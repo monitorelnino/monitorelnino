@@ -1,0 +1,2511 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script data-cfasync="false">
+  (function (w, d) {
+    var busy = [];
+    w.dcGo = function (el, url) {
+      if (el && el.style) { el.style.opacity = '0.65'; el.setAttribute('aria-busy', 'true'); busy.push(el); }
+      var go = function () { w.location.href = url; };
+      if (w.requestAnimationFrame) { w.requestAnimationFrame(function () { setTimeout(go, 0); }); } else { setTimeout(go, 0); }
+    };
+    w.addEventListener('pageshow', function (e) {
+      if (!e.persisted) { return; }
+      for (var i = 0; i < busy.length; i++) { busy[i].style.opacity = ''; busy[i].removeAttribute('aria-busy'); }
+      busy = [];
+    });
+    function toast(text) {
+      var t = d.createElement('div');
+      t.setAttribute('role', 'status');
+      t.textContent = text;
+      t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:2147483000;background:#15213a;color:#fff;padding:10px 16px;border-radius:8px;font:14px/1.3 sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.25);max-width:90vw;overflow-wrap:anywhere';
+      d.body.appendChild(t);
+      setTimeout(function () { if (t.parentNode) { t.parentNode.removeChild(t); } }, 2500);
+    }
+    w.dcShare = function (el) {
+      var c = d.querySelector('link[rel="canonical"]');
+      var url = (c && c.href) || w.location.href.split('#')[0];
+      var touch = w.matchMedia && w.matchMedia('(pointer: coarse)').matches;
+      if (touch && navigator.share) {
+        var p = navigator.share({ title: d.title, url: url });
+        if (p && p.catch) { p.catch(function () {}); }
+        return;
+      }
+      function legacy() {
+        var ok = false;
+        try {
+          var ta = d.createElement('textarea');
+          ta.value = url; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+          d.body.appendChild(ta); ta.select(); ok = d.execCommand('copy'); d.body.removeChild(ta);
+        } catch (x) {}
+        toast(ok ? 'Link copiado' : url);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () { toast('Link copiado'); }, legacy);
+      } else {
+        legacy();
+      }
+    };
+    if (/[?&]dc_defer=0/.test(w.location.search) || !w.EventTarget || !w.WeakMap || !w.requestAnimationFrame) { return; }
+    var TYPES = { click: 1, auxclick: 1, mousedown: 1, mouseup: 1, pointerdown: 1, pointerup: 1, touchstart: 1, touchend: 1 };
+    var FROM = /googletagmanager\.com|connect\.facebook\.net|clarity\.ms/;
+    var P = w.EventTarget.prototype, add = P.addEventListener, rm = P.removeEventListener;
+    var wrappers = new WeakMap(), batches = new WeakMap(), pending = [];
+    function runBatch(b) {
+      if (b.done) { return; }
+      b.done = true;
+      var i = pending.indexOf(b);
+      if (i >= 0) { pending.splice(i, 1); }
+      for (var k = 0; k < b.jobs.length; k++) {
+        try { b.jobs[k](); } catch (err) { setTimeout(function () { throw err; }, 0); }
+      }
+    }
+    function batchFor(e) {
+      var b = batches.get(e);
+      if (!b) {
+        b = { jobs: [], done: false };
+        batches.set(e, b);
+        pending.push(b);
+        w.requestAnimationFrame(function () { setTimeout(function () { runBatch(b); }, 0); });
+        setTimeout(function () { runBatch(b); }, 150);
+      }
+      return b;
+    }
+    function flushAll() {
+      var p = pending.slice();
+      for (var i = 0; i < p.length; i++) { runBatch(p[i]); }
+    }
+    function wrap(fn) {
+      var wr = wrappers.get(fn);
+      if (!wr) {
+        wr = function (e) {
+          var self = this, path = [];
+          try { path = e.composedPath(); } catch (x) {}
+          batchFor(e).jobs.push(function () {
+            try {
+              Object.defineProperty(e, 'currentTarget', { value: self, configurable: true });
+              Object.defineProperty(e, 'composedPath', { value: function () { return path; }, configurable: true });
+            } catch (x) {}
+            if (typeof fn === 'function') { fn.call(self, e); } else if (fn && typeof fn.handleEvent === 'function') { fn.handleEvent(e); }
+          });
+        };
+        wrappers.set(fn, wr);
+      }
+      return wr;
+    }
+    P.addEventListener = function (type, fn, opts) {
+      if (fn && TYPES[type] === 1 && (this === d || this === w || this === d.documentElement || this === d.body)) {
+        var st = '';
+        try { st = new Error().stack || ''; } catch (x) {}
+        if (FROM.test(st)) { return add.call(this, type, wrap(fn), opts); }
+      }
+      return add.call(this, type, fn, opts);
+    };
+    P.removeEventListener = function (type, fn, opts) {
+      return rm.call(this, type, (fn && wrappers.get(fn)) || fn, opts);
+    };
+    add.call(w, 'pagehide', flushAll, true);
+    add.call(d, 'visibilitychange', function () { if (d.visibilityState === 'hidden') { flushAll(); } }, true);
+  })(window, document);
+</script>
+    <meta name="theme-color" content="#15213a">
+
+<link rel="preload" href="https://cdn.cloud.adseleto.com/pr/47515406_as_diariodocomercio.json" as="fetch" crossorigin="anonymous" />
+<link rel='preconnect' href='https://securepubads.g.doubleclick.net' />
+<link rel='preconnect' href='https://cdn.cloud.adseleto.com' />
+<link rel='dns-prefetch' href='//securepubads.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//cdn.cloud.adseleto.com' />
+<link rel='dns-prefetch' href='//custom-targets.cloud.adseleto.com' />
+<link rel='dns-prefetch' href='//mesh.adseleto.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link rel='dns-prefetch' href='//tpc.googlesyndication.com' />
+<link rel='dns-prefetch' href='//googleads.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//adservice.google.com' />
+<link rel='dns-prefetch' href='//fundingchoicesmessages.google.com' />
+<link rel='dns-prefetch' href='//www.googletagservices.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//analytics.google.com' />
+<link rel='dns-prefetch' href='//www.gstatic.com' />
+<link rel='dns-prefetch' href='//cdn.taboola.com' />
+<link rel='dns-prefetch' href='//connect.facebook.net' />
+<link rel='preload' href='https://securepubads.g.doubleclick.net/tag/js/gpt.js' as='script'>
+ <script type="text/javascript">
+  (function (i, v, c, w, e, b) {
+    if (!c.cookie.match(/(^| )_i=([^;]+)/) && !i[v]) {
+        i.GlobalIvcNamespace = i.GlobalIvcNamespace || [];
+        i.GlobalIvcNamespace.push(v);
+        i[v] = function () { (i[v].q = i[v].q || []).push(arguments); };
+        b = c.createElement(w), a = c.getElementsByTagName(w)[0];
+        b.async = 1; b.src = e; a.parentNode.insertBefore(b, a);
+    }
+})(window, "ivc", document, "script", "//web-ivcbrasil-tag.s3.us-west-2.amazonaws.com/ivc.js");
+
+  window.ivc('tracker', 's3', 'ivccf.ivcbrasil.org.br', { idWeb: '677' });
+
+  window.ivc('setUserId', 'login_do_usuario');
+  window.ivc('trackPageView');
+ </script>
+
+ 
+ <!-- MARFEEL SDK -->
+<script>
+  (function (w, d) {
+    function load(src, module) {
+      var s = d.createElement('script');
+      s.src = src;
+
+      if (module) {
+        s.type = 'module';
+      } else {
+        s.async = true;
+        s.type = 'text/javascript';
+        s.setAttribute('nomodule', '');
+      }
+
+      d.head.appendChild(s);
+    }
+
+    w.marfeel = w.marfeel || {};
+    w.marfeel.cmd = w.marfeel.cmd || [];
+
+    w.marfeel.config = {
+      accountId: 3566,
+      adsTrackingFromClient: true
+    };
+
+    load('https://sdk.mrf.io/statics/marfeel-sdk.js?id=' + w.marfeel.config.accountId, true);
+    load('https://sdk.mrf.io/statics/marfeel-sdk.es5.js?id=' + w.marfeel.config.accountId, false);
+  })(window, document);
+</script>
+<script data-cfasync="false">
+  (function (w, d) {
+    function load() {
+      var s = d.createElement('script');
+      s.src = 'https://news.google.com/swg/js/v1/publisher.js';
+      s.async = true;
+      d.head.appendChild(s);
+    }
+    function start() { (w.dcRunWhenIdle || function (fn) { setTimeout(fn, 1500); })(load, 4000); }
+    if (d.readyState === 'complete') { start(); } else { w.addEventListener('load', start, { once: true }); }
+  })(window, document);
+</script>
+<!-- GPT -> MARFEEL ADS TRACKING + ADS PER PAGE -->
+<script>
+  window.googletag = window.googletag || { cmd: [] };
+  window.marfeel = window.marfeel || { cmd: [] };
+
+  (function () {
+    var dcAdsPerPageSlots = {};
+    var dcAdsPerPageCount = 0;
+
+    function sendAdsPerPageMetric() {
+      window.marfeel.cmd.push(['compass', function (compass) {
+        if (typeof compass.setPageMetric === 'function') {
+          compass.setPageMetric('adsPerPage', dcAdsPerPageCount);
+        }
+      }]);
+    }
+
+    googletag.cmd.push(function () {
+      googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+        var slot = event.slot;
+        var slotId = slot && typeof slot.getSlotElementId === 'function'
+          ? slot.getSlotElementId()
+          : '';
+
+        if (!event.isEmpty) {
+          window.marfeel.cmd.push(['compass', function (compass) {
+            if (typeof compass.trackAdEvent === 'function') {
+              compass.trackAdEvent('slotRenderEnded', slot);
+            }
+          }]);
+
+          if (slotId && !dcAdsPerPageSlots[slotId]) {
+            dcAdsPerPageSlots[slotId] = true;
+            dcAdsPerPageCount++;
+            sendAdsPerPageMetric();
+          }
+        }
+      });
+
+      googletag.pubads().addEventListener('slotVisibilityChanged', function (event) {
+        window.marfeel.cmd.push(['compass', function (compass) {
+          if (typeof compass.trackAdEvent === 'function') {
+            compass.trackAdEvent('slotVisibilityChanged', event.slot);
+          }
+        }]);
+      });
+    });
+  })();
+</script>
+
+<!-- ADSELETO WRAPPER -->
+<script>
+  (function (w, d) {
+    function runWhenIdle(task, timeout) {
+      var wait = typeof timeout === 'number' ? timeout : 3000;
+
+      if ('requestIdleCallback' in w) {
+        w.requestIdleCallback(task, { timeout: wait });
+      } else {
+        w.setTimeout(task, Math.min(wait, 2000));
+      }
+    }
+
+    w.dcRunWhenIdle = runWhenIdle;
+
+    function initAdseleto() {
+      if (w.wrapper) return;
+
+      Promise.all([
+        import("https://cdn.cloud.adseleto.com/plugins/auto-custom-targets.min.js"),
+        import("https://cdn.cloud.adseleto.com/adseleto-wrapper.min.js")
+      ]).then(function (mods) {
+        var AdseletoWrapper = mods[1] && mods[1].default ? mods[1].default : null;
+
+        if (!AdseletoWrapper || w.wrapper) return;
+
+        w.wrapper = new AdseletoWrapper({
+          config: {
+            gam_id: "47515406",
+            domain_id: "as_diariodocomercio",
+
+            refresh: {
+              max_times: 10,
+              interval: 30,
+              smart_refresh: true
+            },
+
+            lazy_load: {
+              fetch_margin_percent: 100,
+              mobile_scaling: 1
+            },
+
+            ad_insert: {
+              insert_after: [
+                { ref: "#ad-incontent-1", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["*"] },
+                { ref: "#ad-incontent-2", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["*"] },
+                { ref: "#ad-incontent-3", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["*"] },
+                { ref: "#ad-incontent-4", position: "content", inside_container: true, device: ["desk", "mob"] },
+                { ref: "#ad-incontent-5", position: "content", inside_container: true, device: ["desk", "mob"] },
+                { ref: "#ad-incontent-6", position: "content", inside_container: true, device: ["desk", "mob"] },
+                { ref: "#ad-incontent-7", position: "content", inside_container: true, device: ["desk", "mob"] },
+                { ref: "#ad-incontent-8", position: "content", inside_container: true, device: ["desk", "mob"] },
+
+                { ref: "#adstop", position: "top", inside_container: true, device: ["desk", "mob"], include_in: ["*"] },
+                { ref: "#adstopmob", position: "top", inside_container: true, device: ["desk", "mob"], include_in: ["*"] },
+
+                { ref: "#adsarchive", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["*"] },
+                { ref: "#adsstories", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["/"] },
+                { ref: "#adslateral", position: "sidebar" },
+                { ref: "#adsevents", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["/"] },
+                { ref: "#adseditorials", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["/"] },
+                { ref: "#adsfooter", position: "content", inside_container: true, device: ["desk", "mob"], include_in: ["/"] }
+              ],
+
+              interstitial: {
+                device: ["desk", "mob"]
+              },
+
+              anchor: {
+                device: ["desk", "mob"],
+                anchor_position: "bottom",
+                exclude_from: [
+                  "/samarco-48-anos-meta-reativar-100-por-cento-producao/",
+                  "/anuncie-conosco/",
+                  "/termos-de-uso/",
+                  "/lgpd/",
+                  "/politica-de-privacidade/",
+                  "/termos/*",
+                  "/expediente/",
+                  "/publicidade-legal/",
+                  "*/supermercados-em-mg-tem-dificuldade-de-encontrar-mao-de-obra/",
+                  "*/trem-turistico-promete-rota-de-168-km/",
+                  "*/duvidas-declaracao-imposto-renda/"
+                ]
+              }
+            }
+          },
+
+          plugins: {
+            "auto-custom-targets": true
+          }
+        });
+      }).catch(function (error) {
+        console.error("Falha ao iniciar AdSeleto:", error);
+      });
+    }
+
+    function scheduleAdseletoInit() {
+      runWhenIdle(function () {
+        w.setTimeout(initAdseleto, 0);
+      }, 5000);
+    }
+
+    if (d.readyState === "complete") {
+      scheduleAdseletoInit();
+    } else {
+      w.addEventListener("load", scheduleAdseletoInit, { once: true });
+    }
+  })(window, document);
+</script>
+
+
+<script async src='https://securepubads.g.doubleclick.net/tag/js/gpt.js' data-no-minify='1'></script> 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNKDTM5');</script>
+<script data-cfasync="false">
+  (function (w, d) {
+    function fire() {
+      var run = w.dcRunWhenIdle || function (fn) { setTimeout(fn, 1500); };
+      run(function () {
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: 'dc_idle' });
+      }, 4000);
+    }
+    if (d.readyState === 'complete') { fire(); } else { w.addEventListener('load', fire, { once: true }); }
+  })(window, document);
+</script>
+
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<title>Monitor El Niño: só 284 municípios têm plano de contingência</title>
+	<meta name="description" content="A plataforma MARÉ reúne dados sobre como o Brasil está se antecipando ao El Niño, e apenas 284 municípios têm planos de contingência." />
+	<link rel="canonical" href="https://diariodocomercio.com.br/sustentabilidade/el-nino-planos-contingencia/" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Monitor do El Niño: apenas 284 municípios têm planos de contingência - Diário do Comércio" />
+	<meta property="og:description" content="A plataforma MARÉ reúne dados sobre como o Brasil está se antecipando ao El Niño, e apenas 284 municípios têm planos de contingência." />
+	<meta property="og:url" content="https://diariodocomercio.com.br/sustentabilidade/el-nino-planos-contingencia/" />
+	<meta property="og:site_name" content="Diário do Comércio" />
+	<meta property="article:publisher" content="https://www.facebook.com/DiariodoComercio" />
+	<meta property="article:published_time" content="2026-11-11T11:55:19+00:00" />
+	<meta property="article:modified_time" content="2026-11-11T11:55:22+00:00" />
+	<meta property="og:image" content="https://diariodocomercio.com.br/wp-content/uploads/2026/08/super-el-nino-cidade.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="628" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="Agência Brasil" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@diario_comercio" />
+	<meta name="twitter:site" content="@diario_comercio" />
+	<meta name="twitter:label1" content="Escrito por" />
+	<meta name="twitter:data1" content="Agência Brasil" />
+	<meta name="twitter:label2" content="Est. tempo de leitura" />
+	<meta name="twitter:data2" content="5 minutos" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"NewsArticle","@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/#article","isPartOf":{"@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/"},"author":{"@type":"Person","@id":"https:\/\/diariodocomercio.com.br\/#\/schema\/person\/e41ad0decc1adac6aa9c90fecfa441d2","name":"Rafael Cardoso","description":"Agência Brasil"},"headline":"Monitor do El Niño: apenas 284 municípios têm planos de contingência","datePublished":"2026-11-11T11:55:19+00:00","dateModified":"2026-11-11T11:55:22+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/"},"wordCount":715,"publisher":{"@type":"Organization","name":"Diário do Comércio","logo":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https:\/\/diariodocomercio.com.br\/wp-content\/themes\/diariodocomerciov3\/assets\/img\/logotipo\/logotipo.svg","url":"https:\/\/diariodocomercio.com.br\/wp-content\/themes\/diariodocomerciov3\/assets\/img\/logotipo\/logotipo.svg","contentUrl":"https:\/\/diariodocomercio.com.br\/wp-content\/themes\/diariodocomerciov3\/assets\/img\/logotipo\/logotipo.svg","caption":"Diário do Comércio"},"address":{"@type":"PostalAddress","streetAddress":"Avenida Américo Vespuccio, 1660 - Nova Esperança","addressLocality":"Belo Horizonte","addressRegion":"Minas Gerais","addressCountry":"BR"},"identifier":"17.279.068\/0001-54"},"image":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","url":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","contentUrl":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","thumbnailUrl":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","width":1200,"height":628,"caption":"Super El Niño em uma cidade, dividida em uma tempestade e uma onda de calor"},"thumbnailUrl":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","keywords":["brasil","El Niño","MARÉ","Super El Niño","Sustentabilidade"],"articleSection":"Sustentabilidade","inLanguage":"pt-BR","copyrightYear":"2026","copyrightHolder":{"@id":"https:\/\/diariodocomercio.com.br\/#organization"},"description":"A plataforma MARÉ reúne dados sobre como o Brasil está se antecipando ao El Niño, e apenas 284 municípios têm planos de contingência.","articleBody":"Uma plataforma lançada nesta quarta-feira (11) reúne dados sobre como o Brasil está se antecipando e respondendo ao El Niño, fenômeno climático que intensifica secas, ondas de calor, chuvas e inundações em todo o planeta. Um dos indicadores disponíveis é o de que apenas 284 dos 5.571 municípios têm planos de contingência disponíveis publicamente. O Monitor de Antecipação e Resposta ao El Niño (MARÉ) foi criado pela cientista climática Patricia Ferrini Rodrigues, doutora em Ciências Atmosféricas pela Universidade de São Paulo, e desenvolvido pelo Futura Evidence Lab, com parceria do Instituto Ar. Desde 29 de junho, quando o governo federal divulgou o primeiro boletim de alerta sobre o fenômeno, 1.093 municípios brasileiros, 19,6% do total, registraram decretos de situação de emergência ou calamidade pública. Neles, vivem 38,9 milhões de pessoas. A situação foi reconhecida pela União em 974 municípios. O MARÉ também registra R$ 1,31 bilhão em recursos anunciados por meio de medidas provisórias federais e atos estaduais. O monitor diferencia valores anunciados, autorizados e desembolsados, que são etapas distintas da execução dos recursos. A pesquisadora responsável, no entanto, lembra que outros fatores precisam ser considerados para uma análise crítica das políticas públicas. “Os decretos são necessários quando os danos acontecem, inclusive para viabilizar o acesso aos recursos, mas precisamos avaliar também quais instrumentos de planejamento estavam disponíveis antes da emergência”, diz Patrícia. Leia também: Prejuízos com eventos climáticos extremos sobem 67% no primeiro semestre Outro dado disponível é o de planos estaduais que incluem riscos relacionados a arboviroses, calor, qualidade da água e fumaça de incêndios. A seca e o fogo intensificados pelo El Niño podem trazer doenças respiratórias. A chuva forte favorece casos de leptospirose, diarreia e hepatite A. O calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya aparecem nos três cenários. A ferramenta reúne esses indicadores epidemiológicos, mas não estabelece relação causal automática com o El Niño. Esse tipo de análise precisa ser feita por outras metodologias, explica a médica patologista e diretora do Instituto Ar, Evangelina Araújo. “A disponibilidade de informações públicas e sistematizadas é fundamental para qualificar a tomada de decisão diante dos riscos climáticos. Ao reunir dados sobre preparação, resposta e saúde, o MARÉ contribui para identificar lacunas, acompanhar as medidas adotadas e fortalecer o planejamento de políticas públicas voltadas à proteção da população”, diz Evangelina. Seca, chuva, incêndios Dos 1.093 municípios brasileiros que decretaram situação de emergência ou calamidade pública, 430 declararam seca ou estiagem, 268 chuva, 207 vendaval e 29 fogo. Outros 222 não especificam o tipo de evento e seis mencionam outras ocorrências. O número de decretos supera o de municípios porque uma mesma localidade pode publicar mais de um ato. Os registros não permitem atribuir automaticamente esses eventos ao El Niño. O MARÉ acompanha o intervalo entre a publicação dos decretos municipais e o reconhecimento federal. Em metade dos casos reconhecidos, esse período variou de oito a 22 dias. Leia também: Betim prevê R$ 70,5 milhões em ações contra impactos do Super El Niño Planos estaduais A plataforma apresenta um índice, chamado MARÉ Legal, que vai de 0 a 100, e considera os planos publicados, a existência de estruturas de coordenação e a proporção da população que vive em municípios com planos localizados. O Amazonas apresenta a maior pontuação (76,9), seguido de Santa Catarina (74,7) e Goiás (69,1). Os piores desempenhos são da Paraíba e do Rio Grande do Norte, onde não foram localizados planos estaduais até a data do levantamento. Os índices foram de 1,7 e 1,1 ponto, respectivamente. Os responsáveis reforçam que a verificação das fontes oficiais ainda está em andamento e que os indicadores não avaliam a execução das medidas nem a capacidade operacional dos governos. Conteúdo distribuído por Agência Brasil"},{"@type":"WebPage","@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/","url":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/","name":"Monitor El Niño: só 284 municípios têm plano de contingência","isPartOf":{"@id":"https:\/\/diariodocomercio.com.br\/#website"},"primaryImageOfPage":{"@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/#primaryimage"},"image":{"@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/#primaryimage"},"thumbnailUrl":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","datePublished":"2026-11-11T11:55:19+00:00","dateModified":"2026-11-11T11:55:22+00:00","description":"A plataforma MARÉ reúne dados sobre como o Brasil está se antecipando ao El Niño, e apenas 284 municípios têm planos de contingência.","breadcrumb":{"@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/"]}]},{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/#primaryimage","url":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","contentUrl":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2026\/08\/super-el-nino-cidade.jpg","width":1200,"height":628,"caption":"Foto: Reprodução Adobe Stock"},{"@type":"BreadcrumbList","@id":"https:\/\/diariodocomercio.com.br\/sustentabilidade\/el-nino-planos-contingencia\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Página Inicial","item":"https:\/\/diariodocomercio.com.br\/"},{"@type":"ListItem","position":2,"name":"Sustentabilidade","item":"https:\/\/diariodocomercio.com.br\/editoria\/sustentabilidade\/"},{"@type":"ListItem","position":3,"name":"Monitor do El Niño: apenas 284 municípios têm planos de contingência"}]},{"@type":"WebSite","@id":"https:\/\/diariodocomercio.com.br\/#website","url":"https:\/\/diariodocomercio.com.br\/","name":"Diário do Comércio","description":"Impressão digital da economia mineira","publisher":{"@id":"https:\/\/diariodocomercio.com.br\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/diariodocomercio.com.br\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"pt-BR"},{"@type":"Organization","@id":"https:\/\/diariodocomercio.com.br\/#organization","name":"Diário do Comércio","url":"https:\/\/diariodocomercio.com.br\/","logo":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https:\/\/diariodocomercio.com.br\/#\/schema\/logo\/image\/","url":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2025\/03\/isotipo.png","contentUrl":"https:\/\/diariodocomercio.com.br\/wp-content\/uploads\/2025\/03\/isotipo.png","width":696,"height":696,"caption":"Diário do Comércio"},"image":{"@id":"https:\/\/diariodocomercio.com.br\/#\/schema\/logo\/image\/"},"sameAs":["https:\/\/www.facebook.com\/DiariodoComercio","https:\/\/x.com\/diario_comercio","https:\/\/mastodon.social\/@diariodocomercio","https:\/\/instagram.com\/diariodocomercio","https:\/\/www.linkedin.com\/company\/diariodocomerciomg","https:\/\/www.youtube.com\/channel\/UCJVGURWMaAEa_u0dqo9OJog","https:\/\/tiktok.com\/@diariodocomercio","https:\/\/t.me\/diariodocomercio"],"description":"Principal veículo de comunicação sobre economia, gestão e negócios de Minas Gerais","email":"relacionamento.dc@diariodocomercio.com.br","telephone":"3134692000","legalName":"Diário do Comércio Empresa Jornalistica LTDA","foundingDate":"1932-10-18","vatID":"17.279.068\/0001-54","numberOfEmployees":{"@type":"QuantitativeValue","minValue":"11","maxValue":"50"}},{"@type":"Person","@id":"https:\/\/diariodocomercio.com.br\/#\/schema\/person\/e41ad0decc1adac6aa9c90fecfa441d2","name":"Rafael Cardoso","description":"Agência Brasil"}]}</script>
+
+
+
+<meta property="mrf:authors" content="Rafael Cardoso" />
+<meta property="mrf:sections" content="Sustentabilidade" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://diariodocomercio.com.br/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://diariodocomercio.com.br/wp-includes/blocks/list/style.min.css */
+</style>
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://diariodocomercio.com.br/wp-includes/blocks/paragraph/style.min.css */
+</style>
+
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='contact-form-7-css' href='https://diariodocomercio.com.br/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.2.5' media='print' onload="this.media='all'" />
+<noscript><link rel='stylesheet' id='contact-form-7-css' href='https://diariodocomercio.com.br/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.2.5' media='all' />
+</noscript><style id="faca1200-front-inline-css">
+picture.faca1200-picture{display:contents}
+/*# sourceURL=faca1200-front-inline-css */
+</style>
+<link rel='stylesheet' id='lightbox-plugin-css-css' href='https://diariodocomercio.com.br/wp-content/plugins/lightbox-plugin/assets/lightbox.css?ver=1.0.0' media='print' onload="this.media='all'" />
+<noscript><link rel='stylesheet' id='lightbox-plugin-css-css' href='https://diariodocomercio.com.br/wp-content/plugins/lightbox-plugin/assets/lightbox.css?ver=1.0.0' media='all' />
+</noscript><link rel='shortlink' href='https://diariodo.co/ny20u95' />
+<meta name="meili:post-id" content="648638" />
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'news_view',
+            'date': '2026/11/11 08:55:19',
+            'title': 'Monitor do El Niño: apenas 284 municípios têm planos de contingência',
+            'author': 'Rafael Cardoso',
+            'section': 'Sustentabilidade',
+            'resume': false        });
+    </script>
+        <style type="text/css">
+        #wpadminbar #wp-admin-bar-wp-logo > .ab-item .ab-icon:before {
+            background-image: url(https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/logotipo/admin-logo.svg);
+            background-size: contain;
+            background-position: 0 0;
+            color: rgba(0,0,0,0);
+        }
+    </style>
+<meta name="modelo_do_usuario" content="agencia" />
+<script data-cfasync="false">
+  (function (w, d) {
+    if (!('PerformanceEventTiming' in w) || !('interactionId' in w.PerformanceEventTiming.prototype)) { return; }
+    function gtag() { w.dataLayer = w.dataLayer || []; w.dataLayer.push(arguments); }
+    function cut(s, n) { s = String(s || ''); return s.length > n ? s.slice(0, n) : s; }
+    function scriptName(u) {
+      try { var x = new URL(u); return cut(x.hostname.replace(/^www\./, '') + x.pathname, 100); } catch (e) { return cut(u, 100); }
+    }
+    function send(m) {
+      var a = m.attribution || {}, ls = a.longestScript;
+      gtag('event', 'INP', {
+        send_to: 'G-1BWCWVHNDF',
+        metric_value: Math.round(m.value),
+        metric_rating: m.rating,
+        debug_target: cut(a.interactionTarget || '(removido)', 100),
+        debug_type: a.interactionType || '',
+        debug_load_state: a.loadState || '',
+        debug_input_delay: Math.round(a.inputDelay || 0),
+        debug_processing: Math.round(a.processingDuration || 0),
+        debug_presentation: Math.round(a.presentationDelay || 0),
+        debug_script: ls ? scriptName(ls.entry.sourceURL || ls.entry.invoker) : '',
+        debug_script_part: ls ? ls.subpart : ''
+      });
+    }
+    function sendCLS(m) {
+      var a = m.attribution || {};
+      gtag('event', 'CLS', {
+        send_to: 'G-1BWCWVHNDF',
+        cls_value: Math.round(m.value * 10000) / 10000,
+        metric_rating: m.rating,
+        debug_target: m.value > 0 ? cut(a.largestShiftTarget || '(removido)', 100) : '(sem deslocamento)',
+        debug_load_state: a.loadState || ''
+      });
+    }
+    function sendLCP(m) {
+      var a = m.attribution || {}, i, top = null, phases = [
+        ['TTFB', a.timeToFirstByte],
+        ['atraso do recurso', a.resourceLoadDelay],
+        ['download do recurso', a.resourceLoadDuration],
+        ['atraso de renderização', a.elementRenderDelay]
+      ];
+      for (i = 0; i < phases.length; i++) { if (!top || (phases[i][1] || 0) > (top[1] || 0)) { top = phases[i]; } }
+      gtag('event', 'LCP', {
+        send_to: 'G-1BWCWVHNDF',
+        metric_value: Math.round(m.value),
+        metric_rating: m.rating,
+        debug_target: cut(a.target || '(removido)', 100),
+        debug_lcp_phase: top[0]
+      });
+    }
+    function load() {
+      var s = d.createElement('script');
+      s.src = 'https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/js/web-vitals.attribution.iife.js?ver=1794422882';
+      s.async = true;
+      s.setAttribute('data-cfasync', 'false');
+      s.onload = function () {
+        if (!w.webVitals) { return; }
+        w.webVitals.onINP(send);
+        w.webVitals.onCLS(sendCLS);
+        w.webVitals.onLCP(sendLCP);
+      };
+      d.head.appendChild(s);
+    }
+    function start() {
+      var run = w.dcRunWhenIdle || function (fn, t) {
+        if ('requestIdleCallback' in w) { w.requestIdleCallback(fn, { timeout: t }); } else { setTimeout(fn, 1500); }
+      };
+      run(load, 4000);
+    }
+    if (d.readyState === 'complete') { start(); } else { w.addEventListener('load', start, { once: true }); }
+  })(window, document);
+</script>
+    <link rel="icon" href="https://diariodocomercio.com.br/wp-content/uploads/2024/07/icone2-96x96.png" sizes="32x32" />
+<link rel="icon" href="https://diariodocomercio.com.br/wp-content/uploads/2024/07/icone2-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://diariodocomercio.com.br/wp-content/uploads/2024/07/icone2-300x300.png" />
+<meta name="msapplication-TileImage" content="https://diariodocomercio.com.br/wp-content/uploads/2024/07/icone2-300x300.png" />
+
+    <link href="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/css/bootstrap.min.css?ver=1794422882" rel="stylesheet">
+    <link href="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/css/portal.css?ver=1794422882" rel="stylesheet">
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+        <link rel="preconnect" href="https://p.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/yhx8rkv.css">
+        <link rel="stylesheet" href="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/css/icons.css?ver=1794422882">
+ 
+
+    <link rel="stylesheet" href="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/css/owl.carousel.min.css?ver=1794422882"  />
+ 
+  <!-- Código para single-post -->
+  <script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({article:'auto'});
+    !function (e, f, u, i) {
+      if (!document.getElementById(i)){
+        e.async = 1;
+        e.src = u;
+        e.id = i;
+        f.parentNode.insertBefore(e, f);
+      }
+    }(document.createElement('script'),
+    document.getElementsByTagName('script')[0],
+    '//cdn.taboola.com/libtrc/diariodocomercio-publisher/loader.js',
+    'tb_loader_script');
+    if(window.performance && typeof window.performance.mark == 'function') {
+      window.performance.mark('tbl_ic');
+    }
+  </script>
+
+
+   </head>
+ <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNKDTM5"
+height="0" width="0" style="display:none;visibility:hidden" title="gtm"></iframe></noscript>
+<script>
+  (function (w, d) {
+    function loadPushNews() {
+      if (d.getElementById('dc-pushnews-launcher')) return;
+      var s = d.createElement('script');
+      s.id = 'dc-pushnews-launcher';
+      s.async = true;
+      s.src = "https://cdn.pn.vg/push/pushnews-launcher.js?appId=067400fc-d8b3-4a12-a1e8-ba4589ec5aff";
+      d.body.appendChild(s);
+    }
+
+    function schedulePushNews() {
+      (w.dcRunWhenIdle || function (fn) { setTimeout(fn, 2000); })(loadPushNews);
+    }
+
+    if (d.readyState === "complete") {
+      schedulePushNews();
+    } else {
+      w.addEventListener("load", schedulePushNews, { once: true });
+    }
+  })(window, document);
+</script>
+     <header id="diariodocomercio" >
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-flex">
+        <div class="container">
+          <!-- Botão hamburguer substituindo a marca -->
+          <button
+            class="btn desktop-hamburger"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasMenu"
+            aria-controls="offcanvasMenu"
+            aria-label="Menu de Editorias"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item busca-nav">
+                <a class="nav-link active" aria-current="page" href="/buscar">Buscar</a>
+              </li>
+              
+              <li class="nav-item busca-nav" style="padding-top: var(--bs-nav-link-padding-y); padding-right: var(--bs-navbar-nav-link-padding-x); padding-left: var(--bs-navbar-nav-link-padding-x); color: White!important;">
+                13 de novembro de 2026              </li>
+              
+              
+            </ul>
+            
+              <div id="header-User" class="header-User">
+            </div>
+
+         
+      
+          </div>
+        </div>
+        
+      </nav>
+
+      <!-- Navbar Mobile -->
+      <nav class="navbar bg-body-tertiary d-lg-none">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <!-- Botão hamburguer para mobile -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasMenu"
+              aria-controls="offcanvasMenu"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+              <img
+                src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/logotipo/logotipo-negativo.svg"
+                class="logotipo-mobile img-fluid"
+                width="140" height="40"
+                alt="Logo"
+              />
+            </a>
+
+            <button class="btn btn-yellow" type="button"  onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/assinatura/')">Assine</button>
+          </div>
+        </div>
+        
+        
+      </nav>
+        <div class="publicidade-legal d-block d-md-none">
+  <span>
+    <a href="/publicidade-legal">ACESSE AQUI A <b>PUBLICIDADE LEGAL</b></a>
+  </span>
+</div>
+
+      <!-- Menu offcanvas lateral (compartilhado entre mobile e desktop) -->
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="offcanvasMenu"
+        aria-labelledby="offcanvasMenuLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasMenuLabel">
+          <a href="/">  <img
+              src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/logotipo/logotipo-negativo.svg"
+              class="logotipo-offcanvas img-fluid"
+              width="180" height="60"
+              alt="Logotipo"
+            /></a>
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Fechar"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="offcanvas-search-input">
+            <hr />
+            <form role="search" method="get" action="https://diariodocomercio.com.br/">
+            <input
+              type="text"
+              class="offcanvas-search"
+              placeholder="Buscar"
+              type="search" 
+              name="s" 
+            />
+            </form>
+            <hr />
+          </div>
+
+        <div id="header-UserMobile" class="header-UserMobile">
+        </div>
+   <ul id="menu-menu-lateral-2024" class="navbar-nav">
+   <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="/editoria/parceiros-do-futuro/" class="nav-link">Parceiros do Futuro</a></li>
+   <li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a href="/editoria/mm2032/" class="nav-link">Movimento Minas 2032</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a href="/editoria/premio-jose-costa/" class="nav-link">Prêmio José Costa</a></li>
+
+
+</ul>
+<hr style="margin-top: 15px; margin-bottom: 15px;"/>
+
+        <div class="menu-menu-lateral-2024-container"><ul id="menu-menu-lateral-2024" class="navbar-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a href="https://diariodocomercio.com.br/versao-impressa/" class="nav-link">Versão Impressa</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a href="/publicidade-legal" class="nav-link">Publicidade Legal</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a href="https://diariodocomercio.com.br/ultimas-noticias/" class="nav-link">Últimas Notícias</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/economia/" class="nav-link">Economia</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/negocios/" class="nav-link">Negócios</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/gestao/" class="nav-link">Gestão</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/financas/" class="nav-link">Finanças</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/franquias/" class="nav-link">Franquias</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/variedades/" class="nav-link">Variedades</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children nav-item dropdown"><a href="https://diariodocomercio.com.br/editoria/opiniao/" class="nav-link dropdown-toggle" data-toggle="dropdown">Opinião</a>
+<ul class="submenu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/opiniao/editorial/" class="nav-link">Editorial</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/politica/" class="nav-link">Política</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/opiniao/artigo/" class="nav-link">Artigos</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/agronegocio/" class="nav-link">Agronegócio</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/tecnologia/" class="nav-link">Tecnologia</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/legislacao/" class="nav-link">Legislação</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/internacional/" class="nav-link">Internacional</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/turismo/" class="nav-link">Turismo</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/gastronomia/" class="nav-link">Gastronomia</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent nav-item"><a href="https://diariodocomercio.com.br/editoria/sustentabilidade/" class="nav-link">Sustentabilidade</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/variedades/" class="nav-link">Variedades</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a href="/colunistas" class="nav-link">Colunistas</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/mpes/" class="nav-link">Micro e Pequenas Empresas</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/integra-minas/" class="nav-link">Integra Minas</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/vagas/" class="nav-link">Vagas</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/veiculos/" class="nav-link">Veículos</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Especiais</a>
+<ul class="submenu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item"><a href="https://diariodocomercio.com.br/editoria/parceiros/ciee-estagios/" class="nav-link">CIEE/MG &#8211; Estágio e Aprendizagem</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-conteudo-especial nav-item"><a href="https://diariodocomercio.com.br/conteudo-especial/conectados/" class="nav-link">Conectados 60+</a></li>
+</ul>
+</li>
+</ul></div>        
+
+
+          <hr />
+
+
+          <div class="menu-lgpd-container"><ul id="menu-lgpd" class="navbar-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a href="/expediente" class="nav-link">Expediente</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a href="/termos-de-uso" class="nav-link">Termos de Uso</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a href="/politica-de-privacidade" class="nav-link">Política de Privacidade</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a href="/lgpd" class="nav-link">LGPD</a></li>
+</ul></div>
+
+          <hr />
+          <div class="offcanvas-actions">
+            <button class="btn btn-default d-block mb-2" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/?http_referer=/sustentabilidade/el-nino-planos-contingencia/')">
+              Login
+            </button>
+            <button class="btn btn-yellow d-block mb-2" type="submit" onclick="dcGo(this,'/anuncie-conosco/')">
+              Anuncie
+            </button>
+            <button class="btn btn-yellow d-block mb-2" type="submit"  onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/assinatura/')">
+              Assine
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container superMenu d-none d-lg-block">
+        <div class="row">
+          <div class="col-2">
+          <a href="/">
+            <img
+              src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/logotipo/logotipo.svg"
+              class="logotipo-menu"
+              width="190" height="55"
+              alt="Logotipo"
+            /></a>
+          </div>
+          <div class="col-10 d-flex align-items-center justify-content-end">
+          <div class="menu-menu-principal-2024-container"><ul id="menu-menu-principal-2024" class="d-flex list-unstyled mb-0"><li class="item me-3"><a href="https://diariodocomercio.com.br/ultimas-noticias/">Últimas Notícias</a></li>
+<li class="item me-3"><a href="https://diariodocomercio.com.br/editoria/economia/">Economia</a></li>
+<li class="item me-3"><a href="https://diariodocomercio.com.br/editoria/negocios/">Negócios</a></li>
+<li class="item me-3"><a href="https://diariodocomercio.com.br/editoria/agronegocio/">Agronegócio</a></li>
+<li class="item me-3"><a href="https://diariodocomercio.com.br/editoria/legislacao/">Legislação</a></li>
+</ul></div>
+          </div>
+        </div>
+      </div>
+    </header>
+        <script data-cfasync="false">
+      (function () {
+        function syncHeaderOffset() {
+          var header = document.querySelector('header#diariodocomercio');
+          if (!header) return;
+
+          var styles = window.getComputedStyle(header);
+          var marginTop = parseFloat(styles.marginTop) || 0;
+          var totalHeight = Math.ceil(header.getBoundingClientRect().height + marginTop);
+
+          document.documentElement.style.setProperty('--dc-header-height', totalHeight + 'px');
+        }
+
+        // O header já foi analisado aqui; mede na hora e de novo no DOMContentLoaded.
+        syncHeaderOffset();
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', syncHeaderOffset);
+        }
+
+        window.addEventListener('load', syncHeaderOffset);
+        window.addEventListener('resize', syncHeaderOffset);
+
+        if ('ResizeObserver' in window) {
+          var header = document.querySelector('header#diariodocomercio');
+          if (header) {
+            var ro = new ResizeObserver(syncHeaderOffset);
+            ro.observe(header);
+          }
+        }
+      })();
+    </script>
+    <main id="main-content" role="main">
+<div class="no-headerDetails">
+    <div id="adstop" class="ads adstop d-flex align-items-center justify-content-center d-none d-sm-block ad-slot" data-vars-ad-slot="ads_top"></div>
+
+    <div class="container grid post">
+        <div class="row">
+            <!-- Coluna 1: 8 colunas no desktop e 12 (100%) no mobile -->
+            <div class="col-12 col-md-8 p-3" style="color: black!important;">
+                <article class="dc-leitura">
+                    <style>
+:root {
+  --client-color: #9f7013 !important;
+}
+
+article a {
+  color: #9f7013 !important;
+}
+
+.category a {
+  color: #9f7013 !important;
+  text-decoration: none;
+}
+
+.category a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<div class="category">
+            <a href="https://diariodocomercio.com.br/editoria/sustentabilidade/" style="color: #9f7013 !important;">
+            Sustentabilidade        </a>
+    </div>
+
+<h1 style="color: #9f7013 !important;">Monitor do El Niño: apenas 284 municípios têm planos de contingência</h1>
+                    <div class="bigode" style="color: #9f7013!important;">
+                        Plataforma mostra como está a resposta ao fenômeno climático no país                    </div>
+
+                    <style>
+                        .links-button {
+                            background-color: #9f7013!important;
+                        }
+                    </style>
+
+                    <div class="published" itemprop="datePublished" content="2026-11-11T08:55:19-03:00">11 de novembro de 2026 • 08:55</div>
+                    <div class="d-flex justify-content-between align-items-center autor">
+                        <div class="d-grid">
+                            <div class="d-grid align-items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <a itemprop="url" href="https://diariodocomercio.com.br/author/agenciabrasil/">
+      <div class="d-flex align-items-center">
+        <div class="autor-avatar autor-avatar--40 position-relative flex-shrink-0 d-inline-flex align-items-center justify-content-center overflow-hidden text-white text-uppercase fw-bold shadow rounded-circle me-3">
+          <img 
+            alt=""  
+            loading="lazy" 
+            decoding="async" 
+            class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover autor-img"  src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/icons/user.jpg"> 
+        </div>
+        <div class="d-grid">
+          <h6 class="fw-bold autor-name" itemprop="name">Rafael Cardoso</h6> 
+           
+        </div>
+      </div>
+    </a>
+  </div>                        </div>
+
+                                                                        <div class="d-flex gap-2 align-self-start flex-shrink-0 dc-acoes">
+                            <button type="button" class="rounded-circle d-flex align-items-center justify-content-center text-secondary bg-light autor-social-icon" data-bs-toggle="modal" data-bs-target="#dcShareModal" title="Compartilhar" aria-label="Compartilhar">
+                                <i class="bi bi-share"></i>
+                            </button>
+                                                        <button type="button" class="rounded-circle d-flex align-items-center justify-content-center text-secondary bg-light autor-social-icon" data-bs-toggle="collapse" data-bs-target="#dcPlayer" aria-expanded="false" aria-controls="dcPlayer" title="Ouvir a matéria" aria-label="Ouvir a matéria">
+                                <i class="bi bi-headphones"></i>
+                            </button>
+                                                    </div>
+                    </div>
+
+                    <!-- PR: função existe --><div class="collapse" id="dcPlayer"><style id="pr-player-css">.pr-listen{
+  --pr-a:#ff6a5c; --pr-b:#ff9d4d;
+  --pr-text:#1c1c28; --pr-muted:#8a8a99;
+  --pr-line:#e7e7ee; --pr-track:#ececf2;
+  display:flex;align-items:center;gap:12px;width:100%;
+  min-height:58px;                 /* reserva de altura: evita CLS */
+  padding:9px 14px;margin:0 0 22px;
+  background:#fff;border:1px solid var(--pr-line);border-radius:99px;
+  box-shadow:0 4px 14px -8px rgba(0,0,0,.18);
+  font-family:inherit;color:var(--pr-text);box-sizing:border-box;
+  contain:layout;                  /* isola reflows internos */
+}
+.pr-listen *{box-sizing:border-box}
+.pr-listen button{font-family:inherit;color:var(--pr-text);cursor:pointer;border:none;background:none}
+
+.pr-play{
+  flex:0 0 auto;width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pr-a),var(--pr-b));color:#fff;
+  display:grid;place-items:center;box-shadow:0 6px 14px -6px rgba(255,106,92,.6);
+  transition:transform .12s,filter .2s;
+}
+.pr-play:hover{filter:brightness(1.06)}
+.pr-play:active{transform:scale(.92)}
+.pr-play svg{width:18px;height:18px;fill:#fff}
+
+.pr-spinner{
+  width:18px;height:18px;border:2px solid rgba(255,255,255,.45);
+  border-top-color:#fff;border-radius:50%;animation:pr-spin .7s linear infinite;
+}
+@keyframes pr-spin{to{transform:rotate(360deg)}}
+
+/* Estados do botão controlados por classe (à prova de regras de svg do tema) */
+.pr-listen .pr-ico-play{display:inline-block}
+.pr-listen .pr-ico-pause,
+.pr-listen .pr-spinner{display:none}
+.pr-listen.pr-playing .pr-ico-play{display:none!important}
+.pr-listen.pr-playing .pr-ico-pause{display:inline-block!important}
+.pr-listen.pr-loading .pr-ico-play,
+.pr-listen.pr-loading .pr-ico-pause{display:none!important}
+.pr-listen.pr-loading .pr-spinner{display:inline-block!important}
+
+.pr-label{flex:0 0 auto;line-height:1.1;min-width:118px}
+.pr-label .pr-title{display:block;font-size:.82rem;font-weight:600;white-space:nowrap}
+.pr-label .pr-time{font-size:.72rem;color:var(--pr-muted);font-variant-numeric:tabular-nums}
+
+.pr-progress{position:relative;flex:1 1 auto;min-width:60px;height:6px;border-radius:99px;background:var(--pr-track);cursor:pointer}
+.pr-fill{position:absolute;inset:0 auto 0 0;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--pr-a),var(--pr-b))}
+.pr-thumb{position:absolute;top:50%;left:0%;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid var(--pr-a);transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+.pr-progress:hover .pr-thumb,.pr-progress:focus-visible .pr-thumb{opacity:1}
+
+.pr-icon{flex:0 0 auto;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:var(--pr-muted);transition:background .2s,color .2s}
+.pr-icon:hover{background:#f2f2f7;color:var(--pr-text)}
+.pr-icon svg{width:18px;height:18px;fill:currentColor}
+
+.pr-speed{flex:0 0 auto;height:30px;padding:0 10px;border:1px solid var(--pr-line);border-radius:99px;background:#fafafc;font-weight:600;font-size:.78rem;font-variant-numeric:tabular-nums;transition:border-color .2s,background .2s}
+.pr-speed:hover{border-color:var(--pr-b);background:#fff6ef}
+
+.pr-listen :focus-visible{outline:2px solid var(--pr-b);outline-offset:2px}
+.pr-listen.pr-error{border-color:#f3c2c2}
+.pr-listen.pr-error .pr-title{color:#c0392b}
+
+@media (max-width:560px){
+  .pr-listen{flex-wrap:wrap;border-radius:18px;padding:10px 12px}
+  .pr-progress{order:5;flex-basis:100%;margin-top:4px}
+  .pr-label .pr-title{display:none}
+}
+@media (prefers-reduced-motion:reduce){.pr-listen *{transition:none!important}.pr-spinner{animation-duration:1.4s}}
+
+/* --- Blindagem contra estilos de botão do tema (alta especificidade) --- */
+.pr-listen button.pr-play,
+.pr-listen button.pr-icon,
+.pr-listen button.pr-speed{
+  padding:0;margin:0;border:0;box-shadow:none;min-height:0;
+  text-transform:none;letter-spacing:normal;line-height:normal;
+  text-shadow:none;outline-offset:2px;
+}
+.pr-listen button.pr-play{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pr-a),var(--pr-b)) !important;
+  color:#fff !important;
+  box-shadow:0 6px 14px -6px rgba(255,106,92,.6) !important;
+}
+.pr-listen button.pr-play svg{fill:#fff !important}
+.pr-listen button.pr-speed{
+  height:30px;padding:0 10px;border:1px solid var(--pr-line) !important;
+  background:#fafafc !important;color:var(--pr-text) !important;border-radius:99px;
+}
+.pr-listen button.pr-icon{
+  width:32px;height:32px;border-radius:50%;background:none !important;color:var(--pr-muted) !important;
+}
+.pr-listen button.pr-icon svg{fill:currentColor !important}
+</style>		<div class="pr-listen" data-post="648638" data-title="Monitor do El Niño: apenas 284 municípios têm planos de contingência">
+			<audio class="pr-audio" preload="none"></audio>
+
+			<button class="pr-play" type="button" aria-label="Ouvir a matéria">
+				<svg class="pr-ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+				<svg class="pr-ico-pause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+				<span class="pr-spinner" hidden></span>
+			</button>
+
+			<div class="pr-label">
+				<span class="pr-title">Ouvir a matéria</span>
+				<span class="pr-time"><span class="pr-cur">0:00</span> / <span class="pr-dur">0:00</span></span>
+			</div>
+
+			<button class="pr-icon pr-back" type="button" aria-label="Voltar 10 segundos" title="Voltar 10s">
+				<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>
+			</button>
+			<button class="pr-icon pr-fwd" type="button" aria-label="Avançar 10 segundos" title="Avançar 10s">
+				<svg viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>
+			</button>
+
+			<div class="pr-progress" role="slider" tabindex="0" aria-label="Progresso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+				<div class="pr-fill"></div>
+				<div class="pr-thumb"></div>
+			</div>
+
+			<button class="pr-speed" type="button" aria-label="Velocidade">1×</button>
+
+			<button class="pr-icon pr-mute" type="button" aria-label="Silenciar">
+				<svg viewBox="0 0 24 24"><path class="pr-vol-path" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+			</button>
+		</div>
+		</div>
+                            <div id="adstopmob" class="ads adstop d-flex align-items-center justify-content-center d-block d-sm-none" style="min-height: 480px;"></div>
+
+                    <div class="content-article">
+
+                            
+                        
+<p class="wp-block-paragraph">Uma plataforma lançada nesta quarta-feira (11) reúne dados sobre como o Brasil está se antecipando e respondendo ao El Niño, fenômeno climático que intensifica secas, ondas de calor, chuvas e inundações em todo o planeta. Um dos indicadores disponíveis é o de que apenas 284 dos 5.571 municípios têm planos de contingência disponíveis publicamente.<a href="https://agenciabrasil.ebc.com.br/ebc.png?id=1708333&amp;o=node" class="lightbox-link" data-lightbox="content-images" data-title=""><img decoding="async" src="https://agenciabrasil.ebc.com.br/ebc.png?id=1708333&amp;o=node"></a><a href="https://agenciabrasil.ebc.com.br/ebc.gif?id=1708333&amp;o=node" class="lightbox-link" data-lightbox="content-images" data-title=""><img decoding="async" src="https://agenciabrasil.ebc.com.br/ebc.gif?id=1708333&amp;o=node"></a></p>                                            <figure>
+                                                        <img src="https://diariodocomercio.com.br/wp-content/uploads/2026/08/super-el-nino-cidade.jpg" srcset="https://diariodocomercio.com.br/wp-content/uploads/2026/08/super-el-nino-cidade.jpg 1200w, https://diariodocomercio.com.br/wp-content/uploads/2026/08/super-el-nino-cidade-300x157.jpg 300w, https://diariodocomercio.com.br/wp-content/uploads/2026/08/super-el-nino-cidade-1024x536.jpg 1024w, https://diariodocomercio.com.br/wp-content/uploads/2026/08/super-el-nino-cidade-768x402.jpg 768w, https://diariodocomercio.com.br/wp-content/uploads/2026/08/super-el-nino-cidade-150x79.jpg 150w" sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 991px) 480px, (max-width: 1199px) 629px, 702px" alt="Monitor do El Niño: apenas 284 municípios têm planos de contingência" class="img-fluid img-default-content" itemprop="image" width="1200" height="628" fetchpriority="high">
+                            <div class="captions">Foto: Reprodução Adobe Stock</div>
+                        </figure>
+                    <style>
+/* CLS: o Google injeta o botão (40px) depois do carregamento, logo abaixo da foto de destaque.
+   Sem reserva, o texto abaixo dele descia 40px. */
+.dc-google-preferred-wrap {
+  min-height: 40px;
+}
+
+.dc-google-preferred-wrap [google-add-preferred-source-btn] {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* mira o iframe/elemento que o Google injeta dentro do div */
+.dc-google-preferred-wrap [google-add-preferred-source-btn] > * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+</style>
+      <div class="dc-google-preferred-wrap w-100">
+  <div google-add-preferred-source-btn></div>
+</div>
+                                            
+
+
+
+<p class="wp-block-paragraph">O <a href="https://monitorelnino.com.br/" target="_blank" rel="noopener nofollow">Monitor de Antecipação e Resposta ao El Niño</a> (MARÉ) foi criado pela cientista climática Patricia Ferrini Rodrigues, doutora em Ciências Atmosféricas pela Universidade de São Paulo, e desenvolvido pelo Futura Evidence Lab, com parceria do Instituto Ar.</p>
+
+
+
+<p class="wp-block-paragraph">Desde 29 de junho, quando o governo federal divulgou o primeiro boletim de alerta sobre o fenômeno, 1.093 municípios brasileiros, 19,6% do total, registraram decretos de situação de emergência ou calamidade pública. Neles, vivem 38,9 milhões de pessoas. A situação foi reconhecida pela União em 974 municípios.</p><p class="dc-canal-whatsapp"><a href="https://whatsapp.com/channel/0029VaA1pKF3wtbB4g7eCB0h" target="_blank" rel="nofollow noopener"><span class="dc-canal-emoji" aria-hidden="true">📢</span> Clique aqui para seguir o canal do Diário do Comércio no WhatsApp</a></p>
+
+
+
+<p class="wp-block-paragraph">O MARÉ também registra R$ 1,31 bilhão em recursos anunciados por meio de medidas provisórias federais e atos estaduais. O monitor diferencia valores anunciados, autorizados e desembolsados, que são etapas distintas da execução dos recursos. A pesquisadora responsável, no entanto, lembra que outros fatores precisam ser considerados para uma análise crítica das políticas públicas.</p><div id="ad-incontent-1" class="ad-anchor ad-slot" data-vars-ad-slot="ad_content_1"></div>
+
+
+
+<p class="wp-block-paragraph">“Os decretos são necessários quando os danos acontecem, inclusive para viabilizar o acesso aos recursos, mas precisamos avaliar também quais instrumentos de planejamento estavam disponíveis antes da emergência”, diz Patrícia.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Leia também: <a data-mrf-recirculation="recirculacao-conteudo" href="https://diariodocomercio.com.br/sustentabilidade/prejuizos-eventos-climaticos-sobem/" target="_blank" rel="noopener">Prejuízos com eventos climáticos extremos sobem 67% no primeiro semestre</a></strong></li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Outro dado disponível é o de planos estaduais que incluem riscos relacionados a arboviroses, calor, qualidade da água e fumaça de incêndios. A seca e o fogo intensificados pelo El Niño podem trazer doenças respiratórias. A chuva forte favorece casos de leptospirose, diarreia e hepatite A. O calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya aparecem nos três cenários.</p>
+
+
+
+<p class="wp-block-paragraph">A ferramenta reúne esses indicadores epidemiológicos, mas não estabelece relação causal automática com o El Niño. Esse tipo de análise precisa ser feita por outras metodologias, explica a médica patologista e diretora do Instituto Ar, Evangelina Araújo.</p>
+
+
+
+<p class="wp-block-paragraph">“A disponibilidade de informações públicas e sistematizadas é fundamental para qualificar a tomada de decisão diante dos riscos climáticos. Ao reunir dados sobre preparação, resposta e saúde, o MARÉ contribui para identificar lacunas, acompanhar as medidas adotadas e fortalecer o planejamento de políticas públicas voltadas à proteção da população”, diz Evangelina.</p><div id="ad-incontent-2" class="ad-anchor ad-slot" data-vars-ad-slot="ad_content_2"></div>
+
+
+
+<h2 id="h-seca-chuva-incendios" class="wp-block-heading">Seca, chuva, incêndios</h2>
+
+
+
+<p class="wp-block-paragraph">Dos 1.093 municípios brasileiros que decretaram situação de emergência ou calamidade pública, 430 declararam seca ou estiagem, 268 chuva, 207 vendaval e 29 fogo. Outros 222 não especificam o tipo de evento e seis mencionam outras ocorrências.</p>
+
+
+
+<p class="wp-block-paragraph">O número de decretos supera o de municípios porque uma mesma localidade pode publicar mais de um ato. Os registros não permitem atribuir automaticamente esses eventos ao El Niño.</p>
+
+
+
+<p class="wp-block-paragraph">O MARÉ acompanha o intervalo entre a publicação dos decretos municipais e o reconhecimento federal. Em metade dos casos reconhecidos, esse período variou de oito a 22 dias. </p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Leia também: <a data-mrf-recirculation="recirculacao-conteudo" href="https://diariodocomercio.com.br/economia/betim-plano-super-el-nino/" target="_blank" rel="noopener">Betim prevê R$ 70,5 milhões em ações contra impactos do Super El Niño</a></strong></li>
+</ul>
+
+
+
+<h2 id="h-planos-estaduais" class="wp-block-heading">Planos estaduais</h2>
+
+
+
+<p class="wp-block-paragraph">A plataforma apresenta um índice, chamado MARÉ Legal, que vai de 0 a 100, e considera os planos publicados, a existência de estruturas de coordenação e a proporção da população que vive em municípios com planos localizados.</p>
+
+
+
+<p class="wp-block-paragraph">O Amazonas apresenta a maior pontuação (76,9), seguido de Santa Catarina (74,7) e Goiás (69,1). Os piores desempenhos são da Paraíba e do Rio Grande do Norte, onde não foram localizados planos estaduais até a data do levantamento. Os índices foram de 1,7 e 1,1 ponto, respectivamente.</p><div id="ad-incontent-3" class="ad-anchor ad-slot" data-vars-ad-slot="ad_content_3"></div>
+
+
+
+<p class="wp-block-paragraph">Os responsáveis reforçam que a verificação das fontes oficiais ainda está em andamento e que os indicadores não avaliam a execução das medidas nem a capacidade operacional dos governos.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Conteúdo distribuído por Agência Brasil</strong></p>
+                        
+                    </div>
+
+                                        
+                    
+<style>
+	.author-box-final {
+		background: #ebebeb;
+		border-radius: 16px;
+		margin-bottom: 16px;
+	}
+	.author-box-final__foto {
+		width: 100px;
+		height: 100px;
+		background: #fff;
+	}
+	.author-box-final__rotulo {
+		display: block;
+		font-size: .7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: .06em;
+		color: #6b726d;
+		margin-bottom: 4px;
+	}
+	.author-box-final__nome {
+		color: #14201b;
+		font-weight: 800;
+	}
+	.author-box-final__nome a {
+		color: inherit;
+		text-decoration: none;
+	}
+	.author-box-final__nome a:hover {
+		text-decoration: underline;
+	}
+	.author-box-final__bio {
+		color: #5a625d;
+		font-size: .92rem;
+		max-width: 680px;
+	}
+	.author-box-final__redes {
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+	}
+	@media (min-width: 768px) {
+		.author-box-final__redes { justify-content: flex-start; }
+	}
+	.author-box-final__rede-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: rgba(0,0,0,.06);
+		color: #004934;
+		font-size: 1rem;
+		transition: background .2s ease, color .2s ease, transform .15s ease;
+	}
+	.author-box-final__rede-link:hover {
+		background: #004934;
+		color: #fff;
+		transform: translateY(-2px);
+	}
+</style>
+
+<div class="author-box-final-wrapper my-4">
+			<div class="author-box-final d-flex flex-column flex-md-row align-items-center align-items-md-start gap-3 p-4" itemscope itemtype="https://schema.org/Person">
+			<div class="author-box-final__foto flex-shrink-0 rounded-circle overflow-hidden">
+				<img
+					src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/icons/user.jpg"
+					alt="Rafael Cardoso"
+					width="100" height="100"
+					class="w-100 h-100 object-fit-cover"
+					loading="lazy"
+					itemprop="image"
+				>
+			</div>
+			<div class="author-box-final__conteudo text-center text-md-start">
+				<span class="author-box-final__rotulo">Sobre o autor</span>
+				<h2 class="author-box-final__nome h6 mb-2" itemprop="name">Rafael Cardoso</h2>
+									<p class="author-box-final__bio mb-3" itemprop="description">Agência Brasil</p>
+							</div>
+		</div>
+		</div>
+
+                    <div class="d-block d-md-none">
+                        <section class="dc-publi-lista" aria-label="Publicidade Legal">
+    <h2>Publicidade Legal</h2>
+
+            <h3>Impresso</h3>
+        <ul>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/12-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 12/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/11-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 11/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/10-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 10/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/07-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 07/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/06-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 06/11/2026                    </a>
+                </li>
+                    </ul>
+        <a class="dc-publi-lista__mais" href="https://diariodocomercio.com.br/publicidade-legal-impresso/">Ver outras datas</a>
+    
+            <h3>Digital</h3>
+        <ul class="dc-publi-lista__itens">
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/edital-de-convocacao-assembleia-geral-extraordinaria-a-ser-realizada-em-3-de-dezembro-de-2026-2/">
+                        EDITAL DE CONVOCAÇÃO ASSEMBLEIA GERAL EXTRAORDINÁRIA A SER REALIZADA EM 3 DE DEZEMBRO DE 2026                                                    <span class="dc-publi-lista__empresa">BIOMM S/A</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/ata-de-assembleia-geral-extraordinaria-realizada-em-23-de-outubro-de-2026-2/">
+                        ATA DE ASSEMBLEIA GERAL EXTRAORDINÁRIA, REALIZADA EM 23 DE OUTUBRO DE 2026                                                    <span class="dc-publi-lista__empresa">EPR SUL DE MINAS S.A</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/ata-de-assembleia-geral-extraordinaria-realizada-em-23-de-outubro-de-2026-3/">
+                        ATA DE ASSEMBLEIA GERAL EXTRAORDINÁRIA REALIZADA EM 23 DE OUTUBRO DE 2026                                                    <span class="dc-publi-lista__empresa">EPR VIAS DO CAFE S.A.</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/ata-de-assembleia-geral-extraordinaria-realizada-em-23-de-outubro-de-2026-4/">
+                        ATA DE ASSEMBLEIA GERAL EXTRAORDINÁRIA REALIZADA EM 23 DE OUTUBRO DE 2026                                                    <span class="dc-publi-lista__empresa">EPR TRIANGULO S.A.</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/edital-de-convocacao-assembleia-geral-extraordinaria-171/">
+                        EDITAL DE CONVOCAÇÃO - ASSEMBLEIA GERAL EXTRAORDINÁRIA                                                    <span class="dc-publi-lista__empresa">SGS GEOSOL LABORATORIOS LTDA.</span>
+                                            </a>
+                </li>
+                    </ul>
+        <a class="dc-publi-lista__mais" href="https://diariodocomercio.com.br/publicidade-legal-digital/">Ver outras datas</a>
+    </section><div class="itatiaia">
+  <div class="row  align-items-center">
+    <!-- Coluna 1: Logo e texto centralizada verticalmente -->
+    <div class="col-9 ">
+      <img src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/itatiaia/logotipo.svg" style="height: 30px;" loading="lazy" alt="Rádio Itatiaia">
+      <br>
+      <p style="color: white!important;">Ouça a rádio de Minas</p>
+    </div>
+
+    <!-- Coluna 2: Ícone -->
+    <div class="col-3">
+      <i id="playIcon" class="bi bi-play-circle"></i>
+      <audio id="audio" src="https://8903.brasilstream.com.br/stream" preload="none" hidden></audio>
+    </div>
+  </div>
+</div>                    </div>
+
+                    <button type="button" class="btn reportContent"><i class="bi bi-reply"></i> Reportar erro</button>
+
+                    <div class="d-flex flex-wrap"><a class="btn btn-light fs-6 py-2 px-3 rounded me-2 mb-2 border" href="https://diariodocomercio.com.br/tags/brasil/">#brasil</a><a class="btn btn-light fs-6 py-2 px-3 rounded me-2 mb-2 border" href="https://diariodocomercio.com.br/tags/el-nino-2/">#El Niño</a><a class="btn btn-light fs-6 py-2 px-3 rounded me-2 mb-2 border" href="https://diariodocomercio.com.br/tags/mare/">#MARÉ</a><a class="btn btn-light fs-6 py-2 px-3 rounded me-2 mb-2 border" href="https://diariodocomercio.com.br/tags/super-el-nino/">#Super El Niño</a><a class="btn btn-light fs-6 py-2 px-3 rounded me-2 mb-2 border" href="https://diariodocomercio.com.br/tags/sustentabilidade/">#Sustentabilidade</a></div>
+                    <hr>
+                </article>
+
+                <div class="social-platform d-flex align-items-center justify-content-center">
+                       <ul class="list-unstyled d-flex flex-wrap gap-2">
+        <li>
+          <a href="https://facebook.com/diariodocomercio" target="_blank" class="icon-circle" aria-label="Facebook" rel="nofollow">
+            <i class="bi bi-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/diariodocomercio" target="_blank" class="icon-circle" aria-label="Instagram" rel="nofollow">
+            <i class="bi bi-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@diariodocomercio" target="_blank" class="icon-circle" aria-label="TikTok" rel="nofollow">
+            <i class="bi bi-tiktok"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://youtube.com/diariodocomerciomg" target="_blank" class="icon-circle" aria-label="YouTube" rel="nofollow">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://t.me/diariodocomerciomg" target="_blank" class="icon-circle" aria-label="Telegram" rel="nofollow">
+            <i class="bi bi-telegram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.whatsapp.com/channel/0029VaA1pKF3wtbB4g7eCB0h" class="icon-circle" target="_blank" aria-label="WhatsApp" rel="nofollow">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/diariodocomercio" target="_blank" class="icon-circle" aria-label="LinkedIn" rel="nofollow">
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </li>
+      </ul>                </div>
+
+                <style>
+                    span.video-label.video-title.trc_ellipsis { color: #9f7013!important; }
+                    span.static-text.tbl-fixed-label.tbl-small-label.bottom-left { background-color: #9f7013!important; }
+                    button.video-cta-button.video-cta-style { background-color: #9f7013!important; color: white !important; border: 0 !important; }
+
+                    .tbl-read-more-box a {
+    background-color: #9f7013!important;
+}
+                </style>
+
+                                <script data-cfasync="false">
+                  (function (w, d) {
+                    if (!('ResizeObserver' in w)) return;
+                    var ro = new ResizeObserver(function (entries) {
+                      entries.forEach(function (e) {
+                        var el = e.target;
+                        var h = Math.ceil(el.getBoundingClientRect().height);
+                        if (h > (parseFloat(el.style.minHeight) || 0)) el.style.minHeight = h + 'px';
+                      });
+                    });
+                    d.querySelectorAll('#adstopmob, #adstop, [id^="ad-incontent-"]').forEach(function (el) { ro.observe(el); });
+                  })(window, document);
+                </script>
+
+                                <div id="taboola-below-article-thumbnails"></div>
+                <script type="text/javascript">
+                  (function (w, d) {
+                    var box = d.getElementById('taboola-below-article-thumbnails');
+
+                    // Folga sob o último card enquanto o feed ainda pode trazer outro lote (medido em nov. 2026:
+                    // o lote seguinte soma ~1.300px no celular e até ~3.700px no desktop, com o placeholder).
+                    var FOLGA = w.innerWidth < 768 ? 1400 : 3800;
+                    var maxConteudo = 0, ultimoCrescimento = 0, pertoDesde = 0, completo = false;
+                    var agendado = false, ultimoAjuste = 0;
+
+                    // Se o Taboola não renderizar (bloqueador, rede), devolve o espaço reservado,
+                    // mas só com o box fora da tela, para a remoção não causar outro deslocamento.
+                    function releaseIfEmpty() {
+                      if (!box || box.childElementCount > 0) return true;
+                      if (box.getBoundingClientRect().top > w.innerHeight) {
+                        box.style.minHeight = '0px';
+                        return true;
+                      }
+                      return false;
+                    }
+
+                    // Altura real do conteúdo do feed, sem a reserva: fundo do filho visível mais baixo.
+                    function alturaConteudo() {
+                      var topo = box.getBoundingClientRect().top, fundo = topo, filhos = box.children;
+                      for (var i = 0; i < filhos.length; i++) {
+                        var r = filhos[i].getBoundingClientRect();
+                        if (r.height > 0 && r.bottom > fundo) fundo = r.bottom;
+                      }
+                      return Math.ceil(fundo - topo);
+                    }
+
+                    function ajustar() {
+                      agendado = false;
+                      ultimoAjuste = Date.now();
+                      if (!box.childElementCount) return; // antes de renderizar vale a reserva do portal.css
+                      var agora = ultimoAjuste;
+                      var rect = box.getBoundingClientRect();
+                      var conteudo = alturaConteudo();
+                      if (conteudo > maxConteudo + 1) {
+                        maxConteudo = conteudo; ultimoCrescimento = agora; pertoDesde = 0; completo = false;
+                      }
+                      // O feed só pede outro lote quando o fim do conteúdo chega perto da tela. Se ficou perto
+                      // por 10 s sem crescer, o feed acabou e a folga pode ser devolvida.
+                      var fim = rect.top + conteudo;
+                      if (fim > -1500 && fim < w.innerHeight + 1500) {
+                        if (!pertoDesde) pertoDesde = agora;
+                      } else {
+                        pertoDesde = 0;
+                      }
+                      if (!completo && pertoDesde && agora - pertoDesde > 10000 && agora - ultimoCrescimento > 10000) completo = true;
+
+                      if (rect.bottom > w.innerHeight + 50) {
+                        // Fundo do box (e o rodapé) fora da tela: a reserva pode crescer ou encolher sem mover
+                        // nada visível, desde que o novo fundo continue fora da tela.
+                        var alvo = completo ? conteudo : conteudo + FOLGA;
+                        alvo = Math.max(alvo, Math.ceil(w.innerHeight + 50 - rect.top));
+                        if (Math.abs(alvo - rect.height) > 1) box.style.minHeight = alvo + 'px';
+                      } else if (rect.height > (parseFloat(box.style.minHeight) || 0)) {
+                        // Rodapé visível: trava a altura atual; o box não encolhe.
+                        box.style.minHeight = Math.ceil(rect.height) + 'px';
+                      }
+                    }
+
+                    function agendar() {
+                      if (agendado) return;
+                      agendado = true;
+                      w.requestAnimationFrame(ajustar);
+                    }
+
+                    function acompanharFeed() {
+                      if ('ResizeObserver' in w) new ResizeObserver(agendar).observe(box);
+                      if ('MutationObserver' in w) new MutationObserver(agendar).observe(box, { childList: true });
+                      w.addEventListener('scroll', function () {
+                        if (Date.now() - ultimoAjuste > 200) agendar();
+                      }, { passive: true });
+                      w.addEventListener('resize', agendar);
+                      // Mudanças dentro da reserva não alteram o tamanho do box; confere a cada 2 s por até 10 min.
+                      var inicio = Date.now();
+                      var timer = setInterval(function () {
+                        agendar();
+                        if (Date.now() - inicio > 600000) clearInterval(timer);
+                      }, 2000);
+                    }
+
+                    function mountBelowArticleTaboola() {
+                      if (d.body && d.body.dataset.tbBelowMounted === "1") return;
+                      if (d.body) d.body.dataset.tbBelowMounted = "1";
+
+                      w._taboola = w._taboola || [];
+                      w._taboola.push({
+                        mode: 'alternating-thumbnails-a',
+                        container: 'taboola-below-article-thumbnails',
+                        placement: 'Below Article Thumbnails',
+                        target_type: 'mix'
+                      });
+
+                      w.dataLayer = w.dataLayer || [];
+                      w.dataLayer.push({
+                        event: 'taboola_pv',
+                        placement: 'Below Article Thumbnails'
+                      });
+
+                      setTimeout(function check() {
+                        if (!releaseIfEmpty()) setTimeout(check, 2000);
+                      }, 8000);
+
+                      acompanharFeed();
+                    }
+
+                    if (!box || !('IntersectionObserver' in w)) {
+                      mountBelowArticleTaboola();
+                      return;
+                    }
+
+                    // Antes: 300px. Com ~2 telas de antecedência o feed chega antes do leitor.
+                    var observer = new IntersectionObserver(function (entries) {
+                      entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        mountBelowArticleTaboola();
+                        observer.disconnect();
+                      });
+                    }, { rootMargin: '1500px 0px' });
+
+                    observer.observe(box);
+                  })(window, document);
+                </script>
+            </div>
+
+            <div class="col-12 col-md-4 p-3 d-none d-md-block">
+                <button class="channel-whatsapp d-flex align-items-center justify-content-center" onclick="window.open('https://whatsapp.com/channel/0029VaA1pKF3wtbB4g7eCB0h', '_blank');"><i class="bi bi-whatsapp"></i> Participe do nosso canal no WhatsApp</button>
+
+           <button class="channel-telegram d-flex align-items-center justify-content-center" onclick="window.open('https://t.me/diariodocomercio', '_blank');"><i class="bi bi-telegram"></i> Participe do nosso canal no Telegram</button><section class="dc-publi-lista" aria-label="Publicidade Legal">
+    <h2>Publicidade Legal</h2>
+
+            <h3>Impresso</h3>
+        <ul>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/12-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 12/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/11-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 11/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/10-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 10/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/07-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 07/11/2026                    </a>
+                </li>
+                            <li>
+                    <a href="https://diariodocomercio.com.br/edital-completo/06-11-2026/">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Edição 06/11/2026                    </a>
+                </li>
+                    </ul>
+        <a class="dc-publi-lista__mais" href="https://diariodocomercio.com.br/publicidade-legal-impresso/">Ver outras datas</a>
+    
+            <h3>Digital</h3>
+        <ul class="dc-publi-lista__itens">
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/edital-de-convocacao-assembleia-geral-extraordinaria-a-ser-realizada-em-3-de-dezembro-de-2026-2/">
+                        EDITAL DE CONVOCAÇÃO ASSEMBLEIA GERAL EXTRAORDINÁRIA A SER REALIZADA EM 3 DE DEZEMBRO DE 2026                                                    <span class="dc-publi-lista__empresa">BIOMM S/A</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/ata-de-assembleia-geral-extraordinaria-realizada-em-23-de-outubro-de-2026-2/">
+                        ATA DE ASSEMBLEIA GERAL EXTRAORDINÁRIA, REALIZADA EM 23 DE OUTUBRO DE 2026                                                    <span class="dc-publi-lista__empresa">EPR SUL DE MINAS S.A</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/ata-de-assembleia-geral-extraordinaria-realizada-em-23-de-outubro-de-2026-3/">
+                        ATA DE ASSEMBLEIA GERAL EXTRAORDINÁRIA REALIZADA EM 23 DE OUTUBRO DE 2026                                                    <span class="dc-publi-lista__empresa">EPR VIAS DO CAFE S.A.</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/ata-de-assembleia-geral-extraordinaria-realizada-em-23-de-outubro-de-2026-4/">
+                        ATA DE ASSEMBLEIA GERAL EXTRAORDINÁRIA REALIZADA EM 23 DE OUTUBRO DE 2026                                                    <span class="dc-publi-lista__empresa">EPR TRIANGULO S.A.</span>
+                                            </a>
+                </li>
+                                            <li>
+                    <a href="https://diariodocomercio.com.br/publi-legal/edital-de-convocacao-assembleia-geral-extraordinaria-171/">
+                        EDITAL DE CONVOCAÇÃO - ASSEMBLEIA GERAL EXTRAORDINÁRIA                                                    <span class="dc-publi-lista__empresa">SGS GEOSOL LABORATORIOS LTDA.</span>
+                                            </a>
+                </li>
+                    </ul>
+        <a class="dc-publi-lista__mais" href="https://diariodocomercio.com.br/publicidade-legal-digital/">Ver outras datas</a>
+    </section><div class="itatiaia">
+  <div class="row  align-items-center">
+    <!-- Coluna 1: Logo e texto centralizada verticalmente -->
+    <div class="col-9 ">
+      <img src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/itatiaia/logotipo.svg" style="height: 30px;" loading="lazy" alt="Rádio Itatiaia">
+      <br>
+      <p style="color: white!important;">Ouça a rádio de Minas</p>
+    </div>
+
+    <!-- Coluna 2: Ícone -->
+    <div class="col-3">
+      <i id="playIcon" class="bi bi-play-circle"></i>
+      <audio id="audio" src="https://8903.brasilstream.com.br/stream" preload="none" hidden></audio>
+    </div>
+  </div>
+</div><div class="importantAccess" style="magin-top: 15px">
+<h2> Acessos importantes </h2>
+</div>
+<button class="importantAccess-btn d-flex align-items-center justify-content-center" onclick="window.open('https://diariodocomercio.com.br/publicidade-legal-impresso/', '_blank');"><i class="bi bi-newspaper"></i> Publicidade Legal - Impresso</button>
+<button class="importantAccess-btn d-flex align-items-center justify-content-center" onclick="window.open('https://diariodocomercio.com.br/publicidade-legal-digital/', '_blank');"><i class="bi bi-pc-display-horizontal"></i> Publicidade Legal - Digital</button>
+<div class="columnists">
+  <h2>Colunistas</h2>
+      <div class="owl-carousel style8-carousel">
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2024/10/carteira-trabalho-150x150.jpg" alt="Economia para Todos" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/coluna/economia-para-todos/">
+                  Economia para Todos                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/coluna/economia-para-todos/futuro-emprego-mg/">
+                  O futuro do emprego em MG                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2026/11/workshop-inovacao-1200x628-1-200x200.jpg" alt="Inovação em Pauta" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/coluna/inovacao-coluna/">
+                  Inovação em Pauta                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/coluna/inovacao-coluna/pacto-inovacao-bh-potencial-futuro/">
+                  Pacto de Inovação: Belo Horizonte precisa transformar potencial em futuro                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2026/11/bets-1200x628-1-200x200.jpg" alt="Editorial" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/editorial/">
+                  Editorial                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/editorial/sem-espaco-para-recuar/">
+                  Sem espaço para recuar                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2023/11/Energia-sustentavel-Credito-Adobe-Stock-150x150.jpg" alt="Capitalismo Consciente" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/coluna/capitalismo-consciente/">
+                  Capitalismo Consciente                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/coluna/capitalismo-consciente/2027-espaco-sustentabilidade-plano/">
+                  2027: que espaço a sustentabilidade terá no seu plano?                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2023/11/Foto-B-Pilar-Olivares-Reuters-150x150.jpg" alt="Caminhos sustentáveis" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/coluna/caminhos-sustentaveis/">
+                  Caminhos sustentáveis                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/coluna/caminhos-sustentaveis/rastreabilidade-ruim-pior-sem-ela/">
+                  Rastreabilidade: ruim com ela, pior sem ela                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2026/11/associativismo-1200x628-1-200x200.jpg" alt="Finanças em Foco" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/coluna/financas-em-foco/">
+                  Finanças em Foco                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/coluna/financas-em-foco/associativismo-construcao-coletiva-capacidade-transformar/">
+                  Associativismo: quando a construção coletiva amplia a capacidade de transformar                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2023/04/Foto-A-Fabio-Rodrigues-Agencia-Brasil-150x150.jpg" alt="Editorial" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/editorial/">
+                  Editorial                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/editorial/mudancas-resultados/">
+                  Mudanças e resultados                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2026/11/gelephu-1200x628-1-200x200.jpg" alt="Economia do Propósito" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/coluna/economia-do-proposito/">
+                  Economia do Propósito                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/coluna/economia-do-proposito/gelephu-cidade-butao-ensinar-brasil/">
+                  Gelephu: o que uma cidade no Butão tem a ensinar ao Brasil                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2025/05/praca-brasilia-150x150.jpeg" alt="Editorial" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/editorial/">
+                  Editorial                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/editorial/sem-lugar-errar/">
+                  Sem lugar para errar                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+              <div class="style8-slide">
+          <div class="d-flex align-items-center">
+            <!-- Imagem de destaque do conteúdo -->
+                          <img src="https://diariodocomercio.com.br/wp-content/uploads/2026/11/AdobeStock_482344053-1200x628-1-200x200.jpg" alt="Coluna" class="style8-colunista-img" width="80" height="80" loading="lazy" />
+                        <div>
+              <!-- Nome da categoria com link para a categoria -->
+              <div class="style8-colunista-nome">
+                <a href="https://diariodocomercio.com.br/editoria/opiniao/coluna/">
+                  Coluna                </a>
+              </div>
+              <!-- Título do conteúdo com link para o post -->
+              <p class="style8-colunista-texto">
+                <a href="https://diariodocomercio.com.br/opiniao/coluna/diversidade-em-foco/privilegio-relacional-mercado-trabalho/">
+                  Privilégio é relacional? Como identificar vantagens e abrir portas no mercado de trabalho                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+          </div>
+  </div>    <a href="https://diariodocomercio.com.br/especial/diario-comercio-94-anos-economia-mg/" style="text-decoration: none;">
+        <div class="card-gradient" style="background: url('https://diariodocomercio.com.br/wp-content/uploads/2026/10/diario-comercio.jpeg') center/cover no-repeat;">
+            <div class="card-content">
+                <div class="card-editoria">Especial</div>
+                <div class="card-title">
+                    Aos 94 anos, Diário do Comércio revisita as campanhas que ajudaram a moldar Minas                </div>
+            </div>
+        </div>
+    </a>
+      <div id="newsletter" class="container-fluid newsletter justify-content-center align-items-center mt-12" style="border-radius: 10px;">
+            <div class="row">
+              <div class="news-form-container news-content">
+                  <h2 class="mb-4">Receba novidades por e-mail</h2>
+                  
+             
+             <!-- Newsletter - Formulário Newsletter Portal -->
+<div id="nsl-form-container-1" data-nsl-form="1"></div>
+<script data-cfasync="false">
+(function () {
+  var SRC = 'https://apistoolkit.app-services.space/embed/nsl-forms.js';
+  // Altura do formulário renderizado (campo, botão e captcha Turnstile), medida
+  // em nov. 2026: 209px em todas as larguras. Reservada antes de o formulário
+  // aparecer, para ele não empurrar o texto de baixo. Se o formulário mudar
+  // (por exemplo, captcha só no envio, ~137px), atualize este valor.
+  var RESERVE = 209;
+  var boxes = document.querySelectorAll('[data-nsl-form]:not([data-nsl-form-init])');
+  if (!boxes.length) { return; }
+  for (var k = 0; k < boxes.length; k++) { boxes[k].style.minHeight = RESERVE + 'px'; }
+  // Se o script não carregar (bloqueador, rede), devolve o espaço.
+  function release() {
+    for (var m = 0; m < boxes.length; m++) { boxes[m].style.minHeight = ''; }
+  }
+  function load() {
+    if (window.NSLForms) { window.NSLForms.scan(); return; }
+    if (window.__dcNslLoading) { return; }
+    window.__dcNslLoading = true;
+    var s = document.createElement('script');
+    s.src = SRC;
+    s.async = true;
+    s.setAttribute('data-cfasync', 'false');
+    s.onerror = release;
+    document.body.appendChild(s);
+  }
+  if (!('IntersectionObserver' in window)) { load(); return; }
+  var io = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) { io.disconnect(); load(); return; }
+    }
+  }, { rootMargin: '600px 0px' });
+  for (var j = 0; j < boxes.length; j++) { io.observe(boxes[j]); }
+})();
+</script>
+                 
+             
+                  <p class="text-center" style="color: white;">Ao preencher e enviar o formulário, você concorda 
+                      com a nossa Política de Privacidade e Termos de Uso.</p>
+                </div>
+            </div>
+          </div>            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal (Bootstrap 5) -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModalLabel">Reportar Erro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body" style="padding: 15px!important;">
+        <p>
+<div class="wpcf7 no-js" id="wpcf7-f467145-o1" lang="pt-BR" dir="ltr" data-wpcf7-id="467145">
+<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<form action="/sustentabilidade/el-nino-planos-contingencia/#wpcf7-f467145-o1" method="post" class="wpcf7-form init" aria-label="Formulários de contato" novalidate="novalidate" data-status="init">
+<fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="467145" /><input type="hidden" name="_wpcf7_version" value="6.2.5" /><input type="hidden" name="_wpcf7_locale" value="pt_BR" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f467145-o1" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" /><input type="hidden" name="_wpcf7dtx_version" value="5.0.7" />
+</fieldset>
+<p><span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required reporterror" autocomplete="name" aria-required="true" aria-invalid="false" placeholder="Nome Completo" value="" type="text" name="your-name" /></span><br />
+<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email reporterror" autocomplete="email" aria-required="true" aria-invalid="false" placeholder="E-mail" value="" type="email" name="your-email" /></span><br />
+<span class="wpcf7-form-control-wrap" data-name="erro"><textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required reporterror" aria-required="true" aria-invalid="false" placeholder="Erro que gostaria de relatar" name="erro"></textarea></span><br />
+<input class="wpcf7-form-control wpcf7-submit has-spinner reporterror" type="submit" value="Enviar" /><br />
+<div class="wpcf7-turnstile cf-turnstile" data-sitekey="0x4AAAAAABi29RDcn6Ey8WgE" data-response-field-name="_wpcf7_turnstile_response"></div><br />
+<span class="wpcf7-form-control-wrap url" data-name="url"><input type="hidden" name="url" id="https://diariodocomercio.com.br/sustentabilidade/el-nino-planos-contingencia/" class="wpcf7-form-control wpcf7-hidden wpcf7dtx wpcf7dtx-hidden" aria-invalid="false" value="https://diariodocomercio.com.br/sustentabilidade/el-nino-planos-contingencia/"></span><br />
+<span class="wpcf7-form-control-wrap post_title" data-name="post_title"><input type="hidden" name="post_title" class="wpcf7-form-control wpcf7-hidden wpcf7dtx wpcf7dtx-hidden" aria-invalid="false" value="Monitor do El Niño: apenas 284 municípios têm planos de contingência"></span>
+</p><div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+</div>
+</p>
+        <p class="alert-message" style="padding-left: 10px; padding-right: 10px;">
+          <i class="bi bi-info-square"></i> Você não precisa colar o link e nem o título do conteúdo no seu relato. Vamos incorporar todas as informações necessárias para nossa equipe em sua mensagem.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="dcShareModal" tabindex="-1" aria-labelledby="dcShareModalTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title fw-bold mb-0" id="dcShareModalTitulo">Compartilhar</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body pt-2">
+        <ul class="list-unstyled mb-0 dc-share-list">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdiariodocomercio.com.br%2Fsustentabilidade%2Fel-nino-planos-contingencia%2F%3Futm_source%3Dsocial-share%26utm_medium%3Dcontent" target="_blank" rel="nofollow noopener"><i class="bi bi-facebook"></i> Facebook</a></li>
+          <li><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdiariodocomercio.com.br%2Fsustentabilidade%2Fel-nino-planos-contingencia%2F%3Futm_source%3Dsocial-share%26utm_medium%3Dcontent" target="_blank" rel="nofollow noopener"><i class="bi bi-twitter-x"></i> X (Twitter)</a></li>
+          <li><a href="https://threads.net/intent/post?text=https%3A%2F%2Fdiariodocomercio.com.br%2Fsustentabilidade%2Fel-nino-planos-contingencia%2F%3Futm_source%3Dsocial-share%26utm_medium%3Dcontent" target="_blank" rel="nofollow noopener"><i class="bi bi-threads"></i> Threads</a></li>
+          <li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fdiariodocomercio.com.br%2Fsustentabilidade%2Fel-nino-planos-contingencia%2F%3Futm_source%3Dsocial-share%26utm_medium%3Dcontent" target="_blank" rel="nofollow noopener"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://api.whatsapp.com/send?text=https%3A%2F%2Fdiariodocomercio.com.br%2Fsustentabilidade%2Fel-nino-planos-contingencia%2F%3Futm_source%3Dsocial-share%26utm_medium%3Dcontent" target="_blank" rel="nofollow noopener"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
+          <li><button type="button" class="dc-share-outros" data-bs-dismiss="modal"><i class="bi bi-three-dots"></i> <span>Outros...</span></button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>
+      <div class="container">
+        <div class="row">
+          <!-- Coluna 1: No mobile, será exibida por último; no desktop, como a primeira coluna -->
+          <div class="col-12 col-lg-4 order-3 order-lg-1">
+          <a href="/">
+            <img
+              src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/img/logotipo/logotipo-negativo.svg"
+              class="logotipo-footer"
+              width="160" height="45"
+              alt="Logotipo"
+            /></a>
+            <div class="footer-actions mb-3">
+              <button class="btn btn-default d-block mb-2" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/?http_referer=/sustentabilidade/el-nino-planos-contingencia/')">
+                Login
+              </button>
+              <button class="btn btn-yellow d-block mb-2" type="submit" onclick="dcGo(this,'/anuncie-conosco/')">
+                Anuncie
+              </button>
+              <button class="btn btn-yellow d-block mb-2" type="submit"  onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/assinatura/')">Assine</button>
+               <button class="btn btn-green d-block mb-2" type="submit"  onclick="dcGo(this,'/publicidade-legal/')">
+                Publicidade Legal
+              </button>
+            </div>
+
+            <!-- Lista de ícones -->
+             <ul class="list-unstyled d-flex flex-wrap gap-2">
+        <li>
+          <a href="https://facebook.com/diariodocomercio" target="_blank" class="icon-circle" aria-label="Facebook" rel="nofollow">
+            <i class="bi bi-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/diariodocomercio" target="_blank" class="icon-circle" aria-label="Instagram" rel="nofollow">
+            <i class="bi bi-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@diariodocomercio" target="_blank" class="icon-circle" aria-label="TikTok" rel="nofollow">
+            <i class="bi bi-tiktok"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://youtube.com/diariodocomerciomg" target="_blank" class="icon-circle" aria-label="YouTube" rel="nofollow">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://t.me/diariodocomerciomg" target="_blank" class="icon-circle" aria-label="Telegram" rel="nofollow">
+            <i class="bi bi-telegram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.whatsapp.com/channel/0029VaA1pKF3wtbB4g7eCB0h" class="icon-circle" target="_blank" aria-label="WhatsApp" rel="nofollow">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/diariodocomercio" target="_blank" class="icon-circle" aria-label="LinkedIn" rel="nofollow">
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </li>
+      </ul>          </div>
+          <!-- Coluna 2: Mantém a ordem natural tanto no mobile quanto no desktop -->
+          <div class="col-12 col-lg-4 order-2 compliance">
+            <strong>Fale Conosco</strong><br />
+            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0371666f62606a6c6d626e666d776c2d676043676a62716a6c676c606c6e6671606a6c2d606c6e2d6171">[email&#160;protected]</a>
+            <p></p>
+            <strong>Atendimento ao Leitor</strong><br />
+            (31) 3469 2000
+            <p></p>
+            De segunda a sexta, das 8h às 17h<br />
+            Avenida Américo Vespúcio, 1660 – Pq. Riachuello<br />
+            Belo Horizonte / MG – CEP 31230 250<br />
+            <p></p>
+            <hr />
+            <br />
+            <p>
+              Diário do Comércio: veículo especializado em Economia, Gestão e
+              Negócios de Minas Gerais, referência para empresários, executivos
+              e profissionais liberais.
+            </p>
+            <p>© Diário do Comércio. Todos os direitos reservados.</p>
+            <p>Diário do Comércio Empresa Jornalística Ltda<br />
+              CNPJ: 17.279.068/0001-54</p>
+            <p>
+              O conteúdo deste site não pode ser publicado, transmitido por
+              broadcast, reescrito ou redistribuído sem autorização.
+            </p>
+
+            <hr />
+            <div class="links">
+              <a href="/expediente">Expediente</a> | <a href="/termos-de-uso">Termos de Uso</a> |
+              <a href="/politica-de-privacidade">Privacidade e Proteção de Dados</a> |
+              <a href="/mapa-do-site">Mapa do Site</a> |  <a href="/trends">Trends</a>
+            </div>
+          </div>
+          <!-- Coluna 3: No mobile, será exibida primeiro; no desktop, como a terceira coluna -->
+          <div class="col-12 col-lg-4 order-1 order-lg-3">
+           <div class="menu-rodape-container"><ul id="menu-rodape" class="navbar-nav text-start text-lg-end"><li class="nav"><a href="https://diariodocomercio.com.br/ultimas-noticias/">Últimas notícias</a></li>
+<li class="nav"><a href="https://diariodocomercio.com.br/central-do-leitor/">Central do Leitor</a></li>
+<li class="nav"><a href="https://diariodocomercio.com.br/editoria/economia/">Economia</a></li>
+<li class="nav"><a href="https://diariodocomercio.com.br/editoria/negocios/">Negócios</a></li>
+<li class="nav"><a href="https://diariodocomercio.com.br/editoria/gestao/">Gestão</a></li>
+<li class="nav"><a href="https://diariodocomercio.com.br/editoria/legislacao/">Legislação</a></li>
+</ul></div>          </div>
+        </div>
+      </div>
+    </footer>
+                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/js/jquery-3.6.0.min.js?ver=1794422882" defer></script>
+        <script src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/js/owl.carousel.min.js?ver=1794422882" defer></script>
+        <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/diariodocomerciov4/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-hooks-js" src="https://diariodocomercio.com.br/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255"></script>
+<script id="wp-i18n-js" src="https://diariodocomercio.com.br/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="swv-js" src="https://diariodocomercio.com.br/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.2.5"></script>
+<script id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2025-05-19 13:41:20+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n > 1;","lang":"pt_BR"},"Error:":["Erro:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+//# sourceURL=contact-form-7-js-translations
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/diariodocomercio.com.br\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+//# sourceURL=contact-form-7-js-before
+</script>
+<script id="contact-form-7-js" src="https://diariodocomercio.com.br/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.2.5"></script>
+<script id="pr-player-js-extra">
+var PR_DATA = {"rest":"https://diariodocomercio.com.br/wp-json/polly-reader/v1/audio/","nonce":"440a55b7cf"};
+//# sourceURL=pr-player-js-extra
+</script>
+<script id="pr-player-js" defer src="https://diariodocomercio.com.br/wp-content/plugins/polly-reader/assets/player.js?ver=1.0.0"></script>
+<script data-cfasync="false">
+  (function (w, d) {
+    var started = false;
+    function renderAll() {
+      if (!w.turnstile) return;
+      d.querySelectorAll('.wpcf7-turnstile.cf-turnstile').forEach(function (el) {
+        if (el.getAttribute('data-dc-rendered')) return;
+        el.setAttribute('data-dc-rendered', '1');
+        w.turnstile.render(el, {
+          sitekey: el.getAttribute('data-sitekey'),
+          'response-field-name': el.getAttribute('data-response-field-name') || 'cf-turnstile-response'
+        });
+      });
+    }
+    w.dcTurnstileReady = renderAll;
+    function load() {
+      if (started) { renderAll(); return; }
+      if (!d.querySelector('.wpcf7-turnstile.cf-turnstile')) return;
+      started = true;
+      var s = d.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=dcTurnstileReady';
+      s.async = true;
+      s.setAttribute('data-cfasync', 'false');
+      d.head.appendChild(s);
+    }
+    // Mesmo comportamento do CF7: reinicia o captcha depois de cada envio.
+    d.addEventListener('wpcf7submit', function () { if (w.turnstile) w.turnstile.reset(); });
+    var modal = d.getElementById('errorModal');
+    if (modal) modal.addEventListener('show.bs.modal', load);
+    // Formulário com captcha fora de modal: carrega quando o leitor começa a preencher.
+    d.addEventListener('focusin', function (e) {
+      var f = e.target && e.target.closest ? e.target.closest('.wpcf7-form') : null;
+      if (f && f.querySelector('.cf-turnstile')) load();
+    });
+  })(window, document);
+</script>
+            <script src="https://diariodocomercio.com.br/wp-content/themes/diariodocomerciov4/assets/js/bootstrap.bundle.min.js?ver=1794422882" defer></script>
+ 
+    <!-- Inicialização Owl Carousel -->
+    <script>
+      (function (w, d) {
+        function warmupOffcanvas() {
+          if (!w.bootstrap || !w.bootstrap.Offcanvas) return;
+          var menu = d.getElementById("offcanvasMenu");
+          if (!menu) return;
+          w.bootstrap.Offcanvas.getOrCreateInstance(menu);
+        }
+
+        function scheduleWarmup() {
+          if (w.dcRunWhenIdle) {
+            w.dcRunWhenIdle(warmupOffcanvas, 2000);
+          } else if ("requestIdleCallback" in w) {
+            w.requestIdleCallback(warmupOffcanvas, { timeout: 2000 });
+          } else {
+            setTimeout(warmupOffcanvas, 800);
+          }
+        }
+
+        // O Bootstrap tem defer: só existe depois da leitura do HTML.
+        if (d.readyState === "loading") {
+          d.addEventListener("DOMContentLoaded", scheduleWarmup, { once: true });
+        } else {
+          scheduleWarmup();
+        }
+      })(window, document);
+
+
+      document.addEventListener("DOMContentLoaded", function(){
+      const audio = document.getElementById("audio");
+      const icon = document.getElementById("playIcon");
+
+      if (!audio || !icon) return;
+
+      icon.addEventListener("click", function(){
+        if (audio.paused) {
+          audio.play();
+          icon.classList.remove("bi-play-circle");
+          icon.classList.add("bi-pause-circle");
+        } else {
+          audio.pause();
+          audio.currentTime = 0; // Reseta o áudio para o início
+          icon.classList.remove("bi-pause-circle");
+          icon.classList.add("bi-play-circle");
+        }
+      });
+    });
+       
+      
+    // jQuery e Owl têm defer: o init dos carrosséis espera o DOMContentLoaded, que só dispara depois deles.
+    document.addEventListener("DOMContentLoaded", function () {
+  var $ = window.jQuery;
+  if (!$ || !$.fn || !$.fn.owlCarousel) return;
+
+  function observeWhenVisible(selector, initFn, rootMargin) {
+    var elements = $(selector).toArray();
+    if (!elements.length) return;
+
+    function initElement(el) {
+      if (!el || el.dataset.dcOwlReady === "1") return;
+      el.dataset.dcOwlReady = "1";
+      initFn($(el));
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach(function (el) {
+        initElement(el);
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var targetEl = entry.target && entry.target.__dcOwlElement ? entry.target.__dcOwlElement : null;
+        initElement(targetEl);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: rootMargin || "220px 0px" });
+
+    elements.forEach(function (el) {
+      // Owl costuma iniciar com display:none; observar um ancestral visível evita travar.
+      var observeTarget = el.parentElement || el;
+      observeTarget.__dcOwlElement = el;
+      observer.observe(observeTarget);
+    });
+
+    // Fallback: garante init mesmo sem interseção reportada.
+    setTimeout(function () {
+      elements.forEach(function (el) {
+        initElement(el);
+      });
+    }, 3000);
+  }
+
+      observeWhenVisible(".style8-carousel", function ($el) {
+      if ($el.data("owl-initialized")) return;
+      $el.data("owl-initialized", true);
+
+      $el.owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        dots: true,
+        nav: false,
+        dotsClass: "style8-dots",
+        dotClass: "style8-dot",
+        onInitialized: function (event) {
+          $(event.target).find(".style8-dot").each(function (index) {
+            $(this).attr("aria-label", "Etapa " + (index + 1));
+          });
+        }
+      });
+    });
+
+});
+
+        
+      </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".dropdown-toggle").forEach(function (dropdown) {
+          dropdown.addEventListener("click", function (e) {
+              e.preventDefault();
+              
+              let submenu = this.nextElementSibling;
+              
+              // Alterna a visibilidade do submenu
+              if (submenu.style.display === "block") {
+                  submenu.style.display = "none";
+                  this.classList.remove("active"); // Remove a classe da seta
+              } else {
+                  submenu.style.display = "block";
+                  this.classList.add("active"); // Adiciona a classe da seta
+              }
+          });
+      });
+  });
+</script>
+<script type="text/javascript">
+  (function (w) {
+    function flushTaboola() {
+      if (!w._taboola || !Array.isArray(w._taboola)) return;
+      w._taboola.push({ flush: true });
+    }
+
+    if (w.dcRunWhenIdle) {
+      w.dcRunWhenIdle(flushTaboola, 3500);
+    } else if ("requestIdleCallback" in w) {
+      w.requestIdleCallback(flushTaboola, { timeout: 3500 });
+    } else {
+      setTimeout(flushTaboola, 1200);
+    }
+  })(window);
+</script>
+
+ <script>
+
+  function hydrateHeaderUserBlocks() {
+    fetch("https://centraldoleitor.diariodocomercio.com.br/account/", {
+  credentials: "include"
+})
+      .then(response => response.json())
+      .then(data => {
+        // Atualiza header para Desktop
+        const headerUser = document.getElementById("header-User");
+        if (headerUser) {
+          if (data.status === "0") {
+            headerUser.innerHTML = `
+              <button class="btn btn-default" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/?http_referer=/sustentabilidade/el-nino-planos-contingencia/')">Login</button> 
+              <button class="btn btn-yellow" type="submit" onclick="dcGo(this,'/anuncie-conosco/')">Anuncie</button>
+              <button class="btn btn-yellow" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/assinatura/')">Assine</button>
+              <button class="btn btn-green" type="submit" onclick="dcGo(this,'https://diariodocomercio.com.br/publicidade-legal/')">Publicidade Legal</button>
+            `;
+          } else if (data.status === "1") {
+            if (data.signature === "freemium") {
+              headerUser.innerHTML = `
+                <div class="d-flex align-items-center signature">
+                <!--  <img src="https://placehold.co/40x40?text=Imagem" class="rounded-circle"> -->
+                  <p class="mb-0 ms-2">Olá, ${data['userName']}! <a href=""><i class="bi bi-box-arrow-right"></i></a></p>
+                  <button class="btn btn-yellow" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/assinatura/')">Assine</button>
+                  
+                </div>
+              `;
+            } else if (data.signature === "premium") {
+              if (data.partner === true || data.partner === "true") {
+                headerUser.innerHTML = `
+                  <div class="d-flex align-items-center signature">
+                    <!--<img src="https://placehold.co/40x40?text=Imagem" class="rounded-circle">-->
+                    <p class="mb-0 ms-2">Olá, ${data['userName']}! <a href="https://centraldoleitor.diariodocomercio.com.br/logout"><i class="bi bi-box-arrow-right"></i></a></p>
+                    <img src="${data['partner-logo']}" class="patrocinio" style="max-height:30px!important">
+                    <button class="btn btn-yellow d-block mb-2" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/clube/')">Central do Leitor</button>
+                    <button class="btn btn-green" type="submit" onclick="dcGo(this,'https://diariodocomercio.com.br/publicidade-legal/')">Publicidade Legal</button>
+                  </div>
+                `;
+              } else {
+                headerUser.innerHTML = `
+                  <div class="d-flex align-items-center signature">
+                    <!-- <img src="https://placehold.co/40x40?text=Imagem" class="rounded-circle">-->
+                    <p class="mb-0 ms-2">Olá, ${data['userName']}! <a href="https://centraldoleitor.diariodocomercio.com.br/logout"><i class="bi bi-box-arrow-right"></i></a></p>
+                    <button class="btn btn-yellow" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/clube/')">Central do Leitor</button>
+                  </div>
+                `;
+              }
+            }
+          }
+        }
+      
+        // Atualiza header para Mobile
+        const headerUserMobile = document.getElementById("header-UserMobile");
+        if (headerUserMobile) {
+          if (data.status === "0") {
+            headerUserMobile.innerHTML = `
+              <div class="d-block d-md-none">
+                <div class="d-flex align-items-center signature">
+                  <button class="btn btn-default d-block mb-2" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/?http_referer=/sustentabilidade/el-nino-planos-contingencia/')">
+                    Login
+                  </button>
+                </div>
+                <hr style="margin-top: 15px; margin-bottom: 10px;"/>
+              </div>
+            `;
+          } else if (data.status === "1") {
+            if (data.signature === "freemium") {
+              headerUserMobile.innerHTML = `
+                <div class="d-block d-md-none">
+                  <div class="d-flex align-items-center signature">
+                    <!--<img src="https://placehold.co/40x40?text=Imagem" class="rounded-circle">-->
+                    <p class="mb-0 ms-2">Olá, ${data['userName']}! <a href="https://centraldoleitor.diariodocomercio.com.br/logout"><i class="bi bi-box-arrow-right"></i></a></p>
+                    <button class="btn btn-yellow d-block mb-2" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/assinatura/')">Assine</button>
+                  </div>
+                  <hr style="margin-top: 15px; margin-bottom: 10px;"/>
+                </div>
+              `;
+            } else if (data.signature === "premium") {
+              if (data.partner === true || data.partner === "true") {
+                headerUserMobile.innerHTML = `
+                  <div class="d-block d-md-none">
+                    <div class="d-flex align-items-center signature">
+                      <!--<img src="https://placehold.co/40x40?text=Imagem" class="rounded-circle">-->
+                      <p class="mb-0 ms-2">Olá, ${data['userName']}! <a href="https://centraldoleitor.diariodocomercio.com.br/logout"><i class="bi bi-box-arrow-right"></i></a></p>
+                      <img src="${data['partner-logo']}" class="patrocinio" style="max-height: 20px!important;">
+                    
+                    </div>
+                    <button class="btn btn-yellow d-block mb-2" type="submit" onclick="dcGo(this,'https://centraldoleitor.diariodocomercio.com.br/clube/')">
+                 Central do Leitor</button></div>
+                    <hr style="margin-top: 15px; margin-bottom: 10px;"/>
+                  </div>
+                `;
+              } else {
+                headerUserMobile.innerHTML = `
+                  <div class="d-block d-md-none">
+                    <div class="d-flex align-items-center signature">
+                      <!--<img src="https://placehold.co/40x40?text=Imagem" class="rounded-circle">-->
+                      <p class="mb-0 ms-2">Olá, ${data['userName']}! <a href="https://centraldoleitor.diariodocomercio.com.br/logout"><i class="bi bi-box-arrow-right"></i></a></p>
+                    </div>
+                    <hr style="margin-top: 15px; margin-bottom: 10px;"/>
+                  </div>
+                `;
+              }
+            }
+          }
+        }
+      })
+      .catch(error => console.error("Erro ao obter dados de conta:", error));
+  }
+
+  function scheduleUserHydration(task) {
+    if (window.dcRunWhenIdle) {
+      window.dcRunWhenIdle(task, 4000);
+      return;
+    }
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(task, { timeout: 4000 });
+      return;
+    }
+    setTimeout(task, 1500);
+  }
+
+  if (document.readyState === "complete") {
+    scheduleUserHydration(hydrateHeaderUserBlocks);
+  } else {
+    window.addEventListener("load", function () {
+      scheduleUserHydration(hydrateHeaderUserBlocks);
+    }, { once: true });
+  }
+  </script>
+<script>
+  (function (w, d) {
+    function loadScriptOnce(id, src, attrs) {
+      if (d.getElementById(id)) return;
+      var s = d.createElement("script");
+      s.id = id;
+      s.src = src;
+      s.async = true;
+      if (attrs) {
+        Object.keys(attrs).forEach(function (key) {
+          s.setAttribute(key, attrs[key]);
+        });
+      }
+      d.body.appendChild(s);
+    }
+
+    function schedule(task, timeout) {
+      var wait = typeof timeout === "number" ? timeout : 2000;
+      if (w.dcRunWhenIdle) {
+        w.dcRunWhenIdle(task, wait);
+      } else if ("requestIdleCallback" in w) {
+        w.requestIdleCallback(task, { timeout: wait });
+      } else {
+        setTimeout(task, Math.min(wait, 1500));
+      }
+    }
+
+    // Lightbox: no mobile, evita custo extra de JS em interação.
+    var isMobileViewport = w.matchMedia && w.matchMedia("(max-width: 991.98px)").matches;
+    if (!isMobileViewport && d.querySelector(".lightbox-link")) {
+      schedule(function () {
+        loadScriptOnce(
+          "dc-lightbox-script",
+          "https://diariodocomercio.com.br/wp-content/plugins/lightbox-plugin/assets/lightbox.js?ver=1.0.0"
+        );
+      }, 2500);
+    }
+
+    // instant.page removido (nov. 2026): o WordPress já pré-carrega os links nativamente
+    // (<script type="speculationrules">), então era um script e um domínio de terceiros a mais.
+  })(window, document);
+</script>
+<script src="https://apistoolkit.app-services.space/embed/nsl-cookies.js" data-key="ck_3e77cfffad6713b5eb85808fd4bc2d2e" defer></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a59b23eeb803af8c',t:'MTc5NDU0NTI2Ng=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a59b23eeb803af8c',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html><!-- Script para abrir o modal -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var isMobileViewport = window.matchMedia && window.matchMedia("(max-width: 991.98px)").matches;
+
+  if (isMobileViewport) {
+    // Hard-off do lightbox no mobile para reduzir INP em cliques de imagem.
+    document.querySelectorAll(".content-article a.lightbox-link, article figure a.lightbox-link").forEach(function (anchor) {
+      var parent = anchor.parentNode;
+      if (!parent) return;
+      while (anchor.firstChild) {
+        parent.insertBefore(anchor.firstChild, anchor);
+      }
+      parent.removeChild(anchor);
+    });
+  }
+
+  var reportBtn = document.querySelector(".reportContent");
+  var errorModalEl = document.getElementById("errorModal");
+  var myModal = errorModalEl ? new bootstrap.Modal(errorModalEl) : null;
+
+  if (reportBtn && myModal) {
+    reportBtn.addEventListener("click", function () {
+      myModal.show();
+    });
+  }
+
+  var collapseEl = document.getElementById("resume");
+  var triggerBtn = document.querySelector('[data-bs-toggle="collapse"]');
+  if (collapseEl && triggerBtn) {
+    collapseEl.addEventListener("show.bs.collapse", function () {
+      triggerBtn.innerHTML = '<i class="bi bi-body-text"></i> Fechar o Resumo';
+      triggerBtn.id = "resume-close";
+    });
+
+    collapseEl.addEventListener("hide.bs.collapse", function () {
+      triggerBtn.innerHTML = '<i class="bi bi-body-text"></i> Ler o Resumo';
+      triggerBtn.id = "resume-open";
+    });
+  }
+
+  // "Outros..." no modal de compartilhar (nov. 2026): abre o compartilhamento nativo do aparelho. Onde ele não
+  // existe (Firefox no desktop, por exemplo), a opção vira "Copiar link" (dcShare, functions.php).
+  document.querySelectorAll(".dc-share-outros").forEach(function (btn) {
+    if (!navigator.share) {
+      var label = btn.querySelector("span"), icon = btn.querySelector(".bi");
+      if (label) { label.textContent = "Copiar link"; }
+      if (icon) { icon.className = "bi bi-link-45deg"; }
+    }
+    btn.addEventListener("click", function () {
+      var canon = document.querySelector('link[rel="canonical"]');
+      var url = (canon && canon.href) || window.location.href.split("#")[0];
+      if (navigator.share) {
+        var p = navigator.share({ title: document.title, url: url });
+        if (p && p.catch) { p.catch(function () {}); }
+      } else if (window.dcShare) {
+        window.dcShare(btn);
+      }
+    });
+  });
+
+  // Redes no modal: o link abre em outra aba e o modal fecha pelo script. Não usar data-bs-dismiss nos links:
+  // em <a>, o Bootstrap chama preventDefault() e o link não abre.
+  var dcShareModal = document.getElementById("dcShareModal");
+  document.querySelectorAll(".dc-share-list a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      if (dcShareModal && window.bootstrap && window.bootstrap.Modal) {
+        window.bootstrap.Modal.getOrCreateInstance(dcShareModal).hide();
+      }
+    });
+  });
+
+  var startCarousel = function () {
+    if (!window.jQuery || !jQuery.fn || !jQuery.fn.owlCarousel) return;
+    jQuery(".owl-carousel").owlCarousel({
+      items: 1,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      nav: true,
+      dots: true
+    });
+  };
+
+  (window.dcRunWhenIdle || function (fn) { setTimeout(fn, 800); })(startCarousel);
+});
+</script>
