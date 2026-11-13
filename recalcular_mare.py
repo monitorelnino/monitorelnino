@@ -128,12 +128,11 @@ ESTADOS = {
 #   READ = estrutura permanente ativada/re-instituída/designada para o ciclo por ato datado;
 #   VIG  = ativação recorrente anual (plano de verão/operação sazonal que mobiliza o sistema todo ano);
 #   LAC  = nenhum ato do ciclo toca a estrutura (estrutura permanente sem ato = 0, como a COMPDEC genérica).
-# Fontes e datas de cada julgamento: data/estados.json (campo estrutura) e log_buscas (04/09/2026).
-ESTRUTURA = {
- "AC":"READ","AL":"NOVO","AM":"READ","AP":"LAC","BA":"LAC","CE":"LAC","DF":"READ","ES":"VIG","GO":"NOVO",
- "MA":"VIG","MG":"VIG","MS":"READ","MT":"NOVO","PA":"READ","PB":"LAC","PE":"LAC","PI":"LAC","PR":"READ",
- "RJ":"VIG","RN":"LAC","RO":"VIG","RR":"VIG","RS":"READ","SC":"NOVO","SE":"NOVO","SP":"VIG","TO":"VIG",
-}
+# 13/11/2026 (editoria): a classificação mora no DADO (`data/estados.json`, campo `estrutura.status`, com o
+# documento, a data e o hash), não numa constante deste arquivo: até aqui um decreto lido no diário oficial
+# não tinha como chegar ao índice (RR, Decreto nº 41.444-E, de 31/08/2026, parado por dois meses).
+ESTRUTURA = {u["uf"]: u["estrutura"]["status"]
+             for u in json.load(open(RAIZ / "data" / "estados.json", encoding="utf-8"))["ufs"]}
 # ---------------------------------------------------------------------------------------------
 # v3.1 (30/09/2026, decisão da editoria) — a régua do INSTRUMENTO, sem componente temporal
 # ---------------------------------------------------------------------------------------------
