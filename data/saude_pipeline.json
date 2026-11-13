@@ -4071,7 +4071,13 @@
   {"data": "2026-11-12", "script": "coletar_arboviroses_sinan.py", "inicio": "2026-11-13T01:36:31", "duracao_s": 53.8, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-12", "script": "coletar_obitos_registro_civil.py", "inicio": "2026-11-13T01:37:24", "duracao_s": 33.3, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-12", "script": "classificar_saude_no_plano.py", "inicio": "2026-11-13T01:37:57", "duracao_s": 2.0, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-12", "script": "gerar_saude_municipio.py", "inicio": "2026-11-13T01:37:59", "duracao_s": 0.3, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-12", "script": "gerar_saude_municipio.py", "inicio": "2026-11-13T01:37:59", "duracao_s": 0.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "consultar_querido_diario.py", "inicio": "2026-11-13T01:17:58", "duracao_s": 137.0, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: TimeoutError The read operation timed out | queridodiario.ok.org.br: HTTPError HTTP Error 520: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-12", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-13T01:20:15", "duracao_s": 1.7, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-13T01:20:16", "duracao_s": 2763.6, "itens": 55, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "coletar_doe.py", "inicio": "2026-11-13T02:06:19", "duracao_s": 1644.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "coletar_s2id.py", "inicio": "2026-11-13T02:33:43", "duracao_s": 1190.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-13T02:53:33", "duracao_s": 49.7, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-13T01:37:59"
+ "atualizado_em": "2026-11-13T02:53:33"
 }
