@@ -32,7 +32,7 @@ UFS_ESPERADAS = {"AL", "BA", "CE", "ES", "MA", "MG", "MS", "PB", "PE", "PI", "RJ
 # O texto do PDF quebra a célula em duas linhas ("Subúmido / Seco", "CIRCUNS- / CRITO") e nem sempre traz a
 # letra acentuada inteira: o clima casa pelo radical e a classificação pelo começo.
 LINHA = re.compile(r"\b(\d{7})\s+([A-Z]{2})\s+([^\d]{2,60}?)\s+(?<!\S)(Sub\S{1,2}mido(?:\s+Seco)?|Semi\S{1,2}rido|\S{1,2}rido|\S{1,2}mido)"
-                   r"(?!\S)\s+(ASD|Entorno\s*\((SAB;\s*PAN|SAB|PAN|CIRCUNS))", re.I)
+                   r"(?!\S)\s+(ASD|(?:Entorno\s*)?\((SAB;\s*PAN|SAB|PAN|CIRCUNS))", re.I)
 CODIGO = re.compile(r"\b(\d{7})\s+([A-Z]{2})\s")
 
 
@@ -97,7 +97,7 @@ def autoteste() -> int:
     texto = ("2100154 MA Água Doce do Maranhão Úmido Entorno (SAB; PAN)\n2100907 MA Araioses Subúmido Seco ASD "
              "2304202 CE Crato Semiárido ASD\n3160207 MG Santo Antônio do\nItambé Úmido Entorno (CIRCUNSCRITO) "
              "Tabela 1 – 1.649 municípios 2611101 PE Petrolina A´rido ASD 2101509 MA Barão de Grajaú Subúmido ASD Seco "
-             "3116803 MG Coluna Úmido Entorno (CIRCUNS- CRITO)")
+             "3116803 MG Coluna Úmido (CIRCUNSCRITO) 250 Apêndice B")
     regs = linhas_da_tabela(texto)
     base = {"2100154": {"uf": "MA", "nome": "Água Doce do Maranhão"}, "2100907": {"uf": "MA", "nome": "Araioses"},
             "2304202": {"uf": "CE", "nome": "Crato"}, "3160207": {"uf": "MG", "nome": "Santo Antônio do Itambé"}, "2101509": {"uf": "MA", "nome": "Barão de Grajaú"}, "3116803": {"uf": "MG", "nome": "Coluna"},
