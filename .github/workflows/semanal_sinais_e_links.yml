@@ -51,6 +51,10 @@ jobs:
         # porque a delimitação muda por resolução, não por dia; o próprio script pula a gravação
         # quando o hash do arquivo do IBGE não mudou e a última conferência tem menos de 7 dias.
         coletar_semiarido_sudene.py
+        # 13/11/2026: municípios das Áreas Suscetíveis à Desertificação e Entorno (PAB-Brasil, MMA,
+        # Apêndice B). Semanal como as outras listas federais: o plano muda por edição, e o script
+        # pula a gravação quando o PDF é o mesmo e a última conferência tem menos de 7 dias.
+        coletar_pab_brasil.py
         # Sondas do InfoGripe, as duas: a série da Fiocruz volta a ser fonte complementar se o
         # acesso voltar, e são elas que avisam. Nenhuma escreve série.
         #

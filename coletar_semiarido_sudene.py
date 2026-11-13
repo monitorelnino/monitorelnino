@@ -131,7 +131,7 @@ def problemas(registros: list, base: dict) -> list:
     return ruins
 
 
-def precisa_reprocessar(anterior: dict, hash_novo: str, hoje, dias=DIAS_ENTRE_COLETAS) -> bool:
+def precisa_reprocessar(anterior: dict, hash_novo: str, hoje, dias=DIAS_ENTRE_COLETAS, familia="semiarido") -> bool:
     """True quando vale gravar de novo. Função pura.
 
     Documento novo sempre reprocessa. Documento igual só depois da cadência, para o carimbo de
@@ -139,7 +139,7 @@ def precisa_reprocessar(anterior: dict, hash_novo: str, hoje, dias=DIAS_ENTRE_CO
     e "conferimos e nada mudou" é informação diferente de "paramos de conferir"."""
     if not anterior:
         return True
-    fontes = (anterior.get("fontes") or {}).get("semiarido") or {}
+    fontes = (anterior.get("fontes") or {}).get(familia) or {}
     if fontes.get("hash") != hash_novo:
         return True
     consultado = fontes.get("consultado_em")
