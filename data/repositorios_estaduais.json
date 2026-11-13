@@ -198,15 +198,37 @@
   },
   "DF": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 0,
-   "busca_completa": false,
+   "paginas_lidas": 3,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
+   "noticias": [
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
+    },
+    {
+     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
+     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/GUA%C3%87U%C3%8D%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025%20-%202028.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL"
+    },
+    {
+     "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
+     "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS"
+    },
+    {
+     "url": "https://www.jica.go.jp/brazil/portuguese/office/publications/c8h0vm000001w9k8-att/volume3.pdf",
+     "titulo": "MANUAL DE PLANOS DE CONTINGÊNCIA PARA DESASTRES DE ..."
+    }
+   ],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "www.defesacivil.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentl"
+    "www.defesacivil.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
+    "defesacivil.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
+    "www.saude.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
+    "www.seduh.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
+    "www.economia.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.df.gov.br/"
@@ -214,8 +236,8 @@
   },
   "ES": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 5,
-   "busca_completa": false,
+   "paginas_lidas": 12,
+   "busca_completa": true,
    "candidatos": [
     {
      "url": "https://defesacivil.es.gov.br/planos-de-contigencia",
@@ -223,41 +245,46 @@
      "pastas_externas": []
     }
    ],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+   "noticias": [
+    {
+     "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+     "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://defesacivil.es.gov.br/planos-de-contigencia"
    ]
   },
   "GO": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 6,
-   "busca_completa": false,
+   "paginas_lidas": 7,
+   "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
+     "url": "https://www.youtube.com/watch?v=kFUwetLnW0M",
+     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
+    },
+    {
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Chuvas.pdf",
+     "titulo": "Plano de Contingência para desastres provocados por chuvas ..."
+    },
+    {
+     "url": "https://www.cbngoiania.com.br/tarde-cbn/goias-elabora-planos-de-contingencia-para-combater-impactos-do-super-el-ni-o-1.3427902",
+     "titulo": "Goiás elabora planos de contingência para combater impactos do ..."
+    },
+    {
+     "url": "https://www.youtube.com/watch?v=xggoIeTwinM",
+     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
+    },
+    {
      "url": "https://periodicos.ufsc.br/index.php/adm/article/view/84312",
      "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
-    },
-    {
-     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIT%C3%93RIA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202024-2025.pdf",
-     "titulo": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PMPDC"
-    },
-    {
-     "url": "https://www.dgrm.pt/documents/20143/646385/PCRE+3IBES+FACTORY.pdf/6b84ed7b-1be4-ec12-4044-65dfeab06c9b",
-     "titulo": "PLANO DE CONTINGÊNCIA E RESPOSTA DE EMERGÊNCIA DO ..."
     }
    ],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "www.defesacivil.go.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: ",
-    "www.luziania.go.gov.br: Error: page.evaluate: Execution context was destroyed, most ",
-    "portal.al.go.leg.br: Error: page.evaluate: Execution context was destroyed, most "
+    "www.defesacivil.go.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno -2] Name or servic"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.go.gov.br/"
@@ -265,45 +292,96 @@
   },
   "MA": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 2,
-   "busca_completa": false,
+   "paginas_lidas": 9,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+   "noticias": [
+    {
+     "url": "https://www.portodoitaqui.com.br/arquivos/pcs-2026.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA PARA EMERGÊNCIA EM SAÚDE ..."
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
+    },
+    {
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+    },
+    {
+     "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
+     "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
+    },
+    {
+     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.ma.gov.br/"
    ]
   },
   "MG": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 1,
-   "busca_completa": false,
+   "paginas_lidas": 11,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+   "noticias": [
+    {
+     "url": "https://www.instagram.com/reel/DW9esgADvQg/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
+    },
+    {
+     "url": "https://s3-apps-01.mgdata.com.br/portalbrumadinho/brumadinho/media%20-1769115146587.pdf",
+     "titulo": "Plano de Contingência Municipal (PLANCON) de Brumadinho ..."
+    },
+    {
+     "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
+     "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS"
+    },
+    {
+     "url": "https://dialnet.unirioja.es/descarga/articulo/8628803.pdf",
+     "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.mg.gov.br/planos-de-contigencia"
    ]
   },
   "MS": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 5,
-   "busca_completa": false,
+   "paginas_lidas": 12,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+   "noticias": [
+    {
+     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
+     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
+    },
+    {
+     "url": "https://dialnet.unirioja.es/descarga/articulo/8628803.pdf",
+     "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
+    },
+    {
+     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
+    },
+    {
+     "url": "https://espigaodooeste.ro.gov.br/uploads/678686e2dd349.pdf",
+     "titulo": "COMPDEC PLANO DE CONTINGÊNCIA DE SECA E ESTIAGEM"
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.ms.gov.br/planos-de-contingencia"
    ]
@@ -315,9 +393,8 @@
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.mt.gov.br/"
@@ -330,9 +407,7 @@
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
@@ -341,15 +416,12 @@
   },
   "PB": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 0,
+   "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "www.defesacivil.pb.gov.br: Error: page.evaluate: Execution context was destroyed, most "
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.pb.gov.br/"
@@ -357,15 +429,13 @@
   },
   "PE": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 0,
+   "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "www.defesacivil.pe.gov.br: Error: page.evaluate: Execution context was destroyed, most "
+    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.pe.gov.br/"
@@ -378,9 +448,7 @@
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.pi.gov.br/planos-de-contigencia"
@@ -388,14 +456,29 @@
   },
   "PR": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 10,
+   "paginas_lidas": 16,
    "busca_completa": false,
    "candidatos": [],
-   "noticias": [],
+   "noticias": [
+    {
+     "url": "https://www.instagram.com/reel/DflKYBuu-kD/",
+     "titulo": "Orientações, elaboração de planos de contingência, reuniões e ..."
+    },
+    {
+     "url": "https://saojose.sc.gov.br/wp-content/uploads/2025/09/Plano-de-Contingencia-da-SAS-2025.pdf",
+     "titulo": "Plano de Contingência da SAS - Prefeitura Municipal De São José"
+    },
+    {
+     "url": "https://www.pmav.es.gov.br/uploads/documento/6621768484005.pdf",
+     "titulo": "plano de contingência da secretaria municipal de saúde para ..."
+    },
+    {
+     "url": "https://bibliotecas.ufpr.br/wp-content/uploads/2022/01/Plano_Contingencia.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DO SISTEMA DE BIBLIOTECAS DA ..."
+    }
+   ],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.pr.gov.br/"
@@ -408,9 +491,8 @@
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc"
@@ -418,15 +500,12 @@
   },
   "RN": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 0,
+   "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "www.defesacivil.rn.gov.br: Error: page.evaluate: Execution context was destroyed, most "
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.rn.gov.br/"
@@ -439,10 +518,9 @@
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "www.defesacivil.ro.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentl"
+    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]",
+    "www.defesacivil.ro.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno -3] Temporary fail"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.ro.gov.br/"
@@ -455,9 +533,7 @@
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.rr.gov.br/"
@@ -465,7 +541,7 @@
   },
   "RS": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 8,
+   "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [
     {
@@ -476,30 +552,9 @@
      ]
     }
    ],
-   "noticias": [
-    {
-     "url": "https://www.youtube.com/watch?v=xggoIeTwinM",
-     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
-    },
-    {
-     "url": "https://www.youtube.com/watch?v=kFUwetLnW0M",
-     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
-    },
-    {
-     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
-     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
-    },
-    {
-     "url": "https://dopaonlineupload.procempa.com.br/dopaonlineupload/4419_ce_366883_2.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIAS DE PROTEÇÃO E DEFESA CIVIL"
-    },
-    {
-     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
-     "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
-    }
-   ],
+   "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://prepara.rs.gov.br/planos-de-contingencia-de-protecao-e-defesa-civil"
@@ -507,15 +562,12 @@
   },
   "SC": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 0,
+   "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "www.defesacivil.sc.gov.br: Error: page.evaluate: Execution context was destroyed, most "
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.sc.gov.br/municipios/"
@@ -523,15 +575,19 @@
   },
   "SE": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 0,
+   "paginas_lidas": 1,
    "busca_completa": false,
-   "candidatos": [],
+   "candidatos": [
+    {
+     "url": "https://defesacivil.se.gov.br/planos-de-contigencia/",
+     "municipios": 14,
+     "pastas_externas": []
+    }
+   ],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "defesacivil.se.gov.br: Error: page.evaluate: Execution context was destroyed, most "
+    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://defesacivil.se.gov.br/planos-de-contigencia/"
@@ -544,9 +600,7 @@
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura"
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.sp.gov.br/planos-de-contigencia"
@@ -554,15 +608,12 @@
   },
   "TO": {
    "sondado_em": "2026-11-13",
-   "paginas_lidas": 0,
+   "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
    "noticias": [],
    "falhas": [
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "busca: ValueError: sem cobertura",
-    "bombeiros.to.gov.br: Error: page.evaluate: Execution context was destroyed, most "
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://bombeiros.to.gov.br/planos-de-contigencia"
