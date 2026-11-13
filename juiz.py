@@ -1187,6 +1187,26 @@ def _arquivo_colado(s) -> str:
     return "".join(w for w in (_norm(x) for x in re.split(r"[\W_]+", str(s or ""))) if not RUIDO_DO_ARQUIVO_18.fullmatch(w))
 
 
+# J21 (13/11/2026, editoria). Estrutura de coordenação ESTADUAL criada para o ciclo (METODOLOGIA §30, degrau
+# "criada no ciclo"): decreto do governador cuja EMENTA institui ou cria gabinete, comitê, sala de situação ou
+# centro de operações e nomeia o El Niño. Só este caso, o mais estrito; na dúvida o juiz não classifica.
+RE_ESTRUTURA_DO_CICLO = re.compile(
+    r"(DECRETO\s+N[ºo°.]+\s*[\d.]+(?:-[A-Z])?),?\s+DE\s+(\d{1,2})[ºo°]?\s+DE\s+([A-Za-zçÇ]+)\s+DE\s+(20\d\d)\.?\s+"
+    r"((?:Institui|Cria)\b[^.]{0,160}?\b(?:Gabinete|Comit[êe]|Sala\s+de\s+Situa[çc][ãa]o|Centro\s+de\s+Opera[çc][õo]es)\b"
+    r"[^.]{0,200}?El\s*Ni[ñn]o[^.]{0,120}\.)\s+(?:O|A)\s+GOVERNADORA?\s+DO\s+ESTADO", re.I)
+_MESES = "janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro".split()
+
+
+def estrutura_estadual_do_ciclo(texto):
+    """{"doc", "data"} do primeiro decreto do governador, na edição, que cria estrutura para o El Niño; None. Pura."""
+    m = RE_ESTRUTURA_DO_CICLO.search(" ".join(str(texto or "").split()))
+    mes = m and m.group(3).lower().replace("marco", "março")
+    if not m or mes not in _MESES:
+        return None
+    return {"doc": f"{m.group(1)}, de {int(m.group(2)):02d}/{_MESES.index(mes) + 1:02d}/{m.group(4)}: {m.group(5)}"[:300],
+            "data": f"{int(m.group(2)):02d}/{_MESES.index(mes) + 1:02d}/{m.group(4)}"}
+
+
 def ente_do_repositorio_18(texto, url):
     """(nome, uf, ibge) | "nao_identificado" | None (fora de repositório estadual). O nome mais longo da UF contido no
     nome do arquivo colado vence ("Santa Maria do Herval" e não "Santa Maria")."""
