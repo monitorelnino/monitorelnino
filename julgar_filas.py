@@ -251,6 +251,13 @@ def julgar_uma(p: dict, buscar, preservar=None, propostas: tuple = ()) -> dict:
     veredito = julgar(texto, nome=nome, uf=uf, ibge=ibge, url=url, trecho=p.get("trecho"), propostas=propostas)
     veredito["pista_id"] = p.get("id")
     veredito["origem"] = p.get("origem")
+    # 13/11/2026 (J21): o documento estadual não morre na recusa. A pista da UF, ou a que o J14 encaminha ao
+    # instrumento estadual, é lida atrás da estrutura criada para o ciclo; `--aplicar` a grava em estados.json.
+    if texto and uf and (veredito.get("encaminhar") == "instrumento_estadual" or not (nome or ibge)):
+        from juiz import estrutura_estadual_do_ciclo
+        achado = estrutura_estadual_do_ciclo(texto)
+        if achado:
+            veredito["estrutura_estadual"] = {**achado, "uf": uf, "url": url}
     # 28/09/2026: separar "não pudemos ler" de "lemos e não serve". Sem esta marca, `--aplicar`
     # gravava recusa PERMANENTE numa pista cujo documento apenas não respondeu naquela noite —
     # uma falha de rede, um 403 de uma hora, um portal fora do ar apagariam a pista para sempre,
@@ -720,6 +727,15 @@ def autoteste() -> int:
 
     # todo motivo que o juiz produz está na lista do relatório
     motivos_vistos = {v.get("motivo") for v in vereditos if not v["promove"]}
+    _doe = ("Diário Oficial do Estado de Roraima DECRETO Nº 41.444-E, DE 31 DE AGOSTO DE 2026 Institui, em caráter "
+            "extraordinário, o Gabinete Integrado da Operação El Niño 2026-2027, no Estado de Roraima. O GOVERNADOR DO "
+            "ESTADO DE RORAIMA, no uso das atribuições " + "que lhe são conferidas pela Constituição do Estado. " * 20)
+    _pista_uf = {"id": "rr", "alvo": "RR", "uf": "RR", "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260831.pdf"}
+    _v_rr = julgar_uma(_pista_uf, lambda u: _doe, lambda u, t: "h")
+    _v_ata = julgar_uma(_pista_uf, lambda u: _doe.replace("Institui, em caráter extraordinário, o Gabinete Integrado da", "Ata da reunião que discutiu a"), lambda u, t: "h")
+    casos.append(("J21: decreto do governador que cria gabinete para o El Niño vira estrutura estadual do ciclo; ata não",
+                  (_v_rr.get("estrutura_estadual") or {}).get("data") == "31/08/2026" and not _v_rr["promove"]
+                  and "estrutura_estadual" not in _v_ata))
     casos.append(("todo motivo produzido pelos canários está no codebook do relatório",
                   motivos_vistos <= set(MOTIVOS)))
 
@@ -856,6 +872,12 @@ def main() -> int:
         if interrompido:
             break
 
+    if aplicar:
+        from julgar_e_aplicar_descobertas import aplicar_estrutura_estadual
+        for v in vereditos:
+            e = v.get("estrutura_estadual")
+            if e and aplicar_estrutura_estadual(e["uf"], e, e["url"], v.get("hash_evidencia"), hoje_editorial().isoformat()):
+                print(f"estrutura estadual criada no ciclo: {e['uf']} · {e['doc'][:120]}")
     c = contar(vereditos)
     por_categoria = {}
     for v in vereditos:

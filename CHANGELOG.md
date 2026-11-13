@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-13 · #PR · Juiz lê a estrutura estadual criada para o ciclo no diário oficial
+
+O documento estadual deixou de parar na recusa: quando a pista é da UF, ou o juiz a encaminha ao
+instrumento estadual, a edição é lida atrás de decreto do governador que cria gabinete, comitê, sala
+de situação ou centro de operações para o El Niño. Achado, a estrutura do estado sobe a "criada no
+ciclo" em `estados.json`, com documento, data e hash. Nunca rebaixa.
+
 ## 2026-11-12 · #PR · Boletim da NOAA: "mais de 79%" sai com o limiar da fonte
 
 O leitor do boletim do El Niño perdia o "greater than" quando a NOAA escreve "greater than a 79%

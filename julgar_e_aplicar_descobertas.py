@@ -436,6 +436,26 @@ def sincronizar_areas(uf, risco_texto):
     return True, "atualizado"
 
 
+def aplicar_estrutura_estadual(uf, achado, url, hash_evidencia, hoje, caminho=None):
+    """Grava em estados.json a estrutura de coordenação criada no ciclo (juiz, J21), com documento, data, endereço
+    e hash. Nunca rebaixa nem regrava o que já está no degrau. Devolve True se gravou."""
+    from recalcular_mare import ESTADO_SCORE
+    caminho = caminho or RAIZ / "data" / "estados.json"
+    estados = json.load(open(caminho, encoding="utf-8"))
+    alvo = next((u for u in estados["ufs"] if u["uf"] == uf), None)
+    if alvo is None or ESTADO_SCORE["NOVO"] <= ESTADO_SCORE[(alvo.get("estrutura") or {}).get("status", "LAC")]:
+        return False
+    novo = {"status": "NOVO", "doc": achado["doc"], "data": achado["data"], "url": url, "consultado_em": hoje,
+            "julgado_em": hoje, "hash_evidencia": hash_evidencia,
+            "proveniencia": {"tipo_fonte": "diario_oficial", "verificacao": "conteudo_conferido",
+                             "como_achou": "juiz automático (J21): decreto do governador lido na edição do diário oficial"}}
+    alvo["estrutura"] = novo
+    alvo["instrumentos"] = [i for i in alvo.get("instrumentos") or [] if i.get("tipo") != "estrutura_coordenacao"] + \
+        [{"tipo": "estrutura_coordenacao", **{k: v for k, v in novo.items() if k != "julgado_em"}}]
+    gravar_em(caminho, estados)
+    return True
+
+
 def aplicar_estadual(uf, texto, numero, data, url, hoje, hash_evidencia=None):
     """Mescla um instrumento estadual EX_ANTE confiante em estados.json. Retorna
     (aplicado: bool, motivo: str, status_aplicado: str|None, antecipacao: int|None)."""
@@ -1137,6 +1157,16 @@ def self_test():
     with _mk.patch("urllib.request.urlopen", side_effect=OSError("403")), \
          _mk.patch(f"{__name__}.copia_arquivada", return_value=(None, None)):
         assert buscar_texto("https://x.ms.gov.br/p.html") is None
+
+    # 13/11/2026 (J21): a estrutura criada no ciclo sobe, com prova; a que já está no degrau não é regravada
+    with tempfile.TemporaryDirectory() as _t:
+        _c = Path(_t) / "estados.json"
+        _c.write_text(json.dumps({"ufs": [{"uf": "RR", "estrutura": {"status": "VIG"}, "instrumentos": [{"tipo": "estrutura_coordenacao", "status": "VIG"}]}]}), encoding="utf-8")
+        _a = {"doc": "DECRETO Nº 41.444-E, de 31/08/2026: Institui o Gabinete", "data": "31/08/2026"}
+        assert aplicar_estrutura_estadual("RR", _a, "https://x/doe.pdf", "abc", "2026-11-13", _c)
+        _e = json.load(open(_c, encoding="utf-8"))["ufs"][0]
+        assert _e["estrutura"]["status"] == "NOVO" and _e["estrutura"]["hash_evidencia"] == "abc" and len(_e["instrumentos"]) == 1
+        assert not aplicar_estrutura_estadual("RR", _a, "https://x/doe.pdf", "abc", "2026-11-13", _c)
 
     print("\n✓ self-test do orquestrador OK — 6 cenários cobertos (aplicar exigiria banco real; "
           "ver classificador_natureza.py e verificar_recorrencia_uf.py para os self-tests de aplicação).")

@@ -4449,3 +4449,8 @@ A Lei nº 12.340/2010, art. 3º-A, §2º, diz que "Os Municípios incluídos no 
 ## 130. Site que recusa ou saiu do ar: cópia arquivada antes de desistir (12/11/2026)
 
 Decisão da editoria. Quando nenhum endereço da prefeitura responde como a prefeitura (recusa 401/403/429/451, domínio expirado, TLS, tempo esgotado), `descobrir_no_portal` lê a captura mais recente do endereço no Internet Archive (`coletores_base.copia_arquivada`), sem novo pedido ao host. A captura que se identifica como a prefeitura e é do ciclo (desde 29/06/2026) conta como consulta do site (`lido`, com "cópia arquivada de AAAA-MM-DD" no log); captura anterior fica `portal_nao_verificado` e só gera pista. O juiz lê o documento pela mesma via quando a origem recusa. A recusa segue respeitada: o host não é pedido de novo.
+
+## 133. O juiz lê a estrutura estadual criada para o ciclo (regra J21, 13/11/2026)
+
+Decisão da editoria (12/11/2026), segundo passo do §131. A pista cujo alvo é a UF, ou a que o juiz encaminha ao instrumento estadual (J14), é lida atrás de um único caso, o mais estrito da régua do §30: **decreto do governador cuja ementa institui ou cria gabinete, comitê, sala de situação ou centro de operações e nomeia o El Niño**. Achado, `aplicar_estrutura_estadual` grava em `data/estados.json` o degrau "criada no ciclo", com o decreto, a data, o endereço e o hash do texto julgado; nunca rebaixa nem regrava o que já está no degrau. Estrutura permanente ativada por ato datado e mobilização recorrente não são classificadas pela máquina: na dúvida o juiz não classifica, e a errata por linha continua sendo a via. O veredito da pista não muda (segue recusada para crédito municipal). Nenhum peso, crédito ou componente muda.
+
