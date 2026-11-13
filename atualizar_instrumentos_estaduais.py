@@ -18,8 +18,7 @@ REGISTRO DE REPOSITÓRIOS (extensível):
   Cada UF mapeada tem uma função de parser própria, porque cada site estadual
   publica a lista em formato diferente. Adicionar uma UF = escrever um parser
   novo e registrá-lo em REPOSITORIOS; nada mais muda.
-  Implementadas: SE, ES, RS (pasta pública do SharePoint). Mapeadas mas SEM parser ainda (grafado no protocolo de
-  busca como pendência): PR (SISDC), ES, AM — ver Metodologia §4.1.1(d).
+  Implementadas: SE, ES, RS (pasta pública do SharePoint). As demais UFs: `sondar_repositorios_estaduais.py`.
 
 LIMITAÇÃO DE AMBIENTE (declarada, não escondida): o sandbox onde este projeto
 é normalmente editado tem a rede restrita a um allowlist de domínios de
@@ -197,42 +196,9 @@ REPOSITORIOS = {
         "pasta": "/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa Militar/SUBCHEFIAS/SUBCHEFIA DE PROTEÇÃO E DEFESA CIVIL/3. Departamento de Gestão de Riscos/Divisão Técnica de Riscos/Planos de contingência/TODOS PLANCONS RECEBIDOS",
         "carregar": listar_sharepoint,
     },
-    "PR": {"parser": None, "nota": "SISDC/CEPDEC-PR — planos gerados no sistema, sem lista pública de PDFs para parser (Protocolo de Busca v2, decisão pendente ii)"},
-    "AM": {"parser": None, "nota": "repositório estadual conhecido, parser não implementado"},
-    # Ausências VERIFICADAS em 26/08/2026 (registradas para não repetir a busca):
-    # o estado publica material de orientação/modelo, mas NÃO um repositório dos
-    # planos municipais recebidos. Rever se a página mudar.
-    "SC": {"parser": None, "nota": "VERIFICADO 26/08/2026 — defesacivil.sc.gov.br/municipios/ publica apenas pacotes-modelo (PlanCon AS, PlanCon EduAgravi); sem repositório de planos municipais. Cobertura de SC vem do levantamento declarado do TCE-SC (Painel Farol)"},
-
-    # ---- Sondagem de 24/09/2026 (§195), pedido editorial de estender o canal ----------------
-    # SE e ES são as duas UFs com repositório de PLANCONs municipais e parser, e juntas já deram 84
-    # dos planos do banco — o dobro do que o canal inteiro de diários municipais produziu. O pedido
-    # foi estender às outras. O QUE FOI FEITO, e o seu limite, declarado: as 23 UFs restantes foram
-    # sondadas nos três caminhos que SE e ES usam (/planos-de-contigencia — com a grafia sem o
-    # segundo "n" que os dois adotam —, /planos-de-contingencia e /plancon), com o cliente
-    # identificado e respeitando robots (§185). Seis responderam; nenhuma é repositório municipal.
-    # ISSO NÃO PROVA QUE NÃO EXISTE: prova que não está nesses três caminhos. Um repositório sob
-    # outro endereço, ou atrás de JavaScript, escapa desta sondagem — a descoberta renderizada
-    # (descobrir_planos.py --renderizar) é o passo seguinte, e está declarado como pendente.
-    "MS": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.ms.gov.br/planos-de-contingencia responde 293 kB com o título 'Planos de Contingência (PLANCON)', mas a página não lista plano municipal nenhum: só a Comissão Estadual e botões de compartilhamento. Página informativa, não repositório"},
-    "MG": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.mg.gov.br/planos-de-contigencia responde com aviso de período eleitoral (padrão do §182: o que está suspenso é a seção, não o sítio). Reconferir depois de 25/10"},
-    "TO": {"parser": None, "nota": "SONDADO 24/09/2026 — bombeiros.to.gov.br/planos-de-contigencia responde 'Aviso de Suspensão' do período eleitoral. Reconferir depois de 25/10"},
-    "PI": {"parser": None, "nota": "SONDADO 24/09/2026 — www.pi.gov.br/planos-de-contigencia responde sob aviso de período eleitoral, com 5 PDFs na página; conteúdo não conferido. Reconferir depois de 25/10"},
-    "SP": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.sp.gov.br/planos-de-contigencia devolve a página institucional, sem lista de planos municipais. Ver também o muro de robô do §186 neste domínio"},
-    "AL": {"parser": None, "nota": "SONDADO 24/09/2026 — defesacivil.al.gov.br/planos-de-contigencia responde 349 bytes (página vazia)"},
-    # ---- Descoberta RENDERIZADA de 24/09/2026 (§197), o passo que a sonda por caminho não alcança --
-    # As 21 UFs sem parser tiveram a home aberta em navegador real e a navegação lida em busca de
-    # seção de planos MUNICIPAIS. Três candidatos, e os três dizem coisas diferentes:
-    "PA": {"parser": None, "nota": "DESCOBERTO 24/09/2026 — plancon.defesacivilpa.com.br é o SISTEMA PLANCON do CBMPA/CEPDEC: 'Gestão municipal de planos de contingência — cadastro, revisão, aprovação e exportação'. Fica ATRÁS DE LOGIN, e login é recusa que se respeita (§170). Os planos municipais do PA existem e não são públicos: é a mesma forma do SISDC do PR. Via de cobertura por LAI, decisão da editoria"},
-    "RJ": {"parser": None, "nota": "DESCOBERTO 24/09/2026 — defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc reúne 38 PDFs, mas são do ESTADO, não dos municípios: PLACON 2025/2026 (preservado, hash eefffe3f449f8cb5…, 45 MB) e planos setoriais de CGE, DRM, GSI, INEA e PGE. Não é repositório municipal; é instrumento estadual, e entra na fila R7 como candidato a reclassificação de RJ, hoje VIG"},
-    # PR já estava mapeado acima e a descoberta renderizada confirmou o mesmo desenho do PA: sistema,
-    # não repositório. Dois estados guardando plano municipal atrás de autenticação é padrão, não
-    # acaso, e é matéria para pedido de LAI — não para raspagem.
-    #
-    # As demais não responderam em nenhum dos três caminhos (404 ou sem resposta) em 24/09/2026:
-    # AC, BA, CE, DF, GO, MA, MT, PB, PE, RN, RR. Ausência NOS CAMINHOS SONDADOS, não
-    # ausência de repositório — a distinção é a mesma do §194 entre "procuramos e não há" e "não
-    # havia onde procurar", e ela vale também para o que o Monitor ainda não procurou direito.
+    # 13/11/2026 (editoria): as UFs sem parser saíram daqui. O que a sondagem de 24/09 anotou em prosa
+    # ("reconferir depois de 25/10") nunca foi reconferido; agora toda UF é sondada toda semana por
+    # `sondar_repositorios_estaduais.py`, com data por UF em `data/repositorios_estaduais.json`.
 }
 
 
@@ -501,7 +467,7 @@ def main():
     ap.add_argument("--ler", action="store_true", help="Só lista, casa e lê cada arquivo da pasta (RS) pelo leitor do juiz; não grava nada")
     args = ap.parse_args()
 
-    ufs = [args.uf] if args.uf else [u for u, c in REPOSITORIOS.items() if c["parser"]]
+    ufs = [args.uf] if args.uf else list(REPOSITORIOS)
     municipios = json.load(open(DATA / "municipios.json", encoding="utf-8"))
 
     ref = json.load(open(DATA / "municipios_ibge_referencia.json", encoding="utf-8"))
@@ -510,9 +476,6 @@ def main():
         cfg = REPOSITORIOS.get(uf)
         if not cfg:
             print(f"[erro] UF não registrada: {uf}"); continue
-        if not cfg["parser"]:
-            print(f"[pulado] {uf}: {cfg.get('nota', 'sem parser implementado')}")
-            continue
         print(f"[{uf}] verificando {cfg['url']} ...")
         try:
             texto = carregar_texto(uf, args.fixture)

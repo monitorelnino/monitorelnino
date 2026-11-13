@@ -584,6 +584,28 @@
     "monitor-de-riscos.html"
    ],
    "gravidade": "media"
+  },
+  {
+   "id": "noturno_repositorios",
+   "workflow": "noturno_repositorios.yml",
+   "finalidade": "sondagem semanal, por UF, de repositórios estaduais de planos municipais",
+   "cron_primario": "40 6 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída nesta janela",
+   "tolerancia_atraso_min": 120,
+   "idempotencia": "só sonda a UF devida (7 dias ou sem página lida); pista repetida é somada pela porta única",
+   "orcamento_min": 75,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "index.html"
+   ],
+   "gravidade": "media"
   }
  ]
 }

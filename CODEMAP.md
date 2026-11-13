@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_conformidade.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 12/11/2026.
+Atualizado em 13/11/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
@@ -190,6 +190,7 @@ Atualizado em 12/11/2026.
 | `scripts/unir_conflito_de_rodada.py` | — | `blog/posts.json`, `cadencia_publicacao.json`, `citacao_incompleta.json`, `cobertura_declarada_uf.json`, `doe_edicoes/PB.json`, `doe_ocorrencias.json` (+37) | — | 3 | não |
 | `seguir_pistas.py` | — | `arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json` | — | — | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
+| `sondar_repositorios_estaduais.py` | — | `repositorios_estaduais.json` | — | — | não |
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `verificar_consistencia.py` | — | — | — | — | não |
 | `verificar_contribuicoes.py` | — | — | — | — | não |
