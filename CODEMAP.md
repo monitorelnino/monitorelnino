@@ -49,13 +49,13 @@ Atualizado em 13/11/2026.
 | `aplicar_revisao.py` | — | — | — | — | não |
 | `atualizar.py` | — | — | — | — | não |
 | `atualizar_boletins.py` | — | `boletins.json` | — | — | não |
-| `atualizar_instrumentos_estaduais.py` | — | — | — | 3 | não |
+| `atualizar_instrumentos_estaduais.py` | — | — | — | 4 | não |
 | `atualizar_populacao.py` | — | `populacao_censo2022.json` | — | — | não |
 | `atualizar_recursos.py` | — | `financiamento/por_uf.json`, `recursos_uf.json` | — | — | não |
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
 | `buscador2.py` | — | — | — | 3 | não |
 | `buscar_financiamento_preventivo.py` | — | — | — | — | não |
-| `buscar_planos_fontes_abertas.py` | — | — | — | 1 | não |
+| `buscar_planos_fontes_abertas.py` | — | — | — | 2 | não |
 | `buscar_protocolo_calor.py` | — | `saude_desfechos/busca_protocolo_calor.json` | — | — | não |
 | `classificador_natureza.py` | — | — | — | 4 | não |
 | `classificar_pista_civil.py` | — | `pistas_imprensa.json` | — | 5 | não |
@@ -104,11 +104,11 @@ Atualizado em 13/11/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **169** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **170** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
-| `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 4 | não |
+| `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 5 | não |
 | `desfechos_sus.py` | — | — | — | 5 | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | — | não |
 | `funil.py` | — | — | — | 10 | não |
@@ -173,7 +173,7 @@ Atualizado em 13/11/2026.
 | `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 4 | não |
-| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | **21** | não |
+| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | **22** | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/proveniencia_estadual.py` | — | `estados.json` | — | 1 | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |

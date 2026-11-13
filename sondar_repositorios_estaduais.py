@@ -22,11 +22,11 @@ import re
 import sys
 import urllib.parse
 
-from coletores_base import ler, gravar, hoje_editorial, rodar_autoteste, log_busca
+from coletores_base import ler, gravar, hoje_editorial, rodar_autoteste, log_busca, decodificar_pagina
 from atualizar_instrumentos_estaduais import norm
 
 ARQUIVO = "repositorios_estaduais.json"
-DIAS, MINIMO, PAGINAS_POR_UF = 7, 5, 8
+DIAS, MINIMO, PAGINAS_POR_UF, SECOES_POR_PAGINA = 7, 5, 8, 4
 PASTA_EXTERNA = re.compile(r"sharepoint\.com|drive\.google\.com|onedrive\.live\.com|1drv\.ms|dropbox\.com", re.I)
 OFICIAL = re.compile(r"\.(gov|mp|tc|leg|jus|def)\.br$")
 DOCUMENTO = re.compile(r"\.(pdf|docx?|odt|zip)(\?|$)", re.I)
@@ -83,40 +83,74 @@ def pistas_da_pagina(url: str, uf: str, achados: dict, por_cod: dict, hoje: str)
 
 
 def devida(reg: dict, hoje: str) -> bool:
-    """A UF nunca sondada, ou sondada há `DIAS` dias ou mais, ou cuja última sondagem não leu página nenhuma. Pura."""
+    """A UF nunca sondada, ou sondada há `DIAS` dias ou mais, ou cuja última sondagem ficou incompleta (nenhuma
+    página lida, ou busca sem cobertura). Pura."""
     import datetime
-    if not reg or not reg.get("sondado_em") or not reg.get("paginas_lidas"):
+    if not reg or not reg.get("sondado_em") or not reg.get("paginas_lidas") or not reg.get("busca_completa"):
         return True
     return (datetime.date.fromisoformat(hoje) - datetime.date.fromisoformat(reg["sondado_em"])).days >= DIAS
 
 
-def sondar_uf(uf: str, estado: str, conhecidas: list, municipios: dict, por_cod: dict, hoje: str, busca, renderizar) -> tuple:
-    """(registro da UF, pistas). `busca(consulta) -> {results}` e `renderizar(url) -> {ok, links, erro}` são
-    injetados. Busca que falha é registrada como falha; nunca vira "sem repositório"."""
-    paginas, noticias, falhas = list(conhecidas), [], []
+def secoes_de_plano(url: str, links: list) -> list:
+    """As páginas internas que a página aponta como de plano de contingência (menu, botão), sem os documentos:
+    é nelas, e não na home, que a lista dos municípios costuma estar. Pura."""
+    host = urllib.parse.urlparse(url).netloc
+    return list(dict.fromkeys(
+        str(l.get("href")) for l in links or []
+        if urllib.parse.urlparse(str(l.get("href") or "")).netloc == host and not DOCUMENTO.search(str(l.get("href")))
+        and PLANO.search(str(l.get("texto") or "") + " " + urllib.parse.unquote(str(l.get("href"))))
+        and str(l.get("href")).split("#")[0].rstrip("/") != url.split("#")[0].rstrip("/")))[:SECOES_POR_PAGINA]
+
+
+def sondar_uf(uf: str, estado: str, conhecidas: list, municipios: dict, por_cod: dict, hoje: str, busca, ler_pagina) -> tuple:
+    """(registro da UF, pistas). `busca(consulta) -> {results, unresponsive_engines}` e `ler_pagina(url) ->
+    {ok, links, erro}` são injetados. Busca vazia ou com motor mudo é falha (a UF segue devida), nunca
+    "sem repositório"."""
+    paginas, noticias, falhas, buscas_ok = list(conhecidas), [], [], 0
     for c in CONSULTAS:
         try:
-            p, n = hosts_oficiais((busca(c.format(estado=estado, uf=uf.lower())) or {}).get("results"), uf)
-            paginas += p
-            noticias += n
+            dados = busca(c.format(estado=estado, uf=uf.lower())) or {}
+            if not dados.get("results") or dados.get("unresponsive_engines"):
+                raise ValueError("sem cobertura")
+            p, n = hosts_oficiais(dados["results"], uf)
+            paginas, noticias, buscas_ok = paginas + p, noticias + n, buscas_ok + 1
         except Exception as e:  # noqa: BLE001
-            falhas.append(f"busca: {type(e).__name__}")
+            falhas.append(f"busca: {type(e).__name__}: {str(e)[:40]}")
     lidas, candidatos, pistas = 0, [], []
-    for url in list(dict.fromkeys(paginas))[:PAGINAS_POR_UF]:
-        r = renderizar(url) or {}
+    fila, vistas = list(dict.fromkeys(paginas))[:PAGINAS_POR_UF], set()
+    while fila and len(vistas) < 2 * PAGINAS_POR_UF:
+        url = fila.pop(0)
+        if url in vistas:
+            continue
+        vistas.add(url)
+        r = ler_pagina(url) or {}
         if not r.get("ok"):
             falhas.append(f"{urllib.parse.urlparse(url).netloc}: {str(r.get('erro') or 'sem resposta')[:60]}")
             continue
         lidas += 1
         a = avaliar_pagina(url, r.get("links"), municipios)
+        fila += [s for s in secoes_de_plano(url, r.get("links")) if s not in vistas]
         if len(a["municipios"]) >= MINIMO or a["pastas_externas"]:
             candidatos.append({"url": url, "municipios": len(a["municipios"]), "pastas_externas": a["pastas_externas"][:5]})
         if len(a["municipios"]) >= MINIMO:
             pistas += pistas_da_pagina(url, uf, a["municipios"], por_cod, hoje)
-    return ({"sondado_em": hoje, "paginas_lidas": lidas, "candidatos": candidatos,
+    return ({"sondado_em": hoje, "paginas_lidas": lidas, "busca_completa": buscas_ok == len(CONSULTAS), "candidatos": candidatos,
              "noticias": list({n["url"]: n for n in noticias}.values())[:5], "falhas": falhas[:8],
              "paginas_conhecidas": list(dict.fromkeys(conhecidas + [c["url"] for c in candidatos]))[:PAGINAS_POR_UF]},
             pistas)
+
+
+def ler_pagina(url: str, renderizar, buscar) -> dict:
+    """A página como o navegador a vê; se o navegador falhar, o HTML estático (`buscar(url) -> bytes`)."""
+    r = renderizar(url) or {}
+    if r.get("ok"):
+        return r
+    try:
+        html = decodificar_pagina(buscar(url)[:600000])[0]
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "erro": f"{r.get('erro') or 'navegador'}; estático: {type(e).__name__}: {str(e)[:40]}"}
+    return {"ok": True, "links": [{"href": urllib.parse.urljoin(url, m.group(1)), "texto": re.sub(r"<[^>]+>", " ", m.group(2))}
+                                  for m in re.finditer(r'<a\s[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', html, re.I | re.S)]}
 
 
 def autoteste() -> int:
@@ -132,6 +166,14 @@ def autoteste() -> int:
                                    {"url": "https://jornal.com/a", "title": "Estado publica planos de contingência"}]}
     reg, pistas = sondar_uf("PA", "Pará", [], mun, por_cod, "2026-11-13", busca, lambda u: {"ok": True, "links": links})
     falho, sem = sondar_uf("PA", "Pará", [pagina], mun, por_cod, "2026-11-13", busca, lambda u: {"ok": False, "erro": "HTTP 403"})
+    home = "https://defesacivil.pa.gov.br/"
+    menu = [{"href": pagina, "texto": "Planos de Contingência"}, {"href": home + "noticias", "texto": "Notícias"}]
+    fundo, p_fundo = sondar_uf("PA", "Pará", [home], mun, por_cod, "2026-11-13", lambda q: {"results": [{"url": home, "title": "x"}]},
+                               lambda u: {"ok": True, "links": menu if u == home else links})
+    mudo, _ = sondar_uf("PA", "Pará", [pagina], mun, por_cod, "2026-11-13", lambda q: {"results": [], "unresponsive_engines": ["x"]},
+                        lambda u: {"ok": True, "links": links})
+    estatico = ler_pagina(pagina, lambda u: {"ok": False, "erro": "contexto destruído"},
+                          lambda u: b"<a href='/docs/PLANCON_Belem.pdf'>Plano de <b>Bel\xc3\xa9m</b></a>")
     return rodar_autoteste({
         "página: cinco municípios em link de documento; notícia e link sem documento não contam":
             lambda: len(a["municipios"]) == 5 and a["pastas_externas"] == ["https://x.sharepoint.com/:f:/g/abc"],
@@ -146,6 +188,13 @@ def autoteste() -> int:
             and all(p["promovivel"] is False and p["documento_oficial_confirmado"] is None for p in pistas),
         "UF: página que recusa é falha registrada, nunca 'sem repositório', e a UF segue devida":
             lambda: falho["paginas_lidas"] == 0 and sem == [] and "HTTP 403" in falho["falhas"][0] and devida(falho, "2026-11-13"),
+        "a lista está uma página adentro: a seção de planos do menu é aberta, e a de notícias não":
+            lambda: len(p_fundo) == 5 and fundo["paginas_lidas"] == 2 and fundo["candidatos"][0]["url"] == pagina,
+        "busca vazia ou com motor mudo é falha: a UF segue devida mesmo com página lida":
+            lambda: mudo["busca_completa"] is False and devida(mudo, "2026-11-14") and any("busca" in f for f in mudo["falhas"]),
+        "navegador que falha cai no HTML estático, com link absoluto e texto sem marcação":
+            lambda: estatico["ok"] and estatico["links"][0]["href"] == "https://defesacivil.pa.gov.br/docs/PLANCON_Belem.pdf"
+            and "Belém" in estatico["links"][0]["texto"],
         "cadência: sondada hoje não é devida; há sete dias, é; nunca sondada, é":
             lambda: not devida(reg, "2026-11-14") and devida(reg, "2026-11-20") and devida({}, "2026-11-13"),
         "garantia estrutural: nunca escreve nos bancos":
@@ -158,6 +207,7 @@ def main() -> int:
         return autoteste()
     from buscar_planos_fontes_abertas import buscar_web
     from descobrir_planos import _renderizar
+    from coletores_base import buscar_uma_vez
     from scripts.pistas import gravar_lote
     hoje = hoje_editorial().isoformat()
     doc = ler(ARQUIVO, {"ufs": {}})
@@ -172,7 +222,7 @@ def main() -> int:
             mun = {norm(r["nome"]): str(r["codigo_ibge"]).zfill(7) for r in ref if r["uf"] == uf}
             por_cod = {str(r["codigo_ibge"]).zfill(7): r for r in ref if r["uf"] == uf}
             reg, novas = sondar_uf(uf, estados[uf], (doc["ufs"].get(uf) or {}).get("paginas_conhecidas") or [], mun, por_cod,
-                                   hoje, buscar_web, lambda u: _renderizar(u, "sondar_repositorios_estaduais"))
+                                   hoje, buscar_web, lambda u: ler_pagina(u, lambda x: _renderizar(x, "sondar_repositorios_estaduais"), buscar_uma_vez))
             doc["ufs"][uf] = reg
             pistas += novas
             print(f"[{uf}] {reg['paginas_lidas']} página(s) lida(s); candidatos: "
