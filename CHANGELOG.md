@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-13 · #PR · Sondagem semanal de repositórios estaduais de planos, nas 27 UFs
+
+Novo coletor `sondar_repositorios_estaduais.py`: por UF, busca e abre as páginas oficiais (defesa
+civil, ministério público, tribunal de contas) e conta os municípios nomeados em links de plano ou de
+pasta externa. Página com cinco municípios ou mais vira candidata, e cada link vira pista para o juiz.
+Roda toda noite, sonda cada UF a cada sete dias e refaz a que falhou. As anotações "reconferir depois"
+saíram do código.
 ## 2026-11-13 · #PR · Estrutura de coordenação lida do dado; Roraima corrigido com o decreto
 
 A classificação da estrutura de coordenação de cada estado saiu de uma constante do motor e passa a
