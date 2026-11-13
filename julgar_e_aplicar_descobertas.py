@@ -1161,7 +1161,7 @@ def self_test():
     # 13/11/2026 (J21): a estrutura criada no ciclo sobe, com prova; a que já está no degrau não é regravada
     with tempfile.TemporaryDirectory() as _t:
         _c = Path(_t) / "estados.json"
-        _c.write_text(json.dumps({"ufs": [{"uf": "RR", "estrutura": {"status": "VIG"}, "instrumentos": [{"tipo": "estrutura_coordenacao", "status": "VIG"}]}]}), encoding="utf-8")
+        gravar_em(_c, {"ufs": [{"uf": "RR", "estrutura": {"status": "VIG"}, "instrumentos": [{"tipo": "estrutura_coordenacao", "status": "VIG"}]}]})
         _a = {"doc": "DECRETO Nº 41.444-E, de 31/08/2026: Institui o Gabinete", "data": "31/08/2026"}
         assert aplicar_estrutura_estadual("RR", _a, "https://x/doe.pdf", "abc", "2026-11-13", _c)
         _e = json.load(open(_c, encoding="utf-8"))["ufs"][0]
