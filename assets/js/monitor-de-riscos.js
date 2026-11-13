@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, AVISOS, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR, ENQ;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
+let BR_GEOJSON, SINAIS, MARE, AVISOS, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, PAB_MANCHAS, AR, ENQ;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 
@@ -24,6 +24,7 @@ async function __load(){
   /* 16/10/2026: contagens do satélite de referência (dia, série, mês, UF, bioma). Ausente = lacuna. */
   FOGO_REF = await fetch('data/focos_referencia.json').then(r => r.ok ? r.json() : null).catch(() => null);
   SECAS_MANCHAS = await fetch('data/secas_manchas.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  PAB_MANCHAS = await fetch('data/pab_brasil_manchas.json').then(r => r.ok ? r.json() : null).catch(() => null);
   AR = await fetch('data/ar_medido.json').then(r => r.ok ? r.json() : null).catch(() => null);
   ENQ = await fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(() => null);
   window.__refMunicipios = await fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : []).catch(() => []);
@@ -278,6 +279,43 @@ desenharMapa('mapaSecas', 'legSecas', () => MANCHAS.length ? ATM.seca.uf : NEUTR
   const d = document.querySelector('#boxSecas .fonte-figura'); if (d) d.dataset.credito = 'monitor_secas';
 })();
 credito('boxSecas', 'monitor_secas');
+
+// ---- Mapa: Áreas Suscetíveis à Desertificação e Entorno (PAB-Brasil, MMA; 13/11/2026) ----
+// A classe é a da Tabela B.1 do plano: nas áreas suscetíveis, o clima; o Entorno não é área suscetível e vai
+// em hachura, para a diferença não depender só da cor. Estados em branco por baixo, como no mapa de seca.
+(function desertificacao(){
+  const COR = {'Árido': ATM.seca.rampa[5], 'Semiárido': ATM.seca.rampa[3], 'Subúmido seco': ATM.seca.rampa[1]};
+  const feicoes = ((PAB_MANCHAS || {}).features || []);
+  const porUf = {}, UF_DO_CODIGO = {};
+  (window.__refMunicipios || []).forEach(r => { UF_DO_CODIGO[String(r.codigo_ibge).slice(0, 2)] = r.uf; });
+  Object.entries((ENQ || {}).municipios || {}).forEach(([cod, v]) => { if (!v.pab) return;
+    const uf = UF_DO_CODIGO[cod.slice(0, 2)], c = porUf[uf] = porUf[uf] || {asd: 0, entorno: 0};
+    c[v.pab === 'e' ? 'entorno' : 'asd']++; });
+  const f = ((ENQ || {}).fontes || {}).desertificacao || {};
+  const fonteCurta = 'MMA · PAB-Brasil';
+  desenharMapa('mapaDesertificacao', 'legDesertificacao', () => feicoes.length ? ATM.seca.uf : NEUTRA,
+    uf => { const c = porUf[uf];
+      return MonitorMapas.dica({semTitulo: true, data: MonitorMapas.dataBR(f.consultado_em), fonte: fonteCurta,
+        linhas: [c ? txtCat('monitor-de-riscos.desertificacao.dica.molde', {n: n1(c.asd + c.entorno), asd: n1(c.asd), entorno: n1(c.entorno)})
+                   : txtCat('monitor-de-riscos.desertificacao.dica.nenhum')]}); },
+    feicoes.length
+      ? [{cor: COR['Árido'], rotulo: txtCat('monitor-de-riscos.desertificacao.legenda.arido')},
+         {cor: COR['Semiárido'], rotulo: txtCat('monitor-de-riscos.desertificacao.legenda.semiarido')},
+         {cor: COR['Subúmido seco'], rotulo: txtCat('monitor-de-riscos.desertificacao.legenda.subumido')},
+         {cor: ATM.seca.contorno, rotulo: txtCat('monitor-de-riscos.desertificacao.legenda.entorno'), hachura: true}]
+      : [{cor: NEUTRA, rotulo: 'Sem coleta até o corte'}], 'seca');
+  if (!feicoes.length) return;
+  const ctx = __ctx(), svg = d3.select('#mapaDesertificacao');
+  const HACHURA = MonitorMapas.hachura('mapaDesertificacao', 'transparent', ATM.seca.contorno);
+  svg.insert('g', 'g.siglas').attr('class', 'manchas').style('pointer-events', 'none')
+    .selectAll('path').data(feicoes).join('path').attr('d', ctx.path)
+    .attr('fill', d => COR[d.properties.categoria] || HACHURA).attr('stroke', 'none');
+  svg.insert('g', 'g.siglas').attr('class', 'contornos').style('pointer-events', 'none')
+    .selectAll('path').data(ctx.geo.features).join('path').attr('d', ctx.path)
+    .attr('fill', 'none').attr('stroke', ATM.seca.contorno).attr('stroke-width', .8);
+  MonitorMapas.credito('boxDesertificacao', {fontes: ['MMA · Plano de Ação Brasileiro de Combate à Desertificação (PAB-Brasil), Tabela B.1'],
+    url: f.url, consultado: f.consultado_em});
+})();
 
 // ---- Mapa 3: temperatura máxima prevista nas capitais (24/09/2026) ----
 /* O valor é da CAPITAL, não a média do estado: a UF é pintada para localizar, e tanto o texto do

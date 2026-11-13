@@ -49,7 +49,7 @@ GOVERNANCA = (
     "o risco identificado em 'i' (inundação), 'e' (enxurrada), 'ie' (as duas) ou '' (cadastrado "
     "sem tipo nomeado na nota técnica); `tp` = TODOS os tipos de risco que a nota técnica nomeia para o município, em letras ordenadas ('d' deslizamento, 'e' enxurrada, 'i' inundação); `geo` = consta da lista de prioritários só por deslizamento, fora do cadastro de enxurradas e inundações; `sa` = integra a delimitação do Semiárido (Sudene); "
     "`mma` = consta da lista de prioritários para controle do desmatamento (MMA); `mmb` = consta "
-    "da lista de desmatamento monitorado e sob controle (MMA). Camada de CONTEXTO, PESO ZERO: "
+    "da lista de desmatamento monitorado e sob controle (MMA); `pab` = classe no PAB-Brasil (MMA): 'a', 's' ou 'u' = Área Suscetível à Desertificação de clima árido, semiárido ou subúmido seco; 'e' = Entorno. Camada de CONTEXTO, PESO ZERO: "
     "nada disto entra na nota do MARÉ."
 )
 
@@ -122,10 +122,15 @@ def registros(casa_civil: dict, enquadramento: dict) -> dict:
             marcas["mma"] = 1
         if r.get("mma_monitorado_sob_controle"):
             marcas["mmb"] = 1
+        if r.get("pab_brasil"):
+            marcas["pab"] = PAB_LETRA[r["pab_clima"]] if r["pab_brasil"] == "ASD" else "e"
         if marcas:
             fora.setdefault(codigo, {}).update(marcas)
     return dict(sorted(fora.items()))
 
+
+# `pab`: a classe do PAB-Brasil. Nas Áreas Suscetíveis à Desertificação, o clima da tabela; fora delas, o Entorno.
+PAB_LETRA = {"Árido": "a", "Semiárido": "s", "Subúmido seco": "u"}
 
 PAGINA_DO_CADASTRO_MIDR = ("https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/"
                            "cadastro-nacional-de-municipios")
@@ -151,7 +156,7 @@ def fontes_de(casa_civil: dict, enquadramento: dict) -> dict:
             "consultado_em": casa_civil.get("coletado_em"),
         }
         fora["chuva"]["urls"] = [par for par in fora["chuva"]["urls"] if par[1]]
-    for familia, chave in (("seca", "semiarido"), ("fogo", "mma_desmatamento")):
+    for familia, chave in (("seca", "semiarido"), ("fogo", "mma_desmatamento"), ("desertificacao", "pab_brasil")):
         origem = fontes_enq.get(chave)
         if origem:
             fora[familia] = {"instrumento": origem.get("instrumento"), "url": origem.get("url"),
@@ -180,7 +185,9 @@ def autoteste() -> int:
                           "1500602": {"mma_prioritario_desmatamento": True,
                                       "mma_monitorado_sob_controle": False},
                           "5100250": {"mma_monitorado_sob_controle": True},
-                          "1200054": {"semiarido": False}}}
+                          "1200054": {"semiarido": False},
+                          "2611101": {"pab_brasil": "ASD", "pab_clima": "Árido"},
+                          "3116803": {"pab_brasil": "Entorno", "pab_clima": "Úmido"}}}
     r = registros(cc, enq)
     casos = [
         ("inundação e enxurrada viram 'ie'", r["1200054"]["ch"] == "ie"),
@@ -197,6 +204,8 @@ def autoteste() -> int:
         ("os tipos da nota técnica vão completos, deslizamento incluído",
          r["1200054"]["tp"] == "dei"),
         ("Semiárido marcado", r["2900207"]["sa"] == 1),
+        ("PAB-Brasil: ASD leva a letra do clima; Entorno leva 'e', nunca clima",
+         r["2611101"] == {"pab": "a"} and r["3116803"] == {"pab": "e"}),
         ("prioritário do MMA marcado", r["1500602"]["mma"] == 1),
         ("prioritário do MMA não vira monitorado", "mmb" not in r["1500602"]),
         ("monitorado e sob controle marcado", r["5100250"]["mmb"] == 1),

@@ -142,6 +142,30 @@
       "funcao_narrativa": "evidência do agora: condição observada",
       "acao_relacionada": null
     },
+    "monitor-de-riscos.html#boxDesertificacao": {
+      "tipo": "mapa",
+      "pergunta_que_responde": "Que municípios o plano federal classifica como Área Suscetível à Desertificação ou Entorno?",
+      "dimensao_da_preparacao": null,
+      "universo": "1.649 municípios da Tabela B.1 do PAB-Brasil",
+      "unidade_de_analise": "município",
+      "territorio": "Brasil",
+      "periodo": "índice de aridez de 1990 a 2020 (Cemaden/MCTI), como o plano o adota",
+      "variavel_principal": "classe no plano: clima da área suscetível (árido, semiárido, subúmido seco) ou Entorno",
+      "denominador": null,
+      "fonte": "MMA, Plano de Ação Brasileiro de Combate à Desertificação (PAB-Brasil), Apêndice B, Tabela B.1",
+      "metodologia": "classe da tabela do plano, por município; contorno da malha municipal do IBGE (2022), simplificado para desenho",
+      "conclusoes_permitidas": [
+        "que municípios constam da tabela do plano, e em que classe"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que o município está desertificado",
+        "atribuir a classe ao El Niño",
+        "tratar o Entorno como área suscetível",
+        "medir preparação pelo fato de constar da tabela"
+      ],
+      "funcao_narrativa": "contexto: enquadramento federal de risco, peso zero",
+      "acao_relacionada": null
+    },
     "monitor-de-riscos.html#boxTemperatura": {
       "tipo": "mapa com seletor de camada e lista",
       "pergunta_que_responde": "Qual a temperatura máxima prevista para amanhã — na capital de cada estado, ou em cada município?",

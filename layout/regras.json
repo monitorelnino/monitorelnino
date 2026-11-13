@@ -713,7 +713,9 @@
         "geo": "Indicado pela União ao cadastro nacional de municípios com áreas suscetíveis a deslizamento (Lei 12.340, art. 3º-A).",
         "seca": "Integra a delimitação oficial do Semiárido brasileiro.",
         "fogo": "Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, {ano}).",
-        "nenhuma": "Não consta das listas federais de risco por município: indicados ao cadastro nacional (MIDR e Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA)."
+        "desertificacao": "Consta das Áreas Suscetíveis à Desertificação do Plano de Ação Brasileiro de Combate à Desertificação (MMA), com clima {clima}.",
+        "entorno": "Consta do Entorno das Áreas Suscetíveis à Desertificação do Plano de Ação Brasileiro de Combate à Desertificação (MMA).",
+        "nenhuma": "Não consta das listas federais de risco por município: indicados ao cadastro nacional (MIDR e Casa Civil), Semiárido (Sudene), Áreas Suscetíveis à Desertificação (MMA) e prioritários para desmatamento e incêndios (MMA)."
       },
       "complementos": [
         "deslizamento",
@@ -721,7 +723,7 @@
         "inundação"
       ],
       "dever": "\\b(deve|devem|deverá|deverão|dever|deveres|obrigad[oa]s?|obrigatóri[oa]s?|obrigatoriedade|obriga|obrigação|obrigações|recomenda|recomenda-se|recomendável|recomendação|recomendações|precisa|deveria|tem de|há de)\\b",
-      "_nota": "PR 4 do handover do enquadramento federal (editoria, 30/09/2026): as quatro frases do bloco são literais e aprovadas; nenhuma das listas federais cria dever de plano (o Cadastro Nacional do art. 3º-A não é nenhuma delas), e uma palavra de dever ali viraria afirmação jurídica falsa sobre 3.157 municípios. Confere o BLOCO do fonte, não o arquivo."
+      "_nota": "PR 4 do handover do enquadramento federal (editoria, 30/09/2026): as quatro frases do bloco são literais e aprovadas; nenhuma das listas federais cria dever de plano (o Cadastro Nacional do art. 3º-A não é nenhuma delas), e uma palavra de dever ali viraria afirmação jurídica falsa sobre 3.157 municípios. Confere o BLOCO do fonte, não o arquivo. | 13/11/2026: entram as duas frases do PAB-Brasil (Área Suscetível à Desertificação, com o clima da tabela, e Entorno) e a frase de quem não consta passa a nomear a quinta lista; PROTÓTIPO, à espera da editoria."
     },
     "figura_componente": {
       "proibidos": "p, details, .note, .hint, summary, .cartao-mapa-familia, .cartao-k",

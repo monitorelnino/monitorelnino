@@ -257,8 +257,12 @@ const ENQ_TEXTO = {
   geo: 'Indicado pela União ao cadastro nacional de municípios com áreas suscetíveis a deslizamento (Lei 12.340, art. 3º-A).',
   seca: 'Integra a delimitação oficial do Semiárido brasileiro.',
   fogo: 'Consta da lista federal de municípios prioritários para controle do desmatamento e dos incêndios florestais na Amazônia (MMA, {ano}).',
-  nenhuma: 'Não consta das listas federais de risco por município: indicados ao cadastro nacional (MIDR e Casa Civil), Semiárido (Sudene) e prioritários para desmatamento e incêndios (MMA).',
+  desertificacao: 'Consta das Áreas Suscetíveis à Desertificação do Plano de Ação Brasileiro de Combate à Desertificação (MMA), com clima {clima}.',
+  entorno: 'Consta do Entorno das Áreas Suscetíveis à Desertificação do Plano de Ação Brasileiro de Combate à Desertificação (MMA).',
+  nenhuma: 'Não consta das listas federais de risco por município: indicados ao cadastro nacional (MIDR e Casa Civil), Semiárido (Sudene), Áreas Suscetíveis à Desertificação (MMA) e prioritários para desmatamento e incêndios (MMA).',
 };
+// O clima da Área Suscetível à Desertificação, como a tabela do plano o nomeia.
+const ENQ_CLIMA = {a: 'árido', s: 'semiárido', u: 'subúmido seco'};
 // Os tipos que a nota tecnica nomeia, pelos nomes da fonte, em ordem alfabetica.
 const ENQ_TIPO = {d: 'deslizamento', e: 'enxurrada', i: 'inundação'};
 
@@ -305,11 +309,13 @@ function enquadramentoBox(uf, nome, codigo){
   const marcasTipo = tipos.length
     ? `<div class="chips">${tipos.map(x => `<span class="chip-risco">${esc(x)}</span>`).join('')}</div>`
     : '';
-  // Ordem fixa chuva → geo-hidrológico → seca → fogo. Interseção mostra todas as linhas.
+  // Ordem fixa chuva → geo-hidrológico → seca → desertificação → fogo. Interseção mostra todas as linhas.
   const linhas = [];
   if (marcas.ch !== undefined) linhas.push({fam: 'chuva', texto: ENQ_TEXTO.chuva, tipos: marcasTipo});
   if (marcas.geo) linhas.push({fam: 'chuva', texto: ENQ_TEXTO.geo, tipos: ''});
   if (marcas.sa) linhas.push({fam: 'seca', texto: ENQ_TEXTO.seca, tipos: ''});
+  if (marcas.pab) linhas.push({fam: 'seca', fonte: 'desertificacao', tipos: '',
+    texto: marcas.pab === 'e' ? ENQ_TEXTO.entorno : ENQ_TEXTO.desertificacao.replace('{clima}', ENQ_CLIMA[marcas.pab])});
   if (marcas.mma) linhas.push({fam: 'fogo', texto: ENQ_TEXTO.fogo.replace('{ano}', anoDaFonte('fogo')).replace(' (MMA, )', ' (MMA)'), tipos: ''});
   // 16/10/2026: um cartão por lista, no mesmo componente do cartão de projeção (`.risco-box`, faixa
   // de cor da família na borda esquerda).
@@ -318,8 +324,8 @@ function enquadramentoBox(uf, nome, codigo){
     ${corpo}
   </div>`;
   return linhas.length
-    ? linhas.map(l => cartao(l.fam, `<p class="v">${esc(l.texto)}</p>${l.tipos}${fonte(l.fam)}`)).join('')
-    : cartao('', `<p class="v">${esc(ENQ_TEXTO.nenhuma)}</p>${fonte('chuva')}${fonte('seca')}${fonte('fogo')}`);
+    ? linhas.map(l => cartao(l.fam, `<p class="v">${esc(l.texto)}</p>${l.tipos}${fonte(l.fonte || l.fam)}`)).join('')
+    : cartao('', `<p class="v">${esc(ENQ_TEXTO.nenhuma)}</p>${fonte('chuva')}${fonte('seca')}${fonte('desertificacao')}${fonte('fogo')}`);
 }
 
 const regionsEl = document.getElementById('regions');
