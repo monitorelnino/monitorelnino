@@ -1,0 +1,77 @@
+{
+ "data": "2026-11-13",
+ "formato_versao": 1,
+ "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 75,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 8,
+   "consultas": 10,
+   "lacunas": 0,
+   "motor_sem_resposta": 2,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 9
+  },
+  "descobrir_planos": {
+   "achados_novos": 6,
+   "alvos_consultados": 40,
+   "alvos_verificados": 6,
+   "fila_acumulada": 84
+  },
+  "juiz": {
+   "com_documento": 147,
+   "pistas_recebidas": 354,
+   "promovidas": 8,
+   "recusa_autoridade_nao_confirmada": 16,
+   "recusa_citacao_incompleta": 59,
+   "recusa_documento_inacessivel": 130,
+   "recusa_ente_nao_confirmado": 23,
+   "recusa_executivo_pendente": 2,
+   "recusa_fora_do_objeto": 1,
+   "recusa_minuta_ou_rascunho": 1,
+   "recusa_natureza_duvidosa": 6,
+   "recusa_noticia_institucional_nao_e_o_plano": 5,
+   "recusa_texto_nao_extraivel": 77
+  },
+  "transferencias_municipais": {
+   "com_resultado_bruto": 20,
+   "consultas": 20,
+   "municipios": 111296
+  }
+ },
+ "verificador_imprensa": {
+  "na_fila": 2262,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "veiculo_nao_listado": 2167,
+   "sem_https": 95
+  },
+  "crescimento_da_lista": {
+   "candidatos": 1,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 1
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-13T07:40:38"
+ },
+ "atualizado_em": "2026-11-13T08:27:14"
+}
