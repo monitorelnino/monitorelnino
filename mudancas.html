@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>13/11/2026 · Lista de municípios do PAB-Brasil (desertificação) coletada</dt>
+      <dd>Novo coletor lê a Tabela B.1 do Plano de Ação Brasileiro de Combate à Desertificação (MMA): 1.649 municípios, 1.389 em Áreas Suscetíveis à Desertificação e 260 no Entorno, com clima e classificação. Grava em `enquadramento_federal.json`, sem peso no índice. Os totais conferem com a Tabela 1 do plano; nenhuma página muda.</dd>
       <dt>13/11/2026 · Sondagem de repositórios não para em motor mudo nem em redirecionamento</dt>
       <dd>A sondagem de 13/11 leu 27 UFs e ficou sem busca em 21 (motor suspenso) e sem página em oito (redirecionamento por script). Raiz: o resultado de busca com motor mudo era descartado, e o renderizador lia a página no meio da navegação. Agora a página achada é lida (a UF segue devida) e o renderizador espera a navegação terminar.</dd>
       <dt>10/11/2026 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX</dt>
@@ -163,8 +165,6 @@
       <dd>Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: &quot;Seca e incêndio até março de 2027&quot;, antes &quot;Seca, fogo&quot;. Frase do Cemaden sem texto aprovado: fica fora.</dd>
       <dt>27/10/2026 · Financiamento: sai a seção &quot;Defesa civil, depois do reconhecimento&quot;</dt>
       <dd>A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.</dd>
-      <dt>27/10/2026 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais</dt>
-      <dd>`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.</dd>
     </dl>
   </section>
 </main>

@@ -94,7 +94,7 @@ Atualizado em 13/11/2026.
 | `coletar_s2id.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | 1 | não |
 | `coletar_saude_estadual.py` | — | `pistas_imprensa_saude.json`, `saude_desfechos/fontes_uf.json` | — | 1 | não |
-| `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | — | não |
+| `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | 1 | não |
 | `coletar_sg_esus.py` | — | `saude_desfechos/sindrome_gripal_serie.json` | — | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | 1 | não |
 | `coletar_sih.py` | — | — | — | 1 | não |
@@ -105,7 +105,7 @@ Atualizado em 13/11/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **170** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **171** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
