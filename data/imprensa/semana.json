@@ -2,11 +2,11 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 57224,
+   "valor": 57833,
    "unidade": "focos",
    "periodo_inicio": "2026-09-17",
-   "periodo_fim": "2026-11-11",
-   "n": 56,
+   "periodo_fim": "2026-11-12",
+   "n": 57,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": false,
    "motivo": null,
@@ -59,7 +59,7 @@
    "valor": 0,
    "unidade": "cidades",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-11",
+   "periodo_fim": "2026-11-12",
    "n": 1,
    "fonte": "OpenAQ (monitores de referência das capitais), limite de 24 h da OMS",
    "sem_coleta": false,
@@ -67,7 +67,7 @@
    "denominador": 1,
    "periodo_molde": "imprensa.numeros.periodo.capitais_medidas",
    "periodo_vars": {
-    "data": "11/11/2026",
+    "data": "12/11/2026",
     "n": 1
    }
   },
@@ -525,7 +525,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 11208,
+   "valor": 11906,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -534,108 +534,108 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261111.csv",
+   "nota": "Focos do dia — focos_diario_br_20261112.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 4999
+     "valor": 5913
     },
     {
      "uf": "MA",
-     "valor": 1821
+     "valor": 2087
     },
     {
      "uf": "AP",
-     "valor": 1470
+     "valor": 1265
     },
     {
      "uf": "PI",
-     "valor": 491
+     "valor": 503
     },
     {
      "uf": "AM",
-     "valor": 406
+     "valor": 423
     },
     {
      "uf": "BA",
-     "valor": 279
+     "valor": 403
     },
     {
      "uf": "CE",
-     "valor": 258
-    },
-    {
-     "uf": "MT",
-     "valor": 255
-    },
-    {
-     "uf": "TO",
-     "valor": 225
-    },
-    {
-     "uf": "PE",
-     "valor": 128
-    },
-    {
-     "uf": "RO",
-     "valor": 125
+     "valor": 349
     },
     {
      "uf": "RR",
-     "valor": 124
+     "valor": 206
     },
     {
-     "uf": "AC",
-     "valor": 105
+     "uf": "TO",
+     "valor": 172
     },
     {
-     "uf": "MS",
-     "valor": 95
-    },
-    {
-     "uf": "PB",
-     "valor": 85
-    },
-    {
-     "uf": "SP",
+     "uf": "PE",
      "valor": 80
     },
     {
-     "uf": "AL",
-     "valor": 65
-    },
-    {
-     "uf": "PR",
-     "valor": 39
-    },
-    {
-     "uf": "GO",
-     "valor": 38
-    },
-    {
-     "uf": "RN",
-     "valor": 35
-    },
-    {
      "uf": "MG",
-     "valor": 34
+     "valor": 59
     },
     {
-     "uf": "SE",
-     "valor": 23
+     "uf": "MT",
+     "valor": 55
     },
     {
-     "uf": "SC",
-     "valor": 15
+     "uf": "PB",
+     "valor": 55
+    },
+    {
+     "uf": "MS",
+     "valor": 47
     },
     {
      "uf": "RS",
-     "valor": 12
+     "valor": 47
+    },
+    {
+     "uf": "AL",
+     "valor": 45
+    },
+    {
+     "uf": "PR",
+     "valor": 44
+    },
+    {
+     "uf": "SE",
+     "valor": 35
+    },
+    {
+     "uf": "RO",
+     "valor": 32
+    },
+    {
+     "uf": "AC",
+     "valor": 31
+    },
+    {
+     "uf": "RN",
+     "valor": 21
+    },
+    {
+     "uf": "GO",
+     "valor": 16
+    },
+    {
+     "uf": "SP",
+     "valor": 9
+    },
+    {
+     "uf": "SC",
+     "valor": 6
     },
     {
      "uf": "RJ",
-     "valor": 1
+     "valor": 3
     }
    ],
    "pagina_de_origem": null,
