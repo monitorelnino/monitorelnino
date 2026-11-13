@@ -51,7 +51,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3138302": {
    "consultado_em": "2026-11-12",
@@ -272,7 +272,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4307203": {
    "consultado_em": "2026-11-12",
@@ -605,7 +605,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2929800": {
    "consultado_em": "2026-11-12",
@@ -629,7 +629,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2105203": {
    "consultado_em": "2026-11-12",
@@ -1059,11 +1059,11 @@
   },
   "1200104": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "www.amac-acre.com.br: respondeu, mas não se identifica como a prefeitura de Brasiléia; brasileia.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Brasiléia; www.brasileia.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Brasiléia; https://prefeituradebrasileia.ac.gov.br: DNS; http://prefeituradebrasileia.ac.gov.br: DNS; https://prefeiturabrasileia.ac.gov.br: DNS; ht",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "brasileia.ac.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-22",
+   "pistas": 1,
+   "candidatos": 7
   },
   "1304203": {
    "consultado_em": "2026-11-12",
@@ -1159,7 +1159,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1100114": {
    "consultado_em": "2026-11-12",
@@ -1167,7 +1167,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2706307": {
    "consultado_em": "2026-11-12",
@@ -1247,7 +1247,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3171006": {
    "consultado_em": "2026-11-12",
@@ -1332,10 +1332,10 @@
   "4307864": {
    "consultado_em": "2026-11-12",
    "dominio": "fagundesvarela.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 429",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-17",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3145851": {
    "consultado_em": "2026-11-12",
@@ -1343,7 +1343,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3138609": {
    "consultado_em": "2026-11-12",
@@ -1399,7 +1399,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5102504": {
    "consultado_em": "2026-11-12",
@@ -1575,7 +1575,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://iranduba.am.gov.br: URLError; http://iranduba.am.gov.br: ConnectionResetError; https://www.iranduba.am.gov.br: URLError; http://www.iranduba.am.gov.br: ConnectionResetError; https://prefeituradeiranduba.am.gov.br: DNS; http://prefeituradeiranduba.am.gov.br: DNS; https://prefeiturairanduba.am.gov.br: DNS; http://prefeiturairanduba.am.gov.br: DNS; https://pmiranduba.am.gov.br: DNS; http://pm",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3140308": {
    "consultado_em": "2026-11-12",
@@ -1687,7 +1687,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://taipasdotocantins.to.gov.br: DNS; http://taipasdotocantins.to.gov.br: DNS; https://www.taipasdotocantins.to.gov.br: DNS; http://www.taipasdotocantins.to.gov.br: DNS; https://prefeituradetaipasdotocantins.to.gov.br: DNS; http://prefeituradetaipasdotocantins.to.gov.br: DNS; https://prefeiturataipasdotocantins.to.gov.br: DNS; http://prefeiturataipasdotocantins.to.gov.br: DNS; https://pmtaipas",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3304144": {
    "consultado_em": "2026-11-12",
@@ -1795,7 +1795,7 @@
    "ultima_tentativa": {
     "consultado_em": "2026-11-12",
     "situacao": "portal_nao_verificado",
-    "motivo": "https://iracemadooeste.pr.gov.br: timeout; http://iracemadooeste.pr.gov.br: timeout; https://www.iracemadooeste.pr.gov.br: timeout; http://www.iracemadooeste.pr.gov.br: timeout; https://prefeituradeiracemadooeste.pr.gov.br: DNS; http://prefeituradeiracemadooeste.pr.gov.br: DNS; https://prefeiturairacemadooeste.pr.gov.br: DNS; http://prefeiturairacemadooeste.pr.gov.br: DNS; https://pmiracemadooeste"
+    "motivo": "cópia arquivada de 2025-09-13, anterior ao ciclo"
    }
   },
   "4203154": {
@@ -1897,7 +1897,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2600401": {
    "consultado_em": "2026-11-12",
@@ -2230,7 +2230,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "itamonte.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Itamonte; www.itamonte.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Itamonte; https://prefeituradeitamonte.mg.gov.br: DNS; http://prefeituradeitamonte.mg.gov.br: DNS; https://prefeituraitamonte.mg.gov.br: DNS; http://prefeituraitamonte.mg.gov.br: DNS; https://pmitamonte.mg.gov.br: DNS; http://pmitamonte.m",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4210308": {
    "consultado_em": "2026-11-12",
@@ -2704,10 +2704,10 @@
   "4218707": {
    "consultado_em": "2026-11-12",
    "dominio": "tubarao.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-24, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "5205109": {
    "consultado_em": "2026-11-12",
@@ -2840,7 +2840,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "assu.rn.gov.br: respondeu, mas não se identifica como a prefeitura de Açu; https://acu.rn.gov.br: DNS; http://acu.rn.gov.br: DNS; https://www.acu.rn.gov.br: DNS; http://www.acu.rn.gov.br: DNS; https://prefeituradeacu.rn.gov.br: DNS; http://prefeituradeacu.rn.gov.br: DNS; https://prefeituraacu.rn.gov.br: DNS; http://prefeituraacu.rn.gov.br: DNS; https://pmacu.rn.gov.br: DNS; http://pmacu.rn.gov.br:",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3137007": {
    "consultado_em": "2026-11-12",
@@ -3380,10 +3380,10 @@
   "3163300": {
    "consultado_em": "2026-11-12",
    "dominio": "saojosedodivino.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-06-03, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4207700": {
    "consultado_em": "2026-11-12",
@@ -3537,10 +3537,10 @@
   "4213609": {
    "consultado_em": "2026-11-12",
    "dominio": "portouniao.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-05-15, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "3150307": {
    "consultado_em": "2026-11-12",
@@ -3556,7 +3556,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1300086": {
    "consultado_em": "2026-11-12",
@@ -3577,10 +3577,10 @@
   "3125606": {
    "consultado_em": "2026-11-12",
    "dominio": "felisburgo.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-23, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2922656": {
    "consultado_em": "2026-11-12",
@@ -3652,7 +3652,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4211702": {
    "consultado_em": "2026-11-12",
@@ -3817,10 +3817,10 @@
   "4212403": {
    "consultado_em": "2026-11-12",
    "dominio": "pedrasgrandes.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2413508": {
    "consultado_em": "2026-11-12",
@@ -3884,7 +3884,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3201902": {
    "consultado_em": "2026-11-07",
@@ -3902,10 +3902,10 @@
   "4204806": {
    "consultado_em": "2026-11-12",
    "dominio": "curitibanos.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-04-02, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "1300631": {
    "consultado_em": "2026-11-12",
@@ -4302,10 +4302,10 @@
   "4213500": {
    "consultado_em": "2026-11-12",
    "dominio": "portobelo.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 5,
+   "candidatos": 7
   },
   "3115102": {
    "consultado_em": "2026-11-12",
@@ -4361,7 +4361,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "santoantoniodoica.am.gov.br: respondeu, mas não se identifica como a prefeitura de Santo Antônio do Içá; www.santoantoniodoica.am.gov.br: respondeu, mas não se identifica como a prefeitura de Santo Antônio do Içá; https://prefeituradesantoantoniodoica.am.gov.br: DNS; http://prefeituradesantoantoniodoica.am.gov.br: DNS; https://prefeiturasantoantoniodoica.am.gov.br: DNS; http://prefeiturasantoanton",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5000252": {
    "consultado_em": "2026-11-12",
@@ -4382,10 +4382,10 @@
   "4209201": {
    "consultado_em": "2026-11-12",
    "dominio": "lacerdopolis.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-12-24, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3157609": {
    "consultado_em": "2026-11-12",
@@ -4457,7 +4457,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2312205": {
    "consultado_em": "2026-11-12",
@@ -4537,7 +4537,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2705002": {
    "consultado_em": "2026-11-12",
@@ -4614,7 +4614,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "vicosa.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Viçosa; www.vicosa.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Viçosa; https://prefeituradevicosa.mg.gov.br: DNS; http://prefeituradevicosa.mg.gov.br: DNS; https://prefeituravicosa.mg.gov.br: DNS; http://prefeituravicosa.mg.gov.br: DNS; https://pmvicosa.mg.gov.br: DNS; http://pmvicosa.mg.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2916401": {
    "consultado_em": "2026-11-12",
@@ -4662,7 +4662,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "americana.sp.gov.br: respondeu, mas não se identifica como a prefeitura de Americana; www.americana.sp.gov.br: respondeu, mas não se identifica como a prefeitura de Americana; https://prefeituradeamericana.sp.gov.br: DNS; http://prefeituradeamericana.sp.gov.br: DNS; https://prefeituraamericana.sp.gov.br: DNS; http://prefeituraamericana.sp.gov.br: DNS; https://pmamericana.sp.gov.br: DNS; http://pma",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3501905": {
    "consultado_em": "2026-11-12",
@@ -4774,17 +4774,12 @@
    "candidatos": 6
   },
   "3506003": {
-   "consultado_em": "2026-11-11",
-   "dominio": "webmail.bauru.sp.gov.br",
+   "consultado_em": "2026-11-12",
+   "dominio": "bauru.sp.gov.br",
    "situacao": "lido",
-   "motivo": null,
+   "motivo": "cópia arquivada de 2026-10-19",
    "pistas": 0,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://bauru.sp.gov.br: timeout; http://bauru.sp.gov.br: timeout; https://www.bauru.sp.gov.br: timeout; http://www.bauru.sp.gov.br: timeout; https://prefeituradebauru.sp.gov.br: DNS; http://prefeituradebauru.sp.gov.br: DNS; https://prefeiturabauru.sp.gov.br: DNS; http://prefeiturabauru.sp.gov.br: DNS; https://pmbauru.sp.gov.br: DNS; http://pmbauru.sp.gov.br: DNS"
-   }
+   "candidatos": 7
   },
   "3506102": {
    "consultado_em": "2026-11-12",
@@ -4829,15 +4824,15 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3508405": {
    "consultado_em": "2026-11-12",
    "dominio": "cabreuva.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-10",
+   "pistas": 4,
+   "candidatos": 7
   },
   "3509007": {
    "consultado_em": "2026-11-12",
@@ -5073,10 +5068,10 @@
   "3518701": {
    "consultado_em": "2026-11-12",
    "dominio": "guaruja.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-09",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3518800": {
    "consultado_em": "2026-11-12",
@@ -5140,7 +5135,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3522109": {
    "consultado_em": "2026-11-12",
@@ -5273,10 +5268,10 @@
   "3525201": {
    "consultado_em": "2026-11-12",
    "dominio": "jarinu.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-09-12",
+   "pistas": 2,
+   "candidatos": 7
   },
   "3525300": {
    "consultado_em": "2026-11-12",
@@ -5393,10 +5388,10 @@
   "3530706": {
    "consultado_em": "2026-11-12",
    "dominio": "mogiguacu.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-18",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3530805": {
    "consultado_em": "2026-11-12",
@@ -5452,7 +5447,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3533908": {
    "consultado_em": "2026-11-12",
@@ -5508,7 +5503,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3537305": {
    "consultado_em": "2026-11-12",
@@ -5564,7 +5559,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3540705": {
    "consultado_em": "2026-11-12",
@@ -5873,7 +5868,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3554003": {
    "consultado_em": "2026-11-12",
@@ -5977,7 +5972,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "manoelurbano.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Manoel Urbano; www.manoelurbano.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Manoel Urbano; https://prefeiturademanoelurbano.ac.gov.br: DNS; http://prefeiturademanoelurbano.ac.gov.br: DNS; https://prefeituramanoelurbano.ac.gov.br: DNS; http://prefeituramanoelurbano.ac.gov.br: DNS; https://pmmanoelurba",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1200351": {
    "consultado_em": "2026-11-12",
@@ -6033,7 +6028,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "bujari.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Bujari; www.bujari.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Bujari; https://prefeituradebujari.ac.gov.br: DNS; http://prefeituradebujari.ac.gov.br: DNS; https://prefeiturabujari.ac.gov.br: DNS; http://prefeiturabujari.ac.gov.br: DNS; https://pmbujari.ac.gov.br: DNS; http://pmbujari.ac.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1200328": {
    "consultado_em": "2026-11-12",
@@ -6041,7 +6036,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "jordao.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Jordão; www.jordao.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Jordão; https://prefeituradejordao.ac.gov.br: DNS; http://prefeituradejordao.ac.gov.br: DNS; https://prefeiturajordao.ac.gov.br: DNS; http://prefeiturajordao.ac.gov.br: DNS; https://pmjordao.ac.gov.br: DNS; http://pmjordao.ac.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1200807": {
    "consultado_em": "2026-11-12",
@@ -6086,7 +6081,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "senamadureira.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Sena Madureira; www.senamadureira.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Sena Madureira; https://prefeituradesenamadureira.ac.gov.br: DNS; http://prefeituradesenamadureira.ac.gov.br: DNS; https://prefeiturasenamadureira.ac.gov.br: DNS; http://prefeiturasenamadureira.ac.gov.br: DNS; https://pmse",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1200609": {
    "consultado_em": "2026-11-12",
@@ -6491,10 +6486,10 @@
   "1302405": {
    "consultado_em": "2026-11-12",
    "dominio": "labrea.am.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-05",
+   "pistas": 2,
+   "candidatos": 7
   },
   "1301803": {
    "consultado_em": "2026-11-12",
@@ -7076,7 +7071,7 @@
    "ultima_tentativa": {
     "consultado_em": "2026-11-12",
     "situacao": "portal_nao_verificado",
-    "motivo": "https://esplanada.ba.gov.br: URLError; esplanada.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Esplanada; www.esplanada.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Esplanada; https://prefeituradeesplanada.ba.gov.br: DNS; http://prefeituradeesplanada.ba.gov.br: DNS; https://prefeituraesplanada.ba.gov.br: DNS; http://prefeituraesplanada.ba.gov.br: DNS; https:/"
+    "motivo": "esplanada.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Esplanada; www.esplanada.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Esplanada; https://prefeituradeesplanada.ba.gov.br: DNS; http://prefeituradeesplanada.ba.gov.br: DNS; https://prefeituraesplanada.ba.gov.br: DNS; http://prefeituraesplanada.ba.gov.br: DNS; https://pmesplanada.ba.gov.br: DNS; http://pme"
    }
   },
   "2907806": {
@@ -8094,17 +8089,12 @@
    "candidatos": 6
   },
   "2304400": {
-   "consultado_em": "2026-11-10",
-   "dominio": "fortaleza.ce.gov.br",
+   "consultado_em": "2026-11-12",
+   "dominio": "www.fortaleza.ce.gov.br",
    "situacao": "lido",
-   "motivo": null,
-   "pistas": 5,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://fortaleza.ce.gov.br: RemoteDisconnected; http://fortaleza.ce.gov.br: RemoteDisconnected; https://www.fortaleza.ce.gov.br: RemoteDisconnected; http://www.fortaleza.ce.gov.br: RemoteDisconnected; https://prefeituradefortaleza.ce.gov.br: DNS; http://prefeituradefortaleza.ce.gov.br: DNS; https://prefeiturafortaleza.ce.gov.br: DNS; http://prefeiturafortaleza.ce.gov.br: DNS; https://pmfortaleza."
-   }
+   "motivo": "cópia arquivada de 2026-11-04",
+   "pistas": 0,
+   "candidatos": 7
   },
   "2304707": {
    "consultado_em": "2026-11-12",
@@ -8541,7 +8531,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3200805": {
    "consultado_em": "2026-11-12",
@@ -8562,10 +8552,10 @@
   "3201159": {
    "consultado_em": "2026-11-12",
    "dominio": "brejetuba.es.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-14",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3201100": {
    "consultado_em": "2026-11-12",
@@ -8679,10 +8669,10 @@
   "3202603": {
    "consultado_em": "2026-11-12",
    "dominio": "iconha.es.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-03, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3202306": {
    "consultado_em": "2026-11-12",
@@ -8702,11 +8692,11 @@
   },
   "3202553": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "ibitirama.es.gov.br: respondeu, mas não se identifica como a prefeitura de Ibitirama; www.ibitirama.es.gov.br: respondeu, mas não se identifica como a prefeitura de Ibitirama; https://prefeituradeibitirama.es.gov.br: DNS; http://prefeituradeibitirama.es.gov.br: DNS; https://prefeituraibitirama.es.gov.br: DNS; http://prefeituraibitirama.es.gov.br: DNS; https://pmibitirama.es.gov.br: DNS; http://pmi",
+   "dominio": "www.ibitirama.es.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-06",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3202652": {
    "consultado_em": "2026-11-12",
@@ -8746,7 +8736,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3203007": {
    "consultado_em": "2026-11-12",
@@ -8791,10 +8781,10 @@
   "3203502": {
    "consultado_em": "2026-11-12",
    "dominio": "montanha.es.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-17",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3203106": {
    "consultado_em": "2026-11-12",
@@ -8852,10 +8842,10 @@
   "3204054": {
    "consultado_em": "2026-11-12",
    "dominio": "pedrocanario.es.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-10-14, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3204005": {
    "consultado_em": "2026-11-12",
@@ -8964,10 +8954,10 @@
   "3204955": {
    "consultado_em": "2026-11-12",
    "dominio": "saoroquedocanaa.es.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-29",
+   "pistas": 3,
+   "candidatos": 7
   },
   "3205036": {
    "consultado_em": "2026-11-12",
@@ -8975,7 +8965,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3205150": {
    "consultado_em": "2026-11-12",
@@ -8988,10 +8978,10 @@
   "3205101": {
    "consultado_em": "2026-11-12",
    "dominio": "viana.es.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-08-08",
+   "pistas": 2,
+   "candidatos": 7
   },
   "3205069": {
    "consultado_em": "2026-11-12",
@@ -9015,7 +9005,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3205002": {
    "consultado_em": "2026-11-12",
@@ -9257,10 +9247,10 @@
   "2100907": {
    "consultado_em": "2026-11-12",
    "dominio": "araioses.ma.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-07",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2100436": {
    "consultado_em": "2026-11-12",
@@ -9340,7 +9330,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2100055": {
    "consultado_em": "2026-11-12",
@@ -9372,7 +9362,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://luziania.go.gov.br: timeout; http://luziania.go.gov.br: timeout; https://www.luziania.go.gov.br: timeout; http://www.luziania.go.gov.br: timeout; https://prefeituradeluziania.go.gov.br: DNS; http://prefeituradeluziania.go.gov.br: DNS; https://prefeituraluziania.go.gov.br: DNS; http://prefeituraluziania.go.gov.br: DNS; https://pmluziania.go.gov.br: DNS; http://pmluziania.go.gov.br: DNS; htt",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2101509": {
    "consultado_em": "2026-11-12",
@@ -9508,7 +9498,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2104008": {
    "consultado_em": "2026-11-12",
@@ -9609,10 +9599,10 @@
   "2106706": {
    "consultado_em": "2026-11-12",
    "dominio": "mirador.ma.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-05-10, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2106409": {
    "consultado_em": "2026-11-12",
@@ -9641,10 +9631,10 @@
   "2107407": {
    "consultado_em": "2026-11-12",
    "dominio": "olhodaguadascunhas.ma.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-06-15, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2106508": {
    "consultado_em": "2026-11-12",
@@ -10054,7 +10044,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2112902": {
    "consultado_em": "2026-11-12",
@@ -10126,7 +10116,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3101607": {
    "consultado_em": "2026-11-12",
@@ -10242,11 +10232,11 @@
   },
   "3106903": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "bicas.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Bicas; www.bicas.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Bicas; https://prefeituradebicas.mg.gov.br: DNS; http://prefeituradebicas.mg.gov.br: DNS; https://prefeiturabicas.mg.gov.br: DNS; http://prefeiturabicas.mg.gov.br: DNS; https://pmbicas.mg.gov.br: DNS; http://pmbicas.mg.gov.br: DNS",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "bicas.mg.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-18",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3107307": {
    "consultado_em": "2026-11-12",
@@ -10739,7 +10729,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3129301": {
    "consultado_em": "2026-11-12",
@@ -10752,10 +10742,10 @@
   "3131158": {
    "consultado_em": "2026-11-12",
    "dominio": "ipaba.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-04, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3131208": {
    "consultado_em": "2026-11-12",
@@ -10792,10 +10782,10 @@
   "3131901": {
    "consultado_em": "2026-11-12",
    "dominio": "itabirito.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-07-12, anterior ao ciclo",
+   "pistas": 5,
+   "candidatos": 7
   },
   "3131307": {
    "consultado_em": "2026-11-12",
@@ -10811,7 +10801,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3131703": {
    "consultado_em": "2026-11-12",
@@ -10856,10 +10846,10 @@
   "3133303": {
    "consultado_em": "2026-11-12",
    "dominio": "itaobim.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-28, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3133501": {
    "consultado_em": "2026-11-12",
@@ -11186,7 +11176,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "montalvania.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Montalvânia; www.montalvania.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Montalvânia; https://prefeiturademontalvania.mg.gov.br: DNS; http://prefeiturademontalvania.mg.gov.br: DNS; https://prefeituramontalvania.mg.gov.br: DNS; http://prefeituramontalvania.mg.gov.br: DNS; https://pmmontalvania.mg.gov.b",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3141801": {
    "consultado_em": "2026-11-12",
@@ -11315,11 +11305,11 @@
   },
   "3146305": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "padreparaiso.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Padre Paraíso; www.padreparaiso.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Padre Paraíso; https://prefeituradepadreparaiso.mg.gov.br: DNS; http://prefeituradepadreparaiso.mg.gov.br: DNS; https://prefeiturapadreparaiso.mg.gov.br: DNS; http://prefeiturapadreparaiso.mg.gov.br: DNS; https://pmpadreparai",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "www.padreparaiso.mg.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-11",
+   "pistas": 7,
+   "candidatos": 7
   },
   "3145307": {
    "consultado_em": "2026-11-12",
@@ -11403,11 +11393,11 @@
   },
   "3148707": {
    "consultado_em": "2026-11-12",
-   "dominio": "www.camarapedraazul.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "dominio": "www.pedraazul.mg.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-17",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3149309": {
    "consultado_em": "2026-11-12",
@@ -11611,11 +11601,11 @@
   },
   "3156809": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "sabinopolis.mg.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "sabinopolis.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Sabinópolis; www.sabinopolis.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Sabinópolis; https://prefeituradesabinopolis.mg.gov.br: DNS; http://prefeituradesabinopolis.mg.gov.br: DNS; https://prefeiturasabinopolis.mg.gov.br: DNS; http://prefeiturasabinopolis.mg.gov.br: DNS; https://pmsabinopolis.mg.gov.b",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2025-05-16, anterior ao ciclo",
+   "pistas": 3,
+   "candidatos": 7
   },
   "3154606": {
    "consultado_em": "2026-11-12",
@@ -11627,11 +11617,11 @@
   },
   "3155801": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "riopomba.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Rio Pomba; www.riopomba.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Rio Pomba; https://prefeituraderiopomba.mg.gov.br: DNS; http://prefeituraderiopomba.mg.gov.br: DNS; https://prefeiturariopomba.mg.gov.br: DNS; http://prefeiturariopomba.mg.gov.br: DNS; https://pmriopomba.mg.gov.br: DNS; http://pmriopomba",
+   "dominio": "riopomba.mg.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-14",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3158201": {
    "consultado_em": "2026-11-12",
@@ -11659,11 +11649,11 @@
   },
   "3157906": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "santamargarida.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Santa Margarida; www.santamargarida.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Santa Margarida; https://prefeituradesantamargarida.mg.gov.br: DNS; http://prefeituradesantamargarida.mg.gov.br: DNS; https://prefeiturasantamargarida.mg.gov.br: DNS; http://prefeiturasantamargarida.mg.gov.br: DNS; http",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "santamargarida.mg.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-11",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3155504": {
    "consultado_em": "2026-11-12",
@@ -11764,7 +11754,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://saojoaonepomuceno.mg.gov.br: DNS; http://saojoaonepomuceno.mg.gov.br: DNS; https://www.saojoaonepomuceno.mg.gov.br: DNS; http://www.saojoaonepomuceno.mg.gov.br: DNS; https://prefeituradesaojoaonepomuceno.mg.gov.br: DNS; http://prefeituradesaojoaonepomuceno.mg.gov.br: DNS; https://prefeiturasaojoaonepomuceno.mg.gov.br: DNS; http://prefeiturasaojoaonepomuceno.mg.gov.br: DNS; https://pmsaojoa",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3162807": {
    "consultado_em": "2026-11-12",
@@ -11785,10 +11775,10 @@
   "3162500": {
    "consultado_em": "2026-11-12",
    "dominio": "saojoaodelrei.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-12",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3162708": {
    "consultado_em": "2026-11-11",
@@ -13614,11 +13604,11 @@
   },
   "2500700": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "www.saojoaodoriodopeixe.pb.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://saojoaodoriodopeixe.pb.gov.br: URLError; http://saojoaodoriodopeixe.pb.gov.br: URLError; https://www.saojoaodoriodopeixe.pb.gov.br: URLError; http://www.saojoaodoriodopeixe.pb.gov.br: URLError; https://prefeituradesaojoaodoriodopeixe.pb.gov.br: DNS; http://prefeituradesaojoaodoriodopeixe.pb.gov.br: DNS; https://prefeiturasaojoaodoriodopeixe.pb.gov.br: DNS; http://prefeiturasaojoaodoriodope",
+   "motivo": "cópia arquivada de 2016-11-07, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2602902": {
    "consultado_em": "2026-11-12",
@@ -14202,7 +14192,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2615003": {
    "consultado_em": "2026-11-12",
@@ -14798,7 +14788,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "coronelvivida.pr.gov.br: HTTP 503; www.coronelvivida.pr.gov.br: HTTP 503; https://prefeituradecoronelvivida.pr.gov.br: DNS; http://prefeituradecoronelvivida.pr.gov.br: DNS; https://prefeituracoronelvivida.pr.gov.br: DNS; http://prefeituracoronelvivida.pr.gov.br: DNS; https://pmcoronelvivida.pr.gov.br: DNS; http://pmcoronelvivida.pr.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4107652": {
    "consultado_em": "2026-11-12",
@@ -14840,10 +14830,10 @@
   "4109401": {
    "consultado_em": "2026-11-12",
    "dominio": "guarapuava.pr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-04-14, anterior ao ciclo",
+   "pistas": 3,
+   "candidatos": 7
   },
   "4103701": {
    "consultado_em": "2026-11-12",
@@ -14879,11 +14869,11 @@
   },
   "2211001": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "pmt.pi.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://pmt.pi.gov.br: timeout; http://pmt.pi.gov.br: timeout; https://teresina.pi.gov.br: timeout; http://teresina.pi.gov.br: timeout; https://www.teresina.pi.gov.br: timeout; http://www.teresina.pi.gov.br: timeout; https://prefeituradeteresina.pi.gov.br: URLError; http://prefeituradeteresina.pi.gov.br: URLError; https://prefeiturateresina.pi.gov.br: URLError; http://prefeiturateresina.pi.gov.br:",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2025-04-28, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4110706": {
    "consultado_em": "2026-11-12",
@@ -14963,7 +14953,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4114609": {
    "consultado_em": "2026-11-12",
@@ -15015,11 +15005,11 @@
   },
   "4110102": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "imbituva.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://imbituva.pr.gov.br: timeout; http://imbituva.pr.gov.br: timeout; https://www.imbituva.pr.gov.br: timeout; http://www.imbituva.pr.gov.br: timeout; https://prefeituradeimbituva.pr.gov.br: DNS; http://prefeituradeimbituva.pr.gov.br: DNS; https://prefeituraimbituva.pr.gov.br: DNS; http://prefeituraimbituva.pr.gov.br: DNS; https://pmimbituva.pr.gov.br: DNS; http://pmimbituva.pr.gov.br: DNS",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2026-04-15, anterior ao ciclo",
+   "pistas": 10,
+   "candidatos": 7
   },
   "4111506": {
    "consultado_em": "2026-11-12",
@@ -15048,10 +15038,10 @@
   "4117909": {
    "consultado_em": "2026-11-12",
    "dominio": "palotina.pr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-04",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4117701": {
    "consultado_em": "2026-11-12",
@@ -15121,11 +15111,11 @@
   },
   "4119400": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "piraidosul.pr.gov.br: respondeu, mas não se identifica como a prefeitura de Piraí do Sul; www.piraidosul.pr.gov.br: respondeu, mas não se identifica como a prefeitura de Piraí do Sul; https://prefeituradepiraidosul.pr.gov.br: DNS; http://prefeituradepiraidosul.pr.gov.br: DNS; https://prefeiturapiraidosul.pr.gov.br: DNS; http://prefeiturapiraidosul.pr.gov.br: DNS; https://pmpiraidosul.pr.gov.br: DN",
+   "dominio": "www.diario.piraidosul.pr.gov.br",
+   "situacao": "lido",
+   "motivo": null,
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4118204": {
    "consultado_em": "2026-11-12",
@@ -15279,7 +15269,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4127106": {
    "consultado_em": "2026-11-12",
@@ -15295,7 +15285,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4122404": {
    "consultado_em": "2026-11-12",
@@ -15359,7 +15349,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://pontagrossa.pr.gov.br: timeout; http://pontagrossa.pr.gov.br: timeout; https://www.pontagrossa.pr.gov.br: timeout; http://www.pontagrossa.pr.gov.br: timeout; https://prefeituradepontagrossa.pr.gov.br: DNS; http://prefeituradepontagrossa.pr.gov.br: DNS; https://prefeiturapontagrossa.pr.gov.br: DNS; http://prefeiturapontagrossa.pr.gov.br: DNS; https://pmpontagrossa.pr.gov.br: DNS; http://pmp",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4119954": {
    "consultado_em": "2026-11-12",
@@ -15367,7 +15357,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://www.portaldoparana.pr.gov.br: DNS; http://www.portaldoparana.pr.gov.br: DNS; https://pontaldoparana.pr.gov.br: timeout; http://pontaldoparana.pr.gov.br: timeout; https://www.pontaldoparana.pr.gov.br: timeout; http://www.pontaldoparana.pr.gov.br: timeout; https://prefeituradepontaldoparana.pr.gov.br: DNS; http://prefeituradepontaldoparana.pr.gov.br: DNS; https://prefeiturapontaldoparana.pr.",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4124400": {
    "consultado_em": "2026-11-12",
@@ -15427,11 +15417,11 @@
   },
   "3301405": {
    "consultado_em": "2026-11-12",
-   "dominio": "conceicaodemacabu.rj.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "dominio": "pt.conceicaodemacabu.rj.gov.br",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-02-27, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4127700": {
    "consultado_em": "2026-11-12",
@@ -15637,11 +15627,11 @@
   },
   "3304201": {
    "consultado_em": "2026-11-12",
-   "dominio": "resende.rj.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "educacao.resende.rj.gov.br",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-06-09, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3303955": {
    "consultado_em": "2026-11-12",
@@ -15673,7 +15663,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://riodejaneiro.rj.gov.br: DNS; http://riodejaneiro.rj.gov.br: DNS; https://www.riodejaneiro.rj.gov.br: DNS; http://www.riodejaneiro.rj.gov.br: DNS; https://prefeituraderiodejaneiro.rj.gov.br: DNS; http://prefeituraderiodejaneiro.rj.gov.br: DNS; https://prefeiturariodejaneiro.rj.gov.br: DNS; http://prefeiturariodejaneiro.rj.gov.br: DNS; https://pmriodejaneiro.rj.gov.br: DNS; http://pmriodejan",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3304151": {
    "consultado_em": "2026-11-12",
@@ -15725,11 +15715,11 @@
   },
   "3305158": {
    "consultado_em": "2026-11-12",
-   "dominio": "www.sjvriopreto.rj.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "sjvriopreto.rj.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-17",
+   "pistas": 5,
+   "candidatos": 7
   },
   "3305109": {
    "consultado_em": "2026-11-11",
@@ -15974,7 +15964,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1100106": {
    "consultado_em": "2026-11-12",
@@ -16030,7 +16020,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2411502": {
    "consultado_em": "2026-11-12",
@@ -16147,10 +16137,10 @@
   "4302006": {
    "consultado_em": "2026-11-12",
    "dominio": "barroscassal.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 429",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-16",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4301701": {
    "consultado_em": "2026-11-12",
@@ -16210,11 +16200,11 @@
   },
   "4301107": {
    "consultado_em": "2026-11-12",
-   "dominio": "www.arroiodosratos.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "arroiodosratos.rs.gov.br",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-04-20, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4303103": {
    "consultado_em": "2026-11-12",
@@ -16335,11 +16325,11 @@
   },
   "4305108": {
    "consultado_em": "2026-11-12",
-   "dominio": "transparencia.caxias.rs.gov.br",
+   "dominio": "portaldoservidor.caxias.rs.gov.br",
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4304713": {
    "consultado_em": "2026-11-12",
@@ -16419,7 +16409,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4305801": {
    "consultado_em": "2026-11-12",
@@ -16440,10 +16430,10 @@
   "4306809": {
    "consultado_em": "2026-11-12",
    "dominio": "encantado.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-03-03, anterior ao ciclo",
+   "pistas": 3,
+   "candidatos": 7
   },
   "4306007": {
    "consultado_em": "2026-11-12",
@@ -16539,7 +16529,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4308904": {
    "consultado_em": "2026-11-12",
@@ -16571,7 +16561,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 429",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4308102": {
    "consultado_em": "2026-11-11",
@@ -16608,7 +16598,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "guaranidasmissoes.rs.gov.br: respondeu, mas não se identifica como a prefeitura de Guarani das Missões; www.guaranidasmissoes.rs.gov.br: respondeu, mas não se identifica como a prefeitura de Guarani das Missões; https://prefeituradeguaranidasmissoes.rs.gov.br: DNS; http://prefeituradeguaranidasmissoes.rs.gov.br: DNS; https://prefeituraguaranidasmissoes.rs.gov.br: DNS; http://prefeituraguaranidasmi",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4308607": {
    "consultado_em": "2026-11-12",
@@ -16632,7 +16622,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 429",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4310330": {
    "consultado_em": "2026-11-12",
@@ -16667,17 +16657,12 @@
    "candidatos": 6
   },
   "4310801": {
-   "consultado_em": "2026-11-07",
+   "consultado_em": "2026-11-12",
    "dominio": "ivoti.rs.gov.br",
    "situacao": "lido",
-   "motivo": null,
+   "motivo": "cópia arquivada de 2026-10-17",
    "pistas": 1,
-   "candidatos": 5,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://ivoti.rs.gov.br: TLS; http://ivoti.rs.gov.br: TLS; https://www.ivoti.rs.gov.br: TLS; http://www.ivoti.rs.gov.br: TLS; https://prefeituradeivoti.rs.gov.br: DNS; http://prefeituradeivoti.rs.gov.br: DNS; https://prefeituraivoti.rs.gov.br: DNS; http://prefeituraivoti.rs.gov.br: DNS; https://pmivoti.rs.gov.br: DNS; http://pmivoti.rs.gov.br: DNS"
-   }
+   "candidatos": 7
   },
   "4311106": {
    "consultado_em": "2026-11-12",
@@ -16717,7 +16702,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4312500": {
    "consultado_em": "2026-11-12",
@@ -16931,7 +16916,7 @@
    "ultima_tentativa": {
     "consultado_em": "2026-11-12",
     "situacao": "portal_nao_verificado",
-    "motivo": "https://passofundo.rs.gov.br: timeout; http://passofundo.rs.gov.br: timeout; https://www.passofundo.rs.gov.br: timeout; http://www.passofundo.rs.gov.br: timeout; https://prefeituradepassofundo.rs.gov.br: DNS; http://prefeituradepassofundo.rs.gov.br: DNS; https://prefeiturapassofundo.rs.gov.br: DNS; http://prefeiturapassofundo.rs.gov.br: DNS; https://pmpassofundo.rs.gov.br: DNS; http://pmpassofundo"
+    "motivo": "cópia arquivada de 2022-03-01, anterior ao ciclo"
    }
   },
   "4313656": {
@@ -16972,7 +16957,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4315602": {
    "consultado_em": "2026-11-12",
@@ -17008,11 +16993,11 @@
   },
   "4317103": {
    "consultado_em": "2026-11-12",
-   "dominio": "www.sdolivramento.com.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "santanadolivramento.rs.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-16",
+   "pistas": 5,
+   "candidatos": 7
   },
   "4315800": {
    "consultado_em": "2026-11-12",
@@ -17084,7 +17069,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://portoxavier.rs.gov.br: timeout; http://portoxavier.rs.gov.br: timeout; https://www.portoxavier.rs.gov.br: timeout; http://www.portoxavier.rs.gov.br: timeout; https://prefeituradeportoxavier.rs.gov.br: DNS; http://prefeituradeportoxavier.rs.gov.br: DNS; https://prefeituraportoxavier.rs.gov.br: DNS; http://prefeituraportoxavier.rs.gov.br: DNS; https://pmportoxavier.rs.gov.br: DNS; http://pmp",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4315404": {
    "consultado_em": "2026-11-12",
@@ -17100,7 +17085,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "santabarbaradosul.rs.gov.br: respondeu, mas não se identifica como a prefeitura de Santa Bárbara do Sul; https://www.santabarbaradosul.rs.gov.br: timeout; http://www.santabarbaradosul.rs.gov.br: timeout; https://prefeituradesantabarbaradosul.rs.gov.br: DNS; http://prefeituradesantabarbaradosul.rs.gov.br: DNS; https://prefeiturasantabarbaradosul.rs.gov.br: DNS; http://prefeiturasantabarbaradosul.rs",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4317509": {
    "consultado_em": "2026-11-12",
@@ -17121,10 +17106,10 @@
   "4320404": {
    "consultado_em": "2026-11-12",
    "dominio": "serafinacorrea.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 429",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-16",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4319901": {
    "consultado_em": "2026-11-12",
@@ -17248,11 +17233,11 @@
   },
   "4319406": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "www.saopedrodosul.rs.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://saopedrodosul.rs.gov.br: URLError; http://saopedrodosul.rs.gov.br: URLError; https://www.saopedrodosul.rs.gov.br: DNS; http://www.saopedrodosul.rs.gov.br: DNS; https://prefeituradesaopedrodosul.rs.gov.br: DNS; http://prefeituradesaopedrodosul.rs.gov.br: DNS; https://prefeiturasaopedrodosul.rs.gov.br: DNS; http://prefeiturasaopedrodosul.rs.gov.br: DNS; https://pmsaopedrodosul.rs.gov.br: DNS",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2026-05-19, anterior ao ciclo",
+   "pistas": 3,
+   "candidatos": 7
   },
   "4318804": {
    "consultado_em": "2026-11-12",
@@ -17318,10 +17303,10 @@
   "4321436": {
    "consultado_em": "2026-11-12",
    "dominio": "terradeareia.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-04",
+   "pistas": 2,
+   "candidatos": 7
   },
   "4321451": {
    "consultado_em": "2026-11-12",
@@ -17377,7 +17362,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://santocristo.rs.gov.br: timeout; http://santocristo.rs.gov.br: timeout; https://www.santocristo.rs.gov.br: timeout; http://www.santocristo.rs.gov.br: timeout; https://prefeituradesantocristo.rs.gov.br: DNS; http://prefeituradesantocristo.rs.gov.br: DNS; https://prefeiturasantocristo.rs.gov.br: DNS; http://prefeiturasantocristo.rs.gov.br: DNS; https://pmsantocristo.rs.gov.br: DNS; http://pms",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4321956": {
    "consultado_em": "2026-11-12",
@@ -17462,10 +17447,10 @@
   "4200705": {
    "consultado_em": "2026-11-12",
    "dominio": "alfredowagner.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4323002": {
    "consultado_em": "2026-11-12",
@@ -17666,11 +17651,11 @@
   },
   "4322608": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "venancioaires.rs.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://venancioaires.rs.gov.br: timeout; http://venancioaires.rs.gov.br: timeout; https://www.venancioaires.rs.gov.br: timeout; http://www.venancioaires.rs.gov.br: timeout; https://prefeituradevenancioaires.rs.gov.br: DNS; http://prefeituradevenancioaires.rs.gov.br: DNS; https://prefeituravenancioaires.rs.gov.br: DNS; http://prefeituravenancioaires.rs.gov.br: DNS; https://pmvenancioaires.rs.gov.b",
+   "motivo": "cópia arquivada de 2026-03-26, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4203105": {
    "consultado_em": "2026-11-12",
@@ -17691,10 +17676,10 @@
   "4203402": {
    "consultado_em": "2026-11-12",
    "dominio": "campobelodosul.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4203600": {
    "consultado_em": "2026-11-12",
@@ -17702,7 +17687,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4203501": {
    "consultado_em": "2026-11-12",
@@ -17718,15 +17703,15 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4203956": {
    "consultado_em": "2026-11-12",
    "dominio": "capivaridebaixo.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "4202701": {
    "consultado_em": "2026-11-12",
@@ -17776,10 +17761,10 @@
   "4204558": {
    "consultado_em": "2026-11-12",
    "dominio": "correiapinto.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-10-05, anterior ao ciclo",
+   "pistas": 4,
+   "candidatos": 7
   },
   "4204400": {
    "consultado_em": "2026-11-12",
@@ -17816,10 +17801,10 @@
   "4205001": {
    "consultado_em": "2026-11-12",
    "dominio": "dionisiocerqueira.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-07-23, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4205308": {
    "consultado_em": "2026-11-12",
@@ -17856,10 +17841,10 @@
   "4205456": {
    "consultado_em": "2026-11-12",
    "dominio": "forquilhinha.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-11-21, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4206009": {
    "consultado_em": "2026-11-12",
@@ -17911,11 +17896,11 @@
   },
   "4206603": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "guarujadosul.sc.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://guarujadosul.sc.gov.br: TLS; guarujadosul.sc.gov.br: respondeu, mas não se identifica como a prefeitura de Guarujá do Sul; https://www.guarujadosul.sc.gov.br: TLS; www.guarujadosul.sc.gov.br: respondeu, mas não se identifica como a prefeitura de Guarujá do Sul; https://prefeituradeguarujadosul.sc.gov.br: DNS; http://prefeituradeguarujadosul.sc.gov.br: DNS; https://prefeituraguarujadosul.sc",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2023-06-12, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4206504": {
    "consultado_em": "2026-11-12",
@@ -18040,7 +18025,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4208203": {
    "consultado_em": "2026-11-12",
@@ -18059,8 +18044,8 @@
    "candidatos": 6,
    "ultima_tentativa": {
     "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://itapoa.sc.gov.br: timeout; http://itapoa.sc.gov.br: timeout; https://www.itapoa.sc.gov.br: timeout; http://www.itapoa.sc.gov.br: timeout; https://prefeituradeitapoa.sc.gov.br: DNS; http://prefeituradeitapoa.sc.gov.br: DNS; https://prefeituraitapoa.sc.gov.br: DNS; http://prefeituraitapoa.sc.gov.br: DNS; https://pmitapoa.sc.gov.br: DNS; http://pmitapoa.sc.gov.br: DNS"
+    "situacao": "nao_verificado",
+    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)"
    }
   },
   "4208005": {
@@ -18095,10 +18080,10 @@
   "4207601": {
    "consultado_em": "2026-11-12",
    "dominio": "ipira.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-04, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "4209102": {
    "consultado_em": "2026-11-12",
@@ -18110,11 +18095,11 @@
   },
   "4209151": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "www.pmjb.sc.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://www.pmjb.sc.gov.br: DNS; http://www.pmjb.sc.gov.br: DNS; https://joseboiteux.sc.gov.br: DNS; http://joseboiteux.sc.gov.br: DNS; https://www.joseboiteux.sc.gov.br: DNS; http://www.joseboiteux.sc.gov.br: DNS; https://prefeituradejoseboiteux.sc.gov.br: DNS; http://prefeituradejoseboiteux.sc.gov.br: DNS; https://prefeiturajoseboiteux.sc.gov.br: DNS; http://prefeiturajoseboiteux.sc.gov.br: DNS;",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 3,
+   "candidatos": 7
   },
   "4207809": {
    "consultado_em": "2026-11-12",
@@ -18138,7 +18123,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4208906": {
    "consultado_em": "2026-11-12",
@@ -18159,10 +18144,10 @@
   "4210001": {
    "consultado_em": "2026-11-12",
    "dominio": "luizalves.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-02-02, anterior ao ciclo",
+   "pistas": 6,
+   "candidatos": 7
   },
   "4209409": {
    "consultado_em": "2026-11-12",
@@ -18226,15 +18211,15 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4210407": {
    "consultado_em": "2026-11-12",
    "dominio": "maracaja.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 6,
+   "candidatos": 7
   },
   "4211405": {
    "consultado_em": "2026-11-12",
@@ -18271,10 +18256,10 @@
   "4210902": {
    "consultado_em": "2026-11-12",
    "dominio": "modelo.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4211058": {
    "consultado_em": "2026-11-12",
@@ -18324,10 +18309,10 @@
   "4211603": {
    "consultado_em": "2026-11-12",
    "dominio": "novaveneza.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 4,
+   "candidatos": 7
   },
   "4211751": {
    "consultado_em": "2026-11-12",
@@ -18343,7 +18328,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4212106": {
    "consultado_em": "2026-11-12",
@@ -18401,7 +18386,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4212502": {
    "consultado_em": "2026-11-12",
@@ -18429,11 +18414,11 @@
   },
   "4214003": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "https://presidentegetulio.sc.gov.br: timeout; http://presidentegetulio.sc.gov.br: timeout; https://www.presidentegetulio.sc.gov.br: timeout; http://www.presidentegetulio.sc.gov.br: timeout; https://prefeituradepresidentegetulio.sc.gov.br: DNS; http://prefeituradepresidentegetulio.sc.gov.br: DNS; https://prefeiturapresidentegetulio.sc.gov.br: DNS; http://prefeiturapresidentegetulio.sc.gov.br: DNS; ",
+   "dominio": "presidentegetulio.sc.gov.br",
+   "situacao": "nao_verificado",
+   "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4213104": {
    "consultado_em": "2026-11-12",
@@ -18494,10 +18479,10 @@
   "4214409": {
    "consultado_em": "2026-11-12",
    "dominio": "riodasantas.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4214607": {
    "consultado_em": "2026-11-12",
@@ -18510,10 +18495,10 @@
   "4214706": {
    "consultado_em": "2026-11-12",
    "dominio": "riodoscedros.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-12-27, anterior ao ciclo",
+   "pistas": 12,
+   "candidatos": 7
   },
   "4215653": {
    "consultado_em": "2026-11-12",
@@ -18681,7 +18666,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4216909": {
    "consultado_em": "2026-11-12",
@@ -18742,10 +18727,10 @@
   "4218251": {
    "consultado_em": "2026-11-12",
    "dominio": "timbogrande.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4218905": {
    "consultado_em": "2026-11-12",
@@ -18969,7 +18954,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1702208": {
    "consultado_em": "2026-11-12",
@@ -19120,10 +19105,10 @@
   "3100500": {
    "consultado_em": "2026-11-12",
    "dominio": "acucena.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-30, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4200051": {
    "consultado_em": "2026-11-12",
@@ -19764,7 +19749,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4301925": {
    "consultado_em": "2026-11-12",
@@ -19838,10 +19823,10 @@
   "4302238": {
    "consultado_em": "2026-11-12",
    "dominio": "boavistadoincra.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-05",
+   "pistas": 1,
+   "candidatos": 7
   },
   "1703206": {
    "consultado_em": "2026-11-12",
@@ -19894,10 +19879,10 @@
   "4302378": {
    "consultado_em": "2026-11-12",
    "dominio": "bomprogresso.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-11-19, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2902401": {
    "consultado_em": "2026-11-12",
@@ -20041,7 +20026,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "barrocas.ba.gov.br: HTTP 503; https://www.barrocas.ba.gov.br: TLS; www.barrocas.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Barrocas; https://prefeituradebarrocas.ba.gov.br: DNS; http://prefeituradebarrocas.ba.gov.br: DNS; https://prefeiturabarrocas.ba.gov.br: DNS; http://prefeiturabarrocas.ba.gov.br: DNS; https://pmbarrocas.ba.gov.br: DNS; http://pmbarrocas.ba.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2201929": {
    "consultado_em": "2026-11-12",
@@ -20141,11 +20126,11 @@
   },
   "3109600": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "cachoeiradaprata.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Cachoeira da Prata; www.cachoeiradaprata.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Cachoeira da Prata; https://prefeituradecachoeiradaprata.mg.gov.br: DNS; http://prefeituradecachoeiradaprata.mg.gov.br: DNS; https://prefeituracachoeiradaprata.mg.gov.br: DNS; http://prefeituracachoeiradaprata.mg",
+   "dominio": "cachoeiradaprata.mg.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-17",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2904308": {
    "consultado_em": "2026-11-12",
@@ -20198,10 +20183,10 @@
   "4303608": {
    "consultado_em": "2026-11-12",
    "dominio": "cambaradosul.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 429",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-17",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2102556": {
    "consultado_em": "2026-11-12",
@@ -20369,7 +20354,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://cafezaldosul.pr.gov.br: timeout; http://cafezaldosul.pr.gov.br: timeout; https://www.cafezaldosul.pr.gov.br: timeout; http://www.cafezaldosul.pr.gov.br: timeout; https://prefeituradecafezaldosul.pr.gov.br: DNS; http://prefeituradecafezaldosul.pr.gov.br: DNS; https://prefeituracafezaldosul.pr.gov.br: DNS; http://prefeituracafezaldosul.pr.gov.br: DNS; https://pmcafezaldosul.pr.gov.br: DNS; h",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2202406": {
    "consultado_em": "2026-11-12",
@@ -20518,10 +20503,10 @@
   "3511300": {
    "consultado_em": "2026-11-12",
    "dominio": "cedral.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-05-29, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2604155": {
    "consultado_em": "2026-11-12",
@@ -20561,7 +20546,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://capaodocipo.rs.gov.br: timeout; http://capaodocipo.rs.gov.br: timeout; https://www.capaodocipo.rs.gov.br: timeout; http://www.capaodocipo.rs.gov.br: timeout; https://prefeituradecapaodocipo.rs.gov.br: DNS; http://prefeituradecapaodocipo.rs.gov.br: DNS; https://prefeituracapaodocipo.rs.gov.br: DNS; http://prefeituracapaodocipo.rs.gov.br: DNS; https://pmcapaodocipo.rs.gov.br: DNS; http://pmc",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3115607": {
    "consultado_em": "2026-11-12",
@@ -20824,10 +20809,10 @@
   "4305959": {
    "consultado_em": "2026-11-12",
    "dominio": "cotipora.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-05",
+   "pistas": 2,
+   "candidatos": 7
   },
   "5205901": {
    "consultado_em": "2026-11-12",
@@ -21128,25 +21113,20 @@
    "candidatos": 6
   },
   "4307054": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "ernestina.rs.gov.br",
    "situacao": "lido",
-   "motivo": null,
+   "motivo": "cópia arquivada de 2026-10-15",
    "pistas": 3,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://ernestina.rs.gov.br: URLError; http://ernestina.rs.gov.br: ConnectionResetError; https://www.ernestina.rs.gov.br: URLError; http://www.ernestina.rs.gov.br: ConnectionResetError; https://prefeituradeernestina.rs.gov.br: DNS; http://prefeituradeernestina.rs.gov.br: DNS; https://prefeituraernestina.rs.gov.br: DNS; http://prefeituraernestina.rs.gov.br: DNS; https://pmernestina.rs.gov.br: URLEr"
-   }
+   "candidatos": 7
   },
   "3122504": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "www.domcavati.mg.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "domcavati.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Dom Cavati; www.domcavati.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Dom Cavati; https://prefeituradedomcavati.mg.gov.br: DNS; http://prefeituradedomcavati.mg.gov.br: DNS; https://prefeituradomcavati.mg.gov.br: DNS; http://prefeituradomcavati.mg.gov.br: DNS; https://pmdomcavati.mg.gov.br: DNS; http://p",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2026-06-08, anterior ao ciclo",
+   "pistas": 4,
+   "candidatos": 7
   },
   "2604908": {
    "consultado_em": "2026-11-07",
@@ -21167,7 +21147,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://divinolandiademinas.mg.gov.br: timeout; http://divinolandiademinas.mg.gov.br: timeout; https://www.divinolandiademinas.mg.gov.br: TLS; www.divinolandiademinas.mg.gov.br: HTTP 404; https://prefeituradedivinolandiademinas.mg.gov.br: DNS; http://prefeituradedivinolandiademinas.mg.gov.br: DNS; https://prefeituradivinolandiademinas.mg.gov.br: DNS; http://prefeituradivinolandiademinas.mg.gov.br:",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3124500": {
    "consultado_em": "2026-11-12",
@@ -21486,10 +21466,10 @@
   "3517604": {
    "consultado_em": "2026-11-12",
    "dominio": "guapiara.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-16",
+   "pistas": 2,
+   "candidatos": 7
   },
   "2911402": {
    "consultado_em": "2026-11-12",
@@ -21577,7 +21557,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5209457": {
    "consultado_em": "2026-11-12",
@@ -21710,7 +21690,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4109302": {
    "consultado_em": "2026-11-12",
@@ -21718,7 +21698,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4309902": {
    "consultado_em": "2026-11-12",
@@ -21919,7 +21899,7 @@
    "ultima_tentativa": {
     "consultado_em": "2026-11-12",
     "situacao": "portal_nao_verificado",
-    "motivo": "https://inhacora.rs.gov.br: URLError; http://inhacora.rs.gov.br: URLError; https://www.inhacora.rs.gov.br: DNS; http://www.inhacora.rs.gov.br: DNS; https://prefeituradeinhacora.rs.gov.br: DNS; http://prefeituradeinhacora.rs.gov.br: DNS; https://prefeiturainhacora.rs.gov.br: DNS; http://prefeiturainhacora.rs.gov.br: DNS; https://pminhacora.rs.gov.br: DNS; http://pminhacora.rs.gov.br: DNS"
+    "motivo": "cópia arquivada de 2021-12-06, anterior ao ciclo"
    }
   },
   "2306207": {
@@ -22120,7 +22100,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://itambe.pr.gov.br: timeout; http://itambe.pr.gov.br: timeout; https://www.itambe.pr.gov.br: timeout; http://www.itambe.pr.gov.br: timeout; https://prefeituradeitambe.pr.gov.br: DNS; http://prefeituradeitambe.pr.gov.br: DNS; https://prefeituraitambe.pr.gov.br: DNS; http://prefeituraitambe.pr.gov.br: DNS; https://pmitambe.pr.gov.br: DNS; http://pmitambe.pr.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4112306": {
    "consultado_em": "2026-11-12",
@@ -22231,10 +22211,10 @@
   "2205516": {
    "consultado_em": "2026-11-12",
    "dominio": "juazeirodopiaui.pi.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2017-03-05, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4112900": {
    "consultado_em": "2026-11-11",
@@ -22252,10 +22232,10 @@
   "4209177": {
    "consultado_em": "2026-11-12",
    "dominio": "jupia.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 4,
+   "candidatos": 7
   },
   "5212105": {
    "consultado_em": "2026-11-12",
@@ -22524,10 +22504,10 @@
   "2106300": {
    "consultado_em": "2026-11-12",
    "dominio": "magalhaesdealmeida.ma.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-04-15, anterior ao ciclo",
+   "pistas": 6,
+   "candidatos": 7
   },
   "5212808": {
    "consultado_em": "2026-11-12",
@@ -22596,10 +22576,10 @@
   "4114906": {
    "consultado_em": "2026-11-12",
    "dominio": "marilandiadosul.pr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-04-12, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4115358": {
    "consultado_em": "2026-11-12",
@@ -22639,7 +22619,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://lunardelli.pr.gov.br: timeout; http://lunardelli.pr.gov.br: timeout; https://www.lunardelli.pr.gov.br: timeout; http://www.lunardelli.pr.gov.br: timeout; https://prefeituradelunardelli.pr.gov.br: DNS; http://prefeituradelunardelli.pr.gov.br: DNS; https://prefeituralunardelli.pr.gov.br: DNS; http://prefeituralunardelli.pr.gov.br: DNS; https://pmlunardelli.pr.gov.br: DNS; http://pmlunardelli",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2509206": {
    "consultado_em": "2026-11-12",
@@ -22676,10 +22656,10 @@
   "3529658": {
    "consultado_em": "2026-11-12",
    "dominio": "mesopolis.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-06-13, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2407609": {
    "consultado_em": "2026-11-12",
@@ -23007,7 +22987,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "naque.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Naque; www.naque.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Naque; https://prefeituradenaque.mg.gov.br: DNS; http://prefeituradenaque.mg.gov.br: DNS; https://prefeituranaque.mg.gov.br: DNS; http://prefeituranaque.mg.gov.br: DNS; https://pmnaque.mg.gov.br: DNS; http://pmnaque.mg.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1504950": {
    "consultado_em": "2026-11-12",
@@ -23823,7 +23803,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3540754": {
    "consultado_em": "2026-11-12",
@@ -23988,10 +23968,10 @@
   "3154200": {
    "consultado_em": "2026-11-12",
    "dominio": "resendecosta.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-05-05, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4120200": {
    "consultado_em": "2026-11-12",
@@ -24164,7 +24144,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://quatigua.pr.gov.br: timeout; http://quatigua.pr.gov.br: timeout; https://www.quatigua.pr.gov.br: timeout; http://www.quatigua.pr.gov.br: timeout; https://prefeituradequatigua.pr.gov.br: DNS; http://prefeituradequatigua.pr.gov.br: DNS; https://prefeituraquatigua.pr.gov.br: DNS; http://prefeituraquatigua.pr.gov.br: DNS; https://pmquatigua.pr.gov.br: DNS; http://pmquatigua.pr.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3156601": {
    "consultado_em": "2026-11-12",
@@ -24185,10 +24165,10 @@
   "3544806": {
    "consultado_em": "2026-11-12",
    "dominio": "sales.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2023-03-28, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1718659": {
    "consultado_em": "2026-11-12",
@@ -24313,10 +24293,10 @@
   "4123402": {
    "consultado_em": "2026-11-12",
    "dominio": "santafe.pr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-30",
+   "pistas": 2,
+   "candidatos": 7
   },
   "1718808": {
    "consultado_em": "2026-11-12",
@@ -24624,11 +24604,11 @@
   },
   "4123824": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "santalucia.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://santalucia.pr.gov.br: timeout; http://santalucia.pr.gov.br: timeout; https://www.santalucia.pr.gov.br: timeout; http://www.santalucia.pr.gov.br: timeout; https://prefeituradesantalucia.pr.gov.br: DNS; http://prefeituradesantalucia.pr.gov.br: DNS; https://prefeiturasantalucia.pr.gov.br: DNS; http://prefeiturasantalucia.pr.gov.br: DNS; https://pmsantalucia.pr.gov.br: DNS; http://pmsantalucia",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2026-04-12, anterior ao ciclo",
+   "pistas": 7,
+   "candidatos": 7
   },
   "2209609": {
    "consultado_em": "2026-11-12",
@@ -24928,10 +24908,10 @@
   "3164506": {
    "consultado_em": "2026-11-12",
    "dominio": "saosebastiaodomaranhao.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-11-23, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2807006": {
    "consultado_em": "2026-11-12",
@@ -25181,20 +25161,15 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4320230": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "www.sedenova.rs.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 2,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://sedenova.rs.gov.br: timeout; http://sedenova.rs.gov.br: timeout; https://www.sedenova.rs.gov.br: timeout; http://www.sedenova.rs.gov.br: timeout; https://prefeituradesedenova.rs.gov.br: DNS; http://prefeituradesedenova.rs.gov.br: DNS; https://prefeiturasedenova.rs.gov.br: DNS; http://prefeiturasedenova.rs.gov.br: DNS; https://pmsedenova.rs.gov.br: DNS; http://pmsedenova.rs.gov.br: DNS"
-   }
+   "candidatos": 7
   },
   "2930808": {
    "consultado_em": "2026-11-12",
@@ -25386,7 +25361,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2931707": {
    "consultado_em": "2026-11-12",
@@ -25394,7 +25369,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://terranova.ba.gov.br: TLS; terranova.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Terra Nova; https://www.terranova.ba.gov.br: TLS; www.terranova.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Terra Nova; https://prefeituradeterranova.ba.gov.br: DNS; http://prefeituradeterranova.ba.gov.br: DNS; https://prefeituraterranova.ba.gov.br: DNS; http://prefeitu",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3305901": {
    "consultado_em": "2026-11-12",
@@ -25503,10 +25478,10 @@
   "4218855": {
    "consultado_em": "2026-11-12",
    "dominio": "uniaodooeste.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3555604": {
    "consultado_em": "2026-11-12",
@@ -25526,11 +25501,11 @@
   },
   "4126900": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "tapira.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://tapira.pr.gov.br: timeout; http://tapira.pr.gov.br: timeout; https://www.tapira.pr.gov.br: timeout; http://www.tapira.pr.gov.br: timeout; https://prefeituradetapira.pr.gov.br: DNS; http://prefeituradetapira.pr.gov.br: DNS; https://prefeituratapira.pr.gov.br: DNS; http://prefeituratapira.pr.gov.br: DNS; https://pmtapira.pr.gov.br: DNS; http://pmtapira.pr.gov.br: DNS",
+   "motivo": "cópia arquivada de 2026-03-21, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4219101": {
    "consultado_em": "2026-11-12",
@@ -25628,10 +25603,10 @@
   "2211605": {
    "consultado_em": "2026-11-12",
    "dominio": "vilanovadopiaui.pi.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-18, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "5222302": {
    "consultado_em": "2026-11-12",
@@ -25647,7 +25622,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2415008": {
    "consultado_em": "2026-11-11",
@@ -25663,17 +25638,12 @@
    }
   },
   "4323200": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "victorgraeff.rs.gov.br",
    "situacao": "lido",
-   "motivo": null,
-   "pistas": 4,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://victorgraeff.rs.gov.br: URLError; http://victorgraeff.rs.gov.br: ConnectionResetError; https://www.victorgraeff.rs.gov.br: URLError; http://www.victorgraeff.rs.gov.br: ConnectionResetError; https://prefeituradevictorgraeff.rs.gov.br: DNS; http://prefeituradevictorgraeff.rs.gov.br: DNS; https://prefeituravictorgraeff.rs.gov.br: DNS; http://prefeituravictorgraeff.rs.gov.br: DNS; https://pmvi"
-   }
+   "motivo": "cópia arquivada de 2026-10-17",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2932101": {
    "consultado_em": "2026-11-12",
@@ -25785,7 +25755,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2300507": {
    "consultado_em": "2026-11-12",
@@ -26081,7 +26051,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4100608": {
    "consultado_em": "2026-11-12",
@@ -26164,17 +26134,12 @@
    "candidatos": 6
   },
   "2301257": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "ararenda.ce.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 1,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://ararenda.ce.gov.br: timeout; http://ararenda.ce.gov.br: timeout; https://www.ararenda.ce.gov.br: timeout; http://www.ararenda.ce.gov.br: timeout; https://prefeituradeararenda.ce.gov.br: DNS; http://prefeituradeararenda.ce.gov.br: DNS; https://prefeituraararenda.ce.gov.br: DNS; http://prefeituraararenda.ce.gov.br: DNS; https://pmararenda.ce.gov.br: DNS; http://pmararenda.ce.gov.br: DNS"
-   }
+   "candidatos": 7
   },
   "1702406": {
    "consultado_em": "2026-11-12",
@@ -26238,7 +26203,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://ares.rn.gov.br: DNS; http://ares.rn.gov.br: DNS; https://www.ares.rn.gov.br: DNS; http://www.ares.rn.gov.br: DNS; https://prefeituradeares.rn.gov.br: DNS; http://prefeituradeares.rn.gov.br: DNS; https://prefeituraares.rn.gov.br: DNS; http://prefeituraares.rn.gov.br: DNS; https://pmares.rn.gov.br: DNS; http://pmares.rn.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2501351": {
    "consultado_em": "2026-11-12",
@@ -26270,7 +26235,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2301802": {
    "consultado_em": "2026-11-12",
@@ -26437,10 +26402,10 @@
   "5002001": {
    "consultado_em": "2026-11-12",
    "dominio": "bataypora.ms.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-06-13, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3106408": {
    "consultado_em": "2026-11-12",
@@ -26679,10 +26644,10 @@
   "3507902": {
    "consultado_em": "2026-11-12",
    "dominio": "brotas.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-04",
+   "pistas": 2,
+   "candidatos": 7
   },
   "4103305": {
    "consultado_em": "2026-11-12",
@@ -26695,10 +26660,10 @@
   "4202875": {
    "consultado_em": "2026-11-12",
    "dominio": "brunopolis.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2401800": {
    "consultado_em": "2026-11-12",
@@ -26847,10 +26812,10 @@
   "3110400": {
    "consultado_em": "2026-11-12",
    "dominio": "camacho.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-04",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3508603": {
    "consultado_em": "2026-11-12",
@@ -26885,17 +26850,12 @@
    "candidatos": 6
   },
   "2202075": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "cajazeirasdopiaui.pi.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 0,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://cajazeirasdopiaui.pi.gov.br: timeout; http://cajazeirasdopiaui.pi.gov.br: timeout; https://www.cajazeirasdopiaui.pi.gov.br: URLError; http://www.cajazeirasdopiaui.pi.gov.br: URLError; https://prefeituradecajazeirasdopiaui.pi.gov.br: URLError; http://prefeituradecajazeirasdopiaui.pi.gov.br: URLError; https://prefeituracajazeirasdopiaui.pi.gov.br: URLError; http://prefeituracajazeirasdopiaui"
-   }
+   "candidatos": 7
   },
   "4104055": {
    "consultado_em": "2026-11-12",
@@ -27100,10 +27060,10 @@
   "3114907": {
    "consultado_em": "2026-11-12",
    "dominio": "casagrande.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-04-02, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2402501": {
    "consultado_em": "2026-11-12",
@@ -27180,10 +27140,10 @@
   "1100056": {
    "consultado_em": "2026-11-12",
    "dominio": "cerejeiras.ro.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-10-18, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3511003": {
    "consultado_em": "2026-11-12",
@@ -27942,7 +27902,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4107751": {
    "consultado_em": "2026-11-12",
@@ -28160,10 +28120,10 @@
   "4309159": {
    "consultado_em": "2026-11-12",
    "dominio": "gramadoxavier.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2020-01-10, anterior ao ciclo",
+   "pistas": 8,
+   "candidatos": 7
   },
   "2404309": {
    "consultado_em": "2026-11-12",
@@ -28224,7 +28184,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "gracchocardoso.se.gov.br: respondeu, mas não se identifica como a prefeitura de Gracho Cardoso; https://grachocardoso.se.gov.br: DNS; http://grachocardoso.se.gov.br: DNS; https://www.grachocardoso.se.gov.br: DNS; http://www.grachocardoso.se.gov.br: DNS; https://prefeituradegrachocardoso.se.gov.br: DNS; http://prefeituradegrachocardoso.se.gov.br: DNS; https://prefeituragrachocardoso.se.gov.br: DNS;",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5209200": {
    "consultado_em": "2026-11-12",
@@ -28244,11 +28204,11 @@
   },
   "4107801": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "florai.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://florai.pr.gov.br: timeout; http://florai.pr.gov.br: timeout; https://www.florai.pr.gov.br: timeout; http://www.florai.pr.gov.br: timeout; https://prefeituradeflorai.pr.gov.br: DNS; http://prefeituradeflorai.pr.gov.br: DNS; https://prefeituraflorai.pr.gov.br: DNS; http://prefeituraflorai.pr.gov.br: DNS; https://pmflorai.pr.gov.br: DNS; http://pmflorai.pr.gov.br: DNS",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2025-09-14, anterior ao ciclo",
+   "pistas": 3,
+   "candidatos": 7
   },
   "5209408": {
    "consultado_em": "2026-11-12",
@@ -28477,7 +28437,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://guamiranga.pr.gov.br: timeout; http://guamiranga.pr.gov.br: timeout; https://www.guamiranga.pr.gov.br: timeout; http://www.guamiranga.pr.gov.br: timeout; https://prefeituradeguamiranga.pr.gov.br: DNS; http://prefeituradeguamiranga.pr.gov.br: DNS; https://prefeituraguamiranga.pr.gov.br: DNS; http://prefeituraguamiranga.pr.gov.br: DNS; https://pmguamiranga.pr.gov.br: DNS; http://pmguamiranga",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4306734": {
    "consultado_em": "2026-11-12",
@@ -28493,7 +28453,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3521101": {
    "consultado_em": "2026-11-12",
@@ -28655,10 +28615,10 @@
   "3133907": {
    "consultado_em": "2026-11-12",
    "dominio": "itaverava.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-12",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2607802": {
    "consultado_em": "2026-11-12",
@@ -28727,10 +28687,10 @@
   "3135076": {
    "consultado_em": "2026-11-12",
    "dominio": "jampruca.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-30, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "4310876": {
    "consultado_em": "2026-11-12",
@@ -29585,7 +29545,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: page.evaluate: Execution context was destroyed, most likely because of a ; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2206654": {
    "consultado_em": "2026-11-12",
@@ -29742,7 +29702,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://muquemdesaofrancisco.ba.gov.br: DNS; http://muquemdesaofrancisco.ba.gov.br: DNS; https://www.muquemdesaofrancisco.ba.gov.br: DNS; http://www.muquemdesaofrancisco.ba.gov.br: DNS; https://prefeiturademuquemdesaofrancisco.ba.gov.br: DNS; http://prefeiturademuquemdesaofrancisco.ba.gov.br: DNS; https://prefeituramuquemdesaofrancisco.ba.gov.br: DNS; http://prefeituramuquemdesaofrancisco.ba.gov.b",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2804607": {
    "consultado_em": "2026-11-12",
@@ -29803,7 +29763,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2922607": {
    "consultado_em": "2026-11-12",
@@ -29867,7 +29827,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://novaaliancadoivai.pr.gov.br: DNS; http://novaaliancadoivai.pr.gov.br: DNS; https://www.novaaliancadoivai.pr.gov.br: DNS; http://www.novaaliancadoivai.pr.gov.br: DNS; https://prefeituradenovaaliancadoivai.pr.gov.br: DNS; http://prefeituradenovaaliancadoivai.pr.gov.br: DNS; https://prefeituranovaaliancadoivai.pr.gov.br: DNS; http://prefeituranovaaliancadoivai.pr.gov.br: DNS; https://pmnovaal",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4313011": {
    "consultado_em": "2026-11-12",
@@ -30039,11 +29999,11 @@
   },
   "4117271": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "novatebas.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://novatebas.pr.gov.br: timeout; http://novatebas.pr.gov.br: timeout; https://www.novatebas.pr.gov.br: timeout; http://www.novatebas.pr.gov.br: timeout; https://prefeituradenovatebas.pr.gov.br: DNS; http://prefeituradenovatebas.pr.gov.br: DNS; https://prefeituranovatebas.pr.gov.br: DNS; http://prefeituranovatebas.pr.gov.br: DNS; https://pmnovatebas.pr.gov.br: URLError; http://pmnovatebas.pr.g",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2025-09-08, anterior ao ciclo",
+   "pistas": 3,
+   "candidatos": 7
   },
   "5215652": {
    "consultado_em": "2026-11-12",
@@ -30288,7 +30248,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3536802": {
    "consultado_em": "2026-11-12",
@@ -30360,7 +30320,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://petrolinadegoias.go.gov.br: DNS; http://petrolinadegoias.go.gov.br: DNS; https://www.petrolinadegoias.go.gov.br: DNS; http://www.petrolinadegoias.go.gov.br: DNS; https://prefeituradepetrolinadegoias.go.gov.br: DNS; http://prefeituradepetrolinadegoias.go.gov.br: DNS; https://prefeiturapetrolinadegoias.go.gov.br: DNS; http://prefeiturapetrolinadegoias.go.gov.br: DNS; https://pmpetrolinadegoi",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4119103": {
    "consultado_em": "2026-11-12",
@@ -30456,7 +30416,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "www.prefeiturapiedadedecaratinga.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Piedade de Caratinga; https://piedadedecaratinga.mg.gov.br: DNS; http://piedadedecaratinga.mg.gov.br: DNS; https://www.piedadedecaratinga.mg.gov.br: DNS; http://www.piedadedecaratinga.mg.gov.br: DNS; https://prefeituradepiedadedecaratinga.mg.gov.br: DNS; http://prefeituradepiedadedecaratinga.mg.gov.br",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3151305": {
    "consultado_em": "2026-11-12",
@@ -30525,10 +30485,10 @@
   "4213351": {
    "consultado_em": "2026-11-12",
    "dominio": "www.pmpan.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "1505650": {
    "consultado_em": "2026-11-12",
@@ -30600,7 +30560,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "pocrane.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Pocrane; www.pocrane.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Pocrane; https://prefeituradepocrane.mg.gov.br: DNS; http://prefeituradepocrane.mg.gov.br: DNS; https://prefeiturapocrane.mg.gov.br: DNS; http://prefeiturapocrane.mg.gov.br: DNS; https://pmpocrane.mg.gov.br: DNS; http://pmpocrane.mg.gov.br: ",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3540101": {
    "consultado_em": "2026-11-11",
@@ -30661,7 +30621,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2924702": {
    "consultado_em": "2026-11-12",
@@ -30677,7 +30637,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2925600": {
    "consultado_em": "2026-11-12",
@@ -30741,7 +30701,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1718402": {
    "consultado_em": "2026-11-12",
@@ -30797,7 +30757,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://portomaua.rs.gov.br: timeout; http://portomaua.rs.gov.br: timeout; https://www.portomaua.rs.gov.br: timeout; http://www.portomaua.rs.gov.br: timeout; https://prefeituradeportomaua.rs.gov.br: DNS; http://prefeituradeportomaua.rs.gov.br: DNS; https://prefeituraportomaua.rs.gov.br: DNS; http://prefeituraportomaua.rs.gov.br: DNS; https://pmportomaua.rs.gov.br: DNS; http://pmportomaua.rs.gov.br",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2512804": {
    "consultado_em": "2026-11-12",
@@ -30826,10 +30786,10 @@
   "5107206": {
    "consultado_em": "2026-11-12",
    "dominio": "riobranco.mt.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-17",
+   "pistas": 3,
+   "candidatos": 7
   },
   "3543709": {
    "consultado_em": "2026-11-12",
@@ -30842,10 +30802,10 @@
   "1100262": {
    "consultado_em": "2026-11-12",
    "dominio": "riocrespo.ro.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-12-09, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5107180": {
    "consultado_em": "2026-11-12",
@@ -31165,7 +31125,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://santaluziadoitanhy.se.gov.br: DNS; http://santaluziadoitanhy.se.gov.br: DNS; https://www.santaluziadoitanhy.se.gov.br: DNS; http://www.santaluziadoitanhy.se.gov.br: DNS; https://prefeituradesantaluziadoitanhy.se.gov.br: DNS; http://prefeituradesantaluziadoitanhy.se.gov.br: DNS; https://prefeiturasantaluziadoitanhy.se.gov.br: DNS; http://prefeiturasantaluziadoitanhy.se.gov.br: DNS; https://",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2926657": {
    "consultado_em": "2026-11-12",
@@ -31301,7 +31261,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3160306": {
    "consultado_em": "2026-11-12",
@@ -31453,7 +31413,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4124905": {
    "consultado_em": "2026-11-12",
@@ -31525,7 +31485,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3161809": {
    "consultado_em": "2026-11-12",
@@ -31593,11 +31553,11 @@
   },
   "4124608": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "www.saocarlosdoivai.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://saocarlosdoivai.pr.gov.br: timeout; http://saocarlosdoivai.pr.gov.br: timeout; https://www.saocarlosdoivai.pr.gov.br: timeout; http://www.saocarlosdoivai.pr.gov.br: timeout; https://prefeituradesaocarlosdoivai.pr.gov.br: DNS; http://prefeituradesaocarlosdoivai.pr.gov.br: DNS; https://prefeiturasaocarlosdoivai.pr.gov.br: DNS; http://prefeiturasaocarlosdoivai.pr.gov.br: DNS; https://pmsaocar",
+   "motivo": "cópia arquivada de 2026-04-12, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1507102": {
    "consultado_em": "2026-11-12",
@@ -31693,7 +31653,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://saojoaodoivai.pr.gov.br: timeout; http://saojoaodoivai.pr.gov.br: timeout; https://www.saojoaodoivai.pr.gov.br: timeout; http://www.saojoaodoivai.pr.gov.br: timeout; https://prefeituradesaojoaodoivai.pr.gov.br: DNS; http://prefeituradesaojoaodoivai.pr.gov.br: DNS; https://prefeiturasaojoaodoivai.pr.gov.br: DNS; http://prefeiturasaojoaodoivai.pr.gov.br: DNS; https://pmsaojoaodoivai.pr.gov.b",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5220405": {
    "consultado_em": "2026-11-12",
@@ -31809,11 +31769,11 @@
   },
   "1507805": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
-   "situacao": "portal_nao_verificado",
-   "motivo": "https://senadorjoseporfirio.pa.gov.br: DNS; http://senadorjoseporfirio.pa.gov.br: DNS; https://www.senadorjoseporfirio.pa.gov.br: DNS; http://www.senadorjoseporfirio.pa.gov.br: DNS; https://prefeituradesenadorjoseporfirio.pa.gov.br: DNS; http://prefeituradesenadorjoseporfirio.pa.gov.br: DNS; https://prefeiturasenadorjoseporfirio.pa.gov.br: DNS; http://prefeiturasenadorjoseporfirio.pa.gov.br: DNS; ",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "joseporfirio.pa.gov.br",
+   "situacao": "lido",
+   "motivo": null,
+   "pistas": 2,
+   "candidatos": 7
   },
   "3551603": {
    "consultado_em": "2026-11-12",
@@ -31890,7 +31850,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://serranodomaranhao.ma.gov.br: DNS; http://serranodomaranhao.ma.gov.br: DNS; https://www.serranodomaranhao.ma.gov.br: DNS; http://www.serranodomaranhao.ma.gov.br: DNS; https://prefeituradeserranodomaranhao.ma.gov.br: DNS; http://prefeituradeserranodomaranhao.ma.gov.br: DNS; https://prefeituraserranodomaranhao.ma.gov.br: DNS; http://prefeituraserranodomaranhao.ma.gov.br: DNS; https://pmserran",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4320602": {
    "consultado_em": "2026-11-12",
@@ -32030,11 +31990,11 @@
   },
   "2931103": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "tanquinho.ba.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "tanquinho.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Tanquinho; www.tanquinho.ba.gov.br: respondeu, mas não se identifica como a prefeitura de Tanquinho; https://prefeituradetanquinho.ba.gov.br: DNS; http://prefeituradetanquinho.ba.gov.br: DNS; https://prefeituratanquinho.ba.gov.br: DNS; http://prefeituratanquinho.ba.gov.br: DNS; https://pmtanquinho.ba.gov.br: DNS; http://pmt",
+   "motivo": "cópia arquivada de 2025-02-17, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2413300": {
    "consultado_em": "2026-11-12",
@@ -32103,23 +32063,18 @@
   "4217956": {
    "consultado_em": "2026-11-12",
    "dominio": "tigrinhos.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 5,
+   "candidatos": 7
   },
   "3553906": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "tarabai.sp.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 0,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "tarabai.sp.gov.br: respondeu, mas não se identifica como a prefeitura de Tarabai; www.tarabai.sp.gov.br: respondeu, mas não se identifica como a prefeitura de Tarabai; https://prefeituradetarabai.sp.gov.br: DNS; http://prefeituradetarabai.sp.gov.br: DNS; https://prefeituratarabai.sp.gov.br: DNS; http://prefeituratarabai.sp.gov.br: DNS; https://pmtarabai.sp.gov.br: DNS; http://pmtarabai.sp.gov.br: "
-   }
+   "candidatos": 7
   },
   "2210938": {
    "consultado_em": "2026-11-12",
@@ -32156,10 +32111,10 @@
   "4322152": {
    "consultado_em": "2026-11-12",
    "dominio": "tunas.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-16",
+   "pistas": 4,
+   "candidatos": 7
   },
   "4321469": {
    "consultado_em": "2026-11-11",
@@ -32196,7 +32151,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: saída do renderizador não é JSON; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3170008": {
    "consultado_em": "2026-11-12",
@@ -32268,7 +32223,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1101807": {
    "consultado_em": "2026-11-12",
@@ -32297,10 +32252,10 @@
   "3170578": {
    "consultado_em": "2026-11-12",
    "dominio": "vargemalegre.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-18, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4128401": {
    "consultado_em": "2026-11-12",
@@ -32920,10 +32875,10 @@
   "3503950": {
    "consultado_em": "2026-11-12",
    "dominio": "aspasia.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-01-29, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "3503703": {
    "consultado_em": "2026-11-12",
@@ -33035,7 +32990,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4301859": {
    "consultado_em": "2026-11-12",
@@ -33043,7 +32998,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5001508": {
    "consultado_em": "2026-11-12",
@@ -33187,7 +33142,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4202537": {
    "consultado_em": "2026-11-12",
@@ -33328,10 +33283,10 @@
   "4302659": {
    "consultado_em": "2026-11-12",
    "dominio": "brochier.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-03-16, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "3109253": {
    "consultado_em": "2026-11-12",
@@ -33379,7 +33334,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2102358": {
    "consultado_em": "2026-11-12",
@@ -33467,7 +33422,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3509304": {
    "consultado_em": "2026-11-12",
@@ -33475,7 +33430,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3509403": {
    "consultado_em": "2026-11-12",
@@ -33608,7 +33563,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://camponovoderondonia.ro.gov.br: DNS; http://camponovoderondonia.ro.gov.br: DNS; https://www.camponovoderondonia.ro.gov.br: DNS; http://www.camponovoderondonia.ro.gov.br: DNS; https://prefeituradecamponovoderondonia.ro.gov.br: DNS; http://prefeituradecamponovoderondonia.ro.gov.br: DNS; https://prefeituracamponovoderondonia.ro.gov.br: DNS; http://prefeituracamponovoderondonia.ro.gov.br: DNS; ",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3510104": {
    "consultado_em": "2026-11-12",
@@ -33669,10 +33624,10 @@
   "3113800": {
    "consultado_em": "2026-11-12",
    "dominio": "carmesia.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-07-22, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2202554": {
    "consultado_em": "2026-11-11",
@@ -33796,10 +33751,10 @@
   "4204152": {
    "consultado_em": "2026-11-12",
    "dominio": "celsoramos.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4105003": {
    "consultado_em": "2026-11-12",
@@ -33953,18 +33908,18 @@
   "3116803": {
    "consultado_em": "2026-11-12",
    "dominio": "coluna.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-08-15, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3117009": {
    "consultado_em": "2026-11-12",
    "dominio": "comercinho.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3117207": {
    "consultado_em": "2026-11-12",
@@ -34044,7 +33999,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2202653": {
    "consultado_em": "2026-11-12",
@@ -34307,10 +34262,10 @@
   "3122108": {
    "consultado_em": "2026-11-12",
    "dominio": "divinodaslaranjeiras.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-30, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2203354": {
    "consultado_em": "2026-11-12",
@@ -34632,7 +34587,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4308003": {
    "consultado_em": "2026-11-12",
@@ -34936,17 +34891,12 @@
    "candidatos": 6
   },
   "3518107": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "guaranta.sp.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 2,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "guaranta.sp.gov.br: respondeu, mas não se identifica como a prefeitura de Guarantã; www.guaranta.sp.gov.br: respondeu, mas não se identifica como a prefeitura de Guarantã; https://prefeituradeguaranta.sp.gov.br: DNS; http://prefeituradeguaranta.sp.gov.br: DNS; https://prefeituraguaranta.sp.gov.br: DNS; http://prefeituraguaranta.sp.gov.br: DNS; https://pmguaranta.sp.gov.br: DNS; http://pmguaranta.s"
-   }
+   "candidatos": 7
   },
   "2104909": {
    "consultado_em": "2026-11-12",
@@ -35023,10 +34973,10 @@
   "3129608": {
    "consultado_em": "2026-11-12",
    "dominio": "ibiai.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-06-17, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4309704": {
    "consultado_em": "2026-11-12",
@@ -35130,7 +35080,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://ibema.pr.gov.br: URLError; http://ibema.pr.gov.br: URLError; https://www.ibema.pr.gov.br: URLError; http://www.ibema.pr.gov.br: URLError; https://prefeituradeibema.pr.gov.br: DNS; http://prefeituradeibema.pr.gov.br: DNS; https://prefeituraibema.pr.gov.br: DNS; http://prefeituraibema.pr.gov.br: DNS; https://pmibema.pr.gov.br: DNS; http://pmibema.pr.gov.br: DNS",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3131000": {
    "consultado_em": "2026-11-12",
@@ -35294,7 +35244,7 @@
    "ultima_tentativa": {
     "consultado_em": "2026-11-12",
     "situacao": "portal_nao_verificado",
-    "motivo": "https://iguatu.pr.gov.br: timeout; http://iguatu.pr.gov.br: timeout; https://www.iguatu.pr.gov.br: timeout; http://www.iguatu.pr.gov.br: timeout; https://prefeituradeiguatu.pr.gov.br: DNS; http://prefeituradeiguatu.pr.gov.br: DNS; https://prefeituraiguatu.pr.gov.br: DNS; http://prefeituraiguatu.pr.gov.br: DNS; https://pmiguatu.pr.gov.br: DNS; http://pmiguatu.pr.gov.br: DNS"
+    "motivo": "cópia arquivada de 2025-09-10, anterior ao ciclo"
    }
   },
   "2915700": {
@@ -35372,10 +35322,10 @@
   "4110953": {
    "consultado_em": "2026-11-12",
    "dominio": "itaipulandia.pr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-07-12",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2916807": {
    "consultado_em": "2026-11-12",
@@ -35562,11 +35512,11 @@
   },
   "4310850": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "jaboticaba.rs.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://jaboticaba.rs.gov.br: URLError; http://jaboticaba.rs.gov.br: URLError; https://www.jaboticaba.rs.gov.br: DNS; http://www.jaboticaba.rs.gov.br: DNS; https://prefeituradejaboticaba.rs.gov.br: DNS; http://prefeituradejaboticaba.rs.gov.br: DNS; https://prefeiturajaboticaba.rs.gov.br: DNS; http://prefeiturajaboticaba.rs.gov.br: DNS; https://pmjaboticaba.rs.gov.br: DNS; http://pmjaboticaba.rs.go",
+   "motivo": "cópia arquivada de 2020-03-19, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4208955": {
    "consultado_em": "2026-11-12",
@@ -35574,7 +35524,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3136405": {
    "consultado_em": "2026-11-12",
@@ -35590,7 +35540,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5211701": {
    "consultado_em": "2026-11-12",
@@ -36120,7 +36070,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: Error: networkidle: Error | load: Error | domcontentloaded: Error; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5213087": {
    "consultado_em": "2026-11-12",
@@ -36178,10 +36128,10 @@
   "3531209": {
    "consultado_em": "2026-11-12",
    "dominio": "montealegredosul.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-14",
+   "pistas": 8,
+   "candidatos": 7
   },
   "2308609": {
    "consultado_em": "2026-11-12",
@@ -36218,10 +36168,10 @@
   "4116109": {
    "consultado_em": "2026-11-12",
    "dominio": "moreirasales.pr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-15",
+   "pistas": 1,
+   "candidatos": 7
   },
   "5213707": {
    "consultado_em": "2026-11-12",
@@ -36874,11 +36824,11 @@
   },
   "4117404": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "ourizona.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://ourizona.pr.gov.br: timeout; http://ourizona.pr.gov.br: timeout; https://www.ourizona.pr.gov.br: timeout; http://www.ourizona.pr.gov.br: timeout; https://prefeituradeourizona.pr.gov.br: DNS; http://prefeituradeourizona.pr.gov.br: DNS; https://prefeituraourizona.pr.gov.br: DNS; http://prefeituraourizona.pr.gov.br: DNS; https://pmourizona.pr.gov.br: DNS; http://pmourizona.pr.gov.br: DNS",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2025-09-15, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2924058": {
    "consultado_em": "2026-11-12",
@@ -36966,7 +36916,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3537206": {
    "consultado_em": "2026-11-12",
@@ -37203,7 +37153,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://portoricodomaranhao.ma.gov.br: DNS; http://portoricodomaranhao.ma.gov.br: DNS; https://www.portoricodomaranhao.ma.gov.br: DNS; http://www.portoricodomaranhao.ma.gov.br: DNS; https://prefeituradeportoricodomaranhao.ma.gov.br: DNS; http://prefeituradeportoricodomaranhao.ma.gov.br: DNS; https://prefeituraportoricodomaranhao.ma.gov.br: DNS; http://prefeituraportoricodomaranhao.ma.gov.br: DNS; ",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1718006": {
    "consultado_em": "2026-11-12",
@@ -37368,7 +37318,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1506112": {
    "consultado_em": "2026-11-12",
@@ -37488,7 +37438,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5218706": {
    "consultado_em": "2026-11-12",
@@ -37733,10 +37683,10 @@
   "3157377": {
    "consultado_em": "2026-11-12",
    "dominio": "santacruzdesalinas.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-06-02, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2612471": {
    "consultado_em": "2026-11-12",
@@ -37768,7 +37718,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3545704": {
    "consultado_em": "2026-11-12",
@@ -37944,7 +37894,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "santarosadopurus.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Santa Rosa do Purus; www.santarosadopurus.ac.gov.br: respondeu, mas não se identifica como a prefeitura de Santa Rosa do Purus; https://prefeituradesantarosadopurus.ac.gov.br: DNS; http://prefeituradesantarosadopurus.ac.gov.br: DNS; https://prefeiturasantarosadopurus.ac.gov.br: DNS; http://prefeiturasantarosadopurus.",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2209104": {
    "consultado_em": "2026-11-07",
@@ -38009,11 +37959,11 @@
   },
   "3159001": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "santanadoriacho.mg.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "santanadoriacho.mg.gov.br: HTTP 301; www.santanadoriacho.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Santana do Riacho; https://prefeituradesantanadoriacho.mg.gov.br: DNS; http://prefeituradesantanadoriacho.mg.gov.br: DNS; https://prefeiturasantanadoriacho.mg.gov.br: DNS; http://prefeiturasantanadoriacho.mg.gov.br: DNS; https://pmsantanadoriacho.mg.gov.br: DNS; http://pmsantan",
+   "motivo": "cópia arquivada de 2026-05-05, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3548302": {
    "consultado_em": "2026-11-12",
@@ -38021,7 +37971,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3160504": {
    "consultado_em": "2026-11-12",
@@ -38165,7 +38115,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://saofelixdotocantins.to.gov.br: DNS; http://saofelixdotocantins.to.gov.br: DNS; https://www.saofelixdotocantins.to.gov.br: DNS; http://www.saofelixdotocantins.to.gov.br: DNS; https://prefeituradesaofelixdotocantins.to.gov.br: DNS; http://prefeituradesaofelixdotocantins.to.gov.br: DNS; https://prefeiturasaofelixdotocantins.to.gov.br: DNS; http://prefeiturasaofelixdotocantins.to.gov.br: DNS; ",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2111029": {
    "consultado_em": "2026-11-12",
@@ -38271,7 +38221,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://saojorgedoeste.pr.gov.br: DNS; http://saojorgedoeste.pr.gov.br: DNS; https://www.saojorgedoeste.pr.gov.br: DNS; http://www.saojorgedoeste.pr.gov.br: DNS; https://prefeituradesaojorgedoeste.pr.gov.br: DNS; http://prefeituradesaojorgedoeste.pr.gov.br: DNS; https://prefeiturasaojorgedoeste.pr.gov.br: DNS; http://prefeiturasaojorgedoeste.pr.gov.br: DNS; https://pmsaojorgedoeste.pr.gov.br: DNS;",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4125456": {
    "consultado_em": "2026-11-12",
@@ -38279,7 +38229,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://saojosedaspalmeiras.pr.gov.br: DNS; http://saojosedaspalmeiras.pr.gov.br: DNS; https://www.saojosedaspalmeiras.pr.gov.br: DNS; http://www.saojosedaspalmeiras.pr.gov.br: DNS; https://prefeituradesaojosedaspalmeiras.pr.gov.br: DNS; http://prefeituradesaojosedaspalmeiras.pr.gov.br: DNS; https://prefeiturasaojosedaspalmeiras.pr.gov.br: DNS; http://prefeiturasaojosedaspalmeiras.pr.gov.br: DNS; ",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3550001": {
    "consultado_em": "2026-11-12",
@@ -38607,7 +38557,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://saopedrodobutia.rs.gov.br: timeout; http://saopedrodobutia.rs.gov.br: timeout; https://www.saopedrodobutia.rs.gov.br: timeout; http://www.saopedrodobutia.rs.gov.br: timeout; https://prefeituradesaopedrodobutia.rs.gov.br: DNS; http://prefeituradesaopedrodobutia.rs.gov.br: DNS; https://prefeiturasaopedrodobutia.rs.gov.br: DNS; http://prefeiturasaopedrodobutia.rs.gov.br: DNS; https://pmsaoped",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5007703": {
    "consultado_em": "2026-11-12",
@@ -38892,10 +38842,10 @@
   "3169505": {
    "consultado_em": "2026-11-12",
    "dominio": "tumiritinga.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-06-03, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2615706": {
    "consultado_em": "2026-11-12",
@@ -39028,7 +38978,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4322350": {
    "consultado_em": "2026-11-12",
@@ -39100,7 +39050,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2517100": {
    "consultado_em": "2026-11-12",
@@ -39116,7 +39066,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://tucunduva.rs.gov.br: timeout; http://tucunduva.rs.gov.br: timeout; https://www.tucunduva.rs.gov.br: timeout; http://www.tucunduva.rs.gov.br: timeout; https://prefeituradetucunduva.rs.gov.br: DNS; http://prefeituradetucunduva.rs.gov.br: DNS; https://prefeituratucunduva.rs.gov.br: DNS; http://prefeituratucunduva.rs.gov.br: DNS; https://pmtucunduva.rs.gov.br: DNS; http://pmtucunduva.rs.gov.br",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3170750": {
    "consultado_em": "2026-11-12",
@@ -39201,10 +39151,10 @@
   "4323770": {
    "consultado_em": "2026-11-12",
    "dominio": "westfalia.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-08-08",
+   "pistas": 3,
+   "candidatos": 7
   },
   "4323705": {
    "consultado_em": "2026-11-12",
@@ -39268,7 +39218,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5200159": {
    "consultado_em": "2026-11-12",
@@ -39536,7 +39486,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "alvarenga.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Alvarenga; www.alvarenga.mg.gov.br: respondeu, mas não se identifica como a prefeitura de Alvarenga; https://prefeituradealvarenga.mg.gov.br: DNS; http://prefeituradealvarenga.mg.gov.br: DNS; https://prefeituraalvarenga.mg.gov.br: DNS; http://prefeituraalvarenga.mg.gov.br: DNS; https://pmalvarenga.mg.gov.br: DNS; http://pma",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4100806": {
    "consultado_em": "2026-11-12",
@@ -39613,7 +39563,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://alvoradadoeste.ro.gov.br: DNS; http://alvoradadoeste.ro.gov.br: DNS; https://www.alvoradadoeste.ro.gov.br: DNS; http://www.alvoradadoeste.ro.gov.br: DNS; https://prefeituradealvoradadoeste.ro.gov.br: DNS; http://prefeituradealvoradadoeste.ro.gov.br: DNS; https://prefeituraalvoradadoeste.ro.gov.br: DNS; http://prefeituraalvoradadoeste.ro.gov.br: DNS; https://pmalvoradadoeste.ro.gov.br: DNS;",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3103108": {
    "consultado_em": "2026-11-12",
@@ -39696,17 +39646,12 @@
    "candidatos": 6
   },
   "2501203": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "areial.pb.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 3,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://areial.pb.gov.br: URLError; http://areial.pb.gov.br: URLError; https://www.areial.pb.gov.br: URLError; http://www.areial.pb.gov.br: URLError; https://prefeituradeareial.pb.gov.br: URLError; http://prefeituradeareial.pb.gov.br: URLError; https://prefeituraareial.pb.gov.br: URLError; http://prefeituraareial.pb.gov.br: URLError; https://pmareial.pb.gov.br: DNS; http://pmareial.pb.gov.br: DNS"
-   }
+   "candidatos": 7
   },
   "2902302": {
    "consultado_em": "2026-11-12",
@@ -40033,10 +39978,10 @@
   "1400159": {
    "consultado_em": "2026-11-12",
    "dominio": "bonfim.rr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-15",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5002159": {
    "consultado_em": "2026-11-12",
@@ -40363,7 +40308,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "camposbelos.go.gov.br: respondeu, mas não se identifica como a prefeitura de Campos Belos; www.camposbelos.go.gov.br: respondeu, mas não se identifica como a prefeitura de Campos Belos; https://prefeituradecamposbelos.go.gov.br: DNS; http://prefeituradecamposbelos.go.gov.br: DNS; https://prefeituracamposbelos.go.gov.br: DNS; http://prefeituracamposbelos.go.gov.br: DNS; https://pmcamposbelos.go.gov",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3509908": {
    "consultado_em": "2026-11-12",
@@ -40525,10 +40470,10 @@
   "3115706": {
    "consultado_em": "2026-11-12",
    "dominio": "centraldeminas.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-24, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "4304622": {
    "consultado_em": "2026-11-12",
@@ -40552,20 +40497,15 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2303659": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "catunda.ce.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 1,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "https://catunda.ce.gov.br: timeout; http://catunda.ce.gov.br: timeout; https://www.catunda.ce.gov.br: timeout; http://www.catunda.ce.gov.br: timeout; https://prefeituradecatunda.ce.gov.br: DNS; http://prefeituradecatunda.ce.gov.br: DNS; https://prefeituracatunda.ce.gov.br: DNS; http://prefeituracatunda.ce.gov.br: DNS; https://pmcatunda.ce.gov.br: DNS; http://pmcatunda.ce.gov.br: DNS"
-   }
+   "candidatos": 7
   },
   "2402709": {
    "consultado_em": "2026-11-12",
@@ -40578,10 +40518,10 @@
   "3116100": {
    "consultado_em": "2026-11-12",
    "dominio": "chapadadonorte.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-05",
+   "pistas": 1,
+   "candidatos": 7
   },
   "5102850": {
    "consultado_em": "2026-11-12",
@@ -40674,7 +40614,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3116407": {
    "consultado_em": "2026-11-12",
@@ -40860,7 +40800,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2504850": {
    "consultado_em": "2026-11-12",
@@ -40996,17 +40936,12 @@
    "candidatos": 6
   },
   "4306320": {
-   "consultado_em": "2026-11-11",
+   "consultado_em": "2026-11-12",
    "dominio": "www.derrubadas-rs.com.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 2,
-   "candidatos": 6,
-   "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
-    "situacao": "portal_nao_verificado",
-    "motivo": "www.derrubadas-rs.com.br: HTTP 503; derrubadas.rs.gov.br: HTTP 503; www.derrubadas.rs.gov.br: HTTP 503; https://prefeituradederrubadas.rs.gov.br: DNS; http://prefeituradederrubadas.rs.gov.br: DNS; https://prefeituraderrubadas.rs.gov.br: DNS; http://prefeituraderrubadas.rs.gov.br: DNS; https://pmderrubadas.rs.gov.br: DNS; http://pmderrubadas.rs.gov.br: DNS"
-   }
+   "candidatos": 7
   },
   "3121001": {
    "consultado_em": "2026-11-12",
@@ -41394,7 +41329,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2204006": {
    "consultado_em": "2026-11-12",
@@ -42018,7 +41953,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 429",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1710904": {
    "consultado_em": "2026-11-12",
@@ -42055,10 +41990,10 @@
   "5104609": {
    "consultado_em": "2026-11-12",
    "dominio": "itiquira.mt.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2023-06-11, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "2917201": {
    "consultado_em": "2026-11-12",
@@ -42655,7 +42590,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4210704": {
    "consultado_em": "2026-11-12",
@@ -42668,10 +42603,10 @@
   "3141504": {
    "consultado_em": "2026-11-12",
    "dominio": "mendespimentel.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-06-03, anterior ao ciclo",
+   "pistas": 2,
+   "candidatos": 7
   },
   "3141702": {
    "consultado_em": "2026-11-12",
@@ -42775,7 +42710,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4312351": {
    "consultado_em": "2026-11-12",
@@ -42855,7 +42790,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://morroagudodegoias.go.gov.br: DNS; http://morroagudodegoias.go.gov.br: DNS; https://www.morroagudodegoias.go.gov.br: DNS; http://www.morroagudodegoias.go.gov.br: DNS; https://prefeiturademorroagudodegoias.go.gov.br: DNS; http://prefeiturademorroagudodegoias.go.gov.br: DNS; https://prefeituramorroagudodegoias.go.gov.br: DNS; http://prefeituramorroagudodegoias.go.gov.br: DNS; https://pmmorroa",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3203601": {
    "consultado_em": "2026-11-12",
@@ -43159,7 +43094,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5106240": {
    "consultado_em": "2026-11-12",
@@ -43172,10 +43107,10 @@
   "4211850": {
    "consultado_em": "2026-11-12",
    "dominio": "ouroverde.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2923209": {
    "consultado_em": "2026-11-12",
@@ -43188,10 +43123,10 @@
   "3534906": {
    "consultado_em": "2026-11-12",
    "dominio": "pacaembu.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2024-01-22, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4116703": {
    "consultado_em": "2026-11-12",
@@ -43249,10 +43184,10 @@
   "3535606": {
    "consultado_em": "2026-11-12",
    "dominio": "paraibuna.sp.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-09-11",
+   "pistas": 1,
+   "candidatos": 7
   },
   "5216007": {
    "consultado_em": "2026-11-12",
@@ -43353,10 +43288,10 @@
   "3148400": {
    "consultado_em": "2026-11-12",
    "dominio": "paulistas.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-17, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2207751": {
    "consultado_em": "2026-11-12",
@@ -43842,11 +43777,11 @@
   },
   "4120408": {
    "consultado_em": "2026-11-12",
-   "dominio": null,
+   "dominio": "presidentecastelobranco.pr.gov.br",
    "situacao": "portal_nao_verificado",
-   "motivo": "https://presidentecastelobranco.pr.gov.br: timeout; http://presidentecastelobranco.pr.gov.br: timeout; https://www.presidentecastelobranco.pr.gov.br: timeout; http://www.presidentecastelobranco.pr.gov.br: timeout; https://prefeituradepresidentecastelobranco.pr.gov.br: DNS; http://prefeituradepresidentecastelobranco.pr.gov.br: DNS; https://prefeiturapresidentecastelobranco.pr.gov.br: DNS; http://pr",
-   "pistas": 0,
-   "candidatos": 6
+   "motivo": "cópia arquivada de 2025-08-13, anterior ao ciclo",
+   "pistas": 4,
+   "candidatos": 7
   },
   "2707602": {
    "consultado_em": "2026-11-12",
@@ -44147,7 +44082,7 @@
    "situacao": "nao_verificado",
    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: saída do renderizador não é JSON; busca no domínio: 0 link(s)",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5219001": {
    "consultado_em": "2026-11-12",
@@ -44191,11 +44126,11 @@
   },
   "3157500": {
    "consultado_em": "2026-11-12",
-   "dominio": "www.santaefigenia.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "dominio": "santaefigenia.mg.gov.br",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-07",
+   "pistas": 2,
+   "candidatos": 7
   },
   "4123105": {
    "consultado_em": "2026-11-12",
@@ -44251,7 +44186,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1100296": {
    "consultado_em": "2026-11-12",
@@ -44347,7 +44282,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://santaterezinhadotocantins.to.gov.br: DNS; http://santaterezinhadotocantins.to.gov.br: DNS; https://www.santaterezinhadotocantins.to.gov.br: DNS; http://www.santaterezinhadotocantins.to.gov.br: DNS; https://prefeituradesantaterezinhadotocantins.to.gov.br: DNS; http://prefeituradesantaterezinhadotocantins.to.gov.br: DNS; https://prefeiturasantaterezinhadotocantins.to.gov.br: DNS; http://pref",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2806404": {
    "consultado_em": "2026-11-12",
@@ -44411,7 +44346,7 @@
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4215554": {
    "consultado_em": "2026-11-12",
@@ -44432,10 +44367,10 @@
   "4215752": {
    "consultado_em": "2026-11-12",
    "dominio": "saobernardino.sc.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-01-21, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "3158300": {
    "consultado_em": "2026-11-12",
@@ -44632,10 +44567,10 @@
   "4318465": {
    "consultado_em": "2026-11-12",
    "dominio": "saojosedoherval.rs.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-17",
+   "pistas": 5,
+   "candidatos": 7
   },
   "3163508": {
    "consultado_em": "2026-11-12",
@@ -44659,15 +44594,15 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://saojorgedoivai.pr.gov.br: DNS; http://saojorgedoivai.pr.gov.br: DNS; https://www.saojorgedoivai.pr.gov.br: DNS; http://www.saojorgedoivai.pr.gov.br: DNS; https://prefeituradesaojorgedoivai.pr.gov.br: DNS; http://prefeituradesaojorgedoivai.pr.gov.br: DNS; https://prefeiturasaojorgedoivai.pr.gov.br: DNS; http://prefeiturasaojorgedoivai.pr.gov.br: DNS; https://pmsaojorgedoivai.pr.gov.br: DNS;",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2111250": {
    "consultado_em": "2026-11-12",
    "dominio": "saojosedosbasilios.ma.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-02-26, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2514305": {
    "consultado_em": "2026-11-12",
@@ -44848,10 +44783,10 @@
   "3165503": {
    "consultado_em": "2026-11-12",
    "dominio": "sardoa.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
-   "pistas": 0,
-   "candidatos": 6
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2025-05-17, anterior ao ciclo",
+   "pistas": 1,
+   "candidatos": 7
   },
   "2210631": {
    "consultado_em": "2026-11-12",
@@ -44896,10 +44831,10 @@
   "3166204": {
    "consultado_em": "2026-11-12",
    "dominio": "senhoradosremedios.mg.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "lido",
+   "motivo": "cópia arquivada de 2026-10-12",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3165800": {
    "consultado_em": "2026-11-12",
@@ -45019,7 +44954,7 @@
    "situacao": "portal_nao_verificado",
    "motivo": "https://serranopolisdoiguacu.pr.gov.br: DNS; http://serranopolisdoiguacu.pr.gov.br: DNS; https://www.serranopolisdoiguacu.pr.gov.br: DNS; http://www.serranopolisdoiguacu.pr.gov.br: DNS; https://prefeituradeserranopolisdoiguacu.pr.gov.br: DNS; http://prefeituradeserranopolisdoiguacu.pr.gov.br: DNS; https://prefeituraserranopolisdoiguacu.pr.gov.br: DNS; http://prefeituraserranopolisdoiguacu.pr.gov.b",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3167509": {
    "consultado_em": "2026-11-12",
