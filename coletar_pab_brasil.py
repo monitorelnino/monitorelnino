@@ -5,8 +5,8 @@ A lista nominal está no próprio plano do MMA (PDF), com código IBGE, clima e 
 ASD (pelo menos 1% do território com índice de aridez abaixo de 0,65; Cemaden/MCTI, 1990–2020) de Entorno
 (Semiárido da Sudene, PAN-Brasil 2004 ou contiguidade), e o dado guarda a separação: Entorno não é ASD.
 
-Camada de contexto, PESO ZERO: escreve só as chaves `pab_*` de `data/enquadramento_federal.json` e não
-toca índice nenhum. Trava de leitura: os totais da Tabela 1 do plano (1.389 ASD + 260 Entorno = 1.649) e
+Camada de contexto, PESO ZERO: escreve só as chaves `pab_*` de `data/enquadramento_federal.json` e o contorno
+para desenho em `data/pab_brasil_manchas.json`; não toca índice nenhum. Trava de leitura: os totais da Tabela 1 do plano (1.389 ASD + 260 Entorno = 1.649) e
 todo código na base do projeto, com a UF da tabela igual à da base; se algo não fecha, nada é gravado.
 
 USO
@@ -28,6 +28,9 @@ INSTRUMENTO = ("Plano de Ação Brasileiro de Combate à Desertificação e Miti
                "Ministério do Meio Ambiente e Mudança do Clima; Apêndice B, Tabela B.1 — municípios das Áreas "
                "Suscetíveis à Desertificação e Entorno (índice de aridez: Cemaden/MCTI, 1990–2020)")
 TOTAIS = {"ASD": 1389, "Entorno": 260}
+MANCHAS = RAIZ / "data" / "pab_brasil_manchas.json"
+MALHA = ("https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/"
+         "municipio_2022/UFs/{uf}/{uf}_Municipios_2022.zip")
 UFS_ESPERADAS = {"AL", "BA", "CE", "ES", "MA", "MG", "MS", "PB", "PE", "PI", "RJ", "RN", "SE"}
 # O texto do PDF quebra a célula em duas linhas ("Subúmido / Seco", "CIRCUNS- / CRITO") e nem sempre traz a
 # letra acentuada inteira: o clima casa pelo radical e a classificação pelo começo.
@@ -85,6 +88,48 @@ def fundir(anterior: dict, registros: dict, base: dict) -> dict:
     return {**(anterior or {}), "municipios": dict(sorted(municipios.items()))}
 
 
+def classe_do_mapa(r: dict) -> str:
+    """A categoria que o mapa pinta: o clima nas ASD, "Entorno" fora delas. Pura."""
+    return r["pab_clima"] if r["pab_brasil"] == "ASD" else "Entorno"
+
+
+def manchas_por_classe(poligonos: list, registros: dict) -> list:
+    """Uma feição MultiPolygon por classe, dos polígonos municipais [(código IBGE, anéis)]. Pura."""
+    from coletar_sinais_risco import manchas_de_seca
+    juntas = {}
+    for f in manchas_de_seca([(classe_do_mapa(registros[c]), aneis) for c, aneis in poligonos if c in registros]):
+        juntas.setdefault(f["properties"]["codigo_da_fonte"], []).extend(f["geometry"]["coordinates"])
+    return [{"type": "Feature", "properties": {"categoria": k}, "geometry": {"type": "MultiPolygon", "coordinates": v}}
+            for k, v in sorted(juntas.items())]
+
+
+def gravar_manchas(registros: dict, impressao: str, buscar, hoje: str) -> int:
+    """Contorno para desenho: a malha municipal do IBGE (2022) das UFs do plano, simplificada. Só refaz quando a
+    tabela muda; malha que não cobre todo município da tabela não grava."""
+    import zipfile
+    from coletar_sinais_risco import ler_poligonos_shp, SECAS_TOLERANCIA
+    from coletores_base import gravar_em
+    if MANCHAS.exists() and json.loads(MANCHAS.read_text(encoding="utf-8")).get("hash_da_tabela") == impressao:
+        return 0
+    poligonos = []
+    for uf in sorted({r["uf"] for r in registros.values()}):
+        z = zipfile.ZipFile(io.BytesIO(buscar(MALHA.format(uf=uf), timeout=300, origem="coletar_pab_brasil")))
+        nomes = {n.lower()[-4:]: n for n in z.namelist() if n.lower().endswith((".shp", ".dbf"))}
+        poligonos += ler_poligonos_shp(z.read(nomes[".shp"]), z.read(nomes[".dbf"]), "CD_MUN")
+    faltam = sorted(set(registros) - {c for c, _ in poligonos})
+    if faltam:
+        print(f"X MALHA — {len(faltam)} município(s) da tabela sem polígono ({', '.join(faltam[:8])}): manchas não gravadas.")
+        return 1
+    gravar_em(MANCHAS, {
+        "_governanca": ("Contorno, para desenho, dos municípios das Áreas Suscetíveis à Desertificação (por clima) e do "
+                        "Entorno, como o PAB-Brasil os classifica. Geometria: malha municipal do IBGE (2022), simplificada "
+                        f"(Douglas-Peucker, {SECAS_TOLERANCIA}°, ~2 km). A lista oficial é a Tabela B.1 do plano. Peso zero."),
+        "gerado_em": hoje, "hash_da_tabela": impressao, "malha": MALHA.format(uf="<UF>"),
+        "type": "FeatureCollection", "features": manchas_por_classe(poligonos, registros)}, compacto=True)
+    print(f"{MANCHAS.relative_to(RAIZ)} gravado · {MANCHAS.stat().st_size // 1024} kB")
+    return 0
+
+
 def texto_das_paginas(corpo: bytes) -> str:
     """Só as páginas que trazem linha da tabela: o plano tem centenas de páginas e a tabela, dezenas."""
     import pdfplumber
@@ -129,8 +174,12 @@ def autoteste() -> int:
             lambda: junto["municipios"]["2304202"]["semiarido"] is True and junto["municipios"]["2304202"]["pab_brasil"] == "ASD"
             and "pab_brasil" not in junto["municipios"]["1100205"] and junto["municipios"]["1100205"]["mma_prioritario_desmatamento"]
             and junto["municipios"]["2611101"]["municipio"] == "Petrolina" and junto["fontes"] == antes["fontes"],
-        "garantia estrutural: só escreve o arquivo do enquadramento":
-            lambda: re.findall(r"gravar_em\(([^,)]+)", open(__file__, encoding="utf-8").read().split("def main")[-1]) == ["SAIDA"],
+        "manchas: uma feição por classe (clima nas ASD, Entorno fora), município fora da tabela não entra":
+            lambda: [(f["properties"]["categoria"], len(f["geometry"]["coordinates"])) for f in manchas_por_classe(
+                [(c, [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]]) for c in ("2100154", "2100907", "2101509", "9999999")], regs)]
+            == [("Entorno", 1), ("Subúmido seco", 2)],
+        "garantia estrutural: só escreve o enquadramento e as manchas":
+            lambda: re.findall(r"gravar_em\(([^,)]+)", open(__file__, encoding="utf-8").read()) == ["MANCHAS", "SAIDA"],
     })
 
 
@@ -152,7 +201,7 @@ def main() -> int:
     anterior = json.loads(SAIDA.read_text(encoding="utf-8")) if SAIDA.exists() else {}
     if not precisa_reprocessar(anterior, impressao, hoje, familia="pab_brasil") and "--forcar" not in sys.argv:
         print("documento igual e conferido há menos de 7 dias: nada a reprocessar.")
-        return 0
+        return gravar_manchas({c: r for c, r in anterior["municipios"].items() if r.get("pab_brasil")}, impressao, buscar, hoje.isoformat())
     base = {str(m["ibge"]).zfill(7): {"uf": m.get("uf"), "nome": m.get("nome")}
             for m in json.loads(MUNICIPIOS.read_text(encoding="utf-8")) if m.get("ibge")}
     texto = texto_das_paginas(corpo)
@@ -178,7 +227,7 @@ def main() -> int:
     saida["atualizado_em"] = hoje.isoformat()
     gravar_em(SAIDA, saida)
     print(f"{SAIDA.relative_to(RAIZ)} gravado · {len(registros)} municípios do PAB-Brasil")
-    return 0
+    return gravar_manchas(registros, impressao, buscar, hoje.isoformat())
 
 
 if __name__ == "__main__":
