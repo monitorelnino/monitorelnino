@@ -718241,7 +718241,8 @@
    "pista_id": "d9a3aad0f1",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "395f2d1715545d7e8f58d05dba6a004217be95e2eb84ddbbfb98f5fffb689740"
+   "hash_evidencia": "89cd40a57ca6d658295649ea16cebd14c62348c2dadea1148dedc3469c9e2b2d",
+   "aplicado_em": "2026-11-13"
   },
   {
    "promove": false,
@@ -718369,7 +718370,11 @@
    "pista_id": "d09f4bf3b2",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "395f2d1715545d7e8f58d05dba6a004217be95e2eb84ddbbfb98f5fffb689740"
+   "hash_evidencia": "395f2d1715545d7e8f58d05dba6a004217be95e2eb84ddbbfb98f5fffb689740",
+   "nao_aplicado": {
+    "em": "2026-11-13",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
   },
   {
    "promove": false,
@@ -719940,6 +719945,1925 @@
    "pista_id": "7fae7b9cd0",
    "origem": "busca_web",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf",
+   "regras_18": [],
+   "pista_id": "d1a3559016",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "132 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302809",
+   "municipio": "MENDES",
+   "uf": "RJ",
+   "url": "http://www.rio.rj.gov.br/documents/73801/f848063f-186c-466e-8ae1-afd83b43912b",
+   "regras_18": [],
+   "pista_id": "5aed116b1a",
+   "origem": "seguimento",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2900355",
+   "municipio": "Adustina",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "c3173b304a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918753",
+   "municipio": "Lagoa Real",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "fa9b82f09a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909703",
+   "municipio": "Cristópolis",
+   "uf": "BA",
+   "url": "https://rbsp.sesab.ba.gov.br/index.php/rbsp/article/download/3484/2832",
+   "regras_18": [],
+   "pista_id": "6dc10ebf22",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909703",
+   "municipio": "Cristópolis",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b20c72d511",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Coribe\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909109",
+   "municipio": "Coribe",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "17d3717162",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2902005",
+   "municipio": "Aracatu",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "099e112a73",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2912301",
+   "municipio": "Ibicuí",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-15-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "cc3eb455b8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ibicuí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2912301",
+   "municipio": "Ibicuí",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b8271ca646",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2920452",
+   "municipio": "Mansidão",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b8bc2e99f1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ibipitanga\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2912509",
+   "municipio": "Ibipitanga",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "9e805e5d89",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2926509",
+   "municipio": "Ribeira do Amparo",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "39ceff0597",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2926509",
+   "municipio": "Ribeira do Amparo",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "52b9a11f89",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2903003",
+   "municipio": "Barra do Mendes",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "45122f6f40",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Itagi\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2915106",
+   "municipio": "Itagi",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "3a57f9d31c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2900306",
+   "municipio": "Acajutiba",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "8d842e4e83",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Angical\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2901403",
+   "municipio": "Angical",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b4b203b342",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922706",
+   "municipio": "Nova Canaã",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-14-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "f23c90141f",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922706",
+   "municipio": "Nova Canaã",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "902520c349",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ipecaetá\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2913804",
+   "municipio": "Ipecaetá",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "24765616c2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2903706",
+   "municipio": "Boa Nova",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "3ef3940d23",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2926103",
+   "municipio": "Retirolândia",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "062730ce63",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2932457",
+   "municipio": "Umburanas",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "67ee9b35d0",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jiquiriçá\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918209",
+   "municipio": "Jiquiriçá",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "40905c042e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918209",
+   "municipio": "Jiquiriçá",
+   "uf": "BA",
+   "url": "http://www.ba.gov.br/seplan/publicacoes-institucionais",
+   "regras_18": [],
+   "pista_id": "dd6c976493",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ouriçangas\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2923308",
+   "municipio": "Ouriçangas",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "8bdcb88336",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909000",
+   "municipio": "Cordeiros",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "2d89c93395",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922854",
+   "municipio": "Nova Redenção",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "059dac824d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922854",
+   "municipio": "Nova Redenção",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "4b554bc58a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Lajedo do Tabocal\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2919058",
+   "municipio": "Lajedo do Tabocal",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "d5b6351620",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918605",
+   "municipio": "Jussiape",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "88b857c83d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Macururé\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2919900",
+   "municipio": "Macururé",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b2acda019d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Muniz Ferreira\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922201",
+   "municipio": "Muniz Ferreira",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "2b6c689f1d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2931400",
+   "municipio": "Teodoro Sampaio",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "0a2fd617a7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Itamari\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2915700",
+   "municipio": "Itamari",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "adf623e88b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2919959",
+   "municipio": "Maetinga",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b44e2bc64c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Apuarema\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2901957",
+   "municipio": "Apuarema",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "4840117209",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922755",
+   "municipio": "Nova Ibiá",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "58fb160732",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Itagimirim\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2915304",
+   "municipio": "Itagimirim",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "a2d943b86b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2924108",
+   "municipio": "Pedrão",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "9b28f11d86",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2924108",
+   "municipio": "Pedrão",
+   "uf": "BA",
+   "url": "https://servidores.rhbahia.ba.gov.br/sites/default/files/concursos/editais/2020-04/Convoca%C3%A7%C3%A3o%20para%20Exames%20Pr%C3%A9%20Admissionais.pdf",
+   "regras_18": [],
+   "pista_id": "a3bc30451b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2904803",
+   "municipio": "Caatiba",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "05ef8ecfe7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ichu\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2913309",
+   "municipio": "Ichu",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "fa13c01071",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2914208",
+   "municipio": "Irajuba",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "5f54202c09",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2915403",
+   "municipio": "Itaju do Colônia",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "5a7ff87136",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2915908",
+   "municipio": "Itanagra",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "440f1a0598",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918555",
+   "municipio": "Jussari",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "ec868a2ae8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2903102",
+   "municipio": "Barra do Rocha",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "a5782ae854",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3162575",
+   "municipio": "São João do Manteninha",
+   "uf": "MG",
+   "url": "https://www.saojoaodomanteninha.mg.gov.br/licitacoes/download-txt/4026",
+   "regras_18": [],
+   "pista_id": "36531b90da",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3127503",
+   "municipio": "Gonzaga",
+   "uf": "MG",
+   "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+   "regras_18": [],
+   "pista_id": "f7aeb771ad",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3139102",
+   "municipio": "Madre de Deus de Minas",
+   "uf": "MG",
+   "url": "https://madrededeusdeminas.mg.gov.br/noticia/49121",
+   "regras_18": [],
+   "pista_id": "7eb1f5fd40",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3139102",
+   "municipio": "Madre de Deus de Minas",
+   "uf": "MG",
+   "url": "https://www.madrededeusdeminas.mg.gov.br/noticias_relacionadas/",
+   "regras_18": [],
+   "pista_id": "b573b42fc5",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3112109",
+   "municipio": "Caparaó",
+   "uf": "MG",
+   "url": "https://www.caparao.mg.gov.br/conselhos/comdec/desastres/d2025/3552-pt1-25compdec/file",
+   "regras_18": [],
+   "pista_id": "bdfb4fad7b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3156106",
+   "municipio": "Ritápolis",
+   "uf": "MG",
+   "url": "https://ritapolis.mg.gov.br/pagina/15074/DEFESA%20CIVIL",
+   "regras_18": [],
+   "pista_id": "44e2bbb486",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3156106",
+   "municipio": "Ritápolis",
+   "uf": "MG",
+   "url": "https://ritapolis.mg.gov.br/Salvar_arquivo_Leis.php?INT_ARQ=47179",
+   "regras_18": [],
+   "pista_id": "706d48cc3b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/noticias/30931-prefeitura-organiza-abrigo-emergencial-na-secretaria-de-desenvolvimento-social--conforme-plano-contingencia",
+   "regras_18": [],
+   "pista_id": "45945df294",
+   "origem": null,
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3122603",
+   "municipio": "Dom Joaquim",
+   "uf": "MG",
+   "url": "https://domjoaquim.mg.gov.br/wp-content/uploads/2025/06/ASCA-1_064686_merged-1.pdf",
+   "regras_18": [],
+   "pista_id": "e82928cdf5",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3161403",
+   "municipio": "São Francisco do Glória",
+   "uf": "MG",
+   "url": "https://www.saofranciscodogloria.mg.gov.br/detalhe-da-materia/info/mauro-figueroa-palestra-para-alunos-e-pais-da-rede-publica/6549",
+   "regras_18": [],
+   "pista_id": "989b436838",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3161403",
+   "municipio": "São Francisco do Glória",
+   "uf": "MG",
+   "url": "https://www.saofranciscodogloria.mg.gov.br/tur_est_vis.aspx?cd=11",
+   "regras_18": [],
+   "pista_id": "0314ee53d2",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3155108",
+   "municipio": "Rio do Prado",
+   "uf": "MG",
+   "url": "https://repositorioigam.meioambiente.mg.gov.br/jspui/bitstream/123456789/4060/1/R13-Resumo-Executivo-PDRH-Rios-do-Leste.pdf",
+   "regras_18": [],
+   "pista_id": "497b4ec6c9",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3138351",
+   "municipio": "Leme do Prado",
+   "uf": "MG",
+   "url": "https://www.agenciaminas.mg.gov.br/news/pdf/107478.pdf",
+   "regras_18": [],
+   "pista_id": "c0f4feaba4",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3135076",
+   "municipio": "Jampruca",
+   "uf": "MG",
+   "url": "https://jampruca.mg.gov.br/documentos_oficiais",
+   "regras_18": [],
+   "pista_id": "6b15331bcc",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3135076",
+   "municipio": "Jampruca",
+   "uf": "MG",
+   "url": "https://jampruca.mg.gov.br/noticias/todas",
+   "regras_18": [],
+   "pista_id": "789c919e50",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3140100",
+   "municipio": "Marilac",
+   "uf": "MG",
+   "url": "https://www.pjf.mg.gov.br/noticias/view.php?modo=link2&idnoticia2=72854",
+   "regras_18": [],
+   "pista_id": "ed1101fdef",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "346 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3134509",
+   "municipio": "Itutinga",
+   "uf": "MG",
+   "url": "https://itutinga.mg.gov.br/pagina/6907",
+   "regras_18": [],
+   "pista_id": "4a17f0464b",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3102407",
+   "municipio": "Alvorada de Minas",
+   "uf": "MG",
+   "url": "https://alvoradademinas.mg.leg.br/arquivo/6a071d25697cb.pdf",
+   "regras_18": [],
+   "pista_id": "f9aa223994",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3149606",
+   "municipio": "Pequi",
+   "uf": "MG",
+   "url": "https://camarapequi.mg.gov.br/noticia/23",
+   "regras_18": [],
+   "pista_id": "d09cd938ca",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148905",
+   "municipio": "Pedra do Indaiá",
+   "uf": "MG",
+   "url": "https://repositorioigam.meioambiente.mg.gov.br/bitstream/123456789/650/1/PDRH_Rio%20Para_Etapa%208_Plano_de_Monitoramento.pdf",
+   "regras_18": [],
+   "pista_id": "85d5fb65cf",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300904",
+   "municipio": "Canutama",
+   "uf": "AM",
+   "url": "https://www.transparencia.am.gov.br/wp-content/uploads/2021/10/PORTARIA-n.164-GDP-FAAR.pdf",
+   "regras_18": [],
+   "pista_id": "9f40aaa573",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1304005",
+   "municipio": "Silves",
+   "uf": "AM",
+   "url": "https://www.sedecti.am.gov.br/wp-content/uploads/2020/06/Pauta-da-285-Reuni%C3%A3o-Ordin%C3%A1ria-do-Codam-1.pdf",
+   "regras_18": [],
+   "pista_id": "4e6c72523e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202405",
+   "municipio": "Guarapari",
+   "uf": "ES",
+   "url": "https://www.guarapari.es.gov.br/noticia/ler/628/prefeitura-de-guarapari-abre-processo-seletivo-para-tcnico-operacional-em-sade",
+   "regras_18": [],
+   "pista_id": "0cbf98d5d1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "132 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://portal.duquedecaxias.rj.gov.br/noticia/dia-nacional-do-voluntariado-uma-celebracao-para-quem-doa-seu-tempo-para-ajudar-o-proximo-7233",
+   "regras_18": [],
+   "pista_id": "a321b66232",
+   "origem": null,
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/noticia/38228/38228?titulo=Segundo+Workshop+para+Atualiza%C3%A7%C3%A3o+do+Plano+Municipal+de+Turismo+re%C3%BAne+agentes+p%C3%BAblicos+e+sociedade+civil",
+   "regras_18": [],
+   "pista_id": "b310714b11",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/evento/8077?titulo=Workshop+para+atualiza%C3%A7%C3%A3o+do+Plano+Municipal+de+Turismo",
+   "regras_18": [],
+   "pista_id": "f457bd91f9",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "155 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104303",
+   "municipio": "Campo Mourão",
+   "uf": "PR",
+   "url": "https://www.campomourao.pr.gov.br/cidadao/noticia/plano-de-contingencia-reune-secretarias-e-forcas-de-seguranca-para-fortalecer-preparacao-de-campo-mourao",
+   "regras_18": [],
+   "pista_id": "cefe5c1344",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11192 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saneamento Básico &#8211; Prefeitura de Torres/RS &#8211; Site oficial Ir para o conteúdo Transparência Nota Eletrônica Livro Eletrônico Prot"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "11.445/2007",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321501",
+   "municipio": "Torres",
+   "uf": "RS",
+   "url": "https://torres.rs.gov.br/prefeitura/plano-municipal-de-saneamento-basico/",
+   "regras_18": [],
+   "pista_id": "24f3df88b2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "95e6d1519dbd083443f16e8cfc1c038f0b55a9f959ba57931d68da0b282393c8",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11225 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rave; Informa&ccedil;&atilde;o (15) 3258-8300 Rua Profª Ana Cândida Rolim, 46 - Guareí/SP Prefeitura Dados Abertos Prefeito Vice-prefeito Plano Municipal de Res"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "897/2022",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3518503",
+   "municipio": "Guareí",
+   "uf": "SP",
+   "url": "https://guarei.sp.gov.br/?pag=T1RjPU9EZz1PVFU9T0dVPU9HST1PVEE9T0dFPU9HRT0=&idmenu=255",
+   "regras_18": [],
+   "pista_id": "af516c5d63",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "fa5c8b61dd265d84c9c47d62eacd7e7b0387929dde67924894c3fa480bfef5ae",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3210 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal Macajuba - IBDM Modernização --> --> --> --> --> --> Acesso à Informação Folha de Pessoal Convênios Regulamentação da Lai Relatórios da Res"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "09/2018",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2919603",
+   "municipio": "Macajuba",
+   "uf": "BA",
+   "url": "https://macajuba.ba.gov.br/documentos-saude",
+   "regras_18": [],
+   "pista_id": "3ab6b865d3",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "4f9343ee76d602a536befa15aba0da7f95371326f9c2a886119fdc8d3db9aa1b",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3139 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal Macajuba - IBDM Modernização --> --> --> --> --> --> Acesso à Informação Folha de Pessoal Convênios Regulamentação da Lai Relatórios da Res"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "09/2018",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2919603",
+   "municipio": "Macajuba",
+   "uf": "BA",
+   "url": "https://macajuba.ba.gov.br/documentos?tipo=plano-municipal-de-educacao",
+   "regras_18": [],
+   "pista_id": "745359fbe8",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "6d7a10878c881996386f6e2f047534aaf82ab08b0a5fabe179aa8f47592a9e92",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }
