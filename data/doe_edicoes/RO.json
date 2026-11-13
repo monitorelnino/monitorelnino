@@ -2,9 +2,9 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "06/11/2026",
+  "em": "13/11/2026",
   "conta_como_consultado": true,
-  "ultima_edicao_lida": "2026-11-05"
+  "ultima_edicao_lida": "2026-11-12"
  },
  "edicoes": {
   "2026-06-29": {
@@ -1195,7 +1195,77 @@
    "decisao": "sem_edicao_na_data",
    "em": "06/11/2026",
    "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-11-13": {
+   "decisao": "sem_edicao_na_data",
+   "em": "13/11/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-11-12": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 4329112,
+   "paginas": 729,
+   "paginas_com_texto": 729,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/11/DOE-12-11-2026.pdf",
+   "impressao": "e962460a101597b93c97df947caff646eae775c06c3d52fef96d62bb099fd7a4",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-11": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 3761971,
+   "paginas": 527,
+   "paginas_com_texto": 527,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/11/DOE-11-11-2026.pdf",
+   "impressao": "ed9aac3c92f6b440334d52a7c41d6c4841dfb58022216e223798239b91484370",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-10": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 4141269,
+   "paginas": 562,
+   "paginas_com_texto": 562,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/11/DOE-10-11-2026.pdf",
+   "impressao": "b729d8ff6eb74296dba20fb2058421444ead03a1185ab07f8f33e43ad148034f",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-09": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 9233228,
+   "paginas": 2239,
+   "paginas_com_texto": 2239,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/11/DOE-09-11-2026.pdf",
+   "impressao": "0abf407e5f6d6883c123ea9982a2e646820a4948496883012b894291dfe3f7a6",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-06": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 4984154,
+   "paginas": 921,
+   "paginas_com_texto": 921,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/11/DOE-06-11-2026.pdf",
+   "impressao": "0b765aab687c6682e7f8eb599b79ff21b279e401e1c4ab774c82a794a0ebc9e7",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   }
  },
- "atualizado_em": "06/11/2026"
+ "atualizado_em": "13/11/2026"
 }

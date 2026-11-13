@@ -658,7 +658,7 @@ def parse_ensodisc_cpc(texto: str) -> dict:
 
     prob, limiar = None, None
     if sinopse:
-        m_p = re.search(r"(greater than|less than|about|approximately)?\s*(\d{1,3})\s*% chance", sinopse, re.I)
+        m_p = re.search(r"(greater than|less than|about|approximately)?\s*(?:an?\s+)?(\d{1,3})\s*% chance", sinopse, re.I)
         if m_p:
             valor = int(m_p.group(2))
             if 0 <= valor <= 100:
@@ -2719,6 +2719,9 @@ def autoteste() -> int:
     checar("CPC: data de emiss\u00e3o em formato brasileiro", _d["emitido_em"] == "10/09/2026")
     checar("CPC: data da pr\u00f3xima atualiza\u00e7\u00e3o", _d["proxima_em"] == "08/10/2026")
     checar("CPC: probabilidade e limiar declarados", _d["probabilidade"] == 90 and _d["limiar"] == "acima de")
+    _art = parse_ensodisc_cpc(_cpc.replace("a greater than 90% chance of a very strong event", "a strong event likely (remaining greater than a 79% chance)"))
+    checar("CPC: 'greater than a 79% chance' mant\u00e9m o limiar (12/11/2026: sa\u00eda '83%' sem o 'acima de')",
+           _art["probabilidade"] == 79 and _art["limiar"] == "acima de")
     checar("CPC: sinopse guardada no original, sem tradu\u00e7\u00e3o", _d["sinopse"].startswith("El Ni\u00f1o is strengthening"))
     # negativos: o que n\u00e3o estiver declarado fica None, e nada \u00e9 deduzido
     _vazio = parse_ensodisc_cpc("<p>Nenhuma discuss\u00e3o aqui.</p>")

@@ -2,9 +2,9 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "06/11/2026",
+  "em": "13/11/2026",
   "conta_como_consultado": true,
-  "ultima_edicao_lida": "2026-11-05"
+  "ultima_edicao_lida": "2026-11-11"
  },
  "edicoes": {
   "2026-06-29": {
@@ -1196,7 +1196,72 @@
    "decisao": "sem_edicao_na_data",
    "em": "06/11/2026",
    "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-11-13": {
+   "decisao": "sem_edicao_na_data",
+   "em": "13/11/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-11-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "13/11/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-11-11": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 9215439,
+   "paginas": 83,
+   "paginas_com_texto": 83,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261111.pdf",
+   "impressao": "4902af7a2a02d65b98d129cf0c821b9c065f129ba9f021894b9417d79968c074",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-10": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 4185429,
+   "paginas": 103,
+   "paginas_com_texto": 103,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261110.pdf",
+   "impressao": "efdb2bc59d590511cdbe5e1bf37064c545af967d7e8a67c391dacf3438b0d460",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-09": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 15079858,
+   "paginas": 301,
+   "paginas_com_texto": 301,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261109.pdf",
+   "impressao": "07907a1afd87aab450b7d2dced6aaae40667e175f0ca06ccc5acf2df538cb5a6",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-06": {
+   "decisao": "lida",
+   "em": "13/11/2026",
+   "bytes": 4042316,
+   "paginas": 121,
+   "paginas_com_texto": 121,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261106.pdf",
+   "impressao": "ac779d3007a9a2d4c7bd036f87804cfbdb9553435000096f7442e2a2b74ccb9f",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "ac779d3007a9a2d4c7bd036f87804cfbdb9553435000096f7442e2a2b74ccb9f",
+   "termos_achados": [
+    "El Niño"
+   ]
   }
  },
- "atualizado_em": "06/11/2026"
+ "atualizado_em": "13/11/2026"
 }
