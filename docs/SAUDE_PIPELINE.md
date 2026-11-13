@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-06 a 2026-11-13 (1409 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-06 a 2026-11-13 (1411 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,7 +27,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-13 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-13 07:17 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-12 01:37 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-13 13:45 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-13 14:56 | 5 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-13 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-11 07:15 | 0 s | — | ok | — |
@@ -107,6 +107,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-13 · por canal: we
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-13 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_funil.py` | coletor | 2026-11-11 07:21 | 1 s | — | ok | — |
 | `seguir_pistas.py` | coletor | 2026-11-13 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `sondar_repositorios_estaduais.py` | coletor | 2026-11-13 13:16 | 4165 s | — | ok | — |
 | `triar_confianca_pistas.py` | coletor | 2026-11-13 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `verificar_links.py` | coletor | 2026-11-10 01:39 | 180 s | — | **erro** | interrompido pelo prazo do elo |
 | `verificar_pista_imprensa.py` | coletor | 2026-11-13 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
