@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-13 · #PR · Estrutura de coordenação lida do dado; Roraima corrigido com o decreto
+
+A classificação da estrutura de coordenação de cada estado saiu de uma constante do motor e passa a
+ser lida de `data/estados.json`, com documento, data e hash. Errata: Roraima vai de recorrente a
+criada no ciclo (Decreto nº 41.444-E, de 31/08/2026, Gabinete Integrado da Operação El Niño),
+lido no diário oficial em 31/08 e nunca aplicado. Índice de RR: 26,5 → 44,8. Nenhuma regra muda.
+
 ## 2026-11-12 · #PR · Boletim da NOAA: "mais de 79%" sai com o limiar da fonte
 
 O leitor do boletim do El Niño perdia o "greater than" quando a NOAA escreve "greater than a 79%
