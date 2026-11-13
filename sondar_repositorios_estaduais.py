@@ -110,12 +110,13 @@ def sondar_uf(uf: str, estado: str, conhecidas: list, municipios: dict, por_cod:
     for c in CONSULTAS:
         try:
             dados = busca(c.format(estado=estado, uf=uf.lower())) or {}
+            p, n = hosts_oficiais(dados.get("results") or [], uf)
+            paginas, noticias = paginas + p, noticias + n
             if not dados.get("results") or dados.get("unresponsive_engines"):
-                raise ValueError("sem cobertura")
-            p, n = hosts_oficiais(dados["results"], uf)
-            paginas, noticias, buscas_ok = paginas + p, noticias + n, buscas_ok + 1
+                raise ValueError(f"sem cobertura: {dados.get('unresponsive_engines') or 'vazia'}")
+            buscas_ok += 1
         except Exception as e:  # noqa: BLE001
-            falhas.append(f"busca: {type(e).__name__}: {str(e)[:40]}")
+            falhas.append(f"busca: {type(e).__name__}: {str(e)[:120]}")
     lidas, candidatos, pistas = 0, [], []
     fila, vistas = list(dict.fromkeys(paginas))[:PAGINAS_POR_UF], set()
     while fila and len(vistas) < 2 * PAGINAS_POR_UF:
@@ -125,7 +126,7 @@ def sondar_uf(uf: str, estado: str, conhecidas: list, municipios: dict, por_cod:
         vistas.add(url)
         r = ler_pagina(url) or {}
         if not r.get("ok"):
-            falhas.append(f"{urllib.parse.urlparse(url).netloc}: {str(r.get('erro') or 'sem resposta')[:60]}")
+            falhas.append(f"{urllib.parse.urlparse(url).netloc}: {str(r.get('erro') or 'sem resposta')[:200]}")
             continue
         lidas += 1
         a = avaliar_pagina(url, r.get("links"), municipios)
@@ -135,7 +136,7 @@ def sondar_uf(uf: str, estado: str, conhecidas: list, municipios: dict, por_cod:
         if len(a["municipios"]) >= MINIMO:
             pistas += pistas_da_pagina(url, uf, a["municipios"], por_cod, hoje)
     return ({"sondado_em": hoje, "paginas_lidas": lidas, "busca_completa": buscas_ok == len(CONSULTAS), "candidatos": candidatos,
-             "noticias": list({n["url"]: n for n in noticias}.values())[:5], "falhas": falhas[:8],
+             "noticias": list({n["url"]: n for n in noticias}.values())[:5], "falhas": list(dict.fromkeys(falhas))[:8],
              "paginas_conhecidas": list(dict.fromkeys(conhecidas + [c["url"] for c in candidatos]))[:PAGINAS_POR_UF]},
             pistas)
 
@@ -172,6 +173,9 @@ def autoteste() -> int:
                                lambda u: {"ok": True, "links": menu if u == home else links})
     mudo, _ = sondar_uf("PA", "Pará", [pagina], mun, por_cod, "2026-11-13", lambda q: {"results": [], "unresponsive_engines": ["x"]},
                         lambda u: {"ok": True, "links": links})
+    parcial, p_parcial = sondar_uf("PA", "Pará", [], mun, por_cod, "2026-11-13",
+                                   lambda q: {"results": [{"url": pagina, "title": "Planos"}], "unresponsive_engines": ["x"]},
+                                   lambda u: {"ok": True, "links": links})
     estatico = ler_pagina(pagina, lambda u: {"ok": False, "erro": "contexto destruído"},
                           lambda u: b"<a href='/docs/PLANCON_Belem.pdf'>Plano de <b>Bel\xc3\xa9m</b></a>")
     return rodar_autoteste({
@@ -192,6 +196,8 @@ def autoteste() -> int:
             lambda: len(p_fundo) == 5 and fundo["paginas_lidas"] == 2 and fundo["candidatos"][0]["url"] == pagina,
         "busca vazia ou com motor mudo é falha: a UF segue devida mesmo com página lida":
             lambda: mudo["busca_completa"] is False and devida(mudo, "2026-11-14") and any("busca" in f for f in mudo["falhas"]),
+        "motor mudo com resultado: a página achada é lida e vira pista, e a UF segue devida":
+            lambda: len(p_parcial) == 5 and parcial["busca_completa"] is False and devida(parcial, "2026-11-14"),
         "navegador que falha cai no HTML estático, com link absoluto e texto sem marcação":
             lambda: estatico["ok"] and estatico["links"][0]["href"] == "https://defesacivil.pa.gov.br/docs/PLANCON_Belem.pdf"
             and "Belém" in estatico["links"][0]["texto"],

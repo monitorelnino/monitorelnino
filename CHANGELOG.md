@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-13 · #PR · Sondagem de repositórios não para em motor mudo nem em redirecionamento
+
+A sondagem de 13/11 leu 27 UFs e ficou sem busca em 21 (motor suspenso) e sem página em oito (redirecionamento por script). Raiz: o resultado de busca com motor mudo era descartado, e o renderizador lia a página no meio da navegação. Agora a página achada é lida (a UF segue devida) e o renderizador espera a navegação terminar.
+
 ## 2026-11-13 · #PR · Juiz lê a estrutura estadual criada para o ciclo no diário oficial
 
 O documento estadual deixou de parar na recusa: quando a pista é da UF, ou o juiz a encaminha ao
