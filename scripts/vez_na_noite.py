@@ -50,6 +50,7 @@ WORKFLOWS_DO_GRUPO = (
     "noturno_doe_incremental.yml",
     "recuperar_edicoes_doe.yml",
     "semanal_respiratorias.yml",
+    "noturno_repositorios.yml",
 )
 ABERTOS = ("queued", "requested", "waiting", "pending", "in_progress")
 
