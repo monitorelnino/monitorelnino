@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-06 a 2026-11-13 (1269 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-06 a 2026-11-13 (1287 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,8 +27,8 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-12 07:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-12 01:37 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-13 03:00 | 4 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-12 08:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `recalcular_mare.py` | essencial | 2026-11-13 03:58 | 6 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-13 03:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-11 07:15 | 0 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-11-10 01:21 | 19 s | 13 | ok | — |
@@ -63,31 +63,31 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `coletar_saude.py` | coletor | 2026-11-12 01:13 | 86 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-11-11 03:09 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-11-07 01:15 | 3 s | — | ok | — |
-| `coletar_sg_esus.py` | coletor | 2026-11-12 03:45 | 10 s | — | ok | — |
+| `coletar_sg_esus.py` | coletor | 2026-11-13 03:03 | 11 s | — | ok | — |
 | `coletar_siconfi_182.py` | coletor | 2026-11-11 07:53 | 1 s | 5571 | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-12 07:19 | 5 s | — | sem novidade | — |
 | `coletar_sim.py` | coletor | 2026-11-12 07:19 | 8 s | — | sem novidade | — |
 | `coletar_sinais_risco.py` | coletor | 2026-11-12 01:14 | 100 s | — | ok | — |
 | `coletar_sisab.py` | coletor | 2026-11-12 07:15 | 205 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-07 01:17 | 144 s | — | ok | — |
-| `coletar_srag_sivep.py` | coletor | 2026-11-12 03:44 | 38 s | — | ok | — |
+| `coletar_srag_sivep.py` | coletor | 2026-11-13 03:03 | 43 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-11-11 07:52 | 2 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-12 01:16 | 63 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-11-12 01:17 | 137 s | — | **erro** (6 seguidas) | portas tentadas: api.queridodiario.org.br: TimeoutError The read operation timed out \| queridodiario.ok.org.br: HTTPErr |
 | `descobrir_dominios.py` | coletor | 2026-11-08 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `descobrir_planos.py` | coletor | 2026-11-12 10:49 | 5328 s | — | ok | — |
+| `descobrir_planos.py` | coletor | 2026-11-13 03:51 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `desfechos_sus.py` | coletor | 2026-11-12 07:19 | 1 s | — | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-11-12 08:40 | 32 s | — | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-11-13 03:50 | 32 s | — | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-12 08:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `julgar_filas.py` | coletor | 2026-11-12 08:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `julgar_filas.py` | coletor | 2026-11-13 03:11 | 2452 s | — | **erro** | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-11-11 01:59 | 4184 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-12 07:39 | 5 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-11-12 08:38 | 96 s | 24661 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-11-12 01:20 | 0 s | — | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-11-12 08:30 | 393 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-11-12 08:36 | 103 s | 27 | ok | — |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-11-12 08:40 | 3 s | 18721 | ok | — |
-| `monitorar_sinais_federais.py` | coletor | 2026-11-12 08:40 | 5 s | 10 | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-11-13 03:48 | 122 s | 24801 | ok | — |
+| `monitorar_busca_web.py` | coletor | 2026-11-13 03:51 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `monitorar_imprensa_regional.py` | coletor | 2026-11-13 03:38 | 512 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-11-13 03:47 | 103 s | 27 | ok | — |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-11-13 03:50 | 3 s | 18859 | ok | — |
+| `monitorar_sinais_federais.py` | coletor | 2026-11-13 03:50 | 4 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-11-12 08:08 | 88 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-11-11 07:15 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-11-08 13:24 | 152 s | — | ok | — |
@@ -103,10 +103,10 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-12 05:07 | 1092 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-11-07 01:15 | 97 s | — | ok | — |
 | `scripts/sondar_credenciais.py` | coletor | 2026-11-12 01:17 | 2 s | — | ok | — |
-| `scripts/triar_fila.py` | coletor | 2026-11-12 08:23 | 2 s | — | ok | — |
-| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-12 08:23 | 2 s | — | ok | — |
+| `scripts/triar_fila.py` | coletor | 2026-11-13 03:11 | 2 s | — | ok | — |
+| `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-13 03:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_funil.py` | coletor | 2026-11-11 07:21 | 1 s | — | ok | — |
-| `seguir_pistas.py` | coletor | 2026-11-12 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `triar_confianca_pistas.py` | coletor | 2026-11-12 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `seguir_pistas.py` | coletor | 2026-11-13 03:51 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `triar_confianca_pistas.py` | coletor | 2026-11-13 03:51 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `verificar_links.py` | coletor | 2026-11-10 01:39 | 180 s | — | **erro** | interrompido pelo prazo do elo |
-| `verificar_pista_imprensa.py` | coletor | 2026-11-12 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `verificar_pista_imprensa.py` | coletor | 2026-11-13 03:51 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
