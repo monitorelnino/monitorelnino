@@ -9,6 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-12 · #PR · Boletim da NOAA: "mais de 79%" sai com o limiar da fonte
+
+O leitor do boletim do El Niño perdia o "greater than" quando a NOAA escreve "greater than a 79%
+chance" (com artigo): a probabilidade saía sem o "acima de" que a fonte publica. Corrigido, com
+autoteste.
+
 ## 2026-11-12 · #PR · Site da prefeitura que recusa ou saiu do ar: lê-se a cópia arquivada antes de desistir
 
 Por decisão da editoria, quando o site oficial recusa o acesso, expirou ou não responde, o Monitor
