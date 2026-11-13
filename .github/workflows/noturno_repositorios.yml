@@ -1,0 +1,30 @@
+# Repositórios estaduais de planos municipais — sondagem das 27 UFs (13/11/2026, editoria).
+#
+# Roda toda noite, mas cada UF só é sondada de sete em sete dias (`devida`): a UF cuja sondagem falhou
+# é refeita na noite seguinte, e nenhuma fica parada à espera de alguém lembrar.
+name: Noturno — repositórios estaduais
+
+on:
+  schedule:
+    # 3h40 de Brasília, dentro da janela da noite e longe da abertura da corrente.
+    - cron: "40 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read        # o job `vez` do coletor lê a fila de runs
+
+jobs:
+  repositorios:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: repositorios
+      # Escreve em data/pistas_*.json pela porta única — grupo compartilhado da noite.
+      grupo_de_concorrencia: noturno
+      timeout_minutos: 75
+      precisa_searxng: true
+      precisa_node: true
+      comandos: |
+        prazo=60min sondar_repositorios_estaduais.py
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

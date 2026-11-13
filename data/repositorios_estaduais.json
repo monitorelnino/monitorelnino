@@ -1,0 +1,288 @@
+{
+ "_governanca": "Sondagem de repositórios estaduais de planos municipais (sondar_repositorios_estaduais.py, 13/11/2026). Uma entrada por UF, com a data da sondagem; UF sem página lida segue devida. `nota_de_origem` guarda o que a sondagem manual de 24/09/2026 anotou. Candidata não é repositório declarado: as pistas vão ao juiz, que lê cada documento.",
+ "atualizado_em": "2026-11-13",
+ "ufs": {
+  "AC": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ac.gov.br/"
+   ]
+  },
+  "AL": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://defesacivil.al.gov.br/planos-de-contigencia"
+   ],
+   "nota_de_origem": "SONDADO 24/09/2026 — defesacivil.al.gov.br/planos-de-contigencia responde 349 bytes (página vazia)"
+  },
+  "AM": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.am.gov.br/"
+   ],
+   "nota_de_origem": "repositório estadual conhecido, parser não implementado"
+  },
+  "AP": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ap.gov.br/"
+   ]
+  },
+  "BA": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ba.gov.br/"
+   ]
+  },
+  "CE": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ce.gov.br/"
+   ]
+  },
+  "DF": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.df.gov.br/"
+   ]
+  },
+  "ES": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://defesacivil.es.gov.br/planos-de-contigencia"
+   ]
+  },
+  "GO": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.go.gov.br/"
+   ]
+  },
+  "MA": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ma.gov.br/"
+   ]
+  },
+  "MG": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.mg.gov.br/planos-de-contigencia"
+   ],
+   "nota_de_origem": "SONDADO 24/09/2026 — defesacivil.mg.gov.br/planos-de-contigencia responde com aviso de período eleitoral (padrão do §182: o que está suspenso é a seção, não o sítio). Reconferir depois de 25/10"
+  },
+  "MS": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ms.gov.br/planos-de-contingencia"
+   ],
+   "nota_de_origem": "SONDADO 24/09/2026 — defesacivil.ms.gov.br/planos-de-contingencia responde 293 kB com o título 'Planos de Contingência (PLANCON)', mas a página não lista plano municipal nenhum: só a Comissão Estadual e botões de compartilhamento. Página informativa, não repositório"
+  },
+  "MT": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.mt.gov.br/"
+   ]
+  },
+  "PA": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
+    "https://defesacivil.pa.gov.br/"
+   ],
+   "nota_de_origem": "DESCOBERTO 24/09/2026 — plancon.defesacivilpa.com.br é o SISTEMA PLANCON do CBMPA/CEPDEC: 'Gestão municipal de planos de contingência — cadastro, revisão, aprovação e exportação'. Fica ATRÁS DE LOGIN, e login é recusa que se respeita (§170). Os planos municipais do PA existem e não são públicos: é a mesma forma do SISDC do PR. Via de cobertura por LAI, decisão da editoria"
+  },
+  "PB": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.pb.gov.br/"
+   ]
+  },
+  "PE": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.pe.gov.br/"
+   ]
+  },
+  "PI": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.pi.gov.br/planos-de-contigencia"
+   ],
+   "nota_de_origem": "SONDADO 24/09/2026 — www.pi.gov.br/planos-de-contigencia responde sob aviso de período eleitoral, com 5 PDFs na página; conteúdo não conferido. Reconferir depois de 25/10"
+  },
+  "PR": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.pr.gov.br/"
+   ],
+   "nota_de_origem": "SISDC/CEPDEC-PR — planos gerados no sistema, sem lista pública de PDFs para parser (Protocolo de Busca v2, decisão pendente ii)"
+  },
+  "RJ": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc"
+   ],
+   "nota_de_origem": "DESCOBERTO 24/09/2026 — defesacivil.rj.gov.br/index.php/para-municipios/plano-de-contingencias-dc reúne 38 PDFs, mas são do ESTADO, não dos municípios: PLACON 2025/2026 (preservado, hash eefffe3f449f8cb5…, 45 MB) e planos setoriais de CGE, DRM, GSI, INEA e PGE. Não é repositório municipal; é instrumento estadual, e entra na fila R7 como candidato a reclassificação de RJ, hoje VIG"
+  },
+  "RN": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.rn.gov.br/"
+   ]
+  },
+  "RO": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ro.gov.br/"
+   ]
+  },
+  "RR": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.rr.gov.br/"
+   ]
+  },
+  "RS": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://prepara.rs.gov.br/planos-de-contingencia-de-protecao-e-defesa-civil"
+   ]
+  },
+  "SC": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.sc.gov.br/municipios/"
+   ],
+   "nota_de_origem": "VERIFICADO 26/08/2026 — defesacivil.sc.gov.br/municipios/ publica apenas pacotes-modelo (PlanCon AS, PlanCon EduAgravi); sem repositório de planos municipais. Cobertura de SC vem do levantamento declarado do TCE-SC (Painel Farol)"
+  },
+  "SE": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://defesacivil.se.gov.br/planos-de-contigencia/"
+   ]
+  },
+  "SP": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.sp.gov.br/planos-de-contigencia"
+   ],
+   "nota_de_origem": "SONDADO 24/09/2026 — defesacivil.sp.gov.br/planos-de-contigencia devolve a página institucional, sem lista de planos municipais. Ver também o muro de robô do §186 neste domínio"
+  },
+  "TO": {
+   "sondado_em": null,
+   "paginas_lidas": 0,
+   "candidatos": [],
+   "noticias": [],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://bombeiros.to.gov.br/planos-de-contigencia"
+   ],
+   "nota_de_origem": "SONDADO 24/09/2026 — bombeiros.to.gov.br/planos-de-contigencia responde 'Aviso de Suspensão' do período eleitoral. Reconferir depois de 25/10"
+  }
+ }
+}
