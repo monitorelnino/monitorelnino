@@ -64,12 +64,24 @@ function executavelDoChromium() {
     saida.tentativas_de_espera = erros;
     await pagina.waitForTimeout(espera);
 
-    saida.titulo = (await pagina.title() || '').trim().slice(0, 200);
-    saida.texto = (await pagina.evaluate(() => document.body ? document.body.innerText : ''))
-      .replace(/\s+/g, ' ').trim().slice(0, 20000);
-    saida.links = await pagina.evaluate(() => Array.from(document.querySelectorAll('a[href]'))
-      .map((a) => ({ href: a.href, texto: (a.innerText || a.title || '').replace(/\s+/g, ' ').trim().slice(0, 200) }))
-      .filter((l) => l.href && l.href.startsWith('http')));
+    // 13/11/2026: página que redireciona por script destrói o contexto no meio da leitura (seis portais
+    // estaduais na sondagem de repositórios). Lê-se a página em que a navegação parou: espera o `load`
+    // da nova e lê de novo; só a terceira destruição seguida é erro.
+    for (let tentativa = 1; ; tentativa++) {
+      try {
+        saida.titulo = (await pagina.title() || '').trim().slice(0, 200);
+        saida.texto = (await pagina.evaluate(() => document.body ? document.body.innerText : ''))
+          .replace(/\s+/g, ' ').trim().slice(0, 20000);
+        saida.links = await pagina.evaluate(() => Array.from(document.querySelectorAll('a[href]'))
+          .map((a) => ({ href: a.href, texto: (a.innerText || a.title || '').replace(/\s+/g, ' ').trim().slice(0, 200) }))
+          .filter((l) => l.href && l.href.startsWith('http')));
+        break;
+      } catch (e) {
+        if (tentativa === 3 || !/context was destroyed|navigation/i.test(String(e.message))) throw e;
+        await pagina.waitForLoadState('load', { timeout: 45000 }).catch(() => {});
+      }
+    }
+    saida.url_final = pagina.url();
     saida.n_links = saida.links.length;
     saida.ok = true;
     if (htmlPara) fs.writeFileSync(htmlPara, await pagina.content(), 'utf-8');
