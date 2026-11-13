@@ -4,22 +4,22 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 3.4,
-   "referencia": "12/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em João Pessoa",
-   "capital": "João Pessoa",
-   "uf": "PB",
+   "valor": 3.9,
+   "referencia": "13/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Rio Branco",
+   "capital": "Rio Branco",
+   "uf": "AC",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 34.0 °C contra a média de 30.6 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 36.0 °C contra a média de 32.1 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 2.9,
-    "referencia": "11/11/2026"
+    "valor": 3.4,
+    "referencia": "12/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 11906,
+   "valor": 13022,
    "referencia": "Focos do dia — focos_diario_br_20261112.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 2,
+   "valor": 1,
    "perigo_ou_maior": 0,
-   "referencia": "12/11/2026 22:15",
+   "referencia": "13/11/2026 05:09",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 3,
-    "referencia": "12/11/2026 04:55"
+    "valor": 2,
+    "referencia": "12/11/2026 22:15"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "12/11/2026",
+   "referencia": "13/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "11/11/2026"
+    "referencia": "12/11/2026"
    }
   }
  ]
