@@ -728372,6 +728372,3038 @@
    "origem": "doe",
    "leu_documento": true,
    "hash_evidencia": "a5ebe9b4069668f6db99266d88d6ff25389f49b45209681a2c66fcd193cbd530"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1302405",
+   "municipio": "Lábrea",
+   "uf": "AM",
+   "url": "https://labrea.am.gov.br/noticias_ver.php?id_noticia=176",
+   "regras_18": [],
+   "pista_id": "056d04ffdf",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9204 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Imbituva Este site ultiliza cookies e outras tecnologias semelhantes para melhorar a sua experi&ecirc;ncia em nossa plataforma. Voc&ecir"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "17/03/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "17/03/2026",
+   "natureza": null,
+   "ibge": "4110102",
+   "municipio": "Imbituva",
+   "uf": "PR",
+   "url": "https://imbituva.pr.gov.br/index.php?sessao=b054603368vfb0&id=1469219",
+   "regras_18": [],
+   "pista_id": "a3ec58340d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "21e425e2767202479530cc4e20d18f662fa7b77f5ac19a6d29304f67ab9bf6d6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40442 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE SENADOR JOSÉ PORFÍRIO SECRETARIA MUNICIPAL DE SAÚDE Plano de Contingência Municipal Para Enfrentamento da Infecção Humana pelo Coronavír"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE SENADOR JOSÉ PORFÍRIO SECRETARIA MUNICIPAL DE SAÚDE Plano de Contingência Municipal Para Enfrentamento da Infecção Humana pelo Coronavír",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "PREFEITURA MUNICIPAL DE SENADOR JOSÉ PORFÍRIO SECRETARIA MUNICIPAL DE SAÚDE Plano de Contingência Municipal Para Enfrentamento da Infecção Humana pelo Coronavír",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://joseporfirio.pa.gov.br/wp-content/uploads/2021/02/Plano-de-Contingência-Municipal-2021.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "1507805",
+   "municipio": "Senador José Porfírio",
+   "uf": "PA",
+   "url": "https://joseporfirio.pa.gov.br/wp-content/uploads/2021/02/Plano-de-Contingência-Municipal-2021.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "8f915ea2ac",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5061311196c5088164d3561b704f24d34f1fa38707acc927416652eacad475bb"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6120 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Legislação - Prefeitura Municipal de São José do Vale do Rio Preto Ir paa conte&uacute;do São José do Vale do Rio Preto, 12 de maio de 2025. Prefeitura Municipa"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "12/05/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "12/05/2025",
+   "natureza": null,
+   "ibge": "3305158",
+   "municipio": "São José do Vale do Rio Preto",
+   "uf": "RJ",
+   "url": "https://www.sjvriopreto.rj.gov.br/legislacao/id/1004/?plano-municipal-de-saneamento-basico.html",
+   "regras_18": [],
+   "pista_id": "4a0927393d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "953838590f25c94cebb01c4a5fdcb451c3310fd8c91915219374b7fc8d0e7cf4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3146305",
+   "municipio": "Padre Paraíso",
+   "uf": "MG",
+   "url": "https://www.padreparaiso.mg.gov.br/downloads/categoria/plano-municipal-de-educacao/10055",
+   "regras_18": [],
+   "pista_id": "b0e3c7a9fb",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "213271 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SECRETARIA MUNICIPAL DE SAÚDE DE PADRE PARAÍSO Rua Aracuaí, 80 –Centro - Telefone: (33) 3534-2041/2034 CNPJ: 12.231.708/0001-32 . E-mail: sec.saudepp@gmail.com"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "saúde. Quadro 1 - Principais normas e dispositivos sobre o planejamento no SUS Lei 8080 de Lei orgânica da saúde que estabelece os princípios do SUS, as atribu",
+     "dados": {
+      "tipo": "lei",
+      "numero": "8080",
+      "data": "19/09/1990",
+      "trecho": "saúde. Quadro 1 - Principais normas e dispositivos sobre o planejamento no SUS Lei 8080 de Lei orgânica da saúde que estabelece os princípios do SUS, as atribu"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "19/09/1990",
+   "natureza": null,
+   "ibge": "3146305",
+   "municipio": "Padre Paraíso",
+   "uf": "MG",
+   "url": "https://www.padreparaiso.mg.gov.br/abrir_arquivo.aspx?cdLocal=2&arquivo={707B61ED-BA18-2AE0-87AD-0EBD8A64ECCD}.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "609d69d872",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "61953207a882e129a0b8c5b3da3eda6df8257c65d15f2c0c6a5c52d1661b9a1d"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2732 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - Prefeitura de Cerejeiras Pular para o conteúdo Carregando agora 5 de agosto de 2025 Inicio Sala do"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "05/08/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "05/08/2025",
+   "natureza": null,
+   "ibge": "1100056",
+   "municipio": "Cerejeiras",
+   "uf": "RO",
+   "url": "https://cerejeiras.ro.gov.br/plano-em-elaboracao-final-2/",
+   "regras_18": [],
+   "pista_id": "cd542f670d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "f493a5ab03464106dfb28d8e703178f9f4b52635f4f5e9a4253ff3404e7e8e63",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://cerejeiras.ro.gov.br/plano-em-elaboracao-final-2/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7528 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Cultura &#8211; Prefeitura de Nova Veneza Skip to content 6 de outubro de 2022 Notícias Concurso seleciona corte para a Festa da Gastronomia"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "i constru&iacute;do a partir do texto do Sistema Municipal de Cultura, conforme Lei n&ordm; 2.592, de 23 de outubro de 2017, legisla&ccedil;&atilde;o que integr",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2.592",
+      "data": "10/10/2019",
+      "trecho": "i constru&iacute;do a partir do texto do Sistema Municipal de Cultura, conforme Lei n&ordm; 2.592, de 23 de outubro de 2017, legisla&ccedil;&atilde;o que integr"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/10/2019",
+   "natureza": null,
+   "ibge": "4211603",
+   "municipio": "Nova Veneza",
+   "uf": "SC",
+   "url": "https://www.novaveneza.sc.gov.br/galeria/pagina-33813/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "0bd4268408",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b9e8545b0469b8bdff18f3151ed24e82ca8e509e5b2a43685dc91e5a15dafb1d"
+  },
+  {
+   "promove": false,
+   "motivo": "homonimo_sem_uf",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5042 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "\"Nova Veneza\" existe em mais de uma UF e o texto não cita SC"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211603",
+   "municipio": "Nova Veneza",
+   "uf": "SC",
+   "url": "https://www.novaveneza.sc.gov.br/pagina-42462/",
+   "regras_18": [],
+   "pista_id": "893e667b67",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "2f1ca63ea7e7a2d2618d337e179e2c885d2d56d52b70a96d25ddc3ed4cb2bc9b"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14196 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal da Transparência - Prefeitura Municipal de Magalhães de Almeida | Portal da Transparência - Prefeitura Municipal de Magalhães de Almeida --> --> Plano Mu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.527/2011",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2106300",
+   "municipio": "Magalhães de Almeida",
+   "uf": "MA",
+   "url": "https://magalhaesdealmeida.ma.gov.br/transparencia/educacao/",
+   "regras_18": [],
+   "pista_id": "c2bdf9d43d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "83bae70855e2ede0dac2206aeed5c47055317278aab013aee81960c425dfe21d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14222 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal da Transparência - Prefeitura Municipal de Magalhães de Almeida | Portal da Transparência - Prefeitura Municipal de Magalhães de Almeida --> --> Plano Mu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.527/2011",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2106300",
+   "municipio": "Magalhães de Almeida",
+   "uf": "MA",
+   "url": "https://magalhaesdealmeida.ma.gov.br/transparencia/saude/",
+   "regras_18": [],
+   "pista_id": "9480c22451",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "bbc05da86b660be972f1a8ac9fecfba41f7d581cda06aaa449ef7a9481fb82ec",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5650 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Rio dos Cedros Skip to content 13 de junho de 2024 Últimas Notícias ATENÇÃO, PARA SE INSCREVER EM UM WEBINAR CLIQUE NA"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "31/05/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "31/05/2024",
+   "natureza": null,
+   "ibge": "4214706",
+   "municipio": "Rio dos Cedros",
+   "uf": "SC",
+   "url": "https://riodoscedros.sc.gov.br/plano-municipal-de-saude/",
+   "regras_18": [],
+   "pista_id": "6c7019784f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9b5a3dd22f02ac20c3b6e63b7577f3400cb39855a0694c5792beee0efa5033a6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5151 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saneamento - Prefeitura de Monte Alegre do Sul Ir para o conteúdo Ir para o menu Ir para a busca Ir para o rodapé Serviços Para o Cidad&#227;"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "as Conselhos Conv&#234;nio de Coopera&#231;&#227;o Educa&#231;&#227;o Executivo Lei de Diretrizes Or&#231;ament&#225;rias Lei Or&#231;ament&#225;ria Anual Metas",
+     "dados": {
+      "tipo": "lei",
+      "numero": "231",
+      "data": "21/02/2025",
+      "trecho": "as Conselhos Conv&#234;nio de Coopera&#231;&#227;o Educa&#231;&#227;o Executivo Lei de Diretrizes Or&#231;ament&#225;rias Lei Or&#231;ament&#225;ria Anual Metas"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "21/02/2025",
+   "natureza": null,
+   "ibge": "3531209",
+   "municipio": "Monte Alegre do Sul",
+   "uf": "SP",
+   "url": "https://montealegredosul.sp.gov.br/atos-oficiais/plano-municipal-de-saneamento",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c3fd0542d5",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d4291644c75bd305d6b94c6f33ac2ab4d59993c5a7e890e458146d9acdafb616"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5208 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Tecnologia da Informa&#231;&#227;o (PDTIC) - Prefeitura de Monte Alegre do Sul Ir para o conteúdo Ir para o menu Ir para a busca Ir para o ro"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "as Conselhos Conv&#234;nio de Coopera&#231;&#227;o Educa&#231;&#227;o Executivo Lei de Diretrizes Or&#231;ament&#225;rias Lei Or&#231;ament&#225;ria Anual Metas",
+     "dados": {
+      "tipo": "lei",
+      "numero": "231",
+      "data": "21/02/2025",
+      "trecho": "as Conselhos Conv&#234;nio de Coopera&#231;&#227;o Educa&#231;&#227;o Executivo Lei de Diretrizes Or&#231;ament&#225;rias Lei Or&#231;ament&#225;ria Anual Metas"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "21/02/2025",
+   "natureza": null,
+   "ibge": "3531209",
+   "municipio": "Monte Alegre do Sul",
+   "uf": "SP",
+   "url": "https://montealegredosul.sp.gov.br/atos-oficiais/plano-municipal-de-tecnologia-da-informacao-pdtic",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "d7db0aed01",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "f392acd2983bf102eab08738555c0ed8e83423c353ecc7c84d98b60cf4603c9c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4861 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saneamento - Prefeitura de Monte Alegre do Sul Ir para o conteúdo Ir para o menu Ir para a busca Ir para o rodapé Serviços Para o Cidad&#227;"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "as Conselhos Conv&#234;nio de Coopera&#231;&#227;o Educa&#231;&#227;o Executivo Lei de Diretrizes Or&#231;ament&#225;rias Lei Or&#231;ament&#225;ria Anual Metas",
+     "dados": {
+      "tipo": "lei",
+      "numero": "231",
+      "data": "21/02/2025",
+      "trecho": "as Conselhos Conv&#234;nio de Coopera&#231;&#227;o Educa&#231;&#227;o Executivo Lei de Diretrizes Or&#231;ament&#225;rias Lei Or&#231;ament&#225;ria Anual Metas"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "21/02/2025",
+   "natureza": null,
+   "ibge": "3531209",
+   "municipio": "Monte Alegre do Sul",
+   "uf": "SP",
+   "url": "https://montealegredosul.sp.gov.br/audiencias-publicas/plano-municipal-de-saneamento",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "457a804d48",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "7bc38aa41de0839bb6e602f18794a128c4c011e29ad773e9ed311e9355138da5"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6661 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Cotiporã/RS | Plano Municipal de Educação Free cookie consent management tool by TermsFeed Generator usuário Mapa do Site Município de C"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "mir Fechar Aprova o Plano Municipal de Educação - PME e dá outras providências. Lei Municipal nº 2.402/2015, de 15 de junho de 2015 Aprova o Plano Municipal de",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2.402/2015",
+      "data": "15/06/2015",
+      "trecho": "mir Fechar Aprova o Plano Municipal de Educação - PME e dá outras providências. Lei Municipal nº 2.402/2015, de 15 de junho de 2015 Aprova o Plano Municipal de"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Municipal de Educação Cultura Governamental Secretarias Municipais Gabinete do Prefeito e do Vice-Prefeito Administração Agricultura e Meio Ambiente Obras, Trâ"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "15/06/2015",
+   "natureza": "DUVIDA",
+   "ibge": "4305959",
+   "municipio": "Cotiporã",
+   "uf": "RS",
+   "url": "https://cotipora.rs.gov.br/pagina/view/58/plano-municipal-de-educacao",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "61e63b3cd0",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d059c590ed7e56b1dc8c57680784242143725c2ef9fc6655f4b2c0b853088c75"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5349 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Ação Municipal de Vacinação &#8211; Prefeitura Municipal de Tunas, RS 25 &deg;c Tunas 22 &deg; sex 22 &deg; sáb 24 &deg; dom 26 &deg; seg sexta-feira,"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ublicações Aditivos Concursos Públicos CACS/Fundeb Contratos Convênios Decretos Lei 14.133 &#8211; Regulamentações Avisos de Dispensa Editais Leis Municipais Po",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133",
+      "data": "12/06/2026",
+      "trecho": "ublicações Aditivos Concursos Públicos CACS/Fundeb Contratos Convênios Decretos Lei 14.133 &#8211; Regulamentações Avisos de Dispensa Editais Leis Municipais Po"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "12/06/2026",
+   "natureza": null,
+   "ibge": "4322152",
+   "municipio": "Tunas",
+   "uf": "RS",
+   "url": "https://www.tunas.rs.gov.br/categoria/covid-19/plano-de-acao-municipal-de-vacinacao/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "da7db5943e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0a7fb222368f634a2cca4ce576d7178e5787a5e0d600f7b301660ac68944bdc2"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3922 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Ourizona Acessibilidade A+ A- O conte&uacute;do desse site pode ser acess&iacute;vel em Libras usando o VLibras Este site ultiliza cooki"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "01/08/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/08/2025",
+   "natureza": null,
+   "ibge": "4117404",
+   "municipio": "Ourizona",
+   "uf": "PR",
+   "url": "http://www.ourizona.pr.gov.br/index.php?sessao=b054603368ncb0&id=1921",
+   "regras_18": [],
+   "pista_id": "a3a86e2a31",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "daf43f54e09db54b721f009bbd4ccda2cd8d15b157c4900c1e13a45e0d715c01",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5243 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação – PME JUPIÁ/SC 2017/2018/2019 - Prefeitura de Jupiá Skip to content 27 de outubro de 2025 Últimas Notícias Edital 001/2025 Edital de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Compras Públicas 2016 2017 2018 2019 2020 2021 2022 2023 2023 2023 S.F/ Saúde A Lei de Acesso à Informação 12.527/2011 Acesso à Informação Município de Jupiá AC",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.527/2011",
+      "data": "17/10/2025",
+      "trecho": "Compras Públicas 2016 2017 2018 2019 2020 2021 2022 2023 2023 2023 S.F/ Saúde A Lei de Acesso à Informação 12.527/2011 Acesso à Informação Município de Jupiá AC"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "17/10/2025",
+   "natureza": null,
+   "ibge": "4209177",
+   "municipio": "Jupiá",
+   "uf": "SC",
+   "url": "https://jupia.sc.gov.br/galeria/plano-municipal-de-educacao-pme-jupia-sc-2017-2018-2019/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "f1925b4445",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "13b29904cee86ce0c063a96911b9cec4ed1218e799d372d44d099f5193d5ca98"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6353 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217956",
+   "municipio": "Tigrinhos",
+   "uf": "SC",
+   "url": "https://tigrinhos.sc.gov.br/audiencia-publica-apresenta-monitoramento-e-avaliacao-do-plano-municipal-de-educacao/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "835b6f7fc9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "bc8688b848ba9de05e894ed1b1ad75cba85002dcb6bd932fdbbd47724f4b0b25"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3830 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Audiência Pública sobre o Monitoramento do Plano Municipal de Educação - 2024 - Tigrinhos SC Skip to content 29 de outubro de 2025 Últimas Notícias Tigrinhos re"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "aos 28 Anos de Tigrinhos 5 de setembro de 2023 5 de julho de 2024 imprensamhnet Lei Paulo Gustavo 19 de setembro de 2023 5 de julho de 2024 imprensamhnet Atendi",
+     "dados": {
+      "tipo": "lei",
+      "numero": "19",
+      "data": "29/10/2025",
+      "trecho": "aos 28 Anos de Tigrinhos 5 de setembro de 2023 5 de julho de 2024 imprensamhnet Lei Paulo Gustavo 19 de setembro de 2023 5 de julho de 2024 imprensamhnet Atendi"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "29/10/2025",
+   "natureza": null,
+   "ibge": "4217956",
+   "municipio": "Tigrinhos",
+   "uf": "SC",
+   "url": "https://tigrinhos.sc.gov.br/audiencia-publica-sobre-o-monitoramento-do-plano-municipal-de-educacao-2024/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "8ebf8ccf02",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "8a36d737698cf8632488dce97ce5f71e15bad2e11abf9b4ca1ddec1c94bc5433"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2187 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - Tigrinhos SC Skip to content 29 de outubro de 2025 Últimas Notícias Tigrinhos realiza 4ª Audiência Pública e Conferência"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "23/02/2022",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "23/02/2022",
+   "natureza": null,
+   "ibge": "4217956",
+   "municipio": "Tigrinhos",
+   "uf": "SC",
+   "url": "https://tigrinhos.sc.gov.br/pagina-46538/",
+   "regras_18": [],
+   "pista_id": "cf845289f5",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "3dace771078b7a9a812dd7668b3a9495005ebd3c396ac0ab9dbb4e2abd7c5cab",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2451 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Ação Municipal de Vacinação Prefeitura Municipal de São José do Herval &#8211; RS Plano de Ação Municipal de Vacinação &#8211; Prefeitura Municipal de"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318465",
+   "municipio": "São José do Herval",
+   "uf": "RS",
+   "url": "https://www.saojosedoherval.rs.gov.br/categoria/covid-19/plano-de-acao-municipal-de-vacinacao/",
+   "regras_18": [],
+   "pista_id": "6dbccb2255",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ab91b3a02d9cf552fe228720fd8bfd377b40cc20d240107d578e3aff329cbd69",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.saojosedoherval.rs.gov.br/categoria/covid-19/plano-de-acao-municipal-de-vacinacao/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2590 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Ação Municipal &#8211; Prefeitura Municipal de Inhacorá segunda-feira , 6 dezembro 2021 Acesso à Informação Portal da Transparência Mapa do Site Webmai"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "23/11/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "23/11/2021",
+   "natureza": null,
+   "ibge": "4310413",
+   "municipio": "Inhacorá",
+   "uf": "RS",
+   "url": "http://www.inhacora.rs.gov.br/covid-19/plano-de-acao-municipal/",
+   "regras_18": [],
+   "pista_id": "b5a779cb3a",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "8a48df1f079c7b881801ea878e7e26ad7a252754bdd0370e667719a47d6fdfe7",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3740 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202305",
+   "municipio": "Biguaçu",
+   "uf": "SC",
+   "url": "https://www.bigua.sc.gov.br/estrutura/pagina-11454/plano-municipal-para-a-primeira-infancia-2025-2035/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "db7635035f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "12c41cfdf19158261196ff384eacec8f46ffd46d7f91d2956ca3cac95a163aab"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4733 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO &#8211; Prefeitura de Biguaçu Skip to content 23 de fevereiro de 2024 Últimas Notícias Comunicado Casan: rompimento de adut"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "17/03/2022",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "17/03/2022",
+   "natureza": null,
+   "ibge": "4202305",
+   "municipio": "Biguaçu",
+   "uf": "SC",
+   "url": "https://www.bigua.sc.gov.br/pagina-45706/",
+   "regras_18": [],
+   "pista_id": "36bb6d7958",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "805c9f5313ec5d750d5407c73f1e6a2a2b325641369758d4b656429651edc775",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3554805",
+   "municipio": "Tremembé",
+   "uf": "SP",
+   "url": "https://tremembe.sp.gov.br/cidadao/plano-municipal-de-educacao",
+   "regras_18": [],
+   "pista_id": "865954ba5a",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3554805",
+   "municipio": "Tremembé",
+   "uf": "SP",
+   "url": "https://tremembe.sp.gov.br/cidadao/plano-municipal-pela-primeira-infancia",
+   "regras_18": [],
+   "pista_id": "923acc6826",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3170 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "no Municipal de Gestão Integrada de Resíduos e Saneamento Básico | Município de Dom Pedrito BEM-VINDO AO PORTAL DO MUNICÍPIO DE Dom Pedrito ACESSIBILIDADE MAPA"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "10/06/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/06/2024",
+   "natureza": null,
+   "ibge": "4306601",
+   "municipio": "Dom Pedrito",
+   "uf": "RS",
+   "url": "https://dompedrito.rs.gov.br/pagina/consulta-popular-plano-municipal-de-gerenciamento-integrado-de-residuos-e-saneamento-basico",
+   "regras_18": [],
+   "pista_id": "019aac05b1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "8950d986bfcd1a5dbf0191151814f20bd43bf253f7c9e258ccabbc50057de87f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-municipal-de-educacao/20081",
+   "regras_18": [],
+   "pista_id": "e53c389681",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-m-de-saneamento-basico/10037",
+   "regras_18": [],
+   "pista_id": "0d26949c74",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3699 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Wenceslau Braz Rua Expedicion&aacute;rios, 200 | 0800-400-3033 | administracao@wenceslaubraz.pr.gov.br | --> administracao@wenceslaubraz"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "17/04/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "17/04/2025",
+   "natureza": null,
+   "ibge": "4128500",
+   "municipio": "Wenceslau Braz",
+   "uf": "PR",
+   "url": "https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ixb0&id=3920",
+   "regras_18": [],
+   "pista_id": "4c7b149998",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0ee6ff869b651b3fd1b89d182148f676cd4821c5b58a79230d2f2b9730d9c791",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3540903",
+   "municipio": "Pradópolis",
+   "uf": "SP",
+   "url": "https://pradopolis.sp.gov.br/plano-municipal-da-saude",
+   "regras_18": [],
+   "pista_id": "11b7ad46de",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3540903",
+   "municipio": "Pradópolis",
+   "uf": "SP",
+   "url": "https://pradopolis.sp.gov.br/plano-municipal-de-educacao-2",
+   "regras_18": [],
+   "pista_id": "25d29931ba",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2587 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Rio Piracicaba Acessibilidade A+ A- Contraste Retornar acessibilidade Ir para o conteúdo Alt+1 Ir para o menu Alt+2 Ir para o topo Alt+3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "as Regulamento torneio Leiteiro Saúde Estoque da Farmácia Cultura Paulo Gustavo Lei Aldir Blanc Lei Aldir Blanc 2 Esportes Corrida São Miguel Projeto FullTime C",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2",
+      "data": "11/04/2025",
+      "trecho": "as Regulamento torneio Leiteiro Saúde Estoque da Farmácia Cultura Paulo Gustavo Lei Aldir Blanc Lei Aldir Blanc 2 Esportes Corrida São Miguel Projeto FullTime C"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "11/04/2025",
+   "natureza": null,
+   "ibge": "3155702",
+   "municipio": "Rio Piracicaba",
+   "uf": "MG",
+   "url": "https://riopiracicaba.mg.gov.br/pagina/24_Plano-Municipal-de-Saneamento-Basico.html",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "8a2a7e49e5",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ae91c0009fdec179be4e7d5f26c960636a0f1c793384266939925a3157689a93"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2860 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Rio Piracicaba Acessibilidade A+ A- Contraste Retornar acessibilidade Ir para o conteúdo Alt+1 Ir para o menu Alt+2 Ir para o topo Alt+3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "as Regulamento torneio Leiteiro Saúde Estoque da Farmácia Cultura Paulo Gustavo Lei Aldir Blanc Lei Aldir Blanc 2 Esportes Corrida São Miguel Projeto FullTime C",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2",
+      "data": "00/00/0000",
+      "trecho": "as Regulamento torneio Leiteiro Saúde Estoque da Farmácia Cultura Paulo Gustavo Lei Aldir Blanc Lei Aldir Blanc 2 Esportes Corrida São Miguel Projeto FullTime C"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "00/00/0000",
+   "natureza": null,
+   "ibge": "3155702",
+   "municipio": "Rio Piracicaba",
+   "uf": "MG",
+   "url": "https://riopiracicaba.mg.gov.br/pagina/27_Plano-Municipal-de-Saude.html",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7b379fd13d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "725f3f069da35d98d607cbf0e21331ac4ac95b6e28641f1c8be8f96e4aa23c6c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3292 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Rio Piracicaba Acessibilidade A+ A- Contraste Retornar acessibilidade Ir para o conteúdo Alt+1 Ir para o menu Alt+2 Ir para o topo Alt+3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "as Regulamento torneio Leiteiro Saúde Estoque da Farmácia Cultura Paulo Gustavo Lei Aldir Blanc Lei Aldir Blanc 2 Esportes Corrida São Miguel Projeto FullTime C",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2",
+      "data": "00/00/0000",
+      "trecho": "as Regulamento torneio Leiteiro Saúde Estoque da Farmácia Cultura Paulo Gustavo Lei Aldir Blanc Lei Aldir Blanc 2 Esportes Corrida São Miguel Projeto FullTime C"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "00/00/0000",
+   "natureza": null,
+   "ibge": "3155702",
+   "municipio": "Rio Piracicaba",
+   "uf": "MG",
+   "url": "https://riopiracicaba.mg.gov.br/pagina/29_Plano-Municipal-de-Edcucacao.html",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7960b7bbea",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9e3df09c3d900ba7de74255dfef575535a6916decb7ffb356fe4bb85cc7238dd"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "91690 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SISTEMA ÚNICO DE SAÚDE SECRETARIA MUNICIPAL DE SAÚDE DE ALVINÓPOLIS-MG Plano Municipal de Saúde 2026-2029 MISSÃO DA SECRETARIA MUNICIPAL DE SAÚDE Garantir o ace"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "nto (DIGISUSGMP) - Consulta Online Data da consulta: 26/04/2025 Fundo de Saúde Lei de Criação N° 8.080/90 e lei complementar n° 141/2012. Data de Criação 04/20",
+     "dados": {
+      "tipo": "lei",
+      "numero": "8.080/90",
+      "data": "28/04/2025",
+      "trecho": "nto (DIGISUSGMP) - Consulta Online Data da consulta: 26/04/2025 Fundo de Saúde Lei de Criação N° 8.080/90 e lei complementar n° 141/2012. Data de Criação 04/20"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "28/04/2025",
+   "natureza": null,
+   "ibge": "3102308",
+   "municipio": "Alvinópolis",
+   "uf": "MG",
+   "url": "https://www.alvinopolis.mg.gov.br/arquivo/download/10709/categoria/30095/plano_municipal_de_saude",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4bd6a58fc2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0b809a9542f07e1fdbf825e3774b6f4c67f9e909544af3af5a58707b28c77ed1"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "136884 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Alvinópolis\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "618/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3102308",
+   "municipio": "Alvinópolis",
+   "uf": "MG",
+   "url": "https://www.alvinopolis.mg.gov.br/arquivo/download/10623/categoria/30093/plano_municipal_de_educacao__pme",
+   "regras_18": [],
+   "pista_id": "e23b67f9eb",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "56dfdd3d5bf25b95288de69ee83b10dc7d7848f4b8635677a83fe5218d5bdede",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5004007",
+   "municipio": "Glória de Dourados",
+   "uf": "MS",
+   "url": "https://gloriadedourados.ms.gov.br/portal-da-lgpd/plano-de-acao-roadmap-2025-2026/",
+   "regras_18": [],
+   "pista_id": "d07dd85361",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5882 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Chapada/RS - Plano de Ação Municipal Free cookie consent management tool by TermsFeed Utilize o teclado para navegar, com Ctrl + nº da tecla &nbsp;&nbsp;Ctrl +"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305306",
+   "municipio": "Chapada",
+   "uf": "RS",
+   "url": "https://chapada.rs.gov.br/pagina/view/5",
+   "regras_18": [],
+   "pista_id": "f854ffd3d1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "21e50dce182955e95d65259dfc89d89eeb9e7b237a4bbb7801755bc4ec902266"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3277 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE EDUCAÇÃO - Prefeitura de Ipumirim Skip to content Prefeitura de Ipumirim Seja bem-vindo ao site oficial da Prefeitura do Município de Ipumiri"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "8211",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207700",
+   "municipio": "Ipumirim",
+   "uf": "SC",
+   "url": "https://ipumirim.sc.gov.br/galeria/pagina-33126/",
+   "regras_18": [],
+   "pista_id": "cd0f13a68d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "fa0fea86b93f35172601e5e71cbb1e1fcdb56ecb2cbe1cdf88b9549ac5761c59",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215307",
+   "municipio": "Salete",
+   "uf": "SC",
+   "url": "https://salete.sc.gov.br/galeria/pagina-23969/",
+   "regras_18": [],
+   "pista_id": "592a08fd31",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3171 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "de 2025 Últimas Notícias Circuito Mulher na Ativa promove saúde e bem-estar em Caibi SEU PRODUTO COM NOME E SOBRENOME Novidade em Caibi: A Saúde Bucal está mai"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ", Obras e Serviços – DMER Turismo Estrutura Transparência Acesso à Informação A Lei de Acesso à Informação 12.527/2011 Cartilha “Acesso à Informação Pública” Pe",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.527/2011",
+      "data": "28/07/2014",
+      "trecho": ", Obras e Serviços – DMER Turismo Estrutura Transparência Acesso à Informação A Lei de Acesso à Informação 12.527/2011 Cartilha “Acesso à Informação Pública” Pe"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "28/07/2014",
+   "natureza": null,
+   "ibge": "4203105",
+   "municipio": "Caibi",
+   "uf": "SC",
+   "url": "https://caibi.sc.gov.br/pagina-60118/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "f42b9ea25b",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "7648347918af47261491e954d751b137a7ca88c5134c717c4fdb5e99b33aa85c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3383 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "de 2025 Últimas Notícias Circuito Mulher na Ativa promove saúde e bem-estar em Caibi SEU PRODUTO COM NOME E SOBRENOME Novidade em Caibi: A Saúde Bucal está mai"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ", Obras e Serviços – DMER Turismo Estrutura Transparência Acesso à Informação A Lei de Acesso à Informação 12.527/2011 Cartilha “Acesso à Informação Pública” Pe",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.527/2011",
+      "data": "28/07/2014",
+      "trecho": ", Obras e Serviços – DMER Turismo Estrutura Transparência Acesso à Informação A Lei de Acesso à Informação 12.527/2011 Cartilha “Acesso à Informação Pública” Pe"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "28/07/2014",
+   "natureza": null,
+   "ibge": "4203105",
+   "municipio": "Caibi",
+   "uf": "SC",
+   "url": "https://caibi.sc.gov.br/plano-municipal-de-saude/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "2dc4cd673e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "22013ee4d76bae06f8099389daf812018f77cbc4af946047da79164560d63cd8"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2043 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saneamento Básico - Município de Dona Emma Skip to content 6 de novembro de 2025 Últimas Notícias Eleição Suplementar para Conselheiro Tutela"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "21/06/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "21/06/2023",
+   "natureza": null,
+   "ibge": "4205100",
+   "municipio": "Dona Emma",
+   "uf": "SC",
+   "url": "https://donaemma.sc.gov.br/pagina-49467/",
+   "regras_18": [],
+   "pista_id": "d6b83656f5",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9f48dfc90ea42f923eaefbff096d817e7a773760d859837e6f130b36b3da831f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5298 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Jaborá\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "nicipal de Educação Prestação de Contas Prefeito Publicações Diversas Parcerias Lei 13.019/14 Lei Emergencial Aldir Blanc LAI &#8211; Lei de Acesso à Informação",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/14",
+      "data": "02/10/2022",
+      "trecho": "nicipal de Educação Prestação de Contas Prefeito Publicações Diversas Parcerias Lei 13.019/14 Lei Emergencial Aldir Blanc LAI &#8211; Lei de Acesso à Informação"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "02/10/2022",
+   "natureza": null,
+   "ibge": "4208609",
+   "municipio": "Jaborá",
+   "uf": "SC",
+   "url": "https://jabora.sc.gov.br/pagina-159107/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "111f190e9f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "27b8df3a666429b5c39fc2032be4bf4d23815ab194860c5a39b2601a7ad2e1cb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5443 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "2022 &#8211; EDITAL DE CONVOCAÇÃO DE ELEIÇÃO DOS MEMBROS DO CONSELHO TUTELAR DE JABORÁ/SC TAXAS REFERENTES AOS ALVARÁS DE LOCALIZAÇÃO 2022 Audiência Pública Dem"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "nicipal de Educação Prestação de Contas Prefeito Publicações Diversas Parcerias Lei 13.019/14 Lei Emergencial Aldir Blanc LAI &#8211; Lei de Acesso à Informação",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/14",
+      "data": "07/05/2015",
+      "trecho": "nicipal de Educação Prestação de Contas Prefeito Publicações Diversas Parcerias Lei 13.019/14 Lei Emergencial Aldir Blanc LAI &#8211; Lei de Acesso à Informação"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "07/05/2015",
+   "natureza": null,
+   "ibge": "4208609",
+   "municipio": "Jaborá",
+   "uf": "SC",
+   "url": "https://jabora.sc.gov.br/galeria/pagina-10299/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "eb41b3fe34",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "7ba32c04186e8999c6db546f95b1f263e91e3448aba6b8bec7383e3ec055d74b"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6230 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Campo Bonito - PR Opções de acessibilidade Aumentar fonte Reduzir fonte Alto contraste Desfazer opções Ir para o conteúdo: Alt+1 Ir para"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 1 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": [
+       "atribuições"
+      ]
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104055",
+   "municipio": "Campo Bonito",
+   "uf": "PR",
+   "url": "https://campobonito.pr.gov.br/pagina/482_Plano-Municipal-de-Assistencia-Social.html",
+   "regras_18": [],
+   "pista_id": "e441e4f389",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "abbcbe0d14182f78ff042d2ddb14c320a9c232650c79c45da8a60638271860b4"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6502 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Campo Bonito - PR Opções de acessibilidade Aumentar fonte Reduzir fonte Alto contraste Desfazer opções Ir para o conteúdo: Alt+1 Ir para"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 1 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": [
+       "atribuições"
+      ]
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104055",
+   "municipio": "Campo Bonito",
+   "uf": "PR",
+   "url": "https://campobonito.pr.gov.br/pagina/214_Plano-Municipal-de-Saude-e-Relatorio-de-Gestao.html",
+   "regras_18": [],
+   "pista_id": "525c90bb6f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0f97e8d5f1c290a377a648a4639ec3b22468361a38fde72b28e69db7e06f71b1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213005",
+   "municipio": "Pinheiro Preto",
+   "uf": "SC",
+   "url": "https://pinheiropreto.sc.gov.br/plano-municipal-de-assistencia-social/",
+   "regras_18": [],
+   "pista_id": "704e9b4fea",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3789 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213005",
+   "municipio": "Pinheiro Preto",
+   "uf": "SC",
+   "url": "https://pinheiropreto.sc.gov.br/galeria/pagina-43025/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "28d7ab6bd6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5ede1d55700fdd99bd8b594152ddf0c590cc30dbe90cc24411c39a89f12dfe3e"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3081 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Porto Barreiro - PR Opções de acessibilidade Aumentar fonte Reduzir fonte Alto contraste Desfazer opções Concurso Publico 2025 Início Po"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.005/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4120150",
+   "municipio": "Porto Barreiro",
+   "uf": "PR",
+   "url": "https://portobarreiro.pr.gov.br/pagina/443_Relatorio-de-Monitoramento-do-Plano-Municipal-de-Educacao.html",
+   "regras_18": [],
+   "pista_id": "e2d786cd53",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "2007f8364c0a556ada7c03e05e434c5112db029bc5699db0b83754b46b0c2469",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4120150",
+   "municipio": "Porto Barreiro",
+   "uf": "PR",
+   "url": "https://portobarreiro.pr.gov.br/pagina/496_Plano-Municipal-De-Gestao-Integrada-De-Residuos-Solidos-Urbanos.html",
+   "regras_18": [],
+   "pista_id": "8efedcb2e7",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4120150",
+   "municipio": "Porto Barreiro",
+   "uf": "PR",
+   "url": "https://portobarreiro.pr.gov.br/pagina/499_Plano-Municipal-De-Seguranca-Alimentar-E-Nutricional.html",
+   "regras_18": [],
+   "pista_id": "b31357c8f4",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210209",
+   "municipio": "Major Gercino",
+   "uf": "SC",
+   "url": "https://majorgercino.sc.gov.br/galeria/pagina-43184/",
+   "regras_18": [],
+   "pista_id": "73a7364b91",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210209",
+   "municipio": "Major Gercino",
+   "uf": "SC",
+   "url": "https://majorgercino.sc.gov.br/galeria/pagina-29736/",
+   "regras_18": [],
+   "pista_id": "cf0688ac67",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4473 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Frei Rogério\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "15/06/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "15/06/2021",
+   "natureza": null,
+   "ibge": "4205555",
+   "municipio": "Frei Rogério",
+   "uf": "SC",
+   "url": "https://freirogerio.sc.gov.br/pagina-43806/",
+   "regras_18": [],
+   "pista_id": "d028bef014",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "c5f4c98c95bf19fea54e2f32e4c083c51497716dca7b18e2b1f08442bba38de3",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2297 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE EDUCAÇÃO - Município de Frei Rogério Skip to content 30 de outubro de 2025 Últimas Notícias 📢 3ª Audiência Pública 2ª AUDIÊNCIA PÚBLICA &#821"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "30/10/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "30/10/2025",
+   "natureza": null,
+   "ibge": "4205555",
+   "municipio": "Frei Rogério",
+   "uf": "SC",
+   "url": "https://freirogerio.sc.gov.br/pagina-164139/",
+   "regras_18": [],
+   "pista_id": "99f9113c2a",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0fe974d9476b9afaa3451db575f32d44adf420aa5968f65db97ac22910cbe80f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2512 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE EDUCAÇÃO - Município de Frei Rogério Skip to content 31 de outubro de 2025 Últimas Notícias 📢 3ª Audiência Pública 2ª AUDIÊNCIA PÚBLICA &#821"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "25/05/2022",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "25/05/2022",
+   "natureza": null,
+   "ibge": "4205555",
+   "municipio": "Frei Rogério",
+   "uf": "SC",
+   "url": "https://freirogerio.sc.gov.br/pagina-47280/",
+   "regras_18": [],
+   "pista_id": "fcd11bf005",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9278debb9215d9ac5648d82319b2e749015076b9f54ee983c205ab00d67f8313",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5224 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação | Cunhataí - 2015/2025 - Município de Cunhataí Skip to content terça-feira, outubro 28, 2025 Mapa do Site Município de Cunhataí Três"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.005/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204756",
+   "municipio": "Cunhataí",
+   "uf": "SC",
+   "url": "https://cunhatai.sc.gov.br/plano-municipal-de-educacao-cunhatai-2015-2025/",
+   "regras_18": [],
+   "pista_id": "f2fbe94116",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "3714d3d2573c93cb1863a462ff88b447a89e5c26aa0a7d21110b66024a3ef995",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "37974 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE ASSISTÊNCIA SOCIAL DO MUNICIPIO DE NICOLAU VERGUEIRO/RS. QUADRIÊNIO 2026-2029. NICOLAU VERGUEIRO, 03 DE DEZEMBRO DE 2025. 1 SUMÁRIO Siglas..."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "do Órgão Gestor: Secretaria Municipal de Assistência social e Habitação. N° da Lei de Criação do Órgão: Lei nº 1058/2017 Data de Criação: 05/09/2017 Responsáve",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1058/2017",
+      "data": "05/09/2017",
+      "trecho": "do Órgão Gestor: Secretaria Municipal de Assistência social e Habitação. N° da Lei de Criação do Órgão: Lei nº 1058/2017 Data de Criação: 05/09/2017 Responsáve"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "05/09/2017",
+   "natureza": null,
+   "ibge": "4312674",
+   "municipio": "Nicolau Vergueiro",
+   "uf": "RS",
+   "url": "https://nicolauvergueiro.rs.gov.br/images/downloads/PMAS_2026__-_2029.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "b44da44610",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "4e622789c90a0524059a6fa9ee6a37bf9a550bc2fc0420938f5aa2a2794cd1d0"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600279",
+   "municipio": "Laranjal do Jari",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn8572.pdf?ts=1779141743",
+   "regras_18": [],
+   "pista_id": "0ddc184f81",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18472 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Laranjal do Jari\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600279",
+   "municipio": "Laranjal do Jari",
+   "uf": "AP",
+   "url": "https://saude.portal.ap.gov.br/resolucoes",
+   "regras_18": [],
+   "pista_id": "53ac6e1752",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4044da68efbdb864773d7419d9829971efb5f21eda82276240f43f243ce4b0c1",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://saude.portal.ap.gov.br/resolucoes",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600279",
+   "municipio": "Laranjal do Jari",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn8305.pdf?ts=24121221",
+   "regras_18": [],
+   "pista_id": "4f036516de",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600501",
+   "municipio": "Oiapoque",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn7736.pdf?ts=24123016",
+   "regras_18": [],
+   "pista_id": "bd3c7de964",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600501",
+   "municipio": "Oiapoque",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn8312.pdf?ts=24121914",
+   "regras_18": [],
+   "pista_id": "a6452d9c41",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600501",
+   "municipio": "Oiapoque",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn8319.pdf?ts=24123113",
+   "regras_18": [],
+   "pista_id": "e260e8a393",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "458754 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600501",
+   "municipio": "Oiapoque",
+   "uf": "AP",
+   "url": "https://www.gov.br/mdr/pt-br/centrais-de-conteudo/publicacoes/protecao-e-defesa-civil-sedec/20251110_PNPDC__V4_PGduplacompactado.pdf",
+   "regras_18": [],
+   "pista_id": "ad9334d966",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "11d7c623c6662b917a8320493d36456cdb6fbe66d07550fdc599ba76ec930aad",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.gov.br/mdr/pt-br/centrais-de-conteudo/publicacoes/protecao-e-defesa-civil-sedec/20251110_PNPDC__V4_PGduplacompactado.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600501",
+   "municipio": "Oiapoque",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn8460.pdf?ts=26051803",
+   "regras_18": [],
+   "pista_id": "f4aee1601c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600808",
+   "municipio": "Vitória do Jari",
+   "uf": "AP",
+   "url": "https://www.cmvitoriadojari.ap.gov.br/download/legis/lei_475-2025_31-03-2025_51Da38Ad6Ce9B72bE4c0.pdf",
+   "regras_18": [],
+   "pista_id": "15e0040450",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "102196 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AFONSO CLÁUDIO – ES PLANO DE CONTINGÊNCIA DE DEFESA CIVIL (PLANCON) - 2026-2027 INUNDAÇÕES BRUSCAS E DESLIZAMENTOS COORDENADORIA MUNICIP"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AFONSO CLÁUDIO – ES PLANO DE CONTINGÊNCIA DE DEFESA CIVIL (PLANCON) - 2026-2027 INUNDAÇÕES BRUSCAS E DESLIZAMENTOS COORDENADORIA MUNICIP",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PREFEITURA MUNICIPAL DE AFONSO CLÁUDIO – ES PLANO DE CONTINGÊNCIA DE DEFESA CIVIL (PLANCON) - 2026-2027 INUNDAÇÕES BRUSCAS E DESLIZAMENTOS COORDENADORIA MUNICIP",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AFONSO CLÁUDIO – ES PLANO DE CONTINGÊNCIA DE DEFESA CIVIL (PLANCON) - 2026-2027 INUNDAÇÕES BRUSCAS E DESLIZAMENTOS COORDENADORIA MUNICIP"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO DE CONTINGÊNCIA DE DEFESA CIVIL (PLANCON) - 2026-2027 INUNDAÇÕES BRUSCAS E DESLIZAMENTOS COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL – COMPDEC 2 1."
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2026) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3200102",
+   "municipio": "Afonso Cláudio",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/AFONSO%20CLAUDIO%20-%20PLANO%20DE%20CONTINGE%CC%82NCIA%20-%202026.pdf?v=1781718142000",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "9cc0d1d353",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "27166cd8baa28cbc943eb2f547002cfcb6ac61776957b9f3e54ee4067d9199a2",
+   "data_da_edicao": "2026-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-13",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "48480 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ÁGUA DOCE DO NORTE Estado do Espírito Santo Coordenadoria Municipal de Proteção e Defesa Civil Página 1 de 26 72 / 1 ANIGÁP 74:80 6202/4"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "nto populacional em decréscimo anteriormente. Fonte: IBGE 2022. 5. FINALIDADE O Plano de Contingência de Proteção e Defesa Civil PLANCON para o município de Águ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "nto populacional em decréscimo anteriormente. Fonte: IBGE 2022. 5. FINALIDADE O Plano de Contingência de Proteção e Defesa Civil PLANCON para o município de Águ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ÁGUA DOCE DO NORTE Estado do Espírito Santo Coordenadoria Municipal de Proteção e Defesa Civil Página 1 de 26 72 / 1 ANIGÁP 74:80 6202/4"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "nenhum padrão claro bateu — não classificar sozinho",
+     "objeto": "o documento É o instrumento nomeado: nto populacional em decréscimo anteriormente. Fonte: IBGE 2022. 5. FINALIDADE O Plano de Contingência de Proteção e Defesa Civil PLANCON para o município de Águ",
+     "gatilho": "nção das condições necessárias ao desempenho das atividades e responsabilidades previstas neste Plano. 8.0 INFRAESTRUTURAS PARA FUNCIONAMENTO BEM PATRIMONIO LOC",
+     "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "superficiais com grande velocidade e energia, resultante de fortes chuvas. II. Estiagem Período prolongado de baixa pluviosidade ou sua ausência, em que a perd"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200169",
+   "municipio": "Água Doce do Norte",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/%C3%81GUA%20DOCE%20DO%20NORTE%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf?v=1781718141000",
+   "regras_18": [
+    "J7",
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "1c6aed8919",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "cac5c1cc825567d235a858069013c60293455be6e24a6d7a8c11ead8efda7b85"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "33121 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ÁGUIA BRANCA GOVERNO DO ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO PLANO MUNICIPAL DE CONTINGÊNCIA DE ÁGUIA BRANCA – ES Águia Branca/"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ICIPAL DE ÁGUIA BRANCA GOVERNO DO ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO PLANO MUNICIPAL DE CONTINGÊNCIA DE ÁGUIA BRANCA – ES Águia Branca/ES 2025 0 33 /",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "ICIPAL DE ÁGUIA BRANCA GOVERNO DO ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO PLANO MUNICIPAL DE CONTINGÊNCIA DE ÁGUIA BRANCA – ES Águia Branca/ES 2025 0 33 /",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ÁGUIA BRANCA GOVERNO DO ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO PLANO MUNICIPAL DE CONTINGÊNCIA DE ÁGUIA BRANCA – ES Águia Branca/"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE ÁGUIA BRANCA – ES Águia Branca/ES 2025 0 33 / 1 ANIGÁP 85:90 5202/01/70 SELPMIS AIPÓC - SCOD-E - 4JKS42-5202 PREFEITURA MUNIC"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "3200136",
+   "municipio": "Águia Branca",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/%C3%81GUIA%20BRANCA%20-%20PLANO%20DE%20CONTINGENCIA%20-%202025.pdf?v=1781718141000",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "4247608e1d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "bc3a394b587f4f5b65e301357ef7f32f47760bf39c270f3f871d4b7a588c4369",
+   "data_da_edicao": "2025-12-31",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-13",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121155 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA – PLANCON ALEGRE-ES 2026 SUMÁRIO 1. INTRODUÇÃO ....................................................................................... 8 2."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA – PLANCON ALEGRE-ES 2026 SUMÁRIO 1. INTRODUÇÃO ....................................................................................... 8 2.",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANCON",
+      "trecho": "PLANO DE CONTIGÊNCIA – PLANCON ALEGRE-ES 2026 SUMÁRIO 1. INTRODUÇÃO ....................................................................................... 8 2.",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "A DE DESASTRES (COBRADE) .............. 18 6. RISCOS NATURAIS E TECNOLÓGICOS NO MUNICÍPIO DE ALEGRE ............................................................"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": ".......................... 27 6.7. Risco Tecnológico – Desastres Relacionados a Incêndios Urbanos .............................................................."
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2026) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3200201",
+   "municipio": "Alegre",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ALEGRE%20-%20PLANO%20DE%20CONTIG%C3%8ANCIA%20-%202026.pdf?v=1781718142000",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "67b412d827",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "201162a156f033e15f26e56f4486033f73df2da014508d4f1d46cc5feaa4f272",
+   "data_da_edicao": "2026-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-13",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21392 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ções bruscas ou processos geológicos ou hidrológicos correlatos do município de Alfredo Chaves, estabelece os procedimentos a serem adotados pelos órgãos envolv"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ÜÊFE§A CI\\III .!riirro srrro pLANo DE coNTrNcÊncra oe enoreçÃo E DEFEsA crvrl - pLANcoN Deslizamentos de grande impacto, inundaçôes bruscas ou processos geológi",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "pLANcoN",
+      "trecho": "ÜÊFE§A CI\\III .!riirro srrro pLANo DE coNTrNcÊncra oe enoreçÃo E DEFEsA crvrl - pLANcoN Deslizamentos de grande impacto, inundaçôes bruscas ou processos geológi",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "pacto, inundações bruscas ou processos geológicos ou hidrológicos correlatos do município de Alfredo Chaves, estabelece os procedimentos a serem adotados pelos"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "1.2.2.0.0, 1.3.2.1.4, 1.1.3.2.1"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200300",
+   "municipio": "Alfredo Chaves",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ALFREDO%20CHAVES%20-%20PLANO%20DE%20CONTIGENCIA%20-2025.pdf?v=1781718141000",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J10",
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "6de85a31b1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5592e5928c03bd7e4461a78ac660174cd322fdbe9a9347b7c5e87502a144d1bd"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38056 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "IA E RECONSTRUÇÃO DOS CENÁRIOS DE DESASTRES EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE ALTO RIO NOVO - ES. 2ª Atualização Junho/2025 ESTADO DO ESPÍRITO SANTO PREFEITUR"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ", todas as ações de defesa civil, nos períodos de normalidade e anormalidade. O Plano de Contingência de Defesa Civil (PCDC) constitui-se como conjunto de proce",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": ", todas as ações de defesa civil, nos períodos de normalidade e anormalidade. O Plano de Contingência de Defesa Civil (PCDC) constitui-se como conjunto de proce",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "RO, ASSISTÊNCIA E RECONSTRUÇÃO DOS CENÁRIOS DE DESASTRES EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE ALTO RIO NOVO - ES. 2ª Atualização Junho/2025 ESTADO DO ESPÍRITO SA"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "RESPOSTA",
+   "ibge": "3200359",
+   "municipio": "Alto Rio Novo",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ALTO%20RIO%20NOVO%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718141000",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "encaminhar": "atos_resposta",
+   "pista_id": "2f2df9049c",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5dacecb5600dbf30e8d8a04fafec0a63819814420da0a2530bbba518c71bea3d"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200409",
+   "municipio": "Anchieta",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ANCHIETA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718142000",
+   "regras_18": [],
+   "pista_id": "4867d3d061",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "85343 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "A E RECONSTRUÇÃO DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Município: Apiac"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "O DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Município: Apiacá Estado: Espír",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "O DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Município: Apiacá Estado: Espír",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "O, ASSISTÊNCIA E RECONSTRUÇÃO DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Mun"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANCON para INUNDAÇÕES, ALAGAMENTOS, DESLIZAMENTOS DE SOLO, PERÍODO INTENSO DE ESTIAGEM, INCÊNDIO E PRODUTOS PERIGOSOS do município de Apiacá- ES, estabelece o"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200508",
+   "municipio": "Apiacá",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/APIAC%C3%81%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718142000",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "016e7132a1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "870b4816f7a8e2a136fcd7fc439613f88b67dc30d8012d3ae575f905a4530655"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "118762 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ARACRUZ SECRETARIA DE GOVERNO GERÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLAMPDEC ARACRUZ"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DE ARACRUZ SECRETARIA DE GOVERNO GERÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLAMPDEC ARACRUZ - ES 55 / 1 ANIGÁP 3",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL",
+      "trecho": "DE ARACRUZ SECRETARIA DE GOVERNO GERÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLAMPDEC ARACRUZ - ES 55 / 1 ANIGÁP 3",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ARACRUZ SECRETARIA DE GOVERNO GERÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLAMPDEC ARACRUZ"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "nenhum padrão claro bateu — não classificar sozinho",
+     "objeto": ".2.1.0.0); VENDAVAL (COBRADE 1.3.2.1.5) PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLAMPDEC ARACRUZ 2026 - 2027 VERSÃO: Volume 04 ÚLTIMA ATUALIZAÇÃO: 16/12/2024 EXEMPLAR PERTENCE A: Gerência de Proteção e Defesa Civil de Aracruz 55 / 2 ANIGÁP 33:41 6202/60/30 LANIGIRO OTNEMUCOD - SCOD-E - 4ZHMGC-",
+     "gatilho": "(COBRADE 1.3.2.1.5) PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLAMPDEC ARACRUZ 2026 - 2027 VERSÃO: Volume 04 ÚLTIMA ATUALIZAÇÃO: 16/12/2024 EXEMPLAR PERTENCE A",
+     "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "1.1.3.2.1, 1.2.1.0.0, 1.3.2.1.5"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2026) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3200607",
+   "municipio": "Aracruz",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ARACRUZ%20-%20PLANO%20DE%20COMTING%C3%8ANCIA%202026.pdf?v=1781718146000",
+   "regras_18": [
+    "J10"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "d12373dd1d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "74c2aa1c7658f94e4eefee450c161d6bd855aad301e7f40162e202499963a0ce",
+   "data_da_edicao": "2026-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-13",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
   }
  ]
 }
