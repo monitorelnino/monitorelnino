@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-07 a 2026-11-14 (1432 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-07 a 2026-11-14 (1433 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -74,7 +74,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-14 · por canal: we
 | `coletar_srag_sivep.py` | coletor | 2026-11-13 02:11 | 34 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-11-11 07:52 | 2 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-14 08:00 | 63 s | — | ok | — |
-| `conferir_emergencias_estaduais.py` | coletor | 2026-11-14 07:48 | 21 s | — | ok | — |
+| `conferir_emergencias_estaduais.py` | coletor | 2026-11-14 18:50 | 6 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-11-13 01:17 | 90 s | — | **erro** (7 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-08 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `descobrir_planos.py` | coletor | 2026-11-14 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
