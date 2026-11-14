@@ -2373,7 +2373,8 @@
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "repeticoes": 1
   },
   {
    "municipio": "Petrópolis",
@@ -13903,7 +13904,7 @@
     "hash_evidencia": "fab1deda5476f9cf3c901a83e3d6bfe3edec1b93d4602181abd773d898549470"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 2,
+   "repeticoes": 4,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -47358,7 +47359,7 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "proxima_tentativa_em": "2026-11-15",
-   "repeticoes": 3,
+   "repeticoes": 5,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -53427,7 +53428,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Municipal nº 4",
+    "data_ato": "03/01/2023",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Limeira",
@@ -53455,7 +53475,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (None)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (None)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Taiaçu",
@@ -53492,7 +53531,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2026)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2026)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Atibaia",
@@ -53520,7 +53578,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto n° 62.906",
+    "data_ato": "31/10/2017",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Atibaia",
@@ -53548,7 +53625,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2010",
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'situação de emergência' + recital de dano ocorrido",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Atibaia",
@@ -53587,7 +53683,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Cubatão",
@@ -53617,7 +53722,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "31/10/2017",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cubatão",
@@ -53655,7 +53779,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "13/01/2015",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cubatão",
@@ -53708,7 +53851,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Estadual nº 61.111",
+    "data_ato": "03/02/2015",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2015 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2015 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Assis",
@@ -53738,7 +53900,26 @@
    "sinais": [
     "fonte_imprensa"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "PORTARIA 683",
+    "data_ato": "90.10.08",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (90.10.08)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (90.10.08)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Chavantes",
@@ -53775,7 +53956,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Leme",
@@ -53805,7 +54005,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "01/02/2023",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Leme",
@@ -53834,7 +54053,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "DECRETO Nº 7.365",
+    "data_ato": "16/03/2020",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Itapetininga",
@@ -53872,7 +54110,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2022",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Votuporanga",
@@ -53901,7 +54158,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "11/11/2026",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Votuporanga",
@@ -54011,7 +54287,16 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Londrina",
@@ -54040,7 +54325,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2025",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2025)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2025)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Londrina",
@@ -54070,7 +54374,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2022",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Londrina",
@@ -54106,7 +54429,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "02/06/2025",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cascavel",
@@ -54265,7 +54607,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Curitiba",
@@ -54294,7 +54655,16 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Curitiba",
@@ -54324,7 +54694,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "05/06/2014",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Londrina",
@@ -54438,7 +54827,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "28/08/2025",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Foz do Iguaçu",
@@ -54466,7 +54874,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Estadual nº 730",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Foz do Iguaçu",
@@ -54511,7 +54938,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Colombo",
@@ -54611,7 +55047,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Estadual n° 4.230",
+    "data_ato": "16/03/2020",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2020 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2020 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Guarapuava",
@@ -54678,7 +55133,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Araucária",
@@ -54716,7 +55190,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei nº 2.020",
+    "data_ato": "2017",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Araucária",
@@ -54747,7 +55240,16 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Toledo",
@@ -54776,7 +55278,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Nº 101",
+    "data_ato": "09/12/2025",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Toledo",
@@ -54807,7 +55328,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei nº 8.080",
+    "data_ato": "19/09/1990",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Fazenda Rio Grande",
@@ -54837,7 +55377,16 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Fazenda Rio Grande",
@@ -54867,7 +55416,16 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Fazenda Rio Grande",
@@ -54897,7 +55455,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "LeiEstadual11.362",
+    "data_ato": "20/04/2023",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pinhais",
@@ -54925,7 +55502,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 126",
+    "data_ato": "10/04/2012",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pinhais",
@@ -54961,7 +55557,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "23/03/2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pinhais",
@@ -55074,7 +55689,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Umuarama",
@@ -55186,7 +55820,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto 2.900",
+    "data_ato": "04/2.011",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (04/2.011)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (04/2.011)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Umuarama",
@@ -55222,7 +55875,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "PITANGUI",
@@ -55972,7 +56644,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "PORTARIA 66",
+    "data_ato": "2026",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Campo Mourão",
@@ -56000,7 +56691,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pato Branco",
@@ -56028,7 +56738,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Nº 8.631",
+    "data_ato": "18/03/2020",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'estado de emergência' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pato Branco",
@@ -56063,7 +56792,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Nº 8.631",
+    "data_ato": "18/03/2020",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pato Branco",
@@ -56116,6 +56864,25 @@
     "data": null,
     "julgado_em": "2026-11-14",
     "hash_evidencia": "bdf346d54c8434c9f0d3a17e698cc41f7a40dc72152148698e5b6fa6e9ba7718"
+   },
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "lei 10.520",
+    "data_ato": "2005",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
    }
   },
   {
@@ -56153,7 +56920,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Municipal nº 384",
+    "data_ato": "2007",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2007)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2007)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Castro",
@@ -56183,7 +56969,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2023",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Castro",
@@ -56322,7 +57127,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Estadual nº 4.230",
+    "data_ato": "2020",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'estado de emergência' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Irati",
@@ -56376,7 +57200,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "São Mateus do Sul",
@@ -56849,7 +57692,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Instrução Normativa 1",
+    "data_ato": "2012",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Formosa",
@@ -56878,7 +57740,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Formosa",
@@ -56907,7 +57788,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Formosa",
@@ -56935,7 +57835,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Portaria nº 125",
+    "data_ato": "2020",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'calamidade pública' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Formosa",
@@ -56965,7 +57884,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Resende",
@@ -57003,7 +57941,16 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Rio das Flores",
@@ -57040,7 +57987,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Rio das Flores",
@@ -57103,7 +58059,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "20/09/2014",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2014 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2014 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Primavera",
@@ -57131,7 +58106,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2026)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2026)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "TEÓFILO OTONI",
@@ -57506,7 +58500,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "23/03/2020",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'estado de calamidade pública' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Alvorada D'Oeste",
@@ -57538,7 +58551,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Alvorada D'Oeste",
@@ -57568,7 +58600,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "14/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 12.608",
+    "data_ato": "2012",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Porto Velho",
@@ -61765,7 +62816,8 @@
     "municipio_na_url",
     "texto_candidato_forte"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Macaé",
@@ -61796,7 +62848,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Macaé",
@@ -61827,7 +62880,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Saquarema",
@@ -440317,7 +441371,7 @@
     "julgado_em": "2026-11-05",
     "hash_evidencia": "4c151f267685c2e29aca2885e5f2a5dc49c36b3e58bf73491365b728a524d4ec"
    },
-   "repeticoes": 4,
+   "repeticoes": 11,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -440535,7 +441589,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "repeticoes": 2
   },
   {
    "municipio": "Rio de Janeiro",
@@ -442200,7 +443255,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Belford Roxo",
@@ -442380,7 +443436,8 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "repeticoes": 1
   },
   {
    "municipio": "Belford Roxo",
@@ -442673,7 +443730,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Nova Iguaçu",
@@ -442759,7 +443817,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "São João de Meriti",
@@ -442797,7 +443856,8 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "repeticoes": 2
   },
   {
    "municipio": "São João de Meriti",
@@ -442835,7 +443895,8 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "repeticoes": 1
   },
   {
    "municipio": "São João de Meriti",
@@ -443186,7 +444247,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "repeticoes": 1
   },
   {
    "municipio": "Petrópolis",
@@ -443430,7 +444492,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Volta Redonda",
@@ -443771,7 +444834,8 @@
     "municipio_na_url",
     "texto_candidato_forte"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Macaé",
@@ -444029,7 +445093,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "repeticoes": 1
   },
   {
    "municipio": "Macaé",
@@ -444098,7 +445163,7 @@
     }
    ],
    "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 1
+   "repeticoes": 3
   },
   {
    "municipio": "Magé",
@@ -444168,7 +445233,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "repeticoes": 1
   },
   {
    "municipio": "Magé",
@@ -444212,7 +445278,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 2
   },
   {
    "municipio": "Petrópolis",
@@ -444357,7 +445424,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Magé",
@@ -446277,7 +447345,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "repeticoes": 1
   },
   {
    "municipio": "Angra dos Reis",
@@ -451376,7 +452445,7 @@
     }
    ],
    "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 1
+   "repeticoes": 3
   },
   {
    "municipio": "Barra do Piraí",
@@ -452371,7 +453440,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 2
   },
   {
    "municipio": "Três Rios",
@@ -453011,7 +454081,7 @@
     }
    ],
    "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 1
+   "repeticoes": 2
   },
   {
    "municipio": "Cachoeiras de Macacu",
@@ -454548,7 +455618,7 @@
     }
    ],
    "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 1
+   "repeticoes": 3
   },
   {
    "municipio": "São Francisco de Itabapoana",
@@ -460494,7 +461564,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "repeticoes": 1
   },
   {
    "municipio": "Bom Jardim",
@@ -463196,7 +464267,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Quissamã",
@@ -534022,7 +535094,7 @@
     "hash_evidencia": "8e34618aa8ccc09e7fbdc756c4f5b0217a3412eb8dceced49f582bc33302224c"
    },
    "repeticoes": 1,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-21",
    "pontos_confianca": 1,
    "sinais": [
     "fonte_desconhecida",
@@ -534030,6 +535102,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-14",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-14",
      "classe": "tecnica",
@@ -553011,13 +554089,19 @@
     "hash_evidencia": "3fb986210f1e89a07dfd672aa5d1c0279f943c3ccbbefc8a2ad5f0631bc7f948"
    },
    "repeticoes": 1,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-21",
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-14",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-14",
      "classe": "tecnica",
@@ -553959,13 +555043,19 @@
     "hash_evidencia": "1c73b2b07d3537a676589bd1142f294bab64027d5a2065fcd23a0eb5b6cee300"
    },
    "repeticoes": 1,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-21",
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-14",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-14",
      "classe": "tecnica",
@@ -556274,7 +557364,7 @@
     "hash_evidencia": "1fb67279c01ee2e51d4ef94c9954b6f7172cab4af313c36dce17b2e327fe2d1d"
    },
    "repeticoes": 1,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-21",
    "pontos_confianca": 1,
    "sinais": [
     "fonte_desconhecida",
@@ -556282,6 +557372,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-14",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-14",
      "classe": "tecnica",
@@ -556718,13 +557814,19 @@
     "hash_evidencia": "a50a6bdf87632f0e6afba9c335e782a26b16752ea945a1a8946ac22b36575950"
    },
    "repeticoes": 1,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-21",
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-14",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-14",
      "classe": "tecnica",
@@ -556806,13 +557908,19 @@
     "hash_evidencia": "ce54bf7856fd46e777c95e81bff3d20f189720fe00293d4f1db433f01ef46b26"
    },
    "repeticoes": 1,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-21",
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-14",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-14",
      "classe": "tecnica",
@@ -880384,6 +881492,121 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": []
+  },
+  {
+   "municipio": "Campos dos Goytacazes",
+   "uf": "RJ",
+   "ibge": "3301009",
+   "origem": "busca_web",
+   "data": "2026-11-14",
+   "url": "https://social.campos.rj.gov.br/wp-content/uploads/2026/02/PLANO-MUNICIPAL-DE-ABRIGOS-TEMPORARIOS-2026-2027-versao-002.pdf",
+   "trecho": "Feb 10, 2026 ... os no Plano de Contingência. Esse planejamento prévio permite ... CAMPOS DOS GOYTACAZES (RJ). Secretaria Municipal de Defesa Civil ...",
+   "titulo": "PLANO DE AÇÃO DE ADMINISTRAÇÃO DE ABRIGOS ...",
+   "registrado_em": "2026-11-14",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "origem_do_coletor": "busca_web",
+   "id": "4d7bfb1562",
+   "url_final": "https://social.campos.rj.gov.br/wp-content/uploads/2026/02/PLANO-MUNICIPAL-DE-ABRIGOS-TEMPORARIOS-2026-2027-versao-002.pdf",
+   "alvo": "3301009",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "municipio": "Campos dos Goytacazes",
+   "uf": "RJ",
+   "ibge": "3301009",
+   "origem": "busca_web",
+   "data": "2026-11-14",
+   "url": "http://www.rj.gov.br/saude/node/3097",
+   "trecho": "Jan 11, 2025 ... ... Campos dos Goytacazes, com 19.588 casos. Treinamento de ... Plano de Contingência, em apoio aos 92 municípios, com alertas e ...",
+   "titulo": "Secretaria de Saúde - Governo do Estado do Rio de Janeiro",
+   "registrado_em": "2026-11-14",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "origem_do_coletor": "busca_web",
+   "id": "a9ea593c99",
+   "url_final": "http://www.rj.gov.br/saude/node/3097",
+   "alvo": "3301009",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "municipio": "Niterói",
+   "uf": "RJ",
+   "ibge": "3303302",
+   "origem": "busca_web",
+   "data": "2026-11-14",
+   "url": "https://niteroi.rj.gov.br/plano-chuvas-de-verao-treinamentos-e-exercicios-simulados-marcam-a-primeira-semana-de-protecao-e-defesa-civil-de-niteroi/",
+   "trecho": "Nov 25, 2021 ... ... plano de contingência para resposta a desastres geológicos. ... Prefeitura Municipal de Niterói - Rua Visconde de Sepetiba 987, Centro - Niterói.",
+   "titulo": "Plano Chuvas de Verão, treinamentos e exercícios simulados ...",
+   "registrado_em": "2026-11-14",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "origem_do_coletor": "busca_web",
+   "id": "ed33612530",
+   "url_final": "https://niteroi.rj.gov.br/plano-chuvas-de-verao-treinamentos-e-exercicios-simulados-marcam-a-primeira-semana-de-protecao-e-defesa-civil-de-niteroi/",
+   "alvo": "3303302",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "municipio": "Niterói",
+   "uf": "RJ",
+   "ibge": "3303302",
+   "origem": "busca_web",
+   "data": "2026-11-14",
+   "url": "https://niteroi.rj.gov.br/niteroi-une-inteligencia-artificial-e-humana-no-combate-as-queimadas/",
+   "trecho": "Nov 3, 2023 ... ... plano de contingência para queimadas do Município e prevê ações ... Prefeitura Municipal de Niterói - Rua Visconde de Sepetiba 987, Centro - ...",
+   "titulo": "Niterói une inteligência artificial e humana no combate às queimadas",
+   "registrado_em": "2026-11-14",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "el_nino",
+   "destino": "indefinido",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "origem_do_coletor": "busca_web",
+   "id": "168ce45677",
+   "url_final": "https://niteroi.rj.gov.br/niteroi-une-inteligencia-artificial-e-humana-no-combate-as-queimadas/",
+   "alvo": "3303302",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "municipio": "Magé",
+   "uf": "RJ",
+   "ibge": "3302502",
+   "origem": "busca_web",
+   "data": "2026-11-14",
+   "url": "https://mage.rj.gov.br/informacoes/prefeitura-de-mage-apresenta-plano-de-contingencia-de-barragens-no-2-distrito-para-garantir-seguranca-da-populacao/",
+   "trecho": "PREFEITURA DE MAGÉ APRESENTA PLANO DE CONTINGÊNCIA DE BARRAGENS NO 2° DISTRITO PARA GARANTIR SEGURANÇA DA POPULAÇÃO · Avaliação e Monitoramento Contínuo ...",
+   "titulo": "PREFEITURA DE MAGÉ APRESENTA PLANO DE CONTINGÊNCIA ...",
+   "registrado_em": "2026-11-14",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "indefinido",
+   "destino": "indefinido",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "origem_do_coletor": "busca_web",
+   "id": "1d27093b56",
+   "url_final": "https://mage.rj.gov.br/informacoes/prefeitura-de-mage-apresenta-plano-de-contingencia-de-barragens-no-2-distrito-para-garantir-seguranca-da-populacao/",
+   "alvo": "3302502",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
   }
  ],
  "quarentena": {
