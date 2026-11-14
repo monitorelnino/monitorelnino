@@ -33,11 +33,11 @@
    "detalhe": "1 município(s) em 1 portaria(s)",
    "sem_coleta": false,
    "municipios_semana": 1,
-   "valor_ciclo": 246927946.11,
-   "municipios_ciclo": 96,
+   "valor_ciclo": 247307946.11,
+   "municipios_ciclo": 97,
    "por_acao_ciclo": {
     "outra": 13878788.0,
-    "recuperacao": 214960866.33,
+    "recuperacao": 215340866.33,
     "resposta": 18088291.78
    },
    "desde": "29/06/2026"
@@ -90,17 +90,17 @@
   },
   {
    "id": "defesa_civil_ciclo",
-   "valor": 246927946.11,
+   "valor": 247307946.11,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "96 municípios",
+   "detalhe": "97 municípios",
    "sem_coleta": false,
-   "municipios": 96,
+   "municipios": 97,
    "por_acao": {
     "outra": 13878788.0,
-    "recuperacao": 214960866.33,
+    "recuperacao": 215340866.33,
     "resposta": 18088291.78
    }
   },
@@ -2478,10 +2478,10 @@
    "cod_ibge": "3165552",
    "origem": "defesa_civil",
    "repassado": 126820.8,
-   "autorizado": null,
-   "ato": null,
-   "data": null,
-   "url": null,
+   "autorizado": 380000.0,
+   "ato": "Portaria 3.933",
+   "data": "2026-11-11",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.933-de-11-de-novembro-de-2026-744159188",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Setubinha",
@@ -5342,21 +5342,21 @@
    },
    {
     "mes": "202611",
-    "defesa_civil": 31213912.69,
+    "defesa_civil": 31593912.69,
     "saude": null,
     "parcial": true
    }
   ],
   "saude_desde": "202607",
   "saude_ultimo_mes": "202610",
-  "total_defesa_civil": 246927946.11,
+  "total_defesa_civil": 247307946.11,
   "total_saude": 9552011.72
  },
  "funil_defesa_civil": {
-  "referencia": "13/11/2026",
-  "n_decretaram": 1172,
-  "n_reconhecidos": 1037,
-  "n_com_recurso": 96,
-  "n_com_recurso_e_decretaram": 60
+  "referencia": "14/11/2026",
+  "n_decretaram": 1191,
+  "n_reconhecidos": 1050,
+  "n_com_recurso": 97,
+  "n_com_recurso_e_decretaram": 61
  }
 }
