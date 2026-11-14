@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-14 · #PR · Emergência declarada pelo governo do estado no mapa de emergências
+## 2026-11-14 · #1737 · Emergência declarada pelo governo do estado no mapa de emergências
 
 O mapa de municípios com decreto de emergência passa a mostrar, em tom transparente, o estado cujo governo declarou emergência, com o ato no texto do mouse. Primeiro caso: Pará, Decreto nº 5.767, de 11/11/2026, conferido no Diário Oficial do Estado. Não soma na contagem de municípios nem pontua no índice.
 
