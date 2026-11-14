@@ -2,35 +2,47 @@
  "data": "2026-11-14",
  "formato_versao": 1,
  "etapas": {
-  "funil_recursos_resposta": {
-   "consultas": 1,
-   "com_resultado_bruto": 1,
-   "pistas": 21
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 160,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 8,
+   "consultas": 10,
+   "lacunas": 0,
+   "motor_sem_resposta": 2,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 5
   },
   "descobrir_planos": {
+   "achados_novos": 9,
    "alvos_consultados": 60,
    "alvos_verificados": 15,
-   "achados_novos": 9,
    "fila_acumulada": 126
   },
+  "funil_recursos_resposta": {
+   "com_resultado_bruto": 1,
+   "consultas": 1,
+   "pistas": 21
+  },
   "juiz": {
-   "pistas_recebidas": 310,
    "com_documento": 113,
+   "pistas_recebidas": 310,
    "promovidas": 56,
-   "recusa_documento_inacessivel": 126,
-   "recusa_texto_nao_extraivel": 71,
-   "recusa_ente_nao_confirmado": 11,
-   "recusa_citacao_incompleta": 14,
    "recusa_autoridade_nao_confirmada": 7,
-   "recusa_plano_sem_identificacao": 3,
-   "recusa_noticia_institucional_nao_e_o_plano": 1,
-   "recusa_natureza_duvidosa": 6,
+   "recusa_citacao_incompleta": 14,
+   "recusa_documento_inacessivel": 126,
+   "recusa_ente_nao_confirmado": 11,
    "recusa_fora_do_objeto": 2,
-   "recusa_resposta": 4
+   "recusa_natureza_duvidosa": 6,
+   "recusa_noticia_institucional_nao_e_o_plano": 1,
+   "recusa_plano_sem_identificacao": 3,
+   "recusa_resposta": 4,
+   "recusa_texto_nao_extraivel": 71
   },
   "transferencias_municipais": {
-   "consultas": 10,
    "com_resultado_bruto": 10,
+   "consultas": 10,
    "municipios": 55648
   }
  },
@@ -66,5 +78,5 @@
   "versao": "1.0 (29/09/2026)",
   "gravado_em": "2026-11-14T06:56:24"
  },
- "atualizado_em": "2026-11-14T07:44:25"
+ "atualizado_em": "2026-11-14T07:50:00"
 }
