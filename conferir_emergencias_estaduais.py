@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Confere no diário oficial cada emergência declarada por governo de estado (`data/resposta/emergencias_estaduais.json`).
+"""Confere no diário oficial cada emergência declarada por governo de estado (`data/emergencias_estaduais.json`).
 
 O ato entra no arquivo por curadoria, com o endereço da edição; só vai ao mapa com `conferido: true`, que este
 script grava depois de achar no texto da edição o número do decreto, a data por extenso e a palavra emergência,
@@ -14,9 +14,9 @@ import datetime
 import re
 import sys
 
-from coletores_base import RAIZ, gravar_em, ler, rodar_autoteste
+from coletores_base import RAIZ, gravar_em, hoje_editorial, ler, rodar_autoteste
 
-ARQUIVO = RAIZ / "data" / "resposta" / "emergencias_estaduais.json"
+ARQUIVO = RAIZ / "data" / "emergencias_estaduais.json"
 MESES = "janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro".split()
 
 
@@ -58,7 +58,7 @@ def main() -> int:
         return autoteste()
     from coletores_base import buscar, preservar_evidencia
     from julgar_e_aplicar_descobertas import extrair_texto_pdf
-    doc = ler("resposta/emergencias_estaduais.json", {"atos": []})
+    doc = ler("emergencias_estaduais.json", {"atos": []})
     for ato in doc["atos"]:
         if ato.get("conferido") and "--forcar" not in sys.argv:
             continue
@@ -70,7 +70,7 @@ def main() -> int:
         motivo = confere(ato, extrair_texto_pdf(corpo))
         ato.update(conferido=not motivo, motivo=motivo or None, vigente_ate=vigente_ate(ato),
                    hash_evidencia=preservar_evidencia(corpo, ato["url"], "pdf", "conferir_emergencias_estaduais") if not motivo else None,
-                   conferido_em=datetime.date.today().isoformat())
+                   conferido_em=hoje_editorial().isoformat())
         print(f"[{ato['uf']}] Decreto nº {ato['numero']}: {'conferido' if not motivo else motivo}")
     gravar_em(ARQUIVO, doc)
     return 0

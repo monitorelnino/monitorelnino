@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-14 · #PR · Emergência declarada pelo governo do estado no mapa de emergências
+
+O mapa de municípios com decreto de emergência passa a mostrar, em tom transparente, o estado cujo governo declarou emergência, com o ato no texto do mouse. Primeiro caso: Pará, Decreto nº 5.767, de 11/11/2026, conferido no Diário Oficial do Estado. Não soma na contagem de municípios nem pontua no índice.
+
 ## 2026-11-13 · #1733 · Lista de municípios do PAB-Brasil (desertificação) coletada
 
 Novo coletor lê a Tabela B.1 do Plano de Ação Brasileiro de Combate à Desertificação (MMA): 1.649 municípios, 1.389 em Áreas Suscetíveis à Desertificação e 260 no Entorno, com clima e classificação. Grava em `enquadramento_federal.json`, sem peso no índice. Os totais conferem com a Tabela 1 do plano; nenhuma página muda.

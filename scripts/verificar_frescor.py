@@ -59,7 +59,7 @@ FAMILIAS = {
     },
     "DEFESA CIVIL": {
         "resposta/municipios_decretados.json": "coletor", "resposta/por_uf.json": "coletor",
-        "resposta/emergencias_estaduais.json": "curadoria",   # 14/11/2026: decreto de emergência do governo do estado
+        "emergencias_estaduais.json": "curadoria",   # 14/11/2026: decreto de emergência do governo do estado
         "resposta/serie_semanal.json": "coletor", "resposta/recursos_liberados.json": "coletor",
         "atos_resposta.json": "coletor", "cadastro_prioritarios_federal.json": "coletor",
         "enquadramento_federal.json": "coletor",

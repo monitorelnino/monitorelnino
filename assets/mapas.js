@@ -392,6 +392,9 @@
     // como sintetico/ambar/argila; ganham o nome da família porque é assim que o resto do site
     // as chama, e quem lê um mapa de risco procura 'seca', não 'ambar'.
     familia: {chuva: COR.chuva, seca: COR.seca, fogo: COR.fogo, calor: COR.calor},
+    // 14/11/2026 (editoria): emergência declarada pelo governo do estado, no mapa de emergências municipais —
+    // o estado em tom chapado e transparente, por baixo dos pontos dos municípios.
+    emergencia_estadual: {fundo: COR.fogo, opacidade: 0.18, contorno: COR.fogo, opacidade_contorno: 0.7},
     // 30/09/2026 (item 8, aprovado pela editoria): uma ATMOSFERA por família de risco. Mesmos
     // valores de assets/tokens.css; o motor os lê por nome e nenhuma página carrega cor solta.
     // `fundo` é a área do mapa, `uf`/`contorno` a malha, e a rampa é a marca do dado.
