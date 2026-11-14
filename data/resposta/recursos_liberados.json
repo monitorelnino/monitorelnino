@@ -2388,6 +2388,27 @@
     }
    ],
    "total_autorizado": 3232408.56
+  },
+  "3165552": {
+   "nome": "Setubinha",
+   "uf": "MG",
+   "por_acao": {
+    "recuperacao": 380000.0
+   },
+   "atos": [
+    {
+     "municipio": "Setubinha",
+     "uf": "MG",
+     "portaria": "3.933",
+     "data": "2026-11-11",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 380000.0,
+     "processo_sei": "59053.024444/2026-13",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.933-de-11-de-novembro-de-2026-744159188"
+    }
+   ],
+   "total_autorizado": 380000.0
   }
  },
  "nao_casados": {
@@ -2397,25 +2418,25 @@
  },
  "janela_lida": {
   "desde": "2026-11-05",
-  "ate": "2026-11-12",
-  "atos_na_busca": 37,
+  "ate": "2026-11-14",
+  "atos_na_busca": 41,
   "janelas_incompletas": []
  },
  "recusas": {
   "fora_do_orgao": 1,
-  "prorrogacao_de_prazo": 10,
+  "prorrogacao_de_prazo": 12,
   "sem_municipio_legivel": 0,
-  "sem_valor_declarado": 6,
+  "sem_valor_declarado": 7,
   "ato_nao_lido": 0
  },
- "atos_novos_nesta_rodada": 0,
- "atualizado_em": "12/11/2026",
+ "atos_novos_nesta_rodada": 1,
+ "atualizado_em": "14/11/2026",
  "total_por_acao": {
-  "recuperacao": 236375357.22,
+  "recuperacao": 236755357.22,
   "resposta": 18088291.78,
   "outra": 13878788.0
  },
- "municipios_com_ato": 100,
+ "municipios_com_ato": 101,
  "_governanca": "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta \"Autoriza a transferência de recursos\"). `valor_autorizado` é o que a portaria autoriza transferir — a saída do dinheiro é outro fato, e quem o registra é o Portal da Transparência: a página diz 'liberado', nunca 'pago'. As ações de RESPOSTA e de RECUPERAÇÃO ficam separadas em `por_acao`, com o rótulo que o próprio ato usou, porque somá-las num cartão de resposta inflaria o número com dinheiro de outra finalidade. Ato sem valor declarado não vira zero: entra em `recusas.sem_valor_declarado`. Município que não casa com a referência do IBGE entra em `nao_casados`, com o nome como o ato o escreveu. Derivado de coletar_recursos_resposta.py — não se edita à mão.",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a)."
 }
