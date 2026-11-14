@@ -4,14 +4,14 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 3.9,
+   "valor": 2.6,
    "referencia": "13/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Rio Branco",
-   "capital": "Rio Branco",
-   "uf": "AC",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Teresina",
+   "capital": "Teresina",
+   "uf": "PI",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 36.0 °C contra a média de 32.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 39.0 °C contra a média de 36.4 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
     "valor": 3.4,
     "referencia": "12/11/2026"
@@ -19,14 +19,14 @@
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 13022,
-   "referencia": "Focos do dia — focos_diario_br_20261112.csv",
+   "valor": 12605,
+   "referencia": "Focos do dia — focos_diario_br_20261113.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 11208,
-    "referencia": "Focos do dia — focos_diario_br_20261111.csv"
+    "valor": 13022,
+    "referencia": "Focos do dia — focos_diario_br_20261112.csv"
    }
   },
   {
@@ -44,12 +44,12 @@
    "id": "avisos_inmet_distintos",
    "valor": 1,
    "perigo_ou_maior": 0,
-   "referencia": "13/11/2026 05:25",
+   "referencia": "13/11/2026 22:15",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
     "valor": 1,
-    "referencia": "13/11/2026 05:09"
+    "referencia": "13/11/2026 05:25"
    }
   },
   {
