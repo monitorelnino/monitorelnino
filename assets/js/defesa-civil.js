@@ -23,7 +23,7 @@
  * REGRA DE SEGURANÇA DOS ALERTAS. Aviso e alerta são informação de AGORA. Se a coleta tiver mais de
  * 24 horas, a página não diz que há alerta em vigor: declara "sem atualização desde {data e hora}".
  */
-let BR_GEOJSON, RESP, DECRETADOS, ALERTAS, TOPO,
+let BR_GEOJSON, RESP, DECRETADOS, ALERTAS, TOPO, ESTADUAIS,
     MUN_COD = {}, LATLON_POR_CODIGO = {}, NOMES_POR_UF = {};
 
 const LIMITE_ALERTA_HORAS = 24;
@@ -47,9 +47,9 @@ async function __load(){
       return r.json();
     })));
   /* Os opcionais não derrubam a página: cada bloco que depende deles declara a lacuna. */
-  [RESP, DECRETADOS, ALERTAS, TOPO] = await Promise.all(
+  [RESP, DECRETADOS, ALERTAS, TOPO, ESTADUAIS] = await Promise.all(
     ['data/resposta/por_uf.json', 'data/resposta/municipios_decretados.json',
-     'data/alertas/vigentes.json', 'data/resposta/topo_defesa_civil.json']
+     'data/alertas/vigentes.json', 'data/resposta/topo_defesa_civil.json', 'data/emergencias_estaduais.json']
       .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null)));
   /* Coordenada e nome pelo CÓDIGO IBGE, nunca pelo nome (as fontes escrevem o nome de formas diferentes). */
   ref.forEach(m => {
@@ -252,9 +252,23 @@ function __init(){
   // =========================================================
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
   const porUF = (RESP && RESP.uf) || {};
+  /* 14/11/2026 (editoria): emergência declarada pelo governo do estado, conferida no diário oficial e em vigor
+     hoje. O estado vai em tom transparente por baixo dos pontos; o ato vai no texto do mouse; não soma na contagem. */
+  const hojeISO = new Date().toISOString().slice(0, 10);
+  const estaduais = {};
+  ((ESTADUAIS || {}).atos || []).filter(a => a.conferido && a.vigente_ate >= hojeISO).forEach(a => estaduais[a.uf] = a);
+  const textoEstadual = a => '<br>' + esc(C.texto('defesa-civil.emergencias.mapa.estadual.ato', {natureza: a.natureza, numero: a.numero,
+      data: MonitorMapas.dataBR(a.data_ato), dias: a.dias}))
+    + '<br>' + esc(C.texto('defesa-civil.emergencias.mapa.estadual.fonte', {fonte: a.fonte, publicacao: MonitorMapas.dataBR(a.data_publicacao)}));
   MonitorMapas.desenharMapa(ctx, 'mapEmergencias', null, () => cor('branco'),
-    uf => { const e = porUF[uf]; return e ? n(e.n_municipios) + ' de ' + n(e.total_municipios) + ' municípios com decreto' : 'sem contagem até o corte'; },
+    uf => { const e = porUF[uf]; return (e ? n(e.n_municipios) + ' de ' + n(e.total_municipios) + ' municípios com decreto' : 'sem contagem até o corte')
+      + (estaduais[uf] && C ? textoEstadual(estaduais[uf]) : ''); },
     [], 'contagem');
+  const EST = MonitorMapas.PALETA.emergencia_estadual;
+  d3.select('#mapEmergencias').insert('g', 'g.siglas').attr('class', 'emergencia-estadual').style('pointer-events', 'none')
+    .selectAll('path').data(ctx.geo.features.filter(f => estaduais[f.properties.sigla])).join('path').attr('d', ctx.path)
+    .attr('fill', EST.fundo).attr('fill-opacity', EST.opacidade)
+    .attr('stroke', EST.contorno).attr('stroke-opacity', EST.opacidade_contorno).attr('stroke-width', 1.2);
   const decretoTexto = m => m.decreto || 'data não localizada';
   const reconhecimentoTexto = m => m.reconhecida ? (m.reconhecimento || '') + (m.portaria ? ' · ' + (m.portaria.decreto || '') : '') : 'não localizado até o corte';
   const corpoTabela = document.querySelector('#tblEmergencias tbody');
@@ -281,7 +295,8 @@ function __init(){
   MonitorMapas.legenda('legEmergencias', FAMILIAS.filter(f => porFamilia[f.chave])
     .map(f => ({cor: cor(f.cor), rotulo: f.rotulo + ' · ' + n(porFamilia[f.chave])}))
     .concat(porFamilia[EM_CLASSIFICACAO] ? [{cor: cor('cinza-quente'), rotulo: 'em classificação até o corte · ' + n(porFamilia[EM_CLASSIFICACAO])}] : [])
-    .concat(soDecreto ? [{cor: cor('cinza-quente'), rotulo: 'só decreto, sem reconhecimento · ' + n(soDecreto), vazado: true}] : []));
+    .concat(soDecreto ? [{cor: cor('cinza-quente'), rotulo: 'só decreto, sem reconhecimento · ' + n(soDecreto), vazado: true}] : [])
+    .concat(Object.keys(estaduais).length && C ? [{cor: EST.fundo, opacidade: EST.opacidade, rotulo: C.texto('defesa-civil.emergencias.mapa.estadual.legenda')}] : []));
   molde('subMunicipios', 'defesa-civil.emergencias.mapa.municipios', {n: n(decretados.length)});
   MonitorMapas.credito('boxEmergencias', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: corteDecretos});
 
