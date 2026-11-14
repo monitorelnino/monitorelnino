@@ -264,11 +264,12 @@ function __init(){
     uf => { const e = porUF[uf]; return (e ? n(e.n_municipios) + ' de ' + n(e.total_municipios) + ' municípios com decreto' : 'sem contagem até o corte')
       + (estaduais[uf] && C ? textoEstadual(estaduais[uf]) : ''); },
     [], 'contagem');
-  const EST = MonitorMapas.PALETA.emergencia_estadual;
+  const EST = a => MonitorMapas.PALETA[a.preventiva ? 'emergencia_estadual_preventiva' : 'emergencia_estadual'];
+  const est = f => EST(estaduais[f.properties.sigla]);
   d3.select('#mapEmergencias').insert('g', 'g.siglas').attr('class', 'emergencia-estadual').style('pointer-events', 'none')
     .selectAll('path').data(ctx.geo.features.filter(f => estaduais[f.properties.sigla])).join('path').attr('d', ctx.path)
-    .attr('fill', EST.fundo).attr('fill-opacity', EST.opacidade)
-    .attr('stroke', EST.contorno).attr('stroke-opacity', EST.opacidade_contorno).attr('stroke-width', 1.2);
+    .attr('fill', f => est(f).fundo).attr('fill-opacity', f => est(f).opacidade)
+    .attr('stroke', f => est(f).contorno).attr('stroke-opacity', f => est(f).opacidade_contorno).attr('stroke-width', 1.2);
   const decretoTexto = m => m.decreto || 'data não localizada';
   const reconhecimentoTexto = m => m.reconhecida ? (m.reconhecimento || '') + (m.portaria ? ' · ' + (m.portaria.decreto || '') : '') : 'não localizado até o corte';
   const corpoTabela = document.querySelector('#tblEmergencias tbody');
@@ -296,7 +297,8 @@ function __init(){
     .map(f => ({cor: cor(f.cor), rotulo: f.rotulo + ' · ' + n(porFamilia[f.chave])}))
     .concat(porFamilia[EM_CLASSIFICACAO] ? [{cor: cor('cinza-quente'), rotulo: 'em classificação até o corte · ' + n(porFamilia[EM_CLASSIFICACAO])}] : [])
     .concat(soDecreto ? [{cor: cor('cinza-quente'), rotulo: 'só decreto, sem reconhecimento · ' + n(soDecreto), vazado: true}] : [])
-    .concat(Object.keys(estaduais).length && C ? [{cor: EST.fundo, opacidade: EST.opacidade, rotulo: C.texto('defesa-civil.emergencias.mapa.estadual.legenda')}] : []));
+    .concat(C ? [false, true].filter(p => Object.values(estaduais).some(a => !!a.preventiva === p)).map(p => ({cor: EST({preventiva: p}).fundo,
+      opacidade: EST({preventiva: p}).opacidade, rotulo: C.texto('defesa-civil.emergencias.mapa.estadual.legenda' + (p ? '_preventiva' : ''))})) : []));
   molde('subMunicipios', 'defesa-civil.emergencias.mapa.municipios', {n: n(decretados.length)});
   MonitorMapas.credito('boxEmergencias', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: corteDecretos});
 

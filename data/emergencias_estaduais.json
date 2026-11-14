@@ -1,24 +1,37 @@
 {
-  "_governanca": "Emergências declaradas pelo governo do estado, por decreto estadual, no ciclo. Curadoria: cada ato entra com o endereço do diário oficial e só vai ao mapa depois de `conferir_emergencias_estaduais.py` achar no texto do diário o número, a data e a declaração, preservar a cópia e gravar o hash. Camada de contexto do mapa de emergências municipais: não soma na contagem de municípios e não pontua no índice.",
-  "curadoria": true,
-  "revisado_em": "14/11/2026",
-  "atos": [
-    {
-      "uf": "PA",
-      "natureza": "ambiental e climática",
-      "numero": "5.767",
-      "data_ato": "2026-11-11",
-      "data_publicacao": "2026-11-12",
-      "dias": 120,
-      "fonte": "Diário Oficial do Estado do Pará",
-      "edicao": "36.835",
-      "pagina": 4,
-      "url": "https://ioepa.com.br/pages/2026/2026.11.12.DOE.pdf",
-      "conferido": true,
-      "motivo": null,
-      "vigente_ate": "2027-03-11",
-      "hash_evidencia": "0268510732bde2556b21854b7db41785d9ce13841d7b89c72f6448ef6040159b",
-      "conferido_em": "2026-11-14"
-    }
-  ]
+ "_governanca": "Emergências declaradas pelo governo do estado, por decreto estadual, no ciclo. Curadoria: cada ato entra com o endereço do diário oficial e só vai ao mapa depois de `conferir_emergencias_estaduais.py` achar no texto do diário o número, a data e a declaração, preservar a cópia e gravar o hash. Ato declarado em caráter preventivo leva `preventiva: true` e vai ao mapa em cor própria. Camada de contexto do mapa de emergências municipais: não soma na contagem de municípios e não pontua no índice.",
+ "curadoria": true,
+ "revisado_em": "14/11/2026",
+ "atos": [
+  {
+   "uf": "PA",
+   "natureza": "ambiental e climática",
+   "numero": "5.767",
+   "data_ato": "2026-11-11",
+   "data_publicacao": "2026-11-12",
+   "dias": 120,
+   "fonte": "Diário Oficial do Estado do Pará",
+   "edicao": "36.835",
+   "pagina": 4,
+   "url": "https://ioepa.com.br/pages/2026/2026.11.12.DOE.pdf",
+   "conferido": true,
+   "motivo": null,
+   "vigente_ate": "2027-03-11",
+   "hash_evidencia": "0268510732bde2556b21854b7db41785d9ce13841d7b89c72f6448ef6040159b",
+   "conferido_em": "2026-11-14"
+  },
+  {
+   "uf": "AM",
+   "natureza": "climática e ambiental, em caráter preventivo",
+   "preventiva": true,
+   "numero": "54.274",
+   "data_ato": "2026-06-01",
+   "data_publicacao": "2026-06-01",
+   "dias": 180,
+   "fonte": "Imprensa Oficial do Estado do Amazonas",
+   "url": "https://legisla.imprensaoficial.am.gov.br/diario_am/41534/2026/6/19165",
+   "conferido": false,
+   "motivo": null
+  }
+ ]
 }
