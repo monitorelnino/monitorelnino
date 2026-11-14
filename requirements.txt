@@ -29,3 +29,6 @@ Markdown==3.10.2
 certifi==2026.7.22
 # 14/10/2026 (F56): `scripts/verificar_scripts_dos_workflows.py` reprova nome usado sem definição.
 pyflakes==3.4.0
+# 14/11/2026: cliente do Google Earth Engine, para agregar por estado os mapas públicos do MapBiomas (fogo e água)
+# com a conta de serviço do projeto (Secret EE_CHAVE_CONTA_SERVICO). Versão travada, como todo o resto (docs/SBOM.md).
+earthengine-api==1.7.40

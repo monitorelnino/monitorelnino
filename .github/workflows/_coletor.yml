@@ -91,6 +91,12 @@ on:
         required: false
       INMET_API_TOKEN:
         required: false
+      # 14/11/2026: conta de serviço do Google Earth Engine (projeto do MARÉ), para agregar por estado os mapas
+      # públicos do MapBiomas. O JSON da chave fica só no Secret; o coletor o lê da variável de ambiente.
+      EE_CHAVE_CONTA_SERVICO:
+        required: false
+      EE_PROJETO:
+        required: false
       NETLIFY_AUTH_TOKEN:
         required: false
       NETLIFY_SITE_ID:
@@ -317,6 +323,8 @@ jobs:
           PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
           OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
           INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
+          EE_CHAVE_CONTA_SERVICO: ${{ secrets.EE_CHAVE_CONTA_SERVICO }}
+          EE_PROJETO: ${{ secrets.EE_PROJETO }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}

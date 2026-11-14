@@ -70,3 +70,5 @@ jobs:
       OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
       INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
       PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+      EE_CHAVE_CONTA_SERVICO: ${{ secrets.EE_CHAVE_CONTA_SERVICO }}
+      EE_PROJETO: ${{ secrets.EE_PROJETO }}
