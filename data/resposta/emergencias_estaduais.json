@@ -1,0 +1,20 @@
+{
+  "_governanca": "Emergências declaradas pelo governo do estado, por decreto estadual, no ciclo. Curadoria: cada ato entra com o endereço do diário oficial e só vai ao mapa depois de `conferir_emergencias_estaduais.py` achar no texto do diário o número, a data e a declaração, preservar a cópia e gravar o hash. Camada de contexto do mapa de emergências municipais: não soma na contagem de municípios e não pontua no índice.",
+  "curadoria": true,
+  "revisado_em": "14/11/2026",
+  "atos": [
+    {
+      "uf": "PA",
+      "natureza": "ambiental e climática",
+      "numero": "5.767",
+      "data_ato": "2026-11-11",
+      "data_publicacao": "2026-11-12",
+      "dias": 120,
+      "fonte": "Diário Oficial do Estado do Pará",
+      "edicao": "36.835",
+      "pagina": 4,
+      "url": "https://ioepa.com.br/pages/2026/2026.11.12.DOE.pdf",
+      "conferido": false
+    }
+  ]
+}
