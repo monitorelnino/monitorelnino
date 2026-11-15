@@ -216,7 +216,10 @@ def resposta_sanitaria(emergencias, busca: dict, pop_uf: dict, hoje: date = None
 
     17/10/2026 (HANDOVER_RESPOSTA_SANITARIA §1.2): `emergencias` ausente é "não coletado" (antes
     virava lista vazia e índice 0,0); lista vazia só é 0 com as duas buscas datadas — federal (DOU)
-    e estadual nas 27 —; metade sem busca deixa o índice nulo e é nomeada. ESPIN (`BR`) cobre o país."""
+    e estadual nas 27. ESPIN (`BR`) cobre o país.
+    15/11/2026 (editoria): ato em vigor já localizado TEM valor, mesmo com leitura parcial — a população
+    do estado e a vigência do ato são conhecidas; o índice sai do que foi lido, a situação segue "parcial"
+    e o que falta ler continua nomeado. Sem ato localizado e com leitura incompleta, segue sem valor."""
     pop_total = sum(pop_uf.values())
     base = {"desde": "29/06/2026", "fontes": ["DOU (ESPIN)", "diários oficiais estaduais"], "pop_total": int(pop_total),
             "nota": "índice de resposta sanitária = parcela da população em estado com emergência sanitária declarada no ciclo; contagem de emergências ao lado; nunca somado à antecipação"}
@@ -232,12 +235,13 @@ def resposta_sanitaria(emergencias, busca: dict, pop_uf: dict, hoje: date = None
     faltam = ([] if fed.get("consultado_em") else ["federal (DOU)"]) + ([f"estadual: {', '.join(sem_estadual)}"] if sem_estadual else [])
     completo = len(ufs_em) == len(UFS) or not faltam   # ESPIN: nenhuma UF fica de fora
     pop_em = sum(pop_uf.get(u, 0) for u in ufs_em)
+    tem_valor = completo or bool(vig)   # zero só com as duas buscas; ato em vigor localizado já vale
     return {**base, "situacao": "verificado" if completo else "parcial",
-            "emergencias": len(vig) if completo else None,   # parcial: a lista vai em `eventos`, sem total
-            "indice": round(100.0 * pop_em / pop_total, 1) if completo and pop_total else None,
+            "emergencias": len(vig) if tem_valor else None,
+            "indice": round(100.0 * pop_em / pop_total, 1) if tem_valor and pop_total else None,
             "eventos": [{k: e.get(k) for k in ("uf", "tipo", "documento", "data", "url", "vigencia_dias", "vigencia_origem",
                                                  "vigencia_ate", "em_vigor", "revogado_por")} for e in ev],
-            "ufs": ufs_em, "pop_sob_emergencia": int(pop_em) if completo else None, "faltam": faltam,
+            "ufs": ufs_em, "pop_sob_emergencia": int(pop_em) if tem_valor else None, "faltam": faltam,
             "consultado_em": {"federal": fed.get("consultado_em"),
                               "estadual": {u: v.get("consultado_em") for u, v in sorted(est.items()) if v.get("consultado_em")}},
             "lacunas_estaduais": {u: (est.get(u) or {}).get("lacuna") or "sem registro do canal 2" for u in sem_estadual}}
@@ -399,6 +403,12 @@ def autoteste() -> int:
     def t14():
         r = resposta_sanitaria([], {"federal": todas["federal"], "estadual": {"PB": {"consultado_em": "15/10/2026"}}}, pop)
         return r["indice"] is None and r["emergencias"] is None and "MS" in r["faltam"][0] and "PB" not in r["lacunas_estaduais"]
+    def t14b():
+        r = resposta_sanitaria([{"uf": "AM", "tipo": "decreto_estadual", "data": "13/10/2026", "vigencia_dias": 180}],
+                               {"federal": todas["federal"], "estadual": {"AM": {"consultado_em": "13/11/2026"}}}, pop,
+                               hoje=date(2026, 11, 15))
+        return (r["situacao"] == "parcial" and r["indice"] == round(100 / 27, 1) and r["emergencias"] == 1
+                and r["pop_sob_emergencia"] == 10 and "MG" in r["faltam"][0])
     def t15():
         r = resposta_sanitaria([{"uf": "BR", "tipo": "espin"}], {"federal": todas["federal"]}, pop)
         return r["indice"] == 100.0 and r["situacao"] == "verificado" and len(r["ufs"]) == 27
@@ -421,7 +431,8 @@ def autoteste() -> int:
                             "v0.7: nacional ponderado pela população, c_uf = 1, 27 no denominador": t16,
                             "v0.7: UF fora do denominador é erro": t17, "v0.7: UF em elaboração contribui; c_uf pesa o nacional, não a nota": t21, "v0.5: estatuto do plano": t18, "v0.3: cobertura sanitária por população": t11,
                             "resposta: campo ausente é não coletado, nunca 0": t12, "resposta: lista vazia com as duas buscas é 0 verificado": t13,
-                            "resposta: metade estadual sem busca deixa o índice nulo e nomeada": t14, "resposta: ESPIN cobre 100% da população": t15})
+                            "resposta: sem ato localizado, metade estadual sem busca deixa o índice nulo e nomeada": t14,
+                            "resposta: ato em vigor localizado tem valor com leitura parcial, e o que falta segue nomeado": t14b, "resposta: ESPIN cobre 100% da população": t15})
 
 
 if __name__ == "__main__":
