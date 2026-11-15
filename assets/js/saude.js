@@ -280,23 +280,19 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       fixa('respFillSaude', rp.indice, 'decretos de emergência em saúde');
     }
     if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() => {
-      if (rp.indice == null) {   // sem índice: a reserva do HTML ("sem coleta até o corte") é a linha, ou, com leitura parcial, o que já foi lido e o que falta
-        const sem = Object.keys(rp.lacunas_estaduais || {}).sort(), total = n(res.denominador || 27);
-        if (rp.situacao === 'parcial' && sem.length) {
-          // 15/11/2026 (editoria): leitura parcial não esconde o que já foi localizado nos diários lidos.
-          const achados = rp.eventos || [], ufs = [...new Set(achados.map(e => e.uf))].sort();
-          // Sem pílula de total: a regra de 17/10/2026 não dá total com leitura parcial; a linha diz o que foi achado e onde.
-          escreve('linhaRespostaSaude', 'saude.topo.resposta.linha_parcial',
-            {quando: (MS || {}).gerado_em || (MS || {}).corte || '', lidas: total - sem.length, total, siglas: sem.join(', '),
-             n: achados.length, onde: ufs.length ? ' (' + ufs.join(', ') + ')' : ''});
-        }
-        return;
-      }
+      // 15/11/2026 (editoria): ato em vigor localizado tem valor mesmo com leitura parcial; a linha diz o que falta ler.
+      const sem = Object.keys(rp.lacunas_estaduais || {}).sort(), total = n(res.denominador || 27);
+      const quando = (MS || {}).gerado_em || (MS || {}).corte || '', ufs = (rp.ufs || []).length === 27 ? [] : (rp.ufs || []);
+      const parcial = rp.situacao === 'parcial' && sem.length;
+      if (parcial) escreve('linhaRespostaSaude', 'saude.topo.resposta.linha_parcial',
+        {quando, lidas: total - sem.length, total, siglas: sem.join(', '), n: (rp.eventos || []).filter(e => e.em_vigor).length,
+         onde: ufs.length ? ' (' + ufs.join(', ') + ')' : ''});
+      if (rp.indice == null) return;   // sem índice: fica a reserva do HTML ("sem coleta até o corte") ou a linha de leitura parcial
       // 10/11/2026: mesma forma do cartão de decretos da página inicial — o número grande é % da população
       // e a pílula só conta os decretos (o percentual repetia o número grande).
       el('respDenSaude').textContent = T('saude.topo.resposta.unidade');
       el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {n: rp.emergencias || 0})) + '</span>';
-      escreve('linhaRespostaSaude', 'saude.topo.resposta.linha', {quando: (MS || {}).gerado_em || (MS || {}).corte || ''});
+      if (!parcial) escreve('linhaRespostaSaude', 'saude.topo.resposta.linha', {quando});
     });
     MonitorMapas.animarGauges(el('topoSaude'));
   }).catch(_erroSaude("saude:topo"));

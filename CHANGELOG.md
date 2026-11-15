@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-15 · #1766 · Emergência em saúde: o que já foi localizado aparece
+## 2026-11-15 · #1766 · Emergência em saúde: ato em vigor localizado tem valor
 
-Com leitura parcial dos diários estaduais, o cartão de decretos de emergência em saúde passa a mostrar os decretos já localizados e as UFs, junto do que falta ler. O texto do cartão passa a falar de estados, que é o que se coleta.
+Decisão da editoria: o índice de resposta do MARÉ Saúde passa a ter valor com leitura parcial dos diários estaduais quando há ato em vigor localizado (hoje 1,9% da população, dois decretos do Amazonas). O cartão diz quantos diários foram lidos e quais faltam. Zero segue exigindo as duas buscas completas. O texto do cartão passa a falar de estados.
 
 ## 2026-11-15 · #1763 · Seguidor retenta a página que não abriu
 
