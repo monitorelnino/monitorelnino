@@ -103,6 +103,7 @@ TERMOS_LEGAL = ("El Niño", "plano de contingência") + tuple(TERMOS_LEGAL_NOVOS
 VERSAO_LEGAL = "2026-10-30"  # edição lida antes desta versão não procurou os termos do MARÉ Legal: é relida
 # Edição lida com vocabulário anterior a esta data não procurou declaração: é relida.
 VERSAO_DOS_TERMOS = "2026-10-17"
+VERSAO_EMERGENCIA = "2026-11-15"  # edição lida antes não procurou o decreto estadual de emergência: é relida
 VERSAO_DO_LEITOR = "2026-10-20"  # muda quando `_texto_paginas` passa a ler o que não lia
 CONTEXTO_DE_SIGLA = {t: re.compile(r, re.I) for t, r in CONTEXTO_POR_TERMO.items()}
 JANELA_DE_CONTEXTO = 300
@@ -437,6 +438,12 @@ def a_reler(item) -> bool:
                                                                          or item.get("legal_versao") != VERSAO_LEGAL))
 
 
+def falta_emergencia(item) -> bool:
+    """Edição lida antes de procurar o decreto estadual de emergência: relê-se, mas a cobertura de saúde
+    dela segue valendo (por isso fora de `a_reler`). Função pura."""
+    return isinstance(item, dict) and item.get("decisao") == "lida" and item.get("emergencia_versao") != VERSAO_EMERGENCIA
+
+
 AUSENCIA_FINAL_DIAS = 10
 
 
@@ -584,6 +591,25 @@ def _pela_busca(uf: str, rota: dict, desde: str, ate: str, ocorrencias: dict, ho
             "totais_por_termo": totais}, None
 
 
+TERMO_DE_DECLARACAO_ESTADUAL = "declara situação de emergência"
+
+
+def _declaracoes_pela_busca(uf: str, rota: dict, desde: str, ate: str, busca_fn=None) -> dict:
+    """O decreto estadual de emergência pela busca do diário (TO, AC, apifront): as páginas que a busca
+    aponta passam por `declaracoes_no_texto`. Busca que falha não declara nada: a curadoria segue valendo."""
+    from conferir_emergencias_estaduais import declaracoes_no_texto
+    if busca_fn is None:
+        import coletar_doe
+        busca_fn = coletar_doe.itens_da_busca
+    try:
+        itens, _ = busca_fn(uf, rota["adaptador"], rota["url"], desde, ate, termos=[TERMO_DE_DECLARACAO_ESTADUAL])
+    except Exception as e:  # noqa: BLE001 — fonte externa
+        print(f"  {uf}: busca do decreto estadual de emergência falhou ({type(e).__name__})")
+        return {}
+    return {d["numero"]: dict(d, data_publicacao=(it.get("data") or "")[:10], url=it.get("url"), pagina=it.get("pagina"))
+            for it in itens for d in declaracoes_no_texto(" ".join(it.get("trechos") or []))}
+
+
 def somar_janela(anterior: dict, busca: dict) -> dict:
     """Leitura nova que continua a anterior (mesmos termos, sem buraco entre `ate` e `desde`) herda o `desde`
     mais antigo: a janela curta da noite estende o ciclo lido, não o apaga. Função pura."""
@@ -638,13 +664,16 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
     lidas = com_termo = 0
     pistas_legal = []
     # 15/11/2026: emergência declarada pelo estado (camada do mapa) — a prorrogação sai no mesmo diário.
-    from conferir_emergencias_estaduais import prorrogacoes_no_texto
+    from conferir_emergencias_estaduais import declaracoes_no_texto, prorrogacoes_no_texto
+    declaracoes = registro.setdefault("declaracoes_estaduais", {})
     emergencias = [x for x in (ler("emergencias_estaduais.json", {}) or {}).get("atos", [])
                    if x.get("uf") == uf and x.get("conferido")]
     recusa, interrompido = None, False
 
     if rota["tipo"] == "busca":
         busca, recusa = _pela_busca(uf, rota, desde, ate, ocorrencias, hoje)
+        if not recusa:
+            declaracoes.update(_declaracoes_pela_busca(uf, rota, desde, ate))
         com_termo = busca.get("com_declaracao", 0)
         anterior = (registro.get("canal2") or {}).get("busca_declaracao") or {}
         busca = somar_janela((registro.get("canal2") or {}).get("busca_declaracao") or {}, busca)
@@ -681,7 +710,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                 ancoras_vivas[data_lida] = int(achado.group(1))
         # Data "sem edição" se tenta de novo até a ausência ser medida com folga (`ausencia_a_rever`).
         datas = [d for d in datas_do_periodo(desde, ate, tuple(padrao.get("dias", (0, 1, 2, 3, 4))))
-                 if d not in edicoes or a_reler(edicoes[d]) or ausencia_a_rever(edicoes[d], d)]
+                 if d not in edicoes or a_reler(edicoes[d]) or falta_emergencia(edicoes[d]) or ausencia_a_rever(edicoes[d], d)]
         # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
         # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
         # Fonte que recusa parte das datas (MG, 401, 17/10/2026) tem o recente lido antes da recusa, que
@@ -776,6 +805,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                             ocorrencias[chave] = {"url": url, "hash_evidencia": item["hash_evidencia"],
                                                   "paginas": len(paginas), "achados": achados}
                             com_termo += 1
+                        item["emergencia_versao"] = VERSAO_EMERGENCIA
+                        for d in declaracoes_no_texto(texto_inteiro):
+                            declaracoes[d["numero"]] = dict(d, data_publicacao=data, url=url,
+                                                            pagina=pagina_do_trecho(paginas, d["numero"]))
                         prorrogacoes = prorrogacoes_no_texto(emergencias, texto_inteiro)
                         if prorrogacoes:
                             item["hash_evidencia"] = item.get("hash_evidencia") or preservar_evidencia(
@@ -1158,7 +1191,16 @@ def _autoteste() -> int:
        and registro_da_falha(None, "x", OSError("t"))["decisao"] == "vazio")
     ok("data gravada como vazio (conexão recusada, timeout) ou recusa é relida; sem edição na data não",
        a_reler({"decisao": "vazio", "motivo": "URLError: Connection refused"}) and a_reler({"decisao": "recusa"})
+       and falta_emergencia(lida) and not falta_emergencia(dict(lida, emergencia_versao=VERSAO_EMERGENCIA))
        and not a_reler({"decisao": "sem_edicao_na_data"}))
+    _to = ("DECRETO Nº 7.251, DE 19 DE OUTUBRO DE 2026 DECLARA situação de emergência em todo o território do Estado "
+           "do Tocantins, em razão da estiagem. Art. 1º pelo prazo de 180 (cento e oitenta) dias.")
+    ok("busca do diário: a página apontada que declara emergência no estado vira candidato; busca que falha, nada",
+       _declaracoes_pela_busca("TO", {"adaptador": "busca_to", "url": "u"}, "2026-06-29", "2026-11-15",
+                               lambda *a, **k: ([{"data": "2026-10-20", "pagina": 3, "url": "https://to/x.pdf", "trechos": [_to]}], {}))
+       == {"7.251": {"numero": "7.251", "dias": 180, "data_ato": "2026-10-19", "natureza": "por estiagem", "preventiva": False,
+                     "data_publicacao": "2026-10-20", "url": "https://to/x.pdf", "pagina": 3}}
+       and _declaracoes_pela_busca("TO", {"adaptador": "busca_to", "url": "u"}, "a", "b", lambda *a, **k: 1 / 0) == {})
     nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)
     ciclo = {d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-10-01")}
     ok("metade estadual só conta com o ciclo inteiro coberto e relido",
