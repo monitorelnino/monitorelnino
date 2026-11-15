@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1770 · Emergência estadual achada na leitura do diário
+
+A camada de emergências declaradas pelo estado dependia de lançamento manual, e a leitura do diário só procurava emergência em saúde. O decreto do Tocantins de 20/10/2026 (estiagem, todo o estado, 180 dias) ficou fora do mapa. Agora o diário lido traz o decreto estadual de emergência como candidato, que só aparece no mapa depois de conferido na edição.
+
 ## 2026-11-15 · #1765 · Juiz lê o título no cabeçalho das páginas (J21)
 
 Plano com capa em imagem era recusado por título, porque o juiz só olhava o começo do texto. Passa a valer o título repetido no alto das páginas. Medido nos 39 documentos recusados por esse motivo: muda só o plano de Mesquita/RJ.
