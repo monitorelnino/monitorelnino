@@ -189,7 +189,7 @@ Atualizado em 15/11/2026.
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
-| `scripts/unir_conflito_de_rodada.py` | — | `blog/posts.json`, `cadencia_publicacao.json`, `citacao_incompleta.json`, `cobertura_declarada_uf.json`, `doe_edicoes/PB.json`, `doe_ocorrencias.json` (+38) | — | 3 | não |
+| `scripts/unir_conflito_de_rodada.py` | — | `alertas/vigentes.json`, `blog/posts.json`, `cadencia_publicacao.json`, `calendario/fontes_suspensas.json`, `citacao_incompleta.json`, `cobertura_declarada_uf.json` (+43) | — | 3 | não |
 | `seguir_pistas.py` | — | `arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json` | — | — | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
 | `sondar_repositorios_estaduais.py` | — | `repositorios_estaduais.json` | — | — | não |

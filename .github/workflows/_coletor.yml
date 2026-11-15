@@ -455,6 +455,8 @@ jobs:
         id: commit
         env:
           ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+          # 15/11/2026: a recusa de mesclagem abre Issue no repositório dos avisos (`unir_conflito_de_rodada.py`).
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "monitor-el-nino-bot"
           git config user.email "bot@users.noreply.github.com"
