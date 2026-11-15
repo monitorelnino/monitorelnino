@@ -70,7 +70,10 @@ DOMINIOS_CONHECIDOS = {
         "BA": "saude.ba.gov.br",
         "SC": "saude.sc.gov.br",
         "PR": "saude.pr.gov.br",
-        "RO": "sesau.ro.gov.br",
+        # 15/11/2026, sonda wp-json do runner (run 43730491803): sesau.ro.gov.br não resolve no DNS e o
+        # plano de saúde do RO para o El Niño está no portal do estado; o de GO, no subsite /saude.
+        "RO": "rondonia.ro.gov.br",
+        "GO": "goias.gov.br/saude",
     },
     "defesa_civil": {
         "SC": "defesacivil.sc.gov.br",   # §11: robô recusado nas rodadas de 07/09/2026 — mantido para nova tentativa
@@ -97,7 +100,10 @@ UFS = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "
        "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
 
 TERMOS_BUSCA = {
-    "saude": ["plano de ações de saúde", "plano estadual de enfrentamento", "plano de contingência arboviroses"],
+    # 15/11/2026: a API do WordPress exige TODAS as palavras no título; "plano estadual de enfrentamento"
+    # não achava "planosdepreparacaoelnino2026-2027" (RR) nem "Plano_Adaptacao_Saude_RO_ElNino" (RO), e
+    # "El Niño" e "contingência" acharam os dois (mesma sonda).
+    "saude": ["El Niño", "contingência", "plano estadual de enfrentamento"],
     "defesa_civil": ["plano de contingência", "PLANCON", "plano de enfrentamento"],
 }
 
