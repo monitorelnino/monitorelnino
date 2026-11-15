@@ -80,7 +80,6 @@ jobs:
       precisa_node: true
       comandos: |
         atualizar_populacao.py --check
-        processar_contribuicoes.py
         monitorar_sinais_federais.py
         monitorar_busca_web.py --tamanho 150
         scripts/verificar_funil.py --modo rodada
