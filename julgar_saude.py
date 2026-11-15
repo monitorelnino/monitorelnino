@@ -447,6 +447,23 @@ def vigencia_encerrada(texto: str, titulo: str = "") -> str:
     return ""
 
 
+def encerrar_vencidos(su: dict) -> list:
+    """Instrumento já registrado (curado à mão ou julgado antes da regra) cujo título declara período
+    encerrado passa a VENC, e o topo da UF é recalculado. Devolve as UFs mudadas. Mesma regra de
+    `vigencia_encerrada` (editoria, 15/11/2026); só toca plano em vigor (VIG, READ, NOVO)."""
+    from migrar_saude_instrumentos import sincronizar_topo
+    mudadas = []
+    for uf, u in sorted((su.get("uf") or {}).items()):
+        mudou = False
+        for i in u.get("instrumentos") or []:
+            if i.get("status") in ("VIG", "READ", "NOVO") and vigencia_encerrada("", i.get("doc") or ""):
+                i["status"], mudou = "VENC", True
+        if mudou:
+            sincronizar_topo(u)
+            mudadas.append(uf)
+    return mudadas
+
+
 def status_instrumento(categoria: str, encerrada: str = "") -> str:
     """A categoria do juiz → o vocabulário de `saude_uf.json`. Função pura.
 
@@ -1098,6 +1115,14 @@ def autoteste() -> int:
             lambda: degrau_coordenacao("Reativa o COE para o El Niño", "10/08/2026")[0] == "REATIVADO_CICLO",
         "ato antigo sem menção ao ciclo é PERMANENTE":
             lambda: degrau_coordenacao(t_sala, "03/10/2024")[0] == "PERMANENTE",
+        "instrumento já registrado com período encerrado vira VENC e o topo é recalculado":
+            lambda: (lambda su: (encerrar_vencidos(su) == ["RS"]
+                                 and su["uf"]["RS"]["instrumentos"][0]["status"] == "VENC"
+                                 and su["uf"]["CE"]["instrumentos"][0]["status"] == "VIG"))(
+                {"uf": {"RS": {"instrumentos": [{"status": "VIG", "tipo": "recorrente_arboviroses",
+                                                 "doc": "Plano de Contingência Dengue 2024-2025, 2ª versão"}]},
+                        "CE": {"instrumentos": [{"status": "VIG", "tipo": "recorrente_arboviroses",
+                                                 "doc": "Plano Estadual de Enfrentamento das Arboviroses 2025/2026"}]}}}),
         "categoria do juiz vira vocabulário da saúde":
             lambda: (status_instrumento("plano_antigo", "2023-2024") == "VENC"
                      and status_instrumento("plano_elaboracao", "2023-2024") == "ELAB"
@@ -1532,6 +1557,9 @@ def main() -> int:
         print(f"   {n}× {motivo}")
     if mudancas:
         print("mudanças: " + " · ".join(mudancas))
+    vencidos = encerrar_vencidos(su)
+    if vencidos:
+        print("vigência encerrada: " + ", ".join(vencidos))
     if "--aplicar" in args:
         # 13/10/2026 (central, item 9): a bateria rodou, a verificação é de hoje. 16/10/2026: só se
         # rodou INTEIRA — interrompida pelo prazo (17 de 251 em 15/10), o corte novo dizia verificado
