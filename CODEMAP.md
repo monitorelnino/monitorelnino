@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_conformidade.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 14/11/2026.
+Atualizado em 15/11/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
@@ -106,7 +106,7 @@ Atualizado em 14/11/2026.
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
 | `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **172** | não |
-| `conferir_emergencias_estaduais.py` | — | `emergencias_estaduais.json` | — | — | não |
+| `conferir_emergencias_estaduais.py` | — | `emergencias_estaduais.json` | — | 1 | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -189,7 +189,7 @@ Atualizado em 14/11/2026.
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
-| `scripts/unir_conflito_de_rodada.py` | — | `blog/posts.json`, `cadencia_publicacao.json`, `citacao_incompleta.json`, `cobertura_declarada_uf.json`, `doe_edicoes/PB.json`, `doe_ocorrencias.json` (+37) | — | 3 | não |
+| `scripts/unir_conflito_de_rodada.py` | — | `blog/posts.json`, `cadencia_publicacao.json`, `citacao_incompleta.json`, `cobertura_declarada_uf.json`, `doe_edicoes/PB.json`, `doe_ocorrencias.json` (+38) | — | 3 | não |
 | `seguir_pistas.py` | — | `arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json` | — | — | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
 | `sondar_repositorios_estaduais.py` | — | `repositorios_estaduais.json` | — | — | não |
