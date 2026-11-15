@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1750 · O juiz passa a ler o documento pela porta de rede do projeto
+
+O juiz baixava o documento por conta própria, com prazo de 20 segundos e sem a cadeia de certificados: 1.397 pistas em domínio oficial saíam como documento inacessível, a maioria por tempo esgotado. Ele passa a usar a mesma leitura de todo coletor, e as pistas que só falharam com o leitor antigo voltam à vez.
+
 ## 2026-11-15 · #1747 · Indicação do leitor entra toda noite; teto de pistas não barra mais documento oficial
 
 A indicação recebida pelo formulário passa a ser lida toda noite, antes do juiz. O teto de cinco pistas por município deixa de contar a pista já julgada: ele barrava na porta PDFs em domínio oficial de 1.050 municípios. A rodada semanal não perde mais o commit por conflito de cursor. Corrigida a declaração de lacuna das transferências.
