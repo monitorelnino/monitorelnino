@@ -22703,9 +22703,17 @@
      "data": "09/11/2026",
      "decreto": "Decreto municipal nº 286",
      "hash": "8234c78147fd4df6db0e4fb79fbc1c6a206281dbd4348b648bfa80e5a16093c5"
+    },
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://data.queridodiario.ok.org.br/4104659/2026-11-10/b9ad9d0713635968b9224b410ab4cf8a67c64150.pdf",
+     "data": "10/11/2026",
+     "decreto": "Decreto municipal nº 286/2026",
+     "hash": "9bb0b43c3ed66e418ed4a3579a70b425a90b80a43ed1c756fa31cb1682f7f373"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 5
   },
   "3113107": {
@@ -75768,18 +75776,31 @@
    "ibge": "2805000",
    "nome": "Pedra Mole",
    "uf": "SE",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "10/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://data.queridodiario.ok.org.br/2805000/2026-11-10/1f25413ded5886b7d6f177d030446e25e968c714.pdf",
+     "data": "10/11/2026",
+     "decreto": "Decreto municipal nº 527/2026",
+     "hash": "8a254d33132e57e66398b093320f199d811d00c27f893dcf1fe2202c8814f9fb"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 4
   },
   "2409605": {
    "ibge": "2409605",
@@ -82269,18 +82290,31 @@
    "ibge": "3541307",
    "nome": "Presidente Epitácio",
    "uf": "SP",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "06/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://data.queridodiario.ok.org.br/3541307/2026-11-06/fcbb8ed1c9438d471b20195d0d6b1bd0954a0a7b.pdf",
+     "data": "06/11/2026",
+     "decreto": "Decreto municipal nº 4.539/2026",
+     "hash": "19caf9b46273628268134f363e8f169c06f717c97c494aad081b8591cedb3888"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 8
   },
   "1303536": {
    "ibge": "1303536",
