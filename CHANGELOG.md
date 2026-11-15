@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Plano com capa em imagem era recusado por título, porque o juiz só olhava o começo do texto. Passa a valer o título repetido no alto das páginas. Medido nos 39 documentos recusados por esse motivo: muda só o plano de Mesquita/RJ.
 
+## 2026-11-15 · #1763 · Seguidor retenta a página que não abriu
+
+A página oficial que o seguidor não conseguiu abrir volta a ser aberta fora da janela de sete dias, até três vezes; recusa da fonte não se retenta. A falha guarda o código HTTP. 684 páginas voltam, entre elas a matéria de Mesquita/RJ que linka o plano.
 ## 2026-11-15 · #1762 · Pista do dono do domínio
 
 Documento em domínio oficial de um município passa a ser pista desse município: a porta reatribui em vez de recusar (2.369 recusas, 1.694 PDFs), e a correção de atribuição leva o `alvo` junto (783 pistas corrigidas tinham sido fechadas depois). 1.157 pistas voltam ao juiz, de 354 municípios.
