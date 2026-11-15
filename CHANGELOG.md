@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1766 · Emergência em saúde: o que já foi localizado aparece
+
+Com leitura parcial dos diários estaduais, o cartão de decretos de emergência em saúde passa a mostrar os decretos já localizados e as UFs, junto do que falta ler. O texto do cartão passa a falar de estados, que é o que se coleta.
+
 ## 2026-11-15 · #1762 · Pista do dono do domínio
 
 Documento em domínio oficial de um município passa a ser pista desse município: a porta reatribui em vez de recusar (2.369 recusas, 1.694 PDFs), e a correção de atribuição leva o `alvo` junto (783 pistas corrigidas tinham sido fechadas depois). 1.157 pistas voltam ao juiz, de 354 municípios.
