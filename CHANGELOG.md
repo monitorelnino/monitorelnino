@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1774 · Ponte no Brasil para sites que não respondem ao robô
+
+Alguns sites públicos de governo não respondem a quem acessa de fora do país, como o do Tocantins. Agora uma cópia trazida de um computador no Brasil, conferida pelo conteúdo, serve quando o site não responde; recusa explícita continua respeitada. Entram os planos de prevenção e combate a incêndios florestais do Tocantins de 2025 e 2026.
+
 ## 2026-11-15 · #1770 · Emergência estadual achada na leitura do diário
 
 A camada de emergências declaradas pelo estado dependia de lançamento manual, e a leitura do diário só procurava emergência em saúde. O decreto do Tocantins de 20/10/2026 (estiagem, todo o estado, 180 dias) ficou fora do mapa. Agora o diário lido traz o decreto estadual de emergência como candidato, que só aparece no mapa depois de conferido na edição.
