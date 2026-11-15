@@ -242,6 +242,12 @@ def normalizar(pista: dict, origem: str = "") -> dict:
     p.setdefault("id", id_da_pista(p))   # 30/10/2026: o id nasce na porta, não no juiz (31 pistas SC entraram sem)
     p["url_final"] = resolver_url_final(p)
     p["alvo"] = resolver_alvo(p)
+    # 15/11/2026: documento em domínio oficial de um município é pista DESSE município, não de quem a busca
+    # procurava. A porta recusava como "domínio de outro ente" (2.369 recusas, 1.694 PDFs oficiais).
+    from municipio_do_dominio import municipio_de, precisa_corrigir, reatribuir
+    dono = municipio_de(p["url_final"], camara=True)
+    if precisa_corrigir(p, dono):
+        p = reatribuir(p, dono, resolver_data(p) or "")
     p["nivel"] = resolver_nivel(p)
     # Data ilegível vira "" DE PROPÓSITO: manter o original deixaria passar "4 de outubro",
     # e `validar_pista` só recusa o campo vazio. Corte desalinhado é pior que pista perdida.
@@ -449,15 +455,17 @@ def _autoteste() -> int:
     ok("indicação de leitor não disputa vaga do teto",
        motivo_de_recusa(dict(n, origem="contribuicao", url_final="https://bonito.ms.gov.br/plano.pdf",
                              url="https://bonito.ms.gov.br/plano.pdf"), cheias_oficiais) == "")
-    ok("reposição do teto: só PDF em domínio oficial barrado por teto, uma vez por endereço e alvo",
-       [x["url_final"] for x in barradas_pelo_teto([
+    ok("reposição: PDF em domínio oficial barrado por teto (por endereço e alvo) ou por ser de outro município (por endereço)",
+       [x["url_final"] for x in barradas_por_engano([
            {"url": "https://a.rj.gov.br/p.pdf", "alvo": "1", "tipo": "plano", "rejeitada_em": "2026-10-21",
             "origem": "busca_web", "motivo": "acima do teto de 5 pistas abertas para o alvo, o assunto e o dominio oficial, e nao"},
            {"url": "https://a.rj.gov.br/p.pdf", "alvo": "1", "motivo": "acima do teto ... dominio oficial"},
            {"url": "https://a.rj.gov.br/noticia/", "alvo": "1", "motivo": "acima do teto ... dominio oficial"},
            {"url": "https://g1.com/p.pdf", "alvo": "1", "motivo": "acima do teto ... dominio outros"},
-           {"url": "https://b.rj.gov.br/q.pdf", "alvo": "2", "motivo": "tipo 'outro' nao entra na fila"}])]
-       == ["https://a.rj.gov.br/p.pdf"])
+           {"url": "https://b.rj.gov.br/q.pdf", "alvo": "2", "motivo": "tipo 'outro' nao entra na fila"},
+           {"url": "https://c.rj.gov.br/r.pdf", "alvo": "3", "motivo": "fora da entrada do Buscador 2 (B3/B8): domínio de outro ente (C/RJ: c.rj.gov.br)"},
+           {"url": "https://c.rj.gov.br/r.pdf", "alvo": "4", "motivo": "fora da entrada do Buscador 2 (B3/B8): domínio de outra UF (RJ: c.rj.gov.br)"}])]
+       == ["https://a.rj.gov.br/p.pdf", "https://c.rj.gov.br/r.pdf"])
     ok("o motivo do teto diz de que domínio se fala",
        "oficial" in motivo_de_recusa(dict(n, url_final="https://bonito.ms.gov.br/plano.pdf",
                                           url="https://bonito.ms.gov.br/plano.pdf"),
@@ -787,15 +795,17 @@ def sincronizar(nome_da_fila: str, fila_em_memoria: dict, origem: str = "",
             "motivos": motivos}
 
 
-def barradas_pelo_teto(rejeitadas: list) -> list:
-    """Os PDFs em domínio oficial que a porta barrou por teto, um por endereço e alvo, como pista para
-    voltar à porta. Função pura. 15/11/2026: o teto contava a recusada pelo juiz como aberta."""
+def barradas_por_engano(rejeitadas: list) -> list:
+    """Os PDFs em domínio oficial que a porta barrou por regra já corrigida, um por endereço, como pista
+    para voltar à porta. Função pura. 15/11/2026: o teto contava a recusada pelo juiz como aberta, e o
+    documento em domínio de outro município era recusado em vez de ir para o dono do domínio."""
     vistos, fora = set(), []
     for r in rejeitadas or []:
-        url = str(r.get("url") or "")
-        chave = (url, str(r.get("alvo") or ""))
-        if ("acima do teto" in str(r.get("motivo")) and "dominio oficial" in str(r.get("motivo"))
-                and url.lower().split("?")[0].endswith(".pdf") and chave not in vistos):
+        url, motivo = str(r.get("url") or ""), str(r.get("motivo"))
+        teto = "acima do teto" in motivo and "dominio oficial" in motivo
+        dono = "domínio de outro ente" in motivo or "domínio de outra UF" in motivo
+        chave = (url, "" if dono else str(r.get("alvo") or ""))
+        if (teto or dono) and url.lower().split("?")[0].endswith(".pdf") and chave not in vistos:
             vistos.add(chave)
             fora.append({"url_final": url, "tipo": r.get("tipo"), "alvo": r.get("alvo"), "nivel": "C",
                          "data": r.get("rejeitada_em"), "origem": r.get("origem_canonica") or r.get("origem")})
@@ -805,10 +815,10 @@ def barradas_pelo_teto(rejeitadas: list) -> list:
 def main() -> int:
     if "--autoteste" in sys.argv[1:]:
         return _autoteste()
-    if "--repor-barradas-pelo-teto" in sys.argv[1:]:
+    if "--repor-barradas" in sys.argv[1:]:
         from coletores_base import ler
-        r = gravar_lote(barradas_pelo_teto((ler(ARQUIVO_DE_REJEITADAS) or {}).get("rejeitadas")))
-        print(f"reposição do teto: {r['gravadas']} gravada(s), {r['recusadas']} recusada(s) · {r['motivos']}")
+        r = gravar_lote(barradas_por_engano((ler(ARQUIVO_DE_REJEITADAS) or {}).get("rejeitadas")))
+        print(f"reposição das barradas: {r['gravadas']} gravada(s), {r['recusadas']} recusada(s) · {r['motivos']}")
         return 0
     print(__doc__.strip().splitlines()[1])
     return 0

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1762 · Pista do dono do domínio
+
+Documento em domínio oficial de um município passa a ser pista desse município: a porta reatribui em vez de recusar (2.369 recusas, 1.694 PDFs), e a correção de atribuição leva o `alvo` junto (783 pistas corrigidas tinham sido fechadas depois). 1.157 pistas voltam ao juiz, de 354 municípios.
+
 ## 2026-11-15 · #1759 · Monitor de riscos sem a nota da posição do ponto
 
 Sai do mapa das listas federais de risco a nota sobre o ponto ficar no centro do município, a pedido da editoria. Página e catálogo.

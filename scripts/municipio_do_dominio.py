@@ -152,6 +152,33 @@ def _indice(referencia=None):
     return indice
 
 
+def precisa_corrigir(pista: dict, dono: dict) -> bool:
+    """A pista está atribuída a outro ente que não o dono do domínio? Função pura. Olha também o `alvo`,
+    que é o campo que a porta e o Buscador 2 leem (15/11/2026: a correção mudava `ibge` e deixava o `alvo`
+    antigo; 783 pistas já corrigidas foram fechadas depois como "domínio de outro ente")."""
+    if not dono:
+        return False
+    alvo = str(pista.get("alvo") or "")
+    if alvo.isdigit() and len(alvo) == 7 and alvo != dono["ibge"]:
+        return True
+    atual = str(pista.get("ibge") or "").zfill(7) if pista.get("ibge") else ""
+    if atual:
+        return atual != dono["ibge"]
+    return str(pista.get("municipio") or "") != dono["nome"]
+
+
+def reatribuir(pista: dict, dono: dict, hoje_iso: str) -> dict:
+    """A pista com o ente dono do domínio em `municipio`, `uf`, `ibge` e `alvo`, e a atribuição anterior
+    guardada (a primeira, se já houve correção). Função pura."""
+    nova = dict(pista)
+    nova.setdefault("municipio_atribuido_antes", {
+        "municipio": pista.get("municipio"), "uf": pista.get("uf"), "ibge": pista.get("ibge"),
+        "veredito_do_juiz": (pista.get("juiz") or {}).get("motivo")})
+    nova.update(municipio=dono["nome"], uf=dono["uf"], ibge=dono["ibge"], alvo=dono["ibge"],
+                atribuicao_corrigida_em=hoje_iso, atribuicao_corrigida_por="dominio_oficial_do_documento")
+    return nova
+
+
 _INDICE_REAL = []   # a malha do IBGE, lida uma vez por processo
 
 
