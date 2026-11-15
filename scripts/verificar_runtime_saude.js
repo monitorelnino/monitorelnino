@@ -97,7 +97,7 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
   // A situação por estado: lista dos tipos com as siglas em círculos (botões); tipo sem estado não aparece, sem "zero".
   const botoes = () => [...d.querySelectorAll("#listaTiposPlano button[data-uf]")];
   teste("lista dos tipos de plano: 27 siglas como botões, só os tipos que têm estado, sem contagem nem 'zero'", (() => {
-    const tipos = ["NOVO", "READ", "VIG", "ELAB", "LAC", "NAO_VERIFICADO"].filter(t => Object.values(MSd2.ufs).some(u => u.instrumento.status === t));
+    const tipos = ["NOVO", "READ", "VIG", "ELAB", "VENC", "LAC", "NAO_VERIFICADO"].filter(t => Object.values(MSd2.ufs).some(u => u.instrumento.status === t));
     const dds = [...d.querySelectorAll("#listaTiposPlano dd")];
     return botoes().length === 27 && dds.length === tipos.length && !/zero|\d+ estados?/.test(q("listaTiposPlano").textContent)
       && botoes().every(b => b.classList.contains("chip-risco") && /^Abrir a ficha de /.test(b.getAttribute("aria-label")));
@@ -115,7 +115,7 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
   })());
   // Ficha aberta pelo círculo.
   const NOME_DO_TIPO = { NOVO: "Plano feito para este El Niño", READ: "Plano anual atualizado para o ciclo", VIG: "Plano recorrente, sem atualização para o ciclo",
-    ELAB: "Plano em elaboração", LAC: "Plano não localizado até o corte", NAO_VERIFICADO: "Ainda não verificado" };
+    ELAB: "Plano em elaboração", VENC: "Último plano localizado com vigência encerrada", LAC: "Plano não localizado até o corte", NAO_VERIFICADO: "Ainda não verificado" };
   teste("ficha de SE abre pelo círculo, com o tipo de plano do dado", (() => {
     const b = botoes().find(x => x.dataset.uf === "SE");
     b.click();
