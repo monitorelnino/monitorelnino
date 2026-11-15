@@ -1172,6 +1172,19 @@
    ],
    "correcao": "`ausencia_a_rever`: a ausência de edição só é final quando medida pelo menos dez dias depois da data; até lá a data volta a ser tentada em toda rodada. As já gravadas com medição precoce são relidas uma vez.",
    "caso_de_teste": "coletar_edicoes_doe.py --autoteste (caso \"ausência de edição só é final medida dez dias depois da data\")"
+  },
+  {
+   "id": "F86",
+   "noite": "2026-11-14",
+   "titulo": "Lote de evidências acima de 2 GB derrubava o elo e o juiz era pulado",
+   "sintoma": "Noite de 14→15/11: `Noturno — evidências e OCR` vermelho seis vezes e `Noturno — juiz automático` pulado seis vezes; o juiz rodou uma vez, pela reserva. Releases `evidencias-2026-10` e `evidencias-2026-11` sem ativo.",
+   "causa": "O envio do lote mensal ao Release era um job dentro do workflow do elo. O lote de novembro chegou a 2.152 MB e o GitHub recusa ativo de 2 GB (HTTP 422, `size must be less than 2147483648`); o `--clobber` já tinha apagado o ativo anterior. Run vermelho por causa de um acessório, e o elo seguinte só roda depois de run verde.",
+   "prova": [
+    "run 43696015366 (15/11 08:45 UTC): job `publicar_lote`, HTTP 422 `size must be less than 2147483648`",
+    "noturno_juiz.yml em 15/11: 6 runs `skipped`, 1 `success`; noturno_evidencias.yml: 6 `failure`"
+   ],
+   "correcao": "O lote sai em partes pelo primeiro dígito do hash, cada uma abaixo do teto, publicadas uma a uma em workflow próprio (`lote_de_evidencias.yml`); `validar_workflows.py` reprova job acessório dentro de workflow de que um elo depende.",
+   "caso_de_teste": "scripts/empacotar_evidencias.py --autoteste (caso das partes) e scripts/validar_workflows.py (job acessório em elo da corrente)"
   }
  ]
 }

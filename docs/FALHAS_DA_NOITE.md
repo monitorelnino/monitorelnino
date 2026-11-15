@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 15/11/2026. 85 falhas; 78 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 15/11/2026. 86 falhas; 79 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -770,3 +770,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 43698793376 (15/11): `edicoes_from_data/2026-11-06.json` e `2026-11-09.json` com `itens`; `2026-11-12.json` e `2026-11-13.json` com "Edição não existente!"; data/doe_edicoes/AM.json em 15/11: 16 datas `sem_edicao_na_data`, entre elas 06/11 (medida em 09/11) e 09/11 (medida em 10/11)
 - **Correção:** `ausencia_a_rever`: a ausência de edição só é final quando medida pelo menos dez dias depois da data; até lá a data volta a ser tentada em toda rodada. As já gravadas com medição precoce são relidas uma vez.
 - **Caso de teste:** `coletar_edicoes_doe.py --autoteste (caso "ausência de edição só é final medida dez dias depois da data")`
+
+## F86 · Lote de evidências acima de 2 GB derrubava o elo e o juiz era pulado
+
+- **Noite:** 2026-11-14
+- **Sintoma:** Noite de 14→15/11: `Noturno — evidências e OCR` vermelho seis vezes e `Noturno — juiz automático` pulado seis vezes; o juiz rodou uma vez, pela reserva. Releases `evidencias-2026-10` e `evidencias-2026-11` sem ativo.
+- **Causa:** O envio do lote mensal ao Release era um job dentro do workflow do elo. O lote de novembro chegou a 2.152 MB e o GitHub recusa ativo de 2 GB (HTTP 422, `size must be less than 2147483648`); o `--clobber` já tinha apagado o ativo anterior. Run vermelho por causa de um acessório, e o elo seguinte só roda depois de run verde.
+- **Prova:** run 43696015366 (15/11 08:45 UTC): job `publicar_lote`, HTTP 422 `size must be less than 2147483648`; noturno_juiz.yml em 15/11: 6 runs `skipped`, 1 `success`; noturno_evidencias.yml: 6 `failure`
+- **Correção:** O lote sai em partes pelo primeiro dígito do hash, cada uma abaixo do teto, publicadas uma a uma em workflow próprio (`lote_de_evidencias.yml`); `validar_workflows.py` reprova job acessório dentro de workflow de que um elo depende.
+- **Caso de teste:** `scripts/empacotar_evidencias.py --autoteste (caso das partes) e scripts/validar_workflows.py (job acessório em elo da corrente)`
