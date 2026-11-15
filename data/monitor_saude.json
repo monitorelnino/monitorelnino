@@ -166,29 +166,29 @@
   }
  },
  "resumo": {
-  "verificadas": 21,
-  "nao_verificadas": 6,
+  "verificadas": 25,
+  "nao_verificadas": 2,
   "por_faixa": {
-   "em construção": 14,
-   "avançado": 5,
-   "estágio inicial": 2
+   "em construção": 15,
+   "avançado": 7,
+   "estágio inicial": 3
   },
   "planos_municipais_lidos": 343,
   "planos_municipais_sem_leitura": 41,
   "denominador": 27,
   "ponderacao": "populacao",
   "populacao_total": 203062512,
-  "indice_nacional": 57.4,
+  "indice_nacional": 59.2,
   "por_estatuto": {
-   "plano_localizado": 18,
+   "plano_localizado": 22,
    "plano_em_elaboracao": 3,
    "plano_nao_localizado": 0,
-   "nao_verificado": 6
+   "nao_verificado": 2
   },
-  "ufs_com_plano_localizado": 18,
+  "ufs_com_plano_localizado": 22,
   "ufs_em_elaboracao": 3,
-  "ufs_sem_plano_localizado": 9,
-  "coordenacao_verificadas": 2
+  "ufs_sem_plano_localizado": 5,
+  "coordenacao_verificadas": 3
  },
  "ufs": {
   "AC": {
@@ -799,17 +799,17 @@
    "contribuicao_nacional": 3.47
   },
   "MA": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 0.0,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "VENC",
+    "pontos": 0.0,
+    "doc": "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025",
+    "data": "01/2025",
+    "orgao": "SES-MA",
+    "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2025/01/Plano_arboviroses_-_2024_2025.pdf",
+    "temporada": "anterior"
    },
    "cobertura": {
     "peso": 0,
@@ -829,11 +829,11 @@
     "verificada": false,
     "pontos": null,
     "f1": {
-     "status": "NAO_VERIFICADO",
+     "status": "PERMANENTE",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "doc": "PLANO DE CONTINGÊNCIA EM RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA OCASIONADAS POR DENGUE E OUTRAS ARBOVIROSES, 2024-2025 MARANHA O 2024 1 Carlos Orleans Branda o",
+     "data": "02/2024",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2024/02/Plano-de-contige%CC%82ncia-das-Arboviroses-no-Maranha%CC%83o.pdf",
      "citado": null
     },
     "f2": {
@@ -861,7 +861,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
+   "estatuto": "plano_localizado",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0334,
    "contribuicao_nacional": 0.0
@@ -1474,17 +1474,17 @@
    "contribuicao_nacional": 2.77
   },
   "RN": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "VIG",
+    "pontos": 45.0,
+    "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+    "data": "2025",
+    "orgao": "SES-RN",
+    "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+    "temporada": "2025/2026"
    },
    "cobertura": {
     "peso": 0,
@@ -1504,11 +1504,11 @@
     "verificada": false,
     "pontos": null,
     "f1": {
-     "status": "NAO_VERIFICADO",
+     "status": "PERMANENTE",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+     "data": "2025",
+     "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
      "citado": null
     },
     "f2": {
@@ -1536,10 +1536,10 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0,
+   "estatuto": "plano_localizado",
+   "prontidao_nacional": 45.0,
    "peso_nacional": 0.0163,
-   "contribuicao_nacional": 0.0
+   "contribuicao_nacional": 0.73
   },
   "RO": {
    "verificado": true,
@@ -1610,17 +1610,17 @@
    "contribuicao_nacional": 0.27
   },
   "RR": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "NOVO",
+    "pontos": 100.0,
+    "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+    "data": "09/2026",
+    "orgao": "SES-RR",
+    "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "peso": 0,
@@ -1637,23 +1637,23 @@
    "coordenacao": {
     "peso": 0,
     "entra_na_nota": false,
-    "verificada": false,
-    "pontos": null,
+    "verificada": true,
+    "pontos": 75.0,
     "f1": {
-     "status": "NAO_VERIFICADO",
-     "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "status": "CRIADO_CICLO",
+     "pontos": 100,
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
      "citado": null
     },
     "f2": {
-     "status": "NAO_VERIFICADO",
-     "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
-     "citado": null
+     "status": "LISTADA_SEM_ATRIBUICAO",
+     "pontos": 50,
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "citado": "DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026–2027 GOVERNO DO ESTADO DE RORAIMA SECRETARIA DE ESTADO DA SAÚDE – SESAU/RR COORDENADORIA GERAL DE VIGILÂNCIA EM SAÚDE – CGVS DEPARTAMENTO DE VIGILÂNCIA AMBIENTAL – DVA VIGIDESASTRES/RR VERSÃO 1 Bo"
     }
    },
    "c_uf": 1,
@@ -1672,10 +1672,10 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0,
+   "estatuto": "plano_localizado",
+   "prontidao_nacional": 100.0,
    "peso_nacional": 0.0031,
-   "contribuicao_nacional": 0.0
+   "contribuicao_nacional": 0.31
   },
   "RS": {
    "verificado": true,
@@ -1950,17 +1950,17 @@
    "contribuicao_nacional": 21.88
   },
   "TO": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "NOVO",
+    "pontos": 100.0,
+    "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+    "data": "2026",
+    "orgao": "SES-TO",
+    "url": "https://central.to.gov.br/download/446049",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "peso": 0,
@@ -1988,12 +1988,12 @@
      "citado": null
     },
     "f2": {
-     "status": "NAO_VERIFICADO",
+     "status": "NOMEADA_COM_ATRIBUICAO",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
-     "citado": null
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+     "data": "2026",
+     "url": "https://central.to.gov.br/download/446049",
+     "citado": "nicípios, com exceção de São Félix do Tocantins que, até o momento, possui infestação apenas do Aedes albopictus, vetor competente para transmitir as doenças supracitadas. Atualmente, a Organização Mundial da Saúde (OMS) estima que 2/5 da p"
     }
    },
    "c_uf": 1,
@@ -2012,10 +2012,10 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0,
+   "estatuto": "plano_localizado",
+   "prontidao_nacional": 100.0,
    "peso_nacional": 0.0074,
-   "contribuicao_nacional": 0.0
+   "contribuicao_nacional": 0.74
   }
  }
 }
