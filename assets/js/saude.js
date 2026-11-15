@@ -285,7 +285,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
         if (rp.situacao === 'parcial' && sem.length) {
           // 15/11/2026 (editoria): leitura parcial não esconde o que já foi localizado nos diários lidos.
           const achados = rp.eventos || [], ufs = [...new Set(achados.map(e => e.uf))].sort();
-          el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {n: achados.length})) + '</span>';
+          // Sem pílula de total: a regra de 17/10/2026 não dá total com leitura parcial; a linha diz o que foi achado e onde.
           escreve('linhaRespostaSaude', 'saude.topo.resposta.linha_parcial',
             {quando: (MS || {}).gerado_em || (MS || {}).corte || '', lidas: total - sem.length, total, siglas: sem.join(', '),
              n: achados.length, onde: ufs.length ? ' (' + ufs.join(', ') + ')' : ''});
