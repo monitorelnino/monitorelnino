@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1773 · Planos estaduais de saúde: canal dos sites das secretarias
+
+A busca nos sites das secretarias de saúde usava termos que não achavam os planos do ciclo, procurava Rondônia num endereço que não existe e entregava o que achava a uma fila sem julgamento. Agora procura "El Niño" e "contingência", lê o portal de Rondônia e o subsite de Goiás, e o achado vai ao juiz de saúde. Os planos de Roraima e Rondônia para o El Niño 2026-2027 apareceram na primeira sonda.
+
 ## 2026-11-15 · #1767 · Alarme mede a fila de saúde estadual
 
 O alarme noturno de leitura parada passa a contar as pistas de saúde estadual sem veredito além do prazo. A rodada semanal saiu verde em 04 e 11/11 sem que o trabalho chegasse à main, e 474 pistas ficaram sem julgamento.
