@@ -282,8 +282,14 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() => {
       if (rp.indice == null) {   // sem índice: a reserva do HTML ("sem coleta até o corte") é a linha, ou, com leitura parcial, o que já foi lido e o que falta
         const sem = Object.keys(rp.lacunas_estaduais || {}).sort(), total = n(res.denominador || 27);
-        if (rp.situacao === 'parcial' && sem.length) escreve('linhaRespostaSaude', 'saude.topo.resposta.linha_parcial',
-          {quando: (MS || {}).gerado_em || (MS || {}).corte || '', lidas: total - sem.length, total, siglas: sem.join(', ')});
+        if (rp.situacao === 'parcial' && sem.length) {
+          // 15/11/2026 (editoria): leitura parcial não esconde o que já foi localizado nos diários lidos.
+          const achados = rp.eventos || [], ufs = [...new Set(achados.map(e => e.uf))].sort();
+          el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {n: achados.length})) + '</span>';
+          escreve('linhaRespostaSaude', 'saude.topo.resposta.linha_parcial',
+            {quando: (MS || {}).gerado_em || (MS || {}).corte || '', lidas: total - sem.length, total, siglas: sem.join(', '),
+             n: achados.length, onde: ufs.length ? ' (' + ufs.join(', ') + ')' : ''});
+        }
         return;
       }
       // 10/11/2026: mesma forma do cartão de decretos da página inicial — o número grande é % da população
