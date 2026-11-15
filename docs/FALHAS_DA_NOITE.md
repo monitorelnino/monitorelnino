@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 11/11/2026. 84 falhas; 77 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 15/11/2026. 85 falhas; 78 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -761,3 +761,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 42433051903 (08/11 01:10 UTC): atualizar.py sem etapas de coleta; run 42470261402 (08/11 10:10 UTC): COLETA ADIADA pela guarda da janela; run 42977418722 (11/11 07:09 UTC): '[cadência] ... não é domingo ... encerra sem coletar'
 - **Correção:** `nao_antes_do_cron: true` em `rodada_semanal`: o despachante só a julga devida a partir das 03:10 UTC de domingo (00:10 de Brasília), quando `atualizar.py` já vê domingo. Recoleta de 11/11 pela válvula `coleta_de_dia` (financiamento-semanal).
 - **Caso de teste:** `scripts/despachar_temporizadores.py --autoteste (dois casos F84: 01:10 UTC de domingo não devido; 03:20 devido)`
+
+## F85 · Edição do diário publicada com atraso ficava "sem edição" para sempre (AM)
+
+- **Noite:** 2026-11-13
+- **Sintoma:** `data/doe_edicoes/AM.json` com 06/11 e 09/11 em `sem_edicao_na_data`; em 15/11 o portal do diário do Amazonas lista as duas (ids 18266 e 18270) e ainda não lista 12 e 13/11.
+- **Causa:** O portal do Amazonas sobe a edição dias depois da data. `coletar_edicoes_doe` só tentava de novo a data "sem edição" por três dias; passada a janela, a ausência virava final e a edição nunca era lida.
+- **Prova:** run 43698793376 (15/11): `edicoes_from_data/2026-11-06.json` e `2026-11-09.json` com `itens`; `2026-11-12.json` e `2026-11-13.json` com "Edição não existente!"; data/doe_edicoes/AM.json em 15/11: 16 datas `sem_edicao_na_data`, entre elas 06/11 (medida em 09/11) e 09/11 (medida em 10/11)
+- **Correção:** `ausencia_a_rever`: a ausência de edição só é final quando medida pelo menos dez dias depois da data; até lá a data volta a ser tentada em toda rodada. As já gravadas com medição precoce são relidas uma vez.
+- **Caso de teste:** `coletar_edicoes_doe.py --autoteste (caso "ausência de edição só é final medida dez dias depois da data")`
