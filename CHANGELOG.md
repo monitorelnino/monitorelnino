@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1765 · Juiz lê o título no cabeçalho das páginas (J21)
+
+Plano com capa em imagem era recusado por título, porque o juiz só olhava o começo do texto. Passa a valer o título repetido no alto das páginas. Medido nos 39 documentos recusados por esse motivo: muda só o plano de Mesquita/RJ.
+
 ## 2026-11-15 · #1763 · Seguidor retenta a página que não abriu
 
 A página oficial que o seguidor não conseguiu abrir volta a ser aberta fora da janela de sete dias, até três vezes; recusa da fonte não se retenta. A falha guarda o código HTTP. 684 páginas voltam, entre elas a matéria de Mesquita/RJ que linka o plano.
