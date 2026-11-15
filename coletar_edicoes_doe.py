@@ -437,6 +437,22 @@ def a_reler(item) -> bool:
                                                                          or item.get("legal_versao") != VERSAO_LEGAL))
 
 
+AUSENCIA_FINAL_DIAS = 10
+
+
+def ausencia_a_rever(item, data: str) -> bool:
+    """`sem_edicao_na_data` só é final quando medida pelo menos AUSENCIA_FINAL_DIAS depois da data.
+    Função pura. MEDIDO em 15/11/2026 (AM): as edições de 06 e 09/11 entraram no portal dias depois da
+    data, a janela de releitura era de três dias e as duas ficaram "sem edição" para sempre."""
+    if not (isinstance(item, dict) and item.get("decisao") == "sem_edicao_na_data"):
+        return False
+    try:
+        medido = dt.datetime.strptime(str(item.get("em") or ""), "%d/%m/%Y").date()
+    except ValueError:
+        return True
+    return (medido - dt.date.fromisoformat(data.split("#")[0])).days < AUSENCIA_FINAL_DIAS
+
+
 def datas_sem_cobertura(edicoes: dict, ate: str, dias: tuple = (0, 1, 2, 3, 4)) -> list:
     """Datas úteis de 29/06 até `ate` (e cadernos `data#n`) sem edição lida com os termos de hoje nem
     ausência de edição medida. Função pura. Data não tentada, edição que não é edição, sem texto ou
@@ -621,6 +637,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     lidas = com_termo = 0
     pistas_legal = []
+    # 15/11/2026: emergência declarada pelo estado (camada do mapa) — a prorrogação sai no mesmo diário.
+    from conferir_emergencias_estaduais import prorrogacoes_no_texto
+    emergencias = [x for x in (ler("emergencias_estaduais.json", {}) or {}).get("atos", [])
+                   if x.get("uf") == uf and x.get("conferido")]
     recusa, interrompido = None, False
 
     if rota["tipo"] == "busca":
@@ -659,11 +679,9 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
             achado = re.search(r"DO(\d{4,6})_", str((item or {}).get("url") or ""))
             if achado and (item or {}).get("decisao") == "lida":
                 ancoras_vivas[data_lida] = int(achado.group(1))
-        # Data recente "sem edição" se tenta de novo: a edição do dia pode sair depois da leitura.
-        recente = (dt.date.fromisoformat(ate) - dt.timedelta(days=3)).isoformat()
+        # Data "sem edição" se tenta de novo até a ausência ser medida com folga (`ausencia_a_rever`).
         datas = [d for d in datas_do_periodo(desde, ate, tuple(padrao.get("dias", (0, 1, 2, 3, 4))))
-                 if d not in edicoes or a_reler(edicoes[d])
-                 or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")]
+                 if d not in edicoes or a_reler(edicoes[d]) or ausencia_a_rever(edicoes[d], d)]
         # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
         # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
         # Fonte que recusa parte das datas (MG, 401, 17/10/2026) tem o recente lido antes da recusa, que
@@ -758,6 +776,11 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                             ocorrencias[chave] = {"url": url, "hash_evidencia": item["hash_evidencia"],
                                                   "paginas": len(paginas), "achados": achados}
                             com_termo += 1
+                        prorrogacoes = prorrogacoes_no_texto(emergencias, texto_inteiro)
+                        if prorrogacoes:
+                            item["hash_evidencia"] = item.get("hash_evidencia") or preservar_evidencia(
+                                bruto, url, "pdf", "coletar_edicoes_doe")
+                            item["prorrogacoes"] = prorrogacoes
                         item["termos_achados"] = [a["termo"] for a in achados]
                         lidas += 1
                     edicoes[chave] = item
@@ -1142,6 +1165,11 @@ def _autoteste() -> int:
        "lacuna" in busca_de_declaracao("PB", {"edicoes": dict(ciclo, **{"2026-09-10": lida}), "atualizado_em": "02/10/2026"})
        and busca_de_declaracao("PB", {"edicoes": ciclo, "atualizado_em": "02/10/2026"})
        == {"consultado_em": "02/10/2026", "edicoes_lidas": len(ciclo), "ate": "2026-10-01"})
+    ok("ausência de edição só é final medida dez dias depois da data (AM publica com atraso)",
+       ausencia_a_rever({"decisao": "sem_edicao_na_data", "em": "09/11/2026"}, "2026-11-06")
+       and not ausencia_a_rever({"decisao": "sem_edicao_na_data", "em": "16/11/2026"}, "2026-11-06")
+       and ausencia_a_rever({"decisao": "sem_edicao_na_data"}, "2026-11-06")
+       and not ausencia_a_rever({"decisao": "lida", "em": "09/11/2026"}, "2026-11-06"))
     ok("data do ciclo não tentada, ou que não é edição, é falta de cobertura",
        "2026-07-01" in datas_sem_cobertura({d: e for d, e in ciclo.items() if d != "2026-07-01"}, "2026-10-01")
        and datas_sem_cobertura(dict(ciclo, **{"2026-07-02": {"decisao": "nao_e_edicao"}}), "2026-10-01") == ["2026-07-02"]
@@ -1247,10 +1275,15 @@ def main() -> int:
         fontes = (ler("fontes_doe.json", {}) or {}).get("ufs") or {}
         alvos = sorted((uf for uf in UFS if rota_da_uf(uf, fontes)["tipo"]),
                        key=lambda uf: rota_da_uf(uf, fontes)["tipo"] != "busca")
+    elif "--emergencias" in sys.argv:
+        # Toda noite, só os estados com emergência estadual perto do vencimento (a prorrogação sai aí).
+        from coletores_base import ler
+        from conferir_emergencias_estaduais import ufs_em_janela
+        alvos = ufs_em_janela(ler("emergencias_estaduais.json", {}) or {}, ate)
     else:
         uf = arg("--uf")
         if not uf:
-            print("uso: --uf <UF> | --recuperacao | --relatorio | --autoteste")
+            print("uso: --uf <UF> | --recuperacao | --emergencias | --relatorio | --autoteste")
             return 2
         alvos = [uf.upper()]
 

@@ -124,6 +124,10 @@ REGENERAVEIS = (
     "mudancas.html",             # 10/11/2026: gerado do CHANGELOG (gerar_mudancas.py, na cadeia); todo PR com entrada conflitava nele
 )
 
+# 15/11/2026: arquivo que o próprio elo refaz inteiro a cada noite, a partir do que já está na `main`
+# (curadoria + edições lidas do diário). Vence o lado de cima; o que o elo somou volta na noite seguinte.
+REFEITOS_PELO_ELO = ("data/emergencias_estaduais.json",)
+
 # 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se
 # regerando a partir do arquivo-fonte já unido, aqui mesmo — "versão de cima e a cadeia regenera"
 # não serve, porque a cadeia não os regera e `gerar_saude_pipeline.py --check` cobraria a diferença.
@@ -705,6 +709,11 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
             raise Recusa("o lado de cima não tem o arquivo")
         _escrever(destino, nosso_txt)
         return "versão de cima (derivado, será regenerado)"
+    if norm in REFEITOS_PELO_ELO:
+        if nosso_txt is None:
+            raise Recusa("o lado de cima não tem o arquivo")
+        _escrever(destino, nosso_txt)
+        return "versão de cima (o elo refaz na noite seguinte)"
     if norm.endswith("_cursor.json"):
         # Decisão da central (25/10/2026, item 7): cursor é estado de fila, não registro; vence o lado da
         # `main`. 15/11/2026: a rodada semanal perdeu o commit inteiro em `imprensa_cursor` e `resposta_cursor`.

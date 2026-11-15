@@ -157,6 +157,11 @@ def problemas(arquivos: dict, agora: str, limite: int = LIMITE_DIAS,
             if not c.get("revisado_em"):
                 ruins.append(f"{nome}: é de curadoria e não traz `revisado_em` — curadoria se "
                              "mede por revisão declarada, não por relógio")
+            # Curadoria com conferência automática diária declara `verificado_em` e os `atrasos` medidos.
+            v = _data(c.get("verificado_em"))
+            if "verificado_em" in c and (v is None or dias_desde(v, agora) > 2):
+                ruins.append(f"{nome}: conferência automática parada desde {c.get('verificado_em')} (limite 2 dias)")
+            ruins += [f"{nome}: {x}" for x in c.get("atrasos") or []]
             continue
         if regime == "sinais":
             for fonte, f in sorted((c.get("fontes") or {}).items()):

@@ -65,6 +65,10 @@ jobs:
         # 01/11/2026 (central): sonda diária de cada chave, no elo que já as usa. Grava
         # data/noite/<noite>/chaves.json (nunca o valor) e abre/fecha Issue no robo-registro.
         scripts/sondar_credenciais.py --noite
+        # 15/11/2026 (editoria): emergência declarada pelo estado — o diário do estado lido toda noite
+        # perto do vencimento, e a prorrogação aplicada à vigência do mapa. Sem ato na janela, não lê nada.
+        prazo=10min coletar_edicoes_doe.py --emergencias
+        conferir_emergencias_estaduais.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       # F67 (16/10/2026): `coletar_sinais_risco.py` lê as duas chaves; sem repassar, o OpenAQ
