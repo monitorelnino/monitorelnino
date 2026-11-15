@@ -254,6 +254,16 @@
   "data/repositorios_estaduais.json": {
    "escritor": "noturno_repositorios.yml",
    "por_que": "Sondagem semanal de repositórios estaduais (13/11/2026): só `sondar_repositorios_estaduais.py` escreve; uma entrada por UF, com data."
+  },
+  "data/ponte_brasil.json": {
+   "escritor": "qualquer_elo",
+   "por_que": "Índice da ponte no Brasil (15/11/2026): url → cópia em ponte/ pelo sha256. Só scripts/ponte_brasil.py --guardar escreve; uma chave por URL.",
+   "pendente": "classe de união por chave no resolvedor quando a ponte rodar como elo; até lá, só entra por PR"
+  },
+  "ponte/": {
+   "escritor": "qualquer_elo",
+   "sem_colisao_possivel": true,
+   "por_que": "Endereçado pelo conteúdo: o nome é o sha256, como em evidencias/."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."

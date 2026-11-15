@@ -45,6 +45,12 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>15/11/2026 · Ponte no Brasil para sites que não respondem ao robô</dt>
+      <dd>Alguns sites públicos de governo não respondem a quem acessa de fora do país, como o do Tocantins. Agora uma cópia trazida de um computador no Brasil, conferida pelo conteúdo, serve quando o site não responde; recusa explícita continua respeitada. Entram os planos de prevenção e combate a incêndios florestais do Tocantins de 2025 e 2026.</dd>
+      <dt>15/11/2026 · Planos estaduais de saúde: canal dos sites das secretarias</dt>
+      <dd>A busca nos sites das secretarias de saúde usava termos que não achavam os planos do ciclo, procurava Rondônia num endereço que não existe e entregava o que achava a uma fila sem julgamento. Agora procura &quot;El Niño&quot; e &quot;contingência&quot;, lê o portal de Rondônia e o subsite de Goiás, e o achado vai ao juiz de saúde. Os planos de Roraima e Rondônia para o El Niño 2026-2027 apareceram na primeira sonda.</dd>
+      <dt>15/11/2026 · Emergência estadual achada na leitura do diário</dt>
+      <dd>A camada de emergências declaradas pelo estado dependia de lançamento manual, e a leitura do diário só procurava emergência em saúde. O decreto do Tocantins de 20/10/2026 (estiagem, todo o estado, 180 dias) ficou fora do mapa. Agora o diário lido traz o decreto estadual de emergência como candidato, que só aparece no mapa depois de conferido na edição.</dd>
       <dt>15/11/2026 · Alarme mede a fila de saúde estadual</dt>
       <dd>O alarme noturno de leitura parada passa a contar as pistas de saúde estadual sem veredito além do prazo. A rodada semanal saiu verde em 04 e 11/11 sem que o trabalho chegasse à main, e 474 pistas ficaram sem julgamento.</dd>
       <dt>15/11/2026 · Emergência em saúde: ato em vigor localizado tem valor</dt>
@@ -159,12 +165,6 @@
       <dd>Publicado o texto aprovado pela editoria em 30/10 sobre o Decreto 55.965 do Amazonas (emergência em saúde pública por 180 dias, DOE-AM de 26/10). Texto sem alteração; números conferidos contra o pacote pelo verificador do blog; índice, página e feed gerados por `gerar_blog.py`.</dd>
       <dt>30/10/2026 · Leitor único de documento para as fontes de plano sem leitura (+59/−0)</dt>
       <dd>`scripts/sondar_documento.py`: baixa um PDF ou página pela porta de rede do projeto e imprime os trechos dos termos pedidos; só leitura, não grava em `data/`. Serve a S10, S17, S19, S26 e S30 da matriz de planos, no lugar de um script por fonte.</dd>
-      <dt>30/10/2026 · Juiz 1.8: a segunda leva (J14, J16, J19, J20) passa a valer</dt>
-      <dd>Decisão da central de 30/10: as quatro regras medidas à parte entram no padrão do juiz; J8 e J9 seguem fora. A data do codebook sobe (1.8 de 30/10) e devolve ao juiz o que foi julgado sem elas. Nenhum peso ou crédito muda; MARÉ Legal nacional medido igual (40,7), ES +0,3. METODOLOGIA §126.</dd>
-      <dt>30/10/2026 · DOE incremental e decretos de emergência, seg/qua/sex (+36/−2)</dt>
-      <dd>Novo elo `doe-incremental` (segunda, quarta e sexta, 02:17 UTC): lê as edições dos DOE das 27 UFs dos últimos 4 dias e, em seguida, procura ato estadual de emergência em saúde (`coletar_espin.py`). Para isso `--ultimos-dias N` entra nos dois coletores por uma função única, `desde_de`. Decisão da editoria de 30/10: 2 a 3 vezes por semana, não todo dia. Temporizador registrado; ensaio simulado verde.</dd>
-      <dt>30/10/2026 · O id da pista nasce na porta (+21/−14)</dt>
-      <dd>A fórmula do id (sha1 de ibge, url e trecho) existia em três cópias (`revisar_pistas`, `seguir_pistas`, `triar_confianca_pistas`) e a porta `scripts/pistas.py` deixava entrar pista sem id (31 de SC, 30/10). Passa a haver uma só, `id_da_pista`, aplicada em `normalizar`; as três cópias importam dela. Ids já gravados não mudam. Saldo positivo: um caso de teste novo (+4).</dd>
     </dl>
   </section>
 </main>
