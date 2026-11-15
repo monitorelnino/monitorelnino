@@ -714,6 +714,13 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
             raise Recusa("o lado de cima não tem o arquivo")
         _escrever(destino, nosso_txt)
         return "versão de cima (o elo refaz na noite seguinte)"
+    if norm.endswith("_cursor.json"):
+        # Decisão da central (25/10/2026, item 7): cursor é estado de fila, não registro; vence o lado da
+        # `main`. 15/11/2026: a rodada semanal perdeu o commit inteiro em `imprensa_cursor` e `resposta_cursor`.
+        if nosso_txt is None:
+            raise Recusa("o lado de cima não tem o arquivo")
+        _escrever(destino, nosso_txt)
+        return "versão de cima (cursor: estado de fila)"
     raise Recusa("caminho sem resolução conhecida; a política de mesclagem dele não está decidida")
 
 

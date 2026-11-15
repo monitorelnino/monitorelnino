@@ -371,6 +371,10 @@ def gravar(nome, obj, compacto: bool = False):
 TIPOS_DE_PISTA = ("plano", "estrutura", "decreto", "outro")
 NIVEIS_DE_PISTA = ("A", "B", "C")
 TETO_DE_PISTAS_POR_MUNICIPIO = 5
+# Pista que ja teve a sua vez nao ocupa vaga do teto. 15/11/2026, medido: a recusada pelo juiz contava
+# como aberta para sempre; 444 das 460 chaves no teto estavam cheias so de recusadas, e 1.294 PDFs em
+# dominio oficial (1.050 municipios) foram barrados na porta — entre eles os planos de Mesquita/RJ.
+JA_DECIDIDA = ("fechada", "aplicada", "rejeitada", "pista — recusada pelo juiz")
 
 
 def classe_de_dominio(url: str) -> str:
@@ -396,7 +400,8 @@ def validar_pista(pista: dict, existentes: list = None) -> tuple:
       · `tipo` igual a `decreto`: vai para a conferencia da base oficial de resposta, nunca para a
         fila de planos;
       · repetida (mesma url_final + alvo + tipo): nao entra de novo;
-      · acima do teto de cinco abertas para o municipio e o assunto, salvo nivel superior.
+      · acima do teto de cinco abertas (sem veredito do juiz) para o municipio e o assunto, salvo nivel
+        superior ou indicacao de leitor.
     """
     url = str((pista or {}).get("url_final") or "").strip()
     if not url:
@@ -436,8 +441,9 @@ def validar_pista(pista: dict, existentes: list = None) -> tuple:
                if str(p.get("alvo") or "") == str(pista.get("alvo") or "")
                and p.get("tipo") == tipo
                and classe_de_dominio(str(p.get("url_final") or p.get("url") or "")) == classe
-               and not str(p.get("status") or "").startswith(("fechada", "aplicada", "rejeitada"))]
-    if len(abertas) >= TETO_DE_PISTAS_POR_MUNICIPIO:
+               and not str(p.get("status") or "").startswith(JA_DECIDIDA)]
+    # 15/11/2026: a indicacao do leitor aponta UM documento; nao disputa vaga com o que a busca trouxe.
+    if len(abertas) >= TETO_DE_PISTAS_POR_MUNICIPIO and pista.get("origem") != "contribuicao":
         nivel_novo = NIVEIS_DE_PISTA.index(str(pista.get("nivel")).upper())
         piores = [p for p in abertas
                   if str(p.get("nivel") or "C").upper() in NIVEIS_DE_PISTA
