@@ -61,7 +61,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import ua_de, copia_arquivada, hoje_editorial, gravar_em, log_busca, sessao_sharepoint
+from coletores_base import buscar, ua_de, copia_arquivada, hoje_editorial, gravar_em, log_busca, sessao_sharepoint
 import juiz
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
@@ -123,7 +123,7 @@ def _ler_sharepoint_rs(url, timeout):
     return corpo
 
 
-def buscar_texto(url, timeout=20, arquivada=None):
+def buscar_texto(url, timeout=40, arquivada=None):
     """Busca o conteúdo textual da URL. Tolerante a falha (retorna None, nunca lança).
     Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
     falha já usado no resto do pipeline (perda de recall, nunca invenção de texto)."""
@@ -133,10 +133,11 @@ def buscar_texto(url, timeout=20, arquivada=None):
         elif HOST_SHAREPOINT_RS in url:
             raw, tipo = _ler_sharepoint_rs(url, timeout), ""
         else:
-            req = urllib.request.Request(url, headers={"User-Agent": ua_de("julgamento de descobertas")})
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                raw = resp.read()
-                tipo = (resp.headers.get("Content-Type") or "").lower()
+            # 15/11/2026: pela porta de rede do projeto (`coletores_base.buscar`), como todo coletor. O juiz
+            # abria a conexão por conta própria, com 20 s e sem a cadeia de certificados do `certifi`: em três
+            # rodadas, 90 de 153 falhas foram tempo esgotado e 15 foram cadeia TLS — documento oficial no ar
+            # saindo `documento_inacessivel` (1.397 pistas em domínio oficial paradas nisso).
+            raw, tipo = buscar(url, timeout=timeout, origem="julgamento de descobertas"), ""
         texto = texto_do_documento(raw, url, tipo)
         if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR:
             texto = texto_por_ocr(raw) or texto
@@ -1151,10 +1152,10 @@ def self_test():
 
     # 12/11/2026: o site recusa; o texto vem da cópia arquivada, e sem cópia segue "não obtido"
     import unittest.mock as _mk
-    with _mk.patch("urllib.request.urlopen", side_effect=OSError("403")), \
+    with _mk.patch(f"{__name__}.buscar", side_effect=OSError("403")), \
          _mk.patch(f"{__name__}.copia_arquivada", return_value=(b"<p>Plano de contingencia de Bonito</p>", "2026-09-01")):
         assert "Plano de contingencia" in (buscar_texto("https://x.ms.gov.br/p.html") or ""), "cópia arquivada não lida"
-    with _mk.patch("urllib.request.urlopen", side_effect=OSError("403")), \
+    with _mk.patch(f"{__name__}.buscar", side_effect=OSError("403")), \
          _mk.patch(f"{__name__}.copia_arquivada", return_value=(None, None)):
         assert buscar_texto("https://x.ms.gov.br/p.html") is None
 
