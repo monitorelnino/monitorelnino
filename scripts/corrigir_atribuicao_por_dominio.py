@@ -50,36 +50,29 @@ STATUS_DE_VOLTA = ("pista — atribuição corrigida pelo domínio oficial do do
                    "volta ao juiz com o ente dono do domínio")
 
 
-def precisa_corrigir(pista: dict, dono: dict) -> bool:
-    """A pista está atribuída a outro ente que não o dono do domínio? Função pura."""
-    if not dono:
-        return False
-    atual = str(pista.get("ibge") or "").zfill(7) if pista.get("ibge") else ""
-    if atual and atual == dono["ibge"]:
-        return False
-    if not atual and str(pista.get("municipio") or "") == dono["nome"]:
-        return False
-    return True
+from municipio_do_dominio import precisa_corrigir, reatribuir  # noqa: E402  (a regra mora com o resolvedor)
+
+FECHADA_POR_OUTRO_ENTE = ("domínio de outro ente", "domínio de outra UF")
+
+
+def fechada_por_engano(pista: dict, dono: dict) -> bool:
+    """Fechada pelo Buscador 2 como domínio de outro ente, com o dono do domínio conhecido: era pista do
+    dono, e fechar a tirou do juiz. Função pura."""
+    return bool(dono) and any(m in str(pista.get("status") or "") for m in FECHADA_POR_OUTRO_ENTE)
 
 
 def corrigir(pista: dict, dono: dict, hoje_iso: str) -> dict:
-    """Devolve a pista reatribuída ao dono do domínio. Função pura (não escreve em disco).
+    """Devolve a pista reatribuída ao dono do domínio e de volta à fila do juiz. Função pura.
 
     O veredito do juiz é removido porque ele julgou OUTRO par município-documento; manter o
     veredito deixaria a pista fora da fila para sempre, com uma recusa que não se aplica mais.
     """
-    nova = dict(pista)
-    nova["municipio_atribuido_antes"] = {
-        "municipio": pista.get("municipio"), "uf": pista.get("uf"), "ibge": pista.get("ibge"),
-        "veredito_do_juiz": (pista.get("juiz") or {}).get("motivo"),
-    }
-    nova["municipio"] = dono["nome"]
-    nova["uf"] = dono["uf"]
-    nova["ibge"] = dono["ibge"]
-    nova["atribuicao_corrigida_em"] = hoje_iso
-    nova["atribuicao_corrigida_por"] = "dominio_oficial_do_documento"
-    nova.pop("juiz", None)
-    nova.pop("proxima_tentativa_em", None)
+    if str(pista.get("ibge") or "").zfill(7) == dono["ibge"] and not fechada_por_engano(pista, dono):
+        return dict(pista, alvo=dono["ibge"])   # já julgada com o ente certo: só o alvo estava antigo
+    nova = reatribuir(pista, dono, hoje_iso)
+    for campo in ("juiz", "proxima_tentativa_em", "fechada_em", "buscador2_em"):
+        nova.pop(campo, None)
+    nova["entrada"] = "municipio"
     nova["status"] = STATUS_DE_VOLTA
     return nova
 
@@ -107,6 +100,16 @@ def _autoteste() -> int:
        not precisa_corrigir({"municipio": "Celso Ramos"}, dono))
 
     nova = corrigir(pista, dono, "2026-10-03")
+    ok("o alvo, que é o que a porta lê, vai junto", nova["alvo"] == "4204152")
+    julgada = dict(nova, alvo="4215307", status="aplicada", juiz={"promove": True})
+    ok("pista do ente certo, já julgada, só troca o alvo antigo: veredito e status ficam",
+       corrigir(julgada, dono, "2026-11-15") == dict(julgada, alvo="4204152"))
+    velha = dict(nova, alvo="4215307", status="fechada — Buscador 2: fora da entrada (B3/B8): domínio de outro ente (Celso Ramos/SC: celsoramos.sc.gov.br)")
+    ok("pista já corrigida com o alvo antigo, fechada como de outro ente, volta à fila com o alvo do dono",
+       precisa_corrigir(velha, dono) and fechada_por_engano(velha, dono)
+       and corrigir(velha, dono, "2026-11-15")["alvo"] == "4204152"
+       and corrigir(velha, dono, "2026-11-15")["municipio_atribuido_antes"]["municipio"] == "Salete"
+       and corrigir(velha, dono, "2026-11-15")["status"].startswith("pista — atribuição corrigida"))
     ok("reatribui o município", nova["municipio"] == "Celso Ramos" and nova["ibge"] == "4204152")
     ok("guarda a atribuição anterior",
        nova["municipio_atribuido_antes"]["municipio"] == "Salete"
@@ -168,8 +171,8 @@ def main() -> int:
             if urls and not any(x in url for x in urls):
                 continue
             total += 1
-            dono = municipio_de(url)
-            if not precisa_corrigir(p, dono):
+            dono = municipio_de(str(p.get("url_final") or url), camara=True)
+            if not (precisa_corrigir(p, dono) or fechada_por_engano(p, dono)):
                 continue
             nova = corrigir(p, dono, hoje)
             corrigidas.append((nome_fila, p.get("id"), p.get("municipio"), p.get("uf"),
