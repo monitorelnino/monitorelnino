@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1759 · Monitor de riscos sem a nota da posição do ponto
+
+Sai do mapa das listas federais de risco a nota sobre o ponto ficar no centro do município, a pedido da editoria. Página e catálogo.
+
 ## 2026-11-15 · #1758 · Ato de aprovação fica só no dado
 
 O cartão do município e a ficha do estado deixam de trazer a marca "sem ato de aprovação localizado": a lei federal não exige o ato. O campo continua no registro e a análise de incerteza segue medindo a hipótese. O índice não muda.
