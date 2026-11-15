@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
+
+O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo "vigência encerrada".
+
 ## 2026-11-15 · #1781 · Plano estadual de saúde com vigência encerrada
 
 Quando o último plano de saúde localizado de um estado declara um período já encerrado, como 2024-2025, ele aparece na página como "último plano localizado com vigência encerrada", com título e link, e não pontua. Plano sem período declarado segue a regra de sempre. A regra está na metodologia. O juiz passa a reconhecer plano em título que é nome de arquivo (RR, RO).

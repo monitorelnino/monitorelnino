@@ -54,6 +54,7 @@ import pathlib
 import re
 import sys
 import unicodedata
+import urllib.parse
 
 from classificador_natureza import classificar as classificar_natureza
 from classificador_natureza import citacao_completa, data_do_ato, extrair_data
@@ -206,6 +207,18 @@ EXTENSOES_DE_DOCUMENTO = (".pdf", ".doc", ".docx", ".odt", ".rtf")
 MINIMO_DE_ESTRUTURA = 2
 
 
+def url_de_documento(url: str) -> bool:
+    """A URL entrega um arquivo, e não uma página. Função pura.
+
+    15/11/2026 (RN, TO): o portal publica o PDF por um endereço de download — o nome do arquivo no
+    parâmetro (`download?filePath=…Plano….PDF`) ou um número (`central.to.gov.br/download/446049`).
+    Só a extensão no caminho via documento, e os dois planos saíam `noticia_institucional_nao_e_o_plano`."""
+    partes = urllib.parse.urlsplit(str(url or ""))
+    nomes = [partes.path] + [v for _, v in urllib.parse.parse_qsl(partes.query)]
+    return (any(urllib.parse.unquote(n).lower().rstrip().endswith(EXTENSOES_DE_DOCUMENTO) for n in nomes)
+            or bool(re.search(r"/download/\d+/?$", partes.path)))
+
+
 def e_o_proprio_plano(texto: str, url: str = None) -> tuple:
     """(ok, motivo, provas). O julgado é o PLANO, e não uma notícia sobre ele. Função pura.
 
@@ -219,8 +232,7 @@ def e_o_proprio_plano(texto: str, url: str = None) -> tuple:
     não é plano. Com URL de documento a marca de notícia não derruba — um PDF pode citar a notícia
     que o divulgou, e o que vale é o que foi baixado.
     """
-    u = str(url or "").lower().split("?")[0]
-    e_documento = u.endswith(EXTENSOES_DE_DOCUMENTO)
+    e_documento = url_de_documento(url)
     estrutura = set(m.group(0).lower() for m in RE_ESTRUTURA_DE_PLANO.finditer(texto or ""))
     noticia = RE_MARCA_DE_NOTICIA.search(texto or "")
     if e_documento:
@@ -1872,6 +1884,10 @@ def autoteste() -> int:
                            "para emergências. Assessoria de Comunicação. Leia também.",
                            "https://toledo.pr.gov.br/noticia/prefeitura-apresenta-plano")[1]
          == "noticia_institucional_nao_e_o_plano"),
+        ("download de arquivo é documento: nome no parâmetro (RN) e número no caminho (TO)",
+         url_de_documento("https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=A%2FPlano%20%282025%29.PDF")
+         and url_de_documento("https://central.to.gov.br/download/446049")
+         and not url_de_documento("https://toledo.pr.gov.br/noticia/prefeitura-apresenta-plano")),
         # 15/10/2026, codebook 1.6: os dois documentos reais (Toledo/PR, IN 17/2026-SMED; Cubatão/SP,
         # relatório do BNDES servido em bndes.gov.br).
         ("plano de contingência da rede de ensino NÃO é o plano do município (Toledo/PR)",
