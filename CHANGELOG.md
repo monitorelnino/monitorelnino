@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1751 · Arquivos gravados por dois elos ganham política de mesclagem, e a recusa passa a avisar
+
+Dez arquivos eram gravados por dois ou mais elos sem política de mesclagem: o primeiro conflito derrubava o commit do elo. Cinco ganham política (retrato mais recente; união seção a seção). O banco segue recusando, de propósito, e toda recusa passa a abrir aviso com o nome do arquivo.
+## 2026-11-15 · #1750 · O juiz passa a ler o documento pela porta de rede do projeto
+
+O juiz baixava o documento por conta própria, com prazo de 20 segundos e sem a cadeia de certificados: 1.397 pistas em domínio oficial saíam como documento inacessível, a maioria por tempo esgotado. Ele passa a usar a mesma leitura de todo coletor, e as pistas que só falharam com o leitor antigo voltam à vez.
+## 2026-11-15 · #1749 · Lote de evidências em partes e fora do elo; o juiz não é mais pulado por falha de acessório
+
+O lote mensal de evidências passou de 2 GB, o Release recusou o envio e o elo saiu vermelho seis vezes na noite de 14 para 15/11, pulando o juiz. O lote passa a sair em partes abaixo do teto, em workflow próprio; um portão reprova job acessório dentro de elo da corrente.
+
 ## 2026-11-15 · #1747 · Indicação do leitor entra toda noite; teto de pistas não barra mais documento oficial
 
 A indicação recebida pelo formulário passa a ser lida toda noite, antes do juiz. O teto de cinco pistas por município deixa de contar a pista já julgada: ele barrava na porta PDFs em domínio oficial de 1.050 municípios. A rodada semanal não perde mais o commit por conflito de cursor. Corrigida a declaração de lacuna das transferências.

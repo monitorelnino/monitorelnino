@@ -448,9 +448,35 @@ for f, wf in carregados.items():
                           f"chave cadastrada (F67).")
                     erros += 1
 
+# ELO DA CORRENTE SÓ TEM O COLETOR E O QUE VEM ANTES DELE (15/11/2026, F86 do catálogo).
+#
+# O elo seguinte só roda quando o run do anterior sai verde, e o run é o conjunto dos jobs: o envio do
+# lote de evidências ao Release, job DEPOIS do coletor no mesmo workflow, falhou (ativo de 2 GB) e o
+# juiz foi pulado seis vezes numa noite. Reprova, no workflow de que um elo depende, o job que não é
+# o coletor nem pré-requisito dele (`needs`) — trabalho acessório vive em workflow próprio.
+_nome_de = {(wf or {}).get("name"): f for f, wf in carregados.items()}
+_e_coletor = lambda j: str((j or {}).get("uses") or "").endswith("/_coletor.yml")
+for f, wf in carregados.items():
+    if not any(_e_coletor(j) for j in ((wf or {}).get("jobs") or {}).values()):
+        continue
+    _gatilho = ((wf or {}).get(True) or (wf or {}).get("on") or {})
+    for _fonte_nome in ((_gatilho.get("workflow_run") or {}).get("workflows") or []) if isinstance(_gatilho, dict) else []:
+        _fonte = _nome_de.get(_fonte_nome)
+        _jobs = ((carregados.get(_fonte) or {}).get("jobs") or {})
+        _antes = {n for j in _jobs.values() if _e_coletor(j)
+                  for n in ([j.get("needs")] if isinstance(j.get("needs"), str) else (j.get("needs") or []))}
+        for _nome_job, _job in _jobs.items():
+            if (_e_coletor(_job) or _nome_job in _antes
+                    or str((_job or {}).get("if") or "").startswith("github.event_name == 'workflow_dispatch'")):
+                continue
+            print(f"  ✗ {_fonte}: job `{_nome_job}` não é o coletor nem pré-requisito dele, e `{f}` só roda "
+                  f"quando este run sai verde — a falha do acessório para a corrente (F86).")
+            erros += 1
+
 print("✓ WORKFLOWS OK — YAML válido, sem chave duplicada, todo job com teto de tempo, "
       "todo portão de página com assunto declarado, reposição do domínio fora da fila da rodada, "
       "nenhum script cancelando run de outro, nenhuma expressão de contexto vazia, "
-      "nenhum deploy falho saindo verde, toda chave lida por coletor repassada ao elo."
+      "nenhum deploy falho saindo verde, toda chave lida por coletor repassada ao elo, "
+      "nenhum job acessório dentro de elo da corrente."
       if not erros else f"✗ WORKFLOWS: {erros} problema(s).")
 sys.exit(1 if erros else 0)
