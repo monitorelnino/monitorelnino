@@ -3935,6 +3935,10 @@ aprovação localizado**, conta **no degrau que a leitura do documento indicar**
 O registro traz a marca **"sem ato de aprovação localizado"**, visível na ficha do município e na
 do estado. A marca sai quando o ato for localizado — a busca do ato continua nas rodadas.
 
+> **15/11/2026 (editoria).** A marca deixa de aparecer na ficha: a lei federal não exige ato de
+> aprovação (Lei 12.340/2010, art. 3º-A, § 6º, pede elaboração, atualização anual e audiência pública).
+> O campo `sem_ato_de_aprovacao` continua no registro, e a análise de incerteza segue medindo a hipótese.
+
 ### 101.1 A justificativa, e o que ela não diz
 
 O índice mede **preparação publicada e verificável**. A publicação em domínio oficial é ato do
