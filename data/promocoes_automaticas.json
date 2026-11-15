@@ -742126,6 +742126,287 @@
    "pista_id": "43a00a5add",
    "origem": "descoberta",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "87774 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Campos dos Goytacazes\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "de Assistência Social e Cidadania para administração de Abrigos Temporários. A resolução nº 109, de 11 de novembro de 2009 do Conselho Nacional de Assistência",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "109",
+      "data": "11/11/2009",
+      "trecho": "de Assistência Social e Cidadania para administração de Abrigos Temporários. A resolução nº 109, de 11 de novembro de 2009 do Conselho Nacional de Assistência"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "11/11/2009",
+   "natureza": null,
+   "ibge": "3301009",
+   "municipio": "Campos dos Goytacazes",
+   "uf": "RJ",
+   "url": "https://social.campos.rj.gov.br/wp-content/uploads/2026/02/PLANO-MUNICIPAL-DE-ABRIGOS-TEMPORARIOS-2026-2027-versao-002.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4d7bfb1562",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fb8f2e0e50970733d8b5ffa6d0aa08d87b8bfad6598f230817f910a3d2710d89"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301009",
+   "municipio": "Campos dos Goytacazes",
+   "uf": "RJ",
+   "url": "http://www.rj.gov.br/saude/node/3097",
+   "regras_18": [],
+   "pista_id": "a9ea593c99",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9706 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Niterói\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "25/11/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "25/11/2021",
+   "natureza": null,
+   "ibge": "3303302",
+   "municipio": "Niterói",
+   "uf": "RJ",
+   "url": "https://niteroi.rj.gov.br/plano-chuvas-de-verao-treinamentos-e-exercicios-simulados-marcam-a-primeira-semana-de-protecao-e-defesa-civil-de-niteroi/",
+   "regras_18": [],
+   "pista_id": "ed33612530",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e11888b1992d87fb9731decc53d36a0a0b4e1f5bc52a001115299c223ef0c3e6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://niteroi.rj.gov.br/plano-chuvas-de-verao-treinamentos-e-exercicios-simulados-marcam-a-primeira-semana-de-protecao-e-defesa-civil-de-niteroi/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13258 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Niterói\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "03/11/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "03/11/2023",
+   "natureza": null,
+   "ibge": "3303302",
+   "municipio": "Niterói",
+   "uf": "RJ",
+   "url": "https://niteroi.rj.gov.br/niteroi-une-inteligencia-artificial-e-humana-no-combate-as-queimadas/",
+   "regras_18": [],
+   "pista_id": "168ce45677",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e0424a03652b4ae9685004fd32499826ea7cf4bf6632be4dceed3273d0179535",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13691 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302502",
+   "municipio": "Magé",
+   "uf": "RJ",
+   "url": "https://mage.rj.gov.br/informacoes/prefeitura-de-mage-apresenta-plano-de-contingencia-de-barragens-no-2-distrito-para-garantir-seguranca-da-populacao/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "1d27093b56",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7b47ef2ff249e53248d7a6e86472aa1395a05c819dee741cc8e4cdc6a0d2d3d6"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "95919 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado do Rio de Janeiro MUNICÍPIO DE MARICÁ 813 DECRETO Nº , DE 11 DE FEVEREIRO DE 2022. PLANO DE CONTIGÊNCIA DE PROTEÇÃO E DEFESA CIVIL CONSIDERANDO que o Pla"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "IRO DE 2022. PLANO DE CONTIGÊNCIA DE PROTEÇÃO E DEFESA CIVIL CONSIDERANDO que o Plano de Contingência é um dos instrumentos estratégicos de gestão de risco de d",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado do Rio",
+      "titulo": "Plano de Contingência",
+      "trecho": "IRO DE 2022. PLANO DE CONTIGÊNCIA DE PROTEÇÃO E DEFESA CIVIL CONSIDERANDO que o Plano de Contingência é um dos instrumentos estratégicos de gestão de risco de d",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Estado do Rio de Janeiro MUNICÍPIO DE MARICÁ 813 DECRETO Nº , DE 11 DE FEVEREIRO DE 2022. PLANO DE CONTIGÊNCIA DE PROTEÇÃO E DEFESA CIVIL CONSIDERANDO que o Pla"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "ferente aos meses de dezembro a abril, o que significa o aumento exponencial de chuvas nesta região; CONSIDERANDO o trabalho de previsão meteorológica e monitor"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2021, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2021",
+   "natureza": "EX_ANTE",
+   "ibge": "3302700",
+   "municipio": "Maricá",
+   "uf": "RJ",
+   "url": "https://www.marica.rj.gov.br/wp-content/uploads/2025/04/decreto-no-813-de-11-02-22-Plano-de-Contingencia-Marica-2021-2022-revisao-05.pdf",
+   "regras_18": [
+    "J7",
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "aa877524eb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7ada1cbabf40701d64ae594025dfe1bb5ea472d268b10dfd0a846af6d8f4e6dc",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.marica.rj.gov.br/wp-content/uploads/2025/04/decreto-no-813-de-11-02-22-Plano-de-Contingencia-Marica-2021-2022-revisao-05.pdf",
+    "recusa_original": "citacao_incompleta"
+   },
+   "nao_aplicado": {
+    "em": "2026-11-14",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "127935 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300100",
+   "municipio": "Angra dos Reis",
+   "uf": "RJ",
+   "url": "https://www.defesacivil.rj.gov.br/images/2025/11/PLANCON-24_25-REVISADO---VERSO-2.0---25_26.docx.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "ddbdfb331a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bf5d8271ea782b22a535dfe159f6a8be76c19312a0b965fdd7fb1d21d2f1e399"
   }
  ]
 }
