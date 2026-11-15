@@ -189,18 +189,9 @@ TITULO_DO_AVISO = "Emergência estadual: prorrogação não verificável"
 
 
 def avisar(atrasos: list, gh=None) -> None:
-    """Uma Issue no repositório dos avisos enquanto houver atraso; fecha sozinha. Falha do GitHub não derruba a coleta."""
-    from scripts.sondar_credenciais import REPO_DOS_AVISOS, _gh, issues_abertas
-    gh = gh or _gh
-    abertas = issues_abertas(gh)
-    if abertas is None:
-        return
-    n = abertas.get(TITULO_DO_AVISO)
-    if atrasos and n is None:
-        gh(["issue", "create", "--repo", REPO_DOS_AVISOS, "--title", TITULO_DO_AVISO, "--body-file", "-"],
-           "\n".join(f"- {x}" for x in atrasos) + "\n\nFecha sozinha quando o diário voltar a ser lido.")
-    elif not atrasos and n is not None:
-        gh(["issue", "close", str(n), "--repo", REPO_DOS_AVISOS, "--comment", "Diário lido de novo. Fechada."])
+    """Uma Issue enquanto houver atraso; fecha sozinha. Falha do GitHub não derruba a coleta."""
+    from scripts import avisos
+    avisos.avisar(TITULO_DO_AVISO, "\n".join(f"- {x}" for x in atrasos), "Diário lido de novo. Fechada.", gh or avisos._gh)
 
 
 if __name__ == "__main__":

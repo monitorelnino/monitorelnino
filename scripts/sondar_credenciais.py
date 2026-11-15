@@ -179,7 +179,7 @@ def exigida_pelo_coletor(chave: str) -> bool | None:
         return None
 
 
-REPO_DOS_AVISOS = "monitorelnino/robo-registro"
+from scripts.avisos import REPO_DOS_AVISOS, _gh, issues_abertas  # noqa: E402
 LINK_DOS_SEGREDOS = "https://github.com/monitorelnino/monitorelnino/settings/secrets/actions"
 RAIZ = _pathlib.Path(__file__).resolve().parent.parent
 
@@ -215,18 +215,6 @@ def acao_de_issue(linha, abertas, hoje):
     if linha["estado"] == "aceita" and n is not None:
         return ("fechar", n)
     return (None, n)
-
-
-def _gh(args, entrada=None):
-    return subprocess.run(["gh", *args], capture_output=True, text=True, input=entrada, timeout=60)
-
-
-def issues_abertas(gh=_gh):
-    p = gh(["issue", "list", "--repo", REPO_DOS_AVISOS, "--state", "open", "--limit", "100",
-            "--json", "number,title"])
-    if p.returncode != 0:
-        return None
-    return {i["title"]: i["number"] for i in json.loads(p.stdout or "[]")}
 
 
 def aplicar_issues(linhas, hoje, gh=_gh):

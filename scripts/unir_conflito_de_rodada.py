@@ -128,6 +128,36 @@ REGENERAVEIS = (
 # (curadoria + edições lidas do diário). Vence o lado de cima; o que o elo somou volta na noite seguinte.
 REFEITOS_PELO_ELO = ("data/emergencias_estaduais.json",)
 
+# 15/11/2026 (auditoria dos pontos de mesclagem): dez arquivos eram gravados por dois ou mais elos sem
+# política nenhuma — o primeiro conflito neles derrubaria o commit do elo inteiro, como derrubou a rodada
+# semanal. RETRATO é o arquivo refeito inteiro a cada coleta (sinais e alertas de agora): vale o mais
+# recente. POR_SECAO é o documento em que cada elo escreve a sua parte: a regra é a da pista, um nível
+# acima — seção que só um lado tocou entra; a mesma, mudada dos dois lados, desce um nível; valor
+# diferente no mesmo campo é recusado, nunca adivinhado (o carimbo é a exceção: vale o mais recente).
+RETRATOS = ("data/alertas/vigentes.json", "data/sinais_risco.json", "data/sinais_risco_consultas.json")
+POR_SECAO = ("data/saude_sinais.json", "data/calendario/fontes_suspensas.json")
+
+
+def unir_secoes(base, nosso, deles, _nivel: int = 0):
+    """União de três vias por chave, até dois níveis. Função pura; levanta `Recusa` no conflito real."""
+    fora = {}
+    for k in list(dict.fromkeys([*deles, *nosso])):
+        b, n, d = (base or {}).get(k, _AUSENTE), nosso.get(k, _AUSENTE), deles.get(k, _AUSENTE)
+        if n == d or d == b:
+            v = n
+        elif n == b:
+            v = d
+        elif k in CARIMBOS:
+            v = max(str(n), str(d))
+        elif isinstance(n, dict) and isinstance(d, dict) and _nivel < 2:
+            v = unir_secoes(b if isinstance(b, dict) else {}, n, d, _nivel + 1)
+        else:
+            raise Recusa(f"`{k}` mudou dos dois lados para valores diferentes")
+        if v is not _AUSENTE:
+            fora[k] = v
+    return fora
+
+
 # 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se
 # regerando a partir do arquivo-fonte já unido, aqui mesmo — "versão de cima e a cadeia regenera"
 # não serve, porque a cadeia não os regera e `gerar_saude_pipeline.py --check` cobraria a diferença.
@@ -171,7 +201,12 @@ FILAS_DE_PISTA = (
     "data/pistas_descobertas.json",
     "data/pistas_doe.json",
     "data/pistas_sinais.json",
+    "data/pistas_imprensa_saude.json",
 )
+# A fila de saúde guarda a mesma URL uma vez por alvo, consulta e dia de registro (15/11/2026: 882 entradas,
+# 783 URLs): pela chave da porta, a união apagaria 67 delas. Aqui a identidade é a linha inteira que o coletor
+# grava, e a repetição exata conta pela ordem.
+IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consulta", "registrado_em")}
 
 
 # Decisão da central (25/10/2026, item 7): quando os dois lados mudaram o MESMO campo para valores
@@ -274,19 +309,29 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 
     if str(RAIZ) not in sys.path:
         sys.path.insert(0, str(RAIZ))
-    from scripts.pistas import chave_da_pista as _chave_de_pista  # a identidade é UMA só
+    from scripts.pistas import chave_da_pista  # a identidade é UMA só, salvo a fila com identidade própria
     lb = base.get(chave) if isinstance(base.get(chave), list) else []
     ln, ld = nosso[chave], deles[chave]
-    por_chave_base = {_chave_de_pista(p): p for p in lb}
-    por_chave_nosso = {_chave_de_pista(p): p for p in ln}
-    por_chave_deles = {_chave_de_pista(p): p for p in ld}
+    campos = IDENTIDADE_PROPRIA.get(caminho)
+
+    def por_chave(lista):
+        if not campos:
+            return {chave_da_pista(p): p for p in lista}
+        fora, vistas = {}, {}
+        for p in lista:
+            k = tuple(str(p.get(c)) for c in campos)
+            vistas[k] = vistas.get(k, 0) + 1
+            fora[k + (vistas[k],)] = p
+        return fora
+
+    por_chave_base, por_chave_nosso, por_chave_deles = por_chave(lb), por_chave(ln), por_chave(ld)
 
     # A ORDEM é a da base, depois os acréscimos nossos, depois os deles. Ordem estável mantém o
     # diff legível e faz a união ser a mesma qualquer que seja o lado em que o rebase corre.
     # Cada chave entra UMA vez: a identidade da pista é a chave. Com a lista da base inteira, uma
     # chave repetida emitia a mesma pista mesclada tantas vezes quantas aparecia (22/10/2026:
     # 20.569 cópias idênticas, 24 MB, e o portão de tamanho vermelho na `main`).
-    ordem = list(dict.fromkeys(_chave_de_pista(p) for p in (*lb, *ln, *ld)))
+    ordem = list(dict.fromkeys((*por_chave_base, *por_chave_nosso, *por_chave_deles)))
 
     uniao, mescladas = [], 0
     for k in ordem:
@@ -709,6 +754,17 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
             raise Recusa("o lado de cima não tem o arquivo")
         _escrever(destino, nosso_txt)
         return "versão de cima (derivado, será regenerado)"
+    if norm in RETRATOS:
+        if nosso_txt is None or deles_txt is None:
+            raise Recusa("um dos lados não tem o arquivo")
+        quando = lambda t: str(json.loads(t).get("gerado_em") or "")
+        # empate (carimbo só com a data): vale o do elo, que acabou de coletar
+        _escrever(destino, nosso_txt if quando(nosso_txt) > quando(deles_txt) else deles_txt)
+        return "retrato mais recente (o arquivo é refeito inteiro a cada coleta)"
+    if norm in POR_SECAO:
+        doc = unir_secoes(json.loads(base_txt) if base_txt is not None else {}, json.loads(nosso_txt), json.loads(deles_txt))
+        gravar_no_formato_do_produtor(destino, doc)
+        return "seção a seção, pela base comum"
     if norm in REFEITOS_PELO_ELO:
         if nosso_txt is None:
             raise Recusa("o lado de cima não tem o arquivo")
@@ -1301,11 +1357,62 @@ def autoteste() -> int:
         recusou = True
     checar("regra 7: juiz com mesma data nos dois lados é recusado, não adivinhado", recusou)
 
+    b = {"gerado_em": "2026-11-14", "fontes": {"a": {"status": "coletado", "em": "13"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}
+    n = {"gerado_em": "2026-11-15", "fontes": {"a": {"status": "coletado", "em": "15"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}
+    d = {"gerado_em": "2026-11-14", "fontes": {"a": {"status": "coletado", "em": "13"}, "b": {"status": "coletado"},
+                                              "c": {"status": "lacuna"}}, "espin": {"n": 2}}
+    u = unir_secoes(b, n, d)
+    checar("por seção: cada lado entra com o que tocou, entrada nova fica e o carimbo é o mais recente",
+           u == {"gerado_em": "2026-11-15", "fontes": {"a": {"status": "coletado", "em": "15"}, "b": {"status": "coletado"},
+                                                        "c": {"status": "lacuna"}}, "espin": {"n": 2}})
+    try:
+        unir_secoes(b, dict(n, espin={"n": 3}), d)
+        recusou = False
+    except Recusa:
+        recusou = True
+    checar("por seção: o mesmo campo com valores diferentes dos dois lados é recusado", recusou)
+    with tempfile.TemporaryDirectory() as _t:
+        _d = pathlib.Path(_t) / "r.json"
+        _r = lambda g, x: json.dumps({"gerado_em": g, "x": x})
+        unir_e_gravar(RETRATOS[0], _r("2026-11-15 06:00", 0), _r("2026-11-15 08:00", "main"), _r("2026-11-15 07:00", "elo"), _d)
+        mais_novo = json.loads(_d.read_text())["x"]
+        unir_e_gravar(RETRATOS[1], _r("2026-11-14", 0), _r("2026-11-15", "main"), _r("2026-11-15", "elo"), _d)
+        checar("retrato: vale o de carimbo mais recente; no empate, o do elo que acabou de coletar",
+               (mais_novo, json.loads(_d.read_text())["x"]) == ("main", "elo"))
+    _chamadas = []
+    _falso = lambda args, entrada=None: (_chamadas.append(args), type("R", (), {"returncode": 0, "stdout": '[{"title": "Mesclagem recusada: data/a.json", "number": 7}]'})())[1]
+    _ps = lambda *c: {"url": "https://x.gov.br/p", "alvo": c[0], "consulta": c[1], "registrado_em": c[2]}
+    _fs = lambda *ps: json.dumps({"pistas": list(ps)})
+    _b = [_ps("funil-saude/CE", "plancon", "01/10/2026"), _ps("funil-saude/CE", "doe_saude", "13/10/2026")]
+    _u = unir_fila_de_pistas("data/pistas_imprensa_saude.json", _fs(*_b), _fs(*_b, _ps("funil-saude/PA", "plancon", "15/11/2026")),
+                             _fs(*_b, _ps("funil-saude/CE", "plancon", "15/11/2026")))
+    checar("fila de saúde: a mesma URL em alvo, consulta ou dia diferentes são entradas distintas, e as duas rodadas entram",
+           (_u[1], _u[2], _u[3]) == (3, 3, 4))
+    checar("recusa vira Issue por arquivo, uma só enquanto estiver aberta",
+           avisar_recusa(["data/a.json: caminho sem resolução conhecida", "data/b.json: caminho sem resolução conhecida"],
+                         gh=_falso) == ["Mesclagem recusada: data/b.json"])
+
     if falhas:
         print(f"\n✗ UNIÃO DE CONFLITO: {len(falhas)} falha(s).")
         return 1
     print("\n✓ UNIÃO DE CONFLITO OK — une o que sabe pela base comum, recusa o resto.")
     return 0
+
+
+def avisar_recusa(recusados: list, gh=None) -> list:
+    """Uma Issue por arquivo recusado (`scripts/avisos.py`): a recusa deixa de viver só no log de um run
+    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). Devolve os títulos abertos."""
+    from scripts import avisos
+    gh = gh or avisos._gh
+    abertas, feitas = avisos.issues_abertas(gh), []
+    for linha in recusados if abertas is not None else []:
+        caminho, _, motivo = str(linha).partition(": ")
+        titulo = f"Mesclagem recusada: {caminho}"
+        if avisos.avisar(titulo, f"O elo perdeu o commit porque `{caminho}` conflitou e não tem política de "
+                         f"mesclagem ({motivo}). O trabalho foi para o artefato do run. Declarar a política em "
+                         f"`scripts/unir_conflito_de_rodada.py`.", gh=gh, abertas=abertas) == "aberta":
+            feitas.append(titulo)
+    return feitas
 
 
 def main() -> int:
@@ -1325,6 +1432,10 @@ def main() -> int:
     if recusados:
         print(f"::error::{len(recusados)} caminho(s) sem resolução conhecida; a rodada não "
               f"comita. Adivinhar a mesclagem apagaria dado sem aviso.")
+        try:
+            avisar_recusa(recusados)
+        except Exception as e:  # noqa: BLE001 — o aviso é do GitHub; a recusa já está no log
+            print(f"::warning::aviso de recusa não enviado: {type(e).__name__}")
         return 2
     print(f"{len(resolvidos)} caminho(s) resolvido(s).")
     return 0

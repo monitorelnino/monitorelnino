@@ -129,7 +129,9 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
     for v in decisoes:
         if not (v.get("promove") and v.get("codebook") == versao):
             continue
-        if v.get("superada_por") or v.get("aplicado_em") or v.get("nao_aplicado"):
+        # a abstenção da regra antiga ("atualização não se presume") volta uma vez, para a regra nova decidir
+        if v.get("superada_por") or v.get("aplicado_em") or (
+                v.get("nao_aplicado") and (v["nao_aplicado"] is True or v["nao_aplicado"].get("motivo") != ABSTENCAO_ANTIGA)):
             continue
         repo = repositorio_do_documento(v.get("url") or "")
         if repo:
@@ -159,11 +161,60 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
     return fora
 
 
-def ja_no_banco(municipios: list, nome: str, uf: str) -> bool:
-    """Duplicar registro é pior que não aplicar: a revisão humana decide se é atualização."""
+def no_banco(municipios: list, nome: str, uf: str):
+    """O registro do município no banco, ou None. Um município tem um registro só."""
     n, u = str(nome or "").strip().lower(), str(uf or "").strip().upper()
-    return any(str(m.get("nome", "")).strip().lower() == n
-               and str(m.get("uf", "")).strip().upper() == u for m in municipios)
+    return next((m for m in municipios if str(m.get("nome", "")).strip().lower() == n
+                 and str(m.get("uf", "")).strip().upper() == u), None)
+
+
+def ja_no_banco(municipios: list, nome: str, uf: str) -> bool:
+    return no_banco(municipios, nome, uf) is not None
+
+
+# 15/11/2026 (editoria: "decida você"): até aqui, município com registro nunca era atualizado ("atualização
+# não se presume") — 172 municípios com documento aprovado pelo juiz e não aplicado, entre eles Rio das
+# Ostras/RJ, com plano para o El Niño de 10/2026 e o registro parado num plano de 2024. A regra passa a
+# ser a da não-regressão que a contribuição já usa (`processar_contribuicoes.FORCA`): entra o que é mais
+# forte; na mesma categoria de plano, entra o documento POSTERIOR. O registro que sai fica em
+# `registro_anterior`. Igual, mais fraco ou sem data comparável: nada muda.
+JA_CONSTA = "já consta no banco — "
+ABSTENCAO_ANTIGA = JA_CONSTA + "abstenção registrada (atualização não se presume)"
+CATEGORIAS_DE_PLANO = ("plano", "plano_antigo", "plano_elaboracao")
+RE_MES_NO_ENDERECO = re.compile(r"/((?:19|20)\d{2})/(0[1-9]|1[0-2])/")
+
+
+def quando(data, url=None) -> tuple:
+    """(ano, mês, dia) do que a data diz, com 0 no que ela não diz; o mês do endereço (`/AAAA/MM/`)
+    completa a data que só traz o ano, quando o ano é o mesmo. () quando não há ano. Função pura."""
+    s = str(data or "")
+    m = re.search(r"(?:(\d{1,2})[/-])?(?:(\d{1,2})[/-])?((?:19|20)\d{2})", s)
+    if not m:
+        return ()
+    dia, mes, ano = (int(x) if x else 0 for x in m.groups())
+    if not m.group(2) and m.group(1):       # "10/2025": o único número antes do ano é o mês
+        dia, mes = 0, dia
+    if not mes:
+        e = RE_MES_NO_ENDERECO.search(str(url or ""))
+        if e and int(e.group(1)) == ano:
+            mes = int(e.group(2))
+    return (ano, mes, dia)
+
+
+def atualiza(existente: dict, v: dict) -> str:
+    """Por que o veredito substitui o registro, ou '' quando não substitui. Função pura."""
+    from processar_contribuicoes import FORCA
+    atual, nova = existente.get("categoria"), v.get("categoria")
+    if existente.get("url") == v.get("url") or nova not in FORCA or atual not in {**FORCA, "nao_verificado": 0}:
+        return ""
+    if FORCA[nova] > FORCA.get(atual, 0):
+        return f"categoria mais forte ({atual} → {nova})"
+    a, n = quando(existente.get("data"), existente.get("url")), quando(v.get("data"), v.get("url"))
+    if atual == nova and nova in CATEGORIAS_DE_PLANO and a and n:
+        ate = min(len([x for x in a if x]), len([x for x in n if x]))    # compara até onde as duas datas dizem
+        if n[:ate] > a[:ate]:
+            return f"documento posterior ({existente.get('data')} → {v.get('data')})"
+    return ""
 
 
 def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
@@ -461,6 +512,26 @@ def autoteste() -> int:
 
     mun = [{"nome": "Serra", "uf": "ES"}]
     casos.append(("município já no banco é reconhecido", ja_no_banco(mun, "serra", "es")))
+    _reg = {"categoria": "plano_antigo", "data": "2024", "url": "https://x.rj.gov.br/wp-content/uploads/2024/10/a.pdf"}
+    casos.append(("registro atualiza por categoria mais forte, e nunca por mais fraca ou pelo mesmo documento",
+                  atualiza(_reg, {"categoria": "plano", "data": "2026", "url": "https://x.rj.gov.br/b.pdf"}).startswith("categoria")
+                  and atualiza(dict(_reg, categoria="plano"), {"categoria": "plano_antigo", "data": "2026", "url": "u"}) == ""
+                  and atualiza(_reg, {"categoria": "plano", "data": "2026", "url": _reg["url"]}) == ""
+                  and atualiza(dict(_reg, categoria="decreto"), {"categoria": "plano_antigo", "data": "2026", "url": "u"}) == ""))
+    casos.append(("na mesma categoria de plano entra o documento posterior; data igual ou não comparável não troca",
+                  atualiza(_reg, {"categoria": "plano_antigo", "data": "24/10/2025", "url": "u"}).startswith("documento posterior")
+                  and atualiza(dict(_reg, data="02/07/2026"), {"categoria": "plano_antigo", "data": "2026", "url": "u"}) == ""
+                  and atualiza(dict(_reg, data="2026"), {"categoria": "plano_antigo", "data": "EL NIÑO", "url": "u"}) == ""
+                  and atualiza(dict(_reg, categoria="decreto", data="2025"), {"categoria": "decreto", "data": "2026", "url": "u"}) == ""))
+    _jan, _ago = "https://d.sc.gov.br/wp-content/uploads/2026/01/p.pdf", "https://d.sc.gov.br/wp-content/uploads/2026/08/p.pdf"
+    casos.append(("o mês do endereço completa a data que só traz o ano (Taió/SC: janeiro → agosto de 2026)",
+                  quando("2026", _ago) == (2026, 8, 0) and quando("10/2025") == (2025, 10, 0) and quando("EL NIÑO") == ()
+                  and atualiza({"categoria": "plano", "data": "2026", "url": _jan}, {"categoria": "plano", "data": "2026", "url": _ago}) != ""
+                  and atualiza({"categoria": "plano", "data": "2026", "url": _ago}, {"categoria": "plano", "data": "2026", "url": _jan}) == ""))
+    casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
+                  len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
+                  and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],
+                                 V, resolver=sem_dono) == []))
     casos.append(("município ausente não é falso positivo", not ja_no_banco(mun, "Vitória", "ES")))
 
     r = registro_do_veredito(base, -20.1, -40.3, "DOM", "Diário oficial municipal", "28/09/2026")
@@ -576,8 +647,10 @@ def main() -> int:
         if not v.get("ibge") and not v.get("municipio"):
             recusados.append((v, "veredito sem território — não dá para posicionar"))
             continue
-        if ja_no_banco(municipios, v["municipio"], v["uf"]):
-            recusados.append((v, "já consta no banco — abstenção registrada (atualização não se presume)"))
+        existente = no_banco(municipios, v["municipio"], v["uf"])
+        motivo_da_troca = atualiza(existente, v) if existente else ""
+        if existente and not motivo_da_troca:
+            recusados.append((v, JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"))
             continue
         if (nao_documento := problemas_de_documento([{**v, "nome": v["municipio"], "hash_evidencia": "-"}])):
             recusados.append((v, nao_documento[0].split(": ", 1)[1] + " (D1: o ato é o documento, não a notícia)"))
@@ -603,10 +676,20 @@ def main() -> int:
                                  "registro pontuável exige evidência guardada (portão 26)"))
             continue
         v["hash_evidencia"] = hash_preservado
-        municipios.append(registro_do_veredito(v, lat, lon, canal, fonte_base,
-                                               hoje.strftime("%d/%m/%Y")))
-        pontos.append({"nome": v["municipio"], "uf": v["uf"], "categoria": v["categoria"],
-                       "lat": lat, "lon": lon, "fase": 3})
+        novo = registro_do_veredito(v, lat, lon, canal, fonte_base, hoje.strftime("%d/%m/%Y"))
+        if existente:
+            novo["registro_anterior"] = {k: existente.get(k) for k in
+                                         ("categoria", "documento", "url", "fonte", "data", "hash_evidencia")}
+            municipios[municipios.index(existente)] = novo
+            for ponto in pontos:
+                if (ponto.get("nome"), ponto.get("uf")) == (existente.get("nome"), existente.get("uf")):
+                    ponto["categoria"] = v["categoria"]
+            v["substituiu"] = motivo_da_troca
+            print(f"  atualizado: {v['municipio']}/{v['uf']} — {motivo_da_troca}")
+        else:
+            municipios.append(novo)
+            pontos.append({"nome": v["municipio"], "uf": v["uf"], "categoria": v["categoria"],
+                           "lat": lat, "lon": lon, "fase": 3})
         aplicados.append(v)
 
     for v, motivo in recusados:
