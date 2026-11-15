@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1768 · MapBiomas por estado pelo Earth Engine
+
+Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.
+
 ## 2026-11-15 · #1763 · Seguidor retenta a página que não abriu
 
 A página oficial que o seguidor não conseguiu abrir volta a ser aberta fora da janela de sete dias, até três vezes; recusa da fonte não se retenta. A falha guarda o código HTTP. 684 páginas voltam, entre elas a matéria de Mesquita/RJ que linka o plano.
