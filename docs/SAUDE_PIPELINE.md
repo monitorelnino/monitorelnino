@@ -9,11 +9,10 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-08 a 2026-11-15 (1486 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-08 a 2026-11-15 (1491 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- julgar_saude.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 - verificar_links.py: erro em 2 rodadas seguidas — erro: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
 
 ## Cobertura em 15 dias
@@ -35,7 +34,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-15 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-14 01:39 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-15 19:21 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-15 20:10 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-15 12:41 | 410 s | 4 | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -97,7 +96,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-15 · por canal: we
 | `detectar_marcos_federais.py` | coletor | 2026-11-15 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-15 12:41 | 2 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-11-15 10:11 | 9003 s | — | **erro** | interrompido pelo prazo do elo |
-| `julgar_saude.py` | coletor | 2026-11-15 16:10 | 4200 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
+| `julgar_saude.py` | coletor | 2026-11-15 18:17 | 1 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-15 07:43 | 5 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-15 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_busca_web.py` | coletor | 2026-11-15 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
