@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Com leitura parcial dos diários estaduais, o cartão de decretos de emergência em saúde passa a mostrar os decretos já localizados e as UFs, junto do que falta ler. O texto do cartão passa a falar de estados, que é o que se coleta.
 
+## 2026-11-15 · #1763 · Seguidor retenta a página que não abriu
+
+A página oficial que o seguidor não conseguiu abrir volta a ser aberta fora da janela de sete dias, até três vezes; recusa da fonte não se retenta. A falha guarda o código HTTP. 684 páginas voltam, entre elas a matéria de Mesquita/RJ que linka o plano.
 ## 2026-11-15 · #1762 · Pista do dono do domínio
 
 Documento em domínio oficial de um município passa a ser pista desse município: a porta reatribui em vez de recusar (2.369 recusas, 1.694 PDFs), e a correção de atribuição leva o `alvo` junto (783 pistas corrigidas tinham sido fechadas depois). 1.157 pistas voltam ao juiz, de 354 municípios.
