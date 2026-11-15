@@ -762,6 +762,10 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
         v["motivo"] = "natureza_duvidosa"; return ou_estrutura(v, texto, uf)
 
     ok, familia, trecho = juiz.etapa5_familia_de_risco(texto)
+    if not ok and familia == "fora_do_objeto" and trata_de_risco_do_ciclo(titulo)[0]:
+        # 15/11/2026 (MA, SE): a régua do Legal põe plano de saúde e arbovirose fora do objeto do
+        # município; na camada de saúde eles SÃO o objeto, e o risco do ciclo é o do título (5b).
+        ok, familia, trecho = True, "saude_do_ciclo", trata_de_risco_do_ciclo(titulo)[1]
     v["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None, "trecho": trecho}
     if not ok:
         v["motivo"] = familia; return v
