@@ -225,7 +225,22 @@ def descobrir(uf: str, setor: str, fila: dict) -> tuple:
         except Exception as e:  # noqa: BLE001
             item["status_leitura"] = f"acesso_recusado ({type(e).__name__})"
         achados.append(item)
-    return registrar(fila, achados), respondeu
+    novos = registrar(fila, achados)
+    if setor == "saude" and novos:
+        # 15/11/2026: o juiz de saúde (`julgar_saude.py`) lê só a fila de saúde; os PDFs que este canal
+        # achava ficavam aqui, "pendente_confirmacao_documento", sem juiz nenhum (19 desde setembro).
+        from scripts.pistas import gravar_lote
+        gravar_lote(pistas_de_saude(novos), origem="descoberta", nome_da_fila="pistas_imprensa_saude.json")
+    return novos, respondeu
+
+
+def pistas_de_saude(novos: list) -> list:
+    """Os achados de saúde como pistas da fila do juiz de saúde, com a trava de nascença. Função pura."""
+    return [{"uf": a["uf"], "alvo": a["uf"], "url": a["url"], "titulo": a.get("titulo"), "oficial": True,
+             "tipo": "plano", "nivel": "A", "data": (a.get("data_publicacao") or time.strftime("%Y-%m-%d"))[:10],
+             "consulta": f"wp-json/{a.get('dominio')}", "registrado_em": time.strftime("%d/%m/%Y"),
+             "documento_oficial_confirmado": None, "promovivel": False, "status": "pendente_confirmacao_documento"}
+            for a in novos]
 
 
 def fatia_da_noite(alvos: list, limite: int, dia: int) -> list:
@@ -328,6 +343,12 @@ def autoteste() -> int:
         return (len(fora) == 1 and "addtoany" in fora[0]["url"]
                 and "https://x/pagina" in urls and "https://y/plano.pdf" in urls
                 and "https://x/doc/nota_tecnica05.pdf" in urls)
+
+    def t_pistas_de_saude():
+        p = pistas_de_saude([{"uf": "RR", "url": "https://saude.rr.gov.br/x.pdf", "titulo": "t",
+                              "data_publicacao": "2026-09-25T10:00:00", "dominio": "saude.rr.gov.br"}])[0]
+        return (p["oficial"] and p["alvo"] == "RR" and p["data"] == "2026-09-25" and p["promovivel"] is False
+                and p["documento_oficial_confirmado"] is None)
 
     def t_fatia_da_noite():
         alvos = list(range(54))
@@ -665,6 +686,7 @@ def autoteste() -> int:
         "wp-json: extrai só PDFs, com título e data": t_wp_json_parse,
         "wp-json: falha, muro ou não-WordPress = vazio e NÃO verificado": t_wp_json_tolerante_a_falha,
         "fatia anda por noite e cobre os 54 alvos em 3 noites": t_fatia_da_noite,
+        "achado de saúde vai à fila do juiz de saúde, oficial e não promovível": t_pistas_de_saude,
         "dedup por hash + trava absoluta (campos de nascença)": t_dedup_e_trava,
         "garantia estrutural: nunca escreve nos bancos": t_trava_estrutural,
         "portal da prefeitura: endereço padrão e identidade da página": t_dominios_e_identidade_do_portal,
