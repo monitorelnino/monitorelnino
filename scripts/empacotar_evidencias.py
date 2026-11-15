@@ -12,11 +12,11 @@ O handover deixou a escolha ao Code: **ativo de Release** ou **repositório sepa
 Release, e a razão é medida: o que os scripts da rodada leem é o **texto extraído** — 10,9 MB, que
 continua no git —, não o binário. Binário é prova de registro, consultada por pessoa. Repositório
 separado só se justificaria se algum script precisasse do binário num checkout, e nenhum precisa.
-Release dá URL estável, ativo de até 2 GB, sem clone e sem custo.
+Release dá URL estável, ativo abaixo de 2 GB (por isso o lote sai em partes), sem clone e sem custo.
 
 O QUE ESTE SCRIPT FAZ, E O QUE NÃO FAZ
 --------------------------------------
-**Faz:** agrupa por mês de preservação, monta `evidencias-AAAA-MM.zip` com os binários daquele mês e
+**Faz:** agrupa por mês de preservação, monta `evidencias-AAAA-MM-<parte>.zip` (partes pelo primeiro dígito do hash) com os binários do mês e
 um `INDICE.tsv` dentro do pacote (hash, arquivo, URL de origem, data, tamanho), e imprime o comando de
 publicação. Confere que o sha256 de cada arquivo bate com a chave do índice antes de empacotar — hash
 que não bate não entra, e é acusado.
@@ -27,7 +27,7 @@ da árvore e reescrever o pack são ações irreversíveis que dependem da palav
 
 USO
   python3 scripts/empacotar_evidencias.py --relatorio
-  python3 scripts/empacotar_evidencias.py --mes 2026-09 --saida /tmp
+  python3 scripts/empacotar_evidencias.py --mes 2026-09 --saida /tmp [--parte a]
   python3 scripts/empacotar_evidencias.py --autoteste
 """
 import collections
@@ -79,6 +79,21 @@ def agrupar(itens: dict, existe=None) -> dict:
     return dict(sorted(grupos.items()))
 
 
+# O Release recusa ativo de 2 GB ou mais. O lote do mês sai em partes pelo primeiro dígito do hash: a
+# parte de um arquivo nunca muda, cada uma fica longe do teto (outubro de 2026: 18,5 GB em 16 partes) e
+# o envio da noite regrava parte por parte. 15/11/2026: o lote único de novembro passou de 2 GB, o envio
+# falhou seis vezes na noite e levou o juiz junto (F86).
+TETO_DO_ATIVO = 1_900_000_000
+
+
+def partes(itens_do_mes: list) -> dict:
+    """{dígito: [(hash, nome, item)]} pelo primeiro dígito hexadecimal do hash. Função pura."""
+    fora = collections.defaultdict(list)
+    for h, nome, item in itens_do_mes:
+        fora[str(h)[:1].lower()].append((h, nome, item))
+    return dict(fora)
+
+
 def linha_do_indice(h: str, nome: str, item: dict) -> str:
     """Uma linha do INDICE.tsv dentro do pacote. Tab porque URL tem vírgula e ponto e vírgula."""
     return "\t".join([h, nome, str(item.get("url") or ""), str(item.get("preservado_em") or ""),
@@ -111,6 +126,9 @@ def autoteste() -> int:
     casos.append(("data ausente vai para sem-data",
                   [n for _, n, _ in grupos["sem-data"]] == ["eee.pdf"]))
 
+    casos.append(("o lote sai em partes pelo primeiro dígito do hash, e a parte de um arquivo não muda",
+                  {k: [h for h, _, _ in v] for k, v in partes([("a1", "x", {}), ("A2", "y", {}), ("f0", "z", {})]).items()}
+                  == {"a": ["a1", "A2"], "f": ["f0"]}))
     linha = linha_do_indice("aaa", "aaa.pdf", itens["aaa"])
     casos.append(("a linha do índice é separada por tab e traz seis campos",
                   linha.count("\t") == 5))
@@ -160,23 +178,31 @@ def main() -> int:
         return 1
     destino = pathlib.Path(sys.argv[sys.argv.index("--saida") + 1] if "--saida" in sys.argv else ".")
     destino.mkdir(parents=True, exist_ok=True)
-    pacote = destino / f"evidencias-{mes}.zip"
-
-    divergentes, escritos = [], 0
-    with zipfile.ZipFile(pacote, "w", zipfile.ZIP_DEFLATED) as z:
-        linhas = ["hash\tarquivo\turl\tpreservado_em\ttamanho\torigem"]
-        for h, nome, item in grupos[mes]:
-            caminho = EVIDENCIAS / nome
-            # a chave do índice É o sha256 do binário: hash que não bate não entra no pacote
-            if sha256_do_arquivo(caminho) != h:
-                divergentes.append(nome)
-                continue
-            z.write(caminho, arcname=nome)
-            linhas.append(linha_do_indice(h, nome, item))
-            escritos += 1
-        z.writestr("INDICE.tsv", "\n".join(linhas) + "\n")
-
-    print(f"\n✓ {pacote} — {escritos} arquivo(s), {pacote.stat().st_size / 1e6:.1f} MB")
+    divergentes, escritos, maior = [], 0, 0
+    so = sys.argv[sys.argv.index("--parte") + 1] if "--parte" in sys.argv else None
+    for parte, itens_da_parte in sorted(partes(grupos[mes]).items()):
+        if so and parte != so:
+            continue
+        pacote = destino / f"evidencias-{mes}-{parte}.zip"
+        with zipfile.ZipFile(pacote, "w", zipfile.ZIP_DEFLATED) as z:
+            linhas = ["hash\tarquivo\turl\tpreservado_em\ttamanho\torigem"]
+            for h, nome, item in itens_da_parte:
+                caminho = EVIDENCIAS / nome
+                # a chave do índice É o sha256 do binário: hash que não bate não entra no pacote
+                if sha256_do_arquivo(caminho) != h:
+                    divergentes.append(nome)
+                    continue
+                z.write(caminho, arcname=nome)
+                linhas.append(linha_do_indice(h, nome, item))
+                escritos += 1
+            z.writestr("INDICE.tsv", "\n".join(linhas) + "\n")
+        maior = max(maior, pacote.stat().st_size)
+        print(f"✓ {pacote} — {len(linhas) - 1} arquivo(s), {pacote.stat().st_size / 1e6:.1f} MB")
+    pacote = destino / f"evidencias-{mes}-*.zip"
+    print(f"\n{escritos} arquivo(s) em {len(partes(grupos[mes]))} parte(s); a maior com {maior / 1e6:.1f} MB")
+    if maior > TETO_DO_ATIVO:
+        print(f"✗ parte acima de {TETO_DO_ATIVO / 1e6:.0f} MB: o Release recusa ativo de 2 GB — aumentar PARTES")
+        return 1
     if divergentes:
         print(f"✗ {len(divergentes)} arquivo(s) com sha256 diferente da chave do índice, FORA do "
               f"pacote: {', '.join(divergentes[:5])}")

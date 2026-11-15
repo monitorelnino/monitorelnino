@@ -138,6 +138,16 @@ def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> l
     return fora
 
 
+# 15/11/2026: até aqui o juiz baixava o documento por conta própria (20 s, sem a cadeia do `certifi`) e
+# a falha do leitor contava como "sem leitura do documento". Tentativa técnica anterior ao leitor pela
+# porta de rede não conta para as cinco, e a pista que só tem dessas volta à vez.
+LEITOR_PELA_PORTA_DESDE = "2026-11-15"
+
+
+def tentativa_que_conta(t: dict) -> bool:
+    return t.get("classe") == "tecnica" and str(t.get("em") or "") >= LEITOR_PELA_PORTA_DESDE
+
+
 def recusa_desmentida_pelo_dominio(p: dict, juiz: dict) -> bool:
     """Recusa por autoridade, julgada antes da versão em vigor do resolvedor de domínio, num documento
     servido no domínio do próprio ente: volta uma vez. 10/11/2026: o resolvedor não via subdomínio do ente
@@ -192,6 +202,9 @@ def pendente(p: dict, hoje=None) -> bool:
         if not juiz.get("leu_documento"):
             return bool(url and fonte_oficial(url))
         return recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
+    tentativas = p.get("juiz_tentativas") or []
+    if tentativas and not any(tentativa_que_conta(t) for t in tentativas) and tentativas[-1].get("classe") == "tecnica":
+        return True     # só falhou com o leitor antigo: volta já, sem esperar o back-off nem ficar persistente
     if "inacessivel_persistente" in status:
         return False
     prox = p.get("proxima_tentativa_em")
@@ -394,7 +407,7 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
 
     if classe == "tecnica":
         # Não escreve `juiz`: a pista continua pendente, e volta na data do back-off.
-        tecnicas = sum(1 for t in tentativas if t.get("classe") == "tecnica")
+        tecnicas = sum(1 for t in tentativas if tentativa_que_conta(t))
         prox = proxima_tentativa(tecnicas, hoje)
         if prox is None:
             p["status"] = (f"pista — inacessivel_persistente: {tecnicas} tentativas sem leitura do "
@@ -606,6 +619,13 @@ def autoteste() -> int:
     p_teimosa = {"status": "pista — promover a registro exige documento primário"}
     v_tec = dict(v, leu_documento=False, motivo="documento_inacessivel", promove=False)
     saidas = [aplicar_no_objeto(p_teimosa, v_tec) for _ in range(5)]
+    _persistente = {"status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento",
+                    "juiz_tentativas": [{"em": "2026-10-20", "classe": "tecnica", "motivo": "documento_inacessivel"}] * 5}
+    casos.append(("falha técnica só do leitor antigo volta à vez, mesmo persistente ou em back-off; com falha do leitor novo, não",
+                  na_vez(_persistente) and na_vez(dict(_persistente, status="pista — na fila", proxima_tentativa_em="2999-01-01"))
+                  and not na_vez(dict(_persistente, juiz_tentativas=_persistente["juiz_tentativas"]
+                                      + [{"em": LEITOR_PELA_PORTA_DESDE, "classe": "tecnica"}]))
+                  and not tentativa_que_conta(_persistente["juiz_tentativas"][0])))
     casos.append(("quatro tentativas adiam; a quinta vira inacessivel_persistente",
                   saidas == ["adiada"] * 4 + ["inacessivel"]))
     casos.append(("a pista inacessível sai da fila", not pendente(p_teimosa, _dt.date(2027, 1, 1))))
