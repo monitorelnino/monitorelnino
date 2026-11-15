@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "13/11/2026",
+  "em": "15/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_apifront",
-  "ultima_edicao_lida": "2026-11-10"
+  "ultima_edicao_lida": "2026-11-11"
  },
  "edicoes": {
   "2026-06-29": {
@@ -997,7 +997,7 @@
   },
   "2026-10-12": {
    "decisao": "sem_edicao_na_data",
-   "em": "17/10/2026"
+   "em": "15/11/2026"
   },
   "2026-10-13": {
    "decisao": "lida",
@@ -1033,8 +1033,20 @@
    ]
   },
   "2026-10-15": {
-   "decisao": "sem_edicao_na_data",
-   "em": "17/10/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 20965135,
+   "paginas": 42,
+   "paginas_com_texto": 42,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18249",
+   "impressao": "4f990cf31f1e07bb808d7b6d39b8c796f37518bf66cf82908fac869af72905bf",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "4f990cf31f1e07bb808d7b6d39b8c796f37518bf66cf82908fac869af72905bf",
+   "termos_achados": [
+    "plano de contingência"
+   ]
   },
   "2026-10-16": {
    "decisao": "lida",
@@ -1050,24 +1062,63 @@
    "termos_achados": []
   },
   "2026-10-19": {
-   "decisao": "sem_edicao_na_data",
-   "em": "19/10/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 6356776,
+   "paginas": 48,
+   "paginas_com_texto": 48,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18251",
+   "impressao": "655cee1deb5cd55dae48548e31346128d670ccda68ce1e74bb6f8b56a0117d7f",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-10-30": {
    "decisao": "sem_edicao_na_data",
-   "em": "01/11/2026"
+   "em": "15/11/2026"
   },
   "2026-10-29": {
-   "decisao": "sem_edicao_na_data",
-   "em": "01/11/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 12004444,
+   "paginas": 68,
+   "paginas_com_texto": 68,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18262",
+   "impressao": "0ac1b6910d13730c166dd93cdf646021cc5f0666c78f33e3501ec7a8d0da6dcc",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-10-28": {
-   "decisao": "sem_edicao_na_data",
-   "em": "30/10/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 7081957,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18259",
+   "impressao": "745fe3e50db11ad14251b2561356c6f1c60b3b63b59c2534fb9d5fd1bd7ae688",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "745fe3e50db11ad14251b2561356c6f1c60b3b63b59c2534fb9d5fd1bd7ae688",
+   "termos_achados": [
+    "sala de situação"
+   ]
   },
   "2026-10-27": {
-   "decisao": "sem_edicao_na_data",
-   "em": "30/10/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 10629070,
+   "paginas": 42,
+   "paginas_com_texto": 42,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18260",
+   "impressao": "1a8f2f8f42ad0dc9ae04b49e2d56f538c38c381bf5a958f3b1e44142fff2aebc",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-10-26": {
    "decisao": "lida",
@@ -1156,7 +1207,7 @@
   },
   "2026-11-02": {
    "decisao": "sem_edicao_na_data",
-   "em": "05/11/2026"
+   "em": "15/11/2026"
   },
   "2026-11-05": {
    "decisao": "lida",
@@ -1172,12 +1223,30 @@
    "termos_achados": []
   },
   "2026-11-04": {
-   "decisao": "sem_edicao_na_data",
-   "em": "06/11/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 5761168,
+   "paginas": 56,
+   "paginas_com_texto": 56,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18264",
+   "impressao": "df3224b887fa9b7ee8bae48b3945fffcf14860ed6a5960442c6c4694417db280",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-11-06": {
-   "decisao": "sem_edicao_na_data",
-   "em": "09/11/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 4024934,
+   "paginas": 58,
+   "paginas_com_texto": 58,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18266",
+   "impressao": "d4c16d8b3b4dd7351f782d60019e05d3150a98e75f3921d4697e924cedc7aa6a",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-11-10": {
    "decisao": "lida",
@@ -1193,21 +1262,42 @@
    "termos_achados": []
   },
   "2026-11-09": {
-   "decisao": "sem_edicao_na_data",
-   "em": "10/11/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 4419511,
+   "paginas": 66,
+   "paginas_com_texto": 66,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18270",
+   "impressao": "a984458b62d5c04567d03e94e59fa8fa87a36b7b177af8999105d1573607de8f",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "a984458b62d5c04567d03e94e59fa8fa87a36b7b177af8999105d1573607de8f",
+   "termos_achados": [
+    "El Niño"
+   ]
   },
   "2026-11-13": {
    "decisao": "sem_edicao_na_data",
-   "em": "13/11/2026"
+   "em": "15/11/2026"
   },
   "2026-11-12": {
    "decisao": "sem_edicao_na_data",
-   "em": "13/11/2026"
+   "em": "15/11/2026"
   },
   "2026-11-11": {
-   "decisao": "sem_edicao_na_data",
-   "em": "13/11/2026"
+   "decisao": "lida",
+   "em": "15/11/2026",
+   "bytes": 20450215,
+   "paginas": 56,
+   "paginas_com_texto": 56,
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18272",
+   "impressao": "2cb52b4d8f377e5bfb9f173a5806beff8686f7da0c7c62f18481c18de1784325",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   }
  },
- "atualizado_em": "13/11/2026"
+ "atualizado_em": "15/11/2026"
 }
