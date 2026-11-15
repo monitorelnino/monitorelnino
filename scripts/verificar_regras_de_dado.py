@@ -1308,6 +1308,33 @@ CASOS_JARGAO = [
 ]
 
 
+def problemas_json(nome: str, texto: str) -> list:
+    """Arquivo de dado que não se lê como JSON, com a linha do defeito. Função pura."""
+    try:
+        json.loads(texto)
+        return []
+    except ValueError as e:
+        return [f"{nome}: JSON inválido na linha {getattr(e, 'lineno', '?')} ({str(e)[:80]})"]
+
+
+def real_json():
+    """15/11/2026: data/robots_registro.json estava inválido desde 05/11 (#1510; trechos de linha
+    sumidos, `"origem": ": "robo"`), e o rastro público de acesso parou calado: quem grava o rastro
+    engole o erro de propósito, para nunca derrubar a coleta. Nenhum portão lia o arquivo inteiro."""
+    import subprocess
+    nomes = subprocess.run(["git", "ls-files", "data/*.json", "data/**/*.json"], cwd=RAIZ,
+                           capture_output=True, text=True).stdout.split()
+    falhas = [f for n in nomes if (RAIZ / n).exists() for f in problemas_json(n, (RAIZ / n).read_text(encoding="utf-8"))]
+    return falhas, f"{len(nomes)} arquivo(s) JSON de data/ lidos"
+
+
+CASOS_JSON = [
+    ("JSON válido passa", problemas_json("a.json", '{"x": 1}') == []),
+    ("trecho de linha sumido reprova, com a linha",
+     problemas_json("a.json", '{\n "o": ": "robo"\n}')[0].startswith("a.json: JSON inválido na linha 2")),
+]
+
+
 REGRAS = [("ausencia", False, real_ausencia), ("rotulo", False, real_rotulo),
           ("camada", True, real_camada), ("esquema", True, real_esquema),
           ("proveniencia", False, real_proveniencia), ("redes", False, real_redes),
@@ -1315,7 +1342,7 @@ REGRAS = [("ausencia", False, real_ausencia), ("rotulo", False, real_rotulo),
           ("versao", False, real_versao), ("pdf", False, real_pdf),
           ("semana", False, real_semana), ("ancoras", False, real_ancoras),
           ("paridade_qd", False, real_paridade), ("log", False, real_log),
-          ("jargao", True, real_jargao)]
+          ("jargao", True, real_jargao), ("json", True, real_json)]
 
 
 def autoteste() -> int:
@@ -1328,7 +1355,7 @@ def autoteste() -> int:
                                              ("semana", _casos_semana()),
                                              ("ancoras", _casos_ancoras()),
                                              ("paridade_qd", CASOS_PARIDADE), ("log", CASOS_LOG),
-                                             ("jargao", CASOS_JARGAO))
+                                             ("jargao", CASOS_JARGAO), ("json", CASOS_JSON))
              for r, ok in cs]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
