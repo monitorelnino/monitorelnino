@@ -69,6 +69,22 @@ def e_rota(p) -> bool:
             or p.get("origem") == "imprensa")
 
 
+RECUSAS_DA_PAGINA = ("MuroDeRobo", "HTTPError 401", "HTTPError 403", "HTTPError 429", "HTTPError 451")
+
+
+def a_retentar(p: dict, d_hoje) -> bool:
+    """A página que o seguidor não conseguiu abrir volta a ser aberta? Função pura. 15/11/2026: a falha
+    ficava para sempre depois da janela de sete dias (1.284 de 3.266 páginas seguidas; em Mesquita/RJ a
+    matéria da prefeitura que linka o plano falhou uma vez em 26/10 e nunca mais foi aberta). Recusa da
+    fonte (muro de robô, 401, 403, 429, 451) não se retenta; o resto, até três vezes, em 1, 3 e 7 dias."""
+    s = p.get("seguimento") or {}
+    falhas = [f for f in s.get("falhas") or [] if str(f).startswith("pagina:")]
+    if not falhas or any(r in str(f) for f in falhas for r in RECUSAS_DA_PAGINA):
+        return False
+    proxima = b2.proxima_tentativa(int(s.get("tentativas") or 1), _data(s.get("data")) or d_hoje)
+    return bool(proxima) and proxima <= d_hoje
+
+
 def a_seguir(p: dict, d_hoje, refazer_dias: int = 7, reprocessar: bool = False) -> bool:
     """A pista entra nesta rodada do seguidor? Um critério só para `seguir()` e `restantes()`. Pura.
 
@@ -79,6 +95,8 @@ def a_seguir(p: dict, d_hoje, refazer_dias: int = 7, reprocessar: bool = False) 
     if not (status.startswith(("pista", "pendente_confirmacao_documento")) or e_rota(p)) \
             or "inacessivel_persistente" in status:
         return False
+    if a_retentar(p, d_hoje):
+        return True
     if reprocessar:
         if p.get("buscador2_em"):
             return False
@@ -111,8 +129,9 @@ def restantes(fila: dict, hoje: str, refazer_dias: int = 7) -> int:
     """O que sobrou para a rodada seguinte: pistas a seguir que a noite ainda não tocou. Maior que zero,
     o elo grava `.parcial` e a reserva o redispara (fila reentrante). Quem já foi seguido hoje não conta."""
     d_hoje = datetime.datetime.strptime(hoje, "%d/%m/%Y").date()
-    return sum(1 for p in fila.get("pistas") or []
-               if a_seguir(p, d_hoje, refazer_dias) and p.get("buscador2_em") != d_hoje.isoformat())
+    return sum(1 for p in fila.get("pistas") or []   # a retentativa não segura a noite: entra quando sobra orçamento
+               if a_seguir(p, d_hoje, refazer_dias) and not a_retentar(p, d_hoje)
+               and p.get("buscador2_em") != d_hoje.isoformat())
 
 
 def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_web_=None,
@@ -201,7 +220,7 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
                 corpo = abrir(url) if abrir else None
             except Exception as e:  # noqa: BLE001 — recusa e queda viram falha nomeada, nunca contorno
                 corpo = None
-                falhas.append(f"pagina: {type(e).__name__}")
+                falhas.append(f"pagina: {type(e).__name__}" + (f" {e.code}" if getattr(e, "code", None) else ""))
             if corpo is not None:
                 r = b2.candidatos_da_pagina(p, corpo, abrir=abrir, buscar_web=buscar_web_, hoje_iso=hoje_iso)
                 cands, via, lacuna = r["candidatos"], r["via"], r["lacuna"]
@@ -217,7 +236,8 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
         est["lacunas"] += bool(lacuna)
         est["por_via"][via or "falha"] += 1
         p["seguimento"] = {"data": hoje, "via": via, "candidatos": len(cands), "pistas_novas": n_novas,
-                           "falhas": falhas, **({"lacuna": lacuna} if lacuna else {})}
+                           "falhas": falhas, **({"lacuna": lacuna} if lacuna else {}),
+                           **({"tentativas": int((p.get("seguimento") or {}).get("tentativas") or 0) + 1} if falhas else {})}
 
     for p in pistas:
         if est["retentadas"] >= limite or not retentar(p, d_hoje):
@@ -394,8 +414,29 @@ def autoteste():
         return ([p["url"][-1] for p in l] == ["A", "D"] and all(p["status"] == STATUS_PENDENTE for p in l)
                 and len(do_arquivo(itens, set(), 1)) == 1)
 
+    def t_pagina_que_falhou_volta_e_recusa_nao():
+        d = datetime.date
+        pag = lambda falha, quando, n=1, reg="2026-10-01": {
+            "id": "p", "municipio": "Taió", "uf": "SC", "ibge": "4217808", "alvo": "4217808", "registrado_em": reg,
+            "url": "https://taio.sc.gov.br/noticia", "status": "pista — recusada pelo juiz: citacao_incompleta",
+            "seguimento": {"data": quando, "via": "", "falhas": [falha], "tentativas": n}}
+        import urllib.error
+        def cai(u): raise urllib.error.HTTPError(u, 503, "x", None, None)
+        f = {"pistas": [pag("pagina: HTTPError", "26/10/2026")]}
+        seguir(f, "15/11/2026", abrir=cai)
+        return (a_seguir(pag("pagina: HTTPError", "26/10/2026"), d(2026, 11, 15))            # fora da janela, volta
+                and not a_seguir(pag("pagina: HTTPError", "15/11/2026"), d(2026, 11, 15))     # não no mesmo dia
+                and not a_seguir(pag("pagina: HTTPError 403", "26/10/2026"), d(2026, 11, 15)) # recusa se respeita
+                and not a_seguir(pag("pagina: MuroDeRobo", "26/10/2026"), d(2026, 11, 15))
+                and not a_seguir(pag("pagina: URLError", "26/10/2026", n=3), d(2026, 11, 15)) # três e para
+                and restantes({"pistas": [pag("pagina: URLError", "26/10/2026")]}, "15/11/2026") == 0
+                and f["pistas"][0]["seguimento"]["falhas"] == ["pagina: HTTPError 503"]       # a falha diz o código
+                and f["pistas"][0]["seguimento"]["tentativas"] == 2)
+
     try:
         return rodar_autoteste({
+            "página que falhou volta fora da janela, até três vezes; recusa da fonte não volta; a falha diz o código":
+                t_pagina_que_falhou_volta_e_recusa_nao,
             "arquivo: só link de agregador ainda não tentado, sem repetição": t_arquivo_so_agregador_ainda_nao_tentado,
             "rota (notícia) e página oficial (B4) viram pistas novas de documento": t_rota_e_b4_viram_pistas_novas,
             "lixo cai com motivo (B1, B2, B3), com o status anterior guardado": t_lixo_cai_com_motivo,
