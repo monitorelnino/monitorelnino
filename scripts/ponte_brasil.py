@@ -8,18 +8,17 @@ e guardada endereçada pelo sha256 em `ponte/`; `coletores_base.buscar` a usa qu
 vira conversa HTTP (timeout, DNS, rede). Recusa (401, 403, 429, 451, captcha, login, muro) nunca
 chega aqui: a fonte respondeu "não", e isso se respeita.
 
-Toda noite (`.github/workflows/ponte_brasil.yml`): `--pedidos` lista os documentos das filas de pista
-que moram nos hosts de `config/ponte_brasil.json` e ainda não têm cópia; o executor no Brasil os baixa
-com o cliente identificado e devolve como artefato; `--do-artefato` confere cada um (muro de robô e
-recusa não entram) e guarda pela mesma função de `--guardar`.
+Toda semana (tarefa agendada do Claude no computador da editoria, 15/11/2026: o Controle Inteligente de
+Aplicativos do Windows barra o executor do GitHub, e desligá-lo não tem volta): `--pedidos` lista os
+documentos das filas de pista que moram nos hosts de `config/ponte_brasil.json` e ainda não têm cópia; o
+navegador do app do Claude, no Brasil, os baixa; `--guardar` confere cada um com `aceitar` (muro de robô,
+recusa e corpo vazio não entram) e guarda.
 
 USO
   python3 scripts/ponte_brasil.py --autoteste
   python3 scripts/ponte_brasil.py --guardar URL ARQUIVO --via "como a cópia foi obtida"
   python3 scripts/ponte_brasil.py --pedidos            # um endereço por linha
-  python3 scripts/ponte_brasil.py --do-artefato        # dentro do elo: traz o artefato `ponte` deste run
 """
-import os
 import pathlib
 import re
 import sys
@@ -72,35 +71,15 @@ def registro(doc: dict, url: str, corpo: bytes, via: str, hoje: str) -> tuple:
 
 def guardar(url: str, arquivo: str, via: str) -> str:
     corpo = pathlib.Path(arquivo).read_bytes()
+    motivo = aceitar(corpo, "200")
+    if motivo:
+        raise SystemExit(f"cópia recusada: {motivo}")
     doc, caminho = registro(cb.ler(cb.PONTE, {}), url, corpo, via, cb.hoje_editorial().isoformat())
     destino = cb.RAIZ / caminho
     destino.parent.mkdir(exist_ok=True)
     destino.write_bytes(corpo)
     cb.gravar(cb.PONTE, doc)
     return caminho
-
-
-def do_artefato() -> int:
-    """Traz o artefato `ponte` deste run (manifesto.tsv: n, url, status) e guarda o que vale."""
-    import subprocess
-    import tempfile
-    with tempfile.TemporaryDirectory() as tmp:
-        r = subprocess.run(["gh", "run", "download", os.environ["GITHUB_RUN_ID"], "--name", "ponte", "--dir", tmp],
-                           capture_output=True, text=True, timeout=300)
-        if r.returncode != 0:
-            print(f"ponte: sem artefato nesta noite ({r.stderr.strip()[:120]})")
-            return 0
-        pasta = pathlib.Path(tmp)
-        manifesto = pasta / "manifesto.tsv"
-        for linha in (manifesto.read_text(encoding="utf-8-sig").splitlines() if manifesto.exists() else []):
-            n, url, status = (linha.split("\t") + ["", "", ""])[:3]
-            arquivo = pasta / f"{n}.bin"
-            motivo = aceitar(arquivo.read_bytes() if arquivo.exists() else b"", status)
-            if motivo:
-                print(f"  ✗ {url}: {motivo}")
-                continue
-            print(f"  ✓ {url}: {guardar(url, str(arquivo), 'executor no Brasil (ponte_brasil.yml)')}")
-    return 0
 
 
 def autoteste() -> int:
@@ -161,8 +140,6 @@ def main() -> int:
             filas.append(doc.get("pistas") if isinstance(doc.get("pistas"), list) else doc.get("itens"))
         print("\n".join(pedidos(filas, hosts, (cb.ler(cb.PONTE, {}) or {}).get("copias"))))
         return 0
-    if "--do-artefato" in sys.argv:
-        return do_artefato()
     if "--guardar" in sys.argv:
         i = sys.argv.index("--guardar")
         via = sys.argv[sys.argv.index("--via") + 1] if "--via" in sys.argv else "ponte no Brasil"
