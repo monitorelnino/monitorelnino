@@ -364,21 +364,9 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "21/10/2026",
-   "log_ref": "julgar_saude_21-10-2026",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
-    {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
-     "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
-    },
     {
      "status": "VIG",
      "orgao": "SES-MA",
@@ -389,19 +377,55 @@
      "url": "https://egma.ma.gov.br/noticias/ses-realiza-capacitacao-para-multiplicadores-de-manejo-clinico-de-arboviroses-dos-municipios-da-regiao-metropolitana",
      "natureza_doc": "EX_ANTE",
      "tipo": "saude_do_ciclo",
-     "hash_evidencia": "df58507bc2bf5937218c466789b6e6e30f3429ab892b705c20c9968a554f94b2",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 21/10/2026, codebook 1.6 (15/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+     "hash_evidencia": "1edceeb45f993df32ece7f33458bee85e9be7a625ff4101332d01da37ae47abd",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+    },
+    {
+     "status": "VENC",
+     "orgao": "SES-MA",
+     "doc": "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2025/01/Plano_arboviroses_-_2024_2025.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "43fa8becf9f2b65a732fc1f1ef671a05bb224e00118bc86dc3b4cf320c02691c",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
-   "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "status": "VIG",
+   "orgao": "SES-MA",
+   "doc": "Plano de Contingência da Dengue e Outras Arboviroses” e “Manejo Clínico da Dengue e Outras arboviroses”",
+   "numero": "123",
+   "data": "4/03/2024",
+   "url": "https://egma.ma.gov.br/noticias/ses-realiza-capacitacao-para-multiplicadores-de-manejo-clinico-de-arboviroses-dos-municipios-da-regiao-metropolitana",
+   "hash_evidencia": "1edceeb45f993df32ece7f33458bee85e9be7a625ff4101332d01da37ae47abd",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-MA",
+    "doc": "PLANO DE CONTINGÊNCIA EM RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA OCASIONADAS POR DENGUE E OUTRAS ARBOVIROSES, 2024-2025 MARANHA O 2024 1 Carlos Orleans Branda o",
+    "observacao": null,
+    "numero": null,
+    "data": "02/2024",
+    "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2024/02/Plano-de-contige%CC%82ncia-das-Arboviroses-no-Maranha%CC%83o.pdf",
+    "hash_evidencia": "021cea8d53cfac1b7926f8882cae3443f934d1426e3a8f2e6e01d4945d9e9c8d",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "15/11/2026",
+    "log_ref": "julgar_saude_15-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "PLANO DE CONTINGÊNCIA EM RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA OCASIONADAS POR DENGUE E OUTRAS ARBOVIROSES, 2024-2025 MARANHA O 2024 1 Carlos Orleans Branda o",
+     "numero": null,
+     "data": "02/2024",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2024/02/Plano-de-contige%CC%82ncia-das-Arboviroses-no-Maranha%CC%83o.pdf",
+     "hash_evidencia": "021cea8d53cfac1b7926f8882cae3443f934d1426e3a8f2e6e01d4945d9e9c8d",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "15/11/2026"
+    }
+   }
   },
   "MG": {
    "risco_sanitario_projetado": [
@@ -1101,31 +1125,55 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_pista_fraca_nao_confirmada",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
+     "status": "VIG",
+     "orgao": "SES-RN",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+     "observacao": "sem ato de aprovação localizado",
      "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "data": "2025",
+     "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
+   "status": "VIG",
+   "orgao": "SES-RN",
+   "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
    "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "data": "2025",
+   "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+   "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-RN",
+    "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "2025",
+    "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+    "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "15/11/2026",
+    "log_ref": "julgar_saude_15-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+     "numero": null,
+     "data": "2025",
+     "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+     "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "15/11/2026"
+    }
+   }
   },
   "RO": {
    "risco_sanitario_projetado": [
@@ -1172,31 +1220,67 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_missao_federal_em_curso_sem_plano_publicado",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
+     "status": "NOVO",
+     "orgao": "SES-RR",
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "observacao": "sem ato de aprovação localizado",
      "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
+   "status": "NOVO",
+   "orgao": "SES-RR",
+   "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
    "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "data": "09/2026",
+   "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+   "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "CRIADO_CICLO",
+    "orgao": "SES-RR",
+    "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "09/2026",
+    "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+    "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+    "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo",
+    "data_verificacao": "15/11/2026",
+    "log_ref": "julgar_saude_15-11-2026",
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "numero": null,
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+     "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo",
+     "data_verificacao": "15/11/2026"
+    },
+    "f2": {
+     "status": "LISTADA_SEM_ATRIBUICAO",
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "numero": null,
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+     "justificativa_degrau": "o ato cita a defesa civil como convidada, sem integrá-la à composição",
+     "atribuicao_citada": "DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026–2027 GOVERNO DO ESTADO DE RORAIMA SECRETARIA DE ESTADO DA SAÚDE – SESAU/RR COORDENADORIA GERAL DE VIGILÂNCIA EM SAÚDE – CGVS DEPARTAMENTO DE VIGILÂNCIA AMBIENTAL – DVA VIGIDESASTRES/RR VERSÃO 1 Bo",
+     "data_verificacao": "15/11/2026",
+     "log_ref": "julgar_saude_15-11-2026"
+    }
+   }
   },
   "RS": {
    "risco_sanitario_projetado": [
@@ -1375,31 +1459,46 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_nada_localizado",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
+     "status": "NOVO",
+     "orgao": "SES-TO",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+     "observacao": null,
      "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "data": "2026",
+     "url": "https://central.to.gov.br/download/446049",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "98a4d9518a12d25f3ca472bf2bbe706bffdd2a352161af9a8bfad06dd83ee72c",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
+   "status": "NOVO",
+   "orgao": "SES-TO",
+   "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
    "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "data": "2026",
+   "url": "https://central.to.gov.br/download/446049",
+   "hash_evidencia": "98a4d9518a12d25f3ca472bf2bbe706bffdd2a352161af9a8bfad06dd83ee72c",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+     "numero": null,
+     "data": "2026",
+     "url": "https://central.to.gov.br/download/446049",
+     "hash_evidencia": "98a4d9518a12d25f3ca472bf2bbe706bffdd2a352161af9a8bfad06dd83ee72c",
+     "justificativa_degrau": "estrutura intersetorial do estado com a saúde citada, com atribuição escrita no ato",
+     "atribuicao_citada": "nicípios, com exceção de São Félix do Tocantins que, até o momento, possui infestação apenas do Aedes albopictus, vetor competente para transmitir as doenças supracitadas. Atualmente, a Organização Mundial da Saúde (OMS) estima que 2/5 da p",
+     "data_verificacao": "15/11/2026",
+     "log_ref": "julgar_saude_15-11-2026"
+    }
+   }
   }
  }
 }
