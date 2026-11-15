@@ -47,29 +47,21 @@ on:
 
 permissions:
   contents: read
-  actions: read        # o job `vez` do coletor lê a fila de runs
+  id-token: write
 
 jobs:
-  coletar:
-    uses: ./.github/workflows/_coletor.yml
-    with:
-      nome: ${{ inputs.nome }}
-      grupo_de_concorrencia: dia-${{ inputs.nome }}
-      # `fromJSON`: o GitHub entrega o número do disparo como texto à entrada `number` do workflow
-      # chamado (mesma razão de `busca_planos.yml`).
-      timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
-      precisa_searxng: ${{ inputs.precisa_searxng }}
-      precisa_node: ${{ inputs.precisa_node }}
-      precisa_tesseract: ${{ inputs.precisa_tesseract }}
-      comandos: ${{ inputs.comandos }}
-    secrets:
-      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
-      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
-      # 26/10/2026: a válvula não repassava as chaves; o OpenAQ e o INMET ficavam sem credencial
-      # numa coleta de dia (a noite repassa, em noturno_sinais.yml). Mesmas chaves, mesmo nome.
-      OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
-      INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
-      PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
-      # 15/11/2026: a indicação do leitor (formulário) também se lê de dia, pela válvula.
-      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  sonda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/587772025616/locations/global/workloadIdentityPools/github/providers/monitorelnino
+          service_account: mare-coleta@project-0735ac01-3417-4c02-ab5.iam.gserviceaccount.com
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+      - run: pip install -q earthengine-api
+      - env:
+          GEE_PROJECT: project-0735ac01-3417-4c02-ab5
+        run: ${{ inputs.comandos }}
