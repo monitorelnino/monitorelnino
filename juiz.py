@@ -712,6 +712,9 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
 # =============================================================================================
 # Etapa 3 — autoridade do ato (§5.2.1)
 # =============================================================================================
+NAO_E_ATO = ("nenhuma autoridade do Executivo no texto", "sem fórmula de promulgação nem texto articulado")
+
+
 def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False,
                       esfera: str = "municipal", url: str = None, ente: tuple = None) -> tuple:
     """(ok, motivo, trecho). Ato do Poder Executivo, não aprovação por colegiado.
@@ -754,9 +757,9 @@ def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False,
         # colegiado aprovando, sem fórmula do Executivo: o ato é a aprovação, não a instituição
         return False, "executivo_pendente", trecho_em_volta(texto, tem_colegiado)
     if not tem_executivo:
-        return False, "autoridade_nao_confirmada", "nenhuma autoridade do Executivo no texto"
+        return False, "autoridade_nao_confirmada", NAO_E_ATO[0]
     if not tem_forma:
-        return False, "autoridade_nao_confirmada", "sem fórmula de promulgação nem texto articulado"
+        return False, "autoridade_nao_confirmada", NAO_E_ATO[1]
     return True, "", trecho_em_volta(texto, tem_executivo)
 
 
@@ -1304,14 +1307,19 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return recusa("nome_comum_sem_ente", "J4")
 
     como_plano = e_plano_pelo_cabecalho(texto)
-    ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano)
-    if ok and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
-        ano, _ = ano_do_plano(texto, ano_corrente)
-        if str(ano or "") != str(dados.get("data") or "")[-4:]:
-            dados["data"] = str(ano) if ano else None
-            regras.append("J7")
-    veredito["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
-    veredito["data"] = dados.get("data")
+
+    def citar(como: bool) -> tuple:
+        ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como)
+        if ok and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
+            ano, _ = ano_do_plano(texto, ano_corrente)
+            if str(ano or "") != str(dados.get("data") or "")[-4:]:
+                dados["data"] = str(ano) if ano else None
+                regras.append("J7")
+        veredito["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
+        veredito["data"] = dados.get("data")
+        return ok, motivo, dados
+
+    ok, motivo, dados = citar(como_plano)
     if not ok:
         return recusa(motivo)
     from atualizar_instrumentos_estaduais import documento_do_repositorio
@@ -1327,6 +1335,18 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=sem_ato,
                                            esfera="estadual" if eh_estadual else "municipal",
                                            url=url, ente=None if eh_estadual else (nome, uf))
+    if (not ok and "J20" in propostas and not sem_ato and trecho in NAO_E_ATO
+            and RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])):
+        # J20 (proposta, 15/11/2026): o documento não é ato (sem fórmula, sem artigos) e se intitula plano:
+        # o "ato" achado na etapa 2 era a norma que o plano CITA (Lei federal 12.608 em Mesquita/RJ). Julga-se
+        # como o que ele é — plano publicado sem ato de aprovação localizado (editoria, 03/10/2026).
+        ok2, _, dados2 = citar(True)
+        if ok2 and dados2.get("sem_ato_de_aprovacao"):
+            regras.append("J20")
+            sem_ato = veredito["sem_ato_de_aprovacao"] = True
+            ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=True,
+                                                   esfera="estadual" if eh_estadual else "municipal",
+                                                   url=url, ente=None if eh_estadual else (nome, uf))
     veredito["criterios"]["3_autoridade"] = {"ok": ok, "trecho": trecho}
     if not ok:
         return recusa(motivo)
@@ -1621,6 +1641,13 @@ def _v(texto, nome, uf, url, **kw):
     return julgar(texto, nome=nome, uf=uf, url=url, **dict(_C18, **kw))
 
 
+PLANO_QUE_CITA_NORMA = (
+    "PREFEITURA MUNICIPAL DE TAIÓ - SC\nCOORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL\nPLANO DE CONTINGÊNCIA 2026 / 2027\n"
+    "Este plano de contingência foi elaborado conforme preceitua a Lei federal 12.608 de 10 de abril de 2012, para o "
+    "período chuvoso 2026/2027, diante da previsão de El Niño, com risco de inundação e deslizamento, e orienta a "
+    "preparação das equipes do município antes das chuvas. " + "Contatos das equipes e dos abrigos do município. " * 40)
+
+
 def casos_18() -> list:
     sao_borja = _v(PLANO_RS_18, "São Borja", "RS", URL_RS_18)
     goiania = CANARIOS["plano_novo"]["texto"].replace("14 DE JULHO DE 2026", "21 DE AGOSTO DE 1959")
@@ -1697,6 +1724,15 @@ def casos_18() -> list:
          and _v(plano_2015 + " Plano revisado em 2024.", "Taió", "SC", URL_PDF_DE_PLANO,
                 propostas=("J8",))["categoria"] == "plano_antigo"
          and _v(plano_2015, "Taió", "SC", URL_PDF_DE_PLANO)["categoria"] == "plano_antigo"),
+        ("J20 (proposta) plano em documento do ente que cita a Lei federal 12.608 é julgado como plano (Mesquita/RJ); "
+         "sem a proposta, fora do domínio do ente ou sem título de plano, segue recusado",
+         _v(PLANO_QUE_CITA_NORMA, "Taió", "SC", URL_PDF_DE_PLANO, propostas=("J20",))["categoria"] == "plano"
+         and _v(PLANO_QUE_CITA_NORMA, "Taió", "SC", URL_PDF_DE_PLANO)["motivo"] == "autoridade_nao_confirmada"
+         and _v(PLANO_QUE_CITA_NORMA, "Taió", "SC", "https://www.bndes.gov.br/plano.pdf",
+                propostas=("J20",))["motivo"] == "autoridade_nao_confirmada"
+         and _v(PLANO_QUE_CITA_NORMA.replace("PLANO DE CONTINGÊNCIA 2026 / 2027", "RELATÓRIO DE GESTÃO 2026")
+                .replace("Este plano de contingência", "Este relatório"), "Taió", "SC", URL_PDF_DE_PLANO,
+                propostas=("J20",))["motivo"] == "autoridade_nao_confirmada"),
         ("J9 (proposta) ato da Secretaria de Educação é plano setorial (Toledo/PR)",
          _v(toledo, "Toledo", "PR", "https://www.toledo.pr.gov.br/in-17-2026.pdf", propostas=("J9",))["motivo"]
          == "plano_setorial"),

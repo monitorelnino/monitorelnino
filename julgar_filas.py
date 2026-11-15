@@ -824,6 +824,10 @@ def main() -> int:
     urls = (sys.argv[sys.argv.index("--urls") + 1].split(",") if "--urls" in sys.argv else None)
     so_oficial = "--dominio-oficial" in sys.argv
     rejulgar = "--rejulgar" in sys.argv
+    propostas = tuple(sys.argv[sys.argv.index("--propostas") + 1].split(",")) if "--propostas" in sys.argv else ()
+    if propostas and aplicar:
+        print("--propostas é medição: não se combina com --aplicar")
+        return 2
     if "--urls-de" in sys.argv:
         alvo = pathlib.Path(sys.argv[sys.argv.index("--urls-de") + 1])
         urls = [l.strip() for l in alvo.read_text(encoding="utf-8").splitlines() if l.strip()]
@@ -845,7 +849,7 @@ def main() -> int:
         return sha256(texto.encode("utf-8")) if texto else None
 
     def julgar_fn(p):
-        v = julgar_uma(p, buscar_texto, hash_do_texto)
+        v = julgar_uma(p, buscar_texto, hash_do_texto, propostas=propostas)
         # 28/09/2026 (bloco das 17:20): a recusa por falta de documento primário não encerra a
         # pista antes de PROCURAR o ato. 176 das 250 primeiras recusas foram esta: a pista
         # aponta a notícia, e a notícia não é o ato — mas diz que ele existe e onde procurar.
@@ -915,6 +919,11 @@ def main() -> int:
         print("A APLICAÇÃO em municipios.json/estados.json continua em julgar_e_aplicar_descobertas.py,")
         print("que tem a rede de proteção (backup, portões, rollback em disco) testada desde 31/08/2026.")
     else:
+        for v in vereditos:
+            if set(propostas) & set(v.get("regras_18") or []):
+                print(f"PROPOSTA {'+'.join(sorted(set(propostas) & set(v['regras_18'])))}: "
+                      f"{'promove ' + str(v.get('categoria')) if v['promove'] else 'recusa ' + str(v['motivo'])} · "
+                      f"{v.get('ibge')} {v.get('municipio')}/{v.get('uf')} · {v.get('data')} · {v.get('url')}")
         print("\nrelatório apenas; nada escrito (use --aplicar)")
     return 0
 
