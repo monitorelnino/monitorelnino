@@ -150,14 +150,18 @@ jobs:
           retention-days: 30
           if-no-files-found: warn
 
-      - name: Abrir Issue quando vermelho
-        if: failure()
+      - name: Aviso do ensaio (uma Issue enquanto vermelho; fecha quando verde)
+        if: always()
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
+          ESTADO: ${{ job.status }}
         run: |
-          gh issue create --repo monitorelnino/robo-registro \
-            --title "Ensaio real da noite vermelho ($(date -u +%d/%m/%Y))" \
-            --body "$(printf 'O ensaio real reprovou antes da noite.\n\n```\n%s\n```\n\nRun: %s/%s/actions/runs/%s\n' "$(cat /tmp/veredito.txt 2>/dev/null | tail -40)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")" || true
+          T="Ensaio real da noite vermelho"
+          case "$ESTADO" in
+            success) python3 scripts/avisos.py "$T" ;;
+            failure) printf 'O ensaio real reprovou antes da noite.\n\n```\n%s\n```\n\nRun: %s/%s/actions/runs/%s\n' "$(tail -40 /tmp/veredito.txt 2>/dev/null)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" | python3 scripts/avisos.py "$T" - ;;
+          esac
 
       - name: Apagar o ramo do ensaio
         if: always() && steps.ramo.outputs.ramo != ''

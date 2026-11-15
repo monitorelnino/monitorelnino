@@ -55,13 +55,16 @@ jobs:
           M="${{ inputs.modo || 'flag' }}"; F=""
           [ "$M" = "noindex" ] && F="--esperar-noindex"; [ "$M" = "index" ] && F="--esperar-index"; [ "$M" = "neutro" ] && F="--neutro"
           verificar() { node scripts/verificar_publicado.js --base https://monitorelnino.com.br $F 2>&1 | tee /tmp/verificar_publicado.txt; }
-          if ! verificar && grep -q '✗ integridade' /tmp/verificar_publicado.txt; then
+          T="Domínio atrás da main e a reposição do vigia falhou"
+          if verificar; then
+            python3 scripts/avisos.py "$T" || true
+          elif grep -q '✗ integridade' /tmp/verificar_publicado.txt; then
             echo "::warning::domínio atrás da main: repondo"
             if ! bash scripts/repor_dominio.sh "Vigia ${GITHUB_SHA::7}" --estrito; then
               # 08/11/2026: a causa vai no corpo — "Account credit usage exceeded" ficou 35 h sem nome nas Issues #397/#400/#401.
               CORPO="O vigia achou o domínio diferente da main em ${GITHUB_SHA::7} e repor_dominio.sh falhou: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
               CORPO="$CORPO"$'\n\n'"Relatório do deploy: $(head -c 800 /tmp/repor_relatorio.txt 2>/dev/null)"
-              gh issue create --repo monitorelnino/robo-registro --title "Domínio atrás da main e a reposição do vigia falhou" --body "$CORPO" || true
+              printf '%s\n' "$CORPO" | python3 scripts/avisos.py "$T" - || true
               exit 1
             fi
             # 08/11/2026: dentro da janela de deploy (scripts/janela_de_deploy.py) o domínio pode estar

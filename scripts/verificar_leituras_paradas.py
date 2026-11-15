@@ -73,22 +73,8 @@ def problemas(registros: dict, pistas: list, hoje: datetime.date, e_oficial) -> 
 
 
 def avisar(achados: list, gh=None) -> str:
-    """Abre a Issue quando há achado e não há Issue; fecha quando não há achado. Devolve o que fez."""
-    from scripts.sondar_credenciais import REPO_DOS_AVISOS, _gh, issues_abertas
-    gh = gh or _gh
-    abertas = issues_abertas(gh)
-    if abertas is None:
-        return "sem acesso às Issues"
-    n = abertas.get(TITULO)
-    if achados and n is None:
-        gh(["issue", "create", "--repo", REPO_DOS_AVISOS, "--title", TITULO, "--body-file", "-"],
-           "\n".join(f"- {x}" for x in achados) + "\n\nMedido por `scripts/verificar_leituras_paradas.py`. "
-           "Fecha sozinha quando a leitura volta.")
-        return "aberta"
-    if not achados and n is not None:
-        gh(["issue", "close", str(n), "--repo", REPO_DOS_AVISOS, "--comment", "Leituras em dia. Fechada."])
-        return "fechada"
-    return "sem mudança"
+    from scripts import avisos
+    return avisos.avisar(TITULO, "\n".join(f"- {x}" for x in achados), "Leituras em dia. Fechada.", gh or avisos._gh)
 
 
 def autoteste() -> int:
