@@ -149,7 +149,7 @@ def consultar_endpoint(endpoint: str, params: dict, api_key: str, limiter: RateL
             _lacuna(f"Portal da Transparência ({endpoint})",
                     f"HTTP {resp.status_code} após as esperas — município IBGE "
                     f"{params.get('codigoIBGE')}, ano {params.get('ano')}",
-                    strings=[url])
+                    canal="DOU", camada=1, strings=[url])
             break
         dados = resp.json()
         if not dados:
@@ -260,7 +260,7 @@ def autoteste() -> int:
         esperas, lacunas = [], []
         r = consultar_endpoint("/convenios", {"codigoIBGE": "3106200", "ano": 2026, "itens": 20},
                                "k", _limitador_mudo(), pedir_fn=lambda u: respostas.pop(0),
-                               dormir=esperas.append, lacuna_fn=lambda *a, **k: lacunas.append(a))
+                               dormir=esperas.append, lacuna_fn=lambda fonte, motivo, canal, camada, **k: lacunas.append((fonte, motivo)))
         return r == [{"a": 1}] and esperas == [5, 15] and not lacunas
 
     def t2():
@@ -288,7 +288,7 @@ def autoteste() -> int:
 
         consultar_endpoint("/convenios", {"codigoIBGE": "1", "ano": 2026, "itens": 20}, "k",
                            _limitador_mudo(), pedir_fn=pedir, dormir=esperas.append,
-                           lacuna_fn=lambda *a, **k: lacunas.append(a))
+                           lacuna_fn=lambda fonte, motivo, canal, camada, **k: lacunas.append((fonte, motivo)))
         return esperas == [30] and len(pedidos) == 2 and len(lacunas) == 1
 
     def t4():
@@ -298,7 +298,7 @@ def autoteste() -> int:
         consultar_endpoint("/convenios", {"codigoIBGE": "1", "ano": 2026, "itens": 20}, "k",
                            _limitador_mudo(),
                            pedir_fn=lambda u: (pedidos.append(u), _RespostaFalsa(404))[1],
-                           dormir=esperas.append, lacuna_fn=lambda *a, **k: lacunas.append(a))
+                           dormir=esperas.append, lacuna_fn=lambda fonte, motivo, canal, camada, **k: lacunas.append((fonte, motivo)))
         return len(pedidos) == 1 and not esperas and len(lacunas) == 1
 
     def t5():

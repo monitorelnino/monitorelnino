@@ -39,6 +39,9 @@ jobs:
       precisa_searxng: true
       # Ordem: corrige a atribuição por domínio, prepara, codebook, aplicador (28/09 e 09/10/2026).
       comandos: |
+        # 15/11/2026 (editoria): a indicação do leitor entra toda noite, antes do juiz, e é julgada na
+        # mesma noite. Era semanal, e a rodada de 15/11 perdeu o commit com a indicação de Taió/SC.
+        processar_contribuicoes.py
         scripts/corrigir_atribuicao_por_dominio.py --aplicar
         revisar_pistas.py --preparar
         prazo=75min julgar_filas.py --aplicar
@@ -51,3 +54,5 @@ jobs:
       # `GITHUB_TOKEN`, que não alcança o `robo-registro`, e a Issue de alarme
       # falha em silêncio por causa do `|| true`.
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
