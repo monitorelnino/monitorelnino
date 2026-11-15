@@ -1,0 +1,19 @@
+{
+ "_governanca": "Editoria, 15/11/2026: o domínio to.gov.br inteiro (Semarh, Naturatins, CBMTO, Defesa Civil, diário), saude.ap.gov.br e saude.rn.gov.br esgotam o tempo ou dão rede inalcançável para os servidores do GitHub, e abrem normalmente de um computador no Brasil. A cópia é trazida de lá, com o cliente identificado, e guardada endereçada pelo sha256 em `ponte/`; `coletores_base.buscar` a usa quando a conexão nem vira conversa HTTP (timeout, DNS, rede). Recusa (401, 403, 429, 451, captcha, login, muro) nunca chega aqui: a fonte respondeu \"não\", e isso se respeita.",
+ "copias": {
+  "https://central.to.gov.br/download/468650": {
+   "arquivo": "ponte/cf90acc71331671e37f872d0e273b08b8ef8a71f143174e3b36df850c2ed96eb.pdf",
+   "sha256": "cf90acc71331671e37f872d0e273b08b8ef8a71f143174e3b36df850c2ed96eb",
+   "tamanho": 14225431,
+   "obtido_em": "2026-11-15",
+   "via": "navegador da editoria no Brasil, a partir de https://www.to.gov.br/semarh/2026 (Semarh-TO), 15/11/2026"
+  },
+  "https://central.to.gov.br/download/468652": {
+   "arquivo": "ponte/4bf3dc725b1910c13682002d0bfebbe4e819ecd81a1c48cb9008ae086adf4d36.pdf",
+   "sha256": "4bf3dc725b1910c13682002d0bfebbe4e819ecd81a1c48cb9008ae086adf4d36",
+   "tamanho": 2682165,
+   "obtido_em": "2026-11-15",
+   "via": "navegador da editoria no Brasil, a partir de https://www.to.gov.br/semarh/2025 (Semarh-TO), 15/11/2026"
+  }
+ }
+}

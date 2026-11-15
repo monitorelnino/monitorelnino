@@ -1528,7 +1528,31 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
             return buscar_fn(url, timeout=timeout)
         return buscar_uma_vez(url, timeout=timeout, origem=origem)
 
-    return com_espera(uma_vez, dormir=dormir)
+    try:
+        return com_espera(uma_vez, dormir=dormir)
+    except urllib.error.HTTPError:
+        raise   # a fonte respondeu "não": recusa, que nenhuma cópia substitui
+    except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead):
+        # 15/11/2026 (editoria): o servidor público que não responde ao robô de fora do Brasil
+        # (to.gov.br, saude.ap.gov.br, saude.rn.gov.br) é lido pela ponte no Brasil, cliente identificado.
+        copia, _ = copia_da_ponte(url)
+        if copia is None:
+            raise
+        return copia
+
+
+PONTE = "ponte_brasil.json"
+
+
+def copia_da_ponte(url: str) -> tuple:
+    """(bytes, "AAAA-MM-DD") da cópia que a ponte no Brasil trouxe deste mesmo endereço, conferida pelo
+    sha256; (None, None) sem cópia. Só cobre conexão que não virou conversa HTTP: recusa não chega aqui."""
+    c = ((ler(PONTE, {}) or {}).get("copias") or {}).get(url) or {}
+    arquivo = RAIZ / c["arquivo"] if c.get("arquivo") else None
+    if not arquivo or not arquivo.exists():
+        return None, None
+    corpo = arquivo.read_bytes()
+    return (corpo, c.get("obtido_em")) if sha256(corpo) == c.get("sha256") else (None, None)
 
 
 def muro_no_erro(e) -> str | None:
