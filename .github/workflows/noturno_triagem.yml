@@ -47,4 +47,6 @@ jobs:
         julgar_filas.py --aplicar --dominio-oficial --limite 80
         aplicar_promocoes_do_juiz.py --aplicar
         scripts/verificar_esquema_de_pista.py
+        # 15/11/2026: mede o que ficou sem ler (diário de estado, documento oficial esperando o juiz) e avisa.
+        scripts/verificar_leituras_paradas.py
     secrets: inherit
