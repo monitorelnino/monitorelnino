@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1747 · Indicação do leitor entra toda noite; teto de pistas não barra mais documento oficial
+
+A indicação recebida pelo formulário passa a ser lida toda noite, antes do juiz. O teto de cinco pistas por município deixa de contar a pista já julgada: ele barrava na porta PDFs em domínio oficial de 1.050 municípios. A rodada semanal não perde mais o commit por conflito de cursor. Corrigida a declaração de lacuna das transferências.
 ## 2026-11-15 · #1746 · Prorrogação de emergência estadual conferida no diário do estado toda noite
 
 A prorrogação do decreto estadual de emergência passa a ser lida no diário do estado toda noite perto do vencimento e somada à vigência do mapa; diário sem leitura abre aviso. Corrige a raiz achada no caminho: edição publicada com atraso (Amazonas) ficava "sem edição" para sempre; a ausência só é final dez dias depois da data.

@@ -70,3 +70,6 @@ jobs:
       OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
       INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
       PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
+      # 15/11/2026: a indicação do leitor (formulário) também se lê de dia, pela válvula.
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
