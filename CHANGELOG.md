@@ -12,10 +12,6 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-15 · #1768 · MapBiomas por estado pelo Earth Engine
 
 Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.
-## 2026-11-15 · #1770 · Emergência estadual achada na leitura do diário
-
-A camada de emergências declaradas pelo estado dependia de lançamento manual, e a leitura do diário só procurava emergência em saúde. O decreto do Tocantins de 20/10/2026 (estiagem, todo o estado, 180 dias) ficou fora do mapa. Agora o diário lido traz o decreto estadual de emergência como candidato, que só aparece no mapa depois de conferido na edição.
-
 ## 2026-11-15 · #1767 · Alarme mede a fila de saúde estadual
 
 O alarme noturno de leitura parada passa a contar as pistas de saúde estadual sem veredito além do prazo. A rodada semanal saiu verde em 04 e 11/11 sem que o trabalho chegasse à main, e 474 pistas ficaram sem julgamento.

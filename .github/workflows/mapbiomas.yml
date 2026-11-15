@@ -27,6 +27,7 @@ on:
 
 permissions:
   contents: read
+  actions: read        # o invólucro dos coletores pede (job `vez`); sem isto o run nem começa
 
 jobs:
   somar:

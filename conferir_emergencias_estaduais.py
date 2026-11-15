@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """Confere no diário oficial cada emergência declarada por governo de estado (`data/emergencias_estaduais.json`).
 
-O ato entra no arquivo pela leitura do diário (`coletar_edicoes_doe.py` acha o decreto que declara emergência em
-todo o estado; 15/11/2026: até então só a curadoria, e o Decreto nº 7.251 do Tocantins ficou de fora) ou por
-curadoria, com o endereço da edição (PDF do diário ou página oficial do ato); só vai ao mapa com `conferido: true`, que este
+O ato entra no arquivo por curadoria, com o endereço da edição (PDF do diário ou página oficial do ato); só vai ao mapa com `conferido: true`, que este
 script grava depois de achar no texto da edição o número do decreto, a data por extenso e a palavra emergência,
 com a cópia preservada em `evidencias/`. Não achou: fica `conferido: false`, com o motivo, e o mapa não o mostra.
 `vigente_ate` = publicação + dias − 1 (vigor na data da publicação, dias corridos).
@@ -49,12 +47,6 @@ RX_CABECALHO = re.compile(r"DECRETO\s+N[ºO°.]*\s*([\d.]{3,12})\s*,?\s+DE\s+(\d
                           + "|".join(m.upper() for m in MESES) + r")\s+DE\s+(\d{4})")
 RX_PRORROGA = re.compile(r"prorrog.{0,400}emerg[êe]ncia|emerg[êe]ncia.{0,400}prorrog", re.I)
 RX_DIAS = re.compile(r"(\d{1,3})\s*\([^)]{3,40}\)\s*dias", re.I)
-RX_DECLARA = re.compile(r"declar\w*[^.;]{0,200}?(?:situa[çc][ãa]o|estado)\s+de\s+emerg[êe]ncia", re.I)
-RX_TODO_ESTADO = re.compile(r"tod[oa]\s+(?:a\s+|o\s+)?(?:territ[óo]rio|extens[ãa]o\s+territorial)\s+(?:do|da|deste|desta|estadual)"
-                            r"|territ[óo]rio\s+estadual|todos\s+os\s+munic[íi]pios\s+d[oe]\s+Estado", re.I)
-RX_NAO_E_DECLARACAO = re.compile(r"prorrog|homolog|revoga|sa[úu]de\s+p[úu]blica|epidemi|dengue|arbovir", re.I)
-NATUREZAS = (("por estiagem", r"estiagem|\bseca\b|h[íi]dric"), ("por incêndios florestais", r"inc[êe]ndio|queimada"),
-             ("por chuvas", r"chuva|inunda|enchente|alagamento|desliza"))
 JANELA_DIAS = 30        # antes e depois do vencimento: quando o diário do estado é lido toda noite
 ATRASO_TOLERADO = 7     # dias corridos sem edição lida, dentro da janela, antes de avisar
 
@@ -77,42 +69,6 @@ def prorrogacoes_no_texto(atos: list, texto: str) -> list:
                 achados.append({"de": ato["numero"], "numero": m.group(1), "data_ato": data.isoformat(),
                                 "dias": int(dias.group(1)) if dias else ato["dias"]})
     return achados
-
-
-def declaracoes_no_texto(texto: str) -> list:
-    """Decretos do texto que declaram emergência em todo o estado: candidatos à camada, que `confere` ainda
-    acha na edição. Prorrogação, homologação de município e emergência em saúde (outro canal) não entram;
-    sem prazo escrito nem alcance estadual, também não: na dúvida, não acha. Função pura."""
-    t = " ".join(str(texto or "").split())
-    cab, achados = list(RX_CABECALHO.finditer(t)), []
-    for i, m in enumerate(cab):
-        corpo = t[m.end():min(cab[i + 1].start() if i + 1 < len(cab) else len(t), m.end() + 6000)]
-        ementa, dias = corpo[:1500], RX_DIAS.search(corpo)
-        if not (RX_DECLARA.search(ementa) and RX_TODO_ESTADO.search(ementa) and dias) or RX_NAO_E_DECLARACAO.search(ementa[:400]):
-            continue
-        achados.append({"numero": m.group(1), "dias": int(dias.group(1)),
-                        "data_ato": datetime.date(int(m.group(4)), [x.upper() for x in MESES].index(m.group(3)) + 1,
-                                                  int(m.group(2))).isoformat(),
-                        "natureza": next((n for n, rx in NATUREZAS if re.search(rx, ementa, re.I)), "declarada pelo estado"),
-                        "preventiva": bool(re.search(r"car[áa]ter\s+preventivo", ementa, re.I))})
-    return achados
-
-
-def incorporar_declaracoes(doc: dict, uf: str, declaracoes: list, fonte: str) -> list:
-    """Põe em `doc['atos']` o decreto que a leitura do diário achou e o arquivo não tem (`conferido: false`
-    até `confere` o achar na edição). Devolve os novos. Função pura."""
-    tem = {(a["uf"], a["numero"]) for a in doc.setdefault("atos", [])}
-    novos = []
-    for d in declaracoes or []:
-        if (uf, d["numero"]) in tem:
-            continue
-        tem.add((uf, d["numero"]))
-        novos.append({"uf": uf, "natureza": d["natureza"], "numero": d["numero"], "data_ato": d["data_ato"],
-                      "data_publicacao": d["data_publicacao"], "dias": d["dias"], "fonte": fonte, "edicao": None,
-                      "pagina": d.get("pagina"), "url": d["url"], "preventiva": d["preventiva"] or None, "conferido": False,
-                      "motivo": "achado na leitura do diário; conferência pendente", "prorrogacoes": []})
-    doc["atos"] += novos
-    return novos
 
 
 def em_janela(ato: dict, hoje: str) -> bool:
@@ -157,9 +113,6 @@ def autoteste() -> int:
                    "estado de emergência. DECRETO N.º 55.013, DE 25 DE NOVEMBRO DE 2026 EXONERA.")
     EDICOES_AM = {"2026-11-26": {"decisao": "lida", "url": "https://exemplo/18300", "hash_evidencia": "h",
                                  "prorrogacoes": prorrogacoes_no_texto([am], PRORROGA_AM)}}
-    DECLARA_TO = ("DECRETO Nº 7.250, DE 19 DE OUTUBRO DE 2026 Nomeia servidor. DECRETO Nº 7.251, DE 19 DE OUTUBRO DE 2026 "
-                  "DECLARA situação de emergência em todo o território do Estado do Tocantins, em razão da estiagem prolongada. "
-                  "Art. 1º Fica declarada situação de emergência, pelo prazo de 180 (cento e oitenta) dias.")
     ato = {"numero": "5.767", "data_ato": "2026-11-11", "data_publicacao": "2026-11-12", "dias": 120}
     bom = "DECRETO Nº 5.767, DE 11 DE NOVEMBRO DE 2026 Declara situação de emergência ambiental e climática"
     return rodar_autoteste({
@@ -190,19 +143,6 @@ def autoteste() -> int:
             "sem edição lida há 12 dias" in aplicar_prorrogacoes(dict(am), {"2026-11-10": {"decisao": "lida"}}, "2026-11-22")
             and aplicar_prorrogacoes(dict(am), {"2026-08-10": {"decisao": "lida"}}, "2026-08-30") == ""
             and ufs_em_janela({"atos": [am, dict(am, uf="PA", vigente_ate="2027-03-11")]}, "2026-11-15") == ["AM"],
-        "declaração em todo o estado, com prazo escrito, vira candidato com a natureza do texto": lambda:
-            declaracoes_no_texto(DECLARA_TO) == [{"numero": "7.251", "dias": 180, "data_ato": "2026-10-19",
-                                                  "natureza": "por estiagem", "preventiva": False}],
-        "homologação de município, prorrogação, saúde pública e decreto sem alcance estadual não são declaração": lambda: [
-            declaracoes_no_texto(DECLARA_TO.replace("DECLARA", x)) for x in ("HOMOLOGA o decreto que declara", "PRORROGA a")]
-            == [[], []] and declaracoes_no_texto(DECLARA_TO.replace("estiagem", "emergência em saúde pública")) == []
-            and declaracoes_no_texto(DECLARA_TO.replace("em todo o território do Estado do Tocantins", "no Município de Pium")) == []
-            and declaracoes_no_texto(DECLARA_TO.replace("180 (cento e oitenta) dias", "prazo indeterminado")) == [],
-        "incorporar: entra uma vez, não conferido, e o que já existe não muda": lambda: (lambda doc: (
-            len(incorporar_declaracoes(doc, "TO", [dict(declaracoes_no_texto(DECLARA_TO)[0], data_publicacao="2026-10-20",
-                                                         url="https://exemplo/to.pdf", pagina=1)] * 2, "Diário Oficial (Tocantins)")),
-            incorporar_declaracoes(doc, "AM", [{"numero": "54.274"}], "x"), doc["atos"][-1]["conferido"],
-            len(doc["atos"])))({"atos": [dict(am)]}) == (1, [], False, 2),
         "garantia estrutural: a conferência roda toda noite no elo dos sinais, depois da leitura do diário": lambda: (
             lambda w: 0 < w.find("coletar_edicoes_doe.py --emergencias") < w.find("conferir_emergencias_estaduais.py"))(
             (RAIZ / ".github/workflows/noturno_sinais.yml").read_text(encoding="utf-8")),
@@ -216,12 +156,7 @@ def main() -> int:
         return autoteste()
     from coletores_base import buscar, preservar_evidencia
     from scripts.sondar_documento import texto_de
-    from coletar_saude_estadual import UF_NOME
     doc = ler("emergencias_estaduais.json", {"atos": []})
-    for uf, nome in UF_NOME.items():
-        for novo in incorporar_declaracoes(doc, uf, list(((ler(f"doe_edicoes/{uf}.json", {}) or {}).get(
-                "declaracoes_estaduais") or {}).values()), f"Diário Oficial ({nome})"):
-            print(f"[{uf}] Decreto nº {novo['numero']}: achado na leitura do diário, a conferir")
     for ato in doc["atos"]:
         if ato.get("conferido") and "--forcar" not in sys.argv:
             continue
