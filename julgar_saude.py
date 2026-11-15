@@ -428,13 +428,34 @@ def degrau_coordenacao(texto: str, data: str) -> tuple:
     return "PERMANENTE", "ato institui a estrutura e não nomeia o ciclo"
 
 
-def status_instrumento(categoria: str) -> str:
+ANO_DO_CICLO = 2026
+RE_PERIODO_DO_PLANO = re.compile(r"\b(20\d\d)\s*(?:[-–/]|\ba\b|\bà\b|\bat[ée]\b)\s*(20\d\d|\d\d)\b")
+
+
+def vigencia_encerrada(texto: str, titulo: str = "") -> str:
+    """O período que o próprio plano declara no título ou na capa, quando ele terminou antes do ano do
+    ciclo ("2023-2024"); "" quando o período alcança o ciclo ou o plano não declara período. Função pura.
+
+    Editoria, 15/11/2026: plano com vigência declarada já encerrada aparece como o último localizado e
+    vale 0 (não é "recorrente": não está em vigor). Só período explícito, de até quatro anos, no título
+    ou nas primeiras linhas; na dúvida, não encerra."""
+    for m in RE_PERIODO_DO_PLANO.finditer(f"{titulo} {(texto or '')[:1500]}"):
+        ini = int(m.group(1))
+        fim = int(m.group(2)) if len(m.group(2)) == 4 else 2000 + int(m.group(2))
+        if 0 < fim - ini <= 4:
+            return f"{ini}-{fim}" if fim < ANO_DO_CICLO else ""
+    return ""
+
+
+def status_instrumento(categoria: str, encerrada: str = "") -> str:
     """A categoria do juiz → o vocabulário de `saude_uf.json`. Função pura.
 
     `plano_elaboracao` → ELAB; `plano` (ato a partir do Boletim nº 1) → NOVO; `plano_antigo` (ato
     anterior) → VIG, porque plano de ciclo anterior que segue vigente é recorrente, não novo. A
     divisão do VIG em revisado/outro risco é da v0.4 e acontece em `instrumento_v04`, com o
     `consist` da UF — não aqui."""
+    if encerrada and categoria in ("plano", "plano_antigo"):
+        return "VENC"
     return {"plano_elaboracao": "ELAB", "plano": "NOVO", "plano_antigo": "VIG"}.get(categoria)
 
 
@@ -818,7 +839,10 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
             v["coordenacao"] = dict(zip(("degrau", "motivo"), degrau_coordenacao(texto, v.get("data"))))
             v["coordenacao_f1"] = dict(v["coordenacao"])
         if "instrumento" in v["institui"]:
-            v["status_instrumento"] = status_instrumento(v.get("categoria"))
+            encerrada = vigencia_encerrada(texto, p.get("titulo") or "")
+            v["status_instrumento"] = status_instrumento(v.get("categoria"), encerrada)
+            if encerrada:
+                v["vigencia_declarada"] = encerrada
     return v
 
 
@@ -1075,7 +1099,15 @@ def autoteste() -> int:
         "ato antigo sem menção ao ciclo é PERMANENTE":
             lambda: degrau_coordenacao(t_sala, "03/10/2024")[0] == "PERMANENTE",
         "categoria do juiz vira vocabulário da saúde":
-            lambda: (status_instrumento("plano") == "NOVO"
+            lambda: (status_instrumento("plano_antigo", "2023-2024") == "VENC"
+                     and status_instrumento("plano_elaboracao", "2023-2024") == "ELAB"
+                     and vigencia_encerrada("PLANO DE CONTINGÊNCIA PARA ARBOVIROSES 2023 - 2024 MATO GROSSO 2023") == "2023-2024"
+                     and vigencia_encerrada("", "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025") == "2024-2025"
+                     and vigencia_encerrada("Plano Estadual de Contingência (2025 a 2026)") == ""
+                     and vigencia_encerrada("Palmas – TO 2026/2027 PLANO ESTADUAL") == ""
+                     and vigencia_encerrada("Autenticado em 31/05/2023 às 16:57. Plano sem período") == ""
+                     and vigencia_encerrada("Plano Estadual de Saúde 2016-2027") == ""
+                     and status_instrumento("plano") == "NOVO"
                      and status_instrumento("plano_elaboracao") == "ELAB"
                      and status_instrumento("plano_antigo") == "VIG"
                      and status_instrumento("decreto") is None),

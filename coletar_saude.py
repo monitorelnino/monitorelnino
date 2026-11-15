@@ -100,7 +100,7 @@ def semear():
     saude_uf = {"_governanca": "Camada estadual de saúde (§9.2, C1). Vocabulário fechado: NOVO · READ · VIG · ELAB · "
                                "LAC (bateria datada) · NAO_VERIFICADO. NUNCA lida por recalcular_mare.py (portão). "
                                "'LAC' só com bateria estadual logada (nivel='estadual').",
-                "vocabulario": ["NOVO", "READ", "VIG", "ELAB", "LAC", "NAO_VERIFICADO"],
+                "vocabulario": ["NOVO", "READ", "VIG", "ELAB", "VENC", "LAC", "NAO_VERIFICADO"],
                 "consist_vocabulario": ["COBRE", "PARCIAL", "DIFERE", "SEM", "NEUTRO"],
                 "corte": hoje, "uf": ufs}
     sinais = {"_governanca": "Camada observada de saúde (§9.3). Mesmo formato de sinais_risco.json: por fonte, "

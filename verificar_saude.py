@@ -18,7 +18,7 @@ from pagina_completa import ler_pagina
 
 RAIZ = pathlib.Path(__file__).parent
 D = RAIZ / "data"
-VOCAB = {"NOVO", "READ", "VIG", "ELAB", "LAC", "NAO_VERIFICADO"}
+VOCAB = {"NOVO", "READ", "VIG", "ELAB", "VENC", "LAC", "NAO_VERIFICADO"}
 CONSIST = {"COBRE", "PARCIAL", "DIFERE", "SEM", "NEUTRO"}
 PREDITIVAS = re.compile(r"\b(prevemos|projetamos|estimamos|acreditamos que (?:haver|vai)|vai haver|haverá surto|epidemia (?:vai|deve))\b", re.I)
 
