@@ -1,11 +1,44 @@
 {
- "_governanca": "Hosts de servidor público que não respondem ao robô de fora do Brasil (timeout, DNS ou rede inalcançável), medidos do runner em 15/11/2026, e que abrem de um computador no Brasil. Lidos por scripts/ponte_brasil.py --pedidos. Host que RECUSA (401, 403, 429, 451, captcha, login, muro) nunca entra aqui. Decisão da editoria, 15/11/2026.",
- "hosts": ["to.gov.br", "saude.ap.gov.br", "svs.ap.gov.br", "portal.ap.gov.br", "saude.rn.gov.br"],
- "medido": {
-  "to.gov.br": "Semarh, Naturatins, CBMTO, Defesa Civil, diário: timeout no runner (runs 43726634118, 43728457261); abre no navegador da editoria",
-  "saude.ap.gov.br": "timeout no runner (run 43730491803)",
-  "svs.ap.gov.br": "timeout no runner (run 43730491803)",
-  "portal.ap.gov.br": "timeout no runner (run 43730491803)",
-  "saude.rn.gov.br": "Network is unreachable no runner (run 43730491803)"
+ "_governanca": "Hosts de servidor público que não respondem ao robô de fora do Brasil (timeout, DNS, rede inalcançável ou conexão derrubada) e abrem de um computador no Brasil. Medidos em 15/11/2026: o runner pelo run 43739556125 (sonda de 98 hosts com documento inacessível nas filas, mais diários e secretarias), o Brasil pelo navegador do app do Claude no computador da editoria. Lidos por scripts/ponte_brasil.py --pedidos. Host que RECUSA (401, 403, 429, 451, captcha, login, muro) nunca entra aqui. Decisão da editoria, 15/11/2026.",
+ "hosts": [
+  "acaoinverno.recife.pe.gov.br",
+  "defesacivil.brusque.sc.gov.br",
+  "diariooficial.to.gov.br",
+  "dool.egba.ba.gov.br",
+  "portal.ap.gov.br",
+  "prefeitura.colombo.pr.gov.br",
+  "rbsp.sesab.ba.gov.br",
+  "saude.rn.gov.br",
+  "saude.se.gov.br",
+  "sempapel.al.sp.gov.br",
+  "servidores.rhbahia.ba.gov.br",
+  "sge.brusque.sc.gov.br",
+  "www.al.ma.leg.br",
+  "www.alepe.pe.gov.br",
+  "www.camarapedrasgrandes.sc.gov.br",
+  "www.camaravideira.sc.gov.br",
+  "www.cml.pr.gov.br",
+  "www.cmrolandia.pr.gov.br",
+  "www.planalto.gov.br",
+  "www.pmf.sc.gov.br",
+  "www.rj.gov.br",
+  "www.saude.mt.gov.br",
+  "www.saude.sp.gov.br",
+  "www.tcm.ba.gov.br",
+  "www.to.gov.br"
+ ],
+ "fora_do_ar_nos_dois": {
+  "_por_que": "não abrem nem do runner nem do Brasil em 15/11/2026: não é bloqueio de fora do país, e a ponte não ajuda",
+  "hosts": [
+   "ascurra.sc.gov.br",
+   "docs.uberlandia.mg.gov.br",
+   "papanduva.sc.gov.br",
+   "saude.ap.gov.br",
+   "serraalta.sc.gov.br",
+   "www.brusque.sc.gov.br",
+   "www.diario.pi.gov.br",
+   "www.spdo.ms.gov.br",
+   "www2.sed.sc.gov.br"
+  ]
  }
 }
