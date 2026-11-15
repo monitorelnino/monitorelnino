@@ -516,6 +516,19 @@ def trata_de_risco_do_ciclo(titulo: str) -> tuple:
     return bool(achados), ", ".join(achados[:6])
 
 
+def risco_do_documento(titulo: str, texto: str) -> tuple:
+    """`trata_de_risco_do_ciclo` sobre o título e, se ele não disser, sobre a capa. Função pura.
+
+    15/11/2026 (SE): a capa diz "PLANO DE CONTINGÊNCIA … POR DENGUE, CHIKUNGUNYA E ZIKA", mas o título
+    lido podia ser o da pista ("Plano de Contingência 2026-2027"). A capa é o documento falando de si;
+    o corpo (lista de riscos de um plano de outra doença) continua de fora."""
+    ok, casou = trata_de_risco_do_ciclo(titulo)
+    return (ok, casou) if ok else trata_de_risco_do_ciclo(str(texto or "")[:CAPA_DO_PLANO])
+
+
+CAPA_DO_PLANO = 1500
+
+
 # A5-37: `etapa2`/`extrair_data` tomavam a PRIMEIRA data do texto, e o preâmbulo de um ato cita
 # as normas em que ele se apoia. A Resolução SESA 680/2008 do PR saiu com data 03/06/1987 — a da
 # lei citada no "considerando". A data do ato está no cabeçalho dele, junto do número.
@@ -722,6 +735,12 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # Sem `url` e `como_plano`, a etapa 2 tomava a primeira lei da base legal por "o ato" (Lei 9.071 → sem
     # data; Decreto 18.142/2019 → data de 2019) e recusava por `citacao_incompleta`. A régua é a do Legal.
     como_plano = juiz.e_plano_pelo_cabecalho(texto) or titulo_diz_plano(titulo_da_pista)
+    if como_plano:
+        # 15/11/2026 (MA): a notícia de uma capacitação de 2024 (egma.ma.gov.br/noticias/…) citava o
+        # plano no título e entrava como o plano. O julgado tem de SER o plano (codebook 1.3).
+        ok, motivo, _ = juiz.e_o_proprio_plano(texto, url)
+        if not ok:
+            v["motivo"] = motivo; return v
     ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico, url=url, como_plano=como_plano)
     # A5-37 (12/10/2026): `data_do_cabecalho` existia e só o autoteste a chamava — o juiz seguia
     # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
@@ -762,10 +781,11 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
         v["motivo"] = "natureza_duvidosa"; return ou_estrutura(v, texto, uf)
 
     ok, familia, trecho = juiz.etapa5_familia_de_risco(texto)
-    if not ok and familia == "fora_do_objeto" and trata_de_risco_do_ciclo(titulo)[0]:
+    risco = risco_do_documento(titulo, texto)
+    if not ok and familia == "fora_do_objeto" and risco[0]:
         # 15/11/2026 (MA, SE): a régua do Legal põe plano de saúde e arbovirose fora do objeto do
         # município; na camada de saúde eles SÃO o objeto, e o risco do ciclo é o do título (5b).
-        ok, familia, trecho = True, "saude_do_ciclo", trata_de_risco_do_ciclo(titulo)[1]
+        ok, familia, trecho = True, "saude_do_ciclo", risco[1]
     v["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None, "trecho": trecho}
     if not ok:
         v["motivo"] = familia; return v
@@ -775,7 +795,7 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # por todas as etapas anteriores em 01/10/2026 e foi promovido como instrumento E coordenação de
     # MG — foi o que fez esta etapa existir.
     v["titulo_do_documento"] = titulo
-    ok, casou = trata_de_risco_do_ciclo(titulo)
+    ok, casou = risco
     v["criterios"]["5b_risco_do_ciclo"] = {"ok": ok, "titulo": titulo,
                                            "trecho": casou or "nenhum risco do ciclo no título"}
     if not ok:

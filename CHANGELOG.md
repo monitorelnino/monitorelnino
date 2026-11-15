@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #N · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa
+
+Na camada de saúde, o documento tratado como plano tem de ser o próprio plano, e não uma notícia que o cita (MA, capacitação de 2024). O risco do ciclo passa a ser lido também na capa quando o título não o nomeia (SE, plano de dengue, chikungunya e zika 2026).
+
 ## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
 
 O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo "vigência encerrada".
