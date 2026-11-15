@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1777 · Rastro de acesso aos sites volta a ser registrado
+
+O registro público de cada acesso feito onde o site pede que robôs não entrem estava corrompido desde 05/11 e deixou de receber linhas, sem aviso. O arquivo foi reconstruído sem perder registro, e a verificação diária passa a recusar qualquer arquivo de dado que não se leia por inteiro.
+
+## 2026-11-15 · #1773 · Planos estaduais de saúde: canal dos sites das secretarias
+
+A busca nos sites das secretarias de saúde usava termos que não achavam os planos do ciclo, procurava Rondônia num endereço que não existe e entregava o que achava a uma fila sem julgamento. Agora procura "El Niño" e "contingência", lê o portal de Rondônia e o subsite de Goiás, e o achado vai ao juiz de saúde. Os planos de Roraima e Rondônia para o El Niño 2026-2027 apareceram na primeira sonda.
 ## 2026-11-15 · #1774 · Ponte no Brasil para sites que não respondem ao robô
 
 Alguns sites públicos de governo não respondem a quem acessa de fora do país, como o do Tocantins. Agora uma cópia trazida de um computador no Brasil, conferida pelo conteúdo, serve quando o site não responde; recusa explícita continua respeitada. Entram os planos de prevenção e combate a incêndios florestais do Tocantins de 2025 e 2026.
