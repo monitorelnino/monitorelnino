@@ -23,6 +23,7 @@ sys.path.insert(0, str(RAIZ))
 DIAS_SEM_EDICAO = 10        # diário com rota de edição: a mais recente lida não pode ser mais velha que isto
 DIAS_NA_FILA = 14           # documento em domínio oficial: prazo para ter veredito do juiz
 TETO_NA_FILA = 150          # quantos podem estar além do prazo (a fila anda um lote por noite)
+TETO_DA_SAUDE = 60          # pistas de saúde estadual sem veredito além do prazo (a rodada é semanal)
 TITULO = "Leitura parada"
 
 
@@ -63,8 +64,21 @@ def oficiais_sem_veredito(pistas: list, hoje: datetime.date, e_oficial, dias: in
     return n
 
 
-def problemas(registros: dict, pistas: list, hoje: datetime.date, e_oficial) -> list:
+def saude_sem_veredito(pistas: list, hoje: datetime.date, dias: int = DIAS_NA_FILA) -> int:
+    """Quantas pistas de saúde estadual esperam o juiz de saúde há mais de `dias`. Função pura. 15/11/2026:
+    a rodada semanal saiu verde em 04 e 11/11 e o trabalho dela se perdeu (a fila não tinha regra de mesclagem); 474 de 882
+    pistas ficaram sem veredito e nenhuma pista nova entrou em novembro."""
+    return sum(1 for p in pistas or []
+               if not p.get("juiz") and str(p.get("status") or "").startswith("pendente")
+               and (_data(p.get("registrado_em")) or hoje) < hoje - datetime.timedelta(days=dias))
+
+
+def problemas(registros: dict, pistas: list, hoje: datetime.date, e_oficial, saude: list = None) -> list:
     fora = diarios_parados(registros, hoje)
+    s = saude_sem_veredito(saude, hoje)
+    if s > TETO_DA_SAUDE:
+        fora.append(f"{s} pista(s) de saúde estadual sem veredito do juiz há mais de {DIAS_NA_FILA} dias "
+                    f"(teto {TETO_DA_SAUDE}): o trabalho da rodada de saúde estadual não está chegando à `main`")
     n = oficiais_sem_veredito(pistas, hoje, e_oficial)
     if n > TETO_NA_FILA:
         fora.append(f"{n} documento(s) em domínio oficial sem veredito do juiz há mais de {DIAS_NA_FILA} dias "
@@ -100,6 +114,11 @@ def autoteste() -> int:
     ok("abaixo do teto a fila não é achado; acima, é",
        problemas({}, [fila] * TETO_NA_FILA, hoje, oficial) == []
        and "sem veredito" in problemas({}, [fila] * (TETO_NA_FILA + 1), hoje, oficial)[0])
+    ps = lambda reg, juiz=None: {"status": "pendente_confirmacao_documento", "registrado_em": reg, **({"juiz": juiz} if juiz else {})}
+    ok("fila de saúde: conta a pendente sem veredito além do prazo; julgada e recente não; acima do teto é achado",
+       saude_sem_veredito([ps("21/10/2026"), ps("21/10/2026", {"promove": False}), ps("10/11/2026")], hoje) == 1
+       and "saúde estadual" in problemas({}, [], hoje, oficial, [ps("21/10/2026")] * (TETO_DA_SAUDE + 1))[0]
+       and problemas({}, [], hoje, oficial, [ps("21/10/2026")] * TETO_DA_SAUDE) == [])
     def gh_com(abertas):
         return lambda args, entrada=None: type("R", (), {"returncode": 0, "stdout": json.dumps(abertas)})()
     aberta = [{"title": TITULO, "number": 9}]
@@ -121,7 +140,8 @@ def main() -> int:
     from julgar_filas import url_em_dominio_oficial
     registros = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((RAIZ / "data" / "doe_edicoes").glob("*.json"))}
     fila = json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))
-    achados = problemas(registros, fila.get("pistas") if isinstance(fila, dict) else fila, hoje_editorial(), url_em_dominio_oficial)
+    saude = json.loads((RAIZ / "data" / "pistas_imprensa_saude.json").read_text(encoding="utf-8")).get("pistas")
+    achados = problemas(registros, fila.get("pistas") if isinstance(fila, dict) else fila, hoje_editorial(), url_em_dominio_oficial, saude)
     for x in achados:
         print(f"::warning::{x}")
     try:
