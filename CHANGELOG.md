@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1746 · Prorrogação de emergência estadual conferida no diário do estado toda noite
+
+A prorrogação do decreto estadual de emergência passa a ser lida no diário do estado toda noite perto do vencimento e somada à vigência do mapa; diário sem leitura abre aviso. Corrige a raiz achada no caminho: edição publicada com atraso (Amazonas) ficava "sem edição" para sempre; a ausência só é final dez dias depois da data.
+
 ## 2026-11-14 · #1743 · Emergência preventiva declarada pelo estado em cor própria no mapa de emergências
 
 O mapa de emergências mostra, em cor própria, a emergência declarada em caráter preventivo pelo governo do estado: Amazonas, Decreto nº 54.274, de 01/06/2026, por 180 dias, conferido no texto oficial. Legenda genérica por tipo de ato. A conferência passa a ler PDF ou página oficial pelo leitor já existente. Não soma na contagem de municípios nem pontua no índice.

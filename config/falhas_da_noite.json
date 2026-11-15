@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "11/11/2026",
+ "atualizado_em": "15/11/2026",
  "falhas": [
   {
    "id": "F01",
@@ -1159,6 +1159,19 @@
    ],
    "correcao": "`nao_antes_do_cron: true` em `rodada_semanal`: o despachante só a julga devida a partir das 03:10 UTC de domingo (00:10 de Brasília), quando `atualizar.py` já vê domingo. Recoleta de 11/11 pela válvula `coleta_de_dia` (financiamento-semanal).",
    "caso_de_teste": "scripts/despachar_temporizadores.py --autoteste (dois casos F84: 01:10 UTC de domingo não devido; 03:20 devido)"
+  },
+  {
+   "id": "F85",
+   "noite": "2026-11-13",
+   "titulo": "Edição do diário publicada com atraso ficava \"sem edição\" para sempre (AM)",
+   "sintoma": "`data/doe_edicoes/AM.json` com 06/11 e 09/11 em `sem_edicao_na_data`; em 15/11 o portal do diário do Amazonas lista as duas (ids 18266 e 18270) e ainda não lista 12 e 13/11.",
+   "causa": "O portal do Amazonas sobe a edição dias depois da data. `coletar_edicoes_doe` só tentava de novo a data \"sem edição\" por três dias; passada a janela, a ausência virava final e a edição nunca era lida.",
+   "prova": [
+    "run 43698793376 (15/11): `edicoes_from_data/2026-11-06.json` e `2026-11-09.json` com `itens`; `2026-11-12.json` e `2026-11-13.json` com \"Edição não existente!\"",
+    "data/doe_edicoes/AM.json em 15/11: 16 datas `sem_edicao_na_data`, entre elas 06/11 (medida em 09/11) e 09/11 (medida em 10/11)"
+   ],
+   "correcao": "`ausencia_a_rever`: a ausência de edição só é final quando medida pelo menos dez dias depois da data; até lá a data volta a ser tentada em toda rodada. As já gravadas com medição precoce são relidas uma vez.",
+   "caso_de_teste": "coletar_edicoes_doe.py --autoteste (caso \"ausência de edição só é final medida dez dias depois da data\")"
   }
  ]
 }
