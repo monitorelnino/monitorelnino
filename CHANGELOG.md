@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-15 · #N · Juiz da saúde: plano de arboviroses e download de arquivo
+## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
 
 O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo "vigência encerrada".
 
