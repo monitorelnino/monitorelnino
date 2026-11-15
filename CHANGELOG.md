@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1749 · Lote de evidências em partes e fora do elo; o juiz não é mais pulado por falha de acessório
+
+O lote mensal de evidências passou de 2 GB, o Release recusou o envio e o elo saiu vermelho seis vezes na noite de 14 para 15/11, pulando o juiz. O lote passa a sair em partes abaixo do teto, em workflow próprio; um portão reprova job acessório dentro de elo da corrente.
+
 ## 2026-11-15 · #1747 · Indicação do leitor entra toda noite; teto de pistas não barra mais documento oficial
 
 A indicação recebida pelo formulário passa a ser lida toda noite, antes do juiz. O teto de cinco pistas por município deixa de contar a pista já julgada: ele barrava na porta PDFs em domínio oficial de 1.050 municípios. A rodada semanal não perde mais o commit por conflito de cursor. Corrigida a declaração de lacuna das transferências.
