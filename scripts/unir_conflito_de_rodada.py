@@ -201,7 +201,12 @@ FILAS_DE_PISTA = (
     "data/pistas_descobertas.json",
     "data/pistas_doe.json",
     "data/pistas_sinais.json",
+    "data/pistas_imprensa_saude.json",
 )
+# A fila de saúde guarda a mesma URL uma vez por alvo, consulta e dia de registro (15/11/2026: 882 entradas,
+# 783 URLs): pela chave da porta, a união apagaria 67 delas. Aqui a identidade é a linha inteira que o coletor
+# grava, e a repetição exata conta pela ordem.
+IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consulta", "registrado_em")}
 
 
 # Decisão da central (25/10/2026, item 7): quando os dois lados mudaram o MESMO campo para valores
@@ -304,19 +309,29 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 
     if str(RAIZ) not in sys.path:
         sys.path.insert(0, str(RAIZ))
-    from scripts.pistas import chave_da_pista as _chave_de_pista  # a identidade é UMA só
+    from scripts.pistas import chave_da_pista  # a identidade é UMA só, salvo a fila com identidade própria
     lb = base.get(chave) if isinstance(base.get(chave), list) else []
     ln, ld = nosso[chave], deles[chave]
-    por_chave_base = {_chave_de_pista(p): p for p in lb}
-    por_chave_nosso = {_chave_de_pista(p): p for p in ln}
-    por_chave_deles = {_chave_de_pista(p): p for p in ld}
+    campos = IDENTIDADE_PROPRIA.get(caminho)
+
+    def por_chave(lista):
+        if not campos:
+            return {chave_da_pista(p): p for p in lista}
+        fora, vistas = {}, {}
+        for p in lista:
+            k = tuple(str(p.get(c)) for c in campos)
+            vistas[k] = vistas.get(k, 0) + 1
+            fora[k + (vistas[k],)] = p
+        return fora
+
+    por_chave_base, por_chave_nosso, por_chave_deles = por_chave(lb), por_chave(ln), por_chave(ld)
 
     # A ORDEM é a da base, depois os acréscimos nossos, depois os deles. Ordem estável mantém o
     # diff legível e faz a união ser a mesma qualquer que seja o lado em que o rebase corre.
     # Cada chave entra UMA vez: a identidade da pista é a chave. Com a lista da base inteira, uma
     # chave repetida emitia a mesma pista mesclada tantas vezes quantas aparecia (22/10/2026:
     # 20.569 cópias idênticas, 24 MB, e o portão de tamanho vermelho na `main`).
-    ordem = list(dict.fromkeys(_chave_de_pista(p) for p in (*lb, *ln, *ld)))
+    ordem = list(dict.fromkeys((*por_chave_base, *por_chave_nosso, *por_chave_deles)))
 
     uniao, mescladas = [], 0
     for k in ordem:
@@ -1366,6 +1381,13 @@ def autoteste() -> int:
                (mais_novo, json.loads(_d.read_text())["x"]) == ("main", "elo"))
     _chamadas = []
     _falso = lambda args, entrada=None: (_chamadas.append(args), type("R", (), {"returncode": 0, "stdout": '[{"title": "Mesclagem recusada: data/a.json", "number": 7}]'})())[1]
+    _ps = lambda *c: {"url": "https://x.gov.br/p", "alvo": c[0], "consulta": c[1], "registrado_em": c[2]}
+    _fs = lambda *ps: json.dumps({"pistas": list(ps)})
+    _b = [_ps("funil-saude/CE", "plancon", "01/10/2026"), _ps("funil-saude/CE", "doe_saude", "13/10/2026")]
+    _u = unir_fila_de_pistas("data/pistas_imprensa_saude.json", _fs(*_b), _fs(*_b, _ps("funil-saude/PA", "plancon", "15/11/2026")),
+                             _fs(*_b, _ps("funil-saude/CE", "plancon", "15/11/2026")))
+    checar("fila de saúde: a mesma URL em alvo, consulta ou dia diferentes são entradas distintas, e as duas rodadas entram",
+           (_u[1], _u[2], _u[3]) == (3, 3, 4))
     checar("recusa vira Issue por arquivo, uma só enquanto estiver aberta",
            avisar_recusa(["data/a.json: caminho sem resolução conhecida", "data/b.json: caminho sem resolução conhecida"],
                          gh=_falso) == ["Mesclagem recusada: data/b.json"])
@@ -1378,23 +1400,17 @@ def autoteste() -> int:
 
 
 def avisar_recusa(recusados: list, gh=None) -> list:
-    """Uma Issue por arquivo recusado, no repositório dos avisos, se ainda não houver uma aberta: a recusa
-    deixa de viver só no log de um run vermelho (15/11/2026: três recusas derrubaram a rodada semanal e
-    ninguém foi avisado). Devolve os títulos abertos."""
-    from scripts.sondar_credenciais import REPO_DOS_AVISOS, _gh, issues_abertas
-    gh = gh or _gh
-    abertas = issues_abertas(gh)
-    if abertas is None:
-        return []
-    feitas = []
-    for linha in recusados:
+    """Uma Issue por arquivo recusado (`scripts/avisos.py`): a recusa deixa de viver só no log de um run
+    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). Devolve os títulos abertos."""
+    from scripts import avisos
+    gh = gh or avisos._gh
+    abertas, feitas = avisos.issues_abertas(gh), []
+    for linha in recusados if abertas is not None else []:
         caminho, _, motivo = str(linha).partition(": ")
         titulo = f"Mesclagem recusada: {caminho}"
-        if titulo not in abertas:
-            gh(["issue", "create", "--repo", REPO_DOS_AVISOS, "--title", titulo, "--body-file", "-"],
-               f"O elo perdeu o commit porque `{caminho}` conflitou e não tem política de mesclagem "
-               f"({motivo}). O trabalho foi para o artefato do run. Declarar a política em "
-               f"`scripts/unir_conflito_de_rodada.py` e fechar esta Issue.")
+        if avisos.avisar(titulo, f"O elo perdeu o commit porque `{caminho}` conflitou e não tem política de "
+                         f"mesclagem ({motivo}). O trabalho foi para o artefato do run. Declarar a política em "
+                         f"`scripts/unir_conflito_de_rodada.py`.", gh=gh, abertas=abertas) == "aberta":
             feitas.append(titulo)
     return feitas
 

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1752 · Registro que atualiza e aviso que fecha sozinho
+
+Documento aprovado pelo juiz passa a atualizar o registro do município quando a categoria é mais forte ou o plano é posterior; o anterior fica em `registro_anterior`. `scripts/avisos.py` é a única porta de aviso: uma Issue por causa, fechada quando a causa some; seis alarmes passam a usá-la. Alarme noturno de leitura parada. A fila de pistas de saúde ganha regra de mesclagem com identidade própria.
+
 ## 2026-11-15 · #1751 · Arquivos gravados por dois elos ganham política de mesclagem, e a recusa passa a avisar
 
 Dez arquivos eram gravados por dois ou mais elos sem política de mesclagem: o primeiro conflito derrubava o commit do elo. Cinco ganham política (retrato mais recente; união seção a seção). O banco segue recusando, de propósito, e toda recusa passa a abrir aviso com o nome do arquivo.

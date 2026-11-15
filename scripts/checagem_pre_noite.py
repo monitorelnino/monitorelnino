@@ -225,13 +225,13 @@ def coletar_fatos(agora: dt.datetime) -> dict:
             "segredos": segredos, "ensaio_real": ensaio, "erros_de_consulta": erros}
 
 
-def abrir_issue(noite: str, vermelhos: list) -> None:
-    titulo = f"Checagem pré-noite vermelha: noite de {noite}"
-    corpo = "A checagem das 23h reprovou antes de a noite abrir:\n\n" + "\n".join(
-        f"- **{v['pergunta']}** — {v['detalhe']}" for v in vermelhos) + \
-        "\n\nGerado por `scripts/checagem_pre_noite.py`.\n"
-    subprocess.run(["gh", "issue", "create", "--repo", REPOSITORIO_PRIVADO, "--title", titulo,
-                    "--body", corpo], cwd=RAIZ, capture_output=True, text=True, timeout=60)
+def avisar(noite: str, vermelhos: list) -> None:
+    """Uma Issue enquanto a pré-noite estiver vermelha; a primeira checagem verde a fecha."""
+    sys.path.insert(0, str(RAIZ))
+    from scripts.avisos import avisar as _avisar
+    corpo = vermelhos and f"A checagem das 23h reprovou antes de a noite de {noite} abrir:\n\n" + "\n".join(
+        f"- **{v['pergunta']}** — {v['detalhe']}" for v in vermelhos) + "\n\nGerado por `scripts/checagem_pre_noite.py`.\n"
+    _avisar("Checagem pré-noite vermelha", corpo or "", f"Pré-noite verde na noite de {noite}. Fechada.")
 
 
 def autoteste() -> int:
@@ -348,8 +348,8 @@ def main() -> int:
     for x in resultado:
         print(f"  {'✓' if x['ok'] else '✗'} {x['pergunta']} — {x['detalhe']}")
     print(f"{'✓ PRÉ-NOITE VERDE' if not vermelhos else '✗ PRÉ-NOITE VERMELHA'} · noite de {noite}")
-    if vermelhos and "--abrir-issue" in argv:
-        abrir_issue(noite, vermelhos)
+    if "--abrir-issue" in argv:
+        avisar(noite, vermelhos)
     return 1 if vermelhos else 0
 
 

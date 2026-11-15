@@ -470,24 +470,26 @@ jobs:
 
       # Reprovacao de portao que NAO barra nao some: ela vira Issue no repositorio privado,
       # com o portao e a saida. Publicar mesmo assim e a decisao; esconder nao faz parte dela.
-      - name: Issue quando um portão de código reprova
-        if: steps.portoes_codigo.outcome == 'failure'
+      - name: Aviso do portão de código (uma Issue enquanto reprovar; fecha quando passa)
+        if: steps.portoes_codigo.outcome != 'skipped'
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REPROVOU: ${{ steps.portoes_codigo.outcome == 'failure' }}
         run: |
-          {
-            echo "A publicacao seguiu, como manda a politica de 06/10/2026: portao que so mede"
-            echo "codigo nao barra a publicacao de dado. Os portoes seguem bloqueantes no PR."
-            echo
-            echo "Run: $RUN_URL"
-            echo
-            echo '```'
-            tail -60 /tmp/portoes_codigo.txt 2>/dev/null || echo "sem saida registrada"
-            echo '```'
-          } > /tmp/corpo_issue.md
-          gh issue create --repo monitorelnino/robo-registro \
-            --title "Portao de codigo reprovou na publicacao de $(date -u +%d/%m/%Y) (publicou mesmo assim)" \
-            --body-file /tmp/corpo_issue.md \
-            || echo "::warning::nao consegui abrir a Issue; a saida esta no log deste run"
+          T="Portão de código reprova na publicação"
+          if [ "$REPROVOU" = "true" ]; then
+            {
+              echo "A publicação seguiu, como manda a política de 06/10/2026: portão que só mede"
+              echo "código não barra a publicação de dado. Os portões seguem bloqueantes no PR."
+              echo
+              echo "Primeiro run reprovado: $RUN_URL"
+              echo
+              echo '```'
+              tail -60 /tmp/portoes_codigo.txt 2>/dev/null || echo "sem saída registrada"
+              echo '```'
+            } | python3 scripts/avisos.py "$T" -
+          else
+            python3 scripts/avisos.py "$T"
+          fi
