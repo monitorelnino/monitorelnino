@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1758 · Ato de aprovação fica só no dado
+
+O cartão do município e a ficha do estado deixam de trazer a marca "sem ato de aprovação localizado": a lei federal não exige o ato. O campo continua no registro e a análise de incerteza segue medindo a hipótese. O índice não muda.
+
 ## 2026-11-15 · #1752 · Registro que atualiza e aviso que fecha sozinho
 
 Documento aprovado pelo juiz passa a atualizar o registro do município quando a categoria é mais forte ou o plano é posterior; o anterior fica em `registro_anterior`. `scripts/avisos.py` é a única porta de aviso: uma Issue por causa, fechada quando a causa some; seis alarmes passam a usá-la. Alarme noturno de leitura parada. A fila de pistas de saúde ganha regra de mesclagem com identidade própria.
