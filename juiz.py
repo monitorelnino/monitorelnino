@@ -1030,6 +1030,14 @@ RE_SECAO_DE_PLANO = re.compile(r"\b(cen[áa]rios?|ativa[çc][ãa]o|acionamento|r
 CABECALHO_18 = 2000
 
 
+def titulo_no_cabecalho_corrido(texto, minimo: int = 5) -> bool:
+    """J21 (proposta, 15/11/2026): o título do plano se repete como linha própria, o cabeçalho de página.
+    Mesquita/RJ: capa em imagem, o texto começa no ÍNDICE e "PLANO DE CONTINGÊNCIA 2025 / 2026" vem no alto
+    de 73 páginas; o J15 só olhava o começo do texto. Função pura."""
+    return sum(1 for l in str(texto or "").splitlines()
+               if len(l.strip()) <= 80 and RE_TITULO_DE_PLANO.match(l.strip())) >= minimo
+
+
 def e_plano_pelo_cabecalho(texto) -> bool:
     cabeca = str(texto or "")[:CABECALHO_18]
     titulo = RE_TITULO_PLANO_18.search(cabeca)
@@ -1316,7 +1324,8 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return recusa(motivo)
     from atualizar_instrumentos_estaduais import documento_do_repositorio
     if (dados.get("sem_ato_de_aprovacao") and not como_plano and not documento_do_repositorio(url)
-            and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])):
+            and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])
+            and not ("J21" in propostas and titulo_no_cabecalho_corrido(texto))):
         # J15: o título manda — "Planejamento Estratégico" que cita um plano de contingência não é o plano (Propriá/SE).
         return recusa("titulo_nao_e_plano", "J15")
 
