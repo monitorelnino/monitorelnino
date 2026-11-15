@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>15/11/2026 · Alarme mede a fila de saúde estadual</dt>
+      <dd>O alarme noturno de leitura parada passa a contar as pistas de saúde estadual sem veredito além do prazo. A rodada semanal saiu verde em 04 e 11/11 sem que o trabalho chegasse à main, e 474 pistas ficaram sem julgamento.</dd>
       <dt>15/11/2026 · Emergência em saúde: ato em vigor localizado tem valor</dt>
       <dd>Decisão da editoria: o índice de resposta do MARÉ Saúde passa a ter valor com leitura parcial dos diários estaduais quando há ato em vigor localizado (hoje 1,9% da população, dois decretos do Amazonas). O cartão diz quantos diários foram lidos e quais faltam. Zero segue exigindo as duas buscas completas. O texto do cartão passa a falar de estados.</dd>
       <dt>15/11/2026 · Juiz lê o título no cabeçalho das páginas (J21)</dt>
@@ -163,8 +165,6 @@
       <dd>Novo elo `doe-incremental` (segunda, quarta e sexta, 02:17 UTC): lê as edições dos DOE das 27 UFs dos últimos 4 dias e, em seguida, procura ato estadual de emergência em saúde (`coletar_espin.py`). Para isso `--ultimos-dias N` entra nos dois coletores por uma função única, `desde_de`. Decisão da editoria de 30/10: 2 a 3 vezes por semana, não todo dia. Temporizador registrado; ensaio simulado verde.</dd>
       <dt>30/10/2026 · O id da pista nasce na porta (+21/−14)</dt>
       <dd>A fórmula do id (sha1 de ibge, url e trecho) existia em três cópias (`revisar_pistas`, `seguir_pistas`, `triar_confianca_pistas`) e a porta `scripts/pistas.py` deixava entrar pista sem id (31 de SC, 30/10). Passa a haver uma só, `id_da_pista`, aplicada em `normalizar`; as três cópias importam dela. Ids já gravados não mudam. Saldo positivo: um caso de teste novo (+4).</dd>
-      <dt>30/10/2026 · Saúde: fórmula do índice nacional diz indice_uf (+3/−3)</dt>
-      <dd>`gerar_monitor_saude.py` emitia `nota_uf` na fórmula de agregação nacional (`monitor_saude.json`, `agregacao_nacional.formula`) e no docstring; passa a `indice_uf`, pela regra de vocabulário da editoria (29/10/2026). Só o texto da fórmula muda; nenhum valor, peso ou crédito.</dd>
     </dl>
   </section>
 </main>

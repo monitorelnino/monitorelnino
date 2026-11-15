@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1767 · Alarme mede a fila de saúde estadual
+
+O alarme noturno de leitura parada passa a contar as pistas de saúde estadual sem veredito além do prazo. A rodada semanal saiu verde em 04 e 11/11 sem que o trabalho chegasse à main, e 474 pistas ficaram sem julgamento.
 ## 2026-11-15 · #1766 · Emergência em saúde: ato em vigor localizado tem valor
 
 Decisão da editoria: o índice de resposta do MARÉ Saúde passa a ter valor com leitura parcial dos diários estaduais quando há ato em vigor localizado (hoje 1,9% da população, dois decretos do Amazonas). O cartão diz quantos diários foram lidos e quais faltam. Zero segue exigindo as duas buscas completas. O texto do cartão passa a falar de estados.
