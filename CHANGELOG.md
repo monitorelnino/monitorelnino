@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-15 · #1766 · Emergência em saúde: ato em vigor localizado tem valor
 
 Decisão da editoria: o índice de resposta do MARÉ Saúde passa a ter valor com leitura parcial dos diários estaduais quando há ato em vigor localizado (hoje 1,9% da população, dois decretos do Amazonas). O cartão diz quantos diários foram lidos e quais faltam. Zero segue exigindo as duas buscas completas. O texto do cartão passa a falar de estados.
+## 2026-11-15 · #1765 · Juiz lê o título no cabeçalho das páginas (J21)
+
+Plano com capa em imagem era recusado por título, porque o juiz só olhava o começo do texto. Passa a valer o título repetido no alto das páginas. Medido nos 39 documentos recusados por esse motivo: muda só o plano de Mesquita/RJ.
 
 ## 2026-11-15 · #1763 · Seguidor retenta a página que não abriu
 
