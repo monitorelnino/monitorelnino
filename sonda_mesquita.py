@@ -19,11 +19,11 @@ try:
 except Exception as e:
     print("PDF ERRO", type(e).__name__, str(e)[:200]); sys.exit(0)
 print("PDF ok", len(b), "bytes | sha256", hashlib.sha256(b).hexdigest(), "| começa", b[:5])
-r = texto_de(b); t = r[0] if isinstance(r, tuple) else r
-print("TEXTO", len(t), "caracteres | resto do retorno:", (r[1:] if isinstance(r, tuple) else None))
+t = texto_de(b)[1]
+print("TEXTO", len(t), "caracteres")
 try:
-    from pypdf import PdfReader; import io
-    print("PÁGINAS", len(PdfReader(io.BytesIO(b)).pages))
+    import pdfplumber, io
+    with pdfplumber.open(io.BytesIO(b)) as pdf: print("PÁGINAS", len(pdf.pages))
 except Exception as e:
     print("PÁGINAS ?", type(e).__name__, e, "| /Count:", re.findall(rb"/Count (\d+)", b)[:3])
 print("INÍCIO >>>", re.sub(r"\s+", " ", t[:2200]))
