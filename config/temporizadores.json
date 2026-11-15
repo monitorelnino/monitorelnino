@@ -606,28 +606,6 @@
     "index.html"
    ],
    "gravidade": "media"
-  },
-  {
-   "id": "ponte_brasil",
-   "workflow": "ponte_brasil.yml",
-   "finalidade": "documentos públicos de servidores que não respondem ao robô de fora do Brasil, baixados pelo executor no Brasil (editoria, 15/11/2026)",
-   "cron_primario": "43 2 * * *",
-   "janela": {
-    "inicio_utc": "01:00",
-    "fim_utc": "09:00"
-   },
-   "devido_quando": "não há execução concluída nesta janela noturna",
-   "tolerancia_atraso_min": 1440,
-   "idempotencia": "--pedidos só lista endereço sem cópia; a cópia é endereçada pelo sha256",
-   "orcamento_min": 120,
-   "recuperacao": {
-    "workflow_dispatch": true,
-    "entradas": {}
-   },
-   "quem_depende": [
-    "juiz (planos e documentos de TO, AP e RN)"
-   ],
-   "gravidade": "baixa"
   }
  ]
 }

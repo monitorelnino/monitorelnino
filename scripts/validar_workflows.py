@@ -43,8 +43,8 @@ for f, wf in carregados.items():
             continue
         for i, passo in enumerate(job.get("steps") or []):
             corpo = passo.get("run") if isinstance(passo, dict) else None
-            if not corpo or str(passo.get("shell") or "bash").split()[0] not in ("bash", "sh"):
-                continue   # 15/11/2026: o passo em PowerShell do executor no Brasil não é shell POSIX
+            if not corpo:
+                continue
             limpo = _RE_EXPRESSAO.sub("x", corpo)
             with _tmp.NamedTemporaryFile("w", suffix=".sh", delete=False,
                                          encoding="utf-8", newline="\n") as t:
