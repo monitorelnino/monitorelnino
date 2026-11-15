@@ -66,6 +66,8 @@ sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
 CODEBOOK_VERSAO = "1.8 (30/10/2026)"
+# 15/11/2026: J21 (título no cabeçalho corrido) entra sem subir a versão, porque só alcança o que o J15 recusou
+# (39 documentos, rejulgados por lista: `julgar_filas.py --rejulgar --urls-de`); subir devolveria a fila inteira.
 # 1.8 (30/10/2026, central): a segunda leva (J14, J16, J19, J20) entra no padrão; a data sobe para devolver à fila
 # o que o 1.8 de 29/10 julgou sem ela. Só J8 e J9 seguem em `propostas`.
 # 1.8 (29/10/2026, central): regras J1–J7, J10, J11 e J15 do rejulgamento de 26/10 passam a ser o juiz (medidas em 28/10:
@@ -1030,6 +1032,14 @@ RE_SECAO_DE_PLANO = re.compile(r"\b(cen[áa]rios?|ativa[çc][ãa]o|acionamento|r
 CABECALHO_18 = 2000
 
 
+def titulo_no_cabecalho_corrido(texto, minimo: int = 5) -> bool:
+    """J21 (15/11/2026): o título do plano se repete como linha própria, o cabeçalho de página. Mesquita/RJ:
+    capa em imagem, o texto começa no ÍNDICE e "PLANO DE CONTINGÊNCIA 2025 / 2026" vem no alto de 73 páginas;
+    o J15 só olhava o começo do texto. Medida nos 39 documentos recusados por título: muda só esse. Pura."""
+    return sum(1 for l in str(texto or "").splitlines()
+               if len(l.strip()) <= 80 and RE_TITULO_DE_PLANO.match(l.strip())) >= minimo
+
+
 def e_plano_pelo_cabecalho(texto) -> bool:
     cabeca = str(texto or "")[:CABECALHO_18]
     titulo = RE_TITULO_PLANO_18.search(cabeca)
@@ -1316,7 +1326,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return recusa(motivo)
     from atualizar_instrumentos_estaduais import documento_do_repositorio
     if (dados.get("sem_ato_de_aprovacao") and not como_plano and not documento_do_repositorio(url)
-            and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])):
+            and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18]) and not titulo_no_cabecalho_corrido(texto)):
         # J15: o título manda — "Planejamento Estratégico" que cita um plano de contingência não é o plano (Propriá/SE).
         return recusa("titulo_nao_e_plano", "J15")
 
@@ -1676,6 +1686,10 @@ def casos_18() -> list:
             + "metas e programas " * 150 + "8. Gestão de Riscos: Plano de Contingência para seca e estiagem. "
             + "x " * 200, "Propriá", "SE", "https://www.propria.se.gov.br/files/PLANEJAMENTO.pdf")["motivo"]
          == "titulo_nao_e_plano"),
+        ("J21 capa em imagem: o título no alto das páginas vale; citado duas vezes no meio de um informe, não",
+         titulo_no_cabecalho_corrido("ÍNDICE\n01 INTRODUÇÃO\n" + "PLANO DE CONTINGÊNCIA 2025 / 2026\ntexto da página\n" * 6)
+         and not titulo_no_cabecalho_corrido("INFORME DE MONITORAMENTO\n" + "PLANO DE CONTINGÊNCIA\nseca\n" * 3)
+         and not titulo_no_cabecalho_corrido("x\n" + "o município deve manter o plano de contingência atualizado e divulgado à população local\n" * 9)),
         ("J1 a equipe de elaboração citada no PLANCON não o rebaixa a plano_elaboracao",
          etapa6_categoria("equipe de elaboração do plano de contingência", "2025", sem_ato_de_aprovacao=True,
                           como_plano=True)[0] == "plano_antigo"

@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-15 · #1768 · MapBiomas por estado pelo Earth Engine
 
 Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.
+## 2026-11-15 · #1765 · Juiz lê o título no cabeçalho das páginas (J21)
+
+Plano com capa em imagem era recusado por título, porque o juiz só olhava o começo do texto. Passa a valer o título repetido no alto das páginas. Medido nos 39 documentos recusados por esse motivo: muda só o plano de Mesquita/RJ.
 
 ## 2026-11-15 · #1763 · Seguidor retenta a página que não abriu
 
