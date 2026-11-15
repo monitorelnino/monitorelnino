@@ -203,9 +203,9 @@ def gravar(nome: str, doc: dict, periodos: list, consultado_em: str = None) -> b
         return False
     doc = {"_governanca": "Dado de contexto, somado dos mapas do MapBiomas por estado. Não entra no índice. "
                           "Escritor único: coletar_mapbiomas.py.",
-           "fonte": "MapBiomas", "consultado_em": consultado_em or dt.date.today().isoformat(), **doc}
+           "fonte": "MapBiomas", "consultado_em": consultado_em or __import__("coletores_base").hoje_editorial().isoformat(), **doc}
     SAIDA.mkdir(parents=True, exist_ok=True)
-    (SAIDA / nome).write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    (SAIDA / nome).write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"✓ {nome}: 27 estados × {len(periodos)} período(s)")
     return True
 
