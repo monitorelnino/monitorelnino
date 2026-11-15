@@ -1,0 +1,11 @@
+{
+ "_governanca": "Hosts de servidor público que não respondem ao robô de fora do Brasil (timeout, DNS ou rede inalcançável), medidos do runner em 15/11/2026, e que abrem de um computador no Brasil. Lidos por scripts/ponte_brasil.py --pedidos. Host que RECUSA (401, 403, 429, 451, captcha, login, muro) nunca entra aqui. Decisão da editoria, 15/11/2026.",
+ "hosts": ["to.gov.br", "saude.ap.gov.br", "svs.ap.gov.br", "portal.ap.gov.br", "saude.rn.gov.br"],
+ "medido": {
+  "to.gov.br": "Semarh, Naturatins, CBMTO, Defesa Civil, diário: timeout no runner (runs 43726634118, 43728457261); abre no navegador da editoria",
+  "saude.ap.gov.br": "timeout no runner (run 43730491803)",
+  "svs.ap.gov.br": "timeout no runner (run 43730491803)",
+  "portal.ap.gov.br": "timeout no runner (run 43730491803)",
+  "saude.rn.gov.br": "Network is unreachable no runner (run 43730491803)"
+ }
+}
