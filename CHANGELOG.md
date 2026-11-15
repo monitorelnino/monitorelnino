@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1747 · Indicação do leitor entra toda noite; teto de pistas não barra mais documento oficial
+
+A indicação recebida pelo formulário passa a ser lida toda noite, antes do juiz. O teto de cinco pistas por município deixa de contar a pista já julgada: ele barrava na porta PDFs em domínio oficial de 1.050 municípios. A rodada semanal não perde mais o commit por conflito de cursor. Corrigida a declaração de lacuna das transferências.
+
 ## 2026-11-14 · #1743 · Emergência preventiva declarada pelo estado em cor própria no mapa de emergências
 
 O mapa de emergências mostra, em cor própria, a emergência declarada em caráter preventivo pelo governo do estado: Amazonas, Decreto nº 54.274, de 01/06/2026, por 180 dias, conferido no texto oficial. Legenda genérica por tipo de ato. A conferência passa a ler PDF ou página oficial pelo leitor já existente. Não soma na contagem de municípios nem pontua no índice.
