@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1749 · Lote de evidências em partes e fora do elo; o juiz não é mais pulado por falha de acessório
+
+O lote mensal de evidências passou de 2 GB, o Release recusou o envio e o elo saiu vermelho seis vezes na noite de 14 para 15/11, pulando o juiz. O lote passa a sair em partes abaixo do teto, em workflow próprio; um portão reprova job acessório dentro de elo da corrente.
+
 ## 2026-11-15 · #1746 · Prorrogação de emergência estadual conferida no diário do estado toda noite
 
 A prorrogação do decreto estadual de emergência passa a ser lida no diário do estado toda noite perto do vencimento e somada à vigência do mapa; diário sem leitura abre aviso. Corrige a raiz achada no caminho: edição publicada com atraso (Amazonas) ficava "sem edição" para sempre; a ausência só é final dez dias depois da data.
