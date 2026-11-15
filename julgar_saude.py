@@ -556,6 +556,15 @@ def com_data_do_cabecalho(texto: str, dados: dict) -> dict:
 RE_MES_NO_CAMINHO = re.compile(r"/(20\d{2})/(0[1-9]|1[0-2])(?:/|$)")
 
 
+def titulo_diz_plano(titulo: str) -> bool:
+    """O título da pista nomeia um plano. Função pura.
+
+    15/11/2026 (RR, RO): título de PDF é nome de arquivo — `Plano_Adaptacao_Saude_RO_ElNino_2026_2027`,
+    `planosdepreparacaoelnino2026-2027_001`. `\\bplano\\b` não casava (o sublinhado é letra para a
+    regex), a etapa 2 tomava a lei citada por "o ato" e recusava os dois planos por `citacao_incompleta`."""
+    return bool(re.search(r"(?:^|[^a-z])planos?(?:[^a-z]|de|$)", str(titulo or "").lower().replace("_", " ")))
+
+
 def data_do_plano(dados: dict, url: str) -> dict:
     """`dados` do PLANO publicado com a data de publicação, sem a data de ato citado no corpo. Pura.
 
@@ -712,8 +721,7 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # estado, é o plano mesmo com a capa de equipe antes do título (o cabeçalho de 2.000 caracteres não o vê).
     # Sem `url` e `como_plano`, a etapa 2 tomava a primeira lei da base legal por "o ato" (Lei 9.071 → sem
     # data; Decreto 18.142/2019 → data de 2019) e recusava por `citacao_incompleta`. A régua é a do Legal.
-    como_plano = (juiz.e_plano_pelo_cabecalho(texto)
-                  or bool(re.search(r"\bplano\b", titulo_da_pista or "", re.I)))
+    como_plano = juiz.e_plano_pelo_cabecalho(texto) or titulo_diz_plano(titulo_da_pista)
     ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico, url=url, como_plano=como_plano)
     # A5-37 (12/10/2026): `data_do_cabecalho` existia e só o autoteste a chamava — o juiz seguia
     # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
@@ -1132,6 +1140,9 @@ def autoteste() -> int:
                      and vigencia_encerrada("Palmas – TO 2026/2027 PLANO ESTADUAL") == ""
                      and vigencia_encerrada("Autenticado em 31/05/2023 às 16:57. Plano sem período") == ""
                      and vigencia_encerrada("Plano Estadual de Saúde 2016-2027") == ""
+                     and titulo_diz_plano("Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__2_")
+                     and titulo_diz_plano("planosdepreparacaoelnino2026-2027_001")
+                     and not titulo_diz_plano("planejamento_2026") and not titulo_diz_plano("Decreto 29.321")
                      and status_instrumento("plano") == "NOVO"
                      and status_instrumento("plano_elaboracao") == "ELAB"
                      and status_instrumento("plano_antigo") == "VIG"
