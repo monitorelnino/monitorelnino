@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1751 · Arquivos gravados por dois elos ganham política de mesclagem, e a recusa passa a avisar
+
+Dez arquivos eram gravados por dois ou mais elos sem política de mesclagem: o primeiro conflito derrubava o commit do elo. Cinco ganham política (retrato mais recente; união seção a seção). O banco segue recusando, de propósito, e toda recusa passa a abrir aviso com o nome do arquivo.
+
 ## 2026-11-15 · #1747 · Indicação do leitor entra toda noite; teto de pistas não barra mais documento oficial
 
 A indicação recebida pelo formulário passa a ser lida toda noite, antes do juiz. O teto de cinco pistas por município deixa de contar a pista já julgada: ele barrava na porta PDFs em domínio oficial de 1.050 municípios. A rodada semanal não perde mais o commit por conflito de cursor. Corrigida a declaração de lacuna das transferências.
