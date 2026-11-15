@@ -52,7 +52,7 @@ permissions:
 jobs:
   sonda:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: google-github-actions/auth@v2
@@ -65,3 +65,9 @@ jobs:
       - env:
           GEE_PROJECT: project-0735ac01-3417-4c02-ab5
         run: ${{ inputs.comandos }}
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: mapbiomas-${{ github.run_id }}
+          path: data/mapbiomas/
+          if-no-files-found: warn
