@@ -428,13 +428,51 @@ def degrau_coordenacao(texto: str, data: str) -> tuple:
     return "PERMANENTE", "ato institui a estrutura e não nomeia o ciclo"
 
 
-def status_instrumento(categoria: str) -> str:
+ANO_DO_CICLO = 2026
+RE_PERIODO_DO_PLANO = re.compile(r"\b(20\d\d)\s*(?:[-–/]|\ba\b|\bà\b|\bat[ée]\b)\s*(20\d\d|\d\d)\b")
+
+
+def vigencia_encerrada(texto: str, titulo: str = "") -> str:
+    """O período que o próprio plano declara no título ou na capa, quando ele terminou antes do ano do
+    ciclo ("2023-2024"); "" quando o período alcança o ciclo ou o plano não declara período. Função pura.
+
+    Editoria, 15/11/2026: plano com vigência declarada já encerrada aparece como o último localizado e
+    vale 0 (não é "recorrente": não está em vigor). Só período explícito, de até quatro anos, no título
+    ou nas primeiras linhas; na dúvida, não encerra."""
+    for m in RE_PERIODO_DO_PLANO.finditer(f"{titulo} {(texto or '')[:1500]}"):
+        ini = int(m.group(1))
+        fim = int(m.group(2)) if len(m.group(2)) == 4 else 2000 + int(m.group(2))
+        if 0 < fim - ini <= 4:
+            return f"{ini}-{fim}" if fim < ANO_DO_CICLO else ""
+    return ""
+
+
+def encerrar_vencidos(su: dict) -> list:
+    """Instrumento já registrado (curado à mão ou julgado antes da regra) cujo título declara período
+    encerrado passa a VENC, e o topo da UF é recalculado. Devolve as UFs mudadas. Mesma regra de
+    `vigencia_encerrada` (editoria, 15/11/2026); só toca plano em vigor (VIG, READ, NOVO)."""
+    from migrar_saude_instrumentos import sincronizar_topo
+    mudadas = []
+    for uf, u in sorted((su.get("uf") or {}).items()):
+        mudou = False
+        for i in u.get("instrumentos") or []:
+            if i.get("status") in ("VIG", "READ", "NOVO") and vigencia_encerrada("", i.get("doc") or ""):
+                i["status"], mudou = "VENC", True
+        if mudou:
+            sincronizar_topo(u)
+            mudadas.append(uf)
+    return mudadas
+
+
+def status_instrumento(categoria: str, encerrada: str = "") -> str:
     """A categoria do juiz → o vocabulário de `saude_uf.json`. Função pura.
 
     `plano_elaboracao` → ELAB; `plano` (ato a partir do Boletim nº 1) → NOVO; `plano_antigo` (ato
     anterior) → VIG, porque plano de ciclo anterior que segue vigente é recorrente, não novo. A
     divisão do VIG em revisado/outro risco é da v0.4 e acontece em `instrumento_v04`, com o
     `consist` da UF — não aqui."""
+    if encerrada and categoria in ("plano", "plano_antigo"):
+        return "VENC"
     return {"plano_elaboracao": "ELAB", "plano": "NOVO", "plano_antigo": "VIG"}.get(categoria)
 
 
@@ -516,6 +554,15 @@ def com_data_do_cabecalho(texto: str, dados: dict) -> dict:
 
 
 RE_MES_NO_CAMINHO = re.compile(r"/(20\d{2})/(0[1-9]|1[0-2])(?:/|$)")
+
+
+def titulo_diz_plano(titulo: str) -> bool:
+    """O título da pista nomeia um plano. Função pura.
+
+    15/11/2026 (RR, RO): título de PDF é nome de arquivo — `Plano_Adaptacao_Saude_RO_ElNino_2026_2027`,
+    `planosdepreparacaoelnino2026-2027_001`. `\\bplano\\b` não casava (o sublinhado é letra para a
+    regex), a etapa 2 tomava a lei citada por "o ato" e recusava os dois planos por `citacao_incompleta`."""
+    return bool(re.search(r"(?:^|[^a-z])planos?(?:[^a-z]|de|$)", str(titulo or "").lower().replace("_", " ")))
 
 
 def data_do_plano(dados: dict, url: str) -> dict:
@@ -674,8 +721,7 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # estado, é o plano mesmo com a capa de equipe antes do título (o cabeçalho de 2.000 caracteres não o vê).
     # Sem `url` e `como_plano`, a etapa 2 tomava a primeira lei da base legal por "o ato" (Lei 9.071 → sem
     # data; Decreto 18.142/2019 → data de 2019) e recusava por `citacao_incompleta`. A régua é a do Legal.
-    como_plano = (juiz.e_plano_pelo_cabecalho(texto)
-                  or bool(re.search(r"\bplano\b", titulo_da_pista or "", re.I)))
+    como_plano = juiz.e_plano_pelo_cabecalho(texto) or titulo_diz_plano(titulo_da_pista)
     ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico, url=url, como_plano=como_plano)
     # A5-37 (12/10/2026): `data_do_cabecalho` existia e só o autoteste a chamava — o juiz seguia
     # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
@@ -818,7 +864,10 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
             v["coordenacao"] = dict(zip(("degrau", "motivo"), degrau_coordenacao(texto, v.get("data"))))
             v["coordenacao_f1"] = dict(v["coordenacao"])
         if "instrumento" in v["institui"]:
-            v["status_instrumento"] = status_instrumento(v.get("categoria"))
+            encerrada = vigencia_encerrada(texto, p.get("titulo") or "")
+            v["status_instrumento"] = status_instrumento(v.get("categoria"), encerrada)
+            if encerrada:
+                v["vigencia_declarada"] = encerrada
     return v
 
 
@@ -1074,8 +1123,27 @@ def autoteste() -> int:
             lambda: degrau_coordenacao("Reativa o COE para o El Niño", "10/08/2026")[0] == "REATIVADO_CICLO",
         "ato antigo sem menção ao ciclo é PERMANENTE":
             lambda: degrau_coordenacao(t_sala, "03/10/2024")[0] == "PERMANENTE",
+        "instrumento já registrado com período encerrado vira VENC e o topo é recalculado":
+            lambda: (lambda su: (encerrar_vencidos(su) == ["RS"]
+                                 and su["uf"]["RS"]["instrumentos"][0]["status"] == "VENC"
+                                 and su["uf"]["CE"]["instrumentos"][0]["status"] == "VIG"))(
+                {"uf": {"RS": {"instrumentos": [{"status": "VIG", "tipo": "recorrente_arboviroses",
+                                                 "doc": "Plano de Contingência Dengue 2024-2025, 2ª versão"}]},
+                        "CE": {"instrumentos": [{"status": "VIG", "tipo": "recorrente_arboviroses",
+                                                 "doc": "Plano Estadual de Enfrentamento das Arboviroses 2025/2026"}]}}}),
         "categoria do juiz vira vocabulário da saúde":
-            lambda: (status_instrumento("plano") == "NOVO"
+            lambda: (status_instrumento("plano_antigo", "2023-2024") == "VENC"
+                     and status_instrumento("plano_elaboracao", "2023-2024") == "ELAB"
+                     and vigencia_encerrada("PLANO DE CONTINGÊNCIA PARA ARBOVIROSES 2023 - 2024 MATO GROSSO 2023") == "2023-2024"
+                     and vigencia_encerrada("", "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025") == "2024-2025"
+                     and vigencia_encerrada("Plano Estadual de Contingência (2025 a 2026)") == ""
+                     and vigencia_encerrada("Palmas – TO 2026/2027 PLANO ESTADUAL") == ""
+                     and vigencia_encerrada("Autenticado em 31/05/2023 às 16:57. Plano sem período") == ""
+                     and vigencia_encerrada("Plano Estadual de Saúde 2016-2027") == ""
+                     and titulo_diz_plano("Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__2_")
+                     and titulo_diz_plano("planosdepreparacaoelnino2026-2027_001")
+                     and not titulo_diz_plano("planejamento_2026") and not titulo_diz_plano("Decreto 29.321")
+                     and status_instrumento("plano") == "NOVO"
                      and status_instrumento("plano_elaboracao") == "ELAB"
                      and status_instrumento("plano_antigo") == "VIG"
                      and status_instrumento("decreto") is None),
@@ -1500,6 +1568,9 @@ def main() -> int:
         print(f"   {n}× {motivo}")
     if mudancas:
         print("mudanças: " + " · ".join(mudancas))
+    vencidos = encerrar_vencidos(su)
+    if vencidos:
+        print("vigência encerrada: " + ", ".join(vencidos))
     if "--aplicar" in args:
         # 13/10/2026 (central, item 9): a bateria rodou, a verificação é de hoje. 16/10/2026: só se
         # rodou INTEIRA — interrompida pelo prazo (17 de 251 em 15/10), o corte novo dizia verificado

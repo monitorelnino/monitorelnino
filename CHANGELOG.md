@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1781 · Plano estadual de saúde com vigência encerrada
+
+Quando o último plano de saúde localizado de um estado declara um período já encerrado, como 2024-2025, ele aparece na página como "último plano localizado com vigência encerrada", com título e link, e não pontua. Plano sem período declarado segue a regra de sempre. A regra está na metodologia. O juiz passa a reconhecer plano em título que é nome de arquivo (RR, RO).
+
 ## 2026-11-15 · #1777 · Rastro de acesso aos sites volta a ser registrado
 
 O registro público de cada acesso feito onde o site pede que robôs não entrem estava corrompido desde 05/11 e deixou de receber linhas, sem aviso. O arquivo foi reconstruído sem perder registro, e a verificação diária passa a recusar qualquer arquivo de dado que não se leia por inteiro.

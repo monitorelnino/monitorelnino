@@ -95,7 +95,7 @@ const fonteFigura = MonitorMapas.credito;
  * Sem mapa. A lista dos tipos de plano traz as siglas dos estados em círculos; passar o mouse, focar ou tocar
  * no círculo mostra tipo, documento, data, órgão e a fonte oficial (o cartão do mapa, que não some ao
  * levar o mouse até o link); o clique abre a ficha. A tabela fica como alternativa. */
-const TIPOS_DE_PLANO = ['NOVO', 'READ', 'VIG', 'ELAB', 'LAC', 'NAO_VERIFICADO'];
+const TIPOS_DE_PLANO = ['NOVO', 'READ', 'VIG', 'ELAB', 'VENC', 'LAC', 'NAO_VERIFICADO'];
 const ufsDoMonitor = () => (MSAUDE && MSAUDE.ufs) || {};
 const tipoDoEstado = uf => ((ufsDoMonitor()[uf] || {}).instrumento || {}).status || 'NAO_VERIFICADO';
 const textoSaude = (id, v) => (window.MonitorCatalogo && MonitorCatalogo.texto(id, v)) || '';

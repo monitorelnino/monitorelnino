@@ -371,10 +371,13 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 # 07/11/2026: o registro da varredura do sítio (`descobrir_planos.rodar_municipios`, um registro por
 # município) — lotes paralelos do cadastro escrevem códigos distintos; o mesmo código mudado nos dois
 # lados segue a regra da pista.
+# 15/11/2026: `data/ponte_brasil.json` é `{copias: {url: cópia}}`; cada PR da ponte acrescenta
+# endereços próprios (a união de #1780 com #1781 caiu nele).
 INDICES_POR_CHAVE = {"data/evidencias.json": "itens", "data/robots_registro.json": "hosts",
                      "data/fontes_consultadas.json": "municipios",
                      "data/doe_ocorrencias.json": "ufs",
-                     "data/s2id_busca_dirigida.json": "municipios"}
+                     "data/s2id_busca_dirigida.json": "municipios",
+                     "data/ponte_brasil.json": "copias"}
 
 
 def _unir_municipio_do_livro(base: dict, nosso: dict, deles: dict) -> dict:

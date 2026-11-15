@@ -1,10 +1,11 @@
 {
- "_governanca": "Camada estadual de saúde (§9.2, C1). Vocabulário fechado: NOVO · READ · VIG · ELAB · LAC (bateria datada) · NAO_VERIFICADO. NUNCA lida por recalcular_mare.py (portão). 'LAC' só com bateria estadual logada (nivel='estadual').",
+ "_governanca": "Camada estadual de saúde (§9.2, C1). Vocabulário fechado: NOVO · READ · VIG · ELAB · VENC (vigência declarada encerrada antes do ciclo, vale 0; editoria 15/11/2026) · LAC (bateria datada) · NAO_VERIFICADO. NUNCA lida por recalcular_mare.py (portão). 'LAC' só com bateria estadual logada (nivel='estadual').",
  "vocabulario": [
   "NOVO",
   "READ",
   "VIG",
   "ELAB",
+  "VENC",
   "LAC",
   "NAO_VERIFICADO"
  ],

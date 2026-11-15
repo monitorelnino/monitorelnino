@@ -38,7 +38,8 @@ RAIZ = Path(__file__).resolve().parent
 
 
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
-PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
+# VENC (editoria, 15/11/2026): plano com vigência declarada encerrada antes do ciclo; aparece, vale 0.
+PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "VENC": 0, "LAC": 0}
 # Âncora do indicador de tempo (publicado à parte, peso zero): Boletim nº 1 do Painel El Niño.
 BOLETIM_1 = "29/06/2026"
 # v0.7 (24/10/2026, editoria): a nota da UF é o instrumento; a antecipação sai da nota e o tempo vira
@@ -334,7 +335,7 @@ def gerar() -> int:
 def autoteste() -> int:
     def t1(): return temporada_da_edicao("Plano 2025/2026", "01/07/2025") == "2025/2026" and temporada_da_edicao("Plano 2026-2027", "") == "2026/2027"
     def t2(): return temporada_da_edicao("Plano de Enfrentamento", "22/12/2023") == "anterior" and temporada_da_edicao("Atualização 2024 a 2026", "05/2025") == "2025/2026"
-    def t3(): return prontidao("NOVO") == 100.0 and prontidao("READ") == 65.0 and prontidao("VIG") == 45.0 and prontidao("ELAB") == 35.0 and prontidao("LAC") == 0.0
+    def t3(): return prontidao("NOVO") == 100.0 and prontidao("READ") == 65.0 and prontidao("VIG") == 45.0 and prontidao("ELAB") == 35.0 and prontidao("LAC") == 0.0 and prontidao("VENC") == 0.0
     def t4(): return credito_nacional(None) == 0.0 and credito_nacional(35.0) == 35.0
     def t8():  # tempo: só ato do ciclo com dia fechado; negativo antes do boletim; mês solto e recorrente sem número
         return (dias_apos_boletim_1("NOVO", "08/06/2026") == -21 and dias_apos_boletim_1("READ", "29/06/2026") == 0

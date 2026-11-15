@@ -27,7 +27,7 @@ CAMINHO = RAIZ / "data" / "saude_uf.json"
 
 # ordem de força, do mais fraco ao mais forte — usada por melhor_instrumento()
 ORDEM_TIPO = ["estrutura_coordenacao", "recorrente_arboviroses", "especifico_ciclo"]
-ORDEM_STATUS = ["NAO_VERIFICADO", "LAC", "ELAB", "VIG", "READ", "NOVO"]
+ORDEM_STATUS = ["NAO_VERIFICADO", "LAC", "VENC", "ELAB", "VIG", "READ", "NOVO"]
 
 CAMPOS_INSTRUMENTO = ["status", "orgao", "doc", "numero", "data", "url", "hash_evidencia",
                       "natureza_doc", "justificativa_ex_ante"]
