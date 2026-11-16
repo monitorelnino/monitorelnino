@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-15 · #1788 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa
+
+O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é "feito para o ciclo"; pista recusada ou inalcançável há 21 dias sai da espera.
+
 ## 2026-11-16 · #1795 · Planos municipais de arboviroses na consulta do município
 
 A consulta do município na página de Saúde ganha o cartão "Plano municipal de arboviroses": tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).
