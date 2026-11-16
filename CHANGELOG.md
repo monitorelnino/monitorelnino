@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1805 · Dicas de decreto sem frase sobre qualidade da resposta
+
+A dica sob a parcela da população com decreto, na inicial e na Saúde, passa a descrever só o que o número mede; sai a frase "Não avalia a qualidade da resposta.". Catálogo, fallbacks e índice de conteúdo regerados.
+
 ## 2026-11-16 · #1795 · Planos municipais de arboviroses na consulta do município
 
 A consulta do município na página de Saúde ganha o cartão "Plano municipal de arboviroses": tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).
