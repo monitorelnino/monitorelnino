@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1811 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE
+
+A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.
 ## 2026-11-16 · #1809 · Financiamento preventivo estadual verificado pela máquina, toda noite
 
 A bateria que procura repasse estadual fundo a fundo condicionado a plano de contingência existia só como texto para uma sessão rodar à mão: 26 UFs ficaram sem veredito desde 27/08. Ela passa a rodar no elo da descoberta, lê o documento oficial do estado e decide por regra; na dúvida, não classifica.

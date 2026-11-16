@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/11/2026 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE</dt>
+      <dd>A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.</dd>
       <dt>16/11/2026 · Financiamento preventivo estadual verificado pela máquina, toda noite</dt>
       <dd>A bateria que procura repasse estadual fundo a fundo condicionado a plano de contingência existia só como texto para uma sessão rodar à mão: 26 UFs ficaram sem veredito desde 27/08. Ela passa a rodar no elo da descoberta, lê o documento oficial do estado e decide por regra; na dúvida, não classifica.</dd>
       <dt>16/11/2026 · Ar só de monitor de referência; diário relê data que serviu outro arquivo</dt>
@@ -163,8 +165,6 @@
       <dd>Na figura dupla com duas legendas (Saúde, desfecho escolhido), a legenda da série fica abaixo do gráfico e a das classes abaixo do mapa, em computador e em celular; antes as duas vinham juntas depois dos dois. Regra única em `assets/base.css`, para qualquer figura dupla com legenda dentro da mídia.</dd>
       <dt>04/11/2026 · &quot;Projeção de óbitos&quot; no lugar de &quot;mortes projetadas&quot;</dt>
       <dd>Por decisão da editoria (03/11), a forma &quot;projeção de X&quot; substitui &quot;X projetado&quot; em texto público: títulos do quadro de mortalidade da Saúde, glossário da Imprensa e METODOLOGIA §127. Padrão novo em `padroes` de `layout/regras.json`, com caso no autoteste do vocabulário. Código +1 linha de teste.</dd>
-      <dt>04/11/2026 · Juiz de saúde relê a cópia preservada quando a fonte não abre (+43/−13)</dt>
-      <dd>`portal.pi.gov.br` resolve, mas a porta 443 não responde ao runner (sonda 04/11): o rejulgamento do PI ficava pendente e o título antigo (&quot;EQUIPE GESTORA…&quot;) seguia no ar. Sem download, o juiz lê agora o texto já preservado do mesmo endereço, com o hash do instrumento; sem cópia, segue pendente. Um caso de teste.</dd>
     </dl>
   </section>
 </main>
