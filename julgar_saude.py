@@ -54,6 +54,7 @@ import juiz
 # exceção de domínio que alguém acrescentar a um dos arquivos.
 from coletar_saude_estadual import UFS, oficial
 from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
+from coletores_base import copia_da_ponte as cb_copia_da_ponte
 from julgar_filas import julgar_lista
 
 FILA = "pistas_imprensa_saude.json"
@@ -840,8 +841,12 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     host = urllib.parse.urlparse(url or "").netloc.lower()
     corpo, hash_ev, falha = None, None, None
     if host in _HOSTS_SEM_RESPOSTA:
-        falha = {"promove": False, "pendente": True, "uf": uf,
-                 "motivo": "documento não baixado: host sem resposta nesta rodada"}
+        # 15/11/2026 (SE): o atalho do host morto pulava a cópia da ponte no Brasil, que `buscar` só
+        # consulta quando tenta a rede. O plano 2026-2027 de SE ficou pendente atrás de outra URL do host.
+        corpo = cb_copia_da_ponte(url)[0]
+        if corpo is None:
+            falha = {"promove": False, "pendente": True, "uf": uf,
+                     "motivo": "documento não baixado: host sem resposta nesta rodada"}
     else:
         try:
             corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
