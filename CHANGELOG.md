@@ -12,6 +12,21 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-16 · #1815 · Cartão do município diz quando o decreto é anterior a 29 de junho
 
 Na Defesa civil e no Proteja-se, o cartão do decreto passa a dizer quando o decreto do município é anterior a 29 de junho e foi reconhecido pela União depois dessa data. A linha do estado diz "decreto publicado ou reconhecido desde 29 de junho".
+## 2026-11-16 · #1813 · Saúde no plano: plano lido pela cópia preservada e casado pelo hash
+
+Vinte e nove planos municipais registrados ficavam sem a leitura de como tratam a saúde. Quinze tinham cópia em HTML ou DOCX, ou PDF sem ".pdf" no endereço, e nunca ganhavam texto; quatro já lidos não casavam porque a busca era pela URL. A camada de texto passa a sair da cópia preservada, e a leitura casa pelo hash do documento.
+## 2026-11-16 · #1811 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE
+
+A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.
+## 2026-11-16 · #1809 · Financiamento preventivo estadual verificado pela máquina, toda noite
+
+A bateria que procura repasse estadual fundo a fundo condicionado a plano de contingência existia só como texto para uma sessão rodar à mão: 26 UFs ficaram sem veredito desde 27/08. Ela passa a rodar no elo da descoberta, lê o documento oficial do estado e decide por regra; na dúvida, não classifica.
+## 2026-11-16 · #1808 · Ar só de monitor de referência; diário relê data que serviu outro arquivo
+
+O ar medido na capital passa a aceitar só monitor de referência: Fortaleza mostrava um sensor de teste, e AM, BA, ES, PA e RO, sensores de baixo custo. No diário estadual, a data que serviu o arquivo de outra data (CE, 06/11) é relida por dez dias, e caderno lido antes dos termos atuais volta à fila (CE, DF, PI).
+## 2026-11-16 · #1814 · Resposta: decreto anterior reconhecido no ciclo volta a contar, marcado
+
+Por decisão da editoria, decreto municipal anterior a 29/06 que a União reconheceu depois do anúncio volta a contar no ciclo (70 municípios), marcado no dado para o cartão do município dizer. O primeiro decreto de cada estado no ciclo segue sendo o de 29/06 em diante. A marca sem data do S2iD continua sem decidir.
 
 ## 2026-11-16 · #1806 · Página de imprensa deixa de ser copiada; sessões na nuvem voltam a iniciar
 
