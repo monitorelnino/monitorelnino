@@ -4741,7 +4741,13 @@
   {"data": "2026-11-15", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-16T02:29:18", "duracao_s": 2.1, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "scripts/verificar_leituras_paradas.py", "inicio": "2026-11-16T02:29:20", "duracao_s": 1.5, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "sondar_repositorios_estaduais.py", "inicio": "2026-11-16T02:04:07", "duracao_s": 1862.2, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-15", "script": "recalcular_mare.py", "inicio": "2026-11-16T02:38:54", "duracao_s": 4.3, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-15", "script": "recalcular_mare.py", "inicio": "2026-11-16T02:38:54", "duracao_s": 4.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "consultar_querido_diario.py", "inicio": "2026-11-16T01:17:55", "duracao_s": 40.6, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 522: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 522: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-15", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-16T01:18:35", "duracao_s": 2.8, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-16T01:18:37", "duracao_s": 2726.9, "itens": 46, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "coletar_doe.py", "inicio": "2026-11-16T02:04:04", "duracao_s": 1971.1, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "coletar_s2id.py", "inicio": "2026-11-16T02:36:55", "duracao_s": 1223.1, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-16T02:57:18", "duracao_s": 54.7, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-16T02:38:54"
+ "atualizado_em": "2026-11-16T02:57:18"
 }
