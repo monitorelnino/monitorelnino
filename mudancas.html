@@ -45,6 +45,12 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/11/2026 · Resposta conta só decreto a partir de 29/06</dt>
+      <dd>O contador de resposta passa a contar só decreto municipal de 29/06/2026 em diante, o corte do Boletim nº 1. Decretos de maio e junho reconhecidos em julho entravam, e a marca sem data do S2iD também. Saem 55 municípios de 11 UFs; o índice nacional vai de 19,2 para 18,3.</dd>
+      <dt>16/11/2026 · Válvula de dia não cruza a janela da noite</dt>
+      <dd>A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.</dd>
+      <dt>15/11/2026 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa</dt>
+      <dd>O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é &quot;feito para o ciclo&quot;; pista recusada ou inalcançável há 21 dias sai da espera.</dd>
       <dt>16/11/2026 · Planos municipais de arboviroses na consulta do município</dt>
       <dd>A consulta do município na página de Saúde ganha o cartão &quot;Plano municipal de arboviroses&quot;: tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).</dd>
       <dt>15/11/2026 · Juiz da saúde: plano de arboviroses e download de arquivo</dt>
@@ -159,12 +165,6 @@
       <dd>Causa raiz do `citacao_incompleta` do PI (SESAPI): `julgar_camada_saude` chamava a etapa 2 sem `url` nem `como_plano`, e a primeira lei da base legal (Lei 9.071; Decreto 18.142/2019) virava &quot;o ato&quot;. Agora a etapa 2 recebe a URL e `como_plano` (cabeçalho de plano ou título da pista com &quot;plano&quot;), como no juiz do Legal. Caso de teste F-PI falha sem a correção.</dd>
       <dt>01/11/2026 · Quadro de mortalidade na Saúde (+172/−9)</dt>
       <dd>Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.</dd>
-      <dt>31/10/2026 · Desfechos do SUS só depois da saúde (+6/−0)</dt>
-      <dd>O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.</dd>
-      <dt>30/10/2026 · Goiás: endereço oficial do gabinete e do plano de contingência estadual</dt>
-      <dd>Os dois instrumentos de Goiás passam a apontar a notícia oficial do governo de 18/08/2026, lida na íntegra: ela nomeia o Gabinete de Ações Integradas e o Plano de Contingência Estadual. Não cita número de decreto; o plano em si segue não localizado. Sem mudança de nota.</dd>
-      <dt>30/10/2026 · Painel da noite mostra a rota parada do diário oficial</dt>
-      <dd>O painel da noite lista a UF cujo diário oficial não deu edição lida há mais de sete dias (ou nenhuma até hoje), a partir da data da última edição lida que o coletor já grava. Só acompanhamento: não bloqueia a noite nem a publicação. Código +19/−0.</dd>
     </dl>
   </section>
 </main>

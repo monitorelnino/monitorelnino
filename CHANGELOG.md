@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1812 · Resposta conta só decreto a partir de 29/06
+
+O contador de resposta passa a contar só decreto municipal de 29/06/2026 em diante, o corte do Boletim nº 1. Decretos de maio e junho reconhecidos em julho entravam, e a marca sem data do S2iD também. Saem 55 municípios de 11 UFs; o índice nacional vai de 19,2 para 18,3.
+
+## 2026-11-16 · #1802 · Válvula de dia não cruza a janela da noite
+
+A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.
+## 2026-11-15 · #1788 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa
+
+O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é "feito para o ciclo"; pista recusada ou inalcançável há 21 dias sai da espera.
+
 ## 2026-11-16 · #1795 · Planos municipais de arboviroses na consulta do município
 
 A consulta do município na página de Saúde ganha o cartão "Plano municipal de arboviroses": tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).

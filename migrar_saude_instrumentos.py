@@ -28,6 +28,9 @@ CAMINHO = RAIZ / "data" / "saude_uf.json"
 # ordem de força, do mais fraco ao mais forte — usada por melhor_instrumento()
 ORDEM_TIPO = ["estrutura_coordenacao", "recorrente_arboviroses", "especifico_ciclo"]
 ORDEM_STATUS = ["NAO_VERIFICADO", "LAC", "VENC", "ELAB", "VIG", "READ", "NOVO"]
+# 16/11/2026 (SE): o plano que o juiz promove grava `tipo: saude_do_ciclo`, fora de ORDEM_TIPO, e perdia
+# para qualquer plano de arboviroses cadastrado à mão, mesmo sendo NOVO contra VIG. É o mesmo degrau.
+MESMO_DEGRAU = {"saude_do_ciclo": "recorrente_arboviroses"}
 
 CAMPOS_INSTRUMENTO = ["status", "orgao", "doc", "numero", "data", "url", "hash_evidencia",
                       "natureza_doc", "justificativa_ex_ante"]
@@ -55,9 +58,10 @@ def melhor_instrumento(instrumentos: list) -> dict | None:
     if not instrumentos:
         return None
     def chave(i):
-        tipo_i = ORDEM_TIPO.index(i.get("tipo")) if i.get("tipo") in ORDEM_TIPO else -1
+        tipo = MESMO_DEGRAU.get(i.get("tipo"), i.get("tipo"))
+        tipo_i = ORDEM_TIPO.index(tipo) if tipo in ORDEM_TIPO else -1
         status_i = ORDEM_STATUS.index(i.get("status")) if i.get("status") in ORDEM_STATUS else -1
-        return (tipo_i, status_i, i.get("data") or "")
+        return (tipo_i, status_i, i.get("tipo") not in MESMO_DEGRAU, i.get("data") or "")
     return max(instrumentos, key=chave)
 
 
@@ -144,6 +148,9 @@ def autoteste() -> int:
            melhor_instrumento([{"tipo": "recorrente_arboviroses", "status": "ELAB", "data": "01/2025"},
                                 {"tipo": "recorrente_arboviroses", "status": "VIG", "data": "01/2024"}])["status"] == "VIG")
     checar("melhor: lista vazia devolve None", melhor_instrumento([]) is None)
+    checar("melhor: plano promovido pelo juiz (saude_do_ciclo) NOVO vence recorrente VIG; ELAB não vence VIG",
+           melhor_instrumento([{"tipo": "recorrente_arboviroses", "status": "VIG"}, {"tipo": "saude_do_ciclo", "status": "NOVO"}])["status"] == "NOVO"
+           and melhor_instrumento([{"tipo": "recorrente_arboviroses", "status": "VIG"}, {"tipo": "saude_do_ciclo", "status": "ELAB"}])["status"] == "VIG")
 
     # migração não muda nada (regra de ouro do handover) — roda contra o dado real
     dado = json.loads(CAMINHO.read_text(encoding="utf-8"))
