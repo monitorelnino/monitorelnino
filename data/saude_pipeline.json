@@ -4709,7 +4709,6 @@
   {"data": "2026-11-15", "script": "recalcular_mare.py", "inicio": "2026-11-15T22:09:21", "duracao_s": 5.1, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "recalcular_mare.py", "inicio": "2026-11-16T00:14:32", "duracao_s": 4.3, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "recalcular_mare.py", "inicio": "2026-11-16T00:53:51", "duracao_s": 5.1, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-15", "script": "descobrir_planos.py", "inicio": "2026-11-16T00:18:51", "duracao_s": 1608.5, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "monitorar_busca_web.py", "inicio": "2026-11-16T01:14:39", "duracao_s": 357.7, "itens": 10, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "monitorar_busca_web.py", "inicio": "2026-11-16T01:20:36", "duracao_s": 0.8, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "monitorar_busca_web.py", "inicio": "2026-11-16T01:20:36", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""},
@@ -4733,8 +4732,14 @@
   {"data": "2026-11-15", "script": "coletar_obitos_registro_civil.py", "inicio": "2026-11-16T01:36:57", "duracao_s": 40.3, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "classificar_saude_no_plano.py", "inicio": "2026-11-16T01:37:37", "duracao_s": 1.1, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "gerar_saude_municipio.py", "inicio": "2026-11-16T01:37:38", "duracao_s": 0.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "descobrir_planos.py", "inicio": "2026-11-16T00:18:51", "duracao_s": 1608.5, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-15", "script": "coletar_srag_sivep.py", "inicio": "2026-11-16T02:03:04", "duracao_s": 28.3, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-15", "script": "coletar_sg_esus.py", "inicio": "2026-11-16T02:03:32", "duracao_s": 6.9, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-15", "script": "coletar_sg_esus.py", "inicio": "2026-11-16T02:03:32", "duracao_s": 6.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "scripts/triar_fila.py", "inicio": "2026-11-16T01:59:04", "duracao_s": 2.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "julgar_filas.py", "inicio": "2026-11-16T01:59:06", "duracao_s": 1415.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-16T02:22:41", "duracao_s": 397.8, "itens": 15, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-16T02:29:18", "duracao_s": 2.1, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-15", "script": "scripts/verificar_leituras_paradas.py", "inicio": "2026-11-16T02:29:20", "duracao_s": 1.5, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-16T02:03:32"
+ "atualizado_em": "2026-11-16T02:29:20"
 }
