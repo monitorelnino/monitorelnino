@@ -448,6 +448,38 @@ def vigencia_encerrada(texto: str, titulo: str = "") -> str:
     return ""
 
 
+DIAS_DE_VIDA_DA_PISTA = 21   # o `dias_de_vida` do esquema (schemas/pista.json)
+
+
+def encerrar_parados(pistas: list, hoje) -> int:
+    """Nenhuma pista da saúde fica `pendente_confirmacao` para sempre (portão da fila não humana). Pura.
+
+    16/11/2026, vencido o prazo do estoque: 422 pistas já julgadas e recusadas continuavam pendentes,
+    porque o juiz gravava o veredito e não o estado; e 445 manchetes do funil, de fonte não oficial,
+    nunca entram no juiz (ele lê só documento do órgão). A recusa passa a fechar a pista com o motivo;
+    a manchete não oficial com mais de 21 dias fecha com o seu. Nada se apaga: a pista fica no arquivo."""
+    import datetime as _dt
+    n = 0
+    for p in pistas:
+        if not str(p.get("status") or "").startswith("pendente_confirmacao"):
+            continue
+        j = p.get("juiz") or {}
+        if PAD_FALHA_DE_REDE.match(str(j.get("motivo") or "")):
+            continue   # queda de rede volta à fila: não é veredito
+        if j and not j.get("promove"):
+            p["status"] = f"pista — recusada pelo juiz: {j.get('motivo')}"
+            n += 1
+            continue
+        reg = str(p.get("registrado_em") or p.get("data") or "")
+        m = re.match(r"(\d{2})/(\d{2})/(\d{4})|(\d{4})-(\d{2})-(\d{2})", reg)
+        d = (_dt.date(int(m[3]), int(m[2]), int(m[1])) if m and m[1] else
+             _dt.date(int(m[4]), int(m[5]), int(m[6])) if m else None)
+        if not p.get("oficial") and (d is None or (hoje - d).days > DIAS_DE_VIDA_DA_PISTA):
+            p["status"] = "fechada — fonte não oficial: o juiz da saúde lê só o documento do órgão"
+            n += 1
+    return n
+
+
 def encerrar_vencidos(su: dict) -> list:
     """Instrumento já registrado (curado à mão ou julgado antes da regra) cujo título declara período
     encerrado passa a VENC, e o topo da UF é recalculado. Devolve as UFs mudadas. Mesma regra de
@@ -1169,6 +1201,11 @@ def autoteste() -> int:
                      and vigencia_encerrada("Palmas – TO 2026/2027 PLANO ESTADUAL") == ""
                      and vigencia_encerrada("Autenticado em 31/05/2023 às 16:57. Plano sem período") == ""
                      and vigencia_encerrada("Plano Estadual de Saúde 2016-2027") == ""
+                     and encerrar_parados([{"status": "pendente_confirmacao_documento", "juiz": {"promove": False, "motivo": "citacao_incompleta"}},
+                                           {"status": "pendente_confirmacao_documento", "oficial": False, "registrado_em": "01/10/2026"},
+                                           {"status": "pendente_confirmacao_documento", "oficial": True, "registrado_em": "01/10/2026"},
+                                           {"status": "pendente_confirmacao_documento", "juiz": {"promove": False, "motivo": "documento não baixado: URLError"}}],
+                                          __import__("datetime").date(2026, 11, 16)) == 2
                      and titulo_diz_plano("Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__2_")
                      and titulo_diz_plano("planosdepreparacaoelnino2026-2027_001")
                      and not titulo_diz_plano("planejamento_2026") and not titulo_diz_plano("Decreto 29.321")
@@ -1575,6 +1612,7 @@ def main() -> int:
                                            "institui", "status_instrumento", "coordenacao")}
         if not v.get("promove"):
             recusadas[v.get("motivo")] = recusadas.get(v.get("motivo"), 0) + 1
+            p["status"] = f"pista — recusada pelo juiz: {v.get('motivo')}"
             print(f"  ✗ {p.get('uf')} · {v.get('motivo')}")
             return "recusada"
         m = aplicar(su, v, v.get("titulo_do_documento") or p.get("titulo") or "", p.get("url"))
@@ -1597,6 +1635,9 @@ def main() -> int:
         print(f"   {n}× {motivo}")
     if mudancas:
         print("mudanças: " + " · ".join(mudancas))
+    parados = encerrar_parados(pistas, hoje_editorial())
+    if parados:
+        print(f"fila: {parados} pista(s) parada(s) fechada(s) com motivo")
     vencidos = encerrar_vencidos(su)
     if vencidos:
         print("vigência encerrada: " + ", ".join(vencidos))

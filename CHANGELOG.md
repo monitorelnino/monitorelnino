@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-15 · #1788 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa
 
-Na camada de saúde, o documento tratado como plano tem de ser o próprio plano, e não uma notícia que o cita (MA, capacitação de 2024). O risco do ciclo passa a ser lido também na capa quando o título não o nomeia (SE, plano de dengue, chikungunya e zika 2026). Host sem resposta passa a ser lido pela cópia da ponte no Brasil, e o plano promovido pelo juiz disputa o topo no mesmo degrau do plano de arboviroses.
+Na camada de saúde, o documento tratado como plano tem de ser o próprio plano, e não uma notícia que o cita (MA, capacitação de 2024). O risco do ciclo passa a ser lido também na capa quando o título não o nomeia (SE, plano de dengue, chikungunya e zika 2026). Host sem resposta passa a ser lido pela cópia da ponte no Brasil, e o plano promovido pelo juiz disputa o topo no mesmo degrau do plano de arboviroses. Pista recusada sai de pendente com o motivo.
 
 ## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
 
