@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-16 · #PRNUM · Correção do leitor vai ao juiz; registro nunca julgado cede ao julgado
+## 2026-11-16 · #1818 · Correção do leitor vai ao juiz; registro nunca julgado cede ao julgado
 
 A correção indicada pelo formulário ficava reservada à análise editorial e parada. Ela passa a ser pista de plano, lida pelo juiz. Plano registrado antes do juiz, sem julgamento, cede ao documento julgado de força igual ou maior. Primeiro caso: Rio de Janeiro/RJ, cujo registro apontava o plano estadual.
 
