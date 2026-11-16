@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-16 · #N · Dica do cartão de decretos só descreve
+## 2026-11-16 · #1803 · Dica do cartão de decretos só descreve
 
 A dica do cartão de decretos (página inicial e Saúde) perde a frase "Não avalia a qualidade da resposta". Cartão só descreve; a leitura do decreto como ato, e não como resposta, está na Metodologia.
 
