@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-16 · #PRNUM · Documento anunciado por órgão: estado próprio e vigia noturna
 
-Afirmação de órgão sem documento (comunicação direta) entra em `data/notas_lai.json` com o estado `plano_em_elaboracao`, distinto de ausência, sem pontuar e sem página. A noite procura o título dado pelo órgão (`busca_dirigida_do_ato.py --avisos`); achado em domínio oficial vira pista e segue o juiz. Primeiro registro: RN.
+Afirmação de órgão sem documento (comunicação direta) entra em `data/notas_lai.json` com o estado `plano_em_elaboracao`, distinto de ausência, sem pontuar; no cartão do estado, só a nota do que o órgão informou. A noite procura o título dado pelo órgão (`busca_dirigida_do_ato.py --avisos`); achado em domínio oficial vira pista e segue o juiz. Primeiro registro: RN.
 
 ## 2026-11-16 · #1810 · Endereço que falha na rede vira pedido à ponte no Brasil
 

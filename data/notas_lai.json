@@ -1,6 +1,6 @@
 {
  "gerado_em": "2026-10-04",
- "_governanca": "Afirmações de órgão público recebidas por resposta a pedido de acesso à informação ou por comunicação direta do órgão. NÃO PONTUAM no índice: são prova de que o órgão afirma, não de que o documento existe e diz o que se espera dele. Os textos são literais aprovados pela editoria em 03/10/2026; ver scripts/incorporar_respostas_lai.py. `plano_em_elaboracao` é estado próprio, distinto de ausência: o órgão diz que o documento está em preparação; a noite procura o título (scripts/busca_dirigida_do_ato.py --avisos) e o achado em domínio oficial vira pista e segue o juiz. Registro sem campo `nota` não vai a página.",
+ "_governanca": "Afirmações de órgão público recebidas por resposta a pedido de acesso à informação ou por comunicação direta do órgão. NÃO PONTUAM no índice: são prova de que o órgão afirma, não de que o documento existe e diz o que se espera dele. Os textos são literais aprovados pela editoria em 03/10/2026; ver scripts/incorporar_respostas_lai.py. `plano_em_elaboracao` é estado próprio, distinto de ausência: o órgão diz que o documento está em preparação; a noite procura o título (scripts/busca_dirigida_do_ato.py --avisos) e o achado em domínio oficial vira pista e segue o juiz.",
  "municipios": [
   {
    "nome": "Tangará da Serra",
@@ -294,7 +294,8 @@
     "estados RN": "LAC, nenhum plano estadual nominal localizado",
     "pedido de acesso à SESAP-RN": "saúde estadual, reiterado em 19/10/2026 — outro órgão, outro instrumento",
     "emergencias_estaduais RN": "nenhum decreto estadual de emergência registrado"
-   }
+   },
+   "nota": "O IDEMA informou ao MARÉ, em 16/11/2026, que o Plano de Ação Estadual de Enfrentamento aos Efeitos do El Niño 2026–2027 está em elaboração, sem data de publicação."
   }
  ],
  "buscas_dirigidas": [
