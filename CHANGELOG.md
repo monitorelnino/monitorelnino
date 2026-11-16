@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1809 · Financiamento preventivo estadual verificado pela máquina, toda noite
+
+A bateria que procura repasse estadual fundo a fundo condicionado a plano de contingência existia só como texto para uma sessão rodar à mão: 26 UFs ficaram sem veredito desde 27/08. Ela passa a rodar no elo da descoberta, lê o documento oficial do estado e decide por regra; na dúvida, não classifica.
 ## 2026-11-16 · #1808 · Ar só de monitor de referência; diário relê data que serviu outro arquivo
 
 O ar medido na capital passa a aceitar só monitor de referência: Fortaleza mostrava um sensor de teste, e AM, BA, ES, PA e RO, sensores de baixo custo. No diário estadual, a data que serviu o arquivo de outra data (CE, 06/11) é relida por dez dias, e caderno lido antes dos termos atuais volta à fila (CE, DF, PI).
