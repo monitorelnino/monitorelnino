@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/11/2026 · Saúde no plano: plano lido pela cópia preservada e casado pelo hash</dt>
+      <dd>Vinte e nove planos municipais registrados ficavam sem a leitura de como tratam a saúde. Quinze tinham cópia em HTML ou DOCX, ou PDF sem &quot;.pdf&quot; no endereço, e nunca ganhavam texto; quatro já lidos não casavam porque a busca era pela URL. A camada de texto passa a sair da cópia preservada, e a leitura casa pelo hash do documento.</dd>
       <dt>16/11/2026 · Válvula de dia não cruza a janela da noite</dt>
       <dd>A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.</dd>
       <dt>15/11/2026 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa</dt>
@@ -163,8 +165,6 @@
       <dd>Causa raiz do `citacao_incompleta` do PI (SESAPI): `julgar_camada_saude` chamava a etapa 2 sem `url` nem `como_plano`, e a primeira lei da base legal (Lei 9.071; Decreto 18.142/2019) virava &quot;o ato&quot;. Agora a etapa 2 recebe a URL e `como_plano` (cabeçalho de plano ou título da pista com &quot;plano&quot;), como no juiz do Legal. Caso de teste F-PI falha sem a correção.</dd>
       <dt>01/11/2026 · Quadro de mortalidade na Saúde (+172/−9)</dt>
       <dd>Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.</dd>
-      <dt>31/10/2026 · Desfechos do SUS só depois da saúde (+6/−0)</dt>
-      <dd>O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.</dd>
     </dl>
   </section>
 </main>
