@@ -2476,7 +2476,7 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
             item["decretos"], item["decretos_no_ciclo"] = dec[:RISCOS_DECRETOS_MAX], len(dec)
         if cod in reconhecimento:
             item["reconhecimento"] = {k: reconhecimento[cod].get(k) for k in (
-                "reconhecido", "primeiro_decreto", "primeiro_reconhecimento", "evento_observado")}
+                "reconhecido", "primeiro_decreto", "primeiro_reconhecimento", "evento_observado", "decreto_anterior_ao_ciclo")}
         if (calor_mun.get(cod) or {}).get("classe"):
             item["calor"] = calor_mun[cod]["classe"]
         for chave, lista, campos in (("ar_estacao", estacoes, ("nome", "municipio", "uf", "rede", "iqar")),
