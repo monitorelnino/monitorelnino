@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-16 · #1792 · Ponte no Brasil: documentos municipais, com página redigida
 
 Entram as cópias de 15 documentos municipais que os servidores não entregam fora do país, e duas pistas novas (Itajaí, Caçador). A página guardada em `ponte/` passa pela mesma redação de credencial de terceiro e CPF que as evidências, antes do hash.
+## 2026-11-16 · #1795 · Planos municipais de arboviroses na consulta do município
+
+A consulta do município na página de Saúde ganha o cartão "Plano municipal de arboviroses": tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).
 
 ## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
 

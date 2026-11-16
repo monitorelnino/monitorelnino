@@ -2,11 +2,11 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 60182,
+   "valor": 60198,
    "unidade": "focos",
    "periodo_inicio": "2026-09-17",
-   "periodo_fim": "2026-11-14",
-   "n": 59,
+   "periodo_fim": "2026-11-15",
+   "n": 60,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": false,
    "motivo": null,
@@ -17,11 +17,11 @@
   },
   {
    "id": "municipios_plano_localizado",
-   "valor": 134,
+   "valor": 140,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-15",
-   "n": 134,
+   "periodo_fim": "2026-11-16",
+   "n": 140,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
    "motivo": null
@@ -47,7 +47,7 @@
    "valor": 7,
    "unidade": "estados",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-15",
+   "periodo_fim": "2026-11-16",
    "n": 27,
    "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
    "sem_coleta": false,
@@ -59,7 +59,7 @@
    "valor": 0,
    "unidade": "cidades",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-14",
+   "periodo_fim": "2026-11-15",
    "n": 1,
    "fonte": "OpenAQ (monitores de referência das capitais), limite de 24 h da OMS",
    "sem_coleta": false,
@@ -67,7 +67,7 @@
    "denominador": 1,
    "periodo_molde": "imprensa.numeros.periodo.capitais_medidas",
    "periodo_vars": {
-    "data": "14/11/2026",
+    "data": "15/11/2026",
     "n": 1
    }
   },
@@ -132,7 +132,7 @@
   },
   {
    "id": "capitais_com_plano",
-   "valor": 6,
+   "valor": 8,
    "unidade": "capitais",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
@@ -311,11 +311,11 @@
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-11-15",
+ "gerado_em": "2026-11-16",
  "janela_dias": 7,
  "indices": {
-  "edicao": "15/11/2026",
-  "mare_legal": 41.6,
+  "edicao": "16/11/2026",
+  "mare_legal": 42.9,
   "mare_saude": 59.2,
   "saude_verificadas": 27,
   "decretaram_no_ciclo": 1193
@@ -328,8 +328,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-11-08",
-    "fim": "2026-11-15"
+    "ini": "2026-11-09",
+    "fim": "2026-11-16"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -348,7 +348,7 @@
    "id": "mudaram_faixa",
    "grupo": "preparacao",
    "rotulo": "Estados que mudaram de faixa no MARÉ Legal ou no MARÉ Saúde",
-   "valor": 6,
+   "valor": 0,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "MARÉ, sobre os documentos lidos em cada estado",
@@ -357,40 +357,9 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-11-14 e 2026-11-15, nos dois índices",
+   "nota": "entre as edições de 2026-11-15 e 2026-11-16, nos dois índices",
    "secundaria": null,
-   "lista": [
-    {
-     "uf": "MA",
-     "de": "não verificado",
-     "para": "estágio inicial"
-    },
-    {
-     "uf": "PR",
-     "de": "em construção",
-     "para": "estágio inicial"
-    },
-    {
-     "uf": "RN",
-     "de": "não verificado",
-     "para": "em construção"
-    },
-    {
-     "uf": "RR",
-     "de": "não verificado",
-     "para": "avançado"
-    },
-    {
-     "uf": "RS",
-     "de": "em construção",
-     "para": "estágio inicial"
-    },
-    {
-     "uf": "TO",
-     "de": "não verificado",
-     "para": "avançado"
-    }
-   ],
+   "lista": [],
    "pagina_de_origem": null,
    "referencia": null,
    "unidade": null
@@ -399,7 +368,7 @@
    "id": "capitais_com_plano",
    "grupo": "preparacao",
    "rotulo": "de 27 capitais com plano localizado",
-   "valor": 6,
+   "valor": 8,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
@@ -416,6 +385,18 @@
      "municipio": "Manaus",
      "documento": "Plano Operacional de Enfrentamento à Estiagem 2026",
      "url": "https://www.manaus.am.gov.br/wp-content/uploads/2025/03/PLANO-DE-CONTINGENCIA-OFICIAL-2024-UNIFICADO.pdf"
+    },
+    {
+     "uf": "BA",
+     "municipio": "Salvador",
+     "documento": "Ato oficial localizado: plano de contingência",
+     "url": "https://codesal.salvador.ba.gov.br/wp-content/uploads/2025/09/PLANO_MUNICIPAL_DE_CONTINGNCIA_DAS_CHUVAS-2025-4.pdf"
+    },
+    {
+     "uf": "CE",
+     "municipio": "Fortaleza",
+     "documento": "Ato oficial localizado: plano de contingência",
+     "url": "https://ms.dados.sms.fortaleza.ce.gov.br/PlanodeContingenciadechuvasFINALSET26.pdf"
     },
     {
      "uf": "ES",
@@ -520,10 +501,10 @@
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "15/11/2026 03:54",
+   "referencia": "15/11/2026 22:14",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "15/11/2026 03:54",
+   "consultado_em": "15/11/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -536,14 +517,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3169,
+   "valor": 3032,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "15/11/2026 03:54",
+   "referencia": "15/11/2026 22:14",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "15/11/2026 03:54",
+   "consultado_em": "15/11/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -556,7 +537,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 13884,
+   "valor": 9731,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -565,112 +546,112 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261114.csv",
+   "nota": "Focos do dia — focos_diario_br_20261115.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 7036
+     "valor": 7362
     },
     {
      "uf": "MA",
-     "valor": 2776
+     "valor": 791
     },
     {
      "uf": "AP",
-     "valor": 1083
-    },
-    {
-     "uf": "PI",
-     "valor": 480
-    },
-    {
-     "uf": "BA",
-     "valor": 452
-    },
-    {
-     "uf": "CE",
-     "valor": 396
-    },
-    {
-     "uf": "RR",
-     "valor": 270
-    },
-    {
-     "uf": "TO",
-     "valor": 268
+     "valor": 526
     },
     {
      "uf": "AM",
-     "valor": 228
+     "valor": 234
     },
     {
-     "uf": "MG",
-     "valor": 176
-    },
-    {
-     "uf": "PE",
-     "valor": 174
+     "uf": "TO",
+     "valor": 126
     },
     {
      "uf": "MT",
-     "valor": 157
+     "valor": 107
     },
     {
-     "uf": "GO",
-     "valor": 74
-    },
-    {
-     "uf": "AC",
-     "valor": 51
-    },
-    {
-     "uf": "PR",
-     "valor": 47
-    },
-    {
-     "uf": "RN",
-     "valor": 42
-    },
-    {
-     "uf": "SP",
-     "valor": 41
-    },
-    {
-     "uf": "PB",
-     "valor": 31
+     "uf": "BA",
+     "valor": 103
     },
     {
      "uf": "AL",
-     "valor": 25
+     "valor": 78
     },
     {
-     "uf": "MS",
-     "valor": 18
+     "uf": "RR",
+     "valor": 76
+    },
+    {
+     "uf": "AC",
+     "valor": 67
+    },
+    {
+     "uf": "MG",
+     "valor": 48
+    },
+    {
+     "uf": "CE",
+     "valor": 44
+    },
+    {
+     "uf": "GO",
+     "valor": 35
+    },
+    {
+     "uf": "PE",
+     "valor": 31
+    },
+    {
+     "uf": "RN",
+     "valor": 27
+    },
+    {
+     "uf": "PI",
+     "valor": 16
     },
     {
      "uf": "RO",
-     "valor": 18
+     "valor": 16
     },
     {
      "uf": "SE",
-     "valor": 17
+     "valor": 12
     },
     {
-     "uf": "RJ",
+     "uf": "SP",
      "valor": 10
     },
     {
-     "uf": "RS",
-     "valor": 9
+     "uf": "SC",
+     "valor": 5
     },
     {
-     "uf": "SC",
+     "uf": "PB",
+     "valor": 4
+    },
+    {
+     "uf": "RS",
+     "valor": 4
+    },
+    {
+     "uf": "PR",
+     "valor": 3
+    },
+    {
+     "uf": "RJ",
      "valor": 3
     },
     {
      "uf": "ES",
      "valor": 2
+    },
+    {
+     "uf": "MS",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
@@ -847,5 +828,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 15/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 41,6 de 100; o MARÉ Saúde, em 59,2 de 100. Na semana, nenhum município publicou plano para o El Niño e 36 municípios decretaram situação de emergência ou calamidade; 967.279 pessoas vivem nos municípios que decretaram. 6 estados mudaram de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1193 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 16/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 42,9 de 100; o MARÉ Saúde, em 59,2 de 100. Na semana, nenhum município publicou plano para o El Niño e 36 municípios decretaram situação de emergência ou calamidade; 967.279 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 8 de 27 capitais têm plano localizado e 1193 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
