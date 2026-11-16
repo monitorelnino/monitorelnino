@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-16 · #PRNUM · Focos: a série do ciclo se completa pelo arquivo mensal do INPE
+## 2026-11-16 · #1811 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE
 
 A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.
 
