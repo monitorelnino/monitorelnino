@@ -78,6 +78,8 @@ LOGS_QUE_SO_CRESCEM = {
     # linha. Tratado como fila (dedup por chave) cada união colapsava as repetidas: 39.872 → 33.335
     # entradas na `main` depois do #1314. Multiconjunto pela base não perde nenhuma.
     "data/pistas_rejeitadas.json": "rejeitadas",
+    # 16/11/2026: um pedido à ponte por falha de rede, nunca reescrito; qualquer elo que pede rede acrescenta.
+    "data/ponte_pedidos.json": "pedidos",
     # 16/11/2026: uma decisão por promoção automática, nunca reescrita; sem classe, a união recusava
     # o arquivo e o PR de dado da válvula inteiro.
     "data/promocoes_automaticas.json": "decisoes",
