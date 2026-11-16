@@ -50,6 +50,10 @@ jobs:
         # coletor de redes oficiais — rede social não é entrada (B3), e o rótulo de setor no campo
         # município trazia a web inteira.
         monitorar_busca_web.py --ufs
+        # 16/11/2026: a bateria de financiamento preventivo estadual, que só existia como texto para
+        # uma sessão rodar à mão (26 UFs sem veredito desde 27/08). Só as UFs sem veredito ou com
+        # ausência verificada há mais de 30 dias.
+        prazo=10min buscar_financiamento_preventivo.py --rodar
         seguir_pistas.py --limite 20
         triar_confianca_pistas.py
         # 29/09/2026 (bloco 2, fase 1): verificador da fonte das pistas de imprensa, em MODO
