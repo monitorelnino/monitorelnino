@@ -166,12 +166,12 @@
   }
  },
  "resumo": {
-  "verificadas": 25,
-  "nao_verificadas": 2,
+  "verificadas": 27,
+  "nao_verificadas": 0,
   "por_faixa": {
+   "estágio inicial": 5,
    "em construção": 15,
-   "avançado": 7,
-   "estágio inicial": 3
+   "avançado": 7
   },
   "planos_municipais_lidos": 343,
   "planos_municipais_sem_leitura": 41,
@@ -182,8 +182,8 @@
   "por_estatuto": {
    "plano_localizado": 22,
    "plano_em_elaboracao": 3,
-   "plano_nao_localizado": 0,
-   "nao_verificado": 2
+   "plano_nao_localizado": 2,
+   "nao_verificado": 0
   },
   "ufs_com_plano_localizado": 22,
   "ufs_em_elaboracao": 3,
@@ -192,17 +192,17 @@
  },
  "ufs": {
   "AC": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 0.0,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
+    "status": "LAC",
+    "pontos": 0.0,
     "doc": null,
     "data": null,
     "orgao": null,
     "url": null,
-    "temporada": null
+    "temporada": "desconhecida"
    },
    "cobertura": {
     "peso": 0,
@@ -254,7 +254,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
+   "estatuto": "plano_nao_localizado",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0041,
    "contribuicao_nacional": 0.0
@@ -396,17 +396,17 @@
    "contribuicao_nacional": 1.94
   },
   "AP": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 0.0,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
+    "status": "LAC",
+    "pontos": 0.0,
     "doc": null,
     "data": null,
     "orgao": null,
     "url": null,
-    "temporada": null
+    "temporada": "desconhecida"
    },
    "cobertura": {
     "peso": 0,
@@ -458,7 +458,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
+   "estatuto": "plano_nao_localizado",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0036,
    "contribuicao_nacional": 0.0
