@@ -59,12 +59,13 @@ def _nrm(nome) -> str:
 
 
 def fora_do_ciclo_(ev: dict) -> bool:
-    """Decreto anterior a 29/06/2026 (Boletim nº 1), ou sem data: não entra em contador do ciclo, mesmo que
-    a portaria que o reconhece seja posterior. O corte é a data do DECRETO (editoria, 16/11/2026: "o nosso
-    corte é o primeiro boletim"; 70 municípios de 12 UFs entravam com decreto de maio e junho reconhecido
-    em julho). Uma função para os dois contadores — municípios e tipos de evento. Função pura."""
+    """Ato que nem o decreto nem o reconhecimento federal caem a partir de 29/06/2026 (Boletim nº 1), ou sem
+    data: não entra em contador do ciclo. Decreto anterior oficializado pela União depois do anúncio conta,
+    marcado (`decreto_anterior_ao_ciclo`) para o cartão dizer (editoria, 16/11/2026). Uma função para os
+    dois contadores — municípios e tipos de evento. Função pura."""
     d = data_br(ev.get("data_decreto_municipal") or ev.get("data"))
-    return d is None or d < INICIO_CICLO
+    d_rec = data_br(ev.get("data_reconhecimento") or ev.get("data"))
+    return (d is None or d < INICIO_CICLO) and (d_rec is None or d_rec < INICIO_CICLO)
 
 
 def consolidar_municipios(eventos: list, verificacao: list) -> dict:
@@ -75,7 +76,7 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     out = {}
     for r in verificacao:
         out[str(r["ibge"]).zfill(7)] = {"ibge": str(r["ibge"]).zfill(7), "nome": r.get("nome"), "uf": r.get("uf"), "decreto": False,
-                                       "primeiro_decreto": None, "primeiro_reconhecimento": None, "tipos": [], "reconhecido": False, "decretado": False,
+                                       "primeiro_decreto": None, "primeiro_reconhecimento": None, "tipos": [], "reconhecido": False, "decretado": False, "decreto_anterior_ao_ciclo": False,
                                        "evento_observado": "em_classificacao", "evento_declarado": [], "dias_ate_reconhecimento": None,
                                        "fontes": [], "n_eventos": 0}
     # 08/10/2026 (A3-01): evento sem `ibge` era descartado em SILÊNCIO pelo `continue`. Oito
@@ -131,6 +132,7 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         fam = tipo_ou_sem_informacao(ev)
         if fam not in m["evento_declarado"]: m["evento_declarado"].append(fam)
         if d and (m["primeiro_decreto"] is None or d < data_br(m["primeiro_decreto"])): m["primeiro_decreto"] = d.strftime("%d/%m/%Y")
+        if d and d < INICIO_CICLO: m["decreto_anterior_ao_ciclo"] = True
         if t == "reconhecimento_federal" and d_rec and (
                 m.get("primeiro_reconhecimento") is None
                 or d_rec < data_br(m["primeiro_reconhecimento"])):
@@ -205,7 +207,7 @@ def agregar_uf(municipios: dict, populacao: dict) -> dict:
         com = [m for m in ms if m["decreto"]]
         pop_uf = sum(float(populacao.get(m["ibge"], 0) or 0) for m in ms)
         pop_dec = sum(float(populacao.get(m["ibge"], 0) or 0) for m in com)
-        datas = [data_br(m["primeiro_decreto"]) for m in com if m["primeiro_decreto"]]
+        datas = [data_br(m["primeiro_decreto"]) for m in com if m["primeiro_decreto"] and data_br(m["primeiro_decreto"]) >= INICIO_CICLO]
         por[uf] = {"n_municipios": len(com), "total_municipios": len(ms), "fracao_municipios": round(len(com) / len(ms), 4) if ms else 0.0,
                    "pop_sob_decreto": int(pop_dec), "pop_uf": int(pop_uf), "fracao_populacao": round(pop_dec / pop_uf, 4) if pop_uf else 0.0,
                    # 15/09/2026 (decisão editorial, §32.4): ÍNDICE de resposta 0–100 = 100 × fração da população em município sob decreto
@@ -291,15 +293,17 @@ def autoteste() -> int:
                 and epu["RS"] == {"eventos_declarados": {"chuva": 1, "seca": 1}, "evento_mais_declarado": ["chuva", "seca"]}
                 and epu["BA"]["evento_mais_declarado"] is None and sum(sum(v["eventos_declarados"].values()) for v in epu.values()) == 3)
     def t14():
-        """Decreto antes de 29/06 fica fora do contador, com ou sem portaria no ciclo (editoria, 16/11)."""
+        """Decreto e portaria antes de 29/06: fora. Decreto antes, portaria no ciclo: conta, marcado, e não vira o
+        primeiro decreto do estado no ciclo (editoria, 16/11)."""
         V3 = V + [{"ibge": "7", "nome": "G", "uf": "RJ", "decreto_reconhecido": None}, {"ibge": "8", "nome": "H", "uf": "RJ", "decreto_reconhecido": None}]
         E3 = E + [{"ibge": "7", "uf": "RJ", "data": "13/02/2026", "causa": "situação de emergência", "canal": "imprensa"},
                   {"ibge": "8", "uf": "RJ", "data": "02/07/2026", "data_decreto_municipal": "20/06/2026", "data_reconhecimento": "02/07/2026",
                    "causa": "reconhecimento federal", "canal": "DOU"}]
         m3 = consolidar_municipios(E3, V3); a = agregar_uf(m3, {**P, "0000007": 10, "0000008": 10})["RJ"]
-        return (not m3["0000007"]["decreto"] and not m3["0000008"]["decreto"]
-                and a["n_municipios"] == 0 and a["primeiro_decreto"] is None
-                and sum(eventos_por_uf(m3, E3)["RJ"]["eventos_declarados"].values()) == 0)
+        return (not m3["0000007"]["decreto"] and m3["0000008"]["decreto"] and m3["0000008"]["reconhecido"]
+                and m3["0000008"]["decreto_anterior_ao_ciclo"] and not m3["0000001"]["decreto_anterior_ao_ciclo"]
+                and a["n_municipios"] == 1 and a["primeiro_decreto"] is None and a["tons"]["decretado_sem_reconhecimento"] == 0
+                and sum(eventos_por_uf(m3, E3)["RJ"]["eventos_declarados"].values()) == 1)
     def t12():
         """PARA A A2: dias de decreto até a portaria só para reconhecidos com as duas datas."""
         V2 = V + [{"ibge": "6", "nome": "F", "uf": "PR", "decreto_reconhecido": None}]
