@@ -920,11 +920,13 @@ def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
     O OpenAQ agrega redes oficiais (CETESB, INEA, FEAM e outras) e a rede de origem tem de ser
     creditada junto — ela vem em `provider`/`owner` e é guardada. A seleção é pela coordenada mais
     próxima da capital, com teto de 30 km: monitor a 200 km da capital medindo outra cidade não é
-    "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Função pura."""
+    "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Só monitor
+    de referência (`isMonitor`): sensor de baixo custo ou de teste não é medição da capital (16/11/2026:
+    o de Fortaleza era "211004_teste_modo_fixo"). Função pura."""
     itens = (dados or {}).get("results") if isinstance(dados, dict) else dados
     melhor = {}
     for loc in itens or []:
-        if not isinstance(loc, dict):
+        if not isinstance(loc, dict) or loc.get("isMonitor") is not True:
             continue
         coord = loc.get("coordinates") or {}
         lat, lon = coord.get("latitude"), coord.get("longitude")
@@ -1165,9 +1167,8 @@ def cidades_pm_diaria(locais_brutos: list, capitais: dict, extra: dict, agora_dt
     """{UF: {pm25: {...}, pm10: {...}, estacao, nome, rede_de_origem}} com a série de 31 dias de cada
     capital. Cada sensor falha sozinho e vira lacuna declarada, nunca zero. Usa a seleção de
     `parse_openaq_locais` (monitor a até 30 km da capital)."""
-    oficiais = [l for l in locais_brutos or [] if isinstance(l, dict) and l.get("isMonitor") is True]
-    escolhidos = parse_openaq_locais({"results": oficiais}, capitais)
-    por_id = {l.get("id"): l for l in oficiais}
+    escolhidos = parse_openaq_locais({"results": locais_brutos}, capitais)
+    por_id = {l.get("id"): l for l in locais_brutos or [] if isinstance(l, dict)}
     fim = agora_dt.date()
     de = fim - timedelta(days=OPENAQ_DIAS_JANELA)
     saida = {}
@@ -2476,7 +2477,7 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
             item["decretos"], item["decretos_no_ciclo"] = dec[:RISCOS_DECRETOS_MAX], len(dec)
         if cod in reconhecimento:
             item["reconhecimento"] = {k: reconhecimento[cod].get(k) for k in (
-                "reconhecido", "primeiro_decreto", "primeiro_reconhecimento", "evento_observado")}
+                "reconhecido", "primeiro_decreto", "primeiro_reconhecimento", "evento_observado", "decreto_anterior_ao_ciclo")}
         if (calor_mun.get(cod) or {}).get("classe"):
             item["calor"] = calor_mun[cod]["classe"]
         for chave, lista, campos in (("ar_estacao", estacoes, ("nome", "municipio", "uf", "rede", "iqar")),
@@ -3026,13 +3027,15 @@ def autoteste() -> int:
              "SP": {"uf": "SP", "lat": -23.5505, "lon": -46.6333}}
     _locais = parse_openaq_locais({"results": [
         {"id": 1, "name": "Perto de Brasília", "coordinates": {"latitude": -15.80, "longitude": -47.89},
-         "provider": {"name": "Rede X"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede X"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 2, "name": "Mais perto ainda", "coordinates": {"latitude": -15.795, "longitude": -47.883},
-         "provider": {"name": "Rede Y"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede Y"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 3, "name": "Longe demais", "coordinates": {"latitude": -14.0, "longitude": -47.0},
-         "provider": {"name": "Rede Z"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede Z"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 4, "name": "Sem PM2,5 em SP", "coordinates": {"latitude": -23.551, "longitude": -46.634},
-         "provider": {"name": "Rede W"}, "sensors": [{"parameter": {"name": "o3"}}]},
+         "provider": {"name": "Rede W"}, "sensors": [{"parameter": {"name": "o3"}}], "isMonitor": True},
+        {"id": 5, "name": "211004_teste_modo_fixo", "coordinates": {"latitude": -15.7939, "longitude": -47.8828},
+         "provider": {"name": "HabitatMap"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": False},
     ]}, _caps)
     checar("OpenAQ: escolhe o monitor MAIS PRÓXIMO da capital",
            _locais["DF"]["id"] == 2 and _locais["DF"]["distancia_km"] < 1)
@@ -3041,6 +3044,8 @@ def autoteste() -> int:
     checar("OpenAQ: monitor além do teto de raio não representa a capital",
            all(v["id"] != 3 for v in _locais.values()))
     checar("OpenAQ: monitor sem PM2,5 não entra nesta figura", "SP" not in _locais)
+    checar("OpenAQ: sensor de baixo custo ou de teste não vira medição da capital, mesmo mais perto",
+           all(v["id"] != 5 for v in _locais.values()))
     checar("OpenAQ: rotula a natureza como medição, nunca como modelo",
            _locais["DF"]["natureza"] == NATUREZA_MEDICAO)
     checar("OpenAQ negativo: resposta vazia devolve vazio",

@@ -43193,14 +43193,14 @@
    "atribuicao_corrigida_em": "2026-10-03",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "juiz": {
-    "codebook": "1.3 (03/10/2026)",
-    "promove": false,
-    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": "24/03/1974",
-    "julgado_em": "2026-10-03",
-    "hash_evidencia": "26c167cf4ef842d92a80bf969b5caa466afb98eeb84e5231a10c3d250f040189"
+    "categoria": "plano_antigo",
+    "data": "2014",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ce9f00298eee91dc19d3454974d1969bd349d847701a82137275cd969a61028c"
    },
    "status_anterior": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "limpeza": {
@@ -43217,6 +43217,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -61564,32 +61572,13 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "ultima_busca_em": "2026-10-15",
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
-    "promove": false,
-    "motivo": "citacao_incompleta",
-    "criterios": {
-     "0_documento_primario": {
-      "ok": true,
-      "trecho": "122988 caracteres de fonte oficial"
-     },
-     "1_identidade": {
-      "ok": true,
-      "trecho": "PLANO DE CONTINGÊNCIA DEFESA CIVIL Defesa Civil – Colinas /RS 1 Contato: (51)3760-4000 – (51)99850-0480 – defesacivil@colinas.rs.gov.br COORDENADORIA MUNICIPAL"
-     },
-     "2_citacao": {
-      "ok": false,
-      "trecho": "",
-      "dados": {
-       "tipo": "decreto",
-       "numero": "1834",
-       "data": null,
-       "detalhe": "sem data completa no texto"
-      }
-     }
-    },
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-10-15",
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
     "hash_evidencia": "ca4180c8daaa483582b72577a3e40b2852307da008e7a4bcefc9df4ad89cde14"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -61604,7 +61593,15 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Veranópolis",
@@ -174006,7 +174003,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "aa4f863288a487536db85d1631e3c1e05e955f21cc0034f51407bb8659a98b68"
+   }
   },
   {
    "municipio": "Campo Azul",
@@ -247026,7 +247041,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ca4180c8daaa483582b72577a3e40b2852307da008e7a4bcefc9df4ad89cde14"
+   }
   },
   {
    "municipio": "Chuvisca",
@@ -269071,7 +269104,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ca4180c8daaa483582b72577a3e40b2852307da008e7a4bcefc9df4ad89cde14"
+   }
   },
   {
    "municipio": "Westfália",
@@ -274356,7 +274407,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "19/06/2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "b706d9de573d9ff30a4c5cc53f839903ea8c9174f5123ad6af920e768a21fbf9"
+   }
   },
   {
    "municipio": "Muitos Capões",
@@ -278945,7 +279014,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2018",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "9d9f419613fa3b09117c7e02a0430276ae652d91458918cda3b16d2dabeaeb86"
+   }
   },
   {
    "municipio": "Pinto Bandeira",
@@ -288115,7 +288202,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4a06ae827f46ab051540ba0bbb214f1185560ced732474f4248cb410d29727ef"
+   }
   },
   {
    "municipio": "Salvador do Sul",
@@ -294665,7 +294770,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ca4180c8daaa483582b72577a3e40b2852307da008e7a4bcefc9df4ad89cde14"
+   }
   },
   {
    "municipio": "Travesseiro",
@@ -302336,7 +302459,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "19/06/2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "b706d9de573d9ff30a4c5cc53f839903ea8c9174f5123ad6af920e768a21fbf9"
+   }
   },
   {
    "municipio": "Jacuizinho",
@@ -315094,7 +315235,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ca4180c8daaa483582b72577a3e40b2852307da008e7a4bcefc9df4ad89cde14"
+   }
   },
   {
    "municipio": "Santa Tereza",
@@ -385131,7 +385290,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Itacoatiara",
@@ -385289,7 +385466,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Manacapuru",
@@ -387778,7 +387973,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "São Gabriel da Cachoeira",
@@ -388366,7 +388579,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Autazes",
@@ -389984,7 +390215,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Barreirinha",
@@ -390312,7 +390561,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Careiro",
@@ -390770,7 +391037,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Presidente Figueiredo",
@@ -392455,7 +392740,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Jutaí",
@@ -394450,7 +394753,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Beruri",
@@ -395472,7 +395793,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Careiro da Várzea",
@@ -398078,7 +398417,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Manaquiri",
@@ -398147,7 +398504,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Manaquiri",
@@ -399085,7 +399460,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Novo Airão",
@@ -401714,7 +402107,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Silves",
@@ -439777,7 +440188,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "fbb0c4c343584b2ed66284bb07ff3ead28612b97908f757feb55592b36d73606"
+   }
   },
   {
    "municipio": "Amapá",
@@ -451872,7 +452301,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "aa4f863288a487536db85d1631e3c1e05e955f21cc0034f51407bb8659a98b68"
+   }
   },
   {
    "municipio": "Japeri",
@@ -471449,7 +471896,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "fbb0c4c343584b2ed66284bb07ff3ead28612b97908f757feb55592b36d73606"
+   }
   },
   {
    "municipio": "MATINHOS",
@@ -476976,7 +477441,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Canaã dos Carajás",
@@ -478973,7 +479456,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "São Félix do Xingu",
@@ -479695,7 +480196,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Tangará da Serra",
@@ -483874,7 +484393,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "01/10/2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2de94cbd06261b19e2b61675a054d2aa61cb6e446ee94dc69956139b5626181b"
+   }
   },
   {
    "municipio": "Natal",
@@ -484708,7 +485245,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Itupiranga",
@@ -490312,7 +490867,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "252451a09d87c4ae089c747b2ecd2f2655f323d7774081ff95e694b075a74744"
+   }
   },
   {
    "municipio": "Prainha",
@@ -498787,7 +499360,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Maracanã",
@@ -506348,7 +506939,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "40e483cc6ffa252ce64ed0a8be164e1b566783e9c487536d89c1b7634744fcaa"
+   }
   },
   {
    "municipio": "Garanhuns",
@@ -510537,7 +511146,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "40e483cc6ffa252ce64ed0a8be164e1b566783e9c487536d89c1b7634744fcaa"
+   }
   },
   {
    "municipio": "Carpina",
@@ -513045,7 +513672,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "40e483cc6ffa252ce64ed0a8be164e1b566783e9c487536d89c1b7634744fcaa"
+   }
   },
   {
    "municipio": "Paudalho",
@@ -513825,7 +514470,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "40e483cc6ffa252ce64ed0a8be164e1b566783e9c487536d89c1b7634744fcaa"
+   }
   },
   {
    "municipio": "Moreno",
@@ -519330,7 +519993,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "72ebce20bf388f77cdcf057808249d13a4ce0c871f7ee69cdf3c38ccb35480bb"
+   }
   },
   {
    "municipio": "Aliança",
@@ -522873,7 +523554,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "252451a09d87c4ae089c747b2ecd2f2655f323d7774081ff95e694b075a74744"
+   }
   },
   {
    "municipio": "Trindade",
@@ -525210,7 +525909,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "aa4f863288a487536db85d1631e3c1e05e955f21cc0034f51407bb8659a98b68"
+   }
   },
   {
    "municipio": "Piraí",
@@ -526755,7 +527472,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Paranaguá",
@@ -526981,7 +527716,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Xinguara",
@@ -527097,7 +527850,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Tangará da Serra",
@@ -527439,7 +528210,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "01/10/2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2de94cbd06261b19e2b61675a054d2aa61cb6e446ee94dc69956139b5626181b"
+   }
   },
   {
    "municipio": "Natal",
@@ -527629,7 +528418,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Bannach",
@@ -528250,7 +529057,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "252451a09d87c4ae089c747b2ecd2f2655f323d7774081ff95e694b075a74744"
+   }
   },
   {
    "municipio": "Boa Vista da Aparecida",
@@ -564173,7 +564998,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "252451a09d87c4ae089c747b2ecd2f2655f323d7774081ff95e694b075a74744"
+   }
   },
   {
    "municipio": "Condado",
@@ -565981,7 +566824,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2018",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "9d9f419613fa3b09117c7e02a0430276ae652d91458918cda3b16d2dabeaeb86"
+   }
   },
   {
    "municipio": "São João",
@@ -567771,7 +568632,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "252451a09d87c4ae089c747b2ecd2f2655f323d7774081ff95e694b075a74744"
+   }
   },
   {
    "municipio": "Pedra",
@@ -581830,7 +582709,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Videira",
@@ -586201,7 +587098,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "a8b4c509c62428f7b1daf53f3ab28408fcb08473480247bdf9ca89c52da11189"
+   }
   },
   {
    "municipio": "Laguna",
@@ -588010,7 +588925,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "a8b4c509c62428f7b1daf53f3ab28408fcb08473480247bdf9ca89c52da11189"
+   }
   },
   {
    "municipio": "Braço do Norte",
@@ -589046,7 +589979,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "72ebce20bf388f77cdcf057808249d13a4ce0c871f7ee69cdf3c38ccb35480bb"
+   }
   },
   {
    "municipio": "Porto União",
@@ -590148,7 +591099,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "São José",
@@ -591027,7 +591996,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "a8b4c509c62428f7b1daf53f3ab28408fcb08473480247bdf9ca89c52da11189"
+   }
   },
   {
    "municipio": "Sombrio",
@@ -593564,7 +594551,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "72ebce20bf388f77cdcf057808249d13a4ce0c871f7ee69cdf3c38ccb35480bb"
+   }
   },
   {
    "municipio": "São Joaquim",
@@ -595079,7 +596084,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2014",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ce9f00298eee91dc19d3454974d1969bd349d847701a82137275cd969a61028c"
+   }
   },
   {
    "municipio": "Orleans",
@@ -597223,7 +598246,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2e04c1cc3af30972812e530df9738ab9bc9c0e035990f7a9727ef9fb6ec20d08"
+   }
   },
   {
    "municipio": "Criciúma",
@@ -597540,7 +598581,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Tubarão",
@@ -597579,7 +598638,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "a8b4c509c62428f7b1daf53f3ab28408fcb08473480247bdf9ca89c52da11189"
+   }
   },
   {
    "municipio": "Içara",
@@ -597616,7 +598693,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2e04c1cc3af30972812e530df9738ab9bc9c0e035990f7a9727ef9fb6ec20d08"
+   }
   },
   {
    "municipio": "Schroeder",
@@ -599905,7 +601000,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2e04c1cc3af30972812e530df9738ab9bc9c0e035990f7a9727ef9fb6ec20d08"
+   }
   },
   {
    "municipio": "Morro da Fumaça",
@@ -600166,7 +601279,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Taió",
@@ -600466,7 +601597,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "72ebce20bf388f77cdcf057808249d13a4ce0c871f7ee69cdf3c38ccb35480bb"
+   }
   },
   {
    "municipio": "Taió",
@@ -601559,7 +602708,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Cocal do Sul",
@@ -603452,7 +604619,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Içara",
@@ -603490,7 +604675,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2e04c1cc3af30972812e530df9738ab9bc9c0e035990f7a9727ef9fb6ec20d08"
+   }
   },
   {
    "municipio": "Balneário Rincão",
@@ -603918,7 +605121,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Balneário Arroio do Silva",
@@ -606456,7 +607677,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2021",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "b505f4a79bbca4c3235076011fdfc85d7f6f33294f6fae55f15b4703b7706922"
+   }
   },
   {
    "municipio": "Lauro Muller",
@@ -606522,7 +607761,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Anchieta",
@@ -607040,7 +608297,25 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2022",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "f8f1aa0059f316ee44626279aae2b9bbb1452e01157434c27842d1a81ab4096c"
+   }
   },
   {
    "municipio": "Nova Trento",
@@ -607344,7 +608619,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Siderópolis",
@@ -607803,7 +609096,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d29977625d1e85fe2f26362ff6f89a5d9acc674f25f836eb817f4de8c7e379e3"
+   }
   },
   {
    "municipio": "Nova Veneza",
@@ -609100,7 +610411,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2e04c1cc3af30972812e530df9738ab9bc9c0e035990f7a9727ef9fb6ec20d08"
+   }
   },
   {
    "municipio": "Tubarão",
@@ -611024,7 +612353,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2014",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ce9f00298eee91dc19d3454974d1969bd349d847701a82137275cd969a61028c"
+   }
   },
   {
    "municipio": "Blumenau",
