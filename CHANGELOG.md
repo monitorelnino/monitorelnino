@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-16 · #1802 · Válvula de dia não cruza a janela da noite
 
 A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.
+## 2026-11-15 · #1788 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa
+
+O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é "feito para o ciclo"; pista recusada ou inalcançável há 21 dias sai da espera.
 
 ## 2026-11-16 · #1795 · Planos municipais de arboviroses na consulta do município
 
