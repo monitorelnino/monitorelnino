@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-09 a 2026-11-16 (1464 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-09 a 2026-11-16 (1470 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -20,7 +20,7 @@ Janela: 2026-11-09 a 2026-11-16 (1464 execução(ões) registrada(s), 7 dias de 
 
 ## Cobertura em 15 dias
 
-cobertura 15d: 4918/5571 com verificação real até 2026-11-16 · por canal: web 240 · QD 527 · consorciado 1685 · DOE 4798
+cobertura 15d: 4918/5571 com verificação real até 2026-11-16 · por canal: web 248 · QD 527 · consorciado 1685 · DOE 4798
 
 ## Última execução de cada script
 
@@ -37,7 +37,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-16 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-15 01:37 | 0 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-16 07:58 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-16 08:21 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-16 07:09 | 303 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -102,7 +102,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-16 · por canal: we
 | `julgar_saude.py` | coletor | 2026-11-15 23:26 | 892 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-16 07:44 | 4 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-16 05:08 | 128 s | 25096 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-11-16 05:17 | 249 s | — | ok | — |
+| `monitorar_busca_web.py` | coletor | 2026-11-16 08:15 | 1 s | — | ok | — |
 | `monitorar_imprensa_regional.py` | coletor | 2026-11-16 04:56 | 588 s | 40 | ok | — |
 | `monitorar_imprensa_saude.py` | coletor | 2026-11-16 05:06 | 106 s | 27 | ok | — |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-11-16 05:10 | 3 s | 19068 | ok | — |
