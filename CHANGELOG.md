@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #PRNUM · O ato citado pelo leitor orienta a busca dirigida
+
+Quando o leitor informa o número do ato no formulário (Taió/SC: "Decreto 9584/2026"), o tipo e o número passam a ir com a pista e a busca dirigida procura esse ato nas fontes oficiais. O número não é prova: só entra no site se o juiz o ler no documento oficial.
+
 ## 2026-11-16 · #1810 · Endereço que falha na rede vira pedido à ponte no Brasil
 
 A tarefa semanal da ponte pedia a lista de endereços a trazer a um comando que não existia, e nenhum pedido chegava a ela; o diário do RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo endereço que falha na rede sem cópia passa a ser pedido, e `--pedidos` entrega os 40 mais recentes.

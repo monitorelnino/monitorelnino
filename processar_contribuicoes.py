@@ -192,9 +192,17 @@ def pista_da_contribuicao(dados: dict, ibge: str, hoje_iso: str):
     url = (dados.get("link_oficial") or "").strip()
     if not tipo or not url.startswith("https://") or not ibge:
         return None
-    return {"url_final": url, "tipo": tipo, "alvo": str(ibge).zfill(7), "nivel": "C",
-            "data": hoje_iso, "origem": "contribuicao",
-            "titulo": f"Contribuição de leitor ({tipo})"}
+    pista = {"url_final": url, "tipo": tipo, "alvo": str(ibge).zfill(7), "nivel": "C",
+             "data": hoje_iso, "origem": "contribuicao",
+             "titulo": f"Contribuição de leitor ({tipo})"}
+    # 16/11/2026 (Taió/SC: o leitor informou "Decreto 9584/2026" e o número se perdia): o ato citado pelo
+    # leitor vira só o que a busca dirigida procura (tipo e número, pela mesma régua dela). Não é prova;
+    # a prova é o documento oficial, que o juiz lê. O resto do campo livre continua fora.
+    from scripts.busca_dirigida_do_ato import RE_ATO
+    ato = RE_ATO.search(str(dados.get("numero_data") or ""))
+    if ato:
+        pista["documento"] = f"{ato.group(1).capitalize()} nº {ato.group(2)}"
+    return pista
 
 
 def autoteste() -> int:
@@ -226,6 +234,11 @@ def autoteste() -> int:
          _p == {"url_final": "https://x.se.gov.br/p.pdf", "tipo": "plano", "alvo": "2800308",
                 "nivel": "C", "data": "2026-10-12", "origem": "contribuicao",
                 "titulo": "Contribuição de leitor (plano)"}),
+        ("o ato citado pelo leitor vai à pista só como tipo e número, para a busca dirigida",
+         (pista_da_contribuicao({"tipo": "plano", "link_oficial": "https://x.gov.br/p.pdf", "numero_data": "Decreto 9584/2026 <b>x</b> veja"},
+                                "4217808", "2026-11-12") or {}).get("documento") == "Decreto nº 9584/2026"
+         and "documento" not in pista_da_contribuicao({"tipo": "plano", "link_oficial": "https://x.gov.br/p.pdf",
+                                                       "numero_data": "Disponível no Portal"}, "3302858", "2026-11-15")),
         ("correção com documento vira pista de plano para o juiz",
          (pista_da_contribuicao({"tipo": "correcao", "link_oficial": "https://x.gov.br/p.pdf"}, "2800308",
                                 "2026-10-12") or {}).get("tipo") == "plano"),
