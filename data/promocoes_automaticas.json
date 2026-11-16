@@ -761659,6 +761659,4184 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "1de40c504bee6b8cb54b9e34132b32a6173b0d5fcfefad12a774363fe67e0341"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf",
+   "regras_18": [],
+   "pista_id": "d1a3559016",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202909",
+   "municipio": "Brusque",
+   "uf": "SC",
+   "url": "https://www.brusque.sc.gov.br/cidadao/noticia/operacao-el-nino-organiza-acoes-de-prevencao-e-monitoramento-em-brusque",
+   "regras_18": [],
+   "pista_id": "2385e529b6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202909",
+   "municipio": "Brusque",
+   "uf": "SC",
+   "url": "https://www.brusque.sc.gov.br/cidadao/noticia/acoes-preventivas-contra-o-el-nino-avancam-em-brusque",
+   "regras_18": [],
+   "pista_id": "2c9b2f8bf7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211306",
+   "municipio": "Navegantes",
+   "uf": "SC",
+   "url": "https://navegantes.sc.gov.br/2026/05/25/prefeitura-de-navegantes-cria-forca-tarefa-contra-o-el-nino-e-limpa-34-km-de-canais-no-gravata-e-meia-praia/",
+   "regras_18": [],
+   "pista_id": "027ed149de",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211801",
+   "municipio": "Ouro",
+   "uf": "SC",
+   "url": "https://ouro.sc.gov.br/audiencia-publica-plano-de-contingencia-defesa-civil/",
+   "regras_18": [],
+   "pista_id": "9c0fd223ae",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "404917 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESÍDUOS SÓLIDOS PRODUTO 6 RELATÓRIO FINAL JUNHO DE 2017 Prefeitura Municipal de Congonhas Praça Presidente Kubistchek 135 - Centro Congonhas/MG - 36415-000 Tele"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.305/2010",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118007",
+   "municipio": "Congonhas",
+   "uf": "MG",
+   "url": "https://www.congonhas.mg.gov.br/wp-content/uploads/2017/10/PGRSU-FINAL.pdf",
+   "regras_18": [],
+   "pista_id": "b9c96715ad",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "730c8f08f8499e65ca49f626c2900272ff8aa3859269e242e15c94baf87fd993",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3556701",
+   "municipio": "Vinhedo",
+   "uf": "SP",
+   "url": "https://www.camaravinhedo.sp.gov.br/imprensa/noticias/0/4/0/4337",
+   "regras_18": [],
+   "pista_id": "2ed1c8ce14",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "39 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://duquedecaxias.rj.gov.br/noticia/plano-de-contingencia-municipal-ajuda-a-mitigar-danos-causados-por-desastres-naturais/5368",
+   "regras_18": [],
+   "pista_id": "dc942a39be",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "39 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://duquedecaxias.rj.gov.br/noticia/defesa-civil-de-duque-de-caxias-lanca-plano-verao-20242025/5797",
+   "regras_18": [],
+   "pista_id": "f5961f3406",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236",
+   "regras_18": [],
+   "pista_id": "0bb73f1765",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3561 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "da Administração Municipal, e dá outras providências. O PREFEITO MUNICIPAL DE RIO DAS FLORES, Estado do Rio de Janeiro, no uso de suas atribuições legais, CO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "EFEITURA — x By RIOdasFLÓRES Sa) Resgatando Tradições, Construindo o Futuro! DECRETO Nº 040 de 18 de Março de 2026 Ementa: Dispõe sobre a centralização da g",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "040",
+      "data": "18/03/2026",
+      "trecho": "EFEITURA — x By RIOdasFLÓRES Sa) Resgatando Tradições, Construindo o Futuro! DECRETO Nº 040 de 18 de Março de 2026 Ementa: Dispõe sobre a centralização da g"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "e mensagens no âmbito da Administração Municipal, e dá outras providências. O PREFEITO MUNICIPAL DE RIO DAS FLORES, Estado do Rio de Janeiro, no uso de suas a"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "18/03/2026",
+   "natureza": "DUVIDA",
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://riodasflores.rj.gov.br/ws/media-library/ea77f2a010b29ebe3e7aaeb4be170c7a/decreto-0402026.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "90923bfd42",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "be6f73ac0f342d1a4d3126dc6affb468c59f4ef9ff0071730e7977ace871aae9"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4107900",
+   "municipio": "Floresta",
+   "uf": "PR",
+   "url": "https://www.gov.br/saude/pt-br/composicao/svsa/saude-ambiental/vigiar/monitoramento-de-incendios-florestais/2026/informe-monitoramento-de-incendios-florestais-se-27.pdf",
+   "regras_18": [],
+   "pista_id": "dba3a689b5",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302254",
+   "municipio": "Itatiaia",
+   "uf": "RJ",
+   "url": "http://iprevi.rj.gov.br/index.php/seja-bem-vindo/noticias/156-decreto-estabelece-medidas-da-prefeitura-para-prevencao-contra-o-novo-coronavirus",
+   "regras_18": [],
+   "pista_id": "271267c5be",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "32516 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE PEDRINHAS PAULISTA (COVID-19) PREFEITURA DE PEDRINHAS PAULISTA-SP SECRETARIA MUNICIPAL DA SAÚDE Prefeito: SERGIO FORNASIER Secretária M"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "onavírus (COVID-19), considerando a necessidade de respostas rápidas através da Portaria MS/GM Nº188. As medidas adotadas pela Vigilância à Saúde do Brasil e ou",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "188",
+      "data": "25/02/2020",
+      "trecho": "onavírus (COVID-19), considerando a necessidade de respostas rápidas através da Portaria MS/GM Nº188. As medidas adotadas pela Vigilância à Saúde do Brasil e ou"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "25/02/2020",
+   "natureza": null,
+   "ibge": "3537156",
+   "municipio": "Pedrinhas Paulista",
+   "uf": "SP",
+   "url": "https://www.pedrinhaspaulista.sp.gov.br/plano-municipal/plano-municipal-index/download/3/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "cdb8158a6f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "dfa754d78126352f1ceea3b0ee5eee11b5257f033188cf25e6a1fa33bad592d7"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2610707",
+   "municipio": "Paulista",
+   "uf": "PE",
+   "url": "https://paulista.pe.gov.br/2024/dinamico/noticia-detalhe.php?id=7782",
+   "regras_18": [],
+   "pista_id": "55cc6ecfa6",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "22 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://defesacivil.itajai.sc.gov.br/historico/",
+   "regras_18": [],
+   "pista_id": "b97a664c30",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "268 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://plancon.itajai.sc.gov.br/",
+   "regras_18": [],
+   "pista_id": "b582a28463",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118700",
+   "municipio": "Coqueiral",
+   "uf": "MG",
+   "url": "https://www.coqueiral.mg.gov.br/plano-de-contingencia-municipal-de-enfrentamento-ao-covid-19",
+   "regras_18": [],
+   "pista_id": "e3edb754f4",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "12 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2408607",
+   "municipio": "Paraná",
+   "uf": "RN",
+   "url": "https://legisvideos.assembleia.pr.leg.br/video/2330",
+   "regras_18": [],
+   "pista_id": "2236b63f59",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210407",
+   "municipio": "Maracajá",
+   "uf": "SC",
+   "url": "https://maracaja.sc.gov.br/agenda/",
+   "regras_18": [],
+   "pista_id": "4638b824bd",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3535 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Planos Orçamentários - Prefeitura de Maracajá Skip to content 31 de outubro de 2025 Últimas Notícias Uma história que continua viva: 60 anos da Escola Eufrázio"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "31/10/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "31/10/2025",
+   "natureza": null,
+   "ibge": "4210407",
+   "municipio": "Maracajá",
+   "uf": "SC",
+   "url": "https://maracaja.sc.gov.br/pagina-61311/",
+   "regras_18": [],
+   "pista_id": "2efb9bc789",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "dd7f48daccf9a4f9754a4993712fe7eb6da7ea60f7800b2783ba878ac2d6b1f6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7880 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Defesa Civil - Acompanhe o monitoramento do Rio Itajaí do Oeste - Prefeitura de Laurentino Skip to content 11 de novembro de 2025 Últimas Notícias Tributação &#"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "CIONAL (NFS-e) Mudança horário expediente da Prefeitura de Laurentino, conforme decreto 1861. Educação- Edital aberto para seleção de Formadores Municipais CAMP",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "1861",
+      "data": "27/10/2025",
+      "trecho": "CIONAL (NFS-e) Mudança horário expediente da Prefeitura de Laurentino, conforme decreto 1861. Educação- Edital aberto para seleção de Formadores Municipais CAMP"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "27/10/2025",
+   "natureza": null,
+   "ibge": "4209508",
+   "municipio": "Laurentino",
+   "uf": "SC",
+   "url": "https://laurentino.sc.gov.br/defesa-civil-acompanhe-o-monitoramento-do-rio-itajai-do-oeste/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "0d71b3bc0e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e4ab972cd3d98f1efa2565ee4209b95f2aeaa6b6556f8d07fe2bf105a1df984"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210100",
+   "municipio": "Mafra",
+   "uf": "SC",
+   "url": "https://mafra.sc.gov.br/legislacao/decreto-no-68-2025/",
+   "regras_18": [],
+   "pista_id": "0fe76dd54a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5960 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202081",
+   "municipio": "Bandeirante",
+   "uf": "SC",
+   "url": "https://bandeirante.sc.gov.br/galeria/pagina-45715/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "8ac9f4196e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80e246b155a2000a1fa9fc520d1865d28848581a13c166de694f812a771f0c8a"
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://thmais.com.br/giro-de-noticias/defesa-civil-apura-ocorrencia-de-tornado-apos-tempestade-em-santa-catarina/"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207684",
+   "municipio": "Ipuaçu",
+   "uf": "SC",
+   "url": "https://thmais.com.br/giro-de-noticias/defesa-civil-apura-ocorrencia-de-tornado-apos-tempestade-em-santa-catarina/",
+   "regras_18": [],
+   "pista_id": "5d0ec7f96f",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207684",
+   "municipio": "Ipuaçu",
+   "uf": "SC",
+   "url": "https://ipuacu.sc.gov.br/plano-de-contingencia-de-protecao-e-defesa-civil-plancon/",
+   "regras_18": [],
+   "pista_id": "a353384432",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207684",
+   "municipio": "Ipuaçu",
+   "uf": "SC",
+   "url": "https://ipuacu.sc.gov.br/author/denner/",
+   "regras_18": [],
+   "pista_id": "75b3f1d0ad",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207684",
+   "municipio": "Ipuaçu",
+   "uf": "SC",
+   "url": "https://ipuacu.sc.gov.br/ipuacu-celebra-34-anos-com-grande-festa/",
+   "regras_18": [],
+   "pista_id": "ba99f92ee6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215307",
+   "municipio": "Salete",
+   "uf": "SC",
+   "url": "https://www.cmb.sc.gov.br/proposicoes/Requerimentos/0/1/0/36789",
+   "regras_18": [],
+   "pista_id": "cb319c3dda",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203006",
+   "municipio": "Caçador",
+   "uf": "SC",
+   "url": "https://cacador.sc.gov.br/prefeitura-de-cacador-intensifica-acoes-preventivas-diante-da-possibilidade-de-el-nino/",
+   "regras_18": [],
+   "pista_id": "f44a722a53",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5705 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ticas de proteção integral, com respeito à diversidade.no &#8211; Prefeitura de Porto União Skip to content 13 de junho de 2024 Últimas Notícias Calendário Vaci"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Acesso à Informação Lista de espera no SUS Legislação Editais Impress e Amaspu Portaria do MPSC N. 0001/2018/ Edital n.º 1454 /2018 – PRONATEC PRISIONAL Restit",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "0001/2018",
+      "data": "13/06/2024",
+      "trecho": "Acesso à Informação Lista de espera no SUS Legislação Editais Impress e Amaspu Portaria do MPSC N. 0001/2018/ Edital n.º 1454 /2018 – PRONATEC PRISIONAL Restit"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "13/06/2024",
+   "natureza": null,
+   "ibge": "4213609",
+   "municipio": "Porto União",
+   "uf": "SC",
+   "url": "https://www.portouniao.sc.gov.br/realizada-nesta-quinta-feira-01-12-nas-dependencias-do-gremio-ribeiro-pires-a-viii-conferencia-municipal-dos-direitos-da-crianca-e-adolescente-com-o-tema-a-situacao-dos-direitos-humanos-de-criancas/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "e5fad3f6b8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e7cd1d5a55cd76109591b07616ab204f7003f3ad1d8ba914970dd9a8221615a3"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "18 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218400",
+   "municipio": "Treze de Maio",
+   "uf": "SC",
+   "url": "https://sistemas.epagri.sc.gov.br/semob/consulta.action?subFuncao=consultaPublicacoes",
+   "regras_18": [],
+   "pista_id": "0ea2fd9a54",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "39 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://duquedecaxias.rj.gov.br/noticia/defesa-civil-de-duque-de-caxias-conclui-plano-de-contingencia-para-o-periodo-de-estiagem/2965",
+   "regras_18": [],
+   "pista_id": "3457c507e1",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "93 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/43338",
+   "regras_18": [],
+   "pista_id": "5bbbf16ebb",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "75 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/42965",
+   "regras_18": [],
+   "pista_id": "49b3023d57",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Leis-ordinarias/0/24/0/110757",
+   "regras_18": [],
+   "pista_id": "6623c9d715",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6114 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Contingência - Prefeitura de Tubarão Skip to content 6 de novembro de 2025 Últimas Notícias Construções abandonadas abrigam pessoas em situação de rua"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "egra nos links abaixo. Arquivos [10/10/2023] PLANO DE CONTINGÊNCIA [19/04/2022] Decreto 6461/2022 - PlanCon Tubarão - 5ª Versão - Anexo [19/04/2022] Decreto - P",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "6461/2022",
+      "data": "19/04/2022",
+      "trecho": "egra nos links abaixo. Arquivos [10/10/2023] PLANO DE CONTINGÊNCIA [19/04/2022] Decreto 6461/2022 - PlanCon Tubarão - 5ª Versão - Anexo [19/04/2022] Decreto - P"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "19/04/2022",
+   "natureza": null,
+   "ibge": "4218707",
+   "municipio": "Tubarão",
+   "uf": "SC",
+   "url": "https://tubarao.sc.gov.br/galeria/pagina-20596/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "208ffd784b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "99519da00f80eef0db726a8c5940f506230cc85c086b1ccd3ff6fe8cff5a3b15"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Projetos-de-Leis-Ordinarias/0/1/0/145796",
+   "regras_18": [],
+   "pista_id": "da22d8bb43",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "74 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4214805",
+   "municipio": "Rio do Sul",
+   "uf": "SC",
+   "url": "https://www.riodosul.sc.gov.br/cidadao/pagina/defesa-civil",
+   "regras_18": [],
+   "pista_id": "cc944f32a1",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19636 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "UL/SC ESCOLA DE EDUCAÇÃO BÁSICA TEREZA CRISTINA RUA PAULO POSSAMAI, 98 — CENTRO/LAURENTINO PLANO DE CONTINGENCIA para a COVID-19 Estabelecimento de Educação/E"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DE EDUCAÇÃO BÁSICA TEREZA CRISTINA RUA PAULO POSSAMAI, 98 — CENTRO/LAURENTINO PLANO DE CONTINGENCIA para a COVID-19 Estabelecimento de Educação/Ensino Fundam",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE SANTA",
+      "titulo": "PLANO DE\nCONTINGENCIA",
+      "trecho": "DE EDUCAÇÃO BÁSICA TEREZA CRISTINA RUA PAULO POSSAMAI, 98 — CENTRO/LAURENTINO PLANO DE CONTINGENCIA para a COVID-19 Estabelecimento de Educação/Ensino Fundam",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a Padre Doutor Itamar Luis da Costa - Imbituba/SC Profa. Rute Maria Fernandes - Secretaria Municipal de Educação, Cultura e Esportes (SEDUCE) - Imbituba/SC. Ms"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ão Mundial de Saúde, bem como Secretarias de Estado de Saúde e de Educação). O Plano de Contingência Escolar para a COVID-19, a partir de cenários de risco id"
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": "EX_ANTE",
+   "ibge": "4209508",
+   "municipio": "Laurentino",
+   "uf": "SC",
+   "url": "https://laurentino.sc.gov.br/uploads/sites/163/2021/12/2222691_Plancon_EEB_Tereza_Cristina_3_versao.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "2abca0e51b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7bab836c7ff3792efc4054e51dea7aee8a4d0f9a20596988eddde9987ba03172"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219309",
+   "municipio": "Videira",
+   "uf": "SC",
+   "url": "https://www.camaravideira.sc.gov.br/tramitacoes/1/4384/0",
+   "regras_18": [],
+   "pista_id": "d28592e8e2",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210100",
+   "municipio": "Mafra",
+   "uf": "SC",
+   "url": "https://mafra.sc.gov.br/legislacao/norma-523933/",
+   "regras_18": [],
+   "pista_id": "0a4ed46b62",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210100",
+   "municipio": "Mafra",
+   "uf": "SC",
+   "url": "https://mafra.sc.gov.br/legislacao/norma-473018/",
+   "regras_18": [],
+   "pista_id": "44686636c2",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203808",
+   "municipio": "Canoinhas",
+   "uf": "SC",
+   "url": "https://www.canoinhas.sc.leg.br/tramitacoes",
+   "regras_18": [],
+   "pista_id": "d86168a88f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "70645 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "8 2 SITUAÇÃO E PRESSUPOSTOS 2.1 CARACTERÍSTICAS DO MUNICÍPIO DE BLUMENAU O município de Blumenau, localizado na Bacia Hidrográfica do Rio Itajaí, possui uma áre"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e Codificação Brasileira de Desastres – COBRADE, os eventos desencadeadores do Plano de Contingência de desastres em hospitais poderão ter a seguinte classific",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "e Codificação Brasileira de Desastres – COBRADE, os eventos desencadeadores do Plano de Contingência de desastres em hospitais poderão ter a seguinte classific",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "8 2 SITUAÇÃO E PRESSUPOSTOS 2.1 CARACTERÍSTICAS DO MUNICÍPIO DE BLUMENAU O município de Blumenau, localizado na Bacia Hidrográfica do Rio Itajaí, possui uma áre"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ioativas; Desastres relacionados a produtos perigosos; Desastres relacionados a incêndios urbanos; Desastres relacionados a obras civis; Desastres relacionados"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "4202404",
+   "municipio": "Blumenau",
+   "uf": "SC",
+   "url": "https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/PCDH_2024.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "9df60a76ba",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211801",
+   "municipio": "Ouro",
+   "uf": "SC",
+   "url": "https://ouro.sc.gov.br/pagina-36602/",
+   "regras_18": [],
+   "pista_id": "cc51ac2925",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211801",
+   "municipio": "Ouro",
+   "uf": "SC",
+   "url": "https://ouro.sc.gov.br/carta-servico/",
+   "regras_18": [],
+   "pista_id": "f85d6481a7",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212403",
+   "municipio": "Pedras Grandes",
+   "uf": "SC",
+   "url": "https://www.camarapedrasgrandes.sc.gov.br/tramitacoes/1/1332/0",
+   "regras_18": [],
+   "pista_id": "2bc919c780",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "164 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2932903",
+   "municipio": "Valença",
+   "uf": "BA",
+   "url": "https://pesquisa.apps.tcu.gov.br/#/documento/ata-sessao/37528019987.PROC/%2520/DTRELEVANCIA%2520desc/1/%2520",
+   "regras_18": [],
+   "pista_id": "00a855bad6",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3105400",
+   "municipio": "Barão de Cocais",
+   "uf": "MG",
+   "url": "https://www.baraodecocais.mg.gov.br/abrir_arquivo.aspx/Portaria_301_2019?cdLocal=5&arquivo=%7B61025BCB-7CD6-3D28-CD53-EA0BE6E71C3D%7D.pdf",
+   "regras_18": [],
+   "pista_id": "241806438f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "190 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "url": "https://www.doe.sp.gov.br/executivo/secretaria-de-desenvolvimento-economico/resolucao-n-11-2025-de-27-de-fevereiro-de-2025-2025031311181220946231",
+   "regras_18": [],
+   "pista_id": "3ca34443b9",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "169 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104808",
+   "municipio": "Cascavel",
+   "uf": "PR",
+   "url": "https://prefa.cascavel.pr.gov.br/cidadao/noticia/gestao-de-riscos-prefeitura-de-cascavel-intensifica-plano-integrado-para-reduzir-impactos-do-el-nino-e-reforcar-respostas-a-emergencias",
+   "regras_18": [],
+   "pista_id": "1a887fd480",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4113700",
+   "municipio": "Londrina",
+   "uf": "PR",
+   "url": "https://www.cml.pr.gov.br/proposicoes/Projetos-de-Lei/2026/5/0",
+   "regras_18": [],
+   "pista_id": "91f90a24fa",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4105805",
+   "municipio": "Colombo",
+   "uf": "PR",
+   "url": "https://prefeitura.colombo.pr.gov.br/mapa-do-site/",
+   "regras_18": [],
+   "pista_id": "914b9ec2dc",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "4cb2bb38a028801a5cddea93530d219764f634a2358ba7efd2544bd3291acaa4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "url": "https://www.gov.br/anvisa/pt-br/composicao/diretoria-colegiada/reunioes-da-diretoria/votos/2023/copy5_of_rop-7.2023/4-5-2-1.pdf",
+   "regras_18": [],
+   "pista_id": "7fe6011407",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2599 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "GOVERNO DO ESTADO 4 ns SANEPAR PARANÁ É co dbddo CA 514/2021 — GRUM 7 Umuarama, 06 de dezembro de 2021. Excelentíssimo Sr. Wilson Luiz Perez Pedrão Presiden"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "iante das questões acima a Sanepar não mediu esforços para ajustar o sistema, a Lei nº 4932/2017 de 06/12/2017, estabelece diretrizes denominado Plano de Contin",
+     "dados": {
+      "tipo": "lei",
+      "numero": "4932/2017",
+      "data": "06/12/2017",
+      "trecho": "iante das questões acima a Sanepar não mediu esforços para ajustar o sistema, a Lei nº 4932/2017 de 06/12/2017, estabelece diretrizes denominado Plano de Contin"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "de dezembro de 2021. Excelentíssimo Sr. Wilson Luiz Perez Pedrão Presidente da Câmara Municipal de Cianorte Ref.: Ofício nº 774/2021 — Câmara de Vereadores de"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2017",
+   "natureza": null,
+   "ibge": "4128104",
+   "municipio": "Umuarama",
+   "uf": "PR",
+   "url": "https://camaracianorte.pr.gov.br/downloadDocumentos/download/TlRjPU5XTT1OVFE9TlRVPU5UVT0=/correspondencias-recebidas.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "1899f95181",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "3a9085fbe5f893d09bb71c1458c434801550f6b1fe55042d96762c365e10af54"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104907",
+   "municipio": "Castro",
+   "uf": "PR",
+   "url": "https://www.cmrolandia.pr.gov.br/tramitacoes/1/57270",
+   "regras_18": [],
+   "pista_id": "e40ce5a2d8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111726 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Secretaria Especial de Saúde Indígena Distrito Sanitário Especial Indígena Alto Rio Negro Plano de Contingência para Infecção Humana pelo novo Coronavírus (COVI"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "22/01/2020",
+      "prova": "............................................. 62 3 1. INTRODUÇÃO Este documento apresenta o Plano de Contingência Nacional para Infecção Humana pelo novo Corona",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "22/01/2020",
+   "natureza": null,
+   "ibge": "4122305",
+   "municipio": "Rio Negro",
+   "uf": "PR",
+   "url": "https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-arn-alto-do-rio-negro/@@download/file",
+   "regras_18": [],
+   "pista_id": "7b27f89539",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "82cde4fbe343155791c9b41087e7de6b2962f64efc8fe3a5d2624c7a85799bb3"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4311403",
+   "municipio": "Lajeado",
+   "uf": "RS",
+   "url": "http://www.lajeado.rs.gov.br/noticia/14718/892?titulo=Prefeitura+de+Lajeado+realiza+chamamento+p%C3%BAblico+para+localizar+pessoas+com+direitos+sobre+im%C3%B3veis+nas+Zonas+de+Arraste",
+   "regras_18": [],
+   "pista_id": "4e36d76e22",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2014 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "orno das Aulas Presenciais.” RAFAEL SENHOR, Prefeito Municipal em Exercício de Serra Alta, Estado de Santa Catarina, usando de suas atribuições legais, estabel"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DECRETO Nº 226/2020 DE 29 DE OUTUBRO DE 2020 “Dispõe sobre a homologação do Plano de Contingência Municipal elaborado pela Comissão Intersetorial Municipal pa",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "226/2020",
+      "data": "29/10/2020",
+      "trecho": "DECRETO Nº 226/2020 DE 29 DE OUTUBRO DE 2020 “Dispõe sobre a homologação do Plano de Contingência Municipal elaborado pela Comissão Intersetorial Municipal pa"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "rial Municipal para Estudos do Retorno das Aulas Presenciais.” RAFAEL SENHOR, Prefeito Municipal em Exercício de Serra Alta, Estado de Santa Catarina, usando"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "29/10/2020",
+   "natureza": "DUVIDA",
+   "ibge": "4217550",
+   "municipio": "Serra Alta",
+   "uf": "SC",
+   "url": "https://serraalta.sc.gov.br/uploads/sites/323/2023/06/1965559_DECRETO_2262020.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "1fd1e09ea2",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e51b09710aedcf91bf3f676fa996d8a711966b2b8d59cbb3bd4fdafed23a5db0"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14538 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE SÃO MATEUS Continua... ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO DECREIO Nº, 15,396/2023 Considerando a competência da Coordenad"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ípio de São Mateus, Estado do Espirito Santo: DECREIA Art.1º. Fica aprovado o Plano Municipal de Contingência de Proteção e Defesa Civil, do Município de São",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano Municipal de\nContingência",
+      "trecho": "ípio de São Mateus, Estado do Espirito Santo: DECREIA Art.1º. Fica aprovado o Plano Municipal de Contingência de Proteção e Defesa Civil, do Município de São",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE SÃO MATEUS Continua... ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO DECREIO Nº, 15,396/2023 Considerando a competência da Coordenad"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ocasionados pela evolução gradual de um evento climático, tais como estiagens e secas; º Quando forem constados danos humanos e/ou materiais de qualquer espéci"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2022, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2022",
+   "natureza": "EX_ANTE",
+   "ibge": "3204906",
+   "municipio": "São Mateus",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/S%C3%83O%20MATEUS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
+   "regras_18": [
+    "J7",
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "dfee82c174",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "b4ba1000fe7a3364bf1e6a94323cf2250af0be8a77413f3142ba1e038fbc4d92"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20676 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ER PREFEITURA MUNICIPAL DE SÃO MATEUS ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO LELNº. 1.637/2017 O Prefeito Municipal de São Mateus, Estado do Espírito"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.651/2012",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204906",
+   "municipio": "São Mateus",
+   "uf": "ES",
+   "url": "https://saomateus.es.gov.br/uploads/acessetambem/aj019l36fqyu8izg57e4prcmtbhdwxvsno2k.pdf",
+   "regras_18": [],
+   "pista_id": "cc565c077b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "b56c581004918f2547a0ed686bc32ddff880dc03976c09b193ccabf6030e67fc",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303401",
+   "municipio": "Nova Friburgo",
+   "uf": "RJ",
+   "url": "http://www.rj.gov.br/casacivil/node/247",
+   "regras_18": [],
+   "pista_id": "a5ed111a8a",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "22 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://defesacivil.itajai.sc.gov.br/",
+   "regras_18": [],
+   "pista_id": "35b4013c43",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "117754 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PROJETO POLÍTICO PEDAGÓGICO 2023 2 PREFEITURA DE BRUSQUE SECRETARIA MUNICIPAL DE EDUCAÇÃO PROJETO POLÍTICO PEDAGÓGICO Centro de Educação Infantil Padre Theodoro"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Comunicação TICs – Tecnologias de Informação e Comunicação UE – Unidade Escolar PLANCON – Plano Nacional de Contingência 5 SUMÁRIO LISTA DE GRÁFICOS 3 LISTA DE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DE",
+      "titulo": "PLANCON",
+      "trecho": "Comunicação TICs – Tecnologias de Informação e Comunicação UE – Unidade Escolar PLANCON – Plano Nacional de Contingência 5 SUMÁRIO LISTA DE GRÁFICOS 3 LISTA DE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": null,
+   "ibge": "4202909",
+   "municipio": "Brusque",
+   "uf": "SC",
+   "url": "https://sge.brusque.sc.gov.br/sge/UpSis/ppp/ppp124.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "5991a0ec9e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ca1342856ebcdf6abb99bbf7df95a1176b44677fe489464621e84b6728f5155f"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Projetos-de-Leis-Complementares/0/1/0/149615",
+   "regras_18": [],
+   "pista_id": "4eb64c3ea5",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217709",
+   "municipio": "Sombrio",
+   "uf": "SC",
+   "url": "https://www2.sed.sc.gov.br/documentos/plano-estadual-de-educacao-sc-452/12706-5-relatorio-de-monit-pee-sc-2020",
+   "regras_18": [],
+   "pista_id": "287dbdcb36",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212205",
+   "municipio": "Papanduva",
+   "uf": "SC",
+   "url": "https://papanduva.sc.gov.br/noticia-629756/",
+   "regras_18": [],
+   "pista_id": "0e45dcbe21",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2105302",
+   "municipio": "Imperatriz",
+   "uf": "MA",
+   "url": "https://www.al.ma.leg.br/sitealema/wp-content/uploads/2026/03/DIARIO_041_13.03.2026___.pdf",
+   "regras_18": [],
+   "pista_id": "c3cd9ccb8c",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "3bf1df1d55",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2919926",
+   "municipio": "Madre de Deus",
+   "uf": "BA",
+   "url": "https://www.madrededeus.ba.gov.br/abrir_arquivo.aspx/Plano_de_Contingencia?cdLocal=2&arquivo=%7BE1BA21D6-A35B-B3AC-5BBE-6CAE436DCB15%7D.pdf",
+   "regras_18": [],
+   "pista_id": "7bda3e2b21",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "45628 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "aúde Secretaria Especial de Saúde indígena Distrito Sanitário Especial Indígena-Parintins PLANO DE CONTINGÊNCIA DISTRITAL PARA INFECÇÃO HUMANA PELO NOVO CORONAV"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "duos. A Política Nacional de Atenção à Saúde dos Povos Indígenas, aprovada pela Portaria do Ministério da Saúde nº 254, de 31 de janeiro de 2002, tem o propósit",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "254",
+      "data": "23/09/1999",
+      "trecho": "duos. A Política Nacional de Atenção à Saúde dos Povos Indígenas, aprovada pela Portaria do Ministério da Saúde nº 254, de 31 de janeiro de 2002, tem o propósit"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "23/09/1999",
+   "natureza": null,
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "url": "https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-pin-parintins",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "3f4fab56d4",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "8140e28f01fa45de0e5ef9927786de13a1eb1686d7a5ed877720e2aabdb6d13d"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "90 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://www.cvi.sc.gov.br/sessao/43o-sessao-ordinaria-09-07-2026-1000165",
+   "regras_18": [],
+   "pista_id": "7b8e8b5143",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6669 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ibilidade PLANO DE CONTINGÊNCIA 18/03/2020 - PLANO DE CONTINGÊNCIA MUNICIPAL DE CAÇADOR.docx Decretos 19/04/2020 - Decreto 8673 - autorização feriados 17/04/202"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ria Prestação de Contas Dados dos estagiários dos anos 2015/2016/2017 Parcerias Lei 13.019/14 Boletim Epidemiológico Município História Marcas do Governo Hino d",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/14",
+      "data": "17/06/2020",
+      "trecho": "ria Prestação de Contas Dados dos estagiários dos anos 2015/2016/2017 Parcerias Lei 13.019/14 Boletim Epidemiológico Município História Marcas do Governo Hino d"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "17/06/2020",
+   "natureza": null,
+   "ibge": "4203006",
+   "municipio": "Caçador",
+   "uf": "SC",
+   "url": "https://cacador.sc.gov.br/pagina-36688/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "65e0c5d2b9",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "2232cabfb5c0334d98cc13fea4ca0827c28df6be17f063c57a3bb9cba9ddfe1b"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203006",
+   "municipio": "Caçador",
+   "uf": "SC",
+   "url": "https://cacador.sc.gov.br/prefeitura-realiza-trabalhos-de-prevencao-a-enxurradas-na-ponte-antonio-bortolon/",
+   "regras_18": [],
+   "pista_id": "4063211934",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203006",
+   "municipio": "Caçador",
+   "uf": "SC",
+   "url": "https://www.camaracacador.sc.gov.br/tramitacoes/1/11828/0",
+   "regras_18": [],
+   "pista_id": "3529756c29",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4201703",
+   "municipio": "Ascurra",
+   "uf": "SC",
+   "url": "https://ascurra.sc.gov.br/prefeitura-de-ascurra-promove-seminario-virtual-sobre-o-plano-municipal-de-saneamento-basico/",
+   "regras_18": [],
+   "pista_id": "d668476523",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4201703",
+   "municipio": "Ascurra",
+   "uf": "SC",
+   "url": "https://ascurra.sc.gov.br/noticia-718339/",
+   "regras_18": [],
+   "pista_id": "eef597dec5",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210308",
+   "municipio": "Major Vieira",
+   "uf": "SC",
+   "url": "https://consulta.tce.sc.gov.br/Diario/dotc-e2025-12-02.pdf",
+   "regras_18": [],
+   "pista_id": "04711c75ef",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://www.pmf.sc.gov.br/arquivos/arquivos/pdf/13_03_2023_12.22.52.80a3cb7a48f5538e6f1082f9e125dcc5.pdf",
+   "regras_18": [],
+   "pista_id": "0370b59649",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "554524 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2109270",
+   "municipio": "Presidente Sarney",
+   "uf": "MA",
+   "url": "https://www.al.ma.leg.br/sitealema/wp-content/uploads/2025/02/DIARIO_036_27.02.2025__.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "18e57d818b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e8354a52623efe3f6633d5e16ffe466aa0a98afa1828a7e4214d940939eb0236"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "51390 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Arapiraca\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2700300",
+   "municipio": "Arapiraca",
+   "uf": "AL",
+   "url": "https://www.gov.br/saude/pt-br/composicao/sesai/publicacoes/plano-de-contingencia-nacional-para-covid-19-em-povos-indigenas-dsei-alse-alagoas-e-sergipe",
+   "regras_18": [],
+   "pista_id": "15b8fc403f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "17897e0e45f0082702ebc406dc309dd02a9cffefd9815e2964cdd2e15047fb8a"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14605 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Santa Maria\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "http://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2004/Decreto/D5296.htm",
+   "regras_18": [],
+   "pista_id": "078db0e1bb",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": true,
+   "hash_evidencia": "40b50f3c11a0377a9b04524a53c8d39c023c7f126ab4e4133d41b0741f22c6f4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14605 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Santa Maria\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "http://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/decreto/d6949.htm",
+   "regras_18": [],
+   "pista_id": "0242c5bcd9",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": true,
+   "hash_evidencia": "40b50f3c11a0377a9b04524a53c8d39c023c7f126ab4e4133d41b0741f22c6f4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14605 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Santa Maria\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/Decreto/D7724.htm",
+   "regras_18": [],
+   "pista_id": "f1dbb41e4c",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": true,
+   "hash_evidencia": "40b50f3c11a0377a9b04524a53c8d39c023c7f126ab4e4133d41b0741f22c6f4"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.governodigital.gov.br/documentos-e-arquivos/e-MAG%20V3.pdf",
+   "regras_18": [],
+   "pista_id": "56aff99de2",
+   "origem": "seguimento_link_noticia",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5103502",
+   "municipio": "Diamantino",
+   "uf": "MT",
+   "url": "https://www.saude.mt.gov.br/storage/old/files/resolucao-cir-cnmt-n-010-de-18-de-novembro-de-2022-[28609-200323-SES-MT].pdf",
+   "regras_18": [],
+   "pista_id": "29101f525b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "275693 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "doquena; o Parque Nacional de Brasília; os Lençóis Maranhenses; Jericoacoara; a Chapada dos Guimarães; e o Parque Nacional da Capivara. São mais de 300 parques"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Agência Brasileira de Promoção Internacional do Turismo (MPV no 907, de 2019 / Lei no 14.002, de 2020), foi indagado ao ministro do Turismo como se efetivou a",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.002",
+      "data": "10/5/2021",
+      "trecho": "Agência Brasileira de Promoção Internacional do Turismo (MPV no 907, de 2019 / Lei no 14.002, de 2020), foi indagado ao ministro do Turismo como se efetivou a"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "10/5/2021",
+   "natureza": null,
+   "ibge": "5103007",
+   "municipio": "Chapada dos Guimarães",
+   "uf": "MT",
+   "url": "https://www2.senado.leg.br/bdsf/bitstream/handle/id/593338/Turismo_pos-pandemia.pdf?sequence=1&isAllowed=y",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "eabb2157e2",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "2f753def655f183db65d9180014b57a1eb431568222e1a8eb389bc204ae74989"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303906",
+   "municipio": "Petrópolis",
+   "uf": "RJ",
+   "url": "http://www.rj.gov.br/casacivil/node/768",
+   "regras_18": [],
+   "pista_id": "5f851192fb",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/agenersa/sites/default/files/arquivos_paginas_basicas/DELIBERACAO5022.pdf",
+   "regras_18": [],
+   "pista_id": "650a5fe61d",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "29 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2303709",
+   "municipio": "Caucaia",
+   "uf": "CE",
+   "url": "https://www.cmfor.ce.gov.br/comunicacao/noticias/lares-de-idosos-mudam-rotina-de-cuidados-e-inovam-protocolos-para-evitar-contagio-de-covid-19",
+   "regras_18": [],
+   "pista_id": "823978d6ec",
+   "origem": "seguimento",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213203",
+   "municipio": "Pomerode",
+   "uf": "SC",
+   "url": "https://www.cmpomerode.sc.gov.br/imprensa/noticias/0/527/0/846",
+   "regras_18": [],
+   "pista_id": "193742abd5",
+   "origem": "seguimento",
+   "leu_documento": true
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "299843 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "lano visa a organizar as ações dos órgãos públicos, privados e da comunidade de Blumenau, para fazer frente aos desastres, inundações e movimentos de massa que"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA 2021 INUNDAÇÕES E MOVIMENTOS DE MASSA DEFESA CIVIL FORTE, CIDADE PROTEGIDA INTRODUÇÃO Este Plano de Contingência destina-se a enfrentar os",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA 2021 INUNDAÇÕES E MOVIMENTOS DE MASSA DEFESA CIVIL FORTE, CIDADE PROTEGIDA INTRODUÇÃO Este Plano de Contingência destina-se a enfrentar os",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ovimentos de massa que ocorrem episodicamente no nosso município. 2. SITUAÇÃO O município de Blumenau é constantemente atingido por inundações e movimentos de m"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO DE CONTINGÊNCIA 2021 INUNDAÇÕES E MOVIMENTOS DE MASSA DEFESA CIVIL FORTE, CIDADE PROTEGIDA INTRODUÇÃO Este Plano de Contingência destina-se a enfrentar os"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2021, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2021",
+   "natureza": "EX_ANTE",
+   "ibge": "4202404",
+   "municipio": "Blumenau",
+   "uf": "SC",
+   "url": "https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/Plano_de_conting%C3%AAncia_2021.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "bf6315b6cb",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "b505f4a79bbca4c3235076011fdfc85d7f6f33294f6fae55f15b4703b7706922"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4314902",
+   "municipio": "Porto Alegre",
+   "uf": "RS",
+   "url": "https://sintse.tse.jus.br/documentos/2026/Out/6/diario-da-justica-eletronico-tres-destaques/portaria-no-2-813-2026-institui-o-plano-de-contingencia-socioambiental-do-tribunal-regional",
+   "regras_18": [],
+   "pista_id": "cc63c5b73e",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3516200",
+   "municipio": "Franca",
+   "uf": "SP",
+   "url": "https://www.saude.sp.gov.br/resources/vetores/homepage/banner_central/planos-municipais-manejo-escorpiao/ipua.pdf",
+   "regras_18": [],
+   "pista_id": "2cf957da34",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504107",
+   "municipio": "Atibaia",
+   "uf": "SP",
+   "url": "https://www.camaraatibaia.sp.gov.br/temp/29092026232345PLC_06_2025_PDTIC.pdf",
+   "regras_18": [],
+   "pista_id": "0bf5d25583",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "314625 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DIRETOR DE DRENAGEM URBANA DO MUNICÍPIO DE IRATI – PR PRODUTO 4 – RELATÓRIO DE PROGNÓSTICO DE DRENAGEM URBANA IRATI/PR FEVEREIRO/2019 PLANO DIRETOR DE DRE"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "08/04/2019",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "08/04/2019",
+   "natureza": null,
+   "ibge": "4110706",
+   "municipio": "Irati",
+   "uf": "PR",
+   "url": "https://irati.pr.gov.br/uploads/pagina/arquivos/FermaPDDUP04RelPrognosticoFinalR11504.pdf",
+   "regras_18": [],
+   "pista_id": "6b9f9f0e42",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "7096719bb1ad16d0fbeac7bf13f62df67a5c01fbd8df3eceac6156e618ed9de6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304128",
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "url": "https://www.tjrj.jus.br/documents/d/portal-conhecimento/inconstitucionalidade-2022",
+   "regras_18": [],
+   "pista_id": "86db2de9b0",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/agenersa/sites/default/files/arquivos_paginas_basicas/RF254-2024.pdf",
+   "regras_18": [],
+   "pista_id": "a596cd7b04",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4110706",
+   "municipio": "Irati",
+   "uf": "PR",
+   "url": "https://irati.pr.gov.br/uploads/pagina/arquivos/RAG-2021-2.pdf",
+   "regras_18": [],
+   "pista_id": "25d9c615ee",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2616001",
+   "municipio": "VENTUROSA",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2020-09-05%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "ea425d95aa",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "132 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302809",
+   "municipio": "MENDES",
+   "uf": "RJ",
+   "url": "http://www.rio.rj.gov.br/documents/73801/f848063f-186c-466e-8ae1-afd83b43912b",
+   "regras_18": [],
+   "pista_id": "5aed116b1a",
+   "origem": "seguimento",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3364 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RELVADO ESTADO DO RIO GRANDE DO SUL DECRETO Nº 21/2021, DE 05 DE MARÇO DE 2021. Dá nova redação ao Decreto nº 73/2020, que cria o Centro"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RELVADO ESTADO DO RIO GRANDE DO SUL DECRETO Nº 21/2021, DE 05 DE MARÇO DE 2021. Dá nova redação ao Decreto nº 73/2020, que cria o Centro",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "21/2021",
+      "data": "05/03/2021",
+      "trecho": "PREFEITURA MUNICIPAL DE RELVADO ESTADO DO RIO GRANDE DO SUL DECRETO Nº 21/2021, DE 05 DE MARÇO DE 2021. Dá nova redação ao Decreto nº 73/2020, que cria o Centro"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "da EMEI AMIGUINHOS DA NATUREZA e, da outras providências. CARLOS LUIZ FRAPORTI, Prefeito Municipal de Relvado, no uso de suas atribuições legais e de conformida"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)"
+    }
+   },
+   "categoria": null,
+   "data": "05/03/2021",
+   "natureza": "DUVIDA",
+   "ibge": "4315453",
+   "municipio": "Relvado",
+   "uf": "RS",
+   "url": "https://relvado.rs.gov.br/uploads/norma/23477/DEC_21_2021_Relvado_RS.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "14e49522fb",
+   "origem": "imprensa",
+   "leu_documento": true,
+   "hash_evidencia": "75fc1fe07640b8914e85ffdfd5fbaa340eef5e8781bfea47ef172b3fe245e891"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3170206",
+   "municipio": "Uberlândia",
+   "uf": "MG",
+   "url": "https://docs.uberlandia.mg.gov.br/wp-content/uploads/2026/06/15o-TERMO-DE-APOSTILAMENTO-AO-CONTRATO-No-251-2020-Missao-Sal-da-Terra-1.pdf",
+   "regras_18": [],
+   "pista_id": "c7cdcdd370",
+   "origem": "imprensa",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3551603",
+   "municipio": "Serra Negra",
+   "uf": "SP",
+   "url": "https://www.serranegra.sp.gov.br/up/anexo/15837624652.pdf",
+   "regras_18": [],
+   "pista_id": "441b5a5d2a",
+   "origem": "imprensa",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3531209",
+   "municipio": "Monte Alegre do Sul",
+   "uf": "SP",
+   "url": "https://sempapel.al.sp.gov.br/Arquivo/Documents/EXT/202305051530299896.pdf?identificador=370039003500320035003A005000",
+   "regras_18": [],
+   "pista_id": "d1ba7fd790",
+   "origem": "imprensa",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "276701 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE LAVRINHAS Estado de São Paulo Paço Municipal, nº 200 – Centro – Lavrinhas/SP – Tel.: (12) 3146-1110 CEP.: 12.760-000 – CNPJ 45.200.029/0"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: título de plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3526605",
+   "municipio": "Lavrinhas",
+   "uf": "SP",
+   "url": "http://lavrinhas.sp.gov.br/site/wp-content/uploads/2019/05/PLANO-MUNICIPAL-DE-SANEAMENTO-2019-PMSB.pdf",
+   "regras_18": [],
+   "pista_id": "cdd3096fe1",
+   "origem": "imprensa",
+   "leu_documento": true,
+   "hash_evidencia": "d35853a9659e1e89d62673270eee7906b5b88b0ea66b25bd275b75f43c5b379b"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5704 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de São João Del Rei Menu Lateral Chamada Variaveis Chamadas para as Funções Chamadas para efeitos Album Chamada Redes Sociais Album Ouvidor"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DEC DE S&Atilde;O JO&Atilde;O DEL REI &nbsp; &nbsp; Em 05 de outubro de 1970, o Decreto Federal n&ordm; 67.347, considerando o &sect; 1&ordm; do artigo 3&ordm;,",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "67.347",
+      "data": "29/08/2006",
+      "trecho": "DEC DE S&Atilde;O JO&Atilde;O DEL REI &nbsp; &nbsp; Em 05 de outubro de 1970, o Decreto Federal n&ordm; 67.347, considerando o &sect; 1&ordm; do artigo 3&ordm;,"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "29/08/2006",
+   "natureza": null,
+   "ibge": "3162500",
+   "municipio": "São João del Rei",
+   "uf": "MG",
+   "url": "https://www.saojoaodelrei.mg.gov.br/pagina/3928/COMPDEC",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c1de15bd9b",
+   "origem": "imprensa",
+   "leu_documento": true,
+   "hash_evidencia": "738de39a2bd3c8a18cb8d3344076aed85aee3650698ac248537cc584a956b03f"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/downloads/defesa-civil/gestaos-de-riscos/planos-de-contigencia/PLANCON%20-%20CHUVAS%20INTENSAS.pdf",
+   "regras_18": [],
+   "pista_id": "05cb6b0382",
+   "origem": "imprensa",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1981 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Secretaria Municipal de PREFEITURA DE Assistência Social Ea LAGES PORTARIA SMAS Nº 16/2026 Dispõe sobre a nomeação de membros para compor a Comissão de Assis"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Secretaria Municipal de PREFEITURA DE Assistência Social Ea LAGES PORTARIA SMAS Nº 16/2026 Dispõe sobre a nomeação de membros para compor a Comissão de Assis",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "16/2026",
+      "data": "24/04/2025",
+      "trecho": "Secretaria Municipal de PREFEITURA DE Assistência Social Ea LAGES PORTARIA SMAS Nº 16/2026 Dispõe sobre a nomeação de membros para compor a Comissão de Assis"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Secretaria Municipal de PREFEITURA DE Assistência Social Ea LAGES PORTARIA SMAS Nº 16/2026 Dispõe sobre a nomeação de membros para compor a Comissão de Assis"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "24/04/2025",
+   "natureza": "DUVIDA",
+   "ibge": "4209300",
+   "municipio": "Lages",
+   "uf": "SC",
+   "url": "https://www.lages.sc.gov.br/source/edital/geral/1775062722754.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "484d65a55d",
+   "origem": "imprensa",
+   "leu_documento": true,
+   "hash_evidencia": "120ab35fb1bf7ca46677de3a797b55e47d0ec8f7654b689b25845814767075fb"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "29 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104808",
+   "municipio": "Cascavel",
+   "uf": "PR",
+   "url": "https://www.cascavel.pr.gov.br/",
+   "regras_18": [],
+   "pista_id": "df5c6d78d8",
+   "origem": "imprensa",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4109401",
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "url": "https://guarapuava.pr.gov.br/wp-content/uploads/2026/02/Boletim-Oficial-3351.pdf",
+   "regras_18": [],
+   "pista_id": "404da9f936",
+   "origem": "imprensa",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2925600",
+   "municipio": "Presidente Dutra",
+   "uf": "BA",
+   "url": "http://www.ba.gov.br/hemoba/noticias/2023-04/11/hemoba-promove-campanha-para-atender-demanda-durante-a-micareta-de-feira",
+   "regras_18": [],
+   "pista_id": "9c3d4ef5b5",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Sítio do Quinto\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2930766",
+   "municipio": "Sítio do Quinto",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "9050f77f38",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Pindaí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2924504",
+   "municipio": "Pindaí",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "325a7b2a2c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jacaraci\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2917409",
+   "municipio": "Jacaraci",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "78787eb038",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jitaúna\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918308",
+   "municipio": "Jitaúna",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "7fae7b9cd0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Adustina\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2900355",
+   "municipio": "Adustina",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "c3173b304a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Lagoa Real\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918753",
+   "municipio": "Lagoa Real",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "fa9b82f09a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38233 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Cristópolis\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909703",
+   "municipio": "Cristópolis",
+   "uf": "BA",
+   "url": "https://rbsp.sesab.ba.gov.br/index.php/rbsp/article/download/3484/2832",
+   "regras_18": [],
+   "pista_id": "6dc10ebf22",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "6d4f985e7659c027d45d43b790463bc82976584fafe71120d7e8501cff7bbc05"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909703",
+   "municipio": "Cristópolis",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b20c72d511",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Aracatu\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2902005",
+   "municipio": "Aracatu",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "099e112a73",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6995 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "municípios de:JÂNIO QUADROS, BRUMADO, FIRMINO ALVES, UBATÃ, MACARANI, MAETINGA, IBICUÍ, POTIRAGUA, CANDIDO SALES, ITAPETINGA, JEQUIE, CACHOEIRA DO PAJEÚ, MAIQUI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO DE LEITOS TAXA DE OCUPAÇÃO DE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO DE LEITOS TAXA DE OCUPAÇÃO DE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": null,
+   "ibge": "2912301",
+   "municipio": "Ibicuí",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-15-de-julho.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "cc3eb455b8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "91bb9b00d7220ef0cc6a121fd23453972f0972b8bded1612e0e2def3899aca93"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Mansidão\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2920452",
+   "municipio": "Mansidão",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b8bc2e99f1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ribeira do Amparo\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2926509",
+   "municipio": "Ribeira do Amparo",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "39ceff0597",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ribeira do Amparo\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2926509",
+   "municipio": "Ribeira do Amparo",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "52b9a11f89",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Barra do Mendes\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2903003",
+   "municipio": "Barra do Mendes",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "45122f6f40",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Acajutiba\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2900306",
+   "municipio": "Acajutiba",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "8d842e4e83",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6988 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "QUARA, ITAMBE, PLANALTO, COCOS, ITABELA, ITABUNA, BELO CAMPO, ILHEUS, GUANAMBI, NOVA CANAÁ, WENCESLAU GUIMARÃES, MAIQUINIQUE, ITAPETINGA, POÇÕES, PEDRA AZUL E"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO DE LEITOS TAXA DE OCUPAÇÃO DE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO DE LEITOS TAXA DE OCUPAÇÃO DE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": null,
+   "ibge": "2922706",
+   "municipio": "Nova Canaã",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-14-de-julho.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "f23c90141f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d37b8b4237b1b9a5d6d993a5150ce16ce35107b1836c1ce313ad90074a331fee"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Nova Canaã\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922706",
+   "municipio": "Nova Canaã",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "902520c349",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Boa Nova\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2903706",
+   "municipio": "Boa Nova",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "3ef3940d23",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Retirolândia\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2926103",
+   "municipio": "Retirolândia",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "062730ce63",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Umburanas\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2932457",
+   "municipio": "Umburanas",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "67ee9b35d0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918209",
+   "municipio": "Jiquiriçá",
+   "uf": "BA",
+   "url": "http://www.ba.gov.br/seplan/publicacoes-institucionais",
+   "regras_18": [],
+   "pista_id": "dd6c976493",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909000",
+   "municipio": "Cordeiros",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "2d89c93395",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Nova Redenção\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922854",
+   "municipio": "Nova Redenção",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "059dac824d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Nova Redenção\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922854",
+   "municipio": "Nova Redenção",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "4b554bc58a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jussiape\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918605",
+   "municipio": "Jussiape",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "88b857c83d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Teodoro Sampaio\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2931400",
+   "municipio": "Teodoro Sampaio",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "0a2fd617a7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Maetinga\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2919959",
+   "municipio": "Maetinga",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "b44e2bc64c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Nova Ibiá\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922755",
+   "municipio": "Nova Ibiá",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "58fb160732",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Pedrão\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2924108",
+   "municipio": "Pedrão",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "9b28f11d86",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2924108",
+   "municipio": "Pedrão",
+   "uf": "BA",
+   "url": "https://servidores.rhbahia.ba.gov.br/sites/default/files/concursos/editais/2020-04/Convoca%C3%A7%C3%A3o%20para%20Exames%20Pr%C3%A9%20Admissionais.pdf",
+   "regras_18": [],
+   "pista_id": "a3bc30451b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Caatiba\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2904803",
+   "municipio": "Caatiba",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "05ef8ecfe7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Irajuba\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2914208",
+   "municipio": "Irajuba",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "5f54202c09",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Itaju do Colônia\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2915403",
+   "municipio": "Itaju do Colônia",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "5a7ff87136",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Itanagra\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2915908",
+   "municipio": "Itanagra",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "440f1a0598",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jussari\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918555",
+   "municipio": "Jussari",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "ec868a2ae8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Barra do Rocha\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2903102",
+   "municipio": "Barra do Rocha",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "a5782ae854",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Feira da Mata\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2910776",
+   "municipio": "Feira da Mata",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "fb6eb44f52",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Barro Preto\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2903300",
+   "municipio": "Barro Preto",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "9ae3800998",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Gongogi\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2911501",
+   "municipio": "Gongogi",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "f9f2ff1c1d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
   }
  ]
 }
