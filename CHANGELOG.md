@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1806 · Página de imprensa deixa de ser copiada; sessões na nuvem voltam a iniciar
+
+O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11.
 ## 2026-11-16 · #1805 · Dicas de decreto sem frase sobre qualidade da resposta
 
 A dica sob a parcela da população com decreto, na inicial e na Saúde, passa a descrever só o que o número mede; sai a frase "Não avalia a qualidade da resposta.". Catálogo, fallbacks e índice de conteúdo regerados.
