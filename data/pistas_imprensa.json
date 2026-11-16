@@ -2,32 +2,29 @@
  "_governanca": "Fila de pistas encontradas na imprensa/diários oficiais para promoção humana a registro (§3.2). 'imprensa descobre, nunca registra'. Campo 'triagem' (03/09/2026, só para pistas origem=querido_diario): 'candidato_forte' | 'falso_positivo_provavel' | 'indefinido' — heurística de classificar_pista_civil.py que APENAS ORDENA a fila de revisão; nunca decide sozinha, nunca promove a registro. Toda promoção exige leitura humana do documento primário.",
  "pistas": [
   {
-   "url_final": "https://www.rj.gov.br/agenersa/sites/default/files/arquivos_paginas_basicas/RF-078-2022_0.pdf",
+   "url_final": "https://transparencia.mesquita.rj.gov.br/ver20240713/tmp/PortalServices/PLANODECONTINGENCIA20252026.pdf",
    "tipo": "plano",
-   "alvo": "3300803",
+   "alvo": "3302858",
    "nivel": "C",
-   "data": "2026-11-15",
-   "origem": "busca_web",
-   "origem_do_coletor": "busca_web",
+   "data": "2026-11-16",
+   "origem": "contribuicao",
+   "titulo": "Contribuição de leitor (plano)",
+   "origem_do_coletor": "contribuicao",
    "id": "c65f37b2cb",
-   "entrada": "uf",
-   "registrado_em": "2026-11-15",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
-   "nivel_confianca": "C",
-   "pontos_confianca": 0,
-   "sinais": [
-    "fonte_desconhecida"
-   ],
-   "alertas": [],
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-16",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
-   "proxima_tentativa_em": "2026-11-17"
+   "municipio_atribuido_antes": {
+    "municipio": null,
+    "uf": null,
+    "ibge": null,
+    "veredito_do_juiz": null
+   },
+   "municipio": "Mesquita",
+   "uf": "RJ",
+   "ibge": "3302858",
+   "atribuicao_corrigida_em": "2026-11-16",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "entrada": "municipio",
+   "registrado_em": "2026-11-16",
+   "status": "pista — na fila, aguardando busca dirigida e juiz"
   },
   {
    "municipio": "Belo Horizonte",
@@ -47952,7 +47949,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "São João da Barra",
@@ -47981,6 +47997,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Municipal Nº 580",
+    "data_ato": "2019",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2019)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2019)"
+    },
+    "resultado": "preparada"
+   },
    "repeticoes": 1
   },
   {
@@ -48009,7 +48044,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'situação de emergência' + recital de dano ocorrido",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Blumenau",
@@ -48053,7 +48107,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "05/05/1989",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Itajaí",
@@ -48122,7 +48195,16 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Chapecó",
@@ -48186,7 +48268,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Chapecó",
@@ -48249,7 +48350,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "25.8.24",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Palhoça",
@@ -48326,7 +48446,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Araranguá",
@@ -48365,7 +48504,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Criciúma",
@@ -48394,7 +48552,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Municipal n° 3.172",
+    "data_ato": "07/05/2025",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Criciúma",
@@ -48422,7 +48599,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "PORTARIA Nº 157",
+    "data_ato": "2020",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2020)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2020)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lages",
@@ -48452,7 +48648,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2020)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2020)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lages",
@@ -48481,7 +48696,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2024",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Brusque",
@@ -48658,7 +48892,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Tijucas",
@@ -48801,7 +49054,16 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Balneário Camboriú",
@@ -49228,7 +49490,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2022",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Balneário Camboriú",
@@ -49274,7 +49555,26 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-17",
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Balneário Camboriú",
@@ -49417,7 +49717,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Nº 472",
+    "data_ato": "06/11/2015",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Rio do Sul",
@@ -49741,7 +50060,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "06/05/2025",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Videira",
@@ -49770,7 +50108,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Municipal nº 5.727",
+    "data_ato": "2022",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Ibiam",
@@ -50820,7 +51177,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Canoinhas",
@@ -50849,7 +51225,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei n° 8.080",
+    "data_ato": "1990",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Canoinhas",
@@ -50880,7 +51275,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "PORTARIA Nº 120",
+    "data_ato": "29/04/2025",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pomerode",
@@ -50909,7 +51323,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2022",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plancon', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Blumenau",
@@ -51045,7 +51478,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "21/08/2013",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Ituporanga",
@@ -51073,7 +51525,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Capinzal",
@@ -51104,7 +51575,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto nº 51",
+    "data_ato": "15/04/2020",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Piratuba",
@@ -51160,7 +51650,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Ouro",
@@ -51377,7 +51876,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2019",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Pedras Grandes",
@@ -51492,7 +52010,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Municipal nº 451",
+    "data_ato": "2024",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2024)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2024)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caxias",
@@ -51529,7 +52066,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei nº 14.129",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caxias do Sul",
@@ -51577,7 +52133,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Caxias",
@@ -51613,7 +52178,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei nº 14.129",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caxias",
@@ -51645,7 +52229,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "LEI Nº 236",
+    "data_ato": "09/11/2017",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Porto Alegre",
@@ -51673,7 +52276,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Porto Alegre",
@@ -51703,7 +52325,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Porto Alegre",
@@ -51738,7 +52379,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (None)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (None)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Encantado",
@@ -51785,7 +52445,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Caxias do Sul",
@@ -51830,7 +52499,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Bom Jesus",
@@ -51860,7 +52538,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Resolução nº 056",
+    "data_ato": "17/06/202",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Bom Jesus",
@@ -51891,7 +52588,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "22/02/202",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -51931,7 +52647,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -51962,7 +52687,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -52001,7 +52745,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -52031,7 +52784,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'situação de emergência' + recital de dano ocorrido",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -52085,7 +52857,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto 9.235",
+    "data_ato": "17/10/2018",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Valença",
@@ -52213,7 +53004,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei Nº. 579",
+    "data_ato": "16/12/2019",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "alvo": "manutencao/PPI",
@@ -52274,7 +53084,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Portaria nº 70.389",
+    "data_ato": "17/05/2017",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Barão de Cocais",
@@ -52379,7 +53208,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "70.01.0015",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Barão de Cocais",
@@ -52408,7 +53256,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto nº 46",
+    "data_ato": "10/10/2012",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2012 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2012 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lambari",
@@ -52437,7 +53304,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei nº 14.133",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2021)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2021)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lambari",
@@ -52467,7 +53353,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lambari",
@@ -52497,7 +53402,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2025",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Luz",
@@ -52526,7 +53450,26 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'calamidade pública' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Luz",
@@ -52556,7 +53499,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "27/04/2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: alerta da triagem de confiança: ano_anterior_ao_ciclo"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Luz",
@@ -52587,7 +53549,26 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Bauru",
@@ -52625,7 +53606,16 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "Bauru",
@@ -52818,7 +53808,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2020)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2020)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Franca",
@@ -52854,7 +53863,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "7.3.10",
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Franca",
@@ -52883,7 +53911,26 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "preparacao": {
+    "data": "16/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "31/07/2014",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2014 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2014 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Franca",
@@ -83825,7 +84872,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem_do_coletor": "busca_web",
    "url_final": "https://contendasdosincora.ba.gov.br/.arquivo/diario/Edicao-833.pdf",
    "alvo": "2908804",
@@ -83849,7 +84896,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "07/11/2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "b88df36d1b5a45f0a899591989b810ebb2986f2ec8d8ae2dcc20fc5f762d148f"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ibipitanga",
@@ -84185,7 +85250,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.jacarei.sp.gov.br/wp-content/uploads/2021/07/PLACON-Atualizado-2021.pdf",
    "alvo": "3524402",
@@ -84212,7 +85277,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "12/09/2008",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "4295450159b4f37cc191b35fcd69f83bce6fdac1675edcca5605205a7dd1874e"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Manoel Vitorino",
@@ -84522,7 +85605,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
    "alvo": "2926509",
@@ -84586,8 +85669,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+   }
   },
   {
    "municipio": "Ribeira do Amparo",
@@ -84674,7 +85773,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://transparencia.portovelho.ro.gov.br/fornecedores",
    "alvo": "1100205",
@@ -84697,7 +85796,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "04/09/2009",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "064329eb002659a49543d21329c84d6afb446b27a8babe218c2dc008a8fbfeba"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ribeira do Amparo",
@@ -84781,8 +85898,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "proxima_tentativa_em": "2026-11-17"
   },
   {
    "municipio": "Barra do Mendes",
@@ -85078,7 +86202,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
    "alvo": "2903003",
@@ -85142,8 +86266,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+   }
   },
   {
    "municipio": "Barra do Mendes",
@@ -85481,7 +86621,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://transparencia.portovelho.ro.gov.br/fornecedores",
    "alvo": "1100205",
@@ -85504,7 +86644,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "04/09/2009",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "064329eb002659a49543d21329c84d6afb446b27a8babe218c2dc008a8fbfeba"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Itagi",
@@ -85838,7 +86996,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.pedeserra.ba.gov.br/publicacao/4a8d09d8beb29ee682ac6ec3c139b943.pdf",
    "alvo": "2924058",
@@ -85862,7 +87020,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "30/07/2019",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "dd0a09061ca7f7265f4f773da9645a9109cc32361b3b33239175f2488cf10e3b"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Várzea da Roça",
@@ -86180,8 +87356,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "proxima_tentativa_em": "2026-11-17"
   },
   {
    "municipio": "Acajutiba",
@@ -86266,7 +87449,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://arquivos.camacari.ba.gov.br/sedur/pmsb/Sintese%20do%20PMSB.pdf",
    "alvo": "2905701",
@@ -86291,7 +87474,36 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-16",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "6397a7ebd3f0b95cef881232d30b0d6207549ddce0bce9e2773f43cffb15abcb"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-16"
   },
   {
    "municipio": "Acajutiba",
@@ -86724,7 +87936,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.santaluzia.mg.gov.br/wp-content/uploads/2020/07/Jornal-Prefeitura-Informa-n%C2%BA-14.pdf",
    "alvo": "3157807",
@@ -86741,8 +87953,8 @@
    },
    "atribuicao_corrigida_em": "2026-11-16",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
-   "ultima_busca_em": "2026-10-20",
-   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-16",
+   "tentativas_de_busca_dirigida": 2,
    "status_anterior": "pista — recusada pelo juiz: citacao_incompleta",
    "pontos_confianca": 2,
    "sinais": [
@@ -86751,7 +87963,34 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-16",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "a4b757cef4d7a540b625c32054486f94c31b7a5f1cd296b1848e929a8afb2730"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Angical",
@@ -87080,7 +88319,16 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-17"
   },
   {
    "municipio": "Angical",
@@ -87241,7 +88489,25 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "07/12/2022",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "ac5d5ebc723c7f53840512f4ef361caf5bee4eea437ffd5f915b030a58460c9f"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Nova Canaã",
@@ -87464,7 +88730,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-14-de-julho.pdf",
    "alvo": "2922706",
@@ -87526,8 +88792,24 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "titulo_nao_e_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "d37b8b4237b1b9a5d6d993a5150ce16ce35107b1836c1ce313ad90074a331fee"
+   }
   },
   {
    "municipio": "Nova Canaã",
@@ -87543,7 +88825,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
    "alvo": "2922706",
@@ -87611,8 +88893,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+   }
   },
   {
    "municipio": "Ilha Solteira",
@@ -87653,7 +88951,16 @@
    "alertas": [
     "ano_anterior_ao_ciclo"
    ],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-17"
   },
   {
    "municipio": "Ipecaetá",
@@ -87824,7 +89131,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -87847,7 +89154,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "minuta_ou_rascunho",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ipecaetá",
@@ -88314,7 +89639,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
    "alvo": "2903706",
@@ -88382,8 +89707,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+   }
   },
   {
    "municipio": "Boa Nova",
@@ -88737,7 +90078,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
    "alvo": "2926103",
@@ -88801,8 +90142,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+   }
   },
   {
    "municipio": "Retirolândia",
@@ -89267,7 +90624,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
    "alvo": "2932457",
@@ -89331,8 +90688,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+   }
   },
   {
    "municipio": "Umburanas",
@@ -89430,7 +90803,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.irajuba.ba.gov.br/Handler.ashx?f=diario&query=2194&c=339&m=0",
    "alvo": "2914208",
@@ -89454,7 +90827,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "16/11/2021",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "044f4692141ca41b12644ae3275461eb548b441bc11d45f96ffbd65bcada73bf"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Jiquiriçá",
@@ -89787,6 +91178,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "buscador2_em": "2026-10-26",
@@ -89798,7 +91195,8 @@
     "falhas": [
      "pagina: HTTPError"
     ]
-   }
+   },
+   "proxima_tentativa_em": "2026-11-17"
   },
   {
    "municipio": "Jiquiriçá",
@@ -90064,7 +91462,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ribeiraopreto.sp.gov.br/portal/pdf/planejamento3336.pdf",
    "alvo": "3543402",
@@ -90081,8 +91479,8 @@
    },
    "atribuicao_corrigida_em": "2026-11-16",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
-   "ultima_busca_em": "2026-10-20",
-   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-16",
+   "tentativas_de_busca_dirigida": 2,
    "status_anterior": "pista — recusada pelo juiz: resposta",
    "pontos_confianca": 4,
    "sinais": [
@@ -90090,7 +91488,34 @@
     "texto_candidato_forte"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-16",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "f44b058a89dc20299a762c61b69ecad1b309ef1138ee20fe583e495d57ba31b0"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Tanquinho",
@@ -90146,7 +91571,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.santanadeparnaiba.sp.gov.br/planejamento/saneamento-basico/7-CADERNO-III-ESGOTO-ATUALIZA-O_2019.pdf",
    "alvo": "3547304",
@@ -90169,7 +91594,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "21/11/1986",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "aab6496905b26497227200df82d4582a5ac96bf7b3484c0e6f7e933e52349f94"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Feira de Santana",
@@ -90183,7 +91626,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -90206,7 +91649,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "minuta_ou_rascunho",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Tanquinho",
@@ -90296,7 +91757,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: executivo_pendente",
    "origem_do_coletor": "busca_web",
    "url_final": "https://aguafria.ba.gov.br/wp-content/uploads/2026/05/rag_-2025-aprovado-pelo-conselho.pdf",
    "alvo": "2900405",
@@ -90319,7 +91780,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "executivo_pendente",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "29/04/1993",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "33a8052e98d8948d1e050bc29914d0b1266889f3e0400aedfbddaee65efd717a"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ouriçangas",
@@ -90531,7 +92010,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.pojuca.ba.gov.br/pdf/publicacoes/93123139967.pdf",
    "alvo": "2925204",
@@ -90556,7 +92035,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "28/11/2013",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2383fa5eee4f62fdbe57f53ffcabbc191ce4c867a6c50f9d63156aa3ae7dd01a"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ouriçangas",
@@ -90866,7 +92363,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
    "alvo": "2909000",
@@ -90934,8 +92431,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+   }
   },
   {
    "municipio": "Cordeiros",
@@ -91141,8 +92654,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "proxima_tentativa_em": "2026-11-17"
   },
   {
    "municipio": "Nova Redenção",
@@ -91467,8 +92987,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "proxima_tentativa_em": "2026-11-17"
   },
   {
    "municipio": "Lajedo do Tabocal",
@@ -91675,7 +93202,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://transparencia.portovelho.ro.gov.br/fornecedores",
    "alvo": "1100205",
@@ -91698,7 +93225,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "04/09/2009",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "064329eb002659a49543d21329c84d6afb446b27a8babe218c2dc008a8fbfeba"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Lajedo do Tabocal",
@@ -92007,7 +93552,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
    "alvo": "2918605",
@@ -92075,8 +93620,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+   }
   },
   {
    "municipio": "Jussiape",
@@ -92171,7 +93732,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem_do_coletor": "busca_web",
    "url_final": "https://contendasdosincora.ba.gov.br/.arquivo/diario/Edicao-833.pdf",
    "alvo": "2908804",
@@ -92194,7 +93755,25 @@
     "fonte_oficial"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "07/11/2024",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "b88df36d1b5a45f0a899591989b810ebb2986f2ec8d8ae2dcc20fc5f762d148f"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Jussiape",
@@ -92726,7 +94305,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.paripiranga.ba.gov.br/Handler.ashx?f=diario&query=1571&c=583&m=0",
    "alvo": "2923803",
@@ -92750,7 +94329,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/03/2020",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "2eaee931710f19d742557e75282fc76649973a01512ffa5d1f62e887ee90f2d9"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Macururé",
@@ -93423,7 +95020,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.iacu.ba.gov.br/Handler.ashx?f=diario&query=1862&c=291&m=0",
    "alvo": "2911907",
@@ -93447,7 +95044,25 @@
     "municipio_na_url"
    ],
    "alertas": [],
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "27/06/2023",
+    "julgado_em": "2026-11-16",
+    "hash_evidencia": "865344b68909473bdc24cb4592a2bcebcdf5c745032c6b56665b717f5785662b"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-16",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Muniz Ferreira",
@@ -856220,71 +857835,86 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Dores do Rio Preto/ES",
+   "alvo": "D-municipio-prioritario/São José do Rio Preto/SP",
+   "query": "\"plano de contingência\" São José do Rio Preto SP 2026 El Niño estiagem defesa civil",
+   "titulo": "Governo de Sergipe cancela Verão Sergipe 2027 para investir no combate ao El Niño - PÁGINA DE POLÍCIA",
    "url": "https://www.paginadepolicia.com.br/noticia/116871/inverno-em-sergipe-comeca-com-tempo-ameno-e-possibilidade-de-chuva-fraca/amp",
    "data_publicacao": "Mon, 09 Nov 2026 18:43:04 GMT",
+   "fonte_veiculo": "PÁGINA DE POLÍCIA",
    "veiculo_dominio": "https://www.paginadepolicia.com.br",
-   "hash": "c5679205db16947f",
+   "hash": "67bbb50bcecdfc92",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPeWxkTWd3Um5SNG1JVVcxbGY1T0pGdDJWdXlONGJOLXB5VUVKQmpuTVlfWFZ0WGlrVTlFdG1uUWw1OGJlZEdoR3piNnp3SDVuX0NINHdtYnBCcUNzLXM3M2RiOVdiMVYwdGlPSWMzRllNbzFYYWEzbkNjZ25oa2Z1X0k2QlpEb2J2WUFDV1VCSEZIZEdJM2YzYldrUlJOaXpDWkFUOE5GOTBuV0ZhZ0dUdURLcE9NaEZ5ZnhNTXpDaXM3TUhTYnkxcnlqYw?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "9bf8a72fa91d72afdcb37c42752f60e1c8ee4c5efdfe3d8d37947edfa681411f",
+   "hash_evidencia": "8e12300658fa0f421dbefb7abef94203578fc06d5d3091a7b6be9ac591f60a0f",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (paginadepolicia.com.br)",
-   "buscador2_em": "2026-11-14",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-14",
+   "fechada_em": "2026-11-16",
    "id": "9370a18eb1",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Propriá/SE",
+   "alvo": "D-municipio-prioritario/Canoas/RS",
+   "query": "\"plano de contingência\" Canoas RS 2026 El Niño estiagem defesa civil",
+   "titulo": "Super El Niño: as escolas brasileiras estão preparadas para eventos climáticos extremos? - Nova Escola",
    "url": "https://novaescola.org.br/conteudo/22678/super-el-nino-e-escolas-brasileiras",
    "data_publicacao": "Tue, 07 Jul 2026 07:00:00 GMT",
+   "fonte_veiculo": "Nova Escola",
    "veiculo_dominio": "https://novaescola.org.br",
-   "hash": "48b8dc431b0e70ca",
+   "hash": "c81d74c73e917d62",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNdGRkVVpadUJTY2djSGl3XzFndTNfZzVYcHlxUW1UY2FYUXp0UWphNWJFcGEwMG1xbVp5dUVtZlhlWkxFQzZGUzVSUGpYMEE0eUF6djVTOVVXbkZOV0xYdnotc3RxWVRoUmlOQi1JTlFhTHo4ZFdSR0NLZmpEUzBMcGRn?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "hash_evidencia": "c514630dd21db708262bc8de134f1ebdf9e5b29cc272477227bd90b1bb2c9736",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (novaescola.org.br)",
-   "buscador2_em": "2026-11-14",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-14",
+   "fechada_em": "2026-11-16",
    "id": "e114b72671",
    "nivel_confianca": "C",
-   "pontos_confianca": 0,
+   "pontos_confianca": 1,
    "sinais": [
-    "fonte_desconhecida"
+    "fonte_desconhecida",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Cascavel/PR",
+   "alvo": "D-municipio-prioritario/Londrina/PR",
+   "query": "\"plano de contingência\" Londrina PR 2026 El Niño estiagem defesa civil",
+   "titulo": "Os graves efeitos do 'Super El Niño' na América Latina previstos pelos cientistas - G1",
    "url": "https://g1.globo.com/meio-ambiente/noticia/2026/08/09/os-graves-efeitos-do-super-el-nino-na-america-latina-previstos-pelos-cientistas.ghtml",
    "data_publicacao": "Sun, 09 Aug 2026 07:00:00 GMT",
+   "fonte_veiculo": "G1",
    "veiculo_dominio": "https://g1.globo.com",
-   "hash": "d2327b886b9e9a00",
+   "hash": "e3a8f45723b1511c",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPTnlnRHZaZ2NVUl8zd0RhNnFXVjhFem1iYzdJWWZfYndiVjk1Rk1ZbF9Wa1h3YUk5WGlIMDNPdVFZeFkwMllyVVYyLTV6cjJZVllIUVhTdEZvM3lmaGZUY2Vrbms0QUNrd3ZlaGpxMUFyWFRheWZPQjhBOGhtOWptQ05CUVllbTZZMUpxQV9qNmc2Y01Jd2w4bk1tMkJKMm1tMTROc1BJVExjRmNoV1FjVmZFR2l3Z1VDV2t1aUFWSU91S0UzX1o3NVBNdmd5VnlQMDFoSnF30gHkAUFVX3lxTE90TVRVZVZXaVBJZG5LakU4NFBVcmNTaW43LW05bmdjRWtCZV9oV1ZYZE54cFY2R2NrTEFoY1g3VzVucFB0ODBJWnprVjF0aWFLY0JsY1N4dllEWWNydm9Udms4WHd4RF9UTDNxZzhKUmVHMzB6WlZ1MGdGeWVCZkI2dTJtU2FCZndOLUd4czc0M1g1TjRjTzNfNW5yTmtWNm9RLUVWRHUwYnlOR2JkS05BbjFENTFoQjVyaEt4Q0o5cVFxQVp2YlpGZkl2dHkzbE5HSkhiWk9CXzB4b2tIanEzV0NGNg?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "b0c3c491114394f3c6f7c5c8080244bb1fe9373301313da32c26927a69a8357e",
+   "hash_evidencia": "e6b3796eb2bb5f10bd55d05ed9e7828149ce05340ae1d96f9f8dbb769023bcc0",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
-   "buscador2_em": "2026-11-14",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-14",
+   "fechada_em": "2026-11-16",
    "id": "13d956a238",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -856427,25 +858057,30 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Porto Grande/AP",
+   "alvo": "D-municipio-prioritario/Canoas/RS",
+   "query": "\"plano de contingência\" Canoas RS 2026 El Niño estiagem defesa civil",
+   "titulo": "El Niño 2026: o que é fato, o que é alerta e o que ainda é boato - Agora RS",
    "url": "https://agorars.com/agora-no-tempo/el-nino-2026-o-que-e-fato-o-que-e-alerta-e-o-que-ainda-e-boato/",
    "data_publicacao": "Wed, 10 Jun 2026 07:00:00 GMT",
+   "fonte_veiculo": "Agora RS",
    "veiculo_dominio": "https://agorars.com",
-   "hash": "55d06c815182a33b",
+   "hash": "4fd134de713f5345",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPc3poaVBpVm9PaXhQUHVqc252YnIzQmJFYmpiaGpOSUpNM1A4Wk83UE9uWmJzX3hiN2FiZ1Z0MzdVOUpncU9yWWdac1BaS28tYlRlY2hmRzN4cklQeUNPS0NFZ3l4c0NvNmx4YTBLbU5ZOEFzeDhsTXE0VDYwWC0wOFJqOHBYMjVqcjNxb201ZjYwSzZKeXdzb1VKdEhiVlE?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": null,
+   "hash_evidencia": "016700b720f8ecf18a59edc6c2e1094c54b43a5b445cf92ea57ac8ef48625dab",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (agorars.com)",
-   "buscador2_em": "2026-11-11",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-11",
+   "fechada_em": "2026-11-16",
    "id": "50ba160896",
    "nivel_confianca": "C",
-   "pontos_confianca": 0,
+   "pontos_confianca": 1,
    "sinais": [
-    "fonte_desconhecida"
+    "fonte_desconhecida",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -863199,25 +864834,30 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Uberlândia/MG",
+   "alvo": "D-municipio-prioritario/Petrolina/PE",
+   "query": "\"plano de contingência\" Petrolina PE 2026 El Niño estiagem defesa civil",
+   "titulo": "MG tem 78 cidades em emergência climática e só três com planos específicos para o El Niño, aponta levantamento - G1",
    "url": "https://g1.globo.com/mg/minas-gerais/noticia/2026/11/11/mg-tem-78-cidades-em-emergencia-climatica-e-so-tres-com-planos-especificos-para-o-el-nino-aponta-levantamento.ghtml",
    "data_publicacao": "Wed, 11 Nov 2026 22:21:30 GMT",
+   "fonte_veiculo": "G1",
    "veiculo_dominio": "https://g1.globo.com",
-   "hash": "316ca4c55e38cd14",
+   "hash": "bd43e068594a2f1a",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQaHZuNDhnakpRS3c1SEtjSG5ubExmcnR5Nld5ZXRORUU1Qzl0ZTY2ekxjX1RTcnllX0dDaU5ES0VkLUVOM2pGMVduSXRWN0xyRGJCOG16VFkwMjdnX0VLOUxuTUJXWXotVFJULVNCS2p5YWx2S2dBT1FuLXI3YlROYVZ6QV9KZDB2ZHg2bGFEenpyN0YwbEhfUFNrRkl2Y3ZraEFKc0N4cU1kb2RkZzcwVGdtV3lmWnV6TWZQTXRRVklfbTBhNTVqdC1wR1Y5SFUza2JSRTdEemxYVTV3d3doYkFUYzR5dGR5ZnZ3SjBqNVdMZnNRZWxQdGcyRTlpeFdR0gGPAkFVX3lxTE1kZFhCeVhqcjN5VktCNHBsQnhSaTJJRnNJLVFkTE9NRi14N0lpNGhnaDNIZDhLQzVhZmRzVDJwTWROUlhWS19uei1lQUhZMG1pbUhlNmdxSEotOER6QjVZTXpZcWNRNmpHRHhqMTR4YXFSZHA0MWplYTJYdVRDNmtrN3dvdl9ibHpTY091REY2bEd6X1B6Q0IzTkZKRVpMaHgzZHpoVTBPTkRJRGczRzg0ak9MajIwRTMzT2ZidkVqWE91bWVMbElPVkJGNVZ5QlR5THNSSzBaNEp3Ym9RX1hGdXBnRjRmWkJIaUJRcXFFcGVLUEpyZzh5bExpcnNwRFVTbUxNRXFwaGVMSkJjNEE?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "2e2bf5aa1f1ee41a010c07e03993e3d1459269cf89f2b287b843253d5b35b28f",
+   "hash_evidencia": "6134b67289847603f811fc1ec75c258a877bdfb8aabc82234731f6f938aa1eba",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
-   "buscador2_em": "2026-11-15",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-15",
+   "fechada_em": "2026-11-16",
    "id": "4616379fde",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -863314,20 +864954,24 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Aparecida de Goiânia/GO",
+   "alvo": "D-municipio-prioritario/Araguaína/TO",
+   "query": "\"plano de contingência\" Araguaína TO 2026 El Niño estiagem defesa civil",
+   "titulo": "TORNEIRAS SECAS – Saneago anuncia rodízio no abastecimento de água em Porangatu: confira o cronograma - Excelência Notícias",
    "url": "https://excelencianoticias.com.br/2026/11/10/torneiras-secas-saneago-anuncia-rodizio-no-abastecimento-de-agua-em-porangatu-confira-o-cronograma/",
    "data_publicacao": "Tue, 10 Nov 2026 03:01:56 GMT",
+   "fonte_veiculo": "Excelência Notícias",
    "veiculo_dominio": "https://excelencianoticias.com.br",
-   "hash": "36313ab358f944cf",
+   "hash": "eff403788b41441e",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOMlh2clVhbGdSSThRalZwc3NhdTcxMlhzS3d4b0tKSTlGUWxyT29QajBCNzJGbldiU0JudUowb3EwNnVMUjZGY3VZdnFuZGtaWW9yd184eDNMRFFSMGFQcUg0RXA4dGJPU0hGZTBLVWxJQWlPWVE2MmpaSG93OTRvZEFpTGxUOG5JcDBSRWNibThld3ROUWp4Y0NzdzQ2UjBMYjZtUEs1WEk0QU05MmNLMlI1YWJjY0JIVEZaNjluSFkyQk5KNTB0WTUzRVowV2NWcDlfeVlZMUQ0SVhv?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "cfedef11e51f29d16367c1fc7e266c1707818a36bcf1a695c70b76aa2e93e95a",
+   "hash_evidencia": null,
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (excelencianoticias.com.br)",
-   "buscador2_em": "2026-11-15",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-15",
+   "fechada_em": "2026-11-16",
    "id": "c2a78f6dfa",
    "nivel_confianca": "C",
    "pontos_confianca": 1,
@@ -863865,25 +865509,30 @@
    "alertas": []
   },
   {
-   "alvo": "C-estado-amplo/AP",
+   "alvo": "D-municipio-prioritario/Porto Nacional/TO",
+   "query": "\"plano de contingência\" Porto Nacional TO 2026 El Niño estiagem defesa civil",
+   "titulo": "Adoção de medidas preventivas para eventual El Niño 26/27. - Aprosoja Brasil",
    "url": "https://aprosojabrasil.com.br/comunicacao/blog/destaques/2026/09/04/adocao-de-medidas-preventivas-para-eventual-el-nino-26-27/",
    "data_publicacao": "Fri, 04 Sep 2026 07:00:00 GMT",
+   "fonte_veiculo": "Aprosoja Brasil",
    "veiculo_dominio": "https://aprosojabrasil.com.br",
-   "hash": "91926164cc607082",
+   "hash": "202b2d904f3462d3",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQZkZCaXBIZDdOMlA1XzlRaHVPNjBGakFMbnF4eml0aEdlUDFfQUp4SjRpNC16dTE2Q1B3Mi0tOUpwVk9nSkRuaXZXdlJBVS00cmhON0UyZUxTWU0xYjVHUDZNbHZ5X0lEWkVyZ25LMjlXWHFaUUhlTW5oVFZ4N3c1VXY1Z29LUU52TjZIZjY0bUVCajV4LUhOYnlzRG5ZMGRXU2RfTHpMbVJQYnVUSm0xVXBWTG9TdFY3OTBhbG5CZUVObEpm?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "b3557b25b637b60d7eaf03525445e4235eb1f1427d36dd15b7c31c76f6173938",
+   "hash_evidencia": "a3ceee7a21dcd31ccd5be2f03e3fa4c73d2393e4ac42f6c3cc4fb40b154c1317",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (aprosojabrasil.com.br)",
-   "buscador2_em": "2026-11-15",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-15",
+   "fechada_em": "2026-11-16",
    "id": "899e38c24a",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -869213,48 +870862,58 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Uberlândia/MG",
+   "alvo": "D-municipio-prioritario/São José do Rio Preto/SP",
+   "query": "\"plano de contingência\" São José do Rio Preto SP 2026 El Niño estiagem defesa civil",
+   "titulo": "Cidades do Noroeste Fluminense se preparam para enfrentar os impactos do El Niño - G1",
    "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2026/07/21/cidades-do-noroeste-fluminense-se-preparam-para-enfrentar-os-impactos-do-el-nino.ghtml",
    "data_publicacao": "Tue, 21 Jul 2026 07:00:00 GMT",
+   "fonte_veiculo": "G1",
    "veiculo_dominio": "https://g1.globo.com",
-   "hash": "223d0995d4c53825",
+   "hash": "9d4aaf04cecf8612",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbjdsZnFPaFdfLW1MZVB4bFhucHliVUExWjNsc1BfeG1PcWkzUnRhUWZNRTNmam5nbFBRRWlCMVRSaWl0MHFocHlEWXI3Nk1pQXJ5ZWNRUE1WSlRZNGtZUy1ucnFLZVZGeFgzbWRDbXlhVlA4RHVUczFpQXV1eDhjWVlLdkF5SVNwUm1wSUgzSHpQbllHbjFVenhLckF5enJsTnNGVGx0ZU1HVmJGNDZtWmVlQXYybFNjX3RLUHVNSzdZUU03MnQ5MnZtUkc1VG81QVFfMEcwcDNoTnpaMUg40gHuAUFVX3lxTFBDaGE0WXUtN2JMZGo3RjB5TjVWOTRKNzd1SE56NUVmMk1lZ3U0YTltdkxzclRzUVVsMThNZWF1RlJYY0hGcGJCZHRjZlRiM291Sl9jOU1aaXJBM0N5cU9KRm1iSDNETFpWYV92MEc0RDh3SXZNM1VBRmtId3h0aDNid1QtRWV5U3dWbVN2dERIN1FjbU9JOVkwamI3V19BbEM5cWZ5X3c2NU14cFdqSVF0MEs0QTRvTDhhZWlSSGpuWEt4dk1MOENUbW9MWkwxdXZaX3FuWjhlVTU0emZ3SjJWTmRlbDJ2QUt3ZlkyakE?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "f86e7f28cb0ab95b591ca683441c500c4389fe6556ba876a3da45c9e969f9978",
+   "hash_evidencia": "575d3d65008c60c71f5160f8e9cfab2d9af3570f1a5ba86f59780c84c211c342",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
-   "buscador2_em": "2026-11-15",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-15",
+   "fechada_em": "2026-11-16",
    "id": "a927adff9c",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Paulista/PE",
+   "alvo": "D-municipio-prioritario/Jaboatão dos Guararapes/PE",
+   "query": "\"plano de contingência\" Jaboatão dos Guararapes PE 2026 El Niño estiagem defesa civil",
+   "titulo": "Governo de Sergipe atua de forma intersetorial na prevenção e no combate aos efeitos do El Niño - PÁGINA DE POLÍCIA",
    "url": "https://www.paginadepolicia.com.br/noticia/107261/integracao-entre-governo-do-estado-e-municipios-impulsiona-adaptacao-climatica-em-sergipe/amp",
    "data_publicacao": "Sat, 31 Oct 2026 21:41:04 GMT",
+   "fonte_veiculo": "PÁGINA DE POLÍCIA",
    "veiculo_dominio": "https://www.paginadepolicia.com.br",
-   "hash": "5430d2d02762ed9b",
+   "hash": "4a90bad607d5c614",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPdWRWdVRCVllTOG80dGVJQ3lmRDB0WVlyaGhtVlFIN1pzYkxaaWZwQWJUYWQtdklyVG55MFNjNVRweEJpeUhLcUE4T0tyS2FCY1p0VHNrRWplUXdiaEhSaURGbm1EUm80OGZxOWg4OTFqOVk3Mko3ZnA4Y0NCWkRON1hVazRoTGVSRG5wd3p0a0tfNFl3ZG1MbTlvR3RiUlR2QnJyQU9zR1l3U3ZnU1daek0tRjFVLTlHOFVrM2FvR2Z4RnY1QnZIWG05cjMtTzlsRTNHMjRNV2hwRTlDTVE?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "hash_evidencia": "d0753b7094dd75086c6bf05dc24defc5119e593b84552e03d5a1e0d5ba7548b5",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (paginadepolicia.com.br)",
-   "buscador2_em": "2026-11-14",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-14",
+   "fechada_em": "2026-11-16",
    "id": "e133089d29",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -869913,25 +871572,30 @@
    "alertas": []
   },
   {
-   "alvo": "C-estado-amplo/MA",
+   "alvo": "D-municipio-prioritario/Porto Nacional/TO",
+   "query": "\"plano de contingência\" Porto Nacional TO 2026 El Niño estiagem defesa civil",
+   "titulo": "El Niño: levantamento aponta quais estados têm plano de manejo do fogo - CNN Brasil",
    "url": "https://www.cnnbrasil.com.br/nacional/brasil/el-nino-levantamento-aponta-quais-estados-tem-plano-de-manejo-do-fogo/",
    "data_publicacao": "Wed, 09 Sep 2026 07:00:00 GMT",
+   "fonte_veiculo": "CNN Brasil",
    "veiculo_dominio": "https://www.cnnbrasil.com.br",
-   "hash": "e2e599afaba4db95",
+   "hash": "03e9081a5eb731cd",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOS3hocVNRVmJjWjN5bWhUOEd1S0VoZ2VEejJ4YUhWY2xkY3dWc3ZiRlQ5RlhzMTRGa0F5bVNrSUVqNHVSRWNJWGtWVFk5VHdQRFkwXzNoUkJIdC1xSF9YUG1KaTdnc2hvMUVWX0R0R3o1a1NfbVB6cXlyVEF0ZEVTS3BNbVlwVHZKcHhfcmlSOUFmWnRBaVJIcWk1Zlhxb0h4ZkFqU1FaNkIxM3BQWWM1VXFhYklidw?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "8d151d23a32f394e63cdafb200357fb33d009d7cb02c68a34d7ec0e7f59c765c",
+   "hash_evidencia": "79505dd286fe5be4b67b78b96ec921adf17a06b9f3945160a3c30c130bb83613",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (cnnbrasil.com.br)",
-   "buscador2_em": "2026-11-15",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-15",
+   "fechada_em": "2026-11-16",
    "id": "cfdadb4732",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -875210,25 +876874,30 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Cachoeirinha/RS",
+   "alvo": "D-municipio-prioritario/Canoas/RS",
+   "query": "\"plano de contingência\" Canoas RS 2026 El Niño estiagem defesa civil",
+   "titulo": "60% da população do RS vive em municípios que decretaram emergência ou calamidade após El Niño, indica site de monitoramento - GZH",
    "url": "https://gauchazh.clicrbs.com.br/ultimas-noticias/tag/chuva-no-rs/",
    "data_publicacao": "Thu, 12 Nov 2026 09:36:11 GMT",
+   "fonte_veiculo": "GZH",
    "veiculo_dominio": "https://gauchazh.clicrbs.com.br",
-   "hash": "ea9704ffc23f7515",
+   "hash": "5f971dec7ec3b7dd",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMitAJBVV95cUxOWGhEb3lDRHE2MEVvbUVyRWVmXzNQRVNjUWg1bW1lblFaZlg3N3pEdXRWV0tBeEtXZzJORGpkVUJVVXZ5OHExSE9GQUtNM3FDQ01ITnk2Wm55LTM5cERXTlZVaXhkZWhSVDBHNHdoeFBDSWpzcnVIcWppOU1pVUV5cS16dkpwX2JjeElhSlktZzRXTzZ0c050eUtjd0NPOUMyQmlYMkllTi1iUXFVN25uNnpzbTNWcDNUSWZXM3cybmlFaTBnWml1S2lXMHBpOUFndm5lWm1XdVdTeksxVFB0THd4RWlnNllPcTRCS0Q2ZU03QVlCS0tFLUtQSmVCMHRlOG9vSE40bEdLYjhQZFBiUnJBYU4yQWtBLXU0clN4OVJvSDMyX2E2YjdlZTlEZVo0dGF1UQ?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "a9b51270bfcd683d2841d5ea85c6ef813196be44cc9f9e417d3d9bc0ee34ac5f",
+   "hash_evidencia": "ad263b56a1aa70a0189ed1d72e40b81234945102132b89be9d58d2bf63249371",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (gauchazh.clicrbs.com.br)",
-   "buscador2_em": "2026-11-14",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-14",
+   "fechada_em": "2026-11-16",
    "id": "c8bf63faa5",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -876333,25 +878002,30 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Ariquemes/RO",
+   "alvo": "D-municipio-prioritario/Sobral/CE",
+   "query": "\"plano de contingência\" Sobral CE 2026 El Niño estiagem defesa civil",
+   "titulo": "Rondônia reduz 91,65% dos focos de calor e está entre os 10 estados com melhor resposta ao El Niño - Ariquemes Online",
    "url": "https://ariquemesonline.com.br/noticias-da-amazonia/rondonia-ja-registra-34-mil-focos-de-queimadas-e-nuvens-de-fumaca-encobrem-cidades/",
    "data_publicacao": "Sat, 14 Nov 2026 11:50:32 GMT",
+   "fonte_veiculo": "Ariquemes Online",
    "veiculo_dominio": "https://ariquemesonline.com.br",
-   "hash": "b0b6b78cf05eae11",
+   "hash": "fcf0153b84d9bfe6",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQRjh2NHJrM0V2M24zZUZjNjJReFJ1SF9PU3JuNTNTa3Rfb2NrYkNjalRrRU1LMkY3c2RQQ2I0NDJHQ3JhU3k0ODRjT1A0Sjh3VWI5eUtMSGRMZFdnUkhIUnpKMk4tRVdwMi13ZmxOWFNQMDVoa2pEV1VZZjJXNllwTHgyQmlvd3h2YV9ycXByNUthaldGVjRVWjdmUDZGS3lxSy1JbzJ3Yi1vLVlVUHZiXy1mMF9QQnJfYS14XzlLXzJzeUR0VXc3UGVNNEZJaS10c1JSNTJwRl96aUU?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "hash_evidencia": null,
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (ariquemesonline.com.br)",
-   "buscador2_em": "2026-11-15",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-15",
+   "fechada_em": "2026-11-16",
    "id": "011f955634",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -876379,25 +878053,30 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Ariquemes/RO",
+   "alvo": "D-municipio-prioritario/Ji-Paraná/RO",
+   "query": "\"plano de contingência\" Ji-Paraná RO 2026 El Niño estiagem defesa civil",
+   "titulo": "Rondônia reduz 91,65% dos focos de calor e está entre os 10 estados com melhor resposta ao El Niño - Floresta Notícias",
    "url": "https://www.florestanoticias.com/2026/11/13/rondonia-reduz-9165-dos-focos-de-calor-e-esta-entre-os-10-estados-com-melhor-resposta-ao-el-nino/",
    "data_publicacao": "Fri, 13 Nov 2026 23:44:56 GMT",
+   "fonte_veiculo": "Floresta Notícias",
    "veiculo_dominio": "https://www.florestanoticias.com",
-   "hash": "c5933e4f02929cb7",
+   "hash": "bbbac6f1f6ce44ac",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQUEZsM3ZaUm85RWRSMS1YQVBTdzYtYzBNcmtOMy12YkV6a19WNkZVY1hPUWY3b25URFhYTTU1UDdERnBsV1dENm1jZXZ5M0JMSkx6aEVKV2duNGZYd2lhYTNndTFQOTZSRmlMVjhncjVrUklWRzlKZkFndXZhYWMydm5WbEwzajRZOG9LYTB2cWFpQmVYaGhEck1lTkhYLXRXQ2FFblZ6R0ZyT1ZLQjVmYzRYRGtTYmVhRnA2VUloZS1pNC1zY3pwN3Z2cVB4bXFYcTRMbTRCUVg?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
-   "hash_evidencia": "129679086ffc18bcba423f9b67951daba164c9b18b3329a3a2df7ec78c2dee24",
+   "hash_evidencia": null,
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (florestanoticias.com)",
-   "buscador2_em": "2026-11-15",
+   "buscador2_em": "2026-11-16",
    "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-15",
+   "fechada_em": "2026-11-16",
    "id": "4fab4a4b98",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -878257,62 +879936,6 @@
    }
   },
   {
-   "alvo": "D-municipio-prioritario/Jaboatão dos Guararapes/PE",
-   "query": "\"plano de contingência\" Jaboatão dos Guararapes PE 2026 El Niño estiagem defesa civil",
-   "titulo": "Governo de Sergipe atua de forma intersetorial na prevenção e no combate aos efeitos do El Niño - PÁGINA DE POLÍCIA",
-   "url": "https://www.paginadepolicia.com.br/noticia/107261/integracao-entre-governo-do-estado-e-municipios-impulsiona-adaptacao-climatica-em-sergipe/amp",
-   "data_publicacao": "Sat, 31 Oct 2026 21:41:04 GMT",
-   "fonte_veiculo": "PÁGINA DE POLÍCIA",
-   "veiculo_dominio": "https://www.paginadepolicia.com.br",
-   "hash": "4a90bad607d5c614",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPdWRWdVRCVllTOG80dGVJQ3lmRDB0WVlyaGhtVlFIN1pzYkxaaWZwQWJUYWQtdklyVG55MFNjNVRweEJpeUhLcUE4T0tyS2FCY1p0VHNrRWplUXdiaEhSaURGbm1EUm80OGZxOWg4OTFqOVk3Mko3ZnA4Y0NCWkRON1hVazRoTGVSRG5wd3p0a0tfNFl3ZG1MbTlvR3RiUlR2QnJyQU9zR1l3U3ZnU1daek0tRjFVLTlHOFVrM2FvR2Z4RnY1QnZIWG05cjMtTzlsRTNHMjRNV2hwRTlDTVE?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "d0753b7094dd75086c6bf05dc24defc5119e593b84552e03d5a1e0d5ba7548b5",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (paginadepolicia.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "e133089d29",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Jaboatão dos Guararapes/PE",
-   "query": "\"plano de contingência\" Jaboatão dos Guararapes PE 2026 El Niño estiagem defesa civil",
-   "titulo": "Governo de Sergipe cancela Verão Sergipe 2027 para investir no combate ao El Niño - PÁGINA DE POLÍCIA",
-   "url": "https://www.paginadepolicia.com.br/noticia/116871/inverno-em-sergipe-comeca-com-tempo-ameno-e-possibilidade-de-chuva-fraca/amp",
-   "data_publicacao": "Mon, 09 Nov 2026 18:43:04 GMT",
-   "fonte_veiculo": "PÁGINA DE POLÍCIA",
-   "veiculo_dominio": "https://www.paginadepolicia.com.br",
-   "hash": "ccf835f308eb3d2a",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPeWxkTWd3Um5SNG1JVVcxbGY1T0pGdDJWdXlONGJOLXB5VUVKQmpuTVlfWFZ0WGlrVTlFdG1uUWw1OGJlZEdoR3piNnp3SDVuX0NINHdtYnBCcUNzLXM3M2RiOVdiMVYwdGlPSWMzRllNbzFYYWEzbkNjZ25oa2Z1X0k2QlpEb2J2WUFDV1VCSEZIZEdJM2YzYldrUlJOaXpDWkFUOE5GOTBuV0ZhZ0dUdURLcE9NaEZ5ZnhNTXpDaXM3TUhTYnkxcnlqYw?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "9bf8a72fa91d72afdcb37c42752f60e1c8ee4c5efdfe3d8d37947edfa681411f",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (paginadepolicia.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "9370a18eb1",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
    "alvo": "D-municipio-prioritario/Petrolina/PE",
    "query": "\"plano de contingência\" Petrolina PE 2026 El Niño estiagem defesa civil",
    "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da Conquista reforça planejamento para prevenção de riscos - REDE BRASIL DE TELEVISÃO",
@@ -878332,146 +879955,6 @@
    "status_anterior": "pendente_confirmacao_documento",
    "fechada_em": "2026-11-16",
    "id": "f9a296efa0",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Petrolina/PE",
-   "query": "\"plano de contingência\" Petrolina PE 2026 El Niño estiagem defesa civil",
-   "titulo": "Os graves efeitos do 'Super El Niño' na América Latina previstos pelos cientistas - G1",
-   "url": "https://g1.globo.com/meio-ambiente/noticia/2026/08/09/os-graves-efeitos-do-super-el-nino-na-america-latina-previstos-pelos-cientistas.ghtml",
-   "data_publicacao": "Sun, 09 Aug 2026 07:00:00 GMT",
-   "fonte_veiculo": "G1",
-   "veiculo_dominio": "https://g1.globo.com",
-   "hash": "ecf01aa83a54ef62",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPTnlnRHZaZ2NVUl8zd0RhNnFXVjhFem1iYzdJWWZfYndiVjk1Rk1ZbF9Wa1h3YUk5WGlIMDNPdVFZeFkwMllyVVYyLTV6cjJZVllIUVhTdEZvM3lmaGZUY2Vrbms0QUNrd3ZlaGpxMUFyWFRheWZPQjhBOGhtOWptQ05CUVllbTZZMUpxQV9qNmc2Y01Jd2w4bk1tMkJKMm1tMTROc1BJVExjRmNoV1FjVmZFR2l3Z1VDV2t1aUFWSU91S0UzX1o3NVBNdmd5VnlQMDFoSnF30gHkAUFVX3lxTE90TVRVZVZXaVBJZG5LakU4NFBVcmNTaW43LW05bmdjRWtCZV9oV1ZYZE54cFY2R2NrTEFoY1g3VzVucFB0ODBJWnprVjF0aWFLY0JsY1N4dllEWWNydm9Udms4WHd4RF9UTDNxZzhKUmVHMzB6WlZ1MGdGeWVCZkI2dTJtU2FCZndOLUd4czc0M1g1TjRjTzNfNW5yTmtWNm9RLUVWRHUwYnlOR2JkS05BbjFENTFoQjVyaEt4Q0o5cVFxQVp2YlpGZkl2dHkzbE5HSkhiWk9CXzB4b2tIanEzV0NGNg?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "857fb0fbeb5b37470d4d98ffd09cd1bfdfdd0d19e851920651c0711972130603",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "13d956a238",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Petrolina/PE",
-   "query": "\"plano de contingência\" Petrolina PE 2026 El Niño estiagem defesa civil",
-   "titulo": "MG tem 78 cidades em emergência climática e só três com planos específicos para o El Niño, aponta levantamento - G1",
-   "url": "https://g1.globo.com/mg/minas-gerais/noticia/2026/11/11/mg-tem-78-cidades-em-emergencia-climatica-e-so-tres-com-planos-especificos-para-o-el-nino-aponta-levantamento.ghtml",
-   "data_publicacao": "Wed, 11 Nov 2026 22:21:30 GMT",
-   "fonte_veiculo": "G1",
-   "veiculo_dominio": "https://g1.globo.com",
-   "hash": "bd43e068594a2f1a",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQaHZuNDhnakpRS3c1SEtjSG5ubExmcnR5Nld5ZXRORUU1Qzl0ZTY2ekxjX1RTcnllX0dDaU5ES0VkLUVOM2pGMVduSXRWN0xyRGJCOG16VFkwMjdnX0VLOUxuTUJXWXotVFJULVNCS2p5YWx2S2dBT1FuLXI3YlROYVZ6QV9KZDB2ZHg2bGFEenpyN0YwbEhfUFNrRkl2Y3ZraEFKc0N4cU1kb2RkZzcwVGdtV3lmWnV6TWZQTXRRVklfbTBhNTVqdC1wR1Y5SFUza2JSRTdEemxYVTV3d3doYkFUYzR5dGR5ZnZ3SjBqNVdMZnNRZWxQdGcyRTlpeFdR0gGPAkFVX3lxTE1kZFhCeVhqcjN5VktCNHBsQnhSaTJJRnNJLVFkTE9NRi14N0lpNGhnaDNIZDhLQzVhZmRzVDJwTWROUlhWS19uei1lQUhZMG1pbUhlNmdxSEotOER6QjVZTXpZcWNRNmpHRHhqMTR4YXFSZHA0MWplYTJYdVRDNmtrN3dvdl9ibHpTY091REY2bEd6X1B6Q0IzTkZKRVpMaHgzZHpoVTBPTkRJRGczRzg0ak9MajIwRTMzT2ZidkVqWE91bWVMbElPVkJGNVZ5QlR5THNSSzBaNEp3Ym9RX1hGdXBnRjRmWkJIaUJRcXFFcGVLUEpyZzh5bExpcnNwRFVTbUxNRXFwaGVMSkJjNEE?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "6134b67289847603f811fc1ec75c258a877bdfb8aabc82234731f6f938aa1eba",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "4616379fde",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Canoas/RS",
-   "query": "\"plano de contingência\" Canoas RS 2026 El Niño estiagem defesa civil",
-   "titulo": "Super El Niño: as escolas brasileiras estão preparadas para eventos climáticos extremos? - Nova Escola",
-   "url": "https://novaescola.org.br/conteudo/22678/super-el-nino-e-escolas-brasileiras",
-   "data_publicacao": "Tue, 07 Jul 2026 07:00:00 GMT",
-   "fonte_veiculo": "Nova Escola",
-   "veiculo_dominio": "https://novaescola.org.br",
-   "hash": "c81d74c73e917d62",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNdGRkVVpadUJTY2djSGl3XzFndTNfZzVYcHlxUW1UY2FYUXp0UWphNWJFcGEwMG1xbVp5dUVtZlhlWkxFQzZGUzVSUGpYMEE0eUF6djVTOVVXbkZOV0xYdnotc3RxWVRoUmlOQi1JTlFhTHo4ZFdSR0NLZmpEUzBMcGRn?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "c514630dd21db708262bc8de134f1ebdf9e5b29cc272477227bd90b1bb2c9736",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (novaescola.org.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "e114b72671",
-   "nivel_confianca": "C",
-   "pontos_confianca": 1,
-   "sinais": [
-    "fonte_desconhecida",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Canoas/RS",
-   "query": "\"plano de contingência\" Canoas RS 2026 El Niño estiagem defesa civil",
-   "titulo": "El Niño 2026: o que é fato, o que é alerta e o que ainda é boato - Agora RS",
-   "url": "https://agorars.com/agora-no-tempo/el-nino-2026-o-que-e-fato-o-que-e-alerta-e-o-que-ainda-e-boato/",
-   "data_publicacao": "Wed, 10 Jun 2026 07:00:00 GMT",
-   "fonte_veiculo": "Agora RS",
-   "veiculo_dominio": "https://agorars.com",
-   "hash": "4fd134de713f5345",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPc3poaVBpVm9PaXhQUHVqc252YnIzQmJFYmpiaGpOSUpNM1A4Wk83UE9uWmJzX3hiN2FiZ1Z0MzdVOUpncU9yWWdac1BaS28tYlRlY2hmRzN4cklQeUNPS0NFZ3l4c0NvNmx4YTBLbU5ZOEFzeDhsTXE0VDYwWC0wOFJqOHBYMjVqcjNxb201ZjYwSzZKeXdzb1VKdEhiVlE?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "016700b720f8ecf18a59edc6c2e1094c54b43a5b445cf92ea57ac8ef48625dab",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (agorars.com)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "50ba160896",
-   "nivel_confianca": "C",
-   "pontos_confianca": 1,
-   "sinais": [
-    "fonte_desconhecida",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Canoas/RS",
-   "query": "\"plano de contingência\" Canoas RS 2026 El Niño estiagem defesa civil",
-   "titulo": "60% da população do RS vive em municípios que decretaram emergência ou calamidade após El Niño, indica site de monitoramento - GZH",
-   "url": "https://gauchazh.clicrbs.com.br/ultimas-noticias/tag/chuva-no-rs/",
-   "data_publicacao": "Thu, 12 Nov 2026 09:36:11 GMT",
-   "fonte_veiculo": "GZH",
-   "veiculo_dominio": "https://gauchazh.clicrbs.com.br",
-   "hash": "5f971dec7ec3b7dd",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMitAJBVV95cUxOWGhEb3lDRHE2MEVvbUVyRWVmXzNQRVNjUWg1bW1lblFaZlg3N3pEdXRWV0tBeEtXZzJORGpkVUJVVXZ5OHExSE9GQUtNM3FDQ01ITnk2Wm55LTM5cERXTlZVaXhkZWhSVDBHNHdoeFBDSWpzcnVIcWppOU1pVUV5cS16dkpwX2JjeElhSlktZzRXTzZ0c050eUtjd0NPOUMyQmlYMkllTi1iUXFVN25uNnpzbTNWcDNUSWZXM3cybmlFaTBnWml1S2lXMHBpOUFndm5lWm1XdVdTeksxVFB0THd4RWlnNllPcTRCS0Q2ZU03QVlCS0tFLUtQSmVCMHRlOG9vSE40bEdLYjhQZFBiUnJBYU4yQWtBLXU0clN4OVJvSDMyX2E2YjdlZTlEZVo0dGF1UQ?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "ad263b56a1aa70a0189ed1d72e40b81234945102132b89be9d58d2bf63249371",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (gauchazh.clicrbs.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "c8bf63faa5",
    "nivel_confianca": "C",
    "pontos_confianca": 2,
    "sinais": [
@@ -878540,34 +880023,6 @@
    "pontos_confianca": 1,
    "sinais": [
     "fonte_imprensa"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Sobral/CE",
-   "query": "\"plano de contingência\" Sobral CE 2026 El Niño estiagem defesa civil",
-   "titulo": "Rondônia reduz 91,65% dos focos de calor e está entre os 10 estados com melhor resposta ao El Niño - Ariquemes Online",
-   "url": "https://ariquemesonline.com.br/noticias-da-amazonia/rondonia-ja-registra-34-mil-focos-de-queimadas-e-nuvens-de-fumaca-encobrem-cidades/",
-   "data_publicacao": "Sat, 14 Nov 2026 11:50:32 GMT",
-   "fonte_veiculo": "Ariquemes Online",
-   "veiculo_dominio": "https://ariquemesonline.com.br",
-   "hash": "fcf0153b84d9bfe6",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQRjh2NHJrM0V2M24zZUZjNjJReFJ1SF9PU3JuNTNTa3Rfb2NrYkNjalRrRU1LMkY3c2RQQ2I0NDJHQ3JhU3k0ODRjT1A0Sjh3VWI5eUtMSGRMZFdnUkhIUnpKMk4tRVdwMi13ZmxOWFNQMDVoa2pEV1VZZjJXNllwTHgyQmlvd3h2YV9ycXByNUthaldGVjRVWjdmUDZGS3lxSy1JbzJ3Yi1vLVlVUHZiXy1mMF9QQnJfYS14XzlLXzJzeUR0VXc3UGVNNEZJaS10c1JSNTJwRl96aUU?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": null,
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (ariquemesonline.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "011f955634",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
    ],
    "alertas": []
   },
@@ -878717,90 +880172,6 @@
    "entrada": "municipio"
   },
   {
-   "alvo": "D-municipio-prioritario/São José do Rio Preto/SP",
-   "query": "\"plano de contingência\" São José do Rio Preto SP 2026 El Niño estiagem defesa civil",
-   "titulo": "Governo de Sergipe cancela Verão Sergipe 2027 para investir no combate ao El Niño - PÁGINA DE POLÍCIA",
-   "url": "https://www.paginadepolicia.com.br/noticia/116871/inverno-em-sergipe-comeca-com-tempo-ameno-e-possibilidade-de-chuva-fraca/amp",
-   "data_publicacao": "Mon, 09 Nov 2026 18:43:04 GMT",
-   "fonte_veiculo": "PÁGINA DE POLÍCIA",
-   "veiculo_dominio": "https://www.paginadepolicia.com.br",
-   "hash": "67bbb50bcecdfc92",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPeWxkTWd3Um5SNG1JVVcxbGY1T0pGdDJWdXlONGJOLXB5VUVKQmpuTVlfWFZ0WGlrVTlFdG1uUWw1OGJlZEdoR3piNnp3SDVuX0NINHdtYnBCcUNzLXM3M2RiOVdiMVYwdGlPSWMzRllNbzFYYWEzbkNjZ25oa2Z1X0k2QlpEb2J2WUFDV1VCSEZIZEdJM2YzYldrUlJOaXpDWkFUOE5GOTBuV0ZhZ0dUdURLcE9NaEZ5ZnhNTXpDaXM3TUhTYnkxcnlqYw?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "8e12300658fa0f421dbefb7abef94203578fc06d5d3091a7b6be9ac591f60a0f",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (paginadepolicia.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "9370a18eb1",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/São José do Rio Preto/SP",
-   "query": "\"plano de contingência\" São José do Rio Preto SP 2026 El Niño estiagem defesa civil",
-   "titulo": "Cidades do Noroeste Fluminense se preparam para enfrentar os impactos do El Niño - G1",
-   "url": "https://g1.globo.com/rj/norte-fluminense/noticia/2026/07/21/cidades-do-noroeste-fluminense-se-preparam-para-enfrentar-os-impactos-do-el-nino.ghtml",
-   "data_publicacao": "Tue, 21 Jul 2026 07:00:00 GMT",
-   "fonte_veiculo": "G1",
-   "veiculo_dominio": "https://g1.globo.com",
-   "hash": "9d4aaf04cecf8612",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbjdsZnFPaFdfLW1MZVB4bFhucHliVUExWjNsc1BfeG1PcWkzUnRhUWZNRTNmam5nbFBRRWlCMVRSaWl0MHFocHlEWXI3Nk1pQXJ5ZWNRUE1WSlRZNGtZUy1ucnFLZVZGeFgzbWRDbXlhVlA4RHVUczFpQXV1eDhjWVlLdkF5SVNwUm1wSUgzSHpQbllHbjFVenhLckF5enJsTnNGVGx0ZU1HVmJGNDZtWmVlQXYybFNjX3RLUHVNSzdZUU03MnQ5MnZtUkc1VG81QVFfMEcwcDNoTnpaMUg40gHuAUFVX3lxTFBDaGE0WXUtN2JMZGo3RjB5TjVWOTRKNzd1SE56NUVmMk1lZ3U0YTltdkxzclRzUVVsMThNZWF1RlJYY0hGcGJCZHRjZlRiM291Sl9jOU1aaXJBM0N5cU9KRm1iSDNETFpWYV92MEc0RDh3SXZNM1VBRmtId3h0aDNid1QtRWV5U3dWbVN2dERIN1FjbU9JOVkwamI3V19BbEM5cWZ5X3c2NU14cFdqSVF0MEs0QTRvTDhhZWlSSGpuWEt4dk1MOENUbW9MWkwxdXZaX3FuWjhlVTU0emZ3SjJWTmRlbDJ2QUt3ZlkyakE?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "575d3d65008c60c71f5160f8e9cfab2d9af3570f1a5ba86f59780c84c211c342",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "a927adff9c",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Londrina/PR",
-   "query": "\"plano de contingência\" Londrina PR 2026 El Niño estiagem defesa civil",
-   "titulo": "Os graves efeitos do 'Super El Niño' na América Latina previstos pelos cientistas - G1",
-   "url": "https://g1.globo.com/meio-ambiente/noticia/2026/08/09/os-graves-efeitos-do-super-el-nino-na-america-latina-previstos-pelos-cientistas.ghtml",
-   "data_publicacao": "Sun, 09 Aug 2026 07:00:00 GMT",
-   "fonte_veiculo": "G1",
-   "veiculo_dominio": "https://g1.globo.com",
-   "hash": "e3a8f45723b1511c",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPTnlnRHZaZ2NVUl8zd0RhNnFXVjhFem1iYzdJWWZfYndiVjk1Rk1ZbF9Wa1h3YUk5WGlIMDNPdVFZeFkwMllyVVYyLTV6cjJZVllIUVhTdEZvM3lmaGZUY2Vrbms0QUNrd3ZlaGpxMUFyWFRheWZPQjhBOGhtOWptQ05CUVllbTZZMUpxQV9qNmc2Y01Jd2w4bk1tMkJKMm1tMTROc1BJVExjRmNoV1FjVmZFR2l3Z1VDV2t1aUFWSU91S0UzX1o3NVBNdmd5VnlQMDFoSnF30gHkAUFVX3lxTE90TVRVZVZXaVBJZG5LakU4NFBVcmNTaW43LW05bmdjRWtCZV9oV1ZYZE54cFY2R2NrTEFoY1g3VzVucFB0ODBJWnprVjF0aWFLY0JsY1N4dllEWWNydm9Udms4WHd4RF9UTDNxZzhKUmVHMzB6WlZ1MGdGeWVCZkI2dTJtU2FCZndOLUd4czc0M1g1TjRjTzNfNW5yTmtWNm9RLUVWRHUwYnlOR2JkS05BbjFENTFoQjVyaEt4Q0o5cVFxQVp2YlpGZkl2dHkzbE5HSkhiWk9CXzB4b2tIanEzV0NGNg?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "e6b3796eb2bb5f10bd55d05ed9e7828149ce05340ae1d96f9f8dbb769023bcc0",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "13d956a238",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
    "alvo": "D-municipio-prioritario/Ji-Paraná/RO",
    "query": "\"plano de contingência\" Ji-Paraná RO 2026 El Niño estiagem defesa civil",
    "titulo": "Rondônia reduz em 91,65% os focos de calor durante El Niño - Folha de Vilhena",
@@ -878831,34 +880202,6 @@
   {
    "alvo": "D-municipio-prioritario/Ji-Paraná/RO",
    "query": "\"plano de contingência\" Ji-Paraná RO 2026 El Niño estiagem defesa civil",
-   "titulo": "Rondônia reduz 91,65% dos focos de calor e está entre os 10 estados com melhor resposta ao El Niño - Floresta Notícias",
-   "url": "https://www.florestanoticias.com/2026/11/13/rondonia-reduz-9165-dos-focos-de-calor-e-esta-entre-os-10-estados-com-melhor-resposta-ao-el-nino/",
-   "data_publicacao": "Fri, 13 Nov 2026 23:44:56 GMT",
-   "fonte_veiculo": "Floresta Notícias",
-   "veiculo_dominio": "https://www.florestanoticias.com",
-   "hash": "bbbac6f1f6ce44ac",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQUEZsM3ZaUm85RWRSMS1YQVBTdzYtYzBNcmtOMy12YkV6a19WNkZVY1hPUWY3b25URFhYTTU1UDdERnBsV1dENm1jZXZ5M0JMSkx6aEVKV2duNGZYd2lhYTNndTFQOTZSRmlMVjhncjVrUklWRzlKZkFndXZhYWMydm5WbEwzajRZOG9LYTB2cWFpQmVYaGhEck1lTkhYLXRXQ2FFblZ6R0ZyT1ZLQjVmYzRYRGtTYmVhRnA2VUloZS1pNC1zY3pwN3Z2cVB4bXFYcTRMbTRCUVg?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": null,
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (florestanoticias.com)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "4fab4a4b98",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Ji-Paraná/RO",
-   "query": "\"plano de contingência\" Ji-Paraná RO 2026 El Niño estiagem defesa civil",
    "titulo": "Governo federal inicia consulta pública sobre estratégias contra calor extremo - Floresta Notícias",
    "url": "https://www.florestanoticias.com/2026/11/14/governo-abre-consulta-publica-sobre-enfrentamento-ao-calor-extremo-2/",
    "data_publicacao": "Sun, 15 Nov 2026 02:06:36 GMT",
@@ -878876,34 +880219,6 @@
    "status_anterior": "pendente_confirmacao_documento",
    "fechada_em": "2026-11-16",
    "id": "15b4328e97",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Ceará-Mirim/RN",
-   "query": "\"plano de contingência\" Ceará-Mirim RN 2026 El Niño estiagem defesa civil",
-   "titulo": "El Niño: levantamento aponta quais estados têm plano de manejo do fogo - CNN Brasil",
-   "url": "https://www.cnnbrasil.com.br/nacional/brasil/el-nino-levantamento-aponta-quais-estados-tem-plano-de-manejo-do-fogo/",
-   "data_publicacao": "Wed, 09 Sep 2026 07:00:00 GMT",
-   "fonte_veiculo": "CNN Brasil",
-   "veiculo_dominio": "https://www.cnnbrasil.com.br",
-   "hash": "71c2325bf312e9fa",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOS3hocVNRVmJjWjN5bWhUOEd1S0VoZ2VEejJ4YUhWY2xkY3dWc3ZiRlQ5RlhzMTRGa0F5bVNrSUVqNHVSRWNJWGtWVFk5VHdQRFkwXzNoUkJIdC1xSF9YUG1KaTdnc2hvMUVWX0R0R3o1a1NfbVB6cXlyVEF0ZEVTS3BNbVlwVHZKcHhfcmlSOUFmWnRBaVJIcWk1Zlhxb0h4ZkFqU1FaNkIxM3BQWWM1VXFhYklidw?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "79505dd286fe5be4b67b78b96ec921adf17a06b9f3945160a3c30c130bb83613",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (cnnbrasil.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "cfdadb4732",
    "nivel_confianca": "C",
    "pontos_confianca": 2,
    "sinais": [
@@ -878969,33 +880284,6 @@
    "alertas": []
   },
   {
-   "alvo": "D-municipio-prioritario/Araguaína/TO",
-   "query": "\"plano de contingência\" Araguaína TO 2026 El Niño estiagem defesa civil",
-   "titulo": "TORNEIRAS SECAS – Saneago anuncia rodízio no abastecimento de água em Porangatu: confira o cronograma - Excelência Notícias",
-   "url": "https://excelencianoticias.com.br/2026/11/10/torneiras-secas-saneago-anuncia-rodizio-no-abastecimento-de-agua-em-porangatu-confira-o-cronograma/",
-   "data_publicacao": "Tue, 10 Nov 2026 03:01:56 GMT",
-   "fonte_veiculo": "Excelência Notícias",
-   "veiculo_dominio": "https://excelencianoticias.com.br",
-   "hash": "eff403788b41441e",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOMlh2clVhbGdSSThRalZwc3NhdTcxMlhzS3d4b0tKSTlGUWxyT29QajBCNzJGbldiU0JudUowb3EwNnVMUjZGY3VZdnFuZGtaWW9yd184eDNMRFFSMGFQcUg0RXA4dGJPU0hGZTBLVWxJQWlPWVE2MmpaSG93OTRvZEFpTGxUOG5JcDBSRWNibThld3ROUWp4Y0NzdzQ2UjBMYjZtUEs1WEk0QU05MmNLMlI1YWJjY0JIVEZaNjluSFkyQk5KNTB0WTUzRVowV2NWcDlfeVlZMUQ0SVhv?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": null,
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (excelencianoticias.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "c2a78f6dfa",
-   "nivel_confianca": "C",
-   "pontos_confianca": 1,
-   "sinais": [
-    "fonte_imprensa"
-   ],
-   "alertas": []
-  },
-  {
    "alvo": "D-municipio-prioritario/Gurupi/TO",
    "query": "\"plano de contingência\" Gurupi TO 2026 El Niño estiagem defesa civil",
    "titulo": "Rondônia reduz 91,65% dos focos de calor e está entre os 10 estados com melhor resposta ao El Niño - Inteligência Brasil Imprensa",
@@ -879019,62 +880307,6 @@
    "pontos_confianca": 1,
    "sinais": [
     "fonte_desconhecida",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Porto Nacional/TO",
-   "query": "\"plano de contingência\" Porto Nacional TO 2026 El Niño estiagem defesa civil",
-   "titulo": "Adoção de medidas preventivas para eventual El Niño 26/27. - Aprosoja Brasil",
-   "url": "https://aprosojabrasil.com.br/comunicacao/blog/destaques/2026/09/04/adocao-de-medidas-preventivas-para-eventual-el-nino-26-27/",
-   "data_publicacao": "Fri, 04 Sep 2026 07:00:00 GMT",
-   "fonte_veiculo": "Aprosoja Brasil",
-   "veiculo_dominio": "https://aprosojabrasil.com.br",
-   "hash": "202b2d904f3462d3",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQZkZCaXBIZDdOMlA1XzlRaHVPNjBGakFMbnF4eml0aEdlUDFfQUp4SjRpNC16dTE2Q1B3Mi0tOUpwVk9nSkRuaXZXdlJBVS00cmhON0UyZUxTWU0xYjVHUDZNbHZ5X0lEWkVyZ25LMjlXWHFaUUhlTW5oVFZ4N3c1VXY1Z29LUU52TjZIZjY0bUVCajV4LUhOYnlzRG5ZMGRXU2RfTHpMbVJQYnVUSm0xVXBWTG9TdFY3OTBhbG5CZUVObEpm?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "a3ceee7a21dcd31ccd5be2f03e3fa4c73d2393e4ac42f6c3cc4fb40b154c1317",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (aprosojabrasil.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "899e38c24a",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": []
-  },
-  {
-   "alvo": "D-municipio-prioritario/Porto Nacional/TO",
-   "query": "\"plano de contingência\" Porto Nacional TO 2026 El Niño estiagem defesa civil",
-   "titulo": "El Niño: levantamento aponta quais estados têm plano de manejo do fogo - CNN Brasil",
-   "url": "https://www.cnnbrasil.com.br/nacional/brasil/el-nino-levantamento-aponta-quais-estados-tem-plano-de-manejo-do-fogo/",
-   "data_publicacao": "Wed, 09 Sep 2026 07:00:00 GMT",
-   "fonte_veiculo": "CNN Brasil",
-   "veiculo_dominio": "https://www.cnnbrasil.com.br",
-   "hash": "03e9081a5eb731cd",
-   "url_do_agregador": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOS3hocVNRVmJjWjN5bWhUOEd1S0VoZ2VEejJ4YUhWY2xkY3dWc3ZiRlQ5RlhzMTRGa0F5bVNrSUVqNHVSRWNJWGtWVFk5VHdQRFkwXzNoUkJIdC1xSF9YUG1KaTdnc2hvMUVWX0R0R3o1a1NfbVB6cXlyVEF0ZEVTS3BNbVlwVHZKcHhfcmlSOUFmWnRBaVJIcWk1Zlhxb0h4ZkFqU1FaNkIxM3BQWWM1VXFhYklidw?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
-   "fonte_provavel_oficial": false,
-   "hash_evidencia": "79505dd286fe5be4b67b78b96ec921adf17a06b9f3945160a3c30c130bb83613",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (cnnbrasil.com.br)",
-   "buscador2_em": "2026-11-16",
-   "status_anterior": "pendente_confirmacao_documento",
-   "fechada_em": "2026-11-16",
-   "id": "cfdadb4732",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_imprensa",
     "familia_de_risco_do_ciclo"
    ],
    "alertas": []
@@ -879295,31 +880527,6 @@
     "fonte_imprensa"
    ],
    "alertas": []
-  },
-  {
-   "url_final": "https://transparencia.mesquita.rj.gov.br/ver20240713/tmp/PortalServices/PLANODECONTINGENCIA20252026.pdf",
-   "tipo": "plano",
-   "alvo": "3302858",
-   "nivel": "C",
-   "data": "2026-11-16",
-   "origem": "contribuicao",
-   "titulo": "Contribuição de leitor (plano)",
-   "origem_do_coletor": "contribuicao",
-   "id": "c65f37b2cb",
-   "municipio_atribuido_antes": {
-    "municipio": null,
-    "uf": null,
-    "ibge": null,
-    "veredito_do_juiz": null
-   },
-   "municipio": "Mesquita",
-   "uf": "RJ",
-   "ibge": "3302858",
-   "atribuicao_corrigida_em": "2026-11-16",
-   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
-   "entrada": "municipio",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
   },
   {
    "municipio": "Armação dos Búzios",
