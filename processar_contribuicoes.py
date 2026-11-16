@@ -176,7 +176,11 @@ def canal_do_dominio(host, uf):
 # não aplicado, com abstenção registrada, como antes.
 TIPO_DA_PISTA = {"plano": "plano", "plano_elaboracao": "plano", "plano_antigo": "plano",
                  "plano_saude": "plano", "decreto": "decreto", "ato_antecipatorio": "decreto",
-                 "estrutura": "estrutura"}
+                 "estrutura": "estrutura",
+                 # 16/11/2026: a correção do leitor traz o documento certo (Rio de Janeiro/RJ: o registro
+                 # apontava o plano estadual). Ficava "reservada à análise editorial", isto é, parada;
+                 # o juiz lê o documento como lê qualquer pista, e a não-regressão do aplicador decide.
+                 "correcao": "plano"}
 
 
 def pista_da_contribuicao(dados: dict, ibge: str, hoje_iso: str):
@@ -222,8 +226,11 @@ def autoteste() -> int:
          _p == {"url_final": "https://x.se.gov.br/p.pdf", "tipo": "plano", "alvo": "2800308",
                 "nivel": "C", "data": "2026-10-12", "origem": "contribuicao",
                 "titulo": "Contribuição de leitor (plano)"}),
-        ("A6-19: 'correção' não vira pista",
-         pista_da_contribuicao({"tipo": "correcao", "link_oficial": "https://x.gov.br"}, "2800308",
+        ("correção com documento vira pista de plano para o juiz",
+         (pista_da_contribuicao({"tipo": "correcao", "link_oficial": "https://x.gov.br/p.pdf"}, "2800308",
+                                "2026-10-12") or {}).get("tipo") == "plano"),
+        ("tipo que não é de documento não vira pista",
+         pista_da_contribuicao({"tipo": "outro_ato", "link_oficial": "https://x.gov.br"}, "2800308",
                                "2026-10-12") is None),
         ("A6-19: sem https não vira pista",
          pista_da_contribuicao({"tipo": "decreto", "link_oficial": "http://x.gov.br"}, "2800308",
