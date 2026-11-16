@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1808 · Ar só de monitor de referência; diário relê data que serviu outro arquivo
+
+O ar medido na capital passa a aceitar só monitor de referência: Fortaleza mostrava um sensor de teste, e AM, BA, ES, PA e RO, sensores de baixo custo. No diário estadual, a data que serviu o arquivo de outra data (CE, 06/11) é relida por dez dias, e caderno lido antes dos termos atuais volta à fila (CE, DF, PI).
 ## 2026-11-16 · #1814 · Resposta: decreto anterior reconhecido no ciclo volta a contar, marcado
 
 Por decisão da editoria, decreto municipal anterior a 29/06 que a União reconheceu depois do anúncio volta a contar no ciclo (70 municípios), marcado no dado para o cartão do município dizer. O primeiro decreto de cada estado no ciclo segue sendo o de 29/06 em diante. A marca sem data do S2iD continua sem decidir.
