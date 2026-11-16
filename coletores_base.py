@@ -1537,11 +1537,35 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
         # (to.gov.br, saude.ap.gov.br, saude.rn.gov.br) é lido pela ponte no Brasil, cliente identificado.
         copia, _ = copia_da_ponte(url)
         if copia is None:
+            if buscar_fn is None:   # rede de verdade: o endereço vira pedido à ponte (o autoteste não pede)
+                _PEDIDOS_DA_PONTE[url] = origem or ""
             raise
         return copia
 
 
 PONTE = "ponte_brasil.json"
+PEDIDOS_DA_PONTE = "ponte_pedidos.json"
+# 16/11/2026: a tarefa semanal da ponte lê `scripts/ponte_brasil.py --pedidos`, que não existia; nenhum
+# endereço chegava a ela e o DOE-RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo
+# endereço que falha na rede sem cópia vira pedido, gravado uma vez, no fim do processo.
+_PEDIDOS_DA_PONTE = {}
+
+
+def _gravar_pedidos_da_ponte():
+    if not _PEDIDOS_DA_PONTE:
+        return
+    hoje = hoje_editorial().isoformat()
+    doc = ler(PEDIDOS_DA_PONTE, {}) or {}
+    doc.setdefault("_governanca", "Endereços que falharam na rede, sem cópia da ponte no Brasil: um pedido por "
+                                  "falha, nunca reescrito. `scripts/ponte_brasil.py --pedidos` lê esta fila.")
+    doc["pedidos"] = list(doc.get("pedidos") or []) + [{"url": u, "origem": o, "em": hoje}
+                                                       for u, o in _PEDIDOS_DA_PONTE.items()]
+    gravar(PEDIDOS_DA_PONTE, doc)
+    _PEDIDOS_DA_PONTE.clear()
+
+
+import atexit as _atexit  # noqa: E402
+_atexit.register(_gravar_pedidos_da_ponte)
 
 
 def copia_da_ponte(url: str) -> tuple:

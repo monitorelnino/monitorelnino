@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #PRNUM · Endereço que falha na rede vira pedido à ponte no Brasil
+
+A tarefa semanal da ponte pedia a lista de endereços a trazer a um comando que não existia, e nenhum pedido chegava a ela; o diário do RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo endereço que falha na rede sem cópia passa a ser pedido, e `--pedidos` entrega os 40 mais recentes.
+
 ## 2026-11-16 · #1802 · Válvula de dia não cruza a janela da noite
 
 A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.
