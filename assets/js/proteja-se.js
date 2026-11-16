@@ -295,9 +295,9 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
       esc(tx('decreto.nota_nenhum', {data: consultaDe(d, 'decretos')})), null);
     const valor = n > 1 ? tx('decreto.valor_plural', {n: n, data: primeiro}) : tx('decreto.valor', {data: primeiro});
     const rec = m.reconhecimento || {};
-    const nota = rec.reconhecido
+    const nota = (rec.decreto_anterior_ao_ciclo ? esc(tx('decreto.anterior')) + ' ' : '') + (rec.reconhecido
       ? esc(tx('decreto.reconhecido', {data: rec.primeiro_reconhecimento})) + ' ' + tx('decreto.fgts')
-      : esc(tx('decreto.sem_reconhecimento'));
+      : esc(tx('decreto.sem_reconhecimento')));
     return cartao('decreto', 'musgo', tx('decreto.rotulo'), valor, nota, null);
   }
 
