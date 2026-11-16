@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #N · Planos municipais de arboviroses na consulta do município
+
+A consulta do município na página de Saúde ganha o cartão "Plano municipal de arboviroses": tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).
+
 ## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
 
 O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo "vigência encerrada".
