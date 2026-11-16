@@ -799,22 +799,24 @@ def escolher_csv_focos(html_indice: str) -> str:
 SATELITE_REFERENCIA = "AQUA_M-T"
 FOCOS_DIAS_SERIE = 400        # cobre o mesmo dia do ano anterior
 FOCOS_DIAS_MUNICIPIO = 30
-FOCOS_ANUAL_REF = "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/anual/Brasil_sat_ref/focos_br_ref_{ano}.zip"
+# 16/11/2026: o anual de referência só existe para ano fechado (2026 dá 404, sondado pela válvula), e a série
+# do ciclo ficou sem 29/06 a 16/09 nas 27 UFs. O mensal existe para todo mês, traz o satélite e o código IBGE
+# do município, como o diário: é ele que completa a janela.
+FOCOS_MENSAL = "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/mensal/Brasil/focos_mensal_br_{mes}.csv"
 
 
-def resumo_focos_ref(texto: str, filtrar_satelite: bool = True) -> dict:
+def resumo_focos_ref(texto: str) -> dict:
     """{dia ISO: {total, uf, bioma, municipio}} só do satélite de referência. Função pura.
 
-    O CSV diário traz `satelite`, `data_hora_gmt` e `municipio_id`; o anual de referência já vem
-    filtrado e traz `data_pas` e o nome do município, sem código — por isso `municipio` só existe
-    para o diário. O dia é o do horário GMT, como o INPE o publica."""
+    O CSV diário e o mensal trazem `satelite`, `data_hora_gmt` e `municipio_id`. O dia é o do horário
+    GMT, como o INPE o publica."""
     import csv
     import io
     saida = {}
     for linha in csv.DictReader(io.StringIO(texto or "")):
-        if filtrar_satelite and (linha.get("satelite") or "").strip() != SATELITE_REFERENCIA:
+        if (linha.get("satelite") or "").strip() != SATELITE_REFERENCIA:
             continue
-        dia = str(linha.get("data_hora_gmt") or linha.get("data_pas") or "").strip()[:10]
+        dia = str(linha.get("data_hora_gmt") or "").strip()[:10]
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", dia):
             continue
         r = saida.setdefault(dia, {"total": 0, "uf": {}, "bioma": {}, "municipio": {}})
@@ -838,11 +840,11 @@ def _ano_antes(dia: date) -> date:
         return dia.replace(year=dia.year - 1, day=28)
 
 
-def anos_a_completar(guardados: set, fim: date) -> list:
-    """Anos com algum dia faltando na janela de FOCOS_DIAS_SERIE, fora dos últimos FOCOS_DIAS_MUNICIPIO (que o
-    arquivo diário cobre). Função pura."""
+def meses_a_completar(guardados: set, fim: date) -> list:
+    """Meses (AAAAMM) com algum dia faltando na janela de FOCOS_DIAS_SERIE, fora dos últimos
+    FOCOS_DIAS_MUNICIPIO (que o arquivo diário cobre). Função pura."""
     faltam = {(fim - timedelta(days=i)) for i in range(FOCOS_DIAS_MUNICIPIO, FOCOS_DIAS_SERIE)}
-    return sorted({d.year for d in faltam if d.isoformat() not in guardados})
+    return sorted({d.strftime("%Y%m") for d in faltam if d.isoformat() not in guardados})
 
 
 def atualizar_focos_ref(anterior: dict, novos: dict, ultimo_dia: str) -> dict:
@@ -920,11 +922,13 @@ def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
     O OpenAQ agrega redes oficiais (CETESB, INEA, FEAM e outras) e a rede de origem tem de ser
     creditada junto — ela vem em `provider`/`owner` e é guardada. A seleção é pela coordenada mais
     próxima da capital, com teto de 30 km: monitor a 200 km da capital medindo outra cidade não é
-    "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Função pura."""
+    "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Só monitor
+    de referência (`isMonitor`): sensor de baixo custo ou de teste não é medição da capital (16/11/2026:
+    o de Fortaleza era "211004_teste_modo_fixo"). Função pura."""
     itens = (dados or {}).get("results") if isinstance(dados, dict) else dados
     melhor = {}
     for loc in itens or []:
-        if not isinstance(loc, dict):
+        if not isinstance(loc, dict) or loc.get("isMonitor") is not True:
             continue
         coord = loc.get("coordinates") or {}
         lat, lon = coord.get("latitude"), coord.get("longitude")
@@ -1165,9 +1169,8 @@ def cidades_pm_diaria(locais_brutos: list, capitais: dict, extra: dict, agora_dt
     """{UF: {pm25: {...}, pm10: {...}, estacao, nome, rede_de_origem}} com a série de 31 dias de cada
     capital. Cada sensor falha sozinho e vira lacuna declarada, nunca zero. Usa a seleção de
     `parse_openaq_locais` (monitor a até 30 km da capital)."""
-    oficiais = [l for l in locais_brutos or [] if isinstance(l, dict) and l.get("isMonitor") is True]
-    escolhidos = parse_openaq_locais({"results": oficiais}, capitais)
-    por_id = {l.get("id"): l for l in oficiais}
+    escolhidos = parse_openaq_locais({"results": locais_brutos}, capitais)
+    por_id = {l.get("id"): l for l in locais_brutos or [] if isinstance(l, dict)}
     fim = agora_dt.date()
     de = fim - timedelta(days=OPENAQ_DIAS_JANELA)
     saida = {}
@@ -2295,12 +2298,9 @@ def gravar_secas_manchas() -> None:
     print("[aviso] secas: nenhum mapa publicado nos três últimos meses — arquivo anterior mantido.")
 def gravar_focos_referencia() -> None:
     """Lê o último dia COMPLETO de focos (o penúltimo arquivo do diretório: o do dia corrente
-    nasce vazio e enche ao longo do dia), completa os dias que faltam na janela de 30 e, se faltar
-    o mesmo dia do ano anterior, o arquivo anual de referência daquele ano — uma vez, porque o ano
-    inteiro fica na série. Cada resposta deixa URL, hora e hash no livro de consultas. Fonte que não
-    responde deixa o arquivo anterior, com a data dele."""
-    import io
-    import zipfile
+    nasce vazio e enche ao longo do dia), completa os dias que faltam na janela de 30 e, fora dela,
+    os meses com dia faltando pelo arquivo mensal. Cada resposta deixa URL, hora e hash no livro de
+    consultas. Fonte que não responde deixa o arquivo anterior, com a data dele."""
     destino = RAIZ / "data" / "focos_referencia.json"
     base = FONTES["inpe_fogo"]["endpoint"]
     try:
@@ -2321,20 +2321,16 @@ def gravar_focos_referencia() -> None:
                 texto = _buscar_registrado("inpe_fogo", f"{base}focos_diario_br_{d}.csv")
                 csv_ultimo = texto if iso == ultimo else csv_ultimo
                 novos.update(resumo_focos_ref(texto))
-        # 10/11/2026: só o dia de um ano antes buscava o arquivo anual; o dia que saía da janela de 30 sem ter
-        # sido lido nunca mais entrava, e a série do ciclo começava em 17/09. Todo ano com dia faltando na
-        # janela de 400, fora dos 30 que o diário cobre, busca o anual daquele ano — uma vez, e cada ano falha sozinho.
-        for ano in anos_a_completar(guardados | set(novos), fim):
-            url = FOCOS_ANUAL_REF.format(ano=ano)
+        # 10/11/2026: o dia que saía da janela de 30 sem ter sido lido nunca mais entrava. Todo mês com dia
+        # faltando na janela de 400, fora dos 30 que o diário cobre, busca o mensal daquele mês — uma vez, e
+        # cada mês falha sozinho.
+        for mes in meses_a_completar(guardados | set(novos), fim):
             try:
-                bruto = _buscar(url, binario=True)
-            except Exception as e:  # noqa: BLE001 — o ano fica com a lacuna, os outros seguem
-                print(f"[aviso] focos de referência: anual de {ano} indisponível ({type(e).__name__}).")
+                texto = _buscar_registrado("inpe_fogo", FOCOS_MENSAL.format(mes=mes))
+            except Exception as e:  # noqa: BLE001 — o mês fica com a lacuna, os outros seguem
+                print(f"[aviso] focos de referência: mensal de {mes} indisponível ({type(e).__name__}).")
                 continue
-            registrar_consulta("inpe_fogo", url, bruto)
-            z = zipfile.ZipFile(io.BytesIO(bruto))
-            anual = resumo_focos_ref(z.read(z.infolist()[0]).decode("utf-8", "replace"), filtrar_satelite=False)
-            novos.update({d: v for d, v in anual.items() if d not in novos and d not in guardados
+            novos.update({d: v for d, v in resumo_focos_ref(texto).items() if d not in novos and d not in guardados
                           and FOCOS_DIAS_MUNICIPIO <= (fim - date.fromisoformat(d)).days < FOCOS_DIAS_SERIE})
     except Exception as e:  # noqa: BLE001 — fonte externa: o arquivo anterior fica, com a data dele
         print(f"[aviso] focos de referência: {type(e).__name__}: {str(e)[:160]} — data/focos_referencia.json mantido.")
@@ -2476,7 +2472,7 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
             item["decretos"], item["decretos_no_ciclo"] = dec[:RISCOS_DECRETOS_MAX], len(dec)
         if cod in reconhecimento:
             item["reconhecimento"] = {k: reconhecimento[cod].get(k) for k in (
-                "reconhecido", "primeiro_decreto", "primeiro_reconhecimento", "evento_observado")}
+                "reconhecido", "primeiro_decreto", "primeiro_reconhecimento", "evento_observado", "decreto_anterior_ao_ciclo")}
         if (calor_mun.get(cod) or {}).get("classe"):
             item["calor"] = calor_mun[cod]["classe"]
         for chave, lista, campos in (("ar_estacao", estacoes, ("nome", "municipio", "uf", "rede", "iqar")),
@@ -2677,11 +2673,11 @@ def autoteste() -> int:
     # ── Focos: anos com dia faltando na janela (10/11/2026) ─────
     _fim = date(2026, 11, 9)
     _cheio = {(_fim - timedelta(days=i)).isoformat() for i in range(FOCOS_DIAS_SERIE)}
-    checar("focos: série completa não busca anual nenhum", anos_a_completar(_cheio, _fim) == [])
-    checar("focos: buraco de julho busca só o anual de 2026",
-           anos_a_completar(_cheio - {"2026-07-15"}, _fim) == [2026])
+    checar("focos: série completa não busca mensal nenhum", meses_a_completar(_cheio, _fim) == [])
+    checar("focos: buraco de julho busca só o mensal de julho de 2026",
+           meses_a_completar(_cheio - {"2026-07-15"}, _fim) == ["202607"])
     checar("focos: buraco nos últimos 30 dias fica com o diário",
-           anos_a_completar(_cheio - {"2026-11-01"}, _fim) == [])
+           meses_a_completar(_cheio - {"2026-11-01"}, _fim) == [])
 
     # ── Histórico dos avisos do Inmet (10/11/2026) ─────
     _h = anotar_dia_de_avisos({}, {"RS": {"graus": {"Perigo": 2}}, "SC": {"graus": {"Perigo Potencial": 3}}}, "2026-11-10")
@@ -3026,13 +3022,15 @@ def autoteste() -> int:
              "SP": {"uf": "SP", "lat": -23.5505, "lon": -46.6333}}
     _locais = parse_openaq_locais({"results": [
         {"id": 1, "name": "Perto de Brasília", "coordinates": {"latitude": -15.80, "longitude": -47.89},
-         "provider": {"name": "Rede X"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede X"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 2, "name": "Mais perto ainda", "coordinates": {"latitude": -15.795, "longitude": -47.883},
-         "provider": {"name": "Rede Y"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede Y"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 3, "name": "Longe demais", "coordinates": {"latitude": -14.0, "longitude": -47.0},
-         "provider": {"name": "Rede Z"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede Z"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 4, "name": "Sem PM2,5 em SP", "coordinates": {"latitude": -23.551, "longitude": -46.634},
-         "provider": {"name": "Rede W"}, "sensors": [{"parameter": {"name": "o3"}}]},
+         "provider": {"name": "Rede W"}, "sensors": [{"parameter": {"name": "o3"}}], "isMonitor": True},
+        {"id": 5, "name": "211004_teste_modo_fixo", "coordinates": {"latitude": -15.7939, "longitude": -47.8828},
+         "provider": {"name": "HabitatMap"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": False},
     ]}, _caps)
     checar("OpenAQ: escolhe o monitor MAIS PRÓXIMO da capital",
            _locais["DF"]["id"] == 2 and _locais["DF"]["distancia_km"] < 1)
@@ -3041,6 +3039,8 @@ def autoteste() -> int:
     checar("OpenAQ: monitor além do teto de raio não representa a capital",
            all(v["id"] != 3 for v in _locais.values()))
     checar("OpenAQ: monitor sem PM2,5 não entra nesta figura", "SP" not in _locais)
+    checar("OpenAQ: sensor de baixo custo ou de teste não vira medição da capital, mesmo mais perto",
+           all(v["id"] != 5 for v in _locais.values()))
     checar("OpenAQ: rotula a natureza como medição, nunca como modelo",
            _locais["DF"]["natureza"] == NATUREZA_MEDICAO)
     checar("OpenAQ negativo: resposta vazia devolve vazio",
@@ -3153,10 +3153,10 @@ def autoteste() -> int:
            _r["2026-10-15"]["total"] == 2 and _r["2026-10-15"]["uf"] == {"PA": 1, "MA": 1}
            and _r["2026-10-15"]["bioma"] == {"Amazônia": 1, "Cerrado": 1} and _r["2026-10-14"]["total"] == 1)
     checar("Focos ref: município pelo código IBGE da fonte", _r["2026-10-15"]["municipio"] == {"1505650": 1, "2101400": 1})
-    _anual = resumo_focos_ref("id_bdq,data_pas,estado,municipio,bioma\n9,2025-10-15 16:52:00,PERNAMBUCO,SOLIDÃO,Caatinga\n",
-                              filtrar_satelite=False)
-    _f = atualizar_focos_ref({"serie": {"2024-01-01": {"total": 5, "uf": {}, "bioma": {}}}}, {**_r, **_anual}, "2026-10-15")
-    checar("Focos ref: mesmo dia do ano anterior vem do anual de referência",
+    _mensal = resumo_focos_ref("id,lat,lon,data_hora_gmt,satelite,municipio,estado,municipio_id,bioma\n"
+                               "9,-8,-40,2025-10-15 16:52:00,AQUA_M-T,SOLIDÃO,PERNAMBUCO,2614402,Caatinga\n")
+    _f = atualizar_focos_ref({"serie": {"2024-01-01": {"total": 5, "uf": {}, "bioma": {}}}}, {**_r, **_mensal}, "2026-10-15")
+    checar("Focos ref: mesmo dia do ano anterior vem do mensal daquele mês",
            _f["resumo"]["mesmo_dia_ano_anterior"] == {"dia": "2025-10-15", "total": 1})
     checar("Focos ref: mês e 30 dias somam só dias com arquivo e dizem quantos",
            _f["resumo"]["mes"] == {"total": 3, "dias_com_dado": 2}

@@ -448,10 +448,12 @@ AUSENCIA_FINAL_DIAS = 10
 
 
 def ausencia_a_rever(item, data: str) -> bool:
-    """`sem_edicao_na_data` só é final quando medida pelo menos AUSENCIA_FINAL_DIAS depois da data.
-    Função pura. MEDIDO em 15/11/2026 (AM): as edições de 06 e 09/11 entraram no portal dias depois da
-    data, a janela de releitura era de três dias e as duas ficaram "sem edição" para sempre."""
-    if not (isinstance(item, dict) and item.get("decisao") == "sem_edicao_na_data"):
+    """`sem_edicao_na_data` e `nao_e_edicao` só são finais quando medidos pelo menos AUSENCIA_FINAL_DIAS
+    depois da data. Função pura. MEDIDO em 15/11/2026 (AM): as edições de 06 e 09/11 entraram no portal
+    dias depois da data, a janela de releitura era de três dias e as duas ficaram "sem edição" para
+    sempre. MEDIDO em 16/11/2026 (CE): no próprio dia 06/11 o endereço da data servia o arquivo de
+    16/10; a data ficou `nao_e_edicao` sem releitura e o diário do dia nunca foi lido."""
+    if not (isinstance(item, dict) and item.get("decisao") in ("sem_edicao_na_data", "nao_e_edicao")):
         return False
     try:
         medido = dt.datetime.strptime(str(item.get("em") or ""), "%d/%m/%Y").date()
@@ -460,14 +462,35 @@ def ausencia_a_rever(item, data: str) -> bool:
     return (medido - dt.date.fromisoformat(data.split("#")[0])).days < AUSENCIA_FINAL_DIAS
 
 
+def a_rever(item, chave: str) -> bool:
+    """A leitura desta chave (`data` ou caderno `data#n`) tem de ser refeita. Função pura."""
+    return a_reler(item) or ausencia_a_rever(item, chave)
+
+
+def datas_a_ler(edicoes: dict, datas: list) -> list:
+    """Datas cuja edição falta ou tem alguma chave a refazer — a da data E as dos cadernos `data#n`.
+    Função pura. 16/11/2026: só a chave da data era olhada, e caderno a reler (CE 12/10#2, PI 02/07#2,
+    DF 11/09#2, lidos antes dos termos do MARÉ Legal) nunca voltava."""
+    cadernos = {}
+    for k, e in edicoes.items():
+        cadernos.setdefault(k.split("#")[0], []).append((k, e))
+    return [d for d in datas if d not in edicoes or falta_emergencia(edicoes[d])
+            or any(a_rever(e, k) for k, e in cadernos.get(d, []))]
+
+
 def datas_sem_cobertura(edicoes: dict, ate: str, dias: tuple = (0, 1, 2, 3, 4)) -> list:
     """Datas úteis de 29/06 até `ate` (e cadernos `data#n`) sem edição lida com os termos de hoje nem
-    ausência de edição medida. Função pura. Data não tentada, edição que não é edição, sem texto ou
-    recusada: tudo isso é falta de cobertura, nunca "consultado"."""
-    def coberta(e):
-        return isinstance(e, dict) and e.get("decisao") in ("lida", "sem_edicao_na_data") and not a_reler(e)
-    return ([d for d in datas_do_periodo(INICIO_DO_CICLO, ate, dias) if not coberta(edicoes.get(d))]
-            + sorted(k for k, e in edicoes.items() if "#" in k and k <= ate + "~" and not coberta(e)))
+    ausência de edição medida. Função pura. Data não tentada, sem texto, recusada ou ainda a rever:
+    tudo isso é falta de cobertura, nunca "consultado". `nao_e_edicao` medido com a folga de
+    AUSENCIA_FINAL_DIAS é ausência medida, como o 404: o endereço da data não serve edição."""
+    def coberta(e, k):
+        if not isinstance(e, dict):
+            return False
+        if e.get("decisao") == "nao_e_edicao":
+            return not ausencia_a_rever(e, k)
+        return e.get("decisao") in ("lida", "sem_edicao_na_data") and not a_reler(e)
+    return ([d for d in datas_do_periodo(INICIO_DO_CICLO, ate, dias) if not coberta(edicoes.get(d), d)]
+            + sorted(k for k, e in edicoes.items() if "#" in k and k <= ate + "~" and not coberta(e, k)))
 
 
 def busca_de_declaracao(uf: str, registro: dict) -> dict:
@@ -709,8 +732,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
             if achado and (item or {}).get("decisao") == "lida":
                 ancoras_vivas[data_lida] = int(achado.group(1))
         # Data "sem edição" se tenta de novo até a ausência ser medida com folga (`ausencia_a_rever`).
-        datas = [d for d in datas_do_periodo(desde, ate, tuple(padrao.get("dias", (0, 1, 2, 3, 4))))
-                 if d not in edicoes or a_reler(edicoes[d]) or falta_emergencia(edicoes[d]) or ausencia_a_rever(edicoes[d], d)]
+        datas = datas_a_ler(edicoes, datas_do_periodo(desde, ate, tuple(padrao.get("dias", (0, 1, 2, 3, 4)))))
         # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
         # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
         # Fonte que recusa parte das datas (MG, 401, 17/10/2026) tem o recente lido antes da recusa, que
@@ -738,6 +760,9 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                                      if rota["tipo"] == "padrao" else {"decisao": "sem_edicao_na_data", "em": hoje})
                     continue
                 # Edição em vários cadernos (CE) ou com suplemento: um registro por caderno, a data na chave.
+                # A releitura refaz os cadernos da data: o que a leitura anterior registrou além deles sai.
+                for k in [k for k in edicoes if k.startswith(data + "#") and int(k.split("#")[1]) > len(grupos)]:
+                    del edicoes[k]
                 da_data = set()
                 for k, alternativas in enumerate(grupos, start=1):
                     chave = data if k == 1 else f"{data}#{k}"
@@ -1202,6 +1227,7 @@ def _autoteste() -> int:
                      "data_publicacao": "2026-10-20", "url": "https://to/x.pdf", "pagina": 3}}
        and _declaracoes_pela_busca("TO", {"adaptador": "busca_to", "url": "u"}, "a", "b", lambda *a, **k: 1 / 0) == {})
     nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)
+    _em_dia = dict(nova, emergencia_versao=VERSAO_EMERGENCIA)
     ciclo = {d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-10-01")}
     ok("metade estadual só conta com o ciclo inteiro coberto e relido",
        "lacuna" in busca_de_declaracao("PB", {"edicoes": dict(ciclo, **{"2026-09-10": lida}), "atualizado_em": "02/10/2026"})
@@ -1214,7 +1240,12 @@ def _autoteste() -> int:
        and not ausencia_a_rever({"decisao": "lida", "em": "09/11/2026"}, "2026-11-06"))
     ok("data do ciclo não tentada, ou que não é edição, é falta de cobertura",
        "2026-07-01" in datas_sem_cobertura({d: e for d, e in ciclo.items() if d != "2026-07-01"}, "2026-10-01")
-       and datas_sem_cobertura(dict(ciclo, **{"2026-07-02": {"decisao": "nao_e_edicao"}}), "2026-10-01") == ["2026-07-02"]
+       and datas_sem_cobertura(dict(ciclo, **{"2026-07-02": {"decisao": "nao_e_edicao", "em": "03/07/2026"}}), "2026-10-01") == ["2026-07-02"]
+       and datas_sem_cobertura(dict(ciclo, **{"2026-07-02": {"decisao": "nao_e_edicao", "em": "20/07/2026"}}), "2026-10-01") == []
+       and datas_a_ler({"2026-07-02": _em_dia, "2026-07-03": _em_dia, "2026-07-02#2": {"decisao": "lida", "termos_versao": VERSAO_DOS_TERMOS}},
+                       ["2026-07-02", "2026-07-03"]) == ["2026-07-02"]
+       and datas_a_ler({"2026-07-02": {"decisao": "nao_e_edicao", "em": "02/07/2026"}, "2026-07-03": _em_dia},
+                       ["2026-07-02", "2026-07-03"]) == ["2026-07-02"]
        and datas_sem_cobertura(dict(ciclo, **{"2026-07-03": {"decisao": "sem_edicao_na_data"}}), "2026-10-01") == []
        and datas_sem_cobertura(dict(ciclo, **{"2026-07-03#2": {"decisao": "vazio"}}), "2026-10-01") == ["2026-07-03#2"]
        and datas_sem_cobertura({d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-07-10", (1, 2, 3, 4, 5))},
