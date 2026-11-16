@@ -424,8 +424,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "19/09/2026",
-   "log_ref": "triagem_descoberta_wordpress_2026-09-19_MG_plano_el_nino",
+   "data_verificacao": "16/11/2026",
+   "log_ref": "julgar_saude_16-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -451,6 +451,32 @@
      "natureza_doc": "ex-ante",
      "justificativa_ex_ante": "plano específico do ciclo El Niño, da SES-MG/Subsecretaria de Vigilância em Saúde, 127 páginas, publicado no portal oficial saude.mg.gov.br em 08/09/2026 — documento primário preservado e conferido (não é notícia sobre o plano). Quadros datados 'Minas Gerais, 2026/2027'; seis estágios operacionais por cor para os cenários de período chuvoso e de seca/estiagem, com indicadores, ações, setores responsáveis e estrutura de ativação e desativação de COE — mais abrangente que o plano recorrente de arboviroses já registrado (PEC-ARBO).",
      "tipo": "especifico_ciclo"
+    },
+    {
+     "status": "VIG",
+     "orgao": "SES-MG",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "observacao": null,
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+    },
+    {
+     "status": "VIG",
+     "orgao": "SES-MG",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC-ARBO) com foco em Dengue, Chikungunya, Zika e Febre Amarela, para o período de dezembro de 2023 a novembro de",
+     "observacao": null,
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO-20232025.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "e2d7b120e9ac9ceacbead2e03ff3a53c994211a6333a0a723f8d332d0b4d4b88",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "NOVO",
@@ -461,7 +487,42 @@
    "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/08/Plano-de-Enfrentamento-ao-El-Nino-correcao.pdf",
    "hash_evidencia": "5a3bfaa722937585b71bc6ae1bfef79dc699fee2e3754ec4b635f017623779ba",
    "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano específico do ciclo El Niño, da SES-MG/Subsecretaria de Vigilância em Saúde, 127 páginas, publicado no portal oficial saude.mg.gov.br em 08/09/2026 — documento primário preservado e conferido (não é notícia sobre o plano). Quadros datados 'Minas Gerais, 2026/2027'; seis estágios operacionais por cor para os cenários de período chuvoso e de seca/estiagem, com indicadores, ações, setores responsáveis e estrutura de ativação e desativação de COE — mais abrangente que o plano recorrente de arboviroses já registrado (PEC-ARBO)."
+   "justificativa_ex_ante": "plano específico do ciclo El Niño, da SES-MG/Subsecretaria de Vigilância em Saúde, 127 páginas, publicado no portal oficial saude.mg.gov.br em 08/09/2026 — documento primário preservado e conferido (não é notícia sobre o plano). Quadros datados 'Minas Gerais, 2026/2027'; seis estágios operacionais por cor para os cenários de período chuvoso e de seca/estiagem, com indicadores, ações, setores responsáveis e estrutura de ativação e desativação de COE — mais abrangente que o plano recorrente de arboviroses já registrado (PEC-ARBO).",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-MG",
+    "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+    "observacao": null,
+    "numero": null,
+    "data": "01/2025",
+    "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+    "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "16/11/2026",
+    "log_ref": "julgar_saude_16-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+     "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "16/11/2026"
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+     "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+     "justificativa_degrau": "estrutura intersetorial do estado com a saúde citada, com atribuição escrita no ato",
+     "atribuicao_citada": "art. 14 — I M A Comissão Intergestores Bipartite do Sistema Único de Saúde do Estado de Minas Gerais - CIB-SUS/MG, no uso de suas atribuições que lhe conferem o art. 14-A da Lei Federal nº 8.080, de 19 de setembro de 1990, e o art. 32 do Decreto Fede",
+     "data_verificacao": "16/11/2026",
+     "log_ref": "julgar_saude_16-11-2026"
+    }
+   }
   },
   "MS": {
    "risco_sanitario_projetado": [
@@ -471,8 +532,8 @@
     "continuidade de serviços (diálise, oxigênio, rede de frio)"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "02/10/2026",
-   "log_ref": "julgar_saude_02-10-2026",
+   "data_verificacao": "16/11/2026",
+   "log_ref": "julgar_saude_16-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -488,70 +549,27 @@
      "nota_interna": "guias e manuais da SES"
     },
     {
-     "status": "ELAB",
+     "status": "NOVO",
      "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
+     "doc": "Plano de Contingência para desastres provocados por seca, estiagem e incêndios florestais do Estado de Mato Grosso do Sul: abordagem em Saúde Única 2025 Plano de Contingência para",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "06/2025",
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Seca.pdf",
+     "natureza_doc": "EX_ANTE",
      "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
-    },
-    {
-     "status": "ELAB",
-     "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
-     "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
-    },
-    {
-     "status": "ELAB",
-     "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
-     "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
-    },
-    {
-     "status": "ELAB",
-     "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
-     "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
+     "hash_evidencia": "7f16470ff688b9c5636b267dfd6827e387d340ff680e846a12950dc614226ef3",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "VIG",
+   "status": "NOVO",
    "orgao": "SES-MS",
-   "doc": "Plano de Contingência Estadual Arboviroses 2025-2026",
+   "doc": "Plano de Contingência para desastres provocados por seca, estiagem e incêndios florestais do Estado de Mato Grosso do Sul: abordagem em Saúde Única 2025 Plano de Contingência para",
    "numero": null,
-   "data": "08/10/2025",
-   "url": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/",
-   "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano sazonal recorrente, publicado no portal oficial da SES",
-   "preservado_em": "2026-09-26",
-   "hash_pagina_citada": "b19b1dd1ffd431345dddbed3f7d2010902bf2cd40eb29ae3329b99d583349b26",
-   "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta",
+   "data": "06/2025",
+   "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Seca.pdf",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
    "coordenacao": {
     "status": "CRIADO_CICLO",
     "orgao": "SES-MS",
@@ -575,19 +593,19 @@
      "data_verificacao": "02/10/2026"
     },
     "f2": {
-     "status": "LISTADA_SEM_ATRIBUICAO",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_degrau": "o ato cita a defesa civil como convidada, sem integrá-la à composição (lido no recorte do ato)",
-     "atribuicao_citada": "aúde de Mato Grosso do Sul, e dá outras providências. O SECRETÁRIO DE ESTADO DE SAÚDE DE MATO GROSSO DO SUL, no uso das atribuições legais e, Considerando que as mudanças climáticas representam crescente desafio à saúde pública, com potenci",
-     "data_verificacao": "02/10/2026",
-     "log_ref": "julgar_saude_02-10-2026"
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Plano de Contingência para desastres provocados por seca, estiagem e incêndios florestais do Estado de Mato Grosso do Sul: abordagem em Saúde Única 2025 Plano de Contingência para",
+     "numero": null,
+     "data": "06/2025",
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Seca.pdf",
+     "hash_evidencia": "7f16470ff688b9c5636b267dfd6827e387d340ff680e846a12950dc614226ef3",
+     "justificativa_degrau": "estrutura intersetorial do estado com a saúde citada, com atribuição escrita no ato",
+     "atribuicao_citada": "de Crhistinne Cavalheiro Maymone Gonçalves Superintendência de Vigilância em Saúde Larissa Domingues Castilho de Arruda Coordenadoria de Vigilância Ambiental Karyston Adriel Machado da Costa Coordenadoria de Saúde Única Danila Fernanda Rodr",
+     "data_verificacao": "16/11/2026",
+     "log_ref": "julgar_saude_16-11-2026"
     }
    },
-   "nota_interna": "guias e manuais da SES"
+   "hash_evidencia": "7f16470ff688b9c5636b267dfd6827e387d340ff680e846a12950dc614226ef3"
   },
   "MT": {
    "risco_sanitario_projetado": [
