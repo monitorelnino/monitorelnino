@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>16/11/2026 · Cartão do município diz quando o decreto é anterior a 29 de junho</dt>
+      <dd>Na Defesa civil e no Proteja-se, o cartão do decreto passa a dizer quando o decreto do município é anterior a 29 de junho e foi reconhecido pela União depois dessa data. A linha do estado diz &quot;decreto publicado ou reconhecido desde 29 de junho&quot;.</dd>
       <dt>16/11/2026 · Página de imprensa deixa de ser copiada; sessões na nuvem voltam a iniciar</dt>
       <dd>O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11.</dd>
       <dt>16/11/2026 · Dicas de decreto sem frase sobre qualidade da resposta</dt>
@@ -163,8 +165,6 @@
       <dd>`titulo_do_documento` encerra o título antes de equipe, governador e secretário (PI). `proveniencia_estadual.py` não lê texto de evidência quando o instrumento não cita ato (de 2 min a 0,3 s) e roda no elo `doe_incremental`, seg/qua/sex: lacuna ganha `verificado_em` novo, com o teto &quot;não localizado até o corte&quot;.</dd>
       <dt>01/11/2026 · Juiz de saúde: o plano oficial promovido substitui o registro de imprensa e o topo da UF o acompanha · +45/−3</dt>
       <dd>O `--aplicar` só acrescentava o item novo; o registro de imprensa (tipo conhecido) seguia como melhor instrumento e o topo não era sincronizado. Agora o documento oficial lido troca o item mais fraco do ciclo e o topo copia o melhor. A data do plano é a da capa ou o mês do caminho no portal (`09/2026`), nunca a de ato citado no corpo.</dd>
-      <dt>01/11/2026 · Juiz de saúde: plano publicado não é recusado como `resposta` (J1) · +14/−2</dt>
-      <dd>Mesma raiz do #1424, etapas 4 e 6: `julgar_camada_saude` não aplicava o caminho do plano do juiz 1.8. Com a etapa 2 corrigida, o PDF da SESAPI-PI passou a sair `resposta`, porque o teste do objeto (feito para decreto) lê as ações de resposta do corpo. Agora, sendo plano, a natureza é EX_ANTE (J1) e a etapa 6 recebe `sem_ato_de_aprovacao` e `como_plano`. Caso de teste falha sem a correção.</dd>
     </dl>
   </section>
 </main>
