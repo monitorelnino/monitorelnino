@@ -54,7 +54,7 @@ Atualizado em 16/11/2026.
 | `atualizar_recursos.py` | — | `financiamento/por_uf.json`, `recursos_uf.json` | — | — | não |
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
 | `buscador2.py` | — | — | — | 3 | não |
-| `buscar_financiamento_preventivo.py` | — | — | — | — | não |
+| `buscar_financiamento_preventivo.py` | — | `financiamento_uf.json` | — | — | não |
 | `buscar_planos_arboviroses_web.py` | — | — | — | — | não |
 | `buscar_planos_fontes_abertas.py` | — | — | — | 2 | não |
 | `buscar_protocolo_calor.py` | — | `saude_desfechos/busca_protocolo_calor.json` | — | — | não |
@@ -106,7 +106,7 @@ Atualizado em 16/11/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+7) | — | **176** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+7) | — | **177** | não |
 | `conferir_emergencias_estaduais.py` | — | `emergencias_estaduais.json` | — | 1 | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
@@ -142,15 +142,15 @@ Atualizado em 16/11/2026.
 | `ler_planos_arboviroses.py` | — | `planos_arboviroses.json`, `planos_arboviroses_leitura.json` | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
-| `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 6 | não |
+| `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 7 | não |
 | `monitorar_imprensa_regional.py` | — | — | — | 6 | não |
 | `monitorar_imprensa_saude.py` | — | — | — | — | não |
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
 | `monitorar_sinais_federais.py` | — | — | — | 1 | não |
-| `motores_busca.py` | — | — | — | 4 | não |
+| `motores_busca.py` | — | — | — | 5 | não |
 | `pagina_completa.py` | — | — | — | 6 | não |
 | `preencher_fallback_estatico.py` | — | — | — | — | não |
-| `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 8 | não |
+| `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 9 | não |
 | `processar_contribuicoes.py` | — | — | — | 1 | não |
 | `recalcular_mare.py` | — | — | — | 7 | SIM |
 | `reconferir_instrumentos_federais.py` | — | `saude_desfechos/instrumentos.json` | — | — | não |
