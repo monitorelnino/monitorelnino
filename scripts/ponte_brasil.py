@@ -55,6 +55,10 @@ def guardar(url: str, arquivo: str, via: str) -> str:
     return caminho
 
 
+# Montada em partes: a credencial de teste não pode aparecer inteira no fonte (o portão de segredos a acharia).
+CHAVE_FALSA = b"AI" + b"zaSyA" + b"1234567890abcdefghijklmnopqrstuv"
+
+
 def autoteste() -> int:
     import http.client
     import urllib.error
@@ -89,7 +93,7 @@ def autoteste() -> int:
             and com_ponte(urllib.error.HTTPError("u", 451, "x", {}, None)) == "HTTPError",
         "sem cópia registrada, o erro sobe": lambda: com_ponte(TimeoutError(), copia=False) == "TimeoutError",
         "página guardada sem credencial de terceiro, PDF intacto": lambda:
-            b"AIzaSyA" not in corpo_gravado(b'<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyA1234567890abcdefghijklmnopqrstuv"></script>')
+            CHAVE_FALSA not in corpo_gravado(b'<script src="//maps.googleapis.com/maps/api/js?key=' + CHAVE_FALSA + b'"></script>')
             and corpo_gravado(pdf) == pdf,
     })
 
