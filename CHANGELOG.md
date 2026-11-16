@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-16 · #1819 · O ato citado pelo leitor orienta a busca dirigida
+## 2026-11-16 · #1819 · O número do ato orienta a busca dirigida, em toda pista
 
-Quando o leitor informa o número do ato no formulário (Taió/SC: "Decreto 9584/2026"), o tipo e o número passam a ir com a pista e a busca dirigida procura esse ato nas fontes oficiais. O número não é prova: só entra no site se o juiz o ler no documento oficial.
+Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.
 
 ## 2026-11-16 · #1810 · Endereço que falha na rede vira pedido à ponte no Brasil
 
