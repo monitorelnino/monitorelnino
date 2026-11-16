@@ -54,6 +54,7 @@ import juiz
 # exceção de domínio que alguém acrescentar a um dos arquivos.
 from coletar_saude_estadual import UFS, oficial
 from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
+from coletores_base import copia_da_ponte as cb_copia_da_ponte
 from julgar_filas import julgar_lista
 
 FILA = "pistas_imprensa_saude.json"
@@ -447,6 +448,38 @@ def vigencia_encerrada(texto: str, titulo: str = "") -> str:
     return ""
 
 
+DIAS_DE_VIDA_DA_PISTA = 21   # o `dias_de_vida` do esquema (schemas/pista.json)
+
+
+def encerrar_parados(pistas: list, hoje) -> int:
+    """Nenhuma pista da saúde fica `pendente_confirmacao` para sempre (portão da fila não humana). Pura.
+
+    16/11/2026, vencido o prazo do estoque: 422 pistas já julgadas e recusadas continuavam pendentes,
+    porque o juiz gravava o veredito e não o estado; e 445 manchetes do funil, de fonte não oficial,
+    nunca entram no juiz (ele lê só documento do órgão). A recusa passa a fechar a pista com o motivo;
+    a manchete não oficial com mais de 21 dias fecha com o seu. Nada se apaga: a pista fica no arquivo."""
+    import datetime as _dt
+    n = 0
+    for p in pistas:
+        if not str(p.get("status") or "").startswith("pendente_confirmacao"):
+            continue
+        j = p.get("juiz") or {}
+        if PAD_FALHA_DE_REDE.match(str(j.get("motivo") or "")):
+            continue   # queda de rede volta à fila: não é veredito
+        if j and not j.get("promove"):
+            p["status"] = f"pista — recusada pelo juiz: {j.get('motivo')}"
+            n += 1
+            continue
+        reg = str(p.get("registrado_em") or p.get("data") or "")
+        m = re.match(r"(\d{2})/(\d{2})/(\d{4})|(\d{4})-(\d{2})-(\d{2})", reg)
+        d = (_dt.date(int(m[3]), int(m[2]), int(m[1])) if m and m[1] else
+             _dt.date(int(m[4]), int(m[5]), int(m[6])) if m else None)
+        if not p.get("oficial") and (d is None or (hoje - d).days > DIAS_DE_VIDA_DA_PISTA):
+            p["status"] = "fechada — fonte não oficial: o juiz da saúde lê só o documento do órgão"
+            n += 1
+    return n
+
+
 def encerrar_vencidos(su: dict) -> list:
     """Instrumento já registrado (curado à mão ou julgado antes da regra) cujo título declara período
     encerrado passa a VENC, e o topo da UF é recalculado. Devolve as UFs mudadas. Mesma regra de
@@ -514,6 +547,19 @@ def trata_de_risco_do_ciclo(titulo: str) -> tuple:
     estadual. Não é demérito do documento; é escopo do índice."""
     achados = sorted({m.group(0).lower() for m in RE_RISCO_DO_CICLO.finditer(titulo or "")})
     return bool(achados), ", ".join(achados[:6])
+
+
+def risco_do_documento(titulo: str, texto: str) -> tuple:
+    """`trata_de_risco_do_ciclo` sobre o título e, se ele não disser, sobre a capa. Função pura.
+
+    15/11/2026 (SE): a capa diz "PLANO DE CONTINGÊNCIA … POR DENGUE, CHIKUNGUNYA E ZIKA", mas o título
+    lido podia ser o da pista ("Plano de Contingência 2026-2027"). A capa é o documento falando de si;
+    o corpo (lista de riscos de um plano de outra doença) continua de fora."""
+    ok, casou = trata_de_risco_do_ciclo(titulo)
+    return (ok, casou) if ok else trata_de_risco_do_ciclo(str(texto or "")[:CAPA_DO_PLANO])
+
+
+CAPA_DO_PLANO = 1500
 
 
 # A5-37: `etapa2`/`extrair_data` tomavam a PRIMEIRA data do texto, e o preâmbulo de um ato cita
@@ -722,6 +768,12 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # Sem `url` e `como_plano`, a etapa 2 tomava a primeira lei da base legal por "o ato" (Lei 9.071 → sem
     # data; Decreto 18.142/2019 → data de 2019) e recusava por `citacao_incompleta`. A régua é a do Legal.
     como_plano = juiz.e_plano_pelo_cabecalho(texto) or titulo_diz_plano(titulo_da_pista)
+    if como_plano:
+        # 15/11/2026 (MA): a notícia de uma capacitação de 2024 (egma.ma.gov.br/noticias/…) citava o
+        # plano no título e entrava como o plano. O julgado tem de SER o plano (codebook 1.3).
+        ok, motivo, _ = juiz.e_o_proprio_plano(texto, url)
+        if not ok:
+            v["motivo"] = motivo; return v
     ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico, url=url, como_plano=como_plano)
     # A5-37 (12/10/2026): `data_do_cabecalho` existia e só o autoteste a chamava — o juiz seguia
     # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
@@ -762,10 +814,11 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
         v["motivo"] = "natureza_duvidosa"; return ou_estrutura(v, texto, uf)
 
     ok, familia, trecho = juiz.etapa5_familia_de_risco(texto)
-    if not ok and familia == "fora_do_objeto" and trata_de_risco_do_ciclo(titulo)[0]:
+    risco = risco_do_documento(titulo, texto)
+    if not ok and familia == "fora_do_objeto" and risco[0]:
         # 15/11/2026 (MA, SE): a régua do Legal põe plano de saúde e arbovirose fora do objeto do
         # município; na camada de saúde eles SÃO o objeto, e o risco do ciclo é o do título (5b).
-        ok, familia, trecho = True, "saude_do_ciclo", trata_de_risco_do_ciclo(titulo)[1]
+        ok, familia, trecho = True, "saude_do_ciclo", risco[1]
     v["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None, "trecho": trecho}
     if not ok:
         v["motivo"] = familia; return v
@@ -775,7 +828,7 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # por todas as etapas anteriores em 01/10/2026 e foi promovido como instrumento E coordenação de
     # MG — foi o que fez esta etapa existir.
     v["titulo_do_documento"] = titulo
-    ok, casou = trata_de_risco_do_ciclo(titulo)
+    ok, casou = risco
     v["criterios"]["5b_risco_do_ciclo"] = {"ok": ok, "titulo": titulo,
                                            "trecho": casou or "nenhum risco do ciclo no título"}
     if not ok:
@@ -820,8 +873,12 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     host = urllib.parse.urlparse(url or "").netloc.lower()
     corpo, hash_ev, falha = None, None, None
     if host in _HOSTS_SEM_RESPOSTA:
-        falha = {"promove": False, "pendente": True, "uf": uf,
-                 "motivo": "documento não baixado: host sem resposta nesta rodada"}
+        # 15/11/2026 (SE): o atalho do host morto pulava a cópia da ponte no Brasil, que `buscar` só
+        # consulta quando tenta a rede. O plano 2026-2027 de SE ficou pendente atrás de outra URL do host.
+        corpo = cb_copia_da_ponte(url)[0]
+        if corpo is None:
+            falha = {"promove": False, "pendente": True, "uf": uf,
+                     "motivo": "documento não baixado: host sem resposta nesta rodada"}
     else:
         try:
             corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
@@ -1144,6 +1201,11 @@ def autoteste() -> int:
                      and vigencia_encerrada("Palmas – TO 2026/2027 PLANO ESTADUAL") == ""
                      and vigencia_encerrada("Autenticado em 31/05/2023 às 16:57. Plano sem período") == ""
                      and vigencia_encerrada("Plano Estadual de Saúde 2016-2027") == ""
+                     and encerrar_parados([{"status": "pendente_confirmacao_documento", "juiz": {"promove": False, "motivo": "citacao_incompleta"}},
+                                           {"status": "pendente_confirmacao_documento", "oficial": False, "registrado_em": "01/10/2026"},
+                                           {"status": "pendente_confirmacao_documento", "oficial": True, "registrado_em": "01/10/2026"},
+                                           {"status": "pendente_confirmacao_documento", "juiz": {"promove": False, "motivo": "documento não baixado: URLError"}}],
+                                          __import__("datetime").date(2026, 11, 16)) == 2
                      and titulo_diz_plano("Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__2_")
                      and titulo_diz_plano("planosdepreparacaoelnino2026-2027_001")
                      and not titulo_diz_plano("planejamento_2026") and not titulo_diz_plano("Decreto 29.321")
@@ -1550,6 +1612,7 @@ def main() -> int:
                                            "institui", "status_instrumento", "coordenacao")}
         if not v.get("promove"):
             recusadas[v.get("motivo")] = recusadas.get(v.get("motivo"), 0) + 1
+            p["status"] = f"pista — recusada pelo juiz: {v.get('motivo')}"
             print(f"  ✗ {p.get('uf')} · {v.get('motivo')}")
             return "recusada"
         m = aplicar(su, v, v.get("titulo_do_documento") or p.get("titulo") or "", p.get("url"))
@@ -1572,6 +1635,9 @@ def main() -> int:
         print(f"   {n}× {motivo}")
     if mudancas:
         print("mudanças: " + " · ".join(mudancas))
+    parados = encerrar_parados(pistas, hoje_editorial())
+    if parados:
+        print(f"fila: {parados} pista(s) parada(s) fechada(s) com motivo")
     vencidos = encerrar_vencidos(su)
     if vencidos:
         print("vigência encerrada: " + ", ".join(vencidos))
