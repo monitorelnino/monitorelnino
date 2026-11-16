@@ -1,6 +1,6 @@
 {
  "_governanca": "Planos municipais de contingência de arboviroses (dengue, chikungunya, zika): onde cada município tem menção localizada, e em que norma o plano se apoia. Peso zero: não entra na nota da Saúde (HANDOVER_SAUDE_V06 §5, 22/10/2026). `municipios` é escrito só por `coletar_planos_arboviroses.py`; `bases` foi lida e registrada à mão em 22/10/2026 e só muda com leitura nova. Estatuto: menção localizada em diário oficial · não localizado até o corte · não verificado (município sem cobertura no acervo, ou consulta que falhou). Menção não é plano lido. Unidade da federação sem linha em `bases` não foi verificada; a ausência não afirma que não há norma.",
- "cursor": 5238,
+ "cursor": 5277,
  "bases": {
   "BR": {
    "documento": "Plano de Contingência Nacional para Dengue, Chikungunya e Zika (Ministério da Saúde)",
@@ -1966,10 +1966,10 @@
   },
   "5107198": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Ribeirãozinho",
    "uf": "MT"
@@ -52842,7 +52842,7 @@
   },
   "4103404": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52852,7 +52852,7 @@
   },
   "4219150": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52862,7 +52862,7 @@
   },
   "2513851": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52872,7 +52872,7 @@
   },
   "3553658": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52882,37 +52882,37 @@
   },
   "4121356": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Rancho Alegre D'Oeste",
    "uf": "PR"
   },
   "5213053": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Mimoso de Goiás",
    "uf": "GO"
   },
   "3506201": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Bento de Abreu",
    "uf": "SP"
   },
   "3113800": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52922,7 +52922,7 @@
   },
   "3549003": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52932,7 +52932,7 @@
   },
   "4311429": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52942,7 +52942,7 @@
   },
   "4301073": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52952,7 +52952,7 @@
   },
   "3546108": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "consulta falhou: URLError",
@@ -52962,269 +52962,260 @@
   },
   "4316972": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Santa Margarida do Sul",
    "uf": "RS"
   },
   "2513968": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São Domingos",
    "uf": "PB"
   },
   "4321634": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-10-28",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Três Arroios",
    "uf": "RS"
   },
   "2513943": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São Domingos do Cariri",
    "uf": "PB"
   },
   "3130804": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Ingaí",
    "uf": "MG"
   },
   "3549201": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São João das Duas Pontes",
    "uf": "SP"
   },
   "3125200": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Fama",
    "uf": "MG"
   },
   "3540853": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Pracinha",
    "uf": "SP"
   },
   "1700251": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Abreulândia",
    "uf": "TO"
   },
   "4215687": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Santa Terezinha do Progresso",
    "uf": "SC"
   },
   "4316436": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Saldanha Marinho",
    "uf": "RS"
   },
   "2406403": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Lagoa de Velhos",
    "uf": "RN"
   },
   "4307864": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Fagundes Varela",
    "uf": "RS"
   },
   "3507753": {
-   "estatuto": "menção localizada em diário oficial",
-   "consultado_em": "2026-10-28",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
-   "achados": [
-    {
-     "url": "https://data.queridodiario.ok.org.br/3507753/2024-04-01/6f5a79f3c22fb948e8a1b054771db65a06c3e6a5.pdf",
-     "data_publicacao": "2024-04-01",
-     "edicao": "401",
-     "consulta": "\"plano de contingência\" chikungunya",
-     "trecho": "Arboviroses conforme Plano de Contingência Nº total de ações realizadas / Nº total de ações previstas no Plano de Contingência x 100 0 80,00 80,00 Percentual 80,00 100,00 Ação Nº 1 - Realizar ações de controle em situações de epidemia de Dengue e outras Arboviroses conforme Plano de Contingência 2. Garantir",
-     "hash_evidencia": "18b046b4babb0b3ecc9e3e85ff5c755f321f76f43ff27f63cc2b29f697d41237"
-    }
-   ],
+   "motivo": "consulta falhou: URLError",
+   "achados": [],
    "nome": "Brejo Alegre",
    "uf": "SP"
   },
   "4306551": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Dom Pedro de Alcântara",
    "uf": "RS"
   },
   "4212056": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Palmeira",
    "uf": "SC"
   },
   "5212600": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Mairipotaba",
    "uf": "GO"
   },
   "5210307": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Israelândia",
    "uf": "GO"
   },
   "4312385": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Monte Belo do Sul",
    "uf": "RS"
   },
   "3145505": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Olímpio Noronha",
    "uf": "MG"
   },
   "4321493": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Toropi",
    "uf": "RS"
   },
   "4312138": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Mato Castelhano",
    "uf": "RS"
   },
   "4209177": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Jupiá",
    "uf": "SC"
   },
   "2509370": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Mato Grosso",
    "uf": "PB"
   },
   "4319737": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São Valério do Sul",
    "uf": "RS"
   },
   "2513653": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-28",
+   "consultado_em": "2026-11-16",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Joca Claudino",
    "uf": "PB"
@@ -57040,13 +57031,13 @@
   }
  },
  "execucao": {
-  "data": "2026-11-15",
-  "consultados": 293,
+  "data": "2026-11-16",
+  "consultados": 39,
   "paradas": "orçamento de tempo",
   "estatutos": {
-   "não localizado até o corte": 379,
-   "menção localizada em diário oficial": 93,
-   "não verificado": 5098
+   "não localizado até o corte": 378,
+   "menção localizada em diário oficial": 92,
+   "não verificado": 5100
   }
  }
 }
