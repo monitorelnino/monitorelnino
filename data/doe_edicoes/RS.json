@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "13/11/2026",
+  "em": "16/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_rs",
-  "ultima_edicao_lida": "2026-11-12"
+  "ultima_edicao_lida": "2026-11-13"
  },
  "edicoes": {
   "2026-10-19": {
@@ -2195,7 +2195,7 @@
   },
   "2026-11-02": {
    "decisao": "sem_edicao_na_data",
-   "em": "05/11/2026"
+   "em": "16/11/2026"
   },
   "2026-09-18#2": {
    "decisao": "lida",
@@ -2211,21 +2211,13 @@
    "termos_achados": []
   },
   "2026-11-03": {
-   "decisao": "lida",
-   "em": "03/11/2026",
-   "bytes": 263442,
-   "paginas": 12,
-   "paginas_com_texto": 12,
-   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54790/pdf",
-   "impressao": "0d1b3ff99a97204b41874d4a54af616c0916ceff2f0b7e0733fa34ea764e05c2",
-   "termos_versao": "2026-10-17",
-   "leitor": "2026-10-20",
-   "legal_versao": "2026-10-30",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-03#2": {
    "decisao": "lida",
-   "em": "03/11/2026",
+   "em": "16/11/2026",
    "bytes": 1302652,
    "paginas": 174,
    "paginas_com_texto": 174,
@@ -2234,24 +2226,17 @@
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
    "termos_achados": []
   },
   "2026-11-05": {
-   "decisao": "lida",
-   "em": "05/11/2026",
-   "bytes": 154191,
-   "paginas": 4,
-   "paginas_com_texto": 4,
-   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54794/pdf",
-   "impressao": "97a9b250ca567b73f1ce63b7fc41b7d5dc596072366ee2a4d67d24bd0478c81a",
-   "termos_versao": "2026-10-17",
-   "leitor": "2026-10-20",
-   "legal_versao": "2026-10-30",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-05#2": {
    "decisao": "lida",
-   "em": "05/11/2026",
+   "em": "16/11/2026",
    "bytes": 1420327,
    "paginas": 178,
    "paginas_com_texto": 178,
@@ -2260,63 +2245,32 @@
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
    "termos_achados": []
   },
   "2026-11-04": {
-   "decisao": "lida",
-   "em": "05/11/2026",
-   "bytes": 157498,
-   "paginas": 4,
-   "paginas_com_texto": 4,
-   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54792/pdf",
-   "impressao": "0b3e631a0f648318485bc38bb4ddd73344394061be338b379820eabd7456baad",
-   "termos_versao": "2026-10-17",
-   "leitor": "2026-10-20",
-   "legal_versao": "2026-10-30",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-04#2": {
-   "decisao": "lida",
-   "em": "05/11/2026",
-   "bytes": 2204980,
-   "paginas": 292,
-   "paginas_com_texto": 292,
-   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54793/pdf",
-   "impressao": "83c7c6c6b5269bf6f6b052137b581d36b65017b11e64dea7e94eff91a5206474",
-   "termos_versao": "2026-10-17",
-   "leitor": "2026-10-20",
-   "legal_versao": "2026-10-30",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-06": {
-   "decisao": "lida",
-   "em": "06/11/2026",
-   "bytes": 161266,
-   "paginas": 5,
-   "paginas_com_texto": 5,
-   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54796/pdf",
-   "impressao": "9f78bfe739723b824d4686b5cdca297ba2b2669aca40b0d5878d465ae5bd5ed6",
-   "termos_versao": "2026-10-17",
-   "leitor": "2026-10-20",
-   "legal_versao": "2026-10-30",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-06#2": {
-   "decisao": "lida",
-   "em": "06/11/2026",
-   "bytes": 9337020,
-   "paginas": 246,
-   "paginas_com_texto": 246,
-   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54797/pdf",
-   "impressao": "5ed61542abe6473b60aaab1c12f33e79dba2bbaac003ff5c5c7d7ca22b066e89",
-   "termos_versao": "2026-10-17",
-   "leitor": "2026-10-20",
-   "legal_versao": "2026-10-30",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-10": {
    "decisao": "lida",
-   "em": "13/11/2026",
+   "em": "16/11/2026",
    "bytes": 157719,
    "paginas": 4,
    "paginas_com_texto": 4,
@@ -2325,16 +2279,27 @@
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
    "termos_achados": []
   },
   "2026-11-09": {
    "decisao": "vazio",
-   "em": "13/11/2026",
-   "motivo": "listagem da data: URLError: <urlopen error [Errno 111] Connection refused>"
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-13": {
-   "decisao": "sem_edicao_na_data",
-   "em": "13/11/2026"
+   "decisao": "lida",
+   "em": "16/11/2026",
+   "bytes": 166596,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54806/pdf",
+   "impressao": "17343be6d88693ccfdb4b78907a6f346c9762ce8853ee135f6b456f4814ff19a",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
   },
   "2026-11-12": {
    "decisao": "lida",
@@ -2364,12 +2329,12 @@
   },
   "2026-11-11": {
    "decisao": "vazio",
-   "em": "13/11/2026",
+   "em": "16/11/2026",
    "motivo": "listagem da data: URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "2026-11-10#2": {
    "decisao": "lida",
-   "em": "13/11/2026",
+   "em": "16/11/2026",
    "bytes": 1726159,
    "paginas": 210,
    "paginas_com_texto": 210,
@@ -2378,8 +2343,29 @@
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
    "termos_achados": []
+  },
+  "2026-11-13#2": {
+   "decisao": "lida",
+   "em": "16/11/2026",
+   "bytes": 5922289,
+   "paginas": 584,
+   "paginas_com_texto": 584,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54807/pdf",
+   "impressao": "49f14254b5a864429ee1275d13411ff50b87cfbff609a4727a7e8a0f27b45ad0",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
+  },
+  "2026-11-09#2": {
+   "decisao": "vazio",
+   "em": "16/11/2026",
+   "motivo": "URLError: <urlopen error [Errno 111] Connection refused>"
   }
  },
- "atualizado_em": "13/11/2026"
+ "atualizado_em": "16/11/2026",
+ "declaracoes_estaduais": {}
 }

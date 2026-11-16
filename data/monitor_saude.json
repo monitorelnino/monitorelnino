@@ -1,7 +1,7 @@
 {
  "_governanca": "MARÉ · Saúde v0.7: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). A nota de cada UF é o instrumento estadual; nenhum componente depende de data (o tempo é publicado à parte, de peso zero) e a coordenação na saúde entra na nota, metade com o instrumento, quando as 27 UFs a tiverem verificada. Índice nacional = Σ(nota × população × c_uf) ÷ Σ população, com as 27 UFs no denominador; c_uf é a cobertura do dever de plano (1 nas 27) e pesa o nacional, não a nota. A UF sem documento lido entra com nota 0 e o estatuto dela viaja junto. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado. UF não verificada não recebe número próprio. Metodologia §31, §115 e §123.",
  "versao": "0.7",
- "gerado_em": "15/11/2026",
+ "gerado_em": "16/11/2026",
  "corte": "15/11/2026",
  "metodo": {
   "pesos": {
@@ -128,28 +128,29 @@
   ],
   "pop_sob_emergencia": 3941175,
   "faltam": [
-   "estadual: BA, CE, DF, MA, MG, PI, RJ, RN, RS"
+   "estadual: BA, CE, DF, MA, MG, PI, RJ, RS"
   ],
   "consultado_em": {
-   "federal": "15/11/2026",
+   "federal": "16/11/2026",
    "estadual": {
-    "AC": "13/11/2026",
+    "AC": "15/11/2026",
     "AL": "13/11/2026",
-    "AM": "13/11/2026",
-    "AP": "13/11/2026",
-    "ES": "13/11/2026",
-    "GO": "13/11/2026",
+    "AM": "15/11/2026",
+    "AP": "15/11/2026",
+    "ES": "15/11/2026",
+    "GO": "15/11/2026",
     "MS": "13/11/2026",
-    "MT": "13/11/2026",
+    "MT": "15/11/2026",
     "PA": "13/11/2026",
     "PB": "13/11/2026",
     "PE": "13/11/2026",
-    "PR": "13/11/2026",
+    "PR": "15/11/2026",
+    "RN": "15/11/2026",
     "RO": "13/11/2026",
     "RR": "13/11/2026",
     "SC": "13/11/2026",
-    "SE": "13/11/2026",
-    "SP": "13/11/2026",
+    "SE": "15/11/2026",
+    "SP": "15/11/2026",
     "TO": "13/11/2026"
    }
   },
@@ -161,48 +162,47 @@
    "MG": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada",
    "PI": "1 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-02#2)",
    "RJ": "3 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-08-07#2)",
-   "RN": "5 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-06)",
-   "RS": "13 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-09)"
+   "RS": "20 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-03)"
   }
  },
  "resumo": {
-  "verificadas": 21,
-  "nao_verificadas": 6,
+  "verificadas": 27,
+  "nao_verificadas": 0,
   "por_faixa": {
+   "estágio inicial": 5,
    "em construção": 14,
-   "avançado": 5,
-   "estágio inicial": 2
+   "avançado": 8
   },
-  "planos_municipais_lidos": 343,
-  "planos_municipais_sem_leitura": 41,
+  "planos_municipais_lidos": 361,
+  "planos_municipais_sem_leitura": 29,
   "denominador": 27,
   "ponderacao": "populacao",
   "populacao_total": 203062512,
-  "indice_nacional": 57.4,
+  "indice_nacional": 59.9,
   "por_estatuto": {
-   "plano_localizado": 18,
+   "plano_localizado": 22,
    "plano_em_elaboracao": 3,
-   "plano_nao_localizado": 0,
-   "nao_verificado": 6
+   "plano_nao_localizado": 2,
+   "nao_verificado": 0
   },
-  "ufs_com_plano_localizado": 18,
+  "ufs_com_plano_localizado": 22,
   "ufs_em_elaboracao": 3,
-  "ufs_sem_plano_localizado": 9,
-  "coordenacao_verificadas": 2
+  "ufs_sem_plano_localizado": 5,
+  "coordenacao_verificadas": 4
  },
  "ufs": {
   "AC": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 0.0,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
+    "status": "LAC",
+    "pontos": 0.0,
     "doc": null,
     "data": null,
     "orgao": null,
     "url": null,
-    "temporada": null
+    "temporada": "desconhecida"
    },
    "cobertura": {
     "peso": 0,
@@ -246,7 +246,7 @@
     "dengue_capital": "Rio Branco",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 51
+    "focos_24h": 67
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -254,7 +254,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
+   "estatuto": "plano_nao_localizado",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0041,
    "contribuicao_nacional": 0.0
@@ -314,7 +314,7 @@
     "dengue_capital": "Maceió",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 25
+    "focos_24h": 78
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -382,7 +382,7 @@
     "dengue_capital": "Manaus",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 228
+    "focos_24h": 234
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -396,24 +396,24 @@
    "contribuicao_nacional": 1.94
   },
   "AP": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 0.0,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
+    "status": "LAC",
+    "pontos": 0.0,
     "doc": null,
     "data": null,
     "orgao": null,
     "url": null,
-    "temporada": null
+    "temporada": "desconhecida"
    },
    "cobertura": {
     "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
-    "planos_sem_leitura": 0
+    "planos_sem_leitura": 1
    },
    "tempo": {
     "peso": 0,
@@ -450,7 +450,7 @@
     "dengue_capital": "Macapá",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 1083
+    "focos_24h": 526
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -458,7 +458,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
+   "estatuto": "plano_nao_localizado",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0036,
    "contribuicao_nacional": 0.0
@@ -481,7 +481,7 @@
     "cobertura_pct": 4.4,
     "pop_coberta": 616279,
     "planos_lidos": 1,
-    "planos_sem_leitura": 0
+    "planos_sem_leitura": 1
    },
    "tempo": {
     "peso": 0,
@@ -518,7 +518,7 @@
     "dengue_capital": "Salvador",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 452
+    "focos_24h": 103
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -549,7 +549,7 @@
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
-    "planos_sem_leitura": 0
+    "planos_sem_leitura": 1
    },
    "tempo": {
     "peso": 0,
@@ -586,7 +586,7 @@
     "dengue_capital": "Fortaleza",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 396
+    "focos_24h": 44
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -682,10 +682,10 @@
    },
    "cobertura": {
     "peso": 0,
-    "cobertura_pct": 54.5,
-    "pop_coberta": 2089022,
-    "planos_lidos": 75,
-    "planos_sem_leitura": 2
+    "cobertura_pct": 48.7,
+    "pop_coberta": 1866596,
+    "planos_lidos": 73,
+    "planos_sem_leitura": 4
    },
    "tempo": {
     "peso": 0,
@@ -785,7 +785,7 @@
     "dengue_capital": "Goiânia",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 74
+    "focos_24h": 35
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -799,17 +799,17 @@
    "contribuicao_nacional": 3.47
   },
   "MA": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 0.0,
+   "faixa": "estágio inicial",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "VENC",
+    "pontos": 0.0,
+    "doc": "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025",
+    "data": "01/2025",
+    "orgao": "SES-MA",
+    "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2025/01/Plano_arboviroses_-_2024_2025.pdf",
+    "temporada": "anterior"
    },
    "cobertura": {
     "peso": 0,
@@ -829,11 +829,11 @@
     "verificada": false,
     "pontos": null,
     "f1": {
-     "status": "NAO_VERIFICADO",
+     "status": "PERMANENTE",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "doc": "PLANO DE CONTINGÊNCIA EM RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA OCASIONADAS POR DENGUE E OUTRAS ARBOVIROSES, 2024-2025 MARANHA O 2024 1 Carlos Orleans Branda o",
+     "data": "02/2024",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2024/02/Plano-de-contige%CC%82ncia-das-Arboviroses-no-Maranha%CC%83o.pdf",
      "citado": null
     },
     "f2": {
@@ -853,7 +853,7 @@
     "dengue_capital": "São Luís",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 2776
+    "focos_24h": 791
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -861,7 +861,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
+   "estatuto": "plano_localizado",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0334,
    "contribuicao_nacional": 0.0
@@ -894,23 +894,23 @@
    "coordenacao": {
     "peso": 0,
     "entra_na_nota": false,
-    "verificada": false,
-    "pontos": null,
+    "verificada": true,
+    "pontos": 72.5,
     "f1": {
-     "status": "NAO_VERIFICADO",
-     "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "status": "PERMANENTE",
+     "pontos": 45,
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
      "citado": null
     },
     "f2": {
-     "status": "NAO_VERIFICADO",
-     "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
-     "citado": null
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "pontos": 100,
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+     "citado": "art. 14 — I M A Comissão Intergestores Bipartite do Sistema Único de Saúde do Estado de Minas Gerais - CIB-SUS/MG, no uso de suas atribuições que lhe conferem o art. 14-A da Lei Federal nº 8.080, de 19 de setembro de 1990, e o art. 32 do Decreto Fede"
     }
    },
    "c_uf": 1,
@@ -921,7 +921,7 @@
     "dengue_capital": "Belo Horizonte",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 176
+    "focos_24h": 48
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -936,15 +936,15 @@
   },
   "MS": {
    "verificado": true,
-   "prontidao": 45.0,
-   "faixa": "em construção",
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "VIG",
-    "pontos": 45.0,
-    "doc": "Plano de Contingência Estadual Arboviroses 2025-2026",
-    "data": "08/10/2025",
+    "status": "NOVO",
+    "pontos": 100.0,
+    "doc": "Plano de Contingência para desastres provocados por seca, estiagem e incêndios florestais do Estado de Mato Grosso do Sul: abordagem em Saúde Única 2025 Plano de Contingência para",
+    "data": "06/2025",
     "orgao": "SES-MS",
-    "url": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/",
+    "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Seca.pdf",
     "temporada": "2025/2026"
    },
    "cobertura": {
@@ -963,7 +963,7 @@
     "peso": 0,
     "entra_na_nota": false,
     "verificada": true,
-    "pontos": 75.0,
+    "pontos": 100.0,
     "f1": {
      "status": "CRIADO_CICLO",
      "pontos": 100,
@@ -973,12 +973,12 @@
      "citado": null
     },
     "f2": {
-     "status": "LISTADA_SEM_ATRIBUICAO",
-     "pontos": 50,
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "citado": "aúde de Mato Grosso do Sul, e dá outras providências. O SECRETÁRIO DE ESTADO DE SAÚDE DE MATO GROSSO DO SUL, no uso das atribuições legais e, Considerando que as mudanças climáticas representam crescente desafio à saúde pública, com potenci"
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "pontos": 100,
+     "doc": "Plano de Contingência para desastres provocados por seca, estiagem e incêndios florestais do Estado de Mato Grosso do Sul: abordagem em Saúde Única 2025 Plano de Contingência para",
+     "data": "06/2025",
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Seca.pdf",
+     "citado": "de Crhistinne Cavalheiro Maymone Gonçalves Superintendência de Vigilância em Saúde Larissa Domingues Castilho de Arruda Coordenadoria de Vigilância Ambiental Karyston Adriel Machado da Costa Coordenadoria de Saúde Única Danila Fernanda Rodr"
     }
    },
    "c_uf": 1,
@@ -989,7 +989,7 @@
     "dengue_capital": "Campo Grande",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 18
+    "focos_24h": 1
    },
    "risco_projetado": [
     "arboviroses",
@@ -998,9 +998,9 @@
     "continuidade de serviços (diálise, oxigênio, rede de frio)"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 45.0,
+   "prontidao_nacional": 100.0,
    "peso_nacional": 0.0136,
-   "contribuicao_nacional": 0.61
+   "contribuicao_nacional": 1.36
   },
   "MT": {
    "verificado": true,
@@ -1057,7 +1057,7 @@
     "dengue_capital": "Cuiabá",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 157
+    "focos_24h": 107
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1125,7 +1125,7 @@
     "dengue_capital": "Belém",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 7036
+    "focos_24h": 7362
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1193,7 +1193,7 @@
     "dengue_capital": "João Pessoa",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 31
+    "focos_24h": 4
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1261,7 +1261,7 @@
     "dengue_capital": "Recife",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 174
+    "focos_24h": 31
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1329,7 +1329,7 @@
     "dengue_capital": "Teresina",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 480
+    "focos_24h": 16
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1357,10 +1357,10 @@
    },
    "cobertura": {
     "peso": 0,
-    "cobertura_pct": 8.2,
-    "pop_coberta": 934526,
-    "planos_lidos": 12,
-    "planos_sem_leitura": 1
+    "cobertura_pct": 8.3,
+    "pop_coberta": 944716,
+    "planos_lidos": 13,
+    "planos_sem_leitura": 0
    },
    "tempo": {
     "peso": 0,
@@ -1397,7 +1397,7 @@
     "dengue_capital": "Curitiba",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 47
+    "focos_24h": 3
    },
    "risco_projetado": [
     "leptospirose",
@@ -1425,10 +1425,10 @@
    },
    "cobertura": {
     "peso": 0,
-    "cobertura_pct": 10.8,
-    "pop_coberta": 1733304,
-    "planos_lidos": 11,
-    "planos_sem_leitura": 3
+    "cobertura_pct": 11.2,
+    "pop_coberta": 1805847,
+    "planos_lidos": 10,
+    "planos_sem_leitura": 4
    },
    "tempo": {
     "peso": 0,
@@ -1465,7 +1465,7 @@
     "dengue_capital": "Rio de Janeiro",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 10
+    "focos_24h": 3
    },
    "risco_projetado": [],
    "estatuto": "plano_em_elaboracao",
@@ -1474,17 +1474,17 @@
    "contribuicao_nacional": 2.77
   },
   "RN": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "VIG",
+    "pontos": 45.0,
+    "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+    "data": "2025",
+    "orgao": "SES-RN",
+    "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+    "temporada": "2025/2026"
    },
    "cobertura": {
     "peso": 0,
@@ -1504,11 +1504,11 @@
     "verificada": false,
     "pontos": null,
     "f1": {
-     "status": "NAO_VERIFICADO",
+     "status": "PERMANENTE",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+     "data": "2025",
+     "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
      "citado": null
     },
     "f2": {
@@ -1528,7 +1528,7 @@
     "dengue_capital": "Natal",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 42
+    "focos_24h": 27
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1536,10 +1536,10 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0,
+   "estatuto": "plano_localizado",
+   "prontidao_nacional": 45.0,
    "peso_nacional": 0.0163,
-   "contribuicao_nacional": 0.0
+   "contribuicao_nacional": 0.73
   },
   "RO": {
    "verificado": true,
@@ -1559,7 +1559,7 @@
     "cobertura_pct": 1.4,
     "pop_coberta": 21495,
     "planos_lidos": 1,
-    "planos_sem_leitura": 0
+    "planos_sem_leitura": 1
    },
    "tempo": {
     "peso": 0,
@@ -1596,7 +1596,7 @@
     "dengue_capital": "Porto Velho",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 18
+    "focos_24h": 16
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1610,17 +1610,17 @@
    "contribuicao_nacional": 0.27
   },
   "RR": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "NOVO",
+    "pontos": 100.0,
+    "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+    "data": "09/2026",
+    "orgao": "SES-RR",
+    "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "peso": 0,
@@ -1637,23 +1637,23 @@
    "coordenacao": {
     "peso": 0,
     "entra_na_nota": false,
-    "verificada": false,
-    "pontos": null,
+    "verificada": true,
+    "pontos": 75.0,
     "f1": {
-     "status": "NAO_VERIFICADO",
-     "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "status": "CRIADO_CICLO",
+     "pontos": 100,
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
      "citado": null
     },
     "f2": {
-     "status": "NAO_VERIFICADO",
-     "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
-     "citado": null
+     "status": "LISTADA_SEM_ATRIBUICAO",
+     "pontos": 50,
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "citado": "DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026–2027 GOVERNO DO ESTADO DE RORAIMA SECRETARIA DE ESTADO DA SAÚDE – SESAU/RR COORDENADORIA GERAL DE VIGILÂNCIA EM SAÚDE – CGVS DEPARTAMENTO DE VIGILÂNCIA AMBIENTAL – DVA VIGIDESASTRES/RR VERSÃO 1 Bo"
     }
    },
    "c_uf": 1,
@@ -1664,7 +1664,7 @@
     "dengue_capital": "Boa Vista",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 270
+    "focos_24h": 76
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1672,10 +1672,10 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0,
+   "estatuto": "plano_localizado",
+   "prontidao_nacional": 100.0,
    "peso_nacional": 0.0031,
-   "contribuicao_nacional": 0.0
+   "contribuicao_nacional": 0.31
   },
   "RS": {
    "verificado": true,
@@ -1692,10 +1692,10 @@
    },
    "cobertura": {
     "peso": 0,
-    "cobertura_pct": 19.5,
-    "pop_coberta": 2124789,
-    "planos_lidos": 206,
-    "planos_sem_leitura": 30
+    "cobertura_pct": 19.9,
+    "pop_coberta": 2162678,
+    "planos_lidos": 226,
+    "planos_sem_leitura": 10
    },
    "tempo": {
     "peso": 0,
@@ -1732,7 +1732,7 @@
     "dengue_capital": "Porto Alegre",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 9
+    "focos_24h": 4
    },
    "risco_projetado": [
     "leptospirose",
@@ -1763,7 +1763,7 @@
     "cobertura_pct": 7.0,
     "pop_coberta": 534973,
     "planos_lidos": 14,
-    "planos_sem_leitura": 0
+    "planos_sem_leitura": 2
    },
    "tempo": {
     "peso": 0,
@@ -1800,7 +1800,7 @@
     "dengue_capital": "Florianópolis",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 3
+    "focos_24h": 5
    },
    "risco_projetado": [
     "leptospirose",
@@ -1868,7 +1868,7 @@
     "dengue_capital": "Aracaju",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 17
+    "focos_24h": 12
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -1936,7 +1936,7 @@
     "dengue_capital": "São Paulo",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 41
+    "focos_24h": 10
    },
    "risco_projetado": [
     "leptospirose",
@@ -1950,17 +1950,17 @@
    "contribuicao_nacional": 21.88
   },
   "TO": {
-   "verificado": false,
-   "prontidao": null,
-   "faixa": "não verificado",
+   "verificado": true,
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "NAO_VERIFICADO",
-    "pontos": null,
-    "doc": null,
-    "data": null,
-    "orgao": null,
-    "url": null,
-    "temporada": null
+    "status": "NOVO",
+    "pontos": 100.0,
+    "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+    "data": "2026",
+    "orgao": "SES-TO",
+    "url": "https://central.to.gov.br/download/446049",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "peso": 0,
@@ -1988,12 +1988,12 @@
      "citado": null
     },
     "f2": {
-     "status": "NAO_VERIFICADO",
+     "status": "NOMEADA_COM_ATRIBUICAO",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
-     "citado": null
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+     "data": "2026",
+     "url": "https://central.to.gov.br/download/446049",
+     "citado": "nicípios, com exceção de São Félix do Tocantins que, até o momento, possui infestação apenas do Aedes albopictus, vetor competente para transmitir as doenças supracitadas. Atualmente, a Organização Mundial da Saúde (OMS) estima que 2/5 da p"
     }
    },
    "c_uf": 1,
@@ -2004,7 +2004,7 @@
     "dengue_capital": "Palmas",
     "dengue_se": 202644,
     "avisos_calor": 0,
-    "focos_24h": 268
+    "focos_24h": 126
    },
    "risco_projetado": [
     "arboviroses (armazenamento de água)",
@@ -2012,10 +2012,10 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0,
+   "estatuto": "plano_localizado",
+   "prontidao_nacional": 100.0,
    "peso_nacional": 0.0074,
-   "contribuicao_nacional": 0.0
+   "contribuicao_nacional": 0.74
   }
  }
 }
