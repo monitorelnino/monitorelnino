@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1813 · Saúde no plano: plano lido pela cópia preservada e casado pelo hash
+
+Vinte e nove planos municipais registrados ficavam sem a leitura de como tratam a saúde. Quinze tinham cópia em HTML ou DOCX, ou PDF sem ".pdf" no endereço, e nunca ganhavam texto; quatro já lidos não casavam porque a busca era pela URL. A camada de texto passa a sair da cópia preservada, e a leitura casa pelo hash do documento.
 ## 2026-11-16 · #1811 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE
 
 A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.
