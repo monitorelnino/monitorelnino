@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-16 · #PRNUM · Resposta: decreto anterior reconhecido no ciclo volta a contar, marcado
+## 2026-11-16 · #1814 · Resposta: decreto anterior reconhecido no ciclo volta a contar, marcado
 
 Por decisão da editoria, decreto municipal anterior a 29/06 que a União reconheceu depois do anúncio volta a contar no ciclo (70 municípios), marcado no dado para o cartão do município dizer. O primeiro decreto de cada estado no ciclo segue sendo o de 29/06 em diante. A marca sem data do S2iD continua sem decidir.
 
