@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #PRNUM · Saúde no plano: plano lido pela cópia preservada e casado pelo hash
+
+Vinte e nove planos municipais registrados ficavam sem a leitura de como tratam a saúde. Quinze tinham cópia em HTML ou DOCX, ou PDF sem ".pdf" no endereço, e nunca ganhavam texto; quatro já lidos não casavam porque a busca era pela URL. A camada de texto passa a sair da cópia preservada, e a leitura casa pelo hash do documento.
+
 ## 2026-11-16 · #1802 · Válvula de dia não cruza a janela da noite
 
 A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.

@@ -184,6 +184,9 @@ def cobertura_sanitaria(municipios: list, referencia: list, populacao: dict, aut
         cat = r.get("categoria"); uf = r.get("uf")
         if cat not in CATEGORIAS_MUNICIPAIS or uf not in saida or not cred_pop.get(cat): continue
         degrau = conf.get((uf, r.get("nome")))
+        # 16/11/2026: o registro guarda o hash do documento lido; a URL do registro e a da cópia divergem
+        # (redirecionamento, maiúsculas, endereço reescrito), e quatro planos lidos ficavam "sem leitura".
+        if degrau is None: degrau = ((auto or {}).get(r.get("hash_evidencia")) or {}).get("degrau")
         if degrau is None: degrau = por_url.get(r.get("url"))
         if degrau is None:
             saida[uf]["planos_sem_leitura"] += 1; continue
