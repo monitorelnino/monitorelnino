@@ -78,6 +78,9 @@ LOGS_QUE_SO_CRESCEM = {
     # linha. Tratado como fila (dedup por chave) cada união colapsava as repetidas: 39.872 → 33.335
     # entradas na `main` depois do #1314. Multiconjunto pela base não perde nenhuma.
     "data/pistas_rejeitadas.json": "rejeitadas",
+    # 16/11/2026: uma decisão por promoção automática, nunca reescrita; sem classe, a união recusava
+    # o arquivo e o PR de dado da válvula inteiro.
+    "data/promocoes_automaticas.json": "decisoes",
 }
 
 
@@ -220,7 +223,12 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 _CAMPOS_DO_ARQUIVO = ("caracteres", "sha256")
 
 
-def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list):
+# Campos da pista que são registro de tentativas: só crescem, e cada tentativa conta (mesmo idêntica).
+# 16/11/2026: `busca_dirigida` (uma linha por busca dirigida) recusou o PR de dado da válvula.
+CAMPOS_QUE_SO_CRESCEM = ("busca_dirigida",)
+
+
+def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
     """Valor vencedor do campo mudado nos dois lados. `perdidos` recebe o veredito que perdeu."""
     if campo == "juiz" and isinstance(nosso_v, dict) and isinstance(deles_v, dict):
         nos_em, eles_em = str(nosso_v.get("julgado_em") or ""), str(deles_v.get("julgado_em") or "")
@@ -229,6 +237,8 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list):
         vence, perde = (nosso_v, deles_v) if nos_em > eles_em else (deles_v, nosso_v)
         perdidos.append(perde)
         return vence
+    if campo in CAMPOS_QUE_SO_CRESCEM and isinstance(nosso_v, list) and isinstance(deles_v, list):
+        return _multiconjunto(base_v if isinstance(base_v, list) else [], nosso_v, deles_v)
     if campo == "juiz_historico" and isinstance(nosso_v, list) and isinstance(deles_v, list):
         return _unir_listas(nosso_v, deles_v)
     if campo == "rejeitada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
@@ -275,7 +285,8 @@ def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
         if nos_mudou and eles_mudou and nosso_v != deles_v:
             if _AUSENTE in (nosso_v, deles_v):
                 raise Recusa(f"o campo {campo!r} foi removido de um lado e mudado no outro")
-            escolhido = _politica_do_campo(campo, nosso_v, deles_v, perdidos)
+            escolhido = _politica_do_campo(campo, nosso_v, deles_v, perdidos,
+                                           None if na_base is _AUSENTE else na_base)
         else:
             escolhido = nosso_v if nos_mudou else (deles_v if eles_mudou else na_base)
         if escolhido is _AUSENTE:
@@ -884,6 +895,13 @@ def autoteste() -> int:
 
     E = {"formato_versao": 2, "formato": "v2"}
     P = "data/log_buscas.json"
+
+    # 0. 16/11/2026: as duas recusas que derrubaram o PR de dado da válvula
+    _b = [{"em": "2026-11-10"}]
+    checar("busca_dirigida: tentativas dos dois lados somam pela base",
+           len(_mesclar_pista({"busca_dirigida": _b}, {"busca_dirigida": _b + [{"em": "2026-11-16", "a": 1}]},
+                              {"busca_dirigida": _b + [{"em": "2026-11-16", "a": 2}]})["busca_dirigida"]) == 3)
+    checar("promocoes_automaticas.json é log que só cresce", LOGS_QUE_SO_CRESCEM.get("data/promocoes_automaticas.json") == "decisoes")
 
     # 1. o caso que acontece toda rodada: os dois lados acrescentaram
     with tempfile.TemporaryDirectory() as t:

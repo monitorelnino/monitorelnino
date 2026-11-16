@@ -241,7 +241,7 @@ jobs:
           # O `if` existe por causa do `-e`: com `shell: bash` o Actions roda `bash -eo
           # pipefail`, e `cmd; rc=$?` aborta no proprio cmd que falha, antes de ler o rc.
           rc=0
-          python3 scripts/guarda_da_janela.py --ramo "${RAMO}" --elo "${{ inputs.nome }}" > /tmp/guarda.txt 2>&1 || rc=$?
+          python3 scripts/guarda_da_janela.py --ramo "${RAMO}" --elo "${{ inputs.nome }}" --teto-min "${{ inputs.timeout_minutos }}" > /tmp/guarda.txt 2>&1 || rc=$?
           cat /tmp/guarda.txt | tee -a "$GITHUB_STEP_SUMMARY"
           if [ "$rc" -eq 0 ]; then
             echo "pode=1" >> "$GITHUB_OUTPUT"
