@@ -43,7 +43,7 @@ ELOS_SEM_JANELA = ("publicar", "publicar-dados", "alertas-dia")
 
 
 def deve_parar(ramo: str, elo: str, agora: dt.datetime, dentro_da_janela,
-               suspenso: bool = False) -> str | None:
+               suspenso: bool = False, teto_min: int = 0) -> str | None:
     """Motivo para não coletar, ou None. Função pura — `dentro_da_janela` é injetada.
 
     Quatro perguntas, nesta ordem, e a primeira que responder decide:
@@ -52,6 +52,17 @@ def deve_parar(ramo: str, elo: str, agora: dt.datetime, dentro_da_janela,
       2. é elo sem janela?     o publicador, quando a editoria chama;
       3. está na janela?       se não, para.
     """
+    if str(ramo or "").startswith("coleta-dia/"):
+        # 16/11/2026: a válvula de dia é coleta FORA da janela, e nada a segurava. Disparada às 00:14 UTC
+        # com teto de 200 min, o juiz municipal dela escreveu `pistas_imprensa.json` junto com o juiz
+        # da noite; a união recusou o PR de dado e as 152 decisões foram rejulgadas à mão. O começo ou o
+        # fim do teto dentro da janela basta (a janela de 8 h é maior que o teto máximo de 340 min).
+        fim = agora + dt.timedelta(minutes=int(teto_min or 0))
+        if dentro_da_janela(agora) or dentro_da_janela(fim):
+            return (f"a válvula `{elo}` começa às {agora.strftime('%H:%M')} UTC com teto de {teto_min} min e "
+                    f"cruzaria a janela da noite (01:00-09:00 UTC), escrevendo os mesmos arquivos que os elos "
+                    f"da noite. Redisparar depois das 09:00 UTC, ou com teto que termine antes das 01:00.")
+        return None
     if str(ramo or "").strip() != "main":
         return None
     if suspenso:
@@ -95,6 +106,11 @@ def _autoteste() -> int:
        deve_parar("main", "diarios", noite, real, suspenso=True) is not None
        and deve_parar("main", "diarios", dia, real, suspenso=True) is not None
        and deve_parar("ensaio-real/x", "diarios", noite, real, suspenso=True) is None)
+    ok("válvula de dia que cruzaria a janela para; a que termina antes dela segue",
+       deve_parar("coleta-dia/x", "v", dt.datetime(2026, 11, 16, 0, 14), real, teto_min=200) is not None
+       and deve_parar("coleta-dia/x", "v", dt.datetime(2026, 11, 16, 3, 0), real, teto_min=10) is not None
+       and deve_parar("coleta-dia/x", "v", dt.datetime(2026, 11, 16, 20, 0), real, teto_min=200) is None
+       and deve_parar("coleta-dia/x", "v", dt.datetime(2026, 11, 16, 9, 0), real, teto_min=340) is None)
     ok("o motivo diz a hora e a regra",
        "27/09" in deve_parar("main", "diarios", dia, real))
 
@@ -134,7 +150,8 @@ def main(argv: list) -> int:
     ramo = opcao("--ramo", os.environ.get("GITHUB_REF_NAME", ""))
     elo = opcao("--elo", os.environ.get("ELO", ""))
     motivo = deve_parar(ramo, elo, dt.datetime.utcnow(), dentro_da_janela,
-                        elo_suspenso(os.environ.get("GITHUB_WORKFLOW_REF", "")))
+                        elo_suspenso(os.environ.get("GITHUB_WORKFLOW_REF", "")),
+                        int(opcao("--teto-min", "0") or 0))
     if motivo:
         print(f"· COLETA ADIADA: {motivo}")
         return 1

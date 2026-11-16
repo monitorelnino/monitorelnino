@@ -48,7 +48,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>blog.titulo_da_pagina</code></td><td>Blog do MARÉ</td></tr>
 </table>
-<h2>defesa-civil <small>(37 trechos)</small></h2>
+<h2>defesa-civil <small>(38 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.titulo_da_pagina</code></td><td>Defesa civil</td></tr>
@@ -122,6 +122,10 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.municipio.decreto.ato_inferido.molde</code></td><td><span class="molde">Ato municipal não localizado até o corte ({corte}); a União reconheceu a emergência em {data}</span><br><span class="ex">exemplo: Ato municipal não localizado até o corte (3); a União reconheceu a emergência em 3</span></td></tr>
 </table>
+<h3>municipio · decreto.anterior</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>defesa-civil.municipio.decreto.anterior</code></td><td>Decreto anterior a 29 de junho, reconhecido pela União depois dessa data</td></tr>
+</table>
 <h3>municipio · reconhecimento</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>defesa-civil.municipio.reconhecimento.titulo</code></td><td>Reconhecimento federal</td></tr>
@@ -144,7 +148,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>municipio · estado.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>defesa-civil.municipio.estado.molde</code></td><td><span class="molde">&lt;strong&gt;{no_estado}:&lt;/strong&gt; {n_dec} dos {n_mun} municípios decretaram emergência desde 29 de junho ({pct}%), {n_rec} reconhecidos pela União; evento mais declarado: {evento}.</span><br><span class="ex">exemplo: &lt;strong&gt;3:&lt;/strong&gt; 3 dos 3 municípios decretaram emergência desde 29 de junho (3%), 3 reconhecidos pela União; evento mais declarado: 3.</span></td></tr>
+<tr><td>texto</td><td><code>defesa-civil.municipio.estado.molde</code></td><td><span class="molde">&lt;strong&gt;{no_estado}:&lt;/strong&gt; {n_dec} dos {n_mun} municípios têm decreto de emergência publicado ou reconhecido desde 29 de junho ({pct}%), {n_rec} reconhecidos pela União; evento mais declarado: {evento}.</span><br><span class="ex">exemplo: &lt;strong&gt;3:&lt;/strong&gt; 3 dos 3 municípios têm decreto de emergência publicado ou reconhecido desde 29 de junho (3%), 3 reconhecidos pela União; evento mais declarado: 3.</span></td></tr>
 </table>
 <h3>emergencias</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1872,7 +1876,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>texto_2 · dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>index.texto_2.dica</code></td><td>Parcela da população que vive em municípios com decreto registrado desde 29 de junho de 2026. Não avalia a qualidade da resposta.</td></tr>
+<tr><td>texto</td><td><code>index.texto_2.dica</code></td><td>Parcela da população que vive em municípios com decreto registrado desde 29 de junho de 2026.</td></tr>
 </table>
 <h3>titulo_da_secao_3 · dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -2614,7 +2618,7 @@ font-size:12px}th:first-child{width:4rem}}
 <tr><td>rotulo</td><td><code>prefeituras.quem-deve.indicados.conteudo.rotulo</code></td><td>Conteúdo</td></tr>
 <tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.conteudo.texto</code></td><td>Oito itens mínimos, listados no passo 2 de &lt;a href=&quot;#caminho&quot;&gt;Do risco ao plano publicado&lt;/a&gt;</td></tr>
 </table>
-<h2>proteja-se <small>(135 trechos)</small></h2>
+<h2>proteja-se <small>(136 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>abertura</td><td><code>proteja-se.abertura</code></td><td>As orientações abaixo indicam o que fazer para se preparar, durante o evento e quando procurar ajuda. Não substitui as instruções da Defesa Civil da sua cidade.</td></tr>
@@ -2957,7 +2961,11 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>municipio · decreto.valor_plural</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>proteja-se.municipio.decreto.valor_plural</code></td><td><span class="molde">Decretou {n} vezes desde 29 de junho, a primeira em {data}</span><br><span class="ex">exemplo: Decretou 3 vezes desde 29 de junho, a primeira em 3</span></td></tr>
+<tr><td>texto</td><td><code>proteja-se.municipio.decreto.valor_plural</code></td><td><span class="molde">Decretou {n} vezes, a primeira em {data}</span><br><span class="ex">exemplo: Decretou 3 vezes, a primeira em 3</span></td></tr>
+</table>
+<h3>municipio · decreto.anterior</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>proteja-se.municipio.decreto.anterior</code></td><td>Decreto anterior a 29 de junho, reconhecido pela União depois dessa data.</td></tr>
 </table>
 <h3>municipio · decreto.reconhecido</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3580,7 +3588,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>topo · resposta.dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.resposta.dica</code></td><td>Parcela da população em estados com decreto de emergência em saúde registrado desde 29 de junho de 2026. Não avalia a qualidade da resposta.</td></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.dica</code></td><td>Parcela da população em estados com decreto de emergência em saúde registrado desde 29 de junho de 2026.</td></tr>
 </table>
 <h3>observado · registram.detalhe.dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>

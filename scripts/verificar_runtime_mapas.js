@@ -112,7 +112,7 @@ setTimeout(() => {
     mun.value = umDecretado.nome; mun.dispatchEvent(new dom.window.Event("input"));
     const card = d.getElementById("consultaCard");
     teste("consulta do município: três cartões e a linha do estado",
-      !card.hidden && card.querySelectorAll(".cartao").length === 3 && /municípios decretaram emergência/.test(card.textContent));
+      !card.hidden && card.querySelectorAll(".cartao").length === 3 && /municípios têm decreto de emergência/.test(card.textContent));
   } else teste("consulta do município existe", false);
 
   /* ── lista buscável: cobrada onde a página declara uma (`[data-busca]`), não em todo cartão ──

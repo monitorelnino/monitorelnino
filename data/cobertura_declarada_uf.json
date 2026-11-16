@@ -1,6 +1,6 @@
 {
  "_governanca": "Cobertura declarada por UF e por canal (§166, 23/09/2026). DERIVADO de data/log_buscas.json — não editar à mão; rode gerar_cobertura_declarada.py. Serve para que 'não localizamos até o corte' passe a ter escopo explícito: o leitor vê em que canais se procurou e quando. Canal com verificado=false NUNCA pode ser apresentado como ausência de plano. O canal 'lai' guarda só data e status, jamais texto ou registro de pedido (regra editorial). A ficha do estado (index) lê os canais verificados; a frase vive no catálogo (A3-18, 13/10/2026).",
- "gerado_em": "2026-11-15",
+ "gerado_em": "2026-11-16",
  "fonte": "data/log_buscas.json (log v2)",
  "nota_publica": null,
  "canais": [
@@ -59,8 +59,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 208,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 211,
      "verificacoes": 80,
      "canais_do_log": [
       "busca_web",
@@ -79,8 +79,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-15",
      "ultima_tentativa": "2026-11-15",
-     "execucoes": 604,
-     "verificacoes": 562,
+     "execucoes": 605,
+     "verificacoes": 563,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -139,8 +139,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-10",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 497,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 500,
      "verificacoes": 43,
      "canais_do_log": [
       "busca_web",
@@ -157,10 +157,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1425,
-     "verificacoes": 1328,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1427,
+     "verificacoes": 1330,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -180,8 +180,8 @@
     "diario_oficial": {
      "verificado": true,
      "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 312,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 315,
      "verificacoes": 180,
      "canais_do_log": [
       "DOM",
@@ -221,8 +221,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-13",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 164,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 167,
      "verificacoes": 67,
      "canais_do_log": [
       "busca_web",
@@ -239,10 +239,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 249,
-     "verificacoes": 152,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 253,
+     "verificacoes": 156,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -302,8 +302,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-07",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 564,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 567,
      "verificacoes": 128,
      "canais_do_log": [
       "busca_web",
@@ -320,10 +320,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 934,
-     "verificacoes": 752,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 949,
+     "verificacoes": 767,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -383,8 +383,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-17",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 2039,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 2042,
      "verificacoes": 333,
      "canais_do_log": [
       "busca_web",
@@ -401,10 +401,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 6586,
-     "verificacoes": 6155,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 6643,
+     "verificacoes": 6212,
      "canais_do_log": [
       "busca ativa de domínio",
       "fontes abertas",
@@ -463,8 +463,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-19",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1121,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1124,
      "verificacoes": 116,
      "canais_do_log": [
       "busca_web",
@@ -481,10 +481,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 3831,
-     "verificacoes": 3541,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 3834,
+     "verificacoes": 3544,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -545,8 +545,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-21",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 65,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 68,
      "verificacoes": 1,
      "canais_do_log": [
       "busca_web",
@@ -563,10 +563,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 245,
-     "verificacoes": 159,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 246,
+     "verificacoes": 160,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -625,8 +625,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-11",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 613,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 616,
      "verificacoes": 158,
      "canais_do_log": [
       "busca_web",
@@ -643,10 +643,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1740,
-     "verificacoes": 1343,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1742,
+     "verificacoes": 1345,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -705,8 +705,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-25",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1139,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1142,
      "verificacoes": 2,
      "canais_do_log": [
       "busca_web",
@@ -723,10 +723,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-14",
-     "ultima_tentativa": "2026-11-14",
-     "execucoes": 1411,
-     "verificacoes": 1240,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1413,
+     "verificacoes": 1242,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -787,8 +787,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-28",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1208,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1211,
      "verificacoes": 8,
      "canais_do_log": [
       "busca_web",
@@ -805,10 +805,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 2420,
-     "verificacoes": 2084,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 2421,
+     "verificacoes": 2085,
      "canais_do_log": [
       "busca ativa de domínio",
       "fontes abertas",
@@ -867,8 +867,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-19",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 884,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 887,
      "verificacoes": 104,
      "canais_do_log": [
       "busca_web",
@@ -885,10 +885,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 900,
-     "verificacoes": 687,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 903,
+     "verificacoes": 690,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -949,8 +949,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-19",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 425,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 428,
      "verificacoes": 52,
      "canais_do_log": [
       "busca_web",
@@ -967,10 +967,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 928,
-     "verificacoes": 754,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 930,
+     "verificacoes": 756,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -1030,8 +1030,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-17",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 4053,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 4056,
      "verificacoes": 766,
      "canais_do_log": [
       "busca_web",
@@ -1049,10 +1049,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 3606,
-     "verificacoes": 1819,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 3612,
+     "verificacoes": 1824,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1112,8 +1112,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 920,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 923,
      "verificacoes": 100,
      "canais_do_log": [
       "busca_web",
@@ -1130,10 +1130,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1101,
-     "verificacoes": 748,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1109,
+     "verificacoes": 756,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1194,8 +1194,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-27",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 974,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 977,
      "verificacoes": 2,
      "canais_do_log": [
       "busca_web",
@@ -1212,10 +1212,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1115,
-     "verificacoes": 942,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1116,
+     "verificacoes": 943,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1275,8 +1275,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1674,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1677,
      "verificacoes": 54,
      "canais_do_log": [
       "busca_web",
@@ -1293,10 +1293,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 2477,
-     "verificacoes": 1879,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 2493,
+     "verificacoes": 1895,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1357,8 +1357,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-24",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1279,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1282,
      "verificacoes": 159,
      "canais_do_log": [
       "busca_web",
@@ -1375,10 +1375,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1681,
-     "verificacoes": 1284,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1688,
+     "verificacoes": 1291,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1438,8 +1438,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-03",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1021,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1024,
      "verificacoes": 1,
      "canais_do_log": [
       "busca_web",
@@ -1517,10 +1517,10 @@
     },
     "busca_web": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 584,
-     "verificacoes": 172,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 597,
+     "verificacoes": 180,
      "canais_do_log": [
       "busca_web",
       "motor_de_busca"
@@ -1536,10 +1536,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 2220,
-     "verificacoes": 1907,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 2243,
+     "verificacoes": 1930,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1599,8 +1599,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 756,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 759,
      "verificacoes": 6,
      "canais_do_log": [
       "busca_web",
@@ -1617,10 +1617,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 476,
-     "verificacoes": 285,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 478,
+     "verificacoes": 287,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1680,8 +1680,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-18",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 2814,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 2817,
      "verificacoes": 412,
      "canais_do_log": [
       "busca_web",
@@ -1698,10 +1698,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 5643,
-     "verificacoes": 4646,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 5668,
+     "verificacoes": 4671,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1761,8 +1761,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 271,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 274,
      "verificacoes": 2,
      "canais_do_log": [
       "busca_web",
@@ -1779,10 +1779,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 380,
-     "verificacoes": 155,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 383,
+     "verificacoes": 158,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1801,8 +1801,8 @@
     "diario_oficial": {
      "verificado": true,
      "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 300,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 303,
      "verificacoes": 148,
      "canais_do_log": [
       "DOM",
@@ -1842,8 +1842,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-03",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 136,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 139,
      "verificacoes": 1,
      "canais_do_log": [
       "busca_web",
@@ -1923,8 +1923,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-03",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 1834,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 1837,
      "verificacoes": 342,
      "canais_do_log": [
       "busca_web",
@@ -1941,10 +1941,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 5316,
-     "verificacoes": 4040,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 5366,
+     "verificacoes": 4090,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -2003,8 +2003,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-01",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 2780,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 2783,
      "verificacoes": 44,
      "canais_do_log": [
       "busca_web",
@@ -2021,10 +2021,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 3140,
-     "verificacoes": 1942,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 3159,
+     "verificacoes": 1961,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -2084,8 +2084,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-09-02",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 351,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 354,
      "verificacoes": 1,
      "canais_do_log": [
       "busca_web",
@@ -2102,10 +2102,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 423,
-     "verificacoes": 338,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 429,
+     "verificacoes": 344,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -2164,8 +2164,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-04",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 643,
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 646,
      "verificacoes": 5,
      "canais_do_log": [
       "busca_web",
@@ -2182,10 +2182,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 872,
-     "verificacoes": 795,
+     "ultima_verificacao": "2026-11-16",
+     "ultima_tentativa": "2026-11-16",
+     "execucoes": 875,
+     "verificacoes": 798,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
