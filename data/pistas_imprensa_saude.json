@@ -19004,9 +19004,9 @@
    "data": "2026-07-01",
    "oficial": true,
    "consulta": "ponte no Brasil: saude.se.gov.br",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "pendente_confirmacao_documento",
+   "documento_oficial_confirmado": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+   "promovivel": true,
+   "status": "promovido_pelo_juiz",
    "registrado_em": "15/11/2026",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
@@ -19014,17 +19014,20 @@
    "url_final": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
    "entrada": "uf",
    "juiz": {
-    "promove": false,
-    "motivo": "fora_do_objeto",
+    "promove": true,
+    "motivo": null,
     "codebook": "1.8 (30/10/2026)",
-    "categoria": null,
+    "categoria": "plano",
     "data": "07/2026",
     "institui": [
      "coordenacao",
      "instrumento"
     ],
-    "status_instrumento": null,
-    "coordenacao": null
+    "status_instrumento": "NOVO",
+    "coordenacao": {
+     "degrau": "PERMANENTE",
+     "motivo": "ato institui a estrutura e não nomeia o ciclo"
+    }
    }
   }
  ]
