@@ -502,7 +502,7 @@ def encerrar_vencidos(su: dict) -> list:
     return mudadas
 
 
-def status_instrumento(categoria: str, encerrada: str = "") -> str:
+def status_instrumento(categoria: str, encerrada: str = "", data: str = "") -> str:
     """A categoria do juiz → o vocabulário de `saude_uf.json`. Função pura.
 
     `plano_elaboracao` → ELAB; `plano` (ato a partir do Boletim nº 1) → NOVO; `plano_antigo` (ato
@@ -511,6 +511,11 @@ def status_instrumento(categoria: str, encerrada: str = "") -> str:
     `consist` da UF — não aqui."""
     if encerrada and categoria in ("plano", "plano_antigo"):
         return "VENC"
+    ano = re.search(r"(20\d{2})", str(data or ""))
+    if categoria == "plano" and ano and int(ano.group(1)) < ANO_DO_CICLO:
+        # 16/11/2026 (MS, plano de seca de 06/2025): plano anterior ao ano do ciclo não é "feito para
+        # este El Niño", ainda que cite o fenômeno; é recorrente. Na dúvida, o degrau mais baixo.
+        return "VIG"
     return {"plano_elaboracao": "ELAB", "plano": "NOVO", "plano_antigo": "VIG"}.get(categoria)
 
 
@@ -931,7 +936,7 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
             v["coordenacao_f1"] = dict(v["coordenacao"])
         if "instrumento" in v["institui"]:
             encerrada = vigencia_encerrada(texto, p.get("titulo") or "")
-            v["status_instrumento"] = status_instrumento(v.get("categoria"), encerrada)
+            v["status_instrumento"] = status_instrumento(v.get("categoria"), encerrada, v.get("data"))
             if encerrada:
                 v["vigencia_declarada"] = encerrada
     return v
@@ -1215,6 +1220,7 @@ def autoteste() -> int:
                      and titulo_diz_plano("planosdepreparacaoelnino2026-2027_001")
                      and not titulo_diz_plano("planejamento_2026") and not titulo_diz_plano("Decreto 29.321")
                      and status_instrumento("plano") == "NOVO"
+                     and status_instrumento("plano", "", "06/2025") == "VIG"
                      and status_instrumento("plano_elaboracao") == "ELAB"
                      and status_instrumento("plano_antigo") == "VIG"
                      and status_instrumento("decreto") is None),
