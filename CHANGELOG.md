@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-16 · #1806 · Página de imprensa deixa de ser copiada; sessões na nuvem voltam a iniciar
 
-O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11. METODOLOGIA atualizada.
+O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11.
 
 ## 2026-11-16 · #1795 · Planos municipais de arboviroses na consulta do município
 
