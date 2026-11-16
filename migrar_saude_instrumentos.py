@@ -61,7 +61,7 @@ def melhor_instrumento(instrumentos: list) -> dict | None:
         tipo = MESMO_DEGRAU.get(i.get("tipo"), i.get("tipo"))
         tipo_i = ORDEM_TIPO.index(tipo) if tipo in ORDEM_TIPO else -1
         status_i = ORDEM_STATUS.index(i.get("status")) if i.get("status") in ORDEM_STATUS else -1
-        return (tipo_i, status_i, i.get("data") or "")
+        return (tipo_i, status_i, i.get("tipo") not in MESMO_DEGRAU, i.get("data") or "")
     return max(instrumentos, key=chave)
 
 
