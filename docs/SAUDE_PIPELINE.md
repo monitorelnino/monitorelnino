@@ -9,10 +9,11 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-08 a 2026-11-15 (1551 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-09 a 2026-11-16 (1390 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
+- consultar_querido_diario.py: erro em 2 rodadas seguidas — portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 522: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 522: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail
 - python3: erro em 2 rodadas seguidas — SyntaxError: unterminated string literal (detected at line 1)
 - verificar_links.py: erro em 2 rodadas seguidas — erro: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
 
@@ -35,7 +36,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-15 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-15 01:37 | 0 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-15 02:38 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-16 03:08 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-15 02:22 | 398 s | 15 | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -59,9 +60,9 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-15 · por canal: we
 | `coletar_dda.py` | coletor | 2026-11-15 01:30 | 56 s | — | ok | — |
 | `coletar_declarado_nacional.py` | coletor | 2026-11-15 04:21 | 28 s | — | ok | — |
 | `coletar_desfechos_saude.py` | coletor | 2026-11-15 01:22 | 450 s | — | ok | — |
-| `coletar_diarios_consorciados.py` | coletor | 2026-11-15 04:45 | 1742 s | — | ok | — |
-| `coletar_diarios_municipais.py` | coletor | 2026-11-15 04:43 | 126 s | — | ok | — |
-| `coletar_doe.py` | coletor | 2026-11-15 04:21 | 1297 s | — | ok | — |
+| `coletar_diarios_consorciados.py` | coletor | 2026-11-15 01:18 | 2727 s | 46 | ok | — |
+| `coletar_diarios_municipais.py` | coletor | 2026-11-15 01:18 | 3 s | 0 | ok | — |
+| `coletar_doe.py` | coletor | 2026-11-15 02:04 | 1971 s | — | ok | — |
 | `coletar_edicoes_doe.py` | coletor | 2026-11-15 01:16 | 601 s | — | **erro** | interrompido pelo prazo do elo |
 | `coletar_espin.py` | coletor | 2026-11-15 05:37 | 312 s | — | ok | — |
 | `coletar_execucao_mps.py` | coletor | 2026-11-15 05:44 | 22 s | — | ok | — |
@@ -74,8 +75,8 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-15 · por canal: we
 | `coletar_planos_arboviroses.py` | coletor | 2026-11-15 07:17 | 1505 s | — | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-11-14 01:13 | 3 s | — | ok | — |
 | `coletar_projecao_cil.py` | coletor | 2026-11-15 07:17 | 3 s | — | ok | — |
-| `coletar_recursos_resposta.py` | coletor | 2026-11-15 03:20 | 59 s | — | ok | — |
-| `coletar_s2id.py` | coletor | 2026-11-15 04:05 | 962 s | — | ok | — |
+| `coletar_recursos_resposta.py` | coletor | 2026-11-15 02:57 | 55 s | — | ok | — |
+| `coletar_s2id.py` | coletor | 2026-11-15 02:36 | 1223 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-11-15 01:14 | 72 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-11-11 03:09 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-11-14 01:13 | 2 s | — | ok | — |
@@ -90,7 +91,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-15 · por canal: we
 | `coletar_transferegov.py` | coletor | 2026-11-15 05:44 | 2 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-15 01:14 | 70 s | — | ok | — |
 | `conferir_emergencias_estaduais.py` | coletor | 2026-11-15 01:26 | 1 s | — | ok | — |
-| `consultar_querido_diario.py` | coletor | 2026-11-15 05:46 | 577 s | — | **erro** | código de saída 1 |
+| `consultar_querido_diario.py` | coletor | 2026-11-15 01:17 | 41 s | — | **erro** (2 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 522: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-15 01:51 | 5561 s | — | **erro** | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-11-15 00:18 | 1608 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-15 07:17 | 1 s | — | ok | — |
