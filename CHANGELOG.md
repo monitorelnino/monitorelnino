@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #PRNUM · Cartão do município diz quando o decreto é anterior a 29 de junho
+
+Na Defesa civil e no Proteja-se, o cartão do decreto passa a dizer quando o decreto do município é anterior a 29 de junho e foi reconhecido pela União depois dessa data. A linha do estado diz "decreto publicado ou reconhecido desde 29 de junho".
+
 ## 2026-11-16 · #1806 · Página de imprensa deixa de ser copiada; sessões na nuvem voltam a iniciar
 
 O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11.
