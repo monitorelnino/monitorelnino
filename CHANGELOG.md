@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-16 · #1792 · Ponte no Brasil: documentos municipais, com página redigida
+
+Entram as cópias de 15 documentos municipais que os servidores não entregam fora do país, e duas pistas novas (Itajaí, Caçador). A página guardada em `ponte/` passa pela mesma redação de credencial de terceiro e CPF que as evidências, antes do hash.
+
 ## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
 
 O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo "vigência encerrada".

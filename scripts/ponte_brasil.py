@@ -21,10 +21,22 @@ import coletores_base as cb  # noqa: E402
 PASTA = "ponte"
 
 
+def corpo_gravado(corpo: bytes) -> bytes:
+    """O que vai a disco: a página com credencial e CPF redigidos; PDF intacto. Função pura."""
+    if corpo[:5] == b"%PDF-":
+        return corpo
+    texto, codificacao = cb.decodificar_pagina(corpo)
+    return cb.redigir_dados_pessoais(cb.redigir_segredos(texto)[0])[0].encode(codificacao)
+
+
 def registro(doc: dict, url: str, corpo: bytes, via: str, hoje: str) -> tuple:
     """(doc, caminho relativo do arquivo) com a cópia registrada para `url`. Função pura."""
-    h = cb.sha256(corpo)
+    # 16/11/2026: a cópia em `ponte/` é servida pelo nosso domínio (netlify publica a raiz), como
+    # `evidencias/`; a página de prefeitura traz chave de terceiro (Google Maps) e pode trazer CPF.
+    # A redação de `preservar_evidencia` vem antes do hash: o hash é o do que está em disco.
+    corpo = corpo_gravado(corpo)
     ext = "pdf" if corpo[:5] == b"%PDF-" else "html"
+    h = cb.sha256(corpo)
     caminho = f"{PASTA}/{h}.{ext}"
     doc = dict(doc or {})
     doc.setdefault("_governanca", __doc__.split("\n\n")[1].replace("\n", " "))
@@ -38,7 +50,7 @@ def guardar(url: str, arquivo: str, via: str) -> str:
     doc, caminho = registro(cb.ler(cb.PONTE, {}), url, corpo, via, cb.hoje_editorial().isoformat())
     destino = cb.RAIZ / caminho
     destino.parent.mkdir(exist_ok=True)
-    destino.write_bytes(corpo)
+    destino.write_bytes(corpo_gravado(corpo))  # o mesmo corpo que `registro` endereçou
     cb.gravar(cb.PONTE, doc)
     return caminho
 
@@ -76,6 +88,9 @@ def autoteste() -> int:
             urllib.error.HTTPError("u", 403, "x", {}, None)) == "HTTPError"
             and com_ponte(urllib.error.HTTPError("u", 451, "x", {}, None)) == "HTTPError",
         "sem cópia registrada, o erro sobe": lambda: com_ponte(TimeoutError(), copia=False) == "TimeoutError",
+        "página guardada sem credencial de terceiro, PDF intacto": lambda:
+            b"AIzaSyA" not in corpo_gravado(b'<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyA1234567890abcdefghijklmnopqrstuv"></script>')
+            and corpo_gravado(pdf) == pdf,
     })
 
 
