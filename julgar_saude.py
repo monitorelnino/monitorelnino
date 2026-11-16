@@ -464,9 +464,7 @@ def encerrar_parados(pistas: list, hoje) -> int:
         if not str(p.get("status") or "").startswith("pendente_confirmacao"):
             continue
         j = p.get("juiz") or {}
-        if PAD_FALHA_DE_REDE.match(str(j.get("motivo") or "")):
-            continue   # queda de rede volta à fila: não é veredito
-        if j and not j.get("promove"):
+        if j and not j.get("promove") and not PAD_FALHA_DE_REDE.match(str(j.get("motivo") or "")):
             p["status"] = f"pista — recusada pelo juiz: {j.get('motivo')}"
             n += 1
             continue
@@ -474,8 +472,15 @@ def encerrar_parados(pistas: list, hoje) -> int:
         m = re.match(r"(\d{2})/(\d{2})/(\d{4})|(\d{4})-(\d{2})-(\d{2})", reg)
         d = (_dt.date(int(m[3]), int(m[2]), int(m[1])) if m and m[1] else
              _dt.date(int(m[4]), int(m[5]), int(m[6])) if m else None)
-        if not p.get("oficial") and (d is None or (hoje - d).days > DIAS_DE_VIDA_DA_PISTA):
+        velha = d is None or (hoje - d).days > DIAS_DE_VIDA_DA_PISTA
+        if velha and not p.get("oficial"):
             p["status"] = "fechada — fonte não oficial: o juiz da saúde lê só o documento do órgão"
+            n += 1
+        elif velha:
+            # Oficial que o executor não alcança (rede, não recusa) há mais de 21 dias: sai da espera com o
+            # nome do Legal, e continua candidata — sem veredito, o juiz a tenta de novo a cada rodada, e a
+            # cópia da ponte no Brasil, quando chegar, é lida (16/11/2026: MT, SP, DF, TO, AC e AP).
+            p["status"] = "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
             n += 1
     return n
 
@@ -1205,7 +1210,7 @@ def autoteste() -> int:
                                            {"status": "pendente_confirmacao_documento", "oficial": False, "registrado_em": "01/10/2026"},
                                            {"status": "pendente_confirmacao_documento", "oficial": True, "registrado_em": "01/10/2026"},
                                            {"status": "pendente_confirmacao_documento", "juiz": {"promove": False, "motivo": "documento não baixado: URLError"}}],
-                                          __import__("datetime").date(2026, 11, 16)) == 2
+                                          __import__("datetime").date(2026, 11, 16)) == 4
                      and titulo_diz_plano("Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__2_")
                      and titulo_diz_plano("planosdepreparacaoelnino2026-2027_001")
                      and not titulo_diz_plano("planejamento_2026") and not titulo_diz_plano("Decreto 29.321")
