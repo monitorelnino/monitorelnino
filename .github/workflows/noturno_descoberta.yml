@@ -54,6 +54,9 @@ jobs:
         # uma sessão rodar à mão (26 UFs sem veredito desde 27/08). Só as UFs sem veredito ou com
         # ausência verificada há mais de 30 dias.
         prazo=10min buscar_financiamento_preventivo.py --rodar
+        # 16/11/2026: documento que um órgão disse estar em elaboração (data/notas_lai.json,
+        # `plano_em_elaboracao`): busca pelo título; achado em domínio oficial vira pista para o juiz.
+        prazo=5min scripts/busca_dirigida_do_ato.py --avisos
         seguir_pistas.py --limite 20
         triar_confianca_pistas.py
         # 29/09/2026 (bloco 2, fase 1): verificador da fonte das pistas de imprensa, em MODO
