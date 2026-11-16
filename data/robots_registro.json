@@ -2969,26 +2969,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 7876,
+   "total_acessos": 7879,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.853-de-2-de-setembro-de-2026-729942478",
-     "quando": "2026-11-16T02:43:43Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.855-de-2-de-setembro-de-2026-729934800",
-     "quando": "2026-11-16T02:43:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.865-de-2-de-setembro-de-2026-729855869",
-     "quando": "2026-11-16T02:43:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.819-de-31-de-agosto-de-2026-729410676",
      "quando": "2026-11-16T02:43:56Z",
@@ -4170,9 +4152,27 @@
      "quando": "2026-11-16T02:58:11Z",
      "origem": "coletar_recursos_resposta",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22Emerg%C3%AAncia%20em%20Sa%C3%BAde%20P%C3%BAblica%20de%20Import%C3%A2ncia%20Nacional%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=12-11-2026&publishTo=16-11-2026&delta=50",
+     "quando": "2026-11-16T03:23:09Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22emerg%C3%AAncia%20em%20sa%C3%BAde%20p%C3%BAblica%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=12-11-2026&publishTo=16-11-2026&delta=50",
+     "quando": "2026-11-16T03:23:13Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/ms-n-12.492-de-12-de-novembro-de-2026-744155787",
+     "quando": "2026-11-16T03:23:19Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-15"
+   "ultimo_acesso": "2026-11-16"
   },
   "www.saopaulo.sp.gov.br": {
    "status_robots": "proibe",
@@ -5330,98 +5330,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-10-01",
-   "total_acessos": 273,
+   "total_acessos": 288,
    "acessos": [
-    {
-     "url": "https://diario.ac.gov.br/",
-     "quando": "2026-10-19T12:34:38Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/",
-     "quando": "2026-10-20T01:52:49Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkyMTUzNjM4OTM5Ny5wZGY=",
-     "quando": "2026-10-20T01:52:59Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkyMDY5MTQzMTY4NS5wZGY=",
-     "quando": "2026-10-20T01:53:11Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkyMDAwODEwNTkwNy5wZGY=",
-     "quando": "2026-10-20T01:53:26Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkxNDYxOTA3MTEwMy5wZGY=",
-     "quando": "2026-10-20T01:53:42Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkwOTQzNjc5NDQ5NS5wZGY=",
-     "quando": "2026-10-20T01:53:59Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkwMTY3NTczNTMwMi5wZGY=",
-     "quando": "2026-10-20T01:54:18Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkwMDc5NzU2OTQucGRm",
-     "quando": "2026-10-20T01:54:35Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg5NTY0MDYxNzIzLnBkZg==",
-     "quando": "2026-10-20T01:54:56Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg5MzkxNDQ2ODc5OC5wZGY=",
-     "quando": "2026-10-20T01:55:14Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg4NTI5MzA0NDQyOC5wZGY=",
-     "quando": "2026-10-20T01:57:01Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/",
-     "quando": "2026-10-20T01:57:11Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkyMTUzNjM4OTM5Ny5wZGY=",
-     "quando": "2026-10-20T01:57:17Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg3OTE5MzIxODI3Ny5wZGY=",
-     "quando": "2026-10-20T01:57:28Z",
-     "origem": "coletar_doe",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://diario.ac.gov.br/",
      "quando": "2026-10-19T15:19:51Z",
@@ -6531,9 +6441,99 @@
      "quando": "2026-11-16T02:08:08Z",
      "origem": "coletar_doe",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/",
+     "quando": "2026-11-16T02:21:11Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkxODk1MDA2MjIzNy5wZGY=",
+     "quando": "2026-11-16T02:21:15Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg5NTY0MDYxNzIzLnBkZg==",
+     "quando": "2026-11-16T02:21:22Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg3MzE3OTc1OTk1MS5wZGY=",
+     "quando": "2026-11-16T02:21:33Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg1MzMwNTc3ODQ5LnBkZg==",
+     "quando": "2026-11-16T02:21:45Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg0NTU2MjE4MjE1My5wZGY=",
+     "quando": "2026-11-16T02:22:33Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg0MDMxMTkzMzE0My5wZGY=",
+     "quando": "2026-11-16T02:22:43Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzgzNTE1NjA2MjMyLnBkZg==",
+     "quando": "2026-11-16T02:22:57Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzgzNDMwOTM3NzUyMy5wZGY=",
+     "quando": "2026-11-16T02:23:06Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/",
+     "quando": "2026-11-16T02:23:18Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/",
+     "quando": "2026-11-16T02:23:21Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkyNTg1ODE3NTU4LnBkZg==",
+     "quando": "2026-11-16T02:23:25Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkyMDAwODEwNTkwNy5wZGY=",
+     "quando": "2026-11-16T02:23:37Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg2NDUxOTYzMDYzLnBkZg==",
+     "quando": "2026-11-16T02:23:49Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg5NTY0MDYxNzIzLnBkZg==",
+     "quando": "2026-11-16T03:23:26Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-15"
+   "ultimo_acesso": "2026-11-16"
   },
   "www.matadesaojoao.ba.gov.br": {
    "status_robots": "proibe",
