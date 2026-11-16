@@ -342,6 +342,16 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const semana = v => { const m = /(\d{4})-(\d{1,2})/.exec(String(v || '')); return (m && MonitorSemana.porExtenso(+m[1], +m[2], true)) || ''; };
   const json = f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null);
   const porUF = {}, extra = Promise.all([json('data/saude_desfechos/srag.json'), json('data/meta.json')]), cartas = () => cartas.p = cartas.p || json('data/municipios_card.json');
+  /* O plano municipal de arboviroses julgado pela régua da saúde (julgar_saude_municipal.py, peso zero).
+     Sem plano promovido, a classe de ausência da coleta: citado sem confirmação, não localizado ou não verificado. */
+  const arboMun = () => arboMun.p = arboMun.p || json('data/planos_arboviroses_juiz.json');
+  const cartaoPlanoSaudeMun = (A, cod, uf) => {
+    const x = ((A || {}).municipios || {})[cod], aus = ((A || {}).sem_plano_promovido || {})[cod] || 'nao_verificado';
+    const valor = x ? esc(textoSaude('saude.estadual.tipo.' + x.status)) + (x.url ? ' · <a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(TC('plano.abrir')) + '</a>' : '')
+      : esc(TC('plano_arbo.' + aus, {corte: (A || {}).atualizado_em ? MonitorMapas.dataBR(A.atualizado_em) : ''}));
+    return cartao('musgo', TC('rotulo.plano_arbo_municipio'), valor, x ? esc(TC('plano_arbo.nota', {documento: x.doc || '', data: x.data || ''})) : '',
+      {href: 'metodologia.html', pagina: textoSaude('consulta.cartao.pagina.metodologia')});
+  };
   const cartao = (acento, rotulo, valor, nota, ver, estado) => ConsultaMunicipio.cartao({acento, rotulo, valor, nota, ver, estado});
   const verObservado = () => ({href: '#observado', pagina: textoSaude('saude.observado.titulo_da_secao')});
   const verMonitor = () => ({href: 'monitor-de-riscos.html#boxTemperatura', pagina: textoSaude('consulta.cartao.pagina.monitor_de_riscos')});
@@ -369,10 +379,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     : cartao('neutro', rotulo, esc(TC('arbo.nao_lido', {semana: semanaSemDado})), esc(TC('arbo.nota_nao_lido', {data: (d || {}).gerado_em || ''})), verObservado());
   fetch('data/geo_uf.json').then(r => r.json()).then(GEO => ConsultaMunicipio.montar({uf: 'consultaSaudeUF', municipio: 'consultaSaudeMun', lista: 'consultaSaudeLista', cartao: 'consultaSaudeCard',
     estados: Object.fromEntries(GEO.features.map(f => [f.properties.sigla, f.properties.name])), semLista: TC('sem_lista'),
-    municipios: uf => (porUF[uf] = porUF[uf] || Promise.all([json('data/saude_municipio/' + uf + '.json'), extra, cartas(), MORTALIDADE]))
-      .then(([D, [S, meta], CARD, M]) => { porUF[uf].dados = {D, S, meta, CARD, M}; return D && Object.values(D.municipios).map(x => x.nome); }),
+    municipios: uf => (porUF[uf] = porUF[uf] || Promise.all([json('data/saude_municipio/' + uf + '.json'), extra, cartas(), MORTALIDADE, arboMun()]))
+      .then(([D, [S, meta], CARD, M, A]) => { porUF[uf].dados = {D, S, meta, CARD, M, A}; return D && Object.values(D.municipios).map(x => x.nome); }),
     mostrar: (uf, nome, card) => {
-      const {D, S, meta, CARD, M} = porUF[uf].dados, o = D.origens || {}, [cod, m] = Object.entries(D.municipios).find(([, x]) => x.nome === nome);
+      const {D, S, meta, CARD, M, A} = porUF[uf].dados, o = D.origens || {}, [cod, m] = Object.entries(D.municipios).find(([, x]) => x.nome === nome);
       const sp = ConsultaMunicipio.situacaoDoPlano(((CARD || {}).municipios || {})[cod]);
       const sinal = (m.dengue || m.chikungunya || {}).semana, quando = semana(sinal);
       const e = ufsDoMonitor()[uf] || {}, pl = m.saude_no_plano, calor = m.calor && m.calor !== 'Normal';
@@ -385,7 +395,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
             esc(TC('srag.nota', {data: (S && MonitorMapas.dataBR(S.coletado_em)) || ''})), verObservado(), NOME_UF[uf])
         + cartao('musgo', TC('rotulo.plano_estado'), esc(textoSaude('saude.estadual.tipo.' + tipoDoEstado(uf))),
             esc(TC('plano_estado.nota', {data: MSAUDE.corte || ''})), {href: '#estadual', ficha: uf, pagina: textoSaude('saude.estadual.titulo_da_secao')}, NOME_UF[uf])
-        + cartaoPlanoDoMunicipio(sp, pl, uf, meta) + cartaoMortalidade(M, uf) + '</div>';
+        + cartaoPlanoDoMunicipio(sp, pl, uf, meta) + cartaoPlanoSaudeMun(A, cod, uf) + cartaoMortalidade(M, uf) + '</div>';
       card.querySelector('[data-ficha]').addEventListener('click', ev => { ev.preventDefault(); abrirDetalheSaude(ev.target.dataset.ficha); });
     }})).catch(_erroSaude("saude:consulta"));
 })();
