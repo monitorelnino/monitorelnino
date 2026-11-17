@@ -12,6 +12,11 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-17 · #1827 · Respostas de LAI vão ao juiz
 
 Documento recebido por pedido de acesso à informação vai ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, como pista direta; sem endereço, por busca dirigida semanal. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos de MT; sai o arquivo de revisão manual de MT. Os planos do painel da Defesa Civil do AM também vão ao juiz (50 pistas).
+## 2026-11-17 · #1828 · Pré-noite: publicação recente não é fila presa; aviso comenta quando a causa muda
+
+A checagem das 23h reprovava com a publicação de dados na fila ou rodando (15 e 16/11). Agora só conta como
+fila presa se estiver aberta há mais de 45 minutos. O aviso do projeto comenta na Issue aberta quando o texto
+da causa muda, em vez de deixar o corpo da primeira ocorrência.
 
 ## 2026-11-17 · #1825 · Noite: vigia dos documentos anunciados por órgão
 

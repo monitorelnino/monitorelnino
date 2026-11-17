@@ -43,6 +43,9 @@ SEGREDOS_DA_NOITE = ("ROBO_TOKEN", "ROBO_DEPLOY_KEY", "NETLIFY_AUTH_TOKEN", "NET
 QUEM_PODE_ESTAR_RODANDO = ("checagem_pre_noite.yml", "despachante.yml", "relogio.yml",
                            "vigia_da_abertura.yml")
 ABERTOS = ("queued", "requested", "waiting", "pending", "in_progress")
+# 17/11/2026: a publicação de dados (merge do dia) está na fila ou rodando às 23h sem estar presa; só
+# reprova se estiver aberta há mais que isto (minutos). Era vermelho nas noites de 15 e 16/11.
+TOLERADOS_POR_IDADE = {"publicar_dados.yml": 45}
 REPOSITORIO_PRIVADO = "monitorelnino/robo-registro"
 RAMOS_FORA_DA_FILA = ("ensaio-real/", "coleta-dia/")
 
@@ -101,8 +104,12 @@ def avaliar(fatos: dict, agora: dt.datetime) -> list:
                 "detalhe": f"{len(tardios)} mesclagem(ns) depois do corte" if tardios
                            else "nenhuma mesclagem depois do corte"})
 
+    def _recente(r):
+        desde, lim = _iso(r.get("desde")), TOLERADOS_POR_IDADE.get(r.get("workflow"))
+        return bool(desde and lim and (agora - desde).total_seconds() < lim * 60)
+
     presos = [r for r in fatos.get("runs_abertos") or []
-              if r.get("workflow") not in QUEM_PODE_ESTAR_RODANDO
+              if r.get("workflow") not in QUEM_PODE_ESTAR_RODANDO and not _recente(r)
               and str(r.get("status") or "").lower() in ABERTOS]
     out.append({"pergunta": "fila de runs vazia", "ok": not presos,
                 "detalhe": ", ".join(f"{r['workflow']} ({r['status']})" for r in presos[:8])
@@ -191,7 +198,7 @@ def abertos_da_api(respostas: list) -> list:
             if str(r.get("head_branch") or "").startswith(RAMOS_FORA_DA_FILA):
                 continue
             out.append({"workflow": pathlib.Path(str(r.get("path") or "")).name or r.get("name"),
-                        "status": r.get("status")})
+                        "status": r.get("status"), "desde": r.get("run_started_at") or r.get("created_at")})
     return out
 
 
@@ -290,6 +297,11 @@ def autoteste() -> int:
     ok("run aberto lido da API reprova a fila; o despachante não (F37)",
        not fila[2]["ok"] and "noturno_triagem.yml" in fila[2]["detalhe"]
        and "despachante" not in fila[2]["detalhe"])
+    _pub = [{"workflow": "publicar_dados.yml", "status": "queued", "desde": "2026-10-10T22:40:00Z"}]
+    ok("publicação aberta há 20 min não é fila presa; há 80 min, é",
+       avaliar(dict(bom, runs_abertos=_pub), agora)[2]["ok"]
+       and not avaliar(dict(bom, runs_abertos=[dict(_pub[0], desde="2026-10-10T21:40:00Z")]), agora)[2]["ok"]
+       and not avaliar(dict(bom, runs_abertos=[dict(_pub[0], workflow="noturno_triagem.yml")]), agora)[2]["ok"])
     _f43 = abertos_da_api([{"workflow_runs": [
         {"id": 7, "path": ".github/workflows/noturno_diarios.yml", "status": "in_progress",
          "head_branch": "ensaio-real/2026-10-11-1"},
