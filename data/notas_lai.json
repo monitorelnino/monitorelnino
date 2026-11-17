@@ -1,6 +1,6 @@
 {
  "gerado_em": "2026-10-04",
- "_governanca": "Afirmações de órgão público recebidas por resposta a pedido de acesso à informação ou por comunicação direta do órgão. NÃO PONTUAM no índice: são prova de que o órgão afirma, não de que o documento existe e diz o que se espera dele. Os textos são literais aprovados pela editoria em 03/10/2026; ver scripts/incorporar_respostas_lai.py. `plano_em_elaboracao` é estado próprio, distinto de ausência: o órgão diz que o documento está em preparação; a noite procura o título (scripts/busca_dirigida_do_ato.py --avisos) e o achado em domínio oficial vira pista e segue o juiz.",
+ "_governanca": "Afirmações de órgão público recebidas por resposta a pedido de acesso à informação ou por comunicação direta do órgão. NÃO PONTUAM no índice: são prova de que o órgão afirma, não de que o documento existe e diz o que se espera dele. Os textos são literais aprovados pela editoria em 03/10/2026; ver scripts/incorporar_respostas_lai.py. `plano_em_elaboracao` é estado próprio, distinto de ausência: o órgão diz que o documento está em preparação; a noite procura o título (scripts/busca_dirigida_do_ato.py --avisos) e o achado em domínio oficial vira pista e segue o juiz. 17/11/2026: `documentos` (com endereço público), `buscas_dirigidas` e os planos em elaboração são levados ao juiz toda noite por scripts/busca_dirigida_do_ato.py --avisos (decisão de 03/10: documento anexado ou com link vai ao juiz). O PDF recebido em anexo não é publicado: procura-se o mesmo documento no endereço público do órgão.",
  "municipios": [
   {
    "nome": "Tangará da Serra",
@@ -708,6 +708,157 @@
    "fonte": "Plano de Adaptação na Saúde de RO, recebido da SESAU/RO por pedido de acesso à informação em 15/10/2026",
    "url": null,
    "registrado_em": "2026-10-19"
+  },
+  {
+   "municipio": "Água Boa",
+   "uf": "MT",
+   "ibge": "5100201",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 10/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Cláudia",
+   "uf": "MT",
+   "ibge": "5103056",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 10/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Juína",
+   "uf": "MT",
+   "ibge": "5105150",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 10/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Colíder",
+   "uf": "MT",
+   "ibge": "5103205",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 11/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Aripuanã",
+   "uf": "MT",
+   "ibge": "5101407",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 11/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Primavera do Leste",
+   "uf": "MT",
+   "ibge": "5107040",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 12/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Sorriso",
+   "uf": "MT",
+   "ibge": "5107925",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 12/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Alto Paraguai",
+   "uf": "MT",
+   "ibge": "5100508",
+   "assunto": "plano de contingência",
+   "nivel": "B",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ); informado em elaboração, previsão 12/2026",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Itaúba",
+   "uf": "MT",
+   "ibge": "5104559",
+   "assunto": "Decreto nº 2.205 de 20/07/2026 (homologação estadual de situação de emergência)",
+   "nivel": "A",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ)",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Várzea Grande",
+   "uf": "MT",
+   "ibge": "5108402",
+   "assunto": "Decreto nº 2.233 de 27/08/2026 (homologação estadual de situação de emergência)",
+   "nivel": "A",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ)",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": "Colniza",
+   "uf": "MT",
+   "ibge": "5103254",
+   "assunto": "Decreto nº 2.234 de 28/08/2026 (homologação estadual de situação de emergência)",
+   "nivel": "A",
+   "origem": "resposta_lai",
+   "fonte": "Defesa Civil de MT, resposta a pedido de acesso à informação de 23/09/2026 (pedido do MARÉ)",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": null,
+   "uf": "AM",
+   "assunto": "Plano Tático de Estiagem 2026",
+   "nivel": "A",
+   "origem": "resposta_lai",
+   "fonte": "Secretaria de Estado de Defesa Civil do AM, resposta a pedido de acesso à informação de 01/10/2026 (anexo)",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": null,
+   "uf": "AM",
+   "assunto": "Plano Tático de Inundações 2026",
+   "nivel": "A",
+   "origem": "resposta_lai",
+   "fonte": "Secretaria de Estado de Defesa Civil do AM, resposta a pedido de acesso à informação de 01/10/2026 (anexo)",
+   "url": null,
+   "registrado_em": "2026-11-17"
+  },
+  {
+   "municipio": null,
+   "uf": "RO",
+   "assunto": "Plano Operacional de Prevenção e Resposta à Crise Hídrica 2025/2026/2027",
+   "nivel": "A",
+   "origem": "resposta_lai",
+   "fonte": "CEPCIF/CBMRO, resposta a pedido de acesso à informação de 30/09/2026 (anexo)",
+   "url": null,
+   "registrado_em": "2026-11-17"
   }
  ],
  "documentos_de_estado": [
@@ -800,6 +951,15 @@
     "coordenacao": "Quadro 15 (p. 35) descreve COE-Saúde, coordenação técnica e Sala de Situação de Saúde; os atos de instituição (I.01, I.05, prazo 30/11/2026) aparecem como ações previstas (p. 45), nenhum como já publicado.",
     "cobertura_municipal": "Sem relação de planos municipais; prevê resolução da CIB (XX.01) e 10 planos municipais protocolados até 31/10/2026 e 52 até 30/11/2026 (XX.03, p. 49)."
    }
+  }
+ ],
+ "documentos": [
+  {
+   "uf": "RO",
+   "titulo": "Plano de Adaptação na Saúde de Rondônia ao Enfrentamento aos Impactos do El Niño 2026 até 2027",
+   "url": "https://rondonia.ro.gov.br/publicacao/plano-de-adaptacao-na-saude-de-rondonia-ao-enfrentamento-aos-impactos-do-el-nino-2026-ate-2027/",
+   "fonte": "SESAU/RO, resposta a pedido de acesso à informação de 15/10/2026 (link de publicação)",
+   "registrado_em": "2026-11-17"
   }
  ]
 }

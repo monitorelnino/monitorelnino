@@ -240,21 +240,42 @@ def procurar(ident: dict, consultar_qd=None, buscar_web=None, esperar=None) -> t
 AVISOS = RAIZ / "data" / "notas_lai.json"
 
 
-def vigiar_avisos(registros, buscar_web, esperar=None, hoje=None) -> list:
-    """Documento que um órgão disse estar em elaboração: procura o título; achado vira pista.
+def vigiar_avisos(notas: dict, buscar_web, esperar=None, hoje=None, dia: int = 0) -> list:
+    """O que um órgão nos disse (resposta de LAI ou comunicação direta), levado ao juiz. Função pura.
 
-    Função pura (rede e data por parâmetro). Só `plano_em_elaboracao` com título entra. O achado é
-    endereço, não prova: a pista vai ao juiz, que confere domínio, órgão, título, ano e ato."""
+    17/11/2026 (editoria, 03/10: "documento anexado ou com link vai ao juiz"): até aqui as respostas de LAI
+    ficavam registradas em `data/notas_lai.json` e nada as levava adiante. Três entradas:
+      · `documentos` com endereço público → pista direta;
+      · `estados` com `plano_em_elaboracao` e título → procura o título, toda noite;
+      · `buscas_dirigidas` (plano ou ato que o órgão informou sem endereço) → procura pelo município e pelo
+        assunto, um sétimo por noite (o índice da entrada módulo 7 é o dia da semana): cada uma, uma vez por semana.
+    O achado é endereço, não prova: a pista vai ao juiz, que confere domínio, órgão, título, ano e ato."""
     novas = []
-    for r in registros or []:
+
+    def pista(url, alvo, titulo, motivo, tipo="plano"):
+        return {"url_final": url, "tipo": tipo, "alvo": alvo, "nivel": "A", "data": hoje,
+                "origem": "busca_web", "motivo_da_busca": motivo, "titulo": titulo}
+
+    for d in (notas or {}).get("documentos") or []:
+        if d.get("url"):
+            novas.append(pista(d["url"], d.get("ibge") or d.get("uf"), d.get("titulo"), "resposta_lai"))
+    for r in (notas or {}).get("estados") or []:
         if r.get("situacao") != "plano_em_elaboracao" or not r.get("titulo_do_documento"):
             continue
-        ident = identificadores({**r, "alvo": r.get("uf")})
+        url, _ = procurar(identificadores({**r, "alvo": r.get("uf")}), buscar_web=buscar_web, esperar=esperar)
+        if url:
+            novas.append(pista(url, r["uf"], r["titulo_do_documento"], "aviso_de_orgao_oficial"))
+    for n, b in enumerate((notas or {}).get("buscas_dirigidas") or []):
+        if n % 7 != dia % 7 or b.get("url"):
+            continue
+        mun = b.get("municipio")
+        ident = identificadores({"titulo": b.get("assunto"), "municipio": mun, "uf": b.get("uf"),
+                                 "ibge": b.get("ibge"), **({} if mun else {"titulo_do_documento": b.get("assunto")})})
         url, _ = procurar(ident, buscar_web=buscar_web, esperar=esperar)
         if url:
-            novas.append({"url_final": url, "tipo": "plano", "alvo": r["uf"], "nivel": "A",
-                          "data": hoje, "origem": "busca_web", "motivo_da_busca": "aviso_de_orgao_oficial",
-                          "titulo": r["titulo_do_documento"]})
+            alvo = (b.get("ibge") or ibge_de(mun, b.get("uf"))) if mun else b.get("uf")
+            novas.append(pista(url, alvo or b.get("uf"), b.get("assunto"), "resposta_lai",
+                               tipo="decreto" if ident.get("tipo") == "decreto" else "plano"))
     return novas
 
 
@@ -263,10 +284,11 @@ def rodar_avisos() -> int:
     from pistas import gravar_lote
     sys.path.insert(0, str(RAIZ))
     from julgar_filas import _web_para_busca_dirigida, _ritmo
-    registros = json.loads(AVISOS.read_text(encoding="utf-8")).get("estados", [])
-    novas = vigiar_avisos(registros, _web_para_busca_dirigida, _ritmo, hoje_editorial().isoformat())
+    notas = json.loads(AVISOS.read_text(encoding="utf-8"))
+    hoje = hoje_editorial()
+    novas = vigiar_avisos(notas, _web_para_busca_dirigida, _ritmo, hoje.isoformat(), hoje.weekday())
     r = gravar_lote(novas, origem="busca_web", ler_fn=ler, gravar_fn=gravar) if novas else {}
-    print(f"avisos de órgão: {len(novas)} documento(s) achado(s); gravadas {r.get('gravadas', 0)}")
+    print(f"avisos e respostas de órgão: {len(novas)} documento(s) achado(s); gravadas {r.get('gravadas', 0)}")
     return 0
 
 
@@ -401,12 +423,21 @@ def autoteste() -> int:
     q = consultas_dirigidas(identificadores({**aviso, "alvo": "RN"}))
     casos.append(("aviso estadual procura o título exato do órgão, com o território",
                   q == ['"Plano de Ação Estadual de Enfrentamento aos Efeitos do El Niño" "Rio Grande do Norte"']))
-    achou = vigiar_avisos([aviso, {**aviso, "situacao": "sem_plano_estadual"}],
+    achou = vigiar_avisos({"estados": [aviso, {**aviso, "situacao": "sem_plano_estadual"}]},
                           lambda c: [{"url": "https://idema.rn.gov.br/plano-el-nino.pdf"}], hoje="2026-11-17")
     casos.append(("achado em domínio oficial vira pista de plano da UF; outro estado de registro não procura",
                   len(achou) == 1 and achou[0]["alvo"] == "RN" and achou[0]["tipo"] == "plano"))
     casos.append(("notícia não vira pista do aviso",
-                  vigiar_avisos([aviso], lambda c: [{"url": "https://jornal.com/plano-el-nino"}]) == []))
+                  vigiar_avisos({"estados": [aviso]}, lambda c: [{"url": "https://jornal.com/plano-el-nino"}]) == []))
+    lai = {"documentos": [{"uf": "RO", "titulo": "Plano X", "url": "https://rondonia.ro.gov.br/publicacao/plano-x/"}],
+           "buscas_dirigidas": [{"municipio": "Itaúba", "uf": "MT", "ibge": "5104559", "assunto": "Decreto nº 2.205 de 20/07/2026"},
+                                {"municipio": "Bonito", "uf": "MS", "assunto": "plano de contingência"}]}
+    vistas = []
+    achou = vigiar_avisos(lai, lambda c: vistas.append(c) or [{"url": "https://www.mt.gov.br/decreto-2205.pdf"}], hoje="2026-11-17", dia=0)
+    casos.append(("resposta de LAI com endereço vira pista direta; sem endereço, busca pelo ato informado",
+                  [x["tipo"] for x in achou] == ["plano", "decreto"] and achou[1]["alvo"] == "5104559"
+                  and any('"decreto nº 2.205"' in v for v in vistas)))
+    casos.append(("busca dirigida da LAI: um sétimo por noite", len(vigiar_avisos(lai, lambda c: [], dia=1)) == 1))
 
     m1, m2 = RE_DATA.search("publicado em 14/07/2026"), RE_DATA.search("em 3 de julho de 2026")
     casos.append(("RE_DATA lê o ano com quatro dígitos (A1-27: era referência ao grupo 2)",
