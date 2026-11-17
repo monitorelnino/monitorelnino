@@ -824,7 +824,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 3201704,ES,Conceição do Castelo,estadual,2026-11-16,plano,False,
 3201803,ES,Divino de São Lourenço,municipal_completo,2026-11-16,plano,False,
 3201902,ES,Domingos Martins,municipal_completo,2026-11-16,plano_antigo,False,
-3202009,ES,Dores do Rio Preto,estadual,2026-11-16,,False,
+3202009,ES,Dores do Rio Preto,estadual,2026-11-16,plano,False,
 3202108,ES,Ecoporanga,municipal_completo,2026-11-16,plano,False,
 3202207,ES,Fundão,estadual,2026-11-16,plano,False,
 3202256,ES,Governador Lindenberg,municipal_completo,2026-11-16,plano,False,
@@ -1091,7 +1091,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 5219712,GO,Santo Antônio da Barra,municipal_completo,2026-11-16,,False,
 5219738,GO,Santo Antônio de Goiás,municipal_completo,2026-11-16,,False,
 5219753,GO,Santo Antônio do Descoberto,municipal_completo,2026-11-16,,False,
-5220454,GO,Senador Canedo,municipal_completo,2026-11-16,,False,
+5220454,GO,Senador Canedo,municipal_completo,2026-11-16,plano_antigo,False,
 5220504,GO,Serranópolis,municipal_completo,2026-11-16,,False,
 5220603,GO,Silvânia,municipal_completo,2026-11-16,,False,
 5220686,GO,Simolândia,municipal_completo,2026-11-16,,False,
@@ -3232,12 +3232,12 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4103008,PR,Boa Esperança,municipal_completo,2026-11-16,plano,False,
 4103024,PR,Boa Esperança do Iguaçu,municipal_completo,2026-11-16,,True,True
 4103040,PR,Boa Ventura de São Roque,estadual,2026-11-16,,False,
-4103057,PR,Boa Vista da Aparecida,municipal_completo,2026-11-16,,True,True
+4103057,PR,Boa Vista da Aparecida,municipal_completo,2026-11-16,plano,True,True
 4103107,PR,Bocaiúva do Sul,municipal_completo,2026-11-16,,False,
 4103156,PR,Bom Jesus do Sul,municipal_completo,2026-11-16,,False,
 4103206,PR,Bom Sucesso,municipal_completo,2026-11-16,,False,
 4103222,PR,Bom Sucesso do Sul,municipal_completo,2026-11-16,plano,False,True
-4103305,PR,Borrazópolis,municipal_completo,2026-11-16,,False,
+4103305,PR,Borrazópolis,municipal_completo,2026-11-16,plano,False,
 4103354,PR,Braganey,municipal_completo,2026-11-16,,False,
 4103370,PR,Brasilândia do Sul,municipal_completo,2026-11-16,,False,
 4103404,PR,Cafeara,municipal_completo,2026-11-16,,False,
@@ -3394,7 +3394,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4114203,PR,Mandaguari,estadual,2026-11-16,,False,
 4114104,PR,Mandaguaçu,municipal_completo,2026-11-16,,False,
 4114302,PR,Mandirituba,estadual,2026-11-16,,False,
-4114351,PR,Manfrinópolis,municipal_completo,2026-11-16,,False,
+4114351,PR,Manfrinópolis,municipal_completo,2026-11-16,plano,False,
 4114401,PR,Mangueirinha,municipal_completo,2026-11-16,,False,True
 4114500,PR,Manoel Ribas,estadual,2026-11-16,,True,True
 4114609,PR,Marechal Cândido Rondon,municipal_completo,2026-11-16,,False,
@@ -3451,7 +3451,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4118402,PR,Paranavaí,municipal_completo,2026-11-16,,True,True
 4118006,PR,Paraíso do Norte,estadual,2026-11-16,,False,
 4118451,PR,Pato Bragado,municipal_completo,2026-11-16,,False,
-4118501,PR,Pato Branco,municipal_completo,2026-11-16,,False,
+4118501,PR,Pato Branco,municipal_completo,2026-11-16,plano,False,
 4118600,PR,Paula Freitas,municipal_completo,2026-11-16,,False,
 4118709,PR,Paulo Frontin,municipal_completo,2026-11-16,,False,
 4118808,PR,Peabiru,municipal_completo,2026-11-16,,True,True
@@ -3493,7 +3493,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4121307,PR,Rancho Alegre,municipal_completo,2026-11-16,,False,
 4121356,PR,Rancho Alegre D'Oeste,estadual,2026-11-16,,False,
 4121406,PR,Realeza,municipal_completo,2026-11-16,,False,True
-4121505,PR,Rebouças,municipal_completo,2026-11-16,,False,True
+4121505,PR,Rebouças,municipal_completo,2026-11-16,plano,False,True
 4121604,PR,Renascença,municipal_completo,2026-11-16,,True,True
 4121703,PR,Reserva,municipal_completo,2026-11-16,,True,True
 4121752,PR,Reserva do Iguaçu,municipal_completo,2026-11-16,,False,True
@@ -3512,7 +3512,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4122701,PR,Sabáudia,municipal_completo,2026-11-16,,False,
 4122800,PR,Salgado Filho,municipal_completo,2026-11-16,,False,
 4122909,PR,Salto do Itararé,municipal_completo,2026-11-16,,False,
-4123006,PR,Salto do Lontra,municipal_completo,2026-11-16,,False,
+4123006,PR,Salto do Lontra,municipal_completo,2026-11-16,plano,False,
 4123105,PR,Santa Amélia,municipal_completo,2026-11-16,,False,
 4123204,PR,Santa Cecília do Pavão,municipal_completo,2026-11-16,,False,
 4123303,PR,Santa Cruz de Monte Castelo,municipal_completo,2026-11-16,,False,True
@@ -3635,7 +3635,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 3302601,RJ,Mangaratiba,municipal_completo,2026-11-16,,False,
 3302700,RJ,Maricá,municipal_completo,2026-11-16,plano,False,
 3302809,RJ,Mendes,municipal_completo,2026-11-16,,False,
-3302858,RJ,Mesquita,municipal_completo,2026-11-16,,False,
+3302858,RJ,Mesquita,municipal_completo,2026-11-16,plano,False,
 3302908,RJ,Miguel Pereira,municipal_completo,2026-11-16,,False,
 3303005,RJ,Miracema,municipal_completo,2026-11-16,,False,
 3303104,RJ,Natividade,municipal_completo,2026-11-16,,False,
@@ -3771,7 +3771,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 2407807,RN,Monte Alegre,municipal_completo,2026-11-16,,False,
 2407906,RN,Monte das Gameleiras,municipal_completo,2026-11-16,decreto,True,
 2408003,RN,Mossoró,municipal_completo,2026-11-15,,False,
-2408102,RN,Natal,municipal_completo,2026-11-15,,False,
+2408102,RN,Natal,municipal_completo,2026-11-15,plano_antigo,False,
 2408300,RN,Nova Cruz,municipal_completo,2026-11-15,,True,
 2408201,RN,Nísia Floresta,municipal_completo,2026-11-16,,False,
 2408409,RN,Olho-d'Água do Borges,municipal_completo,2026-11-15,,False,
@@ -3939,7 +3939,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4300877,RS,Araricá,municipal_completo,2026-11-16,,False,
 4300901,RS,Aratiba,municipal_completo,2026-11-16,,False,
 4301305,RS,Arroio Grande,municipal_completo,2026-11-16,,True,
-4301008,RS,Arroio do Meio,municipal_completo,2026-11-16,,False,
+4301008,RS,Arroio do Meio,municipal_completo,2026-11-16,plano,False,
 4301073,RS,Arroio do Padre,municipal_completo,2026-11-16,,True,
 4301057,RS,Arroio do Sal,municipal_completo,2026-11-16,plano_antigo,False,
 4301206,RS,Arroio do Tigre,estadual,2026-11-16,plano_antigo,True,
@@ -3997,7 +3997,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4304606,RS,Canoas,municipal_completo,2026-11-16,,False,
 4304614,RS,Canudos do Vale,municipal_completo,2026-11-16,plano_antigo,True,
 4304689,RS,Capela de Santana,estadual,2026-11-16,,False,
-4304697,RS,Capitão,municipal_completo,2026-11-16,,False,
+4304697,RS,Capitão,municipal_completo,2026-11-16,plano_antigo,False,
 4304671,RS,Capivari do Sul,municipal_completo,2026-11-16,,False,
 4304622,RS,Capão Bonito do Sul,municipal_completo,2026-11-16,,True,
 4304630,RS,Capão da Canoa,municipal_completo,2026-11-16,,False,
@@ -4057,7 +4057,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4306700,RS,Dona Francisca,municipal_completo,2026-11-16,plano_antigo,False,
 4306734,RS,Doutor Maurício Cardoso,estadual,2026-11-16,,False,
 4306759,RS,Doutor Ricardo,estadual,2026-11-16,,False,
-4306767,RS,Eldorado do Sul,municipal_completo,2026-11-16,,True,
+4306767,RS,Eldorado do Sul,municipal_completo,2026-11-16,plano_antigo,True,
 4306809,RS,Encantado,estadual,2026-11-16,plano_antigo,True,
 4306908,RS,Encruzilhada do Sul,municipal_completo,2026-11-16,,False,
 4306924,RS,Engenho Velho,municipal_completo,2026-11-16,,False,
@@ -4382,7 +4382,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4321808,RS,Três de Maio,estadual,2026-11-16,plano_antigo,True,
 4322103,RS,Tucunduva,estadual,2026-11-16,plano_antigo,False,
 4322152,RS,Tunas,municipal_completo,2026-11-16,plano_antigo,True,
-4322186,RS,Tupanci do Sul,municipal_completo,2026-11-16,,False,
+4322186,RS,Tupanci do Sul,municipal_completo,2026-11-16,plano_antigo,False,
 4322202,RS,Tupanciretã,municipal_completo,2026-11-16,,False,
 4322251,RS,Tupandi,municipal_completo,2026-11-16,,False,
 4322301,RS,Tuparendi,estadual,2026-11-16,plano_antigo,False,
@@ -4635,7 +4635,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 4214805,SC,Rio do Sul,municipal_completo,2026-11-16,,False,
 4214706,SC,Rio dos Cedros,estadual,2026-11-16,plano_antigo,False,
 4215075,SC,Riqueza,estadual,2026-11-16,,False,
-4215109,SC,Rodeio,estadual,2026-11-16,,False,
+4215109,SC,Rodeio,estadual,2026-11-16,plano_antigo,False,
 4215208,SC,Romelândia,estadual,2026-11-16,,False,
 4215307,SC,Salete,estadual,2026-11-16,,False,
 4215356,SC,Saltinho,estadual,2026-11-16,,False,
@@ -4738,7 +4738,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 2802700,SE,Ilha das Flores,municipal_completo,2026-11-15,,False,
 2802809,SE,Indiaroba,municipal_completo,2026-11-15,,False,
 2802908,SE,Itabaiana,municipal_completo,2026-11-15,,False,
-2803005,SE,Itabaianinha,municipal_completo,2026-11-15,,False,
+2803005,SE,Itabaianinha,municipal_completo,2026-11-15,plano,False,
 2803104,SE,Itabi,municipal_completo,2026-11-15,,False,
 2803203,SE,Itaporanga d'Ajuda,municipal_completo,2026-11-15,,False,
 2803302,SE,Japaratuba,municipal_completo,2026-11-15,,False,
@@ -4778,7 +4778,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 2806602,SE,Santo Amaro das Brotas,municipal_completo,2026-11-15,,False,
 2807105,SE,Simão Dias,municipal_completo,2026-11-15,,False,
 2807204,SE,Siriri,municipal_completo,2026-11-15,,False,
-2806701,SE,São Cristóvão,municipal_completo,2026-11-15,,False,
+2806701,SE,São Cristóvão,municipal_completo,2026-11-15,plano,False,
 2806800,SE,São Domingos,municipal_completo,2026-11-15,,False,
 2806909,SE,São Francisco,municipal_completo,2026-11-15,,False,
 2807006,SE,São Miguel do Aleixo,municipal_completo,2026-11-15,,True,
@@ -5252,7 +5252,7 @@ ibge,uf,municipio,nivel_verificacao,ultima_verificacao,plano_localizado,decreto_
 3541802,SP,Queiroz,municipal_completo,2026-11-16,,False,
 3541901,SP,Queluz,municipal_completo,2026-11-16,plano_antigo,False,
 3542008,SP,Quintana,municipal_completo,2026-11-16,,False,
-3542107,SP,Rafard,municipal_completo,2026-11-16,,False,
+3542107,SP,Rafard,municipal_completo,2026-11-16,plano,False,
 3542206,SP,Rancharia,municipal_completo,2026-11-16,,False,
 3542305,SP,Redenção da Serra,estadual,2026-11-16,,False,
 3542404,SP,Regente Feijó,municipal_completo,2026-11-16,,False,
