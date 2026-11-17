@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PRNUM · Plano desatualizado segundo a lei, em todo o país
+## 2026-11-17 · #1835 · Plano desatualizado segundo a lei, em todo o país
 
 Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como "plano desatualizado segundo a lei" e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.
 
