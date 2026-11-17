@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PRNUM · Respostas de LAI vão ao juiz
+## 2026-11-17 · #1827 · Respostas de LAI vão ao juiz
 
 Documento recebido por pedido de acesso à informação, com endereço ou sem ele, passa a ser levado ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, vira pista direta; sem endereço, busca dirigida pelo município e pelo assunto, uma vez por semana. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos informados por MT; o arquivo de revisão manual de MT sai.
 
