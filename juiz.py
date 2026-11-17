@@ -1325,7 +1325,14 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if not eh_estadual and not nome_comum_confirmado(texto_da_identidade or texto, nome, uf, url):
         return recusa("nome_comum_sem_ente", "J4")
 
-    como_plano = e_plano_pelo_cabecalho(texto)
+    # J22 (17/11/2026, editoria: "esses planos foram coletados em canais que, apesar de não serem sites da
+    # prefeitura, ainda assim são oficiais, como o Prepara RS"): documento do repositório estadual de planos
+    # (a pasta de PLANCONs recebidos pela Defesa Civil) é plano pela origem, como o cabeçalho o faria. Data,
+    # município e autoridade continuam conferidos no texto.
+    from atualizar_instrumentos_estaduais import documento_do_repositorio
+    como_plano = e_plano_pelo_cabecalho(texto) or documento_do_repositorio(url or "")
+    if como_plano and not e_plano_pelo_cabecalho(texto):
+        regras.append("J22")
     ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano)
     if ok and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
         ano, _ = ano_do_plano(texto, ano_corrente)
@@ -1336,8 +1343,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     veredito["data"] = dados.get("data")
     if not ok:
         return recusa(motivo)
-    from atualizar_instrumentos_estaduais import documento_do_repositorio
-    if (dados.get("sem_ato_de_aprovacao") and not como_plano and not documento_do_repositorio(url)
+    if (dados.get("sem_ato_de_aprovacao") and not como_plano
             and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18]) and not titulo_no_cabecalho_corrido(texto)):
         # J15: o título manda — "Planejamento Estratégico" que cita um plano de contingência não é o plano (Propriá/SE).
         return recusa("titulo_nao_e_plano", "J15")
@@ -1698,6 +1704,13 @@ def casos_18() -> list:
             + "metas e programas " * 150 + "8. Gestão de Riscos: Plano de Contingência para seca e estiagem. "
             + "x " * 200, "Propriá", "SE", "https://www.propria.se.gov.br/files/PLANEJAMENTO.pdf")["motivo"]
          == "titulo_nao_e_plano"),
+        ("J22 documento da pasta de PLANCONs do RS é plano pela origem: nem natureza nem título o recusam",
+         _v("Município de Capitão, Rio Grande do Sul. Coordenadoria Municipal de Proteção e Defesa Civil, 2025. "
+            + "cenários de risco de estiagem e enxurrada, recursos, acionamento e responsabilidades " * 40,
+            "Capitão", "RS", "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/"
+            "Casa Militar/SUBCHEFIAS/SUBCHEFIA DE PROTEÇÃO E DEFESA CIVIL/3. Departamento de Gestão de Riscos/"
+            "Divisão Técnica de Riscos/Planos de contingência/TODOS PLANCONS RECEBIDOS/CREPDEC 08/CAPITAO.pdf")["motivo"]
+         not in ("natureza_duvidosa", "resposta", "titulo_nao_e_plano", "nao_e_instrumento")),
         ("J21 capa em imagem: o título no alto das páginas vale; citado duas vezes no meio de um informe, não",
          titulo_no_cabecalho_corrido("ÍNDICE\n01 INTRODUÇÃO\n" + "PLANO DE CONTINGÊNCIA 2025 / 2026\ntexto da página\n" * 6)
          and not titulo_no_cabecalho_corrido("INFORME DE MONITORAMENTO\n" + "PLANO DE CONTINGÊNCIA\nseca\n" * 3)

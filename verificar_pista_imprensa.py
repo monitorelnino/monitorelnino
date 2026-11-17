@@ -78,7 +78,6 @@ MOTIVOS = ("texto_insuficiente", "inacessivel", "ente_nao_confirmado", "resposta
            # recusa da fonte nem ausência de matéria — é o nosso lado que não conseguiu abrir.
            "redirecionamento_nao_resolvido")
 
-AGREGADORES = ("news.google.com", "google.com/url", "feedproxy.google.com", "flipboard.com")
 
 
 def norm(s) -> str:
@@ -163,8 +162,9 @@ def data_de_publicacao(html: str, corpo: str = None) -> tuple:
 # Item 1 — o link do agregador não é a fonte; é o caminho até ela
 # =============================================================================================
 def eh_agregador(url) -> bool:
+    from buscador2 import REDIRECIONADORES
     u = str(url or "").lower()
-    return any(a in u for a in AGREGADORES)
+    return any(a in u for a in REDIRECIONADORES + ("flipboard.com",))
 
 
 def url_dentro_do_segmento(url: str):

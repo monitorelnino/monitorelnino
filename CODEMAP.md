@@ -53,7 +53,7 @@ Atualizado em 17/11/2026.
 | `atualizar_populacao.py` | — | `populacao_censo2022.json` | — | — | não |
 | `atualizar_recursos.py` | — | `financiamento/por_uf.json`, `recursos_uf.json` | — | — | não |
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
-| `buscador2.py` | — | — | — | 4 | não |
+| `buscador2.py` | — | — | — | 3 | não |
 | `buscar_financiamento_preventivo.py` | — | `financiamento_uf.json` | — | — | não |
 | `buscar_planos_arboviroses_web.py` | — | — | — | — | não |
 | `buscar_planos_fontes_abertas.py` | — | — | — | 2 | não |
@@ -135,7 +135,7 @@ Atualizado em 17/11/2026.
 | `gerar_saude_municipio.py` | — | — | — | — | não |
 | `gerar_selos.py` | — | — | — | 1 | não |
 | `juiz.py` | — | — | — | 9 | SIM |
-| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 6 | não |
+| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 5 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 6 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 2 | não |
 | `julgar_saude_municipal.py` | — | `pistas_arboviroses.json`, `planos_arboviroses.json`, `planos_arboviroses_juiz.json` | — | — | não |
