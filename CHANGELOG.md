@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #PRNUM · Respostas de LAI vão ao juiz
+
+Documento recebido por pedido de acesso à informação, com endereço ou sem ele, passa a ser levado ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, vira pista direta; sem endereço, busca dirigida pelo município e pelo assunto, uma vez por semana. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos informados por MT; o arquivo de revisão manual de MT sai.
+
 ## 2026-11-17 · #1823 · Saúde: o detalhe do desfecho anda no tempo
 
 O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.
