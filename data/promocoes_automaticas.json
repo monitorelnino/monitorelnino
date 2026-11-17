@@ -742282,7 +742282,7 @@
    },
    "substituiu": "categoria mais forte (plano_nomeado → plano)",
    "revertido_por_portao": {
-    "em": "2026-11-15",
+    "em": "2026-11-17",
     "motivo": "portão vermelho depois da aplicação",
     "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
@@ -752182,7 +752182,7 @@
    },
    "substituiu": "categoria mais forte (plano_nomeado → plano)",
    "revertido_por_portao": {
-    "em": "2026-11-15",
+    "em": "2026-11-17",
     "motivo": "portão vermelho depois da aplicação",
     "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
@@ -787885,6 +787885,34 @@
     "em": "2026-11-17",
     "motivo": "portão vermelho depois da aplicação",
     "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://defesacivil.prefeitura.rio/wp-content/uploads/sites/35/2025/10/PLANO-DE-CONTINGENCIA-SUBPDEC-2025.2026.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304557",
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "url": "https://defesacivil.prefeitura.rio/wp-content/uploads/sites/35/2025/10/PLANO-DE-CONTINGENCIA-SUBPDEC-2025.2026.pdf",
+   "regras_18": [],
+   "pista_id": "0925a2fcf9",
+   "origem": "contribuicao",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
    }
   }
  ]
