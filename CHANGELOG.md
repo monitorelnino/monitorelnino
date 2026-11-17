@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #1825 · Noite: vigia dos documentos anunciados por órgão
+
+A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.
 ## 2026-11-16 · #1819 · O número do ato orienta a busca dirigida, em toda pista
 
 Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.
