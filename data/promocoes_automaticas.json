@@ -257646,8 +257646,8 @@
    "leu_documento": true,
    "hash_evidencia": "c97dbf3ca9212f1eff5746e60ccf013941a9ea8ced25f4c00b9668f1048745da",
    "nao_aplicado": {
-    "em": "2026-11-15",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -258772,8 +258772,8 @@
    "leu_documento": true,
    "hash_evidencia": "a8b4c509c62428f7b1daf53f3ab28408fcb08473480247bdf9ca89c52da11189",
    "nao_aplicado": {
-    "em": "2026-10-31",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -336877,8 +336877,8 @@
    "leu_documento": true,
    "hash_evidencia": "ca4180c8daaa483582b72577a3e40b2852307da008e7a4bcefc9df4ad89cde14",
    "nao_aplicado": {
-    "em": "2026-11-04",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -366722,9 +366722,12 @@
    "leu_documento": true,
    "hash_evidencia": "5c78d047bcd65bd21f5899fec32336261a649b03be276647e0d52cf277bc3393",
    "nao_aplicado": {
-    "em": "2026-11-04",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
-   }
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   },
+   "data_da_edicao": "2022-07-20",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false
   },
   {
    "promove": false,
@@ -371728,14 +371731,20 @@
    "pista_id": "dac5541961",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "801f87ff0eb7a5738966a1097286d427cf34ae5ef76e7a4ed517d587b29cb871",
+   "hash_evidencia": "4a9d2c111ca7926d445f23e4b3f4a9d7065a2d58b7eba359e3af04543ecc19d6",
    "nao_aplicado": {
     "em": "2026-11-15",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
    },
    "data_da_edicao": "2026-12-31",
    "indicado_ao_cadastro_art3A": true,
-   "atualizacao_anual_localizada": true
+   "atualizacao_anual_localizada": true,
+   "substituiu": "registro anterior sem julgamento do juiz",
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
+   }
   },
   {
    "promove": true,
@@ -400058,9 +400067,12 @@
    "leu_documento": true,
    "hash_evidencia": "7d7a66a2b0ef7199a898dc2d5a26331e516270ab53ce4358acd3a9faeb306658",
    "nao_aplicado": {
-    "em": "2026-11-05",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
-   }
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   },
+   "data_da_edicao": "2026-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true
   },
   {
    "promove": false,
@@ -409478,8 +409490,8 @@
    "leu_documento": true,
    "hash_evidencia": "252451a09d87c4ae089c747b2ecd2f2655f323d7774081ff95e694b075a74744",
    "nao_aplicado": {
-    "em": "2026-11-05",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -414769,8 +414781,8 @@
    "leu_documento": true,
    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635",
    "nao_aplicado": {
-    "em": "2026-11-05",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -430082,9 +430094,12 @@
    "leu_documento": true,
    "hash_evidencia": "b1a66f16b9123403cca03cc34c60f12dc74c3e320470dac32b09b353b6f2987f",
    "nao_aplicado": {
-    "em": "2026-11-05",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
-   }
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   },
+   "data_da_edicao": "2026-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true
   },
   {
    "promove": true,
@@ -430149,9 +430164,12 @@
    "leu_documento": true,
    "hash_evidencia": "a761a0ac8a22706576fa9a88dc1829976b3c19d9305014557104fd65d3137828",
    "nao_aplicado": {
-    "em": "2026-11-05",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
-   }
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   },
+   "data_da_edicao": "2025-07-03",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true
   },
   {
    "promove": false,
@@ -434746,7 +434764,11 @@
    "nao_aplicado": {
     "em": "2026-11-05",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
-   }
+   },
+   "data_da_edicao": "2022-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)"
   },
   {
    "promove": false,
@@ -436320,10 +436342,18 @@
    "pista_id": "c8c6d875de",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "294236c0561898bdb7a2f6f8e93254697aa6bb32aaef8939f8c4e16c44bbe214",
+   "hash_evidencia": "6bf54e9db2a3f3d89b657ec6721b63d35dfaaff882204feb9445b169525d2e43",
    "nao_aplicado": {
     "em": "2026-11-05",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "data_da_edicao": "2025-12-31",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": true,
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -437333,10 +437363,18 @@
    "pista_id": "b588496e48",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "86e0d811a28ad8f98c3e718b4f654d8567d456823bcd7bfc36b4de91f5a325a9",
+   "hash_evidencia": "6f62800051c12b3332d53b4247f4dd61c07ce1967f705135fea633a8cad37855",
    "nao_aplicado": {
     "em": "2026-11-05",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "data_da_edicao": "2025-07-10",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -437820,10 +437858,18 @@
    "pista_id": "6eaec32678",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "d66c57bfe47bc119c3ba13a3814aa37e65553e55a9312ebc1d9c65e35ded4f96",
+   "hash_evidencia": "24b03fe57f0fc06dc6459bf5063b04297dc3ae96cd44963f73118d027fe8521e",
    "nao_aplicado": {
     "em": "2026-11-05",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "data_da_edicao": "2025-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -488285,10 +488331,15 @@
    "pista_id": "4eb1c7ec7d",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "2c8825065f1e922ac0a30fb7c2804ef7dc2695430461a54a879e30912aef7a38",
+   "hash_evidencia": "c2de3d4576cc1713a81ec50330d044b7d1e7db5cbc5ec371161806009905dfc4",
    "nao_aplicado": {
     "em": "2026-11-06",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -537037,10 +537088,15 @@
    "pista_id": "4f92c42d78",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "8a21840c7048c276e8081275b98cd2d342a8f70853f4a9b91b87aa4b5f51f515",
+   "hash_evidencia": "682f218da7b848e1c0124299c135c54a9795b02a038c8b042645d9f5720fc0f6",
    "nao_aplicado": {
     "em": "2026-11-06",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -541534,10 +541590,16 @@
    "pista_id": "bdd6c5c1ed",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "1646011c4c13f98e504b18dafbfa27e2f1c2343f59a78d4935b92ba3c04d77f5",
+   "hash_evidencia": "37d33d38055b3eb31111551dfe9d6f03b3a1254c435a2b9fc556250991a2d27a",
    "nao_aplicado": {
     "em": "2026-11-15",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "substituiu": "categoria mais forte (plano_nomeado → plano_antigo)",
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -637950,10 +638012,15 @@
    "pista_id": "c770d3ce8a",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "8d7d4a1b20675a91ba981e6cff6a9ff4d08b851f82f09d57193ec1e87a8a5a1d",
+   "hash_evidencia": "6efcdbffde2b02e7ddf5416e0ef2078b4957ebdcc6aa6d45ac1538220c5de55c",
    "nao_aplicado": {
     "em": "2026-11-10",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -640341,10 +640408,15 @@
    "pista_id": "b74f9ae1e4",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "b2bf31135128c781c62a50b311cd395f238371aed268ffa6137f368caa45170c",
+   "hash_evidencia": "99c2ea7a30031af517bd7d34b6c2ee177f723062d4bda745eeecfef9fa44decd",
    "nao_aplicado": {
     "em": "2026-11-10",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -640410,8 +640482,8 @@
    "leu_documento": true,
    "hash_evidencia": "8a98b39bb99e185652bb5b7ed232d03f6d1e234e14a3c642588bc41dc1b7a933",
    "nao_aplicado": {
-    "em": "2026-11-10",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -640477,8 +640549,8 @@
    "leu_documento": true,
    "hash_evidencia": "5de9a07f93eb09fb86a9d6214a006525b3e1fb90fbaf56176e439d2650fbfed2",
    "nao_aplicado": {
-    "em": "2026-11-10",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -640601,10 +640673,15 @@
    "pista_id": "23eabd5528",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "41aa1c1bd0c60f1c93964e88f7f9cefd53d2991bfb3bc59c8d5b12374505551c",
+   "hash_evidencia": "4329529e700982a11707e64c7d75d6b37655872352b8d52e13fec5b694e0583d",
    "nao_aplicado": {
     "em": "2026-11-10",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -642321,10 +642398,15 @@
    "pista_id": "ff29e13a9b",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "582bd86747a5fac28565d718e958e75058073458f9ea320a734c84463eede08e",
+   "hash_evidencia": "4de23affa661e46554f4cf88db94756f20bdadb28cd731baf2d21271ea73be28",
    "nao_aplicado": {
     "em": "2026-11-10",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -727267,10 +727349,15 @@
    "pista_id": "6cef0112cb",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "c2178b3cd8a15b2abf94b02b3c2e247f5c7c03862ab339e88dde855f684906cf",
+   "hash_evidencia": "eebe3e176aadaf6b4c96c9fde8f2af3ca323b259fb8ae4da5925023716c34440",
    "nao_aplicado": {
     "em": "2026-11-13",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -740161,8 +740248,8 @@
    "indicado_ao_cadastro_art3A": true,
    "atualizacao_anual_localizada": true,
    "nao_aplicado": {
-    "em": "2026-11-15",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -752383,10 +752470,16 @@
    "pista_id": "458b374cf3",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "6adcda3052521c1f4443b6922c5273cb6fa2951ba7303ac5d04c41697c680237",
+   "hash_evidencia": "5de5a4777c93797b6544d62c7f990500f1b916da3b95acddb759ad4f954dea02",
    "nao_aplicado": {
     "em": "2026-11-15",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "substituiu": "categoria mais forte (plano_antigo → plano)",
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -752452,8 +752545,8 @@
    "leu_documento": true,
    "hash_evidencia": "4a17439b7a9a0e0d5878e75cb4f62013e10e9d284f6d102f3147434f6f4e5371",
    "nao_aplicado": {
-    "em": "2026-11-15",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -752596,10 +752689,15 @@
    "pista_id": "431a712c6e",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "20c4a32d912e1c1375278cb540babf22868c41e4f934338634f6a28adf63279d",
+   "hash_evidencia": "a4aff90ec2cd17f76a1abfd125dc44e468da950fd27d452997682280083af630",
    "nao_aplicado": {
     "em": "2026-11-15",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -760741,13 +760839,18 @@
    "pista_id": "c65f37b2cb",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "91dd64ea9dfbca4f9533fa87b76a4612add17e3874dd533cd0186cf47290e81e",
+   "hash_evidencia": "dd0e50d627c3dd85b01e9e10ca2c9602f4c8bfb84b5fd82c853b3584093f359e",
    "data_da_edicao": "2026-07-08",
    "indicado_ao_cadastro_art3A": true,
    "atualizacao_anual_localizada": true,
    "nao_aplicado": {
     "em": "2026-11-15",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -765442,8 +765545,8 @@
    "leu_documento": true,
    "hash_evidencia": "b505f4a79bbca4c3235076011fdfc85d7f6f33294f6fae55f15b4703b7706922",
    "nao_aplicado": {
-    "em": "2026-11-16",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -767664,10 +767767,15 @@
    "pista_id": "1ff8d79780",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "ac5d5ebc723c7f53840512f4ef361caf5bee4eea437ffd5f915b030a58460c9f",
+   "hash_evidencia": "a181bb9d0c2e8331b0d4b588aba1f171a2fcffb4ad382d138716fc5c204cb67a",
    "nao_aplicado": {
     "em": "2026-11-17",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -782701,10 +782809,15 @@
    "pista_id": "fa40de87cb",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "a3a8555c76c0c5e5692c66a36561d0035be2aef4f86e8b0a1a9c746af5dd9cf8",
+   "hash_evidencia": "111d72595d71a80b00daff5ef42404044a138f9daf1938cdf79b80a0c64f47c2",
    "nao_aplicado": {
     "em": "2026-11-17",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -783871,7 +783984,7 @@
    "hash_evidencia": "ac5d5ebc723c7f53840512f4ef361caf5bee4eea437ffd5f915b030a58460c9f",
    "nao_aplicado": {
     "em": "2026-11-17",
-    "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
    }
   },
   {
@@ -786074,10 +786187,16 @@
    "pista_id": "d347649d0d",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "f71bc1fe80f9506d12d55cbef60db9adf656d999b02bcf8a9af792572a799364",
+   "hash_evidencia": "2be45a5881002152288b7a8827d601cd4d6bf0faf783a5070703dae3b26e5a7c",
    "nao_aplicado": {
     "em": "2026-11-17",
     "motivo": "documento acima do limite de evidência e sem cópia externa — registro pontuável exige evidência guardada (portão 26)"
+   },
+   "substituiu": "documento posterior (2021 → 2023)",
+   "revertido_por_portao": {
+    "em": "2026-11-17",
+    "motivo": "portão vermelho depois da aplicação",
+    "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    }
   },
   {
@@ -787602,6 +787721,102 @@
     ],
     "encontrou": "https://data.queridodiario.ok.org.br/3170107/2026-03-10/3a0115fab1aed8f8bd651a47575eb1d234432d40.txt",
     "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "113318 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA 2025 / 2026 Manutenção Aguas do Rio – Responsável técnico Mesquita 1.3 REGISTROS DE ALTERAÇÕES DATA ALTERAÇÃO OBSERVAÇÃO 31 de Outubro de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "CIDADÃO E À IMPRENSA (INFORMAÇÕES SOBRE O S DANOS, DESAPARECIDOS E OUTROS P. 60 PLANO DE CONTINGÊNCIA 2025 / 2026 4.2.3 REABILITAÇÃO DE CENÁRIOS P.61 4.2.3.1 RE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "CIDADÃO E À IMPRENSA (INFORMAÇÕES SOBRE O S DANOS, DESAPARECIDOS E OUTROS P. 60 PLANO DE CONTINGÊNCIA 2025 / 2026 4.2.3 REABILITAÇÃO DE CENÁRIOS P.61 4.2.3.1 RE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": null,
+   "ibge": "3302858",
+   "municipio": "Mesquita",
+   "uf": "RJ",
+   "url": "https://transparencia.mesquita.rj.gov.br/ver20240713/tmp/PortalServices/PLANODECONTINGENCIA20252026.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "659ebae56e",
+   "origem": "contribuicao",
+   "leu_documento": true,
+   "hash_evidencia": "40abb27a2d8079e9f861bfc2e6cc1cb0d2485fe63b3332861302fa7d25f733a4"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial do Município do Rio de Janeiro | Poder Executivo | Ano XL | Nº 126 | Quinta-feira, 17 de Setembro de 2026 Rio terá 141 postos de vacinação antirr"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "não aceitará a publicação de extrato de contrato que esteja em desacordo com a RESOLUÇÃO SEGOVI Nº 84 DE 09 DE MARÇO DE 2022. Preço das publicações (centímetro",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "84",
+      "data": "13/01/2026",
+      "trecho": "não aceitará a publicação de extrato de contrato que esteja em desacordo com a RESOLUÇÃO SEGOVI Nº 84 DE 09 DE MARÇO DE 2022. Preço das publicações (centímetro"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "i- nação Antirrábica chega às zonas Norte e Sudoeste da cidade, neste sábado. A Secretaria Municipal de Proteção e Defesa dos Animais vai disponibilizar a imuni"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "13/01/2026",
+   "natureza": "DUVIDA",
+   "ibge": "3304557",
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "url": "https://data.queridodiario.ok.org.br/3304557/2026-09-17/388bc6737ae6fe2f1a44dc66c9b1960b885030b6.txt",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "0925a2fcf9",
+   "origem": "contribuicao",
+   "leu_documento": true,
+   "hash_evidencia": "7cfe0433e3afb7830719c1175b998c4c1184a946457ab45c6b99bb3d85ee1984",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": "https://data.queridodiario.ok.org.br/3304557/2026-09-17/388bc6737ae6fe2f1a44dc66c9b1960b885030b6.txt",
+    "recusa_original": "sem_documento_primario"
    }
   }
  ]
