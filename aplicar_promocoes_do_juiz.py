@@ -258,6 +258,11 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
         # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
         corpo = _ler_sharepoint_rs(url, 60) if HOST_SHAREPOINT_RS in url else buscar(url)
+        from julgar_e_aplicar_descobertas import ASSINATURAS_DE_DOCUMENTO, copia_arquivada
+        if str(url).lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt")) and not corpo.startswith(ASSINATURAS_DE_DOCUMENTO):
+            corpo = copia_arquivada(url)[0]   # 17/11/2026: o endereço respondeu página; a prova é a cópia pública
+            if not corpo:
+                return None
         # o atalho `.url` do RS entrega o PDF de destino: a extensão vem dos bytes, não do nome
         ext = "pdf" if corpo[:5] == b"%PDF-" else (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
