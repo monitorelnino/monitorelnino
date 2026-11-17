@@ -1759,10 +1759,11 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     idx = ler("evidencias.json", {"_governanca": "Índice de evidências preservadas (§3.8, v2.2.4). "
                                    "Chave = sha256 do documento; nunca lido pelo cálculo do índice.",
                                    "itens": {}})
-    if h in idx["itens"]:
+    if h in idx["itens"] and (idx["itens"][h].get("arquivo") or idx["itens"][h].get("texto_arquivo")
+                              or len(conteudo) <= LIMITE_EVIDENCIA):
         return h
-    item = {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
-            "arquivo": None, "wayback": None}
+    item = idx["itens"].get(h) or {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
+                                   "arquivo": None, "wayback": None}
     if redigidos:
         item["segredos_redigidos"] = redigidos
     if cpfs:
@@ -1776,14 +1777,38 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
             destino.write_bytes(conteudo)
         item["arquivo"] = destino.relative_to(RAIZ).as_posix()
     else:
-        try:
-            buscar("https://web.archive.org/save/" + url, timeout=60)
-            item["wayback"] = "https://web.archive.org/web/*/" + url
-        except Exception as e:  # noqa: BLE001
-            item["wayback"] = f"tentativa falhou ({type(e).__name__})"
+        if not item.get("wayback"):
+            try:
+                buscar("https://web.archive.org/save/" + url, timeout=60)
+                item["wayback"] = "https://web.archive.org/web/*/" + url
+            except Exception as e:  # noqa: BLE001
+                item["wayback"] = f"tentativa falhou ({type(e).__name__})"
+        # 17/11/2026: acima do limite só ficava o pedido ao Wayback, que não lê pasta privada (o OneDrive da
+        # Casa Militar/RS); 40 promoções do juiz ficaram fora do banco por falta de prova (portão 26). A camada
+        # de texto do documento, com segredo e CPF redigidos, é cópia legível com hash próprio (§10.1).
+        item.update(_texto_de_evidencia(conteudo, url, h))
     idx["itens"][h] = item
     gravar("evidencias.json", idx)
     return h
+
+
+def _texto_de_evidencia(conteudo: bytes, url: str, h: str) -> dict:
+    """Os campos `texto_arquivo`, `texto_hash` e `caracteres` da camada de texto do documento, gravada em
+    `evidencias/<hash>.txt`; vazio quando o documento não dá texto."""
+    from julgar_e_aplicar_descobertas import texto_do_documento
+    try:
+        texto = texto_do_documento(conteudo, url) or ""
+    except Exception:  # noqa: BLE001 — documento que não dá texto fica sem esta cópia
+        texto = ""
+    texto, _ = redigir_segredos(texto)
+    texto, _ = redigir_dados_pessoais(texto)
+    if not texto.strip():
+        return {}
+    EVID.mkdir(exist_ok=True)
+    destino = EVID / f"{h}.txt"
+    destino.write_text(texto, encoding="utf-8", newline="\n")
+    return {"texto_arquivo": destino.relative_to(RAIZ).as_posix(), "texto_hash": sha256(destino.read_bytes()),
+            "caracteres": len(texto)}
 
 
 def _indexar_texto_integral(h: str, destino, origem=None) -> str:

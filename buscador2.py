@@ -237,7 +237,7 @@ def classe_da_pista(pista: dict, slugs: dict = None) -> tuple:
 
 # ------------------------------------------------------------------------------------------- B2
 REDIRECIONADORES = ("news.google.com", "news.url.google.com", "/rss/articles/", "feedproxy.google.com",
-                    "google.com/url")
+                    "google.com/url", "share.google/")
 
 
 def eh_redirecionador(url) -> bool:

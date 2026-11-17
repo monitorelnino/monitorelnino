@@ -131,7 +131,9 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
             continue
         # a abstenção da regra antiga ("atualização não se presume") volta uma vez, para a regra nova decidir
         if v.get("superada_por") or v.get("aplicado_em") or (
-                v.get("nao_aplicado") and (v["nao_aplicado"] is True or v["nao_aplicado"].get("motivo") != ABSTENCAO_ANTIGA)):
+                v.get("nao_aplicado") and (v["nao_aplicado"] is True or not (
+                    v["nao_aplicado"].get("motivo") == ABSTENCAO_ANTIGA
+                    or str(v["nao_aplicado"].get("motivo") or "").startswith(LIMITE_NOSSO)))):
             continue
         repo = repositorio_do_documento(v.get("url") or "")
         if repo:
@@ -180,6 +182,10 @@ def ja_no_banco(municipios: list, nome: str, uf: str) -> bool:
 # `registro_anterior`. Igual, mais fraco ou sem data comparável: nada muda.
 JA_CONSTA = "já consta no banco — "
 ABSTENCAO_ANTIGA = JA_CONSTA + "abstenção registrada (atualização não se presume)"
+# 17/11/2026: "acima do limite de evidência" é limite da nossa guarda (o arquivo passa de 5 MB e o Wayback não
+# lê pasta privada), não decisão sobre o caso; a marca enterrava 40 promoções. Como a falha de acesso, não marca,
+# e a marca antiga volta para ser aplicada agora que a camada de texto é guardada.
+LIMITE_NOSSO = ("documento não pôde ser preservado", "documento acima do limite de evidência")
 CATEGORIAS_DE_PLANO = ("plano", "plano_antigo", "plano_elaboracao")
 RE_MES_NO_ENDERECO = re.compile(r"/((?:19|20)\d{2})/(0[1-9]|1[0-2])/")
 
@@ -547,6 +553,10 @@ def autoteste() -> int:
                            {"categoria": "plano", "data": "2026", "url": "u2"}) == "ato de aprovação localizado"
                   and atualiza({"categoria": "plano", "data": "2026", "url": "u1", "codebook": V, "sem_ato_de_aprovacao": True},
                                {"categoria": "plano", "data": "2026", "url": "u2", "sem_ato_de_aprovacao": True}) == ""))
+    casos.append(("limite da nossa guarda (acima de 5 MB) não enterra a promoção: ela volta",
+                  len(aplicaveis([dict(base, nao_aplicado={"motivo": "documento acima do limite de evidência e sem cópia "
+                                                                     "externa — registro pontuável exige evidência guardada (portão 26)"})],
+                                 V, resolver=sem_dono)) == 1))
     casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
                   and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],
@@ -713,8 +723,8 @@ def main() -> int:
 
     for v, motivo in recusados:
         print(f"  não aplicado: {v['municipio']}/{v['uf']} — {motivo}")
-        if motivo.startswith("documento não pôde ser preservado"):
-            continue  # 24/10/2026: falha do nosso acesso, não decisão sobre o caso; a marca enterrou as 75 do RS
+        if motivo.startswith(LIMITE_NOSSO):
+            continue  # falha do nosso acesso ou da nossa guarda, não decisão sobre o caso (24/10 e 17/11/2026)
         v["nao_aplicado"] = {"em": hoje.isoformat(), "motivo": motivo}
 
     if not aplicados:

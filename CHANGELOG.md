@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #1831 · Contribuições e Prepara RS chegam ao juiz e ao banco
+
+A pista que chegava no formato novo recebia o mesmo id de outras 50, e a contribuição de Mesquita/RJ se perdeu entre elas. O formulário passa a aceitar o domínio da Prefeitura do Rio e o link de compartilhamento do Google,; sete envios voltam a ser lidos. Acima de 5 MB, a camada de texto do documento é guardada como prova; 40 promoções do juiz voltam a ser aplicadas. Trinta atalhos do Prepara RS fechados sem leitura voltam à fila.
+
 ## 2026-11-17 · #1829 · Internações e óbitos por município, mês a mês
 
 As internações por doenças respiratórias agudas, por efeitos do calor e por desidratação (SIH/SUS) e os óbitos de todas as causas e por doenças respiratórias agudas (SIM) passam a ser contados também por município de residência, nos 319 municípios de 100 mil habitantes ou mais. O detalhe da Saúde os mostra no mapa que anda no tempo, mês a mês desde julho, na faixa habitual de 2019 a 2025. O histórico municipal entra aos poucos.
