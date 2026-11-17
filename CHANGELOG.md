@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #PRNUM · Uma regra só para "é fonte oficial?"
+
+O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.
+
 ## 2026-11-17 · #1840 · Endereço de PDF que responde página
 
 O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.

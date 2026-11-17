@@ -494,8 +494,11 @@ HOSTS_OFICIAIS = {"www.diariomunicipal.com.br", "diariomunicipal.com.br", "prefe
 
 def host_oficial(host: str) -> bool:
     host = host.lower()
+    # 17/11/2026: e o sítio oficial do município fora de `.gov.br` (`prefeitura.rio`, portal em plataforma), pela
+    # regra única de `coletores_base._dominio_publico` — a mesma do juiz que o promoveu.
+    from coletores_base import _dominio_publico
     return (host in HOSTS_OFICIAIS or "queridodiario.ok.org.br" in host or "data.queridodiario" in host
-            or host.endswith(SUFIXOS_OFICIAIS))
+            or host.endswith(SUFIXOS_OFICIAIS) or _dominio_publico(f"https://{host}/"))
 
 
 def problemas_imprensa(nome: str, registros) -> list:
