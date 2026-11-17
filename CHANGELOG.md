@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PRNUM · Uma regra só para "é fonte oficial?"
+## 2026-11-17 · #1842 · Uma regra só para "é fonte oficial?"
 
 O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.
 
