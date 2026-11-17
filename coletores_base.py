@@ -388,7 +388,7 @@ def classe_de_dominio(url: str) -> str:
     """
     import urllib.parse
     host = urllib.parse.urlparse(str(url or "")).netloc.lower()
-    return "oficial" if host.endswith((".gov.br", ".leg.br", ".jus.br", ".mp.br")) else "outros"
+    return "oficial" if host.endswith((".gov.br", ".leg.br", ".jus.br", ".mp.br")) or _dominio_publico(str(url or "")) else "outros"
 
 
 def validar_pista(pista: dict, existentes: list = None) -> tuple:

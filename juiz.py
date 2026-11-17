@@ -955,11 +955,15 @@ PLATAFORMAS_OFICIAIS_DE_DIARIO = (("voxtecnologia.com.br", "sigpub.publicacao"),
 def fonte_oficial(url) -> bool:
     # 10/11/2026: imprensa oficial estadual fora de `.gov.br` (ioerj.com.br) é fonte oficial; sem ela o
     # Decreto RJ 50.357/2026 foi recusado como `sem_documento_primario` sem ser baixado.
+    # 17/11/2026: e o sítio oficial do município fora de `.gov.br` (`prefeitura.rio`, portais em plataforma) — a
+    # definição é a de `coletores_base._dominio_publico`, a mesma da porta e do formulário; o plano do Rio de
+    # Janeiro saía `sem_documento_primario` sem ser baixado.
+    from coletores_base import _dominio_publico
     from municipio_do_dominio import _host, diarios_estaduais
     u = str(url or "").lower()
     return (any(p in u for p in PADROES_FONTE_PROVAVEL_OFICIAL)
             or any(h in u and marca in u for h, marca in PLATAFORMAS_OFICIAIS_DE_DIARIO)
-            or _host(u) in diarios_estaduais())
+            or _host(u) in diarios_estaduais() or _dominio_publico(u))
 
 
 # J2. Página de notícia (caminho de notícia ou com data) não é documento, mesmo em domínio oficial.
@@ -1882,6 +1886,9 @@ def autoteste() -> int:
         ("família de risco específica vence multirrisco",
          etapa5_familia_de_risco("plano de contingência de proteção e defesa civil para a "
                                  "estiagem e a seca severa")[1] == "seca_estiagem_fogo"),
+        ("fonte oficial: o sítio da Prefeitura do Rio (prefeitura.rio) e portal municipal em plataforma; imprensa, não",
+         fonte_oficial("https://defesacivil.prefeitura.rio/wp-content/uploads/p.pdf")
+         and fonte_oficial("https://araquari.atende.net/cidadao/pagina/plano") and not fonte_oficial("https://itatiaia.com.br/x")),
         ("J23 plano de saúde no título é fora do objeto; plano de defesa civil que lista arbovirose, não",
          etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA PARA ARBOVIROSES Angra dos Reis 2024-2026. Período de chuvas "
                                  "e inundação aumentam criadouros.")[1] == "fora_do_objeto"

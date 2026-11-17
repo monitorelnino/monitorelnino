@@ -59,8 +59,10 @@ jobs:
       # chamado (mesma razão de `busca_planos.yml`).
       timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
-      precisa_node: ${{ inputs.precisa_node }}
-      precisa_tesseract: ${{ inputs.precisa_tesseract }}
+      # 17/11/2026: o aplicador roda portão em Node e o juiz lê PDF escaneado; esquecer a chave no disparo
+      # reverteu a aplicação de Mesquita/RJ (portão sem módulos). Quem roda o juiz ou o aplicador já os pede.
+      precisa_node: ${{ inputs.precisa_node || contains(inputs.comandos, 'aplicar_promocoes_do_juiz') }}
+      precisa_tesseract: ${{ inputs.precisa_tesseract || contains(inputs.comandos, 'julgar_filas') || contains(inputs.comandos, 'aplicar_promocoes_do_juiz') }}
       comandos: ${{ inputs.comandos }}
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

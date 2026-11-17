@@ -479,15 +479,13 @@ function serieEmSvg(valores, faixas, rotulo, estado, corFaixa, marcas) {
     + '</svg>';
 }
 
-/* Os períodos recentes do território, na ordem do calendário: 52 semanas ou 24 meses, SEM os
-   períodos que o arquivo declara parciais. Eles ainda recebem registro, e desenhá-los faria a
-   linha do cartão cair no fim — ao lado de um valor que é o do último período fechado. */
+/* Os períodos do território no ciclo, na ordem do calendário, SEM os que o arquivo declara parciais
+   (ainda recebem registro; desenhá-los faria a linha cair no fim). 17/11/2026 (editoria, 16/11: "todo
+   dado e gráfico de saúde começa no marco zero do ciclo"): eram as últimas 52 semanas ou 24 meses. */
 function recorteRecente(d, uf) {
   const parciais = new Set(d.parcial || []);
   const serie = (d.por_100mil || {})[uf] || {};
-  const chaves = Object.keys(serie).sort().filter(ch => !parciais.has(ch));
-  const quantos = d.periodo === 'semana' ? 52 : 24;
-  return chaves.slice(-quantos);
+  return Object.keys(serie).sort().filter(ch => ch >= inicioDoCiclo(d) && !parciais.has(ch));
 }
 
 /* A posição do último valor consolidado do território na faixa habitual da SEMANA DO PRÓPRIO VALOR
@@ -538,8 +536,7 @@ function cartaoDesfecho(d, uf) {
     + esc(periodoEmPalavras(c.periodo, d.periodo)) + '</p>'
     + '<p class="cartao-numero-variacao' + (p ? ' posicao posicao--' + dentro : '') + '">' + esc(texto) + '</p>'
     + serieEmSvg(chaves.map(ch => serie[ch]), chaves.map(doAno),
-        d.rotulo + ', ' + (d.periodo === 'semana' ? 'últimas 52 semanas' : 'últimos 24 meses')
-        + ', sobre a faixa habitual para a época', dentro, corDaFaixa(d))
+        d.rotulo + ', desde 29 de junho, sobre a faixa habitual para a época', dentro, corDaFaixa(d))
     + '<p class="cartao-numero-fonte">' + rodape + '</p></div>';
 }
 
@@ -577,9 +574,12 @@ function periodosDoCiclo(d) {
   Object.values(d.por_100mil || {}).forEach(s => Object.keys(s || {}).forEach(k => chaves.add(k)));
   const ultimos = Object.values(d.ultimo || {}).map(u => ((u || {}).consolidado || {}).periodo).filter(Boolean).sort();
   const fim = ultimos[ultimos.length - 1];
-  const inicio = d.periodo === 'semana' ? '2026-' + String(MonitorSemana.semanaDaData(INICIO_DO_CICLO)).padStart(2, '0') : '2026-07';
-  return [...chaves].filter(k => k >= inicio && (!fim || k <= fim) && !parciais.has(k)).sort();
+  return [...chaves].filter(k => k >= inicioDoCiclo(d) && (!fim || k <= fim) && !parciais.has(k)).sort();
 }
+
+/* O primeiro período do ciclo na série: a semana que contém 29/06/2026, ou julho. */
+const inicioDoCiclo = d => (d.periodo === 'semana'
+  ? '2026-' + String(MonitorSemana.semanaDaData(INICIO_DO_CICLO)).padStart(2, '0') : '2026-07');
 
 const domingoDoPeriodo = per => { const r = MonitorSemana.semanaParaDatas(Number(per.split('-')[0]), Number(per.split('-')[1]));
   return r ? r.inicio.toISOString().slice(0, 10) : null; };

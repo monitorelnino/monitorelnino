@@ -12,6 +12,13 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-17 · #1835 · Plano desatualizado segundo a lei, em todo o país
 
 Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como "plano desatualizado segundo a lei" e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.
+## 2026-11-17 · #1842 · Uma regra só para "é fonte oficial?"
+
+O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.
+
+## 2026-11-17 · #1837 · Saúde: cartões desde o marco zero do ciclo
+
+A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.
 ## 2026-11-17 · #1840 · Endereço de PDF que responde página
 
 O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.
