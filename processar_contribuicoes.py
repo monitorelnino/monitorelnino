@@ -192,9 +192,15 @@ def pista_da_contribuicao(dados: dict, ibge: str, hoje_iso: str):
     url = (dados.get("link_oficial") or "").strip()
     if not tipo or not url.startswith("https://") or not ibge:
         return None
-    return {"url_final": url, "tipo": tipo, "alvo": str(ibge).zfill(7), "nivel": "C",
-            "data": hoje_iso, "origem": "contribuicao",
-            "titulo": f"Contribuição de leitor ({tipo})"}
+    pista = {"url_final": url, "tipo": tipo, "alvo": str(ibge).zfill(7), "nivel": "C",
+             "data": hoje_iso, "origem": "contribuicao",
+             "titulo": f"Contribuição de leitor ({tipo})"}
+    # 16/11/2026 (Taió/SC: o leitor informou "Decreto 9584/2026" e o número se perdia): o "número e data"
+    # já validado (curto, sem marcação; R4-bis) vai com a pista, e a busca dirigida o lê como lê qualquer
+    # campo. Não é prova: a prova é o documento oficial, que o juiz lê.
+    if dados.get("numero_data") and numero_data_valido(dados["numero_data"]):
+        pista["ato_citado"] = dados["numero_data"].strip()
+    return pista
 
 
 def autoteste() -> int:
@@ -226,6 +232,11 @@ def autoteste() -> int:
          _p == {"url_final": "https://x.se.gov.br/p.pdf", "tipo": "plano", "alvo": "2800308",
                 "nivel": "C", "data": "2026-10-12", "origem": "contribuicao",
                 "titulo": "Contribuição de leitor (plano)"}),
+        ("o número e data validado vai com a pista; com marcação, não",
+         (pista_da_contribuicao({"tipo": "plano", "link_oficial": "https://x.gov.br/p.pdf", "numero_data": "Decreto 9584/2026"},
+                                "4217808", "2026-11-12") or {}).get("ato_citado") == "Decreto 9584/2026"
+         and "ato_citado" not in pista_da_contribuicao({"tipo": "plano", "link_oficial": "https://x.gov.br/p.pdf",
+                                                         "numero_data": "<b>Decreto 1</b>"}, "3302858", "2026-11-15")),
         ("correção com documento vira pista de plano para o juiz",
          (pista_da_contribuicao({"tipo": "correcao", "link_oficial": "https://x.gov.br/p.pdf"}, "2800308",
                                 "2026-10-12") or {}).get("tipo") == "plano"),

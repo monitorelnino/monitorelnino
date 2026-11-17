@@ -60,7 +60,12 @@ def identificadores(pista: dict) -> dict:
 
     Sem inventar nada: o que não estiver escrito volta como None. Identificador ausente não é
     problema — ele apenas tira uma das rotas, e as outras seguem."""
-    texto = " ".join(str(pista.get(k) or "") for k in ("titulo", "trecho", "query", "documento"))
+    # 16/11/2026 (editoria: "a regra de orientar a busca pelo número do ato vale para todas as pistas"):
+    # todo campo de texto da pista conta, não uma lista fixa — o número vinha em campos que a lista não
+    # tinha (o "número e data" do formulário, o `ato` de coletores). Endereço não conta: número de URL
+    # não é número de ato.
+    texto = " ".join(str(v) for k, v in pista.items()
+                     if isinstance(v, str) and not str(v).startswith(("http://", "https://")) and "url" not in k)
     ato = RE_ATO.search(texto)
     plano = RE_NOME_DO_PLANO.search(texto)
     return {
@@ -298,6 +303,10 @@ def autoteste() -> int:
     casos.append(("extrai tipo e número do ato", (i["tipo"], i["numero"]) == ("decreto", "1.482")))
     casos.append(("extrai o nome do plano", i["nome_do_plano"].lower().startswith("plano de conting")))
     casos.append(("extrai município e UF do alvo", (i["municipio"], i["uf"]) == ("Bonito", "MS")))
+    _q = identificadores({"ato_citado": "Decreto 9584/2026", "url_final": "https://x.sc.gov.br/2026/08/p-123.pdf", "alvo": "4217808"})
+    casos.append(("o número do ato vale em qualquer campo de texto da pista, nunca no endereço",
+                  (_q["tipo"], _q["numero"]) == ("decreto", "9584/2026")
+                  and identificadores({"url_final": "https://x/decreto-123.pdf"})["numero"] is None))
     so_camada = identificadores({"titulo": "Estado decreta emergência", "alvo": "resposta/BA"})
     casos.append(("camada da busca não é município; a UF fica",
                   (so_camada["municipio"], so_camada["uf"]) == (None, "BA")

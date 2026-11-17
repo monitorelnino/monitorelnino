@@ -13,6 +13,12 @@ não pontuados permanecem na versão corrente.
 
 Documento recebido por pedido de acesso à informação, com endereço ou sem ele, passa a ser levado ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, vira pista direta; sem endereço, busca dirigida pelo município e pelo assunto, uma vez por semana. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos informados por MT; o arquivo de revisão manual de MT sai. Os 51 planos municipais do painel da Defesa Civil do AM, com link, também vão ao juiz (50 pistas).
 
+## 2026-11-17 · #1825 · Noite: vigia dos documentos anunciados por órgão
+
+A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.
+## 2026-11-16 · #1819 · O número do ato orienta a busca dirigida, em toda pista
+
+Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.
 ## 2026-11-17 · #1823 · Saúde: o detalhe do desfecho anda no tempo
 
 O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.
