@@ -422,6 +422,17 @@ RE_INSTRUMENTO_SETORIAL = re.compile(
     r"de\s+(?:ensino|educa[çc][ãa]o|sa[úu]de)|escola|unidades?\s+(?:escola|de\s+sa[úu]de|b[áa]sica)|"
     r"hospita|creche|ensino)", re.I)
 
+# J23 (17/11/2026, editoria: "plano de saúde é plano de saúde"): o plano cujo TÍTULO é de saúde — de arboviroses,
+# de dengue, de emergências em saúde pública, o plano municipal de saúde — não é o plano de proteção e defesa civil
+# que o MARÉ Legal mede, mesmo que o texto cite chuva ou seca (Angra dos Reis/RJ, plano de arboviroses 2024–2026;
+# Água Branca/PB, emergências em saúde pública). Fica visível e não pontua; é da camada de saúde.
+RE_PLANO_DE_SAUDE_NO_TITULO = re.compile(
+    r"\bplano\b(?:\s+(?:municipal|estadual|integrado|intersetorial|de|da|do|das|dos|para|contra|frente|[àa]s?|aos?|"
+    r"o|a|e|conting[êe]ncia|enfrentamento|a[çc][ãa]o|preven[çc][ãa]o|controle|resposta|vigil[âa]ncia))*\s+"
+    r"(?:arboviroses?|dengue|chikungunya|zika|febre\s+amarela|influenza|covid|sarampo|"
+    r"emerg[êe]ncias?\s+em\s+sa[úu]de)|\bplano\s+municipal\s+de\s+sa[úu]de\b|"
+    r"\bplano\s+de\s+conting[êe]ncia\s+(?:em|da|de)\s+sa[úu]de\b", re.I)
+
 # --- Etapa 6 ---------------------------------------------------------------------------------
 BOLETIM_1 = "29/06/2026"   # §3: marco do ciclo
 RE_INSTITUI = re.compile(
@@ -845,7 +856,7 @@ def etapa5_familia_de_risco(texto: str) -> tuple:
     Ordem deliberada: primeiro procura família do ciclo; só então considera `fora_do_objeto`. Um
     plano multirrisco que menciona arbovirose numa lista de riscos não é um plano de arbovirose —
     foi assim que Salvador travou num teste de 03/09/2026."""
-    setorial = RE_INSTRUMENTO_SETORIAL.search(texto)
+    setorial = RE_INSTRUMENTO_SETORIAL.search(texto) or RE_PLANO_DE_SAUDE_NO_TITULO.search(texto[:CABECALHO_18])
     if setorial:
         return False, "fora_do_objeto", trecho_em_volta(texto, setorial)
     t = texto.lower()
@@ -1048,8 +1059,13 @@ def titulo_no_cabecalho_corrido(texto, minimo: int = 5) -> bool:
     """J21 (15/11/2026): o título do plano se repete como linha própria, o cabeçalho de página. Mesquita/RJ:
     capa em imagem, o texto começa no ÍNDICE e "PLANO DE CONTINGÊNCIA 2025 / 2026" vem no alto de 73 páginas;
     o J15 só olhava o começo do texto. Medida nos 39 documentos recusados por título: muda só esse. Pura."""
-    return sum(1 for l in str(texto or "").splitlines()
-               if len(l.strip()) <= 80 and RE_TITULO_DE_PLANO.match(l.strip())) >= minimo
+    # 17/11/2026: o leitor do juiz (`extrair_texto_pdf`) junta o PDF numa linha só — a regra por linha nunca
+    # valia ali, e Mesquita foi recusada de novo. O título em MAIÚSCULAS repetido é o cabeçalho de página,
+    # com ou sem quebra de linha.
+    t = str(texto or "")
+    linhas = sum(1 for l in t.splitlines() if len(l.strip()) <= 80 and RE_TITULO_DE_PLANO.match(l.strip()))
+    maiusculas = sum(1 for m in RE_TITULO_DE_PLANO.finditer(t) if m.group(0).isupper())
+    return max(linhas, maiusculas) >= minimo
 
 
 def e_plano_pelo_cabecalho(texto) -> bool:
@@ -1714,7 +1730,11 @@ def casos_18() -> list:
         ("J21 capa em imagem: o título no alto das páginas vale; citado duas vezes no meio de um informe, não",
          titulo_no_cabecalho_corrido("ÍNDICE\n01 INTRODUÇÃO\n" + "PLANO DE CONTINGÊNCIA 2025 / 2026\ntexto da página\n" * 6)
          and not titulo_no_cabecalho_corrido("INFORME DE MONITORAMENTO\n" + "PLANO DE CONTINGÊNCIA\nseca\n" * 3)
-         and not titulo_no_cabecalho_corrido("x\n" + "o município deve manter o plano de contingência atualizado e divulgado à população local\n" * 9)),
+         and not titulo_no_cabecalho_corrido("x\n" + "o município deve manter o plano de contingência atualizado e divulgado à população local\n" * 9)
+         and titulo_no_cabecalho_corrido("ÍNDICE " + "PLANO DE CONTINGÊNCIA 2025 / 2026 Manutenção Aguas do Rio – Responsável técnico "
+                                         "Mesquita 1.3 REGISTROS DE ALTERAÇÕES DATA " * 6)
+         and not titulo_no_cabecalho_corrido("x\n" + "Plano de contingência é o documento que registra o planejamento "
+                                             "elaborado a partir da percepção do risco\n" * 6)),
         ("J1 a equipe de elaboração citada no PLANCON não o rebaixa a plano_elaboracao",
          etapa6_categoria("equipe de elaboração do plano de contingência", "2025", sem_ato_de_aprovacao=True,
                           como_plano=True)[0] == "plano_antigo"
@@ -1862,6 +1882,13 @@ def autoteste() -> int:
         ("família de risco específica vence multirrisco",
          etapa5_familia_de_risco("plano de contingência de proteção e defesa civil para a "
                                  "estiagem e a seca severa")[1] == "seca_estiagem_fogo"),
+        ("J23 plano de saúde no título é fora do objeto; plano de defesa civil que lista arbovirose, não",
+         etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA PARA ARBOVIROSES Angra dos Reis 2024-2026. Período de chuvas "
+                                 "e inundação aumentam criadouros.")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("PLANO MUNICIPAL DE CONTINGÊNCIA FRENTE ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA. "
+                                     "Estiagem e seca.")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL. Riscos: inundação, "
+                                     "deslizamento e arboviroses.")[1] == "chuvas_inundacao_deslizamento"),
         ("arbovirose citada numa lista de riscos não torna o plano fora do objeto",
          etapa5_familia_de_risco("plano municipal para inundação, alagamento, deslizamento e "
                                  "também arbovirose")[1] == "chuvas_inundacao_deslizamento"),

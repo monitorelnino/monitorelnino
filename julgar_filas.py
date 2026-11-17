@@ -180,6 +180,17 @@ MOTIVOS_DE_NATUREZA = ("natureza_duvidosa", "resposta", "titulo_nao_e_plano", "n
                        "estrutura_de_defesa_civil")
 
 
+# 17/11/2026: o J21 (título no cabeçalho corrido) contava linhas, e o leitor do juiz junta o PDF numa linha só;
+# a recusa por título julgada até hoje volta uma vez com a contagem que não depende da quebra de linha.
+TITULO_SEM_LINHAS_DESDE = "2026-11-18"
+
+
+def recusa_de_titulo_antes_da_contagem(p: dict, juiz: dict) -> bool:
+    """Recusa `titulo_nao_e_plano` julgada antes da contagem nova do J21: volta uma vez."""
+    return (not juiz.get("promove") and juiz.get("motivo") == "titulo_nao_e_plano"
+            and str(juiz.get("julgado_em") or "") < TITULO_SEM_LINHAS_DESDE)
+
+
 def recusa_do_repositorio_antes_do_J22(p: dict, juiz: dict) -> bool:
     """Recusa por natureza ou título de documento do repositório estadual, julgada antes do J22: volta uma vez."""
     from atualizar_instrumentos_estaduais import documento_do_repositorio
@@ -217,7 +228,7 @@ def pendente(p: dict, hoje=None) -> bool:
         if not juiz.get("leu_documento"):
             return bool(url and fonte_oficial(url))
         return (recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
-                or recusa_do_repositorio_antes_do_J22(p, juiz))
+                or recusa_do_repositorio_antes_do_J22(p, juiz) or recusa_de_titulo_antes_da_contagem(p, juiz))
     tentativas = p.get("juiz_tentativas") or []
     if tentativas and not any(tentativa_que_conta(t) for t in tentativas) and tentativas[-1].get("classe") == "tecnica":
         return True     # só falhou com o leitor antigo: volta já, sem esperar o back-off nem ficar persistente
