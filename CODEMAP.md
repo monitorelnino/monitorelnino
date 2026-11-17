@@ -102,7 +102,7 @@ Atualizado em 17/11/2026.
 | `coletar_sih.py` | — | `saude_desfechos/sih_por_municipio.json` | — | 2 | não |
 | `coletar_sim.py` | — | `saude_desfechos/sim_por_municipio.json` | — | 1 | não |
 | `coletar_sinais_risco.py` | — | — | — | 1 | não |
-| `coletar_sisab.py` | — | — | — | — | não |
+| `coletar_sisab.py` | — | `saude_desfechos/sisab_por_municipio.json` | — | 1 | não |
 | `coletar_srag_gripe.py` | — | `saude_desfechos/infogripe_diagnostico.json` | — | 3 | não |
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_municipios.json`, `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |

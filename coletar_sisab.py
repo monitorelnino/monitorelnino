@@ -20,6 +20,12 @@ O CSV devolve a lista dos filtros que aplicou. O coletor confere que a lista de 
 exatamente a pedida e que o cabeçalho é "Estado;<competências>"; qualquer diferença é lacuna
 declarada, e o arquivo anterior fica.
 
+POR MUNICÍPIO (editoria, 16/11/2026)
+O mesmo relatório com a linha "Município" (UF, IBGE de 6 dígitos e nome) dá a série mensal de cada
+município de 100.000 habitantes ou mais, em `saude_desfechos/sisab_por_municipio.json`, na forma que
+`desfechos_sus.serie_municipal_mensal` lê (um arquivo por UF e ano). Município sem linha no ano lido
+teve zero; célula vazia é lacuna. Anos fechados lidos uma vez; o ano corrente e o anterior, toda leitura.
+
 USO
   python3 coletar_sisab.py --autoteste
   python3 coletar_sisab.py --desfecho diarreias
@@ -48,6 +54,9 @@ DESFECHOS = {
     },
 }
 ANO_INICIAL = 2019
+SAIDA_MUN = "saude_desfechos/sisab_por_municipio.json"
+MUNICIPAIS = ("diarreias",)
+LINHA_UF, LINHA_MUN = "ATD.CO_UF_IBGE", "MUN.CO_MUNICIPIO_IBGE"
 
 
 class TelaMudou(ValueError):
@@ -68,19 +77,18 @@ def formulario(pagina: str) -> dict:
             "equipes": re.findall(r'<option value="(eq-[a-z]+)"', pagina)}
 
 
-def corpo_da_consulta(form: dict, competencias: list, codigos: tuple) -> list:
-    """Campos do POST: linha Estado, coluna Competência, atendimento individual. Função pura."""
-    campos = [("j_idt44", "j_idt44"), ("unidGeo", "brasil"), ("selectLinha", "ATD.CO_UF_IBGE"),
+def corpo_da_consulta(form: dict, competencias: list, codigos: tuple, linha: str = LINHA_UF) -> list:
+    """Campos do POST: linha Estado (ou Município), coluna Competência, atendimento individual. Pura."""
+    campos = [("j_idt44", "j_idt44"), ("unidGeo", "brasil"), ("selectLinha", linha),
               ("selectcoluna", "NU_COMPETENCIA"), ("tpProducao", "4"), ("lsCid", ",".join(codigos) + ","),
               ("javax.faces.ViewState", form["viewstate"]), (form["csv"], form["csv"])]
     campos += [("j_idt76", c) for c in competencias] + [("j_idt89", e) for e in form["equipes"]]
     return campos
 
 
-def ler_csv(texto: str, codigos: tuple, siglas: dict) -> dict:
-    """{UF: {AAAA-MM: int}} do CSV, depois de conferir os filtros aplicados. Função pura.
-
-    `siglas` = {NOME NORMALIZADO: sigla}. Célula vazia é lacuna (None), nunca zero."""
+def _tabela(texto: str, codigos: tuple, rotulo: tuple) -> tuple:
+    """(competências AAAA-MM, linhas de dados) do CSV, depois de conferir filtros, tipo de produção e o
+    cabeçalho que começa por `rotulo`. TelaMudou em qualquer diferença. Função pura."""
     filtro = re.search(r'"CIAP/CID: (.*?)\."', texto, re.S)
     if not filtro:
         raise TelaMudou("CSV sem a linha de filtros CIAP/CID")
@@ -90,26 +98,50 @@ def ler_csv(texto: str, codigos: tuple, siglas: dict) -> dict:
     if "Tipo de Produção: Atendimento Individual" not in texto:
         raise TelaMudou("CSV sem o tipo de produção pedido")
     linhas = [(ln[:-1] if ln.endswith(";") else ln).split(";") for ln in texto.splitlines()]
-    cab = next((ln for ln in linhas if ln and ln[0] == "Estado"), None)
-    if not cab or len(cab) < 2:
-        raise TelaMudou("CSV sem o cabeçalho Estado;competências")
+    cab = next((ln for ln in linhas if ln[:len(rotulo)] == list(rotulo)), None)
+    if not cab or len(cab) <= len(rotulo):
+        raise TelaMudou(f"CSV sem o cabeçalho {';'.join(rotulo)};competências")
     pers = []
-    for c in cab[1:]:
+    for c in cab[len(rotulo):]:
         m = re.fullmatch(r"([A-Z]{3})/(\d{4})", c.strip())
         if not m or m.group(1) not in MESES:
             raise TelaMudou(f"competência ilegível no cabeçalho: {c!r}")
         pers.append(f"{m.group(2)}-{MESES[m.group(1)]:02d}")
+    return pers, [ln for ln in linhas[linhas.index(cab) + 1:] if len(ln) == len(cab)]
+
+
+def _numero(v: str):
+    return int(v.replace(".", "")) if v.strip().replace(".", "").isdigit() else None
+
+
+def ler_csv(texto: str, codigos: tuple, siglas: dict) -> dict:
+    """{UF: {AAAA-MM: int}} do CSV, depois de conferir os filtros aplicados. Função pura.
+
+    `siglas` = {NOME NORMALIZADO: sigla}. Célula vazia é lacuna (None), nunca zero."""
+    pers, linhas = _tabela(texto, codigos, ("Estado",))
     out = {}
-    for ln in linhas[linhas.index(cab) + 1:]:
-        if len(ln) != len(cab):
-            continue
+    for ln in linhas:
         uf = siglas.get(normalizar_nome(ln[0]))
-        if not uf:
-            continue
-        out[uf] = {p: (int(v.replace(".", "")) if v.strip().replace(".", "").isdigit() else None)
-                   for p, v in zip(pers, ln[1:])}
+        if uf:
+            out[uf] = {p: _numero(v) for p, v in zip(pers, ln[1:])}
     if len(out) != 27:
         raise TelaMudou(f"CSV com {len(out)} UFs, esperadas 27")
+    return out
+
+
+def ler_csv_municipal(texto: str, codigos: tuple, acompanhados: dict) -> dict:
+    """{"UF|AAAA": {"meses": [...], "contagens": {"diarreias": {cod6: {AAAA-MM: n|None}}}}} dos municípios
+    acompanhados, na forma de `desfechos_sus.serie_municipal_mensal`. Célula vazia fica None. Pura."""
+    pers, linhas = _tabela(texto, codigos, ("Uf", "Ibge", "Municipio"))
+    if len({ln[0] for ln in linhas}) != 27:
+        raise TelaMudou("CSV municipal sem as 27 UFs")
+    out = {}
+    for ln in linhas:
+        for ano in sorted({p[:4] for p in pers}):
+            out.setdefault(f"{ln[0]}|{ano}", {"meses": [p for p in pers if p[:4] == ano], "contagens": {"diarreias": {}}})
+        if ln[1] in acompanhados:
+            for p, v in zip(pers, ln[3:]):
+                out[f"{ln[0]}|{p[:4]}"]["contagens"]["diarreias"].setdefault(ln[1], {})[p] = _numero(v)
     return out
 
 
@@ -163,6 +195,43 @@ def baixar_serie(codigos: tuple, siglas: dict, sessao=None) -> tuple:
         for uf, meses in ler_csv(texto, codigos, siglas).items():
             serie.setdefault(uf, {}).update(meses)
     return serie, sorted(form["competencias"])
+
+
+def baixar_municipios(codigos: tuple, acompanhados: dict, lidos: set, sessao=None) -> dict:
+    """Os anos ainda não lidos e os dois mais recentes, um pedido por ano, numa sessão."""
+    s = sessao or Sessao(timeout=900)
+    form = formulario(s.pedir(RELATORIO).decode("utf-8", "replace"))
+    url = urllib.parse.urljoin(RELATORIO, form["acao"])
+    anos = lotes(form["competencias"])
+    out = {}
+    for lote in anos:
+        if lote[0][:4] in lidos and lote not in anos[-2:]:
+            continue
+        texto = s.pedir(url, corpo_da_consulta(form, lote, codigos, LINHA_MUN)).decode("latin-1")
+        out.update(ler_csv_municipal(texto, codigos, acompanhados))
+    return out
+
+
+def coletar_municipios(nome: str, baixar=None, ler_fn=None, gravar_fn=None, hoje: str = None) -> bool:
+    """Série mensal por município acompanhado; só regrava se algum ano lido mudou."""
+    import desfechos_sus as ds
+    from coletores_base import ler, gravar, data_da_edicao
+    ler_fn = ler_fn or ler; gravar_fn = gravar_fn or gravar
+    acomp = ds.municipios_acompanhados(ler_fn("populacao_censo2022.json") or {})
+    ant = (ler_fn(SAIDA_MUN) or {}).get("arquivos") or {}
+    novos = (baixar or baixar_municipios)(DESFECHOS[nome]["codigos"], acomp, {k.split("|")[1] for k in ant})
+    arquivos = {**ant, **novos}
+    if arquivos == ant:
+        print(f"{nome}: série municipal do SISAB igual à última leitura; nada a regravar"); return False
+    gravar_fn(SAIDA_MUN, {
+        "_governanca": ("Atendimentos individuais na atenção primária (SISAB, relatório público de produção) com "
+                        + DESFECHOS[nome]["criterio"].split("com ", 1)[1] + ", por município (linha Município do "
+                        "relatório) e competência, nos municípios de 100.000 habitantes ou mais (Censo 2022), um "
+                        "arquivo por UF e ano lido. Município sem linha no ano lido teve zero; célula vazia é lacuna; "
+                        "ano não lido não é zero. Peso zero."),
+        "gerado_em": hoje or data_da_edicao().isoformat(), "sistema": "SISAB (Ministério da Saúde/SAPS), relatório público de produção",
+        "url": RELATORIO, "arquivos": dict(sorted(arquivos.items()))}, compacto=True)
+    return True
 
 
 def coletar(nome: str, baixar=None, ler_fn=None, gravar_fn=None, hoje: str = None) -> bool:
@@ -262,6 +331,32 @@ def _t_coletar_offline_e_idempotente():
         and o["por_100mil"]["CE"]["2019-01"] == 1100.0
 
 
+_CSV_MUN = ('"CIAP/CID: ' + ", ".join(f"{'CIAP' if c.endswith('-4') else 'CID'} ({c[:-2]}) N" for c in DESFECHOS["diarreias"]["codigos"])
+            + '."\nTipo de Produção: Atendimento Individual.\n\nUf;Ibge;Municipio;DEZ/2025;JAN/2026;\n'
+            + "AC;120040;RIO BRANCO;1.204;;\nAC;120001;ACRELANDIA;3;4;\n"
+            + "".join(f"X{i};9{i:05d};M;1;1;\n" for i in range(26)) + "\nFonte: SISAB;\n")
+
+
+def _t_csv_municipal():
+    a = ler_csv_municipal(_CSV_MUN, DESFECHOS["diarreias"]["codigos"], {"120040": "1200401"})
+    return (a["AC|2025"] == {"meses": ["2025-12"], "contagens": {"diarreias": {"120040": {"2025-12": 1204}}}}
+            and a["AC|2026"]["contagens"]["diarreias"] == {"120040": {"2026-01": None}} and len(a) == 54)
+
+
+def _t_municipios_offline_e_idempotente():
+    banco = {"populacao_censo2022.json": {"1200401": 400000}}
+    escritos = []
+    def gravar_falso(nome, obj, compacto=False):
+        banco[nome] = obj; escritos.append(nome)
+    pedidos = []
+    def baixar(codigos, acomp, lidos):
+        pedidos.append(sorted(lidos))
+        return ler_csv_municipal(_CSV_MUN, codigos, acomp)
+    kw = dict(baixar=baixar, ler_fn=banco.get, gravar_fn=gravar_falso, hoje="2026-11-17")
+    ok1, ok2 = coletar_municipios("diarreias", **kw), coletar_municipios("diarreias", **kw)
+    return ok1 and not ok2 and escritos == [SAIDA_MUN] and pedidos == [[], ["2025", "2026"]]
+
+
 def _t_fonte_nao_escreve_banco():
     from desfechos_sus import fonte_cita_banco
     return not fonte_cita_banco(__file__)
@@ -274,6 +369,8 @@ TESTES = {
     "CSV sem as 27 UFs é recusa": _t_ufs_faltando_recusa,
     "tela mudada é recusa, nunca número": _t_tela_mudou,
     "lotes anuais desde 2019": _t_lotes,
+    "CSV municipal: só acompanhados, um arquivo por UF e ano, célula vazia é lacuna": _t_csv_municipal,
+    "série municipal offline; leitura igual não regrava": _t_municipios_offline_e_idempotente,
     "coleta ponta a ponta offline; série igual não regrava": _t_coletar_offline_e_idempotente,
     "trava estrutural: não escreve nos arquivos do índice": _t_fonte_nao_escreve_banco,
 }
@@ -283,12 +380,14 @@ if __name__ == "__main__":
         sys.exit(rodar_autoteste(TESTES))
     if "--desfecho" in sys.argv:
         nome = sys.argv[sys.argv.index("--desfecho") + 1]
-        try:
-            coletar(nome)
-        except Exception as e:  # noqa: BLE001 — falha de fonte é lacuna; o arquivo anterior fica
-            from coletores_base import registrar_lacuna
-            registrar_lacuna(f"{RELATORIO} ({nome})", f"{type(e).__name__}: {e}; o arquivo anterior fica",
-                             canal="desfechos_sus", camada=3)
-            sys.exit(1)
-        sys.exit(0)
+        falhou = False
+        for etapa in (coletar, coletar_municipios) if nome in MUNICIPAIS else (coletar,):
+            try:
+                etapa(nome)
+            except Exception as e:  # noqa: BLE001 — falha de fonte é lacuna; o arquivo anterior fica
+                from coletores_base import registrar_lacuna
+                registrar_lacuna(f"{RELATORIO} ({nome}, {etapa.__name__})", f"{type(e).__name__}: {e}; o arquivo anterior fica",
+                                 canal="desfechos_sus", camada=3)
+                falhou = True
+        sys.exit(1 if falhou else 0)
     print(__doc__)

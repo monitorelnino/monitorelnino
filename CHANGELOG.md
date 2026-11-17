@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #1850 · Diarreias por município, mês a mês
+
+O relatório público do SISAB passa a ser lido também com a linha Município: atendimentos de diarreia por mês nos municípios de 100 mil habitantes ou mais, na mesma faixa habitual dos outros desfechos municipais. Anos fechados são lidos uma vez; célula vazia é lacuna, nunca zero.
+
 ## 2026-11-15 · #1768 · MapBiomas por estado pelo Earth Engine
 
 Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.
