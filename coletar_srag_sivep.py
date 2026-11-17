@@ -57,17 +57,10 @@ RESSALVA = ("O Monitor não atribui casos ao El Niño. A série é a contagem de
 COL_SEMANA = "SEM_PRI"     # semana epidemiológica dos primeiros sintomas
 COL_UF = "SG_UF"           # UF de residência
 COL_MUN = "CO_MUN_RES"     # município de residência (6 dígitos)
-# 17/11/2026 (editoria: "se a fonte tem o município, fazemos por município"): a série municipal fica nos
-# municípios de 100 mil habitantes ou mais (Censo 2022, 319), onde a contagem semanal tem tamanho para
-# uma faixa habitual; abaixo disso, uma notificação a mais põe a cidade "acima" e o mapa vira ruído.
-POPULACAO_MINIMA = 100_000
+# 17/11/2026 (editoria: "se a fonte tem o município, fazemos por município"): o recorte dos municípios
+# acompanhados é o comum (`desfechos_sus.municipios_acompanhados`).
+from desfechos_sus import POPULACAO_MINIMA, municipios_acompanhados  # noqa: E402
 SAIDA_MUN = "saude_desfechos/srag_municipios.json"
-
-
-def municipios_acompanhados(pop: dict) -> dict:
-    """{código de 6 dígitos: código de 7} dos municípios acima do limiar. Função pura."""
-    return {str(c)[:6]: str(c) for c, p in (pop or {}).items()
-            if not str(c).startswith("_") and isinstance(p, (int, float)) and p >= POPULACAO_MINIMA}
 
 
 def serie_municipal(por_ano: dict, ano_corrente: int, ultima: str, anos_canal) -> dict:

@@ -623,7 +623,7 @@ function pintarTempo() {
   const pos = {acima: [], dentro: [], abaixo: [], sem: []};
   UFS.forEach(u => { const p = posicaoNoPeriodo(d, u, per); pos[p ? p.posicao : 'sem'].push(u); });
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  const M = TEMPO.mun[d.desfecho], k = M && semanal ? M.semanas.indexOf(domingoDoPeriodo(per)) : -1;
+  const M = TEMPO.mun[d.desfecho], k = !M ? -1 : semanal ? (M.semanas || []).indexOf(domingoDoPeriodo(per)) : (M.meses || []).indexOf(per);
   const regua = document.getElementById('reguaDesfecho');
   // A régua do nível só existe onde a fonte publica nível (InfoDengue); SRAG não tem.
   regua.hidden = !(M && k >= 0 && M.municipios.some(m => m.nv.some(v => v != null)));
@@ -649,7 +649,7 @@ function pintarTempo() {
       ? [4, 3, 2, 1].map(v => ({cor: NC[v], rotulo: T('nivel', {n: v})}))
       : [['a', 'acima'], ['d', 'dentro'], ['b', 'abaixo']].map(([c, nome]) => ({cor: cor[nome],
           rotulo: textoSaude('saude.posicao.' + nome) + ' · ' + T('contagem_mun', {n: n(c)})})));
-    leitura = T('frase_municipios', {quando: quando, acima: n('a'), total: M.municipios.length, estados: pos.acima.length});
+    leitura = T(semanal ? 'frase_municipios' : 'frase_municipios_mes', {quando: quando, acima: n('a'), total: M.municipios.length, estados: pos.acima.length});
   } else {
     d3.select('#mapaDesfecho').selectAll('g.municipios-tempo').remove();
     const lugar = {}; ['acima', 'dentro', 'abaixo'].forEach(c => pos[c].forEach(u => { lugar[u] = c; }));
@@ -716,13 +716,13 @@ async function pintarDetalhe(d) {
   const T = (id, v) => textoSaude('saude.observado.registram.detalhe.' + id, v);
   const mudou = !TEMPO.d || TEMPO.d.desfecho !== d.desfecho;
   TEMPO.d = d;
-  const M = d.periodo === 'semana' ? await municipiosNoTempo(d) : null;
+  const M = await municipiosNoTempo(d);
   if (mudou) {
     clearInterval(TEMPO.relogio); document.getElementById('tocarDesfecho').setAttribute('aria-pressed', 'false');
     TEMPO.idx = periodosDoCiclo(d).length - 1; TEMPO.regua = 'faixa';
   }
   document.getElementById('tituloDesfecho').textContent = T(M ? 'titulo_municipios' : 'titulo', {desfecho: d.rotulo});
-  document.getElementById('legendaDesfecho').textContent = T(M ? 'subtitulo_municipios' : 'subtitulo_estados', {n: M ? M.municipios.length : 0});
+  document.getElementById('legendaDesfecho').textContent = T(M ? (d.periodo === 'semana' ? 'subtitulo_municipios' : 'subtitulo_municipios_mes') : 'subtitulo_estados', {n: M ? M.municipios.length : 0});
   const ultimoBR = ((d.ultimo || {}).BR || {}).consolidado || {};
   document.getElementById('notaDesfecho').textContent = T('legenda', {periodo: periodoCompacto(ultimoBR.periodo, d.periodo),
     parciais: (d.parcial || []).length ? T('parciais', {n: (d.parcial || []).length}) : T('parciais_nenhum')});

@@ -98,8 +98,8 @@ Atualizado em 17/11/2026.
 | `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | 1 | não |
 | `coletar_sg_esus.py` | — | `saude_desfechos/sindrome_gripal_serie.json` | — | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | 1 | não |
-| `coletar_sih.py` | — | — | — | 1 | não |
-| `coletar_sim.py` | — | — | — | — | não |
+| `coletar_sih.py` | — | `saude_desfechos/sih_por_municipio.json` | — | 2 | não |
+| `coletar_sim.py` | — | `saude_desfechos/sim_por_municipio.json` | — | 1 | não |
 | `coletar_sinais_risco.py` | — | — | — | 1 | não |
 | `coletar_sisab.py` | — | — | — | — | não |
 | `coletar_srag_gripe.py` | — | `saude_desfechos/infogripe_diagnostico.json` | — | 3 | não |
@@ -112,7 +112,7 @@ Atualizado em 17/11/2026.
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
 | `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 5 | não |
-| `desfechos_sus.py` | — | — | — | 5 | não |
+| `desfechos_sus.py` | — | — | — | 7 | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | — | não |
 | `funil.py` | — | — | — | 10 | não |
 | `gerar_blog.py` | — | — | — | — | não |

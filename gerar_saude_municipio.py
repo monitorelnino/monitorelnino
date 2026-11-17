@@ -83,15 +83,17 @@ def semana_do_ciclo(iso: str) -> int:
     return (datetime.date.fromisoformat(iso) - datetime.date(2026, 1, 4)).days // 7 + 1
 
 
-def tempo(serie: dict, canal: dict, ref: list) -> dict:
-    """Posição de cada município na faixa habitual, semana a semana, do marco zero do ciclo à última
-    semana fechada. Pura. 'a' acima do percentil 90 · 'd' entre a mediana e o percentil 90 · 'b' abaixo
+def tempo(serie: dict, canal: dict, ref: list, mensal: bool = False) -> dict:
+    """Posição de cada município na faixa habitual, semana a semana (ou mês a mês, `mensal`), do marco
+    zero do ciclo ao último período fechado. Pura. 'a' acima do percentil 90 · 'd' entre a mediana e o percentil 90 · 'b' abaixo
     da mediana · None sem casos registrados (semana ainda em registro ou faixa ausente: nunca zero).
     `nv` é o nível de alerta do InfoDengue na semana, como a fonte o publica."""
     import datetime
-    w0 = semana_do_ciclo(INICIO_DO_CICLO)
+    # O mês do marco zero (junho) quase não é ciclo: a série mensal começa em julho, como na UF.
+    w0 = int(INICIO_DO_CICLO[5:7]) + 1 if mensal else semana_do_ciclo(INICIO_DO_CICLO)
+    campo, chave_canal = ("meses_2026", "{:02d}") if mensal else ("semanas_2026", "{}")
     mun_s, mun_c = (serie or {}).get("municipios") or {}, (canal or {}).get("municipios") or {}
-    fechadas = [int(k[-2:]) for m in mun_s.values() for k, v in (m.get("semanas_2026") or {}).items()
+    fechadas = [int(k[-2:]) for m in mun_s.values() for k, v in (m.get(campo) or {}).items()
                 if isinstance(v, dict) and v.get("casos") is not None]
     w1 = max(fechadas, default=w0 - 1)
     semanas = list(range(w0, w1 + 1))
@@ -103,14 +105,16 @@ def tempo(serie: dict, canal: dict, ref: list) -> dict:
             continue
         p, nv = [], []
         for w in semanas:
-            x = (m.get("semanas_2026") or {}).get(f"2026-{w:02d}") or {}
-            f = (mun_c.get(cod) or {}).get(str(w))
+            x = (m.get(campo) or {}).get(f"2026-{w:02d}") or {}
+            f = (mun_c.get(cod) or {}).get(chave_canal.format(w))
             c = x.get("casos")
             p.append(None if c is None or not f or f.get("p90") is None else
                      "a" if c > f["p90"] else ("d" if c >= f["mediana"] else "b"))
             nv.append(x.get("nivel"))
         saida.append({"ibge": cod, "nome": m.get("nome") or r["nome"], "uf": m.get("uf") or r["uf"],
                       "lat": round(r["lat"], 3), "lon": round(r["lon"], 3), "p": p, "nv": nv})
+    if mensal:
+        return {"meses": [f"2026-{w:02d}" for w in semanas], "municipios": saida}
     inicio = datetime.date(2026, 1, 4)
     return {"semanas": [(inicio + datetime.timedelta(7 * (w - 1))).isoformat() for w in semanas],
             "municipios": saida}
@@ -154,7 +158,30 @@ def gerar():
                             "'b' abaixo da mediana, null sem casos registrados (nunca zero). `nv`: nível de "
                             "alerta do InfoDengue, como a fonte publica. Peso zero."),
             "fonte": serie.get("sistema") or "InfoDengue (Fiocruz/FGV)", "gerado_em": serie.get("gerado_em"), **t}, compacto=True)
-
+    # Internações (SIH/SUS) e óbitos (SIM), mês a mês, pelo município de residência; cada arquivo tem o
+    # nome do desfecho da UF, para o detalhe achá-lo pelo mesmo nome.
+    import coletar_sih
+    import coletar_sim
+    import desfechos_sus as ds
+    acomp = ds.municipios_acompanhados(ler("populacao_censo2022.json") or {})
+    nomes, uf_de = {str(r["codigo_ibge"]): r for r in ref}, ds.uf_por_codigo(ler)
+    for mod, n_parciais, nome_do, texto in (
+            (coletar_sih, 1, lambda g: coletar_sih.DESFECHOS[g][0], "internações do SIH/SUS"),
+            (coletar_sim, coletar_sim.N_PARCIAIS, lambda g: coletar_sim.TOTAL if g == "total" else f"obitos_{g}",
+             "óbitos do SIM por mês de ocorrência")):
+        arq = ler(mod.SAIDA_MUN) or {}
+        if not arq.get("arquivos"):
+            continue
+        for grupo, por_mun in ds.serie_municipal_mensal(arq["arquivos"], acomp, uf_de, mod.MUNICIPAIS, n_parciais).items():
+            serie = {"municipios": {c: {**v, "nome": (nomes.get(c) or {}).get("nome"), "uf": (nomes.get(c) or {}).get("uf")}
+                                    for c, v in por_mun.items()}}
+            t = tempo(serie, {"municipios": {c: v["canal"] for c, v in por_mun.items()}}, ref, mensal=True)
+            gravar(f"saude_municipio/tempo_{nome_do(grupo)}.json", {
+                "_governanca": (f"Posição de cada município de 100.000 habitantes ou mais na faixa habitual do mês ({texto}, "
+                                "por município de residência, 2019–2025 sem 2024), mês a mês desde julho de 2026. "
+                                "'a' acima do percentil 90, 'd' entre a mediana e ele, 'b' abaixo da mediana, null sem o "
+                                "arquivo do mês lido ou mês ainda parcial (nunca zero). Peso zero."),
+                "fonte": arq.get("sistema"), "gerado_em": arq.get("gerado_em"), **t}, compacto=True)
 
 def autoteste() -> int:
     ref = [{"nome": "Brasiléia", "uf": "AC", "codigo_ibge": 1200104}, {"nome": "Manaus", "uf": "AM", "codigo_ibge": 1302603}]
@@ -185,6 +212,13 @@ def autoteste() -> int:
                     "9999999": {"semanas_2026": {"2026-27": {"casos": 1}}}}},
                       {"municipios": {"1200104": {"26": {"mediana": 2, "p90": 5}, "27": {"mediana": 2, "p90": 5}}}},
                       [{"codigo_ibge": 1200104, "nome": "Brasiléia", "uf": "AC", "lat": -11, "lon": -68.7}])),
+        "tempo mensal: começa em julho, chave do canal com dois dígitos":
+            lambda: tempo({"municipios": {"1200104": {"meses_2026": {"2026-06": {"casos": 1}, "2026-07": {"casos": 9},
+                                                                     "2026-08": {"casos": None}}}}},
+                          {"municipios": {"1200104": {"07": {"mediana": 2, "p90": 5}}}},
+                          [{"codigo_ibge": 1200104, "nome": "Brasiléia", "uf": "AC", "lat": -11, "lon": -68.7}],
+                          mensal=True) == {"meses": ["2026-07"], "municipios": [{"ibge": "1200104", "nome": "Brasiléia",
+                                           "uf": "AC", "lat": -11, "lon": -68.7, "p": ["a"], "nv": [None]}]},
         "tempo: semana 26 é a que contém 29/06/2026": lambda: semana_do_ciclo("2026-06-29") == 26,
         "negativo: série sem nível não gera bloco": lambda: alerta_infodengue({"semanas_2026": {"2026-40": {"nivel": None}}}) is None,
     })

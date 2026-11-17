@@ -52,6 +52,11 @@ ROTULOS = {
     "desidratacao": "Óbitos por desidratação (CID-10 E86)",
     "calor": "Óbitos por exposição a calor natural excessivo (CID-10 X30)",
 }
+# 17/11/2026 (editoria, 16/11: "se a fonte tem o município, fazemos por município"): óbitos de todas as
+# causas e por doenças respiratórias agudas também por município de residência (`CODMUNRES`), no recorte
+# comum (`desfechos_sus.municipios_acompanhados`); contagem por arquivo de UF e ano.
+MUNICIPAIS = ("total", "respiratorias")
+SAIDA_MUN = "saude_desfechos/sim_por_municipio.json"
 DESFECHOS = {TOTAL: "Óbitos por todas as causas (SIM, por mês de ocorrência)",
              **{f"obitos_{g}": r for g, r in ROTULOS.items()}}
 
@@ -103,6 +108,26 @@ def agregar(registros, uf: str, ano: int, preliminar: bool) -> dict:
     return {g: {p: cont.get(g, {}).get(p, 0) for p in todos} for g in ["total", *GRUPOS_SIM]}
 
 
+def agregar_municipios(registros, acompanhados, ano: int, meses: list) -> dict:
+    """O arquivo de UF e ano na forma de `desfechos_sus.serie_municipal_mensal`: os grupos MUNICIPAIS por
+    município de residência, só dos acompanhados, nos `meses` que o arquivo publica (os de `agregar`).
+    Município sem óbito não aparece: o zero é do arquivo lido. Função pura."""
+    from coletar_sih import grupo_do_cid
+    out = {}
+    for r in registros:
+        cod, d = str(r.get("CODMUNRES") or "").strip()[:6], str(r.get("DTOBITO") or "").strip()
+        if cod not in acompanhados or not (len(d) == 8 and d.isdigit() and int(d[4:]) == ano):
+            continue
+        chave = f"{ano:04d}-{d[2:4]}"
+        if chave not in meses:
+            continue
+        for g in ["total", *grupo_do_cid(str(r.get("CAUSABAS") or "").strip().upper())]:
+            if g in MUNICIPAIS:
+                x = out.setdefault(g, {}).setdefault(cod, {})
+                x[chave] = x.get(chave, 0) + 1
+    return {"meses": list(meses), "contagens": out}
+
+
 def alinhamento(registros, uf: str, codigo_uf: str) -> dict:
     """Parcela dos registros cujo município de ocorrência e de residência começam pelo código da UF do
     arquivo (medição de território; `--sondar`). Função pura."""
@@ -134,7 +159,13 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     mudou = {d for d in DESFECHOS if ant[d] and ant[d].get("rotulo") != DESFECHOS[d]}
     lidos = dict(ant[TOTAL]["fonte"].get("arquivos_lidos", {})) if all(ant.values()) and not mudou else {}
     todos = arquivos(dict(listar(DIR_FINAL)), dict(listar(DIR_PRELIM)))
-    fila = a_ler(todos, lidos)
+    # O arquivo já lido na UF, mas ainda sem a contagem municipal, volta à fila; essa pendência é só
+    # municipal e não entra nas lacunas da série da UF.
+    acompanhados = ds.municipios_acompanhados(ler_fn("populacao_censo2022.json") or {})
+    mun_ant = (ler_fn(SAIDA_MUN) or {}).get("arquivos") or {}
+    chave_de = {v[0]: f"{k[0]}|{k[1]}" for k, v in todos.items()}
+    fila = a_ler(todos, {c: t for c, t in lidos.items() if chave_de.get(c) in mun_ant})
+    mun_novos = {}
     novos = {g: {} for g in ["total", *GRUPOS_SIM]}
     falhas, seguidas, feitos, inicio = [], 0, {}, relogio()
     for uf, ano in fila:
@@ -143,9 +174,11 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
         cam, tam, prelim = todos[(uf, ano)]
         try:
             _desc, linhas = decodificar(baixar(cam), CAMPOS)
+            linhas = list(linhas)
             ag = agregar(linhas, uf, ano, prelim)
             if not ag:
                 raise ValueError("arquivo sem registro do ano")
+            mun_novos[f"{uf}|{ano}"] = agregar_municipios(linhas, acompanhados, ano, sorted(ag["total"]))
             for g, s in ag.items():
                 novos[g].setdefault(uf, {}).update(s)
             feitos[cam] = tam; seguidas = 0
@@ -159,7 +192,7 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
         print(f"SIM: nenhum arquivo lido ({len(fila)} na fila, {len(falhas)} falha(s)); os arquivos anteriores ficam")
         return False
     anos_lidos = novos.pop("_anos")
-    pendentes = [k for k in fila if todos[k][0] not in feitos]
+    pendentes = [k for k in fila if todos[k][0] not in feitos and lidos.get(todos[k][0]) != todos[k][1]]
     lacunas = ([f"{len(pendentes)} arquivo(s) de UF e ano ainda não lidos; a leitura segue nas próximas rodadas"]
                if pendentes else []) + \
               ([f"falha de leitura nesta rodada: {', '.join(falhas[:5])}" + (" e outras" if len(falhas) > 5 else "")]
@@ -189,6 +222,13 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
                         n_parciais=N_PARCIAIS, populacao=populacao,
                         anterior=ant[desfecho] if completa else None, lacunas=lacunas)
         ok = ds.gravar_desfecho(obj, gravar_fn=gravar_fn) and ok
+    gravar_fn(SAIDA_MUN, {
+        "_governanca": ("Óbitos (SIM, causa básica) por município de residência (CODMUNRES) e mês de ocorrência, nos "
+                        "municípios de 100.000 habitantes ou mais (Censo 2022), nos grupos " + ", ".join(MUNICIPAIS) + ", "
+                        "contados por arquivo de UF e ano. Município sem linha no arquivo lido teve zero nos meses que o "
+                        "arquivo publica; arquivo não lido não é zero. Peso zero."),
+        "gerado_em": hoje.isoformat(), "sistema": fonte["sistema"], "url": fonte["url"],
+        "arquivos": dict(sorted({**mun_ant, **mun_novos}.items()))}, compacto=True)
     print(f"SIM: {len(feitos)} arquivo(s) lido(s), {len(falhas)} falha(s), {len(pendentes)} por ler; gravado: {ok}")
     return ok
 
@@ -256,6 +296,14 @@ def autoteste() -> int:
     casos.append(("consolidado: 12 meses, zero medido nos vazios", len(c["total"]) == 12 and c["total"]["2025-01"] == 1
                   and c["total"]["2025-06"] == 0))
     casos.append(("arquivo sem registro do ano devolve vazio", agregar([{"DTOBITO": "01012020", "CAUSABAS": "J18"}], "AC", 2026, True) == {}))
+    am = agregar_municipios([{"DTOBITO": "15072026", "CAUSABAS": "J189", "CODMUNRES": "120040"},
+                             {"DTOBITO": "15072026", "CAUSABAS": "I219", "CODMUNRES": "120040"},
+                             {"DTOBITO": "15092026", "CAUSABAS": "I219", "CODMUNRES": "120040"},
+                             {"DTOBITO": "15072026", "CAUSABAS": "J189", "CODMUNRES": "130260"}],
+                            {"120040": "1200401"}, 2026, ["2026-07", "2026-08"])
+    casos.append(("município: residência acompanhada, só os meses que o arquivo publica, total e respiratórias",
+                  am == {"meses": ["2026-07", "2026-08"],
+                         "contagens": {"total": {"120040": {"2026-07": 2}}, "respiratorias": {"120040": {"2026-07": 1}}}}))
     casos.append(("alinhamento do território", alinhamento([{"CODMUNOCOR": "120040", "CODMUNRES": "130010"}], "AC", "12")
                   == {"n": 1, "ocorrencia": 1.0, "residencia": 0.0}))
     # ---- gravação na forma comum (ler, gravar, listar, baixar e decodificar são falsos)
@@ -290,7 +338,7 @@ def autoteste() -> int:
     hoje = datetime.date(2026, 10, 23)
     ok1 = coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
     t = gravados.get("saude_desfechos/obitos_sim_total.json", {})
-    casos.append(("1ª rodada grava os seis arquivos comuns; fumaça (T59) não é série do SIM", ok1 and len(gravados) == 6
+    casos.append(("1ª rodada grava os seis arquivos comuns e o municipal; fumaça (T59) não é série do SIM", ok1 and len(gravados) == 7
                   and "saude_desfechos/obitos_fumaca.json" not in gravados))
     casos.append(("grupo conta só o seu CID; E86 é desidratação",
                   gravados["saude_desfechos/obitos_respiratorias.json"]["serie"]["SP"]["2026-07"] == 1
@@ -306,6 +354,11 @@ def autoteste() -> int:
     baixados.clear()
     coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
     casos.append(("2ª rodada pede só o que faltou", len(baixados) == 1 and baixados[0].endswith("DOAC2025.dbc")))
+    del gravados[SAIDA_MUN]["arquivos"]["SP|2024"]; baixados.clear()
+    coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
+    casos.append(("arquivo sem a contagem municipal é relido, sem lacuna nova na UF",
+                  sorted(x[-12:] for x in baixados) == ["DOAC2025.dbc", "DOSP2024.dbc"] and "SP|2024" in gravados[SAIDA_MUN]["arquivos"]
+                  and "1 arquivo(s) de UF e ano ainda não lidos" in str(gravados["saude_desfechos/obitos_sim_total.json"]["lacunas"])))
     baixados.clear()
     pre = {n: (9 if n.startswith("DOSP2026") else v) for n, v in pre.items()}
     coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
