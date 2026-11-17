@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #PRNUM · Plano desatualizado segundo a lei, em todo o país
+
+Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como "plano desatualizado segundo a lei" e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.
+
 ## 2026-11-17 · #1834 · Plano de saúde não é plano de defesa civil; Mesquita de novo ao juiz
 
 Plano cujo título é de saúde (arboviroses, dengue, emergências em saúde pública) fica fora da conta do MARÉ Legal: Angra dos Reis/RJ não entra e Água Branca/PB sai. O juiz passa a reconhecer o título do plano repetido no alto das páginas também no PDF lido como linha única; Mesquita/RJ e 111 recusas por título voltam ao juiz. Documento escaneado acima de 5 MB tem o OCR guardado como prova.
