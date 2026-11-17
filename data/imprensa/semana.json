@@ -20,7 +20,7 @@
    "valor": 140,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-16",
+   "periodo_fim": "2026-11-17",
    "n": 140,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
@@ -47,7 +47,7 @@
    "valor": 7,
    "unidade": "estados",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-16",
+   "periodo_fim": "2026-11-17",
    "n": 27,
    "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
    "sem_coleta": false,
@@ -311,10 +311,10 @@
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-11-16",
+ "gerado_em": "2026-11-17",
  "janela_dias": 7,
  "indices": {
-  "edicao": "16/11/2026",
+  "edicao": "17/11/2026",
   "mare_legal": 42.9,
   "mare_saude": 59.2,
   "saude_verificadas": 27,
@@ -328,8 +328,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-11-09",
-    "fim": "2026-11-16"
+    "ini": "2026-11-10",
+    "fim": "2026-11-17"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -497,9 +497,9 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 3,
+   "valor": null,
    "unidade": null,
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "15/11/2026 22:14",
    "fonte": "Cemaden",
@@ -517,9 +517,9 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3032,
+   "valor": null,
    "unidade": null,
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "15/11/2026 22:14",
    "fonte": "Inmet",
@@ -702,7 +702,7 @@
    "id": "resposta_autorizado_semana",
    "grupo": "dinheiro",
    "rotulo": "Autorizados pela defesa civil federal nos últimos 7 dias",
-   "valor": 570300.0,
+   "valor": 0,
    "unidade": "reais",
    "sem_coleta": false,
    "periodo": null,
@@ -803,7 +803,10 @@
    "pagina_de_origem": "saude.html"
   }
  ],
- "sem_dado_nesta_edicao": [],
+ "sem_dado_nesta_edicao": [
+  "Municípios sob alerta do Cemaden",
+  "Municípios sob aviso do Inmet"
+ ],
  "nao_calculaveis": [
   {
    "id": "planos_localizados_no_periodo",
@@ -828,5 +831,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 16/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 42,9 de 100; o MARÉ Saúde, em 59,2 de 100. Na semana, nenhum município publicou plano para o El Niño e 36 municípios decretaram situação de emergência ou calamidade; 967.279 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 8 de 27 capitais têm plano localizado e 1193 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 17/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 42,9 de 100; o MARÉ Saúde, em 59,2 de 100. Na semana, nenhum município publicou plano para o El Niño e 36 municípios decretaram situação de emergência ou calamidade; 967.279 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 8 de 27 capitais têm plano localizado e 1193 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
