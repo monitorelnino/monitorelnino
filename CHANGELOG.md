@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #PRNUM · Saúde: cartões desde o marco zero do ciclo
+
+A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.
+
 ## 2026-11-17 · #1834 · Plano de saúde não é plano de defesa civil; Mesquita de novo ao juiz
 
 Plano cujo título é de saúde (arboviroses, dengue, emergências em saúde pública) fica fora da conta do MARÉ Legal: Angra dos Reis/RJ não entra e Água Branca/PB sai. O juiz passa a reconhecer o título do plano repetido no alto das páginas também no PDF lido como linha única; Mesquita/RJ e 111 recusas por título voltam ao juiz. Documento escaneado acima de 5 MB tem o OCR guardado como prova.
