@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-17 · #1827 · Respostas de LAI vão ao juiz
 
-Documento recebido por pedido de acesso à informação, com endereço ou sem ele, passa a ser levado ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, vira pista direta; sem endereço, busca dirigida pelo município e pelo assunto, uma vez por semana. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos informados por MT; o arquivo de revisão manual de MT sai.
+Documento recebido por pedido de acesso à informação, com endereço ou sem ele, passa a ser levado ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, vira pista direta; sem endereço, busca dirigida pelo município e pelo assunto, uma vez por semana. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos informados por MT; o arquivo de revisão manual de MT sai. Os 51 planos municipais do painel da Defesa Civil do AM, com link, também vão ao juiz (50 pistas).
 
 ## 2026-11-17 · #1823 · Saúde: o detalhe do desfecho anda no tempo
 

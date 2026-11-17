@@ -546,7 +546,21 @@ def gravar_fila(saida: dict, url: str) -> dict:
                            key=lambda x: (x.get("indice_no_painel") or 1e9,
                                           x.get("municipio_no_painel") or ""))
     gravar(FILA, fila)
+    # 17/11/2026: a fila própria não tinha leitor — os 51 planos com link ficavam aqui desde 01/10. O que tem
+    # link vai ao juiz pela porta única; quem confere órgão, data e ato é ele.
+    from scripts.pistas import gravar_lote
+    gravar_lote(pistas_para_o_juiz(fila["itens"], date.today().isoformat()), origem="descoberta",
+                ler_fn=ler, gravar_fn=gravar)
     return fila
+
+
+def pistas_para_o_juiz(itens: list, data_iso: str) -> list:
+    """Uma pista por município com link de documento no painel. Função pura."""
+    return [{"url_final": i["url_do_link"], "tipo": "plano", "alvo": i["ibge"], "nivel": "A",
+             "data": data_iso, "origem": "descoberta",
+             "titulo": (f"Plano municipal de contingência de {i.get('nome_ibge') or i.get('municipio_no_painel')} "
+                        f"(painel da Defesa Civil do AM, ano {i.get('ano_do_plano') or 'não informado'})")}
+            for i in itens or [] if i.get("url_do_link") and i.get("ibge")]
 
 
 # ── autoteste (offline: sem rede, sem navegador) ─────────────────────────────
@@ -1025,7 +1039,12 @@ def autoteste() -> int:
                 and r["municipio_no_painel"] == "Atalaia do Norte"
                 and r["calha"] is None)
 
-    return rodar_autoteste({
+    _pj = pistas_para_o_juiz([{"url_do_link": "https://www.defesacivil.am.gov.br/p.pdf", "ibge": "1300201",
+                               "nome_ibge": "Atalaia do Norte", "ano_do_plano": 2026},
+                              {"url_do_link": None, "ibge": "1300300"}], "2026-11-17")
+    casos_juiz = {"o que tem link vai ao juiz como pista de plano do município; sem link, não":
+                  lambda: len(_pj) == 1 and _pj[0]["alvo"] == "1300201" and _pj[0]["tipo"] == "plano"}
+    return rodar_autoteste({**casos_juiz,
         "§180 ato de criação do município não é ato do plano": t_ato_de_criacao_do_municipio_nao_e_ato_do_plano,
         "§180 ato que institui o plano é lido": t_ato_do_plano_e_lido,
         "§180 ato que aprova o PLANCON é lido": t_ato_que_aprova_o_plancon_e_lido,
