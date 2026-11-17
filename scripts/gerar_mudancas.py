@@ -24,7 +24,7 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 CHANGELOG = RAIZ / "CHANGELOG.md"
 SAIDA = RAIZ / "mudancas.html"
-MODELO = RAIZ / "blog.html"
+MODELO = SAIDA   # 17/11/2026: o blog saiu do site; a página é o próprio modelo (troca só o <main>)
 LIMITE_DE_ENTRADAS = 60
 
 
@@ -71,8 +71,6 @@ def corpo_em_html(entradas: list) -> str:
     return "\n".join(linhas)
 
 
-TITULO_DO_MODELO = "Blog do MARÉ: os textos da editoria sobre o ciclo"
-TITULO = "Mudanças no MARÉ: o registro técnico do método e das correções"
 DESCRICAO = ("O registro técnico do que mudou no Monitor El Niño: método, verificação, portões e "
              "correções.")
 LD = ('<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebPage", '
@@ -92,21 +90,11 @@ def montar(modelo: str, changelog: str) -> str:
     inicio = modelo.index('<main id="conteudo">')
     fim = modelo.index("</main>", inicio) + len("</main>")
     pagina = modelo[:inicio] + corpo_em_html(entradas) + modelo[fim:]
-    pagina = pagina.replace("<title>Blog do MARÉ", "<title>Mudanças no MARÉ")
-    pagina = pagina.replace(TITULO_DO_MODELO, TITULO)
     pagina = re.sub(r'<meta name="description" content="[^"]*"',
                     f'<meta name="description" content="{DESCRICAO}"', pagina, count=1)
-    # 03/10/2026: a página nasce do modelo do blog e herdava o cabeçalho dele — canônica, og:url e
-    # o JSON-LD apontando para blog.html. Duas páginas com a mesma canônica é uma só para quem
-    # indexa, e o portão de SEO reprova com razão. Aqui o endereço passa a ser o desta página.
-    pagina = pagina.replace("https://monitorelnino.com.br/blog.html",
-                            "https://monitorelnino.com.br/mudancas.html")
     pagina = re.sub(r'(<meta (?:property="og:description"|name="twitter:description") '
                     r'content=")[^"]*(")', lambda m: m.group(1) + DESCRICAO + m.group(2), pagina)
     pagina = re.sub(r'<script type="application/ld\+json">[\s\S]*?</script>', LD, pagina, count=1)
-    # A página não entra no menu: a decisão foi explícita. O item ativo do menu some com ela.
-    pagina = pagina.replace('<span class="ativa" aria-current="page">Blog do MARÉ</span>',
-                            '<a href="blog.html">Blog do MARÉ</a>')
     # 10/10/2026 (A4-22): o leitor do catálogo veio junto com o modelo e pedia
     # `conteudo/mudancas.json`, que não existe (404 no console). A página não tem texto de catálogo.
     pagina = re.sub(r'<script src="assets/catalogo\.js[^"]*"[^>]*></script>\n?', '', pagina)
@@ -141,27 +129,14 @@ def _autoteste() -> int:
     ok("o título entra escapado", "Título novo" in h)
     ok("não há cartão na página de mudanças", "cartao" not in h)
 
-    modelo = ('<title>Blog do MARÉ</title><meta name="description" content="x">'
-              '<span class="ativa" aria-current="page">Blog do MARÉ</span>'
+    modelo = ('<title>Mudanças no MARÉ</title><meta name="description" content="x">'
+              '<meta property="og:description" content="velha">'
+              '<script type="application/ld+json">[{"url": "x"}]</script>'
               '<main id="conteudo">velho</main><footer>f</footer>')
-    pagina = montar(modelo, cl)
-    ok("o main é substituído", "velho" not in pagina and "Registro de mudanças" in pagina)
-    ok("o título da aba muda", "<title>Mudanças no MARÉ" in pagina)
-    ok("a página não fica marcada como ativa no menu",
-       'aria-current="page">Blog do MARÉ' not in pagina)
-    ok("o rodapé do modelo é preservado", "<footer>f</footer>" in pagina)
-
-    modelo_cab = ('<title>Blog do MARÉ</title><meta name="description" content="x">'
-                  '<link rel="canonical" href="https://monitorelnino.com.br/blog.html">'
-                  '<meta property="og:description" content="velha">'
-                  '<script type="application/ld+json">[{"url": '
-                  '"https://monitorelnino.com.br/blog.html"}]</script>'
-                  '<main id="conteudo">velho</main>')
-    cab = montar(modelo_cab, cl)
-    ok("a canônica é a desta página",
-       'canonical" href="https://monitorelnino.com.br/mudancas.html"' in cab)
-    ok("nenhum endereço do blog sobra no cabeçalho",
-       "monitorelnino.com.br/blog.html" not in cab)
+    cab = montar(modelo, cl)
+    ok("o main é substituído", "velho" not in cab and "Registro de mudanças" in cab)
+    ok("o rodapé do modelo é preservado", "<footer>f</footer>" in cab)
+    ok("montar a página sobre ela mesma não muda nada", montar(cab, cl) == cab)
     ok("o JSON-LD é o desta página", '"@type": "WebPage"' in cab and '"name": "Mudanças' in cab)
     ok("a descrição social acompanha a da página",
        'og:description" content="' + DESCRICAO + '"' in cab)

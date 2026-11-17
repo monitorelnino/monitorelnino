@@ -120,12 +120,16 @@ def avisos(corpo: str, etiqueta: str) -> list:
     return fora
 
 
+# 17/11/2026: o blog saiu do site e o contrato da página com ele; o vocabulário que ele proibia ao
+# texto fica aqui, para o uso interno.
+PROIBIDO_NO_TEXTO = ["FIGURA", "Corte da edição", "desastre", "defeso", "antecipação", "prontidão", "dados abertos"]
+
+
 def vocabulario_da_pagina(corpo: str) -> list:
-    """O vocabulário que a conformidade reprova em `blog.html` (regras + contrato do blog)."""
+    """O vocabulário que a conformidade reprovava no blog (regras do site + o proibido ao texto)."""
     from scripts.vocabulario import problemas
     regras = json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
-    contrato = json.loads((RAIZ / "layout" / "contratos" / "blog.json").read_text(encoding="utf-8"))
-    return problemas(re.sub(r"<[^>]+>", " ", corpo or ""), "blog.html", regras, contrato)
+    return problemas(re.sub(r"<[^>]+>", " ", corpo or ""), "blog.html", regras, {"texto_proibido": PROIBIDO_NO_TEXTO})
 
 
 def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True,
