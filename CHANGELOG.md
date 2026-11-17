@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PRNUM · Internações por município, mês a mês
+## 2026-11-17 · #1829 · Internações por município, mês a mês
 
 As internações por doenças respiratórias agudas, por efeitos do calor e por desidratação (SIH/SUS) passam a ser contadas também por município de residência, nos 319 municípios de 100 mil habitantes ou mais. O detalhe da Saúde mostra esses municípios no mapa que anda no tempo, mês a mês desde julho, na faixa habitual de 2019 a 2025. O histórico municipal é lido aos poucos, do mês mais recente ao mais antigo.
 
