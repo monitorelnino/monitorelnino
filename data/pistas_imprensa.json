@@ -3017,7 +3017,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "f779a83aa95b0d3e09e0ee91d9b2afc3bb94b2905f576faddc66d8b9c3c43dca"
    },
    "ultima_busca_em": "2026-09-28",
@@ -3029,6 +3029,14 @@
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -31997,6 +32005,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -36977,6 +36993,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -40930,7 +40954,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-01",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "159c9db4cabe566e189013766fc24da8b2f43a8efbd79b06d408dd055ab83653"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -40941,6 +40965,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -62364,7 +62396,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-01",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "40504acb1dc3edc7db24a31c25c9e0241c743b26857440b69d988eaab427716d"
    },
    "alertas": [],
@@ -62372,6 +62404,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -74638,7 +74678,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -74661,17 +74701,25 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-16",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
    },
    "alertas": [],
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -83307,7 +83355,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -83329,17 +83377,25 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-16",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
    },
    "alertas": [],
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -85583,7 +85639,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -85605,17 +85661,25 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-16",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
    },
    "alertas": [],
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -191794,7 +191858,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -191815,13 +191879,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Conceição da Feira",
@@ -198964,7 +199036,15 @@
     "data": "05/08/2011",
     "julgado_em": "2026-11-17",
     "hash_evidencia": "be1a25364bec9e9aaa85f2dd20a93b0b95c21ba969e3e7090f1ea1c069892a14"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "São Gabriel",
@@ -200866,7 +200946,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -200887,13 +200967,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Serra Preta",
@@ -210929,7 +211017,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -210950,13 +211038,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rafael Jambeiro",
@@ -212805,7 +212901,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -212826,13 +212922,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Sapeaçu",
@@ -213177,7 +213281,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2017/11/PLANO-ESTADUAL-PARA-ENFRENTAMENTO-DAS-DANT-2022_2030-ATUALIZADO-EM-abril-2024.pdf",
    "alvo": "2910750",
@@ -213188,11 +213292,11 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-04",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "7b5384e6e98924271269f7167897ef82b20e60dc8c7987b8e5f2355bf850d02e"
    },
    "alertas": [
@@ -213201,6 +213305,14 @@
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -216534,7 +216646,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -216555,13 +216667,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Cabaceiras do Paraguaçu",
@@ -219398,7 +219518,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSB-FS_Sintese.pdf",
    "alvo": "2910800",
@@ -219419,13 +219539,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-17",
     "hash_evidencia": "cb9adcf3340c6bdb238d887a8c8d3606ab3ca28f9c86668a9c1d0a10ffb6760c"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Conceição do Almeida",
@@ -237158,7 +237286,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.der.mg.gov.br/images/1-diretorias/Comunicacao/2026/29.06.26.pdf",
    "alvo": "3155405",
@@ -237171,17 +237299,25 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "ente_nao_confirmado",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-04",
-    "hash_evidencia": "f7e60a03a3b9fe1417d814c3922504f2d89d6583cd2f474f090ca10e08fd800f"
+    "julgado_em": "2026-11-17",
+    "hash_evidencia": "39e713e893b3fed30e755695aae73685d5de7abf800b7d6a72083b3d40c26c2b"
    },
    "alertas": [],
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -258729,7 +258865,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.pmerechim.rs.gov.br/uploads/paginas/9aa56854d784a75a8b8ef93c1c53cf8e.pdf",
    "alvo": "4307005",
@@ -258751,11 +258887,11 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "e829cb8a118747f70ba70f0f93f85dc6dbc4c3e59366b9f9fc5179130cf0025f"
    },
    "repeticoes": 4,
@@ -258764,6 +258900,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -405641,7 +405785,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Santa%20Maria%20de%20Jetib%C3%A1/Volume%20II%20Planos%20de%20Interven%C3%A7%C3%B5es%20Estruturais%20e%20n%C3%A3o%20Estruturais.pdf",
    "alvo": "3204559",
@@ -405652,11 +405796,11 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-04",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "87cb1dedaf46fc8feb395fa554c700ffc387fa1096684bf0b78aceb2e7acefc6"
    },
    "repeticoes": 4,
@@ -405664,6 +405808,14 @@
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -410259,13 +410411,21 @@
     "leu_documento": true,
     "categoria": null,
     "data": "05/08/2011",
-    "julgado_em": "2026-11-04",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "be1a25364bec9e9aaa85f2dd20a93b0b95c21ba969e3e7090f1ea1c069892a14"
    },
    "alertas": [],
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -542265,7 +542425,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2010/MAQUINE%20-%20PLANCON%202025.pdf",
    "alvo": "4311775",
-   "status": "fechada — sem documento oficial localizado: 24 dias na fila (prazo de 21); lida e recusada: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
    "id": "6299e87940",
    "nivel_confianca": "C",
    "juiz": {
@@ -542275,7 +542435,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "12/08/2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "9cca49ff26b89cc3e15b871b7fa6b8319629ff94167fc15732fff0876678cf1e"
    },
    "repeticoes": 1,
@@ -542291,6 +542451,14 @@
    "sinais": [
     "fonte_desconhecida",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -552207,7 +552375,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "5be771822479e9c140028532a2142001f1e34e6fbe5bf4a9d9062a31f1302624"
    },
    "repeticoes": 1,
@@ -552216,6 +552384,14 @@
    "sinais": [
     "fonte_desconhecida",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -554693,17 +554869,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20BAR%C3%83O%20DO%20TRIUNFO.pdf",
    "alvo": "4301750",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "id": "1ece7a8273",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-11",
+    "categoria": "plano",
+    "data": "10/11/2025",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "c4aff967b5567476b63051d39bf77437e575dcc24284052cbe449a9408bed2d6"
    },
    "repeticoes": 1,
@@ -554711,6 +554887,14 @@
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -596579,7 +596763,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.urussanga.sc.gov.br/uploads/sites/473/2026/06/plancon-2026-reformulado.pdf",
    "alvo": "4219002",
@@ -596590,12 +596774,12 @@
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "d94c7a8c629e15886190f53f311eb09271b558df1d7642762ec6ea665194fc33"
    },
    "alertas": [],
@@ -596603,6 +596787,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -611517,7 +611709,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-10",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "159c9db4cabe566e189013766fc24da8b2f43a8efbd79b06d408dd055ab83653"
    },
    "alertas": [
@@ -611527,6 +611719,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -793577,7 +793777,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "0336efb9160b7511c79ecc6ea8f4533217886cf812dd6433f2ac5f472372666f"
    },
    "repeticoes": 3,
@@ -793588,6 +793788,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -838462,7 +838670,7 @@
    "data_publicacao": "2024-06-03",
    "origem": "descoberta",
    "hash_evidencia": "31e6f661a7498331e7683ac7c708a52c0501dc11403b3db56af09e115a097fe2",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -838476,11 +838684,11 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-10",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "beccb6f873b407c45226fc4ba7a0956c1c05fd8f89c2c5b867c44ada8254c20e"
    },
    "repeticoes": 2,
@@ -838491,6 +838699,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -857678,7 +857894,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-10",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "d5a77e14a31986b58600caa8a5e69a6c45006626fa7bd24227561819d5a63198"
    },
    "nivel_confianca": "B",
@@ -857688,6 +857904,14 @@
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -871554,22 +871778,30 @@
    "tipo": "plano",
    "entrada": "municipio",
    "registrado_em": "2026-11-13",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-13",
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-17",
     "hash_evidencia": "14e7bf8fb0722ea7ad21c404278773ce3b47f4073a7573fa345af3169f2c9569"
    },
    "alertas": [],
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-17",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -884548,7 +884780,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "entrada": "municipio",
    "registrado_em": "2026-11-17",
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "busca_dirigida": [
     {
      "em": "2026-11-17",
@@ -884585,15 +884817,21 @@
      "classe": "criterio",
      "motivo": "minuta_ou_rascunho",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-17",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": "26/10/2016",
+    "categoria": "plano",
+    "data": "2025",
     "julgado_em": "2026-11-17",
     "hash_evidencia": "e1d5aa388b9794efae14038b113e4bc4426a928e0e1e615bd301f97b901cdaa7"
    }
