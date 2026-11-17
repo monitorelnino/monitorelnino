@@ -81,6 +81,7 @@ Atualizado em 17/11/2026.
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | — | não |
 | `coletar_financiamento.py` | — | `compromissos_federais.json`, `consultas.json`, `emendas.json`, `financiamento_uf.json`, `por_uf.json`, `recursos_uf.json` (+2) | — | 1 | não |
 | `coletar_fns.py` | — | `fns_2026.json` | — | 1 | não |
+| `coletar_mapbiomas.py` | — | `agua_anual.json`, `fogo_colecao.json`, `fogo_monitor.json` | — | — | não |
 | `coletar_normais_inmet.py` | — | `normais_capitais.json` | — | — | não |
 | `coletar_obitos.py` | — | — | — | — | não |
 | `coletar_obitos_registro_civil.py` | — | `saude_desfechos/obitos_registro_civil.json` | — | 1 | não |
