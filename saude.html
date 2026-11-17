@@ -185,10 +185,20 @@
         <p class="figura-sub" id="legendaDesfecho" data-conteudo="saude.observado.registram.detalhe.legenda_reserva">Valor observado por 100 mil sobre a faixa habitual para a época · sem coleta até o corte</p>
         <p class="figura-leitura" id="leituraDesfecho" hidden></p>
         <div class="figura-midia">
-          <div class="canvas-wrap"><canvas id="cDesfecho" aria-label="Série do desfecho escolhido sobre a faixa habitual para a época"></canvas></div>
-          <div class="map-legend" id="legDesfecho"></div>
-          <div class="mapa-dupla"><svg id="mapaDesfecho" role="img" aria-label="Mapa do Brasil com o valor do desfecho escolhido por 100 mil habitantes em cada estado, no último período fechado" viewBox="0 0 480 460"></svg></div>
-          <div class="map-legend" id="legMapaDesfecho"></div>
+          <div class="tempo-mapa">
+            <div class="mapa-dupla"><svg id="mapaDesfecho" role="img" aria-label="Mapa do Brasil com a posição de cada lugar na faixa habitual da época, no período escolhido" viewBox="0 0 480 460"></svg></div>
+            <div class="tempo-controles">
+              <button type="button" class="chip-risco" id="tocarDesfecho" aria-pressed="false" data-conteudo="saude.observado.registram.detalhe.tocar">Ver passar os períodos</button>
+              <label class="tempo-periodo"><span id="rotuloPeriodoDesfecho"></span><input type="range" id="periodoDesfecho" min="0" max="0" step="1" value="0"></label>
+            </div>
+            <div class="tempo-regua" id="reguaDesfecho" role="group" aria-labelledby="rotuloReguaDesfecho" hidden>
+              <span id="rotuloReguaDesfecho" data-conteudo="saude.observado.registram.detalhe.regua">Régua dos municípios</span>
+              <button type="button" class="chip-risco" data-regua="faixa" aria-pressed="true" data-conteudo="saude.observado.registram.detalhe.regua_faixa">Faixa habitual</button>
+              <button type="button" class="chip-risco" data-regua="nivel" aria-pressed="false" data-conteudo="saude.observado.registram.detalhe.regua_nivel">Nível do InfoDengue</button>
+            </div>
+            <div class="map-legend" id="legMapaDesfecho"></div>
+          </div>
+          <div class="linhas-estados" id="linhasDesfecho"></div>
         </div>
         <p class="figura-nota" id="notaDesfecho"></p>
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.registram.detalhe.lista">Ver em lista</summary>

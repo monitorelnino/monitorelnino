@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #PRNUM · Saúde: o detalhe do desfecho anda no tempo
+
+O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.
+
 ## 2026-11-17 · #1822 · Saúde: linha do topo soma 27, como o quadro dos estados
 
 Plano com vigência encerrada deixa de contar como plano localizado e ganha estatuto próprio (`plano_vencido`). A linha do topo da página de saúde passa a trazer as cinco contagens, que somam 27 e batem com o quadro dos tipos de plano; a escada do índice nomeia o valor do plano vencido. Índice nacional inalterado (59,2).
