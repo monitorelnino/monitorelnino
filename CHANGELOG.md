@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #PRNUM · Internações por município, mês a mês
+
+As internações por doenças respiratórias agudas, por efeitos do calor e por desidratação (SIH/SUS) passam a ser contadas também por município de residência, nos 319 municípios de 100 mil habitantes ou mais. O detalhe da Saúde mostra esses municípios no mapa que anda no tempo, mês a mês desde julho, na faixa habitual de 2019 a 2025. O histórico municipal é lido aos poucos, do mês mais recente ao mais antigo.
+
 ## 2026-11-17 · #1826 · Saúde: SRAG por município
 
 O coletor do SIVEP-Gripe passa a contar também por município de residência, na mesma leitura do arquivo, nos 319 municípios de 100 mil habitantes ou mais (Censo 2022), com a faixa habitual de cada um. O mapa da respiratória grave na página de saúde passa a mostrar esses municípios ao lado dos estados. A primeira rodada relê os anos congelados.

@@ -50,7 +50,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
 FTP_DIR_RD = "/dissemin/publicos/SIHSUS/200801_/Dados"
-CAMPOS = ("ANO_CMPT", "MES_CMPT", "IDENT", "DIAG_PRINC")
+CAMPOS = ("ANO_CMPT", "MES_CMPT", "IDENT", "DIAG_PRINC", "MUNIC_RES")
 TABNET_DEF = "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sih/cnv/niuf.def"
 TABNET_TAB = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sih/cnv/niuf.def"
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
@@ -95,6 +95,12 @@ DESFECHOS = {
     "icsap": ("internacoes_icsap", "Internações por condições sensíveis à atenção primária (Lista Brasileira, Portaria SAS/MS 221/2008)"),
 }
 INICIO = "2019-01"
+# 17/11/2026 (editoria, 16/11: "se a fonte tem o município, fazemos por município"): as internações
+# respiratórias, por calor e por desidratação também por município de residência, nos municípios de
+# 100 mil habitantes ou mais (o mesmo recorte do SRAG). Contagem por arquivo de UF e mês, para que o
+# arquivo relido substitua a sua parte; a série e a faixa saem de `serie_municipal_mensal`.
+MUNICIPAIS = ("respiratorias", "calor", "desidratacao")
+SAIDA_MUN = "saude_desfechos/sih_por_municipio.json"
 ORCAMENTO_S = 3000   # tempo de leitura por rodada (medido: 4,5 s por arquivo com três downloads à frente)
 REPEDIR = 3          # meses mais recentes relidos quando o arquivo mudou de tamanho
 PARADA_APOS = 5      # falhas seguidas: a fonte caiu, a rodada para
@@ -138,6 +144,51 @@ def agregar(registros) -> dict:
             d = out.setdefault(g, {}).setdefault(uf, {})
             for chave in por_mes:
                 d.setdefault(chave, 0)
+    return out
+
+
+def agregar_municipios(registros, acompanhados) -> dict:
+    """{grupo: {cod6: n}} dos grupos MUNICIPAIS por município de residência (`MUNIC_RES`), só dos
+    acompanhados e com o mesmo critério de `agregar` (sem longa permanência). Município sem caso não
+    aparece: o zero é do arquivo lido, não da linha. Função pura."""
+    out = {}
+    for r in registros:
+        cod = str(r.get("MUNIC_RES") or "").strip()[:6]
+        if cod not in acompanhados or str(r.get("IDENT") or "").strip() == "5":
+            continue
+        for g in grupo_do_cid(r.get("DIAG_PRINC")):
+            if g in MUNICIPAIS:
+                d = out.setdefault(g, {})
+                d[cod] = d.get(cod, 0) + 1
+    return out
+
+
+def serie_municipal_mensal(arquivos: dict, acompanhados: dict, uf_do_codigo: dict, ano: int = 2026) -> dict:
+    """{grupo: {cod7: {"meses_2026": {"AAAA-MM": {"casos": n|None}}, "canal": {"MM": {...}}}}} a partir
+    das contagens por arquivo ({"UF|AAAA-MM": {grupo: {cod6: n}}}). O mês do município existe quando o
+    arquivo da UF dele foi lido (zero medido se não teve caso); residente internado em outra UF entra
+    quando o arquivo daquela UF foi lido. O último mês publicado é parcial (cresce com AIH
+    reapresentada) e fica None, como na série da UF. Canal: `canal_endemico`, o mesmo da UF. Pura."""
+    from coletar_desfechos_saude import ANOS_CANAL, canal_endemico
+    meses = sorted({k.split("|")[1] for k in arquivos})
+    parcial = meses[-1] if meses else None
+    out = {}
+    for g in MUNICIPAIS:
+        soma = {}
+        for chave, por_grupo in arquivos.items():
+            comp = chave.split("|")[1]
+            for cod, n in (por_grupo.get(g) or {}).items():
+                soma.setdefault(cod, {})[comp] = soma.get(cod, {}).get(comp, 0) + n
+        por_mun = {}
+        for cod6, cod7 in acompanhados.items():
+            uf = uf_do_codigo.get(cod6[:2])
+            serie = {c: (soma.get(cod6, {}).get(c, 0) if f"{uf}|{c}" in arquivos and c != parcial else None)
+                     for c in meses}
+            canal = canal_endemico({c: {"casos": v} for c, v in serie.items()
+                                    if v is not None and int(c[:4]) in ANOS_CANAL})
+            por_mun[cod7] = {"meses_2026": {c: {"casos": v} for c, v in serie.items() if c.startswith(f"{ano}-")},
+                             "canal": canal}
+        out[g] = por_mun
     return out
 
 
@@ -245,7 +296,14 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     lidos = set.intersection(*({(uf, p) for uf, s in (ant[g] or {}).get("serie", {}).items() if uf != "BR"
                                 for p, v in s.items() if v is not None} for g in GRUPOS))
     listagem = dict(listar(FTP_DIR_RD))
-    fila = a_ler(listagem, lidos, base.get("fonte", {}).get("tamanhos_recentes", {}))
+    # O arquivo de UF e mês ainda sem a contagem municipal é lido de novo; a pendência é só municipal e
+    # não entra nas lacunas da série da UF (que já o tem).
+    from coletar_srag_sivep import municipios_acompanhados
+    acompanhados = municipios_acompanhados(ler_fn("populacao_censo2022.json") or {})
+    mun_ant = (ler_fn(SAIDA_MUN) or {}).get("arquivos") or {}
+    lidos_mun = {tuple(k.split("|")) for k in mun_ant}
+    fila = a_ler(listagem, lidos & lidos_mun, base.get("fonte", {}).get("tamanhos_recentes", {}))
+    mun_novos = {}
     novos = {g: {} for g in GRUPOS}
     falhas, seguidas, feitos, inicio = [], 0, set(), relogio()
     # Os downloads (a maior parte do tempo; medido em 19/10/2026: 11 s por arquivo em fila, 4,5 s com três à frente) correm
@@ -263,11 +321,13 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
             (uf, comp, nome), pedido = voo.popleft()
             try:
                 _desc, linhas = decodificar(pedido.result(), CAMPOS)
+                linhas = list(linhas)
                 ag = agregar({**r, "_UF": uf} for r in linhas)
                 if comp not in ag.get("total", {}).get(uf, {}):
                     raise ValueError("arquivo sem registro da competência")
                 for g in GRUPOS:
                     novos[g].setdefault(uf, {})[comp] = ag[g][uf][comp]
+                mun_novos[f"{uf}|{comp}"] = agregar_municipios(linhas, acompanhados)
                 feitos.add((uf, comp)); seguidas = 0
             except Exception as e:  # noqa: BLE001
                 falhas.append(f"{nome}: {type(e).__name__}"); seguidas += 1
@@ -302,6 +362,15 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
                         coletado_em=hoje.isoformat(), anos_preliminares=[hoje.year], n_parciais=1,
                         populacao=populacao, anterior=ant[g] if not pendentes and _leitura_completa(ant[g]) else None, lacunas=lacunas)
         ok = ds.gravar_desfecho(obj, gravar_fn=gravar_fn) and ok
+    arquivos = {**mun_ant, **mun_novos}
+    por_ler = len({(uf, c) for uf, d in _arquivos_por_uf(listagem).items() for c in d} - {tuple(k.split("|")) for k in arquivos})
+    gravar_fn(SAIDA_MUN, {
+        "_governanca": ("Internações (SIH/SUS, AIH reduzida) por município de residência (MUNIC_RES), nos municípios de "
+                        "100.000 habitantes ou mais (Censo 2022), nos grupos " + ", ".join(MUNICIPAIS) + ", contadas por "
+                        "arquivo de UF do hospital e mês de competência. Município sem linha no arquivo lido teve zero; "
+                        "arquivo não lido não é zero. Peso zero."),
+        "gerado_em": hoje.isoformat(), "sistema": fonte["sistema"], "url": fonte["url"],
+        "arquivos_por_ler": por_ler, "arquivos": dict(sorted(arquivos.items()))}, compacto=True)
     print(f"SIH: {len(feitos)} arquivo(s) lido(s), {len(falhas)} falha(s), {len(pendentes)} por ler; gravado: {ok}")
     return ok
 
@@ -395,6 +464,26 @@ def autoteste() -> int:
     casos.append(("competência ilegível não vira mês", "2026-00" not in ag["total"]["AC"]))
     casos.append(("mês lido sem caso do grupo é zero medido", ag["cardio"]["AC"] == {"2026-07": 0}))
     casos.append(("UF sem arquivo lido não aparece (ausência ≠ zero)", "RR" not in ag["cardio"]))
+    acomp = {"120040": "1200401", "120050": "1200500"}
+    am = agregar_municipios([{"MUNIC_RES": "120040", "IDENT": "1", "DIAG_PRINC": "J180"},
+                             {"MUNIC_RES": "120040", "IDENT": "1", "DIAG_PRINC": "E86"},
+                             {"MUNIC_RES": "120040", "IDENT": "5", "DIAG_PRINC": "J180"},
+                             {"MUNIC_RES": "130260", "IDENT": "1", "DIAG_PRINC": "J180"},
+                             {"MUNIC_RES": "120040", "IDENT": "1", "DIAG_PRINC": "I219"}], acomp)
+    casos.append(("município: residência acompanhada, sem longa permanência, só os três grupos",
+                  am == {"respiratorias": {"120040": 1}, "desidratacao": {"120040": 1}}))
+    arqs = {f"AC|{a}-07": {"respiratorias": {"120040": 10 + a - 2019}} for a in (2019, 2020, 2021, 2022, 2023, 2025)}
+    arqs.update({"AC|2026-07": {"respiratorias": {"120040": 30}}, "AC|2026-08": {},
+                 "SP|2026-08": {"respiratorias": {"120040": 2}}, "SP|2026-09": {}})
+    sm = serie_municipal_mensal(arqs, acomp, {"12": "AC", "35": "SP"})["respiratorias"]
+    casos.append(("município: mês lido sem caso é zero; residente internado em outra UF soma",
+                  sm["1200401"]["meses_2026"]["2026-07"] == {"casos": 30} and sm["1200500"]["meses_2026"]["2026-07"] == {"casos": 0}
+                  and sm["1200401"]["meses_2026"]["2026-08"] == {"casos": 2}))
+    casos.append(("município: último mês publicado é parcial (None), e mês sem o arquivo da UF não vira zero",
+                  sm["1200401"]["meses_2026"]["2026-09"] == {"casos": None}
+                  and serie_municipal_mensal({"SP|2026-07": {}, "SP|2026-08": {}}, acomp, {"12": "AC"})["calor"]["1200401"]["meses_2026"]["2026-07"] == {"casos": None}))
+    casos.append(("município: faixa do mês sobre os anos do canal da UF", sm["1200401"]["canal"]["07"]["mediana"] == 12.5
+                  and sm["1200401"]["canal"]["07"]["n_anos"] == 6))
     ult = ultimo_por_uf(["RDAC2606.dbc", "RDAC2607.dbc", "RDSP2605.DBC", "LEIAME.txt", "RDBR2607.dbc"])
     casos.append(("última competência por UF", ult == {"AC": "2026-07", "SP": "2026-05", "BR": "2026-07"}))
     casos.append(("atraso em meses", meses_de_atraso("2026-07", datetime.date(2026, 10, 17)) == 3))
@@ -436,7 +525,8 @@ def autoteste() -> int:
 
     ok1 = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19), fake_decod, pausa=0)
     o = gravados.get("saude_desfechos/internacoes_respiratorias.json", {})
-    casos.append(("1ª rodada grava os nove arquivos comuns", ok1 and len(gravados) == 9))
+    casos.append(("1ª rodada grava os nove arquivos comuns e o municipal", ok1 and len(gravados) == 10
+                  and set(gravados[SAIDA_MUN]["arquivos"]) == {f"{u}|{m}" for u in UFS for m in meses} - {"AC|2025-07"}))
     casos.append(("grupo conta só o seu CID; BR soma só onde as 27 UFs têm valor",
                   o["serie"]["SP"]["2025-08"] == 2 and o["serie"]["BR"]["2025-08"] == 54 and o["serie"]["BR"].get("2025-07") is None))
     casos.append(("mês que falhou (AC 2025-07) fica fora, não vira zero; lacuna declarada",
@@ -451,6 +541,12 @@ def autoteste() -> int:
     lidos_n.clear()
     coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 20), fake_decod, pausa=0)
     casos.append(("2ª rodada pede só o que faltou", len(lidos_n) == 1 and lidos_n[0].endswith("RDAC2507.dbc")))
+    # contagem municipal ausente de um arquivo já lido na UF: ele é relido, e a série da UF não ganha lacuna
+    del gravados[SAIDA_MUN]["arquivos"]["SP|2025-07"]; lidos_n.clear()
+    coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 20), fake_decod, pausa=0)
+    casos.append(("arquivo sem a contagem municipal é relido, sem lacuna nova na UF",
+                  sorted(x[-12:] for x in lidos_n) == ["RDAC2507.dbc", "RDSP2507.dbc"] and "SP|2025-07" in gravados[SAIDA_MUN]["arquivos"]
+                  and "1 arquivo(s) de UF e mês ainda não lidos" in str(gravados["saude_desfechos/hepatite_a.json"]["lacunas"])))
     # arquivo recente que mudou de tamanho é relido
     lidos_n.clear()
     listagem2 = [(n, 2000 if n.startswith("RDSP") else t) for n, t in listagem]

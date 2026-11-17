@@ -179,6 +179,10 @@
    "escritor": "noturno_desfechos.yml",
    "por_que": "Desfecho do SUS (E1/E2): escrito só pelo elo `noturno_desfechos.yml`, pela função comum `desfechos_sus.gravar_desfecho`; esquema fora da forma vai à quarentena."
   },
+  "data/saude_desfechos/sih_por_municipio.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Internações do SIH por município de residência (editoria, 16/11/2026): escrito só por `coletar_sih.py` no elo dos desfechos, junto das séries por UF; peso zero."
+  },
   "data/saude_desfechos/internacoes_respiratorias.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Desfecho do SUS (E1/E2): escrito só pelo elo `noturno_desfechos.yml`, pela função comum `desfechos_sus.gravar_desfecho`; esquema fora da forma vai à quarentena."
