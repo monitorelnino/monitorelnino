@@ -49,11 +49,11 @@ Atualizado em 17/11/2026.
 | `aplicar_revisao.py` | — | — | — | — | não |
 | `atualizar.py` | — | — | — | — | não |
 | `atualizar_boletins.py` | — | `boletins.json` | — | — | não |
-| `atualizar_instrumentos_estaduais.py` | — | — | — | 4 | não |
+| `atualizar_instrumentos_estaduais.py` | — | — | — | 5 | não |
 | `atualizar_populacao.py` | — | `populacao_censo2022.json` | — | — | não |
 | `atualizar_recursos.py` | — | `financiamento/por_uf.json`, `recursos_uf.json` | — | — | não |
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
-| `buscador2.py` | — | — | — | 4 | não |
+| `buscador2.py` | — | — | — | 5 | não |
 | `buscar_financiamento_preventivo.py` | — | `financiamento_uf.json` | — | — | não |
 | `buscar_planos_arboviroses_web.py` | — | — | — | — | não |
 | `buscar_planos_fontes_abertas.py` | — | — | — | 2 | não |
