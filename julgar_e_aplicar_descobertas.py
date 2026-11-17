@@ -138,6 +138,12 @@ def buscar_texto(url, timeout=40, arquivada=None):
             # rodadas, 90 de 153 falhas foram tempo esgotado e 15 foram cadeia TLS — documento oficial no ar
             # saindo `documento_inacessivel` (1.397 pistas em domínio oficial paradas nisso).
             raw, tipo = buscar(url, timeout=timeout, origem="julgamento de descobertas"), ""
+        if (not arquivada and url.lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt"))
+                and not raw.startswith(ASSINATURAS_DE_DOCUMENTO)):
+            # 17/11/2026: o endereço de documento que responde página (Rio de Janeiro/RJ: 132 caracteres de HTML,
+            # com 200, para o robô de fora do país) não entregou o documento — e o juiz julgava outra coisa.
+            # É falha de leitura: vai à cópia pública, como a recusa e a queda.
+            raise ValueError(f"o endereço do documento respondeu página ({len(raw)} bytes), não o documento")
         texto = texto_do_documento(raw, url, tipo)
         if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR:
             texto = texto_por_ocr(raw) or texto
@@ -1158,6 +1164,10 @@ def self_test():
     with _mk.patch(f"{__name__}.buscar", side_effect=OSError("403")), \
          _mk.patch(f"{__name__}.copia_arquivada", return_value=(None, None)):
         assert buscar_texto("https://x.ms.gov.br/p.html") is None
+    # 17/11/2026: endereço de PDF que responde página (Rio de Janeiro/RJ) não é o documento: vale a cópia pública
+    with _mk.patch(f"{__name__}.buscar", return_value=b"<html><body>acesso</body></html>"), \
+         _mk.patch(f"{__name__}.copia_arquivada", return_value=(None, None)) as _arq:
+        assert buscar_texto("https://x.prefeitura.rio/p.pdf") is None and _arq.called, "página tomada por PDF"
 
     # 13/11/2026 (J21): a estrutura criada no ciclo sobe, com prova; a que já está no degrau não é regravada
     with tempfile.TemporaryDirectory() as _t:
