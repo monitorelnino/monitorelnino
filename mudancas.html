@@ -46,6 +46,10 @@
     <dl class="mudancas-lista">
       <dt>17/11/2026 · O blog sai do site</dt>
       <dd>Por decisão da editoria, a página do blog, os textos publicados e o feed saem do site, do menu, do mapa do site e da página de Imprensa; os endereços antigos levam à inicial. Ficam guardados para uso interno os textos, o pacote semanal de dados e o verificador de texto.</dd>
+      <dt>17/11/2026 · Minuta só na capa</dt>
+      <dd>O juiz recusava como minuta qualquer plano com &quot;consulta pública&quot; ou &quot;minuta&quot; no corpo, como o plano de contingência 2025/2026 do Rio de Janeiro (&quot;permitindo sua consulta pública&quot;). A declaração passa a ser lida só no cabeçalho do documento, e &quot;consulta pública&quot; só como &quot;em&quot; ou &quot;para consulta pública&quot;. As 29 pistas recusadas assim voltam ao juiz.</dd>
+      <dt>17/11/2026 · Diarreias por município, mês a mês</dt>
+      <dd>O relatório público do SISAB passa a ser lido também com a linha Município: atendimentos de diarreia por mês nos municípios de 100 mil habitantes ou mais, na mesma faixa habitual dos outros desfechos municipais. Anos fechados são lidos uma vez; célula vazia é lacuna, nunca zero.</dd>
       <dt>15/11/2026 · MapBiomas por estado pelo Earth Engine</dt>
       <dd>Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.</dd>
       <dt>17/11/2026 · Saúde: legenda do mapa do detalhe centralizada</dt>
@@ -160,10 +164,6 @@
       <dd>Novo coletor lê a Tabela B.1 do Plano de Ação Brasileiro de Combate à Desertificação (MMA): 1.649 municípios, 1.389 em Áreas Suscetíveis à Desertificação e 260 no Entorno, com clima e classificação. Grava em `enquadramento_federal.json`, sem peso no índice. Os totais conferem com a Tabela 1 do plano; nenhuma página muda.</dd>
       <dt>13/11/2026 · Sondagem de repositórios não para em motor mudo nem em redirecionamento</dt>
       <dd>A sondagem de 13/11 leu 27 UFs e ficou sem busca em 21 (motor suspenso) e sem página em oito (redirecionamento por script). Raiz: o resultado de busca com motor mudo era descartado, e o renderizador lia a página no meio da navegação. Agora a página achada é lida (a UF segue devida) e o renderizador espera a navegação terminar.</dd>
-      <dt>10/11/2026 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX</dt>
-      <dd>O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar &quot;Defesa Civil do Rio Grande do Sul — Prepara RS&quot;. Município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA §129).</dd>
-      <dt>10/11/2026 · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).</dt>
-      <dd></dd>
     </dl>
   </section>
 </main>
