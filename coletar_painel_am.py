@@ -549,7 +549,7 @@ def gravar_fila(saida: dict, url: str) -> dict:
     # 17/11/2026: a fila própria não tinha leitor — os 51 planos com link ficavam aqui desde 01/10. O que tem
     # link vai ao juiz pela porta única; quem confere órgão, data e ato é ele.
     from scripts.pistas import gravar_lote
-    gravar_lote(pistas_para_o_juiz(fila["itens"], date.today().isoformat()), origem="descoberta",
+    gravar_lote(pistas_para_o_juiz(fila["itens"], hoje()), origem="descoberta",
                 ler_fn=ler, gravar_fn=gravar)
     return fila
 
