@@ -14,7 +14,46 @@
    "recusa_plano_sem_identificacao": 1,
    "recusa_noticia_institucional_nao_e_o_plano": 2,
    "recusa_natureza_duvidosa": 4
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "alvos_verificados": 7,
+   "achados_novos": 40,
+   "fila_acumulada": 42
   }
  },
- "atualizado_em": "2026-11-17T03:16:38"
+ "atualizado_em": "2026-11-17T03:43:06",
+ "verificador_imprensa": {
+  "na_fila": 3142,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "veiculo_nao_listado": 3021,
+   "sem_https": 121
+  },
+  "crescimento_da_lista": {
+   "candidatos": 2,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 1,
+    "sem_pagina_de_expediente": 1
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-17T03:58:46"
+ }
 }
