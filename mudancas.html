@@ -45,6 +45,10 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/11/2026 · Minuta só na capa</dt>
+      <dd>O juiz recusava como minuta qualquer plano com &quot;consulta pública&quot; ou &quot;minuta&quot; no corpo, como o plano de contingência 2025/2026 do Rio de Janeiro (&quot;permitindo sua consulta pública&quot;). A declaração passa a ser lida só no cabeçalho do documento, e &quot;consulta pública&quot; só como &quot;em&quot; ou &quot;para consulta pública&quot;. As 29 pistas recusadas assim voltam ao juiz.</dd>
+      <dt>17/11/2026 · Diarreias por município, mês a mês</dt>
+      <dd>O relatório público do SISAB passa a ser lido também com a linha Município: atendimentos de diarreia por mês nos municípios de 100 mil habitantes ou mais, na mesma faixa habitual dos outros desfechos municipais. Anos fechados são lidos uma vez; célula vazia é lacuna, nunca zero.</dd>
       <dt>15/11/2026 · MapBiomas por estado pelo Earth Engine</dt>
       <dd>Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.</dd>
       <dt>17/11/2026 · Saúde: legenda do mapa do detalhe centralizada</dt>
@@ -161,10 +165,6 @@
       <dd>A sondagem de 13/11 leu 27 UFs e ficou sem busca em 21 (motor suspenso) e sem página em oito (redirecionamento por script). Raiz: o resultado de busca com motor mudo era descartado, e o renderizador lia a página no meio da navegação. Agora a página achada é lida (a UF segue devida) e o renderizador espera a navegação terminar.</dd>
       <dt>10/11/2026 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX</dt>
       <dd>O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar &quot;Defesa Civil do Rio Grande do Sul — Prepara RS&quot;. Município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA §129).</dd>
-      <dt>10/11/2026 · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).</dt>
-      <dd></dd>
-      <dt>10/11/2026 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag</dt>
-      <dd>`scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.</dd>
     </dl>
   </section>
 </main>
