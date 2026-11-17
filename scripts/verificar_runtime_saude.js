@@ -145,40 +145,46 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
     q("gradeDesfechos").querySelectorAll("[data-desfecho]").length >= 1
     && /(da faixa habitual para a época \(|sem faixa habitual para a época)/.test(txt("gradeDesfechos"))
     && !/semana epidemiológica|\bSE ?\d/.test(txt("gradeDesfechos")));
-  teste("mapaDesfecho: 27 estados e legenda com a ausência declarada",
+  teste("mapaDesfecho: 27 estados e, na dengue, um ponto por município acompanhado",
     q("mapaDesfecho").querySelectorAll("path").length === 27
-    && /sem período fechado/.test(txt("legMapaDesfecho")));
-  /* O detalhe do desfecho escolhido (dengue, o primeiro) lê os MESMOS campos do mesmo arquivo que o topo.
-     Três casos garantem que cada estado se atualiza certo: se o arquivo mudar e algum divergir, o PR não passa. */
+    && q("mapaDesfecho").querySelectorAll("g.municipios-tempo circle").length
+       === JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_municipio", "tempo_dengue.json"), "utf8")).municipios.length);
+  /* 17/11/2026: o detalhe anda no tempo, do marco zero (29/06) ao último período fechado, e abre no último.
+     Os casos garantem que cada estado e cada município leem os MESMOS campos do arquivo que o topo e o gerador. */
   {
     const DD = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "dengue.json"), "utf8"));
+    const TD = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_municipio", "tempo_dengue.json"), "utf8"));
     const PAL = dom.window.MonitorMapas.PALETA.posicao;
     const norm = s => String(s).replace(/\s+/g, " ");
-    // (a) a ficha de uma UF mostra o valor, a taxa e o intervalo da faixa do arquivo, e a semana do próprio valor
+    const desl = q("periodoDesfecho"), idx = Number(desl.value);
     const c = DD.ultimo.SE.consolidado, f = DD.faixa_habitual.SE[c.periodo.split("-")[1]];
-    const caminhoSE = [...q("mapaDesfecho").querySelectorAll("path")].find(x => /^Sergipe:/.test(x.getAttribute("aria-label")));
-    const ficha = norm(caminhoSE.getAttribute("aria-label"));
     const dec = v => dom.window.MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
-    teste("detalhe do desfecho (a): a ficha traz valor, taxa, faixa e a semana do próprio valor",
-      ficha.includes(dec(c.valor) + " notificações · " + dec(c.por_100mil) + " por 100 mil habitantes")
-      && ficha.includes("(de " + dec(f.mediana) + " a " + dec(f.p90) + ")")
-      && ficha.includes(dom.window.MonitorSemana.porExtenso(Number(c.periodo.split("-")[0]), Number(c.periodo.split("-")[1]), true)));
-    // (b) as UFs pintadas em cada cor somam os três números da frase de leitura
-    const pintadas = cor => [...q("mapaDesfecho").querySelectorAll("path")].filter(x => x.getAttribute("fill") === cor).length;
-    const fr = /(\d+) acima, (\d+) dentro e (\d+) abaixo/.exec(txt("leituraDesfecho")) || [];
-    teste("detalhe do desfecho (b): as cores do mapa somam os números da frase de leitura",
-      fr.length === 4 && +fr[1] === pintadas(PAL.acima) && +fr[2] === pintadas(PAL.dentro) && +fr[3] === pintadas(PAL.abaixo));
-    // (c) o "acima" do mapa da dengue é o ufs_acima_faixa do topo
-    teste("detalhe do desfecho (c): o acima do mapa é o ufs_acima_faixa do topo",
-      pintadas(PAL.acima) === TS.desfechos.dengue.ufs_acima_faixa);
-    teste("detalhe do desfecho: sem rótulo de família, subtítulo com território e semana, ano mostrado no eixo",
-      !/Desfecho escolhido/.test(txt("boxDesfecho")) && /^Brasil · semana de /.test(txt("legendaDesfecho"))
-      && /por 100 mil habitantes$/.test(txt("tituloDesfecho")));
+    const caminhoSE = [...q("mapaDesfecho").querySelectorAll("path")].find(x => /^Sergipe:/.test(x.getAttribute("aria-label")));
+    teste("detalhe do desfecho (a): a ficha do estado traz a posição e a faixa do período escolhido",
+      norm(caminhoSE.getAttribute("aria-label")).includes("(de " + dec(f.mediana) + " a " + dec(f.p90) + ")"));
+    const fr = /(\d+) municípios acima da faixa habitual, de (\d+) acompanhados; (\d+) estados acima/.exec(txt("leituraDesfecho")) || [];
+    const pontosAcima = [...q("mapaDesfecho").querySelectorAll("g.municipios-tempo circle")].filter(x => x.getAttribute("fill") === PAL.acima).length;
+    teste("detalhe do desfecho (b): os pontos em argila são os municípios acima da frase de leitura",
+      fr.length === 4 && +fr[1] === pontosAcima && +fr[2] === TD.municipios.length);
+    teste("detalhe do desfecho (c): os estados acima da frase são o ufs_acima_faixa do topo",
+      +fr[3] === TS.desfechos.dengue.ufs_acima_faixa);
+    teste("detalhe do desfecho (d): começa no marco zero e abre no último período fechado",
+      desl.min === "0" && idx === Number(desl.max) && /^Semana de /.test(txt("rotuloPeriodoDesfecho"))
+      && !/semana epidemiológica|\bSE ?\d/.test(txt("boxDesfecho")));
+    teste("detalhe do desfecho (e): Brasil e os 27 estados têm cada um a sua linha, com o período marcado",
+      q("linhasDesfecho").querySelectorAll(".linha-estado svg").length === 28
+      && q("linhasDesfecho").querySelectorAll("line[stroke-dasharray]").length === 28);
+    teste("detalhe do desfecho (f): a régua do InfoDengue troca as cores dos municípios pelo nível da fonte",
+      (() => { q("reguaDesfecho").querySelector('[data-regua="nivel"]').click();
+        const ok = /nível 4 do InfoDengue/.test(txt("legMapaDesfecho"));
+        q("reguaDesfecho").querySelector('[data-regua="faixa"]').click(); return ok; })());
+    teste("detalhe do desfecho: título e subtítulo do catálogo, sem rótulo de família",
+      !/Desfecho escolhido/.test(txt("boxDesfecho")) && /municípios e estados desde 29 de junho$/.test(txt("tituloDesfecho")));
   }
   teste("dlDesfechoUF: lista por estado com a taxa por 100 mil",
     q("dlDesfechoUF").querySelectorAll("dt").length >= 26 && /por 100 mil habitantes/.test(txt("dlDesfechoUF")));
-  teste("os quadros por agravo saíram, e o desfecho escolhido tem um gráfico só",
-    !q("cDesfAcum") && !q("cDengueSemana") && !q("cSRAG") && !q("mapaCalor") && !!q("cDesfecho"));
+  teste("os quadros por agravo saíram, e o desfecho escolhido é mapa e linhas, sem gráfico à parte",
+    !q("cDesfAcum") && !q("cDengueSemana") && !q("cSRAG") && !q("mapaCalor") && !q("cDesfecho"));
 
   try {
     teste("saúde: a figura de estados tem o título do catálogo", q("boxMonitor").querySelector(".figura-titulo").textContent === "Plano estadual de saúde para o El Niño, por estado");
