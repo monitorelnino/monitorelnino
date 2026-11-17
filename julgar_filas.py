@@ -312,6 +312,17 @@ def classe_da_recusa(v: dict) -> str:
 MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA = ("sem_documento_primario", "citacao_incompleta")
 
 
+def procurar_ato_de_aprovacao(p: dict, v: dict) -> bool:
+    """Plano promovido sem ato de aprovação, e a pista cita tipo e número de um ato. Função pura."""
+    if not (v.get("promove") and v.get("sem_ato_de_aprovacao")):
+        return False
+    import importlib
+    import sys as _sys
+    _sys.path.insert(0, str(RAIZ / "scripts"))
+    ident = importlib.import_module("busca_dirigida_do_ato").identificadores(p)
+    return bool(ident.get("tipo") and ident.get("numero"))
+
+
 def tentar_busca_dirigida(p: dict, v: dict, buscar_texto, preservar) -> dict:
     """Procura o ato nas três rotas e, achando, rejulga sobre ele. Devolve o veredito que vale.
 
@@ -511,6 +522,10 @@ def autoteste() -> int:
         raise AssertionError(f"baixou {u}")
     v_imprensa = julgar_uma({"id": "x", "municipio": "Bonito", "uf": "MS",
                              "url": "https://g1.globo.com/ms/plano.html"}, _nao_baixe)
+    casos.append(("plano promovido sem ato e com o número do ato na pista vai à busca do ato; sem número ou já com ato, não",
+                  procurar_ato_de_aprovacao({"ato_citado": "Decreto 9584/2026"}, {"promove": True, "sem_ato_de_aprovacao": True})
+                  and not procurar_ato_de_aprovacao({"titulo": "Plano"}, {"promove": True, "sem_ato_de_aprovacao": True})
+                  and not procurar_ato_de_aprovacao({"ato_citado": "Decreto 9584/2026"}, {"promove": True})))
     casos.append(("URL de imprensa é recusada sem download",
                   v_imprensa["motivo"] == "sem_documento_primario"))
     # 09/10/2026 (lote 2.5, A1-16): fechada por prazo depois de leitura volta com codebook novo.
@@ -871,6 +886,12 @@ def main() -> int:
         # aponta a notícia, e a notícia não é o ato — mas diz que ele existe e onde procurar.
         if dirigida and v.get("motivo") in MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA:
             v = tentar_busca_dirigida(p, v, buscar_texto, hash_do_texto)
+        elif dirigida and procurar_ato_de_aprovacao(p, v):
+            # 16/11/2026 (editoria, regra geral): a pista que cita o número de um ato orienta a busca
+            # também quando o plano já foi promovido sem ato de aprovação. Achado e lido o ato, vale o
+            # veredito com o ato; não achado, fica a promoção que já havia, com o registro da busca.
+            v2 = tentar_busca_dirigida(p, dict(v), buscar_texto, hash_do_texto)
+            v = v2 if v2.get("promove") and not v2.get("sem_ato_de_aprovacao") else dict(v, busca_dirigida=v2.get("busca_dirigida"))
         return v
 
     vereditos, por_fila = [], {}

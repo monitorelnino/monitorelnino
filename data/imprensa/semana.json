@@ -2,7 +2,7 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 98536,
+   "valor": 98590,
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-11-16",
@@ -29,18 +29,18 @@
   },
   {
    "id": "dias_alerta_laranja_vermelho",
-   "valor": 41,
+   "valor": 42,
    "unidade": "dias",
    "periodo_inicio": "2026-09-15",
-   "periodo_fim": "2026-11-16",
-   "n": 59,
+   "periodo_fim": "2026-11-17",
+   "n": 60,
    "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.dias_observados",
    "periodo_vars": {
     "data": "15/09/2026",
-    "n": 59
+    "n": 60
    }
   },
   {
@@ -538,12 +538,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 10097,
+   "valor": 11365,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "16/11/2026",
+   "consultado_em": "17/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -552,31 +552,31 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 8180
+     "valor": 9243
     },
     {
      "uf": "AP",
-     "valor": 466
+     "valor": 503
     },
     {
      "uf": "MA",
-     "valor": 394
+     "valor": 454
     },
     {
      "uf": "AM",
-     "valor": 358
+     "valor": 394
     },
     {
      "uf": "RR",
-     "valor": 270
+     "valor": 303
     },
     {
      "uf": "AC",
-     "valor": 119
+     "valor": 130
     },
     {
      "uf": "RO",
-     "valor": 85
+     "valor": 102
     },
     {
      "uf": "CE",
@@ -603,6 +603,10 @@
      "valor": 23
     },
     {
+     "uf": "SP",
+     "valor": 22
+    },
+    {
      "uf": "PE",
      "valor": 13
     },
@@ -611,16 +615,12 @@
      "valor": 12
     },
     {
-     "uf": "SP",
-     "valor": 12
-    },
-    {
      "uf": "BA",
      "valor": 9
     },
     {
      "uf": "MG",
-     "valor": 6
+     "valor": 7
     },
     {
      "uf": "MT",

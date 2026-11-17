@@ -12,6 +12,15 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-17 · #1825 · Noite: vigia dos documentos anunciados por órgão
 
 A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.
+## 2026-11-16 · #1819 · O número do ato orienta a busca dirigida, em toda pista
+
+Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.
+## 2026-11-17 · #1823 · Saúde: o detalhe do desfecho anda no tempo
+
+O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.
+## 2026-11-17 · #1824 · Fila de pistas: uma data de entrada para o prazo
+
+O portão da fila não humana, a triagem e a limpeza contavam o prazo de 21 dias por datas diferentes; a pista sem `registrado_em` nunca vencia e reprovava a main. A data de entrada agora mora em `pistas.data_da_pista`, para os três, e a pendente de documento vence na fila inteira, não só na rodada do juiz. Nove pistas vencidas fechadas.
 
 ## 2026-11-17 · #1822 · Saúde: linha do topo soma 27, como o quadro dos estados
 
