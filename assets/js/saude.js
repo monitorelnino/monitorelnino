@@ -625,7 +625,9 @@ function pintarTempo() {
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
   const M = TEMPO.mun[d.desfecho], k = M && semanal ? M.semanas.indexOf(domingoDoPeriodo(per)) : -1;
   const regua = document.getElementById('reguaDesfecho');
-  regua.hidden = !(M && k >= 0);
+  // A régua do nível só existe onde a fonte publica nível (InfoDengue); SRAG não tem.
+  regua.hidden = !(M && k >= 0 && M.municipios.some(m => m.nv.some(v => v != null)));
+  if (regua.hidden) TEMPO.regua = 'faixa';
   regua.querySelectorAll('[data-regua]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.regua === TEMPO.regua)));
   const ficha = u => { const p = posicaoNoPeriodo(d, u, per);
     return p ? '<span class="posicao posicao--' + p.posicao + '">' + esc(textoSaude('saude.posicao.' + p.posicao)) + '</span> '

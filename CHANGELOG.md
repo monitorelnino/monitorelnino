@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #1826 · Saúde: SRAG por município
+
+O coletor do SIVEP-Gripe passa a contar também por município de residência, na mesma leitura do arquivo, nos 319 municípios de 100 mil habitantes ou mais (Censo 2022), com a faixa habitual de cada um. O mapa da respiratória grave na página de saúde passa a mostrar esses municípios ao lado dos estados. A primeira rodada relê os anos congelados.
 ## 2026-11-17 · #1828 · Pré-noite: publicação recente não é fila presa; aviso comenta quando a causa muda
 
 A checagem das 23h reprovava com a publicação de dados na fila ou rodando (15 e 16/11). Agora só conta como
