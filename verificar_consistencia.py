@@ -79,11 +79,17 @@ for uf, v in pct.items():
 # consigo mesmo — pega o caso de editar municipios.json e esquecer de rodar
 # recalcular_mare.py --write; achado e corrigido em 26/08/2026)
 sys.path.insert(0, str(RAIZ))
-from recalcular_mare import derivar_percentual_uf
+from recalcular_mare import categoria_que_conta, derivar_percentual_uf
+from aplicar_promocoes_do_juiz import municipios_do_cadastro
+# 17/11/2026: a contagem é a do motor — plano desatualizado segundo a lei conta como `plano_desatualizado`.
+_cod = {(m["nome"], m["uf"]): f"{m['codigo_ibge']:07d}"
+        for m in json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))}
+_cad = municipios_do_cadastro()
 _cnt = {}
 for r in municipios:
-    _cnt.setdefault(r["uf"], {}).setdefault(r["categoria"], 0)
-    _cnt[r["uf"]][r["categoria"]] += 1
+    _cat = categoria_que_conta(r, _cod.get((r["nome"], r["uf"])), _cad)
+    _cnt.setdefault(r["uf"], {}).setdefault(_cat, 0)
+    _cnt[r["uf"]][_cat] += 1
 _totais = {uf: v["total"] for uf, v in pct.items()}
 _pct_esperado = derivar_percentual_uf(_cnt, _totais, pct)
 for uf, esperado in _pct_esperado.items():
