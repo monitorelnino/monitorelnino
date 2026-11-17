@@ -240,9 +240,13 @@ def classe_da_pista(pista: dict, slugs: dict = None) -> tuple:
 # e encurtador não são o endereço do documento; resolve-se o destino antes de julgar (a lista é a única: o
 # `eh_agregador` da imprensa a usa).
 REDIRECIONADORES = ("news.google.com", "news.url.google.com", "/rss/articles/", "feedproxy.google.com",
+<<<<<<< HEAD
                     "google.com/url", "share.google/", "goo.gl/", "bit.ly/", "tinyurl.com/", "//t.co/", "//is.gd/",
                     "cutt.ly/", "//ow.ly/", "rebrand.ly/", "shorturl.at/", "encurtador.com.br/", "l.facebook.com/",
                     "l.instagram.com/", "lnkd.in/", "buff.ly/", "tiny.cc/", "abre.ai/", "bitly.com/")
+=======
+                    "google.com/url", "share.google/")
+>>>>>>> origin/main
 
 
 def eh_redirecionador(url) -> bool:
