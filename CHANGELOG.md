@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-15 · #1768 · MapBiomas por estado pelo Earth Engine
 
 Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.
+## 2026-11-17 · #1844 · Saúde: legenda do mapa do detalhe centralizada
+
+A legenda do mapa do detalhe da Saúde (acima, dentro e abaixo da faixa habitual) passa a ficar centralizada sob o mapa, por uma variante do componente de legenda, sem ajuste manual de pixel.
 
 ## 2026-11-17 · #1835 · Plano desatualizado segundo a lei, em todo o país
 
