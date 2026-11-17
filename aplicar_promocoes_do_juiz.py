@@ -101,6 +101,38 @@ def atualizacao_anual_localizada(data):
 
 
 ROTULO_SEM_ATUALIZACAO = "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)"
+# 17/11/2026 (editoria: "deixar indicado que é um plano desatualizado segundo a lei, valendo para todos os estados e
+# municípios e pontuando zero"): a regra que era só do repositório estadual vale para todo plano de município
+# indicado ao cadastro do art. 3º-A. O plano entra no banco, aparece na ficha com a marca e vale zero no índice.
+PLANOS_DA_LEI = ("plano", "plano_antigo", "plano_nomeado")
+# Na ficha, a lei por extenso: o "§" é marca de seção da Metodologia, e o portão de jargão o recusa em dado exibido.
+MARCA_DESATUALIZADO = ("plano desatualizado segundo a lei: sem atualização anual localizada "
+                       "(Lei 12.340/2010, art. 3º-A, parágrafo 6º)")
+
+
+def desatualizado_pela_lei(categoria, data, ibge, cadastro) -> bool:
+    """Plano de município indicado ao cadastro do art. 3º-A cuja edição é anterior a 29/06/2025? Sem data
+    identificável, não (data insuficiente para o cômputo). Função pura dado o cadastro."""
+    return (categoria in PLANOS_DA_LEI and str(ibge or "") in cadastro
+            and atualizacao_anual_localizada(data) is False)
+
+
+def marcar_desatualizados(municipios: list, codigo_de, cadastro) -> int:
+    """Põe ou tira a marca na ficha de cada registro, conforme a regra; devolve quantos mudaram. A marca de
+    plano sem ato de aprovação, quando há, continua junto."""
+    mudou = 0
+    for m in municipios:
+        marcas = [x for x in str(m.get("marca_na_ficha") or "").split(" · ") if x and x != MARCA_DESATUALIZADO]
+        if desatualizado_pela_lei(m.get("categoria"), m.get("data"), codigo_de(m), cadastro):
+            marcas.append(MARCA_DESATUALIZADO)
+        nova = " · ".join(marcas) or None
+        if nova != m.get("marca_na_ficha"):
+            if nova:
+                m["marca_na_ficha"] = nova
+            else:
+                m.pop("marca_na_ficha", None)
+            mudou += 1
+    return mudou
 
 
 def municipios_do_cadastro() -> set:
@@ -135,21 +167,17 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
                     v["nao_aplicado"].get("motivo") == ABSTENCAO_ANTIGA
                     or str(v["nao_aplicado"].get("motivo") or "").startswith(LIMITE_NOSSO)))):
             continue
+        if cadastro is None:
+            cadastro = municipios_do_cadastro()
+        v["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "") or None
+        v["indicado_ao_cadastro_art3A"] = str(v.get("ibge")) in cadastro
+        v["atualizacao_anual_localizada"] = atualizacao_anual_localizada(v.get("data"))
+        if desatualizado_pela_lei(v.get("categoria"), v.get("data"), v.get("ibge"), cadastro):
+            v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO   # entra no banco com a marca e vale zero no índice
+            sem_atualizacao += 1
         repo = repositorio_do_documento(v.get("url") or "")
         if repo:
-            if cadastro is None:
-                cadastro = municipios_do_cadastro()
-            cfg = REPOSITORIOS[repo]
-            v["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "") or None
-            v["indicado_ao_cadastro_art3A"] = str(v.get("ibge")) in cadastro
-            v["atualizacao_anual_localizada"] = atualizacao_anual_localizada(v.get("data"))
-            # sem data identificável não rebaixa (data insuficiente para o cômputo): só `False` exclui
-            if (cfg.get("contar_so_com_atualizacao_anual") and v["indicado_ao_cadastro_art3A"]
-                    and v["atualizacao_anual_localizada"] is False):
-                v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO
-                sem_atualizacao += 1
-                continue
-            if cfg.get("aplicar_no_banco") is False:
+            if REPOSITORIOS[repo].get("aplicar_no_banco") is False:
                 retidos += 1
                 continue
         if dominio_divergente(v, resolver(v.get("url") or "")):
@@ -158,8 +186,8 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
             continue
         fora.append(v)
     if retidos or sem_atualizacao:
-        print(f"   repositório estadual: {sem_atualizacao} de município indicado ao cadastro sem atualização anual "
-              f"localizada (fora da contagem pelo sinal); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
+        print(f"   {sem_atualizacao} plano(s) de município indicado ao cadastro sem atualização anual localizada "
+              f"(entram com a marca e valem zero); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
     return fora
 
 
@@ -316,11 +344,12 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         registro["marca_na_ficha"] = "sem ato de aprovação localizado"
         registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido em {hoje}; "
                              "ato de aprovação não localizado até o corte")
-    # 10/11/2026 (editoria): documento de repositório estadual só entra dentro da atualização anual, e o
-    # registro diz por quê, com a edição datada que a regra leu.
+    # O registro diz, com a edição datada que a regra leu, se o plano está em dia com a lei (17/11/2026: todos).
     for campo in ("data_da_edicao", "indicado_ao_cadastro_art3A", "atualizacao_anual_localizada"):
-        if campo in v:   # anotados por `aplicaveis` no repositório estadual
+        if campo in v:   # anotados por `aplicaveis`
             registro[campo] = v[campo]
+    if v.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO:
+        registro["marca_na_ficha"] = " · ".join(x for x in (registro.get("marca_na_ficha"), MARCA_DESATUALIZADO) if x)
     return registro
 
 
@@ -491,12 +520,15 @@ def autoteste() -> int:
     try:
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = False
         _retido = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad) == []
-        _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=False)
+        _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = True
         _velho = dict(_rs, data="05/2025")
-        _conta_hoje = len(aplicaveis([_velho], V, resolver=sem_dono, cadastro=_cad)) == 1
-        _aie.REPOSITORIOS["RS"]["contar_so_com_atualizacao_anual"] = True
-        _fora_da_conta = aplicaveis([dict(_velho)], V, resolver=sem_dono, cadastro=_cad) == []
-        _livre = len(aplicaveis([dict(_rs, data="2012")], V, resolver=sem_dono, cadastro=_fora)) == 1
+        _entra = aplicaveis([_velho], V, resolver=sem_dono, cadastro=_cad)
+        _livre = dict(_rs, data="2012")
+        aplicaveis([_livre], V, resolver=sem_dono, cadastro=_fora)
+        _sem_data = dict(_rs, data=None)
+        aplicaveis([_sem_data], V, resolver=sem_dono, cadastro=_cad)
+        _fora_do_repo = dict(base, data="2023", ibge="4300001", url="https://x.rs.gov.br/p.pdf")
+        aplicaveis([_fora_do_repo], V, resolver=sem_dono, cadastro=_cad)
         _ok = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad)
     finally:
         _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
@@ -507,25 +539,33 @@ def autoteste() -> int:
                   and atualizacao_anual_localizada(None) is None and atualizacao_anual_localizada("28/06/2025") is False
                   and atualizacao_anual_localizada("29/06/2025") and atualizacao_anual_localizada("06/2025")
                   and atualizacao_anual_localizada("05/2025") is False and atualizacao_anual_localizada("2026-05-13")))
-    casos.append(("campos descritivos no veredito; sinal desligado conta como hoje; ligado, indicado sem atualização "
-                  "fica fora; não indicado conta com qualquer data",
-                  _conta_hoje and _velho.get("indicado_ao_cadastro_art3A") is True
-                  and _velho.get("atualizacao_anual_localizada") is False and _velho.get("data_da_edicao") == "2025-05-31"
-                  and _fora_da_conta and _livre and "vencido" not in json.dumps(_velho)))
-    _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=True)
-    try:
-        _x = dict(_rs, data="2024")
-        _sem_data = len(aplicaveis([dict(_rs, data=None)], V, resolver=sem_dono, cadastro=_cad)) == 1
-        aplicaveis([_x], V, resolver=sem_dono, cadastro=_cad)
-    finally:
-        _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
-    casos.append(("sem data identificável não rebaixa; fora da contagem leva o rótulo descritivo",
-                  _sem_data and _x.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO))
+    casos.append(("17/11: indicado ao cadastro sem atualização ENTRA com o rótulo (vale zero no índice), em qualquer "
+                  "canal; não indicado e sem data, sem rótulo; nada diz 'vencido'",
+                  len(_entra) == 1 and _velho.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO
+                  and _velho.get("data_da_edicao") == "2025-05-31"
+                  and _fora_do_repo.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO
+                  and "rotulo_contagem" not in _livre and "rotulo_contagem" not in _sem_data
+                  and "vencido" not in json.dumps(_velho)))
+    _marcados = [{"nome": "A", "uf": "RS", "categoria": "plano_antigo", "data": "2023"},
+                 {"nome": "B", "uf": "RS", "categoria": "plano", "data": "2024", "marca_na_ficha": "sem ato de aprovação localizado"},
+                 {"nome": "C", "uf": "RS", "categoria": "plano", "data": "2026"},
+                 {"nome": "D", "uf": "RS", "categoria": "decreto", "data": "2020"}]
+    _n = marcar_desatualizados(_marcados, lambda m: "4300001", _cad)
+    casos.append(("a marca na ficha: só plano fora da atualização; junta-se à marca do ato; idempotente",
+                  _n == 2 and _marcados[0]["marca_na_ficha"] == MARCA_DESATUALIZADO
+                  and _marcados[1]["marca_na_ficha"] == "sem ato de aprovação localizado · " + MARCA_DESATUALIZADO
+                  and "marca_na_ficha" not in _marcados[2] and "marca_na_ficha" not in _marcados[3]
+                  and marcar_desatualizados(_marcados, lambda m: "4300001", _cad) == 0))
     _reg = registro_do_veredito(_ok[0], 0, 0, "orgao_estadual", "F", "10/11/2026") if _ok else {}
-    casos.append(("o registro leva os três campos descritivos (só no repositório)",
+    _r_velho = registro_do_veredito(_velho, 0, 0, "orgao_estadual", "F", "17/11/2026")
+    casos.append(("o registro leva os três campos descritivos que `aplicaveis` anotou, e a marca quando fora da lei",
                   _reg.get("data_da_edicao") == "2026-05-31" and _reg.get("indicado_ao_cadastro_art3A") is True
-                  and _reg.get("atualizacao_anual_localizada") is True
-                  and "indicado_ao_cadastro_art3A" not in registro_do_veredito(base, 0, 0, "x", "F", "10/11/2026")))
+                  and _reg.get("atualizacao_anual_localizada") is True and "marca_na_ficha" not in _reg
+                  and MARCA_DESATUALIZADO in str(_r_velho.get("marca_na_ficha"))
+                  and "indicado_ao_cadastro_art3A" not in registro_do_veredito(
+                      {k: v for k, v in base.items() if k not in ("data_da_edicao", "indicado_ao_cadastro_art3A",
+                                                                  "atualizacao_anual_localizada")},
+                      0, 0, "x", "F", "10/11/2026")))
     casos.append(("recusa nunca é aplicável",
                   aplicaveis([dict(base, promove=False)], V) == []))
 
@@ -644,6 +684,20 @@ def autoteste() -> int:
     return 0
 
 
+def marcar_o_banco() -> int:
+    """A marca de plano desatualizado segundo a lei em todo o banco, a cada passada: a data do plano não muda, mas
+    o cadastro e o registro mudam."""
+    from coletores_base import gravar_em
+    municipios = json.loads(MUNICIPIOS.read_text(encoding="utf-8"))
+    ref = {(r["nome"], r["uf"]): str(r["codigo_ibge"]).zfill(7)
+           for r in json.loads((MUNICIPIOS.parent / "municipios_ibge_referencia.json").read_text(encoding="utf-8"))}
+    n = marcar_desatualizados(municipios, lambda m: ref.get((m.get("nome"), m.get("uf"))), municipios_do_cadastro())
+    if n:
+        gravar_em(MUNICIPIOS, municipios)
+    print(f"marca de plano desatualizado segundo a lei: {n} registro(s) mudaram")
+    return n
+
+
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
@@ -661,6 +715,8 @@ def main() -> int:
           f"de {len(decisoes)} decisão(ões) no registro")
     for v in alvo:
         print(f"  {v['municipio']}/{v['uf']} · {v['categoria']} · {v.get('data')} · {v.get('url')}")
+    if "--aplicar" in sys.argv:
+        marcar_o_banco()
     if not alvo:
         print("nada a aplicar")
         if "--aplicar" in sys.argv and any("indicado_ao_cadastro_art3A" in v for v in decisoes):  # e o rótulo
