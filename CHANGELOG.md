@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PRNUM · Fila de pistas: uma data de entrada para o prazo
+## 2026-11-17 · #1824 · Fila de pistas: uma data de entrada para o prazo
 
 O portão da fila não humana, a triagem e a limpeza contavam o prazo de 21 dias por datas diferentes; a pista sem `registrado_em` nunca vencia e reprovava a main. A data de entrada agora mora em `pistas.data_da_pista`, para os três, e a pendente de documento vence na fila inteira, não só na rodada do juiz. Nove pistas vencidas fechadas.
 
