@@ -272,7 +272,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
          estado ainda não verificado são coisas distintas, e integrar o nacional não apaga a lacuna. */
       if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
         escreve('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
+          // 17/11/2026: as contagens do estatuto somam o denominador, como os grupos do quadro dos tipos de
+          // plano; antes a linha somava 25 de 27 e contava plano vencido como plano localizado.
           com_plano: n(res.ufs_com_plano_localizado), em_elaboracao: res.ufs_em_elaboracao || 0, denominador: n(res.denominador || 27),
+          vencido: res.ufs_plano_vencido || 0, nao_localizado: ((res.por_estatuto || {}).plano_nao_localizado) || 0,
           sem_numero: res.nao_verificadas, corte: (MS || {}).corte || ''}));
     }
     if (rp.indice != null) {

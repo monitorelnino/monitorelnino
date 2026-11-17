@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/11/2026 · Saúde: linha do topo soma 27, como o quadro dos estados</dt>
+      <dd>Plano com vigência encerrada deixa de contar como plano localizado e ganha estatuto próprio (`plano_vencido`). A linha do topo da página de saúde passa a trazer as cinco contagens, que somam 27 e batem com o quadro dos tipos de plano; a escada do índice nomeia o valor do plano vencido. Índice nacional inalterado (59,2).</dd>
       <dt>16/11/2026 · Documento anunciado por órgão: estado próprio e vigia noturna</dt>
       <dd>Afirmação de órgão sem documento (comunicação direta) entra em `data/notas_lai.json` com o estado `plano_em_elaboracao`, distinto de ausência, sem pontuar; no cartão do estado, só a nota do que o órgão informou. O título dado pelo órgão se procura (`busca_dirigida_do_ato.py --avisos`); achado em domínio oficial vira pista e segue o juiz. Primeiro registro: RN.</dd>
       <dt>16/11/2026 · Endereço que falha na rede vira pedido à ponte no Brasil</dt>
@@ -162,8 +164,6 @@
       <dt>05/11/2026 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.</dt>
       <dd></dd>
       <dt>05/11/2026 · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.</dt>
-      <dd></dd>
-      <dt>05/11/2026 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.</dt>
       <dd></dd>
     </dl>
   </section>
