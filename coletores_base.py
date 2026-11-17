@@ -1760,7 +1760,7 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     idx = ler("evidencias.json", {"_governanca": "Índice de evidências preservadas (§3.8, v2.2.4). "
                                    "Chave = sha256 do documento; nunca lido pelo cálculo do índice.",
                                    "itens": {}})
-    if h in idx["itens"] and (idx["itens"][h].get("arquivo") or idx["itens"][h].get("texto_arquivo")
+    if h in idx["itens"] and (idx["itens"][h].get("arquivo") or idx["itens"][h].get("texto_arquivo") or idx["itens"][h].get("ocr_arquivo")
                               or len(conteudo) <= LIMITE_EVIDENCIA):
         return h
     item = idx["itens"].get(h) or {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
@@ -1796,9 +1796,14 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
 def _texto_de_evidencia(conteudo: bytes, url: str, h: str) -> dict:
     """Os campos `texto_arquivo`, `texto_hash` e `caracteres` da camada de texto do documento, gravada em
     `evidencias/<hash>.txt`; vazio quando o documento não dá texto."""
-    from julgar_e_aplicar_descobertas import texto_do_documento
+    from julgar_e_aplicar_descobertas import LETRAS_SEM_OCR, texto_do_documento, texto_por_ocr
+    campo, sufixo = "texto", "txt"
     try:
         texto = texto_do_documento(conteudo, url) or ""
+        # 17/11/2026: o PDF grande quase sempre é escaneado; sem camada de texto, a prova é o OCR, que o portão 26
+        # aceita em campo próprio (`ocr_*`, §177) para não virar insumo de classificação.
+        if conteudo[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto)) < LETRAS_SEM_OCR:
+            texto, campo, sufixo = texto_por_ocr(conteudo) or "", "ocr", "ocr.txt"
     except Exception:  # noqa: BLE001 — documento que não dá texto fica sem esta cópia
         texto = ""
     texto, _ = redigir_segredos(texto)
@@ -1806,10 +1811,10 @@ def _texto_de_evidencia(conteudo: bytes, url: str, h: str) -> dict:
     if not texto.strip():
         return {}
     EVID.mkdir(exist_ok=True)
-    destino = EVID / f"{h}.txt"
+    destino = EVID / f"{h}.{sufixo}"
     destino.write_text(texto, encoding="utf-8", newline="\n")
-    return {"texto_arquivo": destino.relative_to(RAIZ).as_posix(), "texto_hash": sha256(destino.read_bytes()),
-            "caracteres": len(texto)}
+    return {f"{campo}_arquivo": destino.relative_to(RAIZ).as_posix(), f"{campo}_hash": sha256(destino.read_bytes()),
+            "caracteres" if campo == "texto" else "ocr_caracteres": len(texto)}
 
 
 def _indexar_texto_integral(h: str, destino, origem=None) -> str:
