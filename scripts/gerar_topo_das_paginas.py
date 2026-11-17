@@ -204,7 +204,7 @@ def cartoes_da_saude(desfechos: dict, painel: dict, sinais: dict, monitor: dict)
         "fonte": "MARÉ (verificação própria)",
         "sem_coleta": res.get("indice_nacional") is None,
         "nota": (None if com_plano is None
-                 else f"{com_plano} de {res.get('denominador') or 27} estados com plano localizado"),
+                 else f"{com_plano} de {res.get('denominador') or 27} estados com plano em vigor localizado"),
     })
     return cartoes
 
@@ -504,7 +504,7 @@ def _autoteste() -> int:
         if c["id"] == "emergencias_saude_ciclo")["sem_coleta"])
     ok("o índice conta o estatuto, sobre as 27",
        por_id["mare_saude_indice"]["unidades_verificadas"] == 21
-       and por_id["mare_saude_indice"]["nota"] == "21 de 27 estados com plano localizado")
+       and por_id["mare_saude_indice"]["nota"] == "21 de 27 estados com plano em vigor localizado")
     ok("o rótulo diz as datas da semana, nunca 'semana epidemiológica'",
        por_id["dengue_casos_se"]["rotulo"] == "notificações de dengue na semana de 16 a 22 de "
        "agosto de 2026" and not any("epidemiol" in c["rotulo"] for c in saude))

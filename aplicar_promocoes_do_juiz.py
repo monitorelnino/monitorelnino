@@ -209,6 +209,14 @@ def atualiza(existente: dict, v: dict) -> str:
         return ""
     if FORCA[nova] > FORCA.get(atual, 0):
         return f"categoria mais forte ({atual} → {nova})"
+    # 16/11/2026: registro que o juiz nunca julgou (sem `codebook`, anterior a 27/09; 84 planos) não segura o documento julgado de
+    # força igual. Rio de Janeiro/RJ tinha "plano" apontando a página estadual, sem data comparável, e
+    # a correção do leitor com o plano municipal nunca entraria.
+    if "codebook" not in existente and FORCA[nova] >= FORCA.get(atual, 0) and nova in CATEGORIAS_DE_PLANO:
+        return "registro anterior sem julgamento do juiz"
+    # 16/11/2026: o ato de aprovação achado depois completa o plano que entrou sem ele (Taió/SC).
+    if atual == nova and nova in CATEGORIAS_DE_PLANO and existente.get("sem_ato_de_aprovacao") and not v.get("sem_ato_de_aprovacao"):
+        return "ato de aprovação localizado"
     a, n = quando(existente.get("data"), existente.get("url")), quando(v.get("data"), v.get("url"))
     if atual == nova and nova in CATEGORIAS_DE_PLANO and a and n:
         ate = min(len([x for x in a if x]), len([x for x in n if x]))    # compara até onde as duas datas dizem
@@ -512,7 +520,7 @@ def autoteste() -> int:
 
     mun = [{"nome": "Serra", "uf": "ES"}]
     casos.append(("município já no banco é reconhecido", ja_no_banco(mun, "serra", "es")))
-    _reg = {"categoria": "plano_antigo", "data": "2024", "url": "https://x.rj.gov.br/wp-content/uploads/2024/10/a.pdf"}
+    _reg = {"categoria": "plano_antigo", "data": "2024", "url": "https://x.rj.gov.br/wp-content/uploads/2024/10/a.pdf", "codebook": V}
     casos.append(("registro atualiza por categoria mais forte, e nunca por mais fraca ou pelo mesmo documento",
                   atualiza(_reg, {"categoria": "plano", "data": "2026", "url": "https://x.rj.gov.br/b.pdf"}).startswith("categoria")
                   and atualiza(dict(_reg, categoria="plano"), {"categoria": "plano_antigo", "data": "2026", "url": "u"}) == ""
@@ -526,8 +534,19 @@ def autoteste() -> int:
     _jan, _ago = "https://d.sc.gov.br/wp-content/uploads/2026/01/p.pdf", "https://d.sc.gov.br/wp-content/uploads/2026/08/p.pdf"
     casos.append(("o mês do endereço completa a data que só traz o ano (Taió/SC: janeiro → agosto de 2026)",
                   quando("2026", _ago) == (2026, 8, 0) and quando("10/2025") == (2025, 10, 0) and quando("EL NIÑO") == ()
-                  and atualiza({"categoria": "plano", "data": "2026", "url": _jan}, {"categoria": "plano", "data": "2026", "url": _ago}) != ""
-                  and atualiza({"categoria": "plano", "data": "2026", "url": _ago}, {"categoria": "plano", "data": "2026", "url": _jan}) == ""))
+                  and atualiza({"categoria": "plano", "data": "2026", "url": _jan, "codebook": V}, {"categoria": "plano", "data": "2026", "url": _ago}) != ""
+                  and atualiza({"categoria": "plano", "data": "2026", "url": _ago, "codebook": V}, {"categoria": "plano", "data": "2026", "url": _jan}) == ""))
+    casos.append(("registro nunca julgado cede ao plano julgado de força igual; julgado não cede",
+                  atualiza({"categoria": "plano", "data": "vigente", "url": "https://rj.gov.br/p"},
+                           {"categoria": "plano", "data": "2025", "url": "https://rio/p.pdf"}) == "registro anterior sem julgamento do juiz"
+                  and atualiza({"categoria": "plano", "data": "vigente", "url": "https://rj.gov.br/p", "codebook": V},
+                               {"categoria": "plano", "data": "2025", "url": "https://rio/p.pdf"}) == ""
+                  and atualiza({"categoria": "plano", "data": "vigente", "url": "u1"}, {"categoria": "plano_antigo", "data": "2024", "url": "u2"}) == ""))
+    casos.append(("o ato de aprovação achado completa o plano que entrou sem ele; sem ato, não troca",
+                  atualiza({"categoria": "plano", "data": "2026", "url": "u1", "codebook": V, "sem_ato_de_aprovacao": True},
+                           {"categoria": "plano", "data": "2026", "url": "u2"}) == "ato de aprovação localizado"
+                  and atualiza({"categoria": "plano", "data": "2026", "url": "u1", "codebook": V, "sem_ato_de_aprovacao": True},
+                               {"categoria": "plano", "data": "2026", "url": "u2", "sem_ato_de_aprovacao": True}) == ""))
     casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
                   and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],

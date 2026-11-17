@@ -93,8 +93,14 @@
     return p(r.inicio.getUTCDate()) + '/' + p(r.inicio.getUTCMonth() + 1) + '/' + r.inicio.getUTCFullYear();
   }
 
+  /** Número da semana do ano que contém a data ISO (aaaa-mm-dd), na mesma régua. Pura. */
+  function semanaDaData(iso) {
+    const d = new Date(String(iso) + 'T00:00:00Z'), base = domingoDaSemana1(d.getUTCFullYear());
+    return base ? Math.floor((d.getTime() - base.getTime()) / (7 * DIA)) + 1 : null;
+  }
+
   const API = {semanaParaDatas, porExtenso, curta, mesDaSemana, fimPorExtenso, inicioBR,
-               domingoDaSemana1, MESES, MES_CURTO};
+               domingoDaSemana1, semanaDaData, MESES, MES_CURTO};
   if (typeof module === 'object' && module.exports) module.exports = API;
   raiz.MonitorSemana = API;
 })(typeof window !== 'undefined' ? window : globalThis);

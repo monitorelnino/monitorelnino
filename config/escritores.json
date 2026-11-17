@@ -264,6 +264,10 @@
    "escritor": "qualquer_elo",
    "sem_colisao_possivel": true,
    "por_que": "Endereçado pelo conteúdo: o nome é o sha256, como em evidencias/."
+  },
+  "data/ponte_pedidos.json": {
+   "escritor": "qualquer_elo",
+   "por_que": "Fila de pedidos à ponte no Brasil, que só cresce: todo elo que pede rede pode acrescentar. União pela base comum, classe LOGS_QUE_SO_CRESCEM."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."

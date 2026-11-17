@@ -9,6 +9,49 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #1825 · Noite: vigia dos documentos anunciados por órgão
+
+A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.
+## 2026-11-16 · #1819 · O número do ato orienta a busca dirigida, em toda pista
+
+Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.
+## 2026-11-17 · #1823 · Saúde: o detalhe do desfecho anda no tempo
+
+O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.
+## 2026-11-17 · #1824 · Fila de pistas: uma data de entrada para o prazo
+
+O portão da fila não humana, a triagem e a limpeza contavam o prazo de 21 dias por datas diferentes; a pista sem `registrado_em` nunca vencia e reprovava a main. A data de entrada agora mora em `pistas.data_da_pista`, para os três, e a pendente de documento vence na fila inteira, não só na rodada do juiz. Nove pistas vencidas fechadas.
+
+## 2026-11-17 · #1822 · Saúde: linha do topo soma 27, como o quadro dos estados
+
+Plano com vigência encerrada deixa de contar como plano localizado e ganha estatuto próprio (`plano_vencido`). A linha do topo da página de saúde passa a trazer as cinco contagens, que somam 27 e batem com o quadro dos tipos de plano; a escada do índice nomeia o valor do plano vencido. Índice nacional inalterado (59,2).
+
+## 2026-11-16 · #1820 · Documento anunciado por órgão: estado próprio e vigia noturna
+
+Afirmação de órgão sem documento (comunicação direta) entra em `data/notas_lai.json` com o estado `plano_em_elaboracao`, distinto de ausência, sem pontuar; no cartão do estado, só a nota do que o órgão informou. O título dado pelo órgão se procura (`busca_dirigida_do_ato.py --avisos`); achado em domínio oficial vira pista e segue o juiz. Primeiro registro: RN.
+
+## 2026-11-16 · #1810 · Endereço que falha na rede vira pedido à ponte no Brasil
+
+A tarefa semanal da ponte pedia a lista de endereços a trazer a um comando que não existia, e nenhum pedido chegava a ela; o diário do RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo endereço que falha na rede sem cópia passa a ser pedido, e `--pedidos` entrega os 40 mais recentes.
+## 2026-11-16 · #1818 · Correção do leitor vai ao juiz; registro nunca julgado cede ao julgado
+
+A correção indicada pelo formulário ficava reservada à análise editorial e parada. Ela passa a ser pista de plano, lida pelo juiz. Plano registrado antes do juiz, sem julgamento, cede ao documento julgado de força igual ou maior. Primeiro caso: Rio de Janeiro/RJ, cujo registro apontava o plano estadual.
+
+## 2026-11-16 · #1815 · Cartão do município diz quando o decreto é anterior a 29 de junho
+
+Na Defesa civil e no Proteja-se, o cartão do decreto passa a dizer quando o decreto do município é anterior a 29 de junho e foi reconhecido pela União depois dessa data. A linha do estado diz "decreto publicado ou reconhecido desde 29 de junho".
+## 2026-11-16 · #1813 · Saúde no plano: plano lido pela cópia preservada e casado pelo hash
+
+Vinte e nove planos municipais registrados ficavam sem a leitura de como tratam a saúde. Quinze tinham cópia em HTML ou DOCX, ou PDF sem ".pdf" no endereço, e nunca ganhavam texto; quatro já lidos não casavam porque a busca era pela URL. A camada de texto passa a sair da cópia preservada, e a leitura casa pelo hash do documento.
+## 2026-11-16 · #1811 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE
+
+A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.
+## 2026-11-16 · #1809 · Financiamento preventivo estadual verificado pela máquina, toda noite
+
+A bateria que procura repasse estadual fundo a fundo condicionado a plano de contingência existia só como texto para uma sessão rodar à mão: 26 UFs ficaram sem veredito desde 27/08. Ela passa a rodar no elo da descoberta, lê o documento oficial do estado e decide por regra; na dúvida, não classifica.
+## 2026-11-16 · #1808 · Ar só de monitor de referência; diário relê data que serviu outro arquivo
+
+O ar medido na capital passa a aceitar só monitor de referência: Fortaleza mostrava um sensor de teste, e AM, BA, ES, PA e RO, sensores de baixo custo. No diário estadual, a data que serviu o arquivo de outra data (CE, 06/11) é relida por dez dias, e caderno lido antes dos termos atuais volta à fila (CE, DF, PI).
 ## 2026-11-16 · #1814 · Resposta: decreto anterior reconhecido no ciclo volta a contar, marcado
 
 Por decisão da editoria, decreto municipal anterior a 29/06 que a União reconheceu depois do anúncio volta a contar no ciclo (70 municípios), marcado no dado para o cartão do município dizer. O primeiro decreto de cada estado no ciclo segue sendo o de 29/06 em diante. A marca sem data do S2iD continua sem decidir.

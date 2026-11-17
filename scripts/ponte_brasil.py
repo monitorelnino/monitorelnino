@@ -11,6 +11,7 @@ chega aqui: a fonte respondeu "não", e isso se respeita.
 USO
   python3 scripts/ponte_brasil.py --autoteste
   python3 scripts/ponte_brasil.py --guardar URL ARQUIVO --via "como a cópia foi obtida"
+  python3 scripts/ponte_brasil.py --pedidos        # até 40 endereços a trazer, o mais recente primeiro
 """
 import pathlib
 import sys
@@ -41,6 +42,25 @@ def guardar(url: str, arquivo: str, via: str) -> str:
     destino.write_bytes(corpo)
     cb.gravar(cb.PONTE, doc)
     return caminho
+
+
+DIAS_DO_PEDIDO = 30
+LIMITE_DE_PEDIDOS = 40
+
+
+def pedidos(fila: dict, copias: dict, hoje: str) -> list:
+    """Endereços a trazer: pedidos dos últimos DIAS_DO_PEDIDO dias ainda sem cópia, sem repetição, o
+    mais recente primeiro, até LIMITE_DE_PEDIDOS. Função pura."""
+    import datetime as dt
+    corte = (dt.date.fromisoformat(hoje) - dt.timedelta(days=DIAS_DO_PEDIDO)).isoformat()
+    vistos, saida = set(), []
+    for p in sorted((fila or {}).get("pedidos") or [], key=lambda p: p.get("em") or "", reverse=True):
+        u = p.get("url")
+        if not u or u in vistos or u in (copias or {}) or (p.get("em") or "") < corte:
+            continue
+        vistos.add(u)
+        saida.append(u)
+    return saida[:LIMITE_DE_PEDIDOS]
 
 
 def autoteste() -> int:
@@ -76,12 +96,23 @@ def autoteste() -> int:
             urllib.error.HTTPError("u", 403, "x", {}, None)) == "HTTPError"
             and com_ponte(urllib.error.HTTPError("u", 451, "x", {}, None)) == "HTTPError",
         "sem cópia registrada, o erro sobe": lambda: com_ponte(TimeoutError(), copia=False) == "TimeoutError",
+        "autoteste com falha de rede não vira pedido": lambda: (com_ponte(TimeoutError(), copia=False),
+                                                                 "https://to.gov.br/x" not in cb._PEDIDOS_DA_PONTE)[1],
+        "pedidos: sem cópia, recentes, sem repetição, o mais novo primeiro": lambda: pedidos(
+            {"pedidos": [{"url": "a", "em": "2026-11-10"}, {"url": "b", "em": "2026-11-15"}, {"url": "a", "em": "2026-11-12"},
+                         {"url": "c", "em": "2026-09-01"}, {"url": "d", "em": "2026-11-14"}]},
+            {"d": {}}, "2026-11-16") == ["b", "a"],
     })
 
 
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    if "--pedidos" in sys.argv:
+        for u in pedidos(cb.ler(cb.PEDIDOS_DA_PONTE, {}), (cb.ler(cb.PONTE, {}) or {}).get("copias"),
+                         cb.hoje_editorial().isoformat()):
+            print(u)
+        return 0
     if "--guardar" in sys.argv:
         i = sys.argv.index("--guardar")
         via = sys.argv[sys.argv.index("--via") + 1] if "--via" in sys.argv else "ponte no Brasil"

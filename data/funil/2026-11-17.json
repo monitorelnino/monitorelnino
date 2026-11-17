@@ -1,0 +1,68 @@
+{
+ "data": "2026-11-17",
+ "formato_versao": 1,
+ "etapas": {
+  "juiz": {
+   "pistas_recebidas": 411,
+   "com_documento": 249,
+   "promovidas": 18,
+   "recusa_documento_inacessivel": 126,
+   "recusa_texto_nao_extraivel": 36,
+   "recusa_ente_nao_confirmado": 32,
+   "recusa_citacao_incompleta": 41,
+   "recusa_autoridade_nao_confirmada": 63,
+   "recusa_plano_sem_identificacao": 11,
+   "recusa_noticia_institucional_nao_e_o_plano": 14,
+   "recusa_natureza_duvidosa": 40,
+   "recusa_executivo_pendente": 8,
+   "recusa_fora_do_objeto": 4,
+   "recusa_minuta_ou_rascunho": 7,
+   "recusa_resposta": 1
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 60,
+   "alvos_verificados": 21,
+   "achados_novos": 120,
+   "fila_acumulada": 126
+  },
+  "transferencias_municipais": {
+   "consultas": 10,
+   "com_resultado_bruto": 10,
+   "municipios": 55648
+  }
+ },
+ "verificador_imprensa": {
+  "na_fila": 2909,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "veiculo_nao_listado": 2797,
+   "sem_https": 112
+  },
+  "crescimento_da_lista": {
+   "candidatos": 2,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 1,
+    "sem_pagina_de_expediente": 1
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-17T08:31:12"
+ },
+ "atualizado_em": "2026-11-17T08:51:47"
+}

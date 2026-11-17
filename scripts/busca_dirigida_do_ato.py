@@ -27,6 +27,7 @@ documento primário; quem julga é o juiz, com as mesmas etapas de sempre.
 USO
   python3 scripts/busca_dirigida_do_ato.py --autoteste
   python3 scripts/busca_dirigida_do_ato.py --relatorio        # o que seria procurado, sem rede
+  python3 scripts/busca_dirigida_do_ato.py --avisos           # documento anunciado por órgão (noite)
 """
 import json
 import pathlib
@@ -59,7 +60,12 @@ def identificadores(pista: dict) -> dict:
 
     Sem inventar nada: o que não estiver escrito volta como None. Identificador ausente não é
     problema — ele apenas tira uma das rotas, e as outras seguem."""
-    texto = " ".join(str(pista.get(k) or "") for k in ("titulo", "trecho", "query", "documento"))
+    # 16/11/2026 (editoria: "a regra de orientar a busca pelo número do ato vale para todas as pistas"):
+    # todo campo de texto da pista conta, não uma lista fixa — o número vinha em campos que a lista não
+    # tinha (o "número e data" do formulário, o `ato` de coletores). Endereço não conta: número de URL
+    # não é número de ato.
+    texto = " ".join(str(v) for k, v in pista.items()
+                     if isinstance(v, str) and not str(v).startswith(("http://", "https://")) and "url" not in k)
     ato = RE_ATO.search(texto)
     plano = RE_NOME_DO_PLANO.search(texto)
     return {
@@ -69,6 +75,9 @@ def identificadores(pista: dict) -> dict:
         "municipio": pista.get("municipio") or _municipio_do_alvo(pista.get("alvo")),
         "uf": pista.get("uf") or _uf_do_alvo(pista.get("alvo")),
         "ibge": pista.get("ibge"),
+        # Título dado pelo próprio órgão (aviso de documento em elaboração): procura-se por ele, exato.
+        "titulo_exato": pista.get("titulo_do_documento"),
+        "territorio": pista.get("territorio"),
         "data_publicacao": pista.get("data_publicacao") or pista.get("data"),
     }
 
@@ -96,7 +105,9 @@ def consultas_dirigidas(ident: dict) -> list:
     ele. O nome do plano vem depois, porque casa com matéria jornalística com facilidade."""
     mun, uf = ident.get("municipio"), ident.get("uf")
     if not mun:
-        return []
+        # Documento estadual só se procura pelo título que o órgão deu; a UF sozinha casaria tudo.
+        t = ident.get("titulo_exato")
+        return [f'"{t}"' + (f' "{ident["territorio"]}"' if ident.get("territorio") else "")] if t else []
     lugar = f'"{mun}"' + (f" {uf}" if uf else "")
     consultas = []
     if ident.get("tipo") and ident.get("numero"):
@@ -226,6 +237,39 @@ def procurar(ident: dict, consultar_qd=None, buscar_web=None, esperar=None) -> t
     return None, tentadas
 
 
+AVISOS = RAIZ / "data" / "notas_lai.json"
+
+
+def vigiar_avisos(registros, buscar_web, esperar=None, hoje=None) -> list:
+    """Documento que um órgão disse estar em elaboração: procura o título; achado vira pista.
+
+    Função pura (rede e data por parâmetro). Só `plano_em_elaboracao` com título entra. O achado é
+    endereço, não prova: a pista vai ao juiz, que confere domínio, órgão, título, ano e ato."""
+    novas = []
+    for r in registros or []:
+        if r.get("situacao") != "plano_em_elaboracao" or not r.get("titulo_do_documento"):
+            continue
+        ident = identificadores({**r, "alvo": r.get("uf")})
+        url, _ = procurar(ident, buscar_web=buscar_web, esperar=esperar)
+        if url:
+            novas.append({"url_final": url, "tipo": "plano", "alvo": r["uf"], "nivel": "A",
+                          "data": hoje, "origem": "busca_web", "motivo_da_busca": "aviso_de_orgao_oficial",
+                          "titulo": r["titulo_do_documento"]})
+    return novas
+
+
+def rodar_avisos() -> int:
+    from coletores_base import hoje_editorial, ler, gravar
+    from pistas import gravar_lote
+    sys.path.insert(0, str(RAIZ))
+    from julgar_filas import _web_para_busca_dirigida, _ritmo
+    registros = json.loads(AVISOS.read_text(encoding="utf-8")).get("estados", [])
+    novas = vigiar_avisos(registros, _web_para_busca_dirigida, _ritmo, hoje_editorial().isoformat())
+    r = gravar_lote(novas, origem="busca_web", ler_fn=ler, gravar_fn=gravar) if novas else {}
+    print(f"avisos de órgão: {len(novas)} documento(s) achado(s); gravadas {r.get('gravadas', 0)}")
+    return 0
+
+
 def autoteste() -> int:
     import datetime
     casos = []
@@ -237,6 +281,10 @@ def autoteste() -> int:
     casos.append(("extrai tipo e número do ato", (i["tipo"], i["numero"]) == ("decreto", "1.482")))
     casos.append(("extrai o nome do plano", i["nome_do_plano"].lower().startswith("plano de conting")))
     casos.append(("extrai município e UF do alvo", (i["municipio"], i["uf"]) == ("Bonito", "MS")))
+    _q = identificadores({"ato_citado": "Decreto 9584/2026", "url_final": "https://x.sc.gov.br/2026/08/p-123.pdf", "alvo": "4217808"})
+    casos.append(("o número do ato vale em qualquer campo de texto da pista, nunca no endereço",
+                  (_q["tipo"], _q["numero"]) == ("decreto", "9584/2026")
+                  and identificadores({"url_final": "https://x/decreto-123.pdf"})["numero"] is None))
     so_camada = identificadores({"titulo": "Estado decreta emergência", "alvo": "resposta/BA"})
     casos.append(("camada da busca não é município; a UF fica",
                   (so_camada["municipio"], so_camada["uf"]) == (None, "BA")
@@ -348,6 +396,18 @@ def autoteste() -> int:
              esperar=lambda: ritmo.append(1))
     casos.append(("toda consulta passa pelo ritmo da rodada", len(ritmo) >= 3))
 
+    aviso = {"uf": "RN", "situacao": "plano_em_elaboracao", "territorio": "Rio Grande do Norte",
+             "titulo_do_documento": "Plano de Ação Estadual de Enfrentamento aos Efeitos do El Niño"}
+    q = consultas_dirigidas(identificadores({**aviso, "alvo": "RN"}))
+    casos.append(("aviso estadual procura o título exato do órgão, com o território",
+                  q == ['"Plano de Ação Estadual de Enfrentamento aos Efeitos do El Niño" "Rio Grande do Norte"']))
+    achou = vigiar_avisos([aviso, {**aviso, "situacao": "sem_plano_estadual"}],
+                          lambda c: [{"url": "https://idema.rn.gov.br/plano-el-nino.pdf"}], hoje="2026-11-17")
+    casos.append(("achado em domínio oficial vira pista de plano da UF; outro estado de registro não procura",
+                  len(achou) == 1 and achou[0]["alvo"] == "RN" and achou[0]["tipo"] == "plano"))
+    casos.append(("notícia não vira pista do aviso",
+                  vigiar_avisos([aviso], lambda c: [{"url": "https://jornal.com/plano-el-nino"}]) == []))
+
     m1, m2 = RE_DATA.search("publicado em 14/07/2026"), RE_DATA.search("em 3 de julho de 2026")
     casos.append(("RE_DATA lê o ano com quatro dígitos (A1-27: era referência ao grupo 2)",
                   bool(m1) and m1.groups() == ("14", "07", "2026")
@@ -397,6 +457,8 @@ def main() -> int:
         return autoteste()
     if "--relatorio" in sys.argv:
         return relatorio()
+    if "--avisos" in sys.argv:
+        return rodar_avisos()
     print(__doc__.strip().splitlines()[0])
     print("use --autoteste ou --relatorio")
     return 0
