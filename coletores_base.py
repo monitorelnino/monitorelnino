@@ -1806,7 +1806,7 @@ def _texto_de_evidencia(conteudo: bytes, url: str, h: str) -> dict:
         return {}
     EVID.mkdir(exist_ok=True)
     destino = EVID / f"{h}.txt"
-    destino.write_text(texto, encoding="utf-8")
+    destino.write_text(texto, encoding="utf-8", newline="\n")
     return {"texto_arquivo": destino.relative_to(RAIZ).as_posix(), "texto_hash": sha256(destino.read_bytes()),
             "caracteres": len(texto)}
 
