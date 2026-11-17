@@ -105,7 +105,9 @@ ROTULO_SEM_ATUALIZACAO = "sem atualização anual localizada (Lei 12.340, art. 3
 # municípios e pontuando zero"): a regra que era só do repositório estadual vale para todo plano de município
 # indicado ao cadastro do art. 3º-A. O plano entra no banco, aparece na ficha com a marca e vale zero no índice.
 PLANOS_DA_LEI = ("plano", "plano_antigo", "plano_nomeado")
-MARCA_DESATUALIZADO = "plano desatualizado segundo a lei: " + ROTULO_SEM_ATUALIZACAO
+# Na ficha, a lei por extenso: o "§" é marca de seção da Metodologia, e o portão de jargão o recusa em dado exibido.
+MARCA_DESATUALIZADO = ("plano desatualizado segundo a lei: sem atualização anual localizada "
+                       "(Lei 12.340/2010, art. 3º-A, parágrafo 6º)")
 
 
 def desatualizado_pela_lei(categoria, data, ibge, cadastro) -> bool:
