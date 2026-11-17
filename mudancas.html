@@ -47,6 +47,8 @@
     <dl class="mudancas-lista">
       <dt>17/11/2026 · Uma regra só para &quot;é fonte oficial?&quot;</dt>
       <dd>O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.</dd>
+      <dt>17/11/2026 · Saúde: cartões desde o marco zero do ciclo</dt>
+      <dd>A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.</dd>
       <dt>17/11/2026 · Endereço de PDF que responde página</dt>
       <dd>O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.</dd>
       <dt>17/11/2026 · Plano de saúde não é plano de defesa civil; Mesquita de novo ao juiz</dt>
@@ -163,8 +165,6 @@
       <dd>Decisão da editoria de 10/11: `data/publicacao.json` passa a `dominio: aberto` e `indexar: true`. Saem o véu de senha do navegador (`assets/acesso.js`, senhas de editoria e imprensa), o Basic-Auth do domínio e da prévia, e o `noindex` das páginas e do molde do blog. A reposição do domínio (`repor_dominio.sh`) serve o modo aberto. A prévia segue `noindex`; o índice de conteúdo interno também.</dd>
       <dt>10/11/2026 · Um resolvedor de domínio só: o Buscador 2 deixa o seu</dt>
       <dd>O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.</dd>
-      <dt>10/11/2026 · Saúde: legenda do mapa do desfecho sob o mapa, com a contagem, e nota afastada da legenda</dt>
-      <dd>A chave da contagem de estados saiu do catálogo no #1214 e o mapa seguiu pedindo-a pelo JS: a legenda publicava &quot;acima da faixa habitual para a época ·&quot; sem número. O portão do catálogo passa a ler os identificadores pedidos pelo JS. A legenda do mapa fica em coluna, centrada sob ele, e a nota de figura ganha o espaço de mídia → legenda.</dd>
     </dl>
   </section>
 </main>
