@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/mapas.js?v=6d303be4"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=c5a185d1">
+<link rel="stylesheet" href="assets/base.css?v=99e0b770">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/11/2026 · Saúde: legenda do mapa do detalhe centralizada</dt>
+      <dd>A legenda do mapa do detalhe da Saúde (acima, dentro e abaixo da faixa habitual) passa a ficar centralizada sob o mapa, por uma variante do componente de legenda, sem ajuste manual de pixel.</dd>
       <dt>17/11/2026 · Plano desatualizado segundo a lei, em todo o país</dt>
       <dd>Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como &quot;plano desatualizado segundo a lei&quot; e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.</dd>
       <dt>17/11/2026 · Uma regra só para &quot;é fonte oficial?&quot;</dt>
@@ -163,8 +165,6 @@
       <dd>`scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.</dd>
       <dt>10/11/2026 · Imprensa: todo cartão mostra o dado já coletado, com o período real</dt>
       <dd>Focos, dias com alerta laranja ou vermelho, capitais acima do limite da OMS e leptospirose apareciam “sem coleta” com o dado no arquivo: a regra jogava fora o que não cobria o ciclo inteiro. O cartão passa a mostrar o coletado e diz desde quando. Os avisos do Inmet ganham histórico diário (semeado com as coletas guardadas desde 15/09); os focos completam os dias que saíram da janela.</dd>
-      <dt>10/11/2026 · Lançamento: domínio aberto, sem senha e indexável</dt>
-      <dd>Decisão da editoria de 10/11: `data/publicacao.json` passa a `dominio: aberto` e `indexar: true`. Saem o véu de senha do navegador (`assets/acesso.js`, senhas de editoria e imprensa), o Basic-Auth do domínio e da prévia, e o `noindex` das páginas e do molde do blog. A reposição do domínio (`repor_dominio.sh`) serve o modo aberto. A prévia segue `noindex`; o índice de conteúdo interno também.</dd>
     </dl>
   </section>
 </main>

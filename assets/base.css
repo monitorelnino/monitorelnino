@@ -331,6 +331,7 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 .canvas-wrap{position:relative; width:100%; max-width:100%; min-width:0;}
 .map-legend{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-3); margin:var(--esp-figura-legenda) 0 0; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 .map-legend:empty{display:none;}
+.map-legend--centro{justify-content:center;}
 .map-legend span{display:flex; align-items:center; gap:var(--sp-2);}
 .map-legend i{width:10px; height:10px; border-radius:2px; display:inline-block; flex:none;}
 .map-legend .escala{flex-basis:100%; max-width:360px; display:block;}
