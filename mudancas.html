@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/mapas.js?v=6d303be4"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=0e46606b">
+<link rel="stylesheet" href="assets/base.css?v=c5a185d1">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,12 @@
     <dl class="mudancas-lista">
       <dt>17/11/2026 · Noite: vigia dos documentos anunciados por órgão</dt>
       <dd>A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.</dd>
+      <dt>16/11/2026 · O número do ato orienta a busca dirigida, em toda pista</dt>
+      <dd>Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.</dd>
+      <dt>17/11/2026 · Saúde: o detalhe do desfecho anda no tempo</dt>
+      <dd>O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.</dd>
+      <dt>17/11/2026 · Fila de pistas: uma data de entrada para o prazo</dt>
+      <dd>O portão da fila não humana, a triagem e a limpeza contavam o prazo de 21 dias por datas diferentes; a pista sem `registrado_em` nunca vencia e reprovava a main. A data de entrada agora mora em `pistas.data_da_pista`, para os três, e a pendente de documento vence na fila inteira, não só na rodada do juiz. Nove pistas vencidas fechadas.</dd>
       <dt>17/11/2026 · Saúde: linha do topo soma 27, como o quadro dos estados</dt>
       <dd>Plano com vigência encerrada deixa de contar como plano localizado e ganha estatuto próprio (`plano_vencido`). A linha do topo da página de saúde passa a trazer as cinco contagens, que somam 27 e batem com o quadro dos tipos de plano; a escada do índice nomeia o valor do plano vencido. Índice nacional inalterado (59,2).</dd>
       <dt>16/11/2026 · Documento anunciado por órgão: estado próprio e vigia noturna</dt>
@@ -158,12 +164,6 @@
       <dt>05/11/2026 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito &quot;N.º&quot; não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.</dt>
       <dd></dd>
       <dt>05/11/2026 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.</dt>
-      <dd></dd>
-      <dt>05/11/2026 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^=&quot;circulos-&quot;] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).</dt>
-      <dd></dd>
-      <dt>05/11/2026 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.</dt>
-      <dd></dd>
-      <dt>05/11/2026 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.</dt>
       <dd></dd>
     </dl>
   </section>
