@@ -582,6 +582,23 @@
    "em": "2026-11-16",
    "resultado": "lacuna",
    "motivo": "e-SUS Notifica recusa acesso automatizado nas duas rotas que o portal declara — API: HTTPError: HTTP Error 403: Forbidden; CSV: HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+   "coletor": "coletar_srag_sivep",
+   "em": "2026-11-17",
+   "anos_lidos": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+   ],
+   "anos_reusados_do_cache": [],
+   "anos_republicados_por_falha": [],
+   "falhas": {}
   }
  ]
 }
