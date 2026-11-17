@@ -252,8 +252,14 @@ def resolver_data(pista: dict) -> str:
 
 
 def id_da_pista(p: dict) -> str:
-    """O id estável da pista: sha1(ibge|url|trecho)[:10]. A única fórmula; quem precisa do id importa daqui."""
-    base = f"{p.get('ibge') or ''}|{p.get('url') or ''}|{(p.get('trecho') or '')[:500]}"
+    """O id estável da pista: sha1(ibge|url|trecho)[:10]. A única fórmula; quem precisa do id importa daqui.
+
+    17/11/2026: a pista que já chega no esquema (`alvo`, `url_final`, sem `ibge` nem `url`) recebia o
+    sha1 de "||" — o mesmo id para todas (51 na fila: a contribuição de Mesquita/RJ, os planos do painel
+    do AM), e `chave_da_pista` as casava como uma só. Os campos do esquema entram onde os antigos faltam;
+    o id de quem tem `ibge` e `url` não muda."""
+    base = (f"{p.get('ibge') or p.get('alvo') or ''}|{p.get('url') or p.get('url_final') or ''}"
+            f"|{(p.get('trecho') or '')[:500]}")
     return hashlib.sha1(base.encode("utf-8")).hexdigest()[:10]
 
 
@@ -508,6 +514,10 @@ def _autoteste() -> int:
        normalizar({"ibge": "4217303", "url": "https://x.gov.br/a", "trecho": "t"}, "busca_web")["id"] == id_da_pista(
            {"ibge": "4217303", "url": "https://x.gov.br/a", "trecho": "t"})
        and normalizar({"id": "a1", "url": "u"}, "busca_web")["id"] == "a1")
+    ok("pista no esquema (alvo, url_final) ganha id próprio, não o de \"||\"",
+       len({normalizar({"alvo": a, "url_final": u, "tipo": "plano"}, "descoberta")["id"]
+            for a, u in (("1300201", "https://x.am.gov.br/1.pdf"), ("1300607", "https://x.am.gov.br/2.pdf"))}) == 2
+       and id_da_pista({"alvo": "1", "url_final": "u"}) == id_da_pista({"ibge": "1", "url": "u"}))
     ok("sem id, a chave é url_final + alvo",
        chave_da_pista({"url_final": "https://x/1", "alvo": "9"}) == "url:https://x/1|9")
     ok("sem id, a url crua serve de chave",

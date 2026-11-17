@@ -64,7 +64,6 @@ PALAVRAS = {
     "decreto": ["decreta", "situacao de emergencia", "estado de calamidade",
                 "emergencia", "calamidade publica"],
 }
-DOMINIOS_OFICIAIS = (".gov.br", ".leg.br", ".jus.br", ".mp.br", ".def.br")
 AUTOAPLICAR = False  # suspenso em 02/09/2026 (auditoria externa AUD-02/AUD-03)
 
 
@@ -107,7 +106,10 @@ def host_oficial(url: str):
     if u.username or u.password: return False, "", "URL com credenciais"
     host = (u.hostname or "").lower().rstrip(".")
     if not host or host != host.encode("idna").decode("ascii", "ignore") or " " in host: return False, host, "hostname inválido"
-    permitido = host.endswith(DOMINIOS_OFICIAIS) or any(host == d or host.endswith("." + d) for d in DIARIOS_MUNICIPAIS_OFICIAIS)
+    # 17/11/2026: "é oficial?" tem uma definição só, a do juiz (`coletores_base._dominio_publico`). A lista
+    # própria daqui recusava `defesacivil.prefeitura.rio`, o domínio da Prefeitura do Rio de Janeiro.
+    from coletores_base import _dominio_publico
+    permitido = _dominio_publico(f"https://{host}/") or any(host == d or host.endswith("." + d) for d in DIARIOS_MUNICIPAIS_OFICIAIS)
     if not permitido: return False, host, f"domínio '{host}' fora das fontes oficiais aceitas (R4)"
     try:
         infos = socket.getaddrinfo(host, 443, proto=socket.IPPROTO_TCP)
@@ -118,6 +120,42 @@ def host_oficial(url: str):
         if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved or ip.is_multicast or ip.is_unspecified:
             return False, host, f"resolve para endereço não público ({ip})"
     return True, host, ""
+
+
+class _Destino(Exception):
+    """O destino do link de compartilhamento, achado sem abri-lo."""
+
+
+class _SoOPrimeiroSalto(urllib.request.HTTPRedirectHandler):
+    """Segue o redirecionador e para no primeiro destino que não é redirecionador, sem pedi-lo:
+    quem o valida é `host_oficial`, antes de qualquer acesso (AUD-03)."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        from buscador2 import eh_redirecionador
+        if not eh_redirecionador(newurl):
+            raise _Destino(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def desembrulhar(url: str, abrir=None):
+    """(url, motivo): o endereço do documento quando o leitor colou um link de compartilhamento
+    (`share.google`, 16–17/11/2026: três envios de Mesquita/RJ recusados pelo domínio do atalho).
+    Endereço que não é redirecionador volta como veio; o que não se resolve volta None, com o motivo."""
+    from buscador2 import eh_redirecionador
+    if not eh_redirecionador(url):
+        return url, ""
+    try:
+        if abrir:
+            destino = abrir(url)
+        else:
+            opener = urllib.request.build_opener(_SoOPrimeiroSalto())
+            opener.addheaders = [("User-Agent", ua_de("contribuições públicas"))]
+            opener.open(url, timeout=30).close()
+            destino = None
+    except _Destino as d:
+        destino = str(d)
+    except Exception as e:  # noqa: BLE001
+        return None, f"link de compartilhamento não resolvido ({type(e).__name__})"
+    return (destino, "") if destino and not eh_redirecionador(destino) else (None, "link de compartilhamento não resolvido")
 
 
 class _SemRedirect(urllib.request.HTTPRedirectHandler):
@@ -212,6 +250,13 @@ def autoteste() -> int:
     """
     casos = [
         ("número e data curtos passam", numero_data_valido("Decreto 123, de 02/07/2026")),
+        ("link share.google vira o endereço do documento",
+         desembrulhar("https://share.google/abc", abrir=lambda u: "https://x.rj.gov.br/p.pdf") == ("https://x.rj.gov.br/p.pdf", "")),
+        ("link que não resolve é recusado com motivo, não adivinhado",
+         desembrulhar("https://share.google/abc", abrir=lambda u: "https://share.google/abc")[0] is None),
+        ("endereço comum passa como veio", desembrulhar("https://x.gov.br/p.pdf", abrir=lambda u: 1 / 0) == ("https://x.gov.br/p.pdf", "")),
+        ("o domínio da Prefeitura do Rio (prefeitura.rio) é oficial pela regra do juiz",
+         __import__("coletores_base")._dominio_publico("https://defesacivil.prefeitura.rio/")),
         ("campo vazio reprova", not numero_data_valido("")),
         ("campo longo reprova", not numero_data_valido("x" * (TAM_MAX_NUMERO_DATA + 1))),
         ("marcação reprova", not numero_data_valido("<script>alert(1)</script>")),
@@ -301,6 +346,10 @@ def main():
         # AUTOAPLICAÇÃO SUSPENSA (auditoria externa de 02/09/2026, AUD-02/AUD-03): até a
         # editoria reativar por escrito, toda contribuição fica não aplicada (abstenção registrada). Reativar =
         # AUTOAPLICAR = True, somente após os testes negativos de XSS/SSRF passarem no CI.
+        url, motivo_link = desembrulhar(url)
+        if not url:
+            recusa(sid, uf, municipio, motivo_link + " (R4)"); continue
+        d = {**d, "link_oficial": url}
         if not AUTOAPLICAR:
             # A6-19 (12/10/2026, D7): com a autoaplicação suspensa, a contribuição de documento vira
             # PISTA pela porta única e segue o juiz automático — que lê o documento oficial, como
