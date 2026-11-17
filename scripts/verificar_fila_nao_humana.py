@@ -31,9 +31,10 @@ import pathlib
 import re
 import sys
 import tokenize
-from email.utils import parsedate_to_datetime
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ / "scripts"))
+from pistas import DIAS_DE_VIDA, data_da_pista  # noqa: E402  (17/11/2026: uma data de entrada para o portão e os dois prazos)
 
 FILAS = (("data/pistas_imprensa.json", "pistas"),
          ("data/pistas_imprensa_saude.json", "pistas"),
@@ -42,7 +43,6 @@ FILAS = (("data/pistas_imprensa.json", "pistas"),
          ("data/pistas_querido_diario.json", "pistas"),
          ("data/saude_no_plano_revisar.json", "fila"),
          ("data/decretos_conteudo_revisar.json", "fila"))
-DIAS_DE_VIDA = 21
 PRAZO_DO_ESTOQUE = "2026-11-15"
 RE_HUMANO = re.compile(r"(?<![a-z])human[oa]s?(?![a-z])", re.I)
 
@@ -140,25 +140,6 @@ def codigo_ativo_humano(arquivos=None) -> list:
         for n, trecho in ocorrencias_no_codigo(rel, fonte):
             falhas.append(f"{rel}:{n}: código ativo depende de pessoa — {trecho!r}")
     return falhas
-
-
-def data_da_pista(p: dict):
-    """A data mais confiável de entrada na fila, ou None. Função pura."""
-    for campo in ("registrado_em", "descoberto_em", "data_publicacao", "data"):
-        bruto = str(p.get(campo) or "").strip()
-        if not bruto:
-            continue
-        m = re.match(r"(\d{4})-(\d{2})-(\d{2})", bruto)
-        if m:
-            return dt.date(int(m[1]), int(m[2]), int(m[3]))
-        m = re.match(r"(\d{2})/(\d{2})/(\d{4})", bruto)
-        if m:
-            return dt.date(int(m[3]), int(m[2]), int(m[1]))
-        try:
-            return parsedate_to_datetime(bruto).date()
-        except Exception:  # noqa: BLE001
-            continue
-    return None
 
 
 def avaliar(filas: dict, hoje: dt.date) -> tuple:

@@ -214,6 +214,9 @@ def atualiza(existente: dict, v: dict) -> str:
     # a correção do leitor com o plano municipal nunca entraria.
     if "codebook" not in existente and FORCA[nova] >= FORCA.get(atual, 0) and nova in CATEGORIAS_DE_PLANO:
         return "registro anterior sem julgamento do juiz"
+    # 16/11/2026: o ato de aprovação achado depois completa o plano que entrou sem ele (Taió/SC).
+    if atual == nova and nova in CATEGORIAS_DE_PLANO and existente.get("sem_ato_de_aprovacao") and not v.get("sem_ato_de_aprovacao"):
+        return "ato de aprovação localizado"
     a, n = quando(existente.get("data"), existente.get("url")), quando(v.get("data"), v.get("url"))
     if atual == nova and nova in CATEGORIAS_DE_PLANO and a and n:
         ate = min(len([x for x in a if x]), len([x for x in n if x]))    # compara até onde as duas datas dizem
@@ -539,6 +542,11 @@ def autoteste() -> int:
                   and atualiza({"categoria": "plano", "data": "vigente", "url": "https://rj.gov.br/p", "codebook": V},
                                {"categoria": "plano", "data": "2025", "url": "https://rio/p.pdf"}) == ""
                   and atualiza({"categoria": "plano", "data": "vigente", "url": "u1"}, {"categoria": "plano_antigo", "data": "2024", "url": "u2"}) == ""))
+    casos.append(("o ato de aprovação achado completa o plano que entrou sem ele; sem ato, não troca",
+                  atualiza({"categoria": "plano", "data": "2026", "url": "u1", "codebook": V, "sem_ato_de_aprovacao": True},
+                           {"categoria": "plano", "data": "2026", "url": "u2"}) == "ato de aprovação localizado"
+                  and atualiza({"categoria": "plano", "data": "2026", "url": "u1", "codebook": V, "sem_ato_de_aprovacao": True},
+                               {"categoria": "plano", "data": "2026", "url": "u2", "sem_ato_de_aprovacao": True}) == ""))
     casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
                   and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],
