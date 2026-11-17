@@ -137,15 +137,23 @@ def gerar():
     print(f"→ data/saude_municipio/: {len(por_uf)} UF(s), {sum(len(v) for v in por_uf.values())} município(s).")
     # 17/11/2026 (editoria): o mapa dos municípios anda no tempo, do marco zero do ciclo à última semana fechada.
     ref = ler("municipios_ibge_referencia.json") or []
-    for nome, serie, canal in (("dengue", dengue, "canal_endemico"), ("chikungunya", chik, "chik_canal_endemico")):
-        t = tempo(serie, ler(f"saude_desfechos/{canal}.json") or {}, ref)
+    srag = ler("saude_desfechos/srag_municipios.json") or {}
+    canais = {"dengue": ler("saude_desfechos/canal_endemico.json") or {},
+              "chikungunya": ler("saude_desfechos/chik_canal_endemico.json") or {},
+              # SRAG (SIVEP-Gripe): o canal vem junto de cada município, no mesmo arquivo.
+              "srag": {"municipios": {c: m.get("canal") or {} for c, m in (srag.get("municipios") or {}).items()}}}
+    for nome, serie in (("dengue", dengue), ("chikungunya", chik), ("srag", srag)):
+        if not serie.get("municipios"):
+            continue
+        t = tempo(serie, canais[nome], ref)
         gravar(f"saude_municipio/tempo_{nome}.json", {
-            "_governanca": ("Posição de cada município acompanhado pelo InfoDengue na faixa habitual da época "
-                            "(2019–2025 sem 2024), semana a semana desde o Boletim nº 1. `semanas` traz o "
+            "_governanca": ("Posição de cada município acompanhado na faixa habitual da época (a da fonte: "
+                            "InfoDengue, 2019–2025 sem 2024; SIVEP-Gripe, 2019–2025), semana a semana desde o "
+                            "Boletim nº 1. `semanas` traz o "
                             "domingo de cada semana. 'a' acima do percentil 90, 'd' entre a mediana e ele, "
                             "'b' abaixo da mediana, null sem casos registrados (nunca zero). `nv`: nível de "
                             "alerta do InfoDengue, como a fonte publica. Peso zero."),
-            "fonte": "InfoDengue (Fiocruz/FGV)", "gerado_em": serie.get("gerado_em"), **t}, compacto=True)
+            "fonte": serie.get("sistema") or "InfoDengue (Fiocruz/FGV)", "gerado_em": serie.get("gerado_em"), **t}, compacto=True)
 
 
 def autoteste() -> int:
