@@ -180,14 +180,16 @@
   "populacao_total": 203062512,
   "indice_nacional": 59.2,
   "por_estatuto": {
-   "plano_localizado": 22,
+   "plano_localizado": 19,
+   "plano_vencido": 3,
    "plano_em_elaboracao": 3,
    "plano_nao_localizado": 2,
    "nao_verificado": 0
   },
-  "ufs_com_plano_localizado": 22,
+  "ufs_com_plano_localizado": 19,
+  "ufs_plano_vencido": 3,
   "ufs_em_elaboracao": 3,
-  "ufs_sem_plano_localizado": 5,
+  "ufs_sem_plano_localizado": 8,
   "coordenacao_verificadas": 4
  },
  "ufs": {
@@ -861,7 +863,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "plano_localizado",
+   "estatuto": "plano_vencido",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0334,
    "contribuicao_nacional": 0.0
@@ -1405,7 +1407,7 @@
     "hepatite A",
     "abrigos e continuidade de serviços"
    ],
-   "estatuto": "plano_localizado",
+   "estatuto": "plano_vencido",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0564,
    "contribuicao_nacional": 0.0
@@ -1740,7 +1742,7 @@
     "hepatite A",
     "abrigos e continuidade de serviços"
    ],
-   "estatuto": "plano_localizado",
+   "estatuto": "plano_vencido",
    "prontidao_nacional": 0.0,
    "peso_nacional": 0.0536,
    "contribuicao_nacional": 0.0
