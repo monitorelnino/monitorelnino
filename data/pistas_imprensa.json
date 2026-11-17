@@ -884548,7 +884548,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "entrada": "municipio",
    "registrado_em": "2026-11-17",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
    "busca_dirigida": [
     {
      "em": "2026-11-17",
@@ -884556,27 +884556,40 @@
       "querido_diario"
      ],
      "encontrou": "https://data.queridodiario.ok.org.br/3304557/2026-09-17/388bc6737ae6fe2f1a44dc66c9b1960b885030b6.txt"
+    },
+    {
+     "em": "2026-11-17",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
     }
    ],
    "ultima_busca_em": "2026-11-17",
-   "tentativas_de_busca_dirigida": 1,
+   "tentativas_de_busca_dirigida": 2,
    "juiz_tentativas": [
     {
      "em": "2026-11-17",
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-17",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
-    "leu_documento": true,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
     "categoria": null,
-    "data": "13/01/2026",
+    "data": null,
     "julgado_em": "2026-11-17",
-    "hash_evidencia": "7cfe0433e3afb7830719c1175b998c4c1184a946457ab45c6b99bb3d85ee1984"
+    "hash_evidencia": null
    }
   }
  ],
