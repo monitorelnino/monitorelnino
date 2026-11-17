@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 As internações por doenças respiratórias agudas, por efeitos do calor e por desidratação (SIH/SUS) e os óbitos de todas as causas e por doenças respiratórias agudas (SIM) passam a ser contados também por município de residência, nos 319 municípios de 100 mil habitantes ou mais. O detalhe da Saúde os mostra no mapa que anda no tempo, mês a mês desde julho, na faixa habitual de 2019 a 2025. O histórico municipal entra aos poucos.
 
+## 2026-11-17 · #1827 · Respostas de LAI vão ao juiz
+
+Documento recebido por pedido de acesso à informação vai ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, como pista direta; sem endereço, por busca dirigida semanal. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos de MT; sai o arquivo de revisão manual de MT. Os planos do painel da Defesa Civil do AM também vão ao juiz (50 pistas).
 ## 2026-11-17 · #1826 · Saúde: SRAG por município
 
 O coletor do SIVEP-Gripe passa a contar também por município de residência, na mesma leitura do arquivo, nos 319 municípios de 100 mil habitantes ou mais (Censo 2022), com a faixa habitual de cada um. O mapa da respiratória grave na página de saúde passa a mostrar esses municípios ao lado dos estados. A primeira rodada relê os anos congelados.
