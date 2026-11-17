@@ -17,8 +17,7 @@
     "financiamento.html",
     "proteja-se.html",
     "prefeituras.html",
-    "imprensa.html",
-    "blog.html"
+    "imprensa.html"
   ],
   "paginas_internas": [
     "indice-de-conteudo.html",
@@ -395,10 +394,8 @@
     ],
     "refrao_a_partir_de": 3,
     "_nota_refraos": "Voz editorial (16/09/2026, docs/VOZ_EDITORIAL.md): a ressalva mora uma vez por página; 3+ vezes em .hint, .note, .card-body é refrão. Barra a publicação.",
-    "paginas_extras": [
-      "blog/*.html"
-    ],
-    "_nota_paginas": "As páginas julgadas são `paginas_publicas` mais estas; `mudancas.html` e `indice-de-conteudo.html` ficam fora de propósito (internas). `blog/*.html` são os textos publicados do blog.",
+    "paginas_extras": [],
+    "_nota_paginas": "As páginas julgadas são `paginas_publicas` mais estas; `mudancas.html` e `indice-de-conteudo.html` ficam fora de propósito (internas). O blog saiu do site em 17/11/2026.",
     "semana": [
       {
         "nome": "semana epidemiológica",
@@ -697,10 +694,6 @@
       "prefeituras.html": [
         600,
         950
-      ],
-      "blog.html": [
-        250,
-        300
       ]
     },
     "_nota_palavras": "[meta §7, teto] de palavras estáticas por página (v3.1 §7): teto bloqueia a publicação; acima da meta só avisa. Conta o texto fora de script, style, nav, rodapé, `.figura-sub` e blocos data-proveniencia=\"1\" (evidência, não prosa). As metas subiram com textos aprovados pela editoria (30/09 Monitor de riscos; 02/10 Defesa civil; 15/09 Saúde, Financiamento, Imprensa, Prefeituras); o teto continua existindo. 16/10/2026 (#770): teto da inicial 950 → 1050 com os textos aprovados da abertura e do \"Como ler\". 16/10/2026 (lote 2): teto do Monitor de riscos 700 → 800 com a abertura aprovada pela editoria e os números de agora.",

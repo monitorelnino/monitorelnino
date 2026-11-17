@@ -56,6 +56,24 @@
   status = 404
   force = true
 
+# --- Blog: saiu do site (editoria, 17/11/2026) ---
+# Os textos e o pacote ficam guardados no repositório para uso interno; nada do blog é servido.
+[[redirects]]
+  from = "/blog.html"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/blog/*"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/feeds/blog.xml"
+  to = "/"
+  status = 301
+  force = true
+
 # --- Formulário público (prefeituras.html) ---
 # O formulário usa Netlify Forms (atributo data-netlify="true" na marcação),
 # detectado automaticamente pelo Netlify no build — nenhuma configuração
@@ -107,10 +125,6 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 [[headers]]
   for = "/"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-[[headers]]
-  for = "/blog/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 [[headers]]
