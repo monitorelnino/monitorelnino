@@ -173,6 +173,32 @@ def recusa_de_leitura_ilegivel(p: dict, juiz: dict) -> bool:
             and str(url_da_pista(p) or "").lower().split("?")[0].endswith((".docx", ".doc", ".odt")))
 
 
+# J22 (17/11/2026): o documento do repositório estadual de planos é plano pela origem. A recusa por natureza ou
+# título de um documento desses, julgada antes da regra, volta uma vez — também a que o prazo fechou.
+REPOSITORIO_COMO_PLANO_DESDE = "2026-11-17"
+MOTIVOS_DE_NATUREZA = ("natureza_duvidosa", "resposta", "titulo_nao_e_plano", "nao_e_instrumento",
+                       "estrutura_de_defesa_civil")
+
+
+# 17/11/2026: o J21 (título no cabeçalho corrido) contava linhas, e o leitor do juiz junta o PDF numa linha só;
+# a recusa por título julgada até hoje volta uma vez com a contagem que não depende da quebra de linha.
+TITULO_SEM_LINHAS_DESDE = "2026-11-18"
+
+
+def recusa_de_titulo_antes_da_contagem(p: dict, juiz: dict) -> bool:
+    """Recusa `titulo_nao_e_plano` julgada antes da contagem nova do J21: volta uma vez."""
+    return (not juiz.get("promove") and juiz.get("motivo") == "titulo_nao_e_plano"
+            and str(juiz.get("julgado_em") or "") < TITULO_SEM_LINHAS_DESDE)
+
+
+def recusa_do_repositorio_antes_do_J22(p: dict, juiz: dict) -> bool:
+    """Recusa por natureza ou título de documento do repositório estadual, julgada antes do J22: volta uma vez."""
+    from atualizar_instrumentos_estaduais import documento_do_repositorio
+    return (not juiz.get("promove") and juiz.get("motivo") in MOTIVOS_DE_NATUREZA
+            and str(juiz.get("julgado_em") or "") < REPOSITORIO_COMO_PLANO_DESDE
+            and documento_do_repositorio(str(url_da_pista(p) or "")))
+
+
 PREFIXO_FECHADA_POR_PRAZO = "fechada — sem documento oficial localizado"
 
 
@@ -201,7 +227,8 @@ def pendente(p: dict, hoje=None) -> bool:
         url = url_da_pista(p)
         if not juiz.get("leu_documento"):
             return bool(url and fonte_oficial(url))
-        return recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
+        return (recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
+                or recusa_do_repositorio_antes_do_J22(p, juiz) or recusa_de_titulo_antes_da_contagem(p, juiz))
     tentativas = p.get("juiz_tentativas") or []
     if tentativas and not any(tentativa_que_conta(t) for t in tentativas) and tentativas[-1].get("classe") == "tecnica":
         return True     # só falhou com o leitor antigo: volta já, sem esperar o back-off nem ficar persistente
@@ -310,6 +337,17 @@ def classe_da_recusa(v: dict) -> str:
 
 # Recusas que a busca dirigida ataca: as duas em que o problema é o DOCUMENTO, não o conteúdo dele.
 MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA = ("sem_documento_primario", "citacao_incompleta")
+
+
+def procurar_ato_de_aprovacao(p: dict, v: dict) -> bool:
+    """Plano promovido sem ato de aprovação, e a pista cita tipo e número de um ato. Função pura."""
+    if not (v.get("promove") and v.get("sem_ato_de_aprovacao")):
+        return False
+    import importlib
+    import sys as _sys
+    _sys.path.insert(0, str(RAIZ / "scripts"))
+    ident = importlib.import_module("busca_dirigida_do_ato").identificadores(p)
+    return bool(ident.get("tipo") and ident.get("numero"))
 
 
 def tentar_busca_dirigida(p: dict, v: dict, buscar_texto, preservar) -> dict:
@@ -423,6 +461,7 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
                  "data": v["data"], "julgado_em": hoje.isoformat(),
                  "hash_evidencia": v.get("hash_evidencia")}
     if v["promove"]:
+        p["status"] = f"promovida — o juiz leu o documento e promoveu ({v['categoria']})"
         return "promovida"
     p["status"] = f"pista — recusada pelo juiz: {v['motivo']}"
     return "recusada"
@@ -511,6 +550,10 @@ def autoteste() -> int:
         raise AssertionError(f"baixou {u}")
     v_imprensa = julgar_uma({"id": "x", "municipio": "Bonito", "uf": "MS",
                              "url": "https://g1.globo.com/ms/plano.html"}, _nao_baixe)
+    casos.append(("plano promovido sem ato e com o número do ato na pista vai à busca do ato; sem número ou já com ato, não",
+                  procurar_ato_de_aprovacao({"ato_citado": "Decreto 9584/2026"}, {"promove": True, "sem_ato_de_aprovacao": True})
+                  and not procurar_ato_de_aprovacao({"titulo": "Plano"}, {"promove": True, "sem_ato_de_aprovacao": True})
+                  and not procurar_ato_de_aprovacao({"ato_citado": "Decreto 9584/2026"}, {"promove": True})))
     casos.append(("URL de imprensa é recusada sem download",
                   v_imprensa["motivo"] == "sem_documento_primario"))
     # 09/10/2026 (lote 2.5, A1-16): fechada por prazo depois de leitura volta com codebook novo.
@@ -871,6 +914,12 @@ def main() -> int:
         # aponta a notícia, e a notícia não é o ato — mas diz que ele existe e onde procurar.
         if dirigida and v.get("motivo") in MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA:
             v = tentar_busca_dirigida(p, v, buscar_texto, hash_do_texto)
+        elif dirigida and procurar_ato_de_aprovacao(p, v):
+            # 16/11/2026 (editoria, regra geral): a pista que cita o número de um ato orienta a busca
+            # também quando o plano já foi promovido sem ato de aprovação. Achado e lido o ato, vale o
+            # veredito com o ato; não achado, fica a promoção que já havia, com o registro da busca.
+            v2 = tentar_busca_dirigida(p, dict(v), buscar_texto, hash_do_texto)
+            v = v2 if v2.get("promove") and not v2.get("sem_ato_de_aprovacao") else dict(v, busca_dirigida=v2.get("busca_dirigida"))
         return v
 
     vereditos, por_fila = [], {}

@@ -10,6 +10,127 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 ## 2026-11-15 · #1768 · MapBiomas por estado pelo Earth Engine
+
+Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.
+
+## 2026-11-17 · #1835 · Plano desatualizado segundo a lei, em todo o país
+
+Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como "plano desatualizado segundo a lei" e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.
+## 2026-11-17 · #1842 · Uma regra só para "é fonte oficial?"
+
+O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.
+
+## 2026-11-17 · #1837 · Saúde: cartões desde o marco zero do ciclo
+
+A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.
+## 2026-11-17 · #1840 · Endereço de PDF que responde página
+
+O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.
+
+## 2026-11-17 · #1834 · Plano de saúde não é plano de defesa civil; Mesquita de novo ao juiz
+
+Plano cujo título é de saúde (arboviroses, dengue, emergências em saúde pública) fica fora da conta do MARÉ Legal: Angra dos Reis/RJ não entra e Água Branca/PB sai. O juiz passa a reconhecer o título do plano repetido no alto das páginas também no PDF lido como linha única; Mesquita/RJ e 111 recusas por título voltam ao juiz. Documento escaneado acima de 5 MB tem o OCR guardado como prova.
+
+## 2026-11-17 · #1832 · Canais oficiais fora do sítio da prefeitura
+
+Documento da pasta de planos recebidos pela Defesa Civil do RS (Prepara RS) passa a valer como plano pela origem; data e município seguem conferidos. Portais oficiais de prefeitura fora de .gov.br (atende.net, portaltp, equiplano, prefeitura.rio e outros) passam a ser reconhecidos, e encurtadores de link são resolvidos antes do julgamento. Mesquita/RJ e o plano municipal do Rio voltam ao juiz. Pista promovida deixa a fila e não é mais fechada pelo prazo como "sem documento".
+
+## 2026-11-17 · #1831 · Contribuições e Prepara RS chegam ao juiz e ao banco
+
+A pista que chegava no formato novo recebia o mesmo id de outras 50, e a contribuição de Mesquita/RJ se perdeu entre elas. O formulário passa a aceitar o domínio da Prefeitura do Rio e o link de compartilhamento do Google,; sete envios voltam a ser lidos. Acima de 5 MB, a camada de texto do documento é guardada como prova; 40 promoções do juiz voltam a ser aplicadas. Trinta atalhos do Prepara RS fechados sem leitura voltam à fila.
+
+## 2026-11-17 · #1829 · Internações e óbitos por município, mês a mês
+
+As internações por doenças respiratórias agudas, por efeitos do calor e por desidratação (SIH/SUS) e os óbitos de todas as causas e por doenças respiratórias agudas (SIM) passam a ser contados também por município de residência, nos 319 municípios de 100 mil habitantes ou mais. O detalhe da Saúde os mostra no mapa que anda no tempo, mês a mês desde julho, na faixa habitual de 2019 a 2025. O histórico municipal entra aos poucos.
+
+## 2026-11-17 · #1827 · Respostas de LAI vão ao juiz
+
+Documento recebido por pedido de acesso à informação vai ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, como pista direta; sem endereço, por busca dirigida semanal. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos de MT; sai o arquivo de revisão manual de MT. Os planos do painel da Defesa Civil do AM também vão ao juiz (50 pistas).
+## 2026-11-17 · #1826 · Saúde: SRAG por município
+
+O coletor do SIVEP-Gripe passa a contar também por município de residência, na mesma leitura do arquivo, nos 319 municípios de 100 mil habitantes ou mais (Censo 2022), com a faixa habitual de cada um. O mapa da respiratória grave na página de saúde passa a mostrar esses municípios ao lado dos estados. A primeira rodada relê os anos congelados.
+## 2026-11-17 · #1828 · Pré-noite: publicação recente não é fila presa; aviso comenta quando a causa muda
+
+A checagem das 23h reprovava com a publicação de dados na fila ou rodando (15 e 16/11). Agora só conta como
+fila presa se estiver aberta há mais de 45 minutos. O aviso do projeto comenta na Issue aberta quando o texto
+da causa muda, em vez de deixar o corpo da primeira ocorrência.
+
+## 2026-11-17 · #1825 · Noite: vigia dos documentos anunciados por órgão
+
+A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.
+## 2026-11-16 · #1819 · O número do ato orienta a busca dirigida, em toda pista
+
+Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.
+## 2026-11-17 · #1823 · Saúde: o detalhe do desfecho anda no tempo
+
+O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.
+## 2026-11-17 · #1824 · Fila de pistas: uma data de entrada para o prazo
+
+O portão da fila não humana, a triagem e a limpeza contavam o prazo de 21 dias por datas diferentes; a pista sem `registrado_em` nunca vencia e reprovava a main. A data de entrada agora mora em `pistas.data_da_pista`, para os três, e a pendente de documento vence na fila inteira, não só na rodada do juiz. Nove pistas vencidas fechadas.
+
+## 2026-11-17 · #1822 · Saúde: linha do topo soma 27, como o quadro dos estados
+
+Plano com vigência encerrada deixa de contar como plano localizado e ganha estatuto próprio (`plano_vencido`). A linha do topo da página de saúde passa a trazer as cinco contagens, que somam 27 e batem com o quadro dos tipos de plano; a escada do índice nomeia o valor do plano vencido. Índice nacional inalterado (59,2).
+
+## 2026-11-16 · #1820 · Documento anunciado por órgão: estado próprio e vigia noturna
+
+Afirmação de órgão sem documento (comunicação direta) entra em `data/notas_lai.json` com o estado `plano_em_elaboracao`, distinto de ausência, sem pontuar; no cartão do estado, só a nota do que o órgão informou. O título dado pelo órgão se procura (`busca_dirigida_do_ato.py --avisos`); achado em domínio oficial vira pista e segue o juiz. Primeiro registro: RN.
+
+## 2026-11-16 · #1810 · Endereço que falha na rede vira pedido à ponte no Brasil
+
+A tarefa semanal da ponte pedia a lista de endereços a trazer a um comando que não existia, e nenhum pedido chegava a ela; o diário do RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo endereço que falha na rede sem cópia passa a ser pedido, e `--pedidos` entrega os 40 mais recentes.
+## 2026-11-16 · #1818 · Correção do leitor vai ao juiz; registro nunca julgado cede ao julgado
+
+A correção indicada pelo formulário ficava reservada à análise editorial e parada. Ela passa a ser pista de plano, lida pelo juiz. Plano registrado antes do juiz, sem julgamento, cede ao documento julgado de força igual ou maior. Primeiro caso: Rio de Janeiro/RJ, cujo registro apontava o plano estadual.
+
+## 2026-11-16 · #1815 · Cartão do município diz quando o decreto é anterior a 29 de junho
+
+Na Defesa civil e no Proteja-se, o cartão do decreto passa a dizer quando o decreto do município é anterior a 29 de junho e foi reconhecido pela União depois dessa data. A linha do estado diz "decreto publicado ou reconhecido desde 29 de junho".
+## 2026-11-16 · #1813 · Saúde no plano: plano lido pela cópia preservada e casado pelo hash
+
+Vinte e nove planos municipais registrados ficavam sem a leitura de como tratam a saúde. Quinze tinham cópia em HTML ou DOCX, ou PDF sem ".pdf" no endereço, e nunca ganhavam texto; quatro já lidos não casavam porque a busca era pela URL. A camada de texto passa a sair da cópia preservada, e a leitura casa pelo hash do documento.
+## 2026-11-16 · #1811 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE
+
+A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.
+## 2026-11-16 · #1809 · Financiamento preventivo estadual verificado pela máquina, toda noite
+
+A bateria que procura repasse estadual fundo a fundo condicionado a plano de contingência existia só como texto para uma sessão rodar à mão: 26 UFs ficaram sem veredito desde 27/08. Ela passa a rodar no elo da descoberta, lê o documento oficial do estado e decide por regra; na dúvida, não classifica.
+## 2026-11-16 · #1808 · Ar só de monitor de referência; diário relê data que serviu outro arquivo
+
+O ar medido na capital passa a aceitar só monitor de referência: Fortaleza mostrava um sensor de teste, e AM, BA, ES, PA e RO, sensores de baixo custo. No diário estadual, a data que serviu o arquivo de outra data (CE, 06/11) é relida por dez dias, e caderno lido antes dos termos atuais volta à fila (CE, DF, PI).
+## 2026-11-16 · #1814 · Resposta: decreto anterior reconhecido no ciclo volta a contar, marcado
+
+Por decisão da editoria, decreto municipal anterior a 29/06 que a União reconheceu depois do anúncio volta a contar no ciclo (70 municípios), marcado no dado para o cartão do município dizer. O primeiro decreto de cada estado no ciclo segue sendo o de 29/06 em diante. A marca sem data do S2iD continua sem decidir.
+
+## 2026-11-16 · #1806 · Página de imprensa deixa de ser copiada; sessões na nuvem voltam a iniciar
+
+O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11.
+## 2026-11-16 · #1805 · Dicas de decreto sem frase sobre qualidade da resposta
+
+A dica sob a parcela da população com decreto, na inicial e na Saúde, passa a descrever só o que o número mede; sai a frase "Não avalia a qualidade da resposta.". Catálogo, fallbacks e índice de conteúdo regerados.
+## 2026-11-16 · #1812 · Resposta conta só decreto a partir de 29/06
+
+O contador de resposta passa a contar só decreto municipal de 29/06/2026 em diante, o corte do Boletim nº 1. Decretos de maio e junho reconhecidos em julho entravam, e a marca sem data do S2iD também. Saem 55 municípios de 11 UFs; o índice nacional vai de 19,2 para 18,3.
+
+## 2026-11-16 · #1802 · Válvula de dia não cruza a janela da noite
+
+A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.
+## 2026-11-15 · #1788 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa
+
+O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é "feito para o ciclo"; pista recusada ou inalcançável há 21 dias sai da espera.
+
+## 2026-11-16 · #1795 · Planos municipais de arboviroses na consulta do município
+
+A consulta do município na página de Saúde ganha o cartão "Plano municipal de arboviroses": tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).
+
+## 2026-11-15 · #1786 · Juiz da saúde: plano de arboviroses e download de arquivo
+
+O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo "vigência encerrada".
+
+## 2026-11-15 · #1781 · Plano estadual de saúde com vigência encerrada
+
+Quando o último plano de saúde localizado de um estado declara um período já encerrado, como 2024-2025, ele aparece na página como "último plano localizado com vigência encerrada", com título e link, e não pontua. Plano sem período declarado segue a regra de sempre. A regra está na metodologia. O juiz passa a reconhecer plano em título que é nome de arquivo (RR, RO).
+
 ## 2026-11-15 · #1777 · Rastro de acesso aos sites volta a ser registrado
 
 O registro público de cada acesso feito onde o site pede que robôs não entrem estava corrompido desde 05/11 e deixou de receber linhas, sem aviso. O arquivo foi reconstruído sem perder registro, e a verificação diária passa a recusar qualquer arquivo de dado que não se leia por inteiro.
@@ -28,7 +149,6 @@ A busca nos sites das secretarias de saúde usava termos que não achavam os pla
 
 A camada de emergências declaradas pelo estado dependia de lançamento manual, e a leitura do diário só procurava emergência em saúde. O decreto do Tocantins de 20/10/2026 (estiagem, todo o estado, 180 dias) ficou fora do mapa. Agora o diário lido traz o decreto estadual de emergência como candidato, que só aparece no mapa depois de conferido na edição.
 
-Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.
 ## 2026-11-15 · #1767 · Alarme mede a fila de saúde estadual
 
 O alarme noturno de leitura parada passa a contar as pistas de saúde estadual sem veredito além do prazo. A rodada semanal saiu verde em 04 e 11/11 sem que o trabalho chegasse à main, e 474 pistas ficaram sem julgamento.

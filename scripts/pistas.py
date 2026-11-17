@@ -55,6 +55,8 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
 FILA_PADRAO = "pistas_imprensa.json"
+# O `dias_de_vida` do esquema (schemas/pista.json): o prazo de uma pista na fila.
+DIAS_DE_VIDA = 21
 ARQUIVO_DE_REJEITADAS = "pistas_rejeitadas.json"
 
 # A origem que o coletor usa não é sempre a do esquema: `rede_social_oficial` é o nome do coletor,
@@ -113,6 +115,33 @@ SINAIS_DE_ESTRUTURA = (
     "secretaria de proteção e defesa civil", "orgao municipal de defesa civil",
     "órgão municipal de defesa civil",
 )
+
+
+def data_da_pista(p: dict):
+    """A data mais confiável de entrada na fila, ou None. Função pura. 17/11/2026: era só do portão
+    da fila não humana; os dois prazos (triagem e limpeza) liam só `registrado_em`, e a pista sem ele
+    nunca vencia — o portão a reprovava e ninguém a fechava. Uma data para os três."""
+    for campo in ("registrado_em", "descoberto_em", "data_publicacao", "data"):
+        bruto = str(p.get(campo) or "").strip()
+        if not bruto:
+            continue
+        m = re.match(r"(\d{4})-(\d{2})-(\d{2})", bruto)
+        if m:
+            return dt.date(int(m[1]), int(m[2]), int(m[3]))
+        m = re.match(r"(\d{2})/(\d{2})/(\d{4})", bruto)
+        if m:
+            return dt.date(int(m[3]), int(m[2]), int(m[1]))
+        try:
+            return __import__('email.utils').utils.parsedate_to_datetime(bruto).date()
+        except Exception:  # noqa: BLE001
+            continue
+    return None
+
+
+def dias_na_fila(p: dict, hoje_iso: str):
+    """Dias desde a entrada (`data_da_pista`), ou None sem data legível. Função pura."""
+    d = data_da_pista(p)
+    return None if d is None else (dt.date.fromisoformat(hoje_iso) - d).days
 
 
 def _sem_acento(s: str) -> str:
@@ -223,8 +252,14 @@ def resolver_data(pista: dict) -> str:
 
 
 def id_da_pista(p: dict) -> str:
-    """O id estável da pista: sha1(ibge|url|trecho)[:10]. A única fórmula; quem precisa do id importa daqui."""
-    base = f"{p.get('ibge') or ''}|{p.get('url') or ''}|{(p.get('trecho') or '')[:500]}"
+    """O id estável da pista: sha1(ibge|url|trecho)[:10]. A única fórmula; quem precisa do id importa daqui.
+
+    17/11/2026: a pista que já chega no esquema (`alvo`, `url_final`, sem `ibge` nem `url`) recebia o
+    sha1 de "||" — o mesmo id para todas (51 na fila: a contribuição de Mesquita/RJ, os planos do painel
+    do AM), e `chave_da_pista` as casava como uma só. Os campos do esquema entram onde os antigos faltam;
+    o id de quem tem `ibge` e `url` não muda."""
+    base = (f"{p.get('ibge') or p.get('alvo') or ''}|{p.get('url') or p.get('url_final') or ''}"
+            f"|{(p.get('trecho') or '')[:500]}")
     return hashlib.sha1(base.encode("utf-8")).hexdigest()[:10]
 
 
@@ -479,6 +514,10 @@ def _autoteste() -> int:
        normalizar({"ibge": "4217303", "url": "https://x.gov.br/a", "trecho": "t"}, "busca_web")["id"] == id_da_pista(
            {"ibge": "4217303", "url": "https://x.gov.br/a", "trecho": "t"})
        and normalizar({"id": "a1", "url": "u"}, "busca_web")["id"] == "a1")
+    ok("pista no esquema (alvo, url_final) ganha id próprio, não o de \"||\"",
+       len({normalizar({"alvo": a, "url_final": u, "tipo": "plano"}, "descoberta")["id"]
+            for a, u in (("1300201", "https://x.am.gov.br/1.pdf"), ("1300607", "https://x.am.gov.br/2.pdf"))}) == 2
+       and id_da_pista({"alvo": "1", "url_final": "u"}) == id_da_pista({"ibge": "1", "url": "u"}))
     ok("sem id, a chave é url_final + alvo",
        chave_da_pista({"url_final": "https://x/1", "alvo": "9"}) == "url:https://x/1|9")
     ok("sem id, a url crua serve de chave",

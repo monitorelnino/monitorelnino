@@ -97,6 +97,9 @@ CRED_POP = {"plano": 1.0, "plano_antigo": 1.0,
             # operacional; paridade declarada com plano_elaboracao (§30). O crédito é o MAIOR, nunca a soma.
             "estrutura": 0.45,
             "coberto_estadual": 0.3, "nao_el_nino": 0.0, "nao_localizado": 0.0,
+            # 17/11/2026 (editoria): plano de município indicado ao cadastro do art. 3º-A sem atualização anual
+            # localizada (Lei 12.340, art. 3º-A, §6º) — visível na ficha, vale zero (`categoria_que_conta`).
+            "plano_desatualizado": 0.0,
             # v2.2.4 (§2.1): ausência de verificação ≠ ausência de documento; mesmo crédito 0.0
             "nao_verificado": 0.0}
 AGREGADOS = {"RO": (38, "plano")}  # Correção B (26/08/2026): agregados tipo decreto (PB, RN) excluídos do índice — atos de resposta, nunca ex-ante
@@ -443,6 +446,14 @@ def cobertura_de_uf(uf, c, wpop_uf, mediana, pop_total, dp_tce, da_tce, nacional
                                                "declarado_antigo": da_tce or 0}
 
 
+def categoria_que_conta(r: dict, codigo, cadastro) -> str:
+    """A categoria que o índice credita: a do registro, ou `plano_desatualizado` quando o plano está fora da
+    atualização anual que a lei pede ao município do cadastro (`aplicar_promocoes_do_juiz.desatualizado_pela_lei`)."""
+    from aplicar_promocoes_do_juiz import desatualizado_pela_lei
+    return "plano_desatualizado" if desatualizado_pela_lei(r.get("categoria"), r.get("data"), codigo, cadastro) \
+        else r.get("categoria")
+
+
 def calcular(versao="v3.1"):
     """Motor do índice: lê data/*.json, calcula os três componentes por estado, agrega com elemento
     geométrico e piso, e devolve o dicionário completo que vira data/indice.json.
@@ -467,17 +478,20 @@ def calcular(versao="v3.1"):
         cod_por[(m["nome"], m["uf"])] = f"{m['codigo_ibge']:07d}"
     mediana_uf = {u: statistics.median(v) for u, v in pops_uf.items()}
 
+    from aplicar_promocoes_do_juiz import municipios_do_cadastro
+    cadastro = municipios_do_cadastro()
     cnt, cap_cat, wpop = {}, {}, {}
     for r in tab:
-        cnt.setdefault(r["uf"], {}).setdefault(r["categoria"], 0)
-        cnt[r["uf"]][r["categoria"]] += 1
-        if r["nome"] in CAPITAIS and CAPITAIS[r["nome"]] == r["uf"]:
-            cap_cat[r["uf"]] = r["categoria"]
         chave = (r["nome"], r["uf"])
         if chave not in cod_por:
             raise SystemExit(f"✗ registro sem casamento na malha IBGE: {chave} — "
                              "grafia deve ser a oficial (convenção do banco)")
-        wpop[r["uf"]] = wpop.get(r["uf"], 0.0) + pop.get(cod_por[chave], 0) * CRED_POP.get(r["categoria"], 0.0)
+        cat = categoria_que_conta(r, cod_por[chave], cadastro)
+        cnt.setdefault(r["uf"], {}).setdefault(cat, 0)
+        cnt[r["uf"]][cat] += 1
+        if r["nome"] in CAPITAIS and CAPITAIS[r["nome"]] == r["uf"]:
+            cap_cat[r["uf"]] = cat
+        wpop[r["uf"]] = wpop.get(r["uf"], 0.0) + pop.get(cod_por[chave], 0) * CRED_POP.get(cat, 0.0)
 
     pct = derivar_percentual_uf(cnt, totais, pct_arquivo)
 
@@ -863,8 +877,10 @@ def calcular_paralelo_v32(corte=None) -> dict:
         cod_por[(r["nome"], r["uf"])] = cod
         uf_de[cod] = r["uf"]
         pop_uf[r["uf"]] = pop_uf.get(r["uf"], 0) + pop.get(cod, 0)
+    from aplicar_promocoes_do_juiz import municipios_do_cadastro
+    cadastro = municipios_do_cadastro()
     ja_creditado = {cod_por.get((m["nome"], m["uf"])) for m in mun
-                    if CRED_POP.get(m.get("categoria"), 0.0) > 0}
+                    if CRED_POP.get(categoria_que_conta(m, cod_por.get((m["nome"], m["uf"])), cadastro), 0.0) > 0}
 
     ganho_uf, entram = {}, {}
     for cod in arranjo:

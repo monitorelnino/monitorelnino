@@ -1,6 +1,6 @@
 {
  "_governanca": "Sondagem de repositórios estaduais de planos municipais (sondar_repositorios_estaduais.py, 13/11/2026). Uma entrada por UF, com a data da sondagem; UF sem página lida segue devida. `nota_de_origem` guarda o que a sondagem manual de 24/09/2026 anotou. Candidata não é repositório declarado: as pistas vão ao juiz, que lê cada documento.",
- "atualizado_em": "2026-11-14",
+ "atualizado_em": "2026-11-16",
  "ufs": {
   "AC": {
    "sondado_em": "2026-11-13",
@@ -787,41 +787,98 @@
    ]
   },
   "SE": {
-   "sondado_em": "2026-11-14",
-   "paginas_lidas": 1,
-   "busca_completa": false,
+   "sondado_em": "2026-11-15",
+   "paginas_lidas": 8,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
+   "noticias": [
+    {
+     "url": "https://www.facebook.com/mpseoficial/videos/-cidadesseguras-voc%C3%AA-sabe-o-que-%C3%A9-plano-de-conting%C3%AAncia-%C3%A9-um-documento-estrat%C3%A9gi/3340651579435938/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
+     "url": "https://www.instagram.com/reel/DW9esgADvQg/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
+     "url": "https://www.defesacivil.rj.gov.br/images/2025/11/PLANCON-24_25-REVISADO---VERSO-2.0---25_26.docx.pdf",
+     "titulo": "PLANCON 24_25 (REVISADO) - VERSÃO 2.0 - Defesa Civil"
+    },
+    {
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+    },
+    {
+     "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+     "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://defesacivil.se.gov.br/planos-de-contigencia/"
    ]
   },
   "SP": {
-   "sondado_em": "2026-11-14",
-   "paginas_lidas": 1,
-   "busca_completa": false,
+   "sondado_em": "2026-11-15",
+   "paginas_lidas": 8,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
+   "noticias": [
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
+    },
+    {
+     "url": "https://www.instagram.com/p/DY3FB4hjnh5/?hl=en",
+     "titulo": "\"Prefeitura atualiza Plano de Contingência e reforça preparo para ..."
+    },
+    {
+     "url": "https://dialnet.unirioja.es/descarga/articulo/8628803.pdf",
+     "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
+    },
+    {
+     "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
+     "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS"
+    },
+    {
+     "url": "https://www.preventionweb.net/media/73057/download",
+     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb.net"
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.sp.gov.br/planos-de-contigencia"
    ]
   },
   "TO": {
-   "sondado_em": "2026-11-14",
-   "paginas_lidas": 1,
-   "busca_completa": false,
+   "sondado_em": "2026-11-15",
+   "paginas_lidas": 9,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
+   "noticias": [
+    {
+     "url": "https://cavalcante.go.gov.br/wp-content/uploads/2026/03/PLANCON-APROVADO.pdf",
+     "titulo": "Plano de Contingência Municipal PLANCON"
+    },
+    {
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+    },
+    {
+     "url": "https://www.complexodopecem.com.br/wp-content/uploads/2021/06/Plano-de-Contigencia-para-Emergencias-em-Saude-Publica-1.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
+    },
+    {
+     "url": "https://parauapebas.pa.gov.br/wp-content/uploads/2024/02/PLANCON-PARAUAPEBAS-vs.2-2023-1.pdf",
+     "titulo": "PLANCON-PARAUAPEBAS-vs.2-2023-1.pdf"
+    },
+    {
+     "url": "https://www.redalyc.org/journal/1005/100566937024/html/",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+    }
+   ],
    "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
+    "doe.to.gov.br: saída do renderizador não é JSON; estático: URLError: <urlopen error timed out>"
    ],
    "paginas_conhecidas": [
     "https://bombeiros.to.gov.br/planos-de-contigencia"

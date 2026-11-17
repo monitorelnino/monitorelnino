@@ -38,7 +38,7 @@ import sys
 from collections import defaultdict
 
 from coletores_base import ler, gravar, rodar_autoteste
-from coletar_desfechos_saude import canal_endemico
+from coletar_desfechos_saude import ANOS_CANAL, canal_endemico
 
 ESQUEMA = 1
 PASTA = "saude_desfechos"
@@ -71,6 +71,46 @@ def uf_por_codigo(ler_fn=ler) -> dict:
     """{'23': 'CE', ...}: os dois primeiros dígitos do código IBGE para a sigla."""
     return {str(r["codigo_ibge"])[:2]: r["uf"] for r in (ler_fn("municipios_ibge_referencia.json") or [])
             if r.get("codigo_ibge") and r.get("uf")}
+
+
+# 17/11/2026 (editoria, 16/11: "se a fonte tem o município, fazemos por município"): a série municipal
+# fica nos municípios de 100 mil habitantes ou mais (Censo 2022, 319), onde a contagem tem tamanho para
+# uma faixa habitual; abaixo disso, um caso a mais põe a cidade "acima" e o mapa vira ruído.
+POPULACAO_MINIMA = 100_000
+
+
+def municipios_acompanhados(pop: dict) -> dict:
+    """{código de 6 dígitos: código de 7} dos municípios acima do limiar. Função pura."""
+    return {str(c)[:6]: str(c) for c, p in (pop or {}).items()
+            if not str(c).startswith("_") and isinstance(p, (int, float)) and p >= POPULACAO_MINIMA}
+
+
+def serie_municipal_mensal(arquivos: dict, acompanhados: dict, uf_do_codigo: dict, grupos, n_parciais: int = 1,
+                           ano: int = 2026) -> dict:
+    """{grupo: {cod7: {"meses_2026": {"AAAA-MM": {"casos": n|None}}, "canal": {"MM": {...}}}}} a partir dos
+    arquivos lidos por UF ({"UF|período": {"meses": [...], "contagens": {grupo: {cod6: {"AAAA-MM": n}}}}}).
+    O mês do município existe quando o arquivo da UF dele cobre o mês (zero medido se não teve caso);
+    residente atendido em outra UF entra quando o arquivo daquela UF foi lido. Os `n_parciais` meses mais
+    recentes ficam None, como na série da UF. Faixa: `canal_endemico`, a mesma da UF. Pura."""
+    cobertos = {(k.split("|")[0], m) for k, a in arquivos.items() for m in a.get("meses") or []}
+    meses = sorted({m for _uf, m in cobertos})
+    parciais = set(meses[-n_parciais:]) if n_parciais else set()
+    out = {}
+    for g in grupos:
+        soma = {}
+        for a in arquivos.values():
+            for cod, por_mes in ((a.get("contagens") or {}).get(g) or {}).items():
+                for m, n in por_mes.items():
+                    soma.setdefault(cod, {})[m] = soma.get(cod, {}).get(m, 0) + n
+        por_mun = {}
+        for cod6, cod7 in acompanhados.items():
+            uf = uf_do_codigo.get(cod6[:2])
+            serie = {m: (soma.get(cod6, {}).get(m, 0) if (uf, m) in cobertos and m not in parciais else None) for m in meses}
+            por_mun[cod7] = {"meses_2026": {m: {"casos": v} for m, v in serie.items() if m.startswith(f"{ano}-")},
+                             "canal": canal_endemico({m: {"casos": v} for m, v in serie.items()
+                                                      if v is not None and int(m[:4]) in ANOS_CANAL})}
+        out[g] = por_mun
+    return out
 
 
 # ------------------------------------------------------------------ montagem (funções puras)
@@ -408,7 +448,28 @@ def _t_derivar():
             and orig["serie"]["CE"]["2026-38"] is None)
 
 
+def _t_municipal():
+    acomp = {"120040": "1200401", "120050": "1200500"}
+    arqs = {f"AC|{a}-07": {"meses": [f"{a}-07"], "contagens": {"r": {"120040": {f"{a}-07": 10 + a - 2019}}}}
+            for a in (2019, 2020, 2021, 2022, 2023, 2025)}
+    arqs.update({"AC|2026-07": {"meses": ["2026-07"], "contagens": {"r": {"120040": {"2026-07": 30}}}},
+                 "AC|2026-08": {"meses": ["2026-08"], "contagens": {}},
+                 "SP|2026-08": {"meses": ["2026-08"], "contagens": {"r": {"120040": {"2026-08": 2}}}},
+                 "SP|2026-09": {"meses": ["2026-09"], "contagens": {}}})
+    sm = serie_municipal_mensal(arqs, acomp, {"12": "AC", "35": "SP"}, ["r"])["r"]
+    assert sm["1200401"]["meses_2026"]["2026-07"] == {"casos": 30}, "conta"
+    assert sm["1200500"]["meses_2026"]["2026-07"] == {"casos": 0}, "mês lido sem caso é zero"
+    assert sm["1200401"]["meses_2026"]["2026-08"] == {"casos": 2}, "residente internado em outra UF soma"
+    assert sm["1200401"]["meses_2026"]["2026-09"] == {"casos": None}, "último mês parcial é None"
+    assert sm["1200401"]["canal"]["07"]["mediana"] == 12.5 and sm["1200401"]["canal"]["07"]["n_anos"] == 6, "canal da UF"
+    so_sp = serie_municipal_mensal({"SP|2026-07": {"meses": ["2026-07", "2026-08"], "contagens": {}}}, acomp,
+                                   {"12": "AC"}, ["r"], n_parciais=0)
+    assert so_sp["r"]["1200401"]["meses_2026"]["2026-07"] == {"casos": None}, "sem o arquivo da UF não vira zero"
+    return municipios_acompanhados({"1200401": 100000, "1200500": 99999, "_fonte": 1}) == {"120040": "1200401"}
+
+
 TESTES = {
+    "série municipal: zero lido, ausência null, parcial null, canal da UF": _t_municipal,
     "derivado: semanas vazadas voltam como parcial; origem intocada": _t_derivar,
     "forma comum: parcial, último, taxa, quintis, faixa habitual": _t_forma,
     "cortes do mapa congelados na regravação": _t_cortes_congelados,

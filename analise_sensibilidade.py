@@ -72,12 +72,17 @@ def rodar():
     R = {"media": media, "ufs": ufs, "idx": idx}
 
     # cobertura populacional recomputável com descontos variáveis (mesma cadeia do motor)
+    # 17/11/2026: a categoria que conta é a do motor (`categoria_que_conta`: plano desatualizado segundo a lei vale 0).
+    from aplicar_promocoes_do_juiz import municipios_do_cadastro
+    cadastro = municipios_do_cadastro()
+    cat_de = lambda r: rm.categoria_que_conta(r, cod_por[(r["nome"], r["uf"])], cadastro)  # noqa: E731
+
     def contagem_e_peso(uf):
         c, w = {}, 0.0
         for r in mun:
             if r["uf"] == uf:
-                c[r["categoria"]] = c.get(r["categoria"], 0) + 1
-                w += pop.get(cod_por[(r["nome"], r["uf"])], 0) * rm.CRED_POP.get(r["categoria"], 0.0)
+                c[cat_de(r)] = c.get(cat_de(r), 0) + 1
+                w += pop.get(cod_por[(r["nome"], r["uf"])], 0) * rm.CRED_POP.get(cat_de(r), 0.0)
         return c, w
 
     def cobertura(uf, d_plano=0.5):
@@ -217,8 +222,8 @@ def rodar():
         for r in mun:
             if r["uf"] != uf:
                 continue
-            c[r["categoria"]] = c.get(r["categoria"], 0) + 1
-            credito = rm.CRED_POP.get(r["categoria"], 0.0)
+            c[cat_de(r)] = c.get(cat_de(r), 0) + 1
+            credito = rm.CRED_POP.get(cat_de(r), 0.0)
             if r.get("sem_ato_de_aprovacao"):
                 credito *= fator
             w += pop.get(cod_por[(r["nome"], r["uf"])], 0) * credito

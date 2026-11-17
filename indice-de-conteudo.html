@@ -48,7 +48,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>blog.titulo_da_pagina</code></td><td>Blog do MARÉ</td></tr>
 </table>
-<h2>defesa-civil <small>(37 trechos)</small></h2>
+<h2>defesa-civil <small>(38 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.titulo_da_pagina</code></td><td>Defesa civil</td></tr>
@@ -122,6 +122,10 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.municipio.decreto.ato_inferido.molde</code></td><td><span class="molde">Ato municipal não localizado até o corte ({corte}); a União reconheceu a emergência em {data}</span><br><span class="ex">exemplo: Ato municipal não localizado até o corte (3); a União reconheceu a emergência em 3</span></td></tr>
 </table>
+<h3>municipio · decreto.anterior</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>defesa-civil.municipio.decreto.anterior</code></td><td>Decreto anterior a 29 de junho, reconhecido pela União depois dessa data</td></tr>
+</table>
 <h3>municipio · reconhecimento</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>defesa-civil.municipio.reconhecimento.titulo</code></td><td>Reconhecimento federal</td></tr>
@@ -144,7 +148,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>municipio · estado.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>defesa-civil.municipio.estado.molde</code></td><td><span class="molde">&lt;strong&gt;{no_estado}:&lt;/strong&gt; {n_dec} dos {n_mun} municípios decretaram emergência desde 29 de junho ({pct}%), {n_rec} reconhecidos pela União; evento mais declarado: {evento}.</span><br><span class="ex">exemplo: &lt;strong&gt;3:&lt;/strong&gt; 3 dos 3 municípios decretaram emergência desde 29 de junho (3%), 3 reconhecidos pela União; evento mais declarado: 3.</span></td></tr>
+<tr><td>texto</td><td><code>defesa-civil.municipio.estado.molde</code></td><td><span class="molde">&lt;strong&gt;{no_estado}:&lt;/strong&gt; {n_dec} dos {n_mun} municípios têm decreto de emergência publicado ou reconhecido desde 29 de junho ({pct}%), {n_rec} reconhecidos pela União; evento mais declarado: {evento}.</span><br><span class="ex">exemplo: &lt;strong&gt;3:&lt;/strong&gt; 3 dos 3 municípios têm decreto de emergência publicado ou reconhecido desde 29 de junho (3%), 3 reconhecidos pela União; evento mais declarado: 3.</span></td></tr>
 </table>
 <h3>emergencias</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1872,7 +1876,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>texto_2 · dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>index.texto_2.dica</code></td><td>Parcela da população que vive em municípios com decreto registrado desde 29 de junho de 2026. Não avalia a qualidade da resposta.</td></tr>
+<tr><td>texto</td><td><code>index.texto_2.dica</code></td><td>Parcela da população que vive em municípios com decreto registrado desde 29 de junho de 2026.</td></tr>
 </table>
 <h3>titulo_da_secao_3 · dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -2614,7 +2618,7 @@ font-size:12px}th:first-child{width:4rem}}
 <tr><td>rotulo</td><td><code>prefeituras.quem-deve.indicados.conteudo.rotulo</code></td><td>Conteúdo</td></tr>
 <tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.conteudo.texto</code></td><td>Oito itens mínimos, listados no passo 2 de &lt;a href=&quot;#caminho&quot;&gt;Do risco ao plano publicado&lt;/a&gt;</td></tr>
 </table>
-<h2>proteja-se <small>(135 trechos)</small></h2>
+<h2>proteja-se <small>(136 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>abertura</td><td><code>proteja-se.abertura</code></td><td>As orientações abaixo indicam o que fazer para se preparar, durante o evento e quando procurar ajuda. Não substitui as instruções da Defesa Civil da sua cidade.</td></tr>
@@ -2957,7 +2961,11 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>municipio · decreto.valor_plural</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>proteja-se.municipio.decreto.valor_plural</code></td><td><span class="molde">Decretou {n} vezes desde 29 de junho, a primeira em {data}</span><br><span class="ex">exemplo: Decretou 3 vezes desde 29 de junho, a primeira em 3</span></td></tr>
+<tr><td>texto</td><td><code>proteja-se.municipio.decreto.valor_plural</code></td><td><span class="molde">Decretou {n} vezes, a primeira em {data}</span><br><span class="ex">exemplo: Decretou 3 vezes, a primeira em 3</span></td></tr>
+</table>
+<h3>municipio · decreto.anterior</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>proteja-se.municipio.decreto.anterior</code></td><td>Decreto anterior a 29 de junho, reconhecido pela União depois dessa data.</td></tr>
 </table>
 <h3>municipio · decreto.reconhecido</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3071,7 +3079,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(163 trechos)</small></h2>
+<h2>saude <small>(173 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · planos estaduais e registros de saúde no El Niño 2026/2027</td></tr>
@@ -3108,8 +3116,8 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>observado · registram.detalhe</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>saude.observado.registram.detalhe.titulo</code></td><td><span class="molde">{desfecho} por 100 mil habitantes</span><br><span class="ex">exemplo: 3 por 100 mil habitantes</span></td></tr>
-<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Valor observado e faixa habitual para a época · mapa: {periodo}, por estado · {parciais}</span><br><span class="ex">exemplo: Valor observado e faixa habitual para a época · mapa: 3, por estado · 3</span></td></tr>
+<tr><td>titulo</td><td><code>saude.observado.registram.detalhe.titulo</code></td><td><span class="molde">{desfecho} por 100 mil habitantes, por estado, desde 29 de junho</span><br><span class="ex">exemplo: 3 por 100 mil habitantes, por estado, desde 29 de junho</span></td></tr>
+<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Faixa habitual: da mediana ao percentil 90 de 2019 a 2025 · cada linha na sua escala · último período fechado: {periodo} · {parciais}</span><br><span class="ex">exemplo: Faixa habitual: da mediana ao percentil 90 de 2019 a 2025 · cada linha na sua escala · último período fechado: 3 · 3</span></td></tr>
 </table>
 <h3>observado · registram.detalhe.lista</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3135,7 +3143,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>topo · preparacao.linha</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.preparacao.linha</code></td><td><span class="molde">{com_plano} de {denominador} estados com plano localizado · {em_elaboracao|nenhum em elaboração|um em elaboração|{em_elaboracao} em elaboração} · {sem_numero|nenhum estado ainda não verificado|um estado ainda não verificado|{sem_numero} estados ainda não verificados} · {corte}</span><br><span class="ex">exemplo: 3 de 3 estados com plano localizado · 3 em elaboração · 3 estados ainda não verificados · 3</span></td></tr>
+<tr><td>texto</td><td><code>saude.topo.preparacao.linha</code></td><td><span class="molde">{com_plano} de {denominador} estados com plano em vigor localizado · {vencido|nenhum com vigência encerrada|um com vigência encerrada|{vencido} com vigência encerrada} · {em_elaboracao|nenhum em elaboração|um em elaboração|{em_elaboracao} em elaboração} · {nao_localizado|nenhum sem plano localizado|um sem plano localizado até o corte|{nao_localizado} sem plano localizado até o corte} · {sem_numero|todos verificados|um estado ainda não verificado|{sem_numero} estados ainda não verificados} · {corte}</span><br><span class="ex">exemplo: 3 de 3 estados com plano em vigor localizado · 3 com vigência encerrada · 3 em elaboração · 3 sem plano localizado até o corte · 3 estados ainda não verificados · 3</span></td></tr>
 </table>
 <h3>topo · preparacao.linha_reserva</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3194,6 +3202,10 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.estadual.tipo.ELAB</code></td><td>Plano em elaboração</td></tr>
 </table>
+<h3>estadual · tipo.VENC</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.VENC</code></td><td>Último plano localizado com vigência encerrada</td></tr>
+</table>
 <h3>estadual · tipo.LAC</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.estadual.tipo.LAC</code></td><td>Plano não localizado até o corte</td></tr>
@@ -3212,7 +3224,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>estadual · escada</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.estadual.escada</code></td><td><span class="molde">O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, {NOVO}; atualizado, {READ}; recorrente, {VIG}; em elaboração, {ELAB}; não localizado, {LAC}.</span><br><span class="ex">exemplo: O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, 3; atualizado, 3; recorrente, 3; em elaboração, 3; não localizado, 3.</span></td></tr>
+<tr><td>texto</td><td><code>saude.estadual.escada</code></td><td><span class="molde">O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, {NOVO}; atualizado, {READ}; recorrente, {VIG}; em elaboração, {ELAB}; com vigência encerrada, {VENC}; não localizado, {LAC}.</span><br><span class="ex">exemplo: O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, 3; atualizado, 3; recorrente, 3; em elaboração, 3; com vigência encerrada, 3; não localizado, 3.</span></td></tr>
 </table>
 <h3>estadual · ficha.plano</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3382,6 +3394,26 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.consulta.plano.nao_verificado</code></td><td>Município ainda não verificado</td></tr>
 </table>
+<h3>consulta · rotulo.plano_arbo_municipio</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.plano_arbo_municipio</code></td><td>Plano municipal de arboviroses</td></tr>
+</table>
+<h3>consulta · plano_arbo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.plano_arbo.nota</code></td><td><span class="molde">{documento}, {data}</span><br><span class="ex">exemplo: 3, 3</span></td></tr>
+</table>
+<h3>consulta · plano_arbo.citado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano_arbo.citado</code></td><td><span class="molde">Plano citado em diário oficial, documento não confirmado até {corte}</span><br><span class="ex">exemplo: Plano citado em diário oficial, documento não confirmado até 3</span></td></tr>
+</table>
+<h3>consulta · plano_arbo.nao_localizado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano_arbo.nao_localizado</code></td><td><span class="molde">Não localizamos plano municipal de arboviroses até {corte}</span><br><span class="ex">exemplo: Não localizamos plano municipal de arboviroses até 3</span></td></tr>
+</table>
+<h3>consulta · plano_arbo.nao_verificado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano_arbo.nao_verificado</code></td><td>Município ainda não verificado</td></tr>
+</table>
 <h3>consulta · plano.saude_no_plano</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.consulta.plano.saude_no_plano</code></td><td><span class="molde">O plano trata a saúde (leitura página {pagina})</span><br><span class="ex">exemplo: O plano trata a saúde (leitura página 3)</span></td></tr>
@@ -3478,30 +3510,6 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.topo.resposta.pilula</code></td><td><span class="molde">{n|nenhum decreto|um decreto|{n} decretos}</span><br><span class="ex">exemplo: 3 decretos</span></td></tr>
 </table>
-<h3>observado · registram.detalhe.subtitulo_semana</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_semana</code></td><td><span class="molde">{territorio} · semana {datas}</span><br><span class="ex">exemplo: 3 · semana 3</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.subtitulo_mes</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_mes</code></td><td><span class="molde">{territorio} · mês de {mes}</span><br><span class="ex">exemplo: 3 · mês de 3</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.frase</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.frase</code></td><td><span class="molde">No {territorio}, {posicao}. Por estado: {acima}, {dentro} e {abaixo} da faixa habitual.</span><br><span class="ex">exemplo: No 3, 3. Por estado: 3, 3 e 3 da faixa habitual.</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.n_acima</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_acima</code></td><td><span class="molde">{k} acima</span><br><span class="ex">exemplo: 3 acima</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.n_dentro</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_dentro</code></td><td><span class="molde">{k} dentro</span><br><span class="ex">exemplo: 3 dentro</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.n_abaixo</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_abaixo</code></td><td><span class="molde">{k} abaixo</span><br><span class="ex">exemplo: 3 abaixo</span></td></tr>
-</table>
 <h3>observado · registram.detalhe.parciais</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.observado.registram.detalhe.parciais</code></td><td><span class="molde">{n|nenhum período ainda em registro|um período ainda em registro fica fora|{n} períodos ainda em registro ficam fora}</span><br><span class="ex">exemplo: 3 períodos ainda em registro ficam fora</span></td></tr>
@@ -3509,22 +3517,6 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>observado · registram.detalhe.parciais_nenhum</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.observado.registram.detalhe.parciais_nenhum</code></td><td>série fechada até o último período</td></tr>
-</table>
-<h3>observado · registram.detalhe.leg_ano</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_ano</code></td><td><span class="molde">valor observado em {ano}</span><br><span class="ex">exemplo: valor observado em 3</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.leg_faixa</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_faixa</code></td><td>faixa habitual para a época (2019–2025)</td></tr>
-</table>
-<h3>observado · registram.detalhe.leg_incompleto_semana</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_incompleto_semana</code></td><td>semanas com registro incompleto</td></tr>
-</table>
-<h3>observado · registram.detalhe.leg_incompleto_mes</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_incompleto_mes</code></td><td>meses com registro incompleto</td></tr>
 </table>
 <h3>observado · registram.detalhe.sem_periodo</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3534,21 +3526,9 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.observado.registram.detalhe.contagem</code></td><td><span class="molde">{n|zero estados|um estado|{n} estados}</span><br><span class="ex">exemplo: 3 estados</span></td></tr>
 </table>
-<h3>observado · registram.detalhe.ficha</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.ficha</code></td><td><span class="molde">{n} {unidade} · {taxa} por 100 mil habitantes</span><br><span class="ex">exemplo: 3 3 · 3 por 100 mil habitantes</span></td></tr>
-</table>
 <h3>observado · registram.detalhe.faixa</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.observado.registram.detalhe.faixa</code></td><td><span class="molde">(de {mediana} a {p90})</span><br><span class="ex">exemplo: (de 3 a 3)</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.periodo_semana</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.periodo_semana</code></td><td><span class="molde">semana {datas}</span><br><span class="ex">exemplo: semana 3</span></td></tr>
-</table>
-<h3>observado · registram.detalhe.periodo_mes</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.periodo_mes</code></td><td><span class="molde">mês de {mes}</span><br><span class="ex">exemplo: mês de 3</span></td></tr>
 </table>
 <h3>topo · preparacao.dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3556,11 +3536,11 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>topo · resposta.dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.resposta.dica</code></td><td>Parcela da população em estados com decreto de emergência em saúde registrado desde 29 de junho de 2026. Não avalia a qualidade da resposta.</td></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.dica</code></td><td>Parcela da população em estados com decreto de emergência em saúde registrado desde 29 de junho de 2026.</td></tr>
 </table>
 <h3>observado · registram.detalhe.dica</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.dica</code></td><td>Série e mapa do indicador selecionado nos cartões acima.</td></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.dica</code></td><td>Mapa e linhas por estado do indicador selecionado nos cartões acima, desde 29 de junho.</td></tr>
 </table>
 <h3>consulta · resultado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3681,5 +3661,73 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>mortalidade · fonte_sim</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.mortalidade.fonte_sim</code></td><td>SIM, Ministério da Saúde</td></tr>
+</table>
+<h3>observado · registram.detalhe.titulo_municipios</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.titulo_municipios</code></td><td><span class="molde">{desfecho}: municípios e estados desde 29 de junho</span><br><span class="ex">exemplo: 3: municípios e estados desde 29 de junho</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.subtitulo_estados</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_estados</code></td><td>Posição na faixa habitual da época · 27 estados · período a período</td></tr>
+</table>
+<h3>observado · registram.detalhe.subtitulo_municipios</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_municipios</code></td><td><span class="molde">Posição na faixa habitual da época · {n} municípios acompanhados e 27 estados · semana a semana</span><br><span class="ex">exemplo: Posição na faixa habitual da época · 3 municípios acompanhados e 27 estados · semana a semana</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.subtitulo_municipios_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_municipios_mes</code></td><td><span class="molde">Posição na faixa habitual da época · {n} municípios de residência e 27 estados · mês a mês</span><br><span class="ex">exemplo: Posição na faixa habitual da época · 3 municípios de residência e 27 estados · mês a mês</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.tocar</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.tocar</code></td><td>Ver passar os períodos</td></tr>
+</table>
+<h3>observado · registram.detalhe.na_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.na_semana</code></td><td><span class="molde">Semana {datas}</span><br><span class="ex">exemplo: Semana 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.regua</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.regua</code></td><td>Régua dos municípios</td></tr>
+</table>
+<h3>observado · registram.detalhe.regua_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.regua_faixa</code></td><td>Faixa habitual</td></tr>
+</table>
+<h3>observado · registram.detalhe.regua_nivel</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.regua_nivel</code></td><td>Nível do InfoDengue</td></tr>
+</table>
+<h3>observado · registram.detalhe.nivel</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.nivel</code></td><td><span class="molde">nível {n} do InfoDengue</span><br><span class="ex">exemplo: nível 3 do InfoDengue</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.contagem_mun</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.contagem_mun</code></td><td><span class="molde">{n|nenhum município|um município|{n} municípios}</span><br><span class="ex">exemplo: 3 municípios</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.frase_municipios</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.frase_municipios</code></td><td><span class="molde">Na semana {quando}, {acima|nenhum município|um município|{acima} municípios} acima da faixa habitual, de {total} acompanhados; {estados|nenhum estado|um estado|{estados} estados} acima.</span><br><span class="ex">exemplo: Na semana 3, 3 municípios acima da faixa habitual, de 3 acompanhados; 3 estados acima.</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.frase_municipios_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.frase_municipios_mes</code></td><td><span class="molde">Em {quando}, {acima|nenhum município|um município|{acima} municípios} acima da faixa habitual, de {total} acompanhados; {estados|nenhum estado|um estado|{estados} estados} acima.</span><br><span class="ex">exemplo: Em 3, 3 municípios acima da faixa habitual, de 3 acompanhados; 3 estados acima.</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.frase_estados_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.frase_estados_semana</code></td><td><span class="molde">Na semana {quando}, {acima|nenhum estado|um estado|{acima} estados} acima da faixa habitual.</span><br><span class="ex">exemplo: Na semana 3, 3 estados acima da faixa habitual.</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.frase_estados_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.frase_estados_mes</code></td><td><span class="molde">Em {quando}, {acima|nenhum estado|um estado|{acima} estados} acima da faixa habitual.</span><br><span class="ex">exemplo: Em 3, 3 estados acima da faixa habitual.</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.linha_aria</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.linha_aria</code></td><td><span class="molde">{territorio}: valor por 100 mil habitantes desde 29 de junho sobre a faixa habitual; período marcado: {quando}</span><br><span class="ex">exemplo: 3: valor por 100 mil habitantes desde 29 de junho sobre a faixa habitual; período marcado: 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.sem_ciclo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.sem_ciclo</code></td><td><span class="molde">Sem período fechado desde 29 de junho até o corte; o último período fechado é {periodo}.</span><br><span class="ex">exemplo: Sem período fechado desde 29 de junho até o corte; o último período fechado é 3.</span></td></tr>
 </table>
 </body></html>

@@ -38,7 +38,8 @@ RAIZ = Path(__file__).resolve().parent
 
 
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
-PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
+# VENC (editoria, 15/11/2026): plano com vigência declarada encerrada antes do ciclo; aparece, vale 0.
+PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "VENC": 0, "LAC": 0}
 # Âncora do indicador de tempo (publicado à parte, peso zero): Boletim nº 1 do Painel El Niño.
 BOLETIM_1 = "29/06/2026"
 # v0.7 (24/10/2026, editoria): a nota da UF é o instrumento; a antecipação sai da nota e o tempo vira
@@ -130,12 +131,15 @@ def credito_nacional(prontidao_uf):
 
 
 def estatuto_do_plano(status: str, prontidao_uf) -> str:
-    """'plano_localizado' | 'plano_em_elaboracao' | 'plano_nao_localizado' | 'nao_verificado'. Função pura.
-    Plano em elaboração não é plano localizado (editoria, 05/11/2026): conta à parte."""
+    """'plano_localizado' | 'plano_vencido' | 'plano_em_elaboracao' | 'plano_nao_localizado' | 'nao_verificado'.
+    Função pura. Plano em elaboração não é plano localizado (editoria, 05/11/2026), e plano com vigência
+    encerrada também não (17/11/2026): os dois contam à parte, como no quadro dos tipos de plano."""
     if status == "NAO_VERIFICADO":
         return "nao_verificado"
     if status == "ELAB":
         return "plano_em_elaboracao"
+    if status == "VENC":
+        return "plano_vencido"
     return "plano_nao_localizado" if status == "LAC" or prontidao_uf is None else "plano_localizado"
 
 
@@ -144,7 +148,8 @@ def resumo_nacional(ufs: dict, pop_uf: dict) -> dict:
     UF que falta é KeyError, não média menor. `por_uf` traz o `peso_nacional` (pop × c_uf ÷ Σ pop) e a
     `contribuicao_nacional` (nota levada × peso) de cada UF. As contagens por estatuto somam o denominador."""
     total = float(sum(pop_uf[uf] for uf in UFS))
-    por = {k: 0 for k in ("plano_localizado", "plano_em_elaboracao", "plano_nao_localizado", "nao_verificado")}
+    por = {k: 0 for k in ("plano_localizado", "plano_vencido", "plano_em_elaboracao", "plano_nao_localizado",
+                                "nao_verificado")}
     por_uf, soma = {}, 0.0
     for uf in UFS:
         u = ufs[uf]; por[u["estatuto"]] += 1
@@ -183,6 +188,9 @@ def cobertura_sanitaria(municipios: list, referencia: list, populacao: dict, aut
         cat = r.get("categoria"); uf = r.get("uf")
         if cat not in CATEGORIAS_MUNICIPAIS or uf not in saida or not cred_pop.get(cat): continue
         degrau = conf.get((uf, r.get("nome")))
+        # 16/11/2026: o registro guarda o hash do documento lido; a URL do registro e a da cópia divergem
+        # (redirecionamento, maiúsculas, endereço reescrito), e quatro planos lidos ficavam "sem leitura".
+        if degrau is None: degrau = ((auto or {}).get(r.get("hash_evidencia")) or {}).get("degrau")
         if degrau is None: degrau = por_url.get(r.get("url"))
         if degrau is None:
             saida[uf]["planos_sem_leitura"] += 1; continue
@@ -321,6 +329,7 @@ def gerar() -> int:
                    "planos_municipais_lidos": sum(v["planos_lidos"] for v in cob.values()), "planos_municipais_sem_leitura": sum(v["planos_sem_leitura"] for v in cob.values()),
                    **{k: v for k, v in nac.items() if k != "por_uf"},
                    "ufs_com_plano_localizado": nac["por_estatuto"]["plano_localizado"],
+                   "ufs_plano_vencido": nac["por_estatuto"]["plano_vencido"],
                    "ufs_em_elaboracao": nac["por_estatuto"]["plano_em_elaboracao"],
                    "ufs_sem_plano_localizado": 27 - nac["por_estatuto"]["plano_localizado"],
                    "coordenacao_verificadas": sum(1 for uf in UFS if ufs[uf]["coordenacao"]["verificada"])},
@@ -334,7 +343,7 @@ def gerar() -> int:
 def autoteste() -> int:
     def t1(): return temporada_da_edicao("Plano 2025/2026", "01/07/2025") == "2025/2026" and temporada_da_edicao("Plano 2026-2027", "") == "2026/2027"
     def t2(): return temporada_da_edicao("Plano de Enfrentamento", "22/12/2023") == "anterior" and temporada_da_edicao("Atualização 2024 a 2026", "05/2025") == "2025/2026"
-    def t3(): return prontidao("NOVO") == 100.0 and prontidao("READ") == 65.0 and prontidao("VIG") == 45.0 and prontidao("ELAB") == 35.0 and prontidao("LAC") == 0.0
+    def t3(): return prontidao("NOVO") == 100.0 and prontidao("READ") == 65.0 and prontidao("VIG") == 45.0 and prontidao("ELAB") == 35.0 and prontidao("LAC") == 0.0 and prontidao("VENC") == 0.0
     def t4(): return credito_nacional(None) == 0.0 and credito_nacional(35.0) == 35.0
     def t8():  # tempo: só ato do ciclo com dia fechado; negativo antes do boletim; mês solto e recorrente sem número
         return (dias_apos_boletim_1("NOVO", "08/06/2026") == -21 and dias_apos_boletim_1("READ", "29/06/2026") == 0
@@ -393,7 +402,7 @@ def autoteste() -> int:
                 and prontidao("ELAB") == 35.0)
     def t18(): return (estatuto_do_plano("NAO_VERIFICADO", None) == "nao_verificado" and estatuto_do_plano("LAC", 0.0) == "plano_nao_localizado"
                        and estatuto_do_plano("NOVO", None) == "plano_nao_localizado" and estatuto_do_plano("VIG", 30.0) == "plano_localizado"
-                       and estatuto_do_plano("ELAB", 35.0) == "plano_em_elaboracao")
+                       and estatuto_do_plano("ELAB", 35.0) == "plano_em_elaboracao" and estatuto_do_plano("VENC", 0.0) == "plano_vencido")
     pop = {u: 10 for u in UFS}
     todas = {"federal": {"consultado_em": "12/10/2026"}, "estadual": {u: {"consultado_em": "15/10/2026"} for u in UFS}}
     def t12():

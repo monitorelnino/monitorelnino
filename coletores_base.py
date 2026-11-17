@@ -28,6 +28,8 @@ from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
 DATA = RAIZ / "data"
+# Boletim nº 1 do ciclo (29/06/2026): marco zero de toda série do ciclo (editoria, 16/11/2026: a saúde também).
+INICIO_DO_CICLO = "2026-06-29"
 EVID = RAIZ / "evidencias"
 LIMITE_EVIDENCIA = 5 * 1024 * 1024  # bytes
 UA = "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; coletor da Pista A)"
@@ -386,7 +388,7 @@ def classe_de_dominio(url: str) -> str:
     """
     import urllib.parse
     host = urllib.parse.urlparse(str(url or "")).netloc.lower()
-    return "oficial" if host.endswith((".gov.br", ".leg.br", ".jus.br", ".mp.br")) else "outros"
+    return "oficial" if host.endswith((".gov.br", ".leg.br", ".jus.br", ".mp.br")) or _dominio_publico(str(url or "")) else "outros"
 
 
 def validar_pista(pista: dict, existentes: list = None) -> tuple:
@@ -665,8 +667,9 @@ def _dominio_publico(url: str) -> bool:
     if h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h:
         return True
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "scripts"))
-    from municipio_do_dominio import _host, diarios_estaduais   # imprensa oficial fora de .gov.br (IOERJ)
-    return _host(url) in diarios_estaduais()
+    from municipio_do_dominio import _host, diarios_estaduais, municipio_fora_do_gov_br
+    # imprensa oficial fora de .gov.br (IOERJ); e o sítio oficial do município fora de .gov.br (17/11/2026)
+    return _host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
 
 
 def setor_da_url(url: str) -> str:
@@ -1537,11 +1540,35 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
         # (to.gov.br, saude.ap.gov.br, saude.rn.gov.br) é lido pela ponte no Brasil, cliente identificado.
         copia, _ = copia_da_ponte(url)
         if copia is None:
+            if buscar_fn is None:   # rede de verdade: o endereço vira pedido à ponte (o autoteste não pede)
+                _PEDIDOS_DA_PONTE[url] = origem or ""
             raise
         return copia
 
 
 PONTE = "ponte_brasil.json"
+PEDIDOS_DA_PONTE = "ponte_pedidos.json"
+# 16/11/2026: a tarefa semanal da ponte lê `scripts/ponte_brasil.py --pedidos`, que não existia; nenhum
+# endereço chegava a ela e o DOE-RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo
+# endereço que falha na rede sem cópia vira pedido, gravado uma vez, no fim do processo.
+_PEDIDOS_DA_PONTE = {}
+
+
+def _gravar_pedidos_da_ponte():
+    if not _PEDIDOS_DA_PONTE:
+        return
+    hoje = hoje_editorial().isoformat()
+    doc = ler(PEDIDOS_DA_PONTE, {}) or {}
+    doc.setdefault("_governanca", "Endereços que falharam na rede, sem cópia da ponte no Brasil: um pedido por "
+                                  "falha, nunca reescrito. `scripts/ponte_brasil.py --pedidos` lê esta fila.")
+    doc["pedidos"] = list(doc.get("pedidos") or []) + [{"url": u, "origem": o, "em": hoje}
+                                                       for u, o in _PEDIDOS_DA_PONTE.items()]
+    gravar(PEDIDOS_DA_PONTE, doc)
+    _PEDIDOS_DA_PONTE.clear()
+
+
+import atexit as _atexit  # noqa: E402
+_atexit.register(_gravar_pedidos_da_ponte)
 
 
 def copia_da_ponte(url: str) -> tuple:
@@ -1733,10 +1760,11 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     idx = ler("evidencias.json", {"_governanca": "Índice de evidências preservadas (§3.8, v2.2.4). "
                                    "Chave = sha256 do documento; nunca lido pelo cálculo do índice.",
                                    "itens": {}})
-    if h in idx["itens"]:
+    if h in idx["itens"] and (idx["itens"][h].get("arquivo") or idx["itens"][h].get("texto_arquivo") or idx["itens"][h].get("ocr_arquivo")
+                              or len(conteudo) <= LIMITE_EVIDENCIA):
         return h
-    item = {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
-            "arquivo": None, "wayback": None}
+    item = idx["itens"].get(h) or {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
+                                   "arquivo": None, "wayback": None}
     if redigidos:
         item["segredos_redigidos"] = redigidos
     if cpfs:
@@ -1750,14 +1778,43 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
             destino.write_bytes(conteudo)
         item["arquivo"] = destino.relative_to(RAIZ).as_posix()
     else:
-        try:
-            buscar("https://web.archive.org/save/" + url, timeout=60)
-            item["wayback"] = "https://web.archive.org/web/*/" + url
-        except Exception as e:  # noqa: BLE001
-            item["wayback"] = f"tentativa falhou ({type(e).__name__})"
+        if not item.get("wayback"):
+            try:
+                buscar("https://web.archive.org/save/" + url, timeout=60)
+                item["wayback"] = "https://web.archive.org/web/*/" + url
+            except Exception as e:  # noqa: BLE001
+                item["wayback"] = f"tentativa falhou ({type(e).__name__})"
+        # 17/11/2026: acima do limite só ficava o pedido ao Wayback, que não lê pasta privada (o OneDrive da
+        # Casa Militar/RS); 40 promoções do juiz ficaram fora do banco por falta de prova (portão 26). A camada
+        # de texto do documento, com segredo e CPF redigidos, é cópia legível com hash próprio (§10.1).
+        item.update(_texto_de_evidencia(conteudo, url, h))
     idx["itens"][h] = item
     gravar("evidencias.json", idx)
     return h
+
+
+def _texto_de_evidencia(conteudo: bytes, url: str, h: str) -> dict:
+    """Os campos `texto_arquivo`, `texto_hash` e `caracteres` da camada de texto do documento, gravada em
+    `evidencias/<hash>.txt`; vazio quando o documento não dá texto."""
+    from julgar_e_aplicar_descobertas import LETRAS_SEM_OCR, texto_do_documento, texto_por_ocr
+    campo, sufixo = "texto", "txt"
+    try:
+        texto = texto_do_documento(conteudo, url) or ""
+        # 17/11/2026: o PDF grande quase sempre é escaneado; sem camada de texto, a prova é o OCR, que o portão 26
+        # aceita em campo próprio (`ocr_*`, §177) para não virar insumo de classificação.
+        if conteudo[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto)) < LETRAS_SEM_OCR:
+            texto, campo, sufixo = texto_por_ocr(conteudo) or "", "ocr", "ocr.txt"
+    except Exception:  # noqa: BLE001 — documento que não dá texto fica sem esta cópia
+        texto = ""
+    texto, _ = redigir_segredos(texto)
+    texto, _ = redigir_dados_pessoais(texto)
+    if not texto.strip():
+        return {}
+    EVID.mkdir(exist_ok=True)
+    destino = EVID / f"{h}.{sufixo}"
+    destino.write_text(texto, encoding="utf-8", newline="\n")
+    return {f"{campo}_arquivo": destino.relative_to(RAIZ).as_posix(), f"{campo}_hash": sha256(destino.read_bytes()),
+            "caracteres" if campo == "texto" else "ocr_caracteres": len(texto)}
 
 
 def _indexar_texto_integral(h: str, destino, origem=None) -> str:

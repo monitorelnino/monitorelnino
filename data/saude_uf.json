@@ -1,10 +1,11 @@
 {
- "_governanca": "Camada estadual de saúde (§9.2, C1). Vocabulário fechado: NOVO · READ · VIG · ELAB · LAC (bateria datada) · NAO_VERIFICADO. NUNCA lida por recalcular_mare.py (portão). 'LAC' só com bateria estadual logada (nivel='estadual').",
+ "_governanca": "Camada estadual de saúde (§9.2, C1). Vocabulário fechado: NOVO · READ · VIG · ELAB · VENC (vigência declarada encerrada antes do ciclo, vale 0; editoria 15/11/2026) · LAC (bateria datada) · NAO_VERIFICADO. NUNCA lida por recalcular_mare.py (portão). 'LAC' só com bateria estadual logada (nivel='estadual').",
  "vocabulario": [
   "NOVO",
   "READ",
   "VIG",
   "ELAB",
+  "VENC",
   "LAC",
   "NAO_VERIFICADO"
  ],
@@ -15,7 +16,7 @@
   "SEM",
   "NEUTRO"
  ],
- "corte": "01/11/2026",
+ "corte": "15/11/2026",
  "uf": {
   "AC": {
    "risco_sanitario_projetado": [
@@ -25,11 +26,11 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_nada_localizado",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "busca_estadual_2026-11-15_saude_ac_imprensa_portal_cib",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
+     "status": "LAC",
      "orgao": null,
      "doc": null,
      "numero": null,
@@ -38,10 +39,11 @@
      "hash_evidencia": null,
      "natureza_doc": "nenhum",
      "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "tipo": "especifico_ciclo",
+     "observacao": "A Sesacre anunciou em 12/11/2026 o Plano Estadual de Enfrentamento aos efeitos do El Niño, em avaliação em exercício com a OPAS (agencia.ac.gov.br); o documento não foi localizado até o corte."
     }
    ],
-   "status": "NAO_VERIFICADO",
+   "status": "LAC",
    "orgao": null,
    "doc": null,
    "numero": null,
@@ -86,7 +88,8 @@
    "preservado_em": "2026-09-26",
    "hash_pagina_citada": "de31e2f567292715b8e8721f4cda5f0e0a6c3780a16aa95de2623a9b21229c28",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta"
+   "procedencia_da_pagina": "fonte direta",
+   "hash_evidencia": null
   },
   "AM": {
    "risco_sanitario_projetado": [
@@ -125,7 +128,8 @@
    "hash_pagina_citada": "40e878f6bc663fd5ccd28485463f754e77e01287f73cd72a748d7fd29a55ca3f",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
    "procedencia_da_pagina": "fonte direta",
-   "nota_interna": "publicado em 08/06/2026; cinco estágios operacionais: normalidade, mobilização, alerta, situação de emergência e crise"
+   "nota_interna": "publicado em 08/06/2026; cinco estágios operacionais: normalidade, mobilização, alerta, situação de emergência e crise",
+   "hash_evidencia": null
   },
   "AP": {
    "risco_sanitario_projetado": [
@@ -135,11 +139,11 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_nada_localizado",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "busca_estadual_2026-11-15_saude_ap_imprensa_portal_cib",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
+     "status": "LAC",
      "orgao": null,
      "doc": null,
      "numero": null,
@@ -148,10 +152,11 @@
      "hash_evidencia": null,
      "natureza_doc": "nenhum",
      "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "tipo": "especifico_ciclo",
+     "observacao": "Nenhum plano estadual de saúde para os riscos do ciclo localizado até o corte (portal da SESA, resoluções da CIB de 2025 e 2026, imprensa)."
     }
    ],
-   "status": "NAO_VERIFICADO",
+   "status": "LAC",
    "orgao": null,
    "doc": null,
    "numero": null,
@@ -353,7 +358,8 @@
    "hash_pagina_citada": "e9b15bc459c439f167b700b9162e9e130689acea90ef425830676b1e18361b93",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
    "procedencia_da_pagina": "fonte direta",
-   "nota_interna": "(calor extremo, baixa umidade, fumaça de queimadas, arboviroses), apresentado em 27/08/2026, com a Nota Informativa nº 1/2026 – SES/SUVISA/SUVEPI/GESP/V-21845 encaminhada aos 246 municípios"
+   "nota_interna": "(calor extremo, baixa umidade, fumaça de queimadas, arboviroses), apresentado em 27/08/2026, com a Nota Informativa nº 1/2026 – SES/SUVISA/SUVEPI/GESP/V-21845 encaminhada aos 246 municípios",
+   "hash_evidencia": null
   },
   "MA": {
    "risco_sanitario_projetado": [
@@ -363,44 +369,55 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "21/10/2026",
-   "log_ref": "julgar_saude_21-10-2026",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
-     "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
-    },
-    {
-     "status": "VIG",
+     "status": "VENC",
      "orgao": "SES-MA",
-     "doc": "Plano de Contingência da Dengue e Outras Arboviroses” e “Manejo Clínico da Dengue e Outras arboviroses”",
+     "doc": "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025",
      "observacao": "sem ato de aprovação localizado",
-     "numero": "123",
-     "data": "4/03/2024",
-     "url": "https://egma.ma.gov.br/noticias/ses-realiza-capacitacao-para-multiplicadores-de-manejo-clinico-de-arboviroses-dos-municipios-da-regiao-metropolitana",
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2025/01/Plano_arboviroses_-_2024_2025.pdf",
      "natureza_doc": "EX_ANTE",
      "tipo": "saude_do_ciclo",
-     "hash_evidencia": "df58507bc2bf5937218c466789b6e6e30f3429ab892b705c20c9968a554f94b2",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 21/10/2026, codebook 1.6 (15/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+     "hash_evidencia": "43fa8becf9f2b65a732fc1f1ef671a05bb224e00118bc86dc3b4cf320c02691c",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
+   "status": "VENC",
+   "orgao": "SES-MA",
+   "doc": "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025",
    "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "data": "01/2025",
+   "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2025/01/Plano_arboviroses_-_2024_2025.pdf",
+   "hash_evidencia": "43fa8becf9f2b65a732fc1f1ef671a05bb224e00118bc86dc3b4cf320c02691c",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-MA",
+    "doc": "PLANO DE CONTINGÊNCIA EM RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA OCASIONADAS POR DENGUE E OUTRAS ARBOVIROSES, 2024-2025 MARANHA O 2024 1 Carlos Orleans Branda o",
+    "observacao": null,
+    "numero": null,
+    "data": "02/2024",
+    "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2024/02/Plano-de-contige%CC%82ncia-das-Arboviroses-no-Maranha%CC%83o.pdf",
+    "hash_evidencia": "021cea8d53cfac1b7926f8882cae3443f934d1426e3a8f2e6e01d4945d9e9c8d",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "15/11/2026",
+    "log_ref": "julgar_saude_15-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "PLANO DE CONTINGÊNCIA EM RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA OCASIONADAS POR DENGUE E OUTRAS ARBOVIROSES, 2024-2025 MARANHA O 2024 1 Carlos Orleans Branda o",
+     "numero": null,
+     "data": "02/2024",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2024/02/Plano-de-contige%CC%82ncia-das-Arboviroses-no-Maranha%CC%83o.pdf",
+     "hash_evidencia": "021cea8d53cfac1b7926f8882cae3443f934d1426e3a8f2e6e01d4945d9e9c8d",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "15/11/2026"
+    }
+   }
   },
   "MG": {
    "risco_sanitario_projetado": [
@@ -410,8 +427,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "19/09/2026",
-   "log_ref": "triagem_descoberta_wordpress_2026-09-19_MG_plano_el_nino",
+   "data_verificacao": "16/11/2026",
+   "log_ref": "julgar_saude_16-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -437,6 +454,32 @@
      "natureza_doc": "ex-ante",
      "justificativa_ex_ante": "plano específico do ciclo El Niño, da SES-MG/Subsecretaria de Vigilância em Saúde, 127 páginas, publicado no portal oficial saude.mg.gov.br em 08/09/2026 — documento primário preservado e conferido (não é notícia sobre o plano). Quadros datados 'Minas Gerais, 2026/2027'; seis estágios operacionais por cor para os cenários de período chuvoso e de seca/estiagem, com indicadores, ações, setores responsáveis e estrutura de ativação e desativação de COE — mais abrangente que o plano recorrente de arboviroses já registrado (PEC-ARBO).",
      "tipo": "especifico_ciclo"
+    },
+    {
+     "status": "VIG",
+     "orgao": "SES-MG",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "observacao": null,
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+    },
+    {
+     "status": "VIG",
+     "orgao": "SES-MG",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC-ARBO) com foco em Dengue, Chikungunya, Zika e Febre Amarela, para o período de dezembro de 2023 a novembro de",
+     "observacao": null,
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO-20232025.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "e2d7b120e9ac9ceacbead2e03ff3a53c994211a6333a0a723f8d332d0b4d4b88",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "NOVO",
@@ -447,7 +490,42 @@
    "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/08/Plano-de-Enfrentamento-ao-El-Nino-correcao.pdf",
    "hash_evidencia": "5a3bfaa722937585b71bc6ae1bfef79dc699fee2e3754ec4b635f017623779ba",
    "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano específico do ciclo El Niño, da SES-MG/Subsecretaria de Vigilância em Saúde, 127 páginas, publicado no portal oficial saude.mg.gov.br em 08/09/2026 — documento primário preservado e conferido (não é notícia sobre o plano). Quadros datados 'Minas Gerais, 2026/2027'; seis estágios operacionais por cor para os cenários de período chuvoso e de seca/estiagem, com indicadores, ações, setores responsáveis e estrutura de ativação e desativação de COE — mais abrangente que o plano recorrente de arboviroses já registrado (PEC-ARBO)."
+   "justificativa_ex_ante": "plano específico do ciclo El Niño, da SES-MG/Subsecretaria de Vigilância em Saúde, 127 páginas, publicado no portal oficial saude.mg.gov.br em 08/09/2026 — documento primário preservado e conferido (não é notícia sobre o plano). Quadros datados 'Minas Gerais, 2026/2027'; seis estágios operacionais por cor para os cenários de período chuvoso e de seca/estiagem, com indicadores, ações, setores responsáveis e estrutura de ativação e desativação de COE — mais abrangente que o plano recorrente de arboviroses já registrado (PEC-ARBO).",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-MG",
+    "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+    "observacao": null,
+    "numero": null,
+    "data": "01/2025",
+    "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+    "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "16/11/2026",
+    "log_ref": "julgar_saude_16-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+     "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "16/11/2026"
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Plano Estadual de Contingência para Enfrentamento das Arboviroses (PEC ARBO) para o Enfrentamento das Arboviroses Dengue, Zika, Chikungunya e Febre Amarela, para o período de dezem",
+     "numero": null,
+     "data": "01/2025",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2025/01/Plano-Estadual-de-Contingencia-para-Enfrentamento-das-Arboviroses-PEC-ARBO.pdf",
+     "hash_evidencia": "29356b36c51588efaf2da39d4fb4dfeb7c6794c8274d7c943e6247bc31ec18c1",
+     "justificativa_degrau": "estrutura intersetorial do estado com a saúde citada, com atribuição escrita no ato",
+     "atribuicao_citada": "art. 14 — I M A Comissão Intergestores Bipartite do Sistema Único de Saúde do Estado de Minas Gerais - CIB-SUS/MG, no uso de suas atribuições que lhe conferem o art. 14-A da Lei Federal nº 8.080, de 19 de setembro de 1990, e o art. 32 do Decreto Fede",
+     "data_verificacao": "16/11/2026",
+     "log_ref": "julgar_saude_16-11-2026"
+    }
+   }
   },
   "MS": {
    "risco_sanitario_projetado": [
@@ -457,8 +535,8 @@
     "continuidade de serviços (diálise, oxigênio, rede de frio)"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "02/10/2026",
-   "log_ref": "julgar_saude_02-10-2026",
+   "data_verificacao": "16/11/2026",
+   "log_ref": "julgar_saude_16-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -474,56 +552,17 @@
      "nota_interna": "guias e manuais da SES"
     },
     {
-     "status": "ELAB",
+     "status": "VIG",
      "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
+     "doc": "Plano de Contingência para desastres provocados por seca, estiagem e incêndios florestais do Estado de Mato Grosso do Sul: abordagem em Saúde Única 2025 Plano de Contingência para",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "06/2025",
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Seca.pdf",
+     "natureza_doc": "EX_ANTE",
      "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
-    },
-    {
-     "status": "ELAB",
-     "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
-     "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
-    },
-    {
-     "status": "ELAB",
-     "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
-     "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
-    },
-    {
-     "status": "ELAB",
-     "orgao": "SES-MS",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "observacao": null,
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "natureza_doc": null,
-     "tipo": "saude_do_ciclo",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas"
+     "hash_evidencia": "7f16470ff688b9c5636b267dfd6827e387d340ff680e846a12950dc614226ef3",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "VIG",
@@ -534,10 +573,6 @@
    "url": "https://www.saude.ms.gov.br/informativos/guias-e-manuais/plano-de-contingencia-estadual-arboviroses-2025-2026/",
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "plano sazonal recorrente, publicado no portal oficial da SES",
-   "preservado_em": "2026-09-26",
-   "hash_pagina_citada": "b19b1dd1ffd431345dddbed3f7d2010902bf2cd40eb29ae3329b99d583349b26",
-   "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta",
    "coordenacao": {
     "status": "CRIADO_CICLO",
     "orgao": "SES-MS",
@@ -561,19 +596,21 @@
      "data_verificacao": "02/10/2026"
     },
     "f2": {
-     "status": "LISTADA_SEM_ATRIBUICAO",
-     "doc": "Resolução SES/MS nº 1041/2026",
-     "numero": "1041/2026",
-     "data": "03/09/2026",
-     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
-     "hash_evidencia": "24a6aa61e80b0fc905c963ac0ff5af290eb06945d281e253616d4e78c0a1d7aa",
-     "justificativa_degrau": "o ato cita a defesa civil como convidada, sem integrá-la à composição (lido no recorte do ato)",
-     "atribuicao_citada": "aúde de Mato Grosso do Sul, e dá outras providências. O SECRETÁRIO DE ESTADO DE SAÚDE DE MATO GROSSO DO SUL, no uso das atribuições legais e, Considerando que as mudanças climáticas representam crescente desafio à saúde pública, com potenci",
-     "data_verificacao": "02/10/2026",
-     "log_ref": "julgar_saude_02-10-2026"
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Plano de Contingência para desastres provocados por seca, estiagem e incêndios florestais do Estado de Mato Grosso do Sul: abordagem em Saúde Única 2025 Plano de Contingência para",
+     "numero": null,
+     "data": "06/2025",
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Seca.pdf",
+     "hash_evidencia": "7f16470ff688b9c5636b267dfd6827e387d340ff680e846a12950dc614226ef3",
+     "justificativa_degrau": "estrutura intersetorial do estado com a saúde citada, com atribuição escrita no ato",
+     "atribuicao_citada": "de Crhistinne Cavalheiro Maymone Gonçalves Superintendência de Vigilância em Saúde Larissa Domingues Castilho de Arruda Coordenadoria de Vigilância Ambiental Karyston Adriel Machado da Costa Coordenadoria de Saúde Única Danila Fernanda Rodr",
+     "data_verificacao": "16/11/2026",
+     "log_ref": "julgar_saude_16-11-2026"
     }
    },
-   "nota_interna": "guias e manuais da SES"
+   "hash_evidencia": null,
+   "nota_interna": "guias e manuais da SES",
+   "hash_pagina_citada": "b19b1dd1ffd431345dddbed3f7d2010902bf2cd40eb29ae3329b99d583349b26"
   },
   "MT": {
    "risco_sanitario_projetado": [
@@ -679,14 +716,14 @@
     }
    ],
    "status": "ELAB",
-   "orgao": "SES-MT / Gabinete do Secretário",
+   "orgao": "SES-MT",
    "doc": "Portaria nº 0195/2026/GBSES",
-   "numero": "0195/2026/GBSES",
-   "data": "30/03/2026",
+   "numero": "0195/2026",
+   "data": "01/01/2026",
    "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf",
    "hash_evidencia": "445bd8574c43a7f699a7aa9af6f36e0fe89b1b1a7bc424dba2e861a178457b87",
-   "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "Ato do Executivo estadual, com número e data, publicado no Diário Oficial de MT (protocolo 1798084, páginas 144 a 149), lido na íntegra. Ele institui o PROCESSO de elaboração do plano, com prazos — não o plano pronto: por isso ELAB, e não NOVO. Não menciona o El Niño 2026/2027 em nenhuma passagem, conferido no texto.",
+   "natureza_doc": null,
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 02/10/2026, codebook None: documento primário baixado e lido, sete etapas aprovadas",
    "coordenacao": {
     "status": "PERMANENTE",
     "orgao": "SES-MT",
@@ -795,7 +832,8 @@
     "data_verificacao": "02/10/2026",
     "log_ref": "julgar_saude_02-10-2026"
    },
-   "nota_interna": "em execução contínua, com salas de situação das arboviroses implantadas (notícia oficial da SESPA, 02/2025); edição e data do documento não indicadas"
+   "nota_interna": "em execução contínua, com salas de situação das arboviroses implantadas (notícia oficial da SESPA, 02/2025); edição e data do documento não indicadas",
+   "hash_evidencia": null
   },
   "PB": {
    "risco_sanitario_projetado": [
@@ -959,7 +997,8 @@
    "hash_pagina_citada": "cf5736d1c6ecabd1d3c785342e3e48a08feeeb463b5895a93c0160837b92985a",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
    "procedencia_da_pagina": "fonte direta",
-   "nota_interna": "divulgado em 22/01/2025; capítulo específico de Oropouche"
+   "nota_interna": "divulgado em 22/01/2025; capítulo específico de Oropouche",
+   "hash_evidencia": null
   },
   "PI": {
    "risco_sanitario_projetado": [
@@ -1031,7 +1070,7 @@
    "log_ref": "bateria_saude_2026-09-05",
    "instrumentos": [
     {
-     "status": "VIG",
+     "status": "VENC",
      "orgao": "SESA-PR",
      "doc": "Plano de ação e contingência de arboviroses para a sazonalidade 2024/2025",
      "numero": null,
@@ -1044,7 +1083,7 @@
      "nota_interna": "apresentado ao Comitê Intersetorial de Controle da Dengue (22/11/2024); página oficial de dengue da SESA está 'indisponível devido ao período eleitoral' (fonte suspensa no período eleitoral)"
     }
    ],
-   "status": "VIG",
+   "status": "VENC",
    "orgao": "SESA-PR",
    "doc": "Plano de ação e contingência de arboviroses para a sazonalidade 2024/2025",
    "numero": null,
@@ -1100,31 +1139,55 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_pista_fraca_nao_confirmada",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
+     "status": "VIG",
+     "orgao": "SES-RN",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+     "observacao": "sem ato de aprovação localizado",
      "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "data": "2025",
+     "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
+   "status": "VIG",
+   "orgao": "SES-RN",
+   "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
    "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "data": "2025",
+   "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+   "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-RN",
+    "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "2025",
+    "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+    "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "15/11/2026",
+    "log_ref": "julgar_saude_15-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA",
+     "numero": null,
+     "data": "2025",
+     "url": "https://www.saude.rn.gov.br/wp-json/nextcloud/v1/download?filePath=SESAP-GOVRN%2FVIGIL%C3%82NCIAS%2FSUVIGE%20-%20Vigil%C3%A2ncia%20Epidemiol%C3%B3gica%2FArboviroses%2FPlano%20Estadual%20de%20Conting%C3%AAncia%20para%20resposta%20as%20arboviroses%20%20%282025%20a%202026%29.PDF",
+     "hash_evidencia": "67b1f5a23f9b3641f324bd07831e3b13dff60fa66547ce8cfbf26fafa64a41ab",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "15/11/2026"
+    }
+   }
   },
   "RO": {
    "risco_sanitario_projetado": [
@@ -1161,7 +1224,8 @@
    "preservado_em": "2026-09-26",
    "hash_pagina_citada": "d41816e532c68f03a1916b26b01c9fc9cd81569f265f15221cae6c9cc8c91da1",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta"
+   "procedencia_da_pagina": "fonte direta",
+   "hash_evidencia": null
   },
   "RR": {
    "risco_sanitario_projetado": [
@@ -1171,31 +1235,67 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_missao_federal_em_curso_sem_plano_publicado",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
+     "status": "NOVO",
+     "orgao": "SES-RR",
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "observacao": "sem ato de aprovação localizado",
      "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
+   "status": "NOVO",
+   "orgao": "SES-RR",
+   "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
    "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "data": "09/2026",
+   "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+   "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "CRIADO_CICLO",
+    "orgao": "SES-RR",
+    "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "09/2026",
+    "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+    "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+    "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo",
+    "data_verificacao": "15/11/2026",
+    "log_ref": "julgar_saude_15-11-2026",
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "numero": null,
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+     "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo",
+     "data_verificacao": "15/11/2026"
+    },
+    "f2": {
+     "status": "LISTADA_SEM_ATRIBUICAO",
+     "doc": "PLANO DE PREPARAÇÃO DO SETOR SAÚDE DO ESTADO DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026",
+     "numero": null,
+     "data": "09/2026",
+     "url": "https://saude.rr.gov.br/wp-content/uploads/2026/09/planosdepreparacaoelnino2026-2027_001.pdf",
+     "hash_evidencia": "529091199f9f06840a7afc4830547e8de4a1d50d612e220d2bb6a301022eff21",
+     "justificativa_degrau": "o ato cita a defesa civil como convidada, sem integrá-la à composição",
+     "atribuicao_citada": "DE RORAIMA PARA OS IMPACTOS DO EL NIÑO 2026–2027 GOVERNO DO ESTADO DE RORAIMA SECRETARIA DE ESTADO DA SAÚDE – SESAU/RR COORDENADORIA GERAL DE VIGILÂNCIA EM SAÚDE – CGVS DEPARTAMENTO DE VIGILÂNCIA AMBIENTAL – DVA VIGIDESASTRES/RR VERSÃO 1 Bo",
+     "data_verificacao": "15/11/2026",
+     "log_ref": "julgar_saude_15-11-2026"
+    }
+   }
   },
   "RS": {
    "risco_sanitario_projetado": [
@@ -1209,7 +1309,7 @@
    "log_ref": "bateria_saude_2026-09-05",
    "instrumentos": [
     {
-     "status": "VIG",
+     "status": "VENC",
      "orgao": "SES-RS / CEVS",
      "doc": "Plano de Contingência Dengue 2024-2025, 2ª versão (fevereiro/2025); plano para o verão 2025/2026 apresentado às coordenadorias em 29-31/10/2025, edição ainda não listada na página oficial",
      "numero": null,
@@ -1221,7 +1321,7 @@
      "hash_pagina_citada": "217932fd8e6dd0448b7480e1aba2782c178fce97ce49cdb2379dd9a6df65865b"
     }
    ],
-   "status": "VIG",
+   "status": "VENC",
    "orgao": "SES-RS / CEVS",
    "doc": "Plano de Contingência Dengue 2024-2025, 2ª versão (fevereiro/2025); plano para o verão 2025/2026 apresentado às coordenadorias em 29-31/10/2025, edição ainda não listada na página oficial",
    "numero": null,
@@ -1232,7 +1332,8 @@
    "preservado_em": "2026-09-26",
    "hash_pagina_citada": "217932fd8e6dd0448b7480e1aba2782c178fce97ce49cdb2379dd9a6df65865b",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta"
+   "procedencia_da_pagina": "fonte direta",
+   "hash_evidencia": null
   },
   "SC": {
    "risco_sanitario_projetado": [
@@ -1282,8 +1383,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "16/11/2026",
+   "log_ref": "julgar_saude_16-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -1297,21 +1398,53 @@
      "tipo": "recorrente_arboviroses",
      "hash_pagina_citada": "2bc724761d44027649770b2dc748094ad6f30c3b76bf661d6e65b326ae267676",
      "nota_interna": "publicado na página oficial de arboviroses da SES; sem data de edição na página"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-SE",
+     "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "07/2026",
+     "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "VIG",
+   "status": "NOVO",
    "orgao": "SES-SE",
-   "doc": "Plano de Contingência para Enfrentamento e Controle de Epidemias por Arboviroses no Estado de Sergipe",
+   "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
    "numero": null,
-   "data": null,
-   "url": "https://saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/",
-   "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano recorrente publicado na página oficial; edição/data não indicadas — registrado como vigente sem data",
-   "preservado_em": "2026-09-26",
-   "hash_pagina_citada": "2bc724761d44027649770b2dc748094ad6f30c3b76bf661d6e65b326ae267676",
-   "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta",
-   "nota_interna": "publicado na página oficial de arboviroses da SES; sem data de edição na página"
+   "data": "07/2026",
+   "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-SE",
+    "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "07/2026",
+    "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+    "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "16/11/2026",
+    "log_ref": "julgar_saude_16-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+     "numero": null,
+     "data": "07/2026",
+     "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+     "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "16/11/2026"
+    }
+   }
   },
   "SP": {
    "risco_sanitario_projetado": [
@@ -1357,13 +1490,10 @@
    "doc": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño",
    "numero": null,
    "data": "31/08/2026",
-   "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/super-el-nino-faz-sao-paulo-lancar-plano-para-antecipar-cenarios-de-risco/",
+   "url": "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/central/planoestadualdepreparacaaoerespostaemsauudeparaofenoemenoelninao.pdf",
    "natureza_doc": "ex-ante",
    "justificativa_ex_ante": "plano específico do ciclo El Niño 2026/2027, lançado em 31/08/2026, cobrindo 4 cenários (chuvas extremas/enchentes/deslizamentos, ondas de calor/queimadas, arboviroses, e um quarto eixo) — mais abrangente que o plano recorrente de arboviroses já registrado; confirmado em 6 fontes de imprensa independentes (CNN Brasil, Agência Brasil, Jornal Guarulhos em Destaque, Diário do Litoral, thmais.com.br)",
-   "preservado_em": "2026-09-26",
-   "hash_pagina_citada": "05c1b5188eba670c0873b80b45717098820f1f89a4d014f99dba6bde6ce19c3e",
-   "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta"
+   "hash_evidencia": "a5473b26a69e60fb13ae18631503a2c528e5a6364c009a49ca276455a200fac4"
   },
   "TO": {
    "risco_sanitario_projetado": [
@@ -1373,31 +1503,46 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_nada_localizado",
+   "data_verificacao": "15/11/2026",
+   "log_ref": "julgar_saude_15-11-2026",
    "instrumentos": [
     {
-     "status": "NAO_VERIFICADO",
-     "orgao": null,
-     "doc": null,
+     "status": "NOVO",
+     "orgao": "SES-TO",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+     "observacao": null,
      "numero": null,
-     "data": null,
-     "url": null,
-     "hash_evidencia": null,
-     "natureza_doc": "nenhum",
-     "justificativa_ex_ante": null,
-     "tipo": "especifico_ciclo"
+     "data": "2026",
+     "url": "https://central.to.gov.br/download/446049",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "98a4d9518a12d25f3ca472bf2bbe706bffdd2a352161af9a8bfad06dd83ee72c",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "NAO_VERIFICADO",
-   "orgao": null,
-   "doc": null,
+   "status": "NOVO",
+   "orgao": "SES-TO",
+   "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
    "numero": null,
-   "data": null,
-   "url": null,
-   "hash_evidencia": null,
-   "natureza_doc": "nenhum",
-   "justificativa_ex_ante": null
+   "data": "2026",
+   "url": "https://central.to.gov.br/download/446049",
+   "hash_evidencia": "98a4d9518a12d25f3ca472bf2bbe706bffdd2a352161af9a8bfad06dd83ee72c",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "PLANO ESTADUAL DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DAS ARBOVIROSES Palmas",
+     "numero": null,
+     "data": "2026",
+     "url": "https://central.to.gov.br/download/446049",
+     "hash_evidencia": "98a4d9518a12d25f3ca472bf2bbe706bffdd2a352161af9a8bfad06dd83ee72c",
+     "justificativa_degrau": "estrutura intersetorial do estado com a saúde citada, com atribuição escrita no ato",
+     "atribuicao_citada": "nicípios, com exceção de São Félix do Tocantins que, até o momento, possui infestação apenas do Aedes albopictus, vetor competente para transmitir as doenças supracitadas. Atualmente, a Organização Mundial da Saúde (OMS) estima que 2/5 da p",
+     "data_verificacao": "15/11/2026",
+     "log_ref": "julgar_saude_15-11-2026"
+    }
+   }
   }
  }
 }

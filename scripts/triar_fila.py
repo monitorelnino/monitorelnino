@@ -43,7 +43,7 @@ sys.path.insert(0, str(RAIZ / "scripts"))
 
 FILA = "pistas_imprensa.json"
 NIVEIS = {"A": 0, "B": 1, "C": 2}
-DIAS_DE_VIDA = 21
+from pistas import DIAS_DE_VIDA, dias_na_fila  # noqa: E402  (a mesma data de entrada do portão)
 TENTATIVAS_MAXIMAS = 2
 
 DESFECHOS = ("promovida", "coberta pela fonte oficial", "sem documento oficial localizado",
@@ -97,12 +97,10 @@ def desfecho_por_prazo(pista: dict, hoje_iso: str):
     if tentativas >= TENTATIVAS_MAXIMAS:
         return ("sem documento oficial localizado",
                 f"{tentativas} tentativas de busca dirigida sem documento{recusa_lida(pista)}")
-    bruto = str(pista.get("registrado_em") or "")[:10]
-    try:
-        d = dt.date.fromisoformat(bruto)
-    except ValueError:
-        return None
-    dias = (dt.date.fromisoformat(hoje_iso) - d).days
+    dias = dias_na_fila(pista, hoje_iso)
+    if dias is None:
+        # Sem data de entrada legível, a pista não tem prazo a contar e não sai da fila sozinha: fecha.
+        return ("sem documento oficial localizado", f"sem data de entrada legível{recusa_lida(pista)}")
     if dias > DIAS_DE_VIDA:
         return ("sem documento oficial localizado",
                 f"{dias} dias na fila (prazo de {DIAS_DE_VIDA}){recusa_lida(pista)}")
@@ -166,7 +164,9 @@ def _autoteste() -> int:
     ok("o motivo diz quantos dias",
        "dias na fila" in desfecho_por_prazo({"registrado_em": "2026-09-10"}, "2026-10-03")[1])
     ok("pista nova não vence", desfecho_por_prazo({"registrado_em": "2026-10-02"}, "2026-10-03") is None)
-    ok("sem data não vence por prazo", desfecho_por_prazo({}, "2026-10-03") is None)
+    ok("sem data de entrada fecha com o motivo dito", "sem data de entrada" in desfecho_por_prazo({}, "2026-10-03")[1])
+    ok("data de publicação conta quando falta o registro (a mesma data do portão)",
+       desfecho_por_prazo({"data_publicacao": "Mon, 26 Oct 2026 07:00:00 GMT"}, "2026-11-17")[0] == "sem documento oficial localizado")
     ok("lida e recusada: o fechamento diz a recusa real (A1-16)",
        "lida e recusada: natureza_duvidosa" in desfecho_por_prazo(
            {"registrado_em": "2026-09-10", "juiz": {"leu_documento": True, "motivo": "natureza_duvidosa"}},
@@ -232,7 +232,11 @@ def main() -> int:
     print(f"   por grupo: prioritários {por_grupo.get(0, 0)} · capitais {por_grupo.get(1, 0)} · "
           f"demais {por_grupo.get(2, 0)}")
 
-    vencidas = [(p, desfecho_por_prazo(p, hoje)) for p in rodada]
+    # 17/11/2026: a pendente de documento vence na fila inteira, não só na rodada do juiz — fora das 120 de
+    # maior prioridade ela nunca vencia, e o portão da fila não humana a reprovava. Fechar não abre rede.
+    na_rodada = {id(p) for p in rodada}
+    pendentes = [p for p in pistas if id(p) not in na_rodada and str(p.get("status") or "").startswith("pendente_confirmacao")]
+    vencidas = [(p, desfecho_por_prazo(p, hoje)) for p in rodada + pendentes]
     vencidas = [(p, d) for p, d in vencidas if d]
     print(f"   vencem o prazo nesta rodada: {len(vencidas)}")
     if not aplicar:

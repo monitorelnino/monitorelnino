@@ -11,10 +11,10 @@
   ],
   "regra_de_soma": "com plano publicado, vale o plano; o arranjo não soma"
  },
- "municipios_com_arranjo": 236,
- "municipios_que_entrariam_no_credito": 235,
- "media_nacional_v31": 41.6,
- "media_nacional_v32": 42.1,
+ "municipios_com_arranjo": 237,
+ "municipios_que_entrariam_no_credito": 236,
+ "media_nacional_v31": 41.9,
+ "media_nacional_v32": 42.4,
  "por_uf": {
   "AC": {
    "cobertura_v31": 20.4,
@@ -45,17 +45,17 @@
    "municipios_que_entram": 0
   },
   "BA": {
-   "cobertura_v31": 7.9,
-   "cobertura_v32": 11.0,
-   "total_v31": 9.3,
-   "total_v32": 10.3,
+   "cobertura_v31": 24.9,
+   "cobertura_v32": 28.0,
+   "total_v31": 15.0,
+   "total_v32": 16.0,
    "municipios_que_entram": 43
   },
   "CE": {
-   "cobertura_v31": 4.0,
-   "cobertura_v32": 9.6,
-   "total_v31": 11.3,
-   "total_v32": 13.2,
+   "cobertura_v31": 31.5,
+   "cobertura_v32": 37.1,
+   "total_v31": 20.5,
+   "total_v32": 22.4,
    "municipios_que_entram": 26
   },
   "DF": {
@@ -87,8 +87,8 @@
    "municipios_que_entram": 0
   },
   "MG": {
-   "cobertura_v31": 9.3,
-   "cobertura_v32": 9.3,
+   "cobertura_v31": 9.2,
+   "cobertura_v32": 9.2,
    "total_v31": 18.1,
    "total_v32": 18.1,
    "municipios_que_entram": 0
@@ -108,18 +108,18 @@
    "municipios_que_entram": 0
   },
   "PA": {
-   "cobertura_v31": 9.9,
-   "cobertura_v32": 9.9,
-   "total_v31": 48.3,
-   "total_v32": 48.3,
+   "cobertura_v31": 6.8,
+   "cobertura_v32": 6.8,
+   "total_v31": 47.3,
+   "total_v32": 47.3,
    "municipios_que_entram": 0
   },
   "PB": {
-   "cobertura_v31": 5.2,
+   "cobertura_v31": 5.1,
    "cobertura_v32": 16.3,
    "total_v31": 1.7,
    "total_v32": 5.4,
-   "municipios_que_entram": 60
+   "municipios_que_entram": 61
   },
   "PE": {
    "cobertura_v31": 31.4,
@@ -143,10 +143,10 @@
    "municipios_que_entram": 0
   },
   "RJ": {
-   "cobertura_v31": 65.6,
-   "cobertura_v32": 65.6,
-   "total_v31": 46.9,
-   "total_v32": 46.9,
+   "cobertura_v31": 62.5,
+   "cobertura_v32": 62.5,
+   "total_v31": 45.8,
+   "total_v32": 45.8,
    "municipios_que_entram": 0
   },
   "RN": {
@@ -171,17 +171,17 @@
    "municipios_que_entram": 0
   },
   "RS": {
-   "cobertura_v31": 63.3,
-   "cobertura_v32": 63.3,
-   "total_v31": 66.1,
-   "total_v32": 66.1,
+   "cobertura_v31": 49.0,
+   "cobertura_v32": 49.0,
+   "total_v31": 61.3,
+   "total_v32": 61.3,
    "municipios_que_entram": 0
   },
   "SC": {
-   "cobertura_v31": 28.2,
-   "cobertura_v32": 28.2,
-   "total_v31": 76.1,
-   "total_v32": 76.1,
+   "cobertura_v31": 31.8,
+   "cobertura_v32": 31.8,
+   "total_v31": 77.3,
+   "total_v32": 77.3,
    "municipios_que_entram": 0
   },
   "SE": {
@@ -192,10 +192,10 @@
    "municipios_que_entram": 5
   },
   "SP": {
-   "cobertura_v31": 34.2,
-   "cobertura_v32": 34.2,
-   "total_v31": 36.4,
-   "total_v32": 36.4,
+   "cobertura_v31": 31.9,
+   "cobertura_v32": 31.9,
+   "total_v31": 35.6,
+   "total_v32": 35.6,
    "municipios_que_entram": 0
   },
   "TO": {
@@ -1621,6 +1621,12 @@
    "semiarido": true,
    "portaria": "Portaria SEDEC/MIDR nº 3.968",
    "data_reconhecimento": "12/11/2026",
+   "meses_atendidos": 8
+  },
+  "2511103": {
+   "semiarido": true,
+   "portaria": "Portaria SEDEC/MIDR nº 3.997",
+   "data_reconhecimento": "13/11/2026",
    "meses_atendidos": 8
   }
  }

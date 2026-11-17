@@ -108,6 +108,50 @@ def filtrar_alvos(alvos: list, trecho: str | None) -> list:
     return [(h, it) for h, it in alvos if t in str(it.get("url", "")).lower()]
 
 
+def texto_da_copia(caminho, bruto: bytes) -> list:
+    """Páginas de texto da cópia preservada, pelo tipo do ARQUIVO (pdf, html, docx); [] se não lê.
+    Função pura."""
+    import io
+    import zipfile
+    from coletores_base import decodificar_pagina, texto_declarativo
+    ext = str(caminho).lower().rsplit(".", 1)[-1]
+    if ext == "pdf" or bruto[:5] == b"%PDF-":
+        return extrair_texto_por_pagina(bruto)
+    if ext in ("html", "htm"):
+        t = texto_declarativo(decodificar_pagina(bruto)[0])
+        return [t] if t.strip() else []
+    if ext == "docx":
+        try:
+            xml = zipfile.ZipFile(io.BytesIO(bruto)).read("word/document.xml").decode("utf-8", "replace")
+        except (zipfile.BadZipFile, KeyError):
+            return []
+        t = re.sub(r"<[^>]+>", " ", re.sub(r"</w:p>", "\n", xml))
+        return [re.sub(r"[ \t]+", " ", t).strip()] if t.strip() else []
+    return []
+
+
+def ler_copias_dos_planos(itens: dict, municipios: list) -> int:
+    """Camada de texto dos planos municipais registrados cuja cópia preservada não é PDF com URL .pdf
+    (16/11/2026: 15 planos — página HTML do órgão, DOCX do SharePoint do RS — tinham cópia e nunca
+    ganharam texto, e a leitura da saúde no plano nunca os alcançava). Lê a cópia em disco, sem rede."""
+    lidos = 0
+    for r in municipios or []:
+        h = r.get("hash_evidencia")
+        it = itens.get(h) if h else None
+        if not it or it.get("texto_arquivo") or it.get("texto_manual") or it.get("texto_integral") or not it.get("arquivo"):
+            continue
+        p = EVID.parent / it["arquivo"]
+        if not p.exists():
+            continue
+        paginas = texto_da_copia(p, p.read_bytes())
+        if sum(len(t) for t in paginas) < 200:
+            continue
+        it.update({"texto_arquivo": f"evidencias/{h}.txt", "paginas": len(paginas), "texto_hash": gravar_texto(h, paginas),
+                   "lido_em": hoje_editorial().isoformat(), "caracteres": sum(len(t) for t in paginas)})
+        lidos += 1
+    return lidos
+
+
 def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
     """§10.1 peça 1: para todo item do índice com URL de PDF sem texto (e para registros com URL de PDF ainda sem hash),
     baixa com o UA do Monitor, extrai o texto por página, grava evidencias/<sha>.txt e indexa (texto_arquivo, paginas, texto_hash).
@@ -196,6 +240,9 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
             (EVID / f"{h}.pdf").write_bytes(bruto); item["arquivo"] = f"evidencias/{h}.pdf"
         lidos += 1
     for it in itens.values(): it.pop("_reg", None)
+    copias = ler_copias_dos_planos(itens, ler("municipios.json", []) or [])
+    if copias:
+        print(f"camada de texto de {copias} plano(s) municipal(is) lida da cópia preservada (html, docx, pdf sem .pdf na URL)")
     gravar("evidencias.json", idx)
     print(f"leitura de PDFs: {lidos} lido(s) com texto, {recusados} acesso recusado (LAI), {falhas} falha(s); {len(alvos)} alvo(s) na fila")
     return 0
@@ -409,6 +456,18 @@ def autoteste_ocr() -> int:
     fila = {h for h, _ in alvos_ocr(itens)}
     if fila != {"a" * 64, "e" * 64}:
         falhas.append(f"alvos_ocr devolveu {sorted(x[:1] for x in fila)}, esperado o escaneado e o abaixo do piso")
+    # 0b. (16/11/2026) camada de texto pela cópia preservada: html e docx leem; tipo desconhecido não
+    import io as _io, zipfile as _zf
+    _docx = _io.BytesIO()
+    with _zf.ZipFile(_docx, "w") as _z:
+        _z.writestr("word/document.xml", "<w:document><w:p><w:t>Plano de contingência</w:t></w:p><w:p><w:t>SAMU</w:t></w:p></w:document>")
+    if texto_da_copia("x.docx", _docx.getvalue()) != ["Plano de contingência \n SAMU"] \
+            and "Plano de contingência" not in " ".join(texto_da_copia("x.docx", _docx.getvalue())):
+        falhas.append("cópia DOCX do plano não ganha texto")
+    if "Plano municipal" not in " ".join(texto_da_copia("x.html", "<html><body><p>Plano municipal</p></body></html>".encode())):
+        falhas.append("cópia HTML do plano não ganha texto")
+    if texto_da_copia("x.zip", b"PK..") != [] or texto_da_copia("x.docx", b"nao e zip") != []:
+        falhas.append("cópia que não se lê produziu texto")
     # 1a. (A6-23) documento que mudou ganha hash próprio; o texto não vai para o hash antigo
     import inspect as _insp
     _src = _insp.getsource(ler_pdfs)

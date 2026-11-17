@@ -4,28 +4,28 @@
  "etapas": {
   "busca_web": {
    "brutos_periodo_ou_seca": 0,
-   "brutos_plancon": 320,
+   "brutos_plancon": 480,
    "brutos_siglas_e_variantes": 0,
    "coberto_sem_mencao": 0,
-   "com_resultado_bruto": 16,
-   "consultas": 20,
+   "com_resultado_bruto": 24,
+   "consultas": 30,
    "lacunas": 0,
-   "motor_sem_resposta": 4,
+   "motor_sem_resposta": 6,
    "nao_localizado_ate_o_momento": 0,
-   "pistas": 7
+   "pistas": 27
   },
   "descobrir_planos": {
-   "achados_novos": 33,
-   "alvos_consultados": 132,
-   "alvos_verificados": 23,
-   "fila_acumulada": 294
+   "achados_novos": 76,
+   "alvos_consultados": 186,
+   "alvos_verificados": 36,
+   "fila_acumulada": 336
   },
   "diario_consorciado": {
    "bloqueadas": 0,
    "decretos_novos": 0,
-   "fontes": 16,
+   "fontes": 32,
    "fora_do_ar": 0,
-   "pistas": 46
+   "pistas": 92
   },
   "diario_municipal": {
    "consultados": 150,
@@ -34,35 +34,35 @@
    "pistas": 1
   },
   "doe": {
-   "ufs_com_resultado": 54,
-   "ufs_consultadas": 54
+   "ufs_com_resultado": 81,
+   "ufs_consultadas": 81
   },
   "funil_recursos_resposta": {
-   "com_resultado_bruto": 1,
-   "consultas": 1,
-   "pistas": 21
+   "com_resultado_bruto": 2,
+   "consultas": 2,
+   "pistas": 42
   },
   "juiz": {
-   "com_documento": 310,
-   "pistas_recebidas": 638,
+   "com_documento": 326,
+   "pistas_recebidas": 718,
    "promovidas": 26,
-   "recusa_autoridade_nao_confirmada": 22,
-   "recusa_citacao_incompleta": 48,
-   "recusa_documento_inacessivel": 284,
+   "recusa_autoridade_nao_confirmada": 28,
+   "recusa_citacao_incompleta": 52,
+   "recusa_documento_inacessivel": 312,
    "recusa_ente_nao_confirmado": 69,
    "recusa_executivo_pendente": 5,
-   "recusa_natureza_duvidosa": 9,
-   "recusa_texto_nao_extraivel": 44,
-   "recusa_plano_sem_identificacao": 15,
-   "recusa_noticia_institucional_nao_e_o_plano": 7,
-   "recusa_fora_do_objeto": 8,
    "recusa_familia_de_risco_nao_identificada": 1,
-   "recusa_resposta": 1
+   "recusa_fora_do_objeto": 9,
+   "recusa_natureza_duvidosa": 9,
+   "recusa_noticia_institucional_nao_e_o_plano": 8,
+   "recusa_plano_sem_identificacao": 15,
+   "recusa_resposta": 1,
+   "recusa_texto_nao_extraivel": 80
   },
   "transferencias_municipais": {
-   "com_resultado_bruto": 10,
-   "consultas": 10,
-   "municipios": 55648
+   "com_resultado_bruto": 20,
+   "consultas": 20,
+   "municipios": 111296
   }
  },
  "verificador_imprensa": {
@@ -97,5 +97,5 @@
   "versao": "1.0 (29/09/2026)",
   "gravado_em": "2026-11-15T08:33:00"
  },
- "atualizado_em": "2026-11-15T16:10:58"
+ "atualizado_em": "2026-11-16T02:58:12"
 }

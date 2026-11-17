@@ -56,6 +56,35 @@ RESSALVA = ("O Monitor não atribui casos ao El Niño. A série é a contagem de
 # Colunas do banco, pelo dicionário de variáveis do próprio conjunto.
 COL_SEMANA = "SEM_PRI"     # semana epidemiológica dos primeiros sintomas
 COL_UF = "SG_UF"           # UF de residência
+COL_MUN = "CO_MUN_RES"     # município de residência (6 dígitos)
+# 17/11/2026 (editoria: "se a fonte tem o município, fazemos por município"): o recorte dos municípios
+# acompanhados é o comum (`desfechos_sus.municipios_acompanhados`).
+from desfechos_sus import POPULACAO_MINIMA, municipios_acompanhados  # noqa: E402
+SAIDA_MUN = "saude_desfechos/srag_municipios.json"
+
+
+def serie_municipal(por_ano: dict, ano_corrente: int, ultima: str, anos_canal) -> dict:
+    """{cod7: {"semanas_2026": {"AAAA-SS": {"casos": n|None}}, "canal": {"SS": {...}}}} a partir dos
+    agregados anuais esparsos ({ano: {cod6: {"AAAA-SS": n}}}). Semana sem linha no banco é zero
+    contado (o banco foi lido inteiro); as últimas semanas do ano corrente ficam None, como na UF."""
+    from coletar_srag_gripe import canal_endemico, vazar_incompletas
+    cods = set()
+    for por_mun in por_ano.values():
+        cods |= set(por_mun)
+    ult_se = int(str(ultima).split("-")[1]) if ultima else 0
+    out = {}
+    for cod in sorted(cods):
+        cheia = {}
+        for ano, por_mun in por_ano.items():
+            fim = ult_se if int(ano) == ano_corrente else 52
+            for se in range(1, fim + 1):
+                cheia[f"{ano}-{se:02d}"] = (por_mun.get(cod) or {}).get(f"{ano}-{se:02d}", 0)
+        cons, _ = vazar_incompletas(cheia, ano_corrente)
+        canal = {str(int(ss)): v for ss, v in canal_endemico(
+            {k: v for k, v in cheia.items() if int(k[:4]) in anos_canal}).items()}
+        out[cod] = {"semanas_2026": {k: {"casos": v} for k, v in cons.items() if k.startswith(f"{ano_corrente}-")},
+                    "canal": canal}
+    return out
 PADRAO_ANO = r"/SRAG/(20\d\d)/"   # o ano vem do caminho do arquivo no bucket
 
 
@@ -89,6 +118,20 @@ def autoteste() -> int:
                               2026, COL_UF, COL_SEMANA)
     casos.append(("conta por UF e semana, com a sigla do SIVEP", a["ES"]["2026-10"] == 2))
     casos.append(("semana com ano colado é lida pelos dois últimos dígitos", a["SP"]["2026-11"] == 1))
+    mun = {"320530": {}}
+    agregar_por_uf_semana([{"SG_UF": "ES", "SEM_PRI": "10", "CO_MUN_RES": "320530"},
+                           {"SG_UF": "ES", "SEM_PRI": "10", "CO_MUN_RES": "320120"}],
+                          2026, COL_UF, COL_SEMANA, col_mun=COL_MUN, municipios=mun)
+    casos.append(("conta por município só nos acompanhados, na mesma passada", mun == {"320530": {"2026-10": 1}}))
+    casos.append(("acompanha municípios de 100 mil ou mais", municipios_acompanhados(
+        {"3205309": 322869, "3201209": 39000, "_fonte": "x"}) == {"320530": "3205309"}))
+    sm = serie_municipal({2019: {"320530": {"2019-10": 2}}, 2020: {}, 2021: {}, 2026: {"320530": {"2026-01": 3}}},
+                         2026, "2026-06", [2019, 2020, 2021])
+    casos.append(("série municipal: semana sem linha é zero contado, as últimas do ano são null",
+                  sm["320530"]["semanas_2026"]["2026-01"]["casos"] == 3
+                  and sm["320530"]["semanas_2026"]["2026-02"]["casos"] == 0
+                  and sm["320530"]["semanas_2026"]["2026-06"]["casos"] is None
+                  and sm["320530"]["canal"]["10"]["n_anos"] == 3))
 
     serie = {f"{ano}-10": 100 + ano for ano in ANOS_CANAL}
     c = canal_endemico(serie)
@@ -246,19 +289,23 @@ def main() -> int:
     cache.setdefault("anos", {})
 
     agregados, lidos, reusados, falhas = [], [], [], {}
+    acompanhados = municipios_acompanhados(json.loads((DATA / "populacao_censo2022.json").read_text(encoding="utf-8")))
+    por_ano_mun = {}
     reusados_por_falha = []
     for ano in sorted(recursos):
         arquivo = recursos[ano]["arquivo"]
         congelado = ano in ANOS_CONGELADOS
-        if congelado and not precisa_reler(cache, ano, arquivo):
+        if congelado and not precisa_reler(cache, ano, arquivo) and "municipios" in cache["anos"][str(ano)]:
             agregados.append(cache["anos"][str(ano)]["serie"])
+            por_ano_mun[ano] = cache["anos"][str(ano)]["municipios"]
             reusados.append(ano)
             continue
+        mun = {c: {} for c in acompanhados}
         try:
             serie = agregar_por_uf_semana(
                 linhas_do_fluxo(buscar_em_fluxo_confiavel(recursos[ano]["url"], timeout=180,
                                                           origem="coletar_srag_sivep")),
-                ano, COL_UF, COL_SEMANA)
+                ano, COL_UF, COL_SEMANA, col_mun=COL_MUN, municipios=mun)
         except Exception as e:  # noqa: BLE001
             falhas[ano] = f"{type(e).__name__}"
             serie = None
@@ -273,11 +320,14 @@ def main() -> int:
             guardado = (cache.get("anos") or {}).get(str(ano)) or {}
             if guardado.get("serie"):
                 agregados.append(guardado["serie"])
+                if "municipios" in guardado:
+                    por_ano_mun[ano] = guardado["municipios"]
                 reusados_por_falha.append(ano)
             continue
         agregados.append(serie)
         lidos.append(ano)
-        cache["anos"][str(ano)] = {"arquivo": arquivo, "serie": serie,
+        por_ano_mun[ano] = {c: v for c, v in mun.items() if v}
+        cache["anos"][str(ano)] = {"arquivo": arquivo, "serie": serie, "municipios": por_ano_mun[ano],
                                    "lido_em": hoje_editorial().isoformat()}
 
     if falhas:
@@ -319,6 +369,16 @@ def main() -> int:
             [(((cache.get("anos") or {}).get(str(a)) or {}).get("lido_em") or "")
              for a in sorted(lidos + reusados + reusados_por_falha)] or [""]) or None,
         "serie": consolidada, "nowcasting": nowcasting, "canal_endemico": canal})
+
+    # A série municipal, na forma que `gerar_saude_municipio.tempo` lê (a mesma do InfoDengue).
+    mun = serie_municipal(por_ano_mun, ano_corrente, max(serie.get("BR", {}), default=None), ANOS_CANAL)
+    gravar_em(DATA / SAIDA_MUN, {
+        "_governanca": ("SRAG hospitalizada por município de residência (SIVEP-Gripe), nos municípios de "
+                        f"{POPULACAO_MINIMA:,} habitantes ou mais (Censo 2022). Contagem como está no sistema; "
+                        f"as últimas {SE_INCOMPLETAS} semanas do ano corrente são null (registro incompleto). "
+                        f"Canal: mediana/p75/p90 de {min(ANOS_CANAL)}–{max(ANOS_CANAL)}. Peso zero.").replace(",", "."),
+        "gerado_em": hoje_editorial().strftime("%d/%m/%Y"), "fonte": PAGINA, "sistema": "SIVEP-Gripe (Ministério da Saúde)",
+        "municipios": {acompanhados[c]: v for c, v in mun.items() if c in acompanhados}})
 
     registrar_tentativa(sorted(lidos), sorted(reusados), sorted(reusados_por_falha), falhas)
     log_busca("DOU", 1, [PAGINA], "registro", nivel="nacional", n_resultados=len(serie),

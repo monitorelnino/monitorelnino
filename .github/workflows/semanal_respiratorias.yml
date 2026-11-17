@@ -33,7 +33,8 @@ jobs:
       grupo_de_concorrencia: noturno
       # O banco do SIVEP-Gripe tem centenas de megabytes por ano epidemiológico e é lido em fluxo;
       # 60 minutos é o que a primeira leitura real pediu, com folga para a rede da fonte.
-      timeout_minutos: 60
+      # 17/11/2026: a série municipal relê uma vez os anos congelados (o cache não tinha município).
+      timeout_minutos: 120
       comandos: |
         # SRAG hospitalizada pela fonte primária (SIVEP-Gripe). Anos congelados saem do cache.
         coletar_srag_sivep.py
