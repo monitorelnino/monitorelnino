@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PRNUM · Saúde: linha do topo soma 27, como o quadro dos estados
+## 2026-11-17 · #1822 · Saúde: linha do topo soma 27, como o quadro dos estados
 
 Plano com vigência encerrada deixa de contar como plano localizado e ganha estatuto próprio (`plano_vencido`). A linha do topo da página de saúde passa a trazer as cinco contagens, que somam 27 e batem com o quadro dos tipos de plano; a escada do índice nomeia o valor do plano vencido. Índice nacional inalterado (59,2).
 
