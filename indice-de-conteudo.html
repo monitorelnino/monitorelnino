@@ -3143,7 +3143,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>topo · preparacao.linha</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.preparacao.linha</code></td><td><span class="molde">{com_plano} de {denominador} estados com plano localizado · {em_elaboracao|nenhum em elaboração|um em elaboração|{em_elaboracao} em elaboração} · {sem_numero|nenhum estado ainda não verificado|um estado ainda não verificado|{sem_numero} estados ainda não verificados} · {corte}</span><br><span class="ex">exemplo: 3 de 3 estados com plano localizado · 3 em elaboração · 3 estados ainda não verificados · 3</span></td></tr>
+<tr><td>texto</td><td><code>saude.topo.preparacao.linha</code></td><td><span class="molde">{com_plano} de {denominador} estados com plano em vigor localizado · {vencido|nenhum com vigência encerrada|um com vigência encerrada|{vencido} com vigência encerrada} · {em_elaboracao|nenhum em elaboração|um em elaboração|{em_elaboracao} em elaboração} · {nao_localizado|nenhum sem plano localizado|um sem plano localizado até o corte|{nao_localizado} sem plano localizado até o corte} · {sem_numero|todos verificados|um estado ainda não verificado|{sem_numero} estados ainda não verificados} · {corte}</span><br><span class="ex">exemplo: 3 de 3 estados com plano em vigor localizado · 3 com vigência encerrada · 3 em elaboração · 3 sem plano localizado até o corte · 3 estados ainda não verificados · 3</span></td></tr>
 </table>
 <h3>topo · preparacao.linha_reserva</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3224,7 +3224,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>estadual · escada</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.estadual.escada</code></td><td><span class="molde">O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, {NOVO}; atualizado, {READ}; recorrente, {VIG}; em elaboração, {ELAB}; não localizado, {LAC}.</span><br><span class="ex">exemplo: O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, 3; atualizado, 3; recorrente, 3; em elaboração, 3; não localizado, 3.</span></td></tr>
+<tr><td>texto</td><td><code>saude.estadual.escada</code></td><td><span class="molde">O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, {NOVO}; atualizado, {READ}; recorrente, {VIG}; em elaboração, {ELAB}; com vigência encerrada, {VENC}; não localizado, {LAC}.</span><br><span class="ex">exemplo: O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, 3; atualizado, 3; recorrente, 3; em elaboração, 3; com vigência encerrada, 3; não localizado, 3.</span></td></tr>
 </table>
 <h3>estadual · ficha.plano</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
