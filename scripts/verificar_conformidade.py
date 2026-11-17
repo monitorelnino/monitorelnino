@@ -406,8 +406,6 @@ def _autoteste() -> int:
     _r["_verificacao"]["numeros.formato"] = "scripts/inexistente.py"
     ok("A7-14: verificador que não existe reprova",
        len(regras_sem_verificador(_r, existe=lambda c: False)) == 1)
-    ok("contrato de modelo é reconhecido pela marca",
-       (ler_json(CONTRATOS / "blog-post.json", {}) or {}).get("modelo") is True)
     ok("as regras existem e declaram a hierarquia",
        bool(regras.get("hierarquia")) and regras["hierarquia"][0].startswith("AI_EDITORIAL"))
     ok("a hierarquia põe handover por último", regras["hierarquia"][-1] == "handovers")

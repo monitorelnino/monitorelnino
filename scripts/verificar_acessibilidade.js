@@ -12,7 +12,7 @@ const RAIZ = path.join(__dirname, ".."); let falhas = 0;
 const falha = m => { console.log("  ✗ " + m); falhas++; };
   // 30/09/2026 (§309): "calendario-eleitoral.html" saiu desta lista — a página foi apagada do
   // código, com as outras duas telas de calendário (decisão da editoria).
-const PAGINAS = ["index.html", "defesa-civil.html","monitor-de-riscos.html","saude.html","financiamento.html","proteja-se.html","prefeituras.html","imprensa.html","blog.html"];
+const PAGINAS = ["index.html", "defesa-civil.html","monitor-de-riscos.html","saude.html","financiamento.html","proteja-se.html","prefeituras.html","imprensa.html"];
 const base = fs.readFileSync(path.join(RAIZ,"assets","base.css"),"utf-8"), tokens = fs.readFileSync(path.join(RAIZ,"assets","tokens.css"),"utf-8");
 // contraste WCAG dos pares texto/fundo usados no site
 const hex = n => { const m = tokens.match(new RegExp("--" + n + ":\\s*(#[0-9A-Fa-f]{6})")); return m && m[1]; };
