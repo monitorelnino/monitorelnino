@@ -9,6 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #1828 · Pré-noite: publicação recente não é fila presa; aviso comenta quando a causa muda
+
+A checagem das 23h reprovava com a publicação de dados na fila ou rodando (15 e 16/11). Agora só conta como
+fila presa se estiver aberta há mais de 45 minutos. O aviso do projeto comenta na Issue aberta quando o texto
+da causa muda, em vez de deixar o corpo da primeira ocorrência.
+
 ## 2026-11-17 · #1825 · Noite: vigia dos documentos anunciados por órgão
 
 A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.
