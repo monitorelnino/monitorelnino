@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #1837 · Saúde: cartões desde o marco zero do ciclo
+
+A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.
 ## 2026-11-17 · #1840 · Endereço de PDF que responde página
 
 O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.
