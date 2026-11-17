@@ -90,7 +90,8 @@ def serie_municipal_mensal(arquivos: dict, acompanhados: dict, uf_do_codigo: dic
     """{grupo: {cod7: {"meses_2026": {"AAAA-MM": {"casos": n|None}}, "canal": {"MM": {...}}}}} a partir dos
     arquivos lidos por UF ({"UF|período": {"meses": [...], "contagens": {grupo: {cod6: {"AAAA-MM": n}}}}}).
     O mês do município existe quando o arquivo da UF dele cobre o mês (zero medido se não teve caso);
-    residente atendido em outra UF entra quando o arquivo daquela UF foi lido. Os `n_parciais` meses mais
+    residente atendido em outra UF entra quando o arquivo daquela UF foi lido; contagem None (célula vazia
+    da fonte) fica lacuna. Os `n_parciais` meses mais
     recentes ficam None, como na série da UF. Faixa: `canal_endemico`, a mesma da UF. Pura."""
     cobertos = {(k.split("|")[0], m) for k, a in arquivos.items() for m in a.get("meses") or []}
     meses = sorted({m for _uf, m in cobertos})
@@ -101,7 +102,8 @@ def serie_municipal_mensal(arquivos: dict, acompanhados: dict, uf_do_codigo: dic
         for a in arquivos.values():
             for cod, por_mes in ((a.get("contagens") or {}).get(g) or {}).items():
                 for m, n in por_mes.items():
-                    soma.setdefault(cod, {})[m] = soma.get(cod, {}).get(m, 0) + n
+                    d = soma.setdefault(cod, {})
+                    d[m] = None if n is None or (m in d and d[m] is None) else d.get(m, 0) + n
         por_mun = {}
         for cod6, cod7 in acompanhados.items():
             uf = uf_do_codigo.get(cod6[:2])

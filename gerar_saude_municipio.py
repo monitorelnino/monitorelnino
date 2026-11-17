@@ -158,17 +158,21 @@ def gerar():
                             "'b' abaixo da mediana, null sem casos registrados (nunca zero). `nv`: nível de "
                             "alerta do InfoDengue, como a fonte publica. Peso zero."),
             "fonte": serie.get("sistema") or "InfoDengue (Fiocruz/FGV)", "gerado_em": serie.get("gerado_em"), **t}, compacto=True)
-    # Internações (SIH/SUS) e óbitos (SIM), mês a mês, pelo município de residência; cada arquivo tem o
+    # Internações (SIH/SUS) e óbitos (SIM), mês a mês, pelo município de residência, e atendimentos da
+    # atenção primária (SISAB), pelo município do relatório; cada arquivo tem o
     # nome do desfecho da UF, para o detalhe achá-lo pelo mesmo nome.
     import coletar_sih
     import coletar_sim
+    import coletar_sisab
     import desfechos_sus as ds
     acomp = ds.municipios_acompanhados(ler("populacao_censo2022.json") or {})
     nomes, uf_de = {str(r["codigo_ibge"]): r for r in ref}, ds.uf_por_codigo(ler)
     for mod, n_parciais, nome_do, texto in (
-            (coletar_sih, 1, lambda g: coletar_sih.DESFECHOS[g][0], "internações do SIH/SUS"),
+            (coletar_sih, 1, lambda g: coletar_sih.DESFECHOS[g][0], "internações do SIH/SUS por município de residência"),
             (coletar_sim, coletar_sim.N_PARCIAIS, lambda g: coletar_sim.TOTAL if g == "total" else f"obitos_{g}",
-             "óbitos do SIM por mês de ocorrência")):
+             "óbitos do SIM por mês de ocorrência e município de residência"),
+            (coletar_sisab, coletar_sisab.DESFECHOS["diarreias"]["n_parciais"], lambda g: g,
+             "atendimentos na atenção primária do SISAB por município do relatório")):
         arq = ler(mod.SAIDA_MUN) or {}
         if not arq.get("arquivos"):
             continue
@@ -178,7 +182,7 @@ def gerar():
             t = tempo(serie, {"municipios": {c: v["canal"] for c, v in por_mun.items()}}, ref, mensal=True)
             gravar(f"saude_municipio/tempo_{nome_do(grupo)}.json", {
                 "_governanca": (f"Posição de cada município de 100.000 habitantes ou mais na faixa habitual do mês ({texto}, "
-                                "por município de residência, 2019–2025 sem 2024), mês a mês desde julho de 2026. "
+                                "2019–2025 sem 2024), mês a mês desde julho de 2026. "
                                 "'a' acima do percentil 90, 'd' entre a mediana e ele, 'b' abaixo da mediana, null sem o "
                                 "arquivo do mês lido ou mês ainda parcial (nunca zero). Peso zero."),
                 "fonte": arq.get("sistema"), "gerado_em": arq.get("gerado_em"), **t}, compacto=True)
