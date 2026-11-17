@@ -28,6 +28,8 @@ from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
 DATA = RAIZ / "data"
+# Boletim nº 1 do ciclo (29/06/2026): marco zero de toda série do ciclo (editoria, 16/11/2026: a saúde também).
+INICIO_DO_CICLO = "2026-06-29"
 EVID = RAIZ / "evidencias"
 LIMITE_EVIDENCIA = 5 * 1024 * 1024  # bytes
 UA = "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; coletor da Pista A)"

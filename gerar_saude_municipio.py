@@ -18,7 +18,7 @@ Escritor único: o elo da saúde (`config/escritores.json`).
 """
 import sys
 
-from coletores_base import DATA, ler, gravar, rodar_autoteste, normalizar_nome
+from coletores_base import DATA, INICIO_DO_CICLO, ler, gravar, rodar_autoteste, normalizar_nome
 
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
 
@@ -77,6 +77,45 @@ def montar(ref: list, dengue: dict, chik: dict, calor: dict, plano_auto: dict, m
     return saida
 
 
+def semana_do_ciclo(iso: str) -> int:
+    """Semana (calendário epidemiológico de 2026, que começa em 04/01) que contém a data. Pura."""
+    import datetime
+    return (datetime.date.fromisoformat(iso) - datetime.date(2026, 1, 4)).days // 7 + 1
+
+
+def tempo(serie: dict, canal: dict, ref: list) -> dict:
+    """Posição de cada município na faixa habitual, semana a semana, do marco zero do ciclo à última
+    semana fechada. Pura. 'a' acima do percentil 90 · 'd' entre a mediana e o percentil 90 · 'b' abaixo
+    da mediana · None sem casos registrados (semana ainda em registro ou faixa ausente: nunca zero).
+    `nv` é o nível de alerta do InfoDengue na semana, como a fonte o publica."""
+    import datetime
+    w0 = semana_do_ciclo(INICIO_DO_CICLO)
+    mun_s, mun_c = (serie or {}).get("municipios") or {}, (canal or {}).get("municipios") or {}
+    fechadas = [int(k[-2:]) for m in mun_s.values() for k, v in (m.get("semanas_2026") or {}).items()
+                if isinstance(v, dict) and v.get("casos") is not None]
+    w1 = max(fechadas, default=w0 - 1)
+    semanas = list(range(w0, w1 + 1))
+    pos = {str(r.get("codigo_ibge")): r for r in ref or []}
+    saida = []
+    for cod, m in sorted(mun_s.items()):
+        r = pos.get(cod)
+        if not r or r.get("lat") is None:
+            continue
+        p, nv = [], []
+        for w in semanas:
+            x = (m.get("semanas_2026") or {}).get(f"2026-{w:02d}") or {}
+            f = (mun_c.get(cod) or {}).get(str(w))
+            c = x.get("casos")
+            p.append(None if c is None or not f or f.get("p90") is None else
+                     "a" if c > f["p90"] else ("d" if c >= f["mediana"] else "b"))
+            nv.append(x.get("nivel"))
+        saida.append({"ibge": cod, "nome": m.get("nome") or r["nome"], "uf": m.get("uf") or r["uf"],
+                      "lat": round(r["lat"], 3), "lon": round(r["lon"], 3), "p": p, "nv": nv})
+    inicio = datetime.date(2026, 1, 4)
+    return {"semanas": [(inicio + datetime.timedelta(7 * (w - 1))).isoformat() for w in semanas],
+            "municipios": saida}
+
+
 def gerar():
     sinais = ler("saude_sinais.json") or {}
     dengue, chik = ler("saude_desfechos/serie_painel.json") or {}, ler("saude_desfechos/chik_serie_painel.json") or {}
@@ -96,6 +135,17 @@ def gerar():
     for uf, municipios in sorted(por_uf.items()):
         gravar(f"saude_municipio/{uf}.json", {**cabeca, "uf": uf, "municipios": municipios}, compacto=True)
     print(f"→ data/saude_municipio/: {len(por_uf)} UF(s), {sum(len(v) for v in por_uf.values())} município(s).")
+    # 17/11/2026 (editoria): o mapa dos municípios anda no tempo, do marco zero do ciclo à última semana fechada.
+    ref = ler("municipios_ibge_referencia.json") or []
+    for nome, serie, canal in (("dengue", dengue, "canal_endemico"), ("chikungunya", chik, "chik_canal_endemico")):
+        t = tempo(serie, ler(f"saude_desfechos/{canal}.json") or {}, ref)
+        gravar(f"saude_municipio/tempo_{nome}.json", {
+            "_governanca": ("Posição de cada município acompanhado pelo InfoDengue na faixa habitual da época "
+                            "(2019–2025 sem 2024), semana a semana desde o Boletim nº 1. `semanas` traz o "
+                            "domingo de cada semana. 'a' acima do percentil 90, 'd' entre a mediana e ele, "
+                            "'b' abaixo da mediana, null sem casos registrados (nunca zero). `nv`: nível de "
+                            "alerta do InfoDengue, como a fonte publica. Peso zero."),
+            "fonte": "InfoDengue (Fiocruz/FGV)", "gerado_em": serie.get("gerado_em"), **t}, compacto=True)
 
 
 def autoteste() -> int:
@@ -119,6 +169,15 @@ def autoteste() -> int:
         "calor na classe da fonte": lambda: s["AM"]["1302603"]["calor"] == "Severo",
         "degrau do plano casado pela URL do registro e pelo nome normalizado":
             lambda: s["AM"]["1302603"]["saude_no_plano"]["degrau"] == 5,
+        "tempo: começa no marco zero, para na última semana fechada; sem casos é null, nunca zero":
+            lambda: (lambda t: t["semanas"][0] == "2026-06-28" and t["semanas"][-1] == "2026-07-05"
+                     and t["municipios"][0]["p"] == ["a", None] and t["municipios"][0]["nv"] == [3, 1])(
+                tempo({"municipios": {"1200104": {"nome": "Brasiléia", "uf": "AC", "semanas_2026": {
+                    "2026-26": {"casos": 9, "nivel": 3}, "2026-27": {"casos": None, "est": 4, "nivel": 1}}},
+                    "9999999": {"semanas_2026": {"2026-27": {"casos": 1}}}}},
+                      {"municipios": {"1200104": {"26": {"mediana": 2, "p90": 5}, "27": {"mediana": 2, "p90": 5}}}},
+                      [{"codigo_ibge": 1200104, "nome": "Brasiléia", "uf": "AC", "lat": -11, "lon": -68.7}])),
+        "tempo: semana 26 é a que contém 29/06/2026": lambda: semana_do_ciclo("2026-06-29") == 26,
         "negativo: série sem nível não gera bloco": lambda: alerta_infodengue({"semanas_2026": {"2026-40": {"nivel": None}}}) is None,
     })
 

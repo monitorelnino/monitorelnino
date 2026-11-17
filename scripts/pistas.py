@@ -55,6 +55,8 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
 FILA_PADRAO = "pistas_imprensa.json"
+# O `dias_de_vida` do esquema (schemas/pista.json): o prazo de uma pista na fila.
+DIAS_DE_VIDA = 21
 ARQUIVO_DE_REJEITADAS = "pistas_rejeitadas.json"
 
 # A origem que o coletor usa não é sempre a do esquema: `rede_social_oficial` é o nome do coletor,
@@ -113,6 +115,33 @@ SINAIS_DE_ESTRUTURA = (
     "secretaria de proteção e defesa civil", "orgao municipal de defesa civil",
     "órgão municipal de defesa civil",
 )
+
+
+def data_da_pista(p: dict):
+    """A data mais confiável de entrada na fila, ou None. Função pura. 17/11/2026: era só do portão
+    da fila não humana; os dois prazos (triagem e limpeza) liam só `registrado_em`, e a pista sem ele
+    nunca vencia — o portão a reprovava e ninguém a fechava. Uma data para os três."""
+    for campo in ("registrado_em", "descoberto_em", "data_publicacao", "data"):
+        bruto = str(p.get(campo) or "").strip()
+        if not bruto:
+            continue
+        m = re.match(r"(\d{4})-(\d{2})-(\d{2})", bruto)
+        if m:
+            return dt.date(int(m[1]), int(m[2]), int(m[3]))
+        m = re.match(r"(\d{2})/(\d{2})/(\d{4})", bruto)
+        if m:
+            return dt.date(int(m[3]), int(m[2]), int(m[1]))
+        try:
+            return __import__('email.utils').utils.parsedate_to_datetime(bruto).date()
+        except Exception:  # noqa: BLE001
+            continue
+    return None
+
+
+def dias_na_fila(p: dict, hoje_iso: str):
+    """Dias desde a entrada (`data_da_pista`), ou None sem data legível. Função pura."""
+    d = data_da_pista(p)
+    return None if d is None else (dt.date.fromisoformat(hoje_iso) - d).days
 
 
 def _sem_acento(s: str) -> str:
