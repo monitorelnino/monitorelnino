@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PRNUM · Canais oficiais fora do sítio da prefeitura
+## 2026-11-17 · #1832 · Canais oficiais fora do sítio da prefeitura
 
 Documento da pasta de planos recebidos pela Defesa Civil do RS (Prepara RS) passa a valer como plano pela origem; data e município seguem conferidos. Portais oficiais de prefeitura fora de .gov.br (atende.net, portaltp, equiplano, prefeitura.rio e outros) passam a ser reconhecidos, e encurtadores de link são resolvidos antes do julgamento. Mesquita/RJ e o plano municipal do Rio voltam ao juiz.
 
