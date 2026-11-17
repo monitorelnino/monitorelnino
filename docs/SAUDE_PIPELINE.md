@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-10 a 2026-11-17 (1548 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-10 a 2026-11-17 (1550 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -36,7 +36,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-17 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-17 11:00 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-17 19:44 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-17 20:01 | 4 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-17 15:56 | 418 s | 21 | **erro** (3 seguidas) | X portão vermelho — tudo restaurado em disco; as decisões guardam o erro |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -68,6 +68,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-17 · por canal: we
 | `coletar_espin.py` | coletor | 2026-11-16 03:23 | 219 s | — | ok | — |
 | `coletar_execucao_mps.py` | coletor | 2026-11-15 05:44 | 22 s | — | ok | — |
 | `coletar_financiamento.py` | coletor | 2026-11-15 05:44 | 1 s | — | ok | — |
+| `coletar_mapbiomas.py` | coletor | 2026-11-17 18:04 | 2 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-11-14 01:13 | 3 s | — | ok | — |
 | `coletar_obitos.py` | coletor | 2026-11-17 07:16 | 7 s | — | ok | — |
 | `coletar_obitos_registro_civil.py` | coletor | 2026-11-16 01:35 | 42 s | — | ok | — |
