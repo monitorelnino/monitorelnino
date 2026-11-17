@@ -787914,6 +787914,44 @@
     ],
     "encontrou": null
    }
+  },
+  {
+   "promove": false,
+   "motivo": "minuta_ou_rascunho",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "56541 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Rio de Janeiro\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "po possível. ● Este documento será acessível de forma universal, permitindo sua consulta pública, e busca criar sinergia com o Plano Verão 2024/2025 da Prefeitu",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "52.005",
+      "data": "26/10/2016",
+      "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou apresentação",
+      "trecho": "po possível. ● Este documento será acessível de forma universal, permitindo sua consulta pública, e busca criar sinergia com o Plano Verão 2024/2025 da Prefeitu"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "26/10/2016",
+   "natureza": null,
+   "ibge": "3304557",
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "url": "https://defesacivil.prefeitura.rio/wp-content/uploads/sites/35/2025/10/PLANO-DE-CONTINGENCIA-SUBPDEC-2025.2026.pdf",
+   "regras_18": [],
+   "pista_id": "0925a2fcf9",
+   "origem": "contribuicao",
+   "leu_documento": true,
+   "hash_evidencia": "e1d5aa388b9794efae14038b113e4bc4426a928e0e1e615bd301f97b901cdaa7"
   }
  ]
 }
