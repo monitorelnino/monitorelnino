@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-10 a 2026-11-17 (1525 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-10 a 2026-11-17 (1528 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -33,9 +33,9 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-17 · por canal: we
 | `gerar_painel.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
 | `gerar_prioritarios.py` | essencial | 2026-11-15 06:19 | 0 s | — | ok | — |
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
-| `gerar_saude_municipio.py` | essencial | 2026-11-16 01:36 | 0 s | — | ok | — |
+| `gerar_saude_municipio.py` | essencial | 2026-11-17 11:00 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-17 11:03 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-17 11:33 | 4 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-17 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -86,7 +86,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-17 · por canal: we
 | `coletar_sinais_risco.py` | coletor | 2026-11-17 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_sisab.py` | coletor | 2026-11-17 07:14 | 135 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-15 05:35 | 144 s | — | ok | — |
-| `coletar_srag_sivep.py` | coletor | 2026-11-16 02:39 | 36 s | — | ok | — |
+| `coletar_srag_sivep.py` | coletor | 2026-11-17 10:56 | 262 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-11-15 05:44 | 2 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-17 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `conferir_emergencias_estaduais.py` | coletor | 2026-11-17 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
