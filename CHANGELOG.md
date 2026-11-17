@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-17 · #PRNUM · Endereço de PDF que responde página
+
+O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.
+
 ## 2026-11-17 · #1834 · Plano de saúde não é plano de defesa civil; Mesquita de novo ao juiz
 
 Plano cujo título é de saúde (arboviroses, dengue, emergências em saúde pública) fica fora da conta do MARÉ Legal: Angra dos Reis/RJ não entra e Água Branca/PB sai. O juiz passa a reconhecer o título do plano repetido no alto das páginas também no PDF lido como linha única; Mesquita/RJ e 111 recusas por título voltam ao juiz. Documento escaneado acima de 5 MB tem o OCR guardado como prova.
