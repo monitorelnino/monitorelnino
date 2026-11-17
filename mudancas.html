@@ -47,6 +47,10 @@
     <dl class="mudancas-lista">
       <dt>17/11/2026 · Respostas de LAI vão ao juiz</dt>
       <dd>Documento recebido por pedido de acesso à informação, com endereço ou sem ele, passa a ser levado ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, vira pista direta; sem endereço, busca dirigida pelo município e pelo assunto, uma vez por semana. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos informados por MT; o arquivo de revisão manual de MT sai. Os 51 planos municipais do painel da Defesa Civil do AM, com link, também vão ao juiz (50 pistas).</dd>
+      <dt>17/11/2026 · Noite: vigia dos documentos anunciados por órgão</dt>
+      <dd>A rodada de descoberta passa a procurar, toda noite, o título dos documentos que um órgão disse estar em elaboração (`busca_dirigida_do_ato.py --avisos`, de #1820). Primeiro caso: o plano estadual do RN anunciado pelo IDEMA.</dd>
+      <dt>16/11/2026 · O número do ato orienta a busca dirigida, em toda pista</dt>
+      <dd>Regra geral (editoria): todo número de ato citado numa pista, em qualquer campo, orienta a busca dirigida, e a busca também roda quando o plano foi promovido sem ato de aprovação. Achado e lido o ato no documento oficial, ele completa o registro. O número não é prova. Primeiro caso: Taió/SC, Decreto 9584/2026 informado pelo leitor.</dd>
       <dt>17/11/2026 · Saúde: o detalhe do desfecho anda no tempo</dt>
       <dd>O detalhe do desfecho escolhido passa a ser mapa e linhas: posição de cada lugar na faixa habitual, do marco zero (29/06) ao último período fechado, com controle de período. Dengue e chikungunya mostram os 313 municípios do InfoDengue, com a régua alternativa do nível da fonte; ao lado, Brasil e os 27 estados, cada um na sua linha. Série sem período no ciclo declara a lacuna.</dd>
       <dt>17/11/2026 · Fila de pistas: uma data de entrada para o prazo</dt>
@@ -160,10 +164,6 @@
       <dt>05/11/2026 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a &quot;Saúde na estrutura de crise do estado&quot;. A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.</dt>
       <dd></dd>
       <dt>05/11/2026 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito &quot;N.º&quot; não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.</dt>
-      <dd></dd>
-      <dt>05/11/2026 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.</dt>
-      <dd></dd>
-      <dt>05/11/2026 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^=&quot;circulos-&quot;] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).</dt>
       <dd></dd>
     </dl>
   </section>
