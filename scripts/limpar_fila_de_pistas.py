@@ -54,7 +54,7 @@ sys.path.insert(0, str(RAIZ))
 
 FILA = "pistas_imprensa.json"
 TETO_POR_MUNICIPIO = 5
-DIAS_DE_VIDA = 21
+from pistas import DIAS_DE_VIDA, dias_na_fila  # noqa: E402  (a mesma data de entrada do portão)
 TENTATIVAS_MAXIMAS = 2
 # Acima disto, o mesmo artigo atribuído a N municípios é notícia genérica, e não notícia da cidade.
 TETO_DE_MUNICIPIOS_POR_ARTIGO = 3
@@ -119,20 +119,6 @@ def peso_da_pista(pista: dict) -> tuple:
     """Ordem de permanência no teto: nível, depois data. Função pura (maior fica)."""
     nivel = NIVEIS.get(str(pista.get("nivel_confianca") or "C").upper(), 1)
     return nivel, str(pista.get("registrado_em") or pista.get("data") or "")
-
-
-def dias_na_fila(pista: dict, hoje_iso: str):
-    """Dias desde o registro. Função pura; None sem data legível."""
-    bruto = str(pista.get("registrado_em") or "")[:10]
-    for fmt in ("%Y-%m-%d", "%d/%m/%Y"):
-        try:
-            d = dt.datetime.strptime(bruto, fmt).date()
-            break
-        except ValueError:
-            d = None
-    if d is None:
-        return None
-    return (dt.date.fromisoformat(hoje_iso) - d).days
 
 
 def aberta(pista: dict) -> bool:
