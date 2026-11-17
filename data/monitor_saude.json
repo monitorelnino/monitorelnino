@@ -170,15 +170,15 @@
   "nao_verificadas": 0,
   "por_faixa": {
    "estágio inicial": 5,
-   "em construção": 15,
-   "avançado": 7
+   "em construção": 14,
+   "avançado": 8
   },
   "planos_municipais_lidos": 377,
   "planos_municipais_sem_leitura": 16,
   "denominador": 27,
   "ponderacao": "populacao",
   "populacao_total": 203062512,
-  "indice_nacional": 59.2,
+  "indice_nacional": 59.8,
   "por_estatuto": {
    "plano_localizado": 19,
    "plano_vencido": 3,
@@ -1817,16 +1817,16 @@
   },
   "SE": {
    "verificado": true,
-   "prontidao": 45.0,
-   "faixa": "em construção",
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "VIG",
-    "pontos": 45.0,
-    "doc": "Plano de Contingência para Enfrentamento e Controle de Epidemias por Arboviroses no Estado de Sergipe",
-    "data": null,
+    "status": "NOVO",
+    "pontos": 100.0,
+    "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+    "data": "07/2026",
     "orgao": "SES-SE",
-    "url": "https://saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/",
-    "temporada": "desconhecida"
+    "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "peso": 0,
@@ -1846,11 +1846,11 @@
     "verificada": false,
     "pontos": null,
     "f1": {
-     "status": "NAO_VERIFICADO",
+     "status": "PERMANENTE",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+     "data": "07/2026",
+     "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
      "citado": null
     },
     "f2": {
@@ -1879,9 +1879,9 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 45.0,
+   "prontidao_nacional": 100.0,
    "peso_nacional": 0.0109,
-   "contribuicao_nacional": 0.49
+   "contribuicao_nacional": 1.09
   },
   "SP": {
    "verificado": true,

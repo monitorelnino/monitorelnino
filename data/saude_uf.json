@@ -1383,8 +1383,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "16/11/2026",
+   "log_ref": "julgar_saude_16-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -1398,22 +1398,53 @@
      "tipo": "recorrente_arboviroses",
      "hash_pagina_citada": "2bc724761d44027649770b2dc748094ad6f30c3b76bf661d6e65b326ae267676",
      "nota_interna": "publicado na página oficial de arboviroses da SES; sem data de edição na página"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-SE",
+     "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "07/2026",
+     "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "VIG",
+   "status": "NOVO",
    "orgao": "SES-SE",
-   "doc": "Plano de Contingência para Enfrentamento e Controle de Epidemias por Arboviroses no Estado de Sergipe",
+   "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
    "numero": null,
-   "data": null,
-   "url": "https://saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/",
-   "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano recorrente publicado na página oficial; edição/data não indicadas — registrado como vigente sem data",
-   "preservado_em": "2026-09-26",
-   "hash_pagina_citada": "2bc724761d44027649770b2dc748094ad6f30c3b76bf661d6e65b326ae267676",
-   "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta",
-   "nota_interna": "publicado na página oficial de arboviroses da SES; sem data de edição na página",
-   "hash_evidencia": null
+   "data": "07/2026",
+   "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+   "coordenacao": {
+    "status": "PERMANENTE",
+    "orgao": "SES-SE",
+    "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "07/2026",
+    "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+    "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+    "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+    "data_verificacao": "16/11/2026",
+    "log_ref": "julgar_saude_16-11-2026",
+    "f1": {
+     "status": "PERMANENTE",
+     "doc": "PLANO DE CONTINGÊNCIA PARA RESPOSTAS ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA NO ESTADO DE SERGIPE",
+     "numero": null,
+     "data": "07/2026",
+     "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+     "hash_evidencia": "cf7f94c6436e2eaac28365d46f025bdeb68cd4f8806b16ec89938feb2ba07824",
+     "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
+     "data_verificacao": "16/11/2026"
+    }
+   }
   },
   "SP": {
    "risco_sanitario_projetado": [
