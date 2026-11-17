@@ -774273,6 +774273,1383 @@
    "pista_id": "a48d6e7063",
    "origem": "busca_web",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20857 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "torna público o Plano Municipal de Contingência da Defesa Civil. O PREFEITO DE CAÇADOR, usando das suas atribuições legais, nos termos do art. 79, inciso VIII,"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Memorando 15.161/2024 DECRETO Nº 11.539, de 22 de agosto de 2024. Homologa e torna público o Plano Municipal de Contingência da Defesa Civil. O PREFEITO DE CAÇA",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "11.539",
+      "data": "22/08/2024",
+      "trecho": "Memorando 15.161/2024 DECRETO Nº 11.539, de 22 de agosto de 2024. Homologa e torna público o Plano Municipal de Contingência da Defesa Civil. O PREFEITO DE CAÇA"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": ". Homologa e torna público o Plano Municipal de Contingência da Defesa Civil. O PREFEITO DE CAÇADOR, usando das suas atribuições legais, nos termos do art. 79,"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "22/08/2024",
+   "natureza": "DUVIDA",
+   "ibge": "4203006",
+   "municipio": "Caçador",
+   "uf": "SC",
+   "url": "https://s3cache.dom.sc.gov.br/atos/2024/08/1724363542_decreto_11539__plano_contingencia_defesa_civil.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c65f37b2cb",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "fed13b6e65a5d4bf8961da9e04e0e74469dfd17cec8f0f962b7ab30c9c533886"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303906",
+   "municipio": "Petrópolis",
+   "uf": "RJ",
+   "url": "https://www.petropolis.rj.gov.br/pmp/phocadownload/defesa-civil/planos-contigencia/2026/plano-inverno-2026/_PLANO%20INVERNO%202026.pdf",
+   "regras_18": [],
+   "pista_id": "8c6cc9987b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4209854",
+   "municipio": "Lindóia do Sul",
+   "uf": "SC",
+   "url": "https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf",
+   "regras_18": [],
+   "pista_id": "3f4fdbbfa2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305108",
+   "municipio": "Caxias do Sul",
+   "uf": "RS",
+   "url": "https://caxias.rs.gov.br/noticias/2026/04/prefeitura-promove-palestra-sobre-el-nino-e-reforca-acoes-de-prevencao-em-caxias-do-sul",
+   "regras_18": [],
+   "pista_id": "5f1a2834eb",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313409",
+   "municipio": "Novo Hamburgo",
+   "uf": "RS",
+   "url": "https://www.novohamburgo.rs.gov.br/noticia/novo-hamburgo-debate-possiveis-impactos-el-nino-2o-seminario-resiliencia-climatica",
+   "regras_18": [],
+   "pista_id": "34fcb8dfdc",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5003702",
+   "municipio": "Dourados",
+   "uf": "MS",
+   "url": "https://do.dourados.ms.gov.br/wp-content/uploads/2019/01/ANEXO-4.pdf",
+   "regras_18": [],
+   "pista_id": "9dd3bf8ab8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4109401",
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "url": "https://guarapuava.pr.gov.br/wp-content/uploads/2025/12/Plano-Municipal-de-Saude-2026-2029.pdf",
+   "regras_18": [],
+   "pista_id": "e8111187e2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "http://www.rio.rj.gov.br/dlstatic/10112/7502221/4349502/PLANODECONTINGENCIA20212022.pdf",
+   "regras_18": [],
+   "pista_id": "7207bc00aa",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5003702",
+   "municipio": "Dourados",
+   "uf": "MS",
+   "url": "https://do.dourados.ms.gov.br/wp-content/uploads/2019/01/ANEXO-4.pdf",
+   "regras_18": [],
+   "pista_id": "b34956c94d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "url": "https://www2.bauru.sp.gov.br/arquivos/arquivos_site/sec_saude/planejamento_saude/PAS/02;PAS%202026%20-%20Metas%20e%20Indicadores.pdf",
+   "regras_18": [],
+   "pista_id": "cad8df44f3",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210050",
+   "municipio": "Macieira",
+   "uf": "SC",
+   "url": "https://macieira.sc.gov.br/uploads/sites/363/2022/09/646836_PLANO_MUNICIPAL_DE_SANEAMENTO.pdf",
+   "regras_18": [],
+   "pista_id": "4059c65aca",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "47c7927844",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217402",
+   "municipio": "Schroeder",
+   "uf": "SC",
+   "url": "https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf",
+   "regras_18": [],
+   "pista_id": "d4e10c939e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "52bad71f78",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "efd9ef1646",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217402",
+   "municipio": "Schroeder",
+   "uf": "SC",
+   "url": "https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf",
+   "regras_18": [],
+   "pista_id": "9a5a93a8e7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4209854",
+   "municipio": "Lindóia do Sul",
+   "uf": "SC",
+   "url": "https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf",
+   "regras_18": [],
+   "pista_id": "ee7f324041",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204707",
+   "municipio": "Cunha Porã",
+   "uf": "SC",
+   "url": "https://www.camaracunhapora.sc.gov.br/proposicoes/Leis-Ordinarias/2025/1/0/8688",
+   "regras_18": [],
+   "pista_id": "6017a83b82",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202453",
+   "municipio": "Bombinhas",
+   "uf": "SC",
+   "url": "https://bombinhas.sc.gov.br/noticia-748319/",
+   "regras_18": [],
+   "pista_id": "b4416f521a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4115200",
+   "municipio": "Maringá",
+   "uf": "PR",
+   "url": "http://www3.maringa.pr.gov.br/sistema/arquivos/1fcf2b46578d.pdf",
+   "regras_18": [],
+   "pista_id": "d7dcd86491",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203154",
+   "municipio": "Calmon",
+   "uf": "SC",
+   "url": "https://calmon.sc.gov.br/uploads/sites/273/2025/05/PMSB-VOLUME-I-CONSOLDACAO-DO-PLANO-MUNICIPAL-DE-SANEAMENTO-BASICO.pdf",
+   "regras_18": [],
+   "pista_id": "202d759caf",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203154",
+   "municipio": "Calmon",
+   "uf": "SC",
+   "url": "https://calmon.sc.gov.br/uploads/sites/273/2024/05/PLANO-MUNICIPAL-DE-SAUDE-2022-2025.pdf",
+   "regras_18": [],
+   "pista_id": "96d876c78c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2700300",
+   "municipio": "Arapiraca",
+   "uf": "AL",
+   "url": "https://staging-transparencia.integra.arapiraca.al.gov.br/documentos_gerenciais_saude",
+   "regras_18": [],
+   "pista_id": "560a85f834",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/arquivos/baixar-arquivo/conteudo/D24-3863.pdf",
+   "regras_18": [],
+   "pista_id": "20fa85ef94",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/noticias/28011-prefeitura-assina-novo-plano-municipal-de-contingencia-para-nortear-acoes-em-casos-desastres",
+   "regras_18": [],
+   "pista_id": "fb5709e16a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/desenvolvimentoeconomico/sites/default/files/arquivos_paginas/PLANCON%20CGREE%202026_compressed%20%281%29.pdf",
+   "regras_18": [],
+   "pista_id": "f5b3441180",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Projetos-de-Leis-Ordinarias/2024/2/0/139807",
+   "regras_18": [],
+   "pista_id": "80a3e7bdcc",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4206751",
+   "municipio": "Ibiam",
+   "uf": "SC",
+   "url": "https://ibiam.sc.gov.br/uploads/sites/321/2025/05/PLANO-DE-CONTINGENCIA-DE-PROTECAO-E-DEFESA-CIVIL-FORMATADO.pdf",
+   "regras_18": [],
+   "pista_id": "8e1838a884",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213104",
+   "municipio": "Piratuba",
+   "uf": "SC",
+   "url": "https://piratuba.sc.gov.br/uploads/sites/453/2022/04/1968074_Plano_de_Contingencia_para_a_Educacao_Municipal__de_Piratuba.pdf",
+   "regras_18": [],
+   "pista_id": "722d809daa",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305108",
+   "municipio": "Caxias do Sul",
+   "uf": "RS",
+   "url": "https://caxias.rs.gov.br/noticias/2023/04/sancionada-lei-do-plano-municipal-de-contingencia-de-protecao-e-defesa-civil-de-caxias-do-sul",
+   "regras_18": [],
+   "pista_id": "29ccf48d74",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html",
+   "regras_18": [],
+   "pista_id": "751d0bbd32",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305108",
+   "municipio": "Caxias do Sul",
+   "uf": "RS",
+   "url": "https://gcpstorage.caxias.rs.gov.br/documents/2026/05/971f44db-bc1d-42a1-bb76-f7c1990a74e8.pdf",
+   "regras_18": [],
+   "pista_id": "e7f153ec77",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2304400",
+   "municipio": "Fortaleza",
+   "uf": "CE",
+   "url": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/74/2025/03/PLANO-DE-CONTINGENCIA-FALESIAS-digital-1_compressed.pdf",
+   "regras_18": [],
+   "pista_id": "c40273068e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2304400",
+   "municipio": "Fortaleza",
+   "uf": "CE",
+   "url": "https://www.ce.gov.br/cge/wp-content/uploads/sites/71/2020/03/Decreto-n%C2%BA.-33.510-de-16-de-mar%C3%A7o-de-2020.-Decreta-situa%C3%A7%C3%A3o-de-Emerg%C3%AAncia-em-sa%C3%BAde-e-disp%C3%B5e-sobre-medidas-de-enfrentamento-e-conten%C3%A7%C3%A3o-da-infecc%C3%A7%C3%A3o-humana-pelo-novo-coronavirus.pdf",
+   "regras_18": [],
+   "pista_id": "af1877047a",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "url": "https://www2.bauru.sp.gov.br/arquivos/sist_licitacoes/2026/10718/10718_Anexo_1.pdf",
+   "regras_18": [],
+   "pista_id": "32c54866eb",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "url": "https://www2.bauru.sp.gov.br/arquivos/sist_diariooficial/2023/11/do_20231118_3770.pdf",
+   "regras_18": [],
+   "pista_id": "d05e385c11",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3516200",
+   "municipio": "Franca",
+   "uf": "SP",
+   "url": "https://www4.franca.sp.gov.br/index.php?option=com_phocadownload&view=file&id=1141%3Adecreto-n-7739&Itemid=1944",
+   "regras_18": [],
+   "pista_id": "eb186a55d7",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504107",
+   "municipio": "Atibaia",
+   "uf": "SP",
+   "url": "https://www.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/famarela/2025/febre_amarela2025_plano_acao_vacinacao_05agosto.pdf",
+   "regras_18": [],
+   "pista_id": "165971c9c9",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "url": "https://www.foz.pr.gov.br/wp-content/uploads/2025/09/Diario%20Oficial%20PSS%20002_2020.pdf",
+   "regras_18": [],
+   "pista_id": "6ec0fcaa20",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "91 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4118204",
+   "municipio": "Paranaguá",
+   "uf": "PR",
+   "url": "https://www.paranagua.pr.leg.br/indexAjax.php?pag=T0RVPU9UST1PV0U9T1RNPU9URT1PVFk9T0RnPU9HUT1ObVE9T1dFPU9HVT1ZVEk9T1dFPU9UUT1PV1E9WVRVPVlUQT1PRGM9WVRVPU9UWT1ZVEk9WVRBPVlXST1PV1U9&id=20006",
+   "regras_18": [],
+   "pista_id": "83b3cf0e4b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/agenersa/sites/default/files/arquivos_paginas_basicas/DELIBERACAO4275.pdf",
+   "regras_18": [],
+   "pista_id": "22e2dde1f3",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2413003",
+   "municipio": "São Vicente",
+   "uf": "RN",
+   "url": "http://adcon.rn.gov.br/ACERVO/SETHAS/DOC/DOC000000000281179.PDF",
+   "regras_18": [],
+   "pista_id": "0e73c22033",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "url": "https://www.cagepa.pb.gov.br/wp-content/uploads/2026/02/PRSB-CAGEPA-LITORAL_publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "d87a2d06fe",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/smrcrc/noticias/31228-prefeito-de-santa-maria-assina-decreto-emergencia-apos-os-prejuizos-causados-pelas-chuvas",
+   "regras_18": [],
+   "pista_id": "d5c2d8a171",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "130 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302809",
+   "municipio": "MENDES",
+   "uf": "RJ",
+   "url": "http://www.rio.rj.gov.br/documents/73801/f848063f-186c-466e-8ae1-afd83b43912b",
+   "regras_18": [],
+   "pista_id": "5aed116b1a",
+   "origem": "seguimento",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/downloads/defesa-civil/gestaos-de-riscos/planos-de-contigencia/PLANCON%20-%20CHUVAS%20INTENSAS.pdf",
+   "regras_18": [],
+   "pista_id": "05cb6b0382",
+   "origem": "imprensa",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2913606",
+   "municipio": "Ilhéus",
+   "uf": "BA",
+   "url": "https://www.ilheus.ba.gov.br/abrir_arquivo.aspx?cdLocal=12&arquivo=%7BB006AA87-EC33-7B5A-ADCD-2EE8CAB54ECD%7D.pdf",
+   "regras_18": [],
+   "pista_id": "9722c69dea",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "181 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2108207",
+   "municipio": "Pedreiras",
+   "uf": "MA",
+   "url": "https://www.pedreiras.ma.gov.br/relatorio.php?id=57&exp=pdf",
+   "regras_18": [],
+   "pista_id": "22a6d05356",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "435066 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DO PLANO D IRETOR MUNIC IPAL 2ª FASE – ANÁLISE TEMÁTICA INTEGRADA MUNICÍPIO DE ILHA SOLTEIRA - SP 1 PLANO DIRETOR MUNICIPAL Prefeitura Municipal de Ilha Soltei"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "7484/2024",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3520442",
+   "municipio": "Ilha Solteira",
+   "uf": "SP",
+   "url": "https://ilhasolteira.sp.gov.br/wp-content/uploads/2025/04/2a-Fase-Analise-Tematica-Integrada.pdf",
+   "regras_18": [],
+   "pista_id": "808d2b1ac5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "df0a33626a58cecae027ef4a0d816055cf67e5a34ed1a803a18bd09417fe4ee1",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Firmino Alves\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2910909",
+   "municipio": "Firmino Alves",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "9ca51af457",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Santa Cruz da Vitória\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2927804",
+   "municipio": "Santa Cruz da Vitória",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "6e20b1c645",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Aiquara\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2900603",
+   "municipio": "Aiquara",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "24aa285936",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Cravolândia\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2909505",
+   "municipio": "Cravolândia",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "e5d9aa4909",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "99241 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Irajuba 1 Quarta-feira • 17 de Novembro de 2021 • Ano • Nº 2194 Esta edição encontra-se no site oficial deste ente. Prefeitura Municipal"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ontra-se no site oficial deste ente. Prefeitura Municipal de Irajuba publica: • Decreto nº 233/2021, de 16 de novembro de 2021 - Aprova o Plano Municipal de San",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "233/2021",
+      "data": "16/11/2021",
+      "trecho": "ontra-se no site oficial deste ente. Prefeitura Municipal de Irajuba publica: • Decreto nº 233/2021, de 16 de novembro de 2021 - Aprova o Plano Municipal de San"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DA BAHIA PREFEITURA MUNICIPAL DE IRAJUBA Prefeitura Municipal de Irajuba Prefeito Antonio Oliveira Sampaio Secretaria de Infraestrutura e Serviços Urbano"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "16/11/2021",
+   "natureza": "DUVIDA",
+   "ibge": "2914208",
+   "municipio": "Irajuba",
+   "uf": "BA",
+   "url": "https://www.irajuba.ba.gov.br/Handler.ashx?f=diario&query=2194&c=339&m=0",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "503c5e418a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "044f4692141ca41b12644ae3275461eb548b441bc11d45f96ffbd65bcada73bf"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "90166 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Dom Macedo Costa\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2910206",
+   "municipio": "Dom Macedo Costa",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2018/05/anuario-iegm-2016-miolo.pdf",
+   "regras_18": [],
+   "pista_id": "8cf2814ef7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80319946c5175acb20d0695288a4ef0dabde10a2274b051b3eda23db30afecea"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111786 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Contendas do Sincorá\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2908804",
+   "municipio": "Contendas do Sincorá",
+   "uf": "BA",
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "regras_18": [],
+   "pista_id": "9c063564d2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a9298040237e93d4205f3c70b28ff71267e266661313525d974aaf0ea24abf4"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "99241 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Irajuba 1 Quarta-feira • 17 de Novembro de 2021 • Ano • Nº 2194 Esta edição encontra-se no site oficial deste ente. Prefeitura Municipal"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ontra-se no site oficial deste ente. Prefeitura Municipal de Irajuba publica: • Decreto nº 233/2021, de 16 de novembro de 2021 - Aprova o Plano Municipal de San",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "233/2021",
+      "data": "16/11/2021",
+      "trecho": "ontra-se no site oficial deste ente. Prefeitura Municipal de Irajuba publica: • Decreto nº 233/2021, de 16 de novembro de 2021 - Aprova o Plano Municipal de San"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DA BAHIA PREFEITURA MUNICIPAL DE IRAJUBA Prefeitura Municipal de Irajuba Prefeito Antonio Oliveira Sampaio Secretaria de Infraestrutura e Serviços Urbano"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "16/11/2021",
+   "natureza": "DUVIDA",
+   "ibge": "2914208",
+   "municipio": "Irajuba",
+   "uf": "BA",
+   "url": "https://www.irajuba.ba.gov.br/Handler.ashx?f=diario&query=2194&c=339&m=0",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4c2d3be8d9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "044f4692141ca41b12644ae3275461eb548b441bc11d45f96ffbd65bcada73bf"
   }
  ]
 }
