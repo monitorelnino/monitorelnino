@@ -884499,21 +884499,27 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "entrada": "municipio",
    "registrado_em": "2026-11-17",
-   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "juiz_tentativas": [
     {
      "em": "2026-11-17",
      "classe": "criterio",
      "motivo": "titulo_nao_e_plano",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-17",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "titulo_nao_e_plano",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano",
     "data": "2025",
     "julgado_em": "2026-11-17",
     "hash_evidencia": "40abb27a2d8079e9f861bfc2e6cc1cb0d2485fe63b3332861302fa7d25f733a4"
