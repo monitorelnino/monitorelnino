@@ -158,26 +158,30 @@ def gerar():
                             "'b' abaixo da mediana, null sem casos registrados (nunca zero). `nv`: nível de "
                             "alerta do InfoDengue, como a fonte publica. Peso zero."),
             "fonte": serie.get("sistema") or "InfoDengue (Fiocruz/FGV)", "gerado_em": serie.get("gerado_em"), **t}, compacto=True)
-    # As internações (SIH/SUS), mês a mês, pelo município de residência; o arquivo tem o nome do desfecho da UF.
-    from coletar_sih import DESFECHOS, SAIDA_MUN, serie_municipal_mensal
-    from coletar_srag_sivep import municipios_acompanhados
-    sih = ler(SAIDA_MUN) or {}
-    if sih.get("arquivos"):
-        import desfechos_sus as ds
-        acomp = municipios_acompanhados(ler("populacao_censo2022.json") or {})
-        nomes = {str(r["codigo_ibge"]): r for r in ref}
-        for grupo, por_mun in serie_municipal_mensal(sih["arquivos"], acomp, ds.uf_por_codigo(ler)).items():
+    # Internações (SIH/SUS) e óbitos (SIM), mês a mês, pelo município de residência; cada arquivo tem o
+    # nome do desfecho da UF, para o detalhe achá-lo pelo mesmo nome.
+    import coletar_sih
+    import coletar_sim
+    import desfechos_sus as ds
+    acomp = ds.municipios_acompanhados(ler("populacao_censo2022.json") or {})
+    nomes, uf_de = {str(r["codigo_ibge"]): r for r in ref}, ds.uf_por_codigo(ler)
+    for mod, n_parciais, nome_do, texto in (
+            (coletar_sih, 1, lambda g: coletar_sih.DESFECHOS[g][0], "internações do SIH/SUS"),
+            (coletar_sim, coletar_sim.N_PARCIAIS, lambda g: coletar_sim.TOTAL if g == "total" else f"obitos_{g}",
+             "óbitos do SIM por mês de ocorrência")):
+        arq = ler(mod.SAIDA_MUN) or {}
+        if not arq.get("arquivos"):
+            continue
+        for grupo, por_mun in ds.serie_municipal_mensal(arq["arquivos"], acomp, uf_de, mod.MUNICIPAIS, n_parciais).items():
             serie = {"municipios": {c: {**v, "nome": (nomes.get(c) or {}).get("nome"), "uf": (nomes.get(c) or {}).get("uf")}
                                     for c, v in por_mun.items()}}
             t = tempo(serie, {"municipios": {c: v["canal"] for c, v in por_mun.items()}}, ref, mensal=True)
-            gravar(f"saude_municipio/tempo_{DESFECHOS[grupo][0]}.json", {
-                "_governanca": ("Posição de cada município de 100.000 habitantes ou mais na faixa habitual do mês "
-                                "(SIH/SUS, internações por município de residência, 2019–2025 sem 2024), mês a mês "
-                                "desde julho de 2026. 'a' acima do percentil 90, 'd' entre a mediana e ele, 'b' "
-                                "abaixo da mediana, null sem o arquivo do mês lido ou mês ainda parcial (nunca "
-                                "zero). Peso zero."),
-                "fonte": sih.get("sistema"), "gerado_em": sih.get("gerado_em"), **t}, compacto=True)
-
+            gravar(f"saude_municipio/tempo_{nome_do(grupo)}.json", {
+                "_governanca": (f"Posição de cada município de 100.000 habitantes ou mais na faixa habitual do mês ({texto}, "
+                                "por município de residência, 2019–2025 sem 2024), mês a mês desde julho de 2026. "
+                                "'a' acima do percentil 90, 'd' entre a mediana e ele, 'b' abaixo da mediana, null sem o "
+                                "arquivo do mês lido ou mês ainda parcial (nunca zero). Peso zero."),
+                "fonte": arq.get("sistema"), "gerado_em": arq.get("gerado_em"), **t}, compacto=True)
 
 def autoteste() -> int:
     ref = [{"nome": "Brasiléia", "uf": "AC", "codigo_ibge": 1200104}, {"nome": "Manaus", "uf": "AM", "codigo_ibge": 1302603}]
