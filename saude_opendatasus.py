@@ -143,7 +143,7 @@ def pedacos_do_zip(bruto: bytes, pedaco: int = 1 << 20):
 
 
 def agregar_por_uf_semana(linhas, ano: int, col_uf: str, col_semana: str,
-                          referencia=None, filtro=None) -> dict:
+                          referencia=None, filtro=None, col_mun=None, municipios=None) -> dict:
     """{'BR'|UF: {'AAAA-SS': n}}, contando uma linha por ocorrência. Função pura.
 
     Linha sem UF ou sem semana legível **não é contada e não é adivinhada**: ela existe no banco e
@@ -151,7 +151,10 @@ def agregar_por_uf_semana(linhas, ano: int, col_uf: str, col_semana: str,
     nacional é a soma das UFs, e por isso ele também não as inclui.
 
     `filtro(linha) -> bool` deixa cada coletor dizer o que conta, sem que esta função saiba de
-    classificação de caso — que é regra de desfecho, não de leitura."""
+    classificação de caso — que é regra de desfecho, não de leitura.
+
+    17/11/2026: com `col_mun` e `municipios` ({código de 6 dígitos: {}}), a mesma passada conta também
+    por município de residência, só nos códigos que o dicionário traz — o arquivo é lido uma vez."""
     out = defaultdict(lambda: defaultdict(int))
     for linha in linhas:
         if filtro is not None and not filtro(linha):
@@ -168,6 +171,10 @@ def agregar_por_uf_semana(linhas, ano: int, col_uf: str, col_semana: str,
         chave = f"{ano}-{se:02d}"
         out[uf][chave] += 1
         out["BR"][chave] += 1
+        if col_mun and municipios is not None:
+            cod = re.sub(r"\D", "", str(linha.get(col_mun) or ""))[:6]
+            if cod in municipios:
+                municipios[cod][chave] = municipios[cod].get(chave, 0) + 1
     return {loc: dict(v) for loc, v in out.items()}
 
 

@@ -61,17 +61,6 @@ function semanaEmDatas(ano, chave, curta) {
   // agosto de 2026". Sem ela saía "na semana 16 a 22", que tropeça na leitura.
   return (curta ? MonitorSemana.curta(a, n) : MonitorSemana.porExtenso(a, n, true)) || '';
 }
-/* O rótulo do eixo: o nome do mês na PRIMEIRA semana dele, vazio nas outras. */
-function rotulosDeMes(ano, chaves) {
-  let ultimo = null;
-  return (chaves || []).map(k => {
-    const mes = window.MonitorSemana
-      ? MonitorSemana.mesDaSemana(Number(ano), Number(String(k).split('-')[1])) : null;
-    if (!mes || mes === ultimo) return '';
-    ultimo = mes;
-    return mes;
-  });
-}
 
 // 14/09/2026: chikungunya — mesmos quatro arquivos do painel, com prefixo chik_ (coletar_desfechos_saude.py --doenca chikungunya).
 // Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
@@ -439,7 +428,6 @@ const FAMILIA_DO_DESFECHO = {dengue: 'calor', chikungunya: 'calor', internacoes_
   diarreias: 'chuva', leptospirose: 'chuva', hepatite_a: 'chuva', internacoes_desidratacao: 'chuva'};
 const corDaFaixa = d => MonitorMapas.PALETA.familia[FAMILIA_DO_DESFECHO[d.desfecho]] || MonitorMapas.PALETA.serie_habitual.faixa;
 let DESFECHOS_LIDOS = [], DESFECHO_ESCOLHIDO = null, DESF_CATALOGO = null;
-const __graficoDesfecho = {};
 
 /* "2026-08" → "agosto de 2026"; "2026-33" → a semana em datas (a palavra não chega ao leitor). */
 function periodoEmPalavras(chave, cadencia) {
@@ -461,7 +449,7 @@ function periodoCompacto(chave, cadencia) {
 
 /* A linha dos períodos recentes sobre a faixa habitual, em SVG: polígono da faixa na cor da família,
    linha em tinta, último ponto em argila. Sem eixo e sem número: quem mede é o cartão. */
-function serieEmSvg(valores, faixas, rotulo, estado, corFaixa) {
+function serieEmSvg(valores, faixas, rotulo, estado, corFaixa, marcas) {
   const L = 240, A = 48, n = valores.length;
   if (n < 2) return '';
   const tetos = faixas.map(f => (f && f.p90) || 0);
@@ -482,6 +470,12 @@ function serieEmSvg(valores, faixas, rotulo, estado, corFaixa) {
     + (ultimo == null ? '' : '<line x1="' + (L - 1) + '" x2="' + (L - 1) + '" y1="' + (y(ultimo) - 4)
        + '" y2="' + (y(ultimo) + 4) + '" stroke="' + (estado === 'acima' ? FAIXA_COR.acima : FAIXA_COR.dentro)
        + '" stroke-width="2"></line>')
+    /* 17/11/2026 (mapa que anda no tempo): o período escolhido é um traço pontilhado e cada período
+       acima da faixa, um traço curto em argila — traço, não ponto, pela mesma razão do último. */
+    + (marcas && marcas.cursor != null ? '<line x1="' + x(marcas.cursor) + '" x2="' + x(marcas.cursor) + '" y1="0" y2="' + A
+       + '" stroke="' + MonitorMapas.cor('vazio') + '" stroke-width="1" stroke-dasharray="2 2"></line>' : '')
+    + (marcas && marcas.acima ? marcas.acima.map((a, i) => !a ? '' : '<line x1="' + x(i) + '" x2="' + x(i) + '" y1="' + (y(valores[i]) - 4)
+       + '" y2="' + (y(valores[i]) + 4) + '" stroke="' + FAIXA_COR.acima + '" stroke-width="2"></line>').join('') : '')
     + '</svg>';
 }
 
@@ -502,10 +496,15 @@ function recorteRecente(d, uf) {
    a precisão do rótulo varia com o tamanho do valor, e só `decBR` decide por ela. */
 function posicaoNaFaixa(d, uf) {
   const c = ((d.ultimo || {})[uf] || {}).consolidado;
-  const f = c && ((d.faixa_habitual || {})[uf] || {})[String(c.periodo).split('-')[1]];
-  if (!f || f.p90 == null) return null;
+  return c ? posicaoNoPeriodo(d, uf, c.periodo, c.por_100mil) : null;
+}
+/* A mesma conta para qualquer período da série: o mapa que anda no tempo e as linhas por estado. */
+function posicaoNoPeriodo(d, uf, periodo, valor) {
+  const v0 = valor != null ? valor : (((d.por_100mil || {})[uf]) || {})[periodo];
+  const f = ((d.faixa_habitual || {})[uf] || {})[String(periodo).split('-')[1]];
+  if (v0 == null || !f || f.p90 == null) return null;
   const uma = x => Number(String(decBR(x)).replace(/\./g, '').replace(',', '.'));
-  const v = uma(c.por_100mil);
+  const v = uma(v0);
   return {posicao: v > uma(f.p90) ? 'acima' : (v < uma(f.mediana) ? 'abaixo' : 'dentro'), mediana: f.mediana, p90: f.p90};
 }
 
@@ -544,49 +543,6 @@ function cartaoDesfecho(d, uf) {
     + '<p class="cartao-numero-fonte">' + rodape + '</p></div>';
 }
 
-/* A posição de cada UF na faixa habitual da semana do PRÓPRIO valor. O mapa, a frase de leitura e a
-   lista leem estas mesmas contas (`posicaoNaFaixa`, a mesma do cartão e da consulta), e o "acima" do
-   mapa é o `ufs_acima_faixa` do topo: nenhum número é recalculado em dois lugares. */
-function posicoesDasUFs(d) {
-  const r = {acima: [], dentro: [], abaixo: [], sem: []};
-  UFS.forEach(u => { const p = posicaoNaFaixa(d, u); r[p ? p.posicao : 'sem'].push(u); });
-  return r;
-}
-
-/* O mapa do detalhe pinta a posição de cada estado na sua faixa (acima, dentro ou abaixo), nas três
-   cores da posição; a taxa bruta fica na ficha. Estado sem período fechado ou sem faixa fica em
-   sem-dado, e a legenda nomeia a classe — nunca zero. */
-function pintarMapaDoDesfecho(d, pos) {
-  const svgId = 'mapaDesfecho';
-  if (!document.getElementById(svgId) || !BR_GEOJSON) return;
-  const cor = MonitorMapas.PALETA.posicao;
-  const lugar = {};
-  ['acima', 'dentro', 'abaixo'].forEach(k => pos[k].forEach(u => { lugar[u] = k; }));
-  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  MonitorMapas.ufs(ctx, svgId, u => cor[lugar[u]] || MonitorMapas.NEUTRA, u => {
-    const c = ((d.ultimo || {})[u] || {}).consolidado;
-    if (!lugar[u] || !c) return esc(textoSaude('saude.observado.registram.detalhe.sem_periodo'));
-    const f = posicaoNaFaixa(d, u);
-    return esc(textoSaude('saude.observado.registram.detalhe.ficha', {n: _qtdCartao(c.valor), unidade: d.unidade, taxa: decBR(c.por_100mil)}))
-      + '<br><span class="posicao posicao--' + f.posicao + '">' + esc(textoSaude('saude.posicao.' + f.posicao)) + '</span> '
-      + esc(textoSaude('saude.observado.registram.detalhe.faixa', {mediana: decBR(f.mediana), p90: decBR(f.p90)}))
-      + '<br>' + esc(textoSaude('saude.observado.registram.detalhe.periodo_' + (d.periodo === 'semana' ? 'semana' : 'mes'),
-          {datas: periodoEmPalavras(c.periodo, d.periodo), mes: periodoEmPalavras(c.periodo, d.periodo)}));
-  });
-  MonitorMapas.legenda('legMapaDesfecho', ['acima', 'dentro', 'abaixo'].map(k => ({cor: cor[k],
-      rotulo: textoSaude('saude.posicao.' + k) + ' · ' + textoSaude('saude.observado.registram.detalhe.contagem', {n: pos[k].length})}))
-    .concat([{cor: MonitorMapas.NEUTRA, rotulo: textoSaude('saude.observado.registram.detalhe.sem_periodo') + ' · '
-      + textoSaude('saude.observado.registram.detalhe.contagem', {n: pos.sem.length})}]));
-  /* A lista recolhida é a alternativa acessível do mapa: os estados acima primeiro. */
-  const lista = document.getElementById('dlDesfechoUF');
-  if (lista) lista.innerHTML = ['acima', 'dentro', 'abaixo', 'sem'].map(k => pos[k].map(u => {
-    const c = ((d.ultimo || {})[u] || {}).consolidado;
-    return '<dt>' + esc(NOME_UF[u] || u) + '</dt><dd>' + (c ? esc(decBR(c.por_100mil)) + ' ' + esc(d.unidade) + ' por 100 mil habitantes'
-      + (k === 'sem' ? '' : ' · <span class="posicao posicao--' + k + '">' + esc(textoSaude('saude.posicao.' + k)) + '</span>')
-      : esc(textoSaude('saude.observado.registram.detalhe.sem_periodo'))) + '</dd>';
-  }).join('')).join('');
-}
-
 function pintarDesfechos() {
   const grade = document.getElementById('gradeDesfechos');
   const seletor = document.getElementById('ufDesfechos');
@@ -595,7 +551,7 @@ function pintarDesfechos() {
   const comDetalhe = DESFECHOS_LIDOS.filter(EM_EVIDENCIA);
   if (!comDetalhe.some(d => d.desfecho === DESFECHO_ESCOLHIDO)) DESFECHO_ESCOLHIDO = (comDetalhe[0] || {}).desfecho || null;
   grade.innerHTML = DESFECHOS_LIDOS.map(d => cartaoDesfecho(d, uf)).join('');
-  pintarDetalhe(comDetalhe.find(d => d.desfecho === DESFECHO_ESCOLHIDO), uf);
+  pintarDetalhe(comDetalhe.find(d => d.desfecho === DESFECHO_ESCOLHIDO));
 }
 
 /* Um ouvinte na grade, não um por cartão: a grade se repinta inteira a cada troca de território. */
@@ -607,28 +563,147 @@ function escolherDesfecho(ev) {
   pintarDesfechos();
 }
 
-/* O ano do canal endêmico: o ano do último valor fechado, mês a mês, sobre a faixa habitual da
-   época (mediana a p90 de 2019 a 2025), com o ano anterior em linha fina e os períodos que ainda
-   recebem registro tracejados. O eixo é do ano mostrado, não do pico de anos passados. */
-function dadosDoAno(d, uf) {
-  const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
-  const parciais = new Set(d.parcial || []);
-  const c = ((((d.ultimo || {})[uf] || {}).consolidado) || {}).periodo || Object.keys(serie).sort().filter(k => !parciais.has(k)).pop() || '';
-  const ano = Number(String(c).split('-')[0]) || null;
-  const posicoes = Object.keys(faixas).sort();
-  const de = (a, p) => a == null ? null : (serie[a + '-' + p] ?? null);
-  const fechado = p => parciais.has(ano + '-' + p) ? null : de(ano, p);
-  const ultimoFechado = posicoes.filter(p => fechado(p) != null).pop();
-  return {ano, posicoes, faixas, parciais,
-    faixaAlta: posicoes.map(p => faixas[p].p90 ?? null), faixaBaixa: posicoes.map(p => faixas[p].mediana ?? null),
-    atual: posicoes.map(fechado), anterior: posicoes.map(p => de(ano && ano - 1, p)),
-    incompleto: posicoes.map(p => (parciais.has(ano + '-' + p) || p === ultimoFechado) ? de(ano, p) : null)};
+/* 17/11/2026 (editoria, 16/11: "o mapa dos municípios e os estados ao lado"): o detalhe anda no tempo,
+   do marco zero do ciclo (Boletim nº 1, 29/06/2026) ao último período fechado. O mapa mostra a posição
+   de cada lugar na faixa habitual do período escolhido — os municípios, onde a fonte os traz; os
+   estados, onde não — e ao lado cada estado tem a sua linha, com o mesmo período marcado. Nenhuma conta
+   nova: a posição é `posicaoNoPeriodo`, a mesma do cartão; a dos municípios vem pronta do gerador. */
+const INICIO_DO_CICLO = '2026-06-29';
+const TEMPO = {d: null, idx: 0, regua: 'faixa', relogio: 0, mun: {}};
+
+/* Os períodos do ciclo que a série traz fechados: a semana que contém 29/06 em diante, ou de julho em diante. */
+function periodosDoCiclo(d) {
+  const parciais = new Set(d.parcial || []), chaves = new Set();
+  Object.values(d.por_100mil || {}).forEach(s => Object.keys(s || {}).forEach(k => chaves.add(k)));
+  const ultimos = Object.values(d.ultimo || {}).map(u => ((u || {}).consolidado || {}).periodo).filter(Boolean).sort();
+  const fim = ultimos[ultimos.length - 1];
+  const inicio = d.periodo === 'semana' ? '2026-' + String(MonitorSemana.semanaDaData(INICIO_DO_CICLO)).padStart(2, '0') : '2026-07';
+  return [...chaves].filter(k => k >= inicio && (!fim || k <= fim) && !parciais.has(k)).sort();
+}
+
+const domingoDoPeriodo = per => { const r = MonitorSemana.semanaParaDatas(Number(per.split('-')[0]), Number(per.split('-')[1]));
+  return r ? r.inicio.toISOString().slice(0, 10) : null; };
+
+async function municipiosNoTempo(d) {
+  if (!(d.desfecho in TEMPO.mun)) TEMPO.mun[d.desfecho] = await fetch('data/saude_municipio/tempo_' + d.desfecho + '.json')
+    .then(r => (r.ok ? r.json() : null)).catch(() => null);
+  return TEMPO.mun[d.desfecho];
+}
+
+const NIVEL_COR = () => ({1: MonitorMapas.COR['sem-dado'], 2: MonitorMapas.COR.areia, 3: MonitorMapas.COR.ambar, 4: MonitorMapas.COR.argila});
+
+function pintarTempo() {
+  const d = TEMPO.d, pers = d ? periodosDoCiclo(d) : [];
+  if (!d || !BR_GEOJSON) return;
+  const controles = ['periodoDesfecho', 'tocarDesfecho'].map(id => document.getElementById(id));
+  controles.forEach(el => { el.disabled = !pers.length; });
+  if (!pers.length) {
+    /* Série sem período fechado depois do marco zero: lacuna declarada, com o último período que existe. */
+    const ult = ((d.ultimo || {}).BR || {}).consolidado || {};
+    d3.select('#mapaDesfecho').selectAll('g.municipios-tempo').remove();
+    MonitorMapas.ufs(MonitorMapas.contexto(BR_GEOJSON, 480, 460), 'mapaDesfecho', () => MonitorMapas.NEUTRA,
+      () => esc(textoSaude('saude.observado.registram.detalhe.sem_periodo')));
+    MonitorMapas.legenda('legMapaDesfecho', []);
+    document.getElementById('reguaDesfecho').hidden = true;
+    document.getElementById('rotuloPeriodoDesfecho').textContent = '';
+    document.getElementById('linhasDesfecho').innerHTML = '';
+    document.getElementById('dlDesfechoUF').innerHTML = '';
+    mostrarFrase(document.getElementById('leituraDesfecho'), textoSaude('saude.observado.registram.detalhe.sem_ciclo',
+      {periodo: ult.periodo ? periodoEmPalavras(ult.periodo, d.periodo) : textoSaude('saude.observado.registram.detalhe.sem_periodo')}));
+    return;
+  }
+  TEMPO.idx = Math.max(0, Math.min(TEMPO.idx, pers.length - 1));
+  const per = pers[TEMPO.idx], semanal = d.periodo === 'semana', cor = MonitorMapas.PALETA.posicao;
+  const quando = periodoEmPalavras(per, d.periodo);
+  const T = (id, v) => textoSaude('saude.observado.registram.detalhe.' + id, v);
+  const deslizador = document.getElementById('periodoDesfecho');
+  deslizador.max = String(pers.length - 1); deslizador.value = String(TEMPO.idx);
+  deslizador.setAttribute('aria-valuetext', quando);
+  document.getElementById('rotuloPeriodoDesfecho').textContent = semanal ? T('na_semana', {datas: quando}) : quando;
+  const pos = {acima: [], dentro: [], abaixo: [], sem: []};
+  UFS.forEach(u => { const p = posicaoNoPeriodo(d, u, per); pos[p ? p.posicao : 'sem'].push(u); });
+  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
+  const M = TEMPO.mun[d.desfecho], k = M && semanal ? M.semanas.indexOf(domingoDoPeriodo(per)) : -1;
+  const regua = document.getElementById('reguaDesfecho');
+  // A régua do nível só existe onde a fonte publica nível (InfoDengue); SRAG não tem.
+  regua.hidden = !(M && k >= 0 && M.municipios.some(m => m.nv.some(v => v != null)));
+  if (regua.hidden) TEMPO.regua = 'faixa';
+  regua.querySelectorAll('[data-regua]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.regua === TEMPO.regua)));
+  const ficha = u => { const p = posicaoNoPeriodo(d, u, per);
+    return p ? '<span class="posicao posicao--' + p.posicao + '">' + esc(textoSaude('saude.posicao.' + p.posicao)) + '</span> '
+      + esc(T('faixa', {mediana: decBR(p.mediana), p90: decBR(p.p90)})) : esc(T('sem_periodo')); };
+  let leitura;
+  if (M && k >= 0) {
+    /* Municípios: os estados ficam neutros por baixo, para o ponto ser a única cor do mapa. */
+    MonitorMapas.ufs(ctx, 'mapaDesfecho', () => MonitorMapas.COR['osso-claro'], ficha);
+    const nivel = TEMPO.regua === 'nivel', NC = NIVEL_COR(), P = {a: 'acima', d: 'dentro', b: 'abaixo'};
+    const itens = M.municipios.map(m => ({lat: m.lat, lon: m.lon, nome: m.nome, uf: m.uf, p: m.p[k], nv: m.nv[k]}))
+      .sort((a, b) => (nivel ? (a.nv || 0) - (b.nv || 0) : (a.p === 'a') - (b.p === 'a')));
+    MonitorMapas.pontos(ctx, 'mapaDesfecho', itens, {classe: 'municipios-tempo', opacidade: 1,
+      r: x => (nivel ? (x.nv >= 3 ? 5 : 2.5) : (x.p === 'a' ? 5 : 2.5)),
+      cor: x => (nivel ? (NC[x.nv] || MonitorMapas.NEUTRA) : (cor[P[x.p]] || MonitorMapas.NEUTRA)),
+      rotulo: x => '<strong>' + esc(x.nome) + ' (' + x.uf + ')</strong><br>' + esc(nivel
+        ? (x.nv ? T('nivel', {n: x.nv}) : T('sem_periodo')) : (x.p ? textoSaude('saude.posicao.' + P[x.p]) : T('sem_periodo')))});
+    const n = c => M.municipios.filter(m => m.p[k] === c).length;
+    MonitorMapas.legenda('legMapaDesfecho', nivel
+      ? [4, 3, 2, 1].map(v => ({cor: NC[v], rotulo: T('nivel', {n: v})}))
+      : [['a', 'acima'], ['d', 'dentro'], ['b', 'abaixo']].map(([c, nome]) => ({cor: cor[nome],
+          rotulo: textoSaude('saude.posicao.' + nome) + ' · ' + T('contagem_mun', {n: n(c)})})));
+    leitura = T('frase_municipios', {quando: quando, acima: n('a'), total: M.municipios.length, estados: pos.acima.length});
+  } else {
+    d3.select('#mapaDesfecho').selectAll('g.municipios-tempo').remove();
+    const lugar = {}; ['acima', 'dentro', 'abaixo'].forEach(c => pos[c].forEach(u => { lugar[u] = c; }));
+    MonitorMapas.ufs(ctx, 'mapaDesfecho', u => cor[lugar[u]] || MonitorMapas.NEUTRA, ficha);
+    MonitorMapas.legenda('legMapaDesfecho', ['acima', 'dentro', 'abaixo'].map(c => ({cor: cor[c],
+      rotulo: textoSaude('saude.posicao.' + c) + ' · ' + T('contagem', {n: pos[c].length})}))
+      .concat([{cor: MonitorMapas.NEUTRA, rotulo: T('sem_periodo') + ' · ' + T('contagem', {n: pos.sem.length})}]));
+    leitura = T(semanal ? 'frase_estados_semana' : 'frase_estados_mes', {quando: quando, acima: pos.acima.length});
+  }
+  mostrarFrase(document.getElementById('leituraDesfecho'), leitura);
+  /* As linhas: Brasil e os 27 estados em ordem alfabética, cada um na sua escala, o período escolhido marcado. */
+  document.getElementById('linhasDesfecho').innerHTML = ['BR'].concat(UFS.slice().sort()).map(u => {
+    const serie = (d.por_100mil || {})[u] || {}, faixas = (d.faixa_habitual || {})[u] || {};
+    const p = posicaoNoPeriodo(d, u, per), nome = u === 'BR' ? 'Brasil' : NOME_UF[u];
+    return '<div class="linha-estado' + (p && p.posicao === 'acima' ? ' linha-estado--acima' : '') + '"><span class="linha-estado-nome">'
+      + esc(u === 'BR' ? 'Brasil' : u) + '</span>'
+      + serieEmSvg(pers.map(x => serie[x] ?? null), pers.map(x => faixas[String(x).split('-')[1]] || null),
+        T('linha_aria', {territorio: nome, quando: quando}), p && p.posicao, corDaFaixa(d),
+        {cursor: TEMPO.idx, acima: pers.map(x => (posicaoNoPeriodo(d, u, x) || {}).posicao === 'acima')}) + '</div>';
+  }).join('');
+  const lista = document.getElementById('dlDesfechoUF');
+  if (lista) lista.innerHTML = ['acima', 'dentro', 'abaixo', 'sem'].map(c => pos[c].map(u => {
+    const v = ((d.por_100mil || {})[u] || {})[per];
+    return '<dt>' + esc(NOME_UF[u] || u) + '</dt><dd>' + (v != null ? esc(decBR(v)) + ' ' + esc(d.unidade) + ' por 100 mil habitantes'
+      + (c === 'sem' ? '' : ' · <span class="posicao posicao--' + c + '">' + esc(textoSaude('saude.posicao.' + c)) + '</span>')
+      : esc(T('sem_periodo'))) + '</dd>';
+  }).join('')).join('');
+}
+
+function tocarTempo() {
+  const b = document.getElementById('tocarDesfecho'), pers = TEMPO.d ? periodosDoCiclo(TEMPO.d) : [];
+  clearInterval(TEMPO.relogio);
+  if (b.getAttribute('aria-pressed') === 'true') { b.setAttribute('aria-pressed', 'false'); return; }
+  b.setAttribute('aria-pressed', 'true'); TEMPO.idx = 0; pintarTempo();
+  TEMPO.relogio = setInterval(() => {
+    if (TEMPO.idx >= pers.length - 1) { clearInterval(TEMPO.relogio); b.setAttribute('aria-pressed', 'false'); return; }
+    TEMPO.idx++; pintarTempo();
+  }, 900);
+}
+
+function ligarControlesDoTempo() {
+  const fig = document.getElementById('boxDesfecho');
+  if (!fig || fig.dataset.ligado) return;
+  fig.dataset.ligado = '1';
+  document.getElementById('periodoDesfecho').addEventListener('input', ev => { TEMPO.idx = Number(ev.target.value); pintarTempo(); });
+  document.getElementById('tocarDesfecho').addEventListener('click', tocarTempo);
+  document.getElementById('reguaDesfecho').addEventListener('click', ev => {
+    const b = ev.target.closest('[data-regua]'); if (!b) return; TEMPO.regua = b.dataset.regua; pintarTempo(); });
 }
 
 /* O detalhe do cartão escolhido, um por vez: escolher outro troca o conteúdo e a página não cresce. */
-function pintarDetalhe(d, uf) {
-  const fig = document.getElementById('boxDesfecho'), cv = document.getElementById('cDesfecho');
-  if (!fig || !cv || !window.Chart) return;
+async function pintarDetalhe(d) {
+  const fig = document.getElementById('boxDesfecho');
+  if (!fig) return;
   /* Sem desfecho escolhido não há o que detalhar: a figura recolhe, e declara a lacuna na própria
      linha de fonte — sem nomear sistema que não foi lido. Moldura vazia e muda é o pior desfecho. */
   if (!d) {
@@ -637,61 +712,22 @@ function pintarDetalhe(d, uf) {
     return;
   }
   fig.hidden = false;
-  const semanal = d.periodo === 'semana';
-  const A = dadosDoAno(d, uf);
-  const C = window.MonitorCatalogo;
-  const molde = (chave, vals) => (C && C.texto('saude.observado.registram.detalhe.' + chave, vals)) || '';
-  const campo = (id, texto) => { const el = document.getElementById(id); if (el) el.textContent = texto; };
-  const territorio = uf === 'BR' ? 'Brasil' : NOME_UF[uf];
-  const c = ((((d.ultimo || {})[uf] || {}).consolidado) || {});
-  campo('tituloDesfecho', molde('titulo', {desfecho: d.rotulo}));
-  const sub = document.getElementById('legendaDesfecho');
-  if (sub) sub.textContent = c.periodo ? molde(semanal ? 'subtitulo_semana' : 'subtitulo_mes',
-    {territorio: territorio, datas: periodoEmPalavras(c.periodo, d.periodo), mes: periodoEmPalavras(c.periodo, d.periodo)}) : territorio;
-  /* A frase de leitura: o país (ou o estado escolhido) e a contagem dos 27, cada posição na sua cor.
-     Os pedaços entram por marcadores e são trocados depois de escapados, para o catálogo escrever a frase inteira. */
-  const pos = posicoesDasUFs(d);
-  const p = posicaoNaFaixa(d, uf);
-  const span = (k, texto) => '<span class="posicao posicao--' + k + '">' + esc(texto) + '</span>';
-  const parte = k => molde('n_' + k, {k: pos[k].length});
-  const frase = esc(molde('frase', {territorio: territorio, posicao: '\u0001p', acima: '\u0001a', dentro: '\u0001d', abaixo: '\u0001b'}))
-    .replace('\u0001p', p ? span(p.posicao, textoSaude('saude.posicao.' + p.posicao)) : esc(textoSaude('saude.posicao.sem_faixa')))
-    .replace('\u0001a', span('acima', parte('acima'))).replace('\u0001d', span('dentro', parte('dentro')))
-    .replace('\u0001b', span('abaixo', parte('abaixo')));
-  const leitura = document.getElementById('leituraDesfecho');
-  if (leitura) { leitura.innerHTML = frase; leitura.hidden = !A.ano; }
+  ligarControlesDoTempo();
+  const T = (id, v) => textoSaude('saude.observado.registram.detalhe.' + id, v);
+  const mudou = !TEMPO.d || TEMPO.d.desfecho !== d.desfecho;
+  TEMPO.d = d;
+  const M = d.periodo === 'semana' ? await municipiosNoTempo(d) : null;
+  if (mudou) {
+    clearInterval(TEMPO.relogio); document.getElementById('tocarDesfecho').setAttribute('aria-pressed', 'false');
+    TEMPO.idx = periodosDoCiclo(d).length - 1; TEMPO.regua = 'faixa';
+  }
+  document.getElementById('tituloDesfecho').textContent = T(M ? 'titulo_municipios' : 'titulo', {desfecho: d.rotulo});
+  document.getElementById('legendaDesfecho').textContent = T(M ? 'subtitulo_municipios' : 'subtitulo_estados', {n: M ? M.municipios.length : 0});
   const ultimoBR = ((d.ultimo || {}).BR || {}).consolidado || {};
-  campo('notaDesfecho', molde('legenda', {periodo: periodoCompacto(ultimoBR.periodo, d.periodo),
-    parciais: (d.parcial || []).length ? molde('parciais', {n: (d.parcial || []).length}) : molde('parciais_nenhum')}));
-  /* Eixo: meses, como manda a régua do site; o tooltip traz o período por extenso. */
-  const MES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-  const rotulos = !A.ano ? [] : semanal ? rotulosDeMes(A.ano, A.posicoes.map(x => A.ano + '-' + x)) : A.posicoes.map(x => MES[Number(x) - 1].slice(0, 3));
-  const titulo = it => { const x = A.posicoes[it[0].dataIndex]; return semanal ? semanaEmDatas(A.ano, A.ano + '-' + x, false) : MES[Number(x) - 1] + ' de ' + A.ano; };
-  const fam = corDaFaixa(d), ink = MonitorMapas.cor('vazio');
-  const linha = (label, data, extra) => Object.assign({type: 'line', label: label, data: data, pointRadius: 0, order: 1}, extra);
-  MonitorMapas.padraoGraficos(window.Chart);
-  if (__graficoDesfecho.g && typeof __graficoDesfecho.g.destroy === 'function') __graficoDesfecho.g.destroy();
-  __graficoDesfecho.g = new Chart(cv, {data: {labels: rotulos, datasets: [
-      linha(molde('leg_ano', {ano: String(A.ano)}), A.atual, {borderColor: ink, borderWidth: 2}),
-      linha(molde('leg_ano', {ano: String((A.ano || 0) - 1)}), A.anterior, {borderColor: MonitorMapas.COR.muted, borderWidth: 1, order: 2}),
-      linha(molde(semanal ? 'leg_incompleto_semana' : 'leg_incompleto_mes'), A.incompleto, {borderColor: ink, borderWidth: 2, borderDash: [4, 3]}),
-      /* A faixa é uma FAIXA, não duas linhas: o traço de cima preenche até o de baixo. */
-      linha(molde('leg_faixa'), A.faixaAlta, {fill: '+1', borderColor: fam + '66', backgroundColor: fam + '38', borderWidth: 1, order: 3}),
-      linha(molde('leg_faixa'), A.faixaBaixa, {borderColor: fam + '66', borderWidth: 1, order: 3})]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false,
-      plugins: {legend: {display: false}, tooltip: {callbacks: {title: titulo}}},
-      scales: {x: {grid: {display: false}, ticks: {autoSkip: false, maxRotation: 0}},
-               y: {beginAtZero: true, title: {display: true, text: d.unidade + ' por 100 mil'}}}}});
-  MonitorMapas.legenda('legDesfecho', [
-    {cor: ink, rotulo: molde('leg_ano', {ano: String(A.ano)})},
-    {cor: MonitorMapas.COR.muted, rotulo: molde('leg_ano', {ano: String((A.ano || 0) - 1)})},
-    {cor: fam, rotulo: molde('leg_faixa')},
-    {cor: ink, rotulo: molde(semanal ? 'leg_incompleto_semana' : 'leg_incompleto_mes')}]);
-  pintarMapaDoDesfecho(d, pos);
-  /* O gráfico nasce antes de o mapa ocupar a segunda coluna da figura dupla: sem este ajuste, a
-     tela do Chart.js guarda a largura da figura inteira e passa por cima do mapa. */
-  if (__graficoDesfecho.g && typeof __graficoDesfecho.g.resize === 'function') __graficoDesfecho.g.resize();
-  MonitorMapas.credito('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
+  document.getElementById('notaDesfecho').textContent = T('legenda', {periodo: periodoCompacto(ultimoBR.periodo, d.periodo),
+    parciais: (d.parcial || []).length ? T('parciais', {n: (d.parcial || []).length}) : T('parciais_nenhum')});
+  pintarTempo();
+  MonitorMapas.credito('boxDesfecho', {fontes: [(d.fonte || {}).sistema].concat(M ? [M.fonte] : []), data: d.coletado_em, url: (d.fonte || {}).url});
 }
 
 /* Desfecho em evidência que ainda não tem arquivo na forma comum não vira cartão vazio: a seção
