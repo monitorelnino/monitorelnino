@@ -124,7 +124,10 @@ def peso_da_pista(pista: dict) -> tuple:
 def aberta(pista: dict) -> bool:
     """A pista ainda ocupa a fila? Função pura."""
     status = str(pista.get("status") or "")
-    return not status.startswith(("fechada", "aplicada", "rejeitada", "pista de decreto"))
+    # 17/11/2026: a promovida pelo juiz já tem desfecho; continuava "na fila" e o prazo a fechava como
+    # "sem documento oficial localizado" (103 promovidas) — motivo falso sobre documento lido e aprovado.
+    return (not status.startswith(("fechada", "aplicada", "rejeitada", "pista de decreto", "promovida"))
+            and not (pista.get("juiz") or {}).get("promove"))
 
 
 # Pista encerrada guarda o que a reabertura precisa (endereço, alvo, status, decisão do juiz, tentativas)
@@ -231,6 +234,9 @@ def _autoteste() -> int:
     ok("o plano vence o decreto quando os dois aparecem",
        not e_de_resposta({"titulo": "Com plano de contingência aprovado, cidade decreta emergência"}))
 
+    ok("promovida pelo juiz não ocupa a fila nem vence pelo prazo",
+       not aberta({"status": "pista — na fila", "juiz": {"promove": True}}) and not aberta({"status": "promovida — x"})
+       and aberta({"status": "pista — na fila", "juiz": {"promove": False}}))
     ok("dias na fila em ISO", dias_na_fila({"registrado_em": "2026-09-01"}, "2026-10-03") == 32)
     ok("dias na fila em data brasileira",
        dias_na_fila({"registrado_em": "01/09/2026"}, "2026-10-03") == 32)

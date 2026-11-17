@@ -450,6 +450,7 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
                  "data": v["data"], "julgado_em": hoje.isoformat(),
                  "hash_evidencia": v.get("hash_evidencia")}
     if v["promove"]:
+        p["status"] = f"promovida — o juiz leu o documento e promoveu ({v['categoria']})"
         return "promovida"
     p["status"] = f"pista — recusada pelo juiz: {v['motivo']}"
     return "recusada"

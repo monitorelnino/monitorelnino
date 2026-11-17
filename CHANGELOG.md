@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-17 · #1832 · Canais oficiais fora do sítio da prefeitura
 
-Documento da pasta de planos recebidos pela Defesa Civil do RS (Prepara RS) passa a valer como plano pela origem; data e município seguem conferidos. Portais oficiais de prefeitura fora de .gov.br (atende.net, portaltp, equiplano, prefeitura.rio e outros) passam a ser reconhecidos, e encurtadores de link são resolvidos antes do julgamento. Mesquita/RJ e o plano municipal do Rio voltam ao juiz.
+Documento da pasta de planos recebidos pela Defesa Civil do RS (Prepara RS) passa a valer como plano pela origem; data e município seguem conferidos. Portais oficiais de prefeitura fora de .gov.br (atende.net, portaltp, equiplano, prefeitura.rio e outros) passam a ser reconhecidos, e encurtadores de link são resolvidos antes do julgamento. Mesquita/RJ e o plano municipal do Rio voltam ao juiz. Pista promovida deixa a fila e não é mais fechada pelo prazo como "sem documento".
 
 ## 2026-11-17 · #1831 · Contribuições e Prepara RS chegam ao juiz e ao banco
 
