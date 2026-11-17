@@ -2,29 +2,18 @@
  "_governanca": "Fila de pistas encontradas na imprensa/diários oficiais para promoção humana a registro (§3.2). 'imprensa descobre, nunca registra'. Campo 'triagem' (03/09/2026, só para pistas origem=querido_diario): 'candidato_forte' | 'falso_positivo_provavel' | 'indefinido' — heurística de classificar_pista_civil.py que APENAS ORDENA a fila de revisão; nunca decide sozinha, nunca promove a registro. Toda promoção exige leitura humana do documento primário.",
  "pistas": [
   {
-   "url_final": "https://transparencia.mesquita.rj.gov.br/ver20240713/tmp/PortalServices/PLANODECONTINGENCIA20252026.pdf",
+   "url_final": "https://s3cache.dom.sc.gov.br/atos/2024/08/1724363542_decreto_11539__plano_contingencia_defesa_civil.pdf",
    "tipo": "plano",
-   "alvo": "3302858",
-   "nivel": "C",
-   "data": "2026-11-16",
-   "origem": "contribuicao",
-   "titulo": "Contribuição de leitor (plano)",
-   "origem_do_coletor": "contribuicao",
-   "id": "c65f37b2cb",
-   "municipio_atribuido_antes": {
-    "municipio": null,
-    "uf": null,
-    "ibge": null,
-    "veredito_do_juiz": null
-   },
-   "municipio": "Mesquita",
-   "uf": "RJ",
-   "ibge": "3302858",
-   "atribuicao_corrigida_em": "2026-11-16",
-   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
-   "entrada": "municipio",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
+   "alvo": "4203006",
+   "nivel": "A",
+   "data": "2026-11-15",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "entrada": "uf",
+   "registrado_em": "2026-11-15",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "titulo": "Decreto 11.539 — Plano de Contingência de Defesa Civil de Caçador",
+   "id": "c65f37b2cb"
   },
   {
    "municipio": "Belo Horizonte",
@@ -66077,7 +66066,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Votorantim",
@@ -70304,7 +70294,7 @@
    "reaplicada_em": "reaplicacao da noite",
    "id": "1ff1585ccd",
    "nivel_confianca": "C",
-   "repeticoes": 2,
+   "repeticoes": 3,
    "juiz": {
     "codebook": "1.6 (15/10/2026)",
     "promove": false,
@@ -162522,7 +162512,7 @@
    "tipo": "plano",
    "id": "252a97ae8c",
    "nivel_confianca": "C",
-   "repeticoes": 1,
+   "repeticoes": 2,
    "ultima_busca_em": "2026-11-03",
    "tentativas_de_busca_dirigida": 1,
    "juiz": {
@@ -162575,7 +162565,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Santos",
@@ -162595,7 +162586,7 @@
    "tipo": "plano",
    "id": "e50f29cb88",
    "nivel_confianca": "C",
-   "repeticoes": 1,
+   "repeticoes": 3,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -162644,7 +162635,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Niterói",
@@ -705799,7 +705791,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 2
   },
   {
    "documento_oficial_confirmado": null,
@@ -882529,104 +882522,6 @@
    "repeticoes": 1
   },
   {
-   "url_final": "https://www.defesacivil.mt.gov.br/planejamento-estrategico",
-   "tipo": "plano",
-   "alvo": "MT",
-   "nivel": "B",
-   "data": "2026-09-23",
-   "titulo": "Defesa Civil",
-   "origem": "descoberta",
-   "origem_do_coletor": "descoberta",
-   "id": "c65f37b2cb",
-   "entrada": "uf",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
-  },
-  {
-   "url_final": "https://www.defesacivil.pr.gov.br/Pagina/NOTAS-TECNICA-CONJUNTA-EL-NINO-OSCILACAO-SUL-ENOS-2026",
-   "tipo": "plano",
-   "alvo": "PR",
-   "nivel": "B",
-   "data": "2026-09-23",
-   "titulo": "NOTAS TÉCNICA CONJUNTA EL NIÑO OSCILAÇÃO SUL-ENOS 2026 | COORDENADORIA ESTADUAL DA DEFESA CIVIL",
-   "origem": "descoberta",
-   "origem_do_coletor": "descoberta",
-   "id": "c65f37b2cb",
-   "entrada": "uf",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
-  },
-  {
-   "url_final": "https://www.defesacivil.pr.gov.br/Pagina/Planos-de-Trabalho-Anuais-NICS",
-   "tipo": "plano",
-   "alvo": "PR",
-   "nivel": "B",
-   "data": "2026-09-23",
-   "titulo": "",
-   "origem": "descoberta",
-   "origem_do_coletor": "descoberta",
-   "id": "c65f37b2cb",
-   "entrada": "uf",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
-  },
-  {
-   "url_final": "https://www.defesacivil.pr.gov.br/Pagina/Plano-Estrategico",
-   "tipo": "plano",
-   "alvo": "PR",
-   "nivel": "B",
-   "data": "2026-09-23",
-   "titulo": "",
-   "origem": "descoberta",
-   "origem_do_coletor": "descoberta",
-   "id": "c65f37b2cb",
-   "entrada": "uf",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
-  },
-  {
-   "url_final": "https://www.defesacivil.pr.gov.br/Pagina/Prevencao-de-incendios-na-natureza-PREVINA",
-   "tipo": "plano",
-   "alvo": "PR",
-   "nivel": "B",
-   "data": "2026-09-23",
-   "titulo": "",
-   "origem": "descoberta",
-   "origem_do_coletor": "descoberta",
-   "id": "c65f37b2cb",
-   "entrada": "uf",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
-  },
-  {
-   "url_final": "https://www.defesacivil.pr.gov.br/Pagina/Plano-de-Contingencia-e-Simulado",
-   "tipo": "plano",
-   "alvo": "PR",
-   "nivel": "B",
-   "data": "2026-09-23",
-   "titulo": "",
-   "origem": "descoberta",
-   "origem_do_coletor": "descoberta",
-   "id": "c65f37b2cb",
-   "entrada": "uf",
-   "registrado_em": "2026-11-16",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
-  },
-  {
-   "url_final": "https://s3cache.dom.sc.gov.br/atos/2024/08/1724363542_decreto_11539__plano_contingencia_defesa_civil.pdf",
-   "tipo": "plano",
-   "alvo": "4203006",
-   "nivel": "A",
-   "data": "2026-11-15",
-   "origem": "descoberta",
-   "origem_do_coletor": "descoberta",
-   "entrada": "uf",
-   "registrado_em": "2026-11-15",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
-   "titulo": "Decreto 11.539 — Plano de Contingência de Defesa Civil de Caçador",
-   "id": "c65f37b2cb"
-  },
-  {
    "municipio": "Paty do Alferes",
    "uf": "RJ",
    "ibge": "3303856",
@@ -883112,6 +883007,49 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "uf"
+  },
+  {
+   "municipio": "São Roque",
+   "uf": "SP",
+   "ibge": "3550605",
+   "url": "https://data.queridodiario.ok.org.br/3550605/2026-10-29/59fafdac25d592fd1a30ed32e7c7112efc38a7ce.pdf",
+   "trecho": "do Cláudio”; 38. INDICAÇÃO Nº 857/2026, de 14/10/2026, de autoria do vereador Wanderlei Divino Antunes, que “Indica ao Executivo a adoção de plano de contingência para garantir o acesso do transporte escolar e de serviços essenciais nas estradas rurais durante as chuvas”; 39. INDICAÇÃO Nº 858/2026, de",
+   "titulo": "Diário oficial de São Roque/SP, 2026-10-29 — plano de contingência",
+   "data_publicacao": "2026-10-29",
+   "origem": "querido_diario",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-16",
+   "registrado_em": "2026-11-16",
+   "origem_do_coletor": "querido_diario",
+   "id": "f3c4d50555",
+   "url_final": "https://data.queridodiario.ok.org.br/3550605/2026-10-29/59fafdac25d592fd1a30ed32e7c7112efc38a7ce.pdf",
+   "alvo": "3550605",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "querido_diario"
+  },
+  {
+   "municipio": "Valinhos",
+   "uf": "SP",
+   "ibge": "3556206",
+   "url": "https://data.queridodiario.ok.org.br/3556206/2026-10-16/25d214e09d53bb76b15f355b7d8a0b447b310608.pdf",
+   "trecho": "N° 13.141, DE 16 DE OUTUBRO DE 2026 Dispõe sobre a Operação Chuvas de Verão e Enfrentamento aos Efeitos do El Niño 2026/2027 e institui o Plano de Contingência de Proteção e Defesa Civil (PCPDC). FRANKLIN DUARTE DE LIMA, Prefeito do Município de Valinhos, no uso das atribuições que lhe são conferidas",
+   "titulo": "Diário oficial de Valinhos/SP, 2026-10-16 — plano de contingência",
+   "data_publicacao": "2026-10-16",
+   "origem": "querido_diario",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-16",
+   "registrado_em": "2026-11-16",
+   "origem_do_coletor": "querido_diario",
+   "id": "b23a4e7c55",
+   "url_final": "https://data.queridodiario.ok.org.br/3556206/2026-10-16/25d214e09d53bb76b15f355b7d8a0b447b310608.pdf",
+   "alvo": "3556206",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "querido_diario",
+   "repeticoes": 1
   }
  ],
  "quarentena": {
