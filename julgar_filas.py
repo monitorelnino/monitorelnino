@@ -173,6 +173,21 @@ def recusa_de_leitura_ilegivel(p: dict, juiz: dict) -> bool:
             and str(url_da_pista(p) or "").lower().split("?")[0].endswith((".docx", ".doc", ".odt")))
 
 
+# J22 (17/11/2026): o documento do repositório estadual de planos é plano pela origem. A recusa por natureza ou
+# título de um documento desses, julgada antes da regra, volta uma vez — também a que o prazo fechou.
+REPOSITORIO_COMO_PLANO_DESDE = "2026-11-17"
+MOTIVOS_DE_NATUREZA = ("natureza_duvidosa", "resposta", "titulo_nao_e_plano", "nao_e_instrumento",
+                       "estrutura_de_defesa_civil")
+
+
+def recusa_do_repositorio_antes_do_J22(p: dict, juiz: dict) -> bool:
+    """Recusa por natureza ou título de documento do repositório estadual, julgada antes do J22: volta uma vez."""
+    from atualizar_instrumentos_estaduais import documento_do_repositorio
+    return (not juiz.get("promove") and juiz.get("motivo") in MOTIVOS_DE_NATUREZA
+            and str(juiz.get("julgado_em") or "") < REPOSITORIO_COMO_PLANO_DESDE
+            and documento_do_repositorio(str(url_da_pista(p) or "")))
+
+
 PREFIXO_FECHADA_POR_PRAZO = "fechada — sem documento oficial localizado"
 
 
@@ -201,7 +216,8 @@ def pendente(p: dict, hoje=None) -> bool:
         url = url_da_pista(p)
         if not juiz.get("leu_documento"):
             return bool(url and fonte_oficial(url))
-        return recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
+        return (recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
+                or recusa_do_repositorio_antes_do_J22(p, juiz))
     tentativas = p.get("juiz_tentativas") or []
     if tentativas and not any(tentativa_que_conta(t) for t in tentativas) and tentativas[-1].get("classe") == "tecnica":
         return True     # só falhou com o leitor antigo: volta já, sem esperar o back-off nem ficar persistente
@@ -434,6 +450,7 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
                  "data": v["data"], "julgado_em": hoje.isoformat(),
                  "hash_evidencia": v.get("hash_evidencia")}
     if v["promove"]:
+        p["status"] = f"promovida — o juiz leu o documento e promoveu ({v['categoria']})"
         return "promovida"
     p["status"] = f"pista — recusada pelo juiz: {v['motivo']}"
     return "recusada"
