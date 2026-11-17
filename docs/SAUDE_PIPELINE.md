@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-10 a 2026-11-17 (1485 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-10 a 2026-11-17 (1493 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -35,9 +35,9 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-16 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-16 01:36 | 0 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-17 08:35 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-17 08:48 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-17 07:40 | 494 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-17 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
 | `atualizar_boletins.py` | coletor | 2026-11-15 04:04 | 2 s | — | ok | — |
 | `atualizar_instrumentos_estaduais.py` | coletor | 2026-11-15 05:45 | 84 s | — | **erro** | código de saída 1 |
@@ -95,8 +95,8 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-16 · por canal: we
 | `descobrir_planos.py` | coletor | 2026-11-17 08:13 | 471 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-17 07:16 | 1 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-17 08:13 | 2 s | — | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-17 07:31 | 568 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-11-17 06:16 | 4505 s | — | **erro** | interrompido pelo prazo do elo |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-17 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `julgar_filas.py` | coletor | 2026-11-17 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_saude.py` | coletor | 2026-11-15 23:26 | 892 s | — | ok | — |
 | `julgar_saude_municipal.py` | coletor | 2026-11-16 05:40 | 8409 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-17 07:34 | 4 s | — | ok | — |
@@ -116,12 +116,12 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-16 · por canal: we
 | `node scripts/verificar_texto_publico.js` | coletor | 2026-11-15 06:16 | 38 s | — | ok | — |
 | `preencher_fallback_estatico.py` | coletor | 2026-11-15 06:19 | 0 s | — | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-11-17 07:57 | 6 s | — | ok | — |
-| `processar_contribuicoes.py` | coletor | 2026-11-17 06:04 | 2 s | — | ok | — |
+| `processar_contribuicoes.py` | coletor | 2026-11-17 08:37 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-11-15 16:10 | 0 s | — | **erro** (2 seguidas) | SyntaxError: unterminated string literal (detected at line 1) |
 | `reconferir_instrumentos_federais.py` | coletor | 2026-11-17 07:34 | 0 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-11-17 06:04 | 707 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-17 07:48 | 1 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-17 06:04 | 2 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-11-17 08:37 | 462 s | — | **erro** | interrompido pelo prazo do elo |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-17 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-17 08:37 | 1 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-11-11 03:09 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/pistas.py` | coletor | 2026-11-15 10:00 | 252 s | — | ok | — |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-11-17 07:57 | 2 s | — | ok | — |
