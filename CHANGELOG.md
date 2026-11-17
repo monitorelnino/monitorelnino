@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-17 · #PR · Minuta só na capa
+## 2026-11-17 · #1852 · Minuta só na capa
 
 O juiz recusava como minuta qualquer plano com "consulta pública" ou "minuta" no corpo, como o plano de contingência 2025/2026 do Rio de Janeiro ("permitindo sua consulta pública"). A declaração passa a ser lida só no cabeçalho do documento, e "consulta pública" só como "em" ou "para consulta pública". As 29 pistas recusadas assim voltam ao juiz.
 
