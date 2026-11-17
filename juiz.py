@@ -69,6 +69,8 @@ sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6
 CODEBOOK_VERSAO = "1.8 (30/10/2026)"
 # 15/11/2026: J21 (título no cabeçalho corrido) entra sem subir a versão, porque só alcança o que o J15 recusou
 # (39 documentos, rejulgados por lista: `julgar_filas.py --rejulgar --urls-de`); subir devolveria a fila inteira.
+# 17/11/2026: a declaração de minuta passa a ser lida só no cabeçalho, também sem subir a versão: alcança só as
+# 29 pistas recusadas como minuta, rejulgadas por lista (`julgar_filas.py --rejulgar --ids`).
 # 1.8 (30/10/2026, central): a segunda leva (J14, J16, J19, J20) entra no padrão; a data sobe para devolver à fila
 # o que o 1.8 de 29/10 julgou sem ela. Só J8 e J9 seguem em `propostas`.
 # 1.8 (29/10/2026, central): regras J1–J7, J10, J11 e J15 do rejulgamento de 26/10 passam a ser o juiz (medidas em 28/10:
@@ -153,9 +155,11 @@ RE_APROVACAO_COLEGIADA = re.compile(
 # Condição 3 da decisão: **não ser minuta, rascunho, versão para consulta ou apresentação**. É a
 # trava assimétrica deste caminho — sem ato de aprovação, o que separa o documento publicado de um
 # esboço é o próprio documento dizer que é esboço. Falso positivo aqui creditaria preparação a quem
-# publicou uma minuta.
+# publicou uma minuta. A declaração é a do próprio documento, na capa e no cabeçalho (CABECALHO_18):
+# no corpo, "minuta" e "consulta pública" descrevem outras coisas ("permitindo sua consulta pública",
+# "minuta de decreto em anexo") — o Rio de Janeiro, 2025/2026, foi recusado assim em 17/11/2026.
 RE_MINUTA = re.compile(
-    r"\b(minuta|rascunho|vers[ãa]o\s+preliminar|vers[ãa]o\s+para\s+consulta|consulta\s+p[úu]blica|"
+    r"\b(minuta|rascunho|vers[ãa]o\s+preliminar|vers[ãa]o\s+para\s+consulta|(?:em|para)\s+consulta\s+p[úu]blica|"
     r"em\s+elabora[çc][ãa]o|documento\s+de\s+trabalho|draft|apresenta[çc][ãa]o\s+em\s+slides|"
     r"n[ãa]o\s+aprovado)\b", re.I)
 # Condição 2, primeira parte: o documento identifica o ÓRGÃO do ente. Publicação em domínio oficial
@@ -287,11 +291,12 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
     ok_doc, motivo_doc, provas_doc = e_o_proprio_plano(texto, url)
     if not ok_doc:
         return False, motivo_doc, provas_doc
-    if RE_MINUTA.search(texto or ""):
+    minuta = RE_MINUTA.search(str(texto or "")[:CABECALHO_18])
+    if minuta:
         return False, "minuta_ou_rascunho", {
             "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou "
                        "apresentação",
-            "trecho": trecho_em_volta(texto, RE_MINUTA.search(texto))}
+            "trecho": trecho_em_volta(texto, minuta)}
     orgao = RE_ORGAO_IDENTIFICADO.search(texto or "")
     titulo = RE_TITULO_DE_PLANO.search(texto or "")
     ano = RE_ANO_OU_CICLO.search(texto or "")
@@ -1918,6 +1923,9 @@ def autoteste() -> int:
         ("plano sem ato: versão para consulta não passa",
          plano_sem_ato("PLANO DE CONTINGENCIA — versão para consulta pública, 2026, "
                        "Prefeitura Municipal de X", URL_PDF_DE_PLANO)[1] == "minuta_ou_rascunho"),
+        ("plano sem ato: consulta pública no corpo, fora do cabeçalho, não é minuta",
+         plano_sem_ato(PLANO_PUBLICADO_SEM_ATO + "x" * CABECALHO_18 + " Este documento será acessível, permitindo "
+                       "sua consulta pública, e cita a minuta de decreto em anexo.", URL_PDF_DE_PLANO)[0] is True),
         ("plano sem ato: sem órgão não passa",
          plano_sem_ato("PLANO DE CONTINGENCIA 2026 — procedimentos de resposta", URL_PDF_DE_PLANO)[1]
          == "plano_sem_identificacao"),
