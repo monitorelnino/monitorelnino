@@ -180,7 +180,6 @@ def emissores_no_certificado(der: bytes) -> list:
 
 def completar_cadeia(host: str, porta: int = 443, tempo: int = 20, folha_fn=None, baixar_fn=None) -> bool:
     """Aprende o(s) intermediário(s) que o servidor não envia e monta o abridor do site. True se montou."""
-    antes = len(_APRENDIDOS)
     try:
         if folha_fn:
             der = folha_fn(host, porta)
@@ -208,7 +207,7 @@ def completar_cadeia(host: str, porta: int = 443, tempo: int = 20, folha_fn=None
             _APRENDIDOS[url] = pem
     except Exception:  # noqa: BLE001 — sem o intermediário, a verificação segue recusando como antes
         pass
-    if len(_APRENDIDOS) == antes:
+    if not _APRENDIDOS:                        # o intermediário pode ter sido aprendido com outro site da mesma autoridade
         return False
     ctx = ssl.create_default_context()
     ctx.verify_flags &= ~getattr(ssl, "VERIFY_X509_PARTIAL_CHAIN", 0)   # intermediário aprendido nunca é âncora
