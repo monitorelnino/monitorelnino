@@ -514383,7 +514383,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.alepe.pe.gov.br/audioalepe/plano-de-contingencia-para-enchentes-e-discutido-na-frente-parlamentar-do-rio-tejipio/",
    "alvo": "2613701",
@@ -514434,9 +514434,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "939d47c3e164a7538e5c23c12c3b62807e66bde9b1d305f1ff776e9a150095e7"
+   }
   },
   {
    "municipio": "São Lourenço da Mata",
@@ -521465,7 +521480,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.alepe.pe.gov.br/Flip/pubs/diario-oficial-2026-05-12/Flip.pdf",
    "alvo": "2602803",
@@ -521505,10 +521520,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "1e55831c368e1d559c91e9dbd93506f9ac6a92510e1540fb64e7e0fbe477dd71"
+   }
   },
   {
    "municipio": "São Bento do Una",
@@ -521883,9 +521913,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Brejo da Madre de Deus",
@@ -522560,9 +522596,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Bom Conselho",
@@ -523038,9 +523080,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Águas Belas",
@@ -526778,9 +526826,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "São José do Belmonte",
@@ -527044,7 +527098,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.alepe.pe.gov.br/Flip/pubs/diario-oficial-2026-05-12/Flip.pdf",
    "alvo": "2602001",
@@ -527084,9 +527138,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "1e55831c368e1d559c91e9dbd93506f9ac6a92510e1540fb64e7e0fbe477dd71"
+   }
   },
   {
    "municipio": "Bodocó",
@@ -527992,9 +528061,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Sertânia",
@@ -529228,9 +529303,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "São José do Egito",
@@ -530255,9 +530336,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Cabrobó",
@@ -566064,9 +566151,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Ibimirim",
@@ -566963,9 +567056,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Vicência",
@@ -569172,9 +569271,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Tacaratu",
@@ -569801,9 +569906,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Agrestina",
@@ -573007,7 +573118,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.alepe.pe.gov.br/Flip/pubs/diario-oficial-2026-05-12/Flip.pdf",
    "alvo": "2611705",
@@ -573047,9 +573158,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "1e55831c368e1d559c91e9dbd93506f9ac6a92510e1540fb64e7e0fbe477dd71"
+   }
   },
   {
    "municipio": "Gravatá",
@@ -573979,9 +574105,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "São Joaquim do Monte",
@@ -575125,9 +575257,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Lagoa de Itaenga",
@@ -754480,7 +754618,7 @@
    "nivel": "C",
    "entrada": "uf",
    "registrado_em": "2026-10-30",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
    "sinais": [
@@ -754515,9 +754653,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b8fa708f82adbd2c12bfa7505325404141e018fb66c688f71f4c2e9f9985f218"
+   }
   },
   {
    "municipio": "Cedro de São João",
@@ -754539,7 +754692,7 @@
    "nivel": "C",
    "entrada": "uf",
    "registrado_em": "2026-10-30",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
    "sinais": [
@@ -754574,9 +754727,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "789f001abddcc70e27a4dfb8b5524edc8be962bd37da66307a86dfc0d50c8903"
+   }
   },
   {
    "municipio": "Itabaianinha",
@@ -754598,7 +754766,7 @@
    "nivel": "C",
    "entrada": "uf",
    "registrado_em": "2026-10-30",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
    "sinais": [
@@ -754633,9 +754801,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ea0e7ab99426f402e4e1a3c6ca427e857fe0aa2bb2419bd8d845d00234a10c58"
+   }
   },
   {
    "municipio": "Maruim",
@@ -754657,7 +754840,7 @@
    "nivel": "C",
    "entrada": "uf",
    "registrado_em": "2026-10-30",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
    "sinais": [
@@ -754692,9 +754875,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "bf5acc173743a69eb92fb41bcce854c1d118aa548b3df3d3a35fa5a2165b0cde"
+   }
   },
   {
    "municipio": "Riachuelo",
@@ -754716,7 +754914,7 @@
    "nivel": "C",
    "entrada": "uf",
    "registrado_em": "2026-10-30",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
    "sinais": [
@@ -754751,9 +754949,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "c2662a7b7c801403898079ba46b4bfc458b4ae702912583bc584e3e91366765a"
+   }
   },
   {
    "municipio": "São Francisco",
@@ -885215,7 +885428,7 @@
    "id": "670c7dacac",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885223,7 +885436,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/12/2017",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "301c65dd44fa47a911aebb6c1b51b82314dc00b7faacfd37eb9b1aa122c6d5b2"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/02/PLANO-DE-CONTIGENCIA-2026-BC-ATUALIZADO.pdf",
@@ -885237,7 +885468,7 @@
    "id": "ccef92b12c",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885245,7 +885476,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "74c142d32d685d7b68c363b1c25c7afcd275ade9291bb98db65c579378426122"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/plano-de-contingencia-2026-Tabatinga.pdf",
@@ -885259,7 +885508,7 @@
    "id": "9fef1097d6",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885267,7 +885516,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e43ed2e2dcdf67a16b6b07d3553128a83f60ed6feb9ee488ad6cbe770b88bef7"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/06/Plano-de-Contigencia-PRONTO-2026-1.pdf",
@@ -885281,7 +885548,7 @@
    "id": "072d82eba3",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885289,7 +885556,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "63ecfa61a744afe188d0f0497cb71eb043885f9ffef4ad204a494a68a359924d"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/06/PDF_AJUSTADO_TAMANHO.pdf",
@@ -885303,7 +885588,7 @@
    "id": "a392360049",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885311,7 +885596,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "56a95d79ac73031f97e5e5f07241291c62633b5da9dea97a572b2145055ee20d"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/07/PLANO-DE-CONTIGENCIA2026.pdf",
@@ -885325,7 +885628,7 @@
    "id": "5c638358c5",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885333,7 +885636,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "30/12/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e49326d5d14f4de686cb33d27f4f05dc28b900288f45ec0b68b0fed6e5e3d885"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/05/Plano-de-Contigencia-Defesa-Civil-2026.pdf",
@@ -885347,7 +885668,7 @@
    "id": "d82a3bb40f",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885355,7 +885676,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f7900f1c7ebc42af915a19642a4da2c8324ee7cb941c646e31326813185adc86"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2024/08/PLANO-DE-CONTIGENCIA-MUNICIPAL.pdf",
@@ -885369,7 +885708,7 @@
    "id": "6780790f67",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885379,7 +885718,25 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2024",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "80858335a673df1a64f9829780b25398fc984f8effb7975b75f3e787e7e0f9db"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-2026-2027.pdf",
@@ -885393,7 +885750,7 @@
    "id": "6864b4dadf",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885401,7 +885758,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "954e0195d98ff1b5cc2457da27fcf1417ed1f414e92cb1eead511e58ee16874f"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/06/PLANO-DE-CONTIGENCIA-INUNDACAO-ESTIAGEM-SECA-ENTRE-OUTROS-23-02-2026-1.pdf",
@@ -885415,7 +885790,7 @@
    "id": "dc2f6e30fb",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885423,7 +885798,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "14208154918e6d78870d07cf28544ac5f8d856881ab42aee26b9c86002a0d2d1"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/PLANO-DE-CONTIGENCIA-2026.pdf",
@@ -885437,7 +885830,7 @@
    "id": "ca19cbcecf",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885445,7 +885838,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e4001745f7d0c626c680f1098364766ee4d742791922020a740e855540856c27"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2024/07/PLACON-2024-1.pdf",
@@ -885459,7 +885870,7 @@
    "id": "a0318eb05f",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885469,7 +885880,25 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2024",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "1a04f8ffcf7b598514129f218af08f3651860103ddaf7637c329777258e74189"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2024/03/PLANO-DE-CONTIGENCIA-2024-COARI-AM.pdf",
@@ -885483,7 +885912,7 @@
    "id": "3fab01440d",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885493,7 +885922,25 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2024",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "cefaa3835f96edf18bf1dcb0eee4102674390a1c46eee8e47b98916083767997"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/05/CODAJAS-PLANO-DE-CONTINGENCIA-2026.pdf",
@@ -885507,7 +885954,7 @@
    "id": "86fd364fee",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885515,7 +885962,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "6ffdae5c73cd5da1b7727bf82debcda0440ea56c07c44bd33abf393c43a2255a"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2024/08/PLANO-DE-CONTINGENCIA-MUNICIPAL-PLACON.pdf",
@@ -885529,7 +885994,7 @@
    "id": "21a5d5c7fa",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885539,7 +886004,25 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2024",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "089e8cbcf739aaa2ece89daf7d2797ea6c5ce2d052cc2f42dd99b17110521a10"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/DOC-20260427-WA0048.pdf",
@@ -885553,7 +886036,7 @@
    "id": "eb392d4e4d",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885561,7 +886044,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "6fa66877d101f6eeedab839b73851bbcad2b7d1288895b126a20623874c282a4"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/05/PLANO-DE-CONTIGENCIA-MUNICIPAL-PLANCON-2026.pdf",
@@ -885575,7 +886076,7 @@
    "id": "ffc2186b8a",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885583,7 +886084,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e2fe70922e8273b03fa571780f9379433ce97ce90652271b533b0ca0596766bf"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/Manacapuru-PLANO-DE-CONTINGENCIA-2025.pdf",
@@ -885597,7 +886116,7 @@
    "id": "312bffc4b5",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885605,7 +886124,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2025",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "337d8305335076e368a99444dc780599959293eac08ca990a1d13774f098a608"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-MUNICIPAL-PLACON-2026.pdf",
@@ -885619,7 +886156,7 @@
    "id": "4a67f4df5d",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885627,7 +886164,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "94b81b16adbdf4647850625be06db84254c57b24d87f62be89121de7666686a9"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-MUNICIPIO-DE-MANAQUIRI.pdf",
@@ -885641,7 +886196,7 @@
    "id": "0b715f7ef8",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885649,7 +886204,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "30/03/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "19438a04e0c21c9afd232fb0661485d4886bc1bed743589bc15cc47393b4283b"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/CAREIRO-2.pdf",
@@ -885663,7 +886236,7 @@
    "id": "b4e2250b75",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885671,7 +886244,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "fb49c494d9bad55f269a684745b588703b7fb3f8ba23c72de2e1620b3eb48b8d"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/05/Plano-de-contingencia-2026.pdf",
@@ -885685,7 +886276,7 @@
    "id": "19cedf8968",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885693,7 +886284,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "99a55bf6b05bbfe66820ec56f38550b0d67a0075a192611c03da8a40ea497f63"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/plano_contingencia_itacoatiara.pdf",
@@ -885707,7 +886316,7 @@
    "id": "df803c28ba",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885715,7 +886324,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "370bbb2fe0ace0f13a34baee8d0bef08d3f9c05606f76f62fad86b70a22e4841"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/09/PLANCON_Presidente-Figueiredo_2026_2027_compressed.pdf",
@@ -885729,7 +886356,7 @@
    "id": "0b1fb11ff8",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885737,7 +886364,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "6423b82ab2cfbcebb71113bd0185f0d68fc4497c124ebaf4eb9a078810d47f8f"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/06/Plano-de-Contigencia-RIO-PRETO-DA-EVA-2026.pdf",
@@ -885751,7 +886396,7 @@
    "id": "43c73f769b",
    "entrada": "uf",
    "registrado_em": "2026-11-17",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "nivel_confianca": "B",
    "pontos_confianca": 3,
    "sinais": [
@@ -885759,7 +886404,25 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2021",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0477068e04f3669f9ea4fda44149ce502e25ad7294d083a83cb6abc74453ee1a"
+   }
   },
   {
    "url_final": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/09/PLANO-DE-CONTIGENCIA-SILVES-2026-COMDEC.pdf",
