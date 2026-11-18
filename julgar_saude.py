@@ -70,7 +70,7 @@ RE_COORDENACAO = re.compile(
     r"|grupo\s+condutor|\bGC\s+El\s*Ni[ñn]o"
     r"|gabinete\s+de\s+crise|comit[êe]\s+(?:gestor|de\s+crise|de\s+enfrentamento))", re.I)
 RE_PLANO = re.compile(r"(plano\s+(?:estadual\s+)?(?:de\s+)?(?:conting[êe]ncia|prepara[çc][ãa]o|"
-                      r"a[çc][ãa]o|enfrentamento|resposta))", re.I)
+                      r"a[çc][ãa]o|enfrentamento|resposta|adapta[çc][ãa]o))", re.I)
 # Menção NOMINAL ao ciclo: é o que separa "criado para o ciclo" de "permanente".
 RE_CICLO = re.compile(r"El\s*Ni[ñn]o", re.I)
 RE_REATIVA = re.compile(r"(reativa|reinstitui|prorroga|renova|reconduz)", re.I)
@@ -564,12 +564,13 @@ def risco_do_documento(titulo: str, texto: str) -> tuple:
 
     15/11/2026 (SE): a capa diz "PLANO DE CONTINGÊNCIA … POR DENGUE, CHIKUNGUNYA E ZIKA", mas o título
     lido podia ser o da pista ("Plano de Contingência 2026-2027"). A capa é o documento falando de si;
+    18/11/2026 (RO): a capa é o cabeçalho do juiz (`CABECALHO_18`): a de 1.500 caracteres acabava na lista
+    da equipe e não via "Plano de Adaptação … El Niño", 1.647 caracteres depois do início.
     o corpo (lista de riscos de um plano de outra doença) continua de fora."""
     ok, casou = trata_de_risco_do_ciclo(titulo)
-    return (ok, casou) if ok else trata_de_risco_do_ciclo(str(texto or "")[:CAPA_DO_PLANO])
+    return (ok, casou) if ok else trata_de_risco_do_ciclo(str(texto or "")[:juiz.CABECALHO_18])
 
 
-CAPA_DO_PLANO = 1500
 
 
 # A5-37: `etapa2`/`extrair_data` tomavam a PRIMEIRA data do texto, e o preâmbulo de um ato cita
@@ -1556,6 +1557,12 @@ def autoteste() -> int:
     casos["PI: plano publicado com ações de resposta no corpo não vira `resposta` na etapa 4 (J1)"] = (
         lambda: julgar_camada_saude(_t2, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
         .get("criterios", {}).get("4_natureza", {}).get("ok") is True)
+    _ro = ("GOVERNO DO ESTADO DE RONDÔNIA SECRETARIA DE ESTADO DA SAÚDE — SESAU/RO " + "Fulano de Tal CARGO " * 80
+           + "Plano de Adaptação da Saúde de Rondônia para o Enfrentamento dos Impactos do El Niño — Ciclo 2026–2027 "
+           "Instrumento operacional, articulado ao Plano Estadual de Contingência do Setor Saúde.")
+    casos["RO: capa de equipe antes do título; o título é o do plano de adaptação e o risco do ciclo é lido"] = (
+        lambda: titulo_do_documento(_ro, "", _u).startswith("Plano de Adaptação da Saúde de Rondônia")
+        and risco_do_documento(titulo_do_documento(_ro, "", _u), _ro)[0] is True)
     casos["PI: plano com capa de equipe e lei na base legal passa a etapa 2 quando a pista é o plano"] = (
         lambda: julgar_camada_saude(_t, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
         .get("criterios", {}).get("2_citacao", {}).get("ok") is True)
