@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "15/11/2026",
+ "atualizado_em": "18/11/2026",
  "falhas": [
   {
    "id": "F01",
@@ -1185,6 +1185,32 @@
    ],
    "correcao": "O lote sai em partes pelo primeiro dígito do hash, cada uma abaixo do teto, publicadas uma a uma em workflow próprio (`lote_de_evidencias.yml`); `validar_workflows.py` reprova job acessório dentro de workflow de que um elo depende.",
    "caso_de_teste": "scripts/empacotar_evidencias.py --autoteste (caso das partes) e scripts/validar_workflows.py (job acessório em elo da corrente)"
+  },
+  {
+   "id": "F87",
+   "noite": "2026-11-17→2026-11-18",
+   "titulo": "Pista de imprensa nascia sem data de entrada e vencia no mesmo dia",
+   "sintoma": "`main` vermelha depois da descoberta das 03:53 UTC de 18/11: portão da fila não humana com 4 pistas de imprensa pendentes há mais de 21 dias, gravadas naquela noite.",
+   "causa": "`monitorar_imprensa_regional.registrar` e `monitorar_imprensa_saude.registrar` gravavam a pista sem `registrado_em`; desde 17/11 `pistas.data_da_pista` cai em `data_publicacao`, e a matéria de 2025 ou de maio a julho de 2026 entrava já vencida.",
+   "prova": [
+    "commit da descoberta `249d7560` (18/11 03:53 UTC): 4 pistas sem `registrado_em`, `data_publicacao` anterior a 28/10",
+    "#1856: carimbo na criação; Portões verde (run 6843)"
+   ],
+   "correcao": "Os dois monitores carimbam `registrado_em` ao criar a pista (#1856). Raiz que fica: os dois escrevem a fila por fora de `scripts/pistas.py` (dívida nomeada em `config/escritores_legados.json`); a porta carimbaria sozinha.",
+   "caso_de_teste": "monitorar_imprensa_regional.py --autoteste: pista nasceu sem a data de entrada"
+  },
+  {
+   "id": "F88",
+   "noite": "2026-11-17→2026-11-18",
+   "titulo": "Triagem e anotação de confiança desfaziam uma à outra toda noite",
+   "sintoma": "`data/pistas_imprensa.json` com cerca de 150 mil linhas de diff por noite: 22.825 pistas encerradas perdem `sinais`, `alertas` e `pontos_confianca` na triagem e os recebem de volta na descoberta seguinte.",
+   "causa": "`triar_confianca_pistas.anotar_e_gerar_fila` anotava a fila inteira, inclusive a pista encerrada; `triar_fila.py --aplicar` compacta a encerrada (`limpar_fila_de_pistas.compactar`) e apaga esse texto de trabalho.",
+   "prova": [
+    "`main` 70b2ee5e (18/11): 22.825 de 22.825 encerradas com `sinais`/`alertas`/`pontos_confianca`",
+    "noturno_descoberta.yml roda `triar_confianca_pistas.py`; noturno_triagem.yml roda `scripts/triar_fila.py --aplicar`"
+   ],
+   "correcao": "A anotação pula a encerrada (`limpar_fila_de_pistas.encerrada`, a mesma regra que a verificação da descoberta já usa).",
+   "caso_de_teste": "triar_confianca_pistas.py --autoteste: encerrada não recebe texto de trabalho"
   }
  ]
 }
