@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://diagro.portal.ap.gov.br/image/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://diagro.portal.ap.gov.br/image/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://diagro.portal.ap.gov.br/image/favicon/favicon-16x16.png">
+  <link rel="manifest" href="https://diagro.portal.ap.gov.br/image/favicon/site.webmanifest">
+  <link rel="mask-icon" href="https://diagro.portal.ap.gov.br/image/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#ffffff">
+    <title>DIAGRO - Agência de Defesa e Inspeção Agropecuária do Estado do Amapá</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+  <link rel="preload" as="style" href="https://diagro.portal.ap.gov.br/build/assets/app-DYxsC1Xc.css" /><link rel="preload" as="style" href="https://diagro.portal.ap.gov.br/build/assets/app--EUbBPYk.css" /><link rel="modulepreload" href="https://diagro.portal.ap.gov.br/build/assets/app-daAFPWej.js" /><link rel="stylesheet" href="https://diagro.portal.ap.gov.br/build/assets/app-DYxsC1Xc.css" data-navigate-track="reload" /><link rel="stylesheet" href="https://diagro.portal.ap.gov.br/build/assets/app--EUbBPYk.css" data-navigate-track="reload" /><script type="module" src="https://diagro.portal.ap.gov.br/build/assets/app-daAFPWej.js" data-navigate-track="reload"></script>  <link rel="stylesheet" href="https://diagro.portal.ap.gov.br/components/owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://diagro.portal.ap.gov.br/components/owlcarousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://diagro.portal.ap.gov.br/components/lightbox2/dist/css/lightbox.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #topo,
+    #conteudo,
+    #mapa {
+      scroll-margin-top: 1rem;
+    }
+
+    .modal-dialog {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 35px;
+    }
+
+    .modal-body {
+      position: relative;
+      padding: 0;
+    }
+
+    .btn-close {
+      position: absolute;
+      right: -30px;
+      top: 0;
+    }
+
+    /* Setas de navegação do carrossel de Procurados — na mesma linha das bolinhas */
+    #owl-wanted {
+      position: relative;
+    }
+
+    /* faixa inferior das bolinhas (centralizadas) */
+    #owl-wanted .owl-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2rem;
+      margin-top: 0.75rem;
+    }
+
+    /* barra das setas sobreposta exatamente à faixa das bolinhas */
+    #owl-wanted .owl-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+      /* deixa as bolinhas clicáveis */
+    }
+
+    #owl-wanted .owl-nav button.owl-prev,
+    #owl-wanted .owl-nav button.owl-next {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      transition: background-color 0.2s ease;
+    }
+
+    #owl-wanted .owl-nav button.owl-prev:hover,
+    #owl-wanted .owl-nav button.owl-next:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+
+  
+  <script>
+    (function() {
+      var f = localStorage.getItem('acessibilidade-fonte');
+      if (f) document.documentElement.style.fontSize = parseFloat(f) + 'px';
+    })();
+  </script>
+<!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
+</head>
+
+<body class="antialiased acessibilidade" x-data="{ darkMode: false }" x-init="if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    localStorage.setItem('darkMode', JSON.stringify(true));
+}
+darkMode = JSON.parse(localStorage.getItem('darkMode') ?? 'false');
+$watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  x-bind:class="{ 'dark': darkMode, 'tw-dark': darkMode }" x-cloak>
+
+  <!-- Modal Vídeo -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></span></button>
+          <!-- 16:9 aspect ratio -->
+          <div class="ratio ratio-16x9">
+            <iframe class="embed-responsive-item" src="" id="video" allow="autoplay"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <header id="topo">
+    <div :style="darkMode ? 'background-color: #111827' : 'background-color: #005675'"
+  class="tw-w-full tw-py-3 tw-text-white tw-text-sm">
+  <div class="tw-max-w-[1320px] tw-mx-auto tw-px-4 md:tw-px-6 lg:tw-px-8 tw-flex tw-items-center">
+    <div class="tw-flex tw-items-center tw-flex-1 tw-shrink-0">
+      <a href="https://amapa.gov.br" target="_blank">
+                  <img src="https://diagro.portal.ap.gov.br/image/brasao.png" class="tw-h-[40px]" alt="">
+              </a>
+    </div>
+
+    
+    <div class="tw-hidden md:tw-flex tw-items-center tw-justify-center tw-gap-1">
+      <a href="http://www.transparencia.ap.gov.br/" target="_blank"
+        class="btn tw-text-white tw-border tw-border-white btn-sm"><i class="fa-solid fa-sitemap tw-mr-1"></i>Portal
+        da Transparência</a>
+      <a href="#conteudo" class="btn btn-sm tw-text-white tw-border tw-border-white"
+        aria-label="Ir para o conteúdo principal">
+        <i class="fa-brands fa-creative-commons-nd tw-mr-1"></i>Ir Para o Conteúdo
+      </a>
+      <a href="#mapa" class="btn btn-sm tw-text-white tw-border tw-border-white"
+        aria-label="Ir para o rodapé do site">
+        <i class="fa-solid fa-sitemap tw-mr-1"></i>Mapa do Site
+      </a>
+
+      
+      <a href="/conteudo/acessibilidade"
+        class="tw-hidden lg:tw-inline-block btn tw-text-white tw-border tw-border-white btn-sm"><i
+          class="fa-solid fa-wheelchair tw-mr-1"></i>Acessibilidade</a>
+      <button class="tw-hidden lg:tw-inline-block btn tw-text-white tw-border tw-border-white btn-sm"
+        onClick="fonte('a');"> A+</button>
+      <button class="tw-hidden lg:tw-inline-block btn tw-text-white tw-border tw-border-white btn-sm"
+        onClick="fonte('r');"> A ( )</button>
+      <button class="tw-hidden lg:tw-inline-block btn tw-text-white tw-border tw-border-white btn-sm"
+        onClick="fonte('b');"> A-</button>
+    </div>
+
+    <div class="tw-flex tw-items-center tw-flex-1 tw-justify-end tw-shrink-0">
+      <button type="button" x-bind:class="darkMode ? 'tw-bg-gray-500' : 'tw-bg-gray-200'"
+        x-on:click="darkMode = !darkMode"
+        class="tw-relative tw-inline-flex tw-h-6 tw-w-11 tw-flex-shrink-0 tw-cursor-pointer tw-rounded-full tw-border-2 tw-border-transparent tw-transition-colors tw-duration-200 tw-ease-in-out focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-indigo-500 focus:tw-ring-offset-2"
+        role="switch" aria-checked="false">
+        <span class="tw-sr-only">Dark mode toggle</span>
+        <span x-bind:class="darkMode ? 'tw-translate-x-5 tw-bg-gray-700' : 'tw-translate-x-0 tw-bg-white'"
+          class="tw-pointer-events-none tw-relative tw-inline-block tw-h-5 tw-w-5 tw-transform tw-rounded-full tw-shadow tw-ring-0 tw-transition tw-duration-200 tw-ease-in-out">
+          <span
+            x-bind:class="darkMode ? 'tw-opacity-0 tw-ease-out tw-duration-100' : 'tw-opacity-100 tw-ease-in tw-duration-200'"
+            class="tw-absolute tw-inset-0 tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center tw-transition-opacity"
+            aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-3 tw-w-3 tw-text-orange-500" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+          </span>
+          <span
+            x-bind:class="darkMode ? 'tw-opacity-100 tw-ease-in tw-duration-200' : 'tw-opacity-0 tw-ease-out tw-duration-100'"
+            class="tw-absolute tw-inset-0 tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center tw-transition-opacity"
+            aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-3 tw-w-3 tw-text-white" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div :style="darkMode ? 'background-color: #111827' : 'background-color: #005675'"
+  class="tw-w-full tw-py-2 tw-text-white tw-text-sm lg:tw-hidden">
+  <div
+    class="tw-max-w-[1320px] tw-mx-auto tw-px-4 md:tw-px-6 tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-gap-2">
+    <a href="http://www.transparencia.ap.gov.br/" target="_blank"
+      class="md:tw-hidden btn tw-text-white tw-border tw-border-white btn-sm"><i
+        class="fa-solid fa-circle-info tw-mr-1"></i>Portal da Transparência</a>
+    <a href="#mapa" class="md:tw-hidden btn btn-sm tw-text-white tw-border tw-border-white"
+      aria-label="Ir para o rodapé do site">
+      <i class="fa-solid fa-circle-chevron-down tw-mr-1"></i>Ir Para o Rodapé
+    </a>
+    <a href="/conteudo/acessibilidade" class="btn tw-text-white tw-border tw-border-white btn-sm"><i
+        class="fa-solid fa-wheelchair tw-mr-1"></i>Acessibilidade</a>
+    <button class="btn tw-text-white tw-border tw-border-white btn-sm" onClick="fonte('a');"> A+</button>
+    <button class="btn tw-text-white tw-border tw-border-white btn-sm" onClick="fonte('r');"> A ( )</button>
+    <button class="btn tw-text-white tw-border tw-border-white btn-sm" onClick="fonte('b');"> A-</button>
+  </div>
+</div>
+
+
+<div :style="darkMode ? 'background-color: #4b5563' : 'background-color: #00A97A'"
+  class="tw-w-full tw-text-white tw-text-xs">
+  <div class="tw-max-w-[1320px] tw-mx-auto tw-px-4 md:tw-px-6 lg:tw-px-8 tw-py-5">
+    <div class="tw-flex tw-flex-wrap tw-gap-y-3">
+      <div class="tw-w-1/2 md:tw-w-1/3 tw-flex tw-space-x-2 tw-items-center">
+        <div class="tw-text-white tw-text-2xl"><i class="fa-solid fa-headset"></i></div>
+        <div>
+          <a href="https://diagro.portal.ap.gov.br/canais-de-atendimento" class="tw-no-underline tw-text-white">
+            <div class="tw-font-semibold">CONTATOS</div>
+            Canais de atendimento
+          </a>
+        </div>
+      </div>
+      <div class="tw-w-1/2 md:tw-w-1/3 tw-flex tw-space-x-2 tw-items-center">
+        <div class="tw-text-white tw-text-2xl"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <div class="tw-font-semibold">ATENDIMENTOS</div>
+                      <div>Segunda à Sexta, 07:30h às
+              13:30h</div>
+                  </div>
+      </div>
+      <div class="tw-w-full md:tw-w-1/3 tw-flex tw-items-center tw-mt-3 md:tw-mt-0">
+        <select class="form-select" aria-label="Órgãos do estado..." id="select-company"
+          onchange="location = this.value;">
+          <option selected>Órgãos do estado...</option>
+                      <option value="https://diagro.portal.ap.gov.br">Agência de Defesa e Inspeção Agropecuária do Estado do Amapá</option>
+                      <option value="https://agenciaamapa.portal.ap.gov.br/">Agência de Desenvolvimento Econômico</option>
+                      <option value="https://arsap.portal.ap.gov.br">Agência Reguladora de Serviços Públicos Delegados do Estado do Amapá</option>
+                      <option value="https://www.prodap.ap.gov.br/">Centro de Gestão de Tecnologia da Informação</option>
+                      <option value="http://www.creap.ap.gov.br/">Centro de Reabilitação do Amapá</option>
+                      <option value="https://ceas.portal.ap.gov.br">Conselho Estadual de Assistência Social</option>
+                      <option value="https://cee.portal.ap.gov.br">Conselho  Estadual de Educação</option>
+                      <option value="https://secult.portal.ap.gov.br/pagina/conselho-estadual-de-politica-cultural/publicacoes">Conselho Estadual de Política Cultural</option>
+                      <option value="http://www.ces.ap.gov.br/">Conselho Estadual de Saúde</option>
+                      <option value="https://celgbt.portal.ap.gov.br/">Conselho Estadual Dos Direitos Da População LGBT</option>
+                      <option value="https://cge.portal.ap.gov.br">Controladoria Geral do Estado do Amapá</option>
+                      <option value="https://bombeiros.portal.ap.gov.br/">Corpo de Bombeiros Militar do Amapá</option>
+                      <option value="https://esap.portal.ap.gov.br/">Escola de Saberes Públicos do Estado do Amapá</option>
+                      <option value="https://esp.portal.ap.gov.br/">Escola de Saúde Pública	</option>
+                      <option value="https://fapeap.portal.ap.gov.br/">Fundação de Amparo à Pesquisa do Amapá	</option>
+                      <option value="https://fundesa.portal.ap.gov.br">Fundação de Saúde Amapaense</option>
+                      <option value="https://fundacaomarabaixo.portal.ap.gov.br/">Fundação Estadual de Políticas de Promoção da Igualdade Racial do Amapá</option>
+                      <option value="https://fsa.portal.ap.gov.br/">Fundação Socioeducativa do Amapá</option>
+                      <option value="http://defesacivil.ap.gov.br/">Gabinete de Proteção e Defesa Civil</option>
+                      <option value="https://amapa.gov.br/">Governo do Estado do Amapá</option>
+                      <option value="https://iapen.portal.ap.gov.br/">Instituto de Administração Penitenciária do Amapá</option>
+                      <option value="https://procon.portal.ap.gov.br/">Instituto de Defesa do Consumidor do Amapá</option>
+                      <option value="https://iesp.portal.ap.gov.br/">Instituto De Ensino De Segurança Pública Do Estado Do Amapá</option>
+                      <option value="https://rurap.portal.ap.gov.br">Instituto de extensão, assistência e desenvolvimento rural do Amapá</option>
+                      <option value="http://www.hemoap.ap.gov.br/">Instituto de Hematologia e Hemoterapia do Amapá	</option>
+                      <option value="http://www.ipem.ap.gov.br/">Instituto de Pesos e Medidas do Amapá	</option>
+                      <option value="http://www.iepa.ap.gov.br/">Instituto de Pesquisas Científicas e Tecnológicas do Estado do Amapá	</option>
+                      <option value="https://amapaterras.portal.ap.gov.br/">Instituto de Terras do Estado do Amapá</option>
+                      <option value="https://jucap.portal.ap.gov.br">Junta Comercial do Amapá</option>
+                      <option value="http://museusacaca.ap.gov.br/">Museu Sacaca</option>
+                      <option value="http://policiacientifica.ap.gov.br/">Polícia Cientifica do Estado do Amapá	</option>
+                      <option value="https://policiacivil.portal.ap.gov.br">Polícia Civil do Estado do Amapá</option>
+                      <option value="https://pm.portal.ap.gov.br/">Polícia Militar do Estado do Amapá	</option>
+                      <option value="https://pge.portal.ap.gov.br/">Procuradoria Geral do Estado	</option>
+                      <option value="http://tesouroverde.ap.gov.br/">Programa voltado para o desenvolvimento econômico sustentável no Estado do Amapá	</option>
+                      <option value="https://saude.portal.ap.gov.br/">Secretaria da Saúde	</option>
+                      <option value="https://compras.portal.ap.gov.br/">Secretaria de Compras e Licitações Sustentáveis do Estado do Amapá</option>
+                      <option value="https://editor-prodap.portal.ap.gov.br/">SECRETARIA DE COMUNICAÇÃO DO ESTADO DO AMAPÁ</option>
+                      <option value="https://secult.portal.ap.gov.br">Secretaria de Cultura</option>
+                      <option value="https://sdr.portal.ap.gov.br">Secretaria de  Desenvolvimento Rural</option>
+                      <option value="https://direitoshumanos.portal.ap.gov.br/">Secretaria de Direitos Humanos</option>
+                      <option value="https://sead.portal.ap.gov.br">Secretaria de Estado da Administração</option>
+                      <option value="https://seas.portal.ap.gov.br">Secretaria de Estado da Assistência Social</option>
+                      <option value="https://setec.portal.ap.gov.br/">Secretaria de Estado da Ciência e Tecnologia</option>
+                      <option value="https://seed.portal.ap.gov.br/">Secretaria de Estado da Educação</option>
+                      <option value="https://sefaz.portal.ap.gov.br/">Secretaria de Estado da Fazenda</option>
+                      <option value="https://sehab.portal.ap.gov.br">Secretaria de Estado da Habitação   </option>
+                      <option value="http://www.seinf.ap.gov.br/">Secretaria de Estado da Infraestrutura</option>
+                      <option value="https://sejuv.portal.ap.gov.br">Secretaria de Estado da Juventude</option>
+                      <option value="https://semin.portal.ap.gov.br">Secretaria de Estado da Mineração</option>
+                      <option value="https://sepaq.portal.ap.gov.br">Secretaria de Estado da Pesca e Aquicultura</option>
+                      <option value="https://seat.portal.ap.gov.br">Secretaria de Estado de Assuntos da Transposição</option>
+                      <option value="https://setrap.portal.ap.gov.br">Secretaria de Estado de Transporte</option>
+                      <option value="https://sedel.portal.ap.gov.br">Secretaria de Estado do Desporto e do Lazer</option>
+                      <option value="https://seplan.portal.ap.gov.br">Secretaria de Estado do Planejamento</option>
+                      <option value="https://sete.portal.ap.gov.br/">Secretaria de Estado do Trabalho e Empreededorismo</option>
+                      <option value="https://sejusp.portal.ap.gov.br">Secretaria de Justiça e Segurança Pública</option>
+                      <option value="http://homologacao.secretariadamulher.ap.gov.br/">Secretaria de Políticas para Mulheres</option>
+                      <option value="https://amapainternacional.amapa.gov.br/">Secretaria de Relações Internacionais e Comércio Exterior do Estado do Amapá	</option>
+                      <option value="https://setur.portal.ap.gov.br/">Secretaria de Turismo</option>
+                      <option value="https://secbea.amapa.gov.br/">Secretaria do Bem Estar Animal	</option>
+                      <option value="https://cidades.portal.ap.gov.br/">Secretaria do Desenvolvimento das Cidades</option>
+                      <option value="https://meioambiente.portal.ap.gov.br">Secretaria do Meio Ambiente</option>
+                      <option value="http://www.seafro.ap.gov.br/">Secretaria Extraordinária de Políticas para Afrodescendentes	</option>
+                      <option value="https://seab.portal.ap.gov.br/">Secretaria Extraordinária de Representação do Governo do Amapá em Brasilia	</option>
+                      <option value="https://superfacil.portal.ap.gov.br/">Super Fácil</option>
+                      <option value="https://svs.portal.ap.gov.br">Superintendência de Vigilância em Saúde</option>
+                      <option value="https://amapa.gov.br/vice-governadoria">Vice-Governadoria</option>
+                      <option value="https://zee.portal.ap.gov.br/">Zoneamento Ecológico Econômico do Amapá	</option>
+                  </select>
+      </div>
+
+      <div class="tw-w-full tw-block lg:tw-hidden">
+        <nav class="navbar navbar-dark navbar-expand-lg tw-text-sm">
+          <a class="navbar-brand lg:tw-hidden" href="https://diagro.portal.ap.gov.br">
+            <i class="fa-solid fa-house tw-text-white"></i>
+          </a>
+          <span
+            class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-border tw-border-white/30 tw-px-2 tw-py-1">
+            <button class="navbar-toggler shadow-none border-0 tw-p-0" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-bars tw-text-white tw-text-lg" aria-hidden="true"></i>
+            </button>
+          </span>
+
+          <div class="collapse navbar-collapse tw-mt-3 tw-pt-3 tw-border-t tw-border-white/20" id="navbar">
+            <ul class="navbar-nav me-auto tw-gap-0.5">
+                                                <li class="nav-item dropdown">
+                    <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors dropdown-toggle"
+                      href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Institucional
+                    </a>
+                    <ul
+                      class="dropdown-menu tw-shadow-lg tw-rounded-lg tw-overflow-hidden
+                               tw-bg-white dark:tw-bg-gray-800
+                               tw-border tw-border-gray-100 dark:tw-border-gray-700">
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-administrativa-e-financeira" >
+                            Diretoria Administrativa e Financeira
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/institucional/assessoramento-e-diretorias" >
+                            Assessoramento e Diretorias
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-de-defesa-agropecuaria" >
+                            Diretoria de Defesa Agropecuária
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-de-inspecao-de-produtos-de-origem-agropecuaria" >
+                            Diretoria de Inspeção de Produtos de Origem Agropecuária
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/institucional/diretor-presidente" >
+                            Diretor Presidente
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/institucional/sobre-nos" >
+                            Sobre nós
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/institucional/unidades-locais-de-sanidade-agropecuaria" >
+                            Unidades Locais de Sanidade Agropecuária
+                          </a>
+                        </li>
+                                          </ul>
+                  </li>
+                                                                <li class="nav-item dropdown">
+                    <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors dropdown-toggle"
+                      href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Defesa Animal
+                    </a>
+                    <ul
+                      class="dropdown-menu tw-shadow-lg tw-rounded-lg tw-overflow-hidden
+                               tw-bg-white dark:tw-bg-gray-800
+                               tw-border tw-border-gray-100 dark:tw-border-gray-700">
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/notificacao-de-doencas" >
+                            Notificação de Doenças
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/febre-aftosa" >
+                            Febre Aftosa
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/brucelose-e-tuberculose" >
+                            Brucelose e Tuberculose
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-equideos" >
+                            Sanidade dos Equídeos
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-das-aves" >
+                            Sanidade das Aves
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-suinos" >
+                            Sanidade dos Suínos
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-caprinos-e-ovinos" >
+                            Sanidade dos Caprinos e Ovinos
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/raiva-dos-herbivoros" >
+                            Raiva dos herbívoros
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/encefalopatias-espongiformes-transmissiveis" >
+                            Encefalopatias Espongiformes Transmissíveis
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-animais-aquaticos" >
+                            Sanidade dos Animais Aquáticos
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-das-abelhas" >
+                            Sanidade das Abelhas
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/transito-animal" >
+                            Trânsito Animal
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/eventos-com-aglomeracao-de-animais" >
+                            Eventos com Aglomeração de Animais
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/vigilancia-em-propriedades" >
+                            Vigilância em Propriedades
+                          </a>
+                        </li>
+                                          </ul>
+                  </li>
+                                                                <li class="nav-item dropdown">
+                    <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors dropdown-toggle"
+                      href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Defesa Vegetal
+                    </a>
+                    <ul
+                      class="dropdown-menu tw-shadow-lg tw-rounded-lg tw-overflow-hidden
+                               tw-bg-white dark:tw-bg-gray-800
+                               tw-border tw-border-gray-100 dark:tw-border-gray-700">
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/defesa-vegetal" >
+                            Defesa Vegetal
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/transito-vegetal" >
+                            Trânsito Vegetal
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/vassoura-de-bruxa-da-mandioca" >
+                            Vassoura-de-bruxa da mandioca
+                          </a>
+                        </li>
+                                          </ul>
+                  </li>
+                                                                <li class="nav-item dropdown">
+                    <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors dropdown-toggle"
+                      href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Inspeção
+                    </a>
+                    <ul
+                      class="dropdown-menu tw-shadow-lg tw-rounded-lg tw-overflow-hidden
+                               tw-bg-white dark:tw-bg-gray-800
+                               tw-border tw-border-gray-100 dark:tw-border-gray-700">
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/inspecao/inspecao-animal" >
+                            Inspeção Animal
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/inspecao/inspecao-vegetal" >
+                            Inspeção Vegetal
+                          </a>
+                        </li>
+                                          </ul>
+                  </li>
+                                                                <li class="nav-item">
+                                          <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors"
+                        aria-current="page" href="https://diagro.portal.ap.gov.br/pagina/sisdiagro">
+                        Sisdiagro
+                      </a>
+                                      </li>
+                                                                <li class="nav-item">
+                                          <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors"
+                        aria-current="page" href="https://diagro.portal.ap.gov.br/pagina/cadastro">
+                        Cadastro
+                      </a>
+                                      </li>
+                                                                <li class="nav-item">
+                                          <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors"
+                        aria-current="page" href="https://diagro.portal.ap.gov.br/pagina/registro-de-rotulagem">
+                        Registro de Rotulagem
+                      </a>
+                                      </li>
+                                                                <li class="nav-item">
+                                          <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors"
+                        aria-current="page" href="https://diagro.portal.ap.gov.br/pagina/educacao-sanitaria">
+                        Educação Sanitária 
+                      </a>
+                                      </li>
+                                                                <li class="nav-item dropdown">
+                    <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors dropdown-toggle"
+                      href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Serviços e taxas
+                    </a>
+                    <ul
+                      class="dropdown-menu tw-shadow-lg tw-rounded-lg tw-overflow-hidden
+                               tw-bg-white dark:tw-bg-gray-800
+                               tw-border tw-border-gray-100 dark:tw-border-gray-700">
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/servicos-e-taxas/taxas" >
+                            Taxas
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/servicos-e-taxas/dar-avulso" >
+                            DAR Avulso
+                          </a>
+                        </li>
+                                          </ul>
+                  </li>
+                                                                <li class="nav-item dropdown">
+                    <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors dropdown-toggle"
+                      href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Legislação
+                    </a>
+                    <ul
+                      class="dropdown-menu tw-shadow-lg tw-rounded-lg tw-overflow-hidden
+                               tw-bg-white dark:tw-bg-gray-800
+                               tw-border tw-border-gray-100 dark:tw-border-gray-700">
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/legislacao/legislacao-estadual" >
+                            Legislação Estadual
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/legislacao/estrutura-organizacional" >
+                            Estrutura Organizacional
+                          </a>
+                        </li>
+                                              <li>
+                          <a class="dropdown-item tw-text-gray-700 dark:tw-text-gray-200 tw-font-medium tw-text-sm tw-py-2 tw-px-4
+                                     hover:tw-bg-gray-100 dark:hover:tw-bg-gray-700 tw-transition-colors"
+                                                          href="https://diagro.portal.ap.gov.br/pagina/legislacao/estatuto-da-diagro" >
+                            Estatuto da Diagro
+                          </a>
+                        </li>
+                                          </ul>
+                  </li>
+                                                                <li class="nav-item">
+                                          <a class="nav-link tw-text-white tw-font-medium tw-py-2 tw-px-3 tw-rounded-md hover:tw-bg-white/15 tw-transition-colors"
+                        aria-current="page" href="https://diagro.portal.ap.gov.br/pagina/contato">
+                        Contato
+                      </a>
+                                      </li>
+                                          </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+    <div
+  class="tw-w-full dark:tw-bg-gray-900 tw-border-0 md:tw-border-b-2 tw-border-b-gov-green dark:tw-border-white/30 tw-pb-0 md:tw-pb-5">
+  <div class="tw-max-w-[1320px] tw-mx-auto tw-px-4 md:tw-px-6 lg:tw-px-4">
+    <div class="tw-flex tw-flex-wrap md:tw-items-start tw-pt-10">
+      <div class="tw-w-full tw-flex tw-flex-wrap md:tw-flex-nowrap md:tw-items-center tw-gap-5">
+        <div class="tw-w-full md:tw-w-3/4 tw-mb-3 md:tw-mb-0 tw-items-center tw-text-center md:tw-text-justify">
+                      <div class="tw-items-center md:tw-text-start">
+              <a href="https://diagro.portal.ap.gov.br" class="tw-no-underline tw-inline-flex tw-flex-col tw-w-fit">
+                <div class="tw-text-3xl tw-font-black tw-text-gov-blue dark:tw-text-white">
+                  DIAGRO
+                </div>
+                <h2 class="tw-font-normal tw-text-lg">Agência de Defesa e Inspeção Agropecuária do Estado do Amapá</h2>
+              </a>
+            </div>
+                            </div>
+                  <div class="tw-w-full md:tw-w-2/4 lg:tw-w-1/4 tw-text-center">
+            <a href="https://amapa.gov.br/" target="_blank">
+              <img src="https://matrix.amapa.gov.br//storage/logos/01M12J2PZ1TA4J35JSSMJVGYWG.svg"
+                class="tw-max-h-[130px] tw-max-w-full tw-mx-auto tw-block" alt="">
+            </a>
+          </div>
+              </div>
+      <div class="tw-w-full tw-hidden lg:tw-flex lg:tw-items-center lg:tw-mt-5">
+        <nav class="tw-w-full" x-data="{ open: false }">
+          <button type="button"
+            @click="open = !open"
+            :aria-expanded="open.toString()"
+            aria-controls="navbar"
+            aria-label="Toggle navigation"
+            class="lg:tw-hidden tw-p-2 tw-rounded tw-text-gov-blue dark:tw-text-white">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+
+          <div
+            x-show="open"
+            x-transition:enter="tw-transition-opacity tw-ease-out tw-duration-200"
+            x-transition:enter-start="tw-opacity-0"
+            x-transition:enter-end="tw-opacity-100"
+            x-transition:leave="tw-transition-opacity tw-ease-in tw-duration-150"
+            x-transition:leave-start="tw-opacity-100"
+            x-transition:leave-end="tw-opacity-0"
+            class="tw-flex tw-flex-wrap tw-items-center tw-justify-start tw-gap-x-1 tw-gap-y-1 lg:!tw-flex"
+            id="navbar">
+
+            <a href="https://diagro.portal.ap.gov.br"
+              class="tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+              Início
+            </a>
+
+                                          <div class="tw-relative" x-data="{ dropOpen: false }" @click.outside="dropOpen = false">
+                  <button type="button"
+                    @click="dropOpen = !dropOpen"
+                    :aria-expanded="dropOpen.toString()"
+                    class="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-bg-transparent tw-border-0 tw-cursor-pointer tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Institucional
+                    <i class="fas fa-chevron-down tw-text-xs tw-transition-transform tw-duration-200"
+                      :class="{ 'tw-rotate-180': dropOpen }"></i>
+                  </button>
+                  <div
+                    x-show="dropOpen"
+                    x-transition:enter="tw-transition tw-ease-out tw-duration-100"
+                    x-transition:enter-start="tw-opacity-0 tw-scale-95"
+                    x-transition:enter-end="tw-opacity-100 tw-scale-100"
+                    x-transition:leave="tw-transition tw-ease-in tw-duration-75"
+                    x-transition:leave-start="tw-opacity-100 tw-scale-100"
+                    x-transition:leave-end="tw-opacity-0 tw-scale-95"
+                    class="tw-absolute tw-left-0 tw-top-full tw-z-50 tw-min-w-[160px] tw-rounded-md tw-border tw-border-gray-200 dark:tw-border-gray-600 tw-bg-white dark:tw-bg-gray-700 tw-shadow-lg tw-py-1">
+                                                                  <a href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-administrativa-e-financeira"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Diretoria Administrativa e Financeira
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/institucional/assessoramento-e-diretorias"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Assessoramento e Diretorias
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-de-defesa-agropecuaria"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Diretoria de Defesa Agropecuária
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-de-inspecao-de-produtos-de-origem-agropecuaria"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Diretoria de Inspeção de Produtos de Origem Agropecuária
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/institucional/diretor-presidente"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Diretor Presidente
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/institucional/sobre-nos"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Sobre nós
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/institucional/unidades-locais-de-sanidade-agropecuaria"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Unidades Locais de Sanidade Agropecuária
+                        </a>
+                                                            </div>
+                </div>
+                                                        <div class="tw-relative" x-data="{ dropOpen: false }" @click.outside="dropOpen = false">
+                  <button type="button"
+                    @click="dropOpen = !dropOpen"
+                    :aria-expanded="dropOpen.toString()"
+                    class="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-bg-transparent tw-border-0 tw-cursor-pointer tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Defesa Animal
+                    <i class="fas fa-chevron-down tw-text-xs tw-transition-transform tw-duration-200"
+                      :class="{ 'tw-rotate-180': dropOpen }"></i>
+                  </button>
+                  <div
+                    x-show="dropOpen"
+                    x-transition:enter="tw-transition tw-ease-out tw-duration-100"
+                    x-transition:enter-start="tw-opacity-0 tw-scale-95"
+                    x-transition:enter-end="tw-opacity-100 tw-scale-100"
+                    x-transition:leave="tw-transition tw-ease-in tw-duration-75"
+                    x-transition:leave-start="tw-opacity-100 tw-scale-100"
+                    x-transition:leave-end="tw-opacity-0 tw-scale-95"
+                    class="tw-absolute tw-left-0 tw-top-full tw-z-50 tw-min-w-[160px] tw-rounded-md tw-border tw-border-gray-200 dark:tw-border-gray-600 tw-bg-white dark:tw-bg-gray-700 tw-shadow-lg tw-py-1">
+                                                                  <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/notificacao-de-doencas"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Notificação de Doenças
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/febre-aftosa"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Febre Aftosa
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/brucelose-e-tuberculose"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Brucelose e Tuberculose
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-equideos"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Sanidade dos Equídeos
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-das-aves"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Sanidade das Aves
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-suinos"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Sanidade dos Suínos
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-caprinos-e-ovinos"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Sanidade dos Caprinos e Ovinos
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/raiva-dos-herbivoros"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Raiva dos herbívoros
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/encefalopatias-espongiformes-transmissiveis"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Encefalopatias Espongiformes Transmissíveis
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-animais-aquaticos"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Sanidade dos Animais Aquáticos
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-das-abelhas"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Sanidade das Abelhas
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/transito-animal"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Trânsito Animal
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/eventos-com-aglomeracao-de-animais"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Eventos com Aglomeração de Animais
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/vigilancia-em-propriedades"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Vigilância em Propriedades
+                        </a>
+                                                            </div>
+                </div>
+                                                        <div class="tw-relative" x-data="{ dropOpen: false }" @click.outside="dropOpen = false">
+                  <button type="button"
+                    @click="dropOpen = !dropOpen"
+                    :aria-expanded="dropOpen.toString()"
+                    class="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-bg-transparent tw-border-0 tw-cursor-pointer tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Defesa Vegetal
+                    <i class="fas fa-chevron-down tw-text-xs tw-transition-transform tw-duration-200"
+                      :class="{ 'tw-rotate-180': dropOpen }"></i>
+                  </button>
+                  <div
+                    x-show="dropOpen"
+                    x-transition:enter="tw-transition tw-ease-out tw-duration-100"
+                    x-transition:enter-start="tw-opacity-0 tw-scale-95"
+                    x-transition:enter-end="tw-opacity-100 tw-scale-100"
+                    x-transition:leave="tw-transition tw-ease-in tw-duration-75"
+                    x-transition:leave-start="tw-opacity-100 tw-scale-100"
+                    x-transition:leave-end="tw-opacity-0 tw-scale-95"
+                    class="tw-absolute tw-left-0 tw-top-full tw-z-50 tw-min-w-[160px] tw-rounded-md tw-border tw-border-gray-200 dark:tw-border-gray-600 tw-bg-white dark:tw-bg-gray-700 tw-shadow-lg tw-py-1">
+                                                                  <a href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/defesa-vegetal"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Defesa Vegetal
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/transito-vegetal"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Trânsito Vegetal
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/vassoura-de-bruxa-da-mandioca"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Vassoura-de-bruxa da mandioca
+                        </a>
+                                                            </div>
+                </div>
+                                                        <div class="tw-relative" x-data="{ dropOpen: false }" @click.outside="dropOpen = false">
+                  <button type="button"
+                    @click="dropOpen = !dropOpen"
+                    :aria-expanded="dropOpen.toString()"
+                    class="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-bg-transparent tw-border-0 tw-cursor-pointer tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Inspeção
+                    <i class="fas fa-chevron-down tw-text-xs tw-transition-transform tw-duration-200"
+                      :class="{ 'tw-rotate-180': dropOpen }"></i>
+                  </button>
+                  <div
+                    x-show="dropOpen"
+                    x-transition:enter="tw-transition tw-ease-out tw-duration-100"
+                    x-transition:enter-start="tw-opacity-0 tw-scale-95"
+                    x-transition:enter-end="tw-opacity-100 tw-scale-100"
+                    x-transition:leave="tw-transition tw-ease-in tw-duration-75"
+                    x-transition:leave-start="tw-opacity-100 tw-scale-100"
+                    x-transition:leave-end="tw-opacity-0 tw-scale-95"
+                    class="tw-absolute tw-left-0 tw-top-full tw-z-50 tw-min-w-[160px] tw-rounded-md tw-border tw-border-gray-200 dark:tw-border-gray-600 tw-bg-white dark:tw-bg-gray-700 tw-shadow-lg tw-py-1">
+                                                                  <a href="https://diagro.portal.ap.gov.br/pagina/inspecao/inspecao-animal"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Inspeção Animal
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/inspecao/inspecao-vegetal"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Inspeção Vegetal
+                        </a>
+                                                            </div>
+                </div>
+                                                                          <a href="https://diagro.portal.ap.gov.br/pagina/sisdiagro"
+                    class="tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Sisdiagro
+                  </a>
+                                                                                          <a href="https://diagro.portal.ap.gov.br/pagina/cadastro"
+                    class="tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Cadastro
+                  </a>
+                                                                                          <a href="https://diagro.portal.ap.gov.br/pagina/registro-de-rotulagem"
+                    class="tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Registro de Rotulagem
+                  </a>
+                                                                                          <a href="https://diagro.portal.ap.gov.br/pagina/educacao-sanitaria"
+                    class="tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Educação Sanitária 
+                  </a>
+                                                                        <div class="tw-relative" x-data="{ dropOpen: false }" @click.outside="dropOpen = false">
+                  <button type="button"
+                    @click="dropOpen = !dropOpen"
+                    :aria-expanded="dropOpen.toString()"
+                    class="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-bg-transparent tw-border-0 tw-cursor-pointer tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Serviços e taxas
+                    <i class="fas fa-chevron-down tw-text-xs tw-transition-transform tw-duration-200"
+                      :class="{ 'tw-rotate-180': dropOpen }"></i>
+                  </button>
+                  <div
+                    x-show="dropOpen"
+                    x-transition:enter="tw-transition tw-ease-out tw-duration-100"
+                    x-transition:enter-start="tw-opacity-0 tw-scale-95"
+                    x-transition:enter-end="tw-opacity-100 tw-scale-100"
+                    x-transition:leave="tw-transition tw-ease-in tw-duration-75"
+                    x-transition:leave-start="tw-opacity-100 tw-scale-100"
+                    x-transition:leave-end="tw-opacity-0 tw-scale-95"
+                    class="tw-absolute tw-left-0 tw-top-full tw-z-50 tw-min-w-[160px] tw-rounded-md tw-border tw-border-gray-200 dark:tw-border-gray-600 tw-bg-white dark:tw-bg-gray-700 tw-shadow-lg tw-py-1">
+                                                                  <a href="https://diagro.portal.ap.gov.br/pagina/servicos-e-taxas/taxas"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Taxas
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/servicos-e-taxas/dar-avulso"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          DAR Avulso
+                        </a>
+                                                            </div>
+                </div>
+                                                        <div class="tw-relative" x-data="{ dropOpen: false }" @click.outside="dropOpen = false">
+                  <button type="button"
+                    @click="dropOpen = !dropOpen"
+                    :aria-expanded="dropOpen.toString()"
+                    class="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-bg-transparent tw-border-0 tw-cursor-pointer tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Legislação
+                    <i class="fas fa-chevron-down tw-text-xs tw-transition-transform tw-duration-200"
+                      :class="{ 'tw-rotate-180': dropOpen }"></i>
+                  </button>
+                  <div
+                    x-show="dropOpen"
+                    x-transition:enter="tw-transition tw-ease-out tw-duration-100"
+                    x-transition:enter-start="tw-opacity-0 tw-scale-95"
+                    x-transition:enter-end="tw-opacity-100 tw-scale-100"
+                    x-transition:leave="tw-transition tw-ease-in tw-duration-75"
+                    x-transition:leave-start="tw-opacity-100 tw-scale-100"
+                    x-transition:leave-end="tw-opacity-0 tw-scale-95"
+                    class="tw-absolute tw-left-0 tw-top-full tw-z-50 tw-min-w-[160px] tw-rounded-md tw-border tw-border-gray-200 dark:tw-border-gray-600 tw-bg-white dark:tw-bg-gray-700 tw-shadow-lg tw-py-1">
+                                                                  <a href="https://diagro.portal.ap.gov.br/pagina/legislacao/legislacao-estadual"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Legislação Estadual
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/legislacao/estrutura-organizacional"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Estrutura Organizacional
+                        </a>
+                                                                                        <a href="https://diagro.portal.ap.gov.br/pagina/legislacao/estatuto-da-diagro"
+                          class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 dark:hover:tw-text-yellow-400 tw-transition-colors">
+                          Estatuto da Diagro
+                        </a>
+                                                            </div>
+                </div>
+                                                                          <a href="https://diagro.portal.ap.gov.br/pagina/contato"
+                    class="tw-px-3 tw-py-2 tw-text-sm tw-whitespace-nowrap tw-no-underline tw-text-gray-700 dark:tw-text-white hover:tw-text-gov-blue dark:hover:tw-text-yellow-400 tw-transition-colors">
+                    Contato
+                  </a>
+                                                    </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+  </header>
+
+  <main id="conteudo">
+    <div wire:snapshot="{&quot;data&quot;:{&quot;slug_1&quot;:&quot;defesa-animal&quot;,&quot;slug_2&quot;:&quot;defesa-vegetal&quot;,&quot;menu&quot;:[null,{&quot;class&quot;:&quot;App\\Models\\Menu&quot;,&quot;key&quot;:120,&quot;s&quot;:&quot;mdl&quot;}],&quot;submenu&quot;:[null,{&quot;class&quot;:&quot;App\\Models\\Submenu&quot;,&quot;key&quot;:370,&quot;s&quot;:&quot;mdl&quot;}]},&quot;memo&quot;:{&quot;id&quot;:&quot;WlaYP5zfKewt1oJECOEB&quot;,&quot;name&quot;:&quot;pages.page&quot;,&quot;path&quot;:&quot;pagina\/defesa-animal\/defesa-vegetal&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;release&quot;:&quot;a-a-a&quot;,&quot;children&quot;:{&quot;lw-3898874968-0&quot;:[&quot;div&quot;,&quot;us53CGzMn7M3ubrIDGU1&quot;]},&quot;scripts&quot;:[],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;pt_BR&quot;},&quot;checksum&quot;:&quot;a4d8622e29d9d4ba29c7ecef4e23c45c539f02a24c2a2edc44584a9d84257d69&quot;}" wire:effects="[]" wire:id="WlaYP5zfKewt1oJECOEB" class="tw-w-full dark:tw-bg-gray-900 tw-py-5">
+  <div class="tw-max-w-[1320px] tw-mx-auto tw-px-4">
+
+    <div class="tw-hidden md:tw-block">
+      <div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb" class="tw-mb-5 tw-border-b">
+            <ol class="breadcrumb">
+                    <!--[if BLOCK]><![endif]-->          <li class="breadcrumb-item">
+            <a href="https://diagro.portal.ap.gov.br" class="tw-text-gov-blue dark:tw-text-white">
+              <i class="fa-solid fa-house"></i>
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <span class="tw-text-gov-blue dark:tw-text-gov-yellow">Defesa Animal</span>
+          </li>
+          <li class="breadcrumb-item active">
+            <span class="tw-link-alt dark:tw-text-gov-yellow">Defesa Vegetal</span>
+          </li>
+        <!--[if ENDBLOCK]><![endif]-->
+            </ol>
+        </nav>
+    </div>
+</div>
+    </div>
+
+    <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-6 tw-my-5">
+
+      
+      <div class="tw-w-full lg:tw-w-3/4">
+
+        <h1
+          class="tw-font-extrabold tw-text-xl tw-text-gov-blue dark:tw-text-yellow-400 tw-mb-6 tw-text-center md:tw-text-left">
+          Defesa Vegetal
+        </h1>
+
+        
+        <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->
+        
+        <!--[if BLOCK]><![endif]-->
+          <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->
+          <div class="
+    tw-text-base tw-leading-relaxed tw-text-gray-700 dark:tw-text-gray-200
+    [&amp;_p]:tw-mb-4
+    [&amp;_h1]:tw-text-2xl [&amp;_h1]:tw-font-bold [&amp;_h1]:tw-text-gov-blue [&amp;_h1]:dark:tw-text-yellow-400 [&amp;_h1]:tw-mt-6 [&amp;_h1]:tw-mb-3
+    [&amp;_h2]:tw-text-xl [&amp;_h2]:tw-font-bold [&amp;_h2]:tw-text-gov-blue [&amp;_h2]:dark:tw-text-yellow-400 [&amp;_h2]:tw-mt-6 [&amp;_h2]:tw-mb-3
+    [&amp;_h3]:tw-text-lg [&amp;_h3]:tw-font-semibold [&amp;_h3]:tw-text-gov-blue [&amp;_h3]:dark:tw-text-yellow-400 [&amp;_h3]:tw-mt-5 [&amp;_h3]:tw-mb-2
+    [&amp;_h4]:tw-text-base [&amp;_h4]:tw-font-semibold [&amp;_h4]:tw-mt-4 [&amp;_h4]:tw-mb-2
+    [&amp;_a]:tw-text-gov-blue [&amp;_a]:dark:tw-text-yellow-400 [&amp;_a]:hover:tw-underline
+    [&amp;_ul]:tw-list-disc [&amp;_ul]:tw-pl-6 [&amp;_ul]:tw-mb-4 [&amp;_ul]:tw-space-y-1
+    [&amp;_ol]:tw-list-decimal [&amp;_ol]:tw-pl-6 [&amp;_ol]:tw-mb-4 [&amp;_ol]:tw-space-y-1
+    [&amp;_li]:tw-text-gray-700 [&amp;_li]:dark:tw-text-gray-200
+    [&amp;_blockquote]:tw-border-l-4 [&amp;_blockquote]:tw-border-gov-blue [&amp;_blockquote]:dark:tw-border-yellow-400 [&amp;_blockquote]:tw-pl-4 [&amp;_blockquote]:tw-italic [&amp;_blockquote]:tw-text-gray-500 [&amp;_blockquote]:dark:tw-text-gray-400 [&amp;_blockquote]:tw-mb-4
+    [&amp;_strong]:tw-font-semibold [&amp;_strong]:tw-text-gray-800 [&amp;_strong]:dark:tw-text-white
+    [&amp;_table]:tw-w-full [&amp;_table]:tw-text-sm [&amp;_table]:tw-border-collapse [&amp;_table]:tw-mb-4
+    [&amp;_th]:tw-px-3 [&amp;_th]:tw-py-2 [&amp;_th]:tw-border [&amp;_th]:tw-border-gray-300 [&amp;_th]:dark:tw-border-gray-600 [&amp;_th]:tw-bg-gray-50 [&amp;_th]:dark:tw-bg-gray-800 [&amp;_th]:tw-font-semibold
+    [&amp;_td]:tw-px-3 [&amp;_td]:tw-py-2 [&amp;_td]:tw-border [&amp;_td]:tw-border-gray-200 [&amp;_td]:dark:tw-border-gray-700
+    [&amp;_img]:tw-max-w-full [&amp;_img]:tw-rounded-lg [&amp;_img]:tw-my-4 [&amp;_img]:tw-mx-auto [&amp;_img]:tw-block
+    [&amp;_hr]:tw-border-gray-200 [&amp;_hr]:dark:tw-border-gray-700 [&amp;_hr]:tw-my-6
+   tw-mb-8">
+            <p>Defesa Vegetal</p>
+<p>A Defesa Sanit&aacute;ria Vegetal resguarda a sanidade dos vegetais, por meio de a&ccedil;&otilde;es de vigil&acirc;ncia; fiscaliza&ccedil;&atilde;o de tr&acirc;nsito vegetal; controle, preven&ccedil;&atilde;o e erradica&ccedil;&atilde;o de pragas, e com&eacute;rcio e uso de insumos, que objetivam garantir &agrave; sanidade dos plantios em rela&ccedil;&atilde;o &agrave;s pragas de import&acirc;ncia econ&ocirc;mica, bem como dos produtos, protegendo a economia de impactos prejudiciais, bem como assegurar produtos confi&aacute;veis &agrave; popula&ccedil;&atilde;o.</p>
+<ul>
+<li><strong>Unidade de Sanidade vegetal<br></strong>Respons&aacute;vel pela execu&ccedil;&atilde;o e controle dos programas de defesa vegetal:</li>
+<li><strong>Programa de Erradica&ccedil;&atilde;o da Mosca-da-Carambola:</strong> s&atilde;o coordenadas oito rotas de combate e controle da mosca-da-carambola em oito munic&iacute;pios. As supervis&otilde;es de acompanhamento das atividades das rotas s&atilde;o realizadas sistematicamente, visando manter o controle das opera&ccedil;&otilde;es.</li>
+<li><strong>Plano de Conting&ecirc;ncia da Monil&iacute;ase do cacaueiro: </strong>programa que estabelece o Plano de conting&ecirc;ncia da praga quarenten&aacute;ria ausente <em>Moniliophthora roreri</em>, com medidas preventivas e emergenciais para a erradica&ccedil;&atilde;o de focos e conten&ccedil;&atilde;o da praga.</li>
+<li><strong>Servi&ccedil;os de desinfesta&ccedil;&atilde;o de m&aacute;quinas agr&iacute;colas</strong></li>
+</ul>
+<p>Procedimento necess&aacute;rio:</p>
+<p>&radic; Solicita&ccedil;&atilde;o da fiscaliza&ccedil;&atilde;o do servi&ccedil;o de desinfesta&ccedil;&atilde;o;</p>
+<p>&radic; Pagamento da taxa;</p>
+<p>&radic; Emiss&atilde;o do atestado de desinfesta&ccedil;&atilde;o da (s) m&aacute;quina (s).</p>
+<p>&nbsp;</p>
+<p><em>Charles Ferreira Brito<br>&nbsp; Chefe da Unidade de Sanidade Vegetal<br>&nbsp; E-mail: </em><a href="mailto:usv@diagro.ap.gov.br"><em>usv@diagro.ap.gov.br</em></a><em>&nbsp;</em></p>
+<ul>
+<li><strong>Unidade de Fiscaliza&ccedil;&atilde;o Vegetal<br></strong>Controle do uso de agrot&oacute;xicos, que envolve a fiscaliza&ccedil;&atilde;o do com&eacute;rcio, da manipula&ccedil;&atilde;o e do uso de agrot&oacute;xicos, al&eacute;m da fiscaliza&ccedil;&atilde;o de dep&oacute;sitos, do uso de agrot&oacute;xicos em propriedades e do retorno de embalagens vazias. Realiza e acompanha o registro de estabelecimentos de revenda e de aplica&ccedil;&atilde;o de agrot&oacute;xicos. Na fiscaliza&ccedil;&atilde;o, preza-se pelo dever de resguardar a sa&uacute;de dos consumidores e aplicadores, e minimizar os danos desses produtos ao meio ambiente.</li>
+<li><strong>Servi&ccedil;os de cadastro de estabelecimento de revenda de agrot&oacute;xicos<br></strong>Documentos necess&aacute;rios:</li>
+</ul>
+<p>&radic; Requerimento dirigido ao Diretor da DIAGRO solicitando o cadastro;</p>
+<p>&radic; Memorial descritivo;</p>
+<p>&radic; C&oacute;pia do contrato social registrado e atualizado na Junta Comercial do estado do Amap&aacute;;</p>
+<p>&radic; CNPJ, inscri&ccedil;&atilde;o estadual e alvar&aacute; de funcionamento;</p>
+<p>&radic; Declara&ccedil;&atilde;o firmada pelo profissional legalmente habilitado pelo Conselho Regional de Engenharia, Arquitetura e Agronomia &ndash; CREA-AP que preta servi&ccedil;o de assist&ecirc;ncia t&eacute;cnica a empresa (RT), renovado anualmente;</p>
+<p>&radic; Comprovante de que &eacute; associado a posto de recolhimento de embalagens vazias de agrot&oacute;xicos.&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="https://matrix.amapa.gov.br/storage/publications/16/091813-RELA&Ccedil;&Atilde;O%20DOS%20AGROT&Oacute;XICOS%20CADASTRADOS%20NA%20DIAGRO%20OUT.2026%202%20.pdf" target="_blank" rel="noopener"><strong>RELA&Ccedil;&Atilde;O DOS AGROT&Oacute;XICOS CADASTRADOS NA AG&Ecirc;NCIA DE DEFESA E INSPE&Ccedil;&Atilde;O AGROPECU&Aacute;RIA DO ESTADO DO AMAP&Aacute; - DIAGRO&nbsp;</strong></a></p>
+<p>&nbsp;</p>
+<p><a href="https://matrix.amapa.gov.br/storage/publications/16/095324-RELACAO%20DOS%20ESTABELECIMENTOS%20COM%20REGISTRO%20PARA%20O%20COMERCIO%20DE%20AGROTOXICOS%20(2).pdf"><span style="text-decoration: underline;">&nbsp;</span><strong>RELA&Ccedil;&Atilde;O DAS EMPRESAS APTAS AO COM&Eacute;RCIO DE AGROT&Oacute;XICOS NO ESTADO DO AMAP&Aacute;&nbsp;</strong></a></p>
+<p><strong>O controle do tr&acirc;nsito de vegetais</strong> enfoca a fiscaliza&ccedil;&atilde;o desse tr&acirc;nsito, com barreiras fitossanit&aacute;rias portu&aacute;rias nos munic&iacute;pios de Macap&aacute; e Santana. Mant&eacute;m ainda, uma <strong><em>Barreira Fitossanit&aacute;ria no Aeroporto Internacional de Macap&aacute; &ndash; Alberto Alcolumbre</em></strong>. Essas fiscaliza&ccedil;&otilde;es s&atilde;o especialmente direcionadas para a fiscaliza&ccedil;&atilde;o do tr&acirc;nsito interestadual de frutos hospedeiros da mosca-da-carambola, como controle de sa&iacute;da da praga para outros estados.</p>
+<p><em>Iv&ecirc;nio Roque Hartmann Neto<br>&nbsp; Chefe da Unidade de Fiscaliza&ccedil;&atilde;oVegetal<br>&nbsp; E-mail: </em><a href="mailto:agrotoxicos@diagro.ap.gov.br"><strong>agrotoxicos@diagro.ap.gov.br&nbsp;</strong></a></p>
+<ul>
+<li><strong>Unidade de Desenvolvimento Fitossanit&aacute;rio<br></strong>Supervisiona as a&ccedil;&otilde;es de aviso e alerta fitossanit&aacute;rio; contribui na elabora&ccedil;&atilde;o de programas fitossanit&aacute;rios; promove a difus&atilde;o de tecnologias inerentes &agrave;s pragas em a&ccedil;&otilde;es conjuntas com a educa&ccedil;&atilde;o sanit&aacute;ria e atua na capacita&ccedil;&atilde;o e aperfei&ccedil;oamento do quadro t&eacute;cnico operacional.</li>
+</ul>
+<p>&nbsp;</p>
+<p><em>Tania Brito do Nascimento<br>&nbsp; Chefe da Unidade de Desenvolvimento Fitossanit&aacute;rio<br>&nbsp; E-mail: </em><a href="mailto:udfito@diagro.ap.gov.br"><em>udfito@diagro.ap.gov.br</em></a><em>&nbsp;</em></p>
+<p>&nbsp;</p>
+          </div>
+
+          
+          <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->
+          
+          <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->        <!--[if ENDBLOCK]><![endif]-->
+      </div>
+
+      
+      <div class="tw-w-full lg:tw-w-1/4">
+        <div wire:snapshot="{&quot;data&quot;:[],&quot;memo&quot;:{&quot;id&quot;:&quot;us53CGzMn7M3ubrIDGU1&quot;,&quot;name&quot;:&quot;components.last-posts&quot;,&quot;path&quot;:&quot;pagina\/defesa-animal\/defesa-vegetal&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;release&quot;:&quot;a-a-a&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;pt_BR&quot;},&quot;checksum&quot;:&quot;f502d3eb16bbbda6ffda49dfa13a4caee78b62316ec50edcc4ff6c6b97bb3595&quot;}" wire:effects="[]" wire:id="us53CGzMn7M3ubrIDGU1">
+  <!--[if BLOCK]><![endif]-->    <div class="tw-flex tw-flex-col tw-gap-3 tw-mb-4">
+      <h2 class="tw-font-extrabold tw-text-xl tw-text-gov-blue dark:tw-text-yellow-400">
+        ÚLTIMAS NOTÍCIAS
+      </h2>
+    </div>
+
+    <div class="tw-grid lg:tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4">
+      <!--[if BLOCK]><![endif]-->        <a href="https://diagro.portal.ap.gov.br/noticia/05-10-2026-diagro-realiza-campanha-de-atualizacao-cadastral-2026-para-produtores-rurais-do-amapa" class="tw-no-underline tw-group tw-flex tw-flex-col tw-gap-2">
+          <span class="tw-self-start tw-badge tw-text-white tw-text-xs tw-capitalize tw-font-semibold"
+            style="background-color: #5fbd53; text-shadow: 0 1px 2px rgba(0,0,0,0.55), 0 0 1px rgba(0,0,0,0.35);">
+            Campanha de Atualização Cadastral
+          </span>
+          <div
+            class="tw-relative tw-w-full tw-overflow-hidden tw-rounded-lg tw-bg-gray-100 dark:tw-bg-gray-800 tw-aspect-video">
+            <img src="https://matrix.amapa.gov.br//storage/posts/16/01M4671A2178KJPZNTWPFJNFYG.png"
+              class="tw-absolute tw-inset-0 tw-w-full tw-h-full" alt="DIAGRO realiza Campanha de Atualização Cadastral 2026 para produtores rurais do Amapá">
+          </div>
+
+          <div class="tw-flex tw-flex-col tw-gap-1">
+            <div class="tw-text-xs tw-font-medium tw-capitalize tw-text-gray-400 dark:tw-text-yellow-400">
+              <i class="fa-solid fa-calendar-days tw-mr-0.5"></i>
+              5 outubro 2026
+            </div>
+            <div
+              class="tw-text-sm tw-font-bold tw-text-gray-700 dark:tw-text-white tw-leading-snug group-hover:tw-text-gov-green dark:group-hover:tw-text-yellow-300 tw-transition-colors"
+              style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+              DIAGRO realiza Campanha de Atualização Cadastral 2026 para produtores rurais do Amapá
+            </div>
+          </div>
+        </a>
+              <a href="https://diagro.portal.ap.gov.br/noticia/25-02-2026-ouvidoria-publica-da-diagro" class="tw-no-underline tw-group tw-flex tw-flex-col tw-gap-2">
+          <span class="tw-self-start tw-badge tw-text-white tw-text-xs tw-capitalize tw-font-semibold"
+            style="background-color: #6a489c; text-shadow: 0 1px 2px rgba(0,0,0,0.55), 0 0 1px rgba(0,0,0,0.35);">
+            Ouvidoria
+          </span>
+          <div
+            class="tw-relative tw-w-full tw-overflow-hidden tw-rounded-lg tw-bg-gray-100 dark:tw-bg-gray-800 tw-aspect-video">
+            <img src="https://matrix.amapa.gov.br//storage/posts/16/01KWMK9PB97VDVCG0KY2VYN1ZY.png"
+              class="tw-absolute tw-inset-0 tw-w-full tw-h-full" alt="Ouvidoria Pública da DIAGRO">
+          </div>
+
+          <div class="tw-flex tw-flex-col tw-gap-1">
+            <div class="tw-text-xs tw-font-medium tw-capitalize tw-text-gray-400 dark:tw-text-yellow-400">
+              <i class="fa-solid fa-calendar-days tw-mr-0.5"></i>
+              25 fevereiro 2026
+            </div>
+            <div
+              class="tw-text-sm tw-font-bold tw-text-gray-700 dark:tw-text-white tw-leading-snug group-hover:tw-text-gov-green dark:group-hover:tw-text-yellow-300 tw-transition-colors"
+              style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+              Ouvidoria Pública da DIAGRO
+            </div>
+          </div>
+        </a>
+      <!--[if ENDBLOCK]><![endif]-->    </div>
+    <div class="tw-mt-5">
+      <a href="https://diagro.portal.ap.gov.br/noticias" class="tw-btn-gov-primary tw-text-sm">Ler
+        todas</a>
+    </div>
+  <!--[if ENDBLOCK]><![endif]--></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+  </main>
+
+  <footer>
+    <div id="mapa">
+  <div :style="darkMode ? 'background-color: #1f2937' : 'background-color: #00A97A'"
+    class="tw-w-full tw-text-white tw-py-10 tw-text-sm">
+    <div class="tw-max-w-[1320px] tw-mx-auto tw-px-4 md:tw-px-6 lg:tw-px-8">
+      <div class="tw-flex tw-flex-wrap">
+
+        
+        <div class="tw-w-full md:tw-w-1/2 tw-mb-8 md:tw-mb-0">
+          <div class="tw-font-bold tw-text-sm tw-border-b-2 tw-border-white/30 tw-pb-3 tw-mb-5">
+            MAPA DO SITE
+          </div>
+          <div class="tw-grid tw-grid-cols-2 tw-gap-x-6 tw-gap-y-1">
+
+            <div>
+              <a href="https://diagro.portal.ap.gov.br"
+                class="tw-text-white tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5">
+                Página inicial
+              </a>
+            </div>
+
+                                          <div class="tw-col-span-2 tw-mt-2">
+                  <div class="tw-font-semibold tw-py-0.5">Institucional</div>
+                  <div class="tw-pl-3 tw-grid tw-grid-cols-2 tw-gap-x-6 tw-gap-y-0.5 tw-mt-0.5">
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-administrativa-e-financeira">
+                            Diretoria Administrativa e Financeira
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/institucional/assessoramento-e-diretorias">
+                            Assessoramento e Diretorias
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-de-defesa-agropecuaria">
+                            Diretoria de Defesa Agropecuária
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/institucional/diretoria-de-inspecao-de-produtos-de-origem-agropecuaria">
+                            Diretoria de Inspeção de Produtos de Origem Agropecuária
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/institucional/diretor-presidente">
+                            Diretor Presidente
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/institucional/sobre-nos">
+                            Sobre nós
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/institucional/unidades-locais-de-sanidade-agropecuaria">
+                            Unidades Locais de Sanidade Agropecuária
+                          </a>
+                                              </div>
+                                      </div>
+                </div>
+                                                        <div class="tw-col-span-2 tw-mt-2">
+                  <div class="tw-font-semibold tw-py-0.5">Defesa Animal</div>
+                  <div class="tw-pl-3 tw-grid tw-grid-cols-2 tw-gap-x-6 tw-gap-y-0.5 tw-mt-0.5">
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/notificacao-de-doencas">
+                            Notificação de Doenças
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/febre-aftosa">
+                            Febre Aftosa
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/brucelose-e-tuberculose">
+                            Brucelose e Tuberculose
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-equideos">
+                            Sanidade dos Equídeos
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-das-aves">
+                            Sanidade das Aves
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-suinos">
+                            Sanidade dos Suínos
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-caprinos-e-ovinos">
+                            Sanidade dos Caprinos e Ovinos
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/raiva-dos-herbivoros">
+                            Raiva dos herbívoros
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/encefalopatias-espongiformes-transmissiveis">
+                            Encefalopatias Espongiformes Transmissíveis
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-dos-animais-aquaticos">
+                            Sanidade dos Animais Aquáticos
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/sanidade-das-abelhas">
+                            Sanidade das Abelhas
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/transito-animal">
+                            Trânsito Animal
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/eventos-com-aglomeracao-de-animais">
+                            Eventos com Aglomeração de Animais
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-animal/vigilancia-em-propriedades">
+                            Vigilância em Propriedades
+                          </a>
+                                              </div>
+                                      </div>
+                </div>
+                                                        <div class="tw-col-span-2 tw-mt-2">
+                  <div class="tw-font-semibold tw-py-0.5">Defesa Vegetal</div>
+                  <div class="tw-pl-3 tw-grid tw-grid-cols-2 tw-gap-x-6 tw-gap-y-0.5 tw-mt-0.5">
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/defesa-vegetal">
+                            Defesa Vegetal
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/transito-vegetal">
+                            Trânsito Vegetal
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/defesa-vegetal/vassoura-de-bruxa-da-mandioca">
+                            Vassoura-de-bruxa da mandioca
+                          </a>
+                                              </div>
+                                      </div>
+                </div>
+                                                        <div class="tw-col-span-2 tw-mt-2">
+                  <div class="tw-font-semibold tw-py-0.5">Inspeção</div>
+                  <div class="tw-pl-3 tw-grid tw-grid-cols-2 tw-gap-x-6 tw-gap-y-0.5 tw-mt-0.5">
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/inspecao/inspecao-animal">
+                            Inspeção Animal
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/inspecao/inspecao-vegetal">
+                            Inspeção Vegetal
+                          </a>
+                                              </div>
+                                      </div>
+                </div>
+                                                        <div>
+                                      <a class="tw-text-white tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                      href="https://diagro.portal.ap.gov.br/pagina/sisdiagro">
+                      Sisdiagro
+                    </a>
+                                  </div>
+                                                        <div>
+                                      <a class="tw-text-white tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                      href="https://diagro.portal.ap.gov.br/pagina/cadastro">
+                      Cadastro
+                    </a>
+                                  </div>
+                                                        <div>
+                                      <a class="tw-text-white tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                      href="https://diagro.portal.ap.gov.br/pagina/registro-de-rotulagem">
+                      Registro de Rotulagem
+                    </a>
+                                  </div>
+                                                        <div>
+                                      <a class="tw-text-white tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                      href="https://diagro.portal.ap.gov.br/pagina/educacao-sanitaria">
+                      Educação Sanitária 
+                    </a>
+                                  </div>
+                                                        <div class="tw-col-span-2 tw-mt-2">
+                  <div class="tw-font-semibold tw-py-0.5">Serviços e taxas</div>
+                  <div class="tw-pl-3 tw-grid tw-grid-cols-2 tw-gap-x-6 tw-gap-y-0.5 tw-mt-0.5">
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/servicos-e-taxas/taxas">
+                            Taxas
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/servicos-e-taxas/dar-avulso">
+                            DAR Avulso
+                          </a>
+                                              </div>
+                                      </div>
+                </div>
+                                                        <div class="tw-col-span-2 tw-mt-2">
+                  <div class="tw-font-semibold tw-py-0.5">Legislação</div>
+                  <div class="tw-pl-3 tw-grid tw-grid-cols-2 tw-gap-x-6 tw-gap-y-0.5 tw-mt-0.5">
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/legislacao/legislacao-estadual">
+                            Legislação Estadual
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/legislacao/estrutura-organizacional">
+                            Estrutura Organizacional
+                          </a>
+                                              </div>
+                                          <div>
+                                                  <a class="tw-text-white/90 tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                            href="https://diagro.portal.ap.gov.br/pagina/legislacao/estatuto-da-diagro">
+                            Estatuto da Diagro
+                          </a>
+                                              </div>
+                                      </div>
+                </div>
+                                                        <div>
+                                      <a class="tw-text-white tw-no-underline hover:tw-text-gov-yellow tw-block tw-py-0.5"
+                      href="https://diagro.portal.ap.gov.br/pagina/contato">
+                      Contato
+                    </a>
+                                  </div>
+                          
+          </div>
+        </div>
+
+        
+        <div class="tw-w-full md:tw-w-1/2 md:tw-pl-10">
+          <div class="tw-font-bold tw-text-sm tw-border-b-2 tw-border-white/30 tw-pb-3 tw-mb-5">
+            SOBRE O ÓRGÃO
+          </div>
+          <div class="tw-space-y-2">
+            <div class="tw-font-extrabold">
+              DIAGRO - Agência de Defesa e Inspeção Agropecuária do Estado do Amapá
+            </div>
+                                          <div class="tw-flex tw-gap-2">
+                  <i class="fas fa-location-dot tw-mt-0.5 tw-shrink-0"></i>
+                  <span>Avenida Padre Júlio Maria Lombaerd, nº 2925, bairro
+                    Santa Rita - Cep: 68.901-283,
+                    Macapá - AP</span>
+                </div>
+                                                                                                          <div class="tw-flex tw-gap-2 tw-items-center">
+                  <i class="fas fa-envelope tw-shrink-0"></i>
+                  <span>gabinete@diagro.ap.gov.br</span>
+                </div>
+                                                    <div class="tw-flex tw-gap-2 tw-items-center">
+                <i class="fas fa-clock tw-shrink-0"></i>
+                <span>Horário de Atendimento:</span>
+              </div>
+                              <div class="tw-pl-5 tw-text-white/80">
+                  Segunda à Sexta,
+                  07:30h às
+                  13:30h
+                </div>
+                                    </div>
+                      <div class="tw-flex tw-flex-wrap tw-gap-2 tw-mt-6">
+                              <a href="https://www.instagram.com/diagro_oficial/" target="_blank"
+                  class="tw-inline-flex tw-items-center tw-justify-center tw-w-8 tw-h-8 tw-rounded-lg tw-bg-white/20 hover:tw-bg-white/30 tw-transition-colors tw-text-white tw-no-underline">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                              <a href="https://www.facebook.com/profile.php?id=100026172632036" target="_blank"
+                  class="tw-inline-flex tw-items-center tw-justify-center tw-w-8 tw-h-8 tw-rounded-lg tw-bg-white/20 hover:tw-bg-white/30 tw-transition-colors tw-text-white tw-no-underline">
+                  <i class="fab fa-facebook"></i>
+                </a>
+                              <a href="https://www.youtube.com/@diagroemacao/streams" target="_blank"
+                  class="tw-inline-flex tw-items-center tw-justify-center tw-w-8 tw-h-8 tw-rounded-lg tw-bg-white/20 hover:tw-bg-white/30 tw-transition-colors tw-text-white tw-no-underline">
+                  <i class="fab fa-youtube"></i>
+                </a>
+                          </div>
+                  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tw-w-full tw-bg-gray-900 tw-text-white tw-text-sm tw-py-5">
+  <div class="tw-max-w-[1320px] tw-mx-auto tw-px-4 md:tw-px-6 lg:tw-px-8">
+    <div class="tw-flex tw-flex-wrap tw-items-center">
+      <div class="tw-w-full md:tw-w-2/3">
+        <div>Site desenvolvido e hospedado por:
+          <span class="tw-font-bold">PRODAP - Centro de Gestão da Tecnologia da Informação</span>
+        </div>
+        <div class="tw-text-white/60 tw-mt-0.5">2017 - 2026 Licença Creative Commons 3.0
+          International</div>
+      </div>
+      <div class="tw-w-full md:tw-w-1/3 tw-flex tw-justify-center md:tw-justify-end">
+        <img src="https://diagro.portal.ap.gov.br/image/brasao.png" class="tw-mt-5 md:tw-mt-0" alt="Brasão">
+      </div>
+    </div>
+  </div>
+</div>
+  </footer>
+
+  
+  <a href="#topo" x-data="{ show: false }" x-init="show = window.pageYOffset > 400;
+  window.addEventListener('scroll', () => show = window.pageYOffset > 400, { passive: true })"
+    x-bind:class="show ? 'tw-opacity-100 tw-pointer-events-auto' : 'tw-opacity-0 tw-pointer-events-none'"
+    aria-label="Voltar ao topo"
+    class="tw-fixed tw-bottom-5 tw-right-5 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-no-underline tw-shadow-lg tw-transition-opacity tw-duration-300 tw-bg-gov-blue dark:tw-bg-white/90 dark:hover:tw-bg-white">
+    <i class="fa-solid fa-arrow-up tw-text-white dark:tw-text-gray-900"></i>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+  <script src="https://diagro.portal.ap.gov.br/components/owlcarousel/owl.carousel.min.js"></script>
+  <script src="https://diagro.portal.ap.gov.br/components/lightbox2/dist/js/lightbox.js"></script>
+    
+  <script>
+    // Acessibilidade: escala a fonte do site inteiro alterando o font-size do <html> (root).
+    // Como as utilidades de texto do Tailwind/Bootstrap usam rem (relativo ao root),
+    // mudar o root faz menu, títulos e demais componentes variarem juntos.
+    const FONTE_BASE = 16; // px
+    const FONTE_MIN = 14;
+    const FONTE_MAX = 26;
+    const FONTE_KEY = 'acessibilidade-fonte';
+
+    function aplicarFonte(px) {
+      document.documentElement.style.fontSize = px ? px + 'px' : '';
+    }
+
+    function fonte(e) {
+      let atual = parseFloat(localStorage.getItem(FONTE_KEY)) ||
+        parseFloat(getComputedStyle(document.documentElement).fontSize) || FONTE_BASE;
+
+      if (e === 'r') {
+        localStorage.removeItem(FONTE_KEY);
+        aplicarFonte('');
+        return;
+      }
+
+      let novo = e === 'a' ?
+        Math.min(atual + 1, FONTE_MAX) :
+        Math.max(atual - 1, FONTE_MIN);
+
+      localStorage.setItem(FONTE_KEY, novo);
+      aplicarFonte(novo);
+    }
+
+    // Reaplica a preferência salva em todas as páginas
+    (function() {
+      let salvo = localStorage.getItem(FONTE_KEY);
+      if (salvo) aplicarFonte(parseFloat(salvo));
+    })();
+    $(function() {
+      //LINK TR
+      $(".clickable-row").click(function() {
+        window.open($(this).data("href"), '_blank');
+      });
+      // GALLERY
+      lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'albumLabel': "Imagem %1 de %2",
+      })
+
+
+      // Select Company
+      $('#select-company').select2({
+        width: '100%',
+        theme: 'bootstrap-5',
+        selectionCssClass: "select2--small",
+        dropdownCssClass: "select2--small",
+        "language": {
+          "noResults": function() {
+            return "Órgão não encontrado!";
+          }
+        },
+        escapeMarkup: function(markup) {
+          return markup;
+        }
+      });
+      // Carousel
+
+      $('#owl-service').owlCarousel({
+        loop: false,
+        margin: 15,
+        dots: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 2
+          },
+          1000: {
+            items: 3
+          }
+        }
+      })
+
+      $('#owl-wanted').owlCarousel({
+        loop: true,
+        margin: 15,
+        dots: true,
+        nav: true,
+        navText: [
+          '<i class="fas fa-chevron-left"></i>',
+          '<i class="fas fa-chevron-right"></i>'
+        ],
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+          // celular: 1 coluna (2 cards empilhados por slide)
+          0: {
+            items: 1
+          },
+          // tablet (largura cheia): 2 colunas lado a lado
+          768: {
+            items: 2
+          },
+          // desktop (lg): volta a 1 coluna, na sidebar estreita de 4 colunas
+          1024: {
+            items: 1
+          }
+        }
+      })
+
+      $('#owl-link-image').owlCarousel({
+        loop: true,
+        margin: 15,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      })
+
+      $('#owl-geral-link').owlCarousel({
+        loop: true,
+        margin: 15,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        autoHeight: false,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 2
+          },
+          900: {
+            items: 3
+          },
+          1200: {
+            items: 4
+          }
+        }
+      })
+    });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LB7Q8CYVG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0LB7Q8CYVG');
+  </script>
+
+<script src="/livewire/livewire.min.js?id=a60c5ee6"   data-csrf="rTtWnbX3VUb4DoPCZUWMyI3Lg24fWSe7PTcWt3tS" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+</body>
+
+</html>
