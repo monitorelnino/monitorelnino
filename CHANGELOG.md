@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #1916 · Plano de edição anterior não substitui o mais novo
+
+A atualização de registro deixava um documento de força igual trocar o registro sem julgamento do juiz, mesmo sendo mais antigo: Cachoeiro de Itapemirim e Pancas/ES perderam o plano de 2025 para o de 2023, e o índice do ES caiu. Edição anterior não substitui mais; os dois registros voltaram.
+
 ## 2026-11-18 · #1911 · Um leitor só para o documento, também na saúde e na descoberta
 
 O juiz da saúde passa a ler como o juiz municipal: fonte, cópia da ponte no Brasil e cópia pública quando a fonte cai, com OCR do PDF escaneado. Muro de robô volta a ser recusa, não falha de rede. A guarda da prova usa o mesmo leitor. A busca de planos pede à ponte o portal da prefeitura que não abre de fora do país.
