@@ -9,11 +9,10 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-11 a 2026-11-18 (1602 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-11 a 2026-11-18 (1617 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- julgar_saude.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 - python3: erro em 2 rodadas seguidas — SyntaxError: unterminated string literal (detected at line 1)
 - verificar_links.py: erro em 2 rodadas seguidas — erro: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
 
@@ -36,9 +35,9 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-17 01:35 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-18 17:34 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-18 19:59 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-18 16:26 | 938 s | 0 | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-18 17:28 | 440 s | 0 | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
 | `atualizar_boletins.py` | coletor | 2026-11-15 04:04 | 2 s | — | ok | — |
 | `atualizar_instrumentos_estaduais.py` | coletor | 2026-11-15 05:45 | 84 s | — | **erro** | código de saída 1 |
@@ -64,7 +63,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `coletar_diarios_consorciados.py` | coletor | 2026-11-17 01:15 | 3663 s | 83 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-11-17 01:15 | 2 s | 0 | ok | — |
 | `coletar_doe.py` | coletor | 2026-11-17 02:16 | 1659 s | — | ok | — |
-| `coletar_edicoes_doe.py` | coletor | 2026-11-18 10:51 | 4201 s | — | **erro** | interrompido pelo prazo do elo |
+| `coletar_edicoes_doe.py` | coletor | 2026-11-18 18:08 | 2300 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-11-18 03:07 | 204 s | — | ok | — |
 | `coletar_execucao_mps.py` | coletor | 2026-11-15 05:44 | 22 s | — | ok | — |
 | `coletar_financiamento.py` | coletor | 2026-11-15 05:44 | 1 s | — | ok | — |
@@ -98,8 +97,8 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `desfechos_sus.py` | coletor | 2026-11-18 07:15 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-18 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-18 14:31 | 2 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-11-18 15:06 | 3575 s | — | ok | — |
-| `julgar_saude.py` | coletor | 2026-11-18 14:31 | 1501 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
+| `julgar_filas.py` | coletor | 2026-11-18 16:39 | 852 s | — | ok | — |
+| `julgar_saude.py` | coletor | 2026-11-18 15:16 | 5894 s | — | ok | — |
 | `julgar_saude_municipal.py` | coletor | 2026-11-16 05:40 | 8409 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-18 08:30 | 5 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-18 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |

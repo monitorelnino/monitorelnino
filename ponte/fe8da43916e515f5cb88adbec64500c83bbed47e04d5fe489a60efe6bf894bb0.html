@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Diário Oficial do Estado</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,600,700,900&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://ati.to.gov.br/images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/assets/diariooficial.css?1649164399">
+        <link rel="stylesheet" type="text/css" href="/assets/application.css?1626129004">
+    </head>
+
+    <body class="portal">
+
+        <script type="text/javascript" charset="utf-8" src="https://barra.to.gov.br/topo.js?k=diariooficial.to.gov.br"></script>
+
+        <header class="header-gov-inst">
+            <div class="header-container">
+
+                <div class="row">
+                    <div class="govnav">
+                        <a class="govnav-orgao" href="#"></a>
+                        <div class="search"><a href="#" role="button" tabindex="1" data-target="search-menu" class="search-btn"><i
+                                    class="material-icons">search</i> busca</a></div>
+                        <div class="menu-btn">
+                            <a href="#" role="button" tabindex="2" data-target="site-menu"><i class="material-icons">menu</i> menu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="menu">
+                    <div id="site-menu">
+                        <div class="menu-content">
+                            <ul class="main-menu" role="menu">
+                                <li><a href="http://diariooficial.to.gov.br/ajuda/wvyxvr92kzd">Ajuda</a></li><li><a href="http://diariooficial.to.gov.br/contato/145c050jaugp">Contato</a></li><li><a href="http://diariooficial.to.gov.br/publicacao-de-materias/i5lqvrgc795">Publicação de Matérias</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim Menu -->
+
+            </div>
+            <!-- Search -->
+            <div class="search-box">
+                <div class="search-box-overlay"></div>
+                <div class="search-content">
+                    <div class="search-tabs" role="radiogroup">
+                        <label aria-labelledby="portexto" class="checked">
+                            <input class="with-gap tab-switch" name="busca" data-tab="formportexto" type="radio" checked />
+                            <span id="portexto">Por texto</span>
+                          </label>
+                          <label aria-labelledby="pordoc">
+                            <input class="with-gap tab-switch" name="busca" data-tab="formpordocumento" type="radio" />
+                            <span id="pordoc">Por documento</span>
+                          </label>
+                          <label aria-labelledby="pordoc">
+                            <input class="with-gap tab-switch" name="busca" data-tab="formporedicao" type="radio" />
+                            <span id="pordoc">Por edição</span>
+                          </label>
+                    </div>
+                    <form id="formportexto" action="/busca">
+                        <input name="por" type="hidden" value="texto">
+                        <div class="form-group">
+                            <label for="texto-exato">Texto exato</label>
+                            <input id="texto-exato" name="texto" type="search">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-columns">
+                                <div class="form-field">
+                                    <label for="data-inicial">Data inicial</label>
+                                    <input id="data-inicial" name="data-inicial" type="date">
+                                </div>
+                                <div class="form-field">
+                                    <label for="data-final">Data final</label>
+                                    <input id="data-final" name="data-final" type="date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-wrapper">
+                            <button class="search-submit"><i class="material-icons left">search</i> Buscar
+                                texto</button>
+                        </div>
+
+                    </form>
+                    <form id="formpordocumento" action="/busca" style="display: none;">
+                        <input name="por" type="hidden" value="doc">
+                        <div class="form-group">
+                            <label for="tipo-documento">Tipo de documento</label>
+                            <select name="tipo-documento">
+                                <option value="" disabled selected>Escolha um tipo de documento</option>
+                                <option value="1">Decretos</option>
+                                <option value="2">Leis</option>
+                                <option value="3">Emenda Constitucional</option>
+                                <option value="4">Lei Complementar</option>
+                                <option value="5">Medida Provisória</option>
+                                <option value="6">Atos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="num_doc">Número documento</label>
+                            <input id="num_doc" name="numero" type="search" placeholder="1234">
+                        </div>
+                        <div class="btn-wrapper">
+                            <button class="search-submit"><i class="material-icons left">search</i> Buscar
+                                documento</button>
+                        </div>
+                    </form>
+                    <form id="formporedicao" action="/busca" style="display: none;">
+                        <input name="por" type="hidden" value="edicao">
+                        <div class="form-group">
+                            <label for="edicao">edição</label>
+                            <input type="number" name="edicao" id="edicao_num" placeholder="1000" min="1">
+                        </div>
+                        
+                        <div class="btn-wrapper">
+                            <button class="search-submit"><i class="material-icons left">search</i> Buscar
+                                edição</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!-- Fim search -->
+
+        </header>
+
+
+        
+        <section class="search-result-form pt-0">
+            <div class="container">
+                <div class="row hide-on-small-only">
+                    <!--  form texto -->
+                    <div class="col s12 l10 offset-l1">
+                        <h5 class="center-align">Última busca</h5>
+                        <form id="formportexto" action="/busca">
+                            <input name="por" type="hidden" value="texto">
+                            <div class="row">
+                                <div class="col s12 m4 l5">
+                                    <label for="texto-exato">Texto exato</label>
+                                    <input id="texto-exato" name="texto" type="search" value="declara situação de emergência">
+                                </div>
+                                <div class="col s12 m6 l5 pl-0 pr-0">
+                                    <div class="col s6">
+                                        <label for="dataini">Data inicial</label>
+                                        <input id="dataini" name="data-inicial" type="date" value="2026-06-29">
+                                    </div>
+                                    <div class="col s6">
+                                        <label for="datafim">Data final</label>
+                                        <input id="datafim" name="data-final" type="date" value="2026-11-18">
+                                    </div>
+                                </div>
+                                <div class="col s12 m2 l2 btn-wrapper">
+                                    <button class="search-submit"><i class="material-icons left">search</i> Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--  form documento -->
+                    <div class="col s12 m10 l9 offset-m1 offset-l2 mt-1">
+                        <form id="formpordocumento" action="/busca">
+                            <input name="por" type="hidden" value="doc">
+                            <div class="row">
+                                <div class="col s12 m6 l6">
+                                    <label for="tipo-documento">Tipo de documento</label>
+                                    <select name="tipo-documento">
+                                        <option value="" disabled selected>Escolha um tipo de documento</option>
+                                        <option value="1" >Decretos</option>
+                                        <option value="2" >Leis</option>
+                                        <option value="3" >Emenda Constitucional</option>
+                                        <option value="4" >Lei Complementar</option>
+                                        <option value="5" >Medida Provisória</option>
+                                        <option value="6" >Atos</option>
+                                    </select>
+                                </div>
+                                <div class="col s12 m3 l3">
+                                    <label for="num_doc">Nº documento</label>
+                                    <input id="num_doc" name="numero" type="search" placeholder="1234" value="">
+                                </div>
+                                <div class="col s12 m3 l3 btn-wrapper">
+                                    <button class="search-submit"><i class="material-icons left">search</i> Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--  form edição -->
+                    <div class="col s12 m10 l9 offset-m1 offset-l3 mt-1">
+                        <form id="formporedicao" action="/busca">
+                            <input name="por" type="hidden" value="edicao">
+                            <div class="row">
+                                <div class="col s12 m6 l6">
+                                    <label for="tipo-documento">Edição</label>
+                                    <input type="number" name="edicao" id="edicao_num" placeholder="1000" min="1">
+                                </div>
+                                <div class="col s12 m3 l3 btn-wrapper">
+                                    <button class="search-submit"><i class="material-icons left">search</i> Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="search-results">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 l10 offset-l1">
+                        <h5 class="center-align">Resultados da busca</h5>
+                        <table class="responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Edição</th>
+                                    <th>Publicado em</th>
+                                    <th>Páginas</th>
+                                    <th>Tamanho</th>
+                                    <th>Downloads</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                                                <tr>
+                                    <td>Nº 7168</td>
+                                    <td>22/10/2026</td>
+                                    <td>131 pág.</td>
+                                    <td>1.43 MB</td>
+                                    <td>7.533</td>
+                                    <td><a href="https://doe.to.gov.br/diario/5809/download" aria-labelledby="download7168" title="Edição 7168" target="_blank"><i class="material-icons" aria-hidden="true">cloud_download</i> Baixar</a></td>
+                                    <span class="sr-only" id="download7168">Baixar edição 7168</span>
+                                </tr>
+                                                                <tr>
+                                    <td>Nº 7150</td>
+                                    <td>24/09/2026</td>
+                                    <td>145 pág.</td>
+                                    <td>1.61 MB</td>
+                                    <td>5.008</td>
+                                    <td><a href="https://doe.to.gov.br/diario/5789/download" aria-labelledby="download7150" title="Edição 7150" target="_blank"><i class="material-icons" aria-hidden="true">cloud_download</i> Baixar</a></td>
+                                    <span class="sr-only" id="download7150">Baixar edição 7150</span>
+                                </tr>
+                                                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+
+        </section>
+
+
+        <a href="javascript:" id="return-to-top"><i class="material-icons">keyboard_arrow_up</i></a>
+
+        <footer class="footer">
+            <script type="text/javascript" charset="utf-8" src="https://barra.to.gov.br/base.js?k=diariooficial.to.gov.br"></script>
+        </footer>
+
+        <div class="vlib">
+            <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                    <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>
+            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+            <script>
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+            </script>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="/assets/js/vendors.min.js?1626129004"></script>
+        <script src="/assets/js/materialize.js?1626129004"></script>
+        <script src="/assets/js/plugins.js?1626129004"></script>
+        <script src="/assets/js/diariooficial.js?1626129004"></script>
+    </body>
+
+</html>
+
+<!--
+https://central.to.gov.br/api/sites/doe requested 0.037732124328613 
+https://central.to.gov.br/api/sites/doe/menu requested 0.039261102676392 
+
+1.7334291934967
+-->

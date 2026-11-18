@@ -130,36 +130,43 @@ def ler_documento(url, timeout=40, origem=None):
     return _ler_sharepoint_rs(url, timeout) if HOST_SHAREPOINT_RS in url else buscar(url, timeout=timeout, origem=origem)
 
 
-def buscar_texto(url, timeout=40, arquivada=None):
-    """Busca o conteúdo textual da URL. Tolerante a falha (retorna None, nunca lança).
-    Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
-    falha já usado no resto do pipeline (perda de recall, nunca invenção de texto)."""
+def obter_documento(url, timeout=40, origem=None, buscar_fn=None):
+    """Os bytes do documento, por onde ele se lê: a fonte (pasta do RS com a sessão do link; o resto pela porta de
+    rede, que já lê a cópia da ponte) e, se a fonte caiu, recusou ou respondeu página no lugar do documento, a
+    cópia pública do Internet Archive (12/11/2026, editoria). Levanta o erro da fonte quando nada se lê.
+    O mesmo leitor para o juiz municipal, o juiz da saúde e a guarda da prova (18/11/2026: o juiz da saúde e a
+    guarda não liam a cópia pública, e 8 promoções ficaram fora do banco). `buscar_fn` é o transporte do
+    autoteste, que não vai à cópia pública."""
     try:
-        if arquivada:
-            raw, tipo = arquivada, ""
-        else:
-            # 15/11/2026: pela porta de rede do projeto (`coletores_base.buscar`), como todo coletor. O juiz
-            # abria a conexão por conta própria, com 20 s e sem a cadeia de certificados do `certifi`: em três
-            # rodadas, 90 de 153 falhas foram tempo esgotado e 15 foram cadeia TLS — documento oficial no ar
-            # saindo `documento_inacessivel` (1.397 pistas em domínio oficial paradas nisso).
-            raw, tipo = ler_documento(url, timeout, "julgamento de descobertas"), ""
-        if (not arquivada and url.lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt"))
+        raw = buscar_fn(url, timeout=timeout) if buscar_fn else ler_documento(url, timeout, origem)
+        if (url.lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt"))
                 and not raw.startswith(ASSINATURAS_DE_DOCUMENTO)):
             # 17/11/2026: o endereço de documento que responde página (Rio de Janeiro/RJ: 132 caracteres de HTML,
-            # com 200, para o robô de fora do país) não entregou o documento — e o juiz julgava outra coisa.
-            # É falha de leitura: vai à cópia pública, como a recusa e a queda.
+            # com 200, para o robô de fora do país) não entregou o documento.
             raise ValueError(f"o endereço do documento respondeu página ({len(raw)} bytes), não o documento")
-        texto = texto_do_documento(raw, url, tipo)
-        if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR:
-            texto = texto_por_ocr(raw) or texto
-        return texto
+        return raw
     except Exception as e:
-        # 24/10/2026: 170 de 481 PDFs do RS saíram `documento_inacessivel` sem a causa em lugar nenhum.
         print(f"  [buscar_texto] {type(e).__name__}: {str(e)[:140]} · {url[-70:]}", file=sys.stderr)
-        if arquivada or "archive.org" in url:
-            return None
-        raw, _ = copia_arquivada(url)   # 12/11/2026 (editoria): o site recusou ou caiu; lê-se a cópia pública antes de desistir
-        return buscar_texto(url, timeout, arquivada=raw) if raw else None
+        raw = None if buscar_fn or "archive.org" in url else copia_arquivada(url)[0]
+        if not raw:
+            raise
+        return raw
+
+
+def com_ocr(raw, texto):
+    """O texto do documento; PDF sem camada de texto vai ao OCR (o mesmo motor da preservação)."""
+    if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR:
+        return texto_por_ocr(raw) or texto
+    return texto
+
+
+def buscar_texto(url, timeout=40):
+    """O texto do documento, ou None quando nada se lê (perda de recall, nunca invenção de texto)."""
+    try:
+        raw = obter_documento(url, timeout, "julgamento de descobertas")
+    except Exception:  # noqa: BLE001 — a causa já saiu no log
+        return None
+    return com_ocr(raw, texto_do_documento(raw, url))
 
 
 LETRAS_SEM_OCR = 200      # abaixo disto o PDF é tratado como escaneado
