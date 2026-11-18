@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-11 a 2026-11-18 (1618 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-11 a 2026-11-18 (1624 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -35,7 +35,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-17 01:35 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-18 20:27 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-18 21:44 | 4 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-18 17:28 | 440 s | 0 | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -84,7 +84,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `coletar_siconfi_182.py` | coletor | 2026-11-15 05:42 | 1 s | — | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-18 07:25 | 2416 s | — | ok | — |
 | `coletar_sim.py` | coletor | 2026-11-18 07:15 | 609 s | — | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-11-18 12:03 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `coletar_sinais_risco.py` | coletor | 2026-11-18 20:55 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_sisab.py` | coletor | 2026-11-18 07:12 | 195 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-15 05:35 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-17 01:54 | 39 s | — | ok | — |
@@ -98,7 +98,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `detectar_marcos_federais.py` | coletor | 2026-11-18 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-18 14:31 | 2 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-11-18 16:39 | 852 s | — | ok | — |
-| `julgar_saude.py` | coletor | 2026-11-18 15:16 | 5894 s | — | ok | — |
+| `julgar_saude.py` | coletor | 2026-11-18 18:41 | 4645 s | — | ok | — |
 | `julgar_saude_municipal.py` | coletor | 2026-11-16 05:40 | 8409 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-18 08:30 | 5 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-18 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |

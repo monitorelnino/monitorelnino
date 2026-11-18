@@ -246,16 +246,19 @@ def atualiza(existente: dict, v: dict) -> str:
     # 16/11/2026: registro que o juiz nunca julgou (sem `codebook`, anterior a 27/09; 84 planos) não segura o documento julgado de
     # força igual. Rio de Janeiro/RJ tinha "plano" apontando a página estadual, sem data comparável, e
     # a correção do leitor com o plano municipal nunca entraria.
+    a, n = quando(existente.get("data"), existente.get("url")), quando(v.get("data"), v.get("url"))
+    ate = min(len([x for x in a if x]), len([x for x in n if x])) if a and n else 0   # compara até onde as duas datas dizem
+    # 18/11/2026: documento de força igual e edição ANTERIOR nunca substitui (Cachoeiro de Itapemirim e Pancas/ES:
+    # PLANCON 2025 trocado pelo de 2023 e o índice do ES caiu de 58,3 para 56,6).
+    if FORCA[nova] == FORCA.get(atual, 0) and ate and n[:ate] < a[:ate]:
+        return ""
     if "codebook" not in existente and FORCA[nova] >= FORCA.get(atual, 0) and nova in CATEGORIAS_DE_PLANO:
         return "registro anterior sem julgamento do juiz"
     # 16/11/2026: o ato de aprovação achado depois completa o plano que entrou sem ele (Taió/SC).
     if atual == nova and nova in CATEGORIAS_DE_PLANO and existente.get("sem_ato_de_aprovacao") and not v.get("sem_ato_de_aprovacao"):
         return "ato de aprovação localizado"
-    a, n = quando(existente.get("data"), existente.get("url")), quando(v.get("data"), v.get("url"))
-    if atual == nova and nova in CATEGORIAS_DE_PLANO and a and n:
-        ate = min(len([x for x in a if x]), len([x for x in n if x]))    # compara até onde as duas datas dizem
-        if n[:ate] > a[:ate]:
-            return f"documento posterior ({existente.get('data')} → {v.get('data')})"
+    if atual == nova and nova in CATEGORIAS_DE_PLANO and ate and n[:ate] > a[:ate]:
+        return f"documento posterior ({existente.get('data')} → {v.get('data')})"
     return ""
 
 
@@ -644,6 +647,12 @@ def autoteste() -> int:
             cb.ler, cb.preservar_evidencia, jd.ler_documento, jd.copia_arquivada = salvo
     casos.append(("endereço que caiu: a prova é a cópia pública que o juiz leu; sem cópia pública, não há prova",
                   (lambda r: r[0] == "h" * 64 and r[1] is None and r[2] == [(b"%PDF-1.4 copia publica", "pdf")])(prova_pela_copia_publica())))
+    casos.append(("plano de edição anterior nunca substitui o de força igual, nem o registro sem julgamento do juiz",
+                  atualiza({"categoria": "plano", "data": "2025", "url": "u1"}, {"categoria": "plano", "data": "2023", "url": "u2"}) == ""
+                  and atualiza({"categoria": "plano", "data": "2025", "url": "u1", "codebook": V},
+                               {"categoria": "plano", "data": "2023", "url": "u2"}) == ""
+                  and atualiza({"categoria": "plano", "url": "u1"}, {"categoria": "plano", "data": "2023", "url": "u2"})
+                  == "registro anterior sem julgamento do juiz"))
     casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
                   and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],
