@@ -2,7 +2,7 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 99828,
+   "valor": 99835,
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-11-17",
@@ -18,29 +18,29 @@
   },
   {
    "id": "municipios_plano_localizado",
-   "valor": 158,
+   "valor": 159,
    "unidade": "municípios",
    "periodo_inicio": null,
    "periodo_fim": "2026-11-18",
-   "n": 158,
+   "n": 159,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "dias_alerta_laranja_vermelho",
-   "valor": 42,
+   "valor": 43,
    "unidade": "dias",
    "periodo_inicio": "2026-09-15",
-   "periodo_fim": "2026-11-17",
-   "n": 60,
+   "periodo_fim": "2026-11-18",
+   "n": 61,
    "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.dias_observados",
    "periodo_vars": {
     "data": "15/09/2026",
-    "n": 60
+    "n": 61
    }
   },
   {
@@ -225,11 +225,11 @@
   },
   {
    "id": "diarreia",
-   "valor": 202597,
+   "valor": 429591,
    "unidade": "atendimentos",
    "periodo_inicio": "2026-07-01",
-   "periodo_fim": "2026-07-31",
-   "n": 1,
+   "periodo_fim": "2026-08-31",
+   "n": 2,
    "fonte": "SUS (SISAB), meses fechados",
    "sem_coleta": false,
    "motivo": null
@@ -288,15 +288,15 @@
   },
   {
    "id": "estados_acima_da_faixa_diarreia",
-   "valor": 22,
+   "valor": 17,
    "unidade": "estados",
-   "periodo_inicio": "2026-07-01",
-   "periodo_fim": "2026-07-31",
+   "periodo_inicio": "2026-08-01",
+   "periodo_fim": "2026-08-31",
    "n": 27,
    "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
    "sem_coleta": false,
    "motivo": null,
-   "periodo": "2026-07"
+   "periodo": "2026-08"
   },
   {
    "id": "estados_acima_da_faixa_leptospirose",
@@ -538,12 +538,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 13739,
+   "valor": 15215,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "17/11/2026",
+   "consultado_em": "18/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -552,59 +552,59 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 10042
+     "valor": 11050
     },
     {
      "uf": "AM",
-     "valor": 1297
+     "valor": 1469
     },
     {
      "uf": "MA",
-     "valor": 948
+     "valor": 1116
     },
     {
      "uf": "AP",
-     "valor": 584
+     "valor": 605
     },
     {
      "uf": "RR",
-     "valor": 279
+     "valor": 294
     },
     {
      "uf": "RO",
-     "valor": 172
+     "valor": 189
     },
     {
      "uf": "AC",
-     "valor": 92
+     "valor": 101
     },
     {
      "uf": "CE",
-     "valor": 77
+     "valor": 90
     },
     {
      "uf": "SP",
-     "valor": 47
+     "valor": 50
+    },
+    {
+     "uf": "RN",
+     "valor": 45
+    },
+    {
+     "uf": "PB",
+     "valor": 34
     },
     {
      "uf": "PI",
      "valor": 33
     },
     {
-     "uf": "RN",
-     "valor": 30
-    },
-    {
-     "uf": "PB",
-     "valor": 23
-    },
-    {
      "uf": "PE",
-     "valor": 20
+     "valor": 31
     },
     {
      "uf": "AL",
-     "valor": 15
+     "valor": 26
     },
     {
      "uf": "PR",
@@ -619,12 +619,12 @@
      "valor": 13
     },
     {
-     "uf": "MS",
-     "valor": 11
+     "uf": "BA",
+     "valor": 12
     },
     {
-     "uf": "BA",
-     "valor": 10
+     "uf": "MS",
+     "valor": 11
     },
     {
      "uf": "GO",
