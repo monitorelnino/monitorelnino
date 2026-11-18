@@ -348711,7 +348711,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://transparencia.santoantoniodoleste.mt.gov.br/fotos_licitacao/11816.pdf",
    "alvo": "5107792",
@@ -348751,9 +348751,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://transparencia.santoantoniodoleste.mt.gov.br/fotos_licitacao/11816.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "025f8729ffffee2b9c50e9058f444ecd812837773e725241381643323c16343b"
+   }
   },
   {
    "municipio": "Santo Antônio do Leste",
@@ -365227,7 +365254,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem_do_coletor": "busca_web",
    "url_final": "https://cdn.campogrande.ms.gov.br/portal/prod/uploads/sites/30/2021/12/pms-2022-2025-1639061218.pdf",
    "alvo": "5002704",
@@ -365259,6 +365286,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "29/04/19",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e6694f2063f498a133caaed20155cf31db22d12b3f7d848fce01bfba529924d3"
    }
   },
   {
@@ -391313,9 +391358,27 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.ce.gov.br/saude/download/resolucoes-cib-2013/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1
   },
   {
    "municipio": "Miraíma",
@@ -430051,7 +430114,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://santaleopoldina-es.portaltp.com.br/",
    "alvo": "3204500",
@@ -430078,6 +430141,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "adaeb887999eea98c58d81e5083aec8f895dd6b54ae1f7cd2d45cf0f29b19172"
    }
   },
   {
@@ -479622,7 +479703,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/",
    "alvo": "1501402",
@@ -479673,9 +479754,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://santaizabel.pa.gov.br/wp-content/uploads/2021/04/CONTIGENCIA.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "905b83ced5f211ad21af746687ab783b121994f04e8bea58ebf5378c1889b0df"
+   }
   },
   {
    "municipio": "Belém",
@@ -479720,7 +479828,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/dgr-2/",
    "alvo": "1501402",
@@ -479771,9 +479879,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/04/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "1d46be6b41db520cd08d5f28819d4bce406cd1b3dc8845b23a6364f5d4c9e771"
+   }
   },
   {
    "municipio": "Santa Izabel do Pará",
@@ -482016,7 +482139,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505536",
@@ -482067,9 +482190,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://parauapebas.pa.gov.br/wp-content/uploads/2024/02/PLANCON-PARAUAPEBAS-vs.2-2023-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Parauapebas",
@@ -482449,7 +482599,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502400",
@@ -482499,9 +482649,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.camaradecastanhal.pa.gov.br/assinatura/assinado/2026/10/2610080939401B827.pdf?vh=26fd302"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/01/80",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "1997b0c4dab73ff4a8a549e85c33e0fe0333b02f3035ce75ab60633f1032b9fb"
+   }
   },
   {
    "municipio": "Castanhal",
@@ -483196,7 +483373,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/orcamentaria-e-financeira/",
    "alvo": "1502103",
@@ -483247,9 +483424,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://prefeituradecameta.pa.gov.br/wp-content/uploads/2025/08/1-PMSB-PLANO-MUNICIPAL-DE-SANEAMENTO-BA%CC%81SICO-DO-MUNICI%CC%81PIO-DE-CAMETA%CC%81-2025.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "fcc08f9a61c7f71c0c869d40b5afed559021f7a10f2d96126a30485f2164cf7b"
+   }
   },
   {
    "municipio": "Barcarena",
@@ -483644,7 +483848,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://barradocorda.ma.gov.br/upload/plano_contingencia/92734.pdf",
    "alvo": "2101608",
@@ -483673,6 +483877,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ac25955cba8f484dc72b49cb72d6d949bf1d76da134366466232c7903ee17908"
    }
   },
   {
@@ -483855,7 +484077,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503606",
@@ -483905,9 +484127,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://itaituba.pa.gov.br/noticia/1065/prefeito-nicodemos-aguiar-reuniu-com-a-defesa-civil-de-itaituba-e-secretarios-de-governo-para-definir-acoes-do-plano-de-contingencia-no-periodo-chuvoso-/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "6fbd1169371a7000992399c018538e16703fe596a36ff69f9c9a1971bef36882"
+   }
   },
   {
    "municipio": "Itaituba",
@@ -484268,7 +484517,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/orcamentaria-e-financeira/",
    "alvo": "1501709",
@@ -484319,9 +484568,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.canaadoscarajas.pa.gov.br/novo/wp-content/uploads/2026/10/EDITAL-DE-PATROCINIOS-PUBLICADO-19-10-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9a19433fff08895543059298eb056f0738574b1f5aa842a033afeab7d1790c2a"
+   }
   },
   {
    "municipio": "Bragança Paulista",
@@ -484410,7 +484686,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/author/cedec/",
    "alvo": "1504422",
@@ -484461,9 +484737,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "16/12/2025",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "d25636ad19c12d9b1c64d7d63b7d63e13c7fe3d663b5bb377e01647ab612fdb3"
+   }
   },
   {
    "municipio": "Marituba",
@@ -485589,7 +485880,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1508100",
@@ -485639,9 +485930,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://santaizabel.pa.gov.br/wp-content/uploads/2021/04/CONTIGENCIA.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "905b83ced5f211ad21af746687ab783b121994f04e8bea58ebf5378c1889b0df"
+   }
   },
   {
    "municipio": "Tucuruí",
@@ -486348,7 +486666,7 @@
    "autoridade": "executivo",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504703",
@@ -486399,9 +486717,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://moju.pa.gov.br/wp-content/uploads/2020/05/publicado_72560_2020-06-16_48548fb46b251fb4e7dbfd49eff10d01-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0fb10cea7dbeb47eda76618238acbe08f228852488c1bbf20621231b78a2a99a"
+   }
   },
   {
    "municipio": "Moju",
@@ -486784,7 +487129,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502152",
@@ -486834,9 +487179,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.canaadoscarajas.pa.gov.br/novo/wp-content/uploads/2026/10/EDITAL-DE-PATROCINIOS-PUBLICADO-19-10-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9a19433fff08895543059298eb056f0738574b1f5aa842a033afeab7d1790c2a"
+   }
   },
   {
    "municipio": "Santa Izabel do Pará",
@@ -487389,9 +487761,27 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://central3.to.gov.br/arquivo/515090/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1
   },
   {
    "municipio": "Paranaguá",
@@ -488493,7 +488883,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1508001",
@@ -488543,9 +488933,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Tomé-Açu",
@@ -488998,7 +489415,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1507300",
@@ -489048,9 +489465,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "330bb92df43b822ab409a77fe7d6b2242d05d6a1f63509d75bdca1995be52245"
+   }
   },
   {
    "municipio": "Xinguara",
@@ -489281,7 +489713,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://igarapemiri.pa.gov.br/wp-content/uploads/2022/08/termo-de-comodato-facil-solucoes.pdf",
    "alvo": "1503309",
@@ -489324,9 +489756,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "21/06/1993",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "30d968090b64e91d129f58f08af37a070c5fb61cc0618d2d75290e2b8e376ca9"
+   }
   },
   {
    "municipio": "Igarapé-Miri",
@@ -489847,7 +490294,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1501501",
@@ -489897,9 +490344,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/ITAPEMIRIM%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "148c9923ff98a005df8848a806fe6e73f5fcd0a933b6f316fbbb034e24f44f1a"
+   }
   },
   {
    "municipio": "Benevides",
@@ -490152,7 +490626,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505809",
@@ -490202,9 +490676,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://btcu.apps.tcu.gov.br/api/obterDocumentoPdf/79185646"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "499177e27fb99f6b97c09764d50d1f0d0a6085e1f18dae0a0d7a32441eadca2b"
+   }
   },
   {
    "municipio": "Portel",
@@ -490471,7 +490972,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/orcamentaria-e-financeira/",
    "alvo": "1505064",
@@ -490522,9 +491023,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.canaadoscarajas.pa.gov.br/novo/wp-content/uploads/2026/10/EDITAL-DE-PATROCINIOS-PUBLICADO-19-10-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9a19433fff08895543059298eb056f0738574b1f5aa842a033afeab7d1790c2a"
+   }
   },
   {
    "municipio": "Novo Repartimento",
@@ -490672,7 +491200,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505064",
@@ -490722,9 +491250,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.canaadoscarajas.pa.gov.br/novo/wp-content/uploads/2026/10/EDITAL-DE-PATROCINIOS-PUBLICADO-19-10-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9a19433fff08895543059298eb056f0738574b1f5aa842a033afeab7d1790c2a"
+   }
   },
   {
    "municipio": "Monte Alegre",
@@ -490844,7 +491399,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504802",
@@ -490894,9 +491449,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.campinadomontealegre.sp.gov.br/legislacao/detalhe/1609/pdecreto-050-2025-span-stylebackground-colorwhiteaprova-o-plano-de-contingencia-de-protecao-e-defesa-civil-plancon-do-municipio-de-campina-do-monte-alegre-e-da-outras-providenciasspanp/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "bd4a22ad765e5c0cfe3c9ea721c48c8b6303dcf2aa0b6499c8d372b63f52605f"
+   }
   },
   {
    "municipio": "Monte Alegre",
@@ -491270,7 +491852,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/orcamentaria-e-financeira/",
    "alvo": "1502939",
@@ -491321,9 +491903,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://domeliseu.pa.gov.br/wp-content/uploads/2021/01/287-DECRETO-DE-HOMOLOGACAO.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "fbe8db1dd0f945e54321966807ba54cc99ac82b903fec27b149738afc1e3fa23"
+   }
   },
   {
    "municipio": "Dom Eliseu",
@@ -491413,7 +492022,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502939",
@@ -491463,9 +492072,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://domeliseu.pa.gov.br/wp-content/uploads/2021/01/287-DECRETO-DE-HOMOLOGACAO.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "fbe8db1dd0f945e54321966807ba54cc99ac82b903fec27b149738afc1e3fa23"
+   }
   },
   {
    "municipio": "Dom Eliseu",
@@ -492043,7 +492679,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502301",
@@ -492093,9 +492729,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Capitão Poço",
@@ -492431,7 +493094,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1506187",
@@ -492481,9 +493144,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://rondondopara.pa.gov.br/wp-content/uploads/2024/02/Relatorio-de-Acoes-finalizados-2_compressed-2023.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9db7230fcaa67cf5cb1eb111894d621ffae2355f11c9945218a811609b9237c1"
+   }
   },
   {
    "municipio": "Rondon do Pará",
@@ -492738,7 +493428,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1507607",
@@ -492788,9 +493478,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "São Miguel do Guamá",
@@ -493166,7 +493883,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1508407",
@@ -493216,9 +493933,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "330bb92df43b822ab409a77fe7d6b2242d05d6a1f63509d75bdca1995be52245"
+   }
   },
   {
    "municipio": "Xinguara",
@@ -493330,7 +494062,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/orcamentaria-e-financeira/",
    "alvo": "1508407",
@@ -493381,9 +494113,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://xinguara.pa.gov.br/wp-content/uploads/2025/04/PLANO-MUNICIPAL-DE-SAUDE-XINGUARA-2022-2025-.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "3a73b493fe3746ffa52fa7e3991f218f96efe72059eaa607131d5c1943a0fba1"
+   }
   },
   {
    "municipio": "Xinguara",
@@ -493624,7 +494383,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: uf_do_dominio_diverge",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505106",
@@ -493674,9 +494433,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "uf_do_dominio_diverge",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "http://www.adab.ba.gov.br/arquivos/File/ManualdeProcedimentosPlanodeContingenciaMonilia.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "uf_do_dominio_diverge",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "016aa8414bbe876cea834d8a82eff277af3cd4d8242ec42393d4d418635c1847"
+   }
   },
   {
    "municipio": "Óbidos",
@@ -493818,7 +494604,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1501204",
@@ -493868,9 +494654,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://parauapebas.pa.gov.br/destaque/gestao-municipal-conclui-elaboracao-do-plano-de-contingencia-plancon/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "26/11/2021",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b3184e707020b4cce896d34f085da81e0bc8fc469833d536e2e5b30d21299970"
+   }
   },
   {
    "municipio": "Baião",
@@ -494398,7 +495211,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: resposta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503903",
@@ -494449,9 +495262,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://juruti.pa.gov.br/wp-content/uploads/2021/01/DECRETOS_4.736_2021_0000001.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "resposta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "24/02/2021",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "435f92ced861ceaf6dbeb3ab575ce88c41761fe7363eb02abc2402f6b3a6b99a"
+   }
   },
   {
    "municipio": "Vigia",
@@ -494884,7 +495724,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503705",
@@ -494934,9 +495774,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://parauapebas.pa.gov.br/wp-content/uploads/2024/02/PLANCON-PARAUAPEBAS-vs.2-2023-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e3c7ca0952599181d7250db91dac4777f97fe95e04f2462386ab54846e9a4635"
+   }
   },
   {
    "municipio": "Parauapebas",
@@ -495296,7 +496163,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1501782",
@@ -495346,9 +496213,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Bannach",
@@ -495704,7 +496598,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504901",
@@ -495754,9 +496648,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.gov.br/casacivil/pt-br/.arquivos/marajo.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "26/07/2006",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "95d77375b7c906f3c08f1be6f9a97bc031d610ee8238e26ea1591eb63541b7d3"
+   }
   },
   {
    "municipio": "Muaná",
@@ -495868,7 +496789,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1506203",
@@ -495918,9 +496839,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://seplad.pa.gov.br/wp-content/uploads/2025/04/Relatorio-de-Avaliacao-Volume-I.crdownload.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "2041bc1130f1af131e7eccc4d966adeb3766369540f9f92baf8701c50d889a11"
+   }
   },
   {
    "municipio": "Salinópolis",
@@ -496302,7 +497250,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502707",
@@ -496352,9 +497300,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://santaizabel.pa.gov.br/wp-content/uploads/2021/04/CONTIGENCIA.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "905b83ced5f211ad21af746687ab783b121994f04e8bea58ebf5378c1889b0df"
+   }
   },
   {
    "municipio": "Conceição do Araguaia",
@@ -496891,7 +497866,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1508159",
@@ -496941,9 +497916,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+   }
   },
   {
    "municipio": "Altamira",
@@ -497339,7 +498341,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505486",
@@ -497389,9 +498391,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+   }
   },
   {
    "municipio": "Pacajá",
@@ -498118,7 +499147,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502905",
@@ -498168,9 +499197,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.itapetininga.sp.gov.br/pagina/62/plano-de-contingencia/download/75/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "880de0c1abd7ad3a561035b462359a4741a2503c838f5080adc64d25b1d365cb"
+   }
   },
   {
    "municipio": "Curuçá",
@@ -498530,7 +499586,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1508084",
@@ -498580,9 +499636,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "330bb92df43b822ab409a77fe7d6b2242d05d6a1f63509d75bdca1995be52245"
+   }
   },
   {
    "municipio": "Tucumã",
@@ -498842,7 +499913,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1508126",
@@ -498892,9 +499963,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Ulianópolis",
@@ -499475,7 +500573,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1500305",
@@ -499525,9 +500623,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://afua.pa.gov.br/plano-de-contingencia-do-municipio-de-afua-diante-da-pandemia-da-doenca-pelo-sars-cov-2-covid-19/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "08/06/2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "adb09dec072c8ec40b09e6a1bf4c221c28b3302d9fa34631d3bcd9c0af09cf0c"
+   }
   },
   {
    "municipio": "Afuá",
@@ -499717,7 +500842,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503804",
@@ -499767,9 +500892,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://jacunda.pa.gov.br/wp-content/uploads/2023/08/plano-de-saude-jacunda.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ecef746c2ef7fdcf296de599d060435f84699860910eb262bf2e8e72e4c308d8"
+   }
   },
   {
    "municipio": "Jacundá",
@@ -500042,7 +501194,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503200",
@@ -500093,9 +501245,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.manaus.am.gov.br/wp-content/uploads/2025/03/PLANO-DE-CONTINGENCIA-OFICIAL-2024-UNIFICADO.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
+   }
   },
   {
    "municipio": "Igarapé-Açu",
@@ -500319,7 +501498,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1506195",
@@ -500369,9 +501548,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://ruropolis.pa.gov.br/wp-content/uploads/2026/08/PMGIRS-Ruropolis.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/08/2010",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "6aeb7d47c4dceea0b3c18e638cf8484326298916abbc66e16658f915d5f17ced"
+   }
   },
   {
    "municipio": "Rurópolis",
@@ -500922,7 +502128,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: uf_do_dominio_diverge",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1506005",
@@ -500972,9 +502178,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "uf_do_dominio_diverge",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.pmnf.rj.gov.br/uploads/secretaria/21776/X6Vg_RARN2CYLtgQ3p7QBDb6-NzqLR9x.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "uf_do_dominio_diverge",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0b5d7f0ff2297fc8de0c332836f99912867acf514575fd647b044a752317486d"
+   }
   },
   {
    "municipio": "Bagre",
@@ -501257,7 +502490,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504059",
@@ -501307,9 +502540,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Mãe do Rio",
@@ -501728,7 +502988,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1500503",
@@ -501778,9 +503038,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://seplad.pa.gov.br/wp-content/uploads/2025/04/Relatorio-de-Avaliacao-Volume-I.crdownload.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "2041bc1130f1af131e7eccc4d966adeb3766369540f9f92baf8701c50d889a11"
+   }
   },
   {
    "municipio": "Almeirim",
@@ -501946,7 +503233,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502806",
@@ -501996,9 +503283,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Curralinho",
@@ -502218,7 +503532,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/orcamentaria-e-financeira/",
    "alvo": "1505205",
@@ -502269,9 +503583,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.gov.br/casacivil/pt-br/.arquivos/marajo.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "95d77375b7c906f3c08f1be6f9a97bc031d610ee8238e26ea1591eb63541b7d3"
+   }
   },
   {
    "municipio": "Oeiras do Pará",
@@ -502818,7 +504159,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505031",
@@ -502868,9 +504209,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.canaadoscarajas.pa.gov.br/novo/wp-content/uploads/2026/10/EDITAL-DE-PATROCINIOS-PUBLICADO-19-10-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9a19433fff08895543059298eb056f0738574b1f5aa842a033afeab7d1790c2a"
+   }
   },
   {
    "municipio": "Ourilândia do Norte",
@@ -502953,7 +504321,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505437",
@@ -503003,9 +504371,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://ourilandia.pa.gov.br/wp-content/uploads/2023/07/Plano-Municipal-de-Saude-2018-2021-Atualizado.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "01/01/2017",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "37b8abd5c13eed44732344d4c8b93336261bec022de5c337f050f97cd7e92e1d"
+   }
   },
   {
    "municipio": "Ourilândia do Norte",
@@ -503242,7 +504637,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1506708",
@@ -503292,9 +504687,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "330bb92df43b822ab409a77fe7d6b2242d05d6a1f63509d75bdca1995be52245"
+   }
   },
   {
    "municipio": "Santana do Araguaia",
@@ -503685,7 +505095,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1500859",
@@ -503735,9 +505145,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.gov.br/casacivil/pt-br/.arquivos/marajo.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "95d77375b7c906f3c08f1be6f9a97bc031d610ee8238e26ea1591eb63541b7d3"
+   }
   },
   {
    "municipio": "Anapu",
@@ -504002,7 +505439,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503101",
@@ -504052,9 +505489,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.gov.br/casacivil/pt-br/.arquivos/marajo.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "26/07/2006",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "95d77375b7c906f3c08f1be6f9a97bc031d610ee8238e26ea1591eb63541b7d3"
+   }
   },
   {
    "municipio": "Gurupá",
@@ -504311,7 +505775,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503507",
@@ -504361,9 +505825,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Irituia",
@@ -504694,7 +506185,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1507201",
@@ -504744,9 +506235,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "São Domingos do Capim",
@@ -505087,7 +506605,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503457",
@@ -505137,9 +506655,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Ipixuna do Pará",
@@ -505588,7 +507133,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504000",
@@ -505638,9 +507183,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Limoeiro do Ajuru",
@@ -506689,7 +508261,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1500701",
@@ -506739,9 +508311,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://anajas.pa.gov.br/plano-de-contingencia-seca-e-estiagem-2026/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "11/08/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "d478a63f840335ce671e9d210e1811f80ab1dd615aa0d990e44d93af17be1e37"
+   }
   },
   {
    "municipio": "Anajás",
@@ -507083,7 +508682,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1507003",
@@ -507133,9 +508732,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Santo Antônio do Tauá",
@@ -507485,7 +509111,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504604",
@@ -507535,9 +509161,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://seplad.pa.gov.br/wp-content/uploads/2025/04/Relatorio-de-Avaliacao-Volume-I.crdownload.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "2041bc1130f1af131e7eccc4d966adeb3766369540f9f92baf8701c50d889a11"
+   }
   },
   {
    "municipio": "Mocajuba",
@@ -507892,7 +509545,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504455",
@@ -507942,9 +509595,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+   }
   },
   {
    "municipio": "Altamira",
@@ -508314,7 +509994,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502756",
@@ -508364,9 +510044,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Concórdia do Pará",
@@ -508738,7 +510445,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504406",
@@ -508788,9 +510495,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://marapanim.pa.gov.br/wp-content/uploads/2022/05/JUSTIFICATIVA-2-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b25fc48b960c2dc6d1ef1a839a8f0eb0ef0aa6db346de003c6c51dd5e03457cd"
+   }
   },
   {
    "municipio": "Marapanim",
@@ -509170,7 +510904,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503093",
@@ -509220,9 +510954,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.setur.pa.gov.br/sites/default/files/rscovid.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "4a1c01191c152a62383499fcf9baed6f5bcbe67b2f77e5be8906a1320097a609"
+   }
   },
   {
    "municipio": "Goianésia do Pará",
@@ -509633,7 +511394,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504307",
@@ -509683,9 +511444,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Manaus",
@@ -509893,7 +511681,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/",
    "alvo": "1507706",
@@ -509944,9 +511732,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/participacao-da-coordenadoria-estadual-de-protecao-e-defesa-civil-do-para-no-plano-nacional-de-protecao-e-defesa-civil/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "13/11/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "7f46ff864456856a7c1ac4ef214854772f5bea8e6ca1c6a76de462a0067f10cc"
+   }
   },
   {
    "municipio": "São Sebastião da Boa Vista",
@@ -510056,7 +511871,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1507706",
@@ -510106,9 +511921,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/participacao-da-coordenadoria-estadual-de-protecao-e-defesa-civil-do-para-no-plano-nacional-de-protecao-e-defesa-civil/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "13/11/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "7f46ff864456856a7c1ac4ef214854772f5bea8e6ca1c6a76de462a0067f10cc"
+   }
   },
   {
    "municipio": "São Sebastião da Boa Vista",
@@ -510356,7 +512198,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1505700",
@@ -510406,9 +512248,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.canaadoscarajas.pa.gov.br/novo/wp-content/uploads/2026/10/EDITAL-DE-PATROCINIOS-PUBLICADO-19-10-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9a19433fff08895543059298eb056f0738574b1f5aa842a033afeab7d1790c2a"
+   }
   },
   {
    "municipio": "Ponta de Pedras",
@@ -510511,7 +512380,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/orcamentaria-e-financeira/",
    "alvo": "1505700",
@@ -510562,9 +512431,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.canaadoscarajas.pa.gov.br/novo/wp-content/uploads/2026/10/EDITAL-DE-PATROCINIOS-PUBLICADO-19-10-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9a19433fff08895543059298eb056f0738574b1f5aa842a033afeab7d1790c2a"
+   }
   },
   {
    "municipio": "Ponta de Pedras",
@@ -511024,7 +512920,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503077",
@@ -511074,9 +512970,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Garrafão do Norte",
@@ -511366,7 +513289,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1506609",
@@ -511416,9 +513339,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://seplad.pa.gov.br/wp-content/uploads/2025/04/Relatorio-de-Avaliacao-Volume-I.crdownload.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "2041bc1130f1af131e7eccc4d966adeb3766369540f9f92baf8701c50d889a11"
+   }
   },
   {
    "municipio": "Santa Maria do Pará",
@@ -511837,7 +513787,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1501907",
@@ -511887,9 +513837,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Bujaru",
@@ -512286,7 +514263,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1507458",
@@ -512336,9 +514313,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://saogeraldodoaraguaia.pa.gov.br/sao-geraldo-do-araguaia-realiza-simulado-de-mesa-do-plano-de-contingencia-para-estiagem-e-incendios-florestais/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "31/10/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "6d9882a5f2491a8912ff437e1af34ed2ddf1c5f6959fb27c8882ea5f45609aad"
+   }
   },
   {
    "municipio": "São Geraldo do Araguaia",
@@ -512782,7 +514786,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1507904",
@@ -512832,9 +514836,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.gov.br/casacivil/pt-br/.arquivos/marajo.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "26/07/2006",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "95d77375b7c906f3c08f1be6f9a97bc031d610ee8238e26ea1591eb63541b7d3"
+   }
   },
   {
    "municipio": "Salvaterra",
@@ -513237,7 +515268,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503754",
@@ -513288,9 +515319,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://jacareacanga.pa.gov.br/wp-content/uploads/2023/06/PLANO-MUNICIPAL-2022-2025.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "09/11/2021",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "a4da6cf949d41775949535912ec5c5d42d66d833baa171b7b8073e8fbd44945a"
+   }
   },
   {
    "municipio": "Jacareacanga",
@@ -513499,7 +515557,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1502004",
@@ -513549,9 +515607,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Cachoeira do Arari",
@@ -513892,7 +515977,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1500958",
@@ -513942,9 +516027,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Aurora do Pará",
@@ -514367,7 +516479,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1504752",
@@ -514417,9 +516529,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.pa.gov.br/decretos-vigentes/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "02/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aab92e96262366dc22a5e9b5ef73a64e58ced8335f31ce45f0c27bb78e89dcc6"
+   }
   },
   {
    "municipio": "Mojuí dos Campos",
@@ -524927,7 +527066,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "origem_do_coletor": "busca_web",
    "url_final": "https://limoeiro.basemunicipal.com/storage/files/2021/06/plano-de-contingencia-covid-limoeiro-maio-de-2021-1624685168.pdf",
    "alvo": "2608909",
@@ -524957,6 +527096,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "titulo_nao_e_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2019",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "019f8532373ac393f7bf38ab3ed7038580431ea0355b14b8e33ce8cf7d4d8018"
    }
   },
   {
@@ -525049,7 +527206,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://limoeiro.basemunicipal.com/saude/covid/publicacoes",
    "alvo": "2608909",
@@ -525077,6 +527234,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "20/01/2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b5db2fb751a528de5f499a3194dca58890416fb5f90e50f2fab407468931e683"
    }
   },
   {
@@ -530745,7 +532931,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.saocaetanodosul.sp.gov.br/secretaria/5",
    "alvo": "3548807",
@@ -530774,6 +532960,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "16/12/2008",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "21252f4f323890ddb1ffe56e8c7d6e95339bb8d95ab326630c60187c975212ac"
    }
   },
   {
@@ -539180,7 +541384,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://barradocorda.ma.gov.br/upload/plano_contingencia/92734.pdf",
    "alvo": "2101608",
@@ -539209,6 +541413,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ac25955cba8f484dc72b49cb72d6d949bf1d76da134366466232c7903ee17908"
    }
   },
   {
@@ -546549,9 +548771,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "repeticoes": 3
   },
   {
@@ -587940,9 +590168,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Balneário Camboriú",
@@ -588667,7 +590901,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Camboriú",
@@ -591002,9 +593245,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Caçador",
@@ -598241,7 +600490,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Rio Negrinho",
@@ -608157,9 +610415,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Capinzal",
@@ -608226,9 +610490,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Capinzal",
@@ -611910,9 +614180,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Papanduva",
@@ -622700,9 +624976,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Sangão",
@@ -622798,9 +625080,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Sangão",
@@ -624234,7 +626522,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Rodeio",
@@ -669367,7 +671664,7 @@
    "tipo": "plano",
    "entrada": "uf",
    "registrado_em": "2026-10-26",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
@@ -669402,9 +671699,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "061c44907642ebf6823ea451808c76ff41596ba2144a353d17ef15b7488d8a49"
+   }
   },
   {
    "municipio": "Fortaleza dos Valos",
@@ -785428,7 +787740,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "id": "6611819f6f",
    "url_final": "https://caibi.sc.gov.br/uploads/sites/404/2021/12/1721526_26_Roteiro_Inspeo_Sanitaria__SAA_e_SAC_Agua___com_rede.pdf",
@@ -785471,9 +787783,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "4c4d13e4c354f96714769fe1c37694f5d498bc5ba292064420f09dd91a6b962c"
+   }
   },
   {
    "municipio": "Caibi",
@@ -798214,7 +800541,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "origem_do_coletor": "busca_web",
    "id": "51713c89a7",
    "url_final": "https://romelandia.sc.gov.br/uploads/sites/465/2021/12/1980148_PLANCON__EEB_PROF_JOAO_ROMARIO_MOREIRA_E_PRE_ESCOLAR_BARQUINHO_AMARELO_convertido1_removed.pdf",
@@ -798257,9 +800584,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0f6287d560e6b07eed9b3ca631a38ad6705e7868d29185dbec8c13104bb926c7"
+   }
   },
   {
    "municipio": "Romelândia",
@@ -798275,7 +800617,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "id": "0808ebbb94",
    "url_final": "https://romelandia.sc.gov.br/uploads/sites/465/2021/12/1980142_TERMO_DE_RESPONSABILIDADE_MILENA_SCHAFER.pdf",
@@ -798318,9 +800660,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "25/09/2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "c2959447e5e165c1a2deb7e63f159b6d6dc54e92f7415453fdda3c6e56d13d2d"
+   }
   },
   {
    "municipio": "Cordilheira Alta",
@@ -808154,7 +810511,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "data": "2026-11-05",
    "registrado_em": "2026-11-05",
    "origem_do_coletor": "descoberta",
@@ -808199,10 +810556,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "22/04/1918",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "df3a50691b37dc25e7419e88ccb4bc87553a167f6d2b5718456e042de598f4b4"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -827812,6 +830184,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-19",
@@ -827829,7 +830207,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -827882,10 +830260,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "95bb06669e8e2fba4cffa2d370e5bebbee334f98cec4f885f001a0df8c7f7b7a"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -828317,7 +830710,7 @@
    "data_publicacao": "2020-07-07",
    "origem": "descoberta",
    "hash_evidencia": "8ccfc4776334a92b5464fd509dd33f92d0bdad4c494b60a48dad6745ee88c343",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -828363,10 +830756,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "25/02/20",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "d6740ee7180c6214a3c7ed48bffb1dd46618b3522e4f70663222ea060202b0a4"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -830954,7 +833362,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -831005,10 +833413,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "75308b271c11aec10b29ff31d95b9e6c2f272479dfe0662fed84d51ec27e5703"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -831022,7 +833445,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -831073,10 +833496,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "14a55898ec2f287a0826f732bc339f99b0e48730ce7eabd29a86acfbcdce6252"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -834990,6 +837428,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-19",
@@ -835057,6 +837501,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -839328,6 +841778,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-19",
@@ -839395,6 +841851,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -844959,7 +847421,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -845009,10 +847471,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "05/02/2024",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "76244ec54a3314837d1527ad48747c63f4f8c2a12bc5af9f24dc5e418784c3f0"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -845308,7 +847796,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -845361,10 +847849,25 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f7570add6cd1a4e0127477c513786e670dfc2c99ec0e7f3903f68fcc0409190d"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -845378,7 +847881,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -845431,10 +847934,25 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "8993a520fd71a683cd6ddc46af4c03383430cbe2a23c8c97bdadb948f2c3607d"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -848667,7 +851185,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -848720,10 +851238,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "aafbc12678d4b22a20b769d6e15c95694ea76731261a69919a9eb929a8b82cba"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -848737,7 +851270,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -848790,10 +851323,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "1e9ec9739283d1f7345ef5c9d6e617f0c88db5351951ce5d736509f0d73d30da"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -855994,7 +858542,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -856047,10 +858595,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ba307eacf64ee2e3a69765e87ba35b4ef8139c0516a04f7b7346282d33e7be49"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -856114,6 +858677,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -857743,6 +860312,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
@@ -861541,6 +864116,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-19",
@@ -861608,6 +864189,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -876765,11 +879352,17 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "nivel_confianca": "A",
    "pontos_confianca": 6,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
@@ -877289,11 +879882,17 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "nivel_confianca": "A",
    "pontos_confianca": 6,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
@@ -877342,11 +879941,17 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "nivel_confianca": "A",
    "pontos_confianca": 6,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
@@ -884913,9 +887518,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "nivel_confianca": "A",
    "pontos_confianca": 6,
    "sinais": [
@@ -897718,7 +900329,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "id": "bfc52bd076",
    "url_final": "https://www.marica.rj.gov.br/wp-content/uploads/2025/11/JOM_1812_28-11-2025-2.pdf",
@@ -897752,7 +900363,37 @@
     "lido_em": "2026-11-18",
     "criterios": {}
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.marica.rj.gov.br/wp-content/uploads/2025/11/JOM_1812_28-11-2025-2.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ac149365dcaabfa46abb8d686fda44a472a7a75b4ef6b365aee8eb1e4f33cb55"
+   }
   },
   {
    "municipio": "Arraial do Cabo",
@@ -898130,7 +900771,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "id": "3a4b994a63",
    "url_final": "https://www.pmnf.rj.gov.br/uploads/secretaria/21778/f1llKDmGrNBOleevW_Q2hX0mSresCOnY.pdf",
@@ -898154,7 +900795,25 @@
     "lido_em": "2026-11-18",
     "criterios": {}
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "86c725d65bf0de3193fcbc5609986d73415f246531acf6cbcf01f86938f56682"
+   }
   },
   {
    "municipio": "Itatiaia",
@@ -902512,7 +905171,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "origem_do_coletor": "busca_web",
    "id": "e4eff1fd92",
    "url_final": "https://wwsj.silvajardim.rj.gov.br/boletim-oficial/",
@@ -902534,6 +905193,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "120757fc6f833495dc2d2512dfac6cd1c222464d14077636923981b75263c2f8"
    }
   },
   {
@@ -902816,7 +905493,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "id": "8273cb950f",
    "url_final": "https://www.pmnf.rj.gov.br/uploads/secretaria/21684/D4y_4tRAT6Y1URxR4lVRlt0XmndMuw2X.pdf",
@@ -902838,6 +905515,36 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://prefeituramacuco.rj.gov.br/transparencia/arquivos/docs/Plano-de-Contingencia%20Macuco-RJ-2024-2025.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b52c837d396ab4bb7d7f98813f3f0707572244e3fa4c769964de59e38c7d46c5"
    }
   },
   {
