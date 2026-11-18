@@ -338724,7 +338724,7 @@
    "autoridade": "colegiado",
    "objeto": "indefinido",
    "destino": "camada_saude",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: executivo_pendente",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.pontaldoaraguaia.mt.gov.br/wp-content/uploads/2026/10/RESOLUCAO-CMS-PA-N%C2%B0-007-2020.pdf",
    "alvo": "5106653",
@@ -338765,9 +338765,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "executivo_pendente",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/03/2020",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "26a0d3eaab9174a927f533322f035ec440c0eba7cf326b1d2ac21ef8392af236"
+   }
   },
   {
    "municipio": "Pontal do Araguaia",
@@ -349804,7 +349819,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "origem_do_coletor": "busca_web",
    "url_final": "http://www.feiradesantana.ba.gov.br/secom/SANEAMENTO/PMSBFS-Projetos_Acoes_Estudos%20Economicos_Tomo%20VII.pdf",
    "alvo": "2910800",
@@ -349833,6 +349848,24 @@
     "motivo": "sem_https",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "plano_sem_identificacao",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "7193504f2a35a1b2662299d3d6aae66fd3ae3672360c6b95d7e534f3672dce22"
    }
   },
   {
@@ -378517,7 +378550,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.prevsol.solonopole.ce.gov.br/arquivos/502/POLITICA_DE_INVESTIMENTOS__2026_0000001.pdf",
    "alvo": "2313005",
@@ -378557,9 +378590,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.prevsol.solonopole.ce.gov.br/arquivos/502/POLITICA_DE_INVESTIMENTOS__2026_0000001.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0eff9a0a0f1435e7493bdfd6931e91a61aaec4b7a5f6c8bf151a5a2dbe59ea30"
+   }
   },
   {
    "municipio": "Solonópole",
@@ -393713,7 +393773,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://ribeiraoclaro.pr.gov.br/wp-content/uploads/2025/12/planocontingencia-10-12-25.pdf",
    "alvo": "4121802",
@@ -393745,6 +393805,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "10/12/2025",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "c1334fed0d7baaf5161b367ad476d5f5e0f8ffaeba423408b165d9e446c18e35"
    }
   },
   {
@@ -409141,7 +409219,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/CACHOEIRO%20DE%20ITAPEMIRIM%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3201209",
@@ -409182,10 +409260,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 6
+   "repeticoes": 6,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2023",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "86a61b5f73924e121d086c6d3a31e6d8b2050828864a2a783365cedacd1f9b77"
+   }
   },
   {
    "municipio": "Cachoeiro de Itapemirim",
@@ -409926,7 +410019,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/GUARAPARI%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3202405",
@@ -409968,10 +410061,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 16
+   "repeticoes": 16,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "data_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e4786569720ba22d90b4ed77ceb531c73688d4d6cae698aed8d9645510233734"
+   }
   },
   {
    "municipio": "Guarapari",
@@ -410932,7 +411040,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/ARACRUZ%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3200607",
@@ -410973,9 +411081,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2018",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f01ca74ec8bd26c92d8ca2825ca5036c2c987b9206b81541ec34be2fc208cace"
+   }
   },
   {
    "municipio": "Aracruz",
@@ -415347,7 +415470,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ANCHIETA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
    "alvo": "3200409",
@@ -415388,10 +415511,37 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 5
+   "repeticoes": 5,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ANCHIETA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "4e3b68335e5d889292bc40a2c089e010765682ad91ab7a960df0d872b00314cc"
+   }
   },
   {
    "municipio": "Anchieta",
@@ -419045,7 +419195,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VENDA%20NOVA%20DO%20IMIGRANTE-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
    "alvo": "3205069",
@@ -419087,9 +419237,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VENDA%20NOVA%20DO%20IMIGRANTE-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "d6846b5dd35f1cd93c920b138dd3026ec7387941ad9b11a47e804e5ca8f6bade"
+   }
   },
   {
    "municipio": "Venda Nova do Imigrante",
@@ -419435,7 +419612,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/SANTA%20TERESA%20-%20PLANO%20DE%20CONTIG%C3%8ANCIA.pdf",
    "alvo": "3204609",
@@ -419475,10 +419652,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "60302bba7447eb7ede0097f54a06a09fbec68c7f1f3fe0ef9b891a5de573f8c9"
+   }
   },
   {
    "municipio": "Santa Teresa",
@@ -420592,7 +420784,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/GUARAPARI%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3202108",
@@ -420634,9 +420826,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e4786569720ba22d90b4ed77ceb531c73688d4d6cae698aed8d9645510233734"
+   }
   },
   {
    "municipio": "Pedro Canário",
@@ -422104,7 +422311,7 @@
    "autoridade": "colegiado",
    "objeto": "el_nino",
    "destino": "pista_executivo_pendente",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://montanha-es.portaltp.com.br/",
    "alvo": "3203502",
@@ -422132,6 +422339,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "adaeb887999eea98c58d81e5083aec8f895dd6b54ae1f7cd2d45cf0f29b19172"
    }
   },
   {
@@ -422191,7 +422416,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/PANCAS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3204005",
@@ -422233,10 +422458,37 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 4
+   "repeticoes": 4,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/PANCAS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "2023",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "6b604bebe49bcd55bec264930ec880e104da51881354f5353771fa409ce55611"
+   }
   },
   {
    "municipio": "Pancas",
@@ -423757,7 +424009,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/JO%C3%83O%20NEIVA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3203130",
@@ -423767,12 +424019,12 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "15/12/2021",
-    "julgado_em": "2026-11-04",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "eadcf20162165d3fff3ca74ebbbef7f97cbfd7fb05c758a25fc8d412caed00fb"
    },
    "repeticoes": 3,
@@ -423780,7 +424032,15 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "João Neiva",
@@ -425062,7 +425322,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: estrutura_de_defesa_civil",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/IRUPI%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025-2026.pdf",
    "alvo": "3202652",
@@ -425072,12 +425332,12 @@
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "estrutura_de_defesa_civil",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-04",
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "710027b583991143169743ed00f2228ff9662fabae3b7204f8d0f2955b8747f9"
    },
    "repeticoes": 3,
@@ -425086,7 +425346,15 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Irupi",
@@ -426946,7 +427214,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/BREJETUBA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3201159",
@@ -426988,10 +427256,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 6
+   "repeticoes": 6,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "c70b99c2e08243be143ae11d4e08c63c4ed5071c694c980788665dc4b1ffb810"
+   }
   },
   {
    "municipio": "Brejetuba",
@@ -455253,7 +455536,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://pirai.rj.gov.br/defesa_civil/pdf/ESCORREGAMENTO-DESLIZAMENTO.pdf",
    "alvo": "3304003",
@@ -455285,6 +455568,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "273e7cadccbafd6d20a42bc086cd316616787533a2b79997c4b48fd552d4c7d8"
    }
   },
   {
@@ -463707,9 +464008,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Bom Jesus do Itabapoana",
@@ -466357,9 +466664,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Bom Jardim",
@@ -466603,9 +466916,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "repeticoes": 1
   },
   {
@@ -478018,7 +478337,7 @@
    "autoridade": "executivo",
    "objeto": "indefinido",
    "destino": "camada_saude",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://transparencia.santarem.pa.gov.br/storage/attachments/pesquisa-de-mercado-pe-rsp-0542021-61ce10d36e5a8.pdf",
    "alvo": "1506807",
@@ -478048,6 +478367,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "77e2035fac4cc5d9b8041c0a4086ef30580bcccf1a0769dbab3cb38b16bb467f"
    }
   },
   {
@@ -492420,7 +492757,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://brasilnovo.pa.gov.br/wp-content/uploads/2022/08/plano-anual-de-saude-2022-V-2.pdf",
    "alvo": "1501725",
@@ -492451,6 +492788,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "208e3dae8d98a77b6b82066245bdb71e51f3fe37491fe539a4957118669e9fa3"
    }
   },
   {
@@ -495160,7 +495526,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.saovicente.sp.gov.br/informacao/sao-vicente-aproxima-defesa-civil-dos-moradores-do-parque-prainha-para-fortalecer-prevencao-de-deslizamentos",
    "alvo": "3551009",
@@ -495190,6 +495556,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "03/02/2017",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "57e497467b6ab28ab3891978907d3e3839047e5ba06fbf3e72e597bd3a9b4650"
    }
   },
   {
@@ -502350,7 +502734,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://brasilnovo.pa.gov.br/wp-content/uploads/2022/08/plano-anual-de-saude-2022-V-2.pdf",
    "alvo": "1501725",
@@ -502381,6 +502765,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "208e3dae8d98a77b6b82066245bdb71e51f3fe37491fe539a4957118669e9fa3"
    }
   },
   {
@@ -508704,7 +509117,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://transparencia.santarem.pa.gov.br/storage/attachments/relatorio-de-gestao-municipal-de-saude-ano-2023-qGa47V.pdf",
    "alvo": "1506807",
@@ -508737,6 +509150,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "586c617fdca6044bc60a794eb82757d90dca808daeaa69e7d372d3f8168318ec"
    }
   },
   {
@@ -517389,7 +517831,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://saojose.sc.gov.br/prefeitura-de-sao-jose-realiza-plantoes-para-cadastro-no-programa-pesca-bem-segura/96523/",
    "alvo": "4216602",
@@ -517419,6 +517861,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ca241adf4f90f47927fe98a2fdfa5f4241372a199104774874afb3727f86a733"
    }
   },
   {
@@ -519555,7 +520026,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://palmaresdosul.rs.gov.br/novosite/2026/",
    "alvo": "4313656",
@@ -519584,6 +520055,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "12/09/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "246c461279f17f0f35bb4723781b7a78172f659ebccdf5371c3974adfe3fcf76"
    }
   },
   {
@@ -522827,7 +523327,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://saojose.sc.gov.br/quatro-consorcios-apresentam-propostas-para-executar-a-beira-mar-de-barreiros-em-sao-jose/106807/",
    "alvo": "4216602",
@@ -522857,6 +523357,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/11/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "74a446f1da084690054f07a29b542dd584c96e040aefbac0949e8a34e8ecbbe1"
    }
   },
   {
@@ -526225,7 +526743,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://ribeiraoclaro.pr.gov.br/wp-content/uploads/2025/12/planocontingencia-10-12-25.pdf",
    "alvo": "4121802",
@@ -526256,6 +526774,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "10/12/2025",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "c1334fed0d7baaf5161b367ad476d5f5e0f8ffaeba423408b165d9e446c18e35"
    }
   },
   {
@@ -530800,7 +531336,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://pirai.rj.gov.br/defesa_civil/pdf/ESCORREGAMENTO-DESLIZAMENTO.pdf",
    "alvo": "3304003",
@@ -530831,6 +531367,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "273e7cadccbafd6d20a42bc086cd316616787533a2b79997c4b48fd552d4c7d8"
    }
   },
   {
@@ -531305,9 +531859,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Resende",
@@ -532150,7 +532710,7 @@
    "autoridade": "executivo",
    "objeto": "indefinido",
    "destino": "camada_saude",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://transparencia.santarem.pa.gov.br/storage/attachments/pesquisa-de-mercado-pe-rsp-0542021-61ce10d36e5a8.pdf",
    "alvo": "1506807",
@@ -532180,6 +532740,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "77e2035fac4cc5d9b8041c0a4086ef30580bcccf1a0769dbab3cb38b16bb467f"
    }
   },
   {
@@ -533924,7 +534502,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://brasilnovo.pa.gov.br/wp-content/uploads/2022/08/plano-anual-de-saude-2022-V-2.pdf",
    "alvo": "1501725",
@@ -533955,6 +534533,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "208e3dae8d98a77b6b82066245bdb71e51f3fe37491fe539a4957118669e9fa3"
    }
   },
   {
@@ -534286,7 +534893,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.saovicente.sp.gov.br/informacao/sao-vicente-aproxima-defesa-civil-dos-moradores-do-parque-prainha-para-fortalecer-prevencao-de-deslizamentos",
    "alvo": "3551009",
@@ -534316,6 +534923,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "03/02/2017",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "57e497467b6ab28ab3891978907d3e3839047e5ba06fbf3e72e597bd3a9b4650"
    }
   },
   {
@@ -534872,7 +535497,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://brasilnovo.pa.gov.br/wp-content/uploads/2022/08/plano-anual-de-saude-2022-V-2.pdf",
    "alvo": "1501725",
@@ -534903,6 +535528,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "208e3dae8d98a77b6b82066245bdb71e51f3fe37491fe539a4957118669e9fa3"
    }
   },
   {
@@ -535106,9 +535760,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Pindamonhangaba",
@@ -537149,7 +537809,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: homonimo_sem_uf",
    "data": "2026-10-23",
    "registrado_em": "2026-10-23",
    "origem_do_coletor": "descoberta",
@@ -537201,10 +537861,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "homonimo_sem_uf",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "homonimo_sem_uf",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "8e5421859e29e5d28bcb887bb889cd290c1a2f2158bc88ba245c16161fb84c16"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -537218,7 +537893,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: homonimo_sem_uf",
    "data": "2026-10-23",
    "registrado_em": "2026-10-23",
    "origem_do_coletor": "descoberta",
@@ -537270,10 +537945,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "homonimo_sem_uf",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "homonimo_sem_uf",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "3808f2812808b2ec663e049c1344a0c5d16cf2b26cb66f91fbf96b97021e9a53"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -574102,7 +574792,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Parnamirim",
@@ -583355,9 +584054,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Mafra",
@@ -583423,9 +584128,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Mafra",
@@ -586164,9 +586875,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Barra Velha",
@@ -588324,7 +589041,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://camposnovos.sc.gov.br/pagina-42031/",
    "alvo": "4203600",
@@ -588374,9 +589091,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://hervaldoeste.sc.gov.br/uploads/sites/287/2026/10/PLAMCON-2026.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "2e4880fc6379e04c2eeac6b21776800e75fd73528b46b35da7f7c56684251a3a"
+   }
   },
   {
    "municipio": "Celso Ramos",
@@ -588685,9 +589429,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Campos Novos",
@@ -590684,7 +591434,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://saojose.sc.gov.br/prefeitura-de-sao-jose-orienta-sobre-prazos-para-manutencao-de-tumulos-antes-do-dia-de-finados/107914/",
    "alvo": "4216602",
@@ -590714,6 +591464,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/11/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ce2b4cb5a4c82602a4c5825bd064c44871c1aaf1bc14166a87abbfabaeeb3314"
    }
   },
   {
@@ -591310,7 +592089,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://saojose.sc.gov.br/el-nino-defesa-civil-de-sao-jose-leva-orientacao-sobre-prevencao-e-seguranca-a-idosos/105260/",
    "alvo": "4216602",
@@ -591340,6 +592119,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/11/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "59f4a857477d9ea7912f373bfec72f338e3fb07d79fa76dfe0d01dfe47945620"
    }
   },
   {
@@ -591518,7 +592326,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://saojose.sc.gov.br/pmrr/",
    "alvo": "4216602",
@@ -591547,6 +592355,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "a13ea5b879348eedb3d386b68a26929f522119e3b7709145099c48879bb3f42d"
    }
   },
   {
@@ -594051,7 +594888,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://saojose.sc.gov.br/sao-jose-esta-entre-as-cidades-brasileiras-com-maior-numero-de-empregos-formais/105905/",
    "alvo": "4216602",
@@ -594082,6 +594919,35 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/11/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f5b5f83894f5bfac60c70872760e0e79b1497aad55155e1d03ae78e24bf0e23a"
    }
   },
   {
@@ -594809,9 +595675,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "São Joaquim",
@@ -597783,7 +598655,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Pinhalzinho",
@@ -601261,7 +602142,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Garuva",
@@ -601303,7 +602193,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Garuva",
@@ -601561,7 +602460,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Garuva",
@@ -605540,9 +606448,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Balneário Arroio do Silva",
@@ -605608,9 +606522,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Balneário Arroio do Silva",
@@ -607757,7 +608677,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://barracao.pr.gov.br/common/uploads/carta-usuario/plano-contingencia-defesa-civil.pdf",
    "alvo": "4102604",
@@ -607787,6 +608707,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano",
+    "data": "11/11/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "4673f6394ba3601066df6ffed00e6ec645ea9169f0a2be61ebadce4837a221f0"
    }
   },
   {
@@ -611711,9 +612649,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Canelinha",
@@ -611781,9 +612725,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Canelinha",
@@ -611879,9 +612829,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Canelinha",
@@ -614531,7 +615487,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Antônio Carlos",
@@ -617918,9 +618883,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "documento_oficial_confirmado": null,
@@ -696402,7 +697373,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -696448,9 +697419,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "09/11/2017",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "8bd1c6e791bccf3dae1959994c03490e531f118a3ddde5ae8d2d99c36b01a2d6"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -727726,7 +728712,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "data": "2026-10-29",
    "registrado_em": "2026-10-29",
    "origem_do_coletor": "descoberta",
@@ -727740,11 +728726,11 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "titulo_nao_e_plano",
+    "motivo": "autoridade_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": "27/11/2020",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "d5f861db4840d98a9917400b3321a28860441e5418e360fad170b150f5d1a0a9"
    },
    "pontos_confianca": 2,
@@ -727753,6 +728739,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -727904,7 +728898,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2021",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "82da7082d4a2d6477abda01443f95ef95839111c4165a01580adf510d84ff694"
    },
    "pontos_confianca": 2,
@@ -727913,6 +728907,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -732253,7 +733255,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "11/01/2022",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "a7c31ed65c5b7b1e22e4e26f294febc8d7be4081065750b83bd7c574e2d72251"
    },
    "pontos_confianca": 2,
@@ -732262,6 +733264,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -734774,7 +735784,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2024",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "85b1544c695d892da585980f2410550d5b25c1b209a94d9240b764e5b8861edc"
    },
    "pontos_confianca": 2,
@@ -734783,6 +735793,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -735018,14 +736036,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/05/2026",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "1fd1b956ccbc0b9de4fadaa0739d10dcd4bf8e93293b43ff46bcc31d6cd9152b"
    },
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -760807,9 +761833,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Anita Garibaldi",
@@ -764308,9 +765340,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Ipuaçu",
@@ -764379,9 +765417,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Salete",
@@ -779056,9 +780100,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Agronômica",
@@ -779125,9 +780175,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Agronômica",
@@ -779194,9 +780250,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Agronômica",
@@ -779263,9 +780325,27 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://agronomica.sc.gov.br/pagina-47971/"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1
   },
   {
    "municipio": "Agronômica",
@@ -779333,9 +780413,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17"
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Águas de Chapecó",
@@ -792694,7 +793780,7 @@
    "data_publicacao": "2020-03-25",
    "origem": "descoberta",
    "hash_evidencia": "eefce709bae477a8beef9be76859bc6216c6787d4f20558dec96b69b29dc8633",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "data": "2026-11-05",
    "registrado_em": "2026-11-05",
    "origem_do_coletor": "descoberta",
@@ -792740,10 +793826,37 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.pge.am.gov.br/wp-content/uploads/2014/11/relatorio-coe-covid-19.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "91f0b3ec5de77ee0ef89f86b77ad6d2c42122aa13ae20d08ddb23005b730b403"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -795622,7 +796735,7 @@
    "data_publicacao": "2026-01-21",
    "origem": "descoberta",
    "hash_evidencia": "d2fe027d46aac20bbc17b39c35a2f7899127a8bc45cdfb71d3a309e7215dc027",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "data": "2026-11-05",
    "registrado_em": "2026-11-05",
    "origem_do_coletor": "descoberta",
@@ -795666,10 +796779,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "12/01/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "58e48a09f69612bce19d4ebdf32c7d184e8eadc265f7d3c6f6b9a9407d595d69"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -795683,7 +796811,7 @@
    "data_publicacao": "2025-03-07",
    "origem": "descoberta",
    "hash_evidencia": "2c65642befefa89078d19c6ab1cd2637b50f0394f65bd8fbfbffc55ae980b310",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "data": "2026-11-05",
    "registrado_em": "2026-11-05",
    "origem_do_coletor": "descoberta",
@@ -795729,10 +796857,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "26/02/2025",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0a35affec5bdfdc9f1f3015495f8c0ebf772e6e9d1b516bb2fa0494e8afad63a"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -795746,7 +796889,7 @@
    "data_publicacao": "2025-03-07",
    "origem": "descoberta",
    "hash_evidencia": "328efd65454c9c11a1c1919a577bb1120e4331e28266dcdab28622e23fa09007",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "data": "2026-11-05",
    "registrado_em": "2026-11-05",
    "origem_do_coletor": "descoberta",
@@ -795792,10 +796935,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "26/02/2025",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "10718d60e9e4bc3d75b696accf2e27daff825d39a3065c8444737982da3c45bf"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -797554,7 +798712,7 @@
    "data_publicacao": "2026-04-02",
    "origem": "descoberta",
    "hash_evidencia": "657e33b2fed85df871c767c8893b8cef18d8713f3a8b10c63d86dd5e697e7a55",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "data": "2026-11-05",
    "registrado_em": "2026-11-05",
    "origem_do_coletor": "descoberta",
@@ -797597,10 +798755,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "15/03/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f990353730d267979e7d59017968143f228929a61a0e3a057661e807e3a37a24"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -800429,7 +801602,7 @@
    "data_publicacao": "2026-05-25",
    "origem": "descoberta",
    "hash_evidencia": "9dcd5e3bb8e55bb551d9c6bfb597f11cf58ed09c6122a01651f08c4bcbc8a39a",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: resposta",
    "data": "2026-11-05",
    "registrado_em": "2026-11-05",
    "origem_do_coletor": "descoberta",
@@ -800472,10 +801645,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "resposta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "05/11/2025",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ffc99a34b6f28acea3301c26f28274cfad65a587c5d3854cce8d657dfe0b038b"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -803650,9 +804838,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "repeticoes": 3
   },
   {
@@ -809456,7 +810650,7 @@
    "tipo": "plano",
    "entrada": "municipio",
    "registrado_em": "2026-11-06",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "juiz_tentativas": [
     {
      "em": "2026-11-06",
@@ -809475,9 +810669,14 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-17",
    "nivel_confianca": "A",
    "pontos_confianca": 6,
    "sinais": [
@@ -809492,6 +810691,29 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "bd7d34ba5ba432685f74a094fca52f36921a1156ce71aeefce6983e1add601a7"
    }
   },
   {
@@ -816054,7 +817276,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -816107,10 +817329,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "5aa980c3eeca378484cfae27179682a5bc30aea9b6d3f1ae46d6725e1a0838fe"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -816124,7 +817361,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -816177,10 +817414,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e920647cb0d27d6b46ba3bf94bbe3658b5c621c5d06b096826fe8303f82c06e1"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -818867,7 +820119,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -818920,10 +820172,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "8ef25adebe22b159c6723ad58c8461455055f91566e3e3af0eaf2502a8cad2ad"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -818937,7 +820204,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -818990,10 +820257,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "adf9ed5217ffb08dde9dbba505d908dd1ed6429d0a245194481d007d22982981"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -823101,7 +824383,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -823154,10 +824436,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b01144b35787abd0a71c2d5121e5de4f56ade40c5a5a6e47f088b5322b277968"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -823221,6 +824518,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -826625,7 +827928,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -826676,10 +827979,25 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "454e785903d34c781c2d88096c730adfc668253c0ea86f12597629d9994977c3"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -828175,6 +829493,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-19",
@@ -828242,6 +829566,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -832839,6 +834169,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-19"
@@ -832905,6 +834241,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -834987,6 +836329,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
@@ -838645,6 +839993,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-19",
@@ -838662,7 +840016,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -838715,10 +840069,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "07f350f90662465d54b601b6fd799546692d43756ab85a90f387d2624ffa6842"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -839368,6 +840737,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -844327,7 +845702,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -844380,10 +845755,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "97e8bb4c55e51c2ca04e6d15c04ab3d438f0287cdddf9292725ab5548e9294af"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -844397,7 +845787,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -844450,10 +845840,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "452b3e7f18dbb2045e93e9caf26080bd3a2bee46a60148e57b4bb730e5a4d28f"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -849910,7 +851315,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -849963,10 +851368,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "2e640e8c00f4e7d6b65340e02f736b51a3d942e6e62ea0b6d49d1aa83eac4dd1"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -849980,7 +851400,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -850033,10 +851453,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "4031596a0afc6a10b9992b52bec44c1b8e80c4214361b0c71aec3976155a1b89"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -851465,6 +852900,12 @@
     },
     {
      "em": "2026-11-12",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
@@ -862914,11 +864355,17 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "nivel_confianca": "A",
    "pontos_confianca": 8,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
@@ -867474,7 +868921,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-12",
    "registrado_em": "2026-11-12",
    "origem_do_coletor": "descoberta",
@@ -867497,11 +868944,16 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "nivel_confianca": "A",
    "pontos_confianca": 6,
-   "proxima_tentativa_em": "2026-11-17",
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
@@ -867513,6 +868965,28 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://matocastelhano.rs.gov.br/pg.php?area=PUBLICACAOVER&secao=982&nome_pub=Resolu%EF%BF%BD%EF%BF%BDo+CME%2FMC+n%EF%BF%BD+06%2F2026&descricao=Estabelece+diretrizes+para+a+territorializa%EF%BF%BD%EF%BF%BDo+escolar+e+a+prioriza%EF%BF%BD%EF%BF%BDo+de+matr%EF%BF%BDcula+na+Rede+Municipal+de+Ensino+de+Mato+Castelhano%2FRS%2C+com+vistas+a+assegurar+o+quantitativom%EF%BF%BDnimo+de+10+%28dez%29+estudantes+matriculados+por+escola+no+2%EF%BF%BD%2C+no+5%EF%BF%BD+e+no+9%EF%BF%BD+ano+do+Ensino+Fundamental%2C+para+a+aplica%EF%BF%BD%EF%BF%BDo+do+Sistema+de+Avalia%EF%BF%BD%EF%BF%BDo+da+Educa%EF%BF%BD%EF%BF%BDo+B%EF%BF%BDsica+%28SAEB%29+e+do+Sistema+de+Avalia%EF%BF%BD%EF%BF%BDo+do+Rendimento+Escolar+do+Rio+Grande+do+Sul+%28SAERS%29."
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "75fc6b82add03764eb21c705d2982731fbe3fe490d6b0ab144a541236ecb19c2"
    }
   },
   {
@@ -868452,11 +869926,17 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "nivel_confianca": "A",
    "pontos_confianca": 8,
-   "proxima_tentativa_em": "2026-11-17",
+   "proxima_tentativa_em": "2026-11-19",
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
@@ -873220,16 +874700,16 @@
    "url_final": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ALTO%20RIO%20NOVO%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718141000",
    "alvo": "3200359",
    "entrada": "uf",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-13",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "5dacecb5600dbf30e8d8a04fafec0a63819814420da0a2530bbba518c71bea3d"
    },
    "nivel_confianca": "C",
@@ -873237,7 +874717,15 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -873520,24 +875008,32 @@
    "url_final": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/BOM%20JESUS%20DO%20NORTE%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718189000",
    "alvo": "3201100",
    "entrada": "uf",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "repeticoes": 1,
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-14",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "2f027573b0ad37d25efaef4549da42926771e83bbdbf0fcafd5105f9e37ed60b"
    },
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -873894,17 +875390,17 @@
    "url_final": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/GUARAPARI%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718287000",
    "alvo": "3202405",
    "entrada": "uf",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "repeticoes": 1,
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2017",
-    "julgado_em": "2026-11-14",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "e8792e302fc98cc70662503ec00eb90954e9cb0b70914dfae7401bab670a95a6"
    },
    "pontos_confianca": 3,
@@ -873912,7 +875408,15 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -875242,17 +876746,17 @@
    "url_final": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/SERRA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718391000",
    "alvo": "3205002",
    "entrada": "uf",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "repeticoes": 1,
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-14",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "1e7a7112177aa83411609de7d18605bd63cbd5499eebb1e530223c75ca9c5354"
    },
    "pontos_confianca": 3,
@@ -875260,7 +876764,15 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -878942,7 +880454,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "id": "23828deca7",
    "url_final": "https://transparencia.casimirodeabreu.rj.gov.br/acessoainformacao",
@@ -878964,6 +880476,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "14/08/2018",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "20fb09771998c67249b708650e39a3252bd2c07009d5c2dbd1c8cb35c3b33d6a"
    }
   },
   {
@@ -878980,7 +880510,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: nao_e_instrumento",
    "origem_do_coletor": "busca_web",
    "id": "4b7f8ef96d",
    "url_final": "https://transparencia.casimirodeabreu.rj.gov.br/publicacoes.php?cat=58&ta=3",
@@ -879002,6 +880532,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "nao_e_instrumento",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "nao_e_instrumento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "18/03/2021",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f9695ea8f36875bbce233cd8d12b692f33888be70d8e7994318f8a1c28c357c9"
    }
   },
   {
@@ -879018,7 +880566,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "id": "7f9cc3ebf0",
    "url_final": "https://www.defesacivil.rj.gov.br/index.php/noticias-da-defesa-civil/1171-simulado-de-desocupacao-de-comunidades-na-barragem-do-funil",
@@ -879041,6 +880589,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e5c97f074943cac17fa077f659834f25cd985ab04d32c483dbbbcec0384ab3c9"
    }
   },
   {
@@ -879057,7 +880623,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "0a98e5854c",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NTQwNDI%2C",
@@ -879080,7 +880646,25 @@
     "lido_em": "2026-11-18",
     "criterios": {}
    },
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "16e6dcd1f3fc132cc4918a3bfbc409ddf5eb0ee8678f83c721a67db8b1787a9b"
+   }
   },
   {
    "municipio": "São Francisco de Itabapoana",
@@ -879096,7 +880680,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "id": "fd7a04f94a",
    "url_final": "https://defesacivil.rj.gov.br/index.php/noticias-da-defesa-civil/624-cachoeiras-de-macacu-rj-defesa-civil-faz-levantamento-de-dados-sobre-seguranca-de-barragem",
@@ -879120,6 +880704,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "2aa839680d2453a8501d933b37de0409aa74f3f3daa37c40f5a496a4e1ba15ce"
    }
   },
   {
@@ -880288,7 +881890,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "cf9b0dc974",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzU3MDk%2C",
@@ -880311,6 +881913,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "e9e4f414e9d86b8c969df43ece874d1363c0c45bbd996c4da2e5b332b41b2c5e"
    }
   },
   {
@@ -880327,7 +881947,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "83a8c63e58",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzU0Njk%2C",
@@ -880350,6 +881970,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "863b0fc6f1919aeee01f24cc0de98976956307d0d994c480d581db13d1483eb8"
    }
   },
   {
@@ -880414,7 +882052,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "81c1bd831f",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MzAwMTI%2C",
@@ -880437,6 +882075,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "585429c7aa2698388fd4279ee08717bb4bdee5ea83ddb7da2bd2c59ff8e8096f"
    }
   },
   {
@@ -880678,7 +882334,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "municipio": "Vassouras",
@@ -880818,7 +882483,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "37c55a34c0",
    "url_final": "https://www.defesacivil.rj.gov.br/images/2025/08/PLANCON-ESTIAGEM-SECA-E-INCENDIOS-FLORESTAIS-2024-2025.docx.pdf",
@@ -880844,6 +882509,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "ea62a4778eff4f919c6695a9317246659293373334465e4dbc8c0283d8f6c7a9"
    }
   },
   {
@@ -880901,7 +882584,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "f7ca64cb0a",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MjUzNzE%2C",
@@ -880924,6 +882607,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0d301b4632ffc6b9f5002b285acb838574d60b77115dd5c59205d145e5a02d98"
    }
   },
   {
@@ -881145,7 +882846,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "id": "ba17df7ed0",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NzYzMzY%2C",
@@ -881169,6 +882870,37 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f9d40d8e74e9b5def742c10c3f8a187663796fb43e4d8dda705105fe034d76e9"
    }
   },
   {
@@ -881342,7 +883074,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "id": "6f095982ea",
    "url_final": "https://www.defesacivil.rj.gov.br/index.php/noticias-da-defesa-civil/1179-defesa-civil-e-inea-realizam-vistoria-em-barragens-de-paty-do-alferes",
@@ -881365,6 +883097,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "807043e180ee84e92aac78cdb44126b2c47c4d50ab2709bb33d887acfd2d2101"
    }
   },
   {
@@ -881422,7 +883172,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "e4e879f90c",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NDkwMTQ%2C",
@@ -881446,6 +883196,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0a8b3d37224114afdecccfc35c75695c1f085b127d0424db91629e197aaef662"
    }
   },
   {
@@ -881501,7 +883269,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "3723853749",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=NDI5NTA%2C",
@@ -881524,7 +883292,25 @@
     "lido_em": "2026-11-18",
     "criterios": {}
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "7b9ad97ff44750da0659369847d20ace05bf2de014ac55cbae78ad3c5c5347fa"
+   }
   },
   {
    "municipio": "Bom Jardim",
@@ -881788,7 +883574,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "426c51d6d5",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MzAxNDA%2C",
@@ -881811,7 +883597,25 @@
     "lido_em": "2026-11-18",
     "criterios": {}
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "86af466b15a76535b6c6012dc1c3777002e8aa7290a6b539cd67bd6f509dd95d"
+   }
   },
   {
    "municipio": "Miracema",
@@ -882035,7 +883839,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "e3266f6a04",
    "url_final": "https://www.saude.rj.gov.br/comum/code/MostrarArquivo.php?C=MzEzMjM%2C",
@@ -882057,6 +883861,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "4acc81d2cc21e22fe53056665629ef059503d56b9604517f5acbf9dbd5f0f1a0"
    }
   },
   {
@@ -882148,7 +883970,7 @@
    "data_publicacao": "2026-10-29",
    "origem": "querido_diario",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: uf_do_dominio_diverge",
    "data": "2026-11-16",
    "registrado_em": "2026-11-16",
    "origem_do_coletor": "querido_diario",
@@ -882174,6 +883996,36 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://saude.rs.gov.br/upload/arquivos/202604/15143209-rag-2025.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "uf_do_dominio_diverge",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "uf_do_dominio_diverge",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f7d97a17a13e0ca2c079b7223b769a6f83f9f50b63ff78473c546fbc0f09b066"
    }
   },
   {
@@ -882186,7 +884038,7 @@
    "data_publicacao": "2026-10-16",
    "origem": "querido_diario",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: resposta",
    "data": "2026-11-16",
    "registrado_em": "2026-11-16",
    "origem_do_coletor": "querido_diario",
@@ -882212,6 +884064,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "resposta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "16/10/2026",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "022f6106cd2eed21d847de3af3a67fbd0959f4e02643875dd885f5954bdd9e77"
    }
   },
   {
@@ -883808,7 +885678,16 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-19"
   },
   {
    "url_final": "https://www.pmgentil.com.br/noticias.php?categ=38",
