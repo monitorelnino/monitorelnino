@@ -48,8 +48,8 @@
    "orgao": "DOU / diários municipais",
    "papel": "RESPOSTA, peso zero",
    "status": "coletado",
-   "consultado_em": "16/11/2026",
-   "documento": "DOU seção 1, 2026-11-12 a 2026-11-16"
+   "consultado_em": "17/11/2026",
+   "documento": "DOU seção 1, 2026-06-29 a 2026-11-17"
   },
   "painel_calor_ms": {
    "nome": "Painel Nacional de Excesso de Calor",
@@ -584,15 +584,15 @@
   "fonte": "espin",
   "orgao": "Ministério da Saúde (DOU, seção 1)",
   "janela": {
-   "de": "2026-11-12",
-   "ate": "2026-11-16"
+   "de": "2026-06-29",
+   "ate": "2026-11-17"
   },
   "strings_buscadas": [
    "\"Emergência em Saúde Pública de Importância Nacional\"",
    "\"emergência em saúde pública\""
   ],
-  "consultado_em": "16/11/2026",
-  "resultados_lidos": 1,
+  "consultado_em": "17/11/2026",
+  "resultados_lidos": 40,
   "declaracoes": [],
   "pendente_leitura_automatica": [],
   "nao_lidos": [],
@@ -67940,10 +67940,10 @@
  ],
  "emergencias_busca": {
   "federal": {
-   "consultado_em": "16/11/2026",
+   "consultado_em": "17/11/2026",
    "janela": {
-    "de": "2026-11-12",
-    "ate": "2026-11-16"
+    "de": "2026-06-29",
+    "ate": "2026-11-17"
    }
   },
   "estadual": {
@@ -67957,9 +67957,9 @@
     "ate": "2026-11-12"
    },
    "AM": {
-    "consultado_em": "15/11/2026",
+    "consultado_em": "17/11/2026",
     "edicoes_lidas": 93,
-    "ate": "2026-11-14"
+    "ate": "2026-11-16"
    },
    "AP": {
     "consultado_em": "15/11/2026",
@@ -67969,10 +67969,10 @@
     "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML"
    },
    "CE": {
-    "lacuna": "17 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-06)"
+    "lacuna": "3 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-06)"
    },
    "DF": {
-    "lacuna": "8 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)"
+    "lacuna": "1 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-09-11#2)"
    },
    "ES": {
     "consultado_em": "15/11/2026",
@@ -68020,7 +68020,9 @@
     "via": "busca do diário (adaptador apifront)"
    },
    "RJ": {
-    "lacuna": "3 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-08-07#2)"
+    "consultado_em": "15/11/2026",
+    "edicoes_lidas": 106,
+    "ate": "2026-11-14"
    },
    "RN": {
     "consultado_em": "15/11/2026",
@@ -68038,7 +68040,7 @@
     "ate": "2026-11-12"
    },
    "RS": {
-    "lacuna": "20 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-03)"
+    "lacuna": "edição com declaração não lida pelo juiz"
    },
    "SC": {
     "consultado_em": "13/11/2026",
@@ -68092,9 +68094,9 @@
    {
     "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54756/pdf",
     "uf": "RS",
-    "motivo": "edição sem verbo que declara (menção de passagem)"
+    "motivo": "documento não baixado: URLError"
    }
   ],
-  "julgado_em": "16/11/2026"
+  "julgado_em": "17/11/2026"
  }
 }
