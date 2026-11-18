@@ -42,7 +42,7 @@ import pathlib
 import re
 import sys
 import time
-from coletores_base import gravar_em, texto_tolerante  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import gravar_em, hoje_editorial, texto_tolerante  # noqa: E402  (§228: um cliente só, com propósito)
 # O parser do RSS, a heurística de fonte, a identidade da pista e o cursor são os da imprensa
 # regional (17/10/2026): eram cópias; `\.gov\.br` já cobre os padrões de secretaria de saúde.
 from monitorar_imprensa_regional import (_hash, carregar_cursor, extrair_itens_rss,  # noqa: E402
@@ -197,6 +197,7 @@ def registrar(fila, novas):
                 p["hash_evidencia"] = None
         p["documento_oficial_confirmado"] = None
         p["promovivel"] = False
+        p["registrado_em"] = hoje_editorial().isoformat()   # a idade na fila conta da entrada (ver monitorar_imprensa_regional)
         p["status"] = "pendente_confirmacao_documento"
         fila["pistas"].append(p)
         vistos.add(p["hash"])
@@ -231,6 +232,7 @@ def self_test():
         assert p["documento_oficial_confirmado"] is None, "TRAVA VIOLADA: pista nasceu confirmada"
         assert p["promovivel"] is False, "TRAVA VIOLADA: pista nasceu promovível"
         assert p["status"] == "pendente_confirmacao_documento"
+        assert p["registrado_em"] == hoje_editorial().isoformat(), "pista nasceu sem a data de entrada"
     print("✓ dedup e trava absoluta (campos de nascença) OK — F53: pista de outro produtor sem hash")
 
     universo_fx = {"uf": {

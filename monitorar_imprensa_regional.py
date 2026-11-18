@@ -287,6 +287,10 @@ def registrar(fila, novas, buscar_web=None, abrir=None):
         p["fonte_provavel_oficial"] = parece_fonte_oficial(p["url"])
         p["documento_oficial_confirmado"] = None   # só um humano preenche
         p["promovivel"] = False                    # nunca setado por código
+        # 18/11/2026: a idade na fila conta da entrada, não da data da notícia (`pistas.data_da_pista`
+        # lê `registrado_em` primeiro). Sem o carimbo, a matéria de 2025 nascia vencida (>21 dias) e o
+        # portão da fila não humana reprovava a `main` até a triagem da noite fechá-la.
+        p["registrado_em"] = hoje_editorial().isoformat()
         p["status"] = "pendente_confirmacao_documento"
         fila["pistas"].append(p)
         vistos.add(p["hash"])
@@ -322,6 +326,7 @@ def self_test():
         assert p["documento_oficial_confirmado"] is None, "TRAVA VIOLADA: pista nasceu confirmada"
         assert p["promovivel"] is False, "TRAVA VIOLADA: pista nasceu promovível"
         assert p["status"] == "pendente_confirmacao_documento"
+        assert p["registrado_em"] == hoje_editorial().isoformat(), "pista nasceu sem a data de entrada"
     print("✓ dedup e trava absoluta (campos de nascença) OK")
 
     gn = lambda n, titulo: {"alvo": "T/UF", "titulo": titulo, "veiculo_dominio": "https://jornal.example.com",
