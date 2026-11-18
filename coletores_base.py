@@ -1649,9 +1649,25 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
         copia, _ = copia_da_ponte(url)
         if copia is None:
             if buscar_fn is None:   # rede de verdade: o endereço vira pedido à ponte (o autoteste não pede)
-                _PEDIDOS_DA_PONTE[url] = origem or ""
+                pedir_a_ponte(url, origem)
             raise
         return copia
+
+
+def sem_conversa_http(e) -> bool:
+    """A conexão nem virou conversa HTTP (tempo esgotado, reset, rede inalcançável, TLS), e o nome existe: é o
+    caso da ponte no Brasil. Recusa (HTTPError, muro) e nome que não resolve não são. Função pura."""
+    import socket
+    if isinstance(e, urllib.error.HTTPError) or isinstance(e, MuroDeRobo):
+        return False
+    r = getattr(e, "reason", None)
+    return isinstance(e, (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead)) \
+        and not isinstance(r, socket.gaierror)
+
+
+def pedir_a_ponte(url: str, origem: str = None) -> None:
+    """O endereço vira pedido à ponte no Brasil, gravado uma vez no fim do processo (`ponte_pedidos.json`)."""
+    _PEDIDOS_DA_PONTE[url] = origem or ""
 
 
 # 18/11/2026: site que não responde ao robô custava a espera inteira em CADA endereço da rodada (juiz da noite de

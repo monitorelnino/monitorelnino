@@ -282,18 +282,8 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         for h, it in (ler("evidencias.json", {"itens": {}}).get("itens") or {}).items():
             if it.get("url") == url and prova_do_item(it):
                 return h
-        from julgar_e_aplicar_descobertas import ASSINATURAS_DE_DOCUMENTO, copia_arquivada, ler_documento
-        # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
-        # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
-        try:
-            corpo = ler_documento(url, 60)
-        except Exception:  # noqa: BLE001 — 18/11/2026: endereço que caiu (404) ou recusou; o juiz leu a cópia pública, e é ela a prova
-            corpo = b""
-        if not corpo or (str(url).lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt"))
-                         and not corpo.startswith(ASSINATURAS_DE_DOCUMENTO)):
-            corpo = copia_arquivada(url)[0]   # 17/11/2026: o endereço respondeu página; a prova é a cópia pública
-            if not corpo:
-                return None
+        from julgar_e_aplicar_descobertas import obter_documento
+        corpo = obter_documento(url, 60)   # o que o juiz leu: a fonte ou, se ela caiu, a cópia pública
         # o atalho `.url` do RS entrega o PDF de destino: a extensão vem dos bytes, não do nome
         ext = "pdf" if corpo[:5] == b"%PDF-" else (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
