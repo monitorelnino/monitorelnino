@@ -1924,8 +1924,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "22/12/2005",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/DF",
@@ -5766,8 +5776,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/SP",
