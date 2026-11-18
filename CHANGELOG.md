@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-18 · #PR · O blog sai da metodologia
+## 2026-11-18 · #1857 · O blog sai da metodologia
 
 Com o blog fora do site, a metodologia deixa de descrevê-lo: saem a seção sobre os textos do blog e a seção sobre como eles eram produzidos, e as menções ao blog nas seções de contratos e do boletim semanal. Pedido da editoria, que autorizou mexer na metodologia congelada para isso.
 
