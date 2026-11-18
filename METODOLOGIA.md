@@ -3874,8 +3874,8 @@ exceção que não se declara é regra desligada em silêncio.
 
 ### 100.4 Contrato para toda página pública, inclusive as que não têm seção
 
-Nove contratos, de cinco para nove: entraram a inicial, o Monitor de riscos, o Para gestores e o
-Blog. Três dessas páginas **não usam `<section>`** — os blocos são `div` sem id —, e por isso o
+Toda página pública passou a ter contrato: entraram a inicial, o Monitor de riscos e o Para
+gestores. Essas páginas **não usam `<section>`** — os blocos são `div` sem id —, e por isso o
 contrato delas declara na raiz o que se pode provar sem reescrever a marcação: a ordem dos
 títulos, as figuras que têm de existir e estar no componente, o texto exigido e o proibido.
 Divergência declarada em cada um: é menos do que um contrato de seção prova.
@@ -4099,9 +4099,9 @@ Pista com **duas tentativas** de busca dirigida sem documento, ou **21 dias** na
 **reabre sozinha** se surgir evidência nova para o mesmo município e assunto. Fechar não é apagar:
 o registro fica, e é por ele que a reabertura sabe o que já foi tentado.
 
-## 103. Dizemos o que disponibilizamos; o blog conta o ciclo (03/10/2026)
+## 103. Dizemos o que disponibilizamos (03/10/2026)
 
-Duas regras editoriais que valem para **todo o site**, e duas páginas refeitas por causa delas.
+Uma regra editorial que vale para **todo o site**, e as páginas refeitas por causa dela.
 
 ### 103.1 A regra do que se diz sobre o que se oferece
 
@@ -4126,45 +4126,23 @@ repositório**. Remover os arquivos quebraria a cadeia de derivados, que os rege
 que os cobra. O que desfaz a publicação sem mexer na cadeia é a regra de redirecionamento — e é o
 que está no `netlify.toml`.
 
-### 103.2 O blog conta o ciclo, em prosa
-
-O blog **não trata** de decisões, método, correções nem funcionamento do site: isso vive na
-metodologia e na página nova **Mudanças no MARÉ** (`mudancas.html`), ligada da metodologia e **sem
-link no menu** — ela é material de quem audita, não de quem chega. A página nasce do `CHANGELOG.md`,
-que já era o registro canônico: 57 entradas na primeira geração.
-
-Cada texto do blog conta uma condição do ciclo como história de fatos — onde, quando, quanto,
-quem, com fonte — em **texto corrido**. Sem tópicos, sem listas, sem cartões no meio do texto: os
-números vivem nas páginas, e o texto pode citá-los. A verificação é na **geração**, porque é ali
-que o texto se torna página: `gerar_blog.py` recusa corpo com lista ou cartão, e recusa texto sem
-`aprovado: sim`.
-
-**O fluxo editorial é a trava:** a central entrega em `robo-registro/blog/<data>-<slug>.md`, com a
-marca de aprovação, e o Code copia e publica **só o que estiver lá**. Nada gerado automaticamente
-vai ao ar como texto do blog — e o release gerado, que existia, **deixou de existir**.
-
-As etiquetas passam a ser **Boletim** e **Acontecimento**. "Análise" e "Diário do monitoramento"
-saíram: a primeira convidava texto de opinião, e a segunda era por onde os registros técnicos
-entravam no blog. O texto de 22/09 foi **retirado** — ele usava "nota de antecipação", vocabulário
-revogado; a editoria decide se volta reescrito.
-
-### 103.3 O boletim é congelado por edição
+### 103.2 O boletim é congelado por edição
 
 Uma edição por semana, com três números — municípios que decretaram emergência na semana,
 municípios sob alerta do Cemaden, casos prováveis de dengue na última semana fechada. Eles vêm do
 motor da semana, que lê o instantâneo do topo de cada página (§101.5): **nenhuma conta nova
 nasce no boletim**.
 
-O que o boletim faz é **congelar**: `data/blog/boletins/<data>.json` guarda os números daquela
+O que o boletim faz é **congelar**: o arquivo de cada edição guarda os números daquela
 edição. Um boletim de três semanas atrás mostrando o número de hoje seria outro documento, e quem
 cita a edição cita o que ela dizia. Cartão sem dado **sai** do boletim, e a ausência fica
 declarada no próprio arquivo.
 
-### 103.4 A imprensa passa a ter só o estável
+### 103.3 A imprensa passa a ter só o estável
 
 Saíram "Esta semana em números", o release gerado com o botão de copiar, a variação semanal e a
 planilha da edição. O que muda toda semana — e que, por mudar, pedia conferência toda semana —
-vive agora no boletim do blog, escrito por pessoa. Na imprensa fica o **ponteiro**: a data da
+vive agora no boletim semanal. Na imprensa fica o **ponteiro**: a data da
 edição, os três números congelados e o caminho para ela.
 
 O portão de coerência **continua**, no lugar certo: ele compara o motor da semana com as páginas
@@ -4399,22 +4377,6 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **Provas.** Conta refeita à mão para as 27 UFs, pelos dois caminhos (soma das contribuições e Σ índice × população ÷ Σ população); o autoteste de `gerar_monitor_saude.py` reprova se o índice receber argumento de data ou de cobertura, se `c_uf` entrar no índice, se uma UF sair do denominador ou se a contribuição das UFs em elaboração for zero; o portão `verificar_saude.py` (m) exige índice igual ao instrumento, `c_uf` igual a 1, nenhuma antecipação no arquivo e o nacional igual à conta ponderada; `definicao_dos_indices` lê `metodo.pesos` e `metodo.agregacao_nacional` do arquivo, de modo que a Imprensa e a abertura da Saúde descrevem o método sem texto escrito à mão.
 
 **O que não muda.** Nenhuma constante, peso ou denominador do MARÉ Legal, que segue com a média simples dos estados. Peso zero do Saúde no MARÉ (o motor do Legal não lê este arquivo).
-## 124. Blog do MARÉ: como os textos são produzidos (25/10/2026)
-
-*Regras aprovadas pela editoria em 25/10/2026.*
-
-Os textos do Blog do MARÉ são escritos integralmente por inteligência artificial e aprovados pela editoria antes da publicação. São duas editorias: Legal e financiamento, publicada às segundas, e Saúde, publicada às quintas.
-
-**Seleção.** A pauta prioriza os estados e as regiões mais atingidos por seca, estiagem, fogo, chuva forte, enchentes e inundações, segundo contagens publicadas no MARÉ: municípios sob decreto de emergência, população desses municípios, reconhecimentos federais, focos de calor e notificações acima da faixa habitual. A escolha do recorte é editorial; o texto informa as contagens do lugar escolhido.
-
-**Fontes e números.** Cada texto parte do pacote de fatos da semana, gerado a partir dos dados do MARÉ, com fonte, endereço e data de cada fato. Todo número e toda data do texto estão nesse pacote. Fato com mais de nove dias na data do pacote é declarado como lacuna.
-
-**Construção.** Fatos de fontes diferentes aparecem juntos quando compartilham território, risco, população, mecanismo legal ou decisão pública. O texto descreve os fatos e a relação entre eles que os documentos sustentam; causa, razão, percentual e ordenação entre estados ficam com o leitor.
-
-**Saúde.** Os textos informam que as semanas mais recentes são parciais e sobem com as notificações atrasadas, que notificação é diferente de caso confirmado e que os números não indicam relação com o El Niño.
-
-**Forma.** Seis parágrafos em prosa, título factual, linha fina e, ao final, as fontes com a data de consulta. Cada texto fica no seu endereço permanente.
-
 ## 125. Juiz automático, codebook 1.8: regras que passam a valer (29/10/2026)
 
 *Decisão da central em 28/10/2026, sobre a medição de 28/10.*

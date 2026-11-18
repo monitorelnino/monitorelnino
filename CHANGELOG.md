@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #PR · O blog sai da metodologia
+
+Com o blog fora do site, a metodologia deixa de descrevê-lo: saem a seção sobre os textos do blog e a seção sobre como eles eram produzidos, e as menções ao blog nas seções de contratos e do boletim semanal. Pedido da editoria, que autorizou mexer na metodologia congelada para isso.
+
 ## 2026-11-18 · #1856 · Pista de imprensa nasce com a data de entrada
 
 Os monitores de imprensa regional e de saúde gravavam a pista sem `registrado_em`; a idade na fila contava da data da notícia e a matéria antiga nascia vencida (>21 dias). O portão da fila não humana reprovou a `main` das 03:53 UTC até aqui. Os dois monitores carimbam a entrada na criação (+9/−1 em código); as 4 vencidas na fila foram fechadas por prazo.
