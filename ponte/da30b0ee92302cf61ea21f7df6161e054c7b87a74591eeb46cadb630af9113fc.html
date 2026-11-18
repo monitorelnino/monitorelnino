@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando...</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTXK2EVTBK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HTXK2EVTBK');
+    </script>			
+    <script>
+        // Get the URL parameter from the query string
+        function getParameterByName(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
+
+        window.onload = function() {
+            // Retrieve the 'url' parameter from the query string
+            let pdfUrl = getParameterByName('url');
+
+			if (!pdfUrl) {
+				pdfUrl = getParameterByName('arquivo');
+			}
+
+            if (pdfUrl) {
+                // Handle relative URLs by converting them to absolute
+                if (!pdfUrl.startsWith("http")) {
+                    pdfUrl = new URL(pdfUrl, window.location.origin).href;
+                }
+
+                window.location.href = pdfUrl;
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>Redirecionando para o documento...</p>
+</body>
+</html>
