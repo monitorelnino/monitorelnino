@@ -171,7 +171,7 @@ Atualizado em 18/11/2026.
 | `scripts/gerar_resumo_do_log.py` | — | `log_buscas_resumo.json` | — | — | não |
 | `scripts/gerar_topo_das_paginas.py` | — | `resposta/topo_defesa_civil.json`, `saude_desfechos/topo_saude.json`, `topo_monitor_riscos.json` | — | 1 | não |
 | `scripts/ingerir_ocp_midr.py` | — | `ocp_2026.json` | — | — | não |
-| `scripts/limpar_fila_de_pistas.py` | — | `pistas_imprensa.json` | — | 3 | não |
+| `scripts/limpar_fila_de_pistas.py` | — | `pistas_imprensa.json` | — | 4 | não |
 | `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 4 | não |

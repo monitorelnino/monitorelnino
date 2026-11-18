@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="PRODAP">
+    <meta name="description" content="Secretaria da Saúde">
+    <meta name="keywords" content="Governo do Amapá">
+    <meta name="reply-to" content="cotec@prodap.ap.gov.br">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <title>SESA - Secretaria da Saúde</title>
+    <base href="https://saude.portal.ap.gov.br:443/pub_plus.php?" />
+    <link rel="stylesheet/less" type="text/css" href="scripts/css/estilo.less" />
+    <link href="scripts/css/bootstrap.min.css" rel="stylesheet">
+    <link href="scripts/css/bootstrap-select.css" rel="stylesheet">
+    <link href="scripts/css/layout.php" rel="stylesheet">
+    <link rel="stylesheet" href="scripts/css/tipped.css">
+    <link rel="stylesheet" href="scripts/css/font-awesome.min.css">
+    <link rel="stylesheet" href="scripts/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="scripts/css/owl.theme.default.min.css">
+    <link href="scripts/css/dataTables.bootstrap.css" rel="stylesheet">
+    <style>
+        .wrap {
+            display: inline-block;
+            padding: 0;
+            margin: 8px 8px;
+        }
+
+        .wrap span {
+            display: block;
+            padding: 4px 8px;
+            font-weight: bold;
+        }
+
+        .btn-contas {
+            background-color: rgb(61, 155, 233);
+            border-color: #fff;
+            border-radius: 0;
+            color: #fff;
+            -webkit-transition: background-color 0.25s linear;
+            -moz-transition: background-color 0.25s linear;
+            transition: background-color 0.25s linear;
+        }
+
+        .btn-contas:hover, .btn-contas:active, .btn-contas:focus {
+            background-color: rgb(43, 104, 156);
+            border-color: #fff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="scroll-to-top">
+    <a href="#" class="btn btn-primary"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
+</div>
+<!-- INICIO TOPO 1 -->
+<div class="container-fluid topo_um">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <span class="pull-left hidden-xs"><a href="https://www.amapa.gov.br" target="_blank"><div class="gov"><img src="img/bandeira.jpg" class="img-responsive" alt="">GOVERNO DO ESTADO DO AMAPÁ</div></a></span>
+                <span class="pull-left visible-xs"><a href="https://www.amapa.gov.br" target="_blank"><div class="gov"><img src="img/bandeira.jpg" class="img-responsive" alt=""></div></a></span>
+
+                <span class="pull-right">
+                    <img class="brasao" src="img/brasao_topo.png" alt="">
+                   <select onChange="window.open(this.options[this.selectedIndex].value, '_blank');" value="GO" id="lunch" class="selectpicker" data-live-search="true" title="Órgãos Governamentais">
+                                                <option value="http://www.sead.ap.gov.br" >Administração</option>
+                                                <option value="http://ageamapa.ap.gov.br" >Agência Amapá</option>
+                                                <option value="http://www.afap.ap.gov.br" >Agência de Fomento</option>
+                                                <option value="http://www.setec.ap.gov.br" >Ciência e Tecnologia</option>
+                                                <option value="http://www.cge.ap.gov.br" >Controladoria Geral</option>
+                                                <option value="https://bombeiros.portal.ap.gov.br/" >Corpo de Bombeiros</option>
+                                                <option value="http://www.detran.ap.gov.br" >Depto. de Trânsito </option>
+                                                <option value="https://cidades.portal.ap.gov.br" >Desenvolvimento Cidades  </option>
+                                                <option value="http://www.rurap.ap.gov.br" >Desenvolvimento Rural</option>
+                                                <option value="http://www.diagro.ap.gov.br" >Diagro</option>
+                                                <option value="http://www.seed.ap.gov.br" >Educação</option>
+                                                <option value="http://www.eap.ap.gov.br" >Escola de Administração</option>
+                                                <option value="http://www.ief.ap.gov.br" >Instituto de Florestas</option>
+                                                <option value="http://www.hemoap.ap.gov.br" >Instituto de Hematologia</option>
+                                                <option value="http://www.terrap.ap.gov.br" >Instituto de Terras</option>
+                                                <option value="http://www.rurap.ap.gov.br" >Instituto Rural</option>
+                                                <option value="http://www.jucap.ap.gov.br" >Junta Comercial</option>
+                                                <option value="https://sejuv.portal.ap.gov.br/" >Juventude</option>
+                                                <option value="http://www.lacen.ap.gov.br" >Laboratório Central</option>
+                                                <option value="http://www.sema.ap.gov.br" >Meio Ambiente</option>
+                                                <option value="http://www.sims.ap.gov.br" >Mobilização Social</option>
+                                                <option value="http://www.ipem.ap.gov.br" >Pesos e Medidas</option>
+                                                <option value="http://www.seplan.ap.gov.br" >Planejamento</option>
+                                                <option value="http://policiacientifica.ap.gov.br/" >Polícia Cientifica</option>
+                                                <option value="http://www.policiacivil.ap.gov.br" >Policia Civil</option>
+                                                <option value="http://www.pm.ap.gov.br" >Policia Militar</option>
+                                                <option value="http://www.procon.ap.gov.br" >Procon</option>
+                                                <option value="http://www.difusora.ap.gov.br" >Radio Difusora</option>
+                                                <option value="http://www.sefaz.ap.gov.br" >Receita</option>
+                                                <option value="http://www.seab.ap.gov.br" >Representação GEA Brasília </option>
+                                                <option value="http://www.saude.ap.gov.br" >Saúde</option>
+                                                <option value="https://cidades.portal.ap.gov.br/" >Secretaria do Desenvolvimento das Cidades</option>
+                                                <option value="http://www.prodap.ap.gov.br" >Tecnologia da Informação</option>
+                                                <option value="http://www.setrap.ap.gov.br" >Transporte</option>
+                                                <option value="http://www.setur.ap.gov.br" >Turismo</option>
+                                                <option value="http://www.ueap.ap.gov.br" >Universidade Estadual</option>
+                      
+                  </select>
+               </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM TOPO 1 -->
+
+<!-- INICIO TOPO 2-->
+<nav class="navbar topo_dois">
+    <div class="container">
+    	<div class="row">
+        <div class="col-md-12">
+
+               <!-- DIV MONTADA PARA ACESSIBILIDADE -->
+
+                <div id="ace"></div>
+                <div id="redes" style="display:none"><a href='https://www.facebook.com/saude.ap' target='_blank'><i class="fa fa-facebook-square fa-2x simple-tooltip" title="FaceBook" aria-hidden="true"></i></a><a href='https://twitter.com/informesead' target='_blank'><i class="fa fa-twitter-square fa-2x simple-tooltip" title="Twitter" aria-hidden="true"></i></a></div>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!-- FIM TOPO 2-->
+
+<!-- INICIO BANNER -->
+<style>
+    .banner .banner-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: nowrap;
+    }
+
+    .banner .banner-title {
+        flex: 1 1 auto;
+        min-width: 0;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    .banner .banner-title .nome {
+        margin-top: 0;
+        text-align: left;
+    }
+
+    .banner .banner-title h1 {
+        margin-top: 0;
+    }
+
+    .banner .banner-logo {
+        float: none;
+        flex: 0 0 auto;
+        margin: 0 auto;
+    }
+
+    .banner .banner-logo img {
+        width: 200px;
+        max-width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+
+    @media (max-width: 767px) {
+        .banner {
+            padding-top: 18px;
+            padding-bottom: 18px;
+        }
+
+        .banner .banner-header {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .banner .banner-title {
+            width: 100%;
+            text-align: center;
+        }
+
+        .banner .banner-title .nome {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .banner .banner-title h1 {
+            font-size: 42px;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .banner .banner-title h3 {
+            font-size: 18px;
+            line-height: 1.15;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .banner .banner-logo img {
+            width: 180px;
+            margin: 0 auto;
+        }
+    }
+</style>
+<div class="container-fluid banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 banner-header">
+                                    <div class="titulo banner-title">
+                        <div class="nome">
+                        	<h1>SESA</h1></div>
+                        <div class="nome" style="text-shadow: 0px -1px 5px #eeeeee, 0px  1px 5px #eeeeee, -1px  0px 5px #eeeeee, 1px  0px 5px #eeeeee, -1px -1px 5px #eeeeee, -1px  1px 5px #eeeeee, 1px -1px 5px #eeeeee, 1px  1px 5px #eeeeee;">
+                        	<h3>Secretaria da Saúde</h3></div>
+                    </div>
+                                <div class="logo banner-logo"><a href="./"><img src="https://matrix.amapa.gov.br//storage/logos/01KWC8KQE5VK799DFZDVE4Y48G.svg" class="img-responsive" alt=""></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM BANNER -->
+
+<!-- INICIO MENU-->
+<div id="inst" class="container-fluid menu">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand visible-xs" href="./"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                        <li class="hidden-xs"><a href="./">PÁGINA INICIAL</a></li>
+
+                                                        <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Programas de Saúde <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="conteudo/programas/saude-prisional" >Saúde Prisional</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-mental" >Saúde Mental</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-materno-infantil" >Saúde Materno - Infantil</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-do-idoso" >Saúde do Idoso</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-do-homem" >Saúde do Homem</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-do-adolescente" >Saúde do Adolescente</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-da-pessoa-portadora-de-deficiencia" >Saúde da Pessoa Portadora de Deficiência</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-da-familia" >Saúde da Família</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-bucal" >Saúde Bucal</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/promocao-da-equidade" >Promoção da Equidade</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/hipertensao-e-diabetes" >Hipertensão e Diabetes</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/controle-do-cancer-de-colo-de-utero-e-mama" >Controle do Câncer de colo de útero e mama</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/banco-de-leite" >Banco de Leite</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/alimentacao-e-nutricao" >Alimentação e Nutrição</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                    <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servidor <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="https://webmail.amapa.gov.br/" target="_blank">WEBMAIL</a></li>
+                                            
+                                                                                                                                    <li><a href="https://sigdoc.ap.gov.br/login.jsf" target="_blank">SIGDOCS</a></li>
+                                            
+                                                                                                                                    <li><a href="https://siplag.ap.gov.br/SiafeAP/faces/login.jsp;jsessionid=B04A6D85B8A09D0C19B147933936E5E6.server1_tom6" target="_blank">SIAFE</a></li>
+                                            
+                                                                                                                                    <li><a href="https://sead.portal.ap.gov.br" target="_blank">SEAD</a></li>
+                                            
+                                                                                                                                    <li><a href="protocolo" >Protocolo</a></li>
+                                            
+                                                                                                                                    <li><a href="https://prodoc.ap.gov.br/login" target="_blank">PRODOC</a></li>
+                                            
+                                                                                                                                    <li><a href="https://portaldoservidor.ap.gov.br/login" target="_blank">Portal do Servidor</a></li>
+                                            
+                                                                                                                                    <li><a href="https://servicos.portal.ap.gov.br/" target="_blank">PORTAL DE SERVIÇOS GEA</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/servidor/legislacao" >Legislação</a></li>
+                                            
+                                                                                                                                    <li><a href="https://saude.portal.ap.gov.br/esp/" >Escola de Saúde Pública</a></li>
+                                            
+                                                                                                                                    <li><a href="https://diofe.portal.ap.gov.br" target="_blank">Diário Oficial</a></li>
+                                            
+                                                                                                                                    <li><a href="https://amprev.ap.gov.br" target="_blank">AMPREV</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                    <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cidadão <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="conteudo/cidadao/tratamento-fora-de-domicilio-tfd" >Tratamento fora de Domicílio - TFD</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/resultado-de-exames" >Resultado de Exames</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/medicamentos" >Medicamentos</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/marcacao-de-consulta" >Marcação de Consulta</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/catalogo-de-servicos" >Catálogo de Serviços</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/cartao-do-sus" >Cartão do SUS</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                    <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rede de Atendimento <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/upa" >UPA</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/unacon" >UNACON</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/samu" >SAMU</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/nefrologia" >Nefrologia</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/nande" >NANDE</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/hospitais" >Hospitais</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/hemoap" >HEMOAP</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/centros-de-referencia" >Centros de Referência</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/centros-de-especialidades-odontologicas" >Centros de Especialidades Odontológicas</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/caps" >CAPS</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/ambulatorio-de-obesidade-barisus" >Ambulatório de Obesidade - BariSUS</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                                                        <li><a href="https://www.gov.br/saude/pt-br" target="_blank">Ministério da Saúde</a></li>
+                                                                                                                                                                                                                                                                                            <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Institucional <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="transparencia-saude" >Transparência Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/regulamento-sesa" >Regulamento SESA</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/regionalizacao-em-saude" >Regionalização em Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/quem-somos" >Quem Somos</a></li>
+                                            
+                                                                                                                                    <li><a href="portarias/diversas" >Portarias</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/perfil-dos-gestores" >Perfil dos Gestores</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/organograma" >Organograma</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/organizacoes-sociais-de-saude" >Organizações Sociais de Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/mapa-estrategico" >Mapa Estratégico</a></li>
+                                            
+                                                                                                                                    <li><a href="escalas" >Escalas de Plantão (2018 - 2021)</a></li>
+                                            
+                                                                                                                                    <li><a href="contratos" >Contratos</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/conselho-nacional-de-secretarios-de-saude" >Conselho Nacional de Secretários de Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/conselho-estadual-de-saude" >Conselho Estadual de Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/competencias" >Competências</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/comissao-intergestores-biparte" >Comissão Intergestores Biparte</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/comissao-intergestora-regional" >Comissão Intergestora Regional</a></li>
+                                            
+                                                                                                                                    <li><a href="biblioteca" >Biblioteca</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                                                        <li><a href="https://esp.portal.ap.gov.br/" >ESP</a></li>
+                                                                                    
+                        <!-- INICIO MENU DINAMICO -->
+                                                    <li><a href="menu/ministerio-da-saude">Ministério da Saúde</a></li>
+                                                    <li><a href="menu/ouvidoria">Ouvidoria</a></li>
+                                                    <li><a href="menu/protocolos">Protocolos</a></li>
+                                                    <li><a href="menu/institucional">Institucional</a></li>
+                                                <!-- FIM MENU DINAMICO -->
+
+                            <li><a href="galerias">Galerias</a></li>
+
+                        <li><a href="faleconosco">FALE CONOSCO</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- FIM MENU-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+                    </div>
+    </div>
+</div>
+
+				<!-- Modal -->
+					<div class="modal fade" id="myAcc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog modal-lg" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Sobre Acessibilidade</h4>
+					      </div>
+					      <div class="modal-body">
+					        <p>Pessoas com deficiência visual, baixa visão, daltonismo e mobilidade reduzida podem navegar em nosso site por meio de recursos que foram implementados para garantir este acesso, tais como aumento de fonte, teclas de atalho e navegação por teclado.
+							Para aumentar a fonte, é só clicar no símbolo de A+ em nossa barra de acessibilidade. Caso queira voltar ao tamanho de fonte original, é só clicar em A-.
+
+							Se for necessário, você também pode usar o zoom nativo do seu navegador, pressionando as teclas “Ctrl” e “+” para aumentar todo o site e “Ctrl” e “-“ para diminuir. Para voltar ao padrão, pressione “Ctrl” e “0”.
+
+							Este site tem melhor acessibilidade quando acessado nas versões mais atualizadas do seu navegador web. Utilize sempre a versão mais recente de seu software.</p>
+							<p><b>Teclas de atalho por navegadores</b></p>
+
+							<p><b>Internet Explorer e Google Chrome:</b></p>
+								<ul>
+							    <li>“Alt” + “1” - ir para o conteúdo</li>
+							    <li>“Alt” + “2” - ir para o menu</li>
+							    <li>“Alt” + “3” - ir para o rodapé</li>
+							    </ul>
+
+							<p><b>Firefox:</b></p>
+								<ul>
+							    <li>“Alt” + “Shift” + “número”</b></li>
+							    </ul>
+
+							<p><b>Opera:</b></p>
+								<ul>
+							    <li>“Shift” + “Escape” + “número”</b></li>
+							    </ul>
+
+							<p><b>Safari e OmniWeb:</b></p>
+								<ul>
+							    <li>“Ctrl” + “número”</li>
+							    </ul>​
+
+							<p><b>Navegação por tabulação</b></p>
+
+							<p>Use a tecla Tab para navegar por elementos que recebem ação do usuário no site, tais como links, botões, campos de formulário e outros na ordem em que eles são apresentados na página, e Shift + Tab para retornar. Use as setas direcionais para acessar as informações textuais.
+							Sugestões de programas disponíveis para pessoas com deficiência</p>
+
+							    <li> VLibras: suíte de ferramentas utilizadas na tradução automática do Português para a Língua Brasileira de Sinais. Gratuito;</li>
+							    <li> Nitrous Voice Flux: controla o computador por voz. Gratuito;</li>
+							    <li> NVDA: software livre para ler tela – vários idiomas (Windows);</li>
+							    <li> YeoSoft Text: leitor de tela em inglês e português;</li>
+							    <li> Jaws for Windows: leitor de tela – vários idiomas;</li>
+							    <li> Virtual Vision: leitor de telas em português do Brasil;</li>
+							    <li> DOSVOX: sistema para deficientes visuais (Windows ou Linux).</li>
+
+							<p>Observação: leia no manual do leitor de telas sobre a melhor forma de navegação em páginas web.</p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+<div id="xpto">
+
+<!-- CONTEÚDO À PARTIR DAQUI -->
+<!-- ##################################################################################################### -->
+
+
+
+<div class="container" id="breadcrumb">
+    <div class="row">
+        <div class="col-sm-12">
+            <ol class="breadcrumb">
+                <li><a href="./"><i class="fa fa-home"></i> Início</a></li>
+                <li class="active">Todas as Publicações</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="noticias">
+    <div class="row">
+        <div class="col-sm-9">
+            <div id="titulos_menor">TODAS AS PUBLICAÇÕES</div>
+            <div class="block_titulo"></div>
+            <div class="block_titulo_linha"></div>
+
+            <table id="tabela" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Nome do Arquivo</th>
+                    <th>Tipo</th>
+                    <th class="text-center" width="10%"><i class="fa fa-download" aria-hidden="true"></i></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Nome do Arquivo</th>
+                    <th>Tipo</th>
+                    <th class="text-center"><i class="fa fa-download" aria-hidden="true"></i></th>
+                </tr>
+                </tfoot>
+                <tbody>
+                                    <tr>
+                        <td>EDITAL DE CREDENCIAMENTO DE EMPRESAS ESPECIALIZADAS, SEDIADAS NO ESTADO DO AMAPÁ, PARA  A PRESTAÇÃO DOS SERVIÇOS DE EXAMES DE IMAGENS</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5ce746087bf4dba093dc106a6686e99d.pdf" target="_blank" class="btn btn-default btn-xs" title="ANEXO I - ETP"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_9d132e66638372e58899ebaccd282ea8.pdf" target="_blank" class="btn btn-default btn-xs" title="ANEXO II - TR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_cf5bca33283b99f5c42a19858e101b4f.pdf" target="_blank" class="btn btn-default btn-xs" title="ANEXO III - TABELA EXAMES"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_46ae6b707348ed68f4352bd129632cdb.pdf" target="_blank" class="btn btn-default btn-xs" title="ANEXO IV - MINUTA DE CONTRATO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_fb8737006a6c0327ac55a94e23b0aff3.pdf" target="_blank" class="btn btn-default btn-xs" title="ANEXO V - REQUERIMENTO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ca7cca3da62d76226d493d38b8590cd3.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Edital de credenciamento nº 01/2024, de caráter permanente, para fins de credenciamento de organizações da sociedade civil (OSC) para eventual celebração de termo de colaboração ou termo de fomento</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_655006beb4a04cd79f36866f15a147db.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CREDENCIAMENTO Nº 01/2024, DE CARÁTER PERMANENTE, PARA FINS DE CREDENCIAMENTO DE ORGANIZAÇÕES DA SOCIEDADE CIVIL (OSC) PARA EVENTUAL CELEBRAÇÃO DE TERMO DE COLABORAÇÃO OU TERMO DE FOMENTO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Aviso de Licitação - Dispensa com disputa para reapregoamento de medicamentos fracassados (Pregões 2023-CLC/PGE) de uso Ambulatorial, Hospitalar da Assistência Farmacêutica</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8b88b652ac9212e509ddc8c32b8a6e2c.pdf" target="_blank" class="btn btn-default btn-xs" title="AVISO PUBLICO DE DISPENSA DE LICITACAO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1acf44433fc92564bc1a1a833e396f6e.pdf" target="_blank" class="btn btn-default btn-xs" title="Aviso_TR_DE11"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Credenciamento, via chamamento público, para a contratação de pessoa jurídica para prestação de serviços médicos em cirurgia vascular, neuropediatria e anestesiologia para suprir demanda de profission</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_55511f6d8c4f97382a605b5393e6630b.pdf" target="_blank" class="btn btn-default btn-xs" title="02 - ETP ATUALIZADO APOS CUMPRIMENTO DE DILIGENCIAS - 11.06.24"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c8120c97bd82df8e54ffc08e5d88ebd9.pdf" target="_blank" class="btn btn-default btn-xs" title="03 - TERMO DE REF.  ATUALIZADO APOS CUMPRIMENTO DE DILIGENCIAS - 11.06.24"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_d5173ca784a6611fefc9833454234528.pdf" target="_blank" class="btn btn-default btn-xs" title="04 - MINUTA DE CONTRATO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f86ccaa78dbfee904967c6ae06f52983.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL CREDENCIAMENTO -  Pessoa Juridica PROFISSIONAIS MEDICOS 04.07.2024"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_a7a9743335dd9fae93ba9fb714eeb2a7.pdf" target="_blank" class="btn btn-default btn-xs" title="REQUERIMENTO - ANEXO IV"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>CREDENCIAMENTO DE LABORATÓRIO HABILITADO COMO SERVIÇO DE REFERÊNCIA EM TRIAGEM NEONATAL (SRTN) PARA A REALIZAÇÃO DE EXAMES EM TODOS OS RECÉM NASCIDOS DO ESTADO DO AMAPÁ</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_935b265f01ef6b0e3b9a317650a7de35.pdf" target="_blank" class="btn btn-default btn-xs" title="1. EDITAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_7b3b6fa463a6b9c85eaab4256a6050db.pdf" target="_blank" class="btn btn-default btn-xs" title="2. Termo de Referência"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8f9232eb74a88aff4f99633272ac1a67.pdf" target="_blank" class="btn btn-default btn-xs" title="3. Estudo Técnico Preliminar"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_62618ff129278897d7d1e368acfa2e14.pdf" target="_blank" class="btn btn-default btn-xs" title="4. Minuta de contrato"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c3593be218ca84e03cf1981e7c5f84bd.pdf" target="_blank" class="btn btn-default btn-xs" title="5. Requerimento"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>PROCESSO PÚBLICO DE SELEÇÃO 003/2022  - HOSPITAL REGIONAL DE PORTO GRANDE</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_db985cbd428d5991c43f8a2fe1dc6d35.pdf" target="_blank" class="btn btn-default btn-xs" title="500 - RESULTADO FINAL DO PROCESSO PUBLICO DE SELEÇÃO 003-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8b53ffbc29364536d118fa6c1ec0a273.pdf" target="_blank" class="btn btn-default btn-xs" title="ATA DE ANÁLISE E AVALIAÇÃO DO PLANO DE TRABALHO DO PROCESSO PÚBLICO DE SELEÇÃO Nº 003/2022 - SESA/AP"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_b601d739e3041c746bba07da3444317f.pdf" target="_blank" class="btn btn-default btn-xs" title="ATA DE JUGAMENTO DE HABILITAÇÃO DOCUMENTAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_2604a0e09be21bb4cc2f7c02afcfb5b0.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA CUSTEIO EDITAL 003-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ed0779b074373e5fcea8f6b7d1591586.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA DE ALTERAÇÃO DO CRONOGRAMA PROCESSO 003-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1078b5a2cd09c85a19f9f687fe73486a.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA DE ALTERAÇÃO DO CRONOGRAMA PROCESSO 003-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_65cc71dab79aadc916174d598b87bcb5.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA EDITAL 003-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_539280a090f598ca12d0ee5fbcf4296c.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA PORTARIA EDITAL 003-2022 "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ab86dd7bef5a0ce0ef2861a6ea0a0456.pdf" target="_blank" class="btn btn-default btn-xs" title="OSS QUE MANIFESTARAM INTERESSE EDITAL 003-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_dd155f18f085bca911c84318bc914b3c.pdf" target="_blank" class="btn btn-default btn-xs" title="PROCESSO PÚBLICO DE SELEÇÃO 003/2022 - HOSPITAL REGIONAL DE PORTO GRANDE"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_187f62523414f44e9c139b7e178ac9a8.pdf" target="_blank" class="btn btn-default btn-xs" title="RELAÇÃO DE ORGANIZAÇÕES SOCIAIS DE SAÚDE QUE MANIFESTARAM INTERESSE EM PARTICIPAR DO PROCESSO PÚBLICO DE SELEÇÃO Nº 003/2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_15cc583681f7425d7797ca9eed7735a3.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO FINAL DO PROCESSO PÚBLICO DE SELEÇÃO Nº 003/2022 – SESA/AP"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1429d0b2a20f1d709aeb9753234a2e8b.pdf" target="_blank" class="btn btn-default btn-xs" title="Resultado Preliminar do Processo Publico de Seleção 003-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8c2af8f1f8ac71ac78ce93f6ac5d99e3.pdf" target="_blank" class="btn btn-default btn-xs" title="TERMO DE HOMOLOGAÇÃO DE RESULTADO EDITAL 003-2021"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8d4f5a368ad5d1461153456fef56e575.pdf" target="_blank" class="btn btn-default btn-xs" title="TERMO DE HOMOLOGAÇÃO DE RESULTADO FINAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>TERMO DE DISPENSA DE LICITAÇÃO Nº 020/2021-CPL/COGEC/SESA</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c15ed035ea57ab599d61ef7bf5def75e.pdf" target="_blank" class="btn btn-default btn-xs" title="TERMO DE DISPENSA DE LICITAÇÃO Nº 020/2021-CPL/COGEC/SESA"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>PROCESSO SELETIVO PÚBLICO SIMPLIFICADO - IBGH</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8e8672723e799fed87ba0f78f93c5b6c.pdf" target="_blank" class="btn btn-default btn-xs" title="COMUNICADO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f1b2bf274d0212da4aeeb4caf7ec1e70.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_832606a8ae9a41e009499c7d8c77da1a.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE APROVACAO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>PROCESSO PÚBLICO DE SELEÇÃO 002/2022 - UPA ZONA SUL</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_65dfcf4f2b4e171ce7b9d16d6179ce27.pdf" target="_blank" class="btn btn-default btn-xs" title="Ata de Análise e avaliação do Plano de Trabalho"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_0ef8bfa5d9d4dd34404ec66d2f508198.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DO PROCESSO  DE SELEÇÃO Nº 002-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8eb7b1e08046d39b648f6273831b56b1.pdf" target="_blank" class="btn btn-default btn-xs" title="RELAÇÃO DE ORGANIZAÇÕES SOCIAIS DE SAÚDE - OSS QUE MANIFESTARAM INTERESSE EM PARTICIPAR DO PROCESSO PÚBLICO DE SELEÇÃO Nº 002/2022 – SESA/AP"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_66860c61c3dfd94b30ec9c55e78dfa39.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO FINAL 002-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_d8eb9bb49c38eff282095f7e200a5eda.pdf" target="_blank" class="btn btn-default btn-xs" title="Resultado Final do Processo Publico de Seleção 002-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ccb6b8fa62d4644b809560fe278c9609.pdf" target="_blank" class="btn btn-default btn-xs" title="Resultado Preliminar do Processo Publico de Seleção "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f34ab09b120c53c12366a71269ae7447.pdf" target="_blank" class="btn btn-default btn-xs" title="Termo de Homologação 002-2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>LISTA DE ORGANIZAÇÕES SOCIAIS QUALIFICADAS NO ÂMBITO DA SAÚDE DO ESTADO DO AMAPÁ</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_fd99f09d9d98af5cb3b7813c52f64dfa.pdf" target="_blank" class="btn btn-default btn-xs" title="LISTA DE ORGANIZAÇÕES SOCIAIS QUALIFICADAS NO ÂMBITO DA SAÚDE DO ESTADO DO AMAPÁ"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>CONTRATO DE GESTÃO - CONTRATAÇÃO EMERGENCIAL DE ORGANIZAÇÃO SOCIAL EM SAÚDE</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_319ae00e0cb42ca202670ba22a812be0.pdf" target="_blank" class="btn btn-default btn-xs" title="OFÍCIO DE CONTRATAÇÃO EMERGENCIAL DE ORGANIZAÇÃO SOCIAL EM SAÚDE"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>MACROPROCESSO DE LICITAÇÃO E GESTÃO DE CONTRATOS</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_122f9b14b1868c3202433a28d6425cbb.pdf" target="_blank" class="btn btn-default btn-xs" title="MACROPROCESSO DE LICITAÇÃO E GESTÃO DE CONTRATOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>PROCESSO PÚBLICO DE SELEÇÃO Nº 001/2022 - HOSPITAL DE EMERGÊNCIA DR. OSWALDO CRUZ</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_938c9dd744cf6fbc3985b3dfb864767a.pdf" target="_blank" class="btn btn-default btn-xs" title="ATA CIRCUNSTANCIADA - Reanalise ABEAS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1df770298adbdb73f85b67373aef30a8.pdf" target="_blank" class="btn btn-default btn-xs" title="ATA DE ANÁLISE E AVALIAÇÃO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_784f5022aba3502dadc0baa707d05b54.pdf" target="_blank" class="btn btn-default btn-xs" title="ATA DE JULGAMENTO DE HABILITAÇÃO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_039a13d195ea8da63cf54b4032bd3665.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA EDITAL Nº 001/2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_6846b036dcc3bb4a83cbe570b8cfd1a4.pdf" target="_blank" class="btn btn-default btn-xs" title="PROCESSO PÚBLICO DE SELEÇÃO Nº 001/2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_b869f0f901a3ccf1be219a4c1509e4c2.pdf" target="_blank" class="btn btn-default btn-xs" title="RECURSO ADMINISTRATIVO - ABEAS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5c82713e8a9d4abd05580f9e4635462e.pdf" target="_blank" class="btn btn-default btn-xs" title="RECURSO ADMINISTRATIVO - ASM"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f7d5642cbc3f25b600f538230dc6f63f.pdf" target="_blank" class="btn btn-default btn-xs" title="RESPOSTA RECURSO ADMINISTRATIVO - ABEAS - PROCESSO DE SELEÇÃO 001-2022 CESEL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f415000cd981988de8a6aaea4a4dea78.pdf" target="_blank" class="btn btn-default btn-xs" title="RESPOSTA RECURSO ADMINISTRATIVO - ABEAS e IJGS - PROCESSO DE SELEÇÃO 001-2022 CESEL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_b3154e6386e15b69e5f31a29c21aebf9.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO FINAL DO PROCESSO PÚBLICO DE SELEÇÃO Nº 001/2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_bdf9ef4b4f6b9a490a996dd4b47abdd7.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO FINAL Nº 01/2022 "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_e5730e2fdf02faf575abd75b25b3a71f.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO PRELIMINAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>PROCESSO SELETIVO PÚBLICO SIMPLIFICADO - INSTITUTO OVÍDIO MACHADO</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5b064efe510e7836862991c9dbfc4062.pdf" target="_blank" class="btn btn-default btn-xs" title="1ª ERRATA - MÉDICOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_4a6894c72557b167bca0e7e8ca904226.pdf" target="_blank" class="btn btn-default btn-xs" title="2ª ERRATA DO PROCESSO SELETIVO DE CONTRATAÇÃO DE EMPRESAS MÉDICAS PARA MATERNIDADE DE RISCO HABITUAL ZONA NORTE DE MACAPÁ"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_00c0ed90a91ae17d60cfcbdbb6f4e916.pdf" target="_blank" class="btn btn-default btn-xs" title="COMUNICADO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ae12f098e71b1bd5f1c04694e5ed1ad5.pdf" target="_blank" class="btn btn-default btn-xs" title="COMUNICADO 01 "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_0a105e4fc57929f892ae3fc0164caec4.pdf" target="_blank" class="btn btn-default btn-xs" title="COMUNICADO 2 - EDITAL 09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ac0f62c2fee7e00336cd80f2d568e8bd.pdf" target="_blank" class="btn btn-default btn-xs" title="CONVOCAÇÃO DE TREINAMENTO - EDITAL Nº 09/2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_31cc902b0d65c3a97b5974afd557c054.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE ABERTURA - Ed 21 2022 - MATERNIDADE DO AMAPÁ"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c25bb975a83e25b235fba747cb943558.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE ABERTURA Nº 09/2022 - SECRETARIA DE ESTADO DA SAÚDE DO AMAPÁ"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_bfb75bda43abd1eaf901b42cb0877610.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE ABERTURA Nº 16 2022 - MATERNIDADE DO AMAPA?"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_979743a6516b1f95b2aa278d4d2e9d0e.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO - EDITAL 09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_65dec5cb389c1890e8e1e0380a9a879a.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 01 "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8c838f73b24b96704f2a7d8becf4324a.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 01 01-29 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5970856a450ea701de629d93f6391100.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 01-17 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_7674f8114755fa4a24b37189f3c8ef87.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 02 02-21 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_a198ae518257896003041db7639b4564.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 02-09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_46eda62dffcd904411a50c3dd7b33050.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 02-17 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ea6b2e9bf0147f966fb60cec91e4e92e.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 03 03-21 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_13d4ec543bd0a6dec59611d5f0273046.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 04-09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_670dcb4d8e82f633136ebeea18deb68d.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 05 05-21 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ddaf4542aa604c85c42bdaf8a12ac026.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE CONVOCAÇÃO PARA CELEBRAÇÃO DE CONTRATO DE TRABALHO Nº 08-09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_eaf310a24e526c21e7cddef85a296899.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAC?A?O Nº 07 07-29 2022 - RESULTADO PRELIMINAR DA ETAPA DE ANÁLISE CURRICULAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ccad1eb4bd54d175317d1042eff90499.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO N 07-16 2022 - RESULTADO PRELIMINAR DA ETAPA DE ANÁLISE CURRICULAR - EDITAL 16"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f5e8cf1116ee5be9e323e981e5046b90.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO N 07-17 2022 - RESULTADO PRELIMINAR DA ETAPA DE ANÁLISE CURRICULAR - EDITAL 17"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_fd1136d8bba5cd9fd7aac720ea2a2288.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO N° 10 10-29 2022 - RESULTADO FINAL PRELIMINAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_35cab4920ba4e6b6754b9af0d7606099.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 01-21 2022 - RELAÇÃO PRELIMINAR DE CANDIDATOS ISENTOS DO PAGAMENTO DO VALOR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_4203571cedaf6482c475ba52536fcc3e.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 01-29 2022 - RELAÇÃO PRELIMINAR DE CANDIDATOS ISENTOS DO PAGAMENTO DO VALOR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_20efbe463391d4758f49c279bc4414a3.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 02-11 2022 - JULGAMENTO DOS RECURSOS - RELAÇÃO DE CANDIDATOS ISENTOS DE PAGAMENTO DO VALOR DA INSCRIÇÃO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_0c7c84e334541857a7bba27c0cd31c33.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 02-17 2022 - JULGAMENTO DOS RECURSOS - RELAÇÃO DE CANDIDATOS ISENTOS DE PAGAMENTO DO VALOR DA INSCRIÇÃO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1e6ba6001c4ac4572bc52cbfb4768593.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 02-21 2022 - JULGAMENTO DOS RECURSOS PRELIMINAR DE CANDIDATOS ISENTOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_cdfa162a255edcf1936f91245596864a.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 02-29 2022 - JULGAMENTO DOS RECURSOS - RELAÇÃO DE CANDIDATOS ISENTOS DE PAGAMENTO DO VALOR DA INSCRIÇÃO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_bb7bda07a7b85224efdcb01933633856.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 03-16 2022 - RELAÇÃO PRELIMINAR DE CANDIDATOS ISENTOS DO PAGAMENTO DO VALOR APÓS FASE RECURSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_0f992c65ed652e4f83a4c0cece3c2d0e.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 03-17 2022 - RELAÇÃO PRELIMINAR DE CANDIDATOS ISENTOS DO PAGAMENTO DO VALOR APÓS FASE RECURSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_7721f956605402099706bb53994c7968.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 03-21 2022 - RELAÇÃO DE CANDIDATOS ISENTOS DO PAGAMENTO DO VALOR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_720d5bd4da1a942ec6e44e2c392d7436.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 03-29 2022 - JULGAMENTO DOS RECURSOS - RELAÇÃO DE CANDIDATOS ISENTOS DO PAGAMENTO DO VALOR DA INSCRIÇÃO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_93cd80f406dec21facd5e40960b89987.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 04-16 2022 - RELAÇÃO PRELIMINAR DE CANDIDATOS IINSCRITOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_716886572b116b8af286365cc0d76ef3.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 04-292022 - RELAÇÃO PRELIMINAR DE CANDIDATOS INSCRITOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_791fc858bbae12b9d7c178c0093c905c.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 05 05-21 2022 - JULGAMENTO DOS RECURSOS - REL PREL DE CANDIDATOS INSCRITOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_2615444150b24143f328b0a2520304a8.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 05 05-29 2022 - JULGAMENTO DOS RECURSOS - REL PREL DE CANDIDATOS INSCRITOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_95eb1381a650e78939012e51693d33c5.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 05-16 2022 - RESULTADO ANALISE RECURSOS CONTRA A RELAÇÃO DE CANDIDATOS INSCRITOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8ae1a21dfa8e882dd4d2ecf37a29c99a.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 05-17 2022 - RESUL ANALISE RECUR CONTRA A RELAC DE CANDIDATOS IINSCRITOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_674f4166e0e4bbb104e8efc09d54d670.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 06 06-21 2022 - RELAÇÃO DE CANDIDATOS INSCRITOS APÓS FASE DE RECURSOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_503ada499c7e5a22bb27520d58e1558b.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 06 06-292022 - RELAÇÃO DE CANDIDATOS IINSCRITOS APOS RECURSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_034e72fa38d9421ed485c9aee744d788.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 06-16 2022 - RELAÇÃO DE CANDIDATOS INSCRITOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1e7bcec7fdc0d9b74135933e84d103bd.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 06-17 2022 - RELAÇÃO DE CANDIDATOS INSCRITOS APÓS RECURSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_72642bfa125d3b33c981ea32dba97c74.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 07-09 2022 - RESULTADO PRELIMINAR DA ETAPA DE ANÁLISE CURRICULAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_554b4ac6d622336a83ea50d0e75fbd7e.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 07-21 2022 - RESULTADO PRELIMINAR DE ANÁLISE CURRICULAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_d338b339d619d9d9b10364c3cd90fa18.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 07-21 2022 - RESULTADO PRELIMINAR DE ANÁLISE CURRICULAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_32adc40c95e3c2974d27e1ccc7803afd.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 08 08-29 2022 JULGAMENTO DOS RECURSOS APRESENTADOS ANÁLISE CURRICULAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_abae0cab42b04559b7311072f5710c2d.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 09 09-292022 -  ANÁLISE CURRICULAR APÓS JULGAMENTO RECURSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_84523de5cdb38824ae666c56b4877b6b.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 11 11-21 2022 - JULG DOS RECURSOS - RES FINAL EM CARÁTER PRELIINAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_76e2d8c6775a9eca2e88e750b82ebe24.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 11 11-29 2022 - JULGAMENTO DOS RECURSOS - RESULTADO FINAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_d2f6828da0d6c58b8ee059f4aa21e534.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 12 12-21 2022 - RESULTADO FINAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_9803e4ff61b1f3fc279a50d794fa7498.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 12 12-292022 - RESULTADO FINAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_28f5f00a0c8e76ac27b4754bd26051c6.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE DIVULGAÇÃO Nº 12-16 2022 RESULTADO FINAL APÓS RECURSO - EDITAL 16 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_567ca9113b50a6b3d14ad8fb86aab50a.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE RETIFICAÇÃO 01-162022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_65efe5b421eb2bbce6c4aa5b6d1f878a.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE RETIFICAÇÃO Nº 01-09/2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_fab7046f95504657d09fc4d4cbb5e0e3.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE RETIFICACAO Nº 02-09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5358efb3d1d3dbdfcc00639e8ae6c9c1.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DE RETIFICACAO Nº 03-09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5465ac4c8ac26af79fe4dee70e5925f7.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL Nº 17/2022 "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_69a014f0c734f3237f806a6bafbda5b7.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL Nº 28/2023 – IOM"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_cb15da51787c7946725bc77169e136f0.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA Nº 01 01 29 2022 MATERNIDADE"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_09c4476b7772347c152c3c153ae783d3.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA Nº 1"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_29590bcba50c150891530270463842cf.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA Nº 2"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_477720326af034105e85378a6a7258c3.pdf" target="_blank" class="btn btn-default btn-xs" title="Extrato Contratação de Empresa"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_cd23d43b2729a24ecc2300b1a5e52689.pdf" target="_blank" class="btn btn-default btn-xs" title="Extrato da PEÇAS E COMPONENTES"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_e8f5f91944dcf4507082fa28dc53e7ae.pdf" target="_blank" class="btn btn-default btn-xs" title="EXTRATO DE DOCUMENTO OFICIAL "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8b14f8084a1da0ad8207527e1f75bb60.pdf" target="_blank" class="btn btn-default btn-xs" title="Extrato SERVIDOR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ef278873a4c2a43b6c002a7dd6d8c4fb.pdf" target="_blank" class="btn btn-default btn-xs" title="JULGAMENTO DOS RECURSOS - EDITAL 09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_87646244bc2ec1d57e839431598f8f8f.pdf" target="_blank" class="btn btn-default btn-xs" title="JULGAMENTO DOS RECURSOS APRESENTADOS CONTRA RESULTADO FINAL PRELIMINAR - EDITAL162022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ac04ec8d86fda42711b29b94cb2781d8.pdf" target="_blank" class="btn btn-default btn-xs" title="JULGAMENTO DOS RECURSOS APRESENTADOS CONTRA RESULTADO FINAL PRELIMINAR - EDITAL172022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_9dc753b062ab9d7115071f4c3c5fd17e.PDF" target="_blank" class="btn btn-default btn-xs" title="PROCESSO SELETIVO DE CONTRATAÇÃO PROCESSO 347/2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f13f2d9ab21cd3a0296cb6d230c277c4.PDF" target="_blank" class="btn btn-default btn-xs" title="PROCESSO SELETIVO DOS MÉDICOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_50ad176ad4ce757361e663203504a00a.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO DO SELETIVO DOS MÉDICOS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_6e6e451b01e7ba7b0d10c969f7f12ebb.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO FINAL APO?S RECURSO - EDITAL 09 2022"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_ebd1d65bbe9eb17cdb17b1211baac941.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO PRELIMINAR FINAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>FLUXOGRAMAS DE MACROPROCESSO DE PAGAMENTOS FORNECEDORES/PRESTADORES DE SERVIÇOS DA SECRETARIA DE ESTADO DA SAÚDE</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_730459268d4a479ca445d29ab7551f37.pdf" target="_blank" class="btn btn-default btn-xs" title="FLUXOGRAMAS DE MACROPROCESSO DE PAGAMENTOS FORNECEDORES/PRESTADORES DE SERVIÇOS DA SECRETARIA DE ESTADO DA SAÚDE"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>ANÁLISE DA SITUAÇÃO DE SAÚDE</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_3d4cb97e30096ee6406cc1b97dcfc59f.pdf" target="_blank" class="btn btn-default btn-xs" title="Análise Situação de Saúde Amapá 2019"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5fbe3af6b6f08e2fc979ffc541aa7ecd.pdf" target="_blank" class="btn btn-default btn-xs" title="Boletim Estatístico de Vigilância em Saúde_ 2019"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_e7023236b0e23061317dec2f97ea13e4.pdf" target="_blank" class="btn btn-default btn-xs" title="Coletânea 2009 a 2020"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1fbe10134889ee206c4e84e69ec6a28d.pdf" target="_blank" class="btn btn-default btn-xs" title="Diagnóstico Situacional dos Municípios - COM A REDE DCNT E RMI"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5063b8a1d315668a207a9c37d452d8cd.pdf" target="_blank" class="btn btn-default btn-xs" title="Indicadores Previne Brasil - QUADRIMESTRE 3 2021"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_42b0484282043b0bd15eb295036b9e34.pdf" target="_blank" class="btn btn-default btn-xs" title="Territorialização RAS"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>TERMO DE DISPENSA Nº 051-B/2021 - CPL/COGEC/SESA</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f0bf4bade0bd3eedcd8416501d396406.pdf" target="_blank" class="btn btn-default btn-xs" title="TERMO DE DISPENSA Nº 051-B/2021 - CPL/COGEC/SESA"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>TERMO DE DISPENSA Nº 051-A/2021 - CPL/COGEC/SESA;</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_baf196808aa6c548c211615a609d9731.pdf" target="_blank" class="btn btn-default btn-xs" title="TERMO DE DISPENSA Nº 051-A/2021 - CPL/COGEC/SESA;"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>TERMO DE DISPENSA DE LICITAÇÃO – DEMANDA JUDICIAL</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_a361613bc143d1d07a4edf16452a910f.pdf" target="_blank" class="btn btn-default btn-xs" title="Termo de Dispensa nº 061/2021"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>LICITAÇÕES - MANUAL TRAMITE OPERACIONAL </td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_04558a43b264604bbbf1288e97af6853.pdf" target="_blank" class="btn btn-default btn-xs" title="1.PREGÃO ELETRÔNICO - PASSO A PASSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c7dd0ba55bf6da09624a76838f1885e0.pdf" target="_blank" class="btn btn-default btn-xs" title="2. COTAÇÃO ELETRÔNICA - PASSO A PASSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_68595ff60be620258163397be0cb860e.pdf" target="_blank" class="btn btn-default btn-xs" title="3. DISPENSA (exceto art. 24 inciso II e IV), INEXIGIBILIDADE E ADESÃO "><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_a3378cf33752f5bcbb593c56e1bdbd8e.pdf" target="_blank" class="btn btn-default btn-xs" title="4. PROCESSO DE UTILIZAÇÃO DE ATA - PASSO A PASSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>PROCESSO PÚBLICO DE SELEÇÃO  Nº 001/2021 - MATERNIDADE DR. EUCLÉLIA AMÉRICO</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c1c6b9505e20817c1e84b2228587c796.pdf" target="_blank" class="btn btn-default btn-xs" title="ATA DE JULGAMENTO DE HABILITAÇÃO DOCUMENTAL, VALIDAÇÃO E SELEÇÃO DO PLANO DE TRABALHO DO PROCESSO PÚBLICO DE SELEÇÃO Nº001/2021 - SESA/AP"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_1ee523662f5ca0978f8ef6e2cbe2553f.pdf" target="_blank" class="btn btn-default btn-xs" title="COMUNICADO DE INTERPOSIÇÃO DE RECURSO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_11b31755b6fc251387a0ec6f73f4788b.pdf" target="_blank" class="btn btn-default btn-xs" title="COMUNICADO DE RECURSO ADMINISTATIVO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_72a39c62d49e82d3d940d9ff7134e784.pdf" target="_blank" class="btn btn-default btn-xs" title="EDITAL DO PROCESSO PÚBLICO DE SELEÇÃO Nº 001/2021"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_739ded17e4a5ffdaa5f8cdfdd9af4013.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA ATA DE JULGAMENTO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_f34505f7f564473383687f933fe0564f.pdf" target="_blank" class="btn btn-default btn-xs" title="ERRATA RESULTADO PRELIMINAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_9e22ed85e072b8c1253255af51428642.pdf" target="_blank" class="btn btn-default btn-xs" title="LISTA DE VERIFICAÇÃO INSTITUTO BRASILEIRO DE GESTAO HOSPITALAR - IBGH"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5ab1c55c876b2c0c8e58afb9d907e004.pdf" target="_blank" class="btn btn-default btn-xs" title="LISTA DE VERIFICAÇÃO INSTITUTO JOSÉ GOMES DA SILVA"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_5f0a8b240ce4cb1d7e6545ede3834624.pdf" target="_blank" class="btn btn-default btn-xs" title="LISTA DE VERIFICAÇÃO INSTITUTO OVIDIO MACHADO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_259ca25914e3c6f09bd0b5cf8f4e98a3.pdf" target="_blank" class="btn btn-default btn-xs" title="MATRIZ DE AVALIAÇÃO INSTITUTO BRASILEIRO DE GESTAO HOSPITALAR - IBGH"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_635e1c7d0651e64f2698ba2b06446cae.pdf" target="_blank" class="btn btn-default btn-xs" title="MATRIZ DE AVALIAÇÃO INSTITUTO INSTITUTO OVIDIO MACHADO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_398bd994223c313af24f9d4e01376006.pdf" target="_blank" class="btn btn-default btn-xs" title="MATRIZ DE AVALIAÇÃO INSTITUTO JOSÉ GOMES DA SILVA"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_10a85cc0685721c3eca1c382aea422f8.pdf" target="_blank" class="btn btn-default btn-xs" title="PUBLICAÇÃO DOE DO RESULTADO PRELIMINAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_6cb0dbf51cc91abca6b93b113ad51e76.pdf" target="_blank" class="btn btn-default btn-xs" title="PUBLICAÇÃO DOE ERRATA DO RESULTADO PRELIMINAR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_44aa7368402f6c38e2182e4378915dfb.pdf" target="_blank" class="btn btn-default btn-xs" title="RECURSO ADMINISTRATIVO ASSOCIAÇÃO SAÚDE EM MOVIMENTO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c5c1bafb5b8d377237073d8bd30d1fc6.pdf" target="_blank" class="btn btn-default btn-xs" title="RESPOSTA DO RECURSO ADMINISTRATIVO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_572b3591d06c400e8d9c1f447c5e3101.pdf" target="_blank" class="btn btn-default btn-xs" title="Resposta Recurso Administrativo  VF- OSS IBGH"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_dcd4b4522759830f0fa97096ba459a8b.pdf" target="_blank" class="btn btn-default btn-xs" title="Resposta Recurso Administrativo - OSS Saude em Movimento"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_e1b58ba11ff6cdbbc6922717baae29e3.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO FINAL DO PROCESSO PÚBLICO DE SELEÇÃO Nº 001/2021 – SESA/AP"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_c66ee1f315371370d24be741bec8f79b.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO PRELIMINAR DO PROCESSO PÚBLICO DE SELEÇÃO Nº 001/2021"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_45bcde46d6656bb2d84621bb74850301.pdf" target="_blank" class="btn btn-default btn-xs" title="RESULTADO PRELIMINAR RETIFICADO"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_d3cc2fc748184d0db787ff7fffa8916a.pdf" target="_blank" class="btn btn-default btn-xs" title="RETIFICAÇAO DE EDITAL"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>ELABORAÇÃO DE ESTUDO GEOFÍSICO COM MÉTODO GEOELÉTRICO/ELETRORRESISTIVIDADE</td>
+                        <td>Publicações</td>
+                        <td class="text-center">
+
+                            
+                                <a href="https://editor.amapa.gov.br/arquivos_portais/publicacoes/SESA_8fcfe0298165395c7a99b5508271e6ef.pdf" target="_blank" class="btn btn-default btn-xs" title="ELABORAÇÃO DE ESTUDO GEOFÍSICO COM MÉTODO GEOELÉTRICO/ELETRORRESISTIVIDADE INSERIR"><i class="fa fa-file-pdf-o fa-2" aria-hidden="true"></i></a>
+
+                            
+                        </td>
+                    </tr>
+                                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-3" id="mais_lidas">
+                <div id="titulos_menor">+ notícias mais lidas</div>
+    <div class="block_titulo"></div>
+    <div class="block_titulo_linha"></div>
+
+            <a href="noticia/1904/oss-que-administra-maternidade-bem-nascer-lanca-edital-de-contratacao-de-pessoal">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> qui, 19 abr  18 - 09:22h - <i class="fa fa-eye" aria-hidden="true"></i> 58951</div>
+                    <div class="chamada">OSS que administra Maternidade Bem Nascer lança edital de contratação de pessoal</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/1702/hospital-de-emergencia-implanta-gestao-democratica-para-a-escolha-de-gerente-de-enfermagem">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sáb, 17 fev  18 - 14:25h - <i class="fa fa-eye" aria-hidden="true"></i> 53666</div>
+                    <div class="chamada">Hospital de Emergência implanta gestão democrática para a escolha de gerente de enfermagem</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/0204/governo-entrega-maternidade-bem-nascer-para-ser-gerida-por-oss">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> seg, 02 abr  18 - 09:06h - <i class="fa fa-eye" aria-hidden="true"></i> 52128</div>
+                    <div class="chamada">Governo entrega maternidade Bem Nascer para ser gerida por OSS</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/1512/governo-lanca-edital-para-especializacao-de-residencia-em-enfermagem">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sex, 15 dez  17 - 13:46h - <i class="fa fa-eye" aria-hidden="true"></i> 51938</div>
+                    <div class="chamada">Governo lança edital para especialização de residência em enfermagem</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/2411/governo-do-amapa-lancara-edital-de-residencia-em-enfermagem-ainda-este-ano">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sex, 24 nov  17 - 12:33h - <i class="fa fa-eye" aria-hidden="true"></i> 51194</div>
+                    <div class="chamada">Governo do Amapá lançará edital de residência em enfermagem ainda este ano</div>
+                </div>
+            </div>
+        </a>
+                <a href="noticias" class="btn btn-primary btn-xs">+ ler todas</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ##################################################################################################### -->
+<!-- CONTEÚDO ANTES DAQUI -->
+
+
+
+<div class="container" id="newsletter">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="titulos">NEWSLETTER</div><div class="block_titulo"></div><div class="block_titulo_linha"></div>
+            <h3><i class="fa fa-envelope" aria-hidden="true"></i> Receba nossas notícias em seu e-mail ou celular.</h3>
+        </div>
+    </div>
+
+    <div class="well well-sm">
+        <form method="post" role="search">
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user icone"></i></div>
+                    <input type="text" class="form-control" name="new_nome" placeholder="Seu nome" value="" required>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-3">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope icone"></i></div>
+                    <input type="email" class="form-control" name="new_email" placeholder="E-mail" value="" required>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+                    <input type="tel" class="form-control" name="new_celular" id="new_celular"  value="" placeholder="Celular">
+                </div>
+            </div>
+
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></div>
+                    <input type="text" class="form-control text-center" disabled name="nwconfirma" id="nwconfirma" placeholder="406baa">
+                </div>
+            </div>
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></div>
+                    <input type="text" class="form-control text-center" maxlength="6" minlength="6" name="nwconfirmaCod" placeholder="Repita">
+                </div>
+            </div>
+
+            <input type="hidden" name="addNew" value="addNew">
+            <button type="submit" class="btn btn-primary">Cadastro</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- INICIO LINKS UTEIS-->
+<div class="container" id="links-rodape">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="titulos">LINKS ÚTEIS</div>
+            <div class="block_titulo"></div>
+            <div class="block_titulo_linha"></div>
+            <div class="owl-carousel owl-theme">
+                                    <a href="http://agendadoservidor.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>AGENDA DO SERVIDOR</h4>
+                                <p>Tenha acesso a agenda do servidor aqui nesse link</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.ecorregedoria.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-address-book fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>CERTIDÃO FUNCIONAL</h4>
+                                <p>Sistema para emissão de certidão funcional</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://diofe.portal.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-universal-access fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>DIÁRIO OFICIAL</h4>
+                                <p>Diário Oficial do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.edoc.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>E-DOC</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://esic.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>e-SIC</h4>
+                                <p>Sistema Eletrônico do Serviço de Informações ao Cidadão</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://acessoainformacao.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>INFORMAÇÃO AO CIDADÃO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://ouvamapa.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>OUV</h4>
+                                <p>Sistema de Ouvidoria pública do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.transparencia.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-id-card-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DA TRANSPARÊNCIA</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="https://servicos.portal.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa fa-wrench fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DE SERVIÇOS</h4>
+                                <p>Portal de Serviços do Governo do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.amapa.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-university fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DO GOVERNO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.processoseletivo.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-graduation-cap fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PROCESSO SELETIVO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://prodoc.ap.gov.br/login" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-file-text fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PRODOC</h4>
+                                <p>Gestor de Documentos do Governo do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="https://www.portal.ap.gov.br/docs/politica_protecao.pdf" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-lock fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PROTEÇÃO</h4>
+                                <p>Politicas de Proteção de Dados Pessoais e Privacidade</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://portal.convenios.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa fa-users fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>REDE MAIS BRASIL</h4>
+                                <p>Convênios do Governo Federal</p>
+                            </div>
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM LINKS UTEIS-->
+
+<!-- INICIO RODAPE UM -->
+<div class="container-fluid" id="rodape_um" style="background-color: #00a97a; margin-top: 15px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-child" aria-hidden="true"></i> CIDADÃO</div>
+                <ul class="list-unstyled">
+                                            <li><a href="https://agw.csa-equatorial.com.br/Home/InfoSegundaVia" target="_blank">2ª via da Conta de Água</a></li>
+                                            <li><a href="https://ap.equatorialenergia.com.br/2via-simples/" target="_blank">2ª via da Conta de Energia</a></li>
+                                            <li><a href="https://delegaciavirtual.sinesp.gov.br/portal/comunicacaofato/AP/natureza" target="_blank">Boletim de Ocorrência Online</a></li>
+                                            <li><a href="https://sead.portal.ap.gov.br/concursos" target="_blank">Concursos</a></li>
+                                            <li><a href="https://www.detran.ap.gov.br/detranap/veiculo/consulta-de-veiculos/" target="_blank">Consulta de Veículos</a></li>
+                                            <li><a href="https://www.detran.ap.gov.br/detranap/habilitacao/consulta-habilitacao/" target="_blank">Consultar Habilitação</a></li>
+                                            <li><a href="https://prematricula.escolapublica.ap.gov.br/home" target="_blank">Matrícula 2023</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-industry" aria-hidden="true"></i> EMPRESAS</div>
+                <ul class="list-unstyled">
+                                            <li><a href="http://www.siga.ap.gov.br/auto-cadastro/#/validado/login/externo?uri=http:%2F%2Fwww.siga.ap.gov.br%2Fefornecedor%2F&produto=efornecedor" target="_blank">Cadastro de Fornecedores</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=DIA_060" target="_blank">Certidão Negativa</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=ARR_305" target="_blank">DAR Avulso</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/index.php/diap-icms" target="_blank">DIAP-ICMS Eletrônica</a></li>
+                                            <li><a href="https://amapa.gov.br/docs/justificativa_sefaz.pdf" target="_blank">Justificativas</a></li>
+                                            <li><a href="http://www.compras.ap.gov.br/" target="_blank">Licitações do Estado</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-users" aria-hidden="true"></i> SERVIDORES</div>
+                <ul class="list-unstyled">
+                                            <li><a href="http://www.ecorregedoria.ap.gov.br/" target="_blank">Certidão Funcional </a></li>
+                                            <li><a href="http://servidor.apconsig.ap.gov.br/login" target="_blank">Consignataria On line</a></li>
+                                            <li><a href="https://portaldoservidor.ap.gov.br/login" target="_blank">Contracheque</a></li>
+                                            <li><a href="https://sougov.economia.gov.br/sougov/" target="_blank">Serviços do Servidor Federal</a></li>
+                                            <li><a href="https://servicos.portal.ap.gov.br/servicos/solicitar-certidao-de-tempo-de-servico-sead80" target="_blank">Solicitar Certidão de Tempo de Serviço</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-thumbs-up" aria-hidden="true"></i> REDES SOCIAIS DO GEA</div>
+                <ul class="list-unstyled">
+                                        <li><a href="http://www.facebook.com/governoamapa" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                    <li><a href="https://twitter.com/governodoamapa" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                    <li><a href="https://www.instagram.com/governoamapa/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                    <li><a href="http://www.youtube.com/user/GovernodoAmapa" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i> Youtube</a></li>
+                    <li><a href="https://www.flickr.com/photos/governodoamapa/albums" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i> Flickr</a></li>
+                    <a href="https://webmail.amapa.gov.br/" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Webmail GOV</a>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- FIM RODAPE UM -->
+
+<!-- INICIO RODAPE DOIS-->
+<div class="container-fluid" id="rodape_dois" style="background-color: #005675">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+            <div class="pull-left">
+
+                <strong>SESA - Secretaria da Saúde</strong><br/>                
+                <i class="fa fa-map-marker" aria-hidden="true"></i> Av. Anhanguera, 265 - 68902-005</br> 
+                <i class="fa fa-phone" aria-hidden="true"></i> (96) 21018-551</br> 
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> sesa@amapa.gov.br | protocolo@saude.ap.gov.br<br/>
+
+                Manifestações e Pedidos, acesse: <a href="https://ouvamapa.portal.ap.gov.br/" target="_blank">ouvamapa.portal.ap.gov.br</a><br/>
+                Site desenvolvido e hospedado pelo <a href="http://www.prodap.ap.gov.br" target="_blank">PRODAP - Centro de Gestão da Tecnologia da Informação</a><br/>
+                2017 - 2026 Licença Creative Commons 3.0 International
+
+
+                   <!--  <strong>SESA - Secretaria da Saúde</strong><br/>
+                    Av. Anhanguera, 265 - 68902-005 -
+                    i class="fa fa-phone" aria-hidden="true"></i> (96) 21018-551 - 
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> protocolo.sesa.ap@gmail.com | secretariosesa@gmail.com<br/>
+                    Funcionamento: Segunda a Sexta: 8h às 12h e 14h às 18h<br>
+                    Site desenvolvido e hospedado pelo <a href="http://www.prodap.ap.gov.br" target="_blank">PRODAP - Centro de Gestão da Tecnologia da Informação</a><br/>
+                    2017 - 2026 Licença Creative Commons 3.0 International -->
+                </div>
+                <div class="pull-right hidden-xs">
+                    <img src="img/brasao.png" alt="Amapá">
+                </div>
+                <div class="visible-xs text-center">
+                    <img src="img/brasao.png" alt="Amapá">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM RODAPE DOIS-->
+
+
+<script src="scripts/js/jquery.min.js"></script>
+<script src="scripts/js/bootstrap.min.js"></script>
+<script src="scripts/js/bootstrap-select.js"></script>
+<script src="scripts/js/less-1.3.3.min.js"></script>
+<script src="scripts/js/tipped.js"></script>
+<script src="scripts/js/jquery.bsPhotoGallery.js"></script>
+<script src="scripts/js/owl.carousel.js"></script>
+<script src="scripts/js/owl-scripts.js"></script>
+<script src="scripts/js/jquery.dataTables.js" type="text/javascript"></script>
+<script src="scripts/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="scripts/js/jquery.mask.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#new_celular').mask('(00)00000-0000',{clearIfNotMatch: true});
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        Tipped.create('.simple-tooltip');
+    });
+</script>
+<!-- PERSONALIZADOS -->
+
+</body>
+</html>
