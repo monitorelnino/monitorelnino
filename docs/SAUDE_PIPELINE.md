@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-11 a 2026-11-18 (1468 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-11 a 2026-11-18 (1470 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -35,7 +35,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-17 01:35 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-18 04:39 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-18 06:07 | 4 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-17 02:07 | 63 s | 0 | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -128,7 +128,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `scripts/pistas.py` | coletor | 2026-11-15 10:00 | 252 s | — | ok | — |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-11-18 04:01 | 2 s | — | ok | — |
 | `scripts/proveniencia_estadual.py` | coletor | 2026-11-18 03:11 | 1 s | — | ok | — |
-| `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-17 01:18 | 1085 s | — | ok | — |
+| `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-18 05:12 | 1047 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-11-14 01:14 | 99 s | — | ok | — |
 | `scripts/sondar_credenciais.py` | coletor | 2026-11-17 01:16 | 3 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-11-17 01:49 | 1 s | — | ok | — |
