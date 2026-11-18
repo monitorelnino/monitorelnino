@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 15/11/2026. 86 falhas; 79 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 18/11/2026. 88 falhas; 81 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -779,3 +779,21 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 43696015366 (15/11 08:45 UTC): job `publicar_lote`, HTTP 422 `size must be less than 2147483648`; noturno_juiz.yml em 15/11: 6 runs `skipped`, 1 `success`; noturno_evidencias.yml: 6 `failure`
 - **Correção:** O lote sai em partes pelo primeiro dígito do hash, cada uma abaixo do teto, publicadas uma a uma em workflow próprio (`lote_de_evidencias.yml`); `validar_workflows.py` reprova job acessório dentro de workflow de que um elo depende.
 - **Caso de teste:** `scripts/empacotar_evidencias.py --autoteste (caso das partes) e scripts/validar_workflows.py (job acessório em elo da corrente)`
+
+## F87 · Pista de imprensa nascia sem data de entrada e vencia no mesmo dia
+
+- **Noite:** 2026-11-17→2026-11-18
+- **Sintoma:** `main` vermelha depois da descoberta das 03:53 UTC de 18/11: portão da fila não humana com 4 pistas de imprensa pendentes há mais de 21 dias, gravadas naquela noite.
+- **Causa:** `monitorar_imprensa_regional.registrar` e `monitorar_imprensa_saude.registrar` gravavam a pista sem `registrado_em`; desde 17/11 `pistas.data_da_pista` cai em `data_publicacao`, e a matéria de 2025 ou de maio a julho de 2026 entrava já vencida.
+- **Prova:** commit da descoberta `249d7560` (18/11 03:53 UTC): 4 pistas sem `registrado_em`, `data_publicacao` anterior a 28/10; #1856: carimbo na criação; Portões verde (run 6843)
+- **Correção:** Os dois monitores carimbam `registrado_em` ao criar a pista (#1856). Raiz que fica: os dois escrevem a fila por fora de `scripts/pistas.py` (dívida nomeada em `config/escritores_legados.json`); a porta carimbaria sozinha.
+- **Caso de teste:** `monitorar_imprensa_regional.py --autoteste: pista nasceu sem a data de entrada`
+
+## F88 · Triagem e anotação de confiança desfaziam uma à outra toda noite
+
+- **Noite:** 2026-11-17→2026-11-18
+- **Sintoma:** `data/pistas_imprensa.json` com cerca de 150 mil linhas de diff por noite: 22.825 pistas encerradas perdem `sinais`, `alertas` e `pontos_confianca` na triagem e os recebem de volta na descoberta seguinte.
+- **Causa:** `triar_confianca_pistas.anotar_e_gerar_fila` anotava a fila inteira, inclusive a pista encerrada; `triar_fila.py --aplicar` compacta a encerrada (`limpar_fila_de_pistas.compactar`) e apaga esse texto de trabalho.
+- **Prova:** `main` 70b2ee5e (18/11): 22.825 de 22.825 encerradas com `sinais`/`alertas`/`pontos_confianca`; noturno_descoberta.yml roda `triar_confianca_pistas.py`; noturno_triagem.yml roda `scripts/triar_fila.py --aplicar`
+- **Correção:** A anotação pula a encerrada (`limpar_fila_de_pistas.encerrada`, a mesma regra que a verificação da descoberta já usa).
+- **Caso de teste:** `triar_confianca_pistas.py --autoteste: encerrada não recebe texto de trabalho`
