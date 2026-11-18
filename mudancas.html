@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>18/11/2026 · Credencial de terceiro em JSON é redigida; a ponte guarda página já redigida</dt>
+      <dd>A redação de credencial não via a forma do JSON (`&quot;access_token&quot;:&quot;…&quot;`), a aspa escapada nem a maiúscula: a página inicial de uma secretaria trouxe a ficha do Instagram dela, e só o portão do PR a barrou. A porta de redação passa a cobrir essas formas, e o portão usa o padrão dela. A cópia de página da ponte entra redigida, com o sha256 de origem; corpo vazio e muro de robô não entram; `--receber` guarda lote com manifesto.</dd>
       <dt>18/11/2026 · Pré-noite sem fila fantasma</dt>
       <dd>A checagem das 23h deixa de contar como fila presa o run aberto há mais de 24 h: o de 05/11 tinha o job concluído e o run preso em queued há 13 dias, e reprovava a noite. Autoteste novo.</dd>
       <dt>18/11/2026 · Plano de saúde com equipe na capa</dt>
@@ -162,8 +164,6 @@
       <dd>O lote mensal de evidências passou de 2 GB, o Release recusou o envio e o elo saiu vermelho seis vezes na noite de 14 para 15/11, pulando o juiz. O lote passa a sair em partes abaixo do teto, em workflow próprio; um portão reprova job acessório dentro de elo da corrente.</dd>
       <dt>15/11/2026 · Indicação do leitor entra toda noite; teto de pistas não barra mais documento oficial</dt>
       <dd>A indicação recebida pelo formulário passa a ser lida toda noite, antes do juiz. O teto de cinco pistas por município deixa de contar a pista já julgada: ele barrava na porta PDFs em domínio oficial de 1.050 municípios. A rodada semanal não perde mais o commit por conflito de cursor. Corrigida a declaração de lacuna das transferências.</dd>
-      <dt>15/11/2026 · Prorrogação de emergência estadual conferida no diário do estado toda noite</dt>
-      <dd>A prorrogação do decreto estadual de emergência passa a ser lida no diário do estado toda noite perto do vencimento e somada à vigência do mapa; diário sem leitura abre aviso. Corrige a raiz achada no caminho: edição publicada com atraso (Amazonas) ficava &quot;sem edição&quot; para sempre; a ausência só é final dez dias depois da data.</dd>
     </dl>
   </section>
 </main>

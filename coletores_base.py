@@ -777,9 +777,12 @@ def redigir_dados_pessoais(texto: str) -> tuple:
 
 
 PADROES_DE_SEGREDO = (
-    # Atribuição de chave em código ou configuração salvos dentro da página preservada.
+    # Atribuição de chave em código ou configuração salvos dentro da página preservada. 18/11/2026: também
+    # com a aspa que fecha a chave em JSON (`"access_token":"…"`), escapada ou em entidade HTML, e sem
+    # diferença de maiúscula — a ficha do Instagram na página inicial de uma secretaria passava sem redação.
     (re.compile(r"((?:api[_-]?key|apikey|access[_-]?token|client[_-]?secret|secret[_-]?key|"
-                r"authorization)\s*[:=]\s*[\"']?)([A-Za-z0-9_\-\.]{16,})"), r"\1[SEGREDO REDIGIDO]"),
+                r"authorization)(?:\\?[\"']|&quot;|&#0?3[49];)?\s*[:=]\s*(?:\\?[\"']|&quot;|&#0?3[49];)?)"
+                r"([A-Za-z0-9_\-\.]{16,})", re.I), r"\1[SEGREDO REDIGIDO]"),
     # Prefixos que identificam a credencial sozinhos, sem precisar do nome do campo.
     (re.compile(r"\b(AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{20,}|"
                 r"sk-[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9\-]{10,})"), "[SEGREDO REDIGIDO]"),
