@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="PRODAP">
+    <meta name="description" content="Secretaria da Saúde">
+    <meta name="keywords" content="Governo do Amapá">
+    <meta name="reply-to" content="cotec@prodap.ap.gov.br">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <title>SESA - Secretaria da Saúde</title>
+    <base href="https://saude.portal.ap.gov.br:443/biblioteca.php?" />
+    <link rel="stylesheet/less" type="text/css" href="scripts/css/estilo.less" />
+    <link href="scripts/css/bootstrap.min.css" rel="stylesheet">
+    <link href="scripts/css/bootstrap-select.css" rel="stylesheet">
+    <link href="scripts/css/layout.php" rel="stylesheet">
+    <link rel="stylesheet" href="scripts/css/tipped.css">
+    <link rel="stylesheet" href="scripts/css/font-awesome.min.css">
+    <link rel="stylesheet" href="scripts/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="scripts/css/owl.theme.default.min.css">
+    <link href="scripts/css/dataTables.bootstrap.css" rel="stylesheet">
+    <style>
+        .wrap {
+            display: inline-block;
+            padding: 0;
+            margin: 8px 8px;
+        }
+
+        .wrap span {
+            display: block;
+            padding: 4px 8px;
+            font-weight: bold;
+        }
+
+        .btn-contas {
+            background-color: rgb(61, 155, 233);
+            border-color: #fff;
+            border-radius: 0;
+            color: #fff;
+            -webkit-transition: background-color 0.25s linear;
+            -moz-transition: background-color 0.25s linear;
+            transition: background-color 0.25s linear;
+        }
+
+        .btn-contas:hover, .btn-contas:active, .btn-contas:focus {
+            background-color: rgb(43, 104, 156);
+            border-color: #fff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="scroll-to-top">
+    <a href="#" class="btn btn-primary"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
+</div>
+<!-- INICIO TOPO 1 -->
+<div class="container-fluid topo_um">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <span class="pull-left hidden-xs"><a href="https://www.amapa.gov.br" target="_blank"><div class="gov"><img src="img/bandeira.jpg" class="img-responsive" alt="">GOVERNO DO ESTADO DO AMAPÁ</div></a></span>
+                <span class="pull-left visible-xs"><a href="https://www.amapa.gov.br" target="_blank"><div class="gov"><img src="img/bandeira.jpg" class="img-responsive" alt=""></div></a></span>
+
+                <span class="pull-right">
+                    <img class="brasao" src="img/brasao_topo.png" alt="">
+                   <select onChange="window.open(this.options[this.selectedIndex].value, '_blank');" value="GO" id="lunch" class="selectpicker" data-live-search="true" title="Órgãos Governamentais">
+                                                <option value="http://www.sead.ap.gov.br" >Administração</option>
+                                                <option value="http://ageamapa.ap.gov.br" >Agência Amapá</option>
+                                                <option value="http://www.afap.ap.gov.br" >Agência de Fomento</option>
+                                                <option value="http://www.setec.ap.gov.br" >Ciência e Tecnologia</option>
+                                                <option value="http://www.cge.ap.gov.br" >Controladoria Geral</option>
+                                                <option value="https://bombeiros.portal.ap.gov.br/" >Corpo de Bombeiros</option>
+                                                <option value="http://www.detran.ap.gov.br" >Depto. de Trânsito </option>
+                                                <option value="https://cidades.portal.ap.gov.br" >Desenvolvimento Cidades  </option>
+                                                <option value="http://www.rurap.ap.gov.br" >Desenvolvimento Rural</option>
+                                                <option value="http://www.diagro.ap.gov.br" >Diagro</option>
+                                                <option value="http://www.seed.ap.gov.br" >Educação</option>
+                                                <option value="http://www.eap.ap.gov.br" >Escola de Administração</option>
+                                                <option value="http://www.ief.ap.gov.br" >Instituto de Florestas</option>
+                                                <option value="http://www.hemoap.ap.gov.br" >Instituto de Hematologia</option>
+                                                <option value="http://www.terrap.ap.gov.br" >Instituto de Terras</option>
+                                                <option value="http://www.rurap.ap.gov.br" >Instituto Rural</option>
+                                                <option value="http://www.jucap.ap.gov.br" >Junta Comercial</option>
+                                                <option value="https://sejuv.portal.ap.gov.br/" >Juventude</option>
+                                                <option value="http://www.lacen.ap.gov.br" >Laboratório Central</option>
+                                                <option value="http://www.sema.ap.gov.br" >Meio Ambiente</option>
+                                                <option value="http://www.sims.ap.gov.br" >Mobilização Social</option>
+                                                <option value="http://www.ipem.ap.gov.br" >Pesos e Medidas</option>
+                                                <option value="http://www.seplan.ap.gov.br" >Planejamento</option>
+                                                <option value="http://policiacientifica.ap.gov.br/" >Polícia Cientifica</option>
+                                                <option value="http://www.policiacivil.ap.gov.br" >Policia Civil</option>
+                                                <option value="http://www.pm.ap.gov.br" >Policia Militar</option>
+                                                <option value="http://www.procon.ap.gov.br" >Procon</option>
+                                                <option value="http://www.difusora.ap.gov.br" >Radio Difusora</option>
+                                                <option value="http://www.sefaz.ap.gov.br" >Receita</option>
+                                                <option value="http://www.seab.ap.gov.br" >Representação GEA Brasília </option>
+                                                <option value="http://www.saude.ap.gov.br" >Saúde</option>
+                                                <option value="https://cidades.portal.ap.gov.br/" >Secretaria do Desenvolvimento das Cidades</option>
+                                                <option value="http://www.prodap.ap.gov.br" >Tecnologia da Informação</option>
+                                                <option value="http://www.setrap.ap.gov.br" >Transporte</option>
+                                                <option value="http://www.setur.ap.gov.br" >Turismo</option>
+                                                <option value="http://www.ueap.ap.gov.br" >Universidade Estadual</option>
+                      
+                  </select>
+               </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM TOPO 1 -->
+
+<!-- INICIO TOPO 2-->
+<nav class="navbar topo_dois">
+    <div class="container">
+    	<div class="row">
+        <div class="col-md-12">
+
+               <!-- DIV MONTADA PARA ACESSIBILIDADE -->
+
+                <div id="ace"></div>
+                <div id="redes" style="display:none"><a href='https://www.facebook.com/saude.ap' target='_blank'><i class="fa fa-facebook-square fa-2x simple-tooltip" title="FaceBook" aria-hidden="true"></i></a><a href='https://twitter.com/informesead' target='_blank'><i class="fa fa-twitter-square fa-2x simple-tooltip" title="Twitter" aria-hidden="true"></i></a></div>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!-- FIM TOPO 2-->
+
+<!-- INICIO BANNER -->
+<style>
+    .banner .banner-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: nowrap;
+    }
+
+    .banner .banner-title {
+        flex: 1 1 auto;
+        min-width: 0;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    .banner .banner-title .nome {
+        margin-top: 0;
+        text-align: left;
+    }
+
+    .banner .banner-title h1 {
+        margin-top: 0;
+    }
+
+    .banner .banner-logo {
+        float: none;
+        flex: 0 0 auto;
+        margin: 0 auto;
+    }
+
+    .banner .banner-logo img {
+        width: 200px;
+        max-width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+
+    @media (max-width: 767px) {
+        .banner {
+            padding-top: 18px;
+            padding-bottom: 18px;
+        }
+
+        .banner .banner-header {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .banner .banner-title {
+            width: 100%;
+            text-align: center;
+        }
+
+        .banner .banner-title .nome {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .banner .banner-title h1 {
+            font-size: 42px;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .banner .banner-title h3 {
+            font-size: 18px;
+            line-height: 1.15;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .banner .banner-logo img {
+            width: 180px;
+            margin: 0 auto;
+        }
+    }
+</style>
+<div class="container-fluid banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 banner-header">
+                                    <div class="titulo banner-title">
+                        <div class="nome">
+                        	<h1>SESA</h1></div>
+                        <div class="nome" style="text-shadow: 0px -1px 5px #eeeeee, 0px  1px 5px #eeeeee, -1px  0px 5px #eeeeee, 1px  0px 5px #eeeeee, -1px -1px 5px #eeeeee, -1px  1px 5px #eeeeee, 1px -1px 5px #eeeeee, 1px  1px 5px #eeeeee;">
+                        	<h3>Secretaria da Saúde</h3></div>
+                    </div>
+                                <div class="logo banner-logo"><a href="./"><img src="https://matrix.amapa.gov.br//storage/logos/01KWC8KQE5VK799DFZDVE4Y48G.svg" class="img-responsive" alt=""></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM BANNER -->
+
+<!-- INICIO MENU-->
+<div id="inst" class="container-fluid menu">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand visible-xs" href="./"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                        <li class="hidden-xs"><a href="./">PÁGINA INICIAL</a></li>
+
+                                                        <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Programas de Saúde <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="conteudo/programas/saude-prisional" >Saúde Prisional</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-mental" >Saúde Mental</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-materno-infantil" >Saúde Materno - Infantil</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-do-idoso" >Saúde do Idoso</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-do-homem" >Saúde do Homem</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-do-adolescente" >Saúde do Adolescente</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-da-pessoa-portadora-de-deficiencia" >Saúde da Pessoa Portadora de Deficiência</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-da-familia" >Saúde da Família</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/saude-bucal" >Saúde Bucal</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/promocao-da-equidade" >Promoção da Equidade</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/hipertensao-e-diabetes" >Hipertensão e Diabetes</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/controle-do-cancer-de-colo-de-utero-e-mama" >Controle do Câncer de colo de útero e mama</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/banco-de-leite" >Banco de Leite</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/programas/alimentacao-e-nutricao" >Alimentação e Nutrição</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                    <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servidor <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="https://webmail.amapa.gov.br/" target="_blank">WEBMAIL</a></li>
+                                            
+                                                                                                                                    <li><a href="https://sigdoc.ap.gov.br/login.jsf" target="_blank">SIGDOCS</a></li>
+                                            
+                                                                                                                                    <li><a href="https://siplag.ap.gov.br/SiafeAP/faces/login.jsp;jsessionid=B04A6D85B8A09D0C19B147933936E5E6.server1_tom6" target="_blank">SIAFE</a></li>
+                                            
+                                                                                                                                    <li><a href="https://sead.portal.ap.gov.br" target="_blank">SEAD</a></li>
+                                            
+                                                                                                                                    <li><a href="protocolo" >Protocolo</a></li>
+                                            
+                                                                                                                                    <li><a href="https://prodoc.ap.gov.br/login" target="_blank">PRODOC</a></li>
+                                            
+                                                                                                                                    <li><a href="https://portaldoservidor.ap.gov.br/login" target="_blank">Portal do Servidor</a></li>
+                                            
+                                                                                                                                    <li><a href="https://servicos.portal.ap.gov.br/" target="_blank">PORTAL DE SERVIÇOS GEA</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/servidor/legislacao" >Legislação</a></li>
+                                            
+                                                                                                                                    <li><a href="https://saude.portal.ap.gov.br/esp/" >Escola de Saúde Pública</a></li>
+                                            
+                                                                                                                                    <li><a href="https://diofe.portal.ap.gov.br" target="_blank">Diário Oficial</a></li>
+                                            
+                                                                                                                                    <li><a href="https://amprev.ap.gov.br" target="_blank">AMPREV</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                    <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cidadão <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="conteudo/cidadao/tratamento-fora-de-domicilio-tfd" >Tratamento fora de Domicílio - TFD</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/resultado-de-exames" >Resultado de Exames</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/medicamentos" >Medicamentos</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/marcacao-de-consulta" >Marcação de Consulta</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/catalogo-de-servicos" >Catálogo de Serviços</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/cidadao/cartao-do-sus" >Cartão do SUS</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                    <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rede de Atendimento <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/upa" >UPA</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/unacon" >UNACON</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/samu" >SAMU</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/nefrologia" >Nefrologia</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/nande" >NANDE</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/hospitais" >Hospitais</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/hemoap" >HEMOAP</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/centros-de-referencia" >Centros de Referência</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/centros-de-especialidades-odontologicas" >Centros de Especialidades Odontológicas</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/caps" >CAPS</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/rede-de-atendimento/ambulatorio-de-obesidade-barisus" >Ambulatório de Obesidade - BariSUS</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                                                        <li><a href="https://www.gov.br/saude/pt-br" target="_blank">Ministério da Saúde</a></li>
+                                                                                                                                                                                                                                                                                            <li class="dropdown">
+                                    <a href="." class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Institucional <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                                                                                                                    <li><a href="transparencia-saude" >Transparência Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/regulamento-sesa" >Regulamento SESA</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/regionalizacao-em-saude" >Regionalização em Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/quem-somos" >Quem Somos</a></li>
+                                            
+                                                                                                                                    <li><a href="portarias/diversas" >Portarias</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/perfil-dos-gestores" >Perfil dos Gestores</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/organograma" >Organograma</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/organizacoes-sociais-de-saude" >Organizações Sociais de Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/mapa-estrategico" >Mapa Estratégico</a></li>
+                                            
+                                                                                                                                    <li><a href="escalas" >Escalas de Plantão (2018 - 2021)</a></li>
+                                            
+                                                                                                                                    <li><a href="contratos" >Contratos</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/conselho-nacional-de-secretarios-de-saude" >Conselho Nacional de Secretários de Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/conselho-estadual-de-saude" >Conselho Estadual de Saúde</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/competencias" >Competências</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/comissao-intergestores-biparte" >Comissão Intergestores Biparte</a></li>
+                                            
+                                                                                                                                    <li><a href="conteudo/institucional/comissao-intergestora-regional" >Comissão Intergestora Regional</a></li>
+                                            
+                                                                                                                                    <li><a href="biblioteca" >Biblioteca</a></li>
+                                            
+                                                                            </ul>
+                                </li>
+                                                                                                                        <li><a href="https://esp.portal.ap.gov.br/" >ESP</a></li>
+                                                                                    
+                        <!-- INICIO MENU DINAMICO -->
+                                                    <li><a href="menu/ministerio-da-saude">Ministério da Saúde</a></li>
+                                                    <li><a href="menu/ouvidoria">Ouvidoria</a></li>
+                                                    <li><a href="menu/protocolos">Protocolos</a></li>
+                                                    <li><a href="menu/institucional">Institucional</a></li>
+                                                <!-- FIM MENU DINAMICO -->
+
+                            <li><a href="galerias">Galerias</a></li>
+
+                        <li><a href="faleconosco">FALE CONOSCO</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- FIM MENU-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+                    </div>
+    </div>
+</div>
+
+				<!-- Modal -->
+					<div class="modal fade" id="myAcc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog modal-lg" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Sobre Acessibilidade</h4>
+					      </div>
+					      <div class="modal-body">
+					        <p>Pessoas com deficiência visual, baixa visão, daltonismo e mobilidade reduzida podem navegar em nosso site por meio de recursos que foram implementados para garantir este acesso, tais como aumento de fonte, teclas de atalho e navegação por teclado.
+							Para aumentar a fonte, é só clicar no símbolo de A+ em nossa barra de acessibilidade. Caso queira voltar ao tamanho de fonte original, é só clicar em A-.
+
+							Se for necessário, você também pode usar o zoom nativo do seu navegador, pressionando as teclas “Ctrl” e “+” para aumentar todo o site e “Ctrl” e “-“ para diminuir. Para voltar ao padrão, pressione “Ctrl” e “0”.
+
+							Este site tem melhor acessibilidade quando acessado nas versões mais atualizadas do seu navegador web. Utilize sempre a versão mais recente de seu software.</p>
+							<p><b>Teclas de atalho por navegadores</b></p>
+
+							<p><b>Internet Explorer e Google Chrome:</b></p>
+								<ul>
+							    <li>“Alt” + “1” - ir para o conteúdo</li>
+							    <li>“Alt” + “2” - ir para o menu</li>
+							    <li>“Alt” + “3” - ir para o rodapé</li>
+							    </ul>
+
+							<p><b>Firefox:</b></p>
+								<ul>
+							    <li>“Alt” + “Shift” + “número”</b></li>
+							    </ul>
+
+							<p><b>Opera:</b></p>
+								<ul>
+							    <li>“Shift” + “Escape” + “número”</b></li>
+							    </ul>
+
+							<p><b>Safari e OmniWeb:</b></p>
+								<ul>
+							    <li>“Ctrl” + “número”</li>
+							    </ul>​
+
+							<p><b>Navegação por tabulação</b></p>
+
+							<p>Use a tecla Tab para navegar por elementos que recebem ação do usuário no site, tais como links, botões, campos de formulário e outros na ordem em que eles são apresentados na página, e Shift + Tab para retornar. Use as setas direcionais para acessar as informações textuais.
+							Sugestões de programas disponíveis para pessoas com deficiência</p>
+
+							    <li> VLibras: suíte de ferramentas utilizadas na tradução automática do Português para a Língua Brasileira de Sinais. Gratuito;</li>
+							    <li> Nitrous Voice Flux: controla o computador por voz. Gratuito;</li>
+							    <li> NVDA: software livre para ler tela – vários idiomas (Windows);</li>
+							    <li> YeoSoft Text: leitor de tela em inglês e português;</li>
+							    <li> Jaws for Windows: leitor de tela – vários idiomas;</li>
+							    <li> Virtual Vision: leitor de telas em português do Brasil;</li>
+							    <li> DOSVOX: sistema para deficientes visuais (Windows ou Linux).</li>
+
+							<p>Observação: leia no manual do leitor de telas sobre a melhor forma de navegação em páginas web.</p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+<div id="xpto">
+
+<!-- CONTEÚDO À PARTIR DAQUI -->
+<!-- ##################################################################################################### -->
+
+
+
+<div class="container" id="breadcrumb">
+    <div class="row">
+        <div class="col-sm-12">
+            <ol class="breadcrumb">
+                <li><a href="./"><i class="fa fa-home"></i> Início</a></li>
+                <li class="active">Biblioteca</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="noticias">
+    <div class="row">
+        <div class="col-sm-9">
+            <div id="titulos_menor">BIBLIOTECA</div>
+            <div class="block_titulo"></div>
+            <div class="block_titulo_linha"></div>
+            
+            <div class="row">
+                <div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_615d7dec97949354585dbcd26e7bfb4b.pdf" title="PROGRAMAÇÃO ANUAL DE SAÚDE 2025" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_58045c7a8b727bceafb7ce8de7e4fd24.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_615d7dec97949354585dbcd26e7bfb4b.pdf" target="_blank">
+                                <b>PROGRAMAÇÃO ANUAL DE SAÚDE 2025</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_9fb4d4153daef884f4c188d4ef1b5724.pdf" title="RELATÓRIO DE GESTÃO" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_dfcd23208c09e059f954fe54be4a2273.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_9fb4d4153daef884f4c188d4ef1b5724.pdf" target="_blank">
+                                <b>RELATÓRIO DE GESTÃO</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_635686740f3770ed8901c02a0a97f76a.pdf" title="RELATÓRIO ANUAL DE GESTÃO 2025" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_b1f2346a6e06c3405c068bd55d968479.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_635686740f3770ed8901c02a0a97f76a.pdf" target="_blank">
+                                <b>RELATÓRIO ANUAL DE GESTÃO 2025</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_aa92b27d8ccea016ea15fca2f336495e.pdf" title="Programação Anual de Saúde 2026" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_7aa9e04156a2fb7120d4844cf39e67e8.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_aa92b27d8ccea016ea15fca2f336495e.pdf" target="_blank">
+                                <b>Programação Anual de Saúde 2026</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_6fe4a642b05df1362470c4bba2b5cd86.pdf" title="Plano estadual de saúde 2024-2027" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_b9a9e6774d140664af2913cf29a7548a.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_6fe4a642b05df1362470c4bba2b5cd86.pdf" target="_blank">
+                                <b>Plano estadual de saúde 2024-2027</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_0869d051ce34ec4f824ebe25aecd66ac.pdf" title="Boletim epidemiollógico - MIF/SVS 05/2026" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_df1e5267252d8d3f3e51ae38ac176b0b.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_0869d051ce34ec4f824ebe25aecd66ac.pdf" target="_blank">
+                                <b>Boletim epidemiollógico - MIF/SVS 05/2026</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a11d1c4bc21f7c59fbba13e35c237e91.pdf" title="Relatório de monitoramento e avaliação do Programa Anual de Saúde" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_f8096da3205673239b4f375ce8a0713e.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a11d1c4bc21f7c59fbba13e35c237e91.pdf" target="_blank">
+                                <b>Relatório de monitoramento e avaliação do Programa Anual de Saúde</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_bd7f27c075bfd39328512866f527d60c.pdf" title="MODELO DE PLANO DE TRABALHO PADRÃO" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_e99071bd1b5a7f88e8d5c07f8bea98e9.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_bd7f27c075bfd39328512866f527d60c.pdf" target="_blank">
+                                <b>MODELO DE PLANO DE TRABALHO PADRÃO</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_51d7b408dd55b8e7c454bc8c01366759.pdf" title="MODELO DE PLANO DE TRABALHO TERMO DE FOMENTO" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_7784a56a2e608bbf4c083352181eac33.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_51d7b408dd55b8e7c454bc8c01366759.pdf" target="_blank">
+                                <b>MODELO DE PLANO DE TRABALHO TERMO DE FOMENTO</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_163af87086ebf49974b8debfa1ad5cea.pdf" title="PLANO ESTADUAL DE AÇÕES ESTRATÉGICAS  PARA ENFRENTAMENTO DE DOENÇAS CRÔNICAS  E AGRAVOS NÃO TRANSMISSÍVEIS (DANT) DO AMAPÁ 2024 - 2030 " target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_9c11d0fb15fb56340202720a0761ddc1.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_163af87086ebf49974b8debfa1ad5cea.pdf" target="_blank">
+                                <b>PLANO ESTADUAL DE AÇÕES ESTRATÉGICAS  PARA ENFRENTAMENTO DE DOENÇAS CRÔNICAS  E AGRAVOS NÃO TRANSMISSÍVEIS (DANT) DO AMAPÁ 2024 - 2030 </b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a042a92b9d07288f4c309ef22e027112.pdf" title="Resolução CIB - Plano Oncologia - Comissão Intergestores Bipartite" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_39c80225f198525d8bdfd308ccd411f4.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a042a92b9d07288f4c309ef22e027112.pdf" target="_blank">
+                                <b>Resolução CIB - Plano Oncologia - Comissão Intergestores Bipartite</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a4b059933cb842fb6a9960bfab6d5710.pdf" title="PLANO ESTADUAL DE ASSISTÊNCIA ONCOLÓGICA DO AMAPÁ" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_68fb398ff2bfb3efc068560ad0d55455.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a4b059933cb842fb6a9960bfab6d5710.pdf" target="_blank">
+                                <b>PLANO ESTADUAL DE ASSISTÊNCIA ONCOLÓGICA DO AMAPÁ</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_ed1c736ae7470a84d5da238c7c18781d.pdf" title="Relatório Anual de Gestão – RAG 2024" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_770e85a0df81b2ecd94f0897da8fa261.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_ed1c736ae7470a84d5da238c7c18781d.pdf" target="_blank">
+                                <b>Relatório Anual de Gestão – RAG 2024</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_90d9a785facd6a9b1c2bf4adf500b446.pdf" title="INSTRUMENTOS DE PLANEJAMENTO DO SUS  - EM ANÁLISE PELO CES" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_34cb457201c15d198c30080db038c4f1.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_90d9a785facd6a9b1c2bf4adf500b446.pdf" target="_blank">
+                                <b>INSTRUMENTOS DE PLANEJAMENTO DO SUS  - EM ANÁLISE PELO CES</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_925dbd76bb49c5d9a2a4b4eb5df1c179.pdf" title="PLANO MACRORREGIONAL DE SAÚDE" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_e6ef868a44adb024d5567f951b7a5d66.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_925dbd76bb49c5d9a2a4b4eb5df1c179.pdf" target="_blank">
+                                <b>PLANO MACRORREGIONAL DE SAÚDE</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_b4694fc09f1388bd7c203b6346606f9b.pdf" title="BOLETIM MORTALIDADE MATERNA DO ESTADO DO AMAPÁ - 2018 A 2023" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_f682e0aa2b60558ef9e049ec0659fff6.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_b4694fc09f1388bd7c203b6346606f9b.pdf" target="_blank">
+                                <b>BOLETIM MORTALIDADE MATERNA DO ESTADO DO AMAPÁ - 2018 A 2023</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_4abf02591b9582b2cfafa9d55725b13c.pdf" title="BOLETIM NASCIDOS VIVOS DO ESTADO DO AMAPÁ" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_3fd807eea94116fc5f1c1f34b4d4ea9b.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_4abf02591b9582b2cfafa9d55725b13c.pdf" target="_blank">
+                                <b>BOLETIM NASCIDOS VIVOS DO ESTADO DO AMAPÁ</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_07671705335b250a308474e69d3d63a6.pdf" title="RELATÓRIO ANUAL DE GESTÃO - RAG 2023 - em análise pelo CES" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_e420cadd166132d45500f5fc20e73b8a.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_07671705335b250a308474e69d3d63a6.pdf" target="_blank">
+                                <b>RELATÓRIO ANUAL DE GESTÃO - RAG 2023 - em análise pelo CES</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_e2361d9e4e591431ae962051ac14b0f9.pdf" title="PROGRAMAÇÃO ANUAL DE SAÚDE 2024 - em análise do CES" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_2d39d1d05e79a9a4311f8de179162bea.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_e2361d9e4e591431ae962051ac14b0f9.pdf" target="_blank">
+                                <b>PROGRAMAÇÃO ANUAL DE SAÚDE 2024 - em análise do CES</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_24abb6a6ee64790013ad42a95a40cf81.pdf" title="PLANO ESTADUAL DE SAÚDE 2024 - 2027 (em análise pelo CES)" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_40287892d1e5d1670a1c3f2e938dd827.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_24abb6a6ee64790013ad42a95a40cf81.pdf" target="_blank">
+                                <b>PLANO ESTADUAL DE SAÚDE 2024 - 2027 (em análise pelo CES)</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a11e2bdd25e43fa9d500c0e493ef76ba.pdf" title="PROGRAMAÇÃO ANUAL DE SAÚDE 2023" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_fac25db931704146f9a1522398ddd7c8.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a11e2bdd25e43fa9d500c0e493ef76ba.pdf" target="_blank">
+                                <b>PROGRAMAÇÃO ANUAL DE SAÚDE 2023</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_910e0d87b490e2ed1e38cb24f70b8012.pdf" title="MANUAL DE PRESTAÇÃO DE CONTAS DE ORGANIZAÇÕES SOCIAIS DA SECRETARIA DE ESTADO DA SAÚDE DO AMAPÁ" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_44586be5202530380a8fa683d0db256c.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_910e0d87b490e2ed1e38cb24f70b8012.pdf" target="_blank">
+                                <b>MANUAL DE PRESTAÇÃO DE CONTAS DE ORGANIZAÇÕES SOCIAIS DA SECRETARIA DE ESTADO DA SAÚDE DO AMAPÁ</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_4c31bd17c5fd80d5024be16acbb4cfae.pdf" title="RELATÓRIO ANUAL DE GESTÃO - 2022" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_7229bf3b575b6d6d20927f379ee1f843.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_4c31bd17c5fd80d5024be16acbb4cfae.pdf" target="_blank">
+                                <b>RELATÓRIO ANUAL DE GESTÃO - 2022</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_c6adf959a6ef938959758a123de78fea.pdf" title="RELATÓRIO ANUAL DE GESTÃO - 2019" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_dc85a276c39c03684d2e62bc95b3f2bd.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_c6adf959a6ef938959758a123de78fea.pdf" target="_blank">
+                                <b>RELATÓRIO ANUAL DE GESTÃO - 2019</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_f80448c6889e1afcdb3c689561762c40.pdf" title="LINHA DE CUIDADO MATERNO-INFANTIL NO ESTADO DO AMAPÁ" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_10a3bd651ed9c586a899cc8811d187c5.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_f80448c6889e1afcdb3c689561762c40.pdf" target="_blank">
+                                <b>LINHA DE CUIDADO MATERNO-INFANTIL NO ESTADO DO AMAPÁ</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a92e5170e039f1628c59322c0b34dec1.pdf" title="PLANO DE CONTINGÊNCIA DA SECRETARIA DA SAÚDE" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_24f419f11148b093fa4cbe27d42e99cb.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a92e5170e039f1628c59322c0b34dec1.pdf" target="_blank">
+                                <b>PLANO DE CONTINGÊNCIA DA SECRETARIA DA SAÚDE</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a426959a5aaf3672da83c82365409448.pdf" title="PLANO DE CONTINGÊNCIA INDÍGENA" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a78e699c98b6fb625f3909a42af1fab5.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a426959a5aaf3672da83c82365409448.pdf" target="_blank">
+                                <b>PLANO DE CONTINGÊNCIA INDÍGENA</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_2307bbefe897e7bd5dbaf7e28e709c0a.pdf" title="BOLETIM EPIDEMIOLÓGICO - Mortalidade Materna e COVID-19, ano 2021" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_21631a3000d63678d42eeb7db2ff0958.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_2307bbefe897e7bd5dbaf7e28e709c0a.pdf" target="_blank">
+                                <b>BOLETIM EPIDEMIOLÓGICO - Mortalidade Materna e COVID-19, ano 2021</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_8ae0aba41ed70f33d9f10a75886bf85a.pdf" title="BOLETIM EPIDEMIOLÓGICO - Mortalidade Materna, ano 2020" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_c42e65d97388dacd0b0d7406209cb278.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_8ae0aba41ed70f33d9f10a75886bf85a.pdf" target="_blank">
+                                <b>BOLETIM EPIDEMIOLÓGICO - Mortalidade Materna, ano 2020</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_2356c8d94e5ce4b08d08f82051e9f881.pdf" title="RELATÓRIO ANUAL DE GESTÃO 2021" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_7073ef94bb1c45a3e9f01eeccd892a65.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_2356c8d94e5ce4b08d08f82051e9f881.pdf" target="_blank">
+                                <b>RELATÓRIO ANUAL DE GESTÃO 2021</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_6c9960a4b7787dd91f9d8f51e359d69d.pdf" title="RELATÓRIO ANUAL DE GESTÃO 2020" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_b5c2c054c3e174b0bc34af28e91e951f.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_6c9960a4b7787dd91f9d8f51e359d69d.pdf" target="_blank">
+                                <b>RELATÓRIO ANUAL DE GESTÃO 2020</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_8a472f10f408639a648dc05b2d2b8d2b.pdf" title="FLUXOGRAMAS DE MACROPROCESSO DE PAGAMENTOS FORNECEDORES/PRESTADORES DE SERVIÇOS DA SECRETARIA DE ESTADO DA SAÚDE" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_d0d8ff979cf7d5c09d7226375b2bbdb9.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_8a472f10f408639a648dc05b2d2b8d2b.pdf" target="_blank">
+                                <b>FLUXOGRAMAS DE MACROPROCESSO DE PAGAMENTOS FORNECEDORES/PRESTADORES DE SERVIÇOS DA SECRETARIA DE ESTADO DA SAÚDE</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_3a2f31ea28eaf927e9a0fdc91d4d7d70.pdf" title="FLUXO DE SANÇÕES ADMINISTRATIVAS DA SESA" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_b8514daf5ebbde60e4725e6a255c2563.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_3a2f31ea28eaf927e9a0fdc91d4d7d70.pdf" target="_blank">
+                                <b>FLUXO DE SANÇÕES ADMINISTRATIVAS DA SESA</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_7c3365dbdbddad012547c806bd7ff51b.pdf" title="PROGRAMAÇÃO ANUAL DE SAÚDE 2022 " target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a9d180cf3cf66ec42cca48e5f8ea5b26.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_7c3365dbdbddad012547c806bd7ff51b.pdf" target="_blank">
+                                <b>PROGRAMAÇÃO ANUAL DE SAÚDE 2022 </b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a896f9baf5e588acc518508369a282e7.pdf" title="PROGRAMAÇÃO ANUAL DE SAÚDE 2021" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_43ba1ddc2b13dfd99bc1450c6c2f0f04.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_a896f9baf5e588acc518508369a282e7.pdf" target="_blank">
+                                <b>PROGRAMAÇÃO ANUAL DE SAÚDE 2021</b>
+                            </a>
+                        </p>
+                    </div>
+                                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_9f93b17fbf1c632da6141a876128bdf4.pdf" title="PLANO ESTADUAL DE SAÚDE 2020-2023 " target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_c0efffb2182631c884a0575a360cc88a.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_9f93b17fbf1c632da6141a876128bdf4.pdf" target="_blank">
+                                <b>PLANO ESTADUAL DE SAÚDE 2020-2023 </b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div><div class='col-sm-12'><div class='row'>                    <div class="col-sm-6">
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_3084c7503cdd7c963c6b6a08acc9be62.pdf" title="MACROPROCESSO DE LICITAÇÃO E GESTÃO DE CONTRATOS" target="_blank">
+                                <img class="img-fluid" src="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_cd57ffd256c02f18f71339fa2dd5d1ac.jpg" alt="" style="width: 240px"/>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_3084c7503cdd7c963c6b6a08acc9be62.pdf" target="_blank">
+                                <b>MACROPROCESSO DE LICITAÇÃO E GESTÃO DE CONTRATOS</b>
+                            </a>
+                        </p>
+                    </div>
+                </div></div>            </div>
+        </div>
+
+        <div class="col-sm-3" id="mais_lidas">
+                <div id="titulos_menor">+ notícias mais lidas</div>
+    <div class="block_titulo"></div>
+    <div class="block_titulo_linha"></div>
+
+            <a href="noticia/1904/oss-que-administra-maternidade-bem-nascer-lanca-edital-de-contratacao-de-pessoal">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> qui, 19 abr  18 - 09:22h - <i class="fa fa-eye" aria-hidden="true"></i> 58951</div>
+                    <div class="chamada">OSS que administra Maternidade Bem Nascer lança edital de contratação de pessoal</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/1702/hospital-de-emergencia-implanta-gestao-democratica-para-a-escolha-de-gerente-de-enfermagem">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sáb, 17 fev  18 - 14:25h - <i class="fa fa-eye" aria-hidden="true"></i> 53666</div>
+                    <div class="chamada">Hospital de Emergência implanta gestão democrática para a escolha de gerente de enfermagem</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/0204/governo-entrega-maternidade-bem-nascer-para-ser-gerida-por-oss">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> seg, 02 abr  18 - 09:06h - <i class="fa fa-eye" aria-hidden="true"></i> 52128</div>
+                    <div class="chamada">Governo entrega maternidade Bem Nascer para ser gerida por OSS</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/1512/governo-lanca-edital-para-especializacao-de-residencia-em-enfermagem">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sex, 15 dez  17 - 13:46h - <i class="fa fa-eye" aria-hidden="true"></i> 51938</div>
+                    <div class="chamada">Governo lança edital para especialização de residência em enfermagem</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/2411/governo-do-amapa-lancara-edital-de-residencia-em-enfermagem-ainda-este-ano">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sex, 24 nov  17 - 12:33h - <i class="fa fa-eye" aria-hidden="true"></i> 51194</div>
+                    <div class="chamada">Governo do Amapá lançará edital de residência em enfermagem ainda este ano</div>
+                </div>
+            </div>
+        </a>
+                <a href="noticias" class="btn btn-primary btn-xs">+ ler todas</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ##################################################################################################### -->
+<!-- CONTEÚDO ANTES DAQUI -->
+
+
+
+<div class="container" id="newsletter">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="titulos">NEWSLETTER</div><div class="block_titulo"></div><div class="block_titulo_linha"></div>
+            <h3><i class="fa fa-envelope" aria-hidden="true"></i> Receba nossas notícias em seu e-mail ou celular.</h3>
+        </div>
+    </div>
+
+    <div class="well well-sm">
+        <form method="post" role="search">
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user icone"></i></div>
+                    <input type="text" class="form-control" name="new_nome" placeholder="Seu nome" value="" required>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-3">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope icone"></i></div>
+                    <input type="email" class="form-control" name="new_email" placeholder="E-mail" value="" required>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+                    <input type="tel" class="form-control" name="new_celular" id="new_celular"  value="" placeholder="Celular">
+                </div>
+            </div>
+
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></div>
+                    <input type="text" class="form-control text-center" disabled name="nwconfirma" id="nwconfirma" placeholder="c5aae3">
+                </div>
+            </div>
+            <div class="form-group col-sm-2">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></div>
+                    <input type="text" class="form-control text-center" maxlength="6" minlength="6" name="nwconfirmaCod" placeholder="Repita">
+                </div>
+            </div>
+
+            <input type="hidden" name="addNew" value="addNew">
+            <button type="submit" class="btn btn-primary">Cadastro</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- INICIO LINKS UTEIS-->
+<div class="container" id="links-rodape">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="titulos">LINKS ÚTEIS</div>
+            <div class="block_titulo"></div>
+            <div class="block_titulo_linha"></div>
+            <div class="owl-carousel owl-theme">
+                                    <a href="http://agendadoservidor.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>AGENDA DO SERVIDOR</h4>
+                                <p>Tenha acesso a agenda do servidor aqui nesse link</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.ecorregedoria.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-address-book fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>CERTIDÃO FUNCIONAL</h4>
+                                <p>Sistema para emissão de certidão funcional</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://diofe.portal.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-universal-access fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>DIÁRIO OFICIAL</h4>
+                                <p>Diário Oficial do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.edoc.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>E-DOC</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://esic.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>e-SIC</h4>
+                                <p>Sistema Eletrônico do Serviço de Informações ao Cidadão</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://acessoainformacao.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>INFORMAÇÃO AO CIDADÃO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://ouvamapa.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>OUV</h4>
+                                <p>Sistema de Ouvidoria pública do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.transparencia.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-id-card-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DA TRANSPARÊNCIA</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="https://servicos.portal.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa fa-wrench fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DE SERVIÇOS</h4>
+                                <p>Portal de Serviços do Governo do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.amapa.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-university fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DO GOVERNO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.processoseletivo.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-graduation-cap fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PROCESSO SELETIVO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://prodoc.ap.gov.br/login" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-file-text fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PRODOC</h4>
+                                <p>Gestor de Documentos do Governo do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="https://www.portal.ap.gov.br/docs/politica_protecao.pdf" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-lock fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PROTEÇÃO</h4>
+                                <p>Politicas de Proteção de Dados Pessoais e Privacidade</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://portal.convenios.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa fa-users fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>REDE MAIS BRASIL</h4>
+                                <p>Convênios do Governo Federal</p>
+                            </div>
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM LINKS UTEIS-->
+
+<!-- INICIO RODAPE UM -->
+<div class="container-fluid" id="rodape_um" style="background-color: #00a97a; margin-top: 15px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-child" aria-hidden="true"></i> CIDADÃO</div>
+                <ul class="list-unstyled">
+                                            <li><a href="https://agw.csa-equatorial.com.br/Home/InfoSegundaVia" target="_blank">2ª via da Conta de Água</a></li>
+                                            <li><a href="https://ap.equatorialenergia.com.br/2via-simples/" target="_blank">2ª via da Conta de Energia</a></li>
+                                            <li><a href="https://delegaciavirtual.sinesp.gov.br/portal/comunicacaofato/AP/natureza" target="_blank">Boletim de Ocorrência Online</a></li>
+                                            <li><a href="https://sead.portal.ap.gov.br/concursos" target="_blank">Concursos</a></li>
+                                            <li><a href="https://www.detran.ap.gov.br/detranap/veiculo/consulta-de-veiculos/" target="_blank">Consulta de Veículos</a></li>
+                                            <li><a href="https://www.detran.ap.gov.br/detranap/habilitacao/consulta-habilitacao/" target="_blank">Consultar Habilitação</a></li>
+                                            <li><a href="https://prematricula.escolapublica.ap.gov.br/home" target="_blank">Matrícula 2023</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-industry" aria-hidden="true"></i> EMPRESAS</div>
+                <ul class="list-unstyled">
+                                            <li><a href="http://www.siga.ap.gov.br/auto-cadastro/#/validado/login/externo?uri=http:%2F%2Fwww.siga.ap.gov.br%2Fefornecedor%2F&produto=efornecedor" target="_blank">Cadastro de Fornecedores</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=DIA_060" target="_blank">Certidão Negativa</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=ARR_305" target="_blank">DAR Avulso</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/index.php/diap-icms" target="_blank">DIAP-ICMS Eletrônica</a></li>
+                                            <li><a href="https://amapa.gov.br/docs/justificativa_sefaz.pdf" target="_blank">Justificativas</a></li>
+                                            <li><a href="http://www.compras.ap.gov.br/" target="_blank">Licitações do Estado</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-users" aria-hidden="true"></i> SERVIDORES</div>
+                <ul class="list-unstyled">
+                                            <li><a href="http://www.ecorregedoria.ap.gov.br/" target="_blank">Certidão Funcional </a></li>
+                                            <li><a href="http://servidor.apconsig.ap.gov.br/login" target="_blank">Consignataria On line</a></li>
+                                            <li><a href="https://portaldoservidor.ap.gov.br/login" target="_blank">Contracheque</a></li>
+                                            <li><a href="https://sougov.economia.gov.br/sougov/" target="_blank">Serviços do Servidor Federal</a></li>
+                                            <li><a href="https://servicos.portal.ap.gov.br/servicos/solicitar-certidao-de-tempo-de-servico-sead80" target="_blank">Solicitar Certidão de Tempo de Serviço</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-thumbs-up" aria-hidden="true"></i> REDES SOCIAIS DO GEA</div>
+                <ul class="list-unstyled">
+                                        <li><a href="http://www.facebook.com/governoamapa" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                    <li><a href="https://twitter.com/governodoamapa" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                    <li><a href="https://www.instagram.com/governoamapa/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                    <li><a href="http://www.youtube.com/user/GovernodoAmapa" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i> Youtube</a></li>
+                    <li><a href="https://www.flickr.com/photos/governodoamapa/albums" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i> Flickr</a></li>
+                    <a href="https://webmail.amapa.gov.br/" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Webmail GOV</a>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- FIM RODAPE UM -->
+
+<!-- INICIO RODAPE DOIS-->
+<div class="container-fluid" id="rodape_dois" style="background-color: #005675">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+            <div class="pull-left">
+
+                <strong>SESA - Secretaria da Saúde</strong><br/>                
+                <i class="fa fa-map-marker" aria-hidden="true"></i> Av. Anhanguera, 265 - 68902-005</br> 
+                <i class="fa fa-phone" aria-hidden="true"></i> (96) 21018-551</br> 
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> sesa@amapa.gov.br | protocolo@saude.ap.gov.br<br/>
+
+                Manifestações e Pedidos, acesse: <a href="https://ouvamapa.portal.ap.gov.br/" target="_blank">ouvamapa.portal.ap.gov.br</a><br/>
+                Site desenvolvido e hospedado pelo <a href="http://www.prodap.ap.gov.br" target="_blank">PRODAP - Centro de Gestão da Tecnologia da Informação</a><br/>
+                2017 - 2026 Licença Creative Commons 3.0 International
+
+
+                   <!--  <strong>SESA - Secretaria da Saúde</strong><br/>
+                    Av. Anhanguera, 265 - 68902-005 -
+                    i class="fa fa-phone" aria-hidden="true"></i> (96) 21018-551 - 
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> protocolo.sesa.ap@gmail.com | secretariosesa@gmail.com<br/>
+                    Funcionamento: Segunda a Sexta: 8h às 12h e 14h às 18h<br>
+                    Site desenvolvido e hospedado pelo <a href="http://www.prodap.ap.gov.br" target="_blank">PRODAP - Centro de Gestão da Tecnologia da Informação</a><br/>
+                    2017 - 2026 Licença Creative Commons 3.0 International -->
+                </div>
+                <div class="pull-right hidden-xs">
+                    <img src="img/brasao.png" alt="Amapá">
+                </div>
+                <div class="visible-xs text-center">
+                    <img src="img/brasao.png" alt="Amapá">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM RODAPE DOIS-->
+
+
+<script src="scripts/js/jquery.min.js"></script>
+<script src="scripts/js/bootstrap.min.js"></script>
+<script src="scripts/js/bootstrap-select.js"></script>
+<script src="scripts/js/less-1.3.3.min.js"></script>
+<script src="scripts/js/tipped.js"></script>
+<script src="scripts/js/jquery.bsPhotoGallery.js"></script>
+<script src="scripts/js/owl.carousel.js"></script>
+<script src="scripts/js/owl-scripts.js"></script>
+<script src="scripts/js/jquery.dataTables.js" type="text/javascript"></script>
+<script src="scripts/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="scripts/js/jquery.mask.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#new_celular').mask('(00)00000-0000',{clearIfNotMatch: true});
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        Tipped.create('.simple-tooltip');
+    });
+</script>
+<!-- PERSONALIZADOS -->
+
+</body>
+</html>

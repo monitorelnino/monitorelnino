@@ -282,14 +282,8 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         for h, it in (ler("evidencias.json", {"itens": {}}).get("itens") or {}).items():
             if it.get("url") == url and prova_do_item(it):
                 return h
-        from julgar_e_aplicar_descobertas import ASSINATURAS_DE_DOCUMENTO, copia_arquivada, ler_documento
-        # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
-        # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
-        corpo = ler_documento(url, 60)
-        if str(url).lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt")) and not corpo.startswith(ASSINATURAS_DE_DOCUMENTO):
-            corpo = copia_arquivada(url)[0]   # 17/11/2026: o endereço respondeu página; a prova é a cópia pública
-            if not corpo:
-                return None
+        from julgar_e_aplicar_descobertas import obter_documento
+        corpo = obter_documento(url, 60)   # o que o juiz leu: a fonte ou, se ela caiu, a cópia pública
         # o atalho `.url` do RS entrega o PDF de destino: a extensão vem dos bytes, não do nome
         ext = "pdf" if corpo[:5] == b"%PDF-" else (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
@@ -628,6 +622,28 @@ def autoteste() -> int:
                 cb.LIMITE_EVIDENCIA, cb.ler, cb.gravar, cb._texto_de_evidencia = salvo
     casos.append(("texto de 0 caractere não é prova: o escaneado acima do limite vai ao OCR, uma vez só",
                   (lambda r: r[0] is False and r[1] is True and len(r[2]) == 1)(guarda_do_escaneado())))
+    def prova_pela_copia_publica():
+        """18/11/2026: sete promoções lidas pela cópia pública (o endereço original dava 404) nunca entravam no
+        banco: a guarda da prova só tentava o endereço original."""
+        import urllib.error
+        import coletores_base as cb
+        import julgar_e_aplicar_descobertas as jd
+        salvo, guardados = (cb.ler, cb.preservar_evidencia, jd.ler_documento, jd.copia_arquivada), []
+
+        def caiu(url, timeout=40, origem=None):
+            raise urllib.error.HTTPError(url, 404, "Not Found", None, None)
+        try:
+            cb.ler = lambda nome, padrao=None: padrao
+            cb.preservar_evidencia = lambda corpo, url, ext, origem: (guardados.append((corpo, ext)), "h" * 64)[1]
+            jd.ler_documento = caiu
+            jd.copia_arquivada = lambda url: (b"%PDF-1.4 copia publica", "20261101")
+            com = preservar_o_documento("https://x.gov.br/a.pdf")
+            jd.copia_arquivada = lambda url: (None, None)
+            return com, preservar_o_documento("https://x.gov.br/b.pdf"), guardados
+        finally:
+            cb.ler, cb.preservar_evidencia, jd.ler_documento, jd.copia_arquivada = salvo
+    casos.append(("endereço que caiu: a prova é a cópia pública que o juiz leu; sem cópia pública, não há prova",
+                  (lambda r: r[0] == "h" * 64 and r[1] is None and r[2] == [(b"%PDF-1.4 copia publica", "pdf")])(prova_pela_copia_publica())))
     casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
                   and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],

@@ -53,8 +53,8 @@ import juiz
 # de fonte oficial?" tem de ter UMA resposta nos dois lados. Duas cópias divergem na primeira
 # exceção de domínio que alguém acrescentar a um dos arquivos.
 from coletar_saude_estadual import UFS, oficial
-from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
-from coletores_base import copia_da_ponte as cb_copia_da_ponte
+from coletores_base import MuroDeRobo, buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
+from julgar_e_aplicar_descobertas import com_ocr, obter_documento
 from julgar_filas import julgar_lista
 
 FILA = "pistas_imprensa_saude.json"
@@ -858,11 +858,9 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     return v
 
 
-# 16/10/2026 (F68): host que não respondeu (rede, não HTTP) fica de fora do resto da rodada. Em
-# 15/10 as 16 pistas do AP bateram uma a uma no mesmo host morto, ~4,5 min cada com as repetições
-# de `buscar`, e o prazo do elo acabou na 17ª de 251 — e cada uma ficou RECUSADA para sempre por
-# uma queda de rede. Falha de rede agora é PENDENTE: não grava veredito e volta na rodada seguinte.
-_HOSTS_SEM_RESPOSTA = set()
+# 16/10/2026 (F68): falha de rede é PENDENTE: não grava veredito e volta na rodada seguinte. 18/11/2026: o host
+# que não respondeu sai do resto da rodada na porta de rede (`coletores_base.buscar`), para todo coletor; o atalho
+# local que fazia isso aqui (e tratava muro como rede) saiu.
 PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError)")
 
 
@@ -881,23 +879,12 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     """Baixa, lê e julga uma pista. Devolve o veredito com o que o ato institui."""
     url = p.get("url")
     uf = p.get("uf")
-    host = urllib.parse.urlparse(url or "").netloc.lower()
     corpo, hash_ev, falha = None, None, None
-    if host in _HOSTS_SEM_RESPOSTA:
-        # 15/11/2026 (SE): o atalho do host morto pulava a cópia da ponte no Brasil, que `buscar` só
-        # consulta quando tenta a rede. O plano 2026-2027 de SE ficou pendente atrás de outra URL do host.
-        corpo = cb_copia_da_ponte(url)[0]
-        if corpo is None:
-            falha = {"promove": False, "pendente": True, "uf": uf,
-                     "motivo": "documento não baixado: host sem resposta nesta rodada"}
-    else:
-        try:
-            corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
-        except Exception as e:  # noqa: BLE001
-            if not isinstance(e, urllib.error.HTTPError):
-                _HOSTS_SEM_RESPOSTA.add(host)
-            falha = {"promove": False, "pendente": not isinstance(e, urllib.error.HTTPError), "uf": uf,
-                     "motivo": f"documento não baixado: {type(e).__name__}"}
+    try:   # 18/11/2026: o leitor do juiz municipal (fonte, ponte, pasta do RS e cópia pública)
+        corpo = obter_documento(url or "", 150, "julgar_saude", buscar_fn=buscar_fn)
+    except Exception as e:  # noqa: BLE001
+        recusa = isinstance(e, (urllib.error.HTTPError, MuroDeRobo))
+        falha = {"promove": False, "pendente": not recusa, "uf": uf, "motivo": f"documento não baixado: {type(e).__name__}"}
     if falha:
         # Fonte que não abre para o runner (03/11/2026: portal.pi.gov.br, TCP 443 sem resposta) não impede
         # reler o que já foi lido: a cópia preservada do mesmo endereço, com o hash do instrumento.
@@ -906,7 +893,7 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
             return falha
         texto, hash_ev = copia
     else:
-        texto = texto_do_documento(corpo, url)
+        texto = com_ocr(corpo, texto_do_documento(corpo, url))
     if not texto.strip():
         return {"promove": False, "motivo": "documento sem texto extraível (PDF sem OCR?)", "uf": uf}
     institui = o_que_institui(texto)
@@ -1484,7 +1471,7 @@ def autoteste() -> int:
             lambda: ou(d_coe)["promove"] and ou(d_coe)["funcoes_da_estrutura"] == {"F1": True, "F2": False}
                     and not ou("Portaria de nomeação de servidor")["promove"],
     })
-    # F68: falha de rede é pendente e derruba o host para o resto da rodada; HTTP é recusa.
+    # F68: falha de rede é pendente; HTTP e muro são recusa (o host fora da rodada é da porta de rede).
     chamadas = []
 
     def cai(url, **kw):
@@ -1542,11 +1529,20 @@ def autoteste() -> int:
                                buscar_fn=lambda u, **k: t_am_doe.encode(), preservar_fn=lambda *a: "h")
     casos["grafia \"N.º\" do diário do AM: o decreto datado é identificado e a emergência entra"] = (
         lambda: len(e4) == 1 and e4[0].get("uf") == "AM")
-    _HOSTS_SEM_RESPOSTA.clear()
     v1 = julgar_pista({"url": "https://morto.ap.gov.br/a.pdf", "uf": "AP"}, buscar_fn=cai)
-    v2 = julgar_pista({"url": "https://morto.ap.gov.br/b.pdf", "uf": "AP"}, buscar_fn=cai)
     v3 = julgar_pista({"url": "https://vivo.pa.gov.br/c.pdf", "uf": "PA"}, buscar_fn=nega)
-    _HOSTS_SEM_RESPOSTA.clear()
+
+    def murado(url, **kw):
+        raise MuroDeRobo(url, "just a moment...")
+    v4 = julgar_pista({"url": "https://muro.ma.gov.br/d.pdf", "uf": "MA"}, buscar_fn=murado)
+    _pdf_imagem = b"%PDF-1.4 " + b"\x00" * 40
+    import julgar_e_aplicar_descobertas as _jd
+    _salvo_ocr = _jd.texto_por_ocr
+    try:
+        _jd.texto_por_ocr = lambda raw: "PLANO DE CONTINGÊNCIA DE ARBOVIROSES texto lido pelo OCR"
+        _ocr = com_ocr(_pdf_imagem, "")
+    finally:
+        _jd.texto_por_ocr = _salvo_ocr
     _u = "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf"
     _t = ("PLANO ESTADUAL DE PREPARACAO DO SETOR SAUDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NINO EQUIPE GESTORA "
           + "Fulano de Tal Secretario de Estado da Saude Superintendencia de Gestao " * 30
@@ -1576,9 +1572,10 @@ def autoteste() -> int:
         lambda: [i["status"] for i in _su["uf"]["PI"]["instrumentos"]] == ["NOVO"]
         and _su["uf"]["PI"]["instrumentos"][0]["url"] == _u
         and _su["uf"]["PI"]["status"] == "NOVO" and _su["uf"]["PI"]["url"] == _u)
-    casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
-        lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
-    _HOSTS_SEM_RESPOSTA.clear()
+    casos["F68: falha de rede é pendente; muro de robô é recusa, não rede"] = (
+        lambda: v1["pendente"] and len(chamadas) == 1 and v4["pendente"] is False and "MuroDeRobo" in v4["motivo"])
+    casos["PDF escaneado vai ao OCR, como no juiz municipal (18/11/2026: 27 recusas por falta de OCR)"] = (
+        lambda: "ARBOVIROSES" in _ocr)
 
     def sem_rede(u, **k):
         raise urllib.error.URLError("timed out")
@@ -1586,8 +1583,7 @@ def autoteste() -> int:
     _vn = julgar_pista({"url": "https://portal.pi.gov.br/outra", "uf": "PI"}, buscar_fn=sem_rede, copia_de=lambda u: None)
     casos["PI: fonte que não abre relê a cópia preservada do mesmo endereço; sem cópia segue pendente"] = (
         lambda: _vc.get("pendente") is None and _vc.get("hash_evidencia") in ("h0", None) and _vn["pendente"])
-    casos["F68: HTTP 404 é recusa, não pendente, e não derruba o host"] = (
-        lambda: v3["pendente"] is False and "vivo.pa.gov.br" not in _HOSTS_SEM_RESPOSTA)
+    casos["F68: HTTP 404 é recusa, não pendente"] = lambda: v3["pendente"] is False
     casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP não"] = (
         lambda: PAD_FALHA_DE_REDE.match("documento não baixado: URLError")
         and not PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError"))
