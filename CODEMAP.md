@@ -141,7 +141,7 @@ Atualizado em 18/11/2026.
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
 | `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 7 | não |
-| `monitorar_imprensa_regional.py` | — | — | — | 6 | não |
+| `monitorar_imprensa_regional.py` | — | — | — | 7 | não |
 | `monitorar_imprensa_saude.py` | — | — | — | — | não |
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
 | `monitorar_sinais_federais.py` | — | — | — | 1 | não |
