@@ -1,6 +1,6 @@
 {
  "_governanca": "INSTANTÂNEO dos cartões do topo do MARÉ Saúde, para a Imprensa ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada: nasce das mesmas séries que a página lê. A semana fechada é a última com valor na série — nunca a última do calendário, porque semana recente existe no arquivo com valor nulo e tratar nulo como zero publicaria uma queda que é só atraso de notificação.",
- "gerado_em": "17/11/2026",
+ "gerado_em": "18/11/2026",
  "cartoes": [
   {
    "id": "dengue_casos_se",
@@ -22,7 +22,7 @@
   },
   {
    "id": "uf_dengue_alerta",
-   "valor": 3,
+   "valor": 4,
    "referencia": "nível atual",
    "rotulo": "estados com dengue em nível de alerta",
    "fonte": "InfoDengue (Fiocruz e FGV)",
@@ -30,14 +30,15 @@
    "lista": [
     "ES",
     "PB",
+    "PR",
     "SP"
    ],
    "nota": "nível calculado pelo InfoDengue; o estado entra quando ao menos um município acompanhado está em nível 3 ou 4"
   },
   {
    "id": "calor_municipios_severo",
-   "valor": 23,
-   "referencia": "2026-11-16",
+   "valor": 9,
+   "referencia": "2026-11-17",
    "rotulo": "municípios em nível severo ou extremo de calor",
    "fonte": "Ministério da Saúde (Painel Nacional de Excesso de Calor)",
    "sem_coleta": false
@@ -53,7 +54,7 @@
   {
    "id": "mare_saude_indice",
    "valor": 59.8,
-   "referencia": "17/11/2026",
+   "referencia": "18/11/2026",
    "rotulo": "MARÉ Saúde",
    "unidades_verificadas": 27,
    "fonte": "MARÉ (verificação própria)",
