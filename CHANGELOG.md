@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #1881 · Site sem resposta sai da rodada; cadeia de certificado completa; prova do plano escaneado
+
+Site que não responde ao robô deixa de gastar a rodada: sai dela, e o endereço vai à cópia da ponte ou vira pedido. Certificado sem o intermediário é completado pelo emissor que a folha declara, com verificação plena. Plano escaneado acima de 5 MB chega ao OCR e à prova (13 do RS estavam fora do banco). Documento trazido pela ponte fica no ramo do lote; a `main` guarda o índice.
+
 ## 2026-11-18 · #1869 · Credencial de terceiro em JSON é redigida; a ponte guarda página já redigida
 
 A redação de credencial não via a forma do JSON (`"access_token":"…"`), a aspa escapada nem a maiúscula: a página inicial de uma secretaria trouxe a ficha do Instagram dela, e só o portão do PR a barrou. A porta de redação passa a cobrir essas formas, e o portão usa o padrão dela. A cópia de página da ponte entra redigida, com o sha256 de origem; corpo vazio e muro de robô não entram; `--receber` guarda lote com manifesto.

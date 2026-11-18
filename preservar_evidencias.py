@@ -395,7 +395,8 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) ->
     for h, it in alvos[:limite]:
         u = it["url"]
         try:
-            bruto = buscar(u, timeout=120)
+            from julgar_e_aplicar_descobertas import ler_documento
+            bruto = ler_documento(u, 120)
         except Exception as e:  # noqa: BLE001
             falhas += 1
             _falhou_ocr(it, type(e).__name__, hoje)
