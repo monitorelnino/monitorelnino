@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #1862 · Pré-noite sem fila fantasma
+
+A checagem das 23h deixa de contar como fila presa o run aberto há mais de 24 h: o de 05/11 tinha o job concluído e o run preso em queued há 13 dias, e reprovava a noite. Autoteste novo.
+
 ## 2026-11-18 · #1861 · Plano de saúde com equipe na capa
 
 O juiz da saúde lia a capa só nos primeiros 1.500 caracteres e não reconhecia "Plano de Adaptação" como título de plano. O plano de RO para o El Niño 2026–2027, recebido por pedido de acesso à informação, tem a lista da equipe antes do título e foi recusado como fora do ciclo. A capa passa a ser o mesmo cabeçalho do juiz, e "plano de adaptação" é título de plano.
