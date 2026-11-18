@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #PR · Anotação de confiança só na pista aberta
+
+A descoberta anotava `sinais`, `alertas` e `pontos_confianca` nas 22.825 pistas encerradas e a triagem os apagava na mesma noite: ~150 mil linhas de diff por noite em `data/pistas_imprensa.json`. `triar_confianca_pistas.py` pula a encerrada (`limpar_fila_de_pistas.encerrada`), com caso no autoteste. Catálogo da noite: F87 (pista sem data de entrada, #1856) e F88.
+
 ## 2026-11-18 · #1881 · Site sem resposta sai da rodada; cadeia de certificado completa; prova do plano escaneado
 
 Site que não responde ao robô deixa de gastar a rodada: sai dela, e o endereço vai à cópia da ponte ou vira pedido. Certificado sem o intermediário é completado pelo emissor que a folha declara, com verificação plena. Plano escaneado acima de 5 MB chega ao OCR e à prova (13 do RS estavam fora do banco). Documento trazido pela ponte fica no ramo do lote; a `main` guarda o índice.

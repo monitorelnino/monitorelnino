@@ -147,7 +147,11 @@ def anotar_e_gerar_fila() -> dict:
     d = ler("pistas_imprensa.json") or {"pistas": []}
     por_nivel = {"A": 0, "B": 0, "C": 0}
     municipios = set()
+    sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent / "scripts"))
+    from limpar_fila_de_pistas import encerrada
     for p in d["pistas"]:
+        if encerrada(p):   # 18/11/2026: a triagem apaga os sinais da encerrada; anotá-la de novo oscilava 22,8 mil pistas por noite
+            continue
         p.setdefault("id", id_da_pista(p))   # §153: id estável
         p.update(classificar_confianca(p))
         por_nivel[p["nivel_confianca"]] += 1
@@ -230,7 +234,19 @@ def autoteste():
             "url": "https://prefeitura.candeias.ba.gov.br/2026/plano/", "trecho": "..."})
         return r["nivel_confianca"] == "C" and "uf_divergente_na_url" in r["alertas"] and "uf_divergente_na_url" not in ok_ba["alertas"] and ok_ba["nivel_confianca"] == "A"
 
+    def t_encerrada_nao_e_anotada():
+        # 18/11/2026: anotar a encerrada desfazia a compactação da triagem toda noite
+        g, fila = globals(), {"pistas": [{"url": "https://x.gov.br/a", "status": "fechada — prazo"}, {"url": "https://x.gov.br/b"}]}
+        antes = g["ler"], g["gravar"]
+        g["ler"], g["gravar"] = (lambda nome: fila), (lambda nome, doc: None)
+        try:
+            anotar_e_gerar_fila()
+        finally:
+            g["ler"], g["gravar"] = antes
+        return "sinais" not in fila["pistas"][0] and "sinais" in fila["pistas"][1]
+
     return rodar_autoteste({
+        "encerrada não recebe texto de trabalho (oscilação com a triagem)": t_encerrada_nao_e_anotada,
         "homônimos: UF do host oficial divergente da pista → C (caso Candeias MG/BA)": t_homonimo_uf_divergente_na_url,
         "imprensa local com município e plano no título: A ou B (caso Marília)": t_marilia_imprensa_local,
         "decreto em fonte oficial com ato formal: A": t_decreto_oficial_vira_A,
