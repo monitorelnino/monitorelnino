@@ -226,3 +226,8 @@ acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/`. Tamanhos envelhecem:
 - Bloqueio real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre.
 - Recusa servida com `200` (muro de robô, geobloqueio de WAF) é recusa:
   `coletores_base.detectar_muro_de_robo` levanta antes de preservar; nomear a recusa certo.
+- Site que não responde ao robô de fora do país e responde no Brasil lê-se pela ponte no computador da
+  editoria, com o cliente identificado; recusa nunca vai à ponte; documento de lote fica no ramo
+  `ponte-local/*` e a `main` guarda só o índice (editoria, 18/11/2026; `scripts/ponte_brasil.py --autoteste`).
+- Certificado sem o intermediário completa-se na porta de rede, com verificação plena; de outro nome ou
+  vencido, não se lê; site sem resposta sai do resto da rodada (`scripts/testar_espera_de_rede.py`).

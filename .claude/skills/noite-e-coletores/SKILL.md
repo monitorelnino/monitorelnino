@@ -158,6 +158,12 @@ sai como **artefato do run**. Trabalho coletado nunca é descartado em silêncio
   `coletores_base.detectar_muro_de_robo` levanta antes de preservar.
 - **Nunca nomeie a recusa errado**: chamar geobloqueio de `robots.txt` já custou treze dias de
   abstenção indevida.
+- **"Não abre de fora" são classes diferentes, e só uma vai à ponte** (medido em 18/11/2026). Sem conexão
+  ou conexão cortada ao conectar: o site só responde no Brasil, e lê-se pela ponte no computador da
+  editoria (`scripts/ponte_brasil.py`; `coletores_base.buscar` lê a cópia e pede o que falta em
+  `data/ponte_pedidos.json`). Cadeia de certificado incompleta: a porta de rede completa sozinha.
+  Certificado de outro nome ou vencido: não se lê. Muro, `403`, login: recusa, nunca ponte. Mede-se a
+  classe antes de nomear a causa.
 
 ## Temporizadores e cadência
 
