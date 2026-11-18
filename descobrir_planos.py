@@ -54,7 +54,8 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed, wait as _esperar
 
 import funil
-from coletores_base import (RAIZ, buscar, buscar_uma_vez, preservar_evidencia, ler, gravar,
+from coletores_base import (RAIZ, buscar, buscar_uma_vez, copia_da_ponte, pedir_a_ponte, sem_conversa_http,
+                            preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo,
                              decodificar_pagina, copia_arquivada)
@@ -1049,6 +1050,13 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                     recusa = f"muro de robô ({e})"
                     break
                 except Exception as e:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve neste esquema
+                    # 18/11/2026: o portal que não conversa com o robô de fora do país se lê pela cópia da ponte no
+                    # Brasil; sem cópia, vira pedido a ela (nome que não resolve, recusa e muro nunca).
+                    if sem_conversa_http(e):
+                        corpo = copia_da_ponte(f"{esquema}://{d}/")[0]
+                        if corpo is not None:
+                            break
+                        pedir_a_ponte(f"{esquema}://{d}/", "descobrir_planos")
                     falhas.append(f"{esquema}://{d}: {nome_da_falha(e)}")
             if recusa:
                 registrar_lacuna(f"portal de {nome}/{uf}", f"recusa {recusa} em {d}", canal="portal da prefeitura", camada=1, uf=uf)

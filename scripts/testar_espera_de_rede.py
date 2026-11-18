@@ -512,6 +512,16 @@ def t_pedido_se_repete_uma_vez_depois_de_completar_a_cadeia():
             and roda(10, True) == ("sobe", 1) and roda(62, True) == ("sobe", 1) and roda(20, False) == ("sobe", 1))
 
 
+def t_so_a_conexao_sem_conversa_vai_a_ponte():
+    """18/11/2026: a ponte no Brasil é para o site que não conversa com o robô de fora do país. Recusa (HTTP,
+    muro) e nome que não resolve nunca viram pedido."""
+    import socket
+    s = cb.sem_conversa_http
+    return (s(urllib.error.URLError(TimeoutError("t"))) and s(TimeoutError()) and s(ConnectionResetError())
+            and not s(urllib.error.URLError(socket.gaierror(-2, "x"))) and not s(urllib.error.HTTPError("u", 403, "x", None, None))
+            and not s(cb.MuroDeRobo("u", "m")) and not s(OSError("dns")))
+
+
 if __name__ == "__main__":
     sys.exit(rodar_autoteste({
         "tabela de esperas por status é pura": t_esperas_para_e_pura,
@@ -538,4 +548,5 @@ if __name__ == "__main__":
         "resposta HTTP zera a conta; tempo esgotado no meio do corpo não conta": t_resposta_zera_a_conta_e_leitura_cortada_nao_conta,
         "cadeia incompleta: aprende só intermediário, nunca raiz nem lixo; verificação plena": t_cadeia_incompleta_aprende_so_intermediario,
         "negativo: só falta de emissor repete o pedido, e uma vez": t_pedido_se_repete_uma_vez_depois_de_completar_a_cadeia,
+        "só a conexão sem conversa HTTP vai à ponte; recusa e nome inexistente, nunca": t_so_a_conexao_sem_conversa_vai_a_ponte,
     }))
