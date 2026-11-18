@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #0000 · Credencial de terceiro em JSON é redigida; a ponte guarda página já redigida
+
+A redação de credencial de terceiro não via a forma do JSON (`"access_token":"…"`), a aspa escapada nem a maiúscula: a página inicial de uma secretaria trouxe a ficha do Instagram dela, e só o portão do PR a barrou. A porta de redação passa a cobrir essas formas, e o portão usa o padrão dela. A cópia de página da ponte no Brasil entra redigida, com o sha256 de origem; corpo vazio e muro de robô não entram; `--receber` guarda um lote com manifesto.
+
 ## 2026-11-18 · #1862 · Pré-noite sem fila fantasma
 
 A checagem das 23h deixa de contar como fila presa o run aberto há mais de 24 h: o de 05/11 tinha o job concluído e o run preso em queued há 13 dias, e reprovava a noite. Autoteste novo.
