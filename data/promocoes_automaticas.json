@@ -742340,7 +742340,8 @@
     "em": "2026-11-17",
     "motivo": "portão vermelho depois da aplicação",
     "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
-   }
+   },
+   "aplicado_em": "2026-11-17"
   },
   {
    "promove": false,
@@ -752241,7 +752242,8 @@
     "motivo": "portão vermelho depois da aplicação",
     "saida": "  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/runner/work/monitorelnino/monitorelnino/scripts/verificar_estrutura.js'\n  ]\n}\nNode.js v24.22.2"
    },
-   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)"
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "aplicado_em": "2026-11-17"
   },
   {
    "promove": false,
@@ -789238,6 +789240,3098 @@
    "atualizacao_anual_localizada": true,
    "substituiu": "registro anterior sem julgamento do juiz",
    "aplicado_em": "2026-11-17"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "34363 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "a Coordenadora APS: Vanice do Rocio Enfermeira da VIEP: Taiane Karine Guadagnin RESERVA - PR Rua Coronel Benjamin Branco, n. 762 - Bairro Ferreira - CEP: 84320-"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "acharias, cemitérios, rodoviária e ferros-velhos. 1.4 Ativação e desativação do plano de contingência O Plano de Contingência é composto por dois níveis de resp",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "plano de contingência",
+      "trecho": "acharias, cemitérios, rodoviária e ferros-velhos. 1.4 Ativação e desativação do plano de contingência O Plano de Contingência é composto por dois níveis de resp",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": null,
+   "ibge": "4121703",
+   "municipio": "Reserva",
+   "uf": "PR",
+   "url": "https://reserva.pr.gov.br/wp-content/uploads/2025/11/Plano-de-Contingencia-RESERVA-2025-.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "40fef53bc8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "dff6cbc8fffc26b5308e82d87cf909dd2691962ef1c0228a11897a8912b43b31"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "216329 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "TEÇÃO E DEFESA CIVIL (PMPDEC) 5ª Atualização Julho/2024 PREFEITURA MUNICIPAL DE VILA VELHA ARNALDO BORGO FILHO Prefeito Municipal SECRETARIA MUNICIPAL DE PROTEÇ"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) 5ª Atualização Julho/2024 PREFEITURA MUNICIPAL DE VILA VELHA ARNALDO BORGO FILHO Prefeito Municipal SECRETAR",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL",
+      "trecho": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) 5ª Atualização Julho/2024 PREFEITURA MUNICIPAL DE VILA VELHA ARNALDO BORGO FILHO Prefeito Municipal SECRETAR",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (PMPDEC) 5ª Atualização Julho/2024 PREFEITURA MUNICIPAL DE VILA VELHA ARNALDO BORGO FILHO Prefeito Municipal SECRETAR"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "- Coordenar a implementação e operação do Plano de Contingência nos períodos de chuvas intensas; XXX - Propor a realização de vistorias e elaboração de relatóri"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2024",
+   "natureza": "EX_ANTE",
+   "ibge": "3205200",
+   "municipio": "Vila Velha",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/VILA%20VELHA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
+   "regras_18": [
+    "J22",
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "1a14ffe379",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "cf9c512167a7880d8b97357d8dee97b2cd3323f45fe19c054fa3a4d39054de24",
+   "data_da_edicao": "2024-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "nao_aplicado": {
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "117754 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PROJETO POLÍTICO PEDAGÓGICO 2023 2 PREFEITURA DE BRUSQUE SECRETARIA MUNICIPAL DE EDUCAÇÃO PROJETO POLÍTICO PEDAGÓGICO Centro de Educação Infantil Padre Theodoro"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Comunicação TICs – Tecnologias de Informação e Comunicação UE – Unidade Escolar PLANCON – Plano Nacional de Contingência 5 SUMÁRIO LISTA DE GRÁFICOS 3 LISTA DE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DE",
+      "titulo": "PLANCON",
+      "trecho": "Comunicação TICs – Tecnologias de Informação e Comunicação UE – Unidade Escolar PLANCON – Plano Nacional de Contingência 5 SUMÁRIO LISTA DE GRÁFICOS 3 LISTA DE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": null,
+   "ibge": "4202909",
+   "municipio": "Brusque",
+   "uf": "SC",
+   "url": "https://sge.brusque.sc.gov.br/sge/UpSis/ppp/ppp124.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "5991a0ec9e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ca1342856ebcdf6abb99bbf7df95a1176b44677fe489464621e84b6728f5155f"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9821 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PETINGA, ITUAÇU, JÂNIO QUADROS, LIVRAMENTO DE NOSSA SENHORA, MAETINGA, MIRANTE, PINDAÍ, PLANALTO, POÇÕES, RIACHO DE SANTANA E TREMEDAL, ALÉM DE GUARULHOS E RIBE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2924504",
+   "municipio": "Pindaí",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-rede-hospitalar-SECOM-07.06.docx.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "cce2a81249",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b9815f278b5a91a6cffe3bbc698d45f8ba02a8c7453f3901232e71d48fbd254c"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2912301",
+   "municipio": "Ibicuí",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-15-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "cc3eb455b8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2922706",
+   "municipio": "Nova Canaã",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-14-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "f23c90141f",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10127 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "gilância em Saúde www.pmvc.ba.gov.br CARINHANHA, DOM BASILIO, GUANAMBI, IBICUI, JUSSIAPE, PIRIPÁ, PLANALTO, POÇOES, PRESIDENTE JÂNIO QUADROS, TANHAÇU, TANQUE NO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": null,
+   "ibge": "2918605",
+   "municipio": "Jussiape",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/BOLETIM-EPIDEMIOL%C3%93GICO-DIARIO-04-DE-SETEMBRO-DE-2021.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "d1c959d3eb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "29bbfce31b8c2b56ff92c9a2a7639f3731538068f1e256c0ced8d19b077fd5f1"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9821 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "IGUAÍ, ITAMBÉ, ITAPETINGA, ITUAÇU, JÂNIO QUADROS, LIVRAMENTO DE NOSSA SENHORA, MAETINGA, MIRANTE, PINDAÍ, PLANALTO, POÇÕES, RIACHO DE SANTANA E TREMEDAL, ALÉM"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2919959",
+   "municipio": "Maetinga",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-rede-hospitalar-SECOM-07.06.docx.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "8688f81b8e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b9815f278b5a91a6cffe3bbc698d45f8ba02a8c7453f3901232e71d48fbd254c"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10165 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ACATU, BARRA DA ESTIVA, BARRA DO CHOÇA, BELO CAMPO, BOM JESUS DA LAPA, BRUMADO, CAATIBA, CACULÉ, CAETITÉ, CANDIBA, CÂNDIDO SALES, CARINHANHA, CONDEÚBA, FIRMINO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2904803",
+   "municipio": "Caatiba",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-Epidemiol%C3%B3gico-25.04.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "43137ec7de",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f6120153540a46f8db718cb4285eaed18cbe30882bcc46a433c3c99daa035ae3"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9821 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MPO, BOM JESUS DA LAPA, BOQUIRA, CATURAMA, CONDEUBA, DOM BASILIO, ENCRUZILHADA, FEIRA DA MATA, GUANAMBI, IGUAÍ, ITAMBÉ, ITAPETINGA, ITUAÇU, JÂNIO QUADROS, LIVRA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2910776",
+   "municipio": "Feira da Mata",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-rede-hospitalar-SECOM-07.06.docx.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "c9d9b58139",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b9815f278b5a91a6cffe3bbc698d45f8ba02a8c7453f3901232e71d48fbd254c"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10165 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "RUMADO, CAATIBA, CACULÉ, CAETITÉ, CANDIBA, CÂNDIDO SALES, CARINHANHA, CONDEÚBA, FIRMINO ALVES, GUANAMBI, IBICUI, IBOTIRAMA, ITAPETINGA, ITUAÇU, JUSSIAPE, LAGOA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2910909",
+   "municipio": "Firmino Alves",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-Epidemiol%C3%B3gico-25.04.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "21e0afc209",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f6120153540a46f8db718cb4285eaed18cbe30882bcc46a433c3c99daa035ae3"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8317 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "362 SALVADOR 0 1 0 0 1 SANTA BRIGIDA 0 1 0 0 1 SANTA CRUZ DE CABRÁLIA 0 6 0 0 6 SANTA CRUZ DA VITÓRIA 0 1 0 0 1 SANTA RITA DE CASSIA 0 0 1 0 1 SANTA TERESINHA 0"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/09/2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/09/2022",
+   "natureza": null,
+   "ibge": "2927804",
+   "municipio": "Santa Cruz da Vitória",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2022/09/01-09-22-BOLETIM-CIEVS-Monkeypox-2022.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "0133064391",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "523229fee0e3882244a81cb2b79d9f6a926e8ca65a733a6014b663af730d6153"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27965 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "lação - - Bandeira do Sul - - Contagem 310 - Barão de Cocais 11 - Coqueiral - - Barão de Monte Alto - - Coração de Jesus 5 - Barbacena 4 - Cordisburgo 7 - Barra"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "3105509",
+   "municipio": "Barão de Monte Alto",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/04/06-04-Boletim_Arboviroses-N208-f58.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "d5947ca5dd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e3716cb7889275a0802e5202a9779dfa83f4c3928d79cc6be932a00f4a062bea"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27965 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "toni - - Bom Despacho 42 - Cristina - - Bom Jardim de Minas - - Crucilandia - - Bom Jesus da Penha - - Cruzeiro da Fortaleza 2 - Bom Jesus do Amparo 3 - Cruzíli"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "3107604",
+   "municipio": "Bom Jesus da Penha",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/04/06-04-Boletim_Arboviroses-N208-f58.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "b0358519b4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e3716cb7889275a0802e5202a9779dfa83f4c3928d79cc6be932a00f4a062bea"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27965 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Hipólito 1 0 São Gonçalo do Pará 1 0 São João da Ponte 1 0 São João del Rei 1 0 São José da Safira 1 0 São José do Mantimento 1 0 São Lourenço 1 0 São Sebastião"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "3163003",
+   "municipio": "São José da Safira",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/04/06-04-Boletim_Arboviroses-N208-f58.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "54dfffbe8c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e3716cb7889275a0802e5202a9779dfa83f4c3928d79cc6be932a00f4a062bea"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9139 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ormulário de Informações do Desastre – FIDE 1 - Identificação UF: MG Município: NATALÂNDIA Arrecadação População (hab.): PIB (R$ anual): Orçamento (R$ anual): ("
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "co neste Município X O município possui COMDEC ou Órgão correspondente X Existe plano de Contingência para o tipo de desastre ocorrido X Foram realizados simula",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2013",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "plano de Contingência",
+      "trecho": "co neste Município X O município possui COMDEC ou Órgão correspondente X Existe plano de Contingência para o tipo de desastre ocorrido X Foram realizados simula",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2013",
+   "natureza": null,
+   "ibge": "3144375",
+   "municipio": "Natalândia",
+   "uf": "MG",
+   "url": "https://www.natalandia.mg.gov.br/publicacoes/uploads/anexos/6a862b5ec0e37c21b6f551d53a5321d5.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "b61fb29143",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "032c930e8f006ac5a683c5f35408771185609a0a478dc85371462cda1915dfbb"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27965 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "irão das Neves 4 0 Rio Acima 1 0 Rio Novo 0 1 Santa Juliana 1 0 Santa Luzia 3 1 Santana de Cataguases 1 1 Santana do Paraíso 4 0 Santa Rita do Itueto 29 0 Santa"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "3158409",
+   "municipio": "Santana de Cataguases",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/04/06-04-Boletim_Arboviroses-N208-f58.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "e1c53cec53",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e3716cb7889275a0802e5202a9779dfa83f4c3928d79cc6be932a00f4a062bea"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "133290 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DEFESA CIVIL DE SALVADOR CODESAL – RELATÓRIO ANUAL 2024 Salvador – Bahia 2024 DEFESA CIVIL DE SALVADOR – CODESAL RELATÓRIO ANUAL 2024 PREFEITURA MUNICIPAL DO SA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "........................................................................ 93 4.4 PLANO DE CONTINGÊNCIA PARA TEMPERATURAS EXTREMAS ..............................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "........................................................................ 93 4.4 PLANO DE CONTINGÊNCIA PARA TEMPERATURAS EXTREMAS ..............................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": null,
+   "ibge": "2927408",
+   "municipio": "Salvador",
+   "uf": "BA",
+   "url": "https://codesal.salvador.ba.gov.br/wp-content/uploads/2025/03/Relatorio_Anual_2024_denise_2_compressed.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "ea9e753ea6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1494f297bc94b48eee2be9685d60b96571a8cd40a6b60dc0d585ea4910c69e45"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10165 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DE NOSSA SENHORA, MALHADA DE PEDRAS, PARATINGA, PLANALTO, POÇÕES, PORTO SEGURO, TANHAÇU, TREMEDAL, VALPARAÍSO, ALÉM DE COMERCINHO - MG. Ramona Cerqueira Pereira"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2931004",
+   "municipio": "Tanhaçu",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-Epidemiol%C3%B3gico-25.04.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "32f966caa1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f6120153540a46f8db718cb4285eaed18cbe30882bcc46a433c3c99daa035ae3"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "133290 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DEFESA CIVIL DE SALVADOR CODESAL – RELATÓRIO ANUAL 2024 Salvador – Bahia 2024 DEFESA CIVIL DE SALVADOR – CODESAL RELATÓRIO ANUAL 2024 PREFEITURA MUNICIPAL DO SA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "........................................................................ 93 4.4 PLANO DE CONTINGÊNCIA PARA TEMPERATURAS EXTREMAS ..............................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "........................................................................ 93 4.4 PLANO DE CONTINGÊNCIA PARA TEMPERATURAS EXTREMAS ..............................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": null,
+   "ibge": "2927408",
+   "municipio": "Salvador",
+   "uf": "BA",
+   "url": "https://codesal.salvador.ba.gov.br/wp-content/uploads/2025/03/Relatorio_Anual_2024_denise_2_compressed.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "4ac7840573",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1494f297bc94b48eee2be9685d60b96571a8cd40a6b60dc0d585ea4910c69e45"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9649 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "S, CARINHANHA, CONT. SINCORÁ, D.BASÍLIO, ITAPETINGA, JEQUIÉ, MALHADA DE PEDRAS, PARAMIRIM, PLANALTO, PORTO SEGURO, RIO DE CONTAS, RIO DO ANTONIO, SANTA MARIA DA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. LEITOS CLINICOS LEITOS DE UTI 39 15 Outros Muni",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. LEITOS CLINICOS LEITOS DE UTI 39 15 Outros Muni",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": null,
+   "ibge": "2923605",
+   "municipio": "Paramirim",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/BOLETIM-EPIDEMIOL%C3%93GICO-DIARIO-16-DE-agosto-DE-2022-1.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "76aa317d59",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f608fea5306260cf7c1c9f8fe863ead6e2425a359837ad4578c7435e8081fc55"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "133290 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DEFESA CIVIL DE SALVADOR CODESAL – RELATÓRIO ANUAL 2024 Salvador – Bahia 2024 DEFESA CIVIL DE SALVADOR – CODESAL RELATÓRIO ANUAL 2024 PREFEITURA MUNICIPAL DO SA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "........................................................................ 93 4.4 PLANO DE CONTINGÊNCIA PARA TEMPERATURAS EXTREMAS ..............................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "........................................................................ 93 4.4 PLANO DE CONTINGÊNCIA PARA TEMPERATURAS EXTREMAS ..............................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": null,
+   "ibge": "2927408",
+   "municipio": "Salvador",
+   "uf": "BA",
+   "url": "https://codesal.salvador.ba.gov.br/wp-content/uploads/2025/03/Relatorio_Anual_2024_denise_2_compressed.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "d6c7904a87",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1494f297bc94b48eee2be9685d60b96571a8cd40a6b60dc0d585ea4910c69e45"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10400 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "GA, ITARANTIM, JEQUIE, LIVRAMENTO DE NOSSA SENHORA, MALHADA, MAETINGA, MIRANTE, PALMAS DE MONTE ALTO, PIRIPÁ, PLANALTO, POÇOES, E TANHAÇÚ, ALÉM DE PELOTAS - RS."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO DE LEITOS TAXA DE OCUPAÇÃO DE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO DE LEITOS TAXA DE OCUPAÇÃO DE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": null,
+   "ibge": "2923407",
+   "municipio": "Palmas de Monte Alto",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/BOLETIM-EPIDEMIOLO%CC%81GICO-DIARIO-14-NOVEMBRO.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "fc72a00538",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ed387a998429a0f062310a9a9d91bc20a1e49d6c248e14600fc67e7aa4663157"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8317 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o Antônio de Jesus (02 casos), Cairú (01 caso), Conceição do Jacuípe (01 caso), Mutuípe (01 caso), Ilhéus (01 caso), Xique-Xique (01 caso), Feira de Santana (01"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/09/2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/09/2022",
+   "natureza": null,
+   "ibge": "2922409",
+   "municipio": "Mutuípe",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2022/09/01-09-22-BOLETIM-CIEVS-Monkeypox-2022.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "252bf1863c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "523229fee0e3882244a81cb2b79d9f6a926e8ca65a733a6014b663af730d6153"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8317 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SEGURO 0 4 0 0 4 PRESIDENTE DUTRA 0 1 0 0 1 PRESIDENTE TANCREDO NEVES 0 1 0 0 1 RAFAEL JAMBEIRO 0 0 1 0 1 RAFAEL JAMBEIRO 0 1 0 0 1 RIO REAL 0 1 0 0 1 SALVADOR"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/09/2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/09/2022",
+   "natureza": null,
+   "ibge": "2925956",
+   "municipio": "Rafael Jambeiro",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2022/09/01-09-22-BOLETIM-CIEVS-Monkeypox-2022.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "717284fb56",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "523229fee0e3882244a81cb2b79d9f6a926e8ca65a733a6014b663af730d6153"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9821 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "pios de: ANAGÉ, BARRA DA ESTIVA, BARRA DO CHOÇA, BELO CAMPO, BOM JESUS DA LAPA, BOQUIRA, CATURAMA, CONDEUBA, DOM BASILIO, ENCRUZILHADA, FEIRA DA MATA, GUANAMBI,"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2904100",
+   "municipio": "Boquira",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-rede-hospitalar-SECOM-07.06.docx.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "9d191c8517",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b9815f278b5a91a6cffe3bbc698d45f8ba02a8c7453f3901232e71d48fbd254c"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2911808",
+   "municipio": "Guaratinga",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-15-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "ab67a4e5f7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8390 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ço), não Jacuípe (419 casos notificados, sendo 198 confirmados). O município de Baixa Grande teve 01 explicado por outras condi- ções, sendo residente ou ten- c"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "rticipação na 45ª reunião do Comitê CIEVS Salvador com a pauta “Apresentação do Plano de Contingência para a Febre Chikungunya do município de Salvador; -Realiz",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2014",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "rticipação na 45ª reunião do Comitê CIEVS Salvador com a pauta “Apresentação do Plano de Contingência para a Febre Chikungunya do município de Salvador; -Realiz",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2014",
+   "natureza": null,
+   "ibge": "2902609",
+   "municipio": "Baixa Grande",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2017/11/Boletim-epidemiol%C3%B3gico-Chikungunya_BA_N11_10122014.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "3aad27fa40",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7ad39358f2dd0b730d60d4f016426ccb3fd1235ee63009862e42d721f4929a56"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9821 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DOM BASILIO, ENCRUZILHADA, FEIRA DA MATA, GUANAMBI, IGUAÍ, ITAMBÉ, ITAPETINGA, ITUAÇU, JÂNIO QUADROS, LIVRAMENTO DE NOSSA SENHORA, MAETINGA, MIRANTE, PINDAÍ, P"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2917201",
+   "municipio": "Ituaçu",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-rede-hospitalar-SECOM-07.06.docx.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "bdcefdfd8a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b9815f278b5a91a6cffe3bbc698d45f8ba02a8c7453f3901232e71d48fbd254c"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8317 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "0 2 0 0 2 TANQUE NOVO 0 0 1 0 1 TEIXEIRA DE FREITAS 1 2 1 0 4 UBAIRA 0 4 0 0 4 UBAITABA 0 1 0 0 1 VERA CRUZ 0 1 0 0 1 VITORIA DA CONQUISTA 0 3 2 0 5 WENCESLAU"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/09/2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/09/2022",
+   "natureza": null,
+   "ibge": "2932200",
+   "municipio": "Ubaitaba",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2022/09/01-09-22-BOLETIM-CIEVS-Monkeypox-2022.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "e1b3c5df08",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "523229fee0e3882244a81cb2b79d9f6a926e8ca65a733a6014b663af730d6153"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2913507",
+   "municipio": "Iguaí",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-15-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "6d08a45586",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11728 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o Antônio de Jesus (718,1 casos/100.000hab), Ilhéus (582,6 ca- sos/100.000hab), Boquira (547,0 casos/100.000hab) e Brumado (531,8 casos/100.000hab). Os municípi"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "isso, as ações planejadas e desenvolvidas, in loco, devem estar estruturadas no plano de contingência ou quando a situação não permitir a sua imediata elaboraçã",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "estado da Bahia",
+      "titulo": "plano de contingência",
+      "trecho": "isso, as ações planejadas e desenvolvidas, in loco, devem estar estruturadas no plano de contingência ou quando a situação não permitir a sua imediata elaboraçã",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": null,
+   "ibge": "2904100",
+   "municipio": "Boquira",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2017/11/boletimEpidemiologicoArbovirosesNo09_outubro2023.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "7b39b41958",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c2bd466c2c5d8eb181bf8d1c7e5311da92e9267d3b7156bb59313e2b51c7a1b6"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8317 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 MUTUIPE 1 4 0 0 5 NAZARÉ 0 7 0 0 7 NILO PECANHA 0 1 0 0 1 ORIÇANGAS 0 1 0 0 1 OUROLÂNDIA 0 1 0 0 1 PÉ DE SERRA 1 0 0 0 1 PEDRAO 0 1 0 0 1 PINDOBACU 0 2 0 0 2"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/09/2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/09/2022",
+   "natureza": null,
+   "ibge": "2923357",
+   "municipio": "Ourolândia",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2022/09/01-09-22-BOLETIM-CIEVS-Monkeypox-2022.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "87d15e7053",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "523229fee0e3882244a81cb2b79d9f6a926e8ca65a733a6014b663af730d6153"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2911808",
+   "municipio": "Guaratinga",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-14-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "a9f8201962",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10165 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ternados pacientes dos municípios de: ARACATU, BARRA DA ESTIVA, BARRA DO CHOÇA, BELO CAMPO, BOM JESUS DA LAPA, BRUMADO, CAATIBA, CACULÉ, CAETITÉ, CANDIBA, CÂNDI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2903508",
+   "municipio": "Belo Campo",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-Epidemiol%C3%B3gico-25.04.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "54871c6fb4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f6120153540a46f8db718cb4285eaed18cbe30882bcc46a433c3c99daa035ae3"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10165 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ", CARINHANHA, CONDEÚBA, FIRMINO ALVES, GUANAMBI, IBICUI, IBOTIRAMA, ITAPETINGA, ITUAÇU, JUSSIAPE, LAGOA REAL, LIVRAMENTO DE NOSSA SENHORA, MALHADA DE PEDRAS, PA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2917201",
+   "municipio": "Ituaçu",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-Epidemiol%C3%B3gico-25.04.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "00f5514005",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f6120153540a46f8db718cb4285eaed18cbe30882bcc46a433c3c99daa035ae3"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10165 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DA LAPA, BRUMADO, CAATIBA, CACULÉ, CAETITÉ, CANDIBA, CÂNDIDO SALES, CARINHANHA, CONDEÚBA, FIRMINO ALVES, GUANAMBI, IBICUI, IBOTIRAMA, ITAPETINGA, ITUAÇU, JUSSIA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2908705",
+   "municipio": "Condeúba",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-Epidemiol%C3%B3gico-25.04.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "529285d0ed",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f6120153540a46f8db718cb4285eaed18cbe30882bcc46a433c3c99daa035ae3"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8317 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "0 0 1 ARAMARI 0 0 1 0 1 ARATUIPE 0 1 0 0 1 BARRA 0 0 1 0 1 BARREIRAS 0 1 0 0 1 BOA VISTA DO TUPIM 0 1 0 0 1 BREJÕES 0 1 0 0 1 BRUMADO 0 1 1 0 2 CAETITÉ 0 1 0 0"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/09/2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "ica 01/2022 Conjunta Paula Muniz com orientações sobre vigilância de Monkeypox, Plano de Contingência, participação de reuniões semanais da Sala de situação do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/09/2022",
+   "natureza": null,
+   "ibge": "2903805",
+   "municipio": "Boa Vista do Tupim",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2022/09/01-09-22-BOLETIM-CIEVS-Monkeypox-2022.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "6ae83bf3b6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "523229fee0e3882244a81cb2b79d9f6a926e8ca65a733a6014b663af730d6153"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9649 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANALTO, PORTO SEGURO, RIO DE CONTAS, RIO DO ANTONIO, SANTA MARIA DA VITÓRIA, TREMEDAL, URANDI. Ramona Cerqueira Pereira Secretária de Saúde Rua Rotary Club,"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. LEITOS CLINICOS LEITOS DE UTI 39 15 Outros Muni",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. LEITOS CLINICOS LEITOS DE UTI 39 15 Outros Muni",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": null,
+   "ibge": "2931806",
+   "municipio": "Tremedal",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/BOLETIM-EPIDEMIOL%C3%93GICO-DIARIO-16-DE-agosto-DE-2022-1.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "5ea81630af",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f608fea5306260cf7c1c9f8fe863ead6e2425a359837ad4578c7435e8081fc55"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11728 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "80,7 casos/100.000 hab.), Campo Alegre de Lourdes (1.723,4 casos/100.000 hab.), Itapebi (1.680,9 casos/100.000 hab.) e Alcobaça (1.546,0 casos/100.000 hab.). Fo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "isso, as ações planejadas e desenvolvidas, in loco, devem estar estruturadas no plano de contingência ou quando a situação não permitir a sua imediata elaboraçã",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "estado da Bahia",
+      "titulo": "plano de contingência",
+      "trecho": "isso, as ações planejadas e desenvolvidas, in loco, devem estar estruturadas no plano de contingência ou quando a situação não permitir a sua imediata elaboraçã",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": null,
+   "ibge": "2916302",
+   "municipio": "Itapebi",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2017/11/boletimEpidemiologicoArbovirosesNo09_outubro2023.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "07b3d8add9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c2bd466c2c5d8eb181bf8d1c7e5311da92e9267d3b7156bb59313e2b51c7a1b6"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11728 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "lizado UBV acoplado a veículo em 17 municí- pios: Iraquara, Salvador, Juazeiro, Piripá, Condeúba, Lençóis, Barra da Estiva, Feira de Santana, Campo Alegre de Lo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "isso, as ações planejadas e desenvolvidas, in loco, devem estar estruturadas no plano de contingência ou quando a situação não permitir a sua imediata elaboraçã",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "estado da Bahia",
+      "titulo": "plano de contingência",
+      "trecho": "isso, as ações planejadas e desenvolvidas, in loco, devem estar estruturadas no plano de contingência ou quando a situação não permitir a sua imediata elaboraçã",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": null,
+   "ibge": "2924702",
+   "municipio": "Piripá",
+   "uf": "BA",
+   "url": "https://www.ba.gov.br/saude/sites/site-sesab/files/migracao_2024/arquivos/wp-content/uploads/2017/11/boletimEpidemiologicoArbovirosesNo09_outubro2023.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "54df9cc128",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c2bd466c2c5d8eb181bf8d1c7e5311da92e9267d3b7156bb59313e2b51c7a1b6"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9821 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ANAGÉ, BARRA DA ESTIVA, BARRA DO CHOÇA, BELO CAMPO, BOM JESUS DA LAPA, BOQUIRA, CATURAMA, CONDEUBA, DOM BASILIO, ENCRUZILHADA, FEIRA DA MATA, GUANAMBI, IGUAÍ, I"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2907558",
+   "municipio": "Caturama",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-rede-hospitalar-SECOM-07.06.docx.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "c53eb0820d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b9815f278b5a91a6cffe3bbc698d45f8ba02a8c7453f3901232e71d48fbd254c"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9962 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "pacientes dos municípios de: ANAGÉ, BARRA DO CHOÇA, CANDIDO SALES, ITAPETINGA, MAIQUINIQUE, RIACHO DE SANTANA. Ramona Cerqueira Pereira Secretária de Saúde Rua"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. TAXA DE OCUPAÇÃO LEITOS CLINICOS TAXA DE OCUPAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "2920007",
+   "municipio": "Maiquinique",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/BOLETIM-EPIDEMIOL%C3%93GICO-DIARIO-25-DE-DEZEMBRO-DE-2021.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "f996ede5ba",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4315228375762d5d758dc9ae3ba4496989cc421fd1e0621df91828d83d73f772"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2920007",
+   "municipio": "Maiquinique",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/Boletim-15-de-julho.pdf",
+   "regras_18": [],
+   "pista_id": "4258eebd78",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9649 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ETITÉ, CANDIDO SALES, CARINHANHA, CONT. SINCORÁ, D.BASÍLIO, ITAPETINGA, JEQUIÉ, MALHADA DE PEDRAS, PARAMIRIM, PLANALTO, PORTO SEGURO, RIO DE CONTAS, RIO DO ANTO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. LEITOS CLINICOS LEITOS DE UTI 39 15 Outros Muni",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "o especializada do município de Vitória da Conquista, a fim de contribuir com o Plano de Contingência Municipal. LEITOS CLINICOS LEITOS DE UTI 39 15 Outros Muni",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": null,
+   "ibge": "2920304",
+   "municipio": "Malhada de Pedras",
+   "uf": "BA",
+   "url": "https://www.pmvc.ba.gov.br/wp-content/uploads/BOLETIM-EPIDEMIOL%C3%93GICO-DIARIO-16-DE-agosto-DE-2022-1.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "6cb6ab30b3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f608fea5306260cf7c1c9f8fe863ead6e2425a359837ad4578c7435e8081fc55"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "481977 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE ANDRADAS Revisão devido ao processo licitatório para Concessão para exploração dos serviços públicos de abastecimento de"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "1548/12",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3102605",
+   "municipio": "Andradas",
+   "uf": "MG",
+   "url": "https://www.andradas.mg.gov.br/public/admin/globalarq/uploads/files/publica/124-pmsb-versaoconsolidada-16.12.2019(1).pdf",
+   "regras_18": [],
+   "pista_id": "a3d059d54c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8120f82af042ea30eb7d875778325b93d07108a079dbd2374cf3e5f4998a79ed",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Congonhas\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118007",
+   "municipio": "Congonhas",
+   "uf": "MG",
+   "url": "https://sapl.congonhas.mg.leg.br/media/sapl/public/documentoacessorio/2024/820/relatorio-_versao_final_do_requerimento_cidadao_n8_de_2024.pdf",
+   "regras_18": [],
+   "pista_id": "57294f6038",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8fdaaefc4b44893164acd990328de22e0aaf6399078abf3f11f2e8cb8b272149"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3170206",
+   "municipio": "Uberlândia",
+   "uf": "MG",
+   "url": "https://docs.uberlandia.mg.gov.br/wp-content/uploads/2026/06/15o-TERMO-DE-APOSTILAMENTO-AO-CONTRATO-No-251-2020-Missao-Sal-da-Terra-1.pdf",
+   "regras_18": [],
+   "pista_id": "afa3712ee1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3170206",
+   "municipio": "Uberlândia",
+   "uf": "MG",
+   "url": "https://docs.uberlandia.mg.gov.br/wp-content/uploads/2026/06/15o-TERMO-DE-APOSTILAMENTO-AO-CONTRATO-No-251-2020-Missao-Sal-da-Terra-1.pdf",
+   "regras_18": [],
+   "pista_id": "61b38481f1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18599 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE TRINDADE DO SUL-RS “A vida em primeiro lugar”. MAIO, 2025. 54 3541 1025 / 3541 1300 gabinete@trindadedosul.rs.gov.br defesacivil@trinda"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE TRINDADE DO SUL-RS “A vida em primeiro lugar”. MAIO, 2025. 54 3541 1025 / 3541 1300 gabinete@trindadedosul.rs.gov.br defesacivil@trinda",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "28/05/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA DE TRINDADE DO SUL-RS “A vida em primeiro lugar”. MAIO, 2025. 54 3541 1025 / 3541 1300 gabinete@trindadedosul.rs.gov.br defesacivil@trinda",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "indadedosul.rs.gov.br Rua Alecrim, 120 – Cep:99615-000 Trindade do Sul - RS 1.2 COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL: Nome do Coordenador E-mail C"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ita Corrente Líquida (anual): R$ 47.952.279,00 Eventos Adversos Mais Comuns: I. Estiagem; II. Vendaval; III. Granizo; IV. Chuvas Intensas; V. Enxurradas; VI. Er"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "28/05/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4321956",
+   "municipio": "Trindade do Sul",
+   "uf": "RS",
+   "url": "https://www.trindadedosul.rs.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "2266b85b4f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4ef5c839cc95087509fdccb83d59086c509e9722b68e4559f827e53682a5cdb3",
+   "data_da_edicao": "2025-05-28",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "nao_aplicado": {
+    "em": "2026-11-17",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "362842 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Diretor de Gestão de Risco de Desastres da Defesa Civil de Coronel Freitas PDGRD-DCCF 1 Universidade Comunitária da Região de Chapecó – UNOCHAPECÓ Prestaç"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e, com a instituição da Política Nacional de Proteção e Defesa Civil (PNPDEC) - Lei n. 12.608 de 10 de abril de 2012, que delega o maior número de atribuições a",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": "10/04/2012",
+      "trecho": "e, com a instituição da Política Nacional de Proteção e Defesa Civil (PNPDEC) - Lei n. 12.608 de 10 de abril de 2012, que delega o maior número de atribuições a"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/04/2012",
+   "natureza": null,
+   "ibge": "4204400",
+   "municipio": "Coronel Freitas",
+   "uf": "SC",
+   "url": "https://coronelfreitas.sc.gov.br/uploads/sites/411/2025/02/PDGRD-DCCF-formatado-07-12-23.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "41c9cac0cf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ae68264f7e3142bd52b5a19c0e32e424b8d9aab7219e073c77dd4175462d1571"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Alto Feliz\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://www.altofeliz.rs.gov.br/web/imgs/arquivos/publicacao-famurs-n-87-de-23-de-outubro-de-20251761231075.pdf",
+   "regras_18": [],
+   "pista_id": "c3bc51c2b8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "34ca3a7fe788087b54cbea06eae3bc7a5df1d85bc436c74b3f480cbf4b8741bd"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "66598 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "casos humanos confirmados. Vigilância de Vetores de Arbovírus Nos municípios de Caibaté e Coronel Barros, onde PNH morre- Silvestres no Rio Grande do Sul ram de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "indo a disponibilização de bombas costais, veículos para Em 2008 foi lançado o “Plano de Contingência para Den- utilização de UBV, máscaras para aplicação de in",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2010",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Estadual",
+      "titulo": "Plano de Contingência",
+      "trecho": "indo a disponibilização de bombas costais, veículos para Em 2008 foi lançado o “Plano de Contingência para Den- utilização de UBV, máscaras para aplicação de in",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2010",
+   "natureza": null,
+   "ibge": "4303301",
+   "municipio": "Caibaté",
+   "uf": "RS",
+   "url": "https://www.cevs.rs.gov.br/upload/arquivos/201903/12131302-n-3-4-setembro-dezembro.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "4dadc00357",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0ae769290d00f26719bcab7e171e1c6be4910c5965f20ae364599dcab182a040"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "71343 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICIPAL PARA ENFRENTAMENTO DA DENGUE 2025-2026 São José do Ouro - RS 09/09/2025 AUTORES/ELABORAÇÃO Responsável pelo prenchimento do form"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICIPAL PARA ENFRENTAMENTO DA DENGUE 2025-2026 São José do Ouro - RS 09/09/2025 AUTORES/ELABORAÇÃO Responsável pelo prenchimento do form",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "09/09/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA MUNICIPAL PARA ENFRENTAMENTO DA DENGUE 2025-2026 São José do Ouro - RS 09/09/2025 AUTORES/ELABORAÇÃO Responsável pelo prenchimento do form",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "núcleo 2 INTRODUÇÃO Este plano de contingência foi elaborado para a atuação da Secretaria Municipal de Saúde (SMS) de São José do Ouro no enfrentamento da deng"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICIPAL PARA ENFRENTAMENTO DA DENGUE 2025-2026 São José do Ouro - RS 09/09/2025 AUTORES/ELABORAÇÃO Responsável pelo prenchimento do form"
+    }
+   },
+   "categoria": null,
+   "data": "09/09/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4318606",
+   "municipio": "São José do Ouro",
+   "uf": "RS",
+   "url": "http://saojosedoouro.rs.gov.br/file.php?file=..%2Farquivos%2F8028%2F2025-09-17-1758138772arquivos-Resolu____o_06_2025_as.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "b891763dc7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1b45e328c3f30b8b4509001abbf7ad7cefecf925e33cdddb4820b67737315cc5"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "94ebebbad3",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7800 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4301008",
+   "municipio": "Arroio do Meio",
+   "uf": "RS",
+   "url": "https://arroiodomeio.rs.gov.br/noticia/visualizar/id/2156/?43o-festival-de-coros-celebra-o-canto-coral-em-arroio-do-meio.html",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "9068bf9e96",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "829fd438b1af6404355048f660b58fd671668b59d6f8cf21d08008eb7eac87ac"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "91389 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PROGRAMAÇÃO ANUAL DE SAÚDE DO MUNICÍPIO DE IBIRUBÁ/RS PAS 2026. 1. IDENTIFICAÇÃO UF: Rio Grande do Sul Município: Ibirubá 2. SECRETARIA MUNICIPAL DE SAÚDE CNPJ:"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "de Posse: 15/09/2025 4. INFORMAÇÕES DO FUNDO MUNICIPAL DE SAÚDE – FMS Criação: Lei Municipal 1.005/91 Data: 08/05/1991 CNPJ: 11.747.875/0001- 78 Nome do Presid",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.005/91",
+      "data": "08/05/1991",
+      "trecho": "de Posse: 15/09/2025 4. INFORMAÇÕES DO FUNDO MUNICIPAL DE SAÚDE – FMS Criação: Lei Municipal 1.005/91 Data: 08/05/1991 CNPJ: 11.747.875/0001- 78 Nome do Presid"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "etas e propostas previstas no Plano Municipal de Saúde 2026–2029, aprovado pelo Conselho Municipal de Saúde, por meio da Resolução CMS nº 005/2025. O financiame"
+    }
+   },
+   "categoria": null,
+   "data": "08/05/1991",
+   "natureza": null,
+   "ibge": "4310009",
+   "municipio": "Ibirubá",
+   "uf": "RS",
+   "url": "https://ibiruba.rs.gov.br/wp-content/uploads/2026/05/Programacao-Anual-de-Saude-PAS-2026.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "32647db149",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "24a7afce6d89c63d22ebec8acd559b85bca3b444db76c6f47634ac29007d3436"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "314625 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DIRETOR DE DRENAGEM URBANA DO MUNICÍPIO DE IRATI – PR PRODUTO 4 – RELATÓRIO DE PROGNÓSTICO DE DRENAGEM URBANA IRATI/PR FEVEREIRO/2019 PLANO DIRETOR DE DRE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "....................................................... 80 Figura 27 - Áreas do Plano de Contingência de Proteção e Defesa Civil. ......................... 85 F",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2019",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "....................................................... 80 Figura 27 - Áreas do Plano de Contingência de Proteção e Defesa Civil. ......................... 85 F",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2019",
+   "natureza": null,
+   "ibge": "4110706",
+   "municipio": "Irati",
+   "uf": "PR",
+   "url": "https://irati.pr.gov.br/uploads/pagina/arquivos/FermaPDDUP04RelPrognosticoFinalR11504.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "pista_id": "508ffe91cd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7096719bb1ad16d0fbeac7bf13f62df67a5c01fbd8df3eceac6156e618ed9de6"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Alto Feliz\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://www.altofeliz.rs.gov.br/web/imgs/arquivos/publicacao-famurs-n-52-de-27-de-junho-de-20251751025320.pdf",
+   "regras_18": [],
+   "pista_id": "943f0631af",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "576f2cab4a831781310ca93d423de9c4408fd39f19c88506cc6b028d1709c7e9"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "8368bfa417",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9757 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4314308",
+   "municipio": "Pejuçara",
+   "uf": "RS",
+   "url": "https://www.pejucara.rs.gov.br/noticia/3198/prefeitura-adquire-nova-pa-carregadeira/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "8dc9d3c5cc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b64e661037920fcd4945eaece50fff403958486efdaf58d847374387adee265e"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "190439 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde 2026 - 2029 PREFEITURA MUNICIPAL DE ARVOREZINHA SECRETARIA DA SAÚDE CONSELHO MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAÚDE 2026 - 2029 Ar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2.135",
+      "data": "25/09/2013",
+      "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 2026 - 2029 2 PREFEITURA DO MUNICÍPIO DE ARVOREZINHA Clovis Provensi Roman - Prefeito SECRETARIA MUNICIPAL DE SAÚDE Augusto Cichelero - Secretário Municipal"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "25/09/2013",
+   "natureza": "DUVIDA",
+   "ibge": "4301404",
+   "municipio": "Arvorezinha",
+   "uf": "RS",
+   "url": "https://www.arvorezinha.rs.gov.br/plano-municipal/download/3/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ccb9a7af88",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0029ac24fe74873c4235aa284be1300d73b17e444bf89e973aa72a0b65ad5522"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "234101 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "pio de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretaria Mun",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "17/10/2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "Plano de Contingência",
+      "trecho": "pio de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretaria Mun",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Município de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretar"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "as de convergências, tempestades, temperaturas extremas, infestações ou pragas, secas, epidemias, e desastres tecnológicos, como os relacionados a contaminação"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "17/10/2024",
+   "natureza": "EX_ANTE",
+   "ibge": "4209300",
+   "municipio": "Lages",
+   "uf": "SC",
+   "url": "https://www.lages.sc.gov.br/source/edital/geral/1755882399370.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "be14f2b9a3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7000369dfb118c63cb12293edbe9e975711b3de9f69c0b6cc245afc043865dca",
+   "data_da_edicao": "2024-10-17",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "aplicado_em": "2026-11-17"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10584 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322400",
+   "municipio": "Uruguaiana",
+   "uf": "RS",
+   "url": "https://www.uruguaiana.rs.gov.br/portal/noticias/0/3/7714/prefeitura-e-instituicoes-alinham-execucao-do-planejamento-preventivo-no-suporte-a-atingidos-pela-cheia-do-rio-uruguai",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "c1f9e97748",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5eb06c173d5422c5379709ea401ac51c5710624cede220784cc8cc3974c60efa"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "190439 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde 2026 - 2029 PREFEITURA MUNICIPAL DE ARVOREZINHA SECRETARIA DA SAÚDE CONSELHO MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAÚDE 2026 - 2029 Ar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2.135",
+      "data": "25/09/2013",
+      "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 2026 - 2029 2 PREFEITURA DO MUNICÍPIO DE ARVOREZINHA Clovis Provensi Roman - Prefeito SECRETARIA MUNICIPAL DE SAÚDE Augusto Cichelero - Secretário Municipal"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "25/09/2013",
+   "natureza": "DUVIDA",
+   "ibge": "4301404",
+   "municipio": "Arvorezinha",
+   "uf": "RS",
+   "url": "https://www.arvorezinha.rs.gov.br/plano-municipal/download/3/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "baa52fb8fb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0029ac24fe74873c4235aa284be1300d73b17e444bf89e973aa72a0b65ad5522"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "dec07fd75b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Alto Feliz\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://www.altofeliz.rs.gov.br/web/imgs/arquivos/publicacao-famurs-n-87-de-23-de-outubro-de-20251761231075.pdf",
+   "regras_18": [],
+   "pista_id": "56b163907c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "34ca3a7fe788087b54cbea06eae3bc7a5df1d85bc436c74b3f480cbf4b8741bd"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10392 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315305",
+   "municipio": "Quaraí",
+   "uf": "RS",
+   "url": "https://www.quarai.rs.gov.br/noticia/623/prefeito-ricardo-gadret-participa-de-reuniao-com-o-ministro-de-estado-da-saude/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "cfbbded5cc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "20d026f9bca810b96bb7eceaed4eec641d41eb780821a25dfb47978b84d2184d"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8592 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315305",
+   "municipio": "Quaraí",
+   "uf": "RS",
+   "url": "https://quarai.rs.gov.br/noticia/812/chama-crioula-chega-ao-marco-das-3-divisas/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "f171f9067e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "93f614e37d2c00abb3b95e52209be287b5786a84cf4490dc426c1953591dbf8c"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "6fe7d7602c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "190439 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde 2026 - 2029 PREFEITURA MUNICIPAL DE ARVOREZINHA SECRETARIA DA SAÚDE CONSELHO MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAÚDE 2026 - 2029 Ar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2.135",
+      "data": "25/09/2013",
+      "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 2026 - 2029 2 PREFEITURA DO MUNICÍPIO DE ARVOREZINHA Clovis Provensi Roman - Prefeito SECRETARIA MUNICIPAL DE SAÚDE Augusto Cichelero - Secretário Municipal"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "25/09/2013",
+   "natureza": "DUVIDA",
+   "ibge": "4301404",
+   "municipio": "Arvorezinha",
+   "uf": "RS",
+   "url": "https://www.arvorezinha.rs.gov.br/plano-municipal/download/3/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6f271414eb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0029ac24fe74873c4235aa284be1300d73b17e444bf89e973aa72a0b65ad5522"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "190439 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde 2026 - 2029 PREFEITURA MUNICIPAL DE ARVOREZINHA SECRETARIA DA SAÚDE CONSELHO MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAÚDE 2026 - 2029 Ar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2.135",
+      "data": "25/09/2013",
+      "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 2026 - 2029 2 PREFEITURA DO MUNICÍPIO DE ARVOREZINHA Clovis Provensi Roman - Prefeito SECRETARIA MUNICIPAL DE SAÚDE Augusto Cichelero - Secretário Municipal"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "25/09/2013",
+   "natureza": "DUVIDA",
+   "ibge": "4301404",
+   "municipio": "Arvorezinha",
+   "uf": "RS",
+   "url": "https://www.arvorezinha.rs.gov.br/plano-municipal/download/3/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "adaa53c4bf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0029ac24fe74873c4235aa284be1300d73b17e444bf89e973aa72a0b65ad5522"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "190439 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde 2026 - 2029 PREFEITURA MUNICIPAL DE ARVOREZINHA SECRETARIA DA SAÚDE CONSELHO MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAÚDE 2026 - 2029 Ar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2.135",
+      "data": "25/09/2013",
+      "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 2026 - 2029 2 PREFEITURA DO MUNICÍPIO DE ARVOREZINHA Clovis Provensi Roman - Prefeito SECRETARIA MUNICIPAL DE SAÚDE Augusto Cichelero - Secretário Municipal"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "25/09/2013",
+   "natureza": "DUVIDA",
+   "ibge": "4301404",
+   "municipio": "Arvorezinha",
+   "uf": "RS",
+   "url": "https://www.arvorezinha.rs.gov.br/plano-municipal/download/3/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "e0b2cc22ce",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0029ac24fe74873c4235aa284be1300d73b17e444bf89e973aa72a0b65ad5522"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "556575 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ndo R$ 2.520,00 (dois mil quinhentos e vinte reais), as PREFEITURA MUNICIPAL DE ALTO FELIZ paginas excedentes a franquia terão um custo de R$ 0,07 (sete centavo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o Sul – AMLINORTE SETOR DE LICITAÇÃO E CONTRATOS FÁBIA DE ALMEIDA RICHTER (PSB) PORTARIA Nº 21 DE 03 DE AGOSTO DE 2021. Cristal – ACOSTADOCE Altera a Portaria 2",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "21",
+      "data": "03/08/2021",
+      "trecho": "o Sul – AMLINORTE SETOR DE LICITAÇÃO E CONTRATOS FÁBIA DE ALMEIDA RICHTER (PSB) PORTARIA Nº 21 DE 03 DE AGOSTO DE 2021. Cristal – ACOSTADOCE Altera a Portaria 2"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "o que consta no Processo administrativo nº 13/2021; MUNICÍPIO DE ALEGRIA-RS, A Prefeita Municipal no exercício do Cargo de Prefeito Municipal de Alegria, Estad"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "03/08/2021",
+   "natureza": "DUVIDA",
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://www.altofeliz.rs.gov.br/web/imgs/arquivos/publicacao-famurs-n-04-de-10-de-agosto-de-20211628593838.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "74291c5709",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5ce60db5c30f41b7b870b1bfc7fd98e4be945d6adec3f89197c066bac216f73f"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4311403",
+   "municipio": "Lajeado",
+   "uf": "RS",
+   "url": "http://www.lajeado.rs.gov.br/noticia/13487/892?titulo=Defesa+Civil+de+Lajeado+participa+de+encontro+t%C3%A9cnico+com+a+8%C2%AA+Coordenadoria+Regional+de+Prote%C3%A7%C3%A3o+e+Defesa+Civil+do+Estado",
+   "regras_18": [],
+   "pista_id": "d4a55c4a45",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318408",
+   "municipio": "São Jerônimo",
+   "uf": "RS",
+   "url": "https://www.saojeronimo.rs.gov.br/uploads/paginadinamica/37422/Plano_Municipal_de_Contingncia_2026_2027.pdf",
+   "regras_18": [],
+   "pista_id": "4625c73372",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Alto Feliz\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://www.altofeliz.rs.gov.br/web/imgs/arquivos/publicacao-famurs-n-18-de-07-de-maio-de-20241715085286.pdf",
+   "regras_18": [],
+   "pista_id": "9cac113a0d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ae77b1522c02165b13c1cf42eadd51a33328018d6eb393a6c0186b26658c4279"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "237305 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL MUNICÍPIO DE NOVA RAMADA SECRETARIA MUNICIPAL DE SAÚDE E ASSISTÊNCIA SOCIAL PLANO MUNICIPAL DE SAÚDE 2026-2029 Nova Ramada Junho de"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "221/2025",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313334",
+   "municipio": "Nova Ramada",
+   "uf": "RS",
+   "url": "https://novaramada.rs.gov.br/images/documents/municipio/saude/plano-saude-2026-2029.pdf",
+   "regras_18": [],
+   "pista_id": "ce612aed63",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fdff68dcd5d7f097984b0596a457d1b108a6453b36ebc11abb077314d33b7a4f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "190439 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde 2026 - 2029 PREFEITURA MUNICIPAL DE ARVOREZINHA SECRETARIA DA SAÚDE CONSELHO MUNICIPAL DE SAÚDE PLANO MUNICIPAL DE SAÚDE 2026 - 2029 Ar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2.135",
+      "data": "25/09/2013",
+      "trecho": "...................................................................81 ANEXO A - PORTARIA N° 2.135 DE 25 DE SETEMBRO DE 2013: ESTABELECE DIRETRIZES PARA O PROCES"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "de 2026 - 2029 2 PREFEITURA DO MUNICÍPIO DE ARVOREZINHA Clovis Provensi Roman - Prefeito SECRETARIA MUNICIPAL DE SAÚDE Augusto Cichelero - Secretário Municipal"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "25/09/2013",
+   "natureza": "DUVIDA",
+   "ibge": "4301404",
+   "municipio": "Arvorezinha",
+   "uf": "RS",
+   "url": "https://www.arvorezinha.rs.gov.br/plano-municipal/download/3/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "d6fddceb60",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0029ac24fe74873c4235aa284be1300d73b17e444bf89e973aa72a0b65ad5522"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "95227 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "A M U N I C I P A L P A R A S I T U A Ç Õ E S D E R I S C O E D E S A S T R E S TANGARÁ DA SERRA - MT 22002255 P L A N O D E C O N T I N G Ê N C I A P A R A S I"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Região Centro- Sul do Estado de Mato Grosso, responde à exigência postulada na Lei Federal Nº 12.608, de 10 de abril de 2012, e mais especificamente ao Art. 22",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": "10/04/2012",
+      "trecho": "Região Centro- Sul do Estado de Mato Grosso, responde à exigência postulada na Lei Federal Nº 12.608, de 10 de abril de 2012, e mais especificamente ao Art. 22"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/04/2012",
+   "natureza": null,
+   "ibge": "5107958",
+   "municipio": "Tangará da Serra",
+   "uf": "MT",
+   "url": "https://tangaradaserra.mt.gov.br/wp-content/uploads/2025/07/PLANO-DE-CONTINGENCIA-MUNICIPAL-2025.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "1a138313b2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1c6d084043c81635aabf314fa0cf34a418b670273890740c4dc6236d2f0406fa"
   }
  ]
 }
