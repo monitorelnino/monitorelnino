@@ -45,10 +45,6 @@ DEFINEM_OS_PADROES = {"coletores_base.py", "scripts/verificar_segredos.py",
                       "scripts/auditoria_seguranca.py", "scripts/remediar_segredos_evidencias.py"}
 RE_PEM = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
 RE_CPF = re.compile(r"\b\d{3}\.\d{3}\.\d{3}-\d{2}\b")
-# O nome do campo de `PADROES_DE_SEGREDO[0]`, aceitando também a aspa que fecha a chave em JSON
-# (`"api_key": "…"`) — a regex da porta foi escrita para HTML e não a cobria.
-nominal = re.compile(r"(?:api[_-]?key|apikey|access[_-]?token|client[_-]?secret|secret[_-]?key|"
-                     r"authorization)[\"']?\s*[:=]\s*[\"']?[A-Za-z0-9_\-\.]{16,}", re.I)
 EXTENSOES = (".html", ".htm", ".txt", ".json", ".xml", ".csv")   # texto que a redação conhece
 BINARIOS = (".png", ".jpg", ".jpeg", ".gif", ".webp", ".pdf", ".zip", ".gz", ".woff", ".woff2",
             ".ttf", ".ico", ".xlsx", ".docx")
@@ -85,7 +81,7 @@ def separar_diff(texto: str) -> dict:
 def problemas(acrescentadas: dict) -> list:
     """Uma linha por achado: caminho, tipo e trecho mascarado. Função pura."""
     from coletores_base import PADROES_DE_SEGREDO
-    por_prefixo = PADROES_DE_SEGREDO[1][0]
+    nominal, por_prefixo = PADROES_DE_SEGREDO[0][0], PADROES_DE_SEGREDO[1][0]
     fora = []
     for caminho, linhas in sorted((acrescentadas or {}).items()):
         if caminho.startswith("evidencias/") or caminho in DEFINEM_OS_PADROES \
@@ -166,6 +162,11 @@ def _autoteste() -> int:
         ok("evidência com credencial REPROVA", len(pe) == 1 and "1 credencial" in pe[0])
         ok("evidência sem credencial passa", problemas_evidencia(["evidencias/sem.html"], d) == [])
         ok("evidência já redigida passa", problemas_evidencia(["evidencias/redigido.html"], d) == [])
+        (d / "evidencias" / "json.html").write_text(
+            '<script>var o={"access_token":"IGQVJVabcdefghij0123456789"}; var p="{\\"API_KEY\\":\\"abcdefghij0123456789\\"}";</script>',
+            encoding="utf-8", newline="\n")
+        ok("credencial com a aspa do JSON, escapada e em maiúscula REPROVA (18/11/2026)",
+           "2 credencial" in (problemas_evidencia(["evidencias/json.html"], d) or [""])[0])
         ok("caminho que não existe não quebra nem reprova",
            problemas_evidencia(["evidencias/nao_existe.html"], d) == [])
     ok("só texto de evidencias/ entra na conferência",
