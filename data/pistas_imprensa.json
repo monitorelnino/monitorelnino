@@ -540949,18 +540949,18 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2006/Plano%20de%20Conting%C3%AAncia%202026%20ASSINADO_QUARA%C3%8D.pdf",
    "alvo": "4315305",
-   "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "id": "5bf3c68b95",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano",
     "data": "2026",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "9e3f96b4e335276340b6fa117b291513514dac473d2bc5694604ad84255c6958"
    },
    "triagem": {
@@ -540972,7 +540972,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -541251,17 +541259,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2006/Plancon%20Barra%20do%20Quara%C3%AD%20-%202025.pdf",
    "alvo": "4301875",
-   "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21); lida e recusada: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "792f3533c2",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "0a930208f162a54ad8339521dc84adc24bb2baf1c8625804f7cf6fcf8b520c71"
    },
    "repeticoes": 1,
@@ -541274,7 +541282,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -541819,25 +541835,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/Plano%20de%20Conting%C3%AAncia%20S%C3%A3o%20Francisco%20de%20Paula.pdf",
    "alvo": "4318200",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "3d3bf37117",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2021",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "e5cde6c9dcf77114dcd5045d7413219860fd1045066ae84d0be54003ece36ec9"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -542542,25 +542566,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/PLANO%20DE%20CONTINGENCIA%202025%20-%20ANDR%C3%89%20DA%20ROCHA.pdf",
    "alvo": "4300661",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "9b1ee46395",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "803d6a57e7a00184a6de04a07a5399720a06eab97485d937b39fc798bbe69de9"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -543065,17 +543097,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/plano%20de%20conting%C3%AAncia%202025%20Pinto%20Bandeira.pdf",
    "alvo": "4314548",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "2ea89119b9",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "4a516ae338bd457bf6860dd5ab8f8c40df7a8a13f940745868d6d57451c66e5a"
    },
    "repeticoes": 1,
@@ -543083,7 +543115,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -543737,17 +543777,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2002/Plano%20de%20Conting%C3%AAncia%20Marau%202025.pdf",
    "alvo": "4311809",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "b5a6db74af",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2023",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "8fd8891581ab254cdec69c8adfbae345ef35a1d5c7becb03182f9f971e3c2e0c"
    },
    "repeticoes": 1,
@@ -543756,7 +543796,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -544327,25 +544375,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2002/PlanCon%20CAP%C3%83O%20BONITO%20DO%20SUL_2025.pdf",
    "alvo": "4304622",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "086bf62aed",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "c92aa33c2b8657d4aa33b6616f47b8e003dc7b816c6c02a51630e05b429c9570"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -545279,17 +545335,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2002/PlanCon_%20IBIRAPUIT%C3%83_2025.pdf",
    "alvo": "4309951",
-   "status": "fechada — sem documento oficial localizado: 23 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "e37160627f",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "4a87cc5976c2653e8fec672524060d7d9490d066922fd7688ced58debe7e4ab5"
    },
    "repeticoes": 1,
@@ -545302,7 +545358,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -545697,18 +545761,18 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2002/PlanCon%20JACUIZINHO2023.pdf",
    "alvo": "4310876",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "a6372c7988",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2023",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "65fcd267c00d66d2d2335538a42901b0d15ecf4bb896ac62c0a17bee7e35293e"
    },
    "pontos_confianca": 1,
@@ -545716,7 +545780,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -546337,18 +546409,18 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2008/MARQUES%20DE%20SOUZA%20-%20PLANCON%20v1.pdf",
    "alvo": "4312054",
-   "status": "fechada — sem documento oficial localizado: 23 dias na fila (prazo de 21); lida e recusada: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "352becb139",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "ff9656e3b0b0fddccbecf17de2becc2001cc33ed91b1fbe940bd5844b09b7851"
    },
    "triagem": {
@@ -546360,7 +546432,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -546992,17 +547072,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2008/ARVOREZINHA%20-%20PLANCON.pdf",
    "alvo": "4301404",
-   "status": "fechada — sem documento oficial localizado: 23 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "8599d558f6",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "9a3410bb879028a3f464d1d92d0a2a3dbf90bba75ad2f9cbebf82a592a58aba0"
    },
    "repeticoes": 1,
@@ -547016,7 +547096,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -547606,25 +547694,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2008/IL%C3%93POLIS%20-%20PLANCON%20v1.pdf",
    "alvo": "4310306",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "642c0e8197",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "305cc9b72c768ad0d6c63f849e48d0bc45cfbdd220f97995385460c50d5e5305"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -548261,17 +548357,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2008/04%20Plancon%20Encruzilhada%20do%20Sul.pdf",
    "alvo": "4306908",
-   "status": "fechada — sem documento oficial localizado: 23 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "63ce7aa5c0",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "02/01/2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "f7dab166585644cfad8567d1a2bd15e094f1996975d350480faa6432fb17d7e5"
    },
    "repeticoes": 1,
@@ -548284,7 +548380,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -548572,17 +548676,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2010/XANGRI-LA%20-%20PLANCON%202025.pdf",
    "alvo": "4323804",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "df25d58c41",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "490bfbfea8d5f35d8fd5c348c982b8e952642619cef54fe2c7860939b6a696b4"
    },
    "repeticoes": 1,
@@ -548593,6 +548697,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -549089,17 +549201,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2010/TRES%20FORQUILHAS%20-%20PLANCON%202025.pdf",
    "alvo": "4321832",
-   "status": "fechada — sem documento oficial localizado: 24 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "b356f5450d",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "d8025c3cef7dc2ef1de8d76ee0ebd0f8424400546bf9ef32cb0c9929fd7d2bcc"
    },
    "repeticoes": 1,
@@ -549114,6 +549226,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -549740,18 +549860,18 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/Alecrim.pdf",
    "alvo": "4300307",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "aa0ba40573",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "03/02/2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "42d5cd5662a1b05853b949c3cd0413c15c9c77331ddf1915377f63e8eca5a89b"
    },
    "pontos_confianca": 1,
@@ -549759,7 +549879,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -550615,25 +550743,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/Santo%20Cristo.pdf",
    "alvo": "4317905",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "2d033305b9",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "20/03/2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "421dfaee152df577516898923d7a7bb40cdb5968c66c0bc49b9d26c5a7dc95b5"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -552037,17 +552173,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/CONDOR_PLANCON.pdf",
    "alvo": "4305702",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "3888dea875",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "f448e386922f8639dd29fbb94e482f90b9371d017c68d39ad84be4df798cef7f"
    },
    "repeticoes": 1,
@@ -552056,7 +552192,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -552258,25 +552402,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/S%C3%83O%20MIGUEL%20DAS%20MISS%C3%95ES%20PLANCON.pdf",
    "alvo": "4319158",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "8d39bbb82c",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "a41f6b8e76a81cb6bdb7a79e05e7a839d87382001992c13f9e8eafa6d92c1c7a"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -552784,6 +552936,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -552812,7 +552970,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -553415,7 +553573,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "triagem": {
     "em": "2026-11-16",
     "desfecho": "sem documento oficial localizado",
@@ -553436,7 +553594,15 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -553773,7 +553939,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -553794,7 +553960,15 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -554241,7 +554415,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -554262,7 +554436,15 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -554636,7 +554818,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -554658,7 +554840,15 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -555172,6 +555362,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -555200,7 +555396,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -555661,6 +555857,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -555689,7 +555891,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -556108,6 +556310,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -556136,7 +556344,7 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-19",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -556453,17 +556661,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_S%C3%A3oMartinhoDaSerra.pdf",
    "alvo": "4319125",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "bc4d859f22",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "23/05/2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "25c2412896f2940fa5b3c9396937d5e1fb9dae18aef1e47b3d25cd0034a1f1fa"
    },
    "repeticoes": 1,
@@ -556471,7 +556679,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557008,17 +557224,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202023_S%C3%A3oJo%C3%A3oDoPol%C3%AAsine.pdf",
    "alvo": "4318432",
-   "status": "fechada — sem documento oficial localizado: 25 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "f8f8cc3728",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2023",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "4f220a857db8ad49228aa4321a675b5a6e509bd5bb563440f06930b45f91af23"
    },
    "repeticoes": 1,
@@ -557031,7 +557247,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557522,25 +557746,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_Tupanciret%C3%A31.pdf",
    "alvo": "4322202",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "c5fb9e28e8",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2023",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "be0359bbefbc53f931f2296cd63abf9065bd78d1e049c1402e38b6ffb1ee7185"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557908,18 +558140,18 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_S%C3%A3oFranciscoDeAssis.pdf",
    "alvo": "4318101",
-   "status": "fechada — sem documento oficial localizado: 25 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "4a435f3f74",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "e7197048c95ae7de9af6839b0faa0527ffa15b52bca1a9fba9a7566fc4b611b1"
    },
    "triagem": {
@@ -557931,7 +558163,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558291,18 +558531,18 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2004/PLANO%20DE%20CONTIG%C3%8ANCIA%20Arroio%20Grande.pdf",
    "alvo": "4301305",
-   "status": "fechada — sem documento oficial localizado: 25 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "eb9a55c5c0",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "3a8e72b07e4e05400f811724988cc0486301781dccd134b9f35c95fe68402143"
    },
    "triagem": {
@@ -558314,7 +558554,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558805,17 +559053,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2004/Plano%20de%20Conting%C3%AAncia%20Cap%C3%A3o%20do%20Le%C3%A3o.docx",
    "alvo": "4304663",
-   "status": "fechada — sem documento oficial localizado: 25 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "9aff459757",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "d2993997539a5419ee3c4f91b1a7f0e172dce23cb11dc3c2a8f5c1f8bcaba7ad"
    },
    "repeticoes": 1,
@@ -558828,7 +559076,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -559393,17 +559649,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20ELDORADO%20DO%20SUL%202025%20P2.pdf",
    "alvo": "4306767",
-   "status": "fechada — sem documento oficial localizado: 25 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "c0374a2842",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "079566258a825013515bdbcbfd4865376b3cc6f0edac31381b9ed3895172749f"
    },
    "repeticoes": 1,
@@ -559416,7 +559672,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -560233,17 +560497,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CRISTAL.pdf",
    "alvo": "4306056",
-   "status": "fechada — sem documento oficial localizado: 25 dias na fila (prazo de 21); lida e recusada: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "b53122899d",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "ef3fd75a7ce20cbb74cee0fd00fd282dd0392dbc58d402d737726ab619243ed9"
    },
    "repeticoes": 1,
@@ -560259,7 +560523,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -560762,25 +561034,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/Plano%20de%20Conting%C3%AAncia%20Dom%20Feliciano.pdf",
    "alvo": "4306502",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "68cb74f88c",
    "nivel_confianca": "C",
    "repeticoes": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "05/11/2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "ffc99a34b6f28acea3301c26f28274cfad65a587c5d3854cce8d657dfe0b038b"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561241,17 +561521,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CANOAS.pdf",
    "alvo": "4304606",
-   "status": "fechada — sem documento oficial localizado: 25 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "id": "6ea1c64abe",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
-    "julgado_em": "2026-11-11",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "ce9c016e585c79cf183be6a8ad39e6577e0c75d85450cad942310e979aa23aa1"
    },
    "repeticoes": 1,
@@ -561265,7 +561545,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-18",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
