@@ -804650,6 +804650,4323 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "2f54fee6129839654f68ccae0b0db825dab6ae1f203c705744722a5daa204901"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "94252 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PARA ELABORAÇÃO DE PROJETO DE PAVIMENTAÇÃO DA RODOVIA ESTADUAL MT-429, TRECHO: CLÁUDIA – MARCELÂNDIA PARA ATENDER AS NECESSIDADES DA SECRETARIA MUNIC. DE OBRAS"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5103056",
+   "municipio": "Cláudia",
+   "uf": "MT",
+   "url": "https://www.claudia.mt.gov.br/wp-content/uploads/2025/08/TR-MT-429.pdf",
+   "regras_18": [],
+   "pista_id": "b41e72390d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "eb21f0af8f922acca7d5ce8a50bda41dc17be80062b3736ddc59e2dc916e16a1",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5104609",
+   "municipio": "Itiquira",
+   "uf": "MT",
+   "url": "https://www.itiquira.mt.gov.br/noticia/356/Adocao-Responsavel",
+   "regras_18": [],
+   "pista_id": "7ff05950e2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14716 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Tururu Prefeitura Municipal de Tururu Ouvidoria/Sic Transparência CORONAVÍRUS (COVID-19): Boletins, Ações, Transparência e material educativo - cl"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "/01/2025 &times; Camila Sales Montenegro Cargo: Secretário(a) Tipo de nomeação: Portaria Número do ato: 062 Data: 01/02/2017 - Publicação: 31/07/2018 Matrícula:",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "062",
+      "data": "31/07/2014",
+      "trecho": "/01/2025 &times; Camila Sales Montenegro Cargo: Secretário(a) Tipo de nomeação: Portaria Número do ato: 062 Data: 01/02/2017 - Publicação: 31/07/2018 Matrícula:"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "31/07/2014",
+   "natureza": null,
+   "ibge": "2313559",
+   "municipio": "Tururu",
+   "uf": "CE",
+   "url": "https://www.tururu.ce.gov.br/secretaria.php?sec=8",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "dc32e6c4a6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "024987e24cb690457a80d2a9b8c0fa186364a279c5467a2b39181dec1b4d6db4"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9067 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal da Transparência de Muniz Freire - ES Ir para o Cabeçalho Ir para o Conteúdo Ir para o Rodapé Ir para o Mapa do Site Sobre Acessibilidade Contraste A- A"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "19",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203700",
+   "municipio": "Muniz Freire",
+   "uf": "ES",
+   "url": "http://munizfreire-es.portaltp.com.br/consultas/defesaCivil.aspx",
+   "regras_18": [],
+   "pista_id": "9d18c55cfe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "59bb39add614eed115776ffb3644a2d8b80346be42ae67fbe9931efb49aed840",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "562 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Presidente Kennedy\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204302",
+   "municipio": "Presidente Kennedy",
+   "uf": "ES",
+   "url": "https://presidentekennedy-es.portaltp.com.br/",
+   "regras_18": [],
+   "pista_id": "ace15acac0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "adaeb887999eea98c58d81e5083aec8f895dd6b54ae1f7cd2d45cf0f29b19172"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10898 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal da Transparência de Presidente Kennedy - ES Ir para o Cabeçalho Ir para o Conteúdo Ir para o Rodapé Ir para o Mapa do Site Sobre Acessibilidade Contraste"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RIO DO MUNIC&#205;PIO DE PRESIDENTE KENNEDY E D&#193; OUTRAS PROVID&#202;NCIAS. LEI COMPLEMENTAR N&#186; 02, DE 19.12.2008 - C&#243;digo tribut&#225;rio PK.pdf",
+     "dados": {
+      "tipo": "lei",
+      "numero": "186",
+      "data": "17/06/2026",
+      "trecho": "RIO DO MUNIC&#205;PIO DE PRESIDENTE KENNEDY E D&#193; OUTRAS PROVID&#202;NCIAS. LEI COMPLEMENTAR N&#186; 02, DE 19.12.2008 - C&#243;digo tribut&#225;rio PK.pdf"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "17/06/2026",
+   "natureza": null,
+   "ibge": "3204302",
+   "municipio": "Presidente Kennedy",
+   "uf": "ES",
+   "url": "https://presidentekennedy-es.portaltp.com.br/consultas/documentos.aspx?id=371",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "9cda2f0155",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d5944c41c7d60bca5865bb6d460057deb71a7046bcf7c7d368a5e46ba679270c"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301108",
+   "municipio": "Cantagalo",
+   "uf": "RJ",
+   "url": "https://www.cantagalo.rj.gov.br/noticia/22695/Curso-Basico-de-Protecao-e-Defesa-Civil-CBPDEC-012025",
+   "regras_18": [],
+   "pista_id": "8c64c15f68",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2404 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Natividade da Serra – SP - PLANCON - PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE NATIVIDADE DA SERRA – SP Não há suporte ao JavaScript. Ir para o conteú"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE NATIVIDADE DA SERRA – SP AVALIAR DECRETO 29 – PLANCON 👉 Maiores informações nos links abaixo : Planos Municipais",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "29",
+      "data": "02/05/2026",
+      "trecho": "DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE NATIVIDADE DA SERRA – SP AVALIAR DECRETO 29 – PLANCON 👉 Maiores informações nos links abaixo : Planos Municipais"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "02/05/2026",
+   "natureza": null,
+   "ibge": "3532306",
+   "municipio": "Natividade da Serra",
+   "uf": "SP",
+   "url": "https://www.natividadedaserra.sp.gov.br/plancon---plano-de-contingencia-de-protecao-e-defesa-civil-de-natividade-da-serra---sp%20e%20defesa%20civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "20612c1a98",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3ff0121a129bffef0fbe9d85feaba707d647a2662577c4c797af0f5ab9ac45d9"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14752 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Capanema - Paraná - Plano de contingência municipal da defesa civil Início Geral Endereços oficiais Organograma Acesso à informação Busca avançada"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "13/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "13/11/2026",
+   "natureza": null,
+   "ibge": "4104501",
+   "municipio": "Capanema",
+   "uf": "PR",
+   "url": "https://www.capanema.pr.gov.br/transparencia/meioambiente/plano",
+   "regras_18": [],
+   "pista_id": "98cee3aaac",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7e5727222cd99dfd7df4f9fd7b89bfc92cea4484119b109f3a2f6c751777db57",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15076 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Capanema - Paraná - Lei 1.910/2025 - Institui o Conselho Municipal da Cultura e autoriza a criação do Fundo Municipal da Cultura no âmbito da Secre"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.910/2025",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104501",
+   "municipio": "Capanema",
+   "uf": "PR",
+   "url": "https://www.capanema.pr.gov.br/transparencia/atos/leis/lei-1-910-2025-institui-o-conselho-municipal-da-cultura-e-autoriza-a-criacao-do-fundo-municipal-da-cultura-no-ambito-da-secretaria-municipal-de-educacao-e-cultura-semec",
+   "regras_18": [],
+   "pista_id": "c29341a667",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "00b1b019eca4b137352ff5ce7cc121a9f9a5e191885bc3ef0bf78dcb9e8f8e97",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "63703 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "AGAMENTOS: .................................................... 10 4.3.3 SECA E ESTIAGEM ......................................................................."
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2025) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4200051",
+   "municipio": "Abdon Batista",
+   "uf": "SC",
+   "url": "https://abdonbatista.sc.gov.br/uploads/sites/62/2025/07/Plano_Contingencia_Abdon_Batista_FINAL_assinado-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "2741e0a049",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0115f492dddbf6568c908bb8cf7e0753395cc11934f5c6b243fedf4fb103490d"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "47789 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "rão notificados e ter amostra coletada para diagnóstico de vírus respiratórios (influenza, SARS-CoV-2 e outros vírus respiratórios):  Todos os casos de SRAG ho"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1500602",
+   "municipio": "Altamira",
+   "uf": "PA",
+   "url": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "35c3394d52",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "47789 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "rão notificados e ter amostra coletada para diagnóstico de vírus respiratórios (influenza, SARS-CoV-2 e outros vírus respiratórios):  Todos os casos de SRAG ho"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1500602",
+   "municipio": "Altamira",
+   "uf": "PA",
+   "url": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "b54620a945",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4760 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Costa Marques — RO - Início Acessibilidade Inverter cores Monocromatico Contraste Escuro Contraste Claro Baixa Saturação Alta Saturação"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "prova": "ônio Justiniano de Castro M-6869 Gabinete Prefeito Vice-Prefeita Controlador... Leia Mais Política de Privacidade Datafull Texto Temporário Política de Privacid",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100080",
+   "municipio": "Costa Marques",
+   "uf": "RO",
+   "url": "https://site.costamarques.ro.gov.br/",
+   "regras_18": [],
+   "pista_id": "d9ee197cdc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "dcf2460520ff59c728136ab273a8ea6b6e89707c337cc2322ead858185d58227"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "47789 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "rão notificados e ter amostra coletada para diagnóstico de vírus respiratórios (influenza, SARS-CoV-2 e outros vírus respiratórios):  Todos os casos de SRAG ho"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1500602",
+   "municipio": "Altamira",
+   "uf": "PA",
+   "url": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "42bc3fe47c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "47789 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "rão notificados e ter amostra coletada para diagnóstico de vírus respiratórios (influenza, SARS-CoV-2 e outros vírus respiratórios):  Todos os casos de SRAG ho"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1500602",
+   "municipio": "Altamira",
+   "uf": "PA",
+   "url": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "1e7e38a4e1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4107256",
+   "municipio": "Douradina",
+   "uf": "PR",
+   "url": "https://douradina.pr.gov.br/uploads/pagina/arquivos/Plano-Cont-Dengue.pdf",
+   "regras_18": [],
+   "pista_id": "b6acfcb6c5",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2404 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Natividade da Serra – SP - PLANCON - PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE NATIVIDADE DA SERRA – SP Não há suporte ao JavaScript. Ir para o conteú"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE NATIVIDADE DA SERRA – SP AVALIAR DECRETO 29 – PLANCON 👉 Maiores informações nos links abaixo : Planos Municipais",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "29",
+      "data": "02/05/2026",
+      "trecho": "DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DE NATIVIDADE DA SERRA – SP AVALIAR DECRETO 29 – PLANCON 👉 Maiores informações nos links abaixo : Planos Municipais"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "02/05/2026",
+   "natureza": null,
+   "ibge": "3532306",
+   "municipio": "Natividade da Serra",
+   "uf": "SP",
+   "url": "https://www.natividadedaserra.sp.gov.br/plancon---plano-de-contingencia-de-protecao-e-defesa-civil-de-natividade-da-serra---sp%20e%20defesa%20civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c976aaabba",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3ff0121a129bffef0fbe9d85feaba707d647a2662577c4c797af0f5ab9ac45d9"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14752 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Capanema - Paraná - Plano de contingência municipal da defesa civil Início Geral Endereços oficiais Organograma Acesso à informação Busca avançada"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "13/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "13/11/2026",
+   "natureza": null,
+   "ibge": "4104501",
+   "municipio": "Capanema",
+   "uf": "PR",
+   "url": "https://www.capanema.pr.gov.br/transparencia/meioambiente/plano",
+   "regras_18": [],
+   "pista_id": "47a2de99f7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7e5727222cd99dfd7df4f9fd7b89bfc92cea4484119b109f3a2f6c751777db57",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15076 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Capanema - Paraná - Lei 1.910/2025 - Institui o Conselho Municipal da Cultura e autoriza a criação do Fundo Municipal da Cultura no âmbito da Secre"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.910/2025",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104501",
+   "municipio": "Capanema",
+   "uf": "PR",
+   "url": "https://www.capanema.pr.gov.br/transparencia/atos/leis/lei-1-910-2025-institui-o-conselho-municipal-da-cultura-e-autoriza-a-criacao-do-fundo-municipal-da-cultura-no-ambito-da-secretaria-municipal-de-educacao-e-cultura-semec",
+   "regras_18": [],
+   "pista_id": "259c67ebc3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "af6e25a73613925036fc0cf70f617f023420c53f8ff2fffd4f8d59cfa531764b",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "63703 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO MUNICÍPIO DE ABDON BATISTA JUNHO/2025 Sumário: 1 INTRODUÇÃO ......................................"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "AGAMENTOS: .................................................... 10 4.3.3 SECA E ESTIAGEM ......................................................................."
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2025) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4200051",
+   "municipio": "Abdon Batista",
+   "uf": "SC",
+   "url": "https://abdonbatista.sc.gov.br/uploads/sites/62/2025/07/Plano_Contingencia_Abdon_Batista_FINAL_assinado-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "44a82eb584",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0115f492dddbf6568c908bb8cf7e0753395cc11934f5c6b243fedf4fb103490d"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "47789 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "rão notificados e ter amostra coletada para diagnóstico de vírus respiratórios (influenza, SARS-CoV-2 e outros vírus respiratórios):  Todos os casos de SRAG ho"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1500602",
+   "municipio": "Altamira",
+   "uf": "PA",
+   "url": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "f2b7517eb2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "47789 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "rão notificados e ter amostra coletada para diagnóstico de vírus respiratórios (influenza, SARS-CoV-2 e outros vírus respiratórios):  Todos os casos de SRAG ho"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1500602",
+   "municipio": "Altamira",
+   "uf": "PA",
+   "url": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "8ae389ab9b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4760 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Costa Marques — RO - Início Acessibilidade Inverter cores Monocromatico Contraste Escuro Contraste Claro Baixa Saturação Alta Saturação"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "prova": "ônio Justiniano de Castro M-6869 Gabinete Prefeito Vice-Prefeita Controlador... Leia Mais Política de Privacidade Datafull Texto Temporário Política de Privacid",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100080",
+   "municipio": "Costa Marques",
+   "uf": "RO",
+   "url": "https://site.costamarques.ro.gov.br/",
+   "regras_18": [],
+   "pista_id": "bd0176d438",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "dcf2460520ff59c728136ab273a8ea6b6e89707c337cc2322ead858185d58227"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "47789 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................... 6 3. PLANO OPERACIONAL EM ACORDO COM PLANO DE CONTINGÊNCIA ESTADUAL PARA INFECÇÃO HUMANA PELO NOVO CORONAVÍRUS ......",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTIGÊNCIA DO MUNICIPIO DE ALTAMIRA PARA ENFRENTAMENTO DO NOVO CORONAVIRUS (COVID 19) VERSÃO 1 Grupo de Operação de Urgência Municipal no enfrentament"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "rão notificados e ter amostra coletada para diagnóstico de vírus respiratórios (influenza, SARS-CoV-2 e outros vírus respiratórios):  Todos os casos de SRAG ho"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1500602",
+   "municipio": "Altamira",
+   "uf": "PA",
+   "url": "https://altamira.pa.gov.br/wp-content/uploads/2021/03/plano-municipal-C19_Vers%C3%A3o-1.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "f2b882dd92",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d8f1e2276d2660ac7670888106f551994ef88b3cef10f252e69f250fb9130080"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "24541 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA NOVO CORONAVÍRUS (2019-nCoV) SÃO JOSÉ DOS AUSENTES MARÇO/2020 ATUALIZAÇÃO ABRIL/2020 Prefeitura Municipal de São José dos Ausent"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA NOVO CORONAVÍRUS (2019-nCoV) SÃO JOSÉ DOS AUSENTES MARÇO/2020 ATUALIZAÇÃO ABRIL/2020 Prefeitura Municipal de São José dos Ausent",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA NOVO CORONAVÍRUS (2019-nCoV) SÃO JOSÉ DOS AUSENTES MARÇO/2020 ATUALIZAÇÃO ABRIL/2020 Prefeitura Municipal de São José dos Ausent",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "CORONAVÍRUS (2019-nCoV) SÃO JOSÉ DOS AUSENTES MARÇO/2020 ATUALIZAÇÃO ABRIL/2020 Prefeitura Municipal de São José dos Ausentes Rua Professor Eduardo Inácio Perei"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "DUVIDA",
+   "ibge": "4318622",
+   "municipio": "São José dos Ausentes",
+   "uf": "RS",
+   "url": "https://www.saojosedosausentes.rs.gov.br/wp-content/uploads/2020/04/PLANO-MUNICIPAL-DE-CONTINGÊNCIA-NOVO-CORONAVÍRUS-1.pdf",
+   "regras_18": [
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "82d4da15ef",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "7065eb2c500de9fd16965dd679c8018d5a39c361f952334defc9898a29c6ca43"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "38 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3503307",
+   "municipio": "Araras",
+   "uf": "SP",
+   "url": "https://araras.sp.gov.br/pmpi/",
+   "regras_18": [],
+   "pista_id": "898c0dde54",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40696 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "AIS CULTURA Texto Base Para o Debate Sobre o Novo Plano Municipal de Cultura de Araras Decênio 2026 - 2036 ÍNDICE 1.Apresentação................................"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ratação de serviços, obras e consultorias especializadas, em conformidade com a Lei nº 14.133/2021 - obrigatória a partir de 1º de janeiro de 2024 - e demais no",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": "01/01/2024",
+      "trecho": "ratação de serviços, obras e consultorias especializadas, em conformidade com a Lei nº 14.133/2021 - obrigatória a partir de 1º de janeiro de 2024 - e demais no"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "01/01/2024",
+   "natureza": null,
+   "ibge": "3503307",
+   "municipio": "Araras",
+   "uf": "SP",
+   "url": "https://araras.sp.gov.br/home/pdf/Versão_Final_Caderno_PMC_2026_2036.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "16da1e1e11",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ddf92392cd05192543d1b7e4b77d36d35b92479d0c079d1b8a8e75f5eeabd7ee"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "76d193b8d6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7888cb8256",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "b1ccd09c4c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "aac8386df2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://portal.saude.pe.gov.br/wp-content/uploads/2025/04/plano_estadual_de_saude_2020_2023_0.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "0af201c364",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e80b4f313bd512f8b4dbd549389308ded8bd2a6a0ca2ee961eb8a9046e2f085f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://portal.saude.pe.gov.br/wp-content/uploads/2025/04/plano_estadual_de_saude_2020_2023_0.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "88fd79734a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "0645f19e4c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "063f4c11e0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4b5b20c647",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "310c956dd7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "936c06c6c0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6b730ea650",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "da312a539b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21627 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 | CUSTÓDIA GM | 2639068 | UNIDADE MISTA ELIZABETH BARBOSA s [2/0/0lolo0lo WI |IBIMIRIM GM | 2639092 | UNIDADE MISTA MARCOS FERREIRA DÁVILA olololololo WE |INA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "5691",
+      "data": "03/02/2020",
+      "trecho": "DO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano de Contingênci"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "GOVERNO DO ESTADO SECRETARIA DE SAÚDE DO ESTADO DE PERNAMBUCO COMISSÃO INTERGESTORES BIPARTITE RESOLUÇÃO CIB/PE Nº. 5691 DE 21 DE MARÇO DE 2022 Aprovar o Plano"
+    }
+   },
+   "categoria": null,
+   "data": "03/02/2020",
+   "natureza": null,
+   "ibge": "2606606",
+   "municipio": "Ibimirim",
+   "uf": "PE",
+   "url": "https://transparencia.ibimirim.pe.gov.br/uploads/5198/1/atos-oficiais/2022/resolucoes-da-cibpe/1650893332_resol5691covid19depernambucocomleitosdeutieenfermariageegm22.03.2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ba1f5a9943",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec45bc13296125b4f32304ff79cf95ed7e34960d4425ba72956c840c93b6969"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "22 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://defesacivil.itajai.sc.gov.br/",
+   "regras_18": [],
+   "pista_id": "b88e266188",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7565 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "TARINA e o amos PLANO MUNICIPAL DE CONTINGÊNCIA, DE PROTEÇÃO E DEFESA CIVIL DE CELSO RAMOS Estiagem, vendavais, granizo, chuvas intensas e rompimento de barra"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: ano ou ciclo"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "8e4b6ff3c0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "744c2005505a472a68160f22d9c8277f40f38027f4aa925a2e1aadab56cddb81"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "0b4ab20c9e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219705",
+   "municipio": "Xaxim",
+   "uf": "SC",
+   "url": "https://www.xaxim.sc.gov.br/uploads/sites/90/2023/06/Plano-Municipal-de-Contingencia-de-Protecao-e-Defesa-Civil.pdf",
+   "regras_18": [],
+   "pista_id": "8e525ffdbd",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://novatrento.sc.gov.br/defesa-civil-nt-plano-de-contingencia/",
+   "regras_18": [],
+   "pista_id": "705b2df19c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204806",
+   "municipio": "Curitibanos",
+   "uf": "SC",
+   "url": "https://www.camaracuritibanos.sc.gov.br/tramitacoes/1/24773",
+   "regras_18": [],
+   "pista_id": "2d29175a53",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "70942a2d5e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "abe2a63fe4",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "101690 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ".......................................................... 11 4. O MUNICÍPIO DE ABDON BATISTA/SC ........................................................... 12"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Fundo Municipal de Assistência Social Nome do Gestor do FMAS: Vera Lucia Petri Lei de Criação do FMAS: Lei 806 de 28/07/2014 CNPJ: 10.359.074/0001-72 5 1.5 Con",
+     "dados": {
+      "tipo": "lei",
+      "numero": "806",
+      "data": "28/07/2014",
+      "trecho": "Fundo Municipal de Assistência Social Nome do Gestor do FMAS: Vera Lucia Petri Lei de Criação do FMAS: Lei 806 de 28/07/2014 CNPJ: 10.359.074/0001-72 5 1.5 Con"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "O MUNICIPAL DE ASSISTÊNCIA SOCIAL Vigência 2026 a 2029 Lucimar Antônio Salmória Prefeito Municipal Kleber Salmória Vice Prefeito Municipal Vera Lucia Petri Secr"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'calamidade pública' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "28/07/2014",
+   "natureza": "DUVIDA",
+   "ibge": "4200051",
+   "municipio": "Abdon Batista",
+   "uf": "SC",
+   "url": "https://abdonbatista.sc.gov.br/uploads/sites/62/2025/12/Plano_Municipal_2026-2029-Aprovado.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "22f3ad34ab",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2927203ac6458efddc47b6a2e2226ac5613c39b2735d25d0e26dc68bf73e479c"
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7565 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "TARINA e o amos PLANO MUNICIPAL DE CONTINGÊNCIA, DE PROTEÇÃO E DEFESA CIVIL DE CELSO RAMOS Estiagem, vendavais, granizo, chuvas intensas e rompimento de barra"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: ano ou ciclo"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "43b7e89e6a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "744c2005505a472a68160f22d9c8277f40f38027f4aa925a2e1aadab56cddb81"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "65927 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ERSÃO: 1.4 ÚLTIMA ATUALIZAÇÃO: 26/04/2023 EXEMPLAR PERTENCENTE: ao município de Xaxim ÍNDICE 1 APRESENTAÇÃO 3 1.1 Caracterização do Município de Xaxim Santa Cat"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Eventos Extremos VERSÃO: 1.4 ÚLTIMA ATUALIZAÇÃO: 26/04/2023 EXEMPLAR PERTENCENTE: ao município de Xaxim ÍNDICE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "26/04/2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Eventos Extremos VERSÃO: 1.4 ÚLTIMA ATUALIZAÇÃO: 26/04/2023 EXEMPLAR PERTENCENTE: ao município de Xaxim ÍNDICE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "os Extremos VERSÃO: 1.4 ÚLTIMA ATUALIZAÇÃO: 26/04/2023 EXEMPLAR PERTENCENTE: ao município de Xaxim ÍNDICE 1 APRESENTAÇÃO 3 1.1 Caracterização do Município de Xa"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "o córrego transborda todo o ano, ocupando as ruas. Contudo, somente em anos de chuvas mais intensas, aproximadamente de dois em dois anos, a água invade as cas"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2023, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "26/04/2023",
+   "natureza": "EX_ANTE",
+   "ibge": "4219705",
+   "municipio": "Xaxim",
+   "uf": "SC",
+   "url": "https://www.xaxim.sc.gov.br/uploads/sites/90/2023/06/Plano-Municipal-de-Contingencia-de-Protecao-e-Defesa-Civil.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "e7e9683cdc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "140f87ad7014a8b4155ea7f44f07c5c39290c58ae01c096c64237174ee4f04fb"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7179 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Xaxim desenvolve Plano de Contingência para desastres &#8211; Prefeitura de Xaxim Skip to content 9 de novembro de 2023 Últimas Notícias Xaxim desenvolve Plano"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "09/11/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "09/11/2023",
+   "natureza": null,
+   "ibge": "4219705",
+   "municipio": "Xaxim",
+   "uf": "SC",
+   "url": "https://www.xaxim.sc.gov.br/xaxim-desenvolve-plano-de-contingencia-para-desastres/",
+   "regras_18": [],
+   "pista_id": "22850dcc26",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "065c6ca26feffc21532fc78c0603b745164c11fa911514505eab6c0979e47011",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.xaxim.sc.gov.br/xaxim-desenvolve-plano-de-contingencia-para-desastres/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219705",
+   "municipio": "Xaxim",
+   "uf": "SC",
+   "url": "https://www.xaxim.sc.gov.br/governo-municipal-reforca-acoes-preventivas-e-orienta-populacao-diante-da-previsao-de-chuvas-intensas/",
+   "regras_18": [],
+   "pista_id": "34385b4225",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7565 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "TARINA e o amos PLANO MUNICIPAL DE CONTINGÊNCIA, DE PROTEÇÃO E DEFESA CIVIL DE CELSO RAMOS Estiagem, vendavais, granizo, chuvas intensas e rompimento de barra"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: ano ou ciclo"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "6f88a38a76",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "744c2005505a472a68160f22d9c8277f40f38027f4aa925a2e1aadab56cddb81"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213500",
+   "municipio": "Porto Belo",
+   "uf": "SC",
+   "url": "https://portobelo.sc.gov.br/defesa-civil-de-porto-belo-reune-grac-para-alinhar-estrategias-preventivas-contra-impactos-do-el-nino-e-recebe-orientacoes-de-profissionais-da-amfri/",
+   "regras_18": [],
+   "pista_id": "088bb39dec",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213500",
+   "municipio": "Porto Belo",
+   "uf": "SC",
+   "url": "https://portobelo.sc.gov.br/porto-belo-recebe-coordenador-regional-da-defesa-civil-para-alinhamentos-em-relacao-as-previsoes-do-el-nino/",
+   "regras_18": [],
+   "pista_id": "d71114ca4d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213500",
+   "municipio": "Porto Belo",
+   "uf": "SC",
+   "url": "https://portobelo.sc.gov.br/defesa-civil-2/",
+   "regras_18": [],
+   "pista_id": "6a46ed7a73",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213500",
+   "municipio": "Porto Belo",
+   "uf": "SC",
+   "url": "https://portobelo.sc.gov.br/porto-belo-sedia-1o-reuniao-itinerante-do-colegiado-de-protecao-e-defesa-civil-da-amfri/",
+   "regras_18": [],
+   "pista_id": "a8ce5b4dec",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219705",
+   "municipio": "Xaxim",
+   "uf": "SC",
+   "url": "https://www.xaxim.sc.gov.br/uploads/sites/90/2023/06/Plano-Municipal-de-Contingencia-de-Protecao-e-Defesa-Civil.pdf",
+   "regras_18": [],
+   "pista_id": "b4ed113e43",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203956",
+   "municipio": "Capivari de Baixo",
+   "uf": "SC",
+   "url": "https://capivaridebaixo.sc.gov.br/pagina-40679/",
+   "regras_18": [],
+   "pista_id": "d76c0c452f",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203956",
+   "municipio": "Capivari de Baixo",
+   "uf": "SC",
+   "url": "https://capivaridebaixo.sc.gov.br/capivari-de-baixo-inicia-plano-de-contingencia-nas-escolas/",
+   "regras_18": [],
+   "pista_id": "ba98406031",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "bbc150928e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7565 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "TARINA e o amos PLANO MUNICIPAL DE CONTINGÊNCIA, DE PROTEÇÃO E DEFESA CIVIL DE CELSO RAMOS Estiagem, vendavais, granizo, chuvas intensas e rompimento de barra"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: ano ou ciclo"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "122ed93fc0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "744c2005505a472a68160f22d9c8277f40f38027f4aa925a2e1aadab56cddb81"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4206702",
+   "municipio": "Herval d'Oeste",
+   "uf": "SC",
+   "url": "https://hervaldoeste.sc.gov.br/cartaservicos/defesa-civil/",
+   "regras_18": [],
+   "pista_id": "a7e8acde4b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7565 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "TARINA e o amos PLANO MUNICIPAL DE CONTINGÊNCIA, DE PROTEÇÃO E DEFESA CIVIL DE CELSO RAMOS Estiagem, vendavais, granizo, chuvas intensas e rompimento de barra"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: ano ou ciclo"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "fb131c0f7c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "744c2005505a472a68160f22d9c8277f40f38027f4aa925a2e1aadab56cddb81"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213500",
+   "municipio": "Porto Belo",
+   "uf": "SC",
+   "url": "https://portobelo.sc.gov.br/defesa-civil-de-porto-belo-reune-grac-para-alinhar-estrategias-preventivas-contra-impactos-do-el-nino-e-recebe-orientacoes-de-profissionais-da-amfri/",
+   "regras_18": [],
+   "pista_id": "0fd40991ee",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4214201",
+   "municipio": "Quilombo",
+   "uf": "SC",
+   "url": "https://quilombo.sc.gov.br/plano-de-contingencia-da-assistencia-social-eaprovado-e-fortalece-acoes-da-defesa-civilem-quilombo/",
+   "regras_18": [],
+   "pista_id": "c619217c19",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "9988d39919",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212106",
+   "municipio": "Palmitos",
+   "uf": "SC",
+   "url": "https://palmitos.sc.gov.br/plancon/",
+   "regras_18": [],
+   "pista_id": "08af8b5352",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212106",
+   "municipio": "Palmitos",
+   "uf": "SC",
+   "url": "https://palmitos.sc.gov.br/palmitos-integra-debate-sobre-impactos-de-enchentes-e-cobram-acoes-para-o-balneario-de-ilha-redonda-na-alesc/",
+   "regras_18": [],
+   "pista_id": "d9e82a1559",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2026/07/E0sHEoaT41QWSDWXVHtynGs9.pdf",
+   "regras_18": [],
+   "pista_id": "07fa793e07",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202081",
+   "municipio": "Bandeirante",
+   "uf": "SC",
+   "url": "https://bandeirante.sc.gov.br/galeria/pagina-45715/",
+   "regras_18": [],
+   "pista_id": "ddf0d12abd",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://novatrento.sc.gov.br/defesa-civil-nt-plano-de-contingencia/",
+   "regras_18": [],
+   "pista_id": "310a50a411",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://novatrento.sc.gov.br/conselho-municipal-aprova-plancon-plano-que-integra-acoes-em-situacoes-de-risco/",
+   "regras_18": [],
+   "pista_id": "5ac698b2be",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219705",
+   "municipio": "Xaxim",
+   "uf": "SC",
+   "url": "https://www.xaxim.sc.gov.br/uploads/sites/90/2023/06/Plano-Municipal-de-Contingencia-de-Protecao-e-Defesa-Civil.pdf",
+   "regras_18": [],
+   "pista_id": "06cf3c9088",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "da96b0cc6b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4214201",
+   "municipio": "Quilombo",
+   "uf": "SC",
+   "url": "https://quilombo.sc.gov.br/plano-de-contingencia-da-assistencia-social-eaprovado-e-fortalece-acoes-da-defesa-civilem-quilombo/",
+   "regras_18": [],
+   "pista_id": "03547b7a0f",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4214201",
+   "municipio": "Quilombo",
+   "uf": "SC",
+   "url": "https://quilombo.sc.gov.br/noticia-646021/",
+   "regras_18": [],
+   "pista_id": "48e3ec55ea",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3101607",
+   "municipio": "Alfenas",
+   "uf": "MG",
+   "url": "https://alfenas.mg.gov.br/arquivos/publicacoes/509/453a5a4e3b4f2574da6c1a073f794287.pdf",
+   "regras_18": [],
+   "pista_id": "62f33533c5",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218608",
+   "municipio": "Trombudo Central",
+   "uf": "SC",
+   "url": "https://www.cmtc.sc.gov.br/proposicoes/Projetos-de-Leis-Complementares/0/1/0/11867",
+   "regras_18": [],
+   "pista_id": "0afdad3a07",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4216255",
+   "municipio": "São João do Oeste",
+   "uf": "SC",
+   "url": "https://saojoao.sc.gov.br/municipio-elabora-plano-de-contingencia-de-assistencia-social/",
+   "regras_18": [],
+   "pista_id": "fe9e56f678",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://saojoao.sc.gov.br/municipio-elabora-plano-de-contingencia-de-assistencia-social/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4216255",
+   "municipio": "São João do Oeste",
+   "uf": "SC",
+   "url": "https://saojoao.sc.gov.br/municipio-solicita-varios-equipamentos-junto-a-defesa-civil-do-estado/",
+   "regras_18": [],
+   "pista_id": "4a00431797",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918001",
+   "municipio": "Jequié",
+   "uf": "BA",
+   "url": "https://transparencia.jequie.ba.gov.br/plano-municipal-educacao",
+   "regras_18": [],
+   "pista_id": "c892281c17",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/GnxAL/",
+   "regras_18": [],
+   "pista_id": "aa593ca105",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501782",
+   "municipio": "Breu Branco",
+   "uf": "PA",
+   "url": "https://breubranco.pa.gov.br/pg-pages.php?YytJMEpCZ1NkTW5YdnpheVNVUUkrQT09",
+   "regras_18": [],
+   "pista_id": "18a9629e94",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501782",
+   "municipio": "Breu Branco",
+   "uf": "PA",
+   "url": "https://breubranco.pa.gov.br/pg-pages.php?Z2lYb1dtNkQyQlRPV3FQNjllRTk3dz09",
+   "regras_18": [],
+   "pista_id": "c8a70f2c62",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501782",
+   "municipio": "Breu Branco",
+   "uf": "PA",
+   "url": "https://breubranco.pa.gov.br/pg-pages.php?NUpaNWxOQmtVM0xZODQ3aTFwWnVkdz09",
+   "regras_18": [],
+   "pista_id": "c5db19ca44",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "98404 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Edição Extraordinária 1616 – 05 de Dezembro de 2023 PREFEITURA MUNICIPAL DE SÃO SEBASTIÃO Deslizamentos de grande impacto, inundações bruscas ou processos geoló"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "_____________________________ 4 termos do nos termos do artigo 57, inciso II da Lei nº 8.666/93. INTRODUÇÃO ____________________________________________________",
+     "dados": {
+      "tipo": "lei",
+      "numero": "8.666/93",
+      "data": "04/12/2023",
+      "trecho": "_____________________________ 4 termos do nos termos do artigo 57, inciso II da Lei nº 8.666/93. INTRODUÇÃO ____________________________________________________"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "04/12/2023",
+   "natureza": null,
+   "ibge": "3550704",
+   "municipio": "São Sebastião",
+   "uf": "SP",
+   "url": "https://www.saosebastiao.sp.gov.br/doem/DOEM_1616_20231205_221740.pdf",
+   "regras_18": [
+    "J5"
+   ],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "cd41f46046",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "3b85d74820a449d1be1ce73e6c213d1d43ad2efcb68c22c5c130567d3810d069",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.saosebastiao.sp.gov.br/doem/DOEM_1616_20231205_221740.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/qCxAL/",
+   "regras_18": [],
+   "pista_id": "e0b133d0dd",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1689 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Abadia de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Ed"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5200050",
+   "municipio": "Abadia de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.abadiadegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "6ae4955153",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b40717470cd698e5cbef9bb2c83aa7bb444d9ff3de145acfe422e290818ef730"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1671 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Abadia de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm."
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5200050",
+   "municipio": "Abadia de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.abadiadegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "df15029c48",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "acd135aef28eb86014af1354593c7d04e8df6840e223af486b3dcc1bac405620"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1656 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Diorama - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Resoluções"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5207105",
+   "municipio": "Diorama",
+   "uf": "GO",
+   "url": "https://acessoainformacao.diorama.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "3a6ba6c2d8",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "f79e715bf6626cd0f564ff5ad4bdb90172ed648acf67a0412248b9376a554d3a"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1660 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Diorama - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portari"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5207105",
+   "municipio": "Diorama",
+   "uf": "GO",
+   "url": "https://acessoainformacao.diorama.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "a3cbaebb1a",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "64204ca854f2032f030f2c404b0026cd4120a3f6ed55b05ebc4c8ed18eda304e"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1750 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Palestina de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5215652",
+   "municipio": "Palestina de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.palestinadegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "6887f41c49",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "39f8578daf092b043d6af03ef5717213b314596a4e83553b65866e810438ec4d"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1732 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Palestina de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos No"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5215652",
+   "municipio": "Palestina de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.palestinadegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "a3a143aeb0",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b5387958e6e1d77356afa749005cb35ab10efb488744adc0d05e069e878bd34a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5205000",
+   "municipio": "Carmo do Rio Verde",
+   "uf": "GO",
+   "url": "http://acessoainformacao.carmodorioverde.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "0ad1aaa0b7",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5205000",
+   "municipio": "Carmo do Rio Verde",
+   "uf": "GO",
+   "url": "http://acessoainformacao.carmodorioverde.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "6ef4571aad",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "51500 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE JANDAIA SECRETARIA MUNICIPAL DA SAÚDE DE JANDAIA NÚCLEO DE VIGILÂNCIA EM SAÚDE DEPARTAMENTO DE ATENÇÃO BASICA HOSPITAL MUNICIPAL DE JAND"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "IGILÂNCIA EM SAÚDE DEPARTAMENTO DE ATENÇÃO BASICA HOSPITAL MUNICIPAL DE JANDAIA PLANO MUNICIPAL DE CONTINGÊNCIA PARA O ENFRENTAMENTO DA INFECÇÃO HUMANA PELO NOV",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "18/03/2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "IGILÂNCIA EM SAÚDE DEPARTAMENTO DE ATENÇÃO BASICA HOSPITAL MUNICIPAL DE JANDAIA PLANO MUNICIPAL DE CONTINGÊNCIA PARA O ENFRENTAMENTO DA INFECÇÃO HUMANA PELO NOV",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE JANDAIA SECRETARIA MUNICIPAL DA SAÚDE DE JANDAIA NÚCLEO DE VIGILÂNCIA EM SAÚDE DEPARTAMENTO DE ATENÇÃO BASICA HOSPITAL MUNICIPAL DE JAND"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+     "objeto": "a Secretaria Municipal de Saúde decidiu instituir o Plano de Contingência para organização dos serviços de saúde do município, preparação dos serviços de vigilância e assistência à saúde para a detecção, monitora",
+     "gatilho": "ividades e Áreas envolvidas................................... 5.1. NÍVEL Risco Iminente.................................................. 6. CONSIDERAÇÕES FINA",
+     "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ada a necessidade; • Manter as ações de combate a endemias locais como sarampo, dengue e outras. • Solicitar junto a Regional de Saúde material para coleta de S"
+    }
+   },
+   "categoria": null,
+   "data": "18/03/2020",
+   "natureza": "EX_ANTE",
+   "ibge": "5211701",
+   "municipio": "Jandaia",
+   "uf": "GO",
+   "url": "https://www.jandaia.go.gov.br/wp-content/uploads/2020/03/PLANO-MUNICIPAL-DE-CONTINGÊNCIA.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "08ebf054c9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "cee1ae5fa2ac32fc5d84369e8f399815094ab94ad5029d669635e48f23839360"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3527256",
+   "municipio": "Lourdes",
+   "uf": "SP",
+   "url": "https://www.lourdes.sp.gov.br/portal/download/arquivos/KBPoj/",
+   "regras_18": [],
+   "pista_id": "a76f1c4786",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3527256",
+   "municipio": "Lourdes",
+   "uf": "SP",
+   "url": "https://www.lourdes.sp.gov.br/portal/download/arquivos/CKP-z/",
+   "regras_18": [],
+   "pista_id": "bac46c1bdf",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5213509",
+   "municipio": "Monte Alegre de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.montealegre.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "6b2f756a93",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5213509",
+   "municipio": "Monte Alegre de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.montealegre.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "b2dae8fe5e",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5202601",
+   "municipio": "Aurilândia",
+   "uf": "GO",
+   "url": "https://acessoainformacao.aurilandia.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "2abc64281e",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5202601",
+   "municipio": "Aurilândia",
+   "uf": "GO",
+   "url": "https://acessoainformacao.aurilandia.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "6f92a7bdd6",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/prefeitura-de-queluzito-convoca-comunidade-para-participar-da-elaboracao-do-novo-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "b2f4717c93",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/oficina-de-instalacao-do-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "7f9aa36234",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1651 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Santa Bárbara de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5219100",
+   "municipio": "Santa Bárbara de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.santabarbaradegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "02a8a52054",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "45cf1b748f7d59db176e1261e4bb7682c2d9bc7d7946e56df22465516d7976a2"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1655 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Santa Bárbara de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Ato"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5219100",
+   "municipio": "Santa Bárbara de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.santabarbaradegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "1052feaac0",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "6e353374e2dd1e38c6e014c7bf83a63cd034826342e68d4b4b865af284830f0f"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2549 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5008404",
+   "municipio": "Vicentina",
+   "uf": "MS",
+   "url": "https://vicentina.ms.gov.br/portal/noticia/2026/09/30/participe-da-construcao-coletiva-do-plano-municipal-educação-vicentina-2026–2036/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "fec36e08d4",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "6089206d55297560ec735cc2ff4360bd560382abe2b3f066d53fdf9d5abfa716"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1646 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Edealina - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Receitas"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5207352",
+   "municipio": "Edealina",
+   "uf": "GO",
+   "url": "https://acessoainformacao.edealina.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "fa1419a70e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d026741e336edb24d3cebec27a1e905dde126ba577a9d0dc6ca8e9b040db03cf"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1650 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Edealina - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portar"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5207352",
+   "municipio": "Edealina",
+   "uf": "GO",
+   "url": "https://acessoainformacao.edealina.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "b7abf5fc19",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "cbec1958838838ebad4a4c2a01b02d86b68ddfd22ece20b96094ae5dc0dd2013"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1716 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de São Luiz do Norte - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5220157",
+   "municipio": "São Luiz do Norte",
+   "uf": "GO",
+   "url": "https://acessoainformacao.saoluizdonorte.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "950d554add",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "fc23a0656e910431372f656c9e53eef8946fa1b8111dc9355aee0361fd349d52"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5220157",
+   "municipio": "São Luiz do Norte",
+   "uf": "GO",
+   "url": "https://acessoainformacao.saoluizdonorte.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "b006219ade",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4118857",
+   "municipio": "Perobal",
+   "uf": "PR",
+   "url": "https://coronavirus.perobal.pr.gov.br/sistema/arquivos/12066/290921161000_7ordf_edicao_do_plano_estadual_de_vacinacao_contra_a_covid19_pdf.pdf",
+   "regras_18": [],
+   "pista_id": "0bbae7a3bf",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/convocacao-da-populacao-para-participacao-da-2-oficina-do-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "e3d2758b80",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/qnxAL/",
+   "regras_18": [],
+   "pista_id": "b6c07a3a20",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3527256",
+   "municipio": "Lourdes",
+   "uf": "SP",
+   "url": "https://www.lourdes.sp.gov.br/portal/download/arquivos/CqPoj/",
+   "regras_18": [],
+   "pista_id": "2440a1472d",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3527256",
+   "municipio": "Lourdes",
+   "uf": "SP",
+   "url": "https://www.lourdes.sp.gov.br/portal/download/arquivos/RnP-z/",
+   "regras_18": [],
+   "pista_id": "f8b08f122a",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/dBxAL/",
+   "regras_18": [],
+   "pista_id": "cca3f3cf14",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2516755",
+   "municipio": "Tenório",
+   "uf": "PB",
+   "url": "https://tenorio.pb.gov.br/images/arquivos/documentos/1622038271.pdf",
+   "regras_18": [],
+   "pista_id": "966891eec4",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3527256",
+   "municipio": "Lourdes",
+   "uf": "SP",
+   "url": "https://www.lourdes.sp.gov.br/portal/download/arquivos/qRPoj/",
+   "regras_18": [],
+   "pista_id": "cc96f500b3",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "532876 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE NILÓPOLIS Secretaria Municipal de Meio Ambiente RESPOSTA ADMINISTRATIVA AO OFÍCIO MINISTERIAL Nº 144/2026-2PJTCNIG Prestação de informaç"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ação de riscos e registro fotográfico da intervenção realizada. CAPÍTULO VIII – PLANO DE CONTINGÊNCIA DA DEFESA CIVIL PARA CHUVAS INTENSAS Páginas 20 a 21 Apres",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "ação de riscos e registro fotográfico da intervenção realizada. CAPÍTULO VIII – PLANO DE CONTINGÊNCIA DA DEFESA CIVIL PARA CHUVAS INTENSAS Páginas 20 a 21 Apres",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "3303203",
+   "municipio": "Nilópolis",
+   "uf": "RJ",
+   "url": "https://nilopolis.rj.gov.br/wp-content/uploads/2026/08/Resposta-Administrativa-ao-Oficio-no-144-2PJTCONIG.pdf",
+   "regras_18": [
+    "J5",
+    "J15"
+   ],
+   "pista_id": "77df20a95b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "59fa01bf1d1867e4b8bac86a01c34a535e8affb5bb31a40ab4fa4b12e2d76f98",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://nilopolis.rj.gov.br/wp-content/uploads/2026/08/Resposta-Administrativa-ao-Oficio-no-144-2PJTCONIG.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "RJ",
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=9846E3E7-2CDP1-412B-9233-65227AFADBCA",
+   "regras_18": [],
+   "pista_id": "73acd2ebe9",
+   "origem": "doe",
+   "leu_documento": true,
+   "hash_evidencia": "70737309798edaf3f3ba7743e1714bd679dfb87a89f3ddf6cec46f5fcf772e28",
+   "busca_dirigida": {
+    "fontes": [],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "RJ",
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=FF6AA96E-925P0-4634-9EA6-1954849402CF",
+   "regras_18": [],
+   "pista_id": "18fc756148",
+   "origem": "doe",
+   "leu_documento": true,
+   "hash_evidencia": "3224f8a8b01de2988ada72baf0362813d214f16c388c968bdaf25930bdb07f5e",
+   "busca_dirigida": {
+    "fontes": [],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "RJ",
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=9B0D9185-431P2-4CED-B099-0CABF6660EB5",
+   "regras_18": [],
+   "pista_id": "0328858d1f",
+   "origem": "doe",
+   "leu_documento": true,
+   "hash_evidencia": "cdecc4cdc340dfe005d32c139bdc7f491e434ca9a90feb5dbe62087759352bc7",
+   "busca_dirigida": {
+    "fontes": [],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2145 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Contingência de Proteção e Defesa Civil - Prefeitura de Vassouras Pular para o conteúdo 18 de novembro de 2026 Prefeitura de Vassouras Site Oficial A C"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "20/05/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "20/05/2024",
+   "natureza": null,
+   "ibge": "3306206",
+   "municipio": "Vassouras",
+   "uf": "RJ",
+   "url": "https://www.vassouras.rj.gov.br/planodecontingencia/",
+   "regras_18": [],
+   "pista_id": "e275193f82",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d82f1a2af33752f6e161986b8ac06a31eaf1430c38df81c8cb64dc64fbacfa72",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.vassouras.rj.gov.br/planodecontingencia/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "56745 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Vassouras Estado do Rio de Janeiro Secretaria Municipal de Segurança Publica e Defesa Civil PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA C"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "tado do Rio de Janeiro Secretaria Municipal de Segurança Publica e Defesa Civil PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL — PLANCON — Deslizamentos de gr",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "20/05/2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "tado do Rio de Janeiro Secretaria Municipal de Segurança Publica e Defesa Civil PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL — PLANCON — Deslizamentos de gr",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Vassouras Estado do Rio de Janeiro Secretaria Municipal de Segurança Publica e Defesa Civil PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA C"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL — PLANCON — Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos correla"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "20/05/2024",
+   "natureza": "EX_ANTE",
+   "ibge": "3306206",
+   "municipio": "Vassouras",
+   "uf": "RJ",
+   "url": "https://www.vassouras.rj.gov.br/wp-content/uploads/2024/05/Plano-de-contingencia-2024.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "12ef3a61ad",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8825c85febbdd3ce69d47fec7d22e4322b62121bfa41e8838f02255bbadd8c14"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13224 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "co Dados Abertos Gráficos Sobre PORTAL DA TRANSPARÊNCIA PREFEITURA MUNICIPAL DE SANTA MARIA DE JETIBÁ - ES Menu Emergências Dispensas Emergenciais Contratos Eme"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204559",
+   "municipio": "Santa Maria de Jetibá",
+   "uf": "ES",
+   "url": "https://santamariadejetiba-es.portaltp.com.br/consultas/documentos.aspx?id=163",
+   "regras_18": [],
+   "pista_id": "e1ddd7f7b9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "cb8f0e097f8665a36ca94f41ddeea51472ac0f066a232df6318cad931883faca",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }
