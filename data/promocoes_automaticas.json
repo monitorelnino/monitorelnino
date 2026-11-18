@@ -871930,6 +871930,49 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "0477068e04f3669f9ea4fda44149ce502e25ad7294d083a83cb6abc74453ee1a"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "278357 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rogas Gilberto Prazeres Costa Ana Rita Suassuna Wanderley Gabinete do Centro do Recife Secretaria de Saúde do Recife Ana Paula de Oliveira Vilaça Leal Luciana A"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf",
+   "regras_18": [],
+   "pista_id": "7277af411d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "636f72d14b94997e32bb9aab38a9e29a5d8dd2c8e83d5e514ac82f9a53063afe",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }

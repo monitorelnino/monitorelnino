@@ -521800,7 +521800,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf",
    "alvo": "2611606",
@@ -521845,15 +521845,41 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-18",
     "criterios": {}
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "636f72d14b94997e32bb9aab38a9e29a5d8dd2c8e83d5e514ac82f9a53063afe"
    }
   },
   {
