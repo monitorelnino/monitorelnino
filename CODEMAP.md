@@ -196,7 +196,7 @@ Atualizado em 18/11/2026.
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `verificar_consistencia.py` | — | — | — | — | não |
 | `verificar_contribuicoes.py` | — | — | — | — | não |
-| `verificar_evidencias.py` | — | — | — | 1 | não |
+| `verificar_evidencias.py` | — | — | — | 2 | não |
 | `verificar_financiamento.py` | — | `financiamento/x.json` | — | — | não |
 | `verificar_links.py` | — | `links_historico.json` | — | — | não |
 | `verificar_painel.py` | — | `painel/lista.json` | — | — | não |

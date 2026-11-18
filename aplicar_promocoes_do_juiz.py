@@ -276,17 +276,16 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
     if not url:
         return None
     try:
-        from coletores_base import buscar, ler, preservar_evidencia
+        from coletores_base import ler, preservar_evidencia
         # 24/10/2026: já preservado (índice + arquivo em disco) não se baixa de novo; sem isso a
         # passada interrompida pelo prazo refazia do zero os PDFs que já tinha guardado.
         for h, it in (ler("evidencias.json", {"itens": {}}).get("itens") or {}).items():
             if it.get("url") == url and prova_do_item(it):
                 return h
-        from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, _ler_sharepoint_rs
+        from julgar_e_aplicar_descobertas import ASSINATURAS_DE_DOCUMENTO, copia_arquivada, ler_documento
         # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
         # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
-        corpo = _ler_sharepoint_rs(url, 60) if HOST_SHAREPOINT_RS in url else buscar(url)
-        from julgar_e_aplicar_descobertas import ASSINATURAS_DE_DOCUMENTO, copia_arquivada
+        corpo = ler_documento(url, 60)
         if str(url).lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt")) and not corpo.startswith(ASSINATURAS_DE_DOCUMENTO):
             corpo = copia_arquivada(url)[0]   # 17/11/2026: o endereço respondeu página; a prova é a cópia pública
             if not corpo:
@@ -602,6 +601,33 @@ def autoteste() -> int:
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": "documento acima do limite de evidência e sem cópia "
                                                                      "externa — registro pontuável exige evidência guardada (portão 26)"})],
                                  V, resolver=sem_dono)) == 1))
+    def guarda_do_escaneado():
+        """18/11/2026: PDF escaneado acima do limite, já no índice com texto de 0 caractere. O documento em mãos
+        tem de chegar ao OCR; com prova de verdade, não se refaz nada."""
+        import tempfile
+        import coletores_base as cb
+        corpo = b"%PDF-1.4 " + b"x" * 64
+        h, lidos = cb.sha256(corpo), []
+        banco = {"evidencias.json": {"itens": {h: {"url": "https://x.gov.br/a.pdf", "tamanho": len(corpo), "arquivo": None,
+                                                   "wayback": "tentativa falhou (URLError)",
+                                                   "texto_arquivo": f"evidencias/{h}.txt", "caracteres": 0}}}}
+        salvo = cb.LIMITE_EVIDENCIA, cb.ler, cb.gravar, cb._texto_de_evidencia
+        with tempfile.TemporaryDirectory():
+            try:
+                cb.LIMITE_EVIDENCIA = 16
+                cb.ler = lambda nome, padrao=None: banco.get(nome, padrao)
+                cb.gravar = lambda nome, obj, **k: banco.__setitem__(nome, obj)
+                cb._texto_de_evidencia = lambda c, u, hh: (lidos.append(hh), {"ocr_arquivo": f"evidencias/{hh}.ocr.txt",
+                                                                               "ocr_hash": "0" * 64, "ocr_caracteres": 900})[1]
+                sem_prova = prova_do_item(banco["evidencias.json"]["itens"][h])
+                cb.preservar_evidencia(corpo, "https://x.gov.br/a.pdf", "pdf", "autoteste")
+                com_prova = prova_do_item(banco["evidencias.json"]["itens"][h])
+                cb.preservar_evidencia(corpo, "https://x.gov.br/a.pdf", "pdf", "autoteste")
+                return (sem_prova, com_prova, lidos)
+            finally:
+                cb.LIMITE_EVIDENCIA, cb.ler, cb.gravar, cb._texto_de_evidencia = salvo
+    casos.append(("texto de 0 caractere não é prova: o escaneado acima do limite vai ao OCR, uma vez só",
+                  (lambda r: r[0] is False and r[1] is True and len(r[2]) == 1)(guarda_do_escaneado())))
     casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
                   and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],
