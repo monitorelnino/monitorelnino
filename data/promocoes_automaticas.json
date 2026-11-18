@@ -859771,6 +859771,2976 @@
     "encontrou": "https://prefeituramacuco.rj.gov.br/transparencia/arquivos/docs/Plano-de-Contingencia%20Macuco-RJ-2024-2025.pdf",
     "recusa_original": "citacao_incompleta"
    }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13530 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Siqueira Campos Estado do Paraná LEGISLAÇÃO MUNICIPAL DECRETO 009/2020 Ementa: “Dispõe sobre a criação do Comitê Municipal Intersetorial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "009/2020",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4126603",
+   "municipio": "Siqueira Campos",
+   "uf": "PR",
+   "url": "https://www.siqueiracampos.pr.gov.br/legislacao/download-lei/5477/",
+   "regras_18": [],
+   "pista_id": "a77dbbab05",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c811ab6f006489919f41cad2c201406ebf9cb042bcb5507bf65da0256ef5b53f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3157 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "EMOS EM: 13 102 170 ÀsHS 25 ENTO(S) EM / LAUDAS(S, AR | CAMARA o MUNICIPAL DE IRANDUBA GABINETE DO VEREADOR NEDY SANTANA VALE JUNIOR - PP LDO E VADOEM BRR Á"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "pelo Município para minimizar os impactos das enchentes: II — Da existência de Plano de Contingência atualizado para situações de cheias e alagamentos; HI — D",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "Plano de Contingência",
+      "trecho": "pelo Município para minimizar os impactos das enchentes: II — Da existência de Plano de Contingência atualizado para situações de cheias e alagamentos; HI — D",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1301852",
+   "municipio": "Iranduba",
+   "uf": "AM",
+   "url": "https://sapl.iranduba.am.leg.br/media/sapl/public/materialegislativa/2026/3296/requerimento_no18.pdf",
+   "regras_18": [
+    "J7",
+    "J15"
+   ],
+   "pista_id": "e394854342",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e9f4ff9215c8591abd9911ff1b9619a475cb01da9bf371839f6ad4116fd07c8e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205200",
+   "municipio": "Vila Velha",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "fb493f0eb1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201308",
+   "municipio": "Cariacica",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "61ab777ea4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201209",
+   "municipio": "Cachoeiro de Itapemirim",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "6780c1506c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203205",
+   "municipio": "Linhares",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "3c075e11ca",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201506",
+   "municipio": "Colatina",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "6fa9c3388a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203320",
+   "municipio": "Marataízes",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "138a539fa6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201407",
+   "municipio": "Castelo",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "3299dce7fe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201902",
+   "municipio": "Domingos Martins",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "f18e3c6fa2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200102",
+   "municipio": "Afonso Cláudio",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "4eff74d6ce",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200805",
+   "municipio": "Baixo Guandu",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "71608465c4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202306",
+   "municipio": "Guaçuí",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "7e360e6353",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200201",
+   "municipio": "Alegre",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "c2671c0c1a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203056",
+   "municipio": "Jaguaré",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "e5f9f1bc9e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205010",
+   "municipio": "Sooretama",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "1e3b38ebfa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202454",
+   "municipio": "Ibatiba",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "f5571f5897",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204104",
+   "municipio": "Pinheiros",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "02f7deb603",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205069",
+   "municipio": "Venda Nova do Imigrante",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "7704779f96",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204609",
+   "municipio": "Santa Teresa",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "017b80a8a9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204203",
+   "municipio": "Piúma",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "5e14f7f1de",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202108",
+   "municipio": "Ecoporanga",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "e108a24e40",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204054",
+   "municipio": "Pedro Canário",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "0ef128cd37",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205036",
+   "municipio": "Vargem Alta",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "e8d0af5084",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204351",
+   "municipio": "Rio Bananal",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "f14591e935",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203502",
+   "municipio": "Montanha",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "f1c6d09c5e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204005",
+   "municipio": "Pancas",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "438de27b83",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203700",
+   "municipio": "Muniz Freire",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "63177f75ba",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202207",
+   "municipio": "Fundão",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "cefa1fba86",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203346",
+   "municipio": "Marechal Floriano",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "45a37498cb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200300",
+   "municipio": "Alfredo Chaves",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "5f2bc920c7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203809",
+   "municipio": "Muqui",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "b7a1de85c3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205176",
+   "municipio": "Vila Valério",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "750d5090fe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202652",
+   "municipio": "Irupi",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "58b4db0d76",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201001",
+   "municipio": "Boa Esperança",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "49ccbd48b7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202702",
+   "municipio": "Itaguaçu",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "4e145ac761",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204500",
+   "municipio": "Santa Leopoldina",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "441377bfd5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201159",
+   "municipio": "Brejetuba",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "2ff9fce6f9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203304",
+   "municipio": "Mantenópolis",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "faa9a95fba",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202603",
+   "municipio": "Iconha",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "4213252b16",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203353",
+   "municipio": "Marilândia",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "0483d5d7f7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200169",
+   "municipio": "Água Doce do Norte",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "3b163400b3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "25546 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203007",
+   "municipio": "Iúna",
+   "uf": "ES",
+   "url": "https://iuna.es.gov.br/noticia/858",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "8f89717423",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2c79c88c703ec4ec011125fe6a6f331138bb5bd0091e89bbf1708cf1984cd21a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201704",
+   "municipio": "Conceição do Castelo",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "4524e0cfce",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202504",
+   "municipio": "Ibiraçu",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "f116c55591",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203106",
+   "municipio": "Jerônimo Monteiro",
+   "uf": "ES",
+   "url": "https://www.jeronimomonteiro.es.gov.br/detalhe-da-materia/info/defesa-civil-de-jeronimo-monteiro/6803",
+   "regras_18": [],
+   "pista_id": "a3083456cf",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203106",
+   "municipio": "Jerônimo Monteiro",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "dff1def8c1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203163",
+   "municipio": "Laranja da Terra",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "cd12d5ddc1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202256",
+   "municipio": "Governador Lindenberg",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "cd5d69c59b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3204807",
+   "municipio": "São José do Calçado",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "80d5cdee7d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200706",
+   "municipio": "Atilio Vivacqua",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "a23f2399fa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201100",
+   "municipio": "Bom Jesus do Norte",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d2fca8c86d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200136",
+   "municipio": "Águia Branca",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "805aa0e961",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202553",
+   "municipio": "Ibitirama",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "a6ead76c54",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19011 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205150",
+   "municipio": "Vila Pavão",
+   "uf": "ES",
+   "url": "https://setades.es.gov.br/media/PlanodeContigencia/Plano%20de%20Conting%C3%AAncia%20%20Setades.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "fb5012c6c9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81ab029f1d28be664df3dfeb93a9d46d91471f24fc454f0867f569262c479457"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "25546 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203007",
+   "municipio": "Iúna",
+   "uf": "ES",
+   "url": "https://iuna.es.gov.br/noticia/858",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "1581068302",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2c79c88c703ec4ec011125fe6a6f331138bb5bd0091e89bbf1708cf1984cd21a"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40828 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SECRETARIA MUNICIPAL DE SAÚDE DE PARANAGUÁ PLANO MUNICIPAL DE CONTINGÊNCIA DE DOENÇAS TRANSMISSÍVEIS POR VETORES TROPICAIS ZIKA, FEBRE CHIKUNGUNYA, FEBRE AMAREL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Febre Amarela Urbana, Dengue e Chikungunya na instância municipal, por meio da Lei Municipal nº3.656 de 24 de abril de 2017. SECRETARIA MUNICIPAL DE SAÚDE DE P",
+     "dados": {
+      "tipo": "lei",
+      "numero": "3.656",
+      "data": "24/04/2017",
+      "trecho": "Febre Amarela Urbana, Dengue e Chikungunya na instância municipal, por meio da Lei Municipal nº3.656 de 24 de abril de 2017. SECRETARIA MUNICIPAL DE SAÚDE DE P"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "24/04/2017",
+   "natureza": null,
+   "ibge": "4118204",
+   "municipio": "Paranaguá",
+   "uf": "PR",
+   "url": "https://www.paranagua.pr.gov.br/imgbank2/file/semsa/ATUALIZADO%20PLANO-DE-CONTING%C3%8ANCIA-DA-SA%C3%9ADE-DO-LITORAL-E-PARANAGU%C3%81-Oficial-C%C3%B3pia.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "107363628d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "a6b71c7b1cc18dc9d484c4dfe8bf31f65016bca9a25587aa7f875d19fd76d2b1"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "88595 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BOM JESUS DO TOCANTINS SISTEMA ÚNICO DE SAÚDE SECRETARIA MUNICIPAL DE SAÚDE CNPJ: 11.695.769/0001-98 PLANO MUNICIPAL DE SAÚDE 2022-2025"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai",
+     "dados": {
+      "tipo": "lei",
+      "numero": "5.454",
+      "data": "10/05/1988",
+      "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/05/1988",
+   "natureza": null,
+   "ibge": "1501576",
+   "municipio": "Bom Jesus do Tocantins",
+   "uf": "PA",
+   "url": "https://bomjesusdotocantins.pa.gov.br/wp-content/uploads/2022/08/PLANO-MUNICIPAL-DE-SAU%CC%81DE-2022-A-2025-ATUALIZADO-BOM-JESUS-DO-TOCANTINS-1.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "e06a658b81",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fcda2b908de5459c28020dc42e8788ae9f8d8c70f3eeaee6f563bf597b30610c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "88595 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BOM JESUS DO TOCANTINS SISTEMA ÚNICO DE SAÚDE SECRETARIA MUNICIPAL DE SAÚDE CNPJ: 11.695.769/0001-98 PLANO MUNICIPAL DE SAÚDE 2022-2025"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai",
+     "dados": {
+      "tipo": "lei",
+      "numero": "5.454",
+      "data": "10/05/1988",
+      "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/05/1988",
+   "natureza": null,
+   "ibge": "1501576",
+   "municipio": "Bom Jesus do Tocantins",
+   "uf": "PA",
+   "url": "https://bomjesusdotocantins.pa.gov.br/wp-content/uploads/2022/08/PLANO-MUNICIPAL-DE-SAU%CC%81DE-2022-A-2025-ATUALIZADO-BOM-JESUS-DO-TOCANTINS-1.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "70eb47ba83",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fcda2b908de5459c28020dc42e8788ae9f8d8c70f3eeaee6f563bf597b30610c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9483 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE TUCUMÃ SECRETARIA MUNICIPAL DE SAUDE CNPJ: 11.234.776/0001-92 Ofício n.º 023 /SMS/PMT. Tucumã (PA), 19 de janeiro de 2021. ILMO Sr. S"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "6/0001-92 6. FUNDAMENTO LEGAL 6.1 A presente contratação está fundamentada na Lei nº 8.666, de 21 de junho de 1993, que regulamenta o artigo 37, inciso XXI, d",
+     "dados": {
+      "tipo": "lei",
+      "numero": "8.666",
+      "data": "21/06/1993",
+      "trecho": "6/0001-92 6. FUNDAMENTO LEGAL 6.1 A presente contratação está fundamentada na Lei nº 8.666, de 21 de junho de 1993, que regulamenta o artigo 37, inciso XXI, d"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "21/06/1993",
+   "natureza": null,
+   "ibge": "1508084",
+   "municipio": "Tucumã",
+   "uf": "PA",
+   "url": "https://prefeituradetucuma.pa.gov.br/wp-content/uploads/2021/02/oficio-Laborat%C3%B3rio.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "a665f04334",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "81b8f0d7874673a6f863195fd236b9b086f856d2154b15bdf368b58942de71b1"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2616407",
+   "municipio": "Vitória de Santo Antão",
+   "uf": "PE",
+   "url": "https://transparencia.prefeituradavitoria.pe.gov.br/uploads/5429/1/atos-oficiais/2022/plano-municipal-de-saude-2/1658320600_plano-municipal-de-saude-20222025.pdf",
+   "regras_18": [],
+   "pista_id": "a5f689eb92",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://transparencia.prefeituradavitoria.pe.gov.br/uploads/5429/1/atos-oficiais/2022/plano-municipal-de-saude-2/1658320600_plano-municipal-de-saude-20222025.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4206751",
+   "municipio": "Ibiam",
+   "uf": "SC",
+   "url": "https://ibiam.sc.gov.br/uploads/sites/321/2025/05/PLANO-DE-CONTINGENCIA-DE-PROTECAO-E-DEFESA-CIVIL-FORMATADO.pdf",
+   "regras_18": [],
+   "pista_id": "3a4a857623",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "16225 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5107925",
+   "municipio": "Sorriso",
+   "uf": "MT",
+   "url": "https://site.sorriso.mt.gov.br/noticia/compdec-avanca-na-elaboracao-do-plano-de-contingencia-municipal-6a7dea42892d8",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "a47a3b53dc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1d2263a9a27288c2941556d033b4561072cac12bb0370add65962f922252e5f5"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2606101",
+   "municipio": "Glória do Goitá",
+   "uf": "PE",
+   "url": "https://transparencia.prefeituradavitoria.pe.gov.br/uploads/5429/1/atos-oficiais/2025/relatorio-de-gestao-municipal-da-saude/1751486814_rag-8.pdf",
+   "regras_18": [],
+   "pista_id": "aa776fe1d8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40828 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SECRETARIA MUNICIPAL DE SAÚDE DE PARANAGUÁ PLANO MUNICIPAL DE CONTINGÊNCIA DE DOENÇAS TRANSMISSÍVEIS POR VETORES TROPICAIS ZIKA, FEBRE CHIKUNGUNYA, FEBRE AMAREL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Febre Amarela Urbana, Dengue e Chikungunya na instância municipal, por meio da Lei Municipal nº3.656 de 24 de abril de 2017. SECRETARIA MUNICIPAL DE SAÚDE DE P",
+     "dados": {
+      "tipo": "lei",
+      "numero": "3.656",
+      "data": "24/04/2017",
+      "trecho": "Febre Amarela Urbana, Dengue e Chikungunya na instância municipal, por meio da Lei Municipal nº3.656 de 24 de abril de 2017. SECRETARIA MUNICIPAL DE SAÚDE DE P"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "24/04/2017",
+   "natureza": null,
+   "ibge": "4118204",
+   "municipio": "Paranaguá",
+   "uf": "PR",
+   "url": "https://www.paranagua.pr.gov.br/imgbank2/file/semsa/ATUALIZADO%20PLANO-DE-CONTING%C3%8ANCIA-DA-SA%C3%9ADE-DO-LITORAL-E-PARANAGU%C3%81-Oficial-C%C3%B3pia.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "03862ae4b0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "a6b71c7b1cc18dc9d484c4dfe8bf31f65016bca9a25587aa7f875d19fd76d2b1"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "88595 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BOM JESUS DO TOCANTINS SISTEMA ÚNICO DE SAÚDE SECRETARIA MUNICIPAL DE SAÚDE CNPJ: 11.695.769/0001-98 PLANO MUNICIPAL DE SAÚDE 2022-2025"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai",
+     "dados": {
+      "tipo": "lei",
+      "numero": "5.454",
+      "data": "10/05/1988",
+      "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/05/1988",
+   "natureza": null,
+   "ibge": "1501576",
+   "municipio": "Bom Jesus do Tocantins",
+   "uf": "PA",
+   "url": "https://bomjesusdotocantins.pa.gov.br/wp-content/uploads/2022/08/PLANO-MUNICIPAL-DE-SAU%CC%81DE-2022-A-2025-ATUALIZADO-BOM-JESUS-DO-TOCANTINS-1.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "57c34a96e4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fcda2b908de5459c28020dc42e8788ae9f8d8c70f3eeaee6f563bf597b30610c"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "88595 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BOM JESUS DO TOCANTINS SISTEMA ÚNICO DE SAÚDE SECRETARIA MUNICIPAL DE SAÚDE CNPJ: 11.695.769/0001-98 PLANO MUNICIPAL DE SAÚDE 2022-2025"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai",
+     "dados": {
+      "tipo": "lei",
+      "numero": "5.454",
+      "data": "10/05/1988",
+      "trecho": "NTIFICAÇÃO DO MUNICÍPIO: Nome: BOM JESUS DO TOCANTINS– PA HISTÓRICO Criado pela Lei nº 5.454, de 10 de maio de 1988, com área desmembrada de São João do Araguai"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/05/1988",
+   "natureza": null,
+   "ibge": "1501576",
+   "municipio": "Bom Jesus do Tocantins",
+   "uf": "PA",
+   "url": "https://bomjesusdotocantins.pa.gov.br/wp-content/uploads/2022/08/PLANO-MUNICIPAL-DE-SAU%CC%81DE-2022-A-2025-ATUALIZADO-BOM-JESUS-DO-TOCANTINS-1.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "077c72b81c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fcda2b908de5459c28020dc42e8788ae9f8d8c70f3eeaee6f563bf597b30610c"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18082 caracteres de fonte oficial",
+     "recorte_do_ato": "6000 de 18082 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DE 2020. “Reestrutura o Plano de Contingência da Defesa Civil do Município de Santa Cruz do Rio Pardo.” OTACÍLIO PARRAS ASSIS, Prefeito de Santa Cruz do Rio"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DECRETO Nº 309, DE 05 DE NOVEMBRO DE 2020. “Reestrutura o Plano de Contingência da Defesa Civil do Município de Santa Cruz do Rio Pardo.” OTACÍLIO PARRAS ASSI",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "309",
+      "data": "05/11/2020",
+      "trecho": "DECRETO Nº 309, DE 05 DE NOVEMBRO DE 2020. “Reestrutura o Plano de Contingência da Defesa Civil do Município de Santa Cruz do Rio Pardo.” OTACÍLIO PARRAS ASSI"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Defesa Civil do Município de Santa Cruz do Rio Pardo.” OTACÍLIO PARRAS ASSIS, Prefeito de Santa Cruz do Rio Pardo, Estado de São Paulo, usando as atribuições"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "05/11/2020",
+   "natureza": "DUVIDA",
+   "ibge": "3546405",
+   "municipio": "Santa Cruz do Rio Pardo",
+   "uf": "SP",
+   "url": "https://www.santacruzdoriopardo.sp.gov.br/assets/uploads/arquivos/plano-de-contigencia-defesa-civil.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6f1a39ab92",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "80d4fa666178ee552af78a370f9a08e7534b417408328c30342882d9de8de629"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2604502",
+   "municipio": "Chã Grande",
+   "uf": "PE",
+   "url": "https://transparencia.prefeituradavitoria.pe.gov.br/uploads/5429/1/atos-oficiais/2025/relatorio-de-gestao-municipal-da-saude/1751486814_rag-8.pdf",
+   "regras_18": [],
+   "pista_id": "ead87640b6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21487 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁG"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁGUAS FRIAS J",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE SANTA",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "ANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁGUAS FRIAS J",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁG"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁGUAS FRIAS J"
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": "EX_ANTE",
+   "ibge": "4200556",
+   "municipio": "Águas Frias",
+   "uf": "SC",
+   "url": "https://aguasfrias.sc.gov.br/uploads/sites/394/2024/02/PLANO-DE-CONTINGENCIA-DE-COMBATE-A-DENGUE-AGUAS-FRIAS-2024.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "5ea3b33580",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "04decee185f72b17470646e5760f4fec706655e5e418830ebc7ab480f09d73f7"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "154 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207502",
+   "municipio": "Indaial",
+   "uf": "SC",
+   "url": "https://indaial.atende.net/cidadao/noticia/prefeitura-de-indaial-reune-servidores-para-alinhar-acoes-da-assistencia-social-diante-de-eventos-climaticos",
+   "regras_18": [],
+   "pista_id": "84faf71e26",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38560 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "FEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA DE DENGUE, CHIKUNGUNYA E ZI",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE SANTA",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "FEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA DE DENGUE, CHIKUNGUNYA E ZI",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "possui convênio firmado com a Prefeitura Municipal. A vigilância e controle das arboviroses no município ocorre pelo setor de Vigilância Epidemiológica, estrutu"
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": "EX_ANTE",
+   "ibge": "4204905",
+   "municipio": "Descanso",
+   "uf": "SC",
+   "url": "https://descanso.sc.gov.br/uploads/sites/330/2024/05/Plano-de-Contingencia-2023-Descanso.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "353d6247ff",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "58f93cb38b8ecfa52edcfa5c4f9a479b181fe1d937e8131bd2e9da3289e27028"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215000",
+   "municipio": "Rio Negrinho",
+   "uf": "SC",
+   "url": "https://www.camararn.sc.gov.br/imprensa/noticias/0/73/0/2519",
+   "regras_18": [],
+   "pista_id": "ce4bfbc81f",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21487 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁG"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁGUAS FRIAS J",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE SANTA",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "ANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁGUAS FRIAS J",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁG"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ANTA CATARINA PREFEITURA MUNICIPAL DE ÁGUAS FRIAS SECRETARIA MUNICIPAL DE SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DA DENGUE NO MUNICÍPIO DE ÁGUAS FRIAS J"
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": "EX_ANTE",
+   "ibge": "4200556",
+   "municipio": "Águas Frias",
+   "uf": "SC",
+   "url": "https://aguasfrias.sc.gov.br/uploads/sites/394/2024/02/PLANO-DE-CONTINGENCIA-DE-COMBATE-A-DENGUE-AGUAS-FRIAS-2024.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "982b71ebbe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "04decee185f72b17470646e5760f4fec706655e5e418830ebc7ab480f09d73f7"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4206751",
+   "municipio": "Ibiam",
+   "uf": "SC",
+   "url": "https://ibiam.sc.gov.br/uploads/sites/321/2025/05/PLANO-DE-CONTINGENCIA-DE-PROTECAO-E-DEFESA-CIVIL-FORMATADO.pdf",
+   "regras_18": [],
+   "pista_id": "1b055be243",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "43639 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PARANÁ Plano de Contingência Municipal de Proteção e Defesa Civil Município de Três Barras do Paraná - PR O pÍesente Plano de Contingência Municipal estabelece"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "\\ DEFESA GIVIL PARANÁ Plano de Contingência Municipal de Proteção e Defesa Civil Município de Três Barras do Paraná - PR O pÍesente Plano de Contingência Munici",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "Plano de Contingência",
+      "trecho": "\\ DEFESA GIVIL PARANÁ Plano de Contingência Municipal de Proteção e Defesa Civil Município de Três Barras do Paraná - PR O pÍesente Plano de Contingência Munici",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "DEFESA GIVIL PARANÁ Plano de Contingência Municipal de Proteção e Defesa Civil Município de Três Barras do Paraná - PR O pÍesente Plano de Contingência Municip"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "Plano de Contingência Municipal de Proteção e Defesa Civil Município de Três Barras do Paraná - PR O pÍesente Plano de Contingência Municipal estabelece diretri"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "4127858",
+   "municipio": "Três Barras do Paraná",
+   "uf": "PR",
+   "url": "https://tresbarras.pr.gov.br/attachments/article/20344/Plano%20de%20Conting%C3%AAncia%20Municipal%20de%20Prote%C3%A7%C3%A3o%20e%20Defesa%20Civil.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J10",
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "54e9e98aa4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "24337fb97fee15e0c183f753e2fe848316880e84f214d46c3a7aa3ef5d855b06"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "23526 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Três Barras do Paraná - Licitações na íntegra Início O município Perfil Nossa história Acervo digital municipal Eventos anuais Nossos símbolos O go"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "11/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "11/11/2026",
+   "natureza": null,
+   "ibge": "4127858",
+   "municipio": "Três Barras do Paraná",
+   "uf": "PR",
+   "url": "https://tresbarras.pr.gov.br/transparencia/adm/licitacoes",
+   "regras_18": [],
+   "pista_id": "fd60a1074e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1c5584f73a06198955ad2c6face468bc882877f2722238e8104ead9ad39e0bd5",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205803",
+   "municipio": "Garuva",
+   "uf": "SC",
+   "url": "https://www.camaragaruva.sc.gov.br/proposicoes/Lei-Ordinaria/0/1/0/15892",
+   "regras_18": [],
+   "pista_id": "d4ece30be1",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "210461 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA MUNICIPIO DE SÃO BONIFÁCIO SECRETARIA MUNICIPAL DE ASSISTÊNCIA SOCIAL “O Serviço Social atual é caracterizado pela luta, pela defesa do"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "879/96",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215901",
+   "municipio": "São Bonifácio",
+   "uf": "SC",
+   "url": "https://portal.saobonifacio.sc.gov.br/uploads/sites/380/2025/11/Plano-Assistencia-Social-2026-2029-1.pdf",
+   "regras_18": [],
+   "pista_id": "030b127fe3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5cab4c4f4bb669e0b9ff558f07427cabee79f0f9250efb64dd2a19eae37bd394",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4209706",
+   "municipio": "Lebon Régis",
+   "uf": "SC",
+   "url": "https://lebonregis.sc.gov.br/uploads/sites/446/2021/12/2044966_Plano_de_Contingencia___Escola_Santa_Catarina.pdf",
+   "regras_18": [],
+   "pista_id": "47ece93836",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4209706",
+   "municipio": "Lebon Régis",
+   "uf": "SC",
+   "url": "https://lebonregis.sc.gov.br/legislacao/lei-ordinaria-no1815-2025-de-14-outubro-de-2025-concede-auxilio-refeicao-aos-motoristas-da-secretaria-municipal-da-saude-secretaria-municipal-de-educacao-e-cultura-e-das-outras-providencias/",
+   "regras_18": [],
+   "pista_id": "6c0cdca0ee",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [
+    "J5"
+   ],
+   "pista_id": "49da5cd7a7",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217303",
+   "municipio": "Saudades",
+   "uf": "SC",
+   "url": "https://www.camarasaudades.sc.gov.br/tramitacoes/10/484/0",
+   "regras_18": [],
+   "pista_id": "444164bc99",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217303",
+   "municipio": "Saudades",
+   "uf": "SC",
+   "url": "https://www.camarasaudades.sc.gov.br/imprensa/noticias/0/2/2020/661",
+   "regras_18": [],
+   "pista_id": "b0ae43d5b6",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217303",
+   "municipio": "Saudades",
+   "uf": "SC",
+   "url": "https://www.camarasaudades.sc.gov.br/tramitacoes/2/509/0",
+   "regras_18": [],
+   "pista_id": "0bf2998c83",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204905",
+   "municipio": "Descanso",
+   "uf": "SC",
+   "url": "https://descanso.sc.gov.br/confira-o-plano-de-contingencia-para-enfrentamento-de-epidemia-de-dengue/",
+   "regras_18": [],
+   "pista_id": "7b306b80a1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3629 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Secretaria da Saúde - Prefeitura de Descanso Skip to content 9 de novembro de 2024 Últimas Notícias Descanso abre prazo para solicitação de isenção do IPTU Soci"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "prova": "retaria da Saúde - Prefeitura de Descanso Skip to content 9 de novembro de 2024 Últimas Notícias Descanso abre prazo para solicitação de isenção do IPTU Social",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204905",
+   "municipio": "Descanso",
+   "uf": "SC",
+   "url": "https://descanso.sc.gov.br/secretaria-da-saude-2/",
+   "regras_18": [],
+   "pista_id": "1983298346",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aa2cbf5477df03d6716ae606fc96a9f48c3615c75999c5d9305a0b4725208a68"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4366 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202131",
+   "municipio": "Bela Vista do Toldo",
+   "uf": "SC",
+   "url": "https://www.pmbvt.sc.gov.br/estrutura/pagina-4055/pagina-38921-2-2/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "5adb8196eb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "162b66790c8fdaf8b761a7423a2c8a31e47cd4edd32abb4eaeb03e2df2abceae"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1572 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Catu Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Receitas Receitas"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2907509",
+   "municipio": "Catu",
+   "uf": "BA",
+   "url": "https://acessoainformacao.catu.ba.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "829142d6d8",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "1b23916af4d9b413cf461d0c4d6079b12287ab5c37f7b5b04311dcfe74dbcf76"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1480 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação - Prefeitura de Catu Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Receitas Receit"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2907509",
+   "municipio": "Catu",
+   "uf": "BA",
+   "url": "https://acessoainformacao.catu.ba.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "8a375cc782",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "a6cb2ab541ee9921b5d733d94da2b0bdd58349ab46dac229186eb1d9ce769cd4"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "29756 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Riachão Secretaria Municipal de Saúde de Riachão Riachão/MA 2021 PREFEITURA MUNICIPAL DE RIACHÃO SECRETARIA MUNICIPAL DE SAÚDE COORDENAÇ"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/01/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/01/2021",
+   "natureza": null,
+   "ibge": "2109502",
+   "municipio": "Riachão",
+   "uf": "MA",
+   "url": "https://www.riachao.ma.gov.br/wp-content/uploads/2021/05/Plano-Municipal-vacina-COVID-Riachão-MA-1ª-versão.pdf",
+   "regras_18": [],
+   "pista_id": "8a8c85c84d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b5d59011bbff2372ebf0361240fbed6127fcd9947c59b0999b1695ad80185e84",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5203609",
+   "municipio": "Brazabrantes",
+   "uf": "GO",
+   "url": "https://acessoainformacao.brazabrantes.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "7c9aff9f33",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1674 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Brazabrantes - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Po"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5203609",
+   "municipio": "Brazabrantes",
+   "uf": "GO",
+   "url": "https://acessoainformacao.brazabrantes.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "01b5f1e4f4",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ba1939691a2fe4044db904372478ec7c2547a30f261735d1e9da3cffd66a998e"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7180 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PREFEITURA MUNICIPAL DE CERRITO CONSELHO MUNICIPAL DE EDUCAÇÃO PARECER CME Nº 004/2026 Interessado: Secretaria Municipal de Educação"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.063/2020",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305124",
+   "municipio": "Cerrito",
+   "uf": "RS",
+   "url": "https://www.cerrito.rs.gov.br/arquivos/parecer_004_aprova++uo_plano_expans+uo_de_matr+¡culas_tempo_28110910.pdf",
+   "regras_18": [],
+   "pista_id": "8abd40bedf",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "faeed878193d61e49fde2978d4f244035906ff794debaecbac386150131e5c37",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5210562",
+   "municipio": "Itaguari",
+   "uf": "GO",
+   "url": "https://acessoainformacao.itaguari.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "b3334ce9e4",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5210562",
+   "municipio": "Itaguari",
+   "uf": "GO",
+   "url": "https://acessoainformacao.itaguari.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "57a3c00e6a",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1325 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "lano Municipal de Contingência para o Enfrentamento do Covid-19 - Prefeitura de Paraúna Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Licitações"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5216403",
+   "municipio": "Paraúna",
+   "uf": "GO",
+   "url": "http://acessoainformacao.parauna.go.gov.br/cidadao/outras_informacoes/planomunicipal/id=27?_ga=2.260632397.1389820379.1589460874-2116182187.1559072382",
+   "regras_18": [],
+   "pista_id": "50ed8cc42f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "00769eeb63b83930b3ac8be61f508dde5f8a1f7af300cfcfeadd1b22e27136dc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5216403",
+   "municipio": "Paraúna",
+   "uf": "GO",
+   "url": "https://acessoainformacao.parauna.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "ac6900e096",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5216403",
+   "municipio": "Paraúna",
+   "uf": "GO",
+   "url": "https://acessoainformacao.parauna.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "12b09ac7d8",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1727 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Uirapuru - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Ata de Po"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5221577",
+   "municipio": "Uirapuru",
+   "uf": "GO",
+   "url": "http://acessoainformacao.uirapuru.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "f30e3edbd7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b3ff1d38162c18bd5546b74b609da3d04bb34ff66b152cce64eeb6461ce62734"
   }
  ]
 }
