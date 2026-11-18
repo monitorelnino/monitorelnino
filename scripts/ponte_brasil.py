@@ -146,7 +146,7 @@ def autoteste() -> int:
                 {"url": "https://a.gov.br/1.pdf", "status": 200, "sha256": cb.sha256(pdf), "final": "https://a.gov.br/novo/1.pdf"},
                 {"url": "https://a.gov.br/2", "status": 403, "recusa": True},
                 {"url": "https://a.gov.br/3", "status": 200, "sha256": "trocado"},
-                {"url": "https://a.gov.br/4", "status": 404}]}), encoding="utf-8")
+                {"url": "https://a.gov.br/4", "status": 404}]}), encoding="utf-8", newline="\n")
             return itens_do_manifesto(d)
 
     def com_ponte(erro, copia=True):
