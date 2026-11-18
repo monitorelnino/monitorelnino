@@ -427,8 +427,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "16/11/2026",
-   "log_ref": "julgar_saude_16-11-2026",
+   "data_verificacao": "18/11/2026",
+   "log_ref": "julgar_saude_18-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -480,6 +480,19 @@
      "tipo": "saude_do_ciclo",
      "hash_evidencia": "e2d7b120e9ac9ceacbead2e03ff3a53c994211a6333a0a723f8d332d0b4d4b88",
      "justificativa_ex_ante": "promovido por julgar_saude.py em 16/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+    },
+    {
+     "status": "VENC",
+     "orgao": "SES-MG",
+     "doc": "Plano Estadual de Contingência Doenças Transmitidas pelo Aedes 2019-2020",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "11/2019",
+     "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2019/11/Plano-de-Contingencia-Estadual-Aedes-2019_2020_final-112.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "17dbbc4872555959c7e58dd0e6b1768041e4cc182589dc72bc80fe8ab3b576f1",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 18/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "NOVO",
