@@ -349,7 +349,7 @@
    "id": "mudaram_faixa",
    "grupo": "preparacao",
    "rotulo": "Estados que mudaram de faixa no MARÉ Legal ou no MARÉ Saúde",
-   "valor": 0,
+   "valor": 1,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "MARÉ, sobre os documentos lidos em cada estado",
@@ -360,7 +360,13 @@
    "variacao": null,
    "nota": "entre as edições de 2026-11-17 e 2026-11-18, nos dois índices",
    "secundaria": null,
-   "lista": [],
+   "lista": [
+    {
+     "uf": "RO",
+     "de": "em construção",
+     "para": "avançado"
+    }
+   ],
    "pagina_de_origem": null,
    "referencia": null,
    "unidade": null
@@ -818,5 +824,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 18/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 42,2 de 100; o MARÉ Saúde, em 60,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 62 municípios decretaram situação de emergência ou calamidade; 2,5 milhões de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 8 de 27 capitais têm plano localizado e 1257 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 18/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 42,2 de 100; o MARÉ Saúde, em 60,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 62 municípios decretaram situação de emergência ou calamidade; 2,5 milhões de pessoas vivem nos municípios que decretaram. 1 estado mudou de faixa.\n\nDesde 29 de junho, 8 de 27 capitais têm plano localizado e 1257 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
