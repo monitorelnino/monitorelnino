@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #1856 · Pista de imprensa nasce com a data de entrada
+
+Os monitores de imprensa regional e de saúde gravavam a pista sem `registrado_em`; a idade na fila contava da data da notícia e a matéria antiga nascia vencida (>21 dias). O portão da fila não humana reprovou a `main` das 03:53 UTC até aqui. Os dois monitores carimbam a entrada na criação (+9/−1 em código); as 4 vencidas na fila foram fechadas por prazo.
+
 ## 2026-11-17 · #1853 · O blog sai do site
 
 Por decisão da editoria, a página do blog, os textos publicados e o feed saem do site, do menu, do mapa do site e da página de Imprensa; os endereços antigos levam à inicial. Ficam guardados para uso interno os textos, o pacote semanal de dados e o verificador de texto.
