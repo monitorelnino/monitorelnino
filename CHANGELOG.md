@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-18 · #1906 · A prova do plano lido pela cópia pública é a cópia pública
+
+O juiz lê a cópia pública quando o endereço original caiu ou recusou; a guarda da prova só tentava o endereço original, e a promoção nunca entrava no banco (8 promoções de 6 municípios, medidas em 18/11). A leitura que falha passa a cair na mesma cópia pública; sem ela, segue sem registro.
+
 ## 2026-11-18 · #1881 · Site sem resposta sai da rodada; cadeia de certificado completa; prova do plano escaneado
 
 Site que não responde ao robô deixa de gastar a rodada: sai dela, e o endereço vai à cópia da ponte ou vira pedido. Certificado sem o intermediário é completado pelo emissor que a folha declara, com verificação plena. Plano escaneado acima de 5 MB chega ao OCR e à prova (13 do RS estavam fora do banco). Documento trazido pela ponte fica no ramo do lote; a `main` guarda o índice.
