@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>18/11/2026 · Pista de imprensa nasce com a data de entrada</dt>
+      <dd>Os monitores de imprensa regional e de saúde gravavam a pista sem `registrado_em`; a idade na fila contava da data da notícia e a matéria antiga nascia vencida (&gt;21 dias). O portão da fila não humana reprovou a `main` das 03:53 UTC até aqui. Os dois monitores carimbam a entrada na criação (+9/−1 em código); a triagem fechou as 34 vencidas.</dd>
       <dt>17/11/2026 · O blog sai do site</dt>
       <dd>Por decisão da editoria, a página do blog, os textos publicados e o feed saem do site, do menu, do mapa do site e da página de Imprensa; os endereços antigos levam à inicial. Ficam guardados para uso interno os textos, o pacote semanal de dados e o verificador de texto.</dd>
       <dt>17/11/2026 · Minuta só na capa</dt>
@@ -162,8 +164,6 @@
       <dd>O mapa de municípios com decreto de emergência passa a mostrar, em tom transparente, o estado cujo governo declarou emergência, com o ato no texto do mouse. Primeiro caso: Pará, Decreto nº 5.767, de 11/11/2026, conferido no Diário Oficial do Estado. Não soma na contagem de municípios nem pontua no índice.</dd>
       <dt>13/11/2026 · Lista de municípios do PAB-Brasil (desertificação) coletada</dt>
       <dd>Novo coletor lê a Tabela B.1 do Plano de Ação Brasileiro de Combate à Desertificação (MMA): 1.649 municípios, 1.389 em Áreas Suscetíveis à Desertificação e 260 no Entorno, com clima e classificação. Grava em `enquadramento_federal.json`, sem peso no índice. Os totais conferem com a Tabela 1 do plano; nenhuma página muda.</dd>
-      <dt>13/11/2026 · Sondagem de repositórios não para em motor mudo nem em redirecionamento</dt>
-      <dd>A sondagem de 13/11 leu 27 UFs e ficou sem busca em 21 (motor suspenso) e sem página em oito (redirecionamento por script). Raiz: o resultado de busca com motor mudo era descartado, e o renderizador lia a página no meio da navegação. Agora a página achada é lida (a UF segue devida) e o renderizador espera a navegação terminar.</dd>
     </dl>
   </section>
 </main>
