@@ -871930,6 +871930,1189 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "0477068e04f3669f9ea4fda44149ce502e25ad7294d083a83cb6abc74453ee1a"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "105321 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2800308",
+   "municipio": "Aracaju",
+   "uf": "SE",
+   "url": "https://www.aracaju.se.gov.br/pdf/Plano_de_contingencia_2024.pdf",
+   "regras_18": [],
+   "pista_id": "901015b7f7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "073087242c7e331d495b1e7f0783c968513b50d5acc012bb2bbb1f80d9cfc134",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.aracaju.se.gov.br/pdf/Plano_de_contingencia_2024.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "103342 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "COMDEC ESTADO DO AMAZONAS PREFEITURA MUNICIPAL DE SILVES - AM COORDENADORIA MUNICIPAL DE DEFESA CIVIL 1 Avenida Senador Álvaro Maia, 01 – Centro Silves-Am. emai"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ".......................................................................... 6 5. PLANO DE CONTINGÊNCIA...........................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "El Niño",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COMDEC",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": ".......................................................................... 6 5. PLANO DE CONTINGÊNCIA...........................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/09/PLANO-DE-CONTIGENCIA-SILVES-2026-COMDEC.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "El Niño",
+   "natureza": null,
+   "ibge": "1304005",
+   "municipio": "Silves",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/09/PLANO-DE-CONTIGENCIA-SILVES-2026-COMDEC.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "094422e536",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "76ffe6100140131ba745d9f970d4d9221ccdabc82926bedd49ce42cad7966c01"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13047 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "UNICIPAL DE DEFESA CIVIL COMDEC Rua Francisco Barroncas, nº 300 – Santa Luzia – AUTAZES / AM site: www.autazes.am.gov.br E-mail: pma@autazes.am.gov.br / prefeit"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "uradeautazes1@gmail.com Folha: 1 COORDENADORIA MUNICIPAL DE DEFESA CIVIL COMDEC PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON Estiagem brusca Munic",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "24/07/2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COORDENADORIA MUNICIPAL DE DEFESA CIVIL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "uradeautazes1@gmail.com Folha: 1 COORDENADORIA MUNICIPAL DE DEFESA CIVIL COMDEC PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLANCON Estiagem brusca Munic",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2024/02/PLANCON-AUTAZES-2023.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "24/07/2023",
+   "natureza": null,
+   "ibge": "1300300",
+   "municipio": "Autazes",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2024/02/PLANCON-AUTAZES-2023.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "5ef6dc59b1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "1c2ac792d5635948598ecf57fbe7b535ba88555e2d2b37235f418a2d18405ab4"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "65600 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "OI EOI J úI 'OI EETADO DO AMAZONAS PREFEITURA MUNIC]PAL DE URUCURITUBA Coorúenadoria Municipal de Defesa Civil - COMDEC OüIunúiúnrrusl LEI No 079, 14 dc abril d"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DE URUCURITUBA Coorúenadoria Municipal de Defesa Civil - COMDEC OüIunúiúnrrusl LEI No 079, 14 dc abril de 2009 WM Reconhecido pela Lei Federal No í2.608/20í2 C",
+     "dados": {
+      "tipo": "lei",
+      "numero": "079",
+      "data": "14/04/2009",
+      "trecho": "DE URUCURITUBA Coorúenadoria Municipal de Defesa Civil - COMDEC OüIunúiúnrrusl LEI No 079, 14 dc abril de 2009 WM Reconhecido pela Lei Federal No í2.608/20í2 C"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "14/04/2009",
+   "natureza": null,
+   "ibge": "1304401",
+   "municipio": "Urucurituba",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/02/PLANCON-URUCURITUBA.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "a2586a071d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "a4c8310108d321ac22ebd3d5b56e5c826e953aa3f5b9c5903c3f0c10110621af"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "81156 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "GOVERNO DO ESTADO DO AMAZONAS PREFEITURA MUNICIPAL DE BARREIRINHA COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PREFEITURA MUNICIPAL DE BARREIRINHA – GABIN"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "URA MUNICIPAL DE BARREIRINHA COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANCON BARREIRINHA INUNDAÇÃO, ENXURRADAS, ALAGAMENTOS, CHUVAS INTENSAS, VENDAVA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "GOVERNO DO ESTADO",
+      "titulo": "PLANCON",
+      "trecho": "URA MUNICIPAL DE BARREIRINHA COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANCON BARREIRINHA INUNDAÇÃO, ENXURRADAS, ALAGAMENTOS, CHUVAS INTENSAS, VENDAVA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/d4668845-93d3-4b57-9ff3-3dfc4ead810d.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1300508",
+   "municipio": "Barreirinha",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/d4668845-93d3-4b57-9ff3-3dfc4ead810d.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "b12846c4d6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "1dac0aab7fe701a5e2336434e2041641c8648d0c94f47ffa3e7101e44e04ef2a"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "53649 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MUNICIPAL Inundação e Estiagem SECRETARIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL BOA VISTA DO RAMOS/AM INUNDAÇÃO ESTIAGEM Boa Vista do Ramos/AM. pág. 1 SECRETARI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICIPAL Inundação e Estiagem SECRETARIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL BOA VISTA DO RAMOS/AM INUNDAÇÃO ESTIAGEM Boa Vista do Ramos",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "SECRETARIA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA MUNICIPAL Inundação e Estiagem SECRETARIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL BOA VISTA DO RAMOS/AM INUNDAÇÃO ESTIAGEM Boa Vista do Ramos",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/PLANO_CONTINGENCIA_BOA-VISTA-DO-RAMOS.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300680",
+   "municipio": "Boa Vista do Ramos",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/PLANO_CONTINGENCIA_BOA-VISTA-DO-RAMOS.pdf",
+   "regras_18": [
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "e2c60d93e4",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "02eec8e828d2598bff1a516cc2d73a6c2dabf640a3b0d7a3a722618cd86a62d4"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "118210 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "GOVERNO DO ESTADO DO AMAZONAS PREFEITURA DE URUCARÁ COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL - COMPDEC (CNPJ: 16.516.612/0001-62) PLANO DE CONTIGÊNCIA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "EÇÃO E DEFESA CIVIL - COMPDEC (CNPJ: 16.516.612/0001-62) PLANO DE CONTIGÊNCIA - PLANCON 🏢 Rua Coronel Pinto, s/nº, próximo a Praça Matriz - Centro 📞 PLANTÃO 24h",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "GOVERNO DO ESTADO",
+      "titulo": "PLANCON",
+      "trecho": "EÇÃO E DEFESA CIVIL - COMPDEC (CNPJ: 16.516.612/0001-62) PLANO DE CONTIGÊNCIA - PLANCON 🏢 Rua Coronel Pinto, s/nº, próximo a Praça Matriz - Centro 📞 PLANTÃO 24h",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/PLANCON_MULTIRRISCO_2026_2027_URUCARA_ASSINADO.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1304302",
+   "municipio": "Urucará",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/PLANCON_MULTIRRISCO_2026_2027_URUCARA_ASSINADO.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "525d20a300",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d4b9ff9bba4527995a037bf224937d2a7908add82461dc7486e2d80a3da596bf"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "54168 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "OFÍCIO Nº 016/2026 C.M.D.C. Parintins, 11 de janeiro de 2026. Excelentíssimo Senhor. CEL. FRANCISCO FERREIRA MÁXIMO FILHO. Secretário de Estado de Defesa Civil"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "O. Secretário de Estado de Defesa Civil do Amazonas. Assunto: Encaminhamento do Plano de Contingência. Senhor Secretário, Cumprimentando-o cordialmente, encamin",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado de Defesa",
+      "titulo": "Plano de Contingência",
+      "trecho": "O. Secretário de Estado de Defesa Civil do Amazonas. Assunto: Encaminhamento do Plano de Contingência. Senhor Secretário, Cumprimentando-o cordialmente, encamin",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/02/PARINTINS.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1303403",
+   "municipio": "Parintins",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/02/PARINTINS.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "7dbafacb6d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ca5e77d70cde832a98bdb759c6ebb5ec1539333f916710f82127548fca8a7588"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18420 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "VIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PREFEITURA MUNICIPAL DE MAUÉS COORDENADORIA MUNICIPAL DE DEFESA CIVIL - COMDEC CNPJ: 16.383.600/0001-16"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "UÉS COORDENADORIA MUNICIPAL DE DEFESA CIVIL - COMDEC CNPJ: 16.383.600/0001-16 PLANO DE CONTINGÊNCIA MUNICIPAL - PLANCON DEFESA CIVIL MAUÉS — AM 2026 DEFESA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "UÉS COORDENADORIA MUNICIPAL DE DEFESA CIVIL - COMDEC CNPJ: 16.383.600/0001-16 PLANO DE CONTINGÊNCIA MUNICIPAL - PLANCON DEFESA CIVIL MAUÉS — AM 2026 DEFESA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/07/PLANO-DE-CONTINGENCIA-MUNICIPAL-MAUES.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1302900",
+   "municipio": "Maués",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/07/PLANO-DE-CONTINGENCIA-MUNICIPAL-MAUES.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "c84068c06d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "4b06c6641435409ba064f48f39c566e7a68fd3e36d54c2b54eac9b405bf78bcf"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62391 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "iIlNtÂl PREFETTURA MUNICIPAL DE TPIXUNA SECRETARIA MUNICIPAL DE DEFESA CIVIL DE IPIXUNA - AM PLANo DE coNTrcÊucn - PLANcoN SECRETARIA MUNICIPÁL DE DEFESA CTVIL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "XUNA SECRETARIA MUNICIPAL DE DEFESA CIVIL DE IPIXUNA - AM PLANo DE coNTrcÊucn - PLANcoN SECRETARIA MUNICIPÁL DE DEFESA CTVIL . SEMDEC Rua João Carioca - s/n' -",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "SECRETARIA MUNICIPAL",
+      "titulo": "PLANcoN",
+      "trecho": "XUNA SECRETARIA MUNICIPAL DE DEFESA CIVIL DE IPIXUNA - AM PLANo DE coNTrcÊucn - PLANcoN SECRETARIA MUNICIPÁL DE DEFESA CTVIL . SEMDEC Rua João Carioca - s/n' -",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-IPIXUNA-2026.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1301803",
+   "municipio": "Ipixuna",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-IPIXUNA-2026.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "86719aabd6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "58566f539238998e04acfe29622265491933bcd0ef5de9e7c88788066763ba36"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "17007 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Rs A 7 = ATUAÇÃO CONTÍNUA NA PREVENÇÃO, =. + E RESPOSTA E APOIO À POPULAÇÃO DE ENVIRA ESTADO DO AMAZONAS 3 COORDENADORIA MUNICIPAL DE PROTEÇÃO E co JR DEFESA C"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ADO DO AMAZONAS 3 COORDENADORIA MUNICIPAL DE PROTEÇÃO E co JR DEFESA CIVIL 6.4- INSTRUÇÃO NORMATIVA Nº 036, DE 04 DE DEZEMBRO DE 2020 (MDR).............. 15 6.5",
+     "dados": {
+      "tipo": "instrução normativa",
+      "numero": "036",
+      "data": "04/12/2020",
+      "trecho": "ADO DO AMAZONAS 3 COORDENADORIA MUNICIPAL DE PROTEÇÃO E co JR DEFESA CIVIL 6.4- INSTRUÇÃO NORMATIVA Nº 036, DE 04 DE DEZEMBRO DE 2020 (MDR).............. 15 6.5"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "04/12/2020",
+   "natureza": null,
+   "ibge": "1301506",
+   "municipio": "Envira",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-2026-ENVIRA_compressed.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "920aa767dd",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ea1ea69b82c3e1e47cc3595a7062c40e72aedcce0325a0ae757cfc782e7d1f69"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "17270 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA DE DEFESA CIVIL lamara'i Uma cidade melhor a cada dia ITAMARATI ESTADO DO AMAZONAS PREFEITURA MUNICIPAL DE ITAMARATI SECRETARIA MUNICIPAL DE PR"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AMARATI SECRETARIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO DE CONTIGÊNCIA - PLANCON Prefeitura de Itamarati-AM Secretaria Municipal de Proteção e Defesa Ci",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DE",
+      "titulo": "PLANCON",
+      "trecho": "AMARATI SECRETARIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO DE CONTIGÊNCIA - PLANCON Prefeitura de Itamarati-AM Secretaria Municipal de Proteção e Defesa Ci",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-ESTIAGEM-2026-ITAMARATI.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1301951",
+   "municipio": "Itamarati",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-ESTIAGEM-2026-ITAMARATI.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "62c329c133",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "38ccc2701bac564aa305c50cc818c25d472b3742d3749e1706a7b2ae837f1429"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19496 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "derssadus DEFESA CIVIL Eta COMPROMISSO COM A VIDA, dr EIRUNEPE-AM PROTEÇÃO DO NOSSO POVO. SARA À ] Ê COBRADE 1.4.1.1.0 ] = PREVENIR JUNTOS SOMOS ; GESTÃO DE"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/2012",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1301407",
+   "municipio": "Eirunepé",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTINGENCIA-EIRUNEPE-ESTIAGEM-2026.pdf",
+   "regras_18": [],
+   "pista_id": "e3ea998c1b",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "10fe55fa12131a514c95fb45e8afdfab8c8fc314ea1db3bcd934780b8ca9b225",
+   "busca_dirigida": {
+    "fontes": [],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "16343 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "& PREFEITURA DE BOCA DO ACRE Estado do Amazonas Juntos para transformar Prefeitura Municipal de Boca do Acre Secretaria Municipal de Meio Ambiente e Defesa Ci"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "aria Municipal de Meio Ambiente e Defesa Civil- SEMADEC PLANO DE CONTIGÊNCIA - PLANCON meigambentepmbafêgmail com Avenida XXIII, N 180. Platô do Piquiá. CEP:",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DE",
+      "titulo": "PLANCON",
+      "trecho": "aria Municipal de Meio Ambiente e Defesa Civil- SEMADEC PLANO DE CONTIGÊNCIA - PLANCON meigambentepmbafêgmail com Avenida XXIII, N 180. Platô do Piquiá. CEP:",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/PLACON-BOCA-DO-ACRE.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1300706",
+   "municipio": "Boca do Acre",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/03/PLACON-BOCA-DO-ACRE.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "c1e995b0dc",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "765ecf3580ba467e0494306d212690dda299df6cde0244497e91d259eb8b3768"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62236 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO AMAZONAS PREFEITURA MUNICIPAL DE PAUINI Secratraia de Proteção e Defesa Civil Municipal PLANO DE CONTIGÊNCIA - PLANCON “D O P O V O , P E L O P O V O"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E PAUINI Secratraia de Proteção e Defesa Civil Municipal PLANO DE CONTIGÊNCIA - PLANCON “D O P O V O , P E L O P O V O , P A R A O P O V O ” Rua Ananias Teixeir",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO AMAZONAS",
+      "titulo": "PLANCON",
+      "trecho": "E PAUINI Secratraia de Proteção e Defesa Civil Municipal PLANO DE CONTIGÊNCIA - PLANCON “D O P O V O , P E L O P O V O , P A R A O P O V O ” Rua Ananias Teixeir",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2024/07/PLANCON-PAUINI-2024.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "1303502",
+   "municipio": "Pauini",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2024/07/PLANCON-PAUINI-2024.pdf",
+   "regras_18": [
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "7c6fe45f34",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "007ad3d536271fa16bd75139025f2dcd7d707ebe9046257cc6d268c5b4165072"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62072 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO AMAZONAS PREFEITURA MUNICIPAL DE LÁBREA COORDENADORIA MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA - PLANCON AV: 14 DE MAIO S/Nº CENTRO /LABREA – A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AMAZONAS PREFEITURA MUNICIPAL DE LÁBREA COORDENADORIA MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA - PLANCON AV: 14 DE MAIO S/Nº CENTRO /LABREA – AM TEL: (97",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO AMAZONAS",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "AMAZONAS PREFEITURA MUNICIPAL DE LÁBREA COORDENADORIA MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA - PLANCON AV: 14 DE MAIO S/Nº CENTRO /LABREA – AM TEL: (97",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/05/PLANO_DE_CONTIGENCIA_ATUALIZADO_-_INUNDACAO_ESTIAGEM-SECA_PDF_assinado.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1302405",
+   "municipio": "Lábrea",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/05/PLANO_DE_CONTIGENCIA_ATUALIZADO_-_INUNDACAO_ESTIAGEM-SECA_PDF_assinado.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "3872f93a85",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "93c4f0b89bd786062c079521016706af5e6510941561f45d8c1764037f638532"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "104590 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO AMAZONAS Poder Executivo cÂNttTÂt a PREFEITURA MUNICIPA DE CANUTAMA ,aEFatÍuta tutatctr l CÂNUTÂMÂ . .. ....'-r:---. cooRDENADoRtA MUNtctpAL DE enorrç"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": ". .. ....'-r:---. cooRDENADoRtA MUNtctpAL DE enorrçÃo e DEFESA ctvtL - coMpDEc PLANO DE CONTINGENCIA MUNICIPAL PLANCON Rua Antônio Albêrto, n'. - Centro - Canu",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO AMAZONAS",
+      "titulo": "PLANO DE CONTINGENCIA",
+      "trecho": ". .. ....'-r:---. cooRDENADoRtA MUNtctpAL DE enorrçÃo e DEFESA ctvtL - coMpDEc PLANO DE CONTINGENCIA MUNICIPAL PLANCON Rua Antônio Albêrto, n'. - Centro - Canu",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/06/PLANO-DE-CONTIGENCIA-2026_compressed.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300904",
+   "municipio": "Canutama",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/06/PLANO-DE-CONTIGENCIA-2026_compressed.pdf",
+   "regras_18": [
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "80f70bb45d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "14488e5880b1d8cd9b965f43a02d24268d069c32aad09a53d657d8c1c111c78a"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18284 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "E rnree ESTADO DO AMAZONAS y y PREFEITURA MUNICIPAL DE BERURI COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DEFESA CIVIL PLANO DE CONTIGÊNCIA - PLANCON"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DEFESA CIVIL PLANO DE CONTIGÊNCIA - PLANCON BERURI/AM 2026 Av. Castelo Branco, nº 100 — Centro. CEP 69430-000 CNPJ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO AMAZONAS",
+      "titulo": "PLANCON",
+      "trecho": "ORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DEFESA CIVIL PLANO DE CONTIGÊNCIA - PLANCON BERURI/AM 2026 Av. Castelo Branco, nº 100 — Centro. CEP 69430-000 CNPJ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-INUNDACAO-ESTIAGEM-SECA-ENTRE-OUTROS-2026-BERURI.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1300631",
+   "municipio": "Beruri",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/08/PLANO-DE-CONTIGENCIA-INUNDACAO-ESTIAGEM-SECA-ENTRE-OUTROS-2026-BERURI.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "6221f97a21",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b0a79358185d2565321e983e435b6b6e730a1fce433e4c59148dcbf1f05772ae"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40435 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA IVIUNICIPAL DE APUI C OORDENADORIA MUNICIPAL fiiiudei DE PROTECA0 E DEFESA CIVIL Uru=J=-+-i---i=+ PLANO DE CONTINGENCIA Periodo chuvoso, estiagem e q"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "I C OORDENADORIA MUNICIPAL fiiiudei DE PROTECA0 E DEFESA CIVIL Uru=J=-+-i---i=+ PLANO DE CONTINGENCIA Periodo chuvoso, estiagem e queimadas Municfpio APuf/AM -2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE CALAMIDADE",
+      "titulo": "PLANO DE CONTINGENCIA",
+      "trecho": "I C OORDENADORIA MUNICIPAL fiiiudei DE PROTECA0 E DEFESA CIVIL Uru=J=-+-i---i=+ PLANO DE CONTINGENCIA Periodo chuvoso, estiagem e queimadas Municfpio APuf/AM -2",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/Plano-de-contingencia-atualizado-2026.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1300144",
+   "municipio": "Apuí",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/Plano-de-contingencia-atualizado-2026.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "34bc6b51af",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ef9e2883c8209c4e08689543f50caf3ad7cc08451f8351dce3280c36d2d04128"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "57724 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE MANICORÉ – AM SECRETARIA MUNICIPAL DE DEFESA SOCIAL E SEGURANÇA PÚBLICA COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIP"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "A SOCIAL E SEGURANÇA PÚBLICA COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE CONTINGÊNCIA 2026 MANICORÉ – AM 2026 semdessp.mnr@gmail.com –",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "A SOCIAL E SEGURANÇA PÚBLICA COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE CONTINGÊNCIA 2026 MANICORÉ – AM 2026 semdessp.mnr@gmail.com –",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/07/PLANCON-2026.-Manicore_Assinado_Assinado.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": null,
+   "ibge": "1302702",
+   "municipio": "Manicoré",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/07/PLANCON-2026.-Manicore_Assinado_Assinado.pdf",
+   "regras_18": [
+    "J7"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "bdb463bdde",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "62d1f947d12eeffb7c051ba1994cc6da99a3e411613ac19df7109f77ecc15033"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15621 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PAL DE PROTEÇÃO E DEFESA CIVIL — COMPDEC PLANO DE CONTINGÊNCIA — PLANCON 2026 NOVO ARIPUANÃ/AM 2026 dé DEFESA CIVIL ESTADO DO AMAZONAS Nai PREFEITURA MUNICIP"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL — COMPDEC PLANO DE CONTINGÊNCIA — PLANCON 2026 NOVO ARIPUANÃ/AM 2026 dé DEFESA CIVIL ESTADO DO AMAZONAS Na",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COORDENADORIA MUNICIPAL DE PROTEÇÃO E\nDEFESA CIVIL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL — COMPDEC PLANO DE CONTINGÊNCIA — PLANCON 2026 NOVO ARIPUANÃ/AM 2026 dé DEFESA CIVIL ESTADO DO AMAZONAS Na",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/plano-de-contigencia.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1303304",
+   "municipio": "Novo Aripuanã",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/plano-de-contigencia.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "779eeb6eb1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "01a53b8d4ac004243dfcef22b63063bb5540a53da0923ac981d404dc7c7bcefd"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "41089 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ÃO / ENXURRADAS / ALAGAMENTOS / CHUVAS INTENSAS /ESTIAGEM / INCÊNDIO FLORESTAL. Borba/AM 2026 3 SUMÁRIO 1. INTRODUÇÃO O Plano de Contingência (PLANCON) de Prote"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "NTENSAS /ESTIAGEM / INCÊNDIO FLORESTAL. Borba/AM 2026 3 SUMÁRIO 1. INTRODUÇÃO O Plano de Contingência (PLANCON) de Proteção e Defesa Civil para a estiagem/seca,",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "Plano de Contingência",
+      "trecho": "NTENSAS /ESTIAGEM / INCÊNDIO FLORESTAL. Borba/AM 2026 3 SUMÁRIO 1. INTRODUÇÃO O Plano de Contingência (PLANCON) de Proteção e Defesa Civil para a estiagem/seca,",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/Plano-de-Contingencia-Borba-2026-SEMPDEC.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1300805",
+   "municipio": "Borba",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/04/Plano-de-Contingencia-Borba-2026-SEMPDEC.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "6e81007e52",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b61fdad00f8f73a6f6d0e78f6db7471e9cf6819972c67d2b7e2c5fa8fb549625"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "16978 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DEFESA CIVIL PREFEITURA MUNICIPAL DE NOVA OLINDA DO NORTE SECRETARIA MUNICIPAL DE SEGURANÇA, TRÂNSITO E DEFESA CIVIL COORDENADORIA DE DEFESA CIVIL NOVA GLINHA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "GLINHA DE RONTL R ESTADO DO AMAZONAS *tseobmestt Name PLANO DE CONTIGÊNCIA — PLANCON COMDEC-NON 2025 Av. Janary Nunes, S/N, Marcos Araújo - CEP: 69230-000 G",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANCON",
+      "trecho": "GLINHA DE RONTL R ESTADO DO AMAZONAS *tseobmestt Name PLANO DE CONTIGÊNCIA — PLANCON COMDEC-NON 2025 Av. Janary Nunes, S/N, Marcos Araújo - CEP: 69230-000 G",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2025/06/Plnao-de-contingencia-Nova-Olinda-do-Norte-1.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": null,
+   "ibge": "1303106",
+   "municipio": "Nova Olinda do Norte",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2025/06/Plnao-de-contingencia-Nova-Olinda-do-Norte-1.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "83ce462cf1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "e4c3caeb6966246eda8b3ddbdd27d82a99a21bbbf319790b2ae48e915711b863"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "53057 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CIVIL murncrrn ttO 4BBBBBS /VIMA II Estado do Amazonas Prefeitura Municipal de Santa Isabel do Rio Negro SIRN/AM Coordenadoria Municipal de Proteção e Defesa C"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Isabel do Rio Negro SIRN/AM Coordenadoria Municipal de Proteção e Defesa Civil PLANO DE CONTINGÊNCIA MUNICIPAL - PLANCON Endereço: Av. Danilo Correia, s/n, Cen",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado do Amazonas",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "Isabel do Rio Negro SIRN/AM Coordenadoria Municipal de Proteção e Defesa Civil PLANO DE CONTINGÊNCIA MUNICIPAL - PLANCON Endereço: Av. Danilo Correia, s/n, Cen",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2024/05/PLANO-DE-CONTINGENCIA-SANTA-IZABEL-DO-RIO-NEGRO.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": null,
+   "ibge": "1303601",
+   "municipio": "Santa Isabel do Rio Negro",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2024/05/PLANO-DE-CONTINGENCIA-SANTA-IZABEL-DO-RIO-NEGRO.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "6a0f29aba6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "045f880e2bbf4f08e9ac8809a2f40b084a16eeb31e1b8fade7c0e4e2e2816083"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "43628 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DAÇÃO / ENXURRADAS / ALAGAMENTOS / CHUVAS INTENSAS / VENDAVAL / ESTIAGEM / SECA Barcelos/AM 2026 Sumário 1. INTRODUÇÃO ........................................."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA - PLANCON INUNDAÇÃO / ENXURRADAS / ALAGAMENTOS / CHUVAS INTENSAS / VENDAVAL / ESTIAGEM / SECA Barcelos/AM 2026 Sumário 1. INTRODUÇÃO .....",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE CALAMIDADE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA - PLANCON INUNDAÇÃO / ENXURRADAS / ALAGAMENTOS / CHUVAS INTENSAS / VENDAVAL / ESTIAGEM / SECA Barcelos/AM 2026 Sumário 1. INTRODUÇÃO .....",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/07/PLANO-DE-CONTIGENCIA-ASSINADO.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1300409",
+   "municipio": "Barcelos",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/07/PLANO-DE-CONTIGENCIA-ASSINADO.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "56e4051185",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ad5764616976486e2816b50c5e8f05fbbfe56be4130bb751f3a6d6179adea5f1"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "267098 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANCON MANAUS ALAGAMENTOS, DESLIZAMENTOS, INUNDAÇÃO, ESTIAGEM, SECA SEVERA, INCÊNDIOS URBANOS E COLAPSO DE ESTRUTURAS NO MUNICÍPIO DE MANAUS RISCO HIDROMETEORO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANCON MANAUS ALAGAMENTOS, DESLIZAMENTOS, INUNDAÇÃO, ESTIAGEM, SECA SEVERA, INCÊNDIOS URBANOS E COLAPSO DE ESTRUTURAS NO MUNICÍPIO DE MANAUS RISCO HIDROMETEORO",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANCON",
+      "trecho": "PLANCON MANAUS ALAGAMENTOS, DESLIZAMENTOS, INUNDAÇÃO, ESTIAGEM, SECA SEVERA, INCÊNDIOS URBANOS E COLAPSO DE ESTRUTURAS NO MUNICÍPIO DE MANAUS RISCO HIDROMETEORO",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.defesacivil.am.gov.br/wp-content/uploads/2026/02/MANAUS.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1302603",
+   "municipio": "Manaus",
+   "uf": "AM",
+   "url": "https://www.defesacivil.am.gov.br/wp-content/uploads/2026/02/MANAUS.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "a5b2af24f6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "c627e31aeefe8ef2034d43939d93ba7329f1e86a7710e29d0fd3aa3f8b9790be"
   }
  ]
 }
