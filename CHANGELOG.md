@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-18 · #PR · Plano de saúde com equipe na capa
+## 2026-11-18 · #1861 · Plano de saúde com equipe na capa
 
 O juiz da saúde lia a capa só nos primeiros 1.500 caracteres e não reconhecia "Plano de Adaptação" como título de plano. O plano de RO para o El Niño 2026–2027, recebido por pedido de acesso à informação, tem a lista da equipe antes do título e foi recusado como fora do ciclo. A capa passa a ser o mesmo cabeçalho do juiz, e "plano de adaptação" é título de plano.
 
