@@ -804650,6 +804650,4114 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "2f54fee6129839654f68ccae0b0db825dab6ae1f203c705744722a5daa204901"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7429 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3530607",
+   "municipio": "Mogi das Cruzes",
+   "uf": "SP",
+   "url": "http://www.mogidascruzes.sp.gov.br/noticia/escola-clinica-tea-recebe-visita-da-secretaria-de-educacao-de-alto-taquari-cidade-do-mato-grosso",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "a419f466df",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "994921e009dea3686ce1db2e21692e2c81d6c4915a7ce3931aa1eeaf52728e3d"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11259 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5103403",
+   "municipio": "Cuiabá",
+   "uf": "MT",
+   "url": "https://www.cuiaba.mt.gov.br/noticias/cuiaba-fortalece-estrutura-de-prevencao-e-resposta-a-desastres-com-capacitacao",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "fba8bf5e4a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ac15f15ebddacfcf797e53d58f3b33f1469803ec21d0aee696891c2a920b984f"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "540416 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "1 MUNICÍPIO DE GLÓRIA DE DOURADOS/MS PMSB (Plano Municipal De Saneamento Básico) Tomo III – Abastecimento de Água, Esgotamento Sanitário e Drenagem das Águas Pl"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RUPO DE TRABALHO DO PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE GLÓRIA DE DOURADOS (Decreto Municipal no 70, de 13 de junho de 2025) COMITÊ DE COORDENAÇÃO COMITÊ DE",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "70",
+      "data": "13/06/2025",
+      "trecho": "RUPO DE TRABALHO DO PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE GLÓRIA DE DOURADOS (Decreto Municipal no 70, de 13 de junho de 2025) COMITÊ DE COORDENAÇÃO COMITÊ DE"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "13/06/2025",
+   "natureza": null,
+   "ibge": "5004007",
+   "municipio": "Glória de Dourados",
+   "uf": "MS",
+   "url": "https://gloriadedourados.ms.gov.br/wp-content/uploads/2025/11/PMSB-Tomo_III-Gloria-Dourados-ESSE_31_10_-FINAL.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ebd1fdeaf2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "63c9a17e015c8273e271d53757e62bb66f932acbdbb82349c35dee6b5896b2f0"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3734 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "IÇÃO DO CONSELHO DE ALIMENTAÇÃO ESCOLAR - 2026 A 2030 - Prefeitura Municipal de Anajás - PA | Gestão 2025-2028 EDITAL 001 PARA ELEIÇÃO DO CONSELHO DE ALIMENTAÇÃ"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/05/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/05/2026",
+   "natureza": null,
+   "ibge": "1500701",
+   "municipio": "Anajás",
+   "uf": "PA",
+   "url": "https://anajas.pa.gov.br/edital-001-para-eleicao-do-conselho-de-alimentacao-escolar-2026-a-2030/",
+   "regras_18": [],
+   "pista_id": "3b84006203",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e2a36b053684272cc093404bcba016cca3254ee14bf4a5f216e4974ef6549b34",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9646 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal da Transparência de São Gabriel da Palha - ES Ir para o Cabeçalho Ir para o Conteúdo Ir para o Rodapé Ir para o Mapa do Site Sobre Acessibilidade Contras"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "rensa Oficial LGPD Legislação Ouvidoria Política de Dados Abertos Regulamenta a Lei Municipal N.º 2.260, de 14 de outubro de 2012 Secretarias/Unidades Administr",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2.260",
+      "data": "14/10/2012",
+      "trecho": "rensa Oficial LGPD Legislação Ouvidoria Política de Dados Abertos Regulamenta a Lei Municipal N.º 2.260, de 14 de outubro de 2012 Secretarias/Unidades Administr"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "14/10/2012",
+   "natureza": null,
+   "ibge": "3204708",
+   "municipio": "São Gabriel da Palha",
+   "uf": "ES",
+   "url": "https://saogabrieldapalha-es.portaltp.com.br/consultas/documentos.aspx?id=1221",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c266e9ec7f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d0a4269309dfb38f36b5712824b0673927a5f7ff07849c6026bc4257b27b6f7c"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304557",
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "url": "http://www.rio.rj.gov.br/dlstatic/10112/7502221/4349502/PLANODECONTINGENCIA20212022.pdf",
+   "regras_18": [],
+   "pista_id": "3801a9f8fa",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4696 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303500",
+   "municipio": "Nova Iguaçu",
+   "uf": "RJ",
+   "url": "https://novaiguacu.rj.gov.br/2024/12/17/plano-de-contingencia-de-desastres-e-tema-de-reuniao-com-gestores-municipais/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "9da43ae9bd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8cc851a2ce1da79d51ae462054afbbef891811d910ddfeb91e8b0209f8e9e987"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "a8cb72bba1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "bb8408cff3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "51a11d3271",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "192431 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Versão: 1.2 PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE RISCOS E DESASTRES NATAL/RN - 2025/2026 Versão: 1.2 Copyright © 2025 dos autores Todos os direitos desta"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Versão: 1.2 PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE RISCOS E DESASTRES NATAL/RN - 2025/2026 Versão: 1.2 Copyright © 2025 dos autores Todos os direitos desta",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "Versão: 1.2 PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE RISCOS E DESASTRES NATAL/RN - 2025/2026 Versão: 1.2 Copyright © 2025 dos autores Todos os direitos desta",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "o: 1.2 Copyright © 2025 dos autores Todos os direitos desta edição reservados à Secretaria Municipal de Segurança Pública e Defesa Social (SEMDES). Esta obra é"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "o tempo de resposta do município em ocorrência de desastres como, por exemplo, chuvas intensas, colapso de edificações e alagamentos; permitir a aproximação do"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "2408102",
+   "municipio": "Natal",
+   "uf": "RN",
+   "url": "https://www.natal.rn.gov.br/storage/app/media/semdes/planodecontigencia.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "bcfb6a9d66",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1646011c4c13f98e504b18dafbfa27e2f1c2343f59a78d4935b92ba3c04d77f5"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "fd426e864d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "e501216269",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "83e37799b4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "bd73cd05b8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "682280ca2b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "b723e3de5a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "51570215fe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "36023 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado do Pará Município de Acará Prefeitura Municipal de Acará Secretaria Municipal de Saúde RELATÓRIO ANUAL DE GESTÃO 2022 1 Secretária Municipal de Saúde Tra"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta",
+     "dados": {
+      "tipo": "lei",
+      "numero": "11/1991",
+      "data": "17/04/2008",
+      "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "cretaria Municipal de Saúde. Secretário de Saúde – MARIA SUELY RAMOS DOS SANTOS Conselho Municipal de Saúde Mesa Diretora Presidente: Enilsa Trindade Lima da Si"
+    }
+   },
+   "categoria": null,
+   "data": "17/04/2008",
+   "natureza": null,
+   "ibge": "1500206",
+   "municipio": "Acará",
+   "uf": "PA",
+   "url": "https://acara.pa.gov.br/wp-content/uploads/2023/08/relatorio-anual-de-gestao-2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "20fb0c7b86",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c0c9c113d3e836c6f491912c37abe1e817259753017e1e2e6dc43fbe315837e5"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "36023 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado do Pará Município de Acará Prefeitura Municipal de Acará Secretaria Municipal de Saúde RELATÓRIO ANUAL DE GESTÃO 2022 1 Secretária Municipal de Saúde Tra"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta",
+     "dados": {
+      "tipo": "lei",
+      "numero": "11/1991",
+      "data": "17/04/2008",
+      "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "cretaria Municipal de Saúde. Secretário de Saúde – MARIA SUELY RAMOS DOS SANTOS Conselho Municipal de Saúde Mesa Diretora Presidente: Enilsa Trindade Lima da Si"
+    }
+   },
+   "categoria": null,
+   "data": "17/04/2008",
+   "natureza": null,
+   "ibge": "1500206",
+   "municipio": "Acará",
+   "uf": "PA",
+   "url": "https://acara.pa.gov.br/wp-content/uploads/2023/08/relatorio-anual-de-gestao-2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "747a442554",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c0c9c113d3e836c6f491912c37abe1e817259753017e1e2e6dc43fbe315837e5"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "5f21073e29",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "141610 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Recife\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+   "regras_18": [],
+   "pista_id": "5bb02dc8cb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5f3646546788aa1c9cb5753155e9340ae508eb1f713fb3f5e42aa53d1fea924d"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "141610 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jaboatão dos Guararapes\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2607901",
+   "municipio": "Jaboatão dos Guararapes",
+   "uf": "PE",
+   "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+   "regras_18": [],
+   "pista_id": "0d8209c4a8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5f3646546788aa1c9cb5753155e9340ae508eb1f713fb3f5e42aa53d1fea924d"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "141610 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DO CABO DE SANTO AGOSTINHO SECRETARIA MUNICIPAL DE SAÚDE SUPERINTENDÊNCIA DE VIGILÂNCIA EM SAÚDE UNIDADE DE VIGILÂNCIA DE ZOONOSES Plano de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "SAÚDE SUPERINTENDÊNCIA DE VIGILÂNCIA EM SAÚDE UNIDADE DE VIGILÂNCIA DE ZOONOSES Plano de Contingência para Enfrentamento de Desastres de Origem Natural (Enchent",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "SAÚDE SUPERINTENDÊNCIA DE VIGILÂNCIA EM SAÚDE UNIDADE DE VIGILÂNCIA DE ZOONOSES Plano de Contingência para Enfrentamento de Desastres de Origem Natural (Enchent",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": null,
+   "ibge": "2602902",
+   "municipio": "Cabo de Santo Agostinho",
+   "uf": "PE",
+   "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "f5123b1418",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5f3646546788aa1c9cb5753155e9340ae508eb1f713fb3f5e42aa53d1fea924d"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "141610 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Vitória de Santo Antão\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2616407",
+   "municipio": "Vitória de Santo Antão",
+   "uf": "PE",
+   "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+   "regras_18": [],
+   "pista_id": "c1d5466838",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5f3646546788aa1c9cb5753155e9340ae508eb1f713fb3f5e42aa53d1fea924d"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "172128 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Igarassu\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2606804",
+   "municipio": "Igarassu",
+   "uf": "PE",
+   "url": "https://www.bndes.gov.br/arquivos/fep-mobilidade-urbana/relatorios-diagnostico/relatorio-Recife-vol-3.pdf",
+   "regras_18": [],
+   "pista_id": "9dd87cf275",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1ce04abc7ea543874f96d053eee5cdb44db35bedf0d2251f544ecb917643243f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": "https://www.bndes.gov.br/arquivos/fep-mobilidade-urbana/relatorios-diagnostico/relatorio-Recife-vol-3.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2601201",
+   "municipio": "Arcoverde",
+   "uf": "PE",
+   "url": "https://www.adagro.pe.gov.br/blog/11-blog/blog/1907-adagro-realiza-treinamento-sobre-o-programa-nacional-de-sanidade-avicola-pnsa-em-arcoverde",
+   "regras_18": [],
+   "pista_id": "2551ad3d49",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9573 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Belém de Maria | Seriedade e Trabalho Defesa Civil &#8211; Belém de Maria Ir para o conteúdo da Página. 1 Ir para o menu principal. 2 Ir para a bu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "31/05/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "31/05/2026",
+   "natureza": null,
+   "ibge": "2601508",
+   "municipio": "Belém de Maria",
+   "uf": "PE",
+   "url": "https://belemdemaria.pe.gov.br/category/defesa-civil/",
+   "regras_18": [],
+   "pista_id": "b9198d1dca",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bfbc9d6da9e32a608f16d27dd13076a6bc1519804792869255a2abe3a3c2e599",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2610608",
+   "municipio": "Paudalho",
+   "uf": "PE",
+   "url": "https://www.adagro.pe.gov.br/images/legislacao/resolucoes/2025/Resolu%C3%A7%C3%A3o_n%C2%BA_16_2025_-_Plano_de_Conting%C3%AAncia_para_Influenza_Avi%C3%A1ria_Altamente_Patog%C3%AAnica_-_IAAP_-_e_Doen%C3%A7a_de_Newcastle_no_Estado_de_Pernambuco.pdf",
+   "regras_18": [],
+   "pista_id": "277afb21eb",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "141610 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Moreno\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2609402",
+   "municipio": "Moreno",
+   "uf": "PE",
+   "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+   "regras_18": [],
+   "pista_id": "2a93713746",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5f3646546788aa1c9cb5753155e9340ae508eb1f713fb3f5e42aa53d1fea924d"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "292853 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São Bento do Una\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2613008",
+   "municipio": "São Bento do Una",
+   "uf": "PE",
+   "url": "https://www.gov.br/mdr/pt-br/RelatoriodeGestaoIntegrado20242025V.2.pdf",
+   "regras_18": [],
+   "pista_id": "88235018fd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0354fb0705fa2674a49679e64f401c4ac8500fe0572ba227c03a6da75f3771df",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": "https://www.gov.br/mdr/pt-br/RelatoriodeGestaoIntegrado20242025V.2.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2602100",
+   "municipio": "Bom Conselho",
+   "uf": "PE",
+   "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+   "regras_18": [],
+   "pista_id": "c8d30ca751",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2602209",
+   "municipio": "Bom Jardim",
+   "uf": "PE",
+   "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
+   "regras_18": [],
+   "pista_id": "811db2a256",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2609501",
+   "municipio": "Nazaré da Mata",
+   "uf": "PE",
+   "url": "https://www.adagro.pe.gov.br/images/legislacao/resolucoes/2025/Resolu%C3%A7%C3%A3o_n%C2%BA_16_2025_-_Plano_de_Conting%C3%AAncia_para_Influenza_Avi%C3%A1ria_Altamente_Patog%C3%AAnica_-_IAAP_-_e_Doen%C3%A7a_de_Newcastle_no_Estado_de_Pernambuco.pdf",
+   "regras_18": [],
+   "pista_id": "41983fab63",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18599 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE TRINDADE DO SUL-RS “A vida em primeiro lugar”. MAIO, 2025. 54 3541 1025 / 3541 1300 gabinete@trindadedosul.rs.gov.br defesacivil@trinda"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE TRINDADE DO SUL-RS “A vida em primeiro lugar”. MAIO, 2025. 54 3541 1025 / 3541 1300 gabinete@trindadedosul.rs.gov.br defesacivil@trinda",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "28/05/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA DE TRINDADE DO SUL-RS “A vida em primeiro lugar”. MAIO, 2025. 54 3541 1025 / 3541 1300 gabinete@trindadedosul.rs.gov.br defesacivil@trinda",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "indadedosul.rs.gov.br Rua Alecrim, 120 – Cep:99615-000 Trindade do Sul - RS 1.2 COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL: Nome do Coordenador E-mail C"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ita Corrente Líquida (anual): R$ 47.952.279,00 Eventos Adversos Mais Comuns: I. Estiagem; II. Vendaval; III. Granizo; IV. Chuvas Intensas; V. Enxurradas; VI. Er"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "28/05/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4321956",
+   "municipio": "Trindade do Sul",
+   "uf": "RS",
+   "url": "https://www.trindadedosul.rs.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "0e7b0262b4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4ef5c839cc95087509fdccb83d59086c509e9722b68e4559f827e53682a5cdb3"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4696 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303500",
+   "municipio": "Nova Iguaçu",
+   "uf": "RJ",
+   "url": "https://novaiguacu.rj.gov.br/2024/12/17/plano-de-contingencia-de-desastres-e-tema-de-reuniao-com-gestores-municipais/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "43e342aa85",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8cc851a2ce1da79d51ae462054afbbef891811d910ddfeb91e8b0209f8e9e987"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "4f8b4df33f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "8119a556a9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "9d15d62d02",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "192431 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Versão: 1.2 PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE RISCOS E DESASTRES NATAL/RN - 2025/2026 Versão: 1.2 Copyright © 2025 dos autores Todos os direitos desta"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Versão: 1.2 PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE RISCOS E DESASTRES NATAL/RN - 2025/2026 Versão: 1.2 Copyright © 2025 dos autores Todos os direitos desta",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "Versão: 1.2 PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE RISCOS E DESASTRES NATAL/RN - 2025/2026 Versão: 1.2 Copyright © 2025 dos autores Todos os direitos desta",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "o: 1.2 Copyright © 2025 dos autores Todos os direitos desta edição reservados à Secretaria Municipal de Segurança Pública e Defesa Social (SEMDES). Esta obra é"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "o tempo de resposta do município em ocorrência de desastres como, por exemplo, chuvas intensas, colapso de edificações e alagamentos; permitir a aproximação do"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "2408102",
+   "municipio": "Natal",
+   "uf": "RN",
+   "url": "https://www.natal.rn.gov.br/storage/app/media/semdes/planodecontigencia.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "f2247bf583",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1646011c4c13f98e504b18dafbfa27e2f1c2343f59a78d4935b92ba3c04d77f5"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "3c3743fb47",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "e52c7cc04f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "31c238cde3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "4ff183dd85",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "de1d5d67a8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "43f44cc06d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Bannach\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1501253",
+   "municipio": "Bannach",
+   "uf": "PA",
+   "url": "https://bannach.pa.gov.br/wp-content/uploads/2026/03/publicado_117033_2026-03-05_2634d3f85f7bb352e257a024e3b87110.pdf",
+   "regras_18": [],
+   "pista_id": "b6ffb05c65",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc8bfd6b985a3c1312b045bfb9b7473e3a56c0661b26de0179c2fc2ca8b1f441"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "36023 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado do Pará Município de Acará Prefeitura Municipal de Acará Secretaria Municipal de Saúde RELATÓRIO ANUAL DE GESTÃO 2022 1 Secretária Municipal de Saúde Tra"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta",
+     "dados": {
+      "tipo": "lei",
+      "numero": "11/1991",
+      "data": "17/04/2008",
+      "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "cretaria Municipal de Saúde. Secretário de Saúde – MARIA SUELY RAMOS DOS SANTOS Conselho Municipal de Saúde Mesa Diretora Presidente: Enilsa Trindade Lima da Si"
+    }
+   },
+   "categoria": null,
+   "data": "17/04/2008",
+   "natureza": null,
+   "ibge": "1500206",
+   "municipio": "Acará",
+   "uf": "PA",
+   "url": "https://acara.pa.gov.br/wp-content/uploads/2023/08/relatorio-anual-de-gestao-2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4a316f9e4e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c0c9c113d3e836c6f491912c37abe1e817259753017e1e2e6dc43fbe315837e5"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "36023 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado do Pará Município de Acará Prefeitura Municipal de Acará Secretaria Municipal de Saúde RELATÓRIO ANUAL DE GESTÃO 2022 1 Secretária Municipal de Saúde Tra"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta",
+     "dados": {
+      "tipo": "lei",
+      "numero": "11/1991",
+      "data": "17/04/2008",
+      "trecho": "rno) 2º Secretário: Tatiane Souza Nogueira ITAPUAMA-AQMACI. 1.4. FUNDO DE SAÚDE Lei de Criação: 11/1991 Natureza Jurídica: Fundo Público de Administração Direta"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "cretaria Municipal de Saúde. Secretário de Saúde – MARIA SUELY RAMOS DOS SANTOS Conselho Municipal de Saúde Mesa Diretora Presidente: Enilsa Trindade Lima da Si"
+    }
+   },
+   "categoria": null,
+   "data": "17/04/2008",
+   "natureza": null,
+   "ibge": "1500206",
+   "municipio": "Acará",
+   "uf": "PA",
+   "url": "https://acara.pa.gov.br/wp-content/uploads/2023/08/relatorio-anual-de-gestao-2022.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4006a1b56a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c0c9c113d3e836c6f491912c37abe1e817259753017e1e2e6dc43fbe315837e5"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "754 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ntingência do novo Coronavírus (Covid-19) nos Serviços de Assistência Social de Missão Velha-CE. O Plenário do Conselho Municipal de Assistência Social – CMAS d"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RESOLUÇÃO Nº 19, DE 22 DE ABRIL DE 2020. Aprova o Plano Municipal de Contingência do novo Coronavírus (Covid-19) nos Serviços de Assistência Social de Missão Ve",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "19",
+      "data": "22/04/2020",
+      "trecho": "RESOLUÇÃO Nº 19, DE 22 DE ABRIL DE 2020. Aprova o Plano Municipal de Contingência do novo Coronavírus (Covid-19) nos Serviços de Assistência Social de Missão Ve"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "Coronavírus (Covid-19) nos Serviços de Assistência Social de Missão Velha-CE. O Plenário do Conselho Municipal de Assistência Social – CMAS de Missão Velha, no"
+    }
+   },
+   "categoria": null,
+   "data": "22/04/2020",
+   "natureza": null,
+   "ibge": "2308401",
+   "municipio": "Missão Velha",
+   "uf": "CE",
+   "url": "https://missaovelha.ce.gov.br/wp-content/uploads/2020/04/RESOLUÇÃO-Nº-19-CMAS-PLANO-DE-CONTINGENCIAS-COVID-ASS.-SOCIAL.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "f46128f453",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5d7e45c32b793daee4f54d6adc64c24544d71a5f7b23f2842c464822a4138b7d"
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "738 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "al de Contingência do novo Coronavírus do Cad. Único/ Programa Bolsa Família de Missão Velha-CE. O Plenário do Conselho Municipal de Assistência Social – CMAS d"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RESOLUÇÃO Nº 17, DE 22 DE ABRIL DE 2020. Aprova o Plano Municipal de Contingência do novo Coronavírus do Cad. Único/ Programa Bolsa Família de Missão Velha-CE.",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "17",
+      "data": "22/04/2020",
+      "trecho": "RESOLUÇÃO Nº 17, DE 22 DE ABRIL DE 2020. Aprova o Plano Municipal de Contingência do novo Coronavírus do Cad. Único/ Programa Bolsa Família de Missão Velha-CE."
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "do novo Coronavírus do Cad. Único/ Programa Bolsa Família de Missão Velha-CE. O Plenário do Conselho Municipal de Assistência Social – CMAS de Missão Velha, no"
+    }
+   },
+   "categoria": null,
+   "data": "22/04/2020",
+   "natureza": null,
+   "ibge": "2308401",
+   "municipio": "Missão Velha",
+   "uf": "CE",
+   "url": "https://missaovelha.ce.gov.br/wp-content/uploads/2020/04/RESOLUÇÃO-Nº-17-CMAS-PLANO-DE-CONTINGENCIAS-CAD.-UNICO.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "bc1cd3b181",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "3d76b2a0ba049de0c95690c1d4710e7124b364c56cb8dd6bb5697d3ad93abd34"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13684 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Pombos\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2611309",
+   "municipio": "Pombos",
+   "uf": "PE",
+   "url": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal/programas-de-saude-animal/pnsa/imagens/FichaTcnica_NEWCASTLE_jan20.pdf",
+   "regras_18": [],
+   "pista_id": "748ccf7bae",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "48f6f5cf2e60787c9b0a267833dcbc652f61319a803a4b06cb5309b0f0e66b97",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal/programas-de-saude-animal/pnsa/imagens/FichaTcnica_NEWCASTLE_jan20.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5003702",
+   "municipio": "Dourados",
+   "uf": "MS",
+   "url": "https://do.dourados.ms.gov.br/wp-content/uploads/2025/11/27-11-2025-cbq5038v.pdf",
+   "regras_18": [
+    "J5"
+   ],
+   "pista_id": "72b59964e8",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://do.dourados.ms.gov.br/wp-content/uploads/2025/11/27-11-2025-cbq5038v.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15164 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Defesa Civil de Agrestina realiza reunião para apresentação do Plano de Contingência 2024/2025 - Prefeitura de Agrestina Ir para o conteúdo Ir ao Conteúdo Ir pa"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "01",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2600302",
+   "municipio": "Agrestina",
+   "uf": "PE",
+   "url": "https://agrestina.pe.gov.br/defesa-civil-de-agrestina-realiza-reuniao-para-apresentacao-do-plano-de-contingencia-2024-2025/",
+   "regras_18": [],
+   "pista_id": "22491427cb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "04ffb65f8f5feccbde5bcdd5f8638cbb4a628211c5c5484f8ab6fa3ab191d2f2",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8201 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2600203",
+   "municipio": "Afrânio",
+   "uf": "PE",
+   "url": "https://www.saude.am.gov.br/governo-do-estado-apresenta-ao-ministerio-da-saude-o-plano-de-contingencia-para-a-estiagem-no-amazonas/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "47abb189b0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3c924a6c0b3ad6e65b06bc858b8885d21048be04a1ff86c1adf787d59694367a",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": "https://www.saude.am.gov.br/governo-do-estado-apresenta-ao-ministerio-da-saude-o-plano-de-contingencia-para-a-estiagem-no-amazonas/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205902",
+   "municipio": "Gaspar",
+   "uf": "SC",
+   "url": "https://www.gaspar.sc.gov.br/saude/covid/contingencia/",
+   "regras_18": [],
+   "pista_id": "bb21857191",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205902",
+   "municipio": "Gaspar",
+   "uf": "SC",
+   "url": "https://www.gaspar.sc.gov.br/prefeitura-de-gaspar-promove-apresentacao-publica-do-plano-de-contingencia-plancon/",
+   "regras_18": [],
+   "pista_id": "dcd1c8eea6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205902",
+   "municipio": "Gaspar",
+   "uf": "SC",
+   "url": "https://www.gaspar.sc.gov.br/prefeitura-de-gaspar-destaca-medidas-que-fortalece-a-seguranca-nas-escolas-em-reuniao-com-autoridades/",
+   "regras_18": [],
+   "pista_id": "8866953b83",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219309",
+   "municipio": "Videira",
+   "uf": "SC",
+   "url": "https://www.camaravideira.sc.gov.br/tramitacoes/1/6510/0",
+   "regras_18": [],
+   "pista_id": "90a45bc3fc",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219309",
+   "municipio": "Videira",
+   "uf": "SC",
+   "url": "https://www.camaravideira.sc.gov.br/tramitacoes/1/4384/0",
+   "regras_18": [],
+   "pista_id": "a6c8d682a4",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4206504",
+   "municipio": "Guaramirim",
+   "uf": "SC",
+   "url": "https://www.guaramirim.sc.leg.br/atas/plenaria/0/1/0/4450",
+   "regras_18": [],
+   "pista_id": "9188b5854e",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/uploads/sites/450/2024/06/Plano-de-Contingencia-TangaraSC.pdf",
+   "regras_18": [],
+   "pista_id": "e925ee4f7e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "234101 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "pio de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretaria Mun",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "17/10/2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "Plano de Contingência",
+      "trecho": "pio de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretaria Mun",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Município de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretar"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "as de convergências, tempestades, temperaturas extremas, infestações ou pragas, secas, epidemias, e desastres tecnológicos, como os relacionados a contaminação"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "17/10/2024",
+   "natureza": "EX_ANTE",
+   "ibge": "4209300",
+   "municipio": "Lages",
+   "uf": "SC",
+   "url": "https://www.lages.sc.gov.br/source/edital/geral/1755882399370.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "5081668bea",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e87beefcdea7400ef7ccc0194a27d2d154fc023162bb7756b7935a86d23a18a7"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3338 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESA CIVIL - Skip to content 31 de outubro de 2025 Últimas Notícias Município de São Miguel da Boa Vista se prepara para adoção obrigatória da Nota Fiscal de Ser"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "10/03/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/03/2025",
+   "natureza": null,
+   "ibge": "4217154",
+   "municipio": "São Miguel da Boa Vista",
+   "uf": "SC",
+   "url": "https://saomigueldaboavista.sc.gov.br/plano-municipal-de-contingencia-defesa-civil/",
+   "regras_18": [],
+   "pista_id": "97308f47fd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d1863d81f549cfad35e1da8fccacb370157d7dfb51feec2e106c826829cc7a65",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202453",
+   "municipio": "Bombinhas",
+   "uf": "SC",
+   "url": "https://bombinhas.sc.gov.br/noticia-405898/",
+   "regras_18": [],
+   "pista_id": "91d7c5a6b6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202453",
+   "municipio": "Bombinhas",
+   "uf": "SC",
+   "url": "https://bombinhas.sc.gov.br/noticia-529125/",
+   "regras_18": [],
+   "pista_id": "9219e9f550",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "97643 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "INAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇÃO/ENSINO. Lages PLANCON-EDU/COVID-19 Outubro de 2020 COMITÊ ESTRATÉGICO DE RETORNO AS AULA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA- EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Governo do Estado",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA- EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ÇÃO/ENSINO 2 PLANO DE CONTINGÊNCIA MUNICIPAL Plano de contingência aplicável ao município de: LAGES Equipe responsável pela elaboração e implementação do plano:"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "TINGÊNCIA- EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇÃO/ENSINO. Lages PLAN"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "4209300",
+   "municipio": "Lages",
+   "uf": "SC",
+   "url": "https://www.lages.sc.gov.br/img/plano_municipal.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "94897274a9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bb70e10b5e8c8c02d9ec7e4bff7713edc7f828e97c1b9c343773f74ed0732eb2"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3481 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA A DESASTRESDO MUNICÍPIO DE BOMBINHAS &#8211; SC &#8211; Prefeitura de Bombinhas Skip to content 22 de outubro de 2025 Últimas Notícias BOM"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e FME – Cessão de uso do Estadio Municipal SIAFIC Plano de Ação de Adequação ao Decreto Federal Nº 10.540 NOTÍCIAS CONCURSOS PÚBLICOS CARTA DE SERVIÇOS TURISMO",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "10.540",
+      "data": "04/08/2025",
+      "trecho": "e FME – Cessão de uso do Estadio Municipal SIAFIC Plano de Ação de Adequação ao Decreto Federal Nº 10.540 NOTÍCIAS CONCURSOS PÚBLICOS CARTA DE SERVIÇOS TURISMO"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "04/08/2025",
+   "natureza": null,
+   "ibge": "4202453",
+   "municipio": "Bombinhas",
+   "uf": "SC",
+   "url": "https://bombinhas.sc.gov.br/plano-de-contingencia-a-desastresdo-municipio-de-bombinhas-sc/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6191e21b6e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2e61a3a27a279a6575ca9c3ab154f16f4ff28c05c3abdfc05a170d5419254ea3"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4014 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Bombinhas Skip to content 21 de janeiro de 2026 Últimas Notícias BOMBINHAS INAUGURA NOVO CENTRO DE VIGILÂNCIA ANIMAL E FORTALECE POLÍTICAS DE SAÚD"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e FME – Cessão de uso do Estadio Municipal SIAFIC Plano de Ação de Adequação ao Decreto Federal Nº 10.540 NOTÍCIAS CONCURSOS PÚBLICOS CARTA DE SERVIÇOS TURISMO",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "10.540",
+      "data": "21/01/2026",
+      "trecho": "e FME – Cessão de uso do Estadio Municipal SIAFIC Plano de Ação de Adequação ao Decreto Federal Nº 10.540 NOTÍCIAS CONCURSOS PÚBLICOS CARTA DE SERVIÇOS TURISMO"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "21/01/2026",
+   "natureza": null,
+   "ibge": "4202453",
+   "municipio": "Bombinhas",
+   "uf": "SC",
+   "url": "https://bombinhas.sc.gov.br/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "29b726654c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "538aa2271069a84aea36b142e3ec509312c912d5f88413874ce0a4bfd6b87237"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202453",
+   "municipio": "Bombinhas",
+   "uf": "SC",
+   "url": "https://bombinhas.sc.gov.br/category/defesa-civil/",
+   "regras_18": [],
+   "pista_id": "79bb2892e9",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10903 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211751",
+   "municipio": "Otacílio Costa",
+   "uf": "SC",
+   "url": "https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/rede-de-urgencia-e-emergencia/planos-de-acao-regionais/par-bienio-2023-24/plano%20de%20a%C3%87%C3%83o%20regional-%20serra%20catarinense.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "7fb00a90b0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "966bc5e9cce9187622b4a8064e3146000479207b4c16d7f741d041a6f656b24e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10903 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204558",
+   "municipio": "Correia Pinto",
+   "uf": "SC",
+   "url": "https://www.saude.sc.gov.br/edocman/areas-de-atuacao/redes-de-atencao-a-saude-ras/rede-de-urgencia-e-emergencia/planos-de-acao-regionais/par-bienio-2023-24/plano%20de%20a%C3%87%C3%83o%20regional-%20serra%20catarinense.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "78d818d6af",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "966bc5e9cce9187622b4a8064e3146000479207b4c16d7f741d041a6f656b24e"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212106",
+   "municipio": "Palmitos",
+   "uf": "SC",
+   "url": "https://www.camarapalmitos.sc.gov.br/proposicoes/Requerimentos/2026/1/0/3249",
+   "regras_18": [],
+   "pista_id": "8eb1901ef2",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "234101 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Município de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretar"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "pio de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretaria Mun",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "17/10/2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "Plano de Contingência",
+      "trecho": "pio de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretaria Mun",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Município de Lages – Santa Catarina Secretaria Municipal de Assistência Social (SMAS) Plano de Contingência Municipal de Assistência Social PLACOM - AS Secretar"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "as de convergências, tempestades, temperaturas extremas, infestações ou pragas, secas, epidemias, e desastres tecnológicos, como os relacionados a contaminação"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "17/10/2024",
+   "natureza": "EX_ANTE",
+   "ibge": "4209300",
+   "municipio": "Lages",
+   "uf": "SC",
+   "url": "https://www.lages.sc.gov.br/source/edital/geral/1755882399370.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "7d466858cf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e87beefcdea7400ef7ccc0194a27d2d154fc023162bb7756b7935a86d23a18a7"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202099",
+   "municipio": "Barra Bonita",
+   "uf": "SC",
+   "url": "https://barrabonita.sc.gov.br/%F0%9F%9A%A7-atencao-intervencoes-no-transito-linha-beira-rio-%F0%9F%9A%A7/",
+   "regras_18": [],
+   "pista_id": "7c446d39b6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207809",
+   "municipio": "Irani",
+   "uf": "SC",
+   "url": "https://irani.sc.gov.br/planos-municipais/",
+   "regras_18": [],
+   "pista_id": "34b58cb9f1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207809",
+   "municipio": "Irani",
+   "uf": "SC",
+   "url": "https://irani.sc.gov.br/planos-municipais/",
+   "regras_18": [],
+   "pista_id": "605908aa59",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://irani.sc.gov.br/planos-municipais/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "26099 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4201505",
+   "municipio": "Armazém",
+   "uf": "SC",
+   "url": "https://armazem.sc.gov.br/noticia-609514-3/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "d071b09879",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1833a45509589f3becb19086678a86cde2fabc37546be9518738c287164f4d0c"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/plano-de-contingencia-para-enfrentamento-da-dengue-chikungunya-e-zika/",
+   "regras_18": [],
+   "pista_id": "94179bdada",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/planejamento-anual-de-compras-pac/",
+   "regras_18": [],
+   "pista_id": "8796310e39",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/pagina-138981/",
+   "regras_18": [],
+   "pista_id": "df4b7daabb",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4062 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Diretor - Prefeitura de Tangará Skip to content 26 de janeiro de 2023 Prefeitura de Tangará Facebook Instagram Google Mail Início Município Governo Contat"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "está aqui: Início » Galeria » Plano Diretor Plano Diretor Arquivos [29/09/2022] Lei Complementar nº 107-2020 - Plano Diretor [29/09/2022] Lei Complementar nº 10",
+     "dados": {
+      "tipo": "lei",
+      "numero": "107",
+      "data": "29/09/2022",
+      "trecho": "está aqui: Início » Galeria » Plano Diretor Plano Diretor Arquivos [29/09/2022] Lei Complementar nº 107-2020 - Plano Diretor [29/09/2022] Lei Complementar nº 10"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "29/09/2022",
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/galeria/pagina-19110/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4d26c795ae",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "73c36e80ca3a59bc1e666f30d2efb4b4192d18ad4482c73fa2b1de4c2e4b6026"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/pagina-43767/",
+   "regras_18": [],
+   "pista_id": "13f1a2ed76",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204350",
+   "municipio": "Cordilheira Alta",
+   "uf": "SC",
+   "url": "https://pmcordi.sc.gov.br/defesa-civil-apresenta-servicos-e-novas-parcerias-a-prefeitura-de-cordilheira-alta/",
+   "regras_18": [],
+   "pista_id": "4cfb6215ec",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204350",
+   "municipio": "Cordilheira Alta",
+   "uf": "SC",
+   "url": "https://pmcordi.sc.gov.br/consorcio-ibere-doa-composteira-a-escola-municipal-professora-mary-lucia-tecchio-cella-em-acao-de-educacao-ambiental/",
+   "regras_18": [],
+   "pista_id": "f3486eb418",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62676 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204350",
+   "municipio": "Cordilheira Alta",
+   "uf": "SC",
+   "url": "https://pmcordi.sc.gov.br/pagina-37372/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "78f67625fe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "618f57f28760fd48f21e1a7cda60243a88ee02aeb13c0950c0abac22d4c7afa4"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211454",
+   "municipio": "Nova Itaberaba",
+   "uf": "SC",
+   "url": "https://www.novaitaberaba.sc.gov.br/",
+   "regras_18": [],
+   "pista_id": "7eadfd954d",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1728 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Águas Lindas de Goiás Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Instru"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5200258",
+   "municipio": "Águas Lindas de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.aguaslindasdegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "24ec5565af",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "1549cd20d28efe764674de2e40b5096e62ce3c65a6f58b81f3f51b464d3f4a3c"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1777 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Águas Lindas de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5200258",
+   "municipio": "Águas Lindas de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.aguaslindasdegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "0ebc1fa6f6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "f1a76ccf181f36559b7a0d20428c17c28576720c62df7a5ff3690390c072d553"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20617 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SECRETARIA MUNICIPAL DE SAÚDE DE MEDICILÂNDIA PLANO DE CONTINGÊNCIA MUNICIPAL DIANTE DA PANDEMIA DA DOENÇA PELO CORONAVÍRUS (COVID-19) GOVERNO “Com a Força do P"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "SECRETARIA MUNICIPAL DE SAÚDE DE MEDICILÂNDIA PLANO DE CONTINGÊNCIA MUNICIPAL DIANTE DA PANDEMIA DA DOENÇA PELO CORONAVÍRUS (COVID-19) GOVERNO “Com a Força do P",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "SECRETARIA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "SECRETARIA MUNICIPAL DE SAÚDE DE MEDICILÂNDIA PLANO DE CONTINGÊNCIA MUNICIPAL DIANTE DA PANDEMIA DA DOENÇA PELO CORONAVÍRUS (COVID-19) GOVERNO “Com a Força do P",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "SECRETARIA MUNICIPAL DE SAÚDE DE MEDICILÂNDIA PLANO DE CONTINGÊNCIA MUNICIPAL DIANTE DA PANDEMIA DA DOENÇA PELO CORONAVÍRUS (COVID-19) GOVERNO “Com a Força do P"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICIPAL DIANTE DA PANDEMIA DA DOENÇA PELO CORONAVÍRUS (COVID-19) GOVERNO “Com a Força do Povo” MEDICILÂNDIA – PA 2020 PREFEITO DE MEDIC"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "1504455",
+   "municipio": "Medicilândia",
+   "uf": "PA",
+   "url": "https://medicilandia.pa.gov.br/wp-content/uploads/2020/06/Plano-de-contingência-municipal.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "94c831c4a2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9c3d06bb73fb4f9e0caa3e0c23cc7a44ccfa26c1e92abb37dbed0df0edcbf96a"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1666 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Campo Limpo de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Le"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5204854",
+   "municipio": "Campo Limpo de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.campolimpodegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "267ec90a19",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "27b0d750418421c95180ffdfde0a2db1dba6de14c6970e34fb855913eb4b2a31"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1670 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Campo Limpo de Goiás - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5204854",
+   "municipio": "Campo Limpo de Goiás",
+   "uf": "GO",
+   "url": "https://acessoainformacao.campolimpodegoias.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "aaaef0e7f4",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "809912e142d63122df0de2fa17497b9553bc87d186d124623e3d1b244e1ac878"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5214408",
+   "municipio": "Nazário",
+   "uf": "GO",
+   "url": "http://acessoainformacao.nazario.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "a7d572a072",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5214408",
+   "municipio": "Nazário",
+   "uf": "GO",
+   "url": "http://acessoainformacao.nazario.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "0417628166",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5222203",
+   "municipio": "Vila Boa",
+   "uf": "GO",
+   "url": "https://acessoainformacao.vilaboa.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "7f6ca57faa",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5222203",
+   "municipio": "Vila Boa",
+   "uf": "GO",
+   "url": "https://acessoainformacao.vilaboa.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "4a6b927c5a",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1599 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Aloândia - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Resoluçõe"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5200506",
+   "municipio": "Aloândia",
+   "uf": "GO",
+   "url": "https://acessoainformacao.aloandia.go.gov.br/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "ebcb15f4dc",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "065528050494f874bcf4d4754b6b929f87fd85ba83492a796e51c4daabc74829"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1686 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Dueré Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Resoluções Receit"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1707306",
+   "municipio": "Dueré",
+   "uf": "TO",
+   "url": "https://acessoainformacao.duere.to.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "ae63ceca51",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9f20e99349d6185c6b04ee8f17a9ee825038293bd12ce489fce69231857b890d"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1593 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação - Prefeitura de Dueré Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Resoluções Rec"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1707306",
+   "municipio": "Dueré",
+   "uf": "TO",
+   "url": "https://acessoainformacao.duere.to.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "4e17a3d970",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "262c04db98669df1357b5b86d80f9fa1981256be8dbabd393f93f88bffcc4045"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3520707",
+   "municipio": "Indiaporã",
+   "uf": "SP",
+   "url": "https://www.indiapora.sp.gov.br/portal/download/arquivos/RCxAj/",
+   "regras_18": [],
+   "pista_id": "64067939cc",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3556305",
+   "municipio": "Valparaíso",
+   "uf": "SP",
+   "url": "https://www.valparaiso.sp.gov.br/portal/download/arquivos/hnxAzP/",
+   "regras_18": [],
+   "pista_id": "a94f912b2f",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3556305",
+   "municipio": "Valparaíso",
+   "uf": "SP",
+   "url": "https://www.valparaiso.sp.gov.br/portal/download/arquivos/RKxALL/",
+   "regras_18": [],
+   "pista_id": "cdccfd97f3",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12976 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Publicações | Prefeitura Municipal de Divino de São Lourenço Poder Executivo Municipal A+ A- Aa Acessibilidade NVDA Dados Abertos Dados Abertos Transparência Da"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "01/01/2022",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/01/2022",
+   "natureza": null,
+   "ibge": "3201803",
+   "municipio": "Divino de São Lourenço",
+   "uf": "ES",
+   "url": "https://dslourenco.es.gov.br/publicacoes/filtro/1?types=Plano Municipal de Assistência Social",
+   "regras_18": [],
+   "pista_id": "259432d911",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ecb5371d6eab528320b727e91643a6be7664830993bb022849d51aad435136c9",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1657 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Mundo Novo - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Resoluç"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5214051",
+   "municipio": "Mundo Novo",
+   "uf": "GO",
+   "url": "https://acessoainformacao.mundonovo.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "d85cd35ba9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b786526d2f05103a925ab48db9e43a908fd527fab557c561f7e24a68e09a3fc8"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1661 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Mundo Novo - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Port"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5214051",
+   "municipio": "Mundo Novo",
+   "uf": "GO",
+   "url": "https://acessoainformacao.mundonovo.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "1e7593cbb3",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "51bc53cf2e428c74e33ac0a86d1052066e1c179f3838806d1acab2f773247d8d"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1734 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Aragoiânia - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Atas do"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5201801",
+   "municipio": "Aragoiânia",
+   "uf": "GO",
+   "url": "https://acessoainformacao.aragoiania.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "d9e87bef8b",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "7f50db7b20da1a94f3ed5c5cead2c7cb347e411d5e829f065ede6a443cd3aca6"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5201801",
+   "municipio": "Aragoiânia",
+   "uf": "GO",
+   "url": "https://acessoainformacao.aragoiania.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "pista_id": "7dc23589ea",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "87 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3134103",
+   "municipio": "Itueta",
+   "uf": "MG",
+   "url": "https://itueta.mg.gov.br/extra/abrir-arquivo/downloads/%7BF8AD4F4D-1910-4E98-9E05-E73515450F83%7D/",
+   "regras_18": [],
+   "pista_id": "c7becad973",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "29 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5007307",
+   "municipio": "Rio Negro",
+   "uf": "MS",
+   "url": "https://www.rionegro.ms.gov.br/publicacoes?tipo=29",
+   "regras_18": [],
+   "pista_id": "4c310e197c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "29 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5007307",
+   "municipio": "Rio Negro",
+   "uf": "MS",
+   "url": "https://www.rionegro.ms.gov.br/publicacoes?tipo=34",
+   "regras_18": [],
+   "pista_id": "9c0ad99d2d",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "256 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4317202",
+   "municipio": "Santa Rosa",
+   "uf": "RS",
+   "url": "https://prefeitura.santarosa.rs.gov.br/?page_id=10237",
+   "regras_18": [],
+   "pista_id": "a5a56d5bb8",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3520707",
+   "municipio": "Indiaporã",
+   "uf": "SP",
+   "url": "https://www.indiapora.sp.gov.br/portal/download/arquivos/nhxAj/",
+   "regras_18": [],
+   "pista_id": "1dedafacc7",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3520707",
+   "municipio": "Indiaporã",
+   "uf": "SP",
+   "url": "https://www.indiapora.sp.gov.br/portal/download/arquivos/CsxAj/",
+   "regras_18": [],
+   "pista_id": "8f4f803bb1",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-municipal-de-educacao/20081",
+   "regras_18": [],
+   "pista_id": "e53c389681",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-m-de-saneamento-basico/10037",
+   "regras_18": [],
+   "pista_id": "0d26949c74",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5004007",
+   "municipio": "Glória de Dourados",
+   "uf": "MS",
+   "url": "https://gloriadedourados.ms.gov.br/portal-da-lgpd/plano-de-acao-roadmap-2025-2026/",
+   "regras_18": [],
+   "pista_id": "d07dd85361",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://www.curitiba.pr.gov.br/noticias/prefeitura-concentra-vacina-contra-covid-em-dez-unidades-de-saude-para-publico-prioritario-com-12-anos-ou-mais/83298",
+   "regras_18": [],
+   "pista_id": "2c670835a4",
+   "origem": null,
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7500 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301850",
+   "municipio": "Guapimirim",
+   "uf": "RJ",
+   "url": "https://guapimirim.rj.gov.br/2024/03/guapimirim-em-estagio-de-alerta-pelas-fortes-chuvas-previstas-para-o-fim-de-semana/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "1d39117203",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2ac378ceb6ff221d58be8fe2edd374e8731ba5eb79cfcd0bbd59d449478fdbd2"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "94900 caracteres de fonte oficial",
+     "recorte_do_ato": "85376 de 94900 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "BOLETIM INFORMATIVO OFICIAL DO MUNICÍPIO DE GUAPIMIRIM ESTADO DO RIO DE JANEIRO ANO 20 - Nº 544 - 30 DE SETEMBRO DE 2020 DIÁRIO OFICIAL ELETRÔNICO PODER EXECUTI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "LEI COMPLEMENTAR Nº 038 DE 28 DE SETEMBRO DE 2020 das perdas; “Dispõe sobre o ESTATUTO PRÓPRIO DA DEFESA IV - Compromisso com a evolução social da comunidade; C",
+     "dados": {
+      "tipo": "lei",
+      "numero": "038",
+      "data": "28/09/2020",
+      "trecho": "LEI COMPLEMENTAR Nº 038 DE 28 DE SETEMBRO DE 2020 das perdas; “Dispõe sobre o ESTATUTO PRÓPRIO DA DEFESA IV - Compromisso com a evolução social da comunidade; C"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "olícia administrativa delegado pelo município no limite de suas competências; O PREFEITO MUNICIPAL DE GUAPIMIRIM, Estado do Rio de VI - Proteção e preservação d"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "28/09/2020",
+   "natureza": "RESPOSTA",
+   "ibge": "3301850",
+   "municipio": "Guapimirim",
+   "uf": "RJ",
+   "url": "https://guapimirim.rj.gov.br/wp-content/uploads/2021/07/Diario-544.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "431c600511",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7ffdecb4148e1a3876995e62c78b19fcc4a1f2ee852ed158bf6e9c232e939844"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "375673 caracteres de fonte oficial",
+     "recorte_do_ato": "6000 de 375673 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CIDADE DE Noo povo mais feliz! BOLETIM INFORMATIVO OFICIAL DO MUNICÍPIO DE GUAPIMIRIM ESTADO DO RIO DE JANEIRO ANO 20 - Nº 637 - 01 DE MARÇO DE 2021 DIÁRIO OFI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PORTARIA Nº 474 DE 01 DE MARÇO DE 2021. A PREFEITA MUNICIPAL, no uso de suas atribuições legais em consonância com a Lei Orgânica Municipal, Considerando que a",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "474",
+      "data": "01/03/2021",
+      "trecho": "PORTARIA Nº 474 DE 01 DE MARÇO DE 2021. A PREFEITA MUNICIPAL, no uso de suas atribuições legais em consonância com a Lei Orgânica Municipal, Considerando que a"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PORTARIA Nº 474 DE 01 DE MARÇO DE 2021. A PREFEITA MUNICIPAL, no uso de suas atribuições legais em consonância com a Lei Orgânica Municipal, Considerando que a"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "01/03/2021",
+   "natureza": "DUVIDA",
+   "ibge": "3301850",
+   "municipio": "Guapimirim",
+   "uf": "RJ",
+   "url": "https://guapimirim.rj.gov.br/wp-content/uploads/2021/06/Diario-637.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ae76786145",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f232a7d194958962894a09a61e1a5d07538be90c1e2de8bb3c66f05995e1c48b"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2611309",
+   "municipio": "Pombos",
+   "uf": "PE",
+   "url": "https://pombos.pe.transparenciamunicipal.online/app/pe/pombos/1/atos-oficiais-item-suspenso?do_search=1&amp;tipo_ato_oficial=114",
+   "regras_18": [],
+   "pista_id": "dbe2b9c293",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal do Cidadão - MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO ESTRUTURA ADMINISTRATIVA INFORMAÇÕES AO CIDADÃO DELEGACIA CORREI"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204194",
+   "municipio": "Chapadão do Lageado",
+   "uf": "SC",
+   "url": "https://chapadaodolageado.atende.net/cidadao/pagina/plano-municipal-de-saneamento-basico",
+   "regras_18": [],
+   "pista_id": "5ffc7b26f2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0a6a77ee379462038e241298383f35a49dad6ce4060fb8c79f161e38caad150d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal do Cidadão - MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO ESTRUTURA ADMINISTRATIVA INFORMAÇÕES AO CIDADÃO DELEGACIA CORREI"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204194",
+   "municipio": "Chapadão do Lageado",
+   "uf": "SC",
+   "url": "https://chapadaodolageado.atende.net/cidadao/pagina/plano-municipal-de-educacao-e-relatorios-de-monitoramento",
+   "regras_18": [],
+   "pista_id": "cf6b4e500c",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0a6a77ee379462038e241298383f35a49dad6ce4060fb8c79f161e38caad150d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal do Cidadão - MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO ESTRUTURA ADMINISTRATIVA INFORMAÇÕES AO CIDADÃO DELEGACIA CORREI"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204194",
+   "municipio": "Chapadão do Lageado",
+   "uf": "SC",
+   "url": "https://chapadaodolageado.atende.net/cidadao/pagina/plano-municipal-de-residuos-solidos",
+   "regras_18": [],
+   "pista_id": "010809a55a",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0a6a77ee379462038e241298383f35a49dad6ce4060fb8c79f161e38caad150d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal do Cidadão - MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO ESTRUTURA ADMINISTRATIVA INFORMAÇÕES AO CIDADÃO DELEGACIA CORREI"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204194",
+   "municipio": "Chapadão do Lageado",
+   "uf": "SC",
+   "url": "https://chapadaodolageado.atende.net/cidadao/pagina/plano-municipal-de-saude-programacao-anual-e-relatorio-de-gestao",
+   "regras_18": [],
+   "pista_id": "c6d7dbcb38",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0a6a77ee379462038e241298383f35a49dad6ce4060fb8c79f161e38caad150d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Portal do Cidadão - MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO DE CHAPADÃO DO LAGEADO MUNICÍPIO ESTRUTURA ADMINISTRATIVA INFORMAÇÕES AO CIDADÃO DELEGACIA CORREI"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.019/2014",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204194",
+   "municipio": "Chapadão do Lageado",
+   "uf": "SC",
+   "url": "https://chapadaodolageado.atende.net/cidadao/pagina/plano-municipal-de-turismo",
+   "regras_18": [],
+   "pista_id": "425593ec93",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0a6a77ee379462038e241298383f35a49dad6ce4060fb8c79f161e38caad150d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8865 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CLIQUE AQUI E VEJA NA SESSÃO DA LEI ALDIR BLANCK CADASTRAMENTO DE ESTUDANTES DE DERRUBADAS INTERESSADOS NO AUXÍLIO-TRANSPORTE Detalhes Categoria: Notícias Publi"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2017",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306320",
+   "municipio": "Derrubadas",
+   "uf": "RS",
+   "url": "https://www.derrubadas-rs.com.br/site/index.php/a-prefeitura/educacao/regimento-escolar-2",
+   "regras_18": [],
+   "pista_id": "832b23fadc",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "4c7a99bcb2c74417ca59c64156139dd939ce793bedf996e37833ba212e5ba897",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8865 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CLIQUE AQUI E VEJA NA SESSÃO DA LEI ALDIR BLANCK CADASTRAMENTO DE ESTUDANTES DE DERRUBADAS INTERESSADOS NO AUXÍLIO-TRANSPORTE Detalhes Categoria: Notícias Publi"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2017",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306320",
+   "municipio": "Derrubadas",
+   "uf": "RS",
+   "url": "https://www.derrubadas-rs.com.br/site/index.php/acesso-a-informacao/plano-de-acao-siafic",
+   "regras_18": [],
+   "pista_id": "fe8a885aff",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "4c7a99bcb2c74417ca59c64156139dd939ce793bedf996e37833ba212e5ba897",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2266 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Derrubadas\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306320",
+   "municipio": "Derrubadas",
+   "uf": "RS",
+   "url": "https://www.derrubadas-rs.com.br/index.php/a-prefeitura/educacao/regimento-escolar-2",
+   "regras_18": [],
+   "pista_id": "cea200651e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ebe5160b9eccbe7bacfe6f5154b5e5068af0dff383d1dc7f42b24bb58001d454"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2143 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Derrubadas\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306320",
+   "municipio": "Derrubadas",
+   "uf": "RS",
+   "url": "https://www.derrubadas-rs.com.br/index.php/acesso-a-informacao/plano-de-acao-siafic",
+   "regras_18": [],
+   "pista_id": "dc2c151c91",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "23d481fb621709cad29498db30f56a9d58da7c1d4811a67da765639399b6e46a"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19537 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "pista sem nome de município"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "RO",
+   "url": "https://rondonia.ro.gov.br/publicacao/plano-de-adaptacao-na-saude-de-rondonia-ao-enfrentamento-aos-impactos-do-el-nino-2026-ate-2027/",
+   "regras_18": [],
+   "pista_id": "9fe7765320",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d3e91d27d07f5b47a015c46b8b85e4cab0db19ef5cf1e3914e2c2ede7e16c054"
   }
  ]
 }
