@@ -123,6 +123,13 @@ def _ler_sharepoint_rs(url, timeout):
     return corpo
 
 
+def ler_documento(url, timeout=40, origem=None):
+    """Os bytes do documento pela porta que o entrega: a pasta do RS só abre com a sessão do link de
+    compartilhamento; o resto, pela porta de rede do projeto. Um leitor só para o juiz, a guarda da prova e o OCR
+    (18/11/2026: o OCR baixava a pasta do RS sem a sessão e 78 PDFs escaneados ficaram com `HTTPError`)."""
+    return _ler_sharepoint_rs(url, timeout) if HOST_SHAREPOINT_RS in url else buscar(url, timeout=timeout, origem=origem)
+
+
 def buscar_texto(url, timeout=40, arquivada=None):
     """Busca o conteúdo textual da URL. Tolerante a falha (retorna None, nunca lança).
     Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
@@ -130,14 +137,12 @@ def buscar_texto(url, timeout=40, arquivada=None):
     try:
         if arquivada:
             raw, tipo = arquivada, ""
-        elif HOST_SHAREPOINT_RS in url:
-            raw, tipo = _ler_sharepoint_rs(url, timeout), ""
         else:
             # 15/11/2026: pela porta de rede do projeto (`coletores_base.buscar`), como todo coletor. O juiz
             # abria a conexão por conta própria, com 20 s e sem a cadeia de certificados do `certifi`: em três
             # rodadas, 90 de 153 falhas foram tempo esgotado e 15 foram cadeia TLS — documento oficial no ar
             # saindo `documento_inacessivel` (1.397 pistas em domínio oficial paradas nisso).
-            raw, tipo = buscar(url, timeout=timeout, origem="julgamento de descobertas"), ""
+            raw, tipo = ler_documento(url, timeout, "julgamento de descobertas"), ""
         if (not arquivada and url.lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt"))
                 and not raw.startswith(ASSINATURAS_DE_DOCUMENTO)):
             # 17/11/2026: o endereço de documento que responde página (Rio de Janeiro/RJ: 132 caracteres de HTML,
