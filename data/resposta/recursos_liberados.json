@@ -4,7 +4,7 @@
    "nome": "Joaíma",
    "uf": "MG",
    "por_acao": {
-    "recuperacao": 416281.64
+    "recuperacao": 857301.9
    },
    "atos": [
     {
@@ -17,9 +17,20 @@
      "valor_autorizado": 416281.64,
      "processo_sei": "59053.024553/2026-22",
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.181-de-24-de-setembro-de-2026-734499331"
+    },
+    {
+     "municipio": "Joaíma",
+     "uf": "MG",
+     "portaria": "3.984",
+     "data": "2026-10-12",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 441020.26,
+     "processo_sei": "59053.024548/2026-10",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.984-de-12-de-outubro-de-2026-744738821"
     }
    ],
-   "total_autorizado": 416281.64
+   "total_autorizado": 857301.9
   },
   "4314068": {
    "nome": "Passa Sete",
@@ -2409,6 +2420,48 @@
     }
    ],
    "total_autorizado": 380000.0
+  },
+  "4303004": {
+   "nome": "Cachoeira do Sul",
+   "uf": "RS",
+   "por_acao": {
+    "resposta": 63168.0
+   },
+   "atos": [
+    {
+     "municipio": "Cachoeira do Sul",
+     "uf": "RS",
+     "portaria": "3.945",
+     "data": "2026-11-12",
+     "acao": "resposta",
+     "acao_no_ato": "Resposta",
+     "valor_autorizado": 63168.0,
+     "processo_sei": "59052.040717/2026-79",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.945-de-12-de-novembro-de-2026-744745512"
+    }
+   ],
+   "total_autorizado": 63168.0
+  },
+  "1300144": {
+   "nome": "Apuí",
+   "uf": "AM",
+   "por_acao": {
+    "resposta": 527410.0
+   },
+   "atos": [
+    {
+     "municipio": "Apuí",
+     "uf": "AM",
+     "portaria": "3.954",
+     "data": "2026-11-12",
+     "acao": "resposta",
+     "acao_no_ato": "Resposta",
+     "valor_autorizado": 527410.0,
+     "processo_sei": "59052.040642/2026-26",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.954-de-12-de-novembro-de-2026-744745422"
+    }
+   ],
+   "total_autorizado": 527410.0
   }
  },
  "nao_casados": {
@@ -2417,9 +2470,9 @@
   "BA|Cacequi": 9226995.1
  },
  "janela_lida": {
-  "desde": "2026-11-08",
-  "ate": "2026-11-16",
-  "atos_na_busca": 35,
+  "desde": "2026-11-09",
+  "ate": "2026-11-18",
+  "atos_na_busca": 38,
   "janelas_incompletas": []
  },
  "recusas": {
@@ -2429,14 +2482,14 @@
   "sem_valor_declarado": 6,
   "ato_nao_lido": 0
  },
- "atos_novos_nesta_rodada": 0,
- "atualizado_em": "16/11/2026",
+ "atos_novos_nesta_rodada": 3,
+ "atualizado_em": "18/11/2026",
  "total_por_acao": {
-  "recuperacao": 236755357.22,
-  "resposta": 18088291.78,
+  "recuperacao": 237196377.48,
+  "resposta": 18678869.78,
   "outra": 13878788.0
  },
- "municipios_com_ato": 101,
+ "municipios_com_ato": 103,
  "_governanca": "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta \"Autoriza a transferência de recursos\"). `valor_autorizado` é o que a portaria autoriza transferir — a saída do dinheiro é outro fato, e quem o registra é o Portal da Transparência: a página diz 'liberado', nunca 'pago'. As ações de RESPOSTA e de RECUPERAÇÃO ficam separadas em `por_acao`, com o rótulo que o próprio ato usou, porque somá-las num cartão de resposta inflaria o número com dinheiro de outra finalidade. Ato sem valor declarado não vira zero: entra em `recusas.sem_valor_declarado`. Município que não casa com a referência do IBGE entra em `nao_casados`, com o nome como o ato o escreveu. Derivado de coletar_recursos_resposta.py — não se edita à mão.",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a)."
 }

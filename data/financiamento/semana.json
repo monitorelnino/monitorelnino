@@ -25,20 +25,20 @@
   },
   {
    "id": "resposta_liberado_semana",
-   "valor": 0,
+   "valor": 590578.0,
    "unidade": "reais",
    "periodo": "últimos 7 dias",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "nenhuma portaria de resposta publicada nos últimos 7 dias",
+   "detalhe": "2 município(s) em 2 portaria(s)",
    "sem_coleta": false,
-   "municipios_semana": 0,
-   "valor_ciclo": 247307946.11,
-   "municipios_ciclo": 97,
+   "municipios_semana": 2,
+   "valor_ciclo": 248339544.37,
+   "municipios_ciclo": 99,
    "por_acao_ciclo": {
     "outra": 13878788.0,
-    "recuperacao": 215340866.33,
-    "resposta": 18088291.78
+    "recuperacao": 215781886.59,
+    "resposta": 18678869.78
    },
    "desde": "29/06/2026"
   },
@@ -90,18 +90,18 @@
   },
   {
    "id": "defesa_civil_ciclo",
-   "valor": 247307946.11,
+   "valor": 248339544.37,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "97 municípios",
+   "detalhe": "99 municípios",
    "sem_coleta": false,
-   "municipios": 97,
+   "municipios": 99,
    "por_acao": {
     "outra": 13878788.0,
-    "recuperacao": 215340866.33,
-    "resposta": 18088291.78
+    "recuperacao": 215781886.59,
+    "resposta": 18678869.78
    }
   },
   {
@@ -3123,10 +3123,10 @@
    "cod_ibge": "4303004",
    "origem": "defesa_civil",
    "repassado": 28633.2,
-   "autorizado": null,
-   "ato": null,
-   "data": null,
-   "url": null,
+   "autorizado": 63168.0,
+   "ato": "Portaria 3.945",
+   "data": "2026-11-12",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.945-de-12-de-novembro-de-2026-744745512",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Cachoeira do Sul",
@@ -4745,9 +4745,18 @@
  "autorizado_sem_repasse": {
   "corte": "18/11/2026",
   "ultimo_mes_lido": "202609",
-  "n": 62,
-  "autorizado_total": 150422807.64,
+  "n": 63,
+  "autorizado_total": 151391237.9,
   "municipios": [
+   {
+    "cod_ibge": "1300144",
+    "nome": "Apuí",
+    "uf": "AM",
+    "autorizado": 527410.0,
+    "ato": "Portaria 3.954",
+    "data": "2026-11-12",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.954-de-12-de-novembro-de-2026-744745422"
+   },
    {
     "cod_ibge": "1300300",
     "nome": "Autazes",
@@ -4995,10 +5004,10 @@
     "cod_ibge": "3136009",
     "nome": "Joaíma",
     "uf": "MG",
-    "autorizado": 416281.64,
-    "ato": "Portaria 3.181",
-    "data": "2026-09-24",
-    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.181-de-24-de-setembro-de-2026-734499331"
+    "autorizado": 857301.9,
+    "ato": "Portaria 3.984",
+    "data": "2026-10-12",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.984-de-12-de-outubro-de-2026-744738821"
    },
    {
     "cod_ibge": "3138005",
@@ -5336,27 +5345,27 @@
    },
    {
     "mes": "202610",
-    "defesa_civil": 13479357.39,
+    "defesa_civil": 13920377.65,
     "saude": 1304169.68,
     "parcial": false
    },
    {
     "mes": "202611",
-    "defesa_civil": 31593912.69,
+    "defesa_civil": 32184490.69,
     "saude": null,
     "parcial": true
    }
   ],
   "saude_desde": "202607",
   "saude_ultimo_mes": "202610",
-  "total_defesa_civil": 247307946.11,
+  "total_defesa_civil": 248339544.37,
   "total_saude": 9552011.72
  },
  "funil_defesa_civil": {
-  "referencia": "17/11/2026",
-  "n_decretaram": 1206,
-  "n_reconhecidos": 1064,
-  "n_com_recurso": 97,
-  "n_com_recurso_e_decretaram": 61
+  "referencia": "18/11/2026",
+  "n_decretaram": 1257,
+  "n_reconhecidos": 1113,
+  "n_com_recurso": 99,
+  "n_com_recurso_e_decretaram": 65
  }
 }

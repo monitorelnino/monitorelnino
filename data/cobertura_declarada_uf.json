@@ -1,6 +1,6 @@
 {
  "_governanca": "Cobertura declarada por UF e por canal (§166, 23/09/2026). DERIVADO de data/log_buscas.json — não editar à mão; rode gerar_cobertura_declarada.py. Serve para que 'não localizamos até o corte' passe a ter escopo explícito: o leitor vê em que canais se procurou e quando. Canal com verificado=false NUNCA pode ser apresentado como ausência de plano. O canal 'lai' guarda só data e status, jamais texto ou registro de pedido (regra editorial). A ficha do estado (index) lê os canais verificados; a frase vive no catálogo (A3-18, 13/10/2026).",
- "gerado_em": "2026-11-17",
+ "gerado_em": "2026-11-18",
  "fonte": "data/log_buscas.json (log v2)",
  "nota_publica": null,
  "canais": [
@@ -28,10 +28,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 298,
-     "verificacoes": 61,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 299,
+     "verificacoes": 62,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -59,8 +59,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 215,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 217,
      "verificacoes": 81,
      "canais_do_log": [
       "busca_web",
@@ -77,10 +77,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-15",
-     "execucoes": 605,
-     "verificacoes": 563,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 606,
+     "verificacoes": 564,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -97,10 +97,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1829,
-     "verificacoes": 1652,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1831,
+     "verificacoes": 1654,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -108,10 +108,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 550,
-     "verificacoes": 399,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 551,
+     "verificacoes": 400,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -139,8 +139,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 504,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 506,
      "verificacoes": 44,
      "canais_do_log": [
       "busca_web",
@@ -180,8 +180,8 @@
     "diario_oficial": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 319,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 320,
      "verificacoes": 182,
      "canais_do_log": [
       "DOM",
@@ -190,10 +190,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 204,
-     "verificacoes": 116,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 205,
+     "verificacoes": 117,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -221,8 +221,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 171,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 173,
      "verificacoes": 68,
      "canais_do_log": [
       "busca_web",
@@ -241,8 +241,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 254,
-     "verificacoes": 157,
+     "execucoes": 255,
+     "verificacoes": 158,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -270,10 +270,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 447,
-     "verificacoes": 236,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 448,
+     "verificacoes": 237,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -302,8 +302,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 571,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 573,
      "verificacoes": 129,
      "canais_do_log": [
       "busca_web",
@@ -353,8 +353,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 1802,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 1803,
      "verificacoes": 1282,
      "canais_do_log": [
       "orgao_estadual",
@@ -383,8 +383,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 2046,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 2048,
      "verificacoes": 334,
      "canais_do_log": [
       "busca_web",
@@ -432,10 +432,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 790,
-     "verificacoes": 699,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 791,
+     "verificacoes": 700,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -463,8 +463,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1128,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1130,
      "verificacoes": 117,
      "canais_do_log": [
       "busca_web",
@@ -514,10 +514,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 130,
-     "verificacoes": 42,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 131,
+     "verificacoes": 43,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -545,8 +545,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 72,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 74,
      "verificacoes": 2,
      "canais_do_log": [
       "busca_web",
@@ -594,10 +594,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 1976,
-     "verificacoes": 228,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 1977,
+     "verificacoes": 229,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -625,8 +625,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 620,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 622,
      "verificacoes": 159,
      "canais_do_log": [
       "busca_web",
@@ -645,8 +645,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 1757,
-     "verificacoes": 1360,
+     "execucoes": 1758,
+     "verificacoes": 1361,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -674,10 +674,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 947,
-     "verificacoes": 835,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 948,
+     "verificacoes": 836,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -705,8 +705,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1146,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1148,
      "verificacoes": 3,
      "canais_do_log": [
       "busca_web",
@@ -725,8 +725,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 1416,
-     "verificacoes": 1245,
+     "execucoes": 1417,
+     "verificacoes": 1246,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -757,8 +757,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 1044,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 1045,
      "verificacoes": 710,
      "canais_do_log": [
       "orgao_estadual",
@@ -787,8 +787,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1215,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1217,
      "verificacoes": 9,
      "canais_do_log": [
       "busca_web",
@@ -836,10 +836,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 654,
-     "verificacoes": 504,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 655,
+     "verificacoes": 505,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -867,8 +867,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 891,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 893,
      "verificacoes": 105,
      "canais_do_log": [
       "busca_web",
@@ -887,8 +887,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 907,
-     "verificacoes": 694,
+     "execucoes": 908,
+     "verificacoes": 695,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -919,8 +919,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 441,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 442,
      "verificacoes": 254,
      "canais_do_log": [
       "orgao_estadual",
@@ -949,8 +949,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 432,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 434,
      "verificacoes": 53,
      "canais_do_log": [
       "busca_web",
@@ -988,10 +988,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 3928,
-     "verificacoes": 3780,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 3929,
+     "verificacoes": 3781,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -999,10 +999,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 3719,
-     "verificacoes": 2039,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 3720,
+     "verificacoes": 2040,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -1030,8 +1030,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 4060,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 4062,
      "verificacoes": 767,
      "canais_do_log": [
       "busca_web",
@@ -1051,7 +1051,7 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 3761,
+     "execucoes": 3762,
      "verificacoes": 1973,
      "canais_do_log": [
       "DOE",
@@ -1070,10 +1070,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1556,
-     "verificacoes": 1075,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1558,
+     "verificacoes": 1077,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -1082,8 +1082,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 710,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 711,
      "verificacoes": 512,
      "canais_do_log": [
       "orgao_estadual",
@@ -1112,8 +1112,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 927,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 929,
      "verificacoes": 101,
      "canais_do_log": [
       "busca_web",
@@ -1152,10 +1152,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1225,
-     "verificacoes": 1013,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1226,
+     "verificacoes": 1014,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -1163,10 +1163,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 916,
-     "verificacoes": 707,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 917,
+     "verificacoes": 708,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -1194,8 +1194,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 981,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 983,
      "verificacoes": 3,
      "canais_do_log": [
       "busca_web",
@@ -1233,10 +1233,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 2375,
-     "verificacoes": 2021,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 2378,
+     "verificacoes": 2024,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -1244,10 +1244,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 1758,
-     "verificacoes": 873,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 1759,
+     "verificacoes": 874,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -1275,8 +1275,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1681,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1683,
      "verificacoes": 55,
      "canais_do_log": [
       "busca_web",
@@ -1295,8 +1295,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 2504,
-     "verificacoes": 1906,
+     "execucoes": 2505,
+     "verificacoes": 1907,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1327,8 +1327,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 851,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 852,
      "verificacoes": 643,
      "canais_do_log": [
       "orgao_estadual",
@@ -1357,8 +1357,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1286,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1288,
      "verificacoes": 160,
      "canais_do_log": [
       "busca_web",
@@ -1396,10 +1396,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1042,
-     "verificacoes": 1026,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1043,
+     "verificacoes": 1027,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -1408,8 +1408,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 925,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 926,
      "verificacoes": 633,
      "canais_do_log": [
       "orgao_estadual",
@@ -1438,8 +1438,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1028,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1030,
      "verificacoes": 2,
      "canais_do_log": [
       "busca_web",
@@ -1487,10 +1487,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 673,
-     "verificacoes": 370,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 674,
+     "verificacoes": 371,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -1518,8 +1518,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 621,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 623,
      "verificacoes": 197,
      "canais_do_log": [
       "busca_web",
@@ -1538,8 +1538,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 2261,
-     "verificacoes": 1948,
+     "execucoes": 2262,
+     "verificacoes": 1949,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1557,10 +1557,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1085,
-     "verificacoes": 951,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1088,
+     "verificacoes": 954,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -1569,8 +1569,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 702,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 703,
      "verificacoes": 487,
      "canais_do_log": [
       "orgao_estadual",
@@ -1599,8 +1599,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 763,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 765,
      "verificacoes": 7,
      "canais_do_log": [
       "busca_web",
@@ -1649,10 +1649,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 2318,
-     "verificacoes": 1119,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 2319,
+     "verificacoes": 1120,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -1680,8 +1680,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-10-18",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 2820,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 2822,
      "verificacoes": 412,
      "canais_do_log": [
       "busca_web",
@@ -1698,10 +1698,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 5706,
-     "verificacoes": 4709,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 5707,
+     "verificacoes": 4710,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -1731,8 +1731,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 337,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 338,
      "verificacoes": 73,
      "canais_do_log": [
       "orgao_estadual",
@@ -1761,8 +1761,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 278,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 280,
      "verificacoes": 3,
      "canais_do_log": [
       "busca_web",
@@ -1801,8 +1801,8 @@
     "diario_oficial": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 307,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 308,
      "verificacoes": 150,
      "canais_do_log": [
       "DOM",
@@ -1812,8 +1812,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 178,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 179,
      "verificacoes": 42,
      "canais_do_log": [
       "orgao_estadual",
@@ -1842,8 +1842,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 143,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 145,
      "verificacoes": 2,
      "canais_do_log": [
       "busca_web",
@@ -1881,10 +1881,10 @@
    "canais": {
     "diario_oficial": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 2347,
-     "verificacoes": 1635,
+     "ultima_verificacao": "2026-11-18",
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 2348,
+     "verificacoes": 1636,
      "canais_do_log": [
       "DOM",
       "DOU"
@@ -1892,10 +1892,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 2165,
-     "verificacoes": 223,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 2166,
+     "verificacoes": 224,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -1923,8 +1923,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 1841,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 1843,
      "verificacoes": 343,
      "canais_do_log": [
       "busca_web",
@@ -1972,10 +1972,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-16",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 2636,
-     "verificacoes": 1685,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 2637,
+     "verificacoes": 1686,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -2003,8 +2003,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 2787,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 2789,
      "verificacoes": 45,
      "canais_do_log": [
       "busca_web",
@@ -2023,8 +2023,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 3171,
-     "verificacoes": 1973,
+     "execucoes": 3172,
+     "verificacoes": 1974,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
@@ -2053,10 +2053,10 @@
     },
     "sitio_do_orgao": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 390,
-     "verificacoes": 261,
+     "ultima_verificacao": "2026-11-17",
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 391,
+     "verificacoes": 262,
      "canais_do_log": [
       "orgao_estadual",
       "repositorio_estadual",
@@ -2084,8 +2084,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 358,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 360,
      "verificacoes": 2,
      "canais_do_log": [
       "busca_web",
@@ -2104,8 +2104,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 432,
-     "verificacoes": 347,
+     "execucoes": 433,
+     "verificacoes": 348,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -2134,8 +2134,8 @@
     "sitio_do_orgao": {
      "verificado": true,
      "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-16",
-     "execucoes": 607,
+     "ultima_tentativa": "2026-11-17",
+     "execucoes": 608,
      "verificacoes": 421,
      "canais_do_log": [
       "orgao_estadual",
@@ -2164,8 +2164,8 @@
     "busca_web": {
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-17",
-     "execucoes": 650,
+     "ultima_tentativa": "2026-11-18",
+     "execucoes": 652,
      "verificacoes": 6,
      "canais_do_log": [
       "busca_web",
@@ -2184,8 +2184,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-11-17",
      "ultima_tentativa": "2026-11-17",
-     "execucoes": 876,
-     "verificacoes": 799,
+     "execucoes": 877,
+     "verificacoes": 800,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
