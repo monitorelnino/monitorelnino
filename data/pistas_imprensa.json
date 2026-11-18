@@ -50924,17 +50924,16 @@
    "id": "c40273068e",
    "nivel_confianca": "C",
    "juiz": {
-    "codebook": "1.6 (15/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-17",
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "b02f7101d705120bcd561e0a8d50d8cd844d9628abd6f9f9e01a738f484a9edd"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19",
    "repeticoes": 4,
    "pontos_confianca": 2,
    "sinais": [
@@ -50948,6 +50947,12 @@
      "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
      "codebook": "1.8 (30/10/2026)"
     }
    ],
@@ -51004,22 +51009,21 @@
    "url": "https://www.ce.gov.br/cge/wp-content/uploads/sites/71/2020/03/Decreto-n%C2%BA.-33.510-de-16-de-mar%C3%A7o-de-2020.-Decreta-situa%C3%A7%C3%A3o-de-Emerg%C3%AAncia-em-sa%C3%BAde-e-disp%C3%B5e-sobre-medidas-de-enfrentamento-e-conten%C3%A7%C3%A3o-da-infecc%C3%A7%C3%A3o-humana-pelo-novo-coronavirus.pdf",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "pista_origem": "0a8db47e79",
    "id": "af1877047a",
    "nivel_confianca": "C",
    "juiz": {
-    "codebook": "1.6 (15/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "autoridade_nao_confirmada",
+    "motivo": "documento_estadual",
     "leu_documento": true,
     "categoria": null,
-    "data": "16/03/2020",
-    "julgado_em": "2026-10-17",
+    "data": null,
+    "julgado_em": "2026-11-18",
     "hash_evidencia": "1c58876d4ecc1ce5a8383d234cfae09f4576be63995ffe5f31e28e2bf8c38d95"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19",
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -51032,6 +51036,12 @@
      "em": "2026-11-18",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
      "codebook": "1.8 (30/10/2026)"
     }
    ],
@@ -183023,7 +183033,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2309102",
@@ -183083,10 +183093,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21",
-   "repeticoes": 16
+   "repeticoes": 16,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Mulungu",
@@ -183301,7 +183326,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2303659",
@@ -183371,9 +183396,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Catunda",
@@ -183701,7 +183741,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2310407",
@@ -183761,9 +183801,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Paramoti",
@@ -183779,7 +183834,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2310407",
@@ -183839,10 +183894,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21",
-   "repeticoes": 18
+   "repeticoes": 18,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Paramoti",
@@ -184102,7 +184172,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2306801",
@@ -184162,9 +184232,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Jaguaribara",
@@ -184440,7 +184525,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2306801",
@@ -184500,10 +184585,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21",
-   "repeticoes": 11
+   "repeticoes": 11,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Palmácia",
@@ -184649,7 +184749,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/casacivil/2011/11/11/dengue-sesa-reune-municipios-para-intensificar-acoes-antes-das-chuvas/",
    "alvo": "2310100",
@@ -184720,9 +184820,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "5c83e1e45793b0ecc5887f2e7d93a217182072d9aab0607c36b338086ff43057"
+   }
   },
   {
    "municipio": "Palmácia",
@@ -184767,7 +184882,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2310100",
@@ -184827,9 +184942,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Palmácia",
@@ -184988,7 +185118,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2300101",
@@ -185058,9 +185188,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Abaiara",
@@ -185170,7 +185315,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2300101",
@@ -185230,9 +185375,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Abaiara",
@@ -185393,7 +185553,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/73/2020/02/2013_RIMA-FRUTICULTURA-DA-ITAUEIRA-AGROPECU%C3%81RIA-SA.-PALHANO.CE_.pdf",
    "alvo": "2310001",
@@ -185453,10 +185613,37 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21",
-   "repeticoes": 5
+   "repeticoes": 5,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.ce.gov.br/wp-content/uploads/sites/73/2020/02/2013_RIMA-FRUTICULTURA-DA-ITAUEIRA-AGROPECU%C3%81RIA-SA.-PALHANO.CE_.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "7765c9d4068d59a83b1aa2f72c7af460b5f5f2451b12f68cc1f8bde9091befa6"
+   }
   },
   {
    "municipio": "Palhano",
@@ -185737,7 +185924,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2310605",
@@ -185807,9 +185994,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Porteiras",
@@ -186174,7 +186376,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2304269",
@@ -186244,9 +186446,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Deputado Irapuan Pinheiro",
@@ -186262,7 +186479,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2304269",
@@ -186322,9 +186539,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Deputado Irapuan Pinheiro",
@@ -186729,7 +186961,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2311207",
@@ -186789,9 +187021,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Potengi",
@@ -186925,7 +187172,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2311207",
@@ -186995,9 +187242,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Moraújo",
@@ -187013,7 +187275,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2308807",
@@ -187073,9 +187335,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Moraújo",
@@ -187127,7 +187404,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/35/2022/05/LIVRO-UECE-COVID.pdf",
    "alvo": "2308807",
@@ -187188,10 +187465,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b85db256aa851d554b2d9d23ebf5114973854f752c0f01928a5592a1f82a4ba7"
+   }
   },
   {
    "municipio": "Moraújo",
@@ -187473,7 +187765,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2307205",
@@ -187543,9 +187835,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Jati",
@@ -187607,7 +187914,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2307205",
@@ -187667,9 +187974,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Jati",
@@ -187929,7 +188251,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2306207",
@@ -187989,9 +188311,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Itaiçaba",
@@ -188163,7 +188500,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2306207",
@@ -188223,9 +188560,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Tarrafas",
@@ -188273,7 +188625,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2313252",
@@ -188333,9 +188685,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Tarrafas",
@@ -188589,7 +188956,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2301505",
@@ -188649,9 +189016,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Arneiroz",
@@ -188845,7 +189227,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2301505",
@@ -188905,9 +189287,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Arneiroz",
@@ -188991,7 +189388,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2312809",
@@ -189051,9 +189448,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Senador Sá",
@@ -189390,7 +189802,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2300804",
@@ -189460,9 +189872,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Antonina do Norte",
@@ -189650,7 +190077,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2300804",
@@ -189710,9 +190137,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Antonina do Norte",
@@ -189851,7 +190293,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2313708",
@@ -189921,9 +190363,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Umari",
@@ -189968,7 +190425,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2313708",
@@ -190028,9 +190485,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Umari",
@@ -190314,7 +190786,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2300606",
@@ -190384,9 +190856,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Altaneira",
@@ -190546,7 +191033,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2300606",
@@ -190606,9 +191093,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Altaneira",
@@ -190778,7 +191280,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2304608",
@@ -190838,9 +191340,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Caridade",
@@ -191227,7 +191744,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2304277",
@@ -191287,9 +191804,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Ererê",
@@ -191705,7 +192237,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2309904",
@@ -191775,9 +192307,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Pacujá",
@@ -191793,7 +192340,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2309904",
@@ -191853,9 +192400,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Pacujá",
@@ -192741,7 +193303,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2312502",
@@ -192789,9 +193351,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "São João do Jaguaribe",
@@ -192998,7 +193575,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2301802",
@@ -193056,9 +193633,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Baixio",
@@ -193181,7 +193773,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2301802",
@@ -193229,9 +193821,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Baixio",
@@ -193394,7 +194001,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2305100",
@@ -193442,9 +194049,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Guaramiranga",
@@ -193762,7 +194384,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2304806",
@@ -193810,9 +194432,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Granjeiro",
@@ -212002,7 +212639,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2303659",
@@ -212050,9 +212687,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Catunda",
@@ -212186,7 +212838,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2306801",
@@ -212234,9 +212886,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Jaguaribara",
@@ -212630,7 +213297,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2308807",
@@ -212678,9 +213345,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Moraújo",
@@ -213279,7 +213961,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2304277",
@@ -213327,9 +214009,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Ererê",
@@ -213621,7 +214318,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2305100",
@@ -213669,9 +214366,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Guaramiranga",
@@ -213745,7 +214457,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2304806",
@@ -213793,9 +214505,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Granjeiro",
@@ -373761,7 +374488,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2305605",
@@ -373819,9 +374546,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Aiuaba",
@@ -374190,7 +374932,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sps/2020/03/31/unidades-de-acolhimento-sps-adota-novas-medidas-de-prevencao-contra-o-coronavirus/",
    "alvo": "2305308",
@@ -374248,9 +374990,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "638522b0a9ab4ed68a2ef5adaa8cb5bc7a3638c5068c4d5469ad9177a08a9c76"
+   }
   },
   {
    "municipio": "Ibiapina",
@@ -374369,7 +375126,7 @@
    "autoridade": "colegiado",
    "objeto": "indefinido",
    "destino": "pista_executivo_pendente",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sps/wp-content/uploads/sites/65/2020/08/Ata-4%C2%AA-reuni%C3%A3o-ordin%C3%A1riada-CIB-ce.pdf",
    "alvo": "2305308",
@@ -374411,10 +375168,37 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.ce.gov.br/sps/wp-content/uploads/sites/65/2020/03/PLANO-DE-CONTINGENCIA-PARA-O-COVID-19-NAS-UNIDADE-DE-ACOLHIMENTO.pdf.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "a37805d1f9aa2981960f9c2599a225548ce69d9509af3b3aff2ac29203666c72"
+   }
   },
   {
    "municipio": "Ibiapina",
@@ -374604,7 +375388,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2307403",
@@ -374662,9 +375446,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Jucás",
@@ -375102,7 +375901,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2306108",
@@ -375144,9 +375943,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Irauçuba",
@@ -375162,7 +375976,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2306108",
@@ -375204,10 +376018,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16",
-   "repeticoes": 9
+   "repeticoes": 9,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Irauçuba",
@@ -375372,7 +376201,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2310852",
@@ -375414,9 +376243,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Pindoretama",
@@ -375548,7 +376392,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2310852",
@@ -375590,9 +376434,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Pindoretama",
@@ -375639,7 +376498,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2310852",
@@ -375681,9 +376540,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Pindoretama",
@@ -375860,7 +376734,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2308906",
@@ -375902,9 +376776,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Morrinhos",
@@ -375986,7 +376875,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2308906",
@@ -376028,9 +376917,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Morrinhos",
@@ -376221,7 +377125,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2301950",
@@ -376263,9 +377167,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Barreira",
@@ -376501,7 +377420,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2303808",
@@ -376543,9 +377462,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Cedro",
@@ -376739,7 +377673,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2301604",
@@ -376797,9 +377731,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Assaré",
@@ -377012,7 +377961,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2301604",
@@ -377054,9 +378003,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Assaré",
@@ -377159,7 +378123,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/74/2025/03/PLANO-DE-CONTINGENCIA-FALESIAS-digital-1_compressed.pdf",
    "alvo": "2305357",
@@ -377201,9 +378165,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "21/12/2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b02f7101d705120bcd561e0a8d50d8cd844d9628abd6f9f9e01a738f484a9edd"
+   }
   },
   {
    "municipio": "Icapuí",
@@ -377368,7 +378347,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/73/2020/02/2013_RIMA-FRUTICULTURA-DA-ITAUEIRA-AGROPECU%C3%81RIA-SA.-PALHANO.CE_.pdf",
    "alvo": "2305357",
@@ -377410,9 +378389,36 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-18",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.ce.gov.br/wp-content/uploads/sites/73/2020/02/2013_RIMA-FRUTICULTURA-DA-ITAUEIRA-AGROPECU%C3%81RIA-SA.-PALHANO.CE_.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-11-18",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "7765c9d4068d59a83b1aa2f72c7af460b5f5f2451b12f68cc1f8bde9091befa6"
+   }
   },
   {
    "municipio": "Icapuí",
@@ -377562,7 +378568,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/74/2025/03/PLANO-DE-CONTINGENCIA-FALESIAS-digital-1_compressed.pdf",
    "alvo": "2304004",
@@ -377604,9 +378610,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b02f7101d705120bcd561e0a8d50d8cd844d9628abd6f9f9e01a738f484a9edd"
+   }
   },
   {
    "municipio": "Sobral",
@@ -378105,7 +379126,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2311504",
@@ -378147,9 +379168,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Quixeré",
@@ -378194,7 +379230,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2311504",
@@ -378236,9 +379272,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Quixeré",
@@ -378372,7 +379423,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2306603",
@@ -378430,9 +379481,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Itatira",
@@ -378479,7 +379545,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2306603",
@@ -378521,9 +379587,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Itatira",
@@ -378788,7 +379869,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2022/02/Plano-Estadual-de-Preparacao-Vigilancia-e-Resposta-as-Emergencias-em-Saude-Publica-v4-1.pdf",
    "alvo": "2311264",
@@ -378830,9 +379911,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "849be9c2e33fe367223499a280eb56eaace3b9bf956e3c5fe33c4866980f5320"
+   }
   },
   {
    "municipio": "Aiuaba",
@@ -379112,7 +380208,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2311264",
@@ -379154,9 +380250,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Quiterianópolis",
@@ -379230,7 +380341,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2313807",
@@ -379272,9 +380383,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Uruburetama",
@@ -379290,7 +380416,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2313807",
@@ -379332,9 +380458,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Uruburetama",
@@ -379593,7 +380734,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2303956",
@@ -379651,9 +380792,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Chorozinho",
@@ -380050,7 +381206,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/55/2026/06/PORTARIA-50-2020-INSTITUI-O-PLANO-DE-CONTINGENCIA.pdf",
    "alvo": "2301307",
@@ -380090,9 +381246,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "0b0d419a2697222536da5157dfe9f5cbb101a2665555d8a0a8b03fbcf0acb267"
+   }
   },
   {
    "municipio": "Araripe",
@@ -380108,7 +381279,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2301307",
@@ -380166,9 +381337,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Araripe",
@@ -380420,7 +381606,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2309508",
@@ -380462,9 +381648,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Orós",
@@ -380738,7 +381939,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2309508",
@@ -380780,9 +381981,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Reriutaba",
@@ -380798,7 +382014,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2311702",
@@ -380840,9 +382056,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Reriutaba",
@@ -380858,7 +382089,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sps/wp-content/uploads/sites/65/2020/08/Ata-4%C2%AA-reuni%C3%A3o-ordin%C3%A1riada-CIB-ce.pdf",
    "alvo": "2311702",
@@ -380900,9 +382131,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "797d2a8b95f12945a2fbc3f08bb87183c505b72c06c57234c221c6d26d415adc"
+   }
   },
   {
    "municipio": "Reriutaba",
@@ -381139,7 +382385,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2311702",
@@ -381182,9 +382428,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Reriutaba",
@@ -381231,7 +382492,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2304301",
@@ -381273,9 +382534,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -381339,7 +382615,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2304301",
@@ -381381,9 +382657,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Farias Brito",
@@ -381650,7 +382941,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2313005",
@@ -381708,9 +382999,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Solonópole",
@@ -382077,7 +383383,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2313955",
@@ -382119,9 +383425,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Varjota",
@@ -382168,7 +383489,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2313955",
@@ -382210,9 +383531,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Varjota",
@@ -382466,7 +383802,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2305209",
@@ -382524,9 +383860,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Hidrolândia",
@@ -382826,7 +384177,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2306504",
@@ -382868,9 +384219,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Itapiúna",
@@ -382886,7 +384252,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2306504",
@@ -382928,9 +384294,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Itapiúna",
@@ -383317,7 +384698,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2303105",
@@ -383359,9 +384740,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Cariré",
@@ -383466,7 +384862,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2303105",
@@ -383508,9 +384904,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Cariré",
@@ -383526,7 +384937,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2303105",
@@ -383584,9 +384995,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Cariré",
@@ -383662,7 +385088,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2304236",
@@ -383720,9 +385146,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Croatá",
@@ -383899,7 +385340,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2304236",
@@ -383941,9 +385382,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Croatá",
@@ -384084,7 +385540,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2313757",
@@ -384126,9 +385582,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Umirim",
@@ -384579,7 +386050,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/74/2025/03/PLANO-DE-CONTINGENCIA-FALESIAS-digital-1_compressed.pdf",
    "alvo": "2304459",
@@ -384621,9 +386092,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "21/12/2022",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "b02f7101d705120bcd561e0a8d50d8cd844d9628abd6f9f9e01a738f484a9edd"
+   }
   },
   {
    "municipio": "Fortim",
@@ -384956,7 +386442,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2306702",
@@ -384998,9 +386484,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Jaguaretama",
@@ -385293,7 +386794,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2303402",
@@ -385335,9 +386836,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Carnaubal",
@@ -385353,7 +386869,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2303402",
@@ -385395,9 +386911,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Carnaubal",
@@ -385588,7 +387119,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/srh/resolucoes-e-mocoes/",
    "alvo": "2301851",
@@ -385644,9 +387175,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "24/07/1992",
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f6c495fba2ceede5e178dbb0c8cbd74db564ca7910bb226076247c9c60304887"
+   }
   },
   {
    "municipio": "Banabuiú",
@@ -385662,7 +387208,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2301851",
@@ -385720,9 +387266,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Banabuiú",
@@ -386081,7 +387642,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/casacivil/2011/11/11/dengue-sesa-reune-municipios-para-intensificar-acoes-antes-das-chuvas/",
    "alvo": "2313351",
@@ -386140,9 +387701,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "5c83e1e45793b0ecc5887f2e7d93a217182072d9aab0607c36b338086ff43057"
+   }
   },
   {
    "municipio": "Tejuçuoca",
@@ -386158,7 +387734,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2313351",
@@ -386200,9 +387776,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Tejuçuoca",
@@ -386218,7 +387809,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2313351",
@@ -386260,9 +387851,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Tejuçuoca",
@@ -386398,7 +388004,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2308609",
@@ -386440,9 +388046,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Monsenhor Tabosa",
@@ -386636,7 +388257,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2308609",
@@ -386678,9 +388299,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Fortaleza",
@@ -386878,7 +388514,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2311108",
@@ -386936,9 +388572,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Porteiras",
@@ -387178,7 +388829,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2303303",
@@ -387236,9 +388887,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Cariús",
@@ -387283,7 +388949,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2303303",
@@ -387325,9 +388991,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Cariús",
@@ -387637,7 +389318,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2312106",
@@ -387695,9 +389376,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Santana do Cariri",
@@ -387816,7 +389512,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2022/02/Plano-Estadual-de-Preparacao-Vigilancia-e-Resposta-as-Emergencias-em-Saude-Publica-v4-1.pdf",
    "alvo": "2312106",
@@ -387858,9 +389554,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "849be9c2e33fe367223499a280eb56eaace3b9bf956e3c5fe33c4866980f5320"
+   }
   },
   {
    "municipio": "Santana do Cariri",
@@ -387876,7 +389587,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2312106",
@@ -387918,9 +389629,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Santana do Cariri",
@@ -388394,7 +390120,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2310902",
@@ -388436,9 +390162,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Piquet Carneiro",
@@ -388663,7 +390404,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2310902",
@@ -388721,9 +390462,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Caridade",
@@ -389006,7 +390762,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2303006",
@@ -389048,9 +390804,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Caridade",
@@ -389066,7 +390837,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2303006",
@@ -389108,9 +390879,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Caridade",
@@ -389184,7 +390970,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2311355",
@@ -389242,9 +391028,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Quixelô",
@@ -389507,7 +391308,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2311355",
@@ -389549,9 +391350,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Quixelô",
@@ -389567,7 +391383,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2311355",
@@ -389609,9 +391425,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Frecheirinha",
@@ -389719,7 +391550,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2304509",
@@ -389761,9 +391592,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Frecheirinha",
@@ -389885,7 +391731,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/setur/wp-content/uploads/sites/65/2021/02/Protecao-Social-Especial-de-Alta-Complexidade.pdf",
    "alvo": "2304509",
@@ -389927,9 +391773,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "9f54093859ee4ccac1632c66fd169f121600ed17f3a2f6c5b1a4e51158c935fc"
+   }
   },
   {
    "municipio": "Frecheirinha",
@@ -390124,7 +391985,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2313559",
@@ -390166,9 +392027,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Tururu",
@@ -390336,7 +392212,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2313559",
@@ -390378,9 +392254,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Tururu",
@@ -390425,7 +392316,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2309201",
@@ -390483,9 +392374,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Nova Olinda",
@@ -390693,7 +392599,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2309201",
@@ -390735,9 +392641,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Nova Olinda",
@@ -390811,7 +392732,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/64/2020/02/PLANO-CONTINGENCIA-2021-8ed_09042021.pdf",
    "alvo": "2310803",
@@ -390853,9 +392774,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "82a1a2f4fadfffb731f7f5e68976365091b7182c95c531af004572e50f1d9f02"
+   }
   },
   {
    "municipio": "Pereiro",
@@ -390900,7 +392836,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2310803",
@@ -390942,9 +392878,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Pereiro",
@@ -391143,7 +393094,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2308203",
@@ -391201,9 +393152,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Meruoca",
@@ -391379,7 +393345,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2308203",
@@ -391421,9 +393387,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Meruoca",
@@ -391562,7 +393543,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/sema/2020/05/27/sema-e-municipios-elaboram-70-planos-de-contingencia-para-gestao-de-residuos-solidos-em-razao-da-pandemia/",
    "alvo": "2302057",
@@ -391620,9 +393601,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "32ffe0206744e25d682cfc9eaa0807428ccfeb5c91f2c0816c0df6cf3af225d2"
+   }
   },
   {
    "municipio": "Barroquinha",
@@ -391846,7 +393842,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/65/2022/12/CEMARIS-2021.pdf",
    "alvo": "2302057",
@@ -391888,9 +393884,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "511b5aaf413a9a072787651129de7a23cb1eec860ab380bd1e2395157a23944a"
+   }
   },
   {
    "municipio": "Barroquinha",
@@ -392410,7 +394421,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.ce.gov.br/wp-content/uploads/sites/65/2023/01/CEMARIS-2021-%E2%80%93-Censo-e-Mapa-de-Riscos-Pessoal-e-Social-do-Estado-do-Ceara.pdf",
    "alvo": "2300705",
@@ -392452,9 +394463,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-18",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-16"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-18",
+    "hash_evidencia": "f19a547b1518afba4dfb54e839b3d64d891ab5b8ed9a56abd710e0712cb34d77"
+   }
   },
   {
    "municipio": "Alto Santo",
