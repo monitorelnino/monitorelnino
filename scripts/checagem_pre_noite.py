@@ -46,6 +46,9 @@ ABERTOS = ("queued", "requested", "waiting", "pending", "in_progress")
 # 17/11/2026: a publicação de dados (merge do dia) está na fila ou rodando às 23h sem estar presa; só
 # reprova se estiver aberta há mais que isto (minutos). Era vermelho nas noites de 15 e 16/11.
 TOLERADOS_POR_IDADE = {"publicar_dados.yml": 45}
+# 18/11/2026: run "queued" há mais de um dia é fantasma da plataforma (o de 05/11 tem o job concluído
+# e o run preso em queued há 13 dias): não ocupa a fila e reprovava toda noite.
+FANTASMA_H = 24
 REPOSITORIO_PRIVADO = "monitorelnino/robo-registro"
 RAMOS_FORA_DA_FILA = ("ensaio-real/", "coleta-dia/")
 
@@ -108,8 +111,12 @@ def avaliar(fatos: dict, agora: dt.datetime) -> list:
         desde, lim = _iso(r.get("desde")), TOLERADOS_POR_IDADE.get(r.get("workflow"))
         return bool(desde and lim and (agora - desde).total_seconds() < lim * 60)
 
+    def _fantasma(r):
+        desde = _iso(r.get("desde"))
+        return bool(desde and (agora - desde).total_seconds() > FANTASMA_H * 3600)
+
     presos = [r for r in fatos.get("runs_abertos") or []
-              if r.get("workflow") not in QUEM_PODE_ESTAR_RODANDO and not _recente(r)
+              if r.get("workflow") not in QUEM_PODE_ESTAR_RODANDO and not _recente(r) and not _fantasma(r)
               and str(r.get("status") or "").lower() in ABERTOS]
     out.append({"pergunta": "fila de runs vazia", "ok": not presos,
                 "detalhe": ", ".join(f"{r['workflow']} ({r['status']})" for r in presos[:8])
@@ -297,6 +304,9 @@ def autoteste() -> int:
     ok("run aberto lido da API reprova a fila; o despachante não (F37)",
        not fila[2]["ok"] and "noturno_triagem.yml" in fila[2]["detalhe"]
        and "despachante" not in fila[2]["detalhe"])
+    _fan = [{"workflow": "publicar_dados.yml", "status": "queued", "desde": "2026-10-01T16:42:00Z"}]
+    ok("run queued há mais de 24 h é fantasma e não reprova a fila (18/11)",
+       avaliar(dict(bom, runs_abertos=_fan), agora)[2]["ok"])
     _pub = [{"workflow": "publicar_dados.yml", "status": "queued", "desde": "2026-10-10T22:40:00Z"}]
     ok("publicação aberta há 20 min não é fila presa; há 80 min, é",
        avaliar(dict(bom, runs_abertos=_pub), agora)[2]["ok"]
