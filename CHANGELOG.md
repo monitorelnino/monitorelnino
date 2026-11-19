@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-19 · #1921 · Quarentena confere pista por pista; imprensa regional grava pela porta
+
+A quarentena da fila recortava a identidade do texto do problema, e a pista sem `id` (identidade = URL) nunca casava: 29 pistas ficaram na fila ativa e a publicação reprovou desde 03:23 UTC. Agora cada pista se confere sozinha. A origem delas, `monitorar_imprensa_regional.py`, deixa de gravar a fila por fora e passa por `pistas.gravar_lote`.
+
 ## 2026-11-18 · #1916 · Plano de edição anterior não substitui o mais novo
 
 A atualização de registro deixava um documento de força igual trocar o registro sem julgamento do juiz, mesmo sendo mais antigo: Cachoeiro de Itapemirim e Pancas/ES perderam o plano de 2025 para o de 2023, e o índice do ES caiu. Edição anterior não substitui mais; os dois registros voltaram.
@@ -20,7 +24,7 @@ O juiz da saúde passa a ler como o juiz municipal: fonte, cópia da ponte no Br
 ## 2026-11-18 · #1906 · A prova do plano lido pela cópia pública é a cópia pública
 
 O juiz lê a cópia pública quando o endereço original caiu ou recusou; a guarda da prova só tentava o endereço original, e a promoção nunca entrava no banco (8 promoções de 6 municípios, medidas em 18/11). A leitura que falha passa a cair na mesma cópia pública; sem ela, segue sem registro.
-## 2026-11-18 · #PR · Anotação de confiança só na pista aberta
+## 2026-11-18 · #1904 · Anotação de confiança só na pista aberta
 
 A descoberta anotava `sinais`, `alertas` e `pontos_confianca` nas 22.825 pistas encerradas e a triagem os apagava na mesma noite: ~150 mil linhas de diff por noite em `data/pistas_imprensa.json`. `triar_confianca_pistas.py` pula a encerrada (`limpar_fila_de_pistas.encerrada`), com caso no autoteste. Catálogo da noite: F87 (pista sem data de entrada, #1856) e F88.
 
