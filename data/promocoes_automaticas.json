@@ -894105,7 +894105,15 @@
    "pista_id": "8e525ffdbd",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "140f87ad7014a8b4155ea7f44f07c5c39290c58ae01c096c64237174ee4f04fb"
+   "hash_evidencia": "140f87ad7014a8b4155ea7f44f07c5c39290c58ae01c096c64237174ee4f04fb",
+   "data_da_edicao": "2023-04-26",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "nao_aplicado": {
+    "em": "2026-11-19",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
   },
   {
    "promove": false,
@@ -896535,7 +896543,15 @@
    "pista_id": "06cf3c9088",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "140f87ad7014a8b4155ea7f44f07c5c39290c58ae01c096c64237174ee4f04fb"
+   "hash_evidencia": "140f87ad7014a8b4155ea7f44f07c5c39290c58ae01c096c64237174ee4f04fb",
+   "data_da_edicao": "2023-04-26",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "nao_aplicado": {
+    "em": "2026-11-19",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
   },
   {
    "promove": false,
@@ -898732,6 +898748,217 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "b4670e6aa56b31583058fe8b264af809dc7ca856adfc6cf0c17f6b273e3c1db3"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "33725 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatos Jaraguá do Sul - SC VERSÃO: 1.7 ÚLTIMA ATUALIZAÇÃO: 08/10/2025 EXEMPLAR PERTENCE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "08/10/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ROVAÇÃO O Plano de Contingência para deslizamentos, alagamentos e inundações do Município de Jaraguá do Sul, estabelece os procedimentos a serem adotados pelos"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "08/10/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4208906",
+   "municipio": "Jaraguá do Sul",
+   "uf": "SC",
+   "url": "https://wordpress.jaraguadosul.sc.gov.br/wp-content/plugins/pmjs-paginas/downloads/16914/Plancon_2025_revisao-1.7.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "bb6437c63a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "91b47332c7b0c98d70e7d0fe0abad497fadeaeba6ca211e8713a33b04fe0a22e",
+   "data_da_edicao": "2025-10-08",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "categoria mais forte (plano_nomeado → plano_antigo)",
+   "aplicado_em": "2026-11-19"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "33725 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatos Jaraguá do Sul - SC VERSÃO: 1.7 ÚLTIMA ATUALIZAÇÃO: 08/10/2025 EXEMPLAR PERTENCE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "08/10/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ROVAÇÃO O Plano de Contingência para deslizamentos, alagamentos e inundações do Município de Jaraguá do Sul, estabelece os procedimentos a serem adotados pelos"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "08/10/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4208906",
+   "municipio": "Jaraguá do Sul",
+   "uf": "SC",
+   "url": "https://wordpress.jaraguadosul.sc.gov.br/wp-content/plugins/pmjs-paginas/downloads/16914/Plancon_2025_revisao-1.7.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "9a8fcbdcbf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "99de06831e48bb2147547cfd9b6040ff3cf5cd2a0ddd8e9b7af90a1e882b822e",
+   "data_da_edicao": "2025-10-08",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-19",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "33725 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "impacto, inundações bruscas ou processos geológicos ou hidrológicos correlatos Jaraguá do Sul - SC VERSÃO: 1.7 ÚLTIMA ATUALIZAÇÃO: 08/10/2025 EXEMPLAR PERTENCE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "08/10/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ROVAÇÃO O Plano de Contingência para deslizamentos, alagamentos e inundações do Município de Jaraguá do Sul, estabelece os procedimentos a serem adotados pelos"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL – PLAMCON Deslizamentos de grande impacto, inundações bruscas ou processos geológicos ou hidrológicos"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "08/10/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4208906",
+   "municipio": "Jaraguá do Sul",
+   "uf": "SC",
+   "url": "https://wordpress.jaraguadosul.sc.gov.br/wp-content/plugins/pmjs-paginas/downloads/16914/Plancon_2025_revisao-1.7.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "ef72446b87",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "99de06831e48bb2147547cfd9b6040ff3cf5cd2a0ddd8e9b7af90a1e882b822e",
+   "data_da_edicao": "2025-10-08",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-19",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
   }
  ]
 }
