@@ -903,7 +903,7 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     # handover do juiz fixou: ligar quando o documento é plano E não traz tipo e número de ato no
     # texto. A data continua obrigatória — sem data não há como situar o ato no ciclo.
     plano_tecnico = ("instrumento" in institui
-                     and juiz.RE_TIPO_E_NUMERO.search(texto) is None)
+                     and juiz.ato_proprio(texto) is None)
     v = julgar_camada_saude(texto, uf, url, plano_tecnico, p.get("titulo") or "")
     v["institui"] = sorted(institui)
     v["uf"] = uf
