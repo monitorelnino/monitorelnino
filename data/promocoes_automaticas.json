@@ -881548,8 +881548,10 @@
    "data_da_edicao": "2067-12-31",
    "indicado_ao_cadastro_art3A": true,
    "atualizacao_anual_localizada": true,
-   "substituiu": "categoria mais forte (decreto → plano)",
-   "aplicado_em": "2026-11-19"
+   "nao_aplicado": {
+    "em": "2026-11-19",
+    "motivo": "data lida fora do possível (2067, OCR de \"Versão 201 8\"); desfeito em 19/11/2026 e devolvido ao juiz"
+   }
   },
   {
    "promove": false,
