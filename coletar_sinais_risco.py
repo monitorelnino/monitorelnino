@@ -211,24 +211,10 @@ FONTES = {
     #     `parse_estacoes_inmet` consome. A fonte declarava `INMET_API_TOKEN`, e `coletar_fonte`
     #     levantava `CredencialAusente` antes de tocar a rede: a camada de medição ficava vazia por
     #     falta de uma chave que a rota não pede. O token saiu da declaração.
-    #
-    #     Ao lado, dois diagnósticos errados que ficavam aqui e foram conferidos: o comentário
-    #     afirmava que sem token a rota de dados devolve "204 com corpo vazio" — ela devolve **404**
-    #     (medido em `/estacao/diaria/2026-09-24/2026-09-25/A001`). E o papel declarado prometia
-    #     "máxima e mínima medidas", coisa que o adaptador não fazia: ele só escolhia a estação mais
-    #     próxima de cada capital. A promessa agora é cumprida pela rota pública
-    #     `/condicao/capitais/<data>` (200, 28 registros, sem token), abaixo.
     # ---------------------------------------------------------------------
     "openaq": {
-        # 27/09/2026: investigado a pedido da editoria, porque o campo nunca teve dado.
-        # A causa é só uma: a API v3 exige `X-API-Key` (responde 401 sem ela) e a v2 foi
-        # desativada (410). O código JÁ estava inteiro para isso — `credencial` declarada abaixo,
-        # `credencial_de()` lendo do AMBIENTE (nunca do repositório, que é público), o cabeçalho
-        # enviado no despacho, e `atualizar.yml` passando o segredo. O status
-        # `aguardando_credencial` que o registro mostrava era a coisa certa sendo dita.
-        # Faltava apenas o segredo existir. A editoria o cadastrou em 26/09/2026.
-        # NOTA: a chave é gratuita e viaja em cabeçalho, nunca em URL — por isso não entra no
-        # livro de consultas, que vai ao repositório público.
+        # A v3 exige `X-API-Key` (401 sem ela; a v2 foi desativada, 410). `credencial_de()` lê a chave do
+        # AMBIENTE; ela viaja em cabeçalho, nunca em URL, e por isso não entra no livro de consultas.
         "nome": "Qualidade do ar medida", "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
         "camada": "apoio_tecnico",
         "url_publica": "https://openaq.org/",
@@ -251,10 +237,7 @@ FONTES = {
         "endpoint_medida": "https://apitempo.inmet.gov.br/condicao/capitais/{data}",
     },
     "noaa_oni": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
+        # Apoio técnico (30/09/2026): fora das páginas, citada na METODOLOGIA (§58), que o portão de sinais cobra.
         "nome": "Oceanic Niño Index (ONI)", "orgao": "NOAA/CPC", "camada": "apoio_tecnico",
         "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt",
@@ -270,12 +253,7 @@ FONTES = {
         "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
     },
     "noaa_nino34_mensal": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
-        # 08/11/2026 (editoria): volta à página — o Monitor de riscos desenha a série desde 1950 na mesma
-        # forma do RONI (ciclo em curso × episódios). Camada de exibição de novo.
+        # 08/11/2026 (editoria): de volta à página — série desde 1950, na forma do RONI (ciclo em curso × episódios).
         "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC", "camada": "enos",
         "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
@@ -292,15 +270,8 @@ FONTES = {
         "papel": "Leitura semanal da anomalia na região Niño 3.4 (base 1991–2020 do arquivo wksst9120).",
     },
     "iri_plume": {
-        # 24/09/2026 (§209): varredura dos caminhos de DADO, com o resultado de que não há tabela
-        # aberta. Registrado para ninguém repetir:
-        #   · `~forecast/ensofcst/Data/ensofcst_ONI` e as duas variantes: HTTP 404 (desde ~15/09);
-        #   · `ensoforecast.iri.columbia.edu`, host novo que serve os gráficos da página:
-        #     HTTP 403 em tudo que não seja a imagem publicada. 403 é bloqueio de acesso real e
-        #     se respeita — não se insiste.
-        #
-        # 27/09/2026: aquela varredura procurou TABELA e por isso concluiu cedo demais. As
-        # probabilidades estão publicadas na mesma página, em PROSA, com os trimestres nomeados:
+        # Sem tabela aberta (`ensofcst_ONI`: 404; `ensoforecast.iri.columbia.edu`: 403, que se respeita).
+        # As probabilidades estão publicadas na mesma página, em PROSA, com os trimestres nomeados:
         #   "El Niño probabilities remain at 100% from SON 2026 through FMA 2027, followed by
         #    99% in MAM 2027 and 90% in AMJ, before declining to 61% in MJJ 2027."
         # O endpoint passa a ser a própria página pública, lida por `parse_plume_prosa`. Esse
@@ -313,16 +284,8 @@ FONTES = {
         "papel": "Probabilidade de El Niño, neutro e La Niña por trimestre.",
     },
     "cptec_prognostico": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
-        # 27/09/2026: esta fonte NUNCA teve endereço. O campo `enos.prognostico` que ela alimentava
-        # foi semeado à mão uma vez, em 07/09/2026, e nada no repositório o renovava: `leitura_em`
-        # não é escrito em lugar nenhum do módulo, e `coletar()` nunca tocava em `prognostico`. Como
-        # o registro é lido do arquivo e modificado, o campo sobrevivia a cada rodada — congelado.
-        # A página o exibia como leitura corrente. Fica declarado e sem coleta, até que exista
-        # endereço aberto: a leitura automática do estado do ENOS passou a vir de `cpc_ensodisc`.
+        # Apoio técnico (30/09/2026): fora das páginas, citada na METODOLOGIA (§58), que o portão de sinais cobra.
+        # Sem endereço aberto: declarada e sem coleta; o estado do ENOS vem de `cpc_ensodisc`.
         "nome": "Prognóstico climático trimestral", "orgao": "INMET/CPTEC-INPE", "camada": "apoio_tecnico",
         "url_publica": "https://portal.inmet.gov.br/boletinsagro",
         "endpoint": None,
@@ -333,10 +296,7 @@ FONTES = {
         "papel": "A leitura brasileira da mesma previsão, em português.",
     },
     "cpc_ensodisc": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
+        # Apoio técnico (30/09/2026): fora das páginas, citada na METODOLOGIA (§58), que o portão de sinais cobra.
         # 27/09/2026 (pedido da editoria: "construa coletores automáticos, pode até trocar a fonte").
         # A Discussão Diagnóstica do ENOS é publicada pelo CPC todo mês, aberta, sem chave, com
         # estrutura estável: data de emissão, "ENSO Alert System Status", sinopse e data da próxima.

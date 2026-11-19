@@ -522,3 +522,7 @@ sozinho.
 
 ---
 
+
+## Comentários de história retirados do código (consolidação)
+
+- **`coletar_sinais_risco.py`, fontes (18/11/2026).** Estações do INMET: o comentário antigo dizia que a rota de dados sem token devolvia "204 com corpo vazio"; devolvia 404 (medido em `/estacao/diaria/2026-09-24/2026-09-25/A001`), e o papel prometia "máxima e mínima medidas" que o adaptador não lia: a rota `/condicao/capitais/<data>` (200, 28 registros, sem token) passou a cumpri-lo. OpenAQ (27/09/2026): o campo nunca tivera dado só porque o segredo não existia; a editoria o cadastrou em 26/09/2026. IRI (24/09/2026, §209): varredura achou `~forecast/ensofcst/Data/ensofcst_ONI` e variantes em 404 (desde ~15/09) e `ensoforecast.iri.columbia.edu` em 403; em 27/09 achou-se a prosa com as probabilidades na página pública. CPTEC (27/09/2026): `enos.prognostico` fora semeado à mão em 07/09 e nada o renovava; a página o mostrava congelado como leitura corrente.
