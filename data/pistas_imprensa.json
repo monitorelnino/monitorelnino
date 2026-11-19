@@ -3822,7 +3822,7 @@
     "julgado_em": "2026-09-28",
     "hash_evidencia": null
    },
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-26",
    "status_anterior": "pista — recusada pelo juiz: texto_nao_extraivel",
    "limpeza": {
     "em": "2026-10-03",
@@ -3879,6 +3879,12 @@
     },
     {
      "em": "2026-11-16",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -4981,7 +4987,15 @@
    "tentativas_de_busca_dirigida": 6,
    "reaplicada_em": "reaplicacao da noite",
    "repeticoes": 4,
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pedras Grandes",
@@ -5337,7 +5351,7 @@
     "hash_evidencia": "bfbdf3a8f175cacabd024dd3e927250cecf2d6d6eb09c1d43da192caee557204"
    },
    "ultima_busca_em": "2026-10-03",
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-20",
    "reaplicada_em": "reaplicacao da noite",
    "buscador2_em": "2026-10-26",
    "seguimento": {
@@ -5348,7 +5362,15 @@
     "falhas": [
      "pagina: HTTPError"
     ]
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Santa Rosa",
@@ -7445,8 +7467,16 @@
     "julgado_em": "2026-10-03",
     "hash_evidencia": "f60d4c2cf74d9facd50bb1a5873ede536db8e18d11dee5efc3c3a91b54630922"
    },
-   "proxima_tentativa_em": "2026-11-19",
-   "reaplicada_em": "reaplicacao da noite"
+   "proxima_tentativa_em": "2026-11-20",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Araucária",
@@ -9856,7 +9886,7 @@
    "url": "https://manaus.am.gov.br/noticia/decreto/prefeito-vai-decretar-estado-de-emergencia-em-manaus-devido-a-estiagem-nesta-quarta-feira-11-9",
    "data": "22/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 58 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento",
    "pista_origem": "4e6b0deeb7",
    "id": "3800c57450",
    "nivel_confianca": "B",
@@ -9871,7 +9901,12 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "ca746139f74aee112c1a9d06aa248e538ab33c59b0004faacc09e6f160ea8047"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "58 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento"
+   }
   },
   {
    "municipio": "Manaus",
@@ -9990,93 +10025,19 @@
    "uf": "RJ",
    "ibge": "3301702",
    "url": "https://duquedecaxias.rj.gov.br/noticia/defesa-civil-de-duque-de-caxias-lanca-plano-verao-20242025/5797",
-   "trecho": "A Secretaria municipal de Obras e Defesa Civil de Duque de Caxias apresentou, na manhã desta quarta-feira (06/11), na sede da prefeitura, em Jardim Primavera, o Plano Verão 2024/2025.",
-   "titulo": "DEFESA CIVIL DE DUQUE DE CAXIAS LANÇA PLANO VERÃO 2024/2025",
    "data": "22/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "fechada — sem documento oficial localizado: 58 dias na fila (prazo de 21)",
    "pista_origem": "0a62c14347",
    "id": "f5961f3406",
    "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "preparacao": {
-    "data": "22/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "citacao_do_trecho": {
-     "numero": null,
-     "data_ato": "2024"
-    },
-    "numero": null,
-    "data_ato": "2024",
-    "citacao_completa": false,
-    "natureza": "DUVIDA",
-    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
-    "portao_automatico": {
-     "ok": false,
-     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "juiz": {
-     "decisao": "FILA_HUMANA",
-     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "resultado": "preparada"
-   },
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-09-29",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.1 (28/09/2026)"
-    },
-    {
-     "em": "2026-09-30",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.1 (28/09/2026)"
-    },
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.2 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-11",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-18",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "58 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Saúde",
@@ -10589,7 +10550,7 @@
    "url": "https://www.curitiba.pr.gov.br/noticias/hospitais-privados-precisam-apresentar-plano-de-contingencia/58236",
    "data": "23/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 57 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento",
    "pista_origem": "6a630cc284",
    "id": "0bb73f1765",
    "nivel_confianca": "B",
@@ -10610,6 +10571,11 @@
     "data": null,
     "julgado_em": "2026-11-15",
     "hash_evidencia": "9c1241629f2eaab8c5e16ea8299e822708d7e4bba61caf6c3c62ddaa8b038518"
+   },
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "57 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento"
    }
   },
   {
@@ -10639,7 +10605,7 @@
    "url": "https://mid.curitiba.pr.gov.br/2024/00444371.pdf",
    "data": "23/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: nao_e_instrumento",
+   "status": "fechada — sem documento oficial localizado: 57 dias na fila (prazo de 21); lida e recusada: nao_e_instrumento",
    "pista_origem": "6a630cc284",
    "id": "d0f22de20c",
    "nivel_confianca": "B",
@@ -10660,6 +10626,11 @@
     "data": "12/07/2013",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "30cf93d8fe0b537c535744a031518b6cd4c726706ec74b3d892ae02f35ae496d"
+   },
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "57 dias na fila (prazo de 21); lida e recusada: nao_e_instrumento"
    }
   },
   {
@@ -13063,7 +13034,7 @@
    "url": "https://www.serra.es.gov.br/noticias/plano-de-contingencia-serra-esta-trabalhando-na-prevencao-dos-riscos-em-periodos-de-chuva-na-cidade",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento",
    "pista_origem": "c4320e89f3",
    "id": "d53c841939",
    "nivel_confianca": "B",
@@ -13081,9 +13052,9 @@
    "tentativas_de_busca_dirigida": 4,
    "reaplicada_em": "reaplicacao da noite",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: natureza_duvidosa"
+    "motivo": "4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento"
    },
    "repeticoes": 1
   },
@@ -13123,7 +13094,7 @@
    "url": "https://www.serra.es.gov.br/noticias/serra-sai-na-frente-e-apresenta-plano-para-enfrentar-os-efeitos-do-el-nino",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento",
    "pista_origem": "c4320e89f3",
    "id": "900b8ddce3",
    "nivel_confianca": "B",
@@ -13141,9 +13112,9 @@
    "tentativas_de_busca_dirigida": 4,
    "reaplicada_em": "reaplicacao da noite",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento"
    },
    "repeticoes": 1
   },
@@ -13237,7 +13208,7 @@
    "url": "https://m.vitoria.es.gov.br/cidadao/defesa-civil-plano-de-contingencia-para-desastre-e-emergencia",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta",
    "pista_origem": "f3c4158eff",
    "id": "7168e66e84",
    "nivel_confianca": "B",
@@ -13255,9 +13226,9 @@
    "tentativas_de_busca_dirigida": 6,
    "reaplicada_em": "reaplicacao da noite",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    }
   },
   {
@@ -13267,7 +13238,7 @@
    "url": "https://m.vitoria.es.gov.br/noticia/saude-de-vitoria-desenvolve-plano-de-contingencia-para-situacoes-de-desastres-51224",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento",
    "pista_origem": "f3c4158eff",
    "id": "ab9dfdc5bf",
    "nivel_confianca": "B",
@@ -13285,9 +13256,9 @@
    "tentativas_de_busca_dirigida": 4,
    "reaplicada_em": "reaplicacao da noite",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento"
    },
    "repeticoes": 2
   },
@@ -13328,7 +13299,7 @@
    "url": "https://www.vitoria.es.gov.br/prefeitura/defesa-civil",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta",
    "pista_origem": "f3c4158eff",
    "id": "938a518d32",
    "nivel_confianca": "B",
@@ -13346,9 +13317,9 @@
    "tentativas_de_busca_dirigida": 6,
    "reaplicada_em": "reaplicacao da noite",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    },
    "repeticoes": 1
   },
@@ -14513,7 +14484,7 @@
    "url": "https://petrolina.pe.gov.br/mapa-do-site/",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta",
    "pista_origem": "b53b04907d",
    "id": "0ae0a524aa",
    "nivel_confianca": "B",
@@ -14531,9 +14502,9 @@
    "tentativas_de_busca_dirigida": 6,
    "reaplicada_em": "reaplicacao da noite",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    }
   },
   {
@@ -14543,7 +14514,7 @@
    "url": "https://petrolina.pe.gov.br/chesf-e-defesa-civil-de-petrolina-iniciam-instalacao-de-placas-do-plano-de-contingencia-na-tapera/",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta",
    "pista_origem": "b53b04907d",
    "id": "53953ddbae",
    "nivel_confianca": "B",
@@ -14561,9 +14532,9 @@
    "tentativas_de_busca_dirigida": 6,
    "reaplicada_em": "reaplicacao da noite",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    }
   },
   {
@@ -14609,80 +14580,19 @@
    "uf": "PE",
    "ibge": "2610707",
    "url": "https://paulista.pe.gov.br/2024/dinamico/noticia-detalhe.php?id=7782",
-   "trecho": "O Gabinete de Gerenciamento de Risco do Paulista, reativou na manhã desta sexta-feira (20.03), o Plano de Contingência e Proteção da Defesa Civil. O Plano que foi implantado há sete anos, envolve todas as secretarias municipais, que deverão ...",
-   "titulo": "Paulista aciona Gabinete de Gerenciamento de Risco para atualizar ...",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "fechada — sem documento oficial localizado: 56 dias na fila (prazo de 21)",
    "pista_origem": "417950010d",
    "id": "55cc6ecfa6",
    "nivel_confianca": "B",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_trecho",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "preparacao": {
-    "data": "24/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "resultado": "documento_nao_obtido",
-    "numero": null,
-    "data_ato": null,
-    "citacao_completa": false
-   },
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-10-01",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.1 (28/09/2026)"
-    },
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-06",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-13",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-20",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "56 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Maracajá",
@@ -14951,91 +14861,19 @@
    "uf": "SC",
    "ibge": "4208203",
    "url": "https://plancon.itajai.sc.gov.br/",
-   "trecho": "Jornal 2317, de 23 de outubro de 2020 - Torna publico o Plano de Contingência Municipal para a Educação de Itajaí.",
-   "titulo": "CMGPC19",
    "data": "24/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "fechada — sem documento oficial localizado: 56 dias na fila (prazo de 21)",
    "pista_origem": "b11bbc9e9c",
    "id": "b582a28463",
    "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_trecho"
-   ],
-   "alertas": [],
-   "preparacao": {
-    "data": "24/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "citacao_do_trecho": {
-     "numero": null,
-     "data_ato": "23/10/2020"
-    },
-    "numero": null,
-    "data_ato": "23/10/2020",
-    "citacao_completa": false,
-    "natureza": "DUVIDA",
-    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
-    "portao_automatico": {
-     "ok": false,
-     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "juiz": {
-     "decisao": "FILA_HUMANA",
-     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "resultado": "preparada"
-   },
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-10-01",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.1 (28/09/2026)"
-    },
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-06",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-13",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-20",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "56 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Montenegro",
@@ -16160,7 +15998,7 @@
    "url": "https://www.bauru.sp.leg.br/imprensa/noticias/em-audiencia-publica-cpfl-anuncia-plano-de-contingencia-em-situacoes-de-temporais-extremos/",
    "data": "25/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 55 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento",
    "pista_origem": "fd22a6b607",
    "id": "cb0ee06c25",
    "nivel_confianca": "B",
@@ -16174,7 +16012,12 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "6a60c1f07743df46722c87957232e4debd6430064732768f9d29ebedf6646e58"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "55 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento"
+   }
   },
   {
    "municipio": "Bauru",
@@ -16183,7 +16026,7 @@
    "url": "https://www2.bauru.sp.gov.br/arquivos/arquivos_site/sec_saude/planejamento_saude/PAS/02;PAS%202026%20-%20Metas%20e%20Indicadores.pdf",
    "data": "25/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "fechada — sem documento oficial localizado: 55 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada",
    "pista_origem": "fd22a6b607",
    "id": "cad8df44f3",
    "nivel_confianca": "B",
@@ -16197,7 +16040,12 @@
     "julgado_em": "2026-11-18",
     "hash_evidencia": "da4f580e5b8b9c3de4fd309b7a37ce508438ad79a589be747923e515e9d9d009"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "55 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada"
+   }
   },
   {
    "municipio": "Goiânia",
@@ -16372,7 +16220,15 @@
    },
    "tentativas_de_busca_dirigida": 5,
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Barra Bonita",
@@ -22952,14 +22808,14 @@
    "url": "https://www.manaus.am.gov.br/wp-content/uploads/2026/02/20251015_PAC_MAU_V04.pdf",
    "registrado_em": "2026-09-27",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: ente_nao_confirmado"
+    "motivo": "6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta",
    "id": "cece6e304a",
    "nivel_confianca": "B",
    "ultima_busca_em": "2026-10-31",
@@ -23173,14 +23029,14 @@
    "url": "https://www.novavenecia.es.gov.br/nova-venecia-prepara-plano-de-contingencia-pensando-no-periodo-de-chuvas/",
    "registrado_em": "2026-09-27",
    "triagem": {
-    "em": "2026-10-19",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "4 tentativas de busca dirigida sem documento; lida e recusada: noticia_institucional_nao_e_o_plano"
    },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "status": "fechada — sem documento oficial localizado: 4 tentativas de busca dirigida sem documento; lida e recusada: noticia_institucional_nao_e_o_plano",
    "id": "6ba6dc00ca",
    "nivel_confianca": "B",
    "juiz": {
@@ -23839,14 +23695,14 @@
    "url": "https://www.lages.sc.gov.br/noticia-descricao/6793/grupo-de-acoes-coordenadas-discute-plano-de-contingencia-em-situacoes-de-desastre-em-lages",
    "registrado_em": "2026-09-27",
    "triagem": {
-    "em": "2026-10-21",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento"
    },
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento",
    "id": "7596e02225",
    "nivel_confianca": "B",
    "ultima_busca_em": "2026-10-26",
@@ -26127,7 +25983,15 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "repeticoes": 20,
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio do Oeste",
@@ -27638,6 +27502,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "municipio_atribuido_antes": {
@@ -27646,7 +27516,7 @@
     "ibge": "4211108",
     "veredito_do_juiz": "sem_documento_primario"
    },
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -27689,7 +27559,15 @@
     "hash_evidencia": "8e494fa48758f4aaccaa93a8f9200fdf0020ee50bfae91e10e4c952267503bdc"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Monte Castelo",
@@ -27863,7 +27741,15 @@
     "hash_evidencia": "58ce23dbc6df3867063308773bfdcf521afe74c61a0d3c5b220e32c40c86b638"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Monte Castelo",
@@ -29845,7 +29731,15 @@
     "hash_evidencia": "58ce23dbc6df3867063308773bfdcf521afe74c61a0d3c5b220e32c40c86b638"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Palma Sola",
@@ -31905,7 +31799,15 @@
     "hash_evidencia": "8e494fa48758f4aaccaa93a8f9200fdf0020ee50bfae91e10e4c952267503bdc"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Salete",
@@ -32099,7 +32001,15 @@
    "reaplicada_em": "reaplicacao da noite",
    "ultima_busca_em": "2026-10-29",
    "tentativas_de_busca_dirigida": 5,
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Natal",
@@ -33302,7 +33212,7 @@
    },
    "atribuicao_corrigida_em": "2026-10-03",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-20",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
    "limpeza": {
     "em": "2026-10-03",
@@ -33320,7 +33230,15 @@
      "pagina: HTTPError 403"
     ],
     "tentativas": 1
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Salete",
@@ -33401,6 +33319,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "municipio_atribuido_antes": {
@@ -33409,7 +33333,7 @@
     "ibge": "4210308",
     "veredito_do_juiz": "sem_documento_primario"
    },
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -34703,7 +34627,15 @@
     "hash_evidencia": "290980915e159fe5686e050c157ed0b3e0c21f47fd439d39f03b385483a1f5b4"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Major Vieira",
@@ -37578,7 +37510,15 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "tentativas_de_busca_dirigida": 5,
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Timbó Grande",
@@ -37637,7 +37577,15 @@
     "hash_evidencia": "c23b3b8f2bd97b9acde97787a31e1446a286add7b94eeeb64a8b0acfde1fc69a"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Timbó Grande",
@@ -38225,14 +38173,14 @@
    "url": "https://esperantinopolis.ma.gov.br/planosmunicipais.php?grupo=plano_municipal_de_educacao",
    "registrado_em": "2026-09-28",
    "triagem": {
-    "em": "2026-10-21",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "23 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada"
+    "motivo": "52 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada"
    },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "fechada — sem documento oficial localizado: 52 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada",
    "id": "b30d5823c6",
    "nivel_confianca": "B",
    "juiz": {
@@ -38340,14 +38288,14 @@
    "url": "https://web.arapiraca.al.gov.br/tipo-de-arquivo/plano-de-contingencia/",
    "registrado_em": "2026-09-28",
    "triagem": {
-    "em": "2026-10-21",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "23 dias na fila (prazo de 21); lida e recusada: noticia_institucional_nao_e_o_plano"
+    "motivo": "52 dias na fila (prazo de 21); lida e recusada: noticia_institucional_nao_e_o_plano"
    },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "status": "fechada — sem documento oficial localizado: 52 dias na fila (prazo de 21); lida e recusada: noticia_institucional_nao_e_o_plano",
    "id": "fbc2da7491",
    "nivel_confianca": "B",
    "ultima_busca_em": "2026-10-03",
@@ -38568,21 +38516,28 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "fechada — sem documento oficial localizado: 23 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "id": "560a85f834",
    "nivel_confianca": "B",
    "juiz": {
-    "codebook": "1.3 (03/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": "20/04/2022",
-    "julgado_em": "2026-10-03",
-    "hash_evidencia": "267f55e0df1f182146446026dced904578ea882884fcb9231470f20c4b44f7a8"
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "99225fc541585ce41d57e91d710ef921600ffa9d74e5de5d0aaea1fe74383de0"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Girau do Ponciano",
@@ -39726,7 +39681,7 @@
    "url": "https://www.saudelages.sc.gov.br/protocolo/all?page=3",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: ente_nao_confirmado",
    "pista_origem": "8aa38d8664",
    "id": "e3af8f2917",
    "nivel_confianca": "B",
@@ -39740,7 +39695,12 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "d579de70a59f5b8fe9d94fff9a10efc66f24b5a798cc62b54cc8424b57579ed5"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: ente_nao_confirmado"
+   }
   },
   {
    "municipio": "Brusque",
@@ -39861,7 +39821,7 @@
    "url": "https://wiki.smsbrusque.sc.gov.br/images/e/ed/Rag_2022_Brusque.pdf",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: citacao_incompleta",
    "pista_origem": "4f544e83d5",
    "id": "dc1a8aef39",
    "nivel_confianca": "B",
@@ -39877,282 +39837,69 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-13"
+   "ultima_busca_em": "2026-11-13",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: citacao_incompleta"
+   }
   },
   {
    "municipio": "Balneário Camboriú",
    "uf": "SC",
    "ibge": "4202008",
    "url": "https://www.bc.sc.gov.br/noticia/43338",
-   "trecho": "Jul 14, 2026 ... A Prefeitura de Balneário Camboriú realizou, nesta segunda-feira (13), a primeira reunião do Comitê Municipal do Plano de Prevenção, ...",
-   "titulo": "Notícias - Prefeitura de Balneário Camboriú - Noticia",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21)",
    "pista_origem": "b37728af79",
    "id": "5bbbf16ebb",
    "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "preparacao": {
-    "data": "29/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "citacao_do_trecho": {
-     "numero": null,
-     "data_ato": "2026"
-    },
-    "numero": null,
-    "data_ato": "2026",
-    "citacao_completa": false,
-    "natureza": "DUVIDA",
-    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
-    "portao_automatico": {
-     "ok": false,
-     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "juiz": {
-     "decisao": "FILA_HUMANA",
-     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-04",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-07",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-14",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-21",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Balneário Camboriú",
    "uf": "SC",
    "ibge": "4202008",
    "url": "https://www.bc.sc.gov.br/noticia/42965",
-   "trecho": "Jun 15, 2026 ... ... Plano de Contingência, mapeamento das áreas de risco, validação de ... Rua Dinamarca, 320 Nações, Balneário Camboriú - SC CEP: 88338-900.",
-   "titulo": "Notícias - Prefeitura de Balneário Camboriú - Noticia",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21)",
    "pista_origem": "b37728af79",
    "id": "49b3023d57",
    "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_trecho"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "preparacao": {
-    "data": "29/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "citacao_do_trecho": {
-     "numero": null,
-     "data_ato": "2026"
-    },
-    "numero": null,
-    "data_ato": "2026",
-    "citacao_completa": false,
-    "natureza": "DUVIDA",
-    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
-    "portao_automatico": {
-     "ok": false,
-     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "juiz": {
-     "decisao": "FILA_HUMANA",
-     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-04",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-07",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-14",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-21",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Balneário Camboriú",
    "uf": "SC",
    "ibge": "4202008",
    "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Leis-ordinarias/0/24/0/110757",
-   "trecho": "Audiência pública sobre o Plano de Contingência de Proteção e Defesa Civil do Município ... Balneário Camboriú/SC. (47) 3263-7686. ouvidoria@balneariocamboriu.sc.",
-   "titulo": "Lei Ordinária N.º 4298/2019",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21)",
    "pista_origem": "b37728af79",
    "id": "6623c9d715",
    "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_so_no_trecho",
-    "plano_no_trecho",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "preparacao": {
-    "data": "29/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "citacao_do_trecho": {
-     "numero": null,
-     "data_ato": "2019"
-    },
-    "numero": null,
-    "data_ato": "2019",
-    "citacao_completa": false,
-    "natureza": "DUVIDA",
-    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
-    "portao_automatico": {
-     "ok": false,
-     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "juiz": {
-     "decisao": "FILA_HUMANA",
-     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-04",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-07",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-14",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-21",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Tubarão",
@@ -40161,7 +39908,7 @@
    "url": "https://tubarao.sc.gov.br/galeria/pagina-20596/",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada",
    "pista_origem": "077b073042",
    "id": "208ffd784b",
    "nivel_confianca": "B",
@@ -40182,6 +39929,11 @@
     "data": "19/04/2022",
     "julgado_em": "2026-11-15",
     "hash_evidencia": "99519da00f80eef0db726a8c5940f506230cc85c086b1ccd3ff6fe8cff5a3b15"
+   },
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada"
    }
   },
   {
@@ -40191,7 +39943,7 @@
    "url": "https://www.aguas.sc.gov.br/o-comite-rio-tubarao/sites-rio-tubarao/itemlist/tag/Enchente",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: documento_estadual",
+   "status": "fechada — sem documento oficial localizado: 5 tentativas de busca dirigida sem documento; lida e recusada: documento_estadual",
    "pista_origem": "077b073042",
    "id": "701d8464ec",
    "nivel_confianca": "B",
@@ -40209,9 +39961,9 @@
    "ultima_busca_em": "2026-10-29",
    "tentativas_de_busca_dirigida": 5,
    "triagem": {
-    "em": "2026-10-22",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
+    "motivo": "5 tentativas de busca dirigida sem documento; lida e recusada: documento_estadual"
    }
   },
   {
@@ -40296,97 +40048,12 @@
    "uf": "SC",
    "ibge": "4202008",
    "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Projetos-de-Leis-Ordinarias/0/1/0/145796",
-   "trecho": "Jun 17, 2025 ... Audiência pública sobre o Plano de Contingência de Proteção e Defesa Civil do Município ... Camboriú/SC. (47) 3263-7686. ouvidoria@ ...",
-   "titulo": "Projeto de Lei Ordinária N.º 160/2025",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21)",
    "pista_origem": "afc5fc9c39",
    "id": "da22d8bb43",
    "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_trecho",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "preparacao": {
-    "data": "29/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "citacao_do_trecho": {
-     "numero": null,
-     "data_ato": "2025"
-    },
-    "numero": null,
-    "data_ato": "2025",
-    "citacao_completa": false,
-    "natureza": "DUVIDA",
-    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
-    "portao_automatico": {
-     "ok": false,
-     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "juiz": {
-     "decisao": "FILA_HUMANA",
-     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
-    },
-    "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-04",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-07",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-14",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-21",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    },
-    {
-     "em": "2026-11-16",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
    "municipio_atribuido_antes": {
     "municipio": "Camboriú",
@@ -40398,7 +40065,12 @@
    "atribuicao_corrigida_em": "2026-11-16",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "entrada": "municipio",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-19",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Rio do Sul",
@@ -40407,7 +40079,7 @@
    "url": "https://cbm.sc.gov.br/index.php/biblioteca/trabalhos-academicos/tcc-egov-cgrec/category/48-pggrec-2016?download=564%3Amedidas-de-controle-de-enchentes-e-inundacoes-na-cidade-de-rio-do-sul-sc-gabriel-schmitt-laurentino",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: citacao_incompleta",
    "pista_origem": "092f7415f2",
    "id": "6578c08013",
    "nivel_confianca": "B",
@@ -40423,7 +40095,12 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-13"
+   "ultima_busca_em": "2026-11-13",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: citacao_incompleta"
+   }
   },
   {
    "municipio": "Rio do Sul",
@@ -40449,40 +40126,12 @@
    "uf": "SC",
    "ibge": "4209508",
    "url": "https://laurentino.sc.gov.br/uploads/sites/163/2021/12/2222691_Plancon_EEB_Tereza_Cristina_3_versao.pdf",
-   "trecho": "Plano de Contingência de Proteção e Defesa Civil (PLANCON-PDC). Nele se ... 12\"-COORDENADORIA REGIONAL DE EDUCAÇÃO – RIO DO SUL/SC. ESCOLA DE EDUCAÇÃO ...",
-   "titulo": "estado de santa catarina - Prefeitura de Laurentino",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — inacessivel_persistente: 8 tentativas sem leitura do documento; continua no registro, fora da fila",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21)",
    "pista_origem": "092f7415f2",
    "id": "2abca0e51b",
    "nivel_confianca": "B",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_trecho",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
-   "preparacao": {
-    "data": "29/09/2026",
-    "versao": 2,
-    "fonte_oficial": true,
-    "resultado": "documento_nao_obtido",
-    "numero": null,
-    "data_ato": null,
-    "citacao_completa": false
-   },
    "municipio_atribuido_antes": {
     "municipio": "Rio do Sul",
     "uf": "SC",
@@ -40491,62 +40140,6 @@
    },
    "atribuicao_corrigida_em": "2026-10-03",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
-   "juiz_tentativas": [
-    {
-     "em": "2026-10-03",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-04",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-07",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.3 (03/10/2026)"
-    },
-    {
-     "em": "2026-10-14",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-21",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.6 (15/10/2026)"
-    },
-    {
-     "em": "2026-10-29",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.8 (29/10/2026)"
-    },
-    {
-     "em": "2026-10-30",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.8 (29/10/2026)"
-    },
-    {
-     "em": "2026-11-02",
-     "classe": "tecnica",
-     "motivo": "documento_inacessivel",
-     "codebook": "1.8 (30/10/2026)"
-    },
-    {
-     "em": "2026-11-15",
-     "classe": "tecnica",
-     "motivo": "texto_nao_extraivel",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "reaplicada_em": "reaplicacao da noite",
    "retentativas_buscador2": [
     "2026-10-27",
@@ -40555,7 +40148,12 @@
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
    "retentar_buscador2_em": "documento não lido até 2026-11-02",
-   "proxima_tentativa_em": "2026-11-16"
+   "proxima_tentativa_em": "2026-11-16",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21)"
+   }
   },
   {
    "municipio": "Videira",
@@ -40613,7 +40211,7 @@
    "url": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/408-regional-de-saude-de-videira.html?download=1319%3Appr-esp-curitibanos&Itemid=109",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: ente_nao_confirmado",
    "pista_origem": "bb82c0a14b",
    "id": "e8dc634bdb",
    "nivel_confianca": "B",
@@ -40627,7 +40225,12 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "ae64e218fb82035c941eba7eca0b8f72f0ab0ade80b81514356fadfb8f8f95c6"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: ente_nao_confirmado"
+   }
   },
   {
    "municipio": "Ibiam",
@@ -41147,14 +40750,14 @@
    "url": "https://pacajus.ce.gov.br/planosmunicipais.php",
    "registrado_em": "2026-09-29",
    "triagem": {
-    "em": "2026-10-21",
+    "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
-    "motivo": "22 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa"
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa"
    },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa",
    "id": "0f13e405fb",
    "nivel_confianca": "B",
    "juiz": {
@@ -41223,11 +40826,15 @@
    "data": "29/09/2026",
    "url": "https://massape.ce.gov.br/planosmunicipais.php",
    "registrado_em": "2026-09-29",
-   "triagem": "indefinido",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada"
+   },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada",
    "id": "aba2890c38",
    "nivel_confianca": "B",
    "juiz": {
@@ -41258,11 +40865,15 @@
    "data": "29/09/2026",
    "url": "https://parambu.ce.gov.br/cultura/622-alteracoes-no-plano-anual-de-aplicacao-paar-de-parambu",
    "registrado_em": "2026-09-29",
-   "triagem": "indefinido",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "51 dias na fila (prazo de 21); lida e recusada: executivo_pendente"
+   },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: executivo_pendente",
+   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21); lida e recusada: executivo_pendente",
    "id": "de1be370ba",
    "nivel_confianca": "B",
    "juiz": {
@@ -41619,8 +41230,16 @@
     "desfecho": "sem documento oficial localizado",
     "motivo": "4 tentativas de busca dirigida sem documento; lida e recusada: fora_do_objeto"
    },
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 2
+   "proxima_tentativa_em": "2026-11-20",
+   "repeticoes": 2,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ouro",
@@ -41985,13 +41604,21 @@
     "hash_evidencia": "0808e3ede28bbbc015cf24e8216295f0707e66bd6892503423bd8035159f0812"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-20",
    "repeticoes": 1,
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
     "motivo": "48 dias na fila (prazo de 21); lida e recusada: autoridade_nao_confirmada"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Caxias do Sul",
@@ -43610,7 +43237,15 @@
     "hash_evidencia": "dbb811c14e4dd030896fb006180461fa36485da5a0d5698dd454f166a753835f"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Colombo",
@@ -44984,6 +44619,12 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "reaplicada_em": "reaplicacao da noite",
@@ -44997,7 +44638,7 @@
    "atribuicao_corrigida_em": "2026-11-16",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "entrada": "municipio",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-26"
   },
   {
    "municipio": "Irati",
@@ -45206,11 +44847,15 @@
    "data": "01/10/2026",
    "url": "https://www.votorantim.sp.gov.br/portal/noticias/0/3/15830/prefeitura-de-votorantim-prorroga-medidas-de-contingenciamento/",
    "registrado_em": "2026-10-01",
-   "triagem": "indefinido",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "49 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento"
+   },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 49 dias na fila (prazo de 21); lida e recusada: noticia_nao_e_documento",
    "id": "82f66483aa",
    "nivel_confianca": "B",
    "juiz": {
@@ -45317,11 +44962,15 @@
    "data": "01/10/2026",
    "url": "https://www.votoprev.sp.gov.br/portal/noticias/0/3/10/plano-de-contingencia-altera-horario-de-atendimento-na-prefeitura-de-votorantim",
    "registrado_em": "2026-10-01",
-   "triagem": "indefinido",
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento"
+   },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
+   "status": "fechada — sem documento oficial localizado: 4 tentativas de busca dirigida sem documento; lida e recusada: noticia_nao_e_documento",
    "id": "e91c2d1b7e",
    "nivel_confianca": "B",
    "ultima_busca_em": "2026-10-26",
@@ -48868,7 +48517,15 @@
     "hash_evidencia": "fcb4231e231c4e422f81012ff0f233073e82a7b846468441f68ac27435fa4c31"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-20",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Tinto",
@@ -60156,6 +59813,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "municipio_atribuido_antes": {
@@ -60164,7 +59827,7 @@
     "ibge": "2925600",
     "veredito_do_juiz": "sem_documento_primario"
    },
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -211769,9 +211432,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Água Santa",
@@ -219060,9 +218729,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "São Valentim",
@@ -225232,9 +224907,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Nova Bréscia",
@@ -225374,9 +225055,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Ernestina",
@@ -225546,9 +225233,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Ernestina",
@@ -226097,9 +225790,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Balneário Pinhal",
@@ -226150,9 +225849,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Pinhal",
@@ -226484,9 +226189,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Torres",
@@ -231120,9 +230831,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Pinto Bandeira",
@@ -231550,9 +231267,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Sede Nova",
@@ -232758,9 +232481,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Senador Salgado Filho",
@@ -238502,9 +238231,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Araricá",
@@ -238555,9 +238290,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Barra Funda",
@@ -240072,9 +239813,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Forquetinha",
@@ -240354,9 +240101,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Eldorado do Sul",
@@ -241074,9 +240827,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Nova Pádua",
@@ -242146,9 +241905,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Porto Velho",
@@ -248101,9 +247866,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Centenário",
@@ -250884,9 +250655,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Nova Boa Vista",
@@ -251173,9 +250950,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Campos Borges",
@@ -251946,9 +251729,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Gramado dos Loureiros",
@@ -253160,9 +252949,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Almirante Tamandaré do Sul",
@@ -253814,9 +253609,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Boa Vista das Missões",
@@ -255791,9 +255592,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Roca Sales",
@@ -259103,9 +258910,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Linha Nova",
@@ -260798,9 +260611,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Cruzaltense",
@@ -263330,9 +263149,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Carlos Gomes",
@@ -263406,9 +263231,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Carlos Gomes",
@@ -265805,9 +265636,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Vila Bela da Santíssima Trindade",
@@ -265869,9 +265706,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Nova Olímpia",
@@ -266095,9 +265938,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "repeticoes": 3
   },
   {
@@ -266336,9 +266185,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "repeticoes": 12
   },
   {
@@ -266635,9 +266490,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Rosário Oeste",
@@ -266748,9 +266609,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Campinápolis",
@@ -267158,9 +267025,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "repeticoes": 2
   },
   {
@@ -267444,9 +267317,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "São José do Rio Claro",
@@ -267848,9 +267727,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Araputanga",
@@ -268242,9 +268127,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Tapurah",
@@ -268385,9 +268276,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Porto Alegre do Norte",
@@ -268699,9 +268596,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Nova Bandeirantes",
@@ -268788,9 +268691,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Alta Floresta",
@@ -269402,9 +269311,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Alto Garças",
@@ -270467,9 +270382,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "repeticoes": 1
   },
   {
@@ -270805,9 +270726,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Juscimeira",
@@ -271108,9 +271035,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Marcelândia",
@@ -271490,9 +271423,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "repeticoes": 1
   },
   {
@@ -271741,9 +271680,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Guiratinga",
@@ -272208,9 +272153,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Terra Nova do Norte",
@@ -272554,9 +272505,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Arenápolis",
@@ -272965,9 +272922,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Feliz Natal",
@@ -273213,9 +273176,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Carlinda",
@@ -273278,9 +273247,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Carlinda",
@@ -273884,9 +273859,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Juruena",
@@ -275028,9 +275009,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Cláudia",
@@ -275241,9 +275228,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Campos de Júlio",
@@ -275305,9 +275298,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "proxima_tentativa_em": "2026-11-22"
   },
   {
    "municipio": "Campos de Júlio",
@@ -291466,27 +291465,7 @@
    "id": "4b39457ede",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -291741,27 +291720,7 @@
    "id": "8eda4d58b0",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -292147,27 +292106,7 @@
    "id": "2e8e005056",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -292417,27 +292356,7 @@
    "id": "2c226978ed",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -292852,27 +292771,7 @@
    "id": "9a7c58aa45",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -293172,27 +293071,7 @@
    "id": "5f411a1e83",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -293623,27 +293502,7 @@
    "id": "18539aa409",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -294173,27 +294032,7 @@
    "id": "72e0c9eacb",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -295084,27 +294923,7 @@
    "id": "fdb124ee23",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "pontos_confianca": 2,
-   "sinais": [
-    "fonte_oficial"
-   ],
-   "alertas": [],
    "entrada": "municipio",
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-18",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-18",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -547099,7 +546918,7 @@
    "tipo": "plano",
    "entrada": "municipio",
    "registrado_em": "2026-10-26",
-   "status": "pista — recusada pelo juiz: data_nao_confirmada",
+   "status": "fechada — sem documento oficial localizado: 24 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada",
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -547110,6 +546929,11 @@
     "data": null,
     "julgado_em": "2026-11-10",
     "hash_evidencia": "47c07e271670b9be91cbcb8433b608b50dc6c61e45fc699077fab93c67e2a7eb"
+   },
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "24 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada"
    }
   },
   {
@@ -547129,7 +546953,7 @@
    "tipo": "plano",
    "entrada": "municipio",
    "registrado_em": "2026-10-26",
-   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "status": "fechada — sem documento oficial localizado: 24 dias na fila (prazo de 21); lida e recusada: fora_do_objeto",
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -547140,6 +546964,11 @@
     "data": null,
     "julgado_em": "2026-11-10",
     "hash_evidencia": "e03cc540ab23dac9e83981561db79eef14cff81d92e7c0acbd75660d827b03a9"
+   },
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "24 dias na fila (prazo de 21); lida e recusada: fora_do_objeto"
    }
   },
   {
@@ -732228,39 +732057,27 @@
   },
   {
    "alvo": "D-municipio-prioritario/Vitória da Conquista/BA",
-   "query": "\"plano de contingência\" Vitória da Conquista BA 2026 El Niño estiagem defesa civil",
-   "titulo": "Vitória da Conquista participa de webinário sobre preparação para eventos climáticos causados pelo El Niño - Prefeitura Municipal de Vitória da Conquista - PMVC",
    "url": "https://www.pmvc.ba.gov.br/representantes-da-prefeitura-participam-de-oficina-sobre-desastres-climaticos-e-estrategias-de-gestao-de-risco/",
    "data_publicacao": "Wed, 28 Oct 2026 07:00:00 GMT",
-   "fonte_veiculo": "Prefeitura Municipal de Vitória da Conquista - PMVC",
    "veiculo_dominio": "https://www.pmvc.ba.gov.br",
    "hash": "a058505cb20b8cfa",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNejA5STRMT2ZKZG5uYTJwOHk0cmxGSThISEdMci1nRVVPakxETzNEcXpMNnBPd29GRlpGSUFCY0VkbHh4YW8wUjRDX3RUYURWRzVoVkZ6aUhuZTdUUnVObDNUMktuYTd4bTg1V1AxV1lXa3RqaEZNZlJLUV9rRmN2YTdpcUc1QUJNemppcTY5WDdNTC1jYk9wQ0NNaTlfUVB2WXc0NDIweGRRTGtMemFkRXJSbmFDMF9yeXByaEJyWnBGN0ZhUUl3ZGhUOU9Ed1k?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": true,
    "hash_evidencia": "ad76bccd33c176714e14158e11e955125a186c1ddc1fe32c08c321ef34cda39f",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento",
+   "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21)",
    "id": "112fe88824",
    "nivel_confianca": "B",
-   "pontos_confianca": 3,
-   "sinais": [
-    "fonte_oficial",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-19",
-    "criterios": {}
-   },
    "julgamento_automatico": {
     "data": "18/11/2026",
     "decisao": "ABSTENCAO",
     "motivo": "falha ao buscar o documento (tentar de novo na próxima execução)"
+   },
+   "triagem": {
+    "em": "2026-11-19",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "22 dias na fila (prazo de 21)"
    }
   },
   {
@@ -739263,15 +739080,11 @@
   },
   {
    "alvo": "D-municipio-prioritario/Contagem/MG",
-   "query": "\"plano de contingência\" Contagem MG 2026 El Niño estiagem defesa civil",
-   "titulo": "El Niño mobiliza governo de Minas e prefeituras de BH, Contagem e Betim - Diário do Comércio",
    "url": "https://diariodocomercio.com.br/politica/el-nino-governo-prefeituras/",
    "data_publicacao": "Sat, 05 Sep 2026 07:00:00 GMT",
-   "fonte_veiculo": "Diário do Comércio",
    "veiculo_dominio": "https://diariodocomercio.com.br",
    "hash": "1ddff638181469f7",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMieEFVX3lxTE16SHJHS1FGbDY3VFo4djQxM0wzdDZMLVJuTXpOcTBSR0tGWnNmem1Ob2RJSC1feE1ENVRIb2dsRDFKX2dCd2hDVlkxTVpXYU8xUnZDMm93cUJwUzFva0d5M044bkRZQ29kdnNzNlg4NjRiLW5QeS1hcQ?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "documento_oficial_confirmado": null,
    "promovivel": false,
@@ -739283,15 +739096,11 @@
   },
   {
    "alvo": "D-municipio-prioritario/Contagem/MG",
-   "query": "\"plano de contingência\" Contagem MG 2026 El Niño estiagem defesa civil",
-   "titulo": "O Super El Niño chegou, e previsões são preocupantes. Estamos preparados? - Estado de Minas",
    "url": "https://www.em.com.br/gerais/2026/10/7519016-o-super-el-nino-chegou-e-previsoes-sao-preocupantes-estamos-preparados.html",
    "data_publicacao": "Mon, 12 Oct 2026 07:00:00 GMT",
-   "fonte_veiculo": "Estado de Minas",
    "veiculo_dominio": "https://www.em.com.br",
    "hash": "236f8bcdafddf2b9",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOaGdVR1RwbGdGOFhjVFAxN2VSN3dabVVQeERpQXplcHhaTXRGTEZBYmtEUFFTU2VpVEZNX0EyZ25PODRnZnZQRHJUWGFfaXQ2bTlycjZNYnJSWlBpVWhJbzhTOERzY2VCWm94QUJVVy1kNmY4cXpLYUlsZTllcHpucXlUT2pXaWpYMGhoYnY4cERSM0Y3b2pVQmtTZzlGalh5ejFvSFF5eVdUOFZnMEVMTHlLNnJaOXpyZkxaX9IBwgFBVV95cUxPdGx2a0hwVlJ0RnBTOFQtb0NuWG1ZYThqRENQaTBZZEZ1dGo1MGNCdWFVS2daNmNFQUpKc3M1UGQ1dmY4ZTFwTU5qSjB2dW0xTnljOXhJb3NzNVVHQ2JhbFpTdlJtSHlHS1A4ZmJJZk1sVl9MVHU2X0pFbnNWenhiZmFQWGRPbjZmU0Z4ZjJqc2phalFPdlRaZWttdHRuRVVnQ01KYkt5Wldmekw4ZFBSTXV3MzNPZk90Y3dxWC1PTVVhQQ?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "documento_oficial_confirmado": null,
    "promovivel": false,
@@ -739303,15 +739112,11 @@
   },
   {
    "alvo": "D-municipio-prioritario/Montes Claros/MG",
-   "query": "\"plano de contingência\" Montes Claros MG 2026 El Niño estiagem defesa civil",
-   "titulo": "MG tem 78 cidades em emergência climática e só três com planos específicos para o El Niño, aponta levantamento - G1",
    "url": "https://g1.globo.com/mg/minas-gerais/noticia/2026/11/11/mg-tem-78-cidades-em-emergencia-climatica-e-so-tres-com-planos-especificos-para-o-el-nino-aponta-levantamento.ghtml",
    "data_publicacao": "Wed, 11 Nov 2026 22:21:30 GMT",
-   "fonte_veiculo": "G1",
    "veiculo_dominio": "https://g1.globo.com",
    "hash": "a7ae236f64f58a09",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQaHZuNDhnakpRS3c1SEtjSG5ubExmcnR5Nld5ZXRORUU1Qzl0ZTY2ekxjX1RTcnllX0dDaU5ES0VkLUVOM2pGMVduSXRWN0xyRGJCOG16VFkwMjdnX0VLOUxuTUJXWXotVFJULVNCS2p5YWx2S2dBT1FuLXI3YlROYVZ6QV9KZDB2ZHg2bGFEenpyN0YwbEhfUFNrRkl2Y3ZraEFKc0N4cU1kb2RkZzcwVGdtV3lmWnV6TWZQTXRRVklfbTBhNTVqdC1wR1Y5SFUza2JSRTdEemxYVTV3d3doYkFUYzR5dGR5ZnZ3SjBqNVdMZnNRZWxQdGcyRTlpeFdR0gGPAkFVX3lxTE1kZFhCeVhqcjN5VktCNHBsQnhSaTJJRnNJLVFkTE9NRi14N0lpNGhnaDNIZDhLQzVhZmRzVDJwTWROUlhWS19uei1lQUhZMG1pbUhlNmdxSEotOER6QjVZTXpZcWNRNmpHRHhqMTR4YXFSZHA0MWplYTJYdVRDNmtrN3dvdl9ibHpTY091REY2bEd6X1B6Q0IzTkZKRVpMaHgzZHpoVTBPTkRJRGczRzg0ak9MajIwRTMzT2ZidkVqWE91bWVMbElPVkJGNVZ5QlR5THNSSzBaNEp3Ym9RX1hGdXBnRjRmWkJIaUJRcXFFcGVLUEpyZzh5bExpcnNwRFVTbUxNRXFwaGVMSkJjNEE?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "documento_oficial_confirmado": null,
    "promovivel": false,
@@ -739323,15 +739128,11 @@
   },
   {
    "alvo": "D-municipio-prioritario/Betim/MG",
-   "query": "\"plano de contingência\" Betim MG 2026 El Niño estiagem defesa civil",
-   "titulo": "El Niño mobiliza governo de Minas e prefeituras de BH, Contagem e Betim - Diário do Comércio",
    "url": "https://diariodocomercio.com.br/politica/el-nino-governo-prefeituras/",
    "data_publicacao": "Sat, 05 Sep 2026 07:00:00 GMT",
-   "fonte_veiculo": "Diário do Comércio",
    "veiculo_dominio": "https://diariodocomercio.com.br",
    "hash": "c26a1241bcd24c09",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMieEFVX3lxTE16SHJHS1FGbDY3VFo4djQxM0wzdDZMLVJuTXpOcTBSR0tGWnNmem1Ob2RJSC1feE1ENVRIb2dsRDFKX2dCd2hDVlkxTVpXYU8xUnZDMm93cUJwUzFva0d5M044bkRZQ29kdnNzNlg4NjRiLW5QeS1hcQ?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "documento_oficial_confirmado": null,
    "promovivel": false,
@@ -739343,15 +739144,11 @@
   },
   {
    "alvo": "D-municipio-prioritario/Betim/MG",
-   "query": "\"plano de contingência\" Betim MG 2026 El Niño estiagem defesa civil",
-   "titulo": "O Super El Niño chegou, e previsões são preocupantes. Estamos preparados? - Estado de Minas",
    "url": "https://www.em.com.br/gerais/2026/10/7519016-o-super-el-nino-chegou-e-previsoes-sao-preocupantes-estamos-preparados.html",
    "data_publicacao": "Mon, 12 Oct 2026 07:00:00 GMT",
-   "fonte_veiculo": "Estado de Minas",
    "veiculo_dominio": "https://www.em.com.br",
    "hash": "dd6132a151f3135d",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOaGdVR1RwbGdGOFhjVFAxN2VSN3dabVVQeERpQXplcHhaTXRGTEZBYmtEUFFTU2VpVEZNX0EyZ25PODRnZnZQRHJUWGFfaXQ2bTlycjZNYnJSWlBpVWhJbzhTOERzY2VCWm94QUJVVy1kNmY4cXpLYUlsZTllcHpucXlUT2pXaWpYMGhoYnY4cERSM0Y3b2pVQmtTZzlGalh5ejFvSFF5eVdUOFZnMEVMTHlLNnJaOXpyZkxaX9IBwgFBVV95cUxPdGx2a0hwVlJ0RnBTOFQtb0NuWG1ZYThqRENQaTBZZEZ1dGo1MGNCdWFVS2daNmNFQUpKc3M1UGQ1dmY4ZTFwTU5qSjB2dW0xTnljOXhJb3NzNVVHQ2JhbFpTdlJtSHlHS1A4ZmJJZk1sVl9MVHU2X0pFbnNWenhiZmFQWGRPbjZmU0Z4ZjJqc2phalFPdlRaZWttdHRuRVVnQ01KYkt5Wldmekw4ZFBSTXV3MzNPZk90Y3dxWC1PTVVhQQ?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "documento_oficial_confirmado": null,
    "promovivel": false,
@@ -739363,15 +739160,11 @@
   },
   {
    "alvo": "D-municipio-prioritario/Porto Nacional/TO",
-   "query": "\"PLANCON\" Porto Nacional TO 2026 El Niño estiagem defesa civil",
-   "titulo": "Confederação orienta Municípios a se prepararem para impactos do El Niño previsto para 2026 e 2027 - 18 Horas | Rádio Mix Manaus",
    "url": "https://18horas.com.br/mundo/apos-criticas-espanha-vai-permitir-que-criancas-saiam-para-caminhar/",
    "data_publicacao": "Mon, 01 Jun 2026 07:00:00 GMT",
-   "fonte_veiculo": "18 Horas | Rádio Mix Manaus",
    "veiculo_dominio": "https://18horas.com.br",
    "hash": "d8dbedeca3186c5a",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOR0VZWnk1ZmJRQjVlUEdWZWxmczlNb1RGRDZuT01EcTVuTEJGTmVIRWFLRDA5OFc5X3JGTF9zSzF3MnNPdGNWVEZQYlVEbTdjSFQ3eEFKTHhXTk1aZUI1NGxuaGJLY21DZ21zOWlYdWV5bFBHejBMUTFLb2lrVi1nbFdqczEwd0ZULUk2Wnd1blM4LW1vcFZDRVM4NF9ZS0Nwbm5qWTh0dUMyWHZ6MFpWdkZrN09CN2Zad29iX3h4TTdOa05FUVJvTQ?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "documento_oficial_confirmado": null,
    "promovivel": false,
@@ -739383,15 +739176,11 @@
   },
   {
    "alvo": "D-municipio-prioritario/Paraíso do Tocantins/TO",
-   "query": "\"plano de contingência\" Paraíso do Tocantins TO 2026 El Niño estiagem defesa civil",
-   "titulo": "TORNEIRAS SECAS – Saneago anuncia rodízio no abastecimento de água em Porangatu: confira o cronograma - Excelência Notícias",
    "url": "https://excelencianoticias.com.br/2026/11/10/torneiras-secas-saneago-anuncia-rodizio-no-abastecimento-de-agua-em-porangatu-confira-o-cronograma/",
    "data_publicacao": "Tue, 10 Nov 2026 08:00:00 GMT",
-   "fonte_veiculo": "Excelência Notícias",
    "veiculo_dominio": "https://excelencianoticias.com.br",
    "hash": "de8cbb19bd504c24",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOMlh2clVhbGdSSThRalZwc3NhdTcxMlhzS3d4b0tKSTlGUWxyT29QajBCNzJGbldiU0JudUowb3EwNnVMUjZGY3VZdnFuZGtaWW9yd184eDNMRFFSMGFQcUg0RXA4dGJPU0hGZTBLVWxJQWlPWVE2MmpaSG93OTRvZEFpTGxUOG5JcDBSRWNibThld3ROUWp4Y0NzdzQ2UjBMYjZtUEs1WEk0QU05MmNLMlI1YWJjY0JIVEZaNjluSFkyQk5KNTB0WTUzRVowV2NWcDlfeVlZMUQ0SVhv?oc=5",
-   "degrau_do_redirecionamento": "busca_no_veiculo",
    "fonte_provavel_oficial": false,
    "documento_oficial_confirmado": null,
    "promovivel": false,

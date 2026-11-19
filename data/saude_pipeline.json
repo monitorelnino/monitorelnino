@@ -5374,7 +5374,12 @@
   {"data": "2026-11-19", "script": "scripts/busca_dirigida_do_ato.py", "inicio": "2026-11-19T03:18:59", "duracao_s": 54.8, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-19", "script": "seguir_pistas.py", "inicio": "2026-11-19T03:19:53", "duracao_s": 14.4, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-19", "script": "triar_confianca_pistas.py", "inicio": "2026-11-19T03:20:07", "duracao_s": 1.7, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-19", "script": "verificar_pista_imprensa.py", "inicio": "2026-11-19T03:20:08", "duracao_s": 134.3, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-19", "script": "verificar_pista_imprensa.py", "inicio": "2026-11-19T03:20:08", "duracao_s": 134.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "scripts/triar_fila.py", "inicio": "2026-11-19T03:31:06", "duracao_s": 1.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "julgar_filas.py", "inicio": "2026-11-19T03:31:07", "duracao_s": 380.6, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-19T03:37:27", "duracao_s": 421.3, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-19T03:44:28", "duracao_s": 0.7, "itens": null, "status": "erro", "erro": "✗ ESQUEMA DA PISTA: 1 fila(s) que a quarentena não resolveu:"},
+  {"data": "2026-11-19", "script": "scripts/verificar_leituras_paradas.py", "inicio": "2026-11-19T03:44:28", "duracao_s": 2.4, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-19T03:20:08"
+ "atualizado_em": "2026-11-19T03:44:28"
 }
