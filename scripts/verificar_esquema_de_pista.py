@@ -196,16 +196,14 @@ def quarentenar(pistas: list, esquema: dict, vale_a_partir_de=VALE_A_PARTIR_DE,
     `movidas` é {origem_do_coletor: contagem}, que é o que o painel precisa: "quem está gravando
     errado" responde-se por coletor, não por pista.
     """
+    # 19/11/2026: cada pista se confere sozinha. Antes, a identidade era recortada do texto do
+    # problema (`split(":")`), e a pista sem `id` tinha a URL como identidade: "https" nunca casava,
+    # e 29 pistas ficaram na fila ativa com a quarentena dizendo que não as alcançava.
     obrigatorios = list((esquema.get("obrigatorios") or {}).keys())
-    ruins = {x.split(":", 1)[0] for x in problemas_de_esquema(pistas, esquema, vale_a_partir_de,
-                                                              so_fila_ativa=True)}
     fora = []
     movidas = {}
     for p in pistas or []:
-        ident = str(p.get("id") or p.get("url_final") or p.get("url") or "?")[:12]
-        registrado = str(p.get("registrado_em") or "")[:10]
-        alcancada = bool(registrado) and registrado >= vale_a_partir_de
-        if not alcancada or fora_da_fila_ativa(p) or ident not in ruins:
+        if not problemas_de_esquema([p], esquema, vale_a_partir_de, so_fila_ativa=True):
             fora.append(p)
             continue
         faltam = [c for c in obrigatorios if not p.get(c)]
@@ -339,6 +337,9 @@ def _autoteste() -> int:
        quarentenar([dict(ruim, registrado_em="2026-09-01")], esquema)[1] == {})
     ok("pista já fora da fila ativa não é quarentenada de novo",
        quarentenar([dict(ruim, quarentena=True)], esquema)[1] == {})
+    ok("pista sem `id` (identidade = URL, com dois-pontos) também sai da fila ativa",
+       quarentenar([dict({k: v for k, v in ruim.items() if k != "id"}, url="https://x.example/a")],
+                   esquema)[1] != {})
     ok("fila só de pistas boas não move nada", quarentenar([boa], esquema) == ([boa], {}))
     ok("fila vazia não quebra a quarentena", quarentenar([], esquema) == ([], {}))
     ok("a quarentena é idempotente: a segunda passada não move nada",
