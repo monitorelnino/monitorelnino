@@ -80,9 +80,9 @@ def julgar_municipal(texto: str, p: dict) -> dict:
     como_plano = juiz.e_plano_pelo_cabecalho(ato) or js.titulo_diz_plano(titulo)
     if como_plano:
         ok, motivo, _ = juiz.e_o_proprio_plano(ato, url)
-        if not ok and not juiz.RE_TIPO_E_NUMERO.search(ato or ""):
+        if not ok and not juiz.ato_proprio(ato):
             return recusa("1b_e_o_plano", motivo)
-    plano_tecnico = "instrumento" in js.o_que_institui(ato) and juiz.RE_TIPO_E_NUMERO.search(ato) is None
+    plano_tecnico = "instrumento" in js.o_que_institui(ato) and juiz.ato_proprio(ato) is None
     ok, motivo, dados = juiz.etapa2_citacao(ato, plano_tecnico, url=url, como_plano=como_plano)
     dados = js.data_do_plano(dados, url) if como_plano else js.com_data_do_cabecalho(ato, dados)
     v["data"], v["numero"] = dados.get("data"), dados.get("numero")
