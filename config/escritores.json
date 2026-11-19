@@ -8,6 +8,10 @@
    "por_que": "Derivado de tudo o mais. Conflito nele resolve-se com a versão de cima e a cadeia canônica regenera — `scripts/unir_conflito_de_rodada.py`, classe REGENERAVEIS. O handover pede que só o publicador o commite; a mudança fica para o PR do ensaio da noite, porque remover o manifesto do commit do elo deixa a `main` com manifesto obsoleto entre o elo e o publicador, e isso tem de ser provado no ensaio antes de valer. Até lá o conflito está resolvido, não evitado.",
    "pendente": "mover para o publicador, provado pelo ensaio da noite (item 5)"
   },
+  "data/paralelo_juiz18.json": {
+   "escritor": "rodada_paralela_j18",
+   "por_que": "Rejulgamento paralelo pelo codebook 1.8 (rodada J18): gerado por `juiz.py --rejulgar-paralelo` a partir de evidencias/ local. Nenhum workflow o commita; nenhuma página o lê; o índice não muda."
+  },
   "data/pistas_imprensa.json": {
    "escritor": "qualquer_elo",
    "por_que": "A fila tem UMA porta (`scripts/pistas.py`) e uma política de mesclagem declarada e testada: acréscimo dos dois lados entra, campo que só um lado tocou entra, mesmo campo com valores diferentes é recusado. `unir_conflito_de_rodada.py` aplica essa política ao conflito de rebase, classe FILAS_DE_PISTA. A corrida é resolvida, não evitada — e é por isso que este arquivo pode ter vários elos."
