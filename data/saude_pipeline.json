@@ -5356,7 +5356,12 @@
   {"data": "2026-11-18", "script": "coletar_doe.py", "inicio": "2026-11-19T02:13:18", "duracao_s": 1653.7, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-18", "script": "coletar_s2id.py", "inicio": "2026-11-19T02:40:51", "duracao_s": 15.4, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-18", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-19T02:41:06", "duracao_s": 27.3, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-18", "script": "recalcular_mare.py", "inicio": "2026-11-19T02:46:05", "duracao_s": 4.8, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-18", "script": "recalcular_mare.py", "inicio": "2026-11-19T02:46:05", "duracao_s": 4.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-18", "script": "scripts/triar_fila.py", "inicio": "2026-11-19T02:10:44", "duracao_s": 1.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-18", "script": "julgar_filas.py", "inicio": "2026-11-19T02:10:45", "duracao_s": 2493.4, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
+  {"data": "2026-11-18", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-19T02:52:19", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-18", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-19T02:52:19", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-18", "script": "scripts/verificar_leituras_paradas.py", "inicio": "2026-11-19T02:52:19", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
  ],
- "atualizado_em": "2026-11-19T02:46:05"
+ "atualizado_em": "2026-11-19T02:52:19"
 }
