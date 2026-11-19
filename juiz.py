@@ -1285,25 +1285,36 @@ def ente_do_repositorio_18(texto, url):
 # não a da edição. `data_do_ato` lia "134" (o número sem o ano) e, na janela, preferia a data numérica da
 # edição à data por extenso do ato. Aqui a janela começa depois de "número/ano" e vence a data mais próxima
 # do número, numérica ou por extenso. Sem data própria, em diário datado, a data é a da edição, com origem marcada.
-RE_NUMERO_COM_ANO_18 = re.compile(RE_NUMERO_ATO.pattern + r"(?:/\d{2,4})?", re.I)
+# O número inteiro e o "/ano" (RE_NUMERO_ATO corta "1341" em "134": a alternativa de 3 dígitos vem antes).
+RE_NUMERO_COM_ANO_18 = re.compile(
+    r"(decreto|portaria|lei|resolu[çc][ãa]o|instru[çc][ãa]o\s+normativa)\s*(estadual|municipal|est\.)?"
+    r"\s*[nº°.\s]*\d+(?:\.\d{3})*(?:/\d{2,4})?", re.I)
+RE_DATA_COMPLETA_4_18 = re.compile(r"(\d{1,2})[/.](\d{1,2})[/.](\d{4})")
+JANELA_DATA_COLADA_18 = 25
 RE_DIARIO_DATADO_18 = re.compile(r"di[áa]rio\s+oficial|edi[çc][ãa]o|\bDATA\s*:?\s*\d", re.I)
 
 
 def data_do_ato_18(texto) -> tuple:
-    """(data, origem): origem "ato" (data colada ao número), "edicao" (diário datado) ou "texto"."""
+    """(data, origem): origem "ato" (data colada ao número) ou "edicao" (diário datado); (None, None) se nenhuma."""
     texto = str(texto or "")
     m = RE_NUMERO_COM_ANO_18.search(texto)
     if m:
-        janela = texto[m.end(): m.end() + JANELA_DA_DATA_DO_ATO]
-        achados = [(x.start(), x.group(0)) for x in RE_DATA_COMPLETA.finditer(janela)]
+        janela = texto[m.end(): m.end() + JANELA_DATA_COLADA_18]   # "de 31 de março de 2021" cola ao número
+        # Só data de quatro dígitos e separador de barra ou ponto, normalizada para dd/mm/aaaa: "24.07.15" é
+        # ambígua e não entra (no caso de Bagé/RS a data bogus recusava um plano de 2024 como "sem ano").
+        achados = [(x.start(), f"{int(x.group(1)):02d}/{int(x.group(2)):02d}/{x.group(3)}")
+                   for x in RE_DATA_COMPLETA_4_18.finditer(janela)
+                   if 1 <= int(x.group(1)) <= 31 and 1 <= int(x.group(2)) <= 12]
         achados += [(x.start(), data_extenso_para_numerica(x)) for x in RE_DATA_EXTENSO.finditer(janela)
                     if data_extenso_para_numerica(x)]
         if achados:
             return min(achados)[1], "ato"
+    # Sem data colada ao número, só a da edição vale, e só em diário datado (cabeçalho). Data solta no texto
+    # ("Relvado: Maio/2025" e um 09/05/1988 de corpo) não substitui a do documento.
     data = data_do_ato(texto)
-    if not data:
+    if not RE_DIARIO_DATADO_18.search(texto[:300]) or not re.fullmatch(r"\d{2}/\d{2}/\d{4}", str(data or "")):
         return None, None
-    return data, ("edicao" if RE_DIARIO_DATADO_18.search(texto[:300]) else "texto")
+    return data, "edicao"
 
 
 # J12 (1.8, 26/10): um documento (hash) é julgado uma vez por município; repetições colapsam na mais antiga e
@@ -1754,8 +1765,8 @@ def casos_18_medidos() -> list:
          == ("31/03/2021", "ato")),
         ("J13 ato sem data própria em diário datado recebe a data da edição, marcada como edição",
          data_do_ato_18(edicao_sem_ato) == ("02/04/2021", "edicao")),
-        ("J13 sem número nem diário, a origem é o texto",
-         data_do_ato_18("Plano de contingência de 14/07/2026, sem diário") == ("14/07/2026", "texto")),
+        ("J13 sem número nem diário, a data do texto não substitui a do documento",
+         data_do_ato_18("Plano de contingência de 14/07/2026, sem diário") == (None, None)),
         ("J13 no julgar: a data do ato e a origem vão no veredito quando a proposta está ligada",
          _v(canario["texto"], "Bonito", "MS", canario["url"], propostas=("J13",))["data_origem"] == "ato"),
         ("J12 repetição do mesmo documento no mesmo município colapsa na mais antiga, sem somar",
@@ -2170,6 +2181,82 @@ def autoteste() -> int:
     return 0
 
 
+# =============================================================================================
+# Rodada paralela J18: rejulgamento pelo 1.8 gravado à parte (`data/paralelo_juiz18.json`)
+# =============================================================================================
+# Só lê documento que já está em `evidencias/` (por hash). Sem texto local a decisão NÃO é rejulgada:
+# o relatório conta essas decisões como "sem documento local", nunca como "mantida". Nada da produção muda.
+PARALELO_JUIZ18 = RAIZ / "data" / "paralelo_juiz18.json"
+PROPOSTAS_MEDIDAS_18 = ("J13", "J18")   # medidas à parte: ligadas só no paralelo; J8/J9 ficam de fora (crédito)
+
+
+def texto_local_18(hash_: str) -> str:
+    """Texto de `evidencias/<hash>` (txt, ocr, html ou pdf). Vazio se a cópia local não tem texto: um txt de
+    "=== página N ===" sem letras é cópia falha, e julgá-la daria recusa que a produção não deu."""
+    import subprocess
+    base = RAIZ / "evidencias"
+    texto = ""
+    for ext in ("txt", "ocr.txt"):
+        arq = base / f"{hash_}.{ext}"
+        if arq.is_file():
+            texto = arq.read_text(encoding="utf-8", errors="replace")
+            break
+    else:
+        arq = base / f"{hash_}.html"
+        if arq.is_file():
+            bruto = arq.read_text(encoding="utf-8", errors="replace")
+            bruto = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", bruto)
+            texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", bruto))
+        elif (base / f"{hash_}.pdf").is_file():
+            try:
+                texto = subprocess.run(["pdftotext", "-layout", str(base / f"{hash_}.pdf"), "-"],
+                                       capture_output=True, text=True, timeout=60).stdout
+            except (OSError, subprocess.SubprocessError):
+                texto = ""
+    letras = re.sub(r"=== página \d+ ===", " ", texto)
+    return texto if sum(c.isalpha() for c in letras) >= 300 else ""
+
+
+def rejulgar_paralelo_18(decisoes: list, ler_texto=texto_local_18) -> tuple:
+    """(registros, resumo). Cada decisão com documento local é julgada pelo 1.8 com as propostas medidas
+    à parte; J12 colapsa repetições do mesmo hash e município (a mais antiga decide)."""
+    com_texto = [d for d in decisoes if d.get("hash_evidencia")]
+    mantidas, colapsadas = colapsar_repeticoes_18(
+        [{**d, "hash": d["hash_evidencia"]} for d in com_texto])
+    registros, sem_texto, regras_cont = [], 0, {}
+    for d in mantidas:
+        texto = ler_texto(d["hash_evidencia"])
+        if not texto.strip():
+            sem_texto += 1
+            continue
+        v = julgar(texto, nome=d.get("municipio") or "", uf=d.get("uf") or "", ibge=d.get("ibge"),
+                   url=d.get("url"), propostas=PROPOSTAS_MEDIDAS_18)
+        for r in v.get("regras_18") or []:
+            regras_cont[r] = regras_cont.get(r, 0) + 1
+        registros.append({**v, "pista_id": d.get("pista_id"), "origem": d.get("origem"),
+                          "hash_evidencia": d["hash_evidencia"], "leu_documento": True,
+                          "prod": {"promove": d.get("promove"), "motivo": d.get("motivo"),
+                                   "codebook": d.get("codebook"), "categoria": d.get("categoria"),
+                                   "data": d.get("data")}})
+    resumo = {"decisoes": len(decisoes), "com_hash": len(com_texto), "colapsadas_j12": colapsadas,
+              "julgadas": len(registros), "sem_documento_local": sem_texto,
+              "regras_acionadas": dict(sorted(regras_cont.items()))}
+    return registros, resumo
+
+
+def rejulgar_paralelo_cli() -> int:
+    """`juiz.py --rejulgar-paralelo`: grava SÓ `data/paralelo_juiz18.json` (nunca a produção)."""
+    producao = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))
+    registros, resumo = rejulgar_paralelo_18(producao["decisoes"])
+    saida = {"_governanca": ("PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18). Nada do índice lê "
+                             "este arquivo. Escritor: juiz.py --rejulgar-paralelo."),
+             "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
+             "resumo": resumo, "decisoes": registros}
+    PARALELO_JUIZ18.write_text(json.dumps(saida, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(json.dumps(resumo, ensure_ascii=False))
+    return 0
+
+
 if __name__ == "__main__":
     import sys
-    sys.exit(autoteste() if "--autoteste" in sys.argv else 0)
+    sys.exit(autoteste() if "--autoteste" in sys.argv else rejulgar_paralelo_cli() if "--rejulgar-paralelo" in sys.argv else 0)
