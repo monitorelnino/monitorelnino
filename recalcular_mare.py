@@ -97,11 +97,15 @@ CRED_POP = {"plano": 1.0, "plano_antigo": 1.0,
             # operacional; paridade declarada com plano_elaboracao (§30). O crédito é o MAIOR, nunca a soma.
             "estrutura": 0.45,
             "coberto_estadual": 0.3, "nao_el_nino": 0.0, "nao_localizado": 0.0,
-            # 17/11/2026 (editoria): plano de município indicado ao cadastro do art. 3º-A sem atualização anual
-            # localizada (Lei 12.340, art. 3º-A, §6º) — visível na ficha, vale zero (`categoria_que_conta`).
-            "plano_desatualizado": 0.0,
+            # 19/11/2026 (editoria): a idade do plano reduz o crédito, não zera (`categoria_que_conta`). Idade contada
+            # do Boletim nº 1; risco = município indicado ao cadastro do art. 3º-A (Lei 12.340, §6º: atualização anual).
+            # De 1 a 2 anos com risco 0,65 · mais de 2 anos 0,65 · mais de 2 anos com risco 0,45 (degraus da escada).
+            "plano_desatualizado": 0.65, "plano_de_mais_de_2_anos": 0.65, "plano_desatualizado_de_mais_de_2_anos": 0.45,
             # v2.2.4 (§2.1): ausência de verificação ≠ ausência de documento; mesmo crédito 0.0
             "nao_verificado": 0.0}
+# Plano localizado, na categoria própria ou na da idade: é o que `n_plano` conta.
+CATEGORIAS_DE_PLANO = ("plano", "plano_antigo", "plano_desatualizado", "plano_de_mais_de_2_anos",
+                       "plano_desatualizado_de_mais_de_2_anos")
 AGREGADOS = {"RO": (38, "plano")}  # Correção B (26/08/2026): agregados tipo decreto (PB, RN) excluídos do índice — atos de resposta, nunca ex-ante
 CAPITAIS = {"Rio Branco":"AC","Maceió":"AL","Manaus":"AM","Macapá":"AP","Salvador":"BA","Fortaleza":"CE",
  "Brasília":"DF","Vitória":"ES","Goiânia":"GO","São Luís":"MA","Cuiabá":"MT","Campo Grande":"MS",
@@ -301,7 +305,7 @@ def derivar_percentual_uf(cnt, totais, pct_existente):
     novo = {}
     for uf, total in totais.items():
         c = cnt.get(uf, {})
-        n_plano = c.get("plano", 0) + c.get("plano_antigo", 0)
+        n_plano = sum(c.get(k, 0) for k in CATEGORIAS_DE_PLANO)
         n_decreto = c.get("decreto", 0)
         tipo_agr, excedente = excedente_agregado(uf, c)
         if tipo_agr == "plano":
@@ -447,11 +451,10 @@ def cobertura_de_uf(uf, c, wpop_uf, mediana, pop_total, dp_tce, da_tce, nacional
 
 
 def categoria_que_conta(r: dict, codigo, cadastro) -> str:
-    """A categoria que o índice credita: a do registro, ou `plano_desatualizado` quando o plano está fora da
-    atualização anual que a lei pede ao município do cadastro (`aplicar_promocoes_do_juiz.desatualizado_pela_lei`)."""
-    from aplicar_promocoes_do_juiz import desatualizado_pela_lei
-    return "plano_desatualizado" if desatualizado_pela_lei(r.get("categoria"), r.get("data"), codigo, cadastro) \
-        else r.get("categoria")
+    """A categoria que o índice credita: a do registro, ou a da idade do plano
+    (`aplicar_promocoes_do_juiz.faixa_de_idade`)."""
+    from aplicar_promocoes_do_juiz import faixa_de_idade
+    return faixa_de_idade(r.get("categoria"), r.get("data"), codigo, cadastro) or r.get("categoria")
 
 
 def calcular(versao="v3.1"):

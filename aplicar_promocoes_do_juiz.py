@@ -103,7 +103,8 @@ def atualizacao_anual_localizada(data):
 ROTULO_SEM_ATUALIZACAO = "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)"
 # 17/11/2026 (editoria: "deixar indicado que é um plano desatualizado segundo a lei, valendo para todos os estados e
 # municípios e pontuando zero"): a regra que era só do repositório estadual vale para todo plano de município
-# indicado ao cadastro do art. 3º-A. O plano entra no banco, aparece na ficha com a marca e vale zero no índice.
+# indicado ao cadastro do art. 3º-A. O plano entra no banco e aparece na ficha com a marca. 19/11/2026 (editoria):
+# deixa de valer zero; o crédito é o da idade do plano (`faixa_de_idade`).
 PLANOS_DA_LEI = ("plano", "plano_antigo", "plano_nomeado")
 # Na ficha, a lei por extenso: o "§" é marca de seção da Metodologia, e o portão de jargão o recusa em dado exibido.
 MARCA_DESATUALIZADO = ("plano desatualizado segundo a lei: sem atualização anual localizada "
@@ -115,6 +116,23 @@ def desatualizado_pela_lei(categoria, data, ibge, cadastro) -> bool:
     identificável, não (data insuficiente para o cômputo). Função pura dado o cadastro."""
     return (categoria in PLANOS_DA_LEI and str(ibge or "") in cadastro
             and atualizacao_anual_localizada(data) is False)
+
+
+def faixa_de_idade(categoria, data, ibge, cadastro):
+    """A categoria que a idade do plano dá ao índice, ou None quando ele conta pela própria (editoria,
+    19/11/2026: reduzir, não zerar; idade contada do Boletim nº 1; risco = indicado ao cadastro do art. 3º-A).
+    Edição com mais de dois anos: `plano_de_mais_de_2_anos`, e com risco `plano_desatualizado_de_mais_de_2_anos`;
+    de um a dois anos com risco: `plano_desatualizado`. Sem data identificável, None. Função pura dado o cadastro."""
+    from juiz import BOLETIM_1
+    import datetime
+    d = data_da_edicao(data) if categoria in ("plano", "plano_antigo") else None
+    if d is None:
+        return None
+    inicio = datetime.datetime.strptime(BOLETIM_1, "%d/%m/%Y").date()
+    risco = str(ibge or "") in cadastro
+    if d < inicio.replace(year=inicio.year - 2):
+        return "plano_desatualizado_de_mais_de_2_anos" if risco else "plano_de_mais_de_2_anos"
+    return "plano_desatualizado" if risco and d < inicio.replace(year=inicio.year - 1) else None
 
 
 def marcar_desatualizados(municipios: list, codigo_de, cadastro) -> int:
@@ -173,7 +191,7 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
         v["indicado_ao_cadastro_art3A"] = str(v.get("ibge")) in cadastro
         v["atualizacao_anual_localizada"] = atualizacao_anual_localizada(v.get("data"))
         if desatualizado_pela_lei(v.get("categoria"), v.get("data"), v.get("ibge"), cadastro):
-            v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO   # entra no banco com a marca e vale zero no índice
+            v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO   # entra no banco com a marca; o crédito é o da idade (`faixa_de_idade`)
             sem_atualizacao += 1
         repo = repositorio_do_documento(v.get("url") or "")
         if repo:
@@ -529,13 +547,23 @@ def autoteste() -> int:
     finally:
         _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
     casos.append(("repositório com aplicar_no_banco desligado fica retido, sem marca", _retido))
+    casos.append(("idade do plano: até 1 ano conta pela categoria; 1 a 2 anos só reduz com risco; mais de 2 reduz sempre; "
+                  "sem data e fora de plano, não",
+                  faixa_de_idade("plano_antigo", "30/06/2025", "1", {"1"}) is None
+                  and faixa_de_idade("plano_antigo", "28/06/2025", "1", {"1"}) == "plano_desatualizado"
+                  and faixa_de_idade("plano_antigo", "28/06/2025", "2", {"1"}) is None
+                  and faixa_de_idade("plano", "2023", "2", {"1"}) == "plano_de_mais_de_2_anos"
+                  and faixa_de_idade("plano_antigo", "28/06/2024", "1", {"1"}) == "plano_desatualizado_de_mais_de_2_anos"
+                  and faixa_de_idade("plano_antigo", "2024", "1", {"1"}) == "plano_desatualizado"
+                  and faixa_de_idade("plano_antigo", None, "1", {"1"}) is None
+                  and faixa_de_idade("plano_nomeado", "2020", "1", {"1"}) is None))
     casos.append(("atualização anual localizada: de 29/06/2025 em diante (só ano = 31/12; mm/aaaa = último dia); "
                   "sem data, None",
                   atualizacao_anual_localizada("2025") is True and atualizacao_anual_localizada("2024") is False
                   and atualizacao_anual_localizada(None) is None and atualizacao_anual_localizada("28/06/2025") is False
                   and atualizacao_anual_localizada("29/06/2025") and atualizacao_anual_localizada("06/2025")
                   and atualizacao_anual_localizada("05/2025") is False and atualizacao_anual_localizada("2026-05-13")))
-    casos.append(("17/11: indicado ao cadastro sem atualização ENTRA com o rótulo (vale zero no índice), em qualquer "
+    casos.append(("17/11: indicado ao cadastro sem atualização ENTRA com o rótulo, em qualquer "
                   "canal; não indicado e sem data, sem rótulo; nada diz 'vencido'",
                   len(_entra) == 1 and _velho.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO
                   and _velho.get("data_da_edicao") == "2025-05-31"

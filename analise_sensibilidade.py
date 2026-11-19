@@ -72,7 +72,7 @@ def rodar():
     R = {"media": media, "ufs": ufs, "idx": idx}
 
     # cobertura populacional recomputável com descontos variáveis (mesma cadeia do motor)
-    # 17/11/2026: a categoria que conta é a do motor (`categoria_que_conta`: plano desatualizado segundo a lei vale 0).
+    # 17/11/2026: a categoria que conta é a do motor (`categoria_que_conta`: a idade do plano reduz o crédito).
     from aplicar_promocoes_do_juiz import municipios_do_cadastro
     cadastro = municipios_do_cadastro()
     cat_de = lambda r: rm.categoria_que_conta(r, cod_por[(r["nome"], r["uf"])], cadastro)  # noqa: E731
