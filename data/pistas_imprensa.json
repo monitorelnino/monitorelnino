@@ -368797,9 +368797,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
+   "proxima_tentativa_em": "2026-11-26",
    "busca_dirigida": [
     {
      "em": "2026-11-18",
@@ -368816,10 +368822,18 @@
       "sitio_oficial"
      ],
      "encontrou": "https://seadantigo.portal.ap.gov.br/diario/DOEn7564.pdf?ts=22030308"
+    },
+    {
+     "em": "2026-11-19",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://seadantigo.portal.ap.gov.br/diario/DOEn7564.pdf?ts=22030308"
     }
    ],
    "ultima_busca_em": "2026-11-19",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Tartarugalzinho",
@@ -370717,9 +370731,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
+   "proxima_tentativa_em": "2026-11-26",
    "busca_dirigida": [
     {
      "em": "2026-11-18",
@@ -370736,10 +370756,18 @@
       "sitio_oficial"
      ],
      "encontrou": "https://seadantigo.portal.ap.gov.br/diario/DOEn8649.pdf?ts=26051907"
+    },
+    {
+     "em": "2026-11-19",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://seadantigo.portal.ap.gov.br/diario/DOEn8649.pdf?ts=26051907"
     }
    ],
    "ultima_busca_em": "2026-11-19",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Itaubal",
@@ -397267,9 +397295,15 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
+   "proxima_tentativa_em": "2026-11-26",
    "busca_dirigida": [
     {
      "em": "2026-11-18",
@@ -397286,10 +397320,18 @@
       "sitio_oficial"
      ],
      "encontrou": "https://www.sema.df.gov.br/documents/6196895/8858939/Anexo1_Plano-de-conting%25C3%25AAncia-Crise-h%25C3%25ADdrica.pdf"
+    },
+    {
+     "em": "2026-11-19",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.sema.df.gov.br/documents/6196895/8858939/Anexo1_Plano-de-conting%25C3%25AAncia-Crise-h%25C3%25ADdrica.pdf"
     }
    ],
    "ultima_busca_em": "2026-11-19",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Brasília",
@@ -659446,7 +659488,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "6d66089dbd",
    "url_final": "https://www.sedecti.am.gov.br/wp-content/uploads/2023/03/Avaliacao-do-PPA-2020-2023-Exercicio-2022.pdf",
@@ -659496,9 +659538,24 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "f5e04a3105882adb97ad6a8c52cb56a54debe73d63c32f8b182882fad97aafc8"
+   }
   },
   {
    "municipio": "Tefé",
@@ -659514,7 +659571,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "d04a1a20ca",
    "url_final": "https://www.sedecti.am.gov.br/wp-content/uploads/2025/04/CONSTITUICAO-DO-ESTADO-DO-AMAZONAS-4a-EDICAO.pdf",
@@ -659564,9 +659621,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "e854f0ef23280aa64034d31c1548d3b8aa780cb0478dcb30964e30a57bbe40d3"
+   }
   },
   {
    "municipio": "Tefé",
@@ -659658,7 +659730,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "50888e1560",
    "url_final": "https://www.sedecti.am.gov.br/wp-content/uploads/2020/02/MSG_GOV_2019_2020-WEB.pdf",
@@ -659708,9 +659780,24 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "43281b6228749eddf19d0c343d139b9a8c00c87f85372bdd8a9a865260471796"
+   }
   },
   {
    "municipio": "Tabatinga",
@@ -661563,7 +661650,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "origem_do_coletor": "busca_web",
    "id": "0aa12f43ec",
    "url_final": "https://www.agenciaamazonas.am.gov.br/noticias/ses-am-atua-para-expandir-producao-e-capacidade-de-oxigenio-2/",
@@ -661621,9 +661708,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "900291785a26fde749b2e7d48e4ba72592210cc838df020a6905b56b2a7d121c"
+   }
   },
   {
    "municipio": "Manicoré",
@@ -661965,7 +662067,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "56cb722fed",
    "url_final": "https://www.sedecti.am.gov.br/wp-content/uploads/2023/03/Mensagem-Governamental-2023.pdf",
@@ -662015,9 +662117,24 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "4c9d72f4a2dfd33bc6f0344a3679ff56bd4c44e99d54614e70f263ee0609ef2b"
+   }
   },
   {
    "municipio": "Benjamin Constant",
@@ -671721,9 +671838,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-22",
    "repeticoes": 3
   },
   {
@@ -676858,7 +676981,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "854d944ab6",
    "url_final": "https://www.sedecti.am.gov.br/wp-content/uploads/2022/02/Relatorio-de-Acao-Governamental-2021.pdf",
@@ -676890,9 +677013,14 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
@@ -676909,6 +677037,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-19",
     "criterios": {}
+   },
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "2fc1968cddcb27f068500644b502e4a57d5c8f306466c730694c0f9d051305dd"
    }
   },
   {
@@ -677271,7 +677409,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "9f40aaa573",
    "url_final": "https://www.transparencia.am.gov.br/wp-content/uploads/2021/10/PORTARIA-n.164-GDP-FAAR.pdf",
@@ -677320,9 +677458,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "5b73a3ebb683364f127d23f912cba22e2ea316fa32aa83fd716210b51e141b4f"
+   }
   },
   {
    "municipio": "Alagoinhas",
@@ -713135,7 +713288,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -713196,9 +713349,35 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-19",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-19",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "09/05/2025",
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "10ee67aa8edc1fd6ce710f1ebd143991d43afbebbd8d317677b4cd1bc54231d9"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -713212,7 +713391,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -713271,9 +713450,35 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-19",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-19",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "14/05/2026",
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "57c40e0fbdb7c54a784fd3794078e77021129e00af32e3b4b932b179f7dcdbdd"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -713287,7 +713492,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -713348,9 +713553,35 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "busca_dirigida": [
+    {
+     "em": "2026-11-19",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-19",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "17/12/2025",
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "b1ddc605ea95e9c272994ea8b7b8b4531ecabe95ecc4e1d67653ef03b9dda0af"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -732859,7 +733090,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: uf_do_dominio_diverge",
    "origem_do_coletor": "busca_web",
    "id": "e260e8a393",
    "url_final": "https://seadantigo.portal.ap.gov.br/diario/DOEn8319.pdf?ts=24123113",
@@ -732886,9 +733117,14 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "uf_do_dominio_diverge",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
@@ -732912,10 +733148,28 @@
       "sitio_oficial"
      ],
      "encontrou": "https://editor.amapa.gov.br/arquivos_portais/livraria/SESA_615d7dec97949354585dbcd26e7bfb4b.pdf"
+    },
+    {
+     "em": "2026-11-19",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "http://www.adab.ba.gov.br/arquivos/File/ManualdeProcedimentosPlanodeContingenciaMonilia.pdf"
     }
    ],
-   "ultima_busca_em": "2026-11-18",
-   "tentativas_de_busca_dirigida": 1
+   "ultima_busca_em": "2026-11-19",
+   "tentativas_de_busca_dirigida": 2,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "uf_do_dominio_diverge",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "016aa8414bbe876cea834d8a82eff277af3cd4d8242ec42393d4d418635c1847"
+   }
   },
   {
    "municipio": "Oiapoque",
@@ -735904,7 +736158,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "origem_do_coletor": "busca_web",
    "id": "81c434d504",
    "url_final": "https://cosiga.portal.ap.gov.br/covid/15753/anexo/PRODOC-0106.2020-PARTE_1.pdf",
@@ -735947,10 +736201,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-21",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "77dcbbdb0eec5644c5ee4b728258346b4bd4b39f404af5c1df98697ba2ce9e61"
+   }
   },
   {
    "municipio": "Ferreira Gomes",
@@ -738315,7 +738584,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "origem_do_coletor": "busca_web",
    "id": "67583558cc",
    "url_final": "https://www.petropolis.rj.gov.br/index.php/downloads/105-downloads/67-defesa-civil/102-planos-de-contingencia/124-anos-anteriores?download=451%3Aplano-de-contingencia-2021-deslizamentos-de-solo-e-ou-rocha",
@@ -738366,9 +738635,24 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "10/04/2012",
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "5689cdf797f74de53a19736ccde0b0479568da31b33729d19cebfc32281df53d"
+   }
   },
   {
    "municipio": "Paracambi",
@@ -739544,7 +739828,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "id": "a3ffb52f46",
    "url_final": "http://p-web01.mp.rj.gov.br/Arquivos/RAP/AAE_Acu.pdf",
@@ -739573,10 +739857,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "b4670e6aa56b31583058fe8b264af809dc7ca856adfc6cf0c17f6b273e3c1db3"
+   }
   },
   {
    "municipio": "Bom Jesus do Itabapoana",
