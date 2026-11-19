@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-19 · #1922 · Data com ano no futuro não é data do documento
+
+A leitura da data aceitava qualquer ano: o plano de Tobias Barreto/SE, digitalizado, entrou datado de 2067 e trocou o decreto do município. Ano no futuro deixa de ser data do documento; o registro voltou ao de ontem e a pista volta ao juiz.
+
 ## 2026-11-18 · #1916 · Plano de edição anterior não substitui o mais novo
 
 A atualização de registro deixava um documento de força igual trocar o registro sem julgamento do juiz, mesmo sendo mais antigo: Cachoeiro de Itapemirim e Pancas/ES perderam o plano de 2025 para o de 2023, e o índice do ES caiu. Edição anterior não substitui mais; os dois registros voltaram.
