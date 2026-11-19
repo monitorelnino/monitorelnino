@@ -5423,7 +5423,19 @@
   {"data": "2026-11-19", "script": "seguir_pistas.py", "inicio": "2026-11-19T07:17:44", "duracao_s": 11.1, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-19", "script": "triar_confianca_pistas.py", "inicio": "2026-11-19T07:17:55", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-19", "script": "verificar_pista_imprensa.py", "inicio": "2026-11-19T07:17:56", "duracao_s": 127.1, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-19", "script": "recalcular_mare.py", "inicio": "2026-11-19T07:24:08", "duracao_s": 4.9, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-19", "script": "recalcular_mare.py", "inicio": "2026-11-19T07:24:08", "duracao_s": 4.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "coletar_datasus_dbc.py", "inicio": "2026-11-19T07:13:14", "duracao_s": 203.6, "itens": null, "status": "erro", "erro": "[lacuna declarada] ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/ (leptospirose): TimeoutError: timed out; o arquivo anterior fica"},
+  {"data": "2026-11-19", "script": "coletar_datasus_dbc.py", "inicio": "2026-11-19T07:16:37", "duracao_s": 205.6, "itens": null, "status": "erro", "erro": "[lacuna declarada] ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/ (malaria): TimeoutError: timed out; o arquivo anterior fica"},
+  {"data": "2026-11-19", "script": "coletar_sisab.py", "inicio": "2026-11-19T07:20:02", "duracao_s": 166.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "desfechos_sus.py", "inicio": "2026-11-19T07:22:48", "duracao_s": 1.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "coletar_obitos.py", "inicio": "2026-11-19T07:22:49", "duracao_s": 4.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "coletar_sim.py", "inicio": "2026-11-19T07:22:53", "duracao_s": 204.4, "itens": null, "status": "erro", "erro": "TimeoutError: timed out"},
+  {"data": "2026-11-19", "script": "coletar_projecao_cil.py", "inicio": "2026-11-19T07:26:17", "duracao_s": 3.6, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "gerar_mortalidade_comparada.py", "inicio": "2026-11-19T07:26:20", "duracao_s": 0.7, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "coletar_sih.py", "inicio": "2026-11-19T07:26:20", "duracao_s": 2671.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-19", "script": "coletar_planos_arboviroses.py", "inicio": "2026-11-19T08:10:51", "duracao_s": 1409.2, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
+  {"data": "2026-11-19", "script": "ler_planos_arboviroses.py", "inicio": "2026-11-19T08:34:20", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-19", "script": "reconferir_instrumentos_federais.py", "inicio": "2026-11-19T08:34:20", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
  ],
- "atualizado_em": "2026-11-19T07:24:08"
+ "atualizado_em": "2026-11-19T08:34:20"
 }
