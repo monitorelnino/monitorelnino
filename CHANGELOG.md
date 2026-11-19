@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-19 · #1931 · Juiz: ato próprio e plano que se declara plano
+A lei citada na base legal de um plano deixa de ser tomada como o ato dele (`juiz.ato_proprio`), também nos juízes da Saúde; o plano que diz "este plano de contingência" conta como título (J15). As reaberturas de recusas viram uma tabela (`CORRECOES_DO_JUIZ`), e 3.345 recusas por ato, citação, natureza ou título voltam uma vez. Origem: PLANCON 2025 de Rio Branco/AC.
+
 ## 2026-11-19 · #1920 · J13, J12 e J18 no juiz, medidos à parte
 O juiz ganha três regras da rodada paralela J18, todas fora da produção: J13 lê a data do ato colada ao número (nº 1341/2021 de 31 de março de 2021) e marca a origem da data; J12 colapsa repetições do mesmo documento no mesmo município; J18 recusa plano setorial de saúde, saneamento ou escolar, quando a proposta está ligada. O codebook 1.8 não muda, e nenhuma decisão de produção muda.
 
