@@ -686,6 +686,10 @@ def etapa1_identidade(texto: str, nome: str, uf: str, homonimos=None) -> tuple:
 # Etapa 2 — citação completa (§3.2)
 # =============================================================================================
 JANELA_DO_ATO_QUE_APROVA = 240
+# Só o ato que aprova o PLANO: "fica instituída a COMPDEC" (Muqui/ES, lei de 2003 citada no plano de 2026) não é.
+RE_APROVA_O_PLANO = re.compile(
+    r"\b(?:aprova|institui|homologa|atualiza)\s+o\s+(?:presente\s+)?plano|"
+    r"\bfica(?:m)?\s+(?:aprovad|institu[íi]d|homologad|atualizad)[oa]s?\s+o\s+(?:presente\s+)?plano", re.I)
 JANELA_DO_TIMBRE = 300
 
 
@@ -708,7 +712,7 @@ def ato_proprio(texto: str):
     for m in RE_TIPO_E_NUMERO.finditer(texto):
         if m.start() < JANELA_DO_TIMBRE or m.start() in titulos_de_ato:
             return m
-        if RE_INSTITUI.search(texto[m.end(): m.end() + JANELA_DO_ATO_QUE_APROVA]):
+        if RE_APROVA_O_PLANO.search(texto[m.end(): m.end() + JANELA_DO_ATO_QUE_APROVA]):
             return m
     return None
 
@@ -2109,6 +2113,9 @@ def autoteste() -> int:
          ato_proprio("PREFEITURA MUNICIPAL DE X Gabinete do Prefeito Decreto nº 123, de 5 de março de 2026") is not None
          and ato_proprio("x " * 200 + "ESTADO DE Y DECRETO Nº 77/2026 Dispõe sobre a defesa civil") is not None
          and ato_proprio("x " * 400 + "Anexo: Decreto nº 1.580/2023 aprova o Plano de Contingência") is not None),
+        ("ato próprio: a lei citada que institui a COMPDEC não é o ato do plano (Muqui/ES)",
+         ato_proprio("x " * 400 + "conforme a Lei nº 1.234, de 27/05/2003, fica instituída a Coordenadoria "
+                     "Municipal de Proteção e Defesa Civil") is None),
         ("ato próprio: lei citada no corpo, no índice ou depois do título do plano não é o ato do documento",
          ato_proprio("Sumário " + ". " * 200 + " 13 – Legislação 2012 - Lei nº 1.908, 17/05/2012 – Cria a "
                      "Coordenadoria Municipal de Defesa Civil") is None
