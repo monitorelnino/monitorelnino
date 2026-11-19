@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-19 · #1952 · Redução: história das fontes ao histórico; parser RSS único
+Os comentários de história do catálogo de fontes de `coletar_sinais_risco.py` passam a `docs/HISTORICO_DE_REGIMES.md` (código idêntico); `detectar_marcos_federais.py` usa o leitor de RSS de `monitorar_imprensa_regional.py` em vez da cópia. Sem mudança de comportamento; −55 linhas de código.
+
 ## 2026-11-19 · #1944 · Juiz: o ato que aprova é o que aprova o plano
 O ato citado no plano só conta como ato dele quando aprova, institui, homologa ou atualiza o próprio plano (`RE_APROVA_O_PLANO`). "Fica instituída a COMPDEC" deixa de contar: no plano de 2026 de Muqui/ES, a lei de 2003 virava a data do plano.
 
