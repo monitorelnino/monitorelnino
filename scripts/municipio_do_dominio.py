@@ -108,7 +108,7 @@ def partes_do_host(host: str, camara: bool = False):
 
 # Versão do resolvedor, como a do codebook: muda a cada correção dele. Recusa por autoridade julgada antes
 # dela, em domínio que o resolvedor em vigor dá ao próprio ente, volta ao juiz uma vez
-# (`julgar_filas.recusa_desmentida_pelo_dominio`). Sobe-se a data; nada de regra antiga guardada.
+# (`julgar_filas.CORRECOES_DO_JUIZ`). Sobe-se a data; nada de regra antiga guardada.
 RESOLVEDOR_DESDE = "2026-11-10"
 
 # Domínio municipal fora do padrão `<nome>.<uf>.gov.br`. Lista fechada, só de domínio conferido (a página
