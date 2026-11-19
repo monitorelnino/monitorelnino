@@ -9,10 +9,11 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-12 a 2026-11-19 (1520 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-12 a 2026-11-19 (1533 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
+- coletar_datasus_dbc.py: erro em 2 rodadas seguidas — [lacuna declarada] ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/ (malaria): TimeoutError: timed out; o arquivo anterior fica
 - consultar_querido_diario.py: erro em 2 rodadas seguidas — portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 520: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail
 - python3: erro em 2 rodadas seguidas — SyntaxError: unterminated string literal (detected at line 1)
 - verificar_links.py: erro em 2 rodadas seguidas — erro: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
@@ -30,13 +31,13 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `gerar_dados_abertos.py` | essencial | 2026-11-15 06:14 | 0 s | — | ok | — |
 | `gerar_feeds.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
 | `gerar_monitor_saude.py` | essencial | 2026-11-16 19:53 | 1 s | — | ok | — |
-| `gerar_mortalidade_comparada.py` | essencial | 2026-11-18 07:25 | 1 s | — | ok | — |
+| `gerar_mortalidade_comparada.py` | essencial | 2026-11-19 07:26 | 1 s | — | ok | — |
 | `gerar_painel.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
 | `gerar_prioritarios.py` | essencial | 2026-11-15 06:19 | 0 s | — | ok | — |
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-18 01:36 | 2 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-19 07:24 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-19 08:41 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-19 06:21 | 370 s | 0 | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -57,7 +58,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `coletar_boletim_pe_arboviroses.py` | coletor | 2026-11-18 01:34 | 13 s | — | ok | — |
 | `coletar_cadastro_prioritarios.py` | coletor | 2026-11-14 01:13 | 29 s | — | ok | — |
 | `coletar_cobertura_qd.py` | coletor | 2026-11-14 01:18 | 2027 s | — | ok | — |
-| `coletar_datasus_dbc.py` | coletor | 2026-11-18 07:11 | 43 s | — | ok | — |
+| `coletar_datasus_dbc.py` | coletor | 2026-11-19 07:16 | 206 s | — | **erro** (2 seguidas) | [lacuna declarada] ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/ (malaria): TimeoutError: timed out; o arquivo |
 | `coletar_dda.py` | coletor | 2026-11-18 01:29 | 54 s | — | ok | — |
 | `coletar_declarado_nacional.py` | coletor | 2026-11-15 04:21 | 28 s | — | ok | — |
 | `coletar_desfechos_saude.py` | coletor | 2026-11-18 01:22 | 451 s | — | ok | — |
@@ -70,12 +71,12 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `coletar_financiamento.py` | coletor | 2026-11-15 05:44 | 1 s | — | ok | — |
 | `coletar_mapbiomas.py` | coletor | 2026-11-17 18:04 | 2 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-11-14 01:13 | 3 s | — | ok | — |
-| `coletar_obitos.py` | coletor | 2026-11-18 07:15 | 4 s | — | ok | — |
+| `coletar_obitos.py` | coletor | 2026-11-19 07:22 | 5 s | — | ok | — |
 | `coletar_obitos_registro_civil.py` | coletor | 2026-11-18 01:35 | 24 s | — | ok | — |
 | `coletar_pab_brasil.py` | coletor | 2026-11-14 01:14 | 7 s | — | ok | — |
-| `coletar_planos_arboviroses.py` | coletor | 2026-11-18 08:05 | 1501 s | — | ok | — |
+| `coletar_planos_arboviroses.py` | coletor | 2026-11-19 08:10 | 1409 s | — | **erro** | interrompido pelo prazo do elo |
 | `coletar_prioritarios_mma.py` | coletor | 2026-11-14 01:13 | 3 s | — | ok | — |
-| `coletar_projecao_cil.py` | coletor | 2026-11-18 07:25 | 2 s | — | ok | — |
+| `coletar_projecao_cil.py` | coletor | 2026-11-19 07:26 | 4 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-11-18 02:41 | 27 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-11-18 02:40 | 15 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-11-18 01:13 | 81 s | — | ok | — |
@@ -83,10 +84,10 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `coletar_semiarido_sudene.py` | coletor | 2026-11-14 01:13 | 2 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-11-18 02:15 | 8 s | — | ok | — |
 | `coletar_siconfi_182.py` | coletor | 2026-11-15 05:42 | 1 s | — | ok | — |
-| `coletar_sih.py` | coletor | 2026-11-18 07:25 | 2416 s | — | ok | — |
-| `coletar_sim.py` | coletor | 2026-11-18 07:15 | 609 s | — | ok | — |
+| `coletar_sih.py` | coletor | 2026-11-19 07:26 | 2672 s | — | ok | — |
+| `coletar_sim.py` | coletor | 2026-11-19 07:22 | 204 s | — | **erro** | TimeoutError: timed out |
 | `coletar_sinais_risco.py` | coletor | 2026-11-18 01:12 | 125 s | — | ok | — |
-| `coletar_sisab.py` | coletor | 2026-11-18 07:12 | 195 s | — | ok | — |
+| `coletar_sisab.py` | coletor | 2026-11-19 07:20 | 167 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-15 05:35 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-18 02:14 | 30 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-11-15 05:44 | 2 s | — | ok | — |
@@ -95,13 +96,13 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `consultar_querido_diario.py` | coletor | 2026-11-18 01:13 | 105 s | — | **erro** (2 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-15 01:51 | 5561 s | — | **erro** | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-11-19 07:05 | 429 s | — | ok | — |
-| `desfechos_sus.py` | coletor | 2026-11-18 07:15 | 0 s | — | ok | — |
+| `desfechos_sus.py` | coletor | 2026-11-19 07:22 | 1 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-19 07:05 | 2 s | — | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-19 06:14 | 376 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-11-19 04:59 | 4503 s | — | **erro** | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-11-18 18:41 | 4645 s | — | ok | — |
 | `julgar_saude_municipal.py` | coletor | 2026-11-16 05:40 | 8409 s | — | ok | — |
-| `ler_planos_arboviroses.py` | coletor | 2026-11-18 08:30 | 5 s | — | ok | — |
+| `ler_planos_arboviroses.py` | coletor | 2026-11-19 08:34 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-19 07:01 | 221 s | 25322 | ok | — |
 | `monitorar_busca_web.py` | coletor | 2026-11-19 07:12 | 251 s | — | ok | — |
 | `monitorar_imprensa_regional.py` | coletor | 2026-11-19 06:44 | 432 s | 40 | ok | — |
@@ -120,7 +121,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-18 · por canal: we
 | `preservar_evidencias.py` | coletor | 2026-11-19 06:35 | 77 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-11-19 04:53 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-11-15 16:10 | 0 s | — | **erro** (2 seguidas) | SyntaxError: unterminated string literal (detected at line 1) |
-| `reconferir_instrumentos_federais.py` | coletor | 2026-11-18 08:30 | 1 s | — | ok | — |
+| `reconferir_instrumentos_federais.py` | coletor | 2026-11-19 08:34 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `revisar_pistas.py` | coletor | 2026-11-19 04:53 | 395 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-19 06:27 | 1 s | — | ok | — |
 | `scripts/busca_dirigida_do_ato.py` | coletor | 2026-11-19 07:16 | 57 s | — | ok | — |
