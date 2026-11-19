@@ -158,9 +158,9 @@ def classificar(texto, tem_reconhecimento_federal=False):
 def ano_possivel(data) -> bool:
     """O ano da data não está no futuro (19/11/2026: o OCR leu "Versão 201 8" como 2067 e o plano de Tobias
     Barreto/SE entrou como edição de 2067). Ano de dois dígitos fica como está. Função pura."""
-    import datetime
+    from coletores_base import hoje_editorial
     ano = str(data or "").replace(".", "/").split("/")[-1]
-    return not (len(ano) == 4 and ano.isdigit() and int(ano) > datetime.date.today().year)
+    return not (len(ano) == 4 and ano.isdigit() and int(ano) > hoje_editorial().year)
 
 
 def extrair_data(texto):
