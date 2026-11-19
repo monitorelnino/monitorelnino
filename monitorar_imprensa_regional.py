@@ -74,7 +74,7 @@ import urllib.parse
 
 RAIZ = pathlib.Path(__file__).parent
 sys.path.insert(0, str(RAIZ / "scripts"))
-from coletores_base import gravar_em, hoje_editorial, texto_tolerante  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import gravar, gravar_em, hoje_editorial, ler, texto_tolerante  # noqa: E402  (§228)
 
 FILA = RAIZ / "data" / "pistas_imprensa.json"
 CURSOR = RAIZ / "data" / "imprensa_cursor.json"
@@ -394,36 +394,37 @@ def main():
     universo = montar_universo(estados)
     pos = carregar_cursor(len(universo))
     fila = carregar_fila()
-    total_novas = 0
+    ref = json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))
+    ibge = {(r["nome"], r["uf"]): str(r["codigo_ibge"]).zfill(7) for r in ref}
     from monitorar_busca_web import web_do_metabuscador
     bruta = web_do_metabuscador()
     web = bruta and (lambda q: (bruta(q) or {}).get("results"))
 
+    achadas = []
     for i in range(limite):
         idx = (pos + i) % len(universo)
         rotulo, uf, queries = universo[idx]
+        # 19/11/2026: o alvo que a porta entende (IBGE, senão UF); o rótulo da camada fica em `alvo`
+        # só até a porta, que o troca. Sem isso a pista entrava com alvo "D-municipio-prioritario/…".
+        nome, _, sigla = uf.rpartition("/")
+        onde = {"uf": sigla, **({"municipio": nome, "ibge": ibge.get((nome, sigla), "")} if nome else {})}
         for q in queries:
             xml = _get(montar_url(q))
             if not xml:
                 continue
-            itens = [{"alvo": f"{rotulo}/{uf}", "query": q, **it} for it in extrair_itens_rss(xml)]
-            novas = registrar(fila, itens, web)
-            total_novas += len(novas)
+            itens = [{"alvo": f"{rotulo}/{uf}", "query": q, **onde, **it} for it in extrair_itens_rss(xml)]
+            achadas += registrar(fila, itens, web)
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
 
     salvar_cursor((pos + limite) % len(universo), len(universo))
-    gravar_em(FILA, fila)   # §229
-
-    print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C); "
-          f"{limite} consultados nesta execução (posição {pos}→{(pos+limite) % len(universo)}).")
-    if total_novas:
-        print(f"[PISTAS NOVAS] {total_novas} para o juiz automático (status pendente_confirmacao_documento):")
-        for p in fila["pistas"][-total_novas:]:
-            marca = " [parece oficial]" if p["fonte_provavel_oficial"] else ""
-            print(f"  · [{p['alvo']}]{marca} {p['titulo'][:100]}")
-        print("  → NENHUMA foi confirmada nem é promovível — trava absoluta. Ver data/pistas_imprensa.json.")
-    else:
-        print(f"Nenhuma pista inédita (fila com {len(fila['pistas'])} itens acumulados).")
+    # 19/11/2026: pela porta (regra 1), com o par do próprio módulo. Gravada com `gravar_em`, a pista
+    # entrava sem `url_final`, `tipo`, `nivel`, `origem` nem `id`, e a quarentena travou a publicação.
+    from pistas import gravar_lote
+    r = gravar_lote(achadas, origem="imprensa_regional", ler_fn=ler, gravar_fn=gravar) if achadas else {}
+    print(f"Universo de busca: {len(universo)} alvos (camadas A/B/C/D); {limite} consultados nesta "
+          f"execução (posição {pos}→{(pos+limite) % len(universo)}). Achadas {len(achadas)}: "
+          f"{r.get('gravadas', 0)} na fila do juiz, {r.get('recusadas', 0)} recusadas pela porta "
+          f"{r.get('motivos', {})}. Nenhuma confirmada nem promovível (trava absoluta).")
     return 0
 
 
