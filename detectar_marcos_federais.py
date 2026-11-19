@@ -26,6 +26,7 @@ import sys
 import time
 
 from coletores_base import RAIZ, ler, gravar, texto_tolerante
+from monitorar_imprensa_regional import extrair_itens_rss  # o parser RSS é um só (fonte única)
 
 FEED_URL = "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/RSS"
 PALAVRAS_MARCO = [
@@ -36,22 +37,6 @@ PALAVRAS_MARCO = [
 
 def _get(url, timeout=30):
     return texto_tolerante(url, "", timeout, "o feed do MS")
-
-
-def extrair_itens_rss(xml):
-    """Extrai (titulo, link, data) de um feed RSS — mesmo parser tolerante por regex já
-    usado em monitorar_imprensa_saude.py, reaproveitado aqui em vez de reescrito."""
-    itens = []
-    for bloco in re.findall(r"<item>(.*?)</item>", xml or "", re.S):
-        titulo = re.search(r"<title>(.*?)</title>", bloco, re.S)
-        link = re.search(r"<link>(.*?)</link>", bloco, re.S)
-        data = re.search(r"<pubDate>(.*?)</pubDate>", bloco, re.S)
-        if not (titulo and link):
-            continue
-        t = re.sub(r"<!\[CDATA\[|\]\]>", "", titulo.group(1)).strip()
-        itens.append({"titulo": t, "url": link.group(1).strip(),
-                       "data_publicacao": (data.group(1).strip() if data else "")})
-    return itens
 
 
 def eh_marco_relevante(item: dict) -> bool:
