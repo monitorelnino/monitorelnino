@@ -898185,6 +898185,553 @@
    "pista_id": "13f1a2ed76",
    "origem": "busca_web",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600709",
+   "municipio": "Tartarugalzinho",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn7564.pdf?ts=22030308",
+   "regras_18": [],
+   "pista_id": "f19fdd9c30",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://seadantigo.portal.ap.gov.br/diario/DOEn7564.pdf?ts=22030308",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600253",
+   "municipio": "Itaubal",
+   "uf": "AP",
+   "url": "https://seadantigo.portal.ap.gov.br/diario/DOEn8649.pdf?ts=26051907",
+   "regras_18": [],
+   "pista_id": "0fc71e8a48",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://seadantigo.portal.ap.gov.br/diario/DOEn8649.pdf?ts=26051907",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5300108",
+   "municipio": "Brasília",
+   "uf": "DF",
+   "url": "https://www.sema.df.gov.br/documents/6196895/8858939/Anexo1_Plano-de-conting%25C3%25AAncia-Crise-h%25C3%25ADdrica.pdf",
+   "regras_18": [],
+   "pista_id": "14d0838deb",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.sema.df.gov.br/documents/6196895/8858939/Anexo1_Plano-de-conting%25C3%25AAncia-Crise-h%25C3%25ADdrica.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "561778 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1304203",
+   "municipio": "Tefé",
+   "uf": "AM",
+   "url": "https://www.sedecti.am.gov.br/wp-content/uploads/2023/03/Avaliacao-do-PPA-2020-2023-Exercicio-2022.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "6d66089dbd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f5e04a3105882adb97ad6a8c52cb56a54debe73d63c32f8b182882fad97aafc8"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1304203",
+   "municipio": "Tefé",
+   "uf": "AM",
+   "url": "https://www.sedecti.am.gov.br/wp-content/uploads/2025/04/CONSTITUICAO-DO-ESTADO-DO-AMAZONAS-4a-EDICAO.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d04a1a20ca",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e854f0ef23280aa64034d31c1548d3b8aa780cb0478dcb30964e30a57bbe40d3"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1301209",
+   "municipio": "Coari",
+   "uf": "AM",
+   "url": "https://www.sedecti.am.gov.br/wp-content/uploads/2020/02/MSG_GOV_2019_2020-WEB.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "50888e1560",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "43281b6228749eddf19d0c343d139b9a8c00c87f85372bdd8a9a865260471796"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6582 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1301704",
+   "municipio": "Humaitá",
+   "uf": "AM",
+   "url": "https://www.agenciaamazonas.am.gov.br/noticias/ses-am-atua-para-expandir-producao-e-capacidade-de-oxigenio-2/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "0aa12f43ec",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "900291785a26fde749b2e7d48e4ba72592210cc838df020a6905b56b2a7d121c"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300607",
+   "municipio": "Benjamin Constant",
+   "uf": "AM",
+   "url": "https://www.sedecti.am.gov.br/wp-content/uploads/2023/03/Mensagem-Governamental-2023.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "56cb722fed",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4c9d72f4a2dfd33bc6f0344a3679ff56bd4c44e99d54614e70f263ee0609ef2b"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "34 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5001102",
+   "municipio": "Aquidauana",
+   "uf": "MS",
+   "url": "http://aquidauana.ms.gov.br/semed-consulta",
+   "regras_18": [],
+   "pista_id": "93fed66060",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "473773 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1304104",
+   "municipio": "Tapauá",
+   "uf": "AM",
+   "url": "https://www.sedecti.am.gov.br/wp-content/uploads/2022/02/Relatorio-de-Acao-Governamental-2021.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "854d944ab6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2fc1968cddcb27f068500644b502e4a57d5c8f306466c730694c0f9d051305dd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "25708 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300904",
+   "municipio": "Canutama",
+   "uf": "AM",
+   "url": "https://www.transparencia.am.gov.br/wp-content/uploads/2021/10/PORTARIA-n.164-GDP-FAAR.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "9f40aaa573",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5b73a3ebb683364f127d23f912cba22e2ea316fa32aa83fd716210b51e141b4f"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4277 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "e Esgoto - PRAE - CORSAN/AEGEA V&#237;deo Institucional Vídeo Institucional de São José do Inhacorá/RS - 2025 Munic&#237;pio Calendário de Eventos Caracterizaç"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "09/05/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "09/05/2025",
+   "natureza": null,
+   "ibge": "4318499",
+   "municipio": "São José do Inhacorá",
+   "uf": "RS",
+   "url": "https://saojosedoinhacora.rs.gov.br/site/conteudos/6371-plano-municipal-de-contingecircncia-da-dengue-2026",
+   "regras_18": [],
+   "pista_id": "905844246e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "10ee67aa8edc1fd6ce710f1ebd143991d43afbebbd8d317677b4cd1bc54231d9",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4223 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "e Esgoto - PRAE - CORSAN/AEGEA V&#237;deo Institucional Vídeo Institucional de São José do Inhacorá/RS - 2025 Munic&#237;pio Calendário de Eventos Caracterizaç"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "14/05/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "14/05/2026",
+   "natureza": null,
+   "ibge": "4318499",
+   "municipio": "São José do Inhacorá",
+   "uf": "RS",
+   "url": "https://saojosedoinhacora.rs.gov.br/site/conteudos/7268-plano-municipal-de-assistecircncia-social-2026-2029",
+   "regras_18": [],
+   "pista_id": "1137580bb1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "57c40e0fbdb7c54a784fd3794078e77021129e00af32e3b4b932b179f7dcdbdd",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4241 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "e Esgoto - PRAE - CORSAN/AEGEA V&#237;deo Institucional Vídeo Institucional de São José do Inhacorá/RS - 2025 Munic&#237;pio Calendário de Eventos Caracterizaç"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "17/12/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "17/12/2025",
+   "natureza": null,
+   "ibge": "4318499",
+   "municipio": "São José do Inhacorá",
+   "uf": "RS",
+   "url": "https://saojosedoinhacora.rs.gov.br/site/conteudos/6703-plano-municipal-decenal-de-cultura---20252035",
+   "regras_18": [],
+   "pista_id": "8cc088ac0d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b1ddc605ea95e9c272994ea8b7b8b4531ecabe95ecc4e1d67653ef03b9dda0af",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "uf_do_dominio_diverge",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "33876 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600501",
+   "municipio": "Oiapoque",
+   "uf": "AP",
+   "url": "http://www.adab.ba.gov.br/arquivos/File/ManualdeProcedimentosPlanodeContingenciaMonilia.pdf",
+   "regras_18": [
+    "J3"
+   ],
+   "pista_id": "e260e8a393",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "016aa8414bbe876cea834d8a82eff277af3cd4d8242ec42393d4d418635c1847",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "http://www.adab.ba.gov.br/arquivos/File/ManualdeProcedimentosPlanodeContingenciaMonilia.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7887 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600105",
+   "municipio": "Amapá",
+   "uf": "AP",
+   "url": "https://cosiga.portal.ap.gov.br/covid/15753/anexo/PRODOC-0106.2020-PARTE_1.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "81c434d504",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "77dcbbdb0eec5644c5ee4b728258346b4bd4b39f404af5c1df98697ba2ce9e61"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "37847 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ".......................................... 5 3. CARACTERÍSTICAS DO MUNICÍPIO DE PETRÓPOLIS ........................................... 6 3.1 FATORES AGRAVANTES"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": "10/04/2012",
+      "prova": "e do Prefeito 9. Procuradoria Municipal 10. Controladoria Municipal 11. ASCOM – Assessoria de Comunicação Social 12. Polícia Militar – 26º Batalhão de Polícia M",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/04/2012",
+   "natureza": null,
+   "ibge": "3303906",
+   "municipio": "Petrópolis",
+   "uf": "RJ",
+   "url": "https://www.petropolis.rj.gov.br/index.php/downloads/105-downloads/67-defesa-civil/102-planos-de-contingencia/124-anos-anteriores?download=451%3Aplano-de-contingencia-2021-deslizamentos-de-solo-e-ou-rocha",
+   "regras_18": [],
+   "pista_id": "67583558cc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5689cdf797f74de53a19736ccde0b0479568da31b33729d19cebfc32281df53d"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São João da Barra\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3305000",
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "url": "http://p-web01.mp.rj.gov.br/Arquivos/RAP/AAE_Acu.pdf",
+   "regras_18": [],
+   "pista_id": "a3ffb52f46",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b4670e6aa56b31583058fe8b264af809dc7ca856adfc6cf0c17f6b273e3c1db3"
   }
  ]
 }
