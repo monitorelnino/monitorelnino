@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-19 · #1944 · Juiz: o ato que aprova é o que aprova o plano
+O ato citado no plano só conta como ato dele quando aprova, institui, homologa ou atualiza o próprio plano (`RE_APROVA_O_PLANO`). "Fica instituída a COMPDEC" deixa de contar: no plano de 2026 de Muqui/ES, a lei de 2003 virava a data do plano.
+
 ## 2026-11-19 · #1931 · Juiz: ato próprio e plano que se declara plano
 A lei citada na base legal de um plano deixa de ser tomada como o ato dele (`juiz.ato_proprio`), também nos juízes da Saúde; o plano que diz "este plano de contingência" conta como título (J15). As reaberturas de recusas viram uma tabela (`CORRECOES_DO_JUIZ`), e 3.345 recusas por ato, citação, natureza ou título voltam uma vez. Origem: PLANCON 2025 de Rio Branco/AC.
 
