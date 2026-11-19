@@ -484653,7 +484653,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://wordpress.jaraguadosul.sc.gov.br/wp-content/plugins/pmjs-paginas/downloads/16914/Plancon_2025_revisao-1.7.pdf",
    "alvo": "4208906",
@@ -484707,10 +484707,25 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "08/10/2025",
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "99de06831e48bb2147547cfd9b6040ff3cf5cd2a0ddd8e9b7af90a1e882b822e"
+   }
   },
   {
    "municipio": "Jaraguá do Sul",
@@ -512811,7 +512826,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://wordpress.jaraguadosul.sc.gov.br/wp-content/plugins/pmjs-paginas/downloads/16914/Plancon_2025_revisao-1.7.pdf",
    "alvo": "4208906",
@@ -512853,15 +512868,30 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-19",
     "criterios": {}
+   },
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "08/10/2025",
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "99de06831e48bb2147547cfd9b6040ff3cf5cd2a0ddd8e9b7af90a1e882b822e"
    }
   },
   {
@@ -517604,7 +517634,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://wordpress.jaraguadosul.sc.gov.br/wp-content/plugins/pmjs-paginas/downloads/16914/Plancon_2025_revisao-1.7.pdf",
    "alvo": "4208906",
@@ -517646,15 +517676,30 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-19",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-19",
     "criterios": {}
+   },
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": true,
+    "motivo": null,
+    "leu_documento": true,
+    "categoria": "plano_antigo",
+    "data": "08/10/2025",
+    "julgado_em": "2026-11-19",
+    "hash_evidencia": "99de06831e48bb2147547cfd9b6040ff3cf5cd2a0ddd8e9b7af90a1e882b822e"
    }
   },
   {
