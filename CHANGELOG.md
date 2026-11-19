@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-19 · #1920 · J13, J12 e J18 no juiz, medidos à parte
+O juiz ganha três regras da rodada paralela J18, todas fora da produção: J13 lê a data do ato colada ao número (nº 1341/2021 de 31 de março de 2021) e marca a origem da data; J12 colapsa repetições do mesmo documento no mesmo município; J18 recusa plano setorial de saúde, saneamento ou escolar, quando a proposta está ligada. O codebook 1.8 não muda, e nenhuma decisão de produção muda.
+
 ## 2026-11-19 · #1922 · Data com ano no futuro não é data do documento
 
 A leitura da data aceitava qualquer ano: o plano de Tobias Barreto/SE, digitalizado, entrou datado de 2067 e trocou o decreto do município. Ano no futuro deixa de ser data do documento; o registro voltou ao de ontem e a pista volta ao juiz.
