@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-19 · #1920 · J13, J12 e J18 no juiz, medidos à parte
+O juiz ganha três regras da rodada paralela J18, todas fora da produção: J13 lê a data do ato colada ao número (nº 1341/2021 de 31 de março de 2021) e marca a origem da data; J12 colapsa repetições do mesmo documento no mesmo município; J18 recusa plano setorial de saúde, saneamento ou escolar, quando a proposta está ligada. O codebook 1.8 não muda, e nenhuma decisão de produção muda.
+
 ## 2026-11-18 · #1916 · Plano de edição anterior não substitui o mais novo
 
 A atualização de registro deixava um documento de força igual trocar o registro sem julgamento do juiz, mesmo sendo mais antigo: Cachoeiro de Itapemirim e Pancas/ES perderam o plano de 2025 para o de 2023, e o índice do ES caiu. Edição anterior não substitui mais; os dois registros voltaram.
