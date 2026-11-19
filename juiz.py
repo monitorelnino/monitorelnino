@@ -685,6 +685,34 @@ def etapa1_identidade(texto: str, nome: str, uf: str, homonimos=None) -> tuple:
 # =============================================================================================
 # Etapa 2 — citação completa (§3.2)
 # =============================================================================================
+JANELA_DO_ATO_QUE_APROVA = 240
+JANELA_DO_TIMBRE = 300
+
+
+def ato_proprio(texto: str):
+    """O ato DO documento (o match de `RE_TIPO_E_NUMERO`), ou None quando ele só cita atos. PURA.
+
+    19/11/2026 (Rio Branco/AC, PLANCON 2025): o juiz tomava a PRIMEIRA citação de ato do texto como
+    o ato do documento. O plano lista a sua base legal ("Lei nº 1.908, 17/05/2012 – Cria a
+    Coordenadoria…"), a lei virava o ato do plano, e a etapa 3 cobrava dela a fórmula de promulgação.
+    Era a mesma causa dos 47 PLANCONs do RS (24/10) e do J1 (1.8). Ato próprio é só:
+      · o que abre o documento, logo depois do timbre (é assim que o ato e o recorte do diário começam);
+      · o título de ato em caixa alta ("DECRETO Nº 123") no cabeçalho, antes do título de um plano;
+      · ou o que aprova ou institui o plano (o ato de aprovação dentro do próprio PDF).
+    Lei citada no corpo, na base legal ou no índice é referência, não ato do documento. O texto chega
+    sem quebras de linha (a extração junta tudo), por isso a régua é a posição, não a linha."""
+    texto = texto or ""
+    titulo = RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])
+    fim_do_cabecalho = titulo.start() if titulo else CABECALHO_18
+    titulos_de_ato = [a.start() for a in RE_CABECALHO_DE_ATO.finditer(texto[:fim_do_cabecalho])]
+    for m in RE_TIPO_E_NUMERO.finditer(texto):
+        if m.start() < JANELA_DO_TIMBRE or m.start() in titulos_de_ato:
+            return m
+        if RE_INSTITUI.search(texto[m.end(): m.end() + JANELA_DO_ATO_QUE_APROVA]):
+            return m
+    return None
+
+
 def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
                    como_plano: bool = False) -> tuple:
     """(ok, motivo, dados). Tipo de ato + número + data extraídos do PRÓPRIO texto.
@@ -692,7 +720,7 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
     Exceção declarada no handover: plano publicado como documento técnico sem número recebe a
     data de publicação e a identificação "plano de contingência …, versão/ano". **A data é
     obrigatória sempre** — sem data não há como situar o ato no ciclo (§5.3)."""
-    m = RE_TIPO_E_NUMERO.search(texto)
+    m = ato_proprio(texto)
     # 09/10/2026 (A1-21): a data do ATO, nao a primeira data do texto — num diario a primeira e a
     # da edicao. A regua tem um dono em `classificador_natureza.data_do_ato`.
     data = data_do_ato(texto)
@@ -703,13 +731,11 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
     tipo = (m.group(1).lower() if m else None)
     numero = (m.group(2) if m else None)
     dados = {"tipo": tipo, "numero": numero, "data": data}
-    # 24/10/2026 (central): documento do repositório estadual declarado é o PLANO publicado pelo canal
-    # do estado; a lei ou portaria citada no corpo (base legal, nomeação do coordenador) não é o ato
-    # dele. Sem isto 47 PLANCONs do RS citavam "Lei 4.111/2007" e caíam na exigência de fórmula do Executivo.
+    # O repositório estadual declarado e o plano pelo cabeçalho (J1) só decidem a recusa do caminho do
+    # plano; quem separa ato próprio de ato citado é `ato_proprio`, para todo documento.
     from atualizar_instrumentos_estaduais import documento_do_repositorio
-    # 1.8 (J1, paralelo): o documento que se apresenta como plano no cabeçalho é o plano, como o do repositório.
     no_repositorio = documento_do_repositorio(url) or como_plano
-    if m is None or no_repositorio:
+    if m is None:
         # CAMINHO DO PLANO SEM ATO (editoria, 03/10/2026): quando não há tipo e número de ato, o
         # documento pode ainda ser o PLANO publicado pelo ente. Aí a identificação exigida é outra
         # — órgão, título e ano —, e o ano solto basta. Este caminho vem ANTES da exigência de data
@@ -2056,11 +2082,18 @@ def autoteste() -> int:
         ("plano sem ato em domínio federal NÃO é ato do município (Cubatão/SP)",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url="https://www.bndes.gov.br/r.pdf",
                            ente=("Taió", "SC"))[1] == "autoridade_nao_confirmada"),
-        ("plano na pasta da Casa Militar/RS que cita lei na base legal conta como plano sem ato; fora dela, a lei vale",
-         etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.", url=URL_PASTA_RS)[2]
-         .get("sem_ato_de_aprovacao") is True
-         and etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.",
-                            url=URL_PDF_DE_PLANO)[2].get("sem_ato_de_aprovacao") is not True),
+        # 19/11/2026: a lei da base legal é referência em QUALQUER domínio, não só na pasta do RS (Rio Branco/AC).
+        ("plano que cita lei na base legal conta como plano sem ato, na pasta do RS e fora dela",
+         all(etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.", url=u)[2]
+             .get("sem_ato_de_aprovacao") is True for u in (URL_PASTA_RS, URL_PDF_DE_PLANO))),
+        ("ato próprio: o que abre o documento, o título de ato em caixa alta antes do plano e o que aprova o plano",
+         ato_proprio("PREFEITURA MUNICIPAL DE X Gabinete do Prefeito Decreto nº 123, de 5 de março de 2026") is not None
+         and ato_proprio("x " * 200 + "ESTADO DE Y DECRETO Nº 77/2026 Dispõe sobre a defesa civil") is not None
+         and ato_proprio("x " * 400 + "Anexo: Decreto nº 1.580/2023 aprova o Plano de Contingência") is not None),
+        ("ato próprio: lei citada no corpo, no índice ou depois do título do plano não é o ato do documento",
+         ato_proprio("Sumário " + ". " * 200 + " 13 – Legislação 2012 - Lei nº 1.908, 17/05/2012 – Cria a "
+                     "Coordenadoria Municipal de Defesa Civil") is None
+         and ato_proprio("x " * 200 + "PLANO DE CONTINGÊNCIA 2026 conforme a LEI Nº 12.608/2012") is None),
         ("plano sem ato na pasta da Casa Militar/RS: autoridade dada pelo repositório; SharePoint qualquer, não",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"), url=URL_PASTA_RS)[0] is True
          and etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"),
