@@ -2,14 +2,6 @@
   "_governanca": "DÍVIDA NOMEADA, não exceção aberta. O portão `verificar_escritor_de_pista.py` passou a ver escrita na fila por VARIÁVEL e em linha lógica partida (A7-19, 09/10/2026), e com isso apareceram 18 escritas que escapavam da regra 1 de 05/10 — `nenhum coletor grava pista fora de scripts/pistas.py`. Quatro delas tocam fila que o juiz lê. Cada linha aqui diz o arquivo, a fila, por que ainda não passou pela porta e o que falta fazer. Linha sem `falta` é inválida: dívida sem o que fazer é exceção disfarçada. O portão imprime estas linhas em toda execução — elas são visíveis, contáveis e têm dono.",
   "legados": [
     {
-      "arquivo": "monitorar_imprensa_regional.py",
-      "fila": "data/pistas_imprensa.json",
-      "le_o_juiz": true,
-      "motivo": "coletor grava a fila inteira com gravar_em() depois de varrer, em salvamento único; migrar exige trocar por pistas.sincronizar e refazer o autoteste da varredura, que hoje intercepta gravar_em",
-      "falta": "migrar para pistas.sincronizar, com o par ler_fn/gravar_fn do próprio módulo",
-      "desde": "2026-10-09"
-    },
-    {
       "arquivo": "consultar_querido_diario.py",
       "fila": "data/pistas_querido_diario.json",
       "le_o_juiz": true,
