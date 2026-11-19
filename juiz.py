@@ -2252,7 +2252,8 @@ def rejulgar_paralelo_cli() -> int:
                              "este arquivo. Escritor: juiz.py --rejulgar-paralelo."),
              "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
              "resumo": resumo, "decisoes": registros}
-    PARALELO_JUIZ18.write_text(json.dumps(saida, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    from coletores_base import gravar_em   # §229: escrita de data/ só pela porta atômica
+    gravar_em(PARALELO_JUIZ18, saida)
     print(json.dumps(resumo, ensure_ascii=False))
     return 0
 
