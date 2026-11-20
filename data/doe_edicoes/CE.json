@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "18/11/2026",
+  "em": "19/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_ce",
-  "ultima_edicao_lida": "2026-11-17"
+  "ultima_edicao_lida": "2026-11-19"
  },
  "edicoes": {
   "2026-06-29": {
@@ -1695,7 +1695,7 @@
   },
   "2026-08-18": {
    "decisao": "lida",
-   "em": "30/10/2026",
+   "em": "19/11/2026",
    "bytes": 987554,
    "paginas": 64,
    "paginas_com_texto": 64,
@@ -1704,11 +1704,12 @@
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
    "termos_achados": []
   },
   "2026-08-18#2": {
    "decisao": "lida",
-   "em": "30/10/2026",
+   "em": "19/11/2026",
    "bytes": 984104,
    "paginas": 68,
    "paginas_com_texto": 68,
@@ -1717,6 +1718,7 @@
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
    "termos_achados": []
   },
   "2026-08-19": {
@@ -3081,7 +3083,7 @@
   },
   "2026-10-12": {
    "decisao": "sem_edicao_na_data",
-   "em": "18/11/2026"
+   "em": "19/11/2026"
   },
   "2026-10-12#2": {
    "decisao": "lida",
@@ -4018,8 +4020,18 @@
    "termos_achados": []
   },
   "2026-11-18": {
-   "decisao": "sem_edicao_na_data",
-   "em": "18/11/2026"
+   "decisao": "lida",
+   "em": "19/11/2026",
+   "bytes": 1006586,
+   "paginas": 80,
+   "paginas_com_texto": 80,
+   "url": "https://imagens.seplag.ce.gov.br/PDF/20261118/do20261118p01.pdf",
+   "impressao": "e57d6ddbe7c3c41df1e50f398c53ab207071b42ec714fcb967ea13a1837851cb",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
   },
   "2026-11-17": {
    "decisao": "lida",
@@ -4104,8 +4116,81 @@
    "legal_versao": "2026-10-30",
    "emergencia_versao": "2026-11-15",
    "termos_achados": []
+  },
+  "2026-11-19": {
+   "decisao": "lida",
+   "em": "19/11/2026",
+   "bytes": 3120532,
+   "paginas": 64,
+   "paginas_com_texto": 64,
+   "url": "https://imagens.seplag.ce.gov.br/PDF/20261119/do20261119p01.pdf",
+   "impressao": "71ec1155f08e0fe51b5bd9e55176810af03e3f394c945bbe1865c782a973223b",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "71ec1155f08e0fe51b5bd9e55176810af03e3f394c945bbe1865c782a973223b",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-11-19#2": {
+   "decisao": "lida",
+   "em": "19/11/2026",
+   "bytes": 985660,
+   "paginas": 68,
+   "paginas_com_texto": 68,
+   "url": "https://imagens.seplag.ce.gov.br/PDF/20261119/do20261119p02.pdf",
+   "impressao": "bea62cfba8bf6212bab5476212afa508b4cfaffa04e988332f52bd91f8aadaab",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
+  },
+  "2026-11-19#3": {
+   "decisao": "lida",
+   "em": "19/11/2026",
+   "bytes": 840904,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://imagens.seplag.ce.gov.br/PDF/20261119/do20261119p03.pdf",
+   "impressao": "f007133b96adbc9801c1c2031a66224ceb6e9a6aa5f041fc5cb04dfe4bbae572",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
+  },
+  "2026-11-18#2": {
+   "decisao": "lida",
+   "em": "19/11/2026",
+   "bytes": 1039766,
+   "paginas": 72,
+   "paginas_com_texto": 72,
+   "url": "https://imagens.seplag.ce.gov.br/PDF/20261118/do20261118p02.pdf",
+   "impressao": "baa29e9378f41c3c09fffc72e7b869bd62f4ead28ba7b8dca72cebf66138eb5b",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
+  },
+  "2026-11-18#3": {
+   "decisao": "lida",
+   "em": "19/11/2026",
+   "bytes": 919513,
+   "paginas": 52,
+   "paginas_com_texto": 52,
+   "url": "https://imagens.seplag.ce.gov.br/PDF/20261118/do20261118p03.pdf",
+   "impressao": "a4ebc3f89887747c1fd43f9204554d84ab07388ab4a47ded3d9bde51294b35c3",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
   }
  },
- "atualizado_em": "18/11/2026",
+ "atualizado_em": "19/11/2026",
  "declaracoes_estaduais": {}
 }
