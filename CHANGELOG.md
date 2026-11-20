@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-20 · #1960 · Um escritor de relatório no robo-registro
+## 2026-11-20 · #1960 · Um só gravador dos relatórios internos de verificação
 
-Os workflows `portoes`, `publicar_previa`, `auditoria_seguranca` e `verificar_publicado` copiavam o mesmo clone, commit e push para o robo-registro; só a prévia tentava de novo, e o diagnóstico do portão 12 falhou por corrida ("fetch first"). `scripts/registrar_no_robo.sh` passa a ser o único escritor, com rebase e até cinco tentativas. Linhas líquidas: −14.
+Quatro rotinas de verificação e publicação gravavam seus relatórios internos com o mesmo trecho copiado, e só uma tentava de novo quando outra gravava ao mesmo tempo; o diagnóstico de uma verificação falhou por isso. Um único gravador passa a servir às quatro, com nova tentativa. Linhas líquidas: −14.
 
 ## 2026-11-20 · #1958 · Redução: história do coletor de diários estaduais ao histórico
 
