@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 18/11/2026. 88 falhas; 81 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 20/11/2026. 89 falhas; 82 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -797,3 +797,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** `main` 70b2ee5e (18/11): 22.825 de 22.825 encerradas com `sinais`/`alertas`/`pontos_confianca`; noturno_descoberta.yml roda `triar_confianca_pistas.py`; noturno_triagem.yml roda `scripts/triar_fila.py --aplicar`
 - **Correção:** A anotação pula a encerrada (`limpar_fila_de_pistas.encerrada`, a mesma regra que a verificação da descoberta já usa).
 - **Caso de teste:** `triar_confianca_pistas.py --autoteste: encerrada não recebe texto de trabalho`
+
+## F89 · Elo commitava o dado do PDF-índice sem o PDF e deixava a `main` vermelha até o publicador
+
+- **Noite:** 2026-11-17→2026-11-20
+- **Sintoma:** Portão 12 vermelho no push da `main` depois de commits de elo (triagem 18/11 02:09, 18/11 08:51, 20/11 04:05): `MARE_Indice_Documentacao.pdf` obsoleto; o publicador seguinte resselava e a `main` voltava a verde.
+- **Causa:** `_coletor.yml` regenera a cadeia canônica (que reescreve o PDF a partir de `data/verificacao_resumo.json` e afins) e sela o hash novo no manifesto, mas o `git add` do elo listava só `data/`, `dados-abertos/`, `feeds/`, `selos/`, `evidencias/` e o manifesto: o PDF ficava para trás e o `git checkout -- .` o descartava.
+- **Prova:** run 44672129649 (commit 681ebdda, triagem 20/11 04:05): job `portoes · dado`, 'DERIVADOS… MARE_Indice_Documentacao.pdf | 2 +-'; o commit muda `data/verificacao_resumo.json`; run 44221172481 (18/11 02:09, triagem): mesmo PDF obsoleto
+- **Correção:** O PDF-índice entra nas três listas de `git add` do elo; conflito nele já se resolve por regeneração (`unir_conflito_de_rodada.REGENERAVEIS`).
+- **Caso de teste:** `scripts/verificar_derivados.sh (portão 12 no push da `main`)`
