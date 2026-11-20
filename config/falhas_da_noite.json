@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "18/11/2026",
+ "atualizado_em": "20/11/2026",
  "falhas": [
   {
    "id": "F01",
@@ -1211,6 +1211,19 @@
    ],
    "correcao": "A anotação pula a encerrada (`limpar_fila_de_pistas.encerrada`, a mesma regra que a verificação da descoberta já usa).",
    "caso_de_teste": "triar_confianca_pistas.py --autoteste: encerrada não recebe texto de trabalho"
+  },
+  {
+   "id": "F89",
+   "noite": "2026-11-17→2026-11-20",
+   "titulo": "Elo commitava o dado do PDF-índice sem o PDF e deixava a `main` vermelha até o publicador",
+   "sintoma": "Portão 12 vermelho no push da `main` depois de commits de elo (triagem 18/11 02:09, 18/11 08:51, 20/11 04:05): `MARE_Indice_Documentacao.pdf` obsoleto; o publicador seguinte resselava e a `main` voltava a verde.",
+   "causa": "`_coletor.yml` regenera a cadeia canônica (que reescreve o PDF a partir de `data/verificacao_resumo.json` e afins) e sela o hash novo no manifesto, mas o `git add` do elo listava só `data/`, `dados-abertos/`, `feeds/`, `selos/`, `evidencias/` e o manifesto: o PDF ficava para trás e o `git checkout -- .` o descartava.",
+   "prova": [
+    "run 44672129649 (commit 681ebdda, triagem 20/11 04:05): job `portoes · dado`, 'DERIVADOS… MARE_Indice_Documentacao.pdf | 2 +-'; o commit muda `data/verificacao_resumo.json`",
+    "run 44221172481 (18/11 02:09, triagem): mesmo PDF obsoleto"
+   ],
+   "correcao": "O PDF-índice entra nas três listas de `git add` do elo; conflito nele já se resolve por regeneração (`unir_conflito_de_rodada.REGENERAVEIS`).",
+   "caso_de_teste": "scripts/verificar_derivados.sh (portão 12 no push da `main`)"
   }
  ]
 }

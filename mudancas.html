@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/11/2026 · Elo commita o PDF-índice junto do dado que o gera</dt>
+      <dd>O elo da noite regenerava `MARE_Indice_Documentacao.pdf` e selava o hash novo no manifesto, mas não o commitava: a `main` ficava vermelha no portão 12 até o publicador seguinte (triagem de 18/11 e 20/11). O PDF entra no `git add` do `_coletor.yml`; conflito nele já se resolve por regeneração. Falha F89 no catálogo.</dd>
       <dt>19/11/2026 · Redução: história das fontes ao histórico; parser RSS único</dt>
       <dd>Os comentários de história do catálogo de fontes de `coletar_sinais_risco.py` passam a `docs/HISTORICO_DE_REGIMES.md` (código idêntico); `detectar_marcos_federais.py` usa o leitor de RSS de `monitorar_imprensa_regional.py` em vez da cópia. Sem mudança de comportamento; −55 linhas de código.</dd>
       <dt>19/11/2026 · Juiz: o ato que aprova é o que aprova o plano</dt>
@@ -162,8 +164,6 @@
       <dd>A busca nos sites das secretarias de saúde usava termos que não achavam os planos do ciclo, procurava Rondônia num endereço que não existe e entregava o que achava a uma fila sem julgamento. Agora procura &quot;El Niño&quot; e &quot;contingência&quot;, lê o portal de Rondônia e o subsite de Goiás, e o achado vai ao juiz de saúde. Os planos de Roraima e Rondônia para o El Niño 2026-2027 apareceram na primeira sonda.</dd>
       <dt>15/11/2026 · Emergência estadual achada na leitura do diário</dt>
       <dd>A camada de emergências declaradas pelo estado dependia de lançamento manual, e a leitura do diário só procurava emergência em saúde. O decreto do Tocantins de 20/10/2026 (estiagem, todo o estado, 180 dias) ficou fora do mapa. Agora o diário lido traz o decreto estadual de emergência como candidato, que só aparece no mapa depois de conferido na edição.</dd>
-      <dt>15/11/2026 · Alarme mede a fila de saúde estadual</dt>
-      <dd>O alarme noturno de leitura parada passa a contar as pistas de saúde estadual sem veredito além do prazo. A rodada semanal saiu verde em 04 e 11/11 sem que o trabalho chegasse à main, e 474 pistas ficaram sem julgamento.</dd>
     </dl>
   </section>
 </main>

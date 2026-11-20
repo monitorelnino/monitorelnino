@@ -296,7 +296,7 @@ jobs:
             python3 scripts/reaplicar_noite.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY" || true
             git add -A data/ && git diff --cached --quiet && break
             bash scripts/verificar_derivados.sh --regenerar-para-commit >/dev/null || true
-            git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+            git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
             git commit -qm "reaplicação da noite ($(date -u +%H:%M) UTC)"
             git push -q "$REMOTO" "HEAD:${RAMO}" && break
           done
@@ -479,7 +479,7 @@ jobs:
           # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
           # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
           # à `main` — e ele chegava junto, no mesmo commit.
-          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -546,9 +546,9 @@ jobs:
             # tiver andado.
             if ! git diff --quiet FETCH_HEAD..HEAD -- data/; then
               bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+              git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
               git diff --cached --quiet || git commit --amend --no-edit
-              git checkout -- . 2>/dev/null || true   # o que o elo não comita (PDF, páginas) não trava o próximo rebase
+              git checkout -- . 2>/dev/null || true   # o que o elo não comita (páginas) não trava o próximo rebase
             fi
 
             if GIT_SSH_COMMAND="$SSH" python3 scripts/empurrar.py "${RAMO}" "$TENTATIVA"; then
