@@ -84,13 +84,18 @@ A parcela da população do estado que vive em municípios com instrumento de pr
 - município coberto apenas pelo plano do estado: 0,3;
 - nada localizado, não verificado, plano citado sem documento localizado, ato alheio ao El Niño ou decreto de emergência: 0.
 
-Plano localizado cujo tipo ainda não foi lido vale 1,0 até a leitura: não se desconta município porque o Monitor ainda não leu o documento. Plano de edição anterior em vigor vale 1,0. Quando o município tem mais de um documento, vale o maior crédito, nunca a soma.
+Plano localizado cujo tipo ainda não foi lido vale 1,0 até a leitura: não se desconta município porque o Monitor ainda não leu o documento. Plano de edição anterior em vigor vale 1,0, com as reduções pela idade do plano descritas abaixo. Quando o município tem mais de um documento, vale o maior crédito, nunca a soma.
 
 A cobertura do estado é a soma de população do município × crédito, dividida pela população total do estado, vezes 100, com a população do Censo 2022. A capital conta pela sua população, como qualquer município.
 
 **Levantamentos declarados.** Levantamentos de órgãos de controle e pesquisas nacionais oficiais (MUNIC/IBGE e o índice de capacidade municipal da defesa civil nacional) informam quantos municípios declaram ter plano, sem o documento. Eles entram com metade do crédito, só pelo excedente sobre os municípios já documentados, com a população mediana dos municípios do estado. Declaração vale metade do documento porque superestima a existência e a qualidade do plano, o que os próprios levantamentos mostram quando confrontados com verificação documental.
 
-**Atualização anual do plano.** A Lei nº 12.340/2010, art. 3º-A, § 6º, determina que o plano de contingência dos municípios incluídos no Cadastro Nacional de municípios suscetíveis seja atualizado anualmente. Para município indicado pela União a esse cadastro, plano com edição anterior a 29/06/2025 (doze meses antes do Boletim nº 1) fica fora da contagem e aparece com o rótulo "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)". Data só com o ano vale 31/12 daquele ano; mês e ano, o último dia do mês. Plano sem data identificável não é rebaixado. O Monitor usa a lista pública dos municípios indicados pela União; a lista dos inscritos não é pública, e o site nunca afirma que um município específico tem o dever legal de plano.
+**Idade do plano e atualização anual.** A Lei nº 12.340/2010, art. 3º-A, § 6º, determina que o plano de contingência dos municípios incluídos no Cadastro Nacional de municípios suscetíveis seja atualizado anualmente. A idade do plano é contada do Boletim nº 1 (29/06/2026) para trás, pela data da edição ou da última atualização que o próprio plano declara.
+
+- Município indicado pela União a esse cadastro: plano com edição anterior a 29/06/2025 (mais de um ano), sem atualização anual localizada, aparece na ficha como "plano desatualizado segundo a lei" e vale zero na cobertura.
+- Demais municípios: plano com edição anterior a 29/06/2024 (mais de dois anos) vale 0,65; plano mais recente conta pelo seu crédito, sem redução.
+
+Data só com o ano vale 31/12 daquele ano; mês e ano, o último dia do mês. Plano sem data identificável não é rebaixado. O Monitor usa a lista pública dos municípios indicados pela União; a lista dos inscritos não é pública, e o site nunca afirma que um município específico tem o dever legal de plano.
 
 **3.4 O tempo fica fora do índice**
 
