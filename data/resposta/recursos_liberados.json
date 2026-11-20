@@ -205,7 +205,7 @@
    "nome": "Canudos do Vale",
    "uf": "RS",
    "por_acao": {
-    "recuperacao": 949800.0
+    "recuperacao": 1468800.0
    },
    "atos": [
     {
@@ -229,9 +229,20 @@
      "valor_autorizado": 124000.0,
      "processo_sei": "59053.023712/2025-91",
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.175-de-2-de-julho-de-2026-716720664"
+    },
+    {
+     "municipio": "Canudos do Vale",
+     "uf": "RS",
+     "portaria": "4.019",
+     "data": "2026-11-16",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 519000.0,
+     "processo_sei": "59053.024332/2026-54",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.019-de-16-de-novembro-de-2026-745280321"
     }
    ],
-   "total_autorizado": 949800.0
+   "total_autorizado": 1468800.0
   },
   "4322806": {
    "nome": "Veranópolis",
@@ -2462,6 +2473,27 @@
     }
    ],
    "total_autorizado": 527410.0
+  },
+  "1502954": {
+   "nome": "Eldorado do Carajás",
+   "uf": "PA",
+   "por_acao": {
+    "recuperacao": 2750000.0
+   },
+   "atos": [
+    {
+     "municipio": "Eldorado do Carajás",
+     "uf": "PA",
+     "portaria": "4.021",
+     "data": "2026-11-16",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 2750000.0,
+     "processo_sei": "59053.024505/2026-34",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.021-de-16-de-novembro-de-2026-745258645"
+    }
+   ],
+   "total_autorizado": 2750000.0
   }
  },
  "nao_casados": {
@@ -2471,25 +2503,25 @@
  },
  "janela_lida": {
   "desde": "2026-11-11",
-  "ate": "2026-11-18",
-  "atos_na_busca": 27,
+  "ate": "2026-11-19",
+  "atos_na_busca": 35,
   "janelas_incompletas": []
  },
  "recusas": {
-  "fora_do_orgao": 6,
-  "prorrogacao_de_prazo": 8,
+  "fora_do_orgao": 0,
+  "prorrogacao_de_prazo": 13,
   "sem_municipio_legivel": 1,
-  "sem_valor_declarado": 4,
+  "sem_valor_declarado": 5,
   "ato_nao_lido": 0
  },
- "atos_novos_nesta_rodada": 0,
- "atualizado_em": "18/11/2026",
+ "atos_novos_nesta_rodada": 2,
+ "atualizado_em": "19/11/2026",
  "total_por_acao": {
-  "recuperacao": 237196377.48,
+  "recuperacao": 240465377.48,
   "resposta": 18678869.78,
   "outra": 13878788.0
  },
- "municipios_com_ato": 103,
+ "municipios_com_ato": 104,
  "_governanca": "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta \"Autoriza a transferência de recursos\"). `valor_autorizado` é o que a portaria autoriza transferir — a saída do dinheiro é outro fato, e quem o registra é o Portal da Transparência: a página diz 'liberado', nunca 'pago'. As ações de RESPOSTA e de RECUPERAÇÃO ficam separadas em `por_acao`, com o rótulo que o próprio ato usou, porque somá-las num cartão de resposta inflaria o número com dinheiro de outra finalidade. Ato sem valor declarado não vira zero: entra em `recusas.sem_valor_declarado`. Município que não casa com a referência do IBGE entra em `nao_casados`, com o nome como o ato o escreveu. Derivado de coletar_recursos_resposta.py — não se edita à mão.",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a)."
 }
