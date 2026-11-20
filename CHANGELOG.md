@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-20 · #PR · Vigência encerrada no MARÉ Legal e plano setorial fora do crédito
+Plano municipal cujo título declara período encerrado antes do ciclo vale zero e aparece como "último plano localizado com vigência encerrada" (decisão de 15/11; dez planos). Plano de contingência da assistência social e capítulo de contingência do plano de saneamento não são o plano do município: Florianópolis e Rodeio (SC) saem do crédito. Efeito: SC 80,8 → 78,4; RJ 47,0 → 46,7; ES 58,3 → 58,2. Metodologia §129.
+
 ## 2026-11-20 · #1955 · Plano com mais de dois anos não conta inteiro
 Decisão da editoria (20/11/2026). Fora do cadastro federal do art. 3º-A, o plano municipal com edição de mais de dois anos, contados do Boletim nº 1 (anterior a 29/06/2024), passa de 1,0 a 0,65 na cobertura. No cadastro, segue a regra de 17/11: mais de um ano sem atualização vale zero. São 67 planos. Efeito: RS 66,7 → 66,2; SE 72,1 → 71,8; MG 18,2 → 18,1; SP 35,9 → 35,8; média nacional 42,6. Metodologia §129.
 

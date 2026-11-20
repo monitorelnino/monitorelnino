@@ -95,6 +95,8 @@ A cobertura do estado é a soma de população do município × crédito, dividi
 - Município indicado pela União a esse cadastro: plano com edição anterior a 29/06/2025 (mais de um ano), sem atualização anual localizada, aparece na ficha como "plano desatualizado segundo a lei" e vale zero na cobertura.
 - Demais municípios: plano com edição anterior a 29/06/2024 (mais de dois anos) vale 0,65; plano mais recente conta pelo seu crédito, sem redução.
 
+- Em qualquer município: plano cujo título declara um período já encerrado antes do ciclo (por exemplo, "2023/2024") aparece na ficha como "último plano localizado com vigência encerrada" e vale zero. Quando a edição é datada do segundo semestre do último ano do período, o plano é lido como atualização para a estação seguinte e não é dado como encerrado.
+
 Data só com o ano vale 31/12 daquele ano; mês e ano, o último dia do mês. Plano sem data identificável não é rebaixado. O Monitor usa a lista pública dos municípios indicados pela União; a lista dos inscritos não é pública, e o site nunca afirma que um município específico tem o dever legal de plano.
 
 **3.4 O tempo fica fora do índice**

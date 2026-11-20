@@ -100,6 +100,8 @@ CRED_POP = {"plano": 1.0, "plano_antigo": 1.0,
             # 17/11/2026 (editoria): plano de município indicado ao cadastro do art. 3º-A sem atualização anual
             # localizada (Lei 12.340, art. 3º-A, §6º) — visível na ficha, vale zero (`categoria_que_conta`).
             "plano_desatualizado": 0.0,
+            # 15/11/2026 (editoria): plano cujo título declara um período já encerrado antes do ciclo vale zero.
+            "plano_com_vigencia_encerrada": 0.0,
             # 20/11/2026 (editoria): fora do cadastro, a edição com mais de dois anos (contados do Boletim nº 1)
             # não conta inteira: degrau 0,65 da escada.
             "plano_de_mais_de_2_anos": 0.65,
@@ -455,7 +457,8 @@ def categoria_que_conta(r: dict, codigo, cadastro) -> str:
     """A categoria que o índice credita: a do registro, ou a da idade do plano
     (`aplicar_promocoes_do_juiz.faixa_de_idade`)."""
     from aplicar_promocoes_do_juiz import faixa_de_idade
-    return faixa_de_idade(r.get("categoria"), r.get("data"), codigo, cadastro) or r.get("categoria")
+    return faixa_de_idade(r.get("categoria"), r.get("data"), codigo, cadastro,
+                          r.get("vigencia_declarada_encerrada")) or r.get("categoria")
 
 
 def calcular(versao="v3.1"):

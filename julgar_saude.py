@@ -429,23 +429,8 @@ def degrau_coordenacao(texto: str, data: str) -> tuple:
     return "PERMANENTE", "ato institui a estrutura e não nomeia o ciclo"
 
 
-ANO_DO_CICLO = 2026
-RE_PERIODO_DO_PLANO = re.compile(r"\b(20\d\d)\s*(?:[-–/]|\ba\b|\bà\b|\bat[ée]\b)\s*(20\d\d|\d\d)\b")
-
-
-def vigencia_encerrada(texto: str, titulo: str = "") -> str:
-    """O período que o próprio plano declara no título ou na capa, quando ele terminou antes do ano do
-    ciclo ("2023-2024"); "" quando o período alcança o ciclo ou o plano não declara período. Função pura.
-
-    Editoria, 15/11/2026: plano com vigência declarada já encerrada aparece como o último localizado e
-    vale 0 (não é "recorrente": não está em vigor). Só período explícito, de até quatro anos, no título
-    ou nas primeiras linhas; na dúvida, não encerra."""
-    for m in RE_PERIODO_DO_PLANO.finditer(f"{titulo} {(texto or '')[:1500]}"):
-        ini = int(m.group(1))
-        fim = int(m.group(2)) if len(m.group(2)) == 4 else 2000 + int(m.group(2))
-        if 0 < fim - ini <= 4:
-            return f"{ini}-{fim}" if fim < ANO_DO_CICLO else ""
-    return ""
+# A régua da vigência declarada é uma só, a do juiz (20/11/2026: passou a valer também no MARÉ Legal).
+ANO_DO_CICLO, vigencia_encerrada = juiz.ANO_DO_CICLO, juiz.vigencia_encerrada
 
 
 DIAS_DE_VIDA_DA_PISTA = 21   # o `dias_de_vida` do esquema (schemas/pista.json)

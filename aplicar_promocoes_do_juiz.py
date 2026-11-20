@@ -106,6 +106,8 @@ ROTULO_SEM_ATUALIZACAO = "sem atualização anual localizada (Lei 12.340, art. 3
 # indicado ao cadastro do art. 3º-A. O plano entra no banco, aparece na ficha com a marca e vale zero no índice.
 PLANOS_DA_LEI = ("plano", "plano_antigo", "plano_nomeado")
 # Na ficha, a lei por extenso: o "§" é marca de seção da Metodologia, e o portão de jargão o recusa em dado exibido.
+# A mesma frase do MARÉ Saúde para o plano estadual com período encerrado.
+MARCA_ENCERRADO = "último plano localizado com vigência encerrada"
 MARCA_DESATUALIZADO = ("plano desatualizado segundo a lei: sem atualização anual localizada "
                        "(Lei 12.340/2010, art. 3º-A, parágrafo 6º)")
 
@@ -117,13 +119,29 @@ def desatualizado_pela_lei(categoria, data, ibge, cadastro) -> bool:
             and atualizacao_anual_localizada(data) is False)
 
 
-def faixa_de_idade(categoria, data, ibge, cadastro):
+def vigencia_encerrada_no_ciclo(periodo, data) -> bool:
+    """O período que o plano declara ("2024-2025") terminou antes do ciclo, e a edição não é do fim dele?
+    Editoria, 15/11/2026 (vale zero) e 20/11/2026 (na dúvida, não encerra): a edição datada, com mês, no segundo
+    semestre do último ano do período é a atualização para a estação seguinte (Vitória/ES, "Verão 2024/2025,
+    1ª atualização", de 10/2025). Data só com o ano não mostra isso, e o plano fica encerrado. Função pura."""
+    import datetime
+    fim = int(str(periodo or "0")[-4:] or 0)
+    if not fim:
+        return False
+    d = data_da_edicao(data) if re.search(r"\d{1,2}[/-]\d{4}|\d{4}-\d{2}", str(data or "")) else None
+    return not (d and d >= datetime.date(fim, 7, 1))
+
+
+def faixa_de_idade(categoria, data, ibge, cadastro, periodo=None):
     """A categoria que a idade do plano dá ao índice, ou None quando ele conta pela própria (editoria,
-    20/11/2026; idade contada do Boletim nº 1). Município indicado ao cadastro do art. 3º-A com edição de mais
-    de um ano: `plano_desatualizado` (zero, a regra de 17/11). Fora do cadastro, edição de mais de dois anos:
-    `plano_de_mais_de_2_anos` (0,65). Sem data identificável, None. Função pura dado o cadastro."""
+    20/11/2026; idade contada do Boletim nº 1). Vigência declarada encerrada: `plano_com_vigencia_encerrada`
+    (zero). Município indicado ao cadastro do art. 3º-A com edição de mais de um ano: `plano_desatualizado`
+    (zero, a regra de 17/11). Fora do cadastro, edição de mais de dois anos: `plano_de_mais_de_2_anos` (0,65).
+    Sem data identificável, None. Função pura dado o cadastro."""
     import datetime
     from juiz import BOLETIM_1
+    if categoria in ("plano", "plano_antigo") and vigencia_encerrada_no_ciclo(periodo, data):
+        return "plano_com_vigencia_encerrada"
     if desatualizado_pela_lei(categoria, data, ibge, cadastro):
         return "plano_desatualizado"
     d = data_da_edicao(data) if categoria in ("plano", "plano_antigo") else None
@@ -137,7 +155,11 @@ def marcar_desatualizados(municipios: list, codigo_de, cadastro) -> int:
     mudou = 0
     for m in municipios:
         marcas = [x for x in str(m.get("marca_na_ficha") or "").split(" · ") if x and x != MARCA_DESATUALIZADO]
-        if desatualizado_pela_lei(m.get("categoria"), m.get("data"), codigo_de(m), cadastro):
+        marcas = [x for x in marcas if not x.startswith(MARCA_ENCERRADO)]
+        if m.get("categoria") in ("plano", "plano_antigo") and vigencia_encerrada_no_ciclo(
+                m.get("vigencia_declarada_encerrada"), m.get("data")):
+            marcas.append(f"{MARCA_ENCERRADO} ({m['vigencia_declarada_encerrada']})")
+        elif desatualizado_pela_lei(m.get("categoria"), m.get("data"), codigo_de(m), cadastro):
             marcas.append(MARCA_DESATUALIZADO)
         nova = " · ".join(marcas) or None
         if nova != m.get("marca_na_ficha"):
@@ -355,7 +377,8 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido em {hoje}; "
                              "ato de aprovação não localizado até o corte")
     # O registro diz, com a edição datada que a regra leu, se o plano está em dia com a lei (17/11/2026: todos).
-    for campo in ("data_da_edicao", "indicado_ao_cadastro_art3A", "atualizacao_anual_localizada"):
+    for campo in ("data_da_edicao", "indicado_ao_cadastro_art3A", "atualizacao_anual_localizada",
+                  "vigencia_declarada_encerrada"):
         if campo in v:   # anotados por `aplicaveis`
             registro[campo] = v[campo]
     if v.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO:
@@ -543,6 +566,17 @@ def autoteste() -> int:
     finally:
         _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
     casos.append(("repositório com aplicar_no_banco desligado fica retido, sem marca", _retido))
+    casos.append(("vigência declarada encerrada vale zero; a edição datada no fim do período não encerra; só ano encerra",
+                  faixa_de_idade("plano", "2025", "2", {"1"}, "2024-2025") == "plano_com_vigencia_encerrada"
+                  and faixa_de_idade("plano", "10/2025", "2", {"1"}, "2024-2025") is None
+                  and faixa_de_idade("plano", "10/12/2025", "2", {"1"}, "2024-2025") is None
+                  and faixa_de_idade("plano_antigo", "15/03/2025", "2", {"1"}, "2024-2025") == "plano_com_vigencia_encerrada"
+                  and faixa_de_idade("plano", "2026", "2", {"1"}, None) is None))
+    _enc = [{"categoria": "plano", "data": "2025", "vigencia_declarada_encerrada": "2024-2025"}]
+    casos.append(("vigência encerrada aparece na ficha com o período, e a marca não se repete",
+                  marcar_desatualizados(_enc, lambda m: "9", set()) == 1
+                  and _enc[0]["marca_na_ficha"] == MARCA_ENCERRADO + " (2024-2025)"
+                  and marcar_desatualizados(_enc, lambda m: "9", set()) == 0))
     casos.append(("idade do plano: com risco e mais de 1 ano, desatualizado (zero); sem risco, só mais de 2 anos reduz; "
                   "sem data e até 1 ano contam pela categoria",
                   faixa_de_idade("plano_antigo", "30/06/2025", "1", {"1"}) is None

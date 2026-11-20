@@ -427,7 +427,10 @@ FORA_DO_OBJETO = ("geada", "frio", "onda de frio", "friagem", "arbovirose", "den
 RE_INSTRUMENTO_SETORIAL = re.compile(
     r"plano\s+de\s+conting[êe]ncia\s+(?:d[aeo]s?\s+)?(?:rede\s+(?:p[úu]blica\s+)?(?:municipal\s+)?"
     r"de\s+(?:ensino|educa[çc][ãa]o|sa[úu]de)|escola|unidades?\s+(?:escola|de\s+sa[úu]de|b[áa]sica)|"
-    r"hospita|creche|ensino)", re.I)
+    r"hospita|creche|ensino|assist[êe]ncia\s+social)", re.I)
+# 20/11/2026 (editoria, na linha do J23): o capítulo de contingência do plano de saneamento básico não é o plano de
+# proteção e defesa civil do município (Rodeio/SC, revisão do PMSB). Vale pelo título, e só sem defesa civil nele.
+RE_PLANO_DE_SANEAMENTO_NO_TITULO = re.compile(r"\bplano\s+municipal\s+de\s+saneamento\s+b[áa]sico\b|\bPMSB\b", re.I)
 
 # J23 (17/11/2026, editoria: "plano de saúde é plano de saúde"): o plano cujo TÍTULO é de saúde — de arboviroses,
 # de dengue, de emergências em saúde pública, o plano municipal de saúde — não é o plano de proteção e defesa civil
@@ -442,6 +445,31 @@ RE_PLANO_DE_SAUDE_NO_TITULO = re.compile(
 
 # --- Etapa 6 ---------------------------------------------------------------------------------
 BOLETIM_1 = "29/06/2026"   # §3: marco do ciclo
+ANO_DO_CICLO = int(BOLETIM_1[-4:])
+RE_PERIODO_DO_PLANO = re.compile(r"\b(20\d\d)\s*(?:[-–/]|\ba\b|\bà\b|\bat[ée]\b)\s*(20\d\d|\d\d)\b")
+# No texto, o período só é o do plano quando vem na mesma frase do título ("PLANCON – 2024-2025"); "Nos anos de
+# 2021/2022 a estiagem…" é histórico (Caseiros/RS, 20/11/2026). No título dado pelo chamador, vale onde estiver.
+RE_TITULO_ANTES_DO_PERIODO = re.compile(r"\b(?:plano|plancon|plamcon|placon|pmpdc|pmpdec)\b[^.:;]{0,120}$", re.I)
+
+
+def vigencia_encerrada(texto: str, titulo: str = "") -> str:
+    """O período que o próprio plano declara no título ou na capa, quando ele terminou antes do ano do
+    ciclo ("2023-2024"); "" quando o período alcança o ciclo ou o plano não declara período. Função pura.
+
+    Editoria, 15/11/2026: plano com vigência declarada já encerrada aparece como o último localizado e
+    vale 0 (não é "recorrente": não está em vigor). Só período explícito, de até quatro anos, no título
+    ou nas primeiras linhas; na dúvida, não encerra. Uma régua só, para o MARÉ Saúde e o MARÉ Legal."""
+    capa = (texto or "")[:1500]
+    junto = f"{titulo} {capa}"
+    for m in RE_PERIODO_DO_PLANO.finditer(junto):
+        if m.start() > len(titulo) and not RE_TITULO_ANTES_DO_PERIODO.search(junto[len(titulo):m.start()]):
+            continue
+        ini = int(m.group(1))
+        fim = int(m.group(2)) if len(m.group(2)) == 4 else 2000 + int(m.group(2))
+        if 0 < fim - ini <= 4:
+            return f"{ini}-{fim}" if fim < ANO_DO_CICLO else ""
+    return ""
+
 RE_INSTITUI = re.compile(
     r"fica\s+institu[íi]d|institui\s+o\s+plano|institui\s+o\s+programa|aprova\s+o\s+plano|"
     r"fica\s+aprovad[oa]\s+o\s+plano|atualiza\s+o\s+plano|fica\s+atualizad", re.I)
@@ -893,7 +921,9 @@ def etapa5_familia_de_risco(texto: str) -> tuple:
     Ordem deliberada: primeiro procura família do ciclo; só então considera `fora_do_objeto`. Um
     plano multirrisco que menciona arbovirose numa lista de riscos não é um plano de arbovirose —
     foi assim que Salvador travou num teste de 03/09/2026."""
-    setorial = RE_INSTRUMENTO_SETORIAL.search(texto) or RE_PLANO_DE_SAUDE_NO_TITULO.search(texto[:CABECALHO_18])
+    cabeca = texto[:CABECALHO_18]
+    setorial = (RE_INSTRUMENTO_SETORIAL.search(texto) or RE_PLANO_DE_SAUDE_NO_TITULO.search(cabeca)
+                or (not RE_DEFESA_CIVIL_18.search(cabeca) and RE_PLANO_DE_SANEAMENTO_NO_TITULO.search(cabeca)))
     if setorial:
         return False, "fora_do_objeto", trecho_em_volta(texto, setorial)
     t = texto.lower()
@@ -1489,6 +1519,8 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     # estado que o plano conta, e que o ato de aprovação não foi localizado.
     sem_ato = bool(dados.get("sem_ato_de_aprovacao"))
     veredito["sem_ato_de_aprovacao"] = sem_ato
+    if sem_ato or como_plano:   # o documento é o plano: o período que ele declara na capa vai no veredito
+        veredito["vigencia_declarada_encerrada"] = vigencia_encerrada(texto) or None
     ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=sem_ato,
                                            esfera="estadual" if eh_estadual else "municipal",
                                            url=url, ente=None if eh_estadual else (nome, uf))
@@ -1883,6 +1915,18 @@ def casos_18() -> list:
             "responsabilidades. 13 – Legislação 2012 - Lei nº 1.908, 17/05/2012 – Cria a Coordenadoria. "
             + "x " * 200, "Rio Branco", "AC", "https://portalcgm.riobranco.ac.gov.br/lai/PLANO-2025.pdf")["motivo"]
          not in ("titulo_nao_e_plano", "autoridade_nao_confirmada", "citacao_incompleta")),
+        ("plano setorial não é o plano do município: assistência social (Florianópolis/SC) e saneamento (Rodeio/SC)",
+         etapa5_familia_de_risco("Resolução CMAS que aprova o Plano de Contingência da Assistência Social do "
+                                 "município, para inundação")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("Prognóstico e Plano de Contingência e Emergência. REVISÃO DO PLANO MUNICIPAL DE "
+                                     "SANEAMENTO BÁSICO. inundação e estiagem")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL. Conforme o Plano Municipal de "
+                                     "Saneamento Básico, inundação")[0] is True),
+        ("vigência declarada: o período vale junto do título do plano; em frase de histórico, não (Caseiros/RS)",
+         vigencia_encerrada("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON – 2024-2025 Deslizamentos") == "2024-2025"
+         and vigencia_encerrada("Tipo de Risco: Seca e Estiagem Histórico: Nos anos de 2021/2022 /2023 e 2024 o fenômeno") == ""
+         and vigencia_encerrada("", "Dengue 2024-2025, 2ª versão") == "2024-2025"
+         and vigencia_encerrada("PLANO DE CONTINGÊNCIA 2025/2026 Prefeitura de X") == ""),
         ("J22 documento da pasta de PLANCONs do RS é plano pela origem: nem natureza nem título o recusam",
          _v("Município de Capitão, Rio Grande do Sul. Coordenadoria Municipal de Proteção e Defesa Civil, 2025. "
             + "cenários de risco de estiagem e enxurrada, recursos, acionamento e responsabilidades " * 40,
