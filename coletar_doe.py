@@ -38,34 +38,19 @@ from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fi
 
 REGIOES = {"N": "AC AM AP PA RO RR TO", "NE": "AL BA CE MA PB PE PI RN SE", "CO": "DF GO MS MT",
            "SE": "ES MG RJ SP", "S": "PR RS SC"}
-# 26/09/2026 (§231): o primeiro termo era "homologa a situação de emergência", com um artigo que o
-# ato estadual real NÃO tem — medido no DOE-PR de 15/09/2026: "Homologa situação de emergência no
-# Município de Palmeira". Termo que não pode casar é pior do que termo ausente: produz "nada
-# localizado" com aparência de busca feita. Os dois primeiros abaixo são os que a plataforma
-# indexa com resultado, medidos na janela 29/06→26/09/2026 nas seis UFs.
+# Termos na forma do ato real (DOE-PR: "Homologa situação de emergência no Município de…"; §231).
 TERMOS = ["situação de emergência", "estado de calamidade pública",
           "homologa situação de emergência", "homologa o decreto municipal",
           "plano de contingência El Niño", "plano de contingência"]
-# Termos usados na busca da plataforma comum: os dois primeiros bastam para o que interessa e
-# custam duas consultas por UF em vez de seis. "situação de emergência" já casa as homologações
-# com e sem número de decreto.
-# 09/11/2026: o docstring promete "atos estaduais sobre o ciclo" e os termos só viam emergência — o
-# Decreto RJ nº 50.357/2026 (Comitê Estadual de Enfrentamento aos Efeitos do El Niño) nunca foi lido.
-# As duas grafias: a leitura de página do PDF compara texto, e "nino" não casa "niño".
+# Busca da plataforma comum: "situação de emergência" já casa as homologações com e sem número;
+# "El Niño" nas duas grafias, porque a leitura de página do PDF compara texto.
 TERMOS_APIFRONT = ("situação de emergência", "estado de calamidade pública", "El Niño", "El Nino")
-# 24/09/2026 (§194): host migrado — o antigo responde 302 a cada chamada desde 21/09 (§ do coletor
-# municipal). E fica registrado o que foi MEDIDO em 24/09: o Querido Diário **não indexa diário
-# ESTADUAL**. Consultados os territórios de SE, ES, SP, RJ e MG (códigos IBGE de dois dígitos), todos
-# devolvem total_gazettes=0, enquanto Aracaju devolve 4.582. Ou seja: o adaptador "querido_diario"
-# desta rota nunca poderá funcionar, e confirmar um DOE exige adaptador DIRETO, sítio a sítio.
-# Registrado para ninguém repetir a tentativa achando que é questão de configuração.
+# O Querido Diário não indexa diário ESTADUAL (medido em 24/09/2026, §194): DOE exige adaptador direto.
 QD_API = "https://api.queridodiario.org.br/gazettes?{params}"
 PADRAO_HOMOLOGA = re.compile(r"homologa\s+(?:o\s+)?(?:decreto\s+(?:municipal\s+)?n[ºo°\.]?\s*([\d\.\/-]+))?[^.]{0,160}?munic[íi]pio de ([^,;\.\-–]+?)(?:\s*[-–]\s*([A-Z]{2}))?[\.,;]", re.I)
 
 
-# §231 (26/09/2026): as seis UFs cujo diário estadual roda a plataforma comum, com o host lido do
-# próprio sítio e as três rotas testadas contra produção. Nenhum host foi suposto: cada um respondeu
-# `/apifront/portal/edicoes/edicoes_from_data/2026-09-24.json` com JSON válido.
+# Plataforma comum (§231): host lido do próprio sítio, as três rotas medidas contra produção.
 HOSTS_APIFRONT = {
     "AP": "https://diofe.portal.ap.gov.br",
     "ES": "https://ioes.dio.es.gov.br",
@@ -73,16 +58,7 @@ HOSTS_APIFRONT = {
     "MT": "https://www.iomat.mt.gov.br",
     "PR": "https://www.dioe.pr.gov.br",
 }
-# O Amazonas roda a MESMA plataforma — `/apifront/portal/edicoes/...` e `/portal/edicoes/download/`
-# respondem — mas a rota de BUSCA devolve 404: a busca dele é outro aplicativo. Medido em
-# 26/09/2026, com o cliente do projeto, na primeira varredura real.
-#
-# Por isso o AM fica FORA de HOSTS_APIFRONT, e não registrado como `apifront` para falhar todo dia:
-# uma UF cujo adaptador não pode funcionar declarada como se pudesse produz lacuna diária falsa —
-# com a cadência de duas horas, doze por dia sobre um fato que não muda. O caminho para o AM existe
-# e é outro: varrer as edições por data pela rota (a) e ler o PDF de cada uma pela rota (c), o que
-# custa download de edição inteira em vez de busca por termo. Fica declarado como trabalho a fazer,
-# e não como fonte bloqueada — a distinção é a do §231.
+# O AM roda a mesma plataforma, mas a busca devolve 404: fica fora daqui e lê-se por data (ver AM abaixo).
 # =============================================================================================
 # DF — o DODF tem API de busca PRÓPRIA, e ela é a rota que o próprio JS do sítio chama
 # =============================================================================================
@@ -361,14 +337,8 @@ def atos_el_nino(itens: list, uf: str, hash_evidencia: str, hoje: str) -> list:
         for tr in it["trechos"]:
             for m in PAD_EL_NINO.finditer(tr):
                 base = max(0, m.start() - 400)
-                # 09/11/2026: na Parte I do DOE-RJ de 03/07, o leitor intercalou a coluna vizinha e um decreto
-                # CITADO ("Decreto nº 40.013/06.") caiu entre o cabeçalho do 50.357 e a menção; a pista saiu com
-                # o número errado. O ato é o do CABEÇALHO (número seguido da data por extenso); citação só
-                # serve quando não há cabeçalho na janela.
-                # 09/11/2026 (2ª prova, mesma edição lida pelo extrator de produção): com as colunas
-                # intercaladas, menções do corpo do decreto caem perto de decretos CITADOS de outros atos
-                # ("Decreto nº 40.013/06"), e o recuo para a citação gerava pista com número alheio. Só o
-                # cabeçalho identifica o ato; menção sem cabeçalho na janela não vira pista.
+                # Só o CABEÇALHO (número seguido da data por extenso) identifica o ato: com colunas
+                # intercaladas, decretos CITADOS caem perto da menção (DOE-RJ, 03/07/2026).
                 dec = list(PAD_CABECALHO_DECRETO.finditer(tr, base, m.start()))
                 tipo = dec and next((t for t, p in TIPOS_DO_ATO if p.search(tr, dec[-1].start(), m.end())), None)
                 if not tipo:
@@ -1010,19 +980,8 @@ def itens_da_busca(uf: str, adaptador: str, url: str, desde: str, ate: str, term
     raise ValueError(f"{adaptador}: não é rota de busca")
 
 
-# 04/10/2026 — A SOBRA DO DOE NASCE NO ESQUEMA.
-#
-# Medido pela central: `Publicar dados` falhou duas vezes na noite de 03→04 (04:51 e 05:16 UTC) no
-# portão `verificar_esquema_de_pista.py`, com "10 pista(s) nova(s) fora do esquema" — e **nenhum dado
-# novo foi publicado**. As dez eram homologações estaduais achadas aqui, gravadas na forma antiga
-# (`municipio`/`uf`/`url`/`trecho`), que é anterior ao `schemas/pista.json` do handover de 03/10.
-#
-# O portão acusou o certo. O que estava errado era a GRAVAÇÃO: o esquema diz, em letra de forma, que
-# "pista sem os campos obrigatórios é RECUSADA NA GRAVAÇÃO" — filtrar na saída não dá conta do que
-# entra errado. Aqui a sobra passa a nascer com os seis campos obrigatórios e com o `destino`
-# declarado, porque ela não é pista de plano e nunca foi: homologação de emergência é ato de
-# RESPOSTA, e o esquema manda a pista de decreto para a conferência da base oficial, não para a fila
-# de planos. O que faltava era dizer isso no dado.
+# A sobra nasce no esquema (`schemas/pista.json`: seis campos e `destino`): homologação é ato de
+# RESPOSTA, vai à conferência da base oficial, nunca à fila de planos.
 def sobra_de_homologacao(hm: dict, hash_evidencia: str, hoje: str, cod_ibge=None) -> dict:
     """A homologação que não virou registro, na forma do esquema. Função pura.
 
@@ -1064,15 +1023,11 @@ def coletar_uf(uf: str, desde: str, cfg: dict, ate: str = "") -> str:
     ja_registrada_hoje = f.get("ultima_tentativa") == hoje
     f["ultima_tentativa"] = hoje
     if not f.get("adaptador") or not f.get("url"):
-        # 24/09/2026 (§194): a lacuna é REAL e continua declarada — mas uma vez por dia, não a cada
-        # rodada. Com a cadência de 2h, as 27 UFs geravam 324 lacunas idênticas por dia: 2.479 desde
-        # 03/09, um terço de todos os erros do log, sobre um fato que não muda de duas em duas horas.
-        # Registro que não distingue novidade de repetição deixa de informar e passa a esconder.
+        # Lacuna real, declarada uma vez por dia, não a cada rodada (§194).
         if not ja_registrada_hoje:
             registrar_lacuna(f"DOE/{uf}", "sem adaptador de busca neste diário", canal="repositorio_estadual",
                              camada=1, uf=uf)
-        # 14/10/2026: "a_verificar" por 42 dias era lacuna não declarada — já se tentou, e o que
-        # falta é o adaptador. O estado diz isso; a sondagem ao lado diz por onde começar.
+        # O estado diz o que falta (o adaptador), não "a_verificar".
         f["status"] = "sem adaptador de busca"; return "lacuna"
     if f["adaptador"] in (*ADAPTADORES_DE_BUSCA, *EDICOES_POR_DATA):
         # A evidência é o conjunto de trechos como a FONTE OFICIAL os serviu — na busca, o endereço
@@ -1691,10 +1646,7 @@ if __name__ == "__main__":
         ufs = REGIOES[sys.argv[sys.argv.index("--regiao") + 1].upper()].split()
     else:
         ufs = [u for r in REGIOES.values() for u in r.split()]
-    # §212 (25/09/2026): `marcar_fato_municipal` e `marcar_fonte_consultada` leem e regravam o
-    # livro de fontes (12 MB) a cada município. Hoje nenhum DOE tem adaptador confirmado e o laço
-    # não chega lá — o lote entra agora justamente para que, no dia em que chegar, a varredura
-    # não descubra o problema com 27 UFs de municípios na fila.
+    # Em lote: sem ele, cada marcação relê e regrava o livro de fontes (12 MB) (§212).
     abrir_lote_log(); abrir_lote_livro()
     try:
         ate = sys.argv[sys.argv.index("--ate") + 1] if "--ate" in sys.argv else ""
@@ -1702,8 +1654,7 @@ if __name__ == "__main__":
     finally:
         fechar_lote_log(); fechar_lote_livro()
     gravar("fontes_doe.json", cfg)
-    # Item B do handover da auditoria do funil (27/09/2026): a rodada conta por etapa, para que
-    # "está encontrando?" se responda sem abrir o código. Contagem não decide nada.
+    # A rodada conta por etapa (funil); contagem não decide nada.
     funil.registrar("doe", ufs_consultadas=len(ufs),
                     ufs_com_resultado=sum(1 for r in res.values() if r))
     print("DOE:", ", ".join(f"{u}={r}" for u, r in res.items()))
