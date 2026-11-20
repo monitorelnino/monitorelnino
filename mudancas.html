@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/11/2026 · Leitura parada: pista em back-off do juiz não conta como parada</dt>
+      <dd>O alarme contava como &quot;sem veredito&quot; pistas oficiais que o juiz já tentou e marcou para voltar (`proxima_tentativa_em` futura). Eram 595 em 20/11, todas tentadas nos últimos dez dias; fora do back-off restam 79, abaixo do teto de 150. A pista vencida e não tentada segue contando.</dd>
       <dt>20/11/2026 · Elo commita o PDF-índice junto do dado que o gera</dt>
       <dd>O elo da noite regenerava `MARE_Indice_Documentacao.pdf` e selava o hash novo no manifesto, mas não o commitava: a `main` ficava vermelha no portão 12 até o publicador seguinte (triagem de 18/11 e 20/11). O PDF entra no `git add` do `_coletor.yml`; conflito nele já se resolve por regeneração. Falha F89 no catálogo.</dd>
       <dt>19/11/2026 · Redução: história das fontes ao histórico; parser RSS único</dt>
@@ -162,8 +164,6 @@
       <dd>Alguns sites públicos de governo não respondem a quem acessa de fora do país, como o do Tocantins. Agora uma cópia trazida de um computador no Brasil, conferida pelo conteúdo, serve quando o site não responde; recusa explícita continua respeitada. Entram os planos de prevenção e combate a incêndios florestais do Tocantins de 2025 e 2026.</dd>
       <dt>15/11/2026 · Planos estaduais de saúde: canal dos sites das secretarias</dt>
       <dd>A busca nos sites das secretarias de saúde usava termos que não achavam os planos do ciclo, procurava Rondônia num endereço que não existe e entregava o que achava a uma fila sem julgamento. Agora procura &quot;El Niño&quot; e &quot;contingência&quot;, lê o portal de Rondônia e o subsite de Goiás, e o achado vai ao juiz de saúde. Os planos de Roraima e Rondônia para o El Niño 2026-2027 apareceram na primeira sonda.</dd>
-      <dt>15/11/2026 · Emergência estadual achada na leitura do diário</dt>
-      <dd>A camada de emergências declaradas pelo estado dependia de lançamento manual, e a leitura do diário só procurava emergência em saúde. O decreto do Tocantins de 20/10/2026 (estiagem, todo o estado, 180 dias) ficou fora do mapa. Agora o diário lido traz o decreto estadual de emergência como candidato, que só aparece no mapa depois de conferido na edição.</dd>
     </dl>
   </section>
 </main>
