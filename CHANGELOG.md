@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-20 · #1955 · Plano com mais de dois anos não conta inteiro
+Decisão da editoria (20/11/2026). Fora do cadastro federal do art. 3º-A, o plano municipal com edição de mais de dois anos, contados do Boletim nº 1 (anterior a 29/06/2024), passa de 1,0 a 0,65 na cobertura. No cadastro, segue a regra de 17/11: mais de um ano sem atualização vale zero. São 67 planos. Efeito: RS 66,7 → 66,2; SE 72,1 → 71,8; MG 18,2 → 18,1; SP 35,9 → 35,8; média nacional 42,6. Metodologia §129.
+
 ## 2026-11-20 · #1954 · Leitura parada: pista em back-off do juiz não conta como parada
 
 O alarme contava como "sem veredito" pistas oficiais que o juiz já tentou e marcou para voltar (`proxima_tentativa_em` futura). Eram 595 em 20/11, todas tentadas nos últimos dez dias; fora do back-off restam 79, abaixo do teto de 150. A pista vencida e não tentada segue contando.
