@@ -53,10 +53,12 @@ def diarios_parados(registros: dict, hoje: datetime.date, limite: int = DIAS_SEM
 
 
 def oficiais_sem_veredito(pistas: list, hoje: datetime.date, e_oficial, dias: int = DIAS_NA_FILA) -> int:
-    """Quantas pistas em domínio oficial esperam o juiz, sem veredito, há mais de `dias`. Função pura."""
+    """Quantas pistas em domínio oficial esperam o juiz, sem veredito, há mais de `dias`. Função pura.
+    Em back-off (`proxima_tentativa_em` futura) não espera o juiz: ele a tentou e marcou a volta (20/11/2026)."""
     n = 0
     for p in pistas or []:
-        if not str(p.get("status") or "").startswith("pista — na fila") or p.get("juiz"):
+        if not str(p.get("status") or "").startswith("pista — na fila") or p.get("juiz") \
+                or str(p.get("proxima_tentativa_em") or "") > hoje.isoformat():
             continue
         desde = _data(p.get("registrado_em") or p.get("data"))
         if desde and (hoje - desde).days > dias and e_oficial(p.get("url") or p.get("url_final")):
@@ -108,9 +110,11 @@ def autoteste() -> int:
     fila = {"status": "pista — na fila, aguardando busca dirigida e juiz", "registrado_em": "2026-10-14",
             "url": "https://x.rj.gov.br/p.pdf"}
     oficial = lambda u: ".gov.br" in str(u)
-    ok("conta só o oficial, na fila, sem veredito e além do prazo",
+    ok("conta só o oficial, na fila, sem veredito, além do prazo e fora do back-off",
        oficiais_sem_veredito([fila, dict(fila, juiz={"promove": False}), dict(fila, registrado_em="2026-11-10"),
-                              dict(fila, url="https://g1.globo.com/x"), dict(fila, status="fechada — x")], hoje, oficial) == 1)
+                              dict(fila, url="https://g1.globo.com/x"), dict(fila, status="fechada — x"),
+                              dict(fila, proxima_tentativa_em="2026-11-17"), dict(fila, proxima_tentativa_em="2026-11-15")],
+                             hoje, oficial) == 2)
     ok("abaixo do teto a fila não é achado; acima, é",
        problemas({}, [fila] * TETO_NA_FILA, hoje, oficial) == []
        and "sem veredito" in problemas({}, [fila] * (TETO_NA_FILA + 1), hoje, oficial)[0])
