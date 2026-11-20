@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-20 · #1960 · Um só gravador dos relatórios internos de verificação
+
+Quatro rotinas de verificação e publicação gravavam seus relatórios internos com o mesmo trecho copiado, e só uma tentava de novo quando outra gravava ao mesmo tempo; o diagnóstico de uma verificação falhou por isso. Um único gravador passa a servir às quatro, com nova tentativa. Linhas líquidas: −14.
+
 ## 2026-11-20 · #1958 · Redução: história do coletor de diários estaduais ao histórico
 
 `coletar_doe.py` perde 49 linhas de comentário de história (incidentes datados, tentativas antigas); o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica: nenhum comportamento muda.
