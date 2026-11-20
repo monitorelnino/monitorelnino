@@ -4425,6 +4425,8 @@ Decisão da editoria. A idade do plano municipal conta do Boletim nº 1 (29/06/2
 | de um a dois anos | 0 | conta pela categoria |
 | mais de dois anos (anterior a 29/06/2024) | 0 | 0,65 |
 
+**Vigência declarada encerrada.** Em qualquer município, o plano cujo título ou capa declara um período já encerrado antes do ciclo ("2023/2024", "Operação Verão 2013/2014") aparece na ficha como "último plano localizado com vigência encerrada", com o período, e vale zero. A leitura é automática e é a mesma do plano estadual de saúde (§32.4.3): só período explícito, de até quatro anos, junto do título; período citado em frase de histórico não conta. Na dúvida, o plano não é dado como encerrado: quando a edição é datada, com mês, do segundo semestre do último ano do período, ela é lida como atualização para a estação seguinte.
+
 No município da lista de **indicados** pela União ao cadastro (`cadastro_casa_civil_2086`), o plano sem atualização anual localizada aparece na ficha como "plano desatualizado segundo a lei" e vale zero na cobertura populacional. Nos demais, a lei não pede atualização anual; o plano com mais de dois anos continua contando, com o crédito 0,65, que é o degrau do plano readaptado da escada municipal: nenhum peso novo foi criado. Ressalva: indicado não é inscrito — a lista de incluídos no cadastro não tem fonte pública — e a lei não diz que o plano perde validade; o que se mede é a atualização localizada, e o teto da afirmação segue sendo "não localizamos até o corte".
 
 ## 130. Site que recusa ou saiu do ar: cópia arquivada antes de desistir (12/11/2026)

@@ -166539,7 +166539,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
    "origem_do_coletor": "busca_web",
    "url_final": "https://rodeio.sc.gov.br/uploads/sites/343/2026/06/Prog-e-Cont_PMSB_Rodeio_Ver.02-4-1.pdf",
    "alvo": "4215109",
@@ -166555,18 +166555,8 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "id": "fa40de87cb",
    "nivel_confianca": "B",
-   "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "entrada": "municipio",
-   "juiz": {
-    "codebook": "1.8 (30/10/2026)",
-    "promove": true,
-    "motivo": null,
-    "leu_documento": true,
-    "categoria": "plano_antigo",
-    "data": "07/04/2026",
-    "julgado_em": "2026-11-17",
-    "hash_evidencia": "a3a8555c76c0c5e5692c66a36561d0035be2aef4f86e8b0a1a9c746af5dd9cf8"
-   }
+   "status_anterior": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
+   "entrada": "municipio"
   },
   {
    "municipio": "Laje",
@@ -589391,7 +589381,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -589402,18 +589392,9 @@
    "entrada": "querido_diario",
    "id": "8ce30d706f",
    "nivel_confianca": "C",
-   "juiz": {
-    "codebook": "1.8 (30/10/2026)",
-    "promove": true,
-    "motivo": null,
-    "leu_documento": true,
-    "categoria": "plano_antigo",
-    "data": "30/04/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "41ae810f35a6f1cd1810679fbca6359a6b9e6cb175bc47de119cfacbf397a5e1"
-   },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "status_anterior": "promovida — o juiz leu o documento e promoveu (plano_antigo)"
   },
   {
    "documento_oficial_confirmado": null,
