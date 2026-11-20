@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/11/2026 · Um escritor de relatório no robo-registro</dt>
+      <dd>Os workflows `portoes`, `publicar_previa`, `auditoria_seguranca` e `verificar_publicado` copiavam o mesmo clone, commit e push para o robo-registro; só a prévia tentava de novo, e o diagnóstico do portão 12 falhou por corrida (&quot;fetch first&quot;). `scripts/registrar_no_robo.sh` passa a ser o único escritor, com rebase e até cinco tentativas. Linhas líquidas: −14.</dd>
       <dt>20/11/2026 · Redução: história do coletor de diários estaduais ao histórico</dt>
       <dd>`coletar_doe.py` perde 49 linhas de comentário de história (incidentes datados, tentativas antigas); o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica: nenhum comportamento muda.</dd>
       <dt>20/11/2026 · Vigência encerrada no MARÉ Legal e plano setorial fora do crédito</dt>
@@ -162,8 +164,6 @@
       <dd>O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo &quot;vigência encerrada&quot;.</dd>
       <dt>15/11/2026 · Plano estadual de saúde com vigência encerrada</dt>
       <dd>Quando o último plano de saúde localizado de um estado declara um período já encerrado, como 2024-2025, ele aparece na página como &quot;último plano localizado com vigência encerrada&quot;, com título e link, e não pontua. Plano sem período declarado segue a regra de sempre. A regra está na metodologia. O juiz passa a reconhecer plano em título que é nome de arquivo (RR, RO).</dd>
-      <dt>15/11/2026 · Rastro de acesso aos sites volta a ser registrado</dt>
-      <dd>O registro público de cada acesso feito onde o site pede que robôs não entrem estava corrompido desde 05/11 e deixou de receber linhas, sem aviso. O arquivo foi reconstruído sem perder registro, e a verificação diária passa a recusar qualquer arquivo de dado que não se leia por inteiro.</dd>
     </dl>
   </section>
 </main>

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-20 · #1960 · Um escritor de relatório no robo-registro
+
+Os workflows `portoes`, `publicar_previa`, `auditoria_seguranca` e `verificar_publicado` copiavam o mesmo clone, commit e push para o robo-registro; só a prévia tentava de novo, e o diagnóstico do portão 12 falhou por corrida ("fetch first"). `scripts/registrar_no_robo.sh` passa a ser o único escritor, com rebase e até cinco tentativas. Linhas líquidas: −14.
+
 ## 2026-11-20 · #1958 · Redução: história do coletor de diários estaduais ao histórico
 
 `coletar_doe.py` perde 49 linhas de comentário de história (incidentes datados, tentativas antigas); o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica: nenhum comportamento muda.
