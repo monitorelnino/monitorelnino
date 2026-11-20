@@ -81,7 +81,7 @@ for uf, v in pct.items():
 sys.path.insert(0, str(RAIZ))
 from recalcular_mare import categoria_que_conta, derivar_percentual_uf
 from aplicar_promocoes_do_juiz import municipios_do_cadastro
-# 17/11/2026: a contagem é a do motor — plano desatualizado segundo a lei conta como `plano_desatualizado`.
+# 17/11/2026: a contagem é a do motor — a idade do plano muda a categoria que conta.
 _cod = {(m["nome"], m["uf"]): f"{m['codigo_ibge']:07d}"
         for m in json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))}
 _cad = municipios_do_cadastro()
