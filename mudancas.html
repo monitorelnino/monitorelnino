@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/11/2026 · Redução: história do coletor de diários estaduais ao histórico</dt>
+      <dd>`coletar_doe.py` perde 49 linhas de comentário de história (incidentes datados, tentativas antigas); o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica: nenhum comportamento muda.</dd>
       <dt>20/11/2026 · Vigência encerrada no MARÉ Legal e plano setorial fora do crédito</dt>
       <dd>Plano municipal cujo título declara período encerrado antes do ciclo vale zero e aparece como &quot;último plano localizado com vigência encerrada&quot; (decisão de 15/11; dez planos). Plano de contingência da assistência social e capítulo de contingência do plano de saneamento não são o plano do município: Florianópolis e Rodeio (SC) saem do crédito. Efeito: SC 80,8 → 78,4; RJ 47,0 → 46,7; ES 58,3 → 58,2. Metodologia §129.</dd>
       <dt>20/11/2026 · Plano com mais de dois anos não conta inteiro</dt>
@@ -162,8 +164,6 @@
       <dd>Quando o último plano de saúde localizado de um estado declara um período já encerrado, como 2024-2025, ele aparece na página como &quot;último plano localizado com vigência encerrada&quot;, com título e link, e não pontua. Plano sem período declarado segue a regra de sempre. A regra está na metodologia. O juiz passa a reconhecer plano em título que é nome de arquivo (RR, RO).</dd>
       <dt>15/11/2026 · Rastro de acesso aos sites volta a ser registrado</dt>
       <dd>O registro público de cada acesso feito onde o site pede que robôs não entrem estava corrompido desde 05/11 e deixou de receber linhas, sem aviso. O arquivo foi reconstruído sem perder registro, e a verificação diária passa a recusar qualquer arquivo de dado que não se leia por inteiro.</dd>
-      <dt>15/11/2026 · Planos estaduais de saúde: canal dos sites das secretarias</dt>
-      <dd>A busca nos sites das secretarias de saúde usava termos que não achavam os planos do ciclo, procurava Rondônia num endereço que não existe e entregava o que achava a uma fila sem julgamento. Agora procura &quot;El Niño&quot; e &quot;contingência&quot;, lê o portal de Rondônia e o subsite de Goiás, e o achado vai ao juiz de saúde. Os planos de Roraima e Rondônia para o El Niño 2026-2027 apareceram na primeira sonda.</dd>
     </dl>
   </section>
 </main>
