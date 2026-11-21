@@ -2270,6 +2270,11 @@ def autoteste() -> int:
                                    "PLANO DE CONTINGENCIA " * 60)[0] is True),
     ]
     checagens += casos_18() + casos_18_medidos() + casos_leitura_local_18()
+    _fila = [{"id": "a", "hash_evidencia": "h" * 64, "juiz": {"promove": True, "motivo": None, "codebook": "1.8"}},
+             {"id": "b", "hash": "h" * 64, "juiz": {"promove": True}},
+             {"id": "c", "url": "https://x.gov.br/a.pdf"}]
+    checagens.append(("fila paralela: só pista com documento lido entra; o `hash` solto não conta",
+                      [d["pista_id"] for d in decisoes_da_fila_18(_fila)] == ["a"]))
     for nome_check, ok in checagens:
         print(f"  {'OK  ' if ok else 'FALHA'} {nome_check}")
         if not ok:
@@ -2364,22 +2369,55 @@ def rejulgar_paralelo_18(decisoes: list, ler_texto=texto_local_18) -> tuple:
     return registros, resumo
 
 
-def rejulgar_paralelo_cli() -> int:
-    """`juiz.py --rejulgar-paralelo`: grava SÓ `data/paralelo_juiz18.json` (nunca a produção)."""
-    producao = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))
-    registros, resumo = rejulgar_paralelo_18(producao["decisoes"])
-    saida = {"_governanca": ("PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18). Nada do índice lê "
-                             "este arquivo. Escritor: juiz.py --rejulgar-paralelo."),
+PARALELO_FILA18 = RAIZ / "data" / "paralelo_fila18.json"
+
+
+def decisoes_da_fila_18(pistas: list) -> list:
+    """A fila (`pistas_imprensa.json`) na forma de decisão do rejulgamento: só pista com documento lido
+    (`hash_evidencia`). O `hash` solto da pista não é do documento e não entra."""
+    return [{"pista_id": p.get("id"), "origem": p.get("origem"), "municipio": p.get("municipio"),
+             "uf": p.get("uf"), "ibge": p.get("ibge"), "url": p.get("url"), "hash_evidencia": p["hash_evidencia"],
+             "promove": (p.get("juiz") or {}).get("promove"), "motivo": (p.get("juiz") or {}).get("motivo"),
+             "codebook": (p.get("juiz") or {}).get("codebook"), "categoria": (p.get("juiz") or {}).get("categoria"),
+             "data": p.get("data")}
+            for p in pistas if p.get("hash_evidencia")]
+
+
+def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
+    """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo."""
+    registros, resumo = rejulgar_paralelo_18(decisoes)
+    saida = {"_governanca": (f"PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18) de {fonte}. Nada do "
+                             f"índice lê este arquivo. Escritor: juiz.py --rejulgar-paralelo ou --rejulgar-fila-paralela."),
              "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
              "resumo": resumo, "decisoes": registros}
     from coletores_base import gravar_em   # §229: escrita de data/ só pela porta atômica
     # Compacto: o arquivo paralelo cresce 34% em registros únicos; indentado, +38% em bytes e o portão de
     # tamanho (novidade_real) barrava o PR. Sem indentação, +17%: o mesmo conteúdo, sem linhas de enfeite.
-    gravar_em(PARALELO_JUIZ18, saida, compacto=True)
+    gravar_em(destino, saida, compacto=True)
     print(json.dumps(resumo, ensure_ascii=False))
+    return resumo
+
+
+def rejulgar_paralelo_cli() -> int:
+    """`juiz.py --rejulgar-paralelo`: promoções da produção, gravadas SÓ em `data/paralelo_juiz18.json`."""
+    producao = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))
+    gravar_paralelo_18(producao["decisoes"], PARALELO_JUIZ18, "data/promocoes_automaticas.json")
+    return 0
+
+
+def rejulgar_fila_paralela_cli() -> int:
+    """`juiz.py --rejulgar-fila-paralela`: pistas da fila com documento lido, gravadas SÓ em `data/paralelo_fila18.json`."""
+    fila = json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))
+    gravar_paralelo_18(decisoes_da_fila_18(fila["pistas"]), PARALELO_FILA18, "data/pistas_imprensa.json (fila)")
     return 0
 
 
 if __name__ == "__main__":
     import sys
-    sys.exit(autoteste() if "--autoteste" in sys.argv else rejulgar_paralelo_cli() if "--rejulgar-paralelo" in sys.argv else 0)
+    if "--autoteste" in sys.argv:
+        sys.exit(autoteste())
+    if "--rejulgar-paralelo" in sys.argv:
+        sys.exit(rejulgar_paralelo_cli())
+    if "--rejulgar-fila-paralela" in sys.argv:
+        sys.exit(rejulgar_fila_paralela_cli())
+    sys.exit(0)

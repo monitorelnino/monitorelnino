@@ -12,6 +12,10 @@
    "escritor": "rodada_paralela_j18",
    "por_que": "Rejulgamento paralelo pelo codebook 1.8 (rodada J18): gerado por `juiz.py --rejulgar-paralelo` a partir de evidencias/ local. Nenhum workflow o commita; nenhuma página o lê; o índice não muda."
   },
+  "data/paralelo_fila18.json": {
+   "escritor": "rodada_paralela_j18",
+   "por_que": "Rejulgamento paralelo da fila pelo codebook 1.8 (rodada J18): gerado por `juiz.py --rejulgar-fila-paralela` a partir de evidencias/ local. Nenhum workflow o commita; nenhuma página o lê; a fila de produção não muda."
+  },
   "data/pistas_imprensa.json": {
    "escritor": "qualquer_elo",
    "por_que": "A fila tem UMA porta (`scripts/pistas.py`) e uma política de mesclagem declarada e testada: acréscimo dos dois lados entra, campo que só um lado tocou entra, mesmo campo com valores diferentes é recusado. `unir_conflito_de_rodada.py` aplica essa política ao conflito de rebase, classe FILAS_DE_PISTA. A corrida é resolvida, não evitada — e é por isso que este arquivo pode ter vários elos."
