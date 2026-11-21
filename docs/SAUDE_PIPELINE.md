@@ -9,12 +9,12 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-13 a 2026-11-20 (1633 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-13 a 2026-11-20 (1640 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - coletar_datasus_dbc.py: erro em 4 rodadas seguidas — [lacuna declarada] ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/ (malaria): TimeoutError: timed out; o arquivo anterior fica
-- consultar_querido_diario.py: erro em 3 rodadas seguidas — portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable | queridodiario.ok.org.br: HTTPError HTTP Error 503: Service Unavailable | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail
+- consultar_querido_diario.py: erro em 4 rodadas seguidas — portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable | queridodiario.ok.org.br: HTTPError HTTP Error 503: Service Unavailable | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail
 - python3: erro em 2 rodadas seguidas — SyntaxError: unterminated string literal (detected at line 1)
 - verificar_links.py: erro em 2 rodadas seguidas — erro: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
 
@@ -37,7 +37,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-20 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-15 06:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-20 01:37 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-15 06:14 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-20 02:24 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-20 02:42 | 4 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-15 05:56 | 1126 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-20 02:20 | 2 s | 0 | ok | — |
 | `atualizar.py` | coletor | 2026-11-15 04:04 | 8099 s | 150 | ok | — |
@@ -62,9 +62,9 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-20 · por canal: we
 | `coletar_dda.py` | coletor | 2026-11-20 01:25 | 54 s | — | ok | — |
 | `coletar_declarado_nacional.py` | coletor | 2026-11-15 04:21 | 28 s | — | ok | — |
 | `coletar_desfechos_saude.py` | coletor | 2026-11-20 01:20 | 345 s | — | ok | — |
-| `coletar_diarios_consorciados.py` | coletor | 2026-11-19 01:15 | 2562 s | 82 | ok | — |
-| `coletar_diarios_municipais.py` | coletor | 2026-11-19 01:15 | 2 s | 0 | ok | — |
-| `coletar_doe.py` | coletor | 2026-11-19 01:58 | 1853 s | — | ok | — |
+| `coletar_diarios_consorciados.py` | coletor | 2026-11-20 01:14 | 2147 s | 74 | ok | — |
+| `coletar_diarios_municipais.py` | coletor | 2026-11-20 01:14 | 2 s | 0 | ok | — |
+| `coletar_doe.py` | coletor | 2026-11-20 01:50 | 1446 s | — | ok | — |
 | `coletar_edicoes_doe.py` | coletor | 2026-11-20 01:16 | 36 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-11-20 03:15 | 304 s | — | ok | — |
 | `coletar_execucao_mps.py` | coletor | 2026-11-15 05:44 | 22 s | — | ok | — |
@@ -77,8 +77,8 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-20 · por canal: we
 | `coletar_planos_arboviroses.py` | coletor | 2026-11-20 08:23 | 653 s | — | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-11-14 01:13 | 3 s | — | ok | — |
 | `coletar_projecao_cil.py` | coletor | 2026-11-20 07:36 | 3 s | — | ok | — |
-| `coletar_recursos_resposta.py` | coletor | 2026-11-19 02:48 | 51 s | — | ok | — |
-| `coletar_s2id.py` | coletor | 2026-11-19 02:29 | 1163 s | — | ok | — |
+| `coletar_recursos_resposta.py` | coletor | 2026-11-20 02:36 | 29 s | — | ok | — |
+| `coletar_s2id.py` | coletor | 2026-11-20 02:14 | 1283 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-11-20 01:12 | 80 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-11-18 03:00 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-11-14 01:13 | 2 s | — | ok | — |
@@ -93,7 +93,7 @@ cobertura 15d: 4918/5571 com verificação real até 2026-11-20 · por canal: we
 | `coletar_transferegov.py` | coletor | 2026-11-15 05:44 | 2 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-20 01:15 | 52 s | — | ok | — |
 | `conferir_emergencias_estaduais.py` | coletor | 2026-11-20 01:16 | 68 s | — | ok | — |
-| `consultar_querido_diario.py` | coletor | 2026-11-19 01:15 | 2 s | — | **erro** (3 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable \| queridodiario.ok.org.br: HTT |
+| `consultar_querido_diario.py` | coletor | 2026-11-20 01:14 | 2 s | — | **erro** (4 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable \| queridodiario.ok.org.br: HTT |
 | `descobrir_dominios.py` | coletor | 2026-11-15 01:51 | 5561 s | — | **erro** | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-11-20 07:57 | 513 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-20 07:22 | 1 s | — | ok | — |
