@@ -916662,8 +916662,63 @@
    "municipio": "Carauari",
    "uf": "AM",
    "rejeitada_em": "2026-11-21"
+  },
+  {
+   "origem": "buscador2",
+   "origem_canonica": "busca_web",
+   "motivo": "tipo 'outro' nao entra na fila: descarta com motivo",
+   "url": "https://lavrinhas.sp.gov.br/wp-content/uploads/2026/05/PLANO-CONTINGENCIA-DEFESA-CIVIL.pdf",
+   "alvo": "3526605",
+   "tipo": "outro",
+   "municipio": "Lavrinhas",
+   "uf": "SP",
+   "rejeitada_em": "2026-11-21"
+  },
+  {
+   "origem": "buscador2",
+   "origem_canonica": "busca_web",
+   "motivo": "pista de decreto nao entra na fila de planos: vai para a conferencia da base oficial de resposta",
+   "url": "https://www.natividadedaserra.sp.gov.br/publicos/decreto-29-plancon_09113118.pdf",
+   "alvo": "3532306",
+   "tipo": "decreto",
+   "municipio": "Natividade da Serra",
+   "uf": "SP",
+   "rejeitada_em": "2026-11-21"
+  },
+  {
+   "origem": "buscador2",
+   "origem_canonica": "busca_web",
+   "motivo": "fora da entrada (B3/B8): domínio não oficial (thmais.com.br)",
+   "url": "https://thmais.com.br/giro-de-noticias/defesa-civil-apura-ocorrencia-de-tornado-apos-tempestade-em-santa-catarina/",
+   "alvo": null,
+   "tipo": null,
+   "municipio": "Ipuaçu",
+   "uf": "SC",
+   "rejeitada_em": "2026-11-21"
+  },
+  {
+   "origem": "buscador2",
+   "origem_canonica": "rebaixamento C10",
+   "motivo": "fora da entrada (B3/B8): domínio não oficial (plantaoguaruja.com.br)",
+   "url": "https://www.plantaoguaruja.com.br/noticia/guaruja-amplia-plano-preventivo-da-defesa-civil-diante-da-previsao-de-el-nino",
+   "alvo": null,
+   "tipo": null,
+   "municipio": "Guarujá",
+   "uf": "SP",
+   "rejeitada_em": "2026-11-21"
+  },
+  {
+   "origem": "buscador2",
+   "origem_canonica": "busca_web",
+   "motivo": "tipo 'outro' nao entra na fila: descarta com motivo",
+   "url": "https://capivaridosul.rs.gov.br/wp-content/uploads/simple-file-list/Contingencia-Escolas-Municipais/Plano-Contingencia-EMEIMundo.pdf",
+   "alvo": "4304671",
+   "tipo": "outro",
+   "municipio": "Capivari do Sul",
+   "uf": "RS",
+   "rejeitada_em": "2026-11-21"
   }
  ],
  "atualizado_em": "2026-11-21",
- "total": 83333
+ "total": 83338
 }
