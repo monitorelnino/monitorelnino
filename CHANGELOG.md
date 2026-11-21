@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-21 · #1961 · Rodada J18: leitura local do juiz 1.8 segue até o PDF
+A leitura local de `evidencias/` parava na primeira cópia txt, mesmo falha (só marcadores de página). 144 documentos com PDF ao lado ficavam sem texto. Agora a leitura percorre txt, ocr.txt, html e pdf, com OCR quando o PDF não tem camada de texto. Rodada paralela: 420 para 564 documentos julgados. Produção não muda.
+
 ## 2026-11-20 · #1960 · Um só gravador dos relatórios internos de verificação
 
 Quatro rotinas de verificação e publicação gravavam seus relatórios internos com o mesmo trecho copiado, e só uma tentava de novo quando outra gravava ao mesmo tempo; o diagnóstico de uma verificação falhou por isso. Um único gravador passa a servir às quatro, com nova tentativa. Linhas líquidas: −14.
