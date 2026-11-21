@@ -10,7 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 ## 2026-11-21 · #1961 · Rodada J18: leitura local do juiz 1.8 segue até o PDF
-A leitura local de `evidencias/` parava na primeira cópia txt, mesmo falha (só marcadores de página). 144 documentos com PDF ao lado ficavam sem texto. Agora a leitura percorre txt, ocr.txt, html e pdf, com OCR quando o PDF não tem camada de texto. Rodada paralela: 420 para 564 documentos julgados. Produção não muda. O arquivo paralelo passa a ser gravado sem indentação (1,3 MB, em vez de 1,5 MB), para o portão de tamanho.
+A leitura local de `evidencias/` parava na primeira cópia txt, mesmo falha (só marcadores de página). 144 documentos com PDF ao lado ficavam sem texto. Agora a leitura percorre txt, ocr.txt, html e pdf, com OCR quando o PDF não tem camada de texto. Rodada paralela: 420 para 564 documentos julgados. Produção não muda.
 
 ## 2026-11-20 · #1960 · Um só gravador dos relatórios internos de verificação
 
