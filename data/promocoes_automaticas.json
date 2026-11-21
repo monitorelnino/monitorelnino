@@ -1062118,6 +1062118,3416 @@
     ],
     "encontrou": null
    }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "118 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205309",
+   "municipio": "Vitória",
+   "uf": "ES",
+   "url": "https://m.vitoria.es.gov.br/cidadao/defesa-civil-plano-de-contingencia-para-desastre-e-emergencia",
+   "regras_18": [],
+   "pista_id": "7168e66e84",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2700300",
+   "municipio": "Arapiraca",
+   "uf": "AL",
+   "url": "https://staging-transparencia.integra.arapiraca.al.gov.br/documentos_gerenciais_saude",
+   "regras_18": [],
+   "pista_id": "560a85f834",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/boletim_oficial/2026/Boletim_6ab6f3b7d8c7c.pdf",
+   "regras_18": [],
+   "pista_id": "92180b807e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4311130",
+   "municipio": "Jari",
+   "uf": "RS",
+   "url": "https://www.jari.rs.gov.br/arqs/33109.pdf",
+   "regras_18": [],
+   "pista_id": "4e3688352e",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7319 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Defesa Civil &#8211; Prefeitura Municipal de Guiricema Aviso Importante! Disponibilizamos temporariamente um novo número para contato: (32) 3551-8807 Guiricema,"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "20/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "20/11/2026",
+   "natureza": null,
+   "ibge": "3129004",
+   "municipio": "Guiricema",
+   "uf": "MG",
+   "url": "https://www.guiricema.mg.gov.br/category/defesa-civil/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "e5bac97398",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4522a3befa3c0f97775f8148588e4ca0136f40a1af17ea49afc1c30bf71876f3",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "arará Guarda-Mor Guaxupé Guidoval Guimarânia Guiricema Gurinhatã Heliodora Iapu Ibertioga Ibiá Ibiaí Ibiracatu Ibiraci Ibirité Ibitiúra de Minas Ibituruna Icara"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3129400",
+   "municipio": "Ibertioga",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "2aa82dcea1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ama Guaranésia Guarani Guarará Guarda-Mor Guaxupé Guidoval Guimarânia Guiricema Gurinhatã Heliodora Iapu Ibertioga Ibiá Ibiaí Ibiracatu Ibiraci Ibirité Ibitiúra"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3129103",
+   "municipio": "Gurinhatã",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "fdd489bbe9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Limeira do Oeste Lontra Luisburgo Luislândia Luminárias Luz Machacalis Machado Madre de Deus de Minas Malacacheta Mamonas Manga Manhuaçu Manhumirim Mantena Mar"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3139102",
+   "municipio": "Madre de Deus de Minas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d6df42c0c3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Pardo Varginha Varjão de Minas Várzea da Palma Varzelândia Vazante Verdelândia Veredinha Veríssimo Vermelho Novo Vespasiano Viçosa Vieiras Virgem da Lapa Virgí"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3171071",
+   "municipio": "Veredinha",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "118b7a7d8f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "resópolis Douradoquara Durandé Elói Mendes Engenheiro Caldas Engenheiro Navarro Entre Folhas Entre Rios de Minas Ervália Esmeraldas Espera Feliz Espinosa Espíri"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3123858",
+   "municipio": "Entre Folhas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "b02cc6fc7e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ra Rio Manso Rio Novo Rio Paranaíba Rio Pardo de Minas Rio Piracicaba Rio Pomba Rio Preto Rio Vermelho Ritápolis Rochedo de Minas Rodeiro Romaria Rosário da Lim"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3155900",
+   "municipio": "Rio Preto",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "3e6791900c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "íba Japonvar Jeceaba Jenipapo de Minas Jequeri Jequitaí Jequitibá Jequitinhonha Jesuânia Joaíma Joanésia João Monlevade João Pinheiro Joaquim Felício Jordânia J"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3135902",
+   "municipio": "Jesuânia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "6c200e3cb0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "do Indaiá Estrela do Sul Eugenópolis Ewbank da Câmara Extrema Fama Faria Lemos Felício dos Santos Felisburgo Felixlândia Fernandes Tourinho Ferros Fervedouro F"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3125408",
+   "municipio": "Felício dos Santos",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d8ca19638c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ês Mesquita Minas Gerais Minas Novas Minduri Mirabela Miradouro Miraí Miravânia Moeda Moema Monjolos Monsenhor Paulo Montalvânia Monte Alegre de Minas Monte Azu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3142304",
+   "municipio": "Moeda",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "48c3775b32",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Jesus Córrego Fundo Córrego Novo Couto de Magalhães de Minas Crisólita Cristais Cristália Cristiano Otoni Cristina Crucilândia Cruzeiro da Fortaleza Cruzília Cu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3120300",
+   "municipio": "Cristália",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "2b8b769e8d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "omé das Letras São Tiago São Tomás de Aquino São Vicente de Minas Sapucaí-Mirim Sardoá Sarzedo Sem-Peixe Senador Amaral Senador Cortes Senador Firmino Senador J"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3165503",
+   "municipio": "Sardoá",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "79ec52fbb3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ntimento São Lourenço São Miguel do Anta São Paulo São Paulo São Pedro da União São Pedro do Suaçuí São Pedro dos Ferros São Romão São Roque de Minas São Sebast"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3164100",
+   "municipio": "São Pedro do Suaçuí",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "7f79639595",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "upé Guidoval Guimarânia Guiricema Gurinhatã Heliodora Iapu Ibertioga Ibiá Ibiaí Ibiracatu Ibiraci Ibirité Ibitiúra de Minas Ibituruna Icaraí de Minas Igarapé Ig"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3129657",
+   "municipio": "Ibiracatu",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "a23857c43b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "itangui Oratórios Orizânia Ouro Branco Ouro Fino Ouro Preto Ouro Verde de Minas Padre Carvalho Padre Paraíso Pai Pedro Paineiras Pains Paiva Palma Palmópolis Pa"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3146255",
+   "municipio": "Padre Carvalho",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "5682e454c0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "zaga Gouveia Governador Valadares Grão Mogol Grupiara Guanhães Guapé Guaraciaba Guaraciama Guaranésia Guarani Guarará Guarda-Mor Guaxupé Guidoval Guimarânia Gui"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3128253",
+   "municipio": "Guaraciama",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "7b1d7cccee",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "araíba Alfenas Alfredo Vasconcelos Almenara Alpercata Alpinópolis Alterosa Alto Caparaó Alto Jequitibá Alto Rio Doce Alvarenga Alvinópolis Alvorada de Minas Amp"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3112109",
+   "municipio": "Caparaó",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d58ef19722",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3112109",
+   "municipio": "Caparaó",
+   "uf": "MG",
+   "url": "https://www.caparao.mg.gov.br/conselhos/comdec/desastres/d2025/3552-pt1-25compdec/file",
+   "regras_18": [],
+   "pista_id": "bdfb4fad7b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "so Matipó Mato Verde Matozinhos Matutina Medeiros Medina Mendes Pimentel Mercês Mesquita Minas Gerais Minas Novas Minduri Mirabela Miradouro Miraí Miravânia Moe"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3141702",
+   "municipio": "Mesquita",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "2d1454344f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "taleza de Minas Fortuna de Minas Francisco Badaró Francisco Dumont Francisco Sá Franciscópolis Frei Gaspar Frei Inocêncio Frei Lagonegro Fronteira Fronteira dos"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3126752",
+   "municipio": "Franciscópolis",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d4b8d8d1f0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3956 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Defesa Civil - Prefeitura Municipal de Dores de Guanhães Prefeitura Municipal de Dores de Guanhães PREFEITURA MUNICIPAL DE DORES DE GUANHÃES Facebook Instagram"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "10/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/11/2026",
+   "natureza": null,
+   "ibge": "3123106",
+   "municipio": "Dores de Guanhães",
+   "uf": "MG",
+   "url": "https://doresdeguanhaes.mg.gov.br/defesa-civil/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d0dce1bb17",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fe0d366cc89ea828270ba325423b05661976e2bd423a1aa2c10ece0cf229a6da",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "sco Dom Cavati Dom Joaquim Dom Silvério Dom Viçoso Dona Eusébia Dores de Campos Dores de Guanhães Dores do Indaiá Dores do Turvo Doresópolis Douradoquara Durand"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3123106",
+   "municipio": "Dores de Guanhães",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "a1a4a57f67",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Pescador Piau Piedade de Caratinga Piedade de Ponte Nova Piedade do Rio Grande Piedade dos Gerais Pimenta Pingo-d`Água Pintópolis Piracema Pirajuba Piranga Pir"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3150406",
+   "municipio": "Piedade dos Gerais",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "edae9cc2b7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "vério Dom Viçoso Dona Eusébia Dores de Campos Dores de Guanhães Dores do Indaiá Dores do Turvo Doresópolis Douradoquara Durandé Elói Mendes Engenheiro Caldas En"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3123304",
+   "municipio": "Dores do Turvo",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "2cd2402515",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Augusto de Lima Baependi Baldim Bambuí Bandeira Bandeira do Sul Barão de Cocais Barão de Monte Alto Barbacena Barra Longa Barroso Bela Vista de Minas Belmiro Br"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3105509",
+   "municipio": "Barão de Monte Alto",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "8ef5c8a641",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27965 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "lação - - Bandeira do Sul - - Contagem 310 - Barão de Cocais 11 - Coqueiral - - Barão de Monte Alto - - Coração de Jesus 5 - Barbacena 4 - Cordisburgo 7 - Barra"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "3105509",
+   "municipio": "Barão de Monte Alto",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/04/06-04-Boletim_Arboviroses-N208-f58.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "d5947ca5dd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e3716cb7889275a0802e5202a9779dfa83f4c3928d79cc6be932a00f4a062bea"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Tombos Três Corações Três Marias Três Pontas Tumiritinga Tupaciguara Turmalina Turvolândia Ubá Ubaí Ubaporanga Uberaba Uberlândia Umburatiba Unaí União de Mina"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3169802",
+   "municipio": "Turvolândia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "dd4f22355c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ília Cuparaque Curral de Dentro Curvelo Datas Delfim Moreira Delfinópolis Delta Descoberto Desterro de Entre Rios Desterro do Melo Diamantina Diogo de Vasconcel"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3121308",
+   "municipio": "Descoberto",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "0a4f9677af",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "e Olaria Olhos-d`Água Olímpio Noronha Oliveira Oliveira Fortes Onça de Pitangui Oratórios Orizânia Ouro Branco Ouro Fino Ouro Preto Ouro Verde de Minas Padre Ca"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3145851",
+   "municipio": "Oratórios",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "605b1f18ac",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "vinolândia de Minas Divinópolis Divisa Alegre Divisa Nova Divisópolis Dom Bosco Dom Cavati Dom Joaquim Dom Silvério Dom Viçoso Dona Eusébia Dores de Campos Dore"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3122504",
+   "municipio": "Dom Cavati",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "ca146ae6f8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "de Minas Divinópolis Divisa Alegre Divisa Nova Divisópolis Dom Bosco Dom Cavati Dom Joaquim Dom Silvério Dom Viçoso Dona Eusébia Dores de Campos Dores de Guanhã"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3122603",
+   "municipio": "Dom Joaquim",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "94bbaad724",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ão de Minas Várzea da Palma Varzelândia Vazante Verdelândia Veredinha Veríssimo Vermelho Novo Vespasiano Viçosa Vieiras Virgem da Lapa Virgínia Virginópolis Vir"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3171154",
+   "municipio": "Vermelho Novo",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "510de06501",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "curi São José do Mantimento São Lourenço São Miguel do Anta São Paulo São Paulo São Pedro da União São Pedro do Suaçuí São Pedro dos Ferros São Romão São Roque"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3163904",
+   "municipio": "São Pedro da União",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "a26fbd5652",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rinha Porto Firme Poté Pouso Alegre Pouso Alto Prados Prata Pratápolis Pratinha Presidente Bernardes Presidente Juscelino Presidente Kubitschek Presidente Olegá"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3153103",
+   "municipio": "Presidente Bernardes",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "47d203697c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "açu Paraisópolis Paraopeba Passa Quatro Passa Tempo Passa-Vinte Passabém Passos Patis Patos de Minas Patrocínio Patrocínio do Muriaé Paula Cândido Paulistas Pav"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3147956",
+   "municipio": "Patis",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "b339bee7cf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ção do Rio Verde Conceição dos Ouros Cônego Marinho Confins Congonhal Congonhas Congonhas do Norte Conquista Conselheiro Lafaiete Conselheiro Pena Consolação Co"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3118106",
+   "municipio": "Congonhas do Norte",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "8f918d71fa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20903 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "olfo Dutra 288 - Congonhal 11 - Ataléia 11 - Congonhas 26 - Augusto de Lima 8 - Congonhas do Norte - - Baependi 227 - Conquista 33 - Baldim 4 - Conselheiro Lafa"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "26/10/2020",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "26/10/2020",
+   "natureza": null,
+   "ibge": "3118106",
+   "municipio": "Congonhas do Norte",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2020/12/10-12-Boletim-Arboviroses_191-2f9.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "c06fadc1e2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b95f924cc99d103bd45c4d4d5d08e5dc022e7403bce76cf132d5fec1c66dacbd",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "çalo do Rio Preto São Gonçalo do Sapucaí São Gotardo São João Batista do Glória São João da Lagoa São João da Mata São João da Ponte São João das Missões São Jo"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3162252",
+   "municipio": "São João da Lagoa",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "c7d0a6bfa3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20903 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "- São Gotardo 105 - Piracema 3 - São João Batista do Glória 57 - Pirajuba 92 - São João da Lagoa - - Piranga - - São João da Mata - - Piranguçu 5 - São João da"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "26/10/2020",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "26/10/2020",
+   "natureza": null,
+   "ibge": "3162252",
+   "municipio": "São João da Lagoa",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2020/12/10-12-Boletim-Arboviroses_191-2f9.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "72dc7758db",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b95f924cc99d103bd45c4d4d5d08e5dc022e7403bce76cf132d5fec1c66dacbd",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "São Félix de Minas São Francisco São Francisco de Paula São Francisco de Sales São Francisco do Glória São Geraldo São Geraldo da Piedade São Geraldo do Baixio"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3161403",
+   "municipio": "São Francisco do Glória",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "05e447be5a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "gonegro Fronteira Fronteira dos Vales Fruta de Leite Frutal Funilândia Galiléia Gameleiras Glaucilândia Goiabeira Goianá Gonçalves Gonzaga Gouveia Governador Va"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3127339",
+   "municipio": "Gameleiras",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "9966cd39e2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "elena de Minas Santa Juliana Santa Luzia Santa Margarida Santa Maria de Itabira Santa Maria do Salto Santa Maria do Suaçuí Santa Rita de Caldas Santa Rita de Ib"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3158102",
+   "municipio": "Santa Maria do Salto",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "78b9b20567",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "88926 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "el TI Mapa do Site Acessibilidade A+ A A- Portal da Transparência Prefeitura de Porto Velho O que você procura? Despesas, contratos, licitações, servidores… Sec"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "04/09/2009",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "04/09/2009",
+   "natureza": null,
+   "ibge": "1100205",
+   "municipio": "Porto Velho",
+   "uf": "RO",
+   "url": "https://transparencia.portovelho.ro.gov.br/fornecedores",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "f75ff3e437",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2e1fb80572a4b846c25149e0465bf2e3e0ecbc743c798a4345ea75bc525a1842",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ria do Salto Santa Maria do Suaçuí Santa Rita de Caldas Santa Rita de Ibitipoca Santa Rita de Jacutinga Santa Rita de Minas Santa Rita do Itueto Santa Rita do S"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3159308",
+   "municipio": "Santa Rita de Jacutinga",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "215d25ebf7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Aricanduva Arinos Astolfo Dutra Ataléia Augusto de Lima Baependi Baldim Bambuí Bandeira Bandeira do Sul Barão de Cocais Barão de Monte Alto Barbacena Barra Lon"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3105202",
+   "municipio": "Bandeira",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "b9b0fcbcf0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rande Cascalho Rico Cássia Cataguases Catas Altas Catas Altas da Noruega Catuji Catuti Caxambu Cedro do Abaeté Central de Minas Centralina Chácara Chalé Chapada"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3115474",
+   "municipio": "Catuti",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "09e6b6a215",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9937 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CÂMARA MUNICIPAL DE PAULISTAS ESTADO DE MINAS GERAIS PODER LEGISLATIVO OFÍCIO LEGISLATIVO Nº 127/2026 Autoria: Poder Legislativo Nº do Protocolo: 188/2026 Proto"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "03/10/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "03/10/2026",
+   "natureza": null,
+   "ibge": "3148400",
+   "municipio": "Paulistas",
+   "uf": "MG",
+   "url": "https://camaradepaulistas.mg.gov.br/doc/oficio/38/documento",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "be6feed8c4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fabd5ac130fb0a4d17da95c7f20e68fae6adc713085ea5721ec47b4c244960dd",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "aba Rio Pomba Rio Preto Rio Vermelho Ritápolis Rochedo de Minas Rodeiro Romaria Rosário da Limeira Rubelita Rubim Sabará Sabinópolis Sacramento Salinas Salto da"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3156452",
+   "municipio": "Rosário da Limeira",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "5e9ab7748c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Arantina Araponga Araporã Arapuá Araújos Araxá Arceburgo Arcos Areado Argirita Aricanduva Arinos Astolfo Dutra Ataléia Augusto de Lima Baependi Baldim Bambuí B"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3104452",
+   "municipio": "Aricanduva",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "ecac9d9d3c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ul Campo Belo Campo do Meio Campo Florido Campos Altos Campos Gerais Cana Verde Canaã Canápolis Candeias Cantagalo Caparaó Capela Nova Capelinha Capetinga Capim"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3111705",
+   "municipio": "Canaã",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "cb6a036bc3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "anto Antônio do Retiro Santo Antônio do Rio Abaixo Santo Hipólito Santos Dumont São Bento Abade São Brás do Suaçuí São Domingos das Dores São Domingos do Prata"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3160801",
+   "municipio": "São Bento Abade",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "907068e83a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6204 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DEFESA CIVIL &#8211; Prefeitura Municipal de Natércia Início Cidade Aspectos Econômicos Aspectos Geográficos Brasão Comarca e Segurança Escolas do Município His"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "20/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "20/11/2026",
+   "natureza": null,
+   "ibge": "3144409",
+   "municipio": "Natércia",
+   "uf": "MG",
+   "url": "http://natercia.mg.gov.br/defesacivil/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "0641cf87b2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1fa35d2fdde55d68e9b61ebebc34d60d3868ec580781db8c1989bafbc45f4d38",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o do Pilar Munhoz Muriaé Mutum Muzambinho Nacip Raydan Nanuque Naque Natalândia Natércia Nazareno Nepomuceno Ninheira Nova Belém Nova Era Nova Lima Nova Módica"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3144409",
+   "municipio": "Natércia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "3d4dc595dc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ei Inocêncio Frei Lagonegro Fronteira Fronteira dos Vales Fruta de Leite Frutal Funilândia Galiléia Gameleiras Glaucilândia Goiabeira Goianá Gonçalves Gonzaga G"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3127206",
+   "municipio": "Funilândia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "c13a7fdca9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Monte Verde Santa Bárbara do Tugúrio Santa Cruz de Minas Santa Cruz de Salinas Santa Cruz do Escalvado Santa Efigênia de Minas Santa Fé de Minas Santa Helena d"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3157401",
+   "municipio": "Santa Cruz do Escalvado",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "eaf8f0029a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ego Fundo Córrego Novo Couto de Magalhães de Minas Crisólita Cristais Cristália Cristiano Otoni Cristina Crucilândia Cruzeiro da Fortaleza Cruzília Cuparaque Cu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3120409",
+   "municipio": "Cristiano Otoni",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "e86b25bfa8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "inas Centralina Chácara Chalé Chapada do Norte Chapada Gaúcha Chiador Cipotânea Claraval Claro dos Poções Cláudio Coimbra Coluna Comendador Gomes Comercinho Con"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3116407",
+   "municipio": "Claraval",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "08380d5d34",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "cópolis Frei Gaspar Frei Inocêncio Frei Lagonegro Fronteira Fronteira dos Vales Fruta de Leite Frutal Funilândia Galiléia Gameleiras Glaucilândia Goiabeira Goia"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3127073",
+   "municipio": "Fruta de Leite",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "3c96ee5fe2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o das Neves Ribeirão Vermelho Rio Acima Rio Casca Rio de Janeiro Rio de Janeiro Rio do Prado Rio Doce Rio Espera Rio Manso Rio Novo Rio Paranaíba Rio Pardo de M"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3155108",
+   "municipio": "Rio do Prado",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "eaff763ea3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "naí União de Minas Uruana de Minas Urucânia Urucuia Vargem Alegre Vargem Bonita Vargem Grande do Rio Pardo Varginha Varjão de Minas Várzea da Palma Varzelândia"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3170651",
+   "municipio": "Vargem Grande do Rio Pardo",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "a9cb51345f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "izes Perdões Periquito Pescador Piau Piedade de Caratinga Piedade de Ponte Nova Piedade do Rio Grande Piedade dos Gerais Pimenta Pingo-d`Água Pintópolis Piracem"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3150307",
+   "municipio": "Piedade do Rio Grande",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "628a8d77c0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "368125 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "GOVERNO DE BARBACENA PLANO MUNICIPAL DE SAÚDE 2014 - 2017 S aúde nos Bairros é uma ação finalística que visa potencializar os programas federais (Estratégia Saú"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "19/09/1990",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "19/09/1990",
+   "natureza": null,
+   "ibge": "3105608",
+   "municipio": "Barbacena",
+   "uf": "MG",
+   "url": "https://www.barbacena.mg.gov.br/download/planomunicipaldesaude.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "269f3a3314",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0db1b6c4f643f14e47f3586d60424f337625d69427e0c0f0bed9a96524467d11",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "de Espanha Maravilhas Maria da Fé Mariana Marilac Mário Campos Maripá de Minas Marliéria Marmelópolis Martinho Campos Martins Soares Mata Verde Materlândia Mat"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3140308",
+   "municipio": "Marliéria",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "1a5e872740",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "eias Cantagalo Caparaó Capela Nova Capelinha Capetinga Capim Branco Capinópolis Capitão Andrade Capitão Enéas Capitólio Caputira Caraí Caranaíba Carandaí Carang"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3112653",
+   "municipio": "Capitão Andrade",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "37fcbb1270",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "irinha Nova Resende Nova Serrana Nova União Novo Cruzeiro Novo Oriente de Minas Novorizonte Olaria Olhos-d`Água Olímpio Noronha Oliveira Oliveira Fortes Onça de"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3145372",
+   "municipio": "Novorizonte",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "944de25e34",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "mo Vermelho Novo Vespasiano Viçosa Vieiras Virgem da Lapa Virgínia Virginópolis Virgolândia Visconde do Rio Branco Volta Grande Wenceslau Braz Município Unidade"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3171907",
+   "municipio": "Virgolândia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "8744190731",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "tel Geral Queluzito Raposos Raul Soares Recreio Reduto Resende Costa Resplendor Ressaquinha Riachinho Riacho dos Machados Ribeirão das Neves Ribeirão Vermelho R"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3154408",
+   "municipio": "Ressaquinha",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "f09e5f287c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "s Araxá Arceburgo Arcos Areado Argirita Aricanduva Arinos Astolfo Dutra Ataléia Augusto de Lima Baependi Baldim Bambuí Bandeira Bandeira do Sul Barão de Cocais"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3104809",
+   "municipio": "Augusto de Lima",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d7e0dcc665",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ceno São Joaquim de Bicas São José da Barra São José da Lapa São José da Safira São José da Varginha São José do Alegre São José do Divino São José do Goiabal S"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3163102",
+   "municipio": "São José da Varginha",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "bf7db29ccd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Jaboticatubas Jacinto Jacuí Jacutinga Jaguaraçu Jaíba Jampruca Janaúba Januária Japaraíba Japonvar Jeceaba Jenipapo de Minas Jequeri Jequitaí Jequitibá Jequitin"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3135308",
+   "municipio": "Japaraíba",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "c3d5601f2c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Florestal Formiga Formoso Fortaleza de Minas Fortuna de Minas Francisco Badaró Francisco Dumont Francisco Sá Franciscópolis Frei Gaspar Frei Inocêncio Frei Lag"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3126604",
+   "municipio": "Francisco Dumont",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "98c01deaad",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "88926 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "el TI Mapa do Site Acessibilidade A+ A A- Portal da Transparência Prefeitura de Porto Velho O que você procura? Despesas, contratos, licitações, servidores… Sec"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "04/09/2009",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "04/09/2009",
+   "natureza": null,
+   "ibge": "1100205",
+   "municipio": "Porto Velho",
+   "uf": "RO",
+   "url": "https://transparencia.portovelho.ro.gov.br/fornecedores",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "e2bc2f31fb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2e1fb80572a4b846c25149e0465bf2e3e0ecbc743c798a4345ea75bc525a1842",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "uinhas Boa Esperança Bocaina de Minas Bocaiúva Bom Despacho Bom Jardim de Minas Bom Jesus da Penha Bom Jesus do Amparo Bom Jesus do Galho Bom Repouso Bom Sucess"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3107604",
+   "municipio": "Bom Jesus da Penha",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "fbb38b4cbc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27965 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "toni - - Bom Despacho 42 - Cristina - - Bom Jardim de Minas - - Crucilandia - - Bom Jesus da Penha - - Cruzeiro da Fortaleza 2 - Bom Jesus do Amparo 3 - Cruzíli"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "E ZIKA Nº 208 – SEMANA EPIDEMIOLÓGICA 14 – 06 DE ABRIL DE 2021 MONITORAMENTO DO PLANO DE CONTINGÊNCIA POR UNIDADES REGIONAIS DE SAUDE DE MG - SE 10 A SE 13 DE 2",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": null,
+   "ibge": "3107604",
+   "municipio": "Bom Jesus da Penha",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/04/06-04-Boletim_Arboviroses-N208-f58.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "b0358519b4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e3716cb7889275a0802e5202a9779dfa83f4c3928d79cc6be932a00f4a062bea"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "sta de Minas Belmiro Braga Belo Horizonte Belo Oriente Belo Vale Berilo Berizal Bertópolis Betim Bias Fortes Bicas Biquinhas Boa Esperança Bocaina de Minas Boca"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3106606",
+   "municipio": "Bertópolis",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "4053969512",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Botumirim Brás Pires Brasilândia de Minas Brasília Brasília de Minas Brasópolis Braúnas Brumadinho Bueno Brandão Buenópolis Bugre Buritis Buritizeiro Cabeceira"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "06/12/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3108800",
+   "municipio": "Braúnas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "ca6e44c311",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }
