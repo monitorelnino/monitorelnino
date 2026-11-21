@@ -5714,7 +5714,13 @@
   {"data": "2026-11-20", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-21T02:20:11", "duracao_s": 2.1, "itens": 0, "status": "ok", "erro": ""},
   {"data": "2026-11-20", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-21T02:20:13", "duracao_s": 2.9, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-20", "script": "scripts/verificar_leituras_paradas.py", "inicio": "2026-11-21T02:20:15", "duracao_s": 1.7, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-20", "script": "recalcular_mare.py", "inicio": "2026-11-21T02:24:46", "duracao_s": 4.3, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-20", "script": "recalcular_mare.py", "inicio": "2026-11-21T02:24:46", "duracao_s": 4.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-20", "script": "consultar_querido_diario.py", "inicio": "2026-11-21T01:14:56", "duracao_s": 2.4, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable | queridodiario.ok.org.br: HTTPError HTTP Error 503: Service Unavailable | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-20", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-21T01:14:58", "duracao_s": 1.7, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-20", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-21T01:14:59", "duracao_s": 2147.4, "itens": 74, "status": "ok", "erro": ""},
+  {"data": "2026-11-20", "script": "coletar_doe.py", "inicio": "2026-11-21T01:50:46", "duracao_s": 1446.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-20", "script": "coletar_s2id.py", "inicio": "2026-11-21T02:14:52", "duracao_s": 1282.7, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-20", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-21T02:36:14", "duracao_s": 28.8, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-21T02:24:46"
+ "atualizado_em": "2026-11-21T02:36:14"
 }
