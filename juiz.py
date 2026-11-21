@@ -2323,10 +2323,10 @@ def casos_leitura_local_18() -> list:
     with tempfile.TemporaryDirectory() as tmp:
         base = pathlib.Path(tmp)
         h1, h2 = "a" * 64, "b" * 64
-        (base / f"{h1}.txt").write_text("=== página 1 ===\n=== página 2 ===", encoding="utf-8")
+        (base / f"{h1}.txt").write_text("=== página 1 ===\n=== página 2 ===", encoding="utf-8", newline="\n")
         (base / f"{h1}.html").write_text("<html><body>" + "PLANO DE CONTINGENCIA municipal " * 20 + "</body></html>",
-                                         encoding="utf-8")
-        (base / f"{h2}.txt").write_text("=== página 1 ===", encoding="utf-8")
+                                         encoding="utf-8", newline="\n")
+        (base / f"{h2}.txt").write_text("=== página 1 ===", encoding="utf-8", newline="\n")
         return [
             ("leitura local: txt falho cai para o html com texto",
              "PLANO DE CONTINGENCIA" in texto_local_18(h1, base=base)),
