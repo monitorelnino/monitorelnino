@@ -2373,7 +2373,9 @@ def rejulgar_paralelo_cli() -> int:
              "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
              "resumo": resumo, "decisoes": registros}
     from coletores_base import gravar_em   # §229: escrita de data/ só pela porta atômica
-    gravar_em(PARALELO_JUIZ18, saida)
+    # Compacto: o arquivo paralelo cresce 34% em registros únicos; indentado, +38% em bytes e o portão de
+    # tamanho (novidade_real) barrava o PR. Sem indentação, +17%: o mesmo conteúdo, sem linhas de enfeite.
+    gravar_em(PARALELO_JUIZ18, saida, compacto=True)
     print(json.dumps(resumo, ensure_ascii=False))
     return 0
 
