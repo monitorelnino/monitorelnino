@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>21/11/2026 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)</dt>
+      <dd>`scripts/unir_conflito_de_rodada.py`: os relatos datados de cada classe de união (noites perdidas, contagens de incidente) viram uma linha cada; o relato completo vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica, autoteste verde, nenhum comportamento muda. Código +24/−108.</dd>
       <dt>21/11/2026 · Rodada J18: leitura local do juiz 1.8 segue até o PDF</dt>
       <dd>A leitura local de `evidencias/` parava na primeira cópia txt, mesmo falha (só marcadores de página). 144 documentos com PDF ao lado ficavam sem texto. Agora a leitura percorre txt, ocr.txt, html e pdf, com OCR quando o PDF não tem camada de texto. Rodada paralela: 420 para 564 documentos julgados. Produção não muda.</dd>
       <dt>20/11/2026 · Um só gravador dos relatórios internos de verificação</dt>
@@ -162,8 +164,6 @@
       <dd>O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é &quot;feito para o ciclo&quot;; pista recusada ou inalcançável há 21 dias sai da espera.</dd>
       <dt>16/11/2026 · Planos municipais de arboviroses na consulta do município</dt>
       <dd>A consulta do município na página de Saúde ganha o cartão &quot;Plano municipal de arboviroses&quot;: tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).</dd>
-      <dt>15/11/2026 · Juiz da saúde: plano de arboviroses e download de arquivo</dt>
-      <dd>O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo &quot;vigência encerrada&quot;.</dd>
     </dl>
   </section>
 </main>
