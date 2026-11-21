@@ -2,7 +2,7 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 102189,
+   "valor": 102664,
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-11-20",
@@ -32,15 +32,15 @@
    "valor": 45,
    "unidade": "dias",
    "periodo_inicio": "2026-09-15",
-   "periodo_fim": "2026-11-20",
-   "n": 63,
+   "periodo_fim": "2026-11-21",
+   "n": 64,
    "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.dias_observados",
    "periodo_vars": {
     "data": "15/09/2026",
-    "n": 63
+    "n": 64
    }
   },
   {
@@ -544,12 +544,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 11890,
+   "valor": 14055,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "20/11/2026",
+   "consultado_em": "21/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -558,87 +558,87 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 6963
+     "valor": 8265
     },
     {
      "uf": "MA",
-     "valor": 1524
+     "valor": 1844
     },
     {
      "uf": "AP",
-     "valor": 993
+     "valor": 1143
     },
     {
      "uf": "CE",
-     "valor": 694
+     "valor": 753
     },
     {
      "uf": "PE",
-     "valor": 371
+     "valor": 387
     },
     {
      "uf": "RR",
-     "valor": 320
+     "valor": 384
     },
     {
      "uf": "PI",
-     "valor": 274
+     "valor": 312
     },
     {
      "uf": "RO",
-     "valor": 139
+     "valor": 179
     },
     {
      "uf": "PB",
-     "valor": 125
-    },
-    {
-     "uf": "RN",
-     "valor": 84
-    },
-    {
-     "uf": "AL",
-     "valor": 75
-    },
-    {
-     "uf": "BA",
-     "valor": 72
-    },
-    {
-     "uf": "TO",
-     "valor": 63
+     "valor": 128
     },
     {
      "uf": "MT",
-     "valor": 61
+     "valor": 108
+    },
+    {
+     "uf": "RN",
+     "valor": 86
+    },
+    {
+     "uf": "AL",
+     "valor": 82
+    },
+    {
+     "uf": "TO",
+     "valor": 82
+    },
+    {
+     "uf": "BA",
+     "valor": 77
     },
     {
      "uf": "AC",
-     "valor": 31
+     "valor": 56
     },
     {
      "uf": "GO",
-     "valor": 30
-    },
-    {
-     "uf": "SE",
-     "valor": 22
+     "valor": 52
     },
     {
      "uf": "SP",
-     "valor": 20
+     "valor": 32
     },
     {
-     "uf": "AM",
-     "valor": 13
+     "uf": "SE",
+     "valor": 28
     },
     {
      "uf": "MG",
-     "valor": 12
+     "valor": 27
+    },
+    {
+     "uf": "AM",
+     "valor": 25
     },
     {
      "uf": "PR",
-     "valor": 2
+     "valor": 3
     },
     {
      "uf": "RJ",
