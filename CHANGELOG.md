@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-22 · #1968 · Buscador 2: sem via vira recusa, queda ou página sem candidato
+O resumo da rodada chamava "falha" a pista sem via: recusa da fonte (403, muro de robô), queda de rede e página lida sem candidato. Uma função pura separa as três, com autoteste. Só rótulo; nenhum dado muda.
+
 ## 2026-11-22 · #1967 · Triagem conta o prazo pela data da noite
 A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90); a folga de um dia que o #1966 deu ao portão sai. 40 pistas vencidas fechadas por prazo.
 

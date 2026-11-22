@@ -72,6 +72,19 @@ def e_rota(p) -> bool:
 RECUSAS_DA_PAGINA = ("MuroDeRobo", "HTTPError 401", "HTTPError 403", "HTTPError 429", "HTTPError 451")
 
 
+def classe_sem_via(falhas, lacuna="") -> str:
+    """Por que a rodada não achou via para a pista. Função pura. 22/11/2026: o resumo juntava em
+    "falha" a recusa da fonte (403, muro de robô), a queda de rede e a página lida sem candidato —
+    1.223 pistas com via vazia, das quais 828 com falha registrada e 613 de recusa ou queda."""
+    if lacuna:
+        return "sem_legibilidade"
+    if any(r in str(f) for f in falhas or [] for r in RECUSAS_DA_PAGINA):
+        return "recusa_da_fonte"
+    if falhas:
+        return "falha_de_rede"
+    return "sem_candidato"
+
+
 def a_retentar(p: dict, d_hoje) -> bool:
     """A página que o seguidor não conseguiu abrir volta a ser aberta? Função pura. 15/11/2026: a falha
     ficava para sempre depois da janela de sete dias (1.284 de 3.266 páginas seguidas; em Mesquita/RJ a
@@ -234,7 +247,7 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
         est["novas"] += n_novas
         est["rotas_falharam"] += len(falhas)
         est["lacunas"] += bool(lacuna)
-        est["por_via"][via or "falha"] += 1
+        est["por_via"][via or classe_sem_via(falhas, lacuna)] += 1
         p["seguimento"] = {"data": hoje, "via": via, "candidatos": len(cands), "pistas_novas": n_novas,
                            "falhas": falhas, **({"lacuna": lacuna} if lacuna else {}),
                            **({"tentativas": int((p.get("seguimento") or {}).get("tentativas") or 0) + 1} if falhas else {})}
@@ -433,10 +446,19 @@ def autoteste():
                 and f["pistas"][0]["seguimento"]["falhas"] == ["pagina: HTTPError 503"]       # a falha diz o código
                 and f["pistas"][0]["seguimento"]["tentativas"] == 2)
 
+    def t_classe_sem_via_separa_recusa_de_rede():
+        return (classe_sem_via(["pagina: HTTPError 403"]) == "recusa_da_fonte"
+                and classe_sem_via(["pagina: MuroDeRobo"]) == "recusa_da_fonte"
+                and classe_sem_via(["pagina: URLError"]) == "falha_de_rede"
+                and classe_sem_via([], "página não legível até 2026-11-21") == "sem_legibilidade"
+                and classe_sem_via([]) == "sem_candidato")
+
     try:
         return rodar_autoteste({
             "página que falhou volta fora da janela, até três vezes; recusa da fonte não volta; a falha diz o código":
                 t_pagina_que_falhou_volta_e_recusa_nao,
+            "sem via, o resumo separa recusa da fonte, queda de rede e página sem candidato":
+                t_classe_sem_via_separa_recusa_de_rede,
             "arquivo: só link de agregador ainda não tentado, sem repetição": t_arquivo_so_agregador_ainda_nao_tentado,
             "rota (notícia) e página oficial (B4) viram pistas novas de documento": t_rota_e_b4_viram_pistas_novas,
             "lixo cai com motivo (B1, B2, B3), com o status anterior guardado": t_lixo_cai_com_motivo,
