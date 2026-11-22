@@ -156,7 +156,10 @@ def avaliar(filas: dict, hoje: dt.date) -> tuple:
                     falhas.append(f"{nome}: {campo} espera por pessoa — {v[:90]!r}")
             if str(p.get("status") or "").startswith("pendente_confirmacao"):
                 d = data_da_pista(p)
-                velha = d is None or (hoje - d).days > DIAS_DE_VIDA
+                # 22/11/2026: quem fecha a vencida é a triagem, uma vez por noite (antes da meia-noite de
+                # Brasília). O portão reprovava no mesmo dia em que a pista vencia, antes da triagem seguinte,
+                # e a `main` ficava vermelha até a noite. Reprova a que a triagem já devia ter fechado.
+                velha = d is None or (hoje - d).days > DIAS_DE_VIDA + 1
                 if velha:
                     if vence:
                         falhas.append(f"{nome}: pendente há mais de {DIAS_DE_VIDA} dias "
@@ -182,6 +185,10 @@ def autoteste() -> int:
         ("pendente de 30 dias depois do prazo do estoque: reprova",
          len(avaliar({"f": [{"status": "pendente_confirmacao_documento", "registrado_em": "2026-10-15"}]},
                      depois)[0]) == 1),
+        ("pendente que venceu hoje espera a triagem da noite; a de ontem reprova",
+         avaliar({"f": [{"status": "pendente_confirmacao_documento", "registrado_em": "2026-10-29"}]}, depois)
+         == ([], 0) and len(avaliar({"f": [{"status": "pendente_confirmacao_documento",
+                                            "registrado_em": "2026-10-28"}]}, depois)[0]) == 1),
         ("pendente de 5 dias passa",
          avaliar({"f": [{"status": "pendente_confirmacao_documento", "registrado_em": "2026-11-15"}]}, depois)
          == ([], 0)),
