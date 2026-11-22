@@ -4,22 +4,22 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 6.1,
-   "referencia": "21/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em São Paulo",
-   "capital": "São Paulo",
-   "uf": "SP",
+   "valor": 5.3,
+   "referencia": "22/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Vitória",
+   "capital": "Vitória",
+   "uf": "ES",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 33.0 °C contra a média de 26.9 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 34.0 °C contra a média de 28.7 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 4.1,
-    "referencia": "20/11/2026"
+    "valor": 6.1,
+    "referencia": "21/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 20246,
+   "valor": 24245,
    "referencia": "Focos do dia — focos_diario_br_20261121.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 2,
-   "perigo_ou_maior": 1,
-   "referencia": "21/11/2026 22:13",
+   "valor": 1,
+   "perigo_ou_maior": 0,
+   "referencia": "22/11/2026 05:35",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 1,
-    "referencia": "21/11/2026 05:49"
+    "valor": 2,
+    "referencia": "21/11/2026 22:13"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "21/11/2026",
+   "referencia": "22/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "20/11/2026"
+    "referencia": "21/11/2026"
    }
   }
  ]
