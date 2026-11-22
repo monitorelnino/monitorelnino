@@ -190,7 +190,7 @@ Atualizado em 22/11/2026.
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
 | `scripts/unir_conflito_de_rodada.py` | — | `alertas/vigentes.json`, `blog/posts.json`, `cadencia_publicacao.json`, `calendario/fontes_suspensas.json`, `citacao_incompleta.json`, `cobertura_declarada_uf.json` (+47) | — | 3 | não |
-| `seguir_pistas.py` | — | `arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json` | — | — | não |
+| `seguir_pistas.py` | — | `arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json` | — | 1 | não |
 | `sondar_paineis.py` | — | `pistas_paineis.json` | — | — | não |
 | `sondar_repositorios_estaduais.py` | — | `repositorios_estaduais.json` | — | — | não |
 | `triar_confianca_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
