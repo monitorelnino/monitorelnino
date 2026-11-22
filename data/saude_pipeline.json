@@ -5902,7 +5902,12 @@
   {"data": "2026-11-21", "script": "scripts/reavaliar_fontes_suspensas.py", "inicio": "2026-11-22T01:18:23", "duracao_s": 805.2, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-21", "script": "verificar_links.py", "inicio": "2026-11-22T01:31:48", "duracao_s": 449.8, "itens": null, "status": "erro", "erro": "erro: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf"},
   {"data": "2026-11-21", "script": "coletar_srag_sivep.py", "inicio": "2026-11-22T02:09:48", "duracao_s": 37.5, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-21", "script": "coletar_sg_esus.py", "inicio": "2026-11-22T02:10:25", "duracao_s": 10.3, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-21", "script": "coletar_sg_esus.py", "inicio": "2026-11-22T02:10:25", "duracao_s": 10.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-21", "script": "scripts/triar_fila.py", "inicio": "2026-11-22T02:05:05", "duracao_s": 1.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-21", "script": "julgar_filas.py", "inicio": "2026-11-22T02:05:07", "duracao_s": 919.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-21", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-22T02:20:26", "duracao_s": 2.2, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-21", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-22T02:20:28", "duracao_s": 2.6, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-21", "script": "scripts/verificar_leituras_paradas.py", "inicio": "2026-11-22T02:20:30", "duracao_s": 1.5, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-22T02:10:25"
+ "atualizado_em": "2026-11-22T02:20:30"
 }
