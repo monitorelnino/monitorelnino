@@ -1,6 +1,6 @@
 {
  "_governanca": "Planos municipais de contingência de arboviroses (dengue, chikungunya, zika): onde cada município tem menção localizada, e em que norma o plano se apoia. Peso zero: não entra na nota da Saúde (HANDOVER_SAUDE_V06 §5, 22/10/2026). `municipios` é escrito só por `coletar_planos_arboviroses.py`; `bases` foi lida e registrada à mão em 22/10/2026 e só muda com leitura nova. Estatuto: menção localizada em diário oficial · não localizado até o corte · não verificado (município sem cobertura no acervo, ou consulta que falhou). Menção não é plano lido. Unidade da federação sem linha em `bases` não foi verificada; a ausência não afirma que não há norma.",
- "cursor": 1652,
+ "cursor": 1959,
  "bases": {
   "BR": {
    "documento": "Plano de Contingência Nacional para Dengue, Chikungunya e Zika (Ministério da Saúde)",
@@ -1231,10 +1231,10 @@
   },
   "3204005": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-29",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Pancas",
    "uf": "ES"
@@ -1520,7 +1520,7 @@
   },
   "1200336": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -1667,7 +1667,7 @@
   },
   "1100015": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16538,7 +16538,7 @@
   },
   "2106508": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16548,7 +16548,7 @@
   },
   "3202108": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16558,7 +16558,7 @@
   },
   "4212908": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16568,7 +16568,7 @@
   },
   "3521408": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -16578,7 +16578,7 @@
   },
   "4301008": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16588,7 +16588,7 @@
   },
   "2616209": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16598,7 +16598,7 @@
   },
   "3167103": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16608,7 +16608,7 @@
   },
   "3507100": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16618,7 +16618,7 @@
   },
   "5103502": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16628,7 +16628,7 @@
   },
   "1600402": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16638,7 +16638,7 @@
   },
   "2917300": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16648,7 +16648,7 @@
   },
   "5220207": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16657,18 +16657,18 @@
    "uf": "GO"
   },
   "4318200": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São Francisco de Paula",
    "uf": "RS"
   },
   "3144102": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16678,7 +16678,7 @@
   },
   "2108702": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16688,7 +16688,7 @@
   },
   "2705002": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -16698,7 +16698,7 @@
   },
   "5006002": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16708,7 +16708,7 @@
   },
   "2609709": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16718,7 +16718,7 @@
   },
   "2805505": {
    "estatuto": "menção localizada em diário oficial",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -16737,7 +16737,7 @@
   },
   "3147204": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16747,7 +16747,7 @@
   },
   "2500601": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16757,7 +16757,7 @@
   },
   "3517505": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16767,7 +16767,7 @@
   },
   "2301604": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16777,7 +16777,7 @@
   },
   "2912103": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16787,7 +16787,7 @@
   },
   "2926202": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -16797,7 +16797,7 @@
   },
   "1100320": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16807,7 +16807,7 @@
   },
   "5002100": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -16817,7 +16817,7 @@
   },
   "2919702": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16827,7 +16827,7 @@
   },
   "4310009": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16837,7 +16837,7 @@
   },
   "5200134": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16847,7 +16847,7 @@
   },
   "3204054": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16857,7 +16857,7 @@
   },
   "3502754": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -16867,7 +16867,7 @@
   },
   "5005202": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16877,7 +16877,7 @@
   },
   "2509107": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16887,7 +16887,7 @@
   },
   "3505807": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16897,7 +16897,7 @@
   },
   "2408904": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16907,7 +16907,7 @@
   },
   "3511409": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16917,7 +16917,7 @@
   },
   "1200450": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16927,7 +16927,7 @@
   },
   "3553302": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16937,7 +16937,7 @@
   },
   "2305357": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16947,7 +16947,7 @@
   },
   "2605400": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16957,7 +16957,7 @@
   },
   "2210003": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16967,7 +16967,7 @@
   },
   "2932705": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16977,7 +16977,7 @@
   },
   "4112108": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16987,7 +16987,7 @@
   },
   "3149903": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16997,7 +16997,7 @@
   },
   "2703205": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17007,7 +17007,7 @@
   },
   "2913507": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17017,7 +17017,7 @@
   },
   "3305604": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17027,7 +17027,7 @@
   },
   "4316006": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17037,7 +17037,7 @@
   },
   "4319604": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17047,7 +17047,7 @@
   },
   "2503001": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17057,7 +17057,7 @@
   },
   "2701001": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17067,7 +17067,7 @@
   },
   "2931509": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17077,7 +17077,7 @@
   },
   "2106326": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17087,7 +17087,7 @@
   },
   "2512309": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17097,7 +17097,7 @@
   },
   "3301405": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17107,7 +17107,7 @@
   },
   "1507151": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17117,7 +17117,7 @@
   },
   "1506351": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17127,7 +17127,7 @@
   },
   "5210901": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17137,7 +17137,7 @@
   },
   "4319000": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17147,7 +17147,7 @@
   },
   "4105409": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17157,7 +17157,7 @@
   },
   "1400050": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17167,7 +17167,7 @@
   },
   "2107605": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17177,7 +17177,7 @@
   },
   "3115508": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17187,7 +17187,7 @@
   },
   "2207801": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17197,7 +17197,7 @@
   },
   "2918803": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17207,7 +17207,7 @@
   },
   "3132701": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17217,7 +17217,7 @@
   },
   "2106706": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17227,7 +17227,7 @@
   },
   "4318408": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17237,7 +17237,7 @@
   },
   "2500403": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17247,7 +17247,7 @@
   },
   "2931004": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17257,7 +17257,7 @@
   },
   "5002902": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17267,7 +17267,7 @@
   },
   "3133501": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17277,7 +17277,7 @@
   },
   "3159803": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17287,7 +17287,7 @@
   },
   "1400209": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17297,7 +17297,7 @@
   },
   "3114402": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17307,7 +17307,7 @@
   },
   "2304004": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17317,7 +17317,7 @@
   },
   "2927507": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17327,7 +17327,7 @@
   },
   "4219002": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17337,7 +17337,7 @@
   },
   "3143203": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17347,7 +17347,7 @@
   },
   "2311504": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17357,7 +17357,7 @@
   },
   "3137700": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17367,7 +17367,7 @@
   },
   "3118403": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17377,7 +17377,7 @@
   },
   "2708303": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17387,7 +17387,7 @@
   },
   "2908200": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17397,7 +17397,7 @@
   },
   "2912202": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17407,7 +17407,7 @@
   },
   "3301504": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17417,7 +17417,7 @@
   },
   "1502509": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17427,7 +17427,7 @@
   },
   "1300631": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17437,7 +17437,7 @@
   },
   "2923209": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17447,7 +17447,7 @@
   },
   "3122009": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17457,7 +17457,7 @@
   },
   "3111002": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17467,7 +17467,7 @@
   },
   "2705705": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17477,7 +17477,7 @@
   },
   "1507474": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17487,7 +17487,7 @@
   },
   "2600807": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17497,7 +17497,7 @@
   },
   "1300144": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17507,7 +17507,7 @@
   },
   "2611705": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17517,7 +17517,7 @@
   },
   "3139508": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17527,7 +17527,7 @@
   },
   "5003801": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17537,7 +17537,7 @@
   },
   "2911600": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17547,7 +17547,7 @@
   },
   "2906907": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17557,7 +17557,7 @@
   },
   "2604502": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17567,7 +17567,7 @@
   },
   "4104501": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17577,7 +17577,7 @@
   },
   "2108454": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17587,7 +17587,7 @@
   },
   "1504950": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17597,7 +17597,7 @@
   },
   "3526001": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17607,7 +17607,7 @@
   },
   "3147303": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17617,7 +17617,7 @@
   },
   "2306603": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17627,7 +17627,7 @@
   },
   "3137809": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17637,7 +17637,7 @@
   },
   "3134608": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17647,7 +17647,7 @@
   },
   "3540754": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17657,7 +17657,7 @@
   },
   "3304110": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17667,7 +17667,7 @@
   },
   "1506559": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17677,7 +17677,7 @@
   },
   "2605608": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17687,7 +17687,7 @@
   },
   "2923605": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17697,7 +17697,7 @@
   },
   "2108108": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17707,7 +17707,7 @@
   },
   "3142908": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17717,7 +17717,7 @@
   },
   "2929107": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17727,7 +17727,7 @@
   },
   "2806206": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17737,7 +17737,7 @@
   },
   "3124005": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17747,7 +17747,7 @@
   },
   "3508009": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17757,7 +17757,7 @@
   },
   "2311264": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17767,7 +17767,7 @@
   },
   "3540002": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17777,7 +17777,7 @@
   },
   "2313807": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17787,7 +17787,7 @@
   },
   "3142809": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17797,7 +17797,7 @@
   },
   "2303956": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17807,7 +17807,7 @@
   },
   "3141405": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17817,7 +17817,7 @@
   },
   "3542404": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17827,7 +17827,7 @@
   },
   "1303007": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17837,7 +17837,7 @@
   },
   "2800209": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17847,7 +17847,7 @@
   },
   "2903409": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17857,7 +17857,7 @@
   },
   "5105606": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17867,7 +17867,7 @@
   },
   "4313060": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17877,7 +17877,7 @@
   },
   "2924306": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17887,7 +17887,7 @@
   },
   "3105905": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17897,7 +17897,7 @@
   },
   "2707503": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -17907,7 +17907,7 @@
   },
   "2923407": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17917,7 +17917,7 @@
   },
   "3527405": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17927,7 +17927,7 @@
   },
   "4217402": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17937,7 +17937,7 @@
   },
   "2613305": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17947,7 +17947,7 @@
   },
   "2922409": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17957,7 +17957,7 @@
   },
   "2611903": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17967,7 +17967,7 @@
   },
   "4322202": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17977,7 +17977,7 @@
   },
   "3169703": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17987,7 +17987,7 @@
   },
   "3511003": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -17997,7 +17997,7 @@
   },
   "3171006": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18007,7 +18007,7 @@
   },
   "4127502": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18017,7 +18017,7 @@
   },
   "1502772": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18027,7 +18027,7 @@
   },
   "2801405": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18037,7 +18037,7 @@
   },
   "2102606": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18047,7 +18047,7 @@
   },
   "2603108": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18057,7 +18057,7 @@
   },
   "5108600": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18067,7 +18067,7 @@
   },
   "4101101": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18077,7 +18077,7 @@
   },
   "4206900": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18087,7 +18087,7 @@
   },
   "5007406": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18097,7 +18097,7 @@
   },
   "2916104": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18107,7 +18107,7 @@
   },
   "5218904": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18117,7 +18117,7 @@
   },
   "2301307": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18127,7 +18127,7 @@
   },
   "3167608": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18137,7 +18137,7 @@
   },
   "4218301": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18147,7 +18147,7 @@
   },
   "2909604": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18157,7 +18157,7 @@
   },
   "2505105": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18167,7 +18167,7 @@
   },
   "2309508": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18177,7 +18177,7 @@
   },
   "2925956": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18187,7 +18187,7 @@
   },
   "2202000": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18197,7 +18197,7 @@
   },
   "1301159": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18207,7 +18207,7 @@
   },
   "1501956": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18217,7 +18217,7 @@
   },
   "5212204": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18227,7 +18227,7 @@
   },
   "4101002": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18237,7 +18237,7 @@
   },
   "1304104": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18247,7 +18247,7 @@
   },
   "3535309": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -18257,7 +18257,7 @@
   },
   "2904753": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18267,7 +18267,7 @@
   },
   "2101905": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18277,7 +18277,7 @@
   },
   "2402303": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18287,7 +18287,7 @@
   },
   "3515152": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18297,7 +18297,7 @@
   },
   "3205036": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18307,7 +18307,7 @@
   },
   "3113008": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18317,7 +18317,7 @@
   },
   "5209200": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18327,7 +18327,7 @@
   },
   "3131208": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18337,7 +18337,7 @@
   },
   "2111706": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -18347,7 +18347,7 @@
   },
   "3529708": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18357,7 +18357,7 @@
   },
   "5004601": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18367,7 +18367,7 @@
   },
   "3533007": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18377,7 +18377,7 @@
   },
   "3535804": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18387,7 +18387,7 @@
   },
   "3301108": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18397,7 +18397,7 @@
   },
   "2302008": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18407,7 +18407,7 @@
   },
   "1303502": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18417,7 +18417,7 @@
   },
   "2202307": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18427,7 +18427,7 @@
   },
   "1100254": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18437,7 +18437,7 @@
   },
   "2904100": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18447,7 +18447,7 @@
   },
   "1400456": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18457,7 +18457,7 @@
   },
   "2202604": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18467,7 +18467,7 @@
   },
   "3204351": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18477,7 +18477,7 @@
   },
   "1304237": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18487,7 +18487,7 @@
   },
   "4121406": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18497,7 +18497,7 @@
   },
   "2601052": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18507,7 +18507,7 @@
   },
   "2923357": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18517,7 +18517,7 @@
   },
   "3536208": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18527,7 +18527,7 @@
   },
   "5005681": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18537,7 +18537,7 @@
   },
   "4128500": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18547,7 +18547,7 @@
   },
   "2908101": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18557,7 +18557,7 @@
   },
   "3133303": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18567,7 +18567,7 @@
   },
   "3128303": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18577,7 +18577,7 @@
   },
   "4106209": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18587,7 +18587,7 @@
   },
   "5200050": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18597,7 +18597,7 @@
   },
   "2910404": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18607,7 +18607,7 @@
   },
   "4302709": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18617,7 +18617,7 @@
   },
   "2924603": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18627,7 +18627,7 @@
   },
   "3523503": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18637,7 +18637,7 @@
   },
   "2514503": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18647,7 +18647,7 @@
   },
   "2911808": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18657,7 +18657,7 @@
   },
   "3511607": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18667,7 +18667,7 @@
   },
   "2709103": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -18677,7 +18677,7 @@
   },
   "2700102": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -18687,27 +18687,27 @@
   },
   "2608503": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Lagoa de Itaenga",
    "uf": "PE"
   },
   "4103453": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Cafelândia",
    "uf": "PR"
   },
   "5103007": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18717,7 +18717,7 @@
   },
   "2101509": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -18727,680 +18727,680 @@
   },
   "3137502": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Lagoa Formosa",
    "uf": "MG"
   },
   "3203502": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Montanha",
    "uf": "ES"
   },
   "3139300": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Manga",
    "uf": "MG"
   },
   "1708205": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Formoso do Araguaia",
    "uf": "TO"
   },
   "4309605": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Horizontina",
    "uf": "RS"
   },
   "3170909": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Varzelândia",
    "uf": "MG"
   },
   "1300409": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Barcelos",
    "uf": "AM"
   },
   "2613404": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-29",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São José da Coroa Grande",
    "uf": "PE"
   },
   "2108009": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Pastos Bons",
    "uf": "MA"
   },
   "2912905": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Ibirataia",
    "uf": "BA"
   },
   "1507979": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Terra Santa",
    "uf": "PA"
   },
   "2915502": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Itajuípe",
    "uf": "BA"
   },
   "3153400": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Presidente Olegário",
    "uf": "MG"
   },
   "1200252": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Epitaciolândia",
    "uf": "AC"
   },
   "4100509": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Altônia",
    "uf": "PR"
   },
   "2501302": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Aroeiras",
    "uf": "PB"
   },
   "1400175": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Cantá",
    "uf": "RR"
   },
   "2600203": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Afrânio",
    "uf": "PE"
   },
   "2111607": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São Raimundo das Mangabeiras",
    "uf": "MA"
   },
   "1505650": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Placas",
    "uf": "PA"
   },
   "2603900": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Carnaíba",
    "uf": "PE"
   },
   "3543006": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Ribeirão Branco",
    "uf": "SP"
   },
   "1304302": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Urucará",
    "uf": "AM"
   },
   "2932101": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Ubaíra",
    "uf": "BA"
   },
   "2612406": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Sanharó",
    "uf": "PE"
   },
   "4217501": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Seara",
    "uf": "SC"
   },
   "3113701": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Carlos Chagas",
    "uf": "MG"
   },
   "2610400": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Parnamirim",
    "uf": "PE"
   },
   "2311702": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Reriutaba",
    "uf": "CE"
   },
   "3517703": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Guará",
    "uf": "SP"
   },
   "2929255": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São Gabriel",
    "uf": "BA"
   },
   "1713205": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Miracema do Tocantins",
    "uf": "TO"
   },
   "4205803": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Garuva",
    "uf": "SC"
   },
   "2107100": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Morros",
    "uf": "MA"
   },
   "3529906": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Miracatu",
    "uf": "SP"
   },
   "3140902": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Matipó",
    "uf": "MG"
   },
   "2111003": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São João Batista",
    "uf": "MA"
   },
   "4211207": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Morro da Fumaça",
    "uf": "SC"
   },
   "2919926": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Madre de Deus",
    "uf": "BA"
   },
   "5201306": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Anicuns",
    "uf": "GO"
   },
   "3540804": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Potirendaba",
    "uf": "SP"
   },
   "3512001": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Colina",
    "uf": "SP"
   },
   "2100204": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Alcântara",
    "uf": "MA"
   },
   "2704104": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Lagoa da Canoa",
    "uf": "AL"
   },
   "3100906": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Águas Formosas",
    "uf": "MG"
   },
   "4115606": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Matelândia",
    "uf": "PR"
   },
   "2903508": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Belo Campo",
    "uf": "BA"
   },
   "2104552": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Governador Edison Lobão",
    "uf": "MA"
   },
   "2922656": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Nordestina",
    "uf": "BA"
   },
   "4121208": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Quitandinha",
    "uf": "PR"
   },
   "5201702": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Aragarças",
    "uf": "GO"
   },
   "1506161": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Rio Maria",
    "uf": "PA"
   },
   "2507101": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Itapororoca",
    "uf": "PB"
   },
   "3539103": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Pirapora do Bom Jesus",
    "uf": "SP"
   },
   "3104908": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Baependi",
    "uf": "MG"
   },
   "2110401": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "São Benedito do Rio Preto",
    "uf": "MA"
   },
   "2603801": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Capoeiras",
    "uf": "PE"
   },
   "2511400": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Picuí",
    "uf": "PB"
   },
   "4217808": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Taió",
    "uf": "SC"
   },
   "2805802": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Riachão do Dantas",
    "uf": "SE"
   },
   "2104008": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Esperantinópolis",
    "uf": "MA"
   },
   "4116208": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Morretes",
    "uf": "PR"
   },
   "5217708": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Pontalina",
    "uf": "GO"
   },
   "2601607": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Belém do São Francisco",
    "uf": "PE"
   },
   "3101904": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Alpinópolis",
    "uf": "MG"
   },
   "1501006": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Aveiro",
    "uf": "PA"
   },
   "2107704": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Paraibano",
    "uf": "MA"
   },
   "2504405": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Conceição",
    "uf": "PB"
@@ -19417,90 +19417,90 @@
   },
   "5103304": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Comodoro",
    "uf": "MT"
   },
   "4311205": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Júlio de Castilhos",
    "uf": "RS"
   },
   "2902609": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Baixa Grande",
    "uf": "BA"
   },
   "2304301": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Farias Brito",
    "uf": "CE"
   },
   "3532405": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Nazaré Paulista",
    "uf": "SP"
   },
   "2605905": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Gameleira",
    "uf": "PE"
   },
   "2614006": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Serrita",
    "uf": "PE"
   },
   "2600906": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Amaraji",
    "uf": "PE"
   },
   "2313005": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Solonópole",
    "uf": "CE"
@@ -19517,57 +19517,57 @@
   },
   "3531506": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Monte Azul Paulista",
    "uf": "SP"
   },
   "2801009": {
-   "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-11-03",
+   "estatuto": "não verificado",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Campo do Brito",
    "uf": "SE"
   },
   "2932507": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Una",
    "uf": "BA"
   },
   "4127403": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Terra Roxa",
    "uf": "PR"
   },
   "5204904": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
-   "motivo": "município sem cobertura no acervo de diários",
+   "motivo": "consulta falhou: URLError",
    "achados": [],
    "nome": "Campos Belos",
    "uf": "GO"
   },
   "2313955": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -19577,7 +19577,7 @@
   },
   "1501451": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-11-03",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -19587,7 +19587,7 @@
   },
   "4101200": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-24",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -19597,7 +19597,7 @@
   },
   "2800506": {
    "estatuto": "não localizado até o corte",
-   "consultado_em": "2026-10-24",
+   "consultado_em": "2026-11-22",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "",
@@ -56759,13 +56759,13 @@
   }
  },
  "execucao": {
-  "data": "2026-11-21",
-  "consultados": 400,
-  "paradas": null,
+  "data": "2026-11-22",
+  "consultados": 307,
+  "paradas": "orçamento de tempo",
   "estatutos": {
-   "não localizado até o corte": 299,
+   "não localizado até o corte": 291,
    "menção localizada em diário oficial": 68,
-   "não verificado": 5203
+   "não verificado": 5211
   }
  }
 }
