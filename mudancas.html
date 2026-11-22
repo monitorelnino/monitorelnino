@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>22/11/2026 · Triagem conta o prazo pela data da noite</dt>
+      <dd>A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90); a folga de um dia que o #1966 deu ao portão sai. 40 pistas vencidas fechadas por prazo.</dd>
       <dt>22/11/2026 · Fila não humana: uma noite de folga para a triagem fechar a vencida</dt>
       <dd>O portão reprovava a pista no dia em que ela passava de 21 dias, antes da triagem da noite seguinte, que é quem a fecha; o ramo principal ficou vermelho desde 03:03 UTC (três pistas de 31/10). Agora reprova a que a triagem já devia ter fechado (22 dias). Prazo e triagem inalterados; caso novo no autoteste.</dd>
       <dt>21/11/2026 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)</dt>
@@ -162,8 +164,6 @@
       <dd>O contador de resposta passa a contar só decreto municipal de 29/06/2026 em diante, o corte do Boletim nº 1. Decretos de maio e junho reconhecidos em julho entravam, e a marca sem data do S2iD também. Saem 55 municípios de 11 UFs; o índice nacional vai de 19,2 para 18,3.</dd>
       <dt>16/11/2026 · Válvula de dia não cruza a janela da noite</dt>
       <dd>A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.</dd>
-      <dt>15/11/2026 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa</dt>
-      <dd>O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é &quot;feito para o ciclo&quot;; pista recusada ou inalcançável há 21 dias sai da espera.</dd>
     </dl>
   </section>
 </main>

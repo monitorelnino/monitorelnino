@@ -167,6 +167,10 @@ def _autoteste() -> int:
     ok("sem data de entrada fecha com o motivo dito", "sem data de entrada" in desfecho_por_prazo({}, "2026-10-03")[1])
     ok("data de publicação conta quando falta o registro (a mesma data do portão)",
        desfecho_por_prazo({"data_publicacao": "Mon, 26 Oct 2026 07:00:00 GMT"}, "2026-11-17")[0] == "sem documento oficial localizado")
+    from janela_da_noite import noite_de
+    ok("a triagem das 01:16 UTC fecha quem faz 22 dias naquele dia (22/11/2026)",
+       desfecho_por_prazo({"data_publicacao": "Sat, 31 Oct 2026 11:50:00 GMT"},
+                          noite_de(dt.datetime(2026, 11, 22, 1, 16)))[0] == "sem documento oficial localizado")
     ok("lida e recusada: o fechamento diz a recusa real (A1-16)",
        "lida e recusada: natureza_duvidosa" in desfecho_por_prazo(
            {"registrado_em": "2026-09-10", "juiz": {"leu_documento": True, "motivo": "natureza_duvidosa"}},
@@ -213,8 +217,12 @@ def main() -> int:
         return _autoteste()
     limite = int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else 60
     aplicar = "--aplicar" in sys.argv
-    from coletores_base import gravar, ler, hoje_editorial
-    hoje = hoje_editorial().isoformat()
+    from coletores_base import gravar, ler
+    from janela_da_noite import noite_corrente
+    # 22/11/2026: o prazo conta pela data da NOITE, não pela de Brasília. A triagem roda ~01:15 UTC (22h em
+    # Brasília, ainda o dia anterior); a pista que completava 22 dias naquela madrugada só vencia na noite
+    # seguinte, e o portão da fila não humana reprovava a `main` o dia inteiro. A noite é o dia que vem.
+    hoje = noite_corrente(dt.datetime.now(dt.timezone.utc).replace(tzinfo=None))
 
     doc = ler(FILA) or {}
     pistas = doc.get("pistas") or []
