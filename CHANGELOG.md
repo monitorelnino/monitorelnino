@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-22 · #1966 · Fila não humana: uma noite de folga para a triagem fechar a vencida
+
+O portão reprovava a pista no dia em que ela passava de 21 dias, antes da triagem da noite seguinte, que é quem a fecha; a `main` ficou vermelha desde 03:03 UTC (três pistas de 31/10). Agora reprova a que a triagem já devia ter fechado (22 dias). Prazo e triagem inalterados; caso novo no autoteste.
+
 ## 2026-11-21 · #1964 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)
 
 `scripts/unir_conflito_de_rodada.py`: os relatos datados de cada classe de união (noites perdidas, contagens de incidente) viram uma linha cada; o relato completo vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica, autoteste verde, nenhum comportamento muda. Código +24/−108.
