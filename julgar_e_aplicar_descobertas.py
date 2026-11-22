@@ -70,8 +70,7 @@ PISTAS_IMPRENSA = RAIZ / "data" / "pistas_imprensa.json"
 LOG_BUSCAS = RAIZ / "data" / "log_buscas.json"
 
 
-# 09/10/2026 (lote 2.2, A1-20): teto de LEITURA, não de julgamento. Uma edição de diário com o ato
-# na página 60 tem de chegar inteira ao recorte; o juiz julga só o ato recortado (até 20.000).
+# Teto de LEITURA, não de julgamento: o juiz julga só o ato recortado (`juiz.TETO_DO_JULGAMENTO`).
 TETO_DA_LEITURA = 600000
 PAGINAS_DA_LEITURA = 300
 
@@ -108,8 +107,7 @@ def _ler_sharepoint_rs(url, timeout):
     r = _SESSAO_RS[0].get(f"{api}/GetFileById('{_IDS_RS[pasta][nome]}')/$value", timeout=timeout)
     r.raise_for_status()
     if nome.lower().endswith(".url"):
-        # 10/11/2026: na CREPDEC 07 o plano é um atalho para o PDF no sítio da Casa Militar (mesma fonte); o
-        # juiz lia as linhas do atalho (30 `texto_nao_extraivel`). Destino fora da origem declarada não se segue.
+        # Atalho `.url` segue só para a origem declarada.
         alvo = re.search(rb"(?im)^URL=(\S+)", r.content)
         destino = alvo.group(1).decode("latin-1") if alvo else ""
         if not any(o in destino for o in REPOSITORIOS["RS"].get("origens", ())):
@@ -141,8 +139,6 @@ def obter_documento(url, timeout=40, origem=None, buscar_fn=None):
         raw = buscar_fn(url, timeout=timeout) if buscar_fn else ler_documento(url, timeout, origem)
         if (url.lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt"))
                 and not raw.startswith(ASSINATURAS_DE_DOCUMENTO)):
-            # 17/11/2026: o endereço de documento que responde página (Rio de Janeiro/RJ: 132 caracteres de HTML,
-            # com 200, para o robô de fora do país) não entregou o documento.
             raise ValueError(f"o endereço do documento respondeu página ({len(raw)} bytes), não o documento")
         return raw
     except Exception as e:
@@ -192,13 +188,9 @@ def texto_por_ocr(raw):
 
 def texto_do_documento(raw, url, tipo=""):
     """Texto dos bytes já baixados. Função pura. Documento obtido que não dá texto devolve "" (o juiz o
-    recusa como `texto_nao_extraivel`); None fica só para "não obtido" (`documento_inacessivel`).
-    10/11/2026: os 170 PDFs do RS chegavam inteiros e saíam como inacessíveis, e o DOCX/DOC da pasta
-    era lido como bytes decodificados e julgado como se fosse texto (13 `ente_nao_confirmado`)."""
+    recusa como `texto_nao_extraivel`); None fica só para "não obtido" (`documento_inacessivel`)."""
     caminho = url.lower().split("?")[0]
-    # 22/09/2026 (§154): diário oficial é PDF — 41/41 pistas do Querido Diário e 24 da busca web eram
-    # invisíveis ao juiz, que só lia HTML. pdfplumber já é dependência (coletores de boletim); detecta
-    # por magic bytes (%PDF), não só pelo Content-Type/.pdf, porque servidores municipais mentem no tipo.
+    # PDF por magic bytes, não só pelo tipo declarado: servidores municipais mentem no tipo.
     if raw[:5] == b"%PDF-" or "application/pdf" in tipo or caminho.endswith(".pdf"):
         return (extrair_texto_pdf(raw) or "")[:TETO_DA_LEITURA]
     if raw[:4] == b"PK\x03\x04":   # DOCX/ODT: o texto é o XML do corpo; outro zip não é documento
@@ -220,8 +212,6 @@ def texto_do_documento(raw, url, tipo=""):
     texto = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S | re.I)
     texto = re.sub(r"<[^>]+>", " ", texto)
     texto = re.sub(r"\s+", " ", texto).strip()
-    # 09/10/2026 (lote 2.2, A1-20): o corte de 20.000 saiu daqui. Ele vinha ANTES do recorte do
-    # ato, e o ato além do corte nunca era lido. O juiz corta o que julga (`juiz.TETO_DO_JULGAMENTO`).
     return texto[:TETO_DA_LEITURA]
 
 
@@ -251,8 +241,6 @@ def extrair_numero_e_data(texto):
     número do ato ("DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026") é a data do ato; a primeira data do
     texto costuma ser a da EDIÇÃO do diário ("DATA 22/08/2026"), que vem antes. Prefere a janela
     imediata após o número; cai para a busca global só se ali não houver data."""
-    # 09/10/2026 (A1-21): a regra da janela mora em `classificador_natureza.data_do_ato`, que o
-    # juiz tambem usa. Duas copias da mesma regua discordaram por dezessete dias.
     from classificador_natureza import data_do_ato
     m_num = RE_NUMERO_ATO.search(texto)
     return (m_num.group(0).strip() if m_num else None), data_do_ato(texto)
@@ -264,9 +252,7 @@ def eh_estadual(rotulo):
     return rotulo.startswith("A-lac") or rotulo.startswith("C-estado-amplo")
 
 
-# Cadeia canônica de derivados (§163): a fonte de verdade é scripts/verificar_derivados.sh, lida
-# por `cadeia_do_portao12()`. 13/10/2026: a cópia em constante saiu — ela divergia a cada gerador
-# novo e um self-test existia só para cobrar a cópia.
+# Cadeia canônica de derivados (§163): a fonte de verdade é scripts/verificar_derivados.sh.
 
 
 def cadeia_do_portao12():
@@ -352,8 +338,7 @@ def backup_dados():
     backup["recalcular_mare.py"] = RECALCULAR_PY.read_bytes()
     backup["index.html"] = INDEX_HTML.read_bytes()  # gaugeNum é gravado aqui
     backup["defesa-civil.html"] = MAPAS_HTML.read_bytes()  # AREAS é gravado aqui
-    # 22/09/2026 (§158): rodar_portoes() agora regenera derivados antes de checar — o backup passa a cobrir
-    # TUDO que essa sincronização pode tocar, para a reversão continuar sendo reversão de verdade.
+    # rodar_portoes() regenera derivados: o backup cobre tudo o que a sincronização toca (§158).
     for d in DIRETORIOS_SINCRONIZADOS:
         base = RAIZ / d
         if base.exists():
@@ -504,19 +489,13 @@ def aplicar_estadual(uf, texto, numero, data, url, hoje, hash_evidencia=None):
 
     alvo["status"] = status_novo
     alvo["doc"] = f"{texto[:200].strip()} (ato {numero}, {data})" if numero else texto[:200].strip()
-    # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta no
-    # degrau da leitura, nos DOIS índices, com a marca visível na ficha. No estadual, "sem ato" é
-    # exatamente o caso em que não há número de ato a citar — e a ficha do estado passa a dizê-lo,
-    # em vez de mostrar o instrumento como se o ato tivesse sido localizado.
+    # Editoria, 03/10/2026: plano sem ato de aprovação localizado conta no degrau da leitura, com a marca na ficha.
     if numero:
         alvo.pop("sem_ato_de_aprovacao", None)
     else:
         alvo["sem_ato_de_aprovacao"] = True
     alvo["data"] = data
-    # 10/10/2026 (item 2b): PROVENIÊNCIA NA ORIGEM. O juiz lia o documento num endereço e o
-    # guardava só dentro da justificativa em prosa — e o cartão do estado ficava sem link (0 de 54
-    # instrumentos com `url` em 09/10). Quem julga grava o endereço que leu, a data e o hash, no
-    # campo que o cartão lê e no instrumento operacional que o espelha.
+    # Proveniência na origem: quem julga grava endereço, data e hash no campo que o cartão lê.
     if url:
         try:
             consultado = datetime.datetime.strptime(hoje, "%d/%m/%Y").date().isoformat()
@@ -652,9 +631,7 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
     if not hash_evidencia:
         return False, (f"{nome}/{uf}: documento não pôde ser preservado — registro pontuável "
                        f"exige evidência guardada (portão 26)")
-    # 08/11/2026: UM construtor de registro (`registro_do_veredito`), o mesmo do aplicador do juiz. Este
-    # caminho montava o seu à mão e escrevia "(codebook …)" em `fonte`, que o cartão exibe — a frase
-    # pública e a proveniência estruturada nascem num lugar só. Aqui o ato foi lido: a ementa é dele.
+    # Um construtor de registro, o mesmo do aplicador do juiz; aqui o ato foi lido: a ementa é dele.
     registro = registro_do_veredito({**(veredito or {}), "municipio": nome, "uf": uf, "categoria": categoria,
                                      "data": data, "url": url, "hash_evidencia": hash_evidencia},
                                     lat, lon, canal, fonte_base, hoje)
@@ -671,10 +648,9 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
     return True, "aplicado"
 
 
-# 28/09/2026: a decisão do aplicador vira execução do log v2 pela porta canônica.
-# O vocabulário é fechado, e o mapeamento diz o que cada saída significa de fato:
+# A decisão do aplicador vira execução do log v2 pela porta canônica; vocabulário fechado:
 #   APLICADA    entrou no banco                     -> registro
-#   ABSTENCAO   não aplica; continua pista, motivo gravado (até 09/10/2026 chamada FILA_HUMANA) -> pista
+#   ABSTENCAO   não aplica; continua pista, motivo gravado -> pista
 #   DESCARTADA  documento lido, não era plano        -> consultado sem achado
 #   REVERTIDA   aplicada e desfeita pelos portões    -> erro
 # "nada localizado" NUNCA entra aqui: aquele valor é da bateria municipal completa (§2.1), e usá-lo
@@ -771,9 +747,7 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
     if any((e["nome"], e["uf"], e["data"], e["causa"]) == chave for e in atos["eventos"]):
         return False, f"{municipio['nome']}/{uf} já tem esse evento registrado (mesma data e causa) — não duplicar"
 
-    # 08/11/2026: `fonte` sai no PDF do município ("Fonte: …") — é texto público, a mesma frase que os
-    # outros caminhos gravam (`canal_e_fonte` + data da leitura); dano não localizado é ausência (null),
-    # como nos demais eventos, não uma frase sobre o processo.
+    # `fonte` é texto público (PDF do município): a mesma frase dos outros caminhos; dano não localizado é null.
     _, fonte_base = canal_e_fonte(url)
     atos["eventos"].append({
         "nome": municipio["nome"], "uf": uf, "data": data, "causa": causa,
@@ -787,25 +761,17 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
     return True, "aplicado"
 
 
-# =============================================================================================
-# 09/10/2026 (lote 2.6, A1-08) — a fila de pendentes deixa de girar em falso
-# =============================================================================================
-# 2.876 pistas do Google News ficavam em `pendente_confirmacao_documento` para sempre: o link do
-# agregador não se resolvia, `processar_pista` devolvia "fonte não reconhecida", o status voltava o
-# mesmo, e o teto de 150 da noite era gasto nas MESMAS 150 primeiras da lista. Antes de julgar, cada
-# pendente é encaminhada:
+# Encaminhamento das pendentes, antes de julgar:
 #   - link de agregador: resolve-se (URL embutida, busca no veículo pelo título) só quando o veículo
-#     que o feed declara é oficial ou falta — veículo não oficial tem o mesmo destino com ou sem a
-#     URL final (13/10/2026: a rodada gastava as 200 resoluções em notícia de jornal); sem resolver
-#     em duas noites, fecha com o veículo e o título no motivo (reabre se a URL surgir por outra rota);
+#     que o feed declara é oficial ou falta; sem resolver em duas noites, fecha com o veículo e o
+#     título no motivo (reabre se a URL surgir por outra rota);
 #   - fonte que não é oficial: sai daqui para a fila do juiz (`julgar_filas`), que recusa por
 #     documento primário e faz a busca dirigida do ato — é lá que notícia vira documento;
 #   - alvo `resposta/…` sem fonte oficial: vai para a conferência da base oficial de resposta, como o
 #     decreto (não ocupa a fila de planos).
 # Só a pista de fonte oficial chega a `processar_pista`. A ordem é a da notícia mais nova.
 NOITES_PARA_FECHAR_AGREGADOR = 2
-# Cada resolução é uma consulta ao metabuscador (~8 s com o ritmo). 200 cabem no teto de 90 min do
-# elo junto com o juiz; as 3.415 pendentes de 09/10 passam todas em ~17 noites (as mais novas antes).
+# Cada resolução é uma consulta ao metabuscador (~8 s): 200 cabem no teto do elo junto com o juiz.
 RESOLUCOES_POR_RODADA = 200
 STATUS_PISTA_DO_JUIZ = "pista — promover a registro exige documento primário"
 STATUS_RESPOSTA_SEM_FONTE = ("pista de decreto — vai para a conferência da base oficial de resposta; "
@@ -901,7 +867,7 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     texto = buscar(pista["url"])
     if texto is None:
         return {"decisao": "ABSTENCAO", "motivo": "falha ao buscar o documento (tentar de novo na próxima execução)"}
-    # Este caminho não tem `trecho` para recortar: lê o que lia antes do lote 2.2 (A1-20).
+    # Este caminho não tem `trecho` para recortar.
     texto = texto[:20000]
 
     numero, data = extrair_numero_e_data(texto)
@@ -913,10 +879,8 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     decisao, motivo = classificar(texto)
 
     if decisao == "RESPOSTA":
-        # 31/08/2026 (pedido de Patricia): ato de resposta não é mais descartado —
-        # entra no mapa de transparência (nunca no índice). Citação incompleta NÃO
-        # bloqueia aqui como bloqueia para ex-ante: o mapa registra "número não
-        # localizado" com honestidade, em vez de exigir a mesma barra do que pontua.
+        # Ato de resposta entra no mapa de transparência (nunca no índice); citação incompleta
+        # não bloqueia: o mapa registra "número não localizado".
         backup = backup_dados()
         aplicado, motivo_ap = aplicar_resposta(uf, texto, numero, data, pista["url"], hoje)
         if not aplicado:
@@ -932,9 +896,7 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
         motivo_completo = motivo if decisao == "DUVIDA" else f"citação incompleta (número={numero}, data={data})"
         return {"decisao": "ABSTENCAO", "motivo": motivo_completo}
 
-    # EX_ANTE + citação completa — aplicar, com backup real para rollback se os
-    # portões falharem depois (achado no teste de ponta a ponta de 31/08/2026:
-    # a primeira versão dizia "revertida" sem de fato desfazer nada em disco).
+    # EX_ANTE + citação completa — aplicar, com backup real para rollback se os portões falharem.
     backup = backup_dados()
     if eh_estadual(rotulo):
         aplicado, motivo_ap, status, antecip = aplicar_estadual(uf, texto, numero, data, pista["url"], hoje,
@@ -943,12 +905,8 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
         nome_mun = pista["alvo"].split("/", 1)[1].rsplit("/", 1)[0] if rotulo.startswith("D-") else None
         if nome_mun is None:
             return {"decisao": "ABSTENCAO", "motivo": "não foi possível determinar o nome do município a partir do alvo"}
-        # 27/09/2026 (PR 2 do juiz automático): o juiz de `juiz.py` entra aqui como barreira
-        # ADICIONAL, nunca como substituto. Ele só pode recusar o que este caminho já aprovou — as
-        # etapas que ele acrescenta (identidade do ente, autoridade do Executivo, família de risco
-        # do ciclo) são as que faltavam, e todas as três derrubam falso positivo. A decisão de
-        # aplicar, o backup, os portões e o rollback continuam sendo deste arquivo, que os tem
-        # testados desde 31/08/2026.
+        # O juiz é barreira ADICIONAL: só recusa o que este caminho já aprovou; aplicar,
+        # backup, portões e rollback seguem deste arquivo.
         veredito = juiz.julgar(texto, nome=nome_mun, uf=uf, url=pista["url"])
         if not veredito["promove"]:
             return {"decisao": "ABSTENCAO",
@@ -1028,9 +986,7 @@ def self_test():
         assert r5["decisao"] == "ABSTENCAO" and "citação incompleta" in r5["motivo"]
         print("✓ self-test OK — EX_ANTE confiante mas sem número/data vai para fila (citação incompleta)")
 
-        # 09/10/2026 (A1-15): a categoria do registro vem do VEREDITO, nunca fixa em "plano".
-        # Sem veredito com categoria, nada entra no banco — e a trava e pura: ela para antes de
-        # tocar disco, no primeiro `if` da funcao.
+        # A categoria vem do VEREDITO; sem ela nada entra no banco (trava pura, antes do disco).
         ok_sem, motivo_sem = aplicar_municipal("Taió", "SC", "texto", "12", "01/02/2026",
                                                "https://taio.sc.gov.br/a.pdf", "01/02/2026", {})
         assert ok_sem is False and "sem categoria" in motivo_sem, motivo_sem
@@ -1046,9 +1002,7 @@ def self_test():
     assert do_portao and do_portao[-1] == ("scripts/gerar_manifesto.py",), do_portao
     print(f"✓ self-test OK — cadeia de derivados lida do portão 12 ({len(do_portao)} passos)")
 
-    # 23/10/2026: arquivo da pasta do RS lê-se pela REST com a sessão do link, nunca pelo endereço cru.
-    # 10/11/2026: pelo UniqueId da listagem da pasta (o caminho longo estoura o maxUrlLength); resposta que
-    # não é documento é erro; o atalho `.url` segue só para a origem declarada.
+    # Pasta do RS: pela REST, pelo UniqueId da listagem; resposta que não é documento é erro.
     class _R:
         def __init__(self, content=b"", dados=None):
             self.content, self._dados = content, dados
@@ -1108,9 +1062,7 @@ def self_test():
     assert canal_e_fonte("https://x.sharepoint.com/a.pdf")[0] == "imprensa", "SharePoint qualquer não é o repositório"
     print("✓ self-test OK — documento sem texto não é inacessível; DOCX lido; pasta do RS é órgão estadual")
 
-    # 28/09/2026: o log do aplicador. As 150 linhas da primeira noite saíram sem `strings` e sem
-    # `executor` e reprovaram `verificar_consistencia.py`; estas travas provam o esquema e o
-    # vocabulário sem escrever nada.
+    # Log do aplicador: esquema e vocabulário provados sem escrever nada.
     assert municipio_uf_do_alvo("D-municipio-prioritario/Camaçari/BA") == ("Camaçari", "BA")
     assert municipio_uf_do_alvo("A/B/Sao Paulo/SP") == ("Sao Paulo", "SP")
     assert municipio_uf_do_alvo("sem barra") == (None, None), "alvo sem UF não inventa território"
@@ -1129,7 +1081,7 @@ def self_test():
     assert "gravar_em(LOG_BUSCAS" not in _fonte, (
         "duas portas gravando o mesmo log é como se perde registro (§269)")
 
-    # 09/10/2026 (lote 2.6, A1-08): encaminhamento das pendentes, sem rede.
+    # Encaminhamento das pendentes, sem rede.
     gn = {"url": "https://news.google.com/rss/articles/CBMiOPAQUE", "alvo": "B-capital/TO",
           "veiculo_dominio": "https://www.palmas.to.gov.br", "titulo": "Palmas aprova plano"}
     p1 = dict(gn)
@@ -1198,11 +1150,7 @@ def self_test():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--self-test", action="store_true")
-    # 28/09/2026 (item 1 do bloco de frescor): teto de pistas por execução. Sem ele, a fila de
-    # 1.495 pendentes era processada inteira, cada uma com busca de documento na rede, e o job de
-    # 90 min foi CANCELADO no meio — o `_coletor.yml` só commita ao final, então a noite inteira de
-    # trabalho foi perdida sem deixar rastro. Teto baixo que termina e commita vale mais que fila
-    # inteira que não chega ao fim.
+    # Teto por execução: fila que termina e commita vale mais que fila inteira cancelada no meio.
     ap.add_argument("--limite", type=int, default=None,
                     help="processa no máximo N pistas pendentes nesta execução")
     args = ap.parse_args()
