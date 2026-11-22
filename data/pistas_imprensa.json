@@ -236598,6 +236598,7 @@
     "julgado_em": "2026-11-19",
     "hash_evidencia": "a5b38706b72be893335e4735a04ddedd5312af366086ace72705beef86625ead"
    },
+   "proxima_tentativa_em": "2026-11-22",
    "juiz_tentativas": [
     {
      "em": "2026-11-21",
@@ -236605,8 +236606,7 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ],
-   "proxima_tentativa_em": "2026-11-22"
+   ]
   },
   {
    "municipio": "Saldanha Marinho",
@@ -261758,6 +261758,7 @@
     "julgado_em": "2026-11-19",
     "hash_evidencia": "a5b38706b72be893335e4735a04ddedd5312af366086ace72705beef86625ead"
    },
+   "proxima_tentativa_em": "2026-11-22",
    "juiz_tentativas": [
     {
      "em": "2026-11-21",
@@ -261765,8 +261766,7 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ],
-   "proxima_tentativa_em": "2026-11-22"
+   ]
   },
   {
    "municipio": "Jaguarão",
@@ -266024,14 +266024,6 @@
     "julgado_em": "2026-11-21",
     "hash_evidencia": "53b27eb8911d12477d75a4a11b9be7f52b8a9848bbbf2bb468b81f9852de153c"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-21",
-     "classe": "criterio",
-     "motivo": "citacao_incompleta",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "busca_dirigida": [
     {
      "em": "2026-11-21",
@@ -266039,6 +266031,14 @@
       "querido_diario"
      ],
      "encontrou": null
+    }
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-21",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -357865,6 +357865,8 @@
      "encontrou": null
     }
    ],
+   "ultima_busca_em": "2026-11-21",
+   "tentativas_de_busca_dirigida": 1,
    "juiz_tentativas": [
     {
      "em": "2026-11-21",
@@ -357872,9 +357874,7 @@
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
     }
-   ],
-   "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-21"
+   ]
   },
   {
    "municipio": "Conceição do Castelo",
@@ -359172,6 +359172,8 @@
      "encontrou": null
     }
    ],
+   "ultima_busca_em": "2026-11-21",
+   "tentativas_de_busca_dirigida": 1,
    "juiz_tentativas": [
     {
      "em": "2026-11-21",
@@ -359179,9 +359181,7 @@
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
     }
-   ],
-   "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-21"
+   ]
   },
   {
    "municipio": "Rio Novo do Sul",
@@ -364814,7 +364814,6 @@
      "encontrou": null
     }
    ],
-   "buscador2_em": "2026-11-21",
    "juiz_tentativas": [
     {
      "em": "2026-11-21",
@@ -364823,6 +364822,7 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
+   "buscador2_em": "2026-11-21",
    "seguimento": {
     "data": "21/11/2026",
     "via": "B7",
@@ -365283,7 +365283,6 @@
     "julgado_em": "2026-11-21",
     "hash_evidencia": "6243fb423e12f427229e61190e4dd13e009753719f5e0cfcca8031b05ed707b4"
    },
-   "buscador2_em": "2026-11-21",
    "juiz_tentativas": [
     {
      "em": "2026-11-21",
@@ -365292,6 +365291,7 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
+   "buscador2_em": "2026-11-21",
    "seguimento": {
     "data": "21/11/2026",
     "via": "",
@@ -732670,7 +732670,8 @@
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": []
-   }
+   },
+   "repeticoes": 1
   },
   {
    "alvo": "B-capital/MS",
@@ -748249,15 +748250,15 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "uf",
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
     "fonte_oficial",
     "municipio_no_inicio_do_trecho",
     "plano_no_trecho"
+   ],
+   "alertas": [
+    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -748680,6 +748681,32 @@
    "entrada": "uf",
    "registrado_em": "2026-11-22",
    "status": "pista — na fila, aguardando busca dirigida e juiz"
+  },
+  {
+   "alvo": "PB",
+   "query": "\"plano de contingência\" prefeitura João Pessoa 2026",
+   "uf": "PB",
+   "titulo": "PLANO DE CONTINGÊNCIA DENGUE - Prefeitura Municipal de Foz do Iguaçu",
+   "url": "https://www.foz.pr.gov.br/plano-de-contingencia-dengue/",
+   "data_publicacao": "Sat, 18 Oct 2025 09:18:25 GMT",
+   "fonte_veiculo": "Prefeitura Municipal de Foz do Iguaçu",
+   "veiculo_dominio": "https://www.foz.pr.gov.br",
+   "hash": "2931dba0834c24bb",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9QdXpidTRpV2I1UmYzTFFxZTZzdTl5R2RUUXpBcXVqNGRlX3h2NGdVU1NsRFV0VWo0T2FQdWthbmNCakFYN2pteVVhQUhFbDNNZDNLQllkUTkwYmRiN19acjFmcUZJQQ?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": true,
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "registrado_em": "2026-11-22",
+   "status": "rota — notícia de veículo não oficial: o Buscador 2 segue os links oficiais que ela cita; não vai ao juiz",
+   "origem": "imprensa",
+   "origem_do_coletor": "imprensa_regional",
+   "id": "6070c12ea1",
+   "url_final": "https://www.foz.pr.gov.br/plano-de-contingencia-dengue/",
+   "nivel": "C",
+   "data": "2026-11-22",
+   "tipo": "plano",
+   "entrada": "rota"
   }
  ],
  "quarentena": {
