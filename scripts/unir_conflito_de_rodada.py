@@ -168,6 +168,7 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 #   juiz            vence o veredito de `julgado_em` mais recente; o outro vai para `juiz_historico`.
 #   juiz_historico  união dos dois lados (nada se perde).
 #   rejeitada_em    vence a data mais antiga (a primeira rejeição).
+#   seguimento      vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu (A1, 22/11).
 #   busca_web_espera e cursor*  vence o lado da `main` (estado de fila, não registro).
 # Campos derivados do arquivo (`caracteres`, `sha256`) são recalculados do arquivo, nunca escolhidos:
 # nesta função não há o arquivo, então recusam e o resolvedor deixa o caso para a recalculagem.
@@ -200,10 +201,30 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
             if str(v).startswith("https://web.archive.org/"):
                 return v
         return nosso_v                   # duas falhas: o nome da exceção não é dado
+    if campo == "seguimento" and isinstance(nosso_v, dict) and isinstance(deles_v, dict):
+        return _seguimento_que_vence(nosso_v, deles_v)
     if campo in _CAMPOS_DO_ARQUIVO:
         raise Recusa(f"campo derivado do arquivo {campo!r} muda nos dois lados: recalcular do arquivo")
     raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
                  f"diferentes — qual vence é política, e este script não adivinha")
+
+
+def _seguimento_que_vence(a: dict, b: dict) -> dict:
+    """A1, 22/11/2026: dois lotes seguiram a mesma página. Vence a recusa da fonte (nunca se retenta);
+    senão a data mais nova; no mesmo dia, a leitura que abriu a página; duas falhas somam-se."""
+    from seguir_pistas import RECUSAS_DA_PAGINA
+    recusou = [s for s in (a, b) if any(r in str(f) for f in s.get("falhas") or [] for r in RECUSAS_DA_PAGINA)]
+    if len(recusou) == 1:
+        return recusou[0]
+    dia = lambda s: "".join(reversed(str(s.get("data") or "").split("/")))
+    if dia(a) != dia(b):
+        return max(a, b, key=dia)
+    if bool(a.get("falhas")) != bool(b.get("falhas")):
+        return b if a.get("falhas") else a
+    if a.get("falhas"):
+        return {**a, "falhas": _unir_listas(a["falhas"], b["falhas"]),
+                "tentativas": max(int(a.get("tentativas") or 1), int(b.get("tentativas") or 1))}
+    raise Recusa("duas leituras da mesma página no mesmo dia com resultados diferentes")
 
 
 def _unir_listas(a: list, b: list) -> list:
@@ -1184,6 +1205,14 @@ def autoteste() -> int:
         d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
         checar("evidências: o mesmo documento preservado por dois lotes — a cópia aceita pelo Wayback vence a tentativa falhada",
                not rec and d["itens"]["a"]["wayback"] == W)
+    ok_ = {"data": "21/11/2026", "via": "B4", "falhas": []}
+    f403, frst = ({"data": "21/11/2026", "via": "", "falhas": [f"pagina: {e}"], "tentativas": 1}
+                  for e in ("HTTPError 403", "ConnectionResetError"))
+    checar("seguimento: a recusa da fonte vence; no mesmo dia, a leitura que abriu vence a falha; duas falhas somam",
+           _seguimento_que_vence(ok_, f403) is f403 and _seguimento_que_vence(frst, ok_) is ok_
+           and _seguimento_que_vence({**ok_, "data": "22/11/2026"}, f403) is f403
+           and _seguimento_que_vence({**frst, "data": "20/11/2026"}, ok_) is ok_
+           and len(_seguimento_que_vence(frst, {**frst, "falhas": ["pagina: URLError"]})["falhas"]) == 2)
     with tempfile.TemporaryDirectory() as t:
         PB = "data/planos_busca/DF.json"
         pl = lambda g, m: json.dumps({"gerado_em": g, "municipios": m})
