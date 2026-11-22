@@ -38578,7 +38578,7 @@
     "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 40
+   "repeticoes": 41
   },
   {
    "municipio": "Manaus",
@@ -52856,7 +52856,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "72ebce20bf388f77cdcf057808249d13a4ce0c871f7ee69cdf3c38ccb35480bb"
    },
-   "repeticoes": 2
+   "repeticoes": 3
   },
   {
    "municipio": "União da Vitória",
@@ -55811,7 +55811,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "759d6880470bda1221ccb105d3b730bd13fb808fd4bd59a90aa14ee9dff1c61e"
    },
-   "repeticoes": 3
+   "repeticoes": 4
   },
   {
    "municipio": "Ponta Porã",
@@ -433838,7 +433838,8 @@
     "hash_evidencia": "8b0483d349c25d88f340ba764e09c047295c3bda85b4a180c00523042576c133"
    },
    "ultima_busca_em": "2026-11-22",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "repeticoes": 1
   },
   {
    "municipio": "Santa Maria da Boa Vista",
@@ -633325,7 +633326,7 @@
    "tipo": "plano",
    "entrada": "uf",
    "nivel_confianca": "B",
-   "repeticoes": 1,
+   "repeticoes": 2,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -747114,6 +747115,37 @@
     "municipio": "Feijó",
     "uf": "AC",
     "ibge": "1200302",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-22",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Natal",
+   "uf": "RN",
+   "ibge": "2408102",
+   "url": "https://pmrr.natal.rn.gov.br/assets/arquivos/4_Resumo%20Executivo%20_-_PMRR_-_NATAL.pdf",
+   "titulo": "S24 · Aliança/PE: Plano Municipal de Redução de Riscos Município do Natal",
+   "trecho": "Plano Municipal de Redução de Riscos Município do Natal",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-22",
+   "registrado_em": "2026-11-22",
+   "origem_do_coletor": "descoberta",
+   "id": "d6f44bf74a",
+   "url_final": "https://pmrr.natal.rn.gov.br/assets/arquivos/4_Resumo%20Executivo%20_-_PMRR_-_NATAL.pdf",
+   "alvo": "2408102",
+   "municipio_atribuido_antes": {
+    "municipio": "Aliança",
+    "uf": "PE",
+    "ibge": "2600708",
     "veredito_do_juiz": null
    },
    "atribuicao_corrigida_em": "2026-11-22",
