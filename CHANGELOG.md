@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-22 · #1971 · Redução: história do julgar_e_aplicar_descobertas.py ao HISTORICO
+
+Comentários de história do aplicador (datas, lotes, contagens de incidente) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Comportamento igual (AST idêntica fora de uma docstring; `--self-test` verde). Código +27/−79 (−52).
+
 ## 2026-11-22 · #1970 · União de fila: regra para o seguimento
 
 Dois lotes que seguem a mesma página no mesmo dia deixavam de travar a união da fila: vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu a página; duas falhas somam. Destrava os PRs de lote do Buscador 2.
