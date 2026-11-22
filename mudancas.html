@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>22/11/2026 · Triagem conta o prazo pela data da noite</dt>
+      <dd>A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90). 40 pistas vencidas fechadas por prazo.</dd>
       <dt>21/11/2026 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)</dt>
       <dd>`scripts/unir_conflito_de_rodada.py`: os relatos datados de cada classe de união (noites perdidas, contagens de incidente) viram uma linha cada; o relato completo vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica, autoteste verde, nenhum comportamento muda. Código +24/−108.</dd>
       <dt>21/11/2026 · Rodada J18: leitura local do juiz 1.8 segue até o PDF</dt>
@@ -162,8 +164,6 @@
       <dd>A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.</dd>
       <dt>15/11/2026 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa</dt>
       <dd>O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é &quot;feito para o ciclo&quot;; pista recusada ou inalcançável há 21 dias sai da espera.</dd>
-      <dt>16/11/2026 · Planos municipais de arboviroses na consulta do município</dt>
-      <dd>A consulta do município na página de Saúde ganha o cartão &quot;Plano municipal de arboviroses&quot;: tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).</dd>
     </dl>
   </section>
 </main>

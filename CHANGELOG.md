@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-22 · #1967 · Triagem conta o prazo pela data da noite
+A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90). 40 pistas vencidas fechadas por prazo.
+
 ## 2026-11-21 · #1964 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)
 
 `scripts/unir_conflito_de_rodada.py`: os relatos datados de cada classe de união (noites perdidas, contagens de incidente) viram uma linha cada; o relato completo vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica, autoteste verde, nenhum comportamento muda. Código +24/−108.
