@@ -3015,7 +3015,7 @@
    "ultima_busca_em": "2026-10-17",
    "tentativas_de_busca_dirigida": 2,
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 3,
+   "repeticoes": 4,
    "retentar_buscador2_em": "documento não lido até 2026-11-16",
    "retentativas_buscador2": [
     "2026-11-12",
@@ -44850,7 +44850,7 @@
     "hash_evidencia": "8e9c3b80258b710b4be9fd93949b2f0897584fca1beb890b5cf1050fb45b8405"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 3
+   "repeticoes": 4
   },
   {
    "municipio": "TEÓFILO OTONI",
@@ -518870,7 +518870,7 @@
    "tipo": "plano",
    "id": "24e8bad0b3",
    "nivel_confianca": "B",
-   "repeticoes": 5,
+   "repeticoes": 6,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": true,
@@ -719347,7 +719347,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "municipio",
-   "repeticoes": 1,
+   "repeticoes": 2,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": true,
@@ -746928,6 +746928,68 @@
     "municipio": "Bebedouro",
     "uf": "SP",
     "ibge": "3506102",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-22",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Quatro Barras",
+   "uf": "PR",
+   "ibge": "4120804",
+   "url": "https://quatrobarras.pr.gov.br/uploads/pagina/arquivos/PLACON-2020.pdf",
+   "titulo": "S24 · Alcântara/MA: Plano de Contingência Municipal de Proteção e Defesa Civil Quatro ...",
+   "trecho": "Plano de Contingência Municipal de Proteção e Defesa Civil Quatro ...",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-22",
+   "registrado_em": "2026-11-22",
+   "origem_do_coletor": "descoberta",
+   "id": "c1a565b268",
+   "url_final": "https://quatrobarras.pr.gov.br/uploads/pagina/arquivos/PLACON-2020.pdf",
+   "alvo": "4120804",
+   "municipio_atribuido_antes": {
+    "municipio": "Alcântara",
+    "uf": "MA",
+    "ibge": "2100204",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-22",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Imperatriz",
+   "uf": "MA",
+   "ibge": "2105302",
+   "url": "https://sti.imperatriz.ma.gov.br/media/portal/files/page/planos/Plano_Municipal_de_Saude_2022-2025.pdf",
+   "titulo": "S24 · Amarante do Maranhão/MA: PLANO MUNICIPAL DE SAÚDE 2022-2025 - Acessar | Administração",
+   "trecho": "PLANO MUNICIPAL DE SAÚDE 2022-2025 - Acessar | Administração",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-22",
+   "registrado_em": "2026-11-22",
+   "origem_do_coletor": "descoberta",
+   "id": "32dcff515b",
+   "url_final": "https://sti.imperatriz.ma.gov.br/media/portal/files/page/planos/Plano_Municipal_de_Saude_2022-2025.pdf",
+   "alvo": "2105302",
+   "municipio_atribuido_antes": {
+    "municipio": "Amarante do Maranhão",
+    "uf": "MA",
+    "ibge": "2100600",
     "veredito_do_juiz": null
    },
    "atribuicao_corrigida_em": "2026-11-22",
