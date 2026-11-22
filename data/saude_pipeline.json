@@ -5960,7 +5960,14 @@
   {"data": "2026-11-22", "script": "triar_confianca_pistas.py", "inicio": "2026-11-22T04:37:45", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
   {"data": "2026-11-22", "script": "verificar_pista_imprensa.py", "inicio": "2026-11-22T04:37:46", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
   {"data": "2026-11-22", "script": "recalcular_mare.py", "inicio": "2026-11-22T04:41:22", "duracao_s": 5.0, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-22", "script": "scripts/reavaliar_fontes_suspensas.py", "inicio": "2026-11-22T05:11:36", "duracao_s": 856.1, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-22", "script": "scripts/reavaliar_fontes_suspensas.py", "inicio": "2026-11-22T05:11:36", "duracao_s": 856.1, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-22", "script": "processar_contribuicoes.py", "inicio": "2026-11-22T04:42:49", "duracao_s": 1.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-22", "script": "scripts/corrigir_atribuicao_por_dominio.py", "inicio": "2026-11-22T04:42:51", "duracao_s": 0.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-22", "script": "revisar_pistas.py", "inicio": "2026-11-22T04:42:51", "duracao_s": 575.1, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-22", "script": "julgar_filas.py", "inicio": "2026-11-22T04:52:26", "duracao_s": 4503.3, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
+  {"data": "2026-11-22", "script": "julgar_e_aplicar_descobertas.py", "inicio": "2026-11-22T06:07:30", "duracao_s": 382.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-22", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-22T06:13:52", "duracao_s": 2.2, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-22", "script": "scripts/amostra_auditoria_semanal.py", "inicio": "2026-11-22T06:13:54", "duracao_s": 0.9, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-22T05:11:36"
+ "atualizado_em": "2026-11-22T06:13:54"
 }
