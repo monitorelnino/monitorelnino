@@ -2813,7 +2813,7 @@
    "status_robots": "proibe",
    "crawl_delay": 30.0,
    "primeiro_acesso": "2026-09-23",
-   "total_acessos": 4,
+   "total_acessos": 7,
    "acessos": [
     {
      "url": "http://www.defesacivil.mt.gov.br/sitemap.xml",
@@ -2838,9 +2838,27 @@
      "quando": "2026-11-21T02:50:15Z",
      "origem": "sondar_repositorios_estaduais",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/",
+     "quando": "2026-11-22T02:39:53Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/compdecs",
+     "quando": "2026-11-22T02:40:28Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/cursos-em-andamento",
+     "quando": "2026-11-22T02:40:39Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-20"
+   "ultimo_acesso": "2026-11-21"
   },
   "www.diariomunicipal.sc.gov.br": {
    "status_robots": "proibe",
@@ -15215,16 +15233,34 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-11-16",
-   "total_acessos": 1,
+   "total_acessos": 4,
    "acessos": [
     {
      "url": "https://www.gdfsaude.df.gov.br/web/guest/w/saude-apresenta-plano-de-contingencia-contra-dengue-e-outras-arboviroses-ao-ministerio-publico",
      "quando": "2026-11-16T05:57:39Z",
      "origem": "julgar_saude_municipal",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.gdfsaude.df.gov.br/web/guest/w/sistema-permite-acesso-gratuito-a-alertas-para-desastres-naturais-via-sms",
+     "quando": "2026-11-22T02:15:22Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.gdfsaude.df.gov.br/web/guest/w/simulado-faz-treinamento-para-atuacao-em-acidentes-com-produtos-perigosos",
+     "quando": "2026-11-22T02:15:38Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.gdfsaude.df.gov.br/web/guest/w/agentes-de-vigilancia-ambiental-passam-por-treinamento-sobre-aplicativo-contra-dengue",
+     "quando": "2026-11-22T02:15:49Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-16"
+   "ultimo_acesso": "2026-11-21"
   },
   "www.bastos.sp.gov.br": {
    "status_robots": "proibe",
@@ -17562,6 +17598,27 @@
     }
    ],
    "ultimo_acesso": "2026-11-19"
+  },
+  "www.ssp.df.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-11-21",
+   "total_acessos": 2,
+   "acessos": [
+    {
+     "url": "https://www.ssp.df.gov.br/documents/d/ssp/relatorio-anual-de-atividades-2025-pdf?download=true",
+     "quando": "2026-11-22T02:15:33Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.ssp.df.gov.br/documents/d/ssp/relatorio-anual-de-atividades-2025-pdf?download=true",
+     "quando": "2026-11-22T02:15:38Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-11-21"
   }
  }
 }
