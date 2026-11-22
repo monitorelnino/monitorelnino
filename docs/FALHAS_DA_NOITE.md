@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 20/11/2026. 89 falhas; 82 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 2026-11-22. 90 falhas; 83 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -806,3 +806,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 44672129649 (commit 681ebdda, triagem 20/11 04:05): job `portoes · dado`, 'DERIVADOS… MARE_Indice_Documentacao.pdf | 2 +-'; o commit muda `data/verificacao_resumo.json`; run 44221172481 (18/11 02:09, triagem): mesmo PDF obsoleto
 - **Correção:** O PDF-índice entra nas três listas de `git add` do elo; conflito nele já se resolve por regeneração (`unir_conflito_de_rodada.REGENERAVEIS`).
 - **Caso de teste:** `scripts/verificar_derivados.sh (portão 12 no push da `main`)`
+
+## F90 · Pista que completava 22 dias na madrugada só vencia na noite seguinte e deixava a `main` vermelha o dia inteiro
+
+- **Noite:** 2026-11-21→2026-11-22
+- **Sintoma:** Portões no push da `main` vermelhos desde ~08:22 UTC de 22/11: 'FILA NÃO HUMANA: 3 item(ns)… pendente há mais de 21 dias (2026-10-31)'.
+- **Causa:** `triar_fila.py` contava o prazo por `hoje_editorial()` (Brasília). A triagem roda ~01:15 UTC, 22h em Brasília do dia anterior: a pista com 21 dias não vencia; à meia-noite de Brasília passava a 22 e o portão (mesmo relógio, horas depois) reprovava até a triagem da noite seguinte.
+- **Prova:** run 45005339883 (job `portoes · estrutura`): 3 pistas de 2026-10-31; run 44970676196 (triagem 22/11 01:16 UTC): triar_fila rodou com hoje=2026-11-21; o run de 08:37 pulou (triagem.feito); desfecho_por_prazo nas pendentes: 0 vencidas com 2026-11-21, 3 com 2026-11-22
+- **Correção:** O prazo da triagem conta pela data da noite (`janela_da_noite.noite_corrente`), que é o dia que vem; vencidas fechadas no próprio PR.
+- **Caso de teste:** `scripts/triar_fila.py --autoteste ('a triagem das 01:16 UTC fecha quem faz 22 dias naquele dia')`
