@@ -10,7 +10,11 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 ## 2026-11-22 · #1967 · Triagem conta o prazo pela data da noite
-A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90). 40 pistas vencidas fechadas por prazo.
+A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90); a folga de um dia que o #1966 deu ao portão sai. 40 pistas vencidas fechadas por prazo.
+
+## 2026-11-22 · #1966 · Fila não humana: uma noite de folga para a triagem fechar a vencida
+
+O portão reprovava a pista no dia em que ela passava de 21 dias, antes da triagem da noite seguinte, que é quem a fecha; o ramo principal ficou vermelho desde 03:03 UTC (três pistas de 31/10). Agora reprova a que a triagem já devia ter fechado (22 dias). Prazo e triagem inalterados; caso novo no autoteste.
 
 ## 2026-11-21 · #1964 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)
 
