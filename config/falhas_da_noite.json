@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "20/11/2026",
+ "atualizado_em": "2026-11-22",
  "falhas": [
   {
    "id": "F01",
@@ -1224,6 +1224,20 @@
    ],
    "correcao": "O PDF-índice entra nas três listas de `git add` do elo; conflito nele já se resolve por regeneração (`unir_conflito_de_rodada.REGENERAVEIS`).",
    "caso_de_teste": "scripts/verificar_derivados.sh (portão 12 no push da `main`)"
+  },
+  {
+   "id": "F90",
+   "noite": "2026-11-21→2026-11-22",
+   "titulo": "Pista que completava 22 dias na madrugada só vencia na noite seguinte e deixava a `main` vermelha o dia inteiro",
+   "sintoma": "Portões no push da `main` vermelhos desde ~08:22 UTC de 22/11: 'FILA NÃO HUMANA: 3 item(ns)… pendente há mais de 21 dias (2026-10-31)'.",
+   "causa": "`triar_fila.py` contava o prazo por `hoje_editorial()` (Brasília). A triagem roda ~01:15 UTC, 22h em Brasília do dia anterior: a pista com 21 dias não vencia; à meia-noite de Brasília passava a 22 e o portão (mesmo relógio, horas depois) reprovava até a triagem da noite seguinte.",
+   "prova": [
+    "run 45005339883 (job `portoes · estrutura`): 3 pistas de 2026-10-31",
+    "run 44970676196 (triagem 22/11 01:16 UTC): triar_fila rodou com hoje=2026-11-21; o run de 08:37 pulou (triagem.feito)",
+    "desfecho_por_prazo nas pendentes: 0 vencidas com 2026-11-21, 3 com 2026-11-22"
+   ],
+   "correcao": "O prazo da triagem conta pela data da noite (`janela_da_noite.noite_corrente`), que é o dia que vem; vencidas fechadas no próprio PR.",
+   "caso_de_teste": "scripts/triar_fila.py --autoteste ('a triagem das 01:16 UTC fecha quem faz 22 dias naquele dia')"
   }
  ]
 }

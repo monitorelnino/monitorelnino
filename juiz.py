@@ -2269,7 +2269,12 @@ def autoteste() -> int:
          etapa0_documento_primario("https://x.gov.br/a.pdf",
                                    "PLANO DE CONTINGENCIA " * 60)[0] is True),
     ]
-    checagens += casos_18() + casos_18_medidos()
+    checagens += casos_18() + casos_18_medidos() + casos_leitura_local_18()
+    _fila = [{"id": "a", "hash_evidencia": "h" * 64, "juiz": {"promove": True, "motivo": None, "codebook": "1.8"}},
+             {"id": "b", "hash": "h" * 64, "juiz": {"promove": True}},
+             {"id": "c", "url": "https://x.gov.br/a.pdf"}]
+    checagens.append(("fila paralela: só pista com documento lido entra; o `hash` solto não conta",
+                      [d["pista_id"] for d in decisoes_da_fila_18(_fila)] == ["a"]))
     for nome_check, ok in checagens:
         print(f"  {'OK  ' if ok else 'FALHA'} {nome_check}")
         if not ok:
@@ -2293,31 +2298,48 @@ PARALELO_JUIZ18 = RAIZ / "data" / "paralelo_juiz18.json"
 PROPOSTAS_MEDIDAS_18 = ("J13", "J18")   # medidas à parte: ligadas só no paralelo; J8/J9 ficam de fora (crédito)
 
 
-def texto_local_18(hash_: str) -> str:
-    """Texto de `evidencias/<hash>` (txt, ocr, html ou pdf). Vazio se a cópia local não tem texto: um txt de
-    "=== página N ===" sem letras é cópia falha, e julgá-la daria recusa que a produção não deu."""
-    import subprocess
-    base = RAIZ / "evidencias"
-    texto = ""
-    for ext in ("txt", "ocr.txt"):
-        arq = base / f"{hash_}.{ext}"
-        if arq.is_file():
-            texto = arq.read_text(encoding="utf-8", errors="replace")
-            break
-    else:
-        arq = base / f"{hash_}.html"
-        if arq.is_file():
-            bruto = arq.read_text(encoding="utf-8", errors="replace")
-            bruto = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", bruto)
+def texto_local_18(hash_: str, base=None) -> str:
+    """Texto da cópia local de `evidencias/<hash>`: a primeira fonte (txt, ocr.txt, html, pdf) com letras
+    suficientes. Cópia falha (txt só com "=== página N ===") não encerra a busca: 144 documentos da amostra
+    tinham o PDF ao lado. PDF sem camada de texto vai ao OCR, o mesmo caminho da produção (`com_ocr`)."""
+    from julgar_e_aplicar_descobertas import com_ocr, texto_do_documento
+    base = base or RAIZ / "evidencias"
+    for nome in (f"{hash_}.txt", f"{hash_}.ocr.txt", f"{hash_}.html", f"{hash_}.pdf"):
+        arq = base / nome
+        if not arq.is_file():
+            continue
+        if nome.endswith(".pdf"):
+            raw = arq.read_bytes()
+            texto = com_ocr(raw, texto_do_documento(raw, nome))
+        elif nome.endswith(".html"):
+            bruto = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", arq.read_text(encoding="utf-8", errors="replace"))
             texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", bruto))
-        elif (base / f"{hash_}.pdf").is_file():
-            try:
-                texto = subprocess.run(["pdftotext", "-layout", str(base / f"{hash_}.pdf"), "-"],
-                                       capture_output=True, text=True, timeout=60).stdout
-            except (OSError, subprocess.SubprocessError):
-                texto = ""
-    letras = re.sub(r"=== página \d+ ===", " ", texto)
-    return texto if sum(c.isalpha() for c in letras) >= 300 else ""
+        else:
+            texto = arq.read_text(encoding="utf-8", errors="replace")
+        letras = re.sub(r"=== página \d+ ===", " ", texto)
+        if sum(c.isalpha() for c in letras) >= 300:
+            return texto
+    return ""
+
+
+def casos_leitura_local_18() -> list:
+    """Travas da leitura local: a cópia falha não esconde a boa; sem letras suficientes, vazio."""
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        base = pathlib.Path(tmp)
+        h1, h2 = "a" * 64, "b" * 64
+        (base / f"{h1}.txt").write_text("=== página 1 ===\n=== página 2 ===", encoding="utf-8", newline="\n")
+        (base / f"{h1}.html").write_text("<html><body>" + "PLANO DE CONTINGENCIA municipal " * 20 + "</body></html>",
+                                         encoding="utf-8", newline="\n")
+        (base / f"{h2}.txt").write_text("=== página 1 ===", encoding="utf-8", newline="\n")
+        return [
+            ("leitura local: txt falho cai para o html com texto",
+             "PLANO DE CONTINGENCIA" in texto_local_18(h1, base=base)),
+            ("leitura local: sem letras suficientes em nenhuma cópia devolve vazio",
+             texto_local_18(h2, base=base) == ""),
+            ("leitura local: hash sem cópia devolve vazio",
+             texto_local_18("c" * 64, base=base) == ""),
+        ]
 
 
 def rejulgar_paralelo_18(decisoes: list, ler_texto=texto_local_18) -> tuple:
@@ -2347,20 +2369,55 @@ def rejulgar_paralelo_18(decisoes: list, ler_texto=texto_local_18) -> tuple:
     return registros, resumo
 
 
-def rejulgar_paralelo_cli() -> int:
-    """`juiz.py --rejulgar-paralelo`: grava SÓ `data/paralelo_juiz18.json` (nunca a produção)."""
-    producao = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))
-    registros, resumo = rejulgar_paralelo_18(producao["decisoes"])
-    saida = {"_governanca": ("PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18). Nada do índice lê "
-                             "este arquivo. Escritor: juiz.py --rejulgar-paralelo."),
+PARALELO_FILA18 = RAIZ / "data" / "paralelo_fila18.json"
+
+
+def decisoes_da_fila_18(pistas: list) -> list:
+    """A fila (`pistas_imprensa.json`) na forma de decisão do rejulgamento: só pista com documento lido
+    (`hash_evidencia`). O `hash` solto da pista não é do documento e não entra."""
+    return [{"pista_id": p.get("id"), "origem": p.get("origem"), "municipio": p.get("municipio"),
+             "uf": p.get("uf"), "ibge": p.get("ibge"), "url": p.get("url"), "hash_evidencia": p["hash_evidencia"],
+             "promove": (p.get("juiz") or {}).get("promove"), "motivo": (p.get("juiz") or {}).get("motivo"),
+             "codebook": (p.get("juiz") or {}).get("codebook"), "categoria": (p.get("juiz") or {}).get("categoria"),
+             "data": p.get("data")}
+            for p in pistas if p.get("hash_evidencia")]
+
+
+def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
+    """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo."""
+    registros, resumo = rejulgar_paralelo_18(decisoes)
+    saida = {"_governanca": (f"PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18) de {fonte}. Nada do "
+                             f"índice lê este arquivo. Escritor: juiz.py --rejulgar-paralelo ou --rejulgar-fila-paralela."),
              "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
              "resumo": resumo, "decisoes": registros}
     from coletores_base import gravar_em   # §229: escrita de data/ só pela porta atômica
-    gravar_em(PARALELO_JUIZ18, saida)
+    # Compacto: o arquivo paralelo cresce 34% em registros únicos; indentado, +38% em bytes e o portão de
+    # tamanho (novidade_real) barrava o PR. Sem indentação, +17%: o mesmo conteúdo, sem linhas de enfeite.
+    gravar_em(destino, saida, compacto=True)
     print(json.dumps(resumo, ensure_ascii=False))
+    return resumo
+
+
+def rejulgar_paralelo_cli() -> int:
+    """`juiz.py --rejulgar-paralelo`: promoções da produção, gravadas SÓ em `data/paralelo_juiz18.json`."""
+    producao = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))
+    gravar_paralelo_18(producao["decisoes"], PARALELO_JUIZ18, "data/promocoes_automaticas.json")
+    return 0
+
+
+def rejulgar_fila_paralela_cli() -> int:
+    """`juiz.py --rejulgar-fila-paralela`: pistas da fila com documento lido, gravadas SÓ em `data/paralelo_fila18.json`."""
+    fila = json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))
+    gravar_paralelo_18(decisoes_da_fila_18(fila["pistas"]), PARALELO_FILA18, "data/pistas_imprensa.json (fila)")
     return 0
 
 
 if __name__ == "__main__":
     import sys
-    sys.exit(autoteste() if "--autoteste" in sys.argv else rejulgar_paralelo_cli() if "--rejulgar-paralelo" in sys.argv else 0)
+    if "--autoteste" in sys.argv:
+        sys.exit(autoteste())
+    if "--rejulgar-paralelo" in sys.argv:
+        sys.exit(rejulgar_paralelo_cli())
+    if "--rejulgar-fila-paralela" in sys.argv:
+        sys.exit(rejulgar_fila_paralela_cli())
+    sys.exit(0)

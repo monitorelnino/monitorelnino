@@ -156,7 +156,7 @@ def avaliar(filas: dict, hoje: dt.date) -> tuple:
                     falhas.append(f"{nome}: {campo} espera por pessoa — {v[:90]!r}")
             if str(p.get("status") or "").startswith("pendente_confirmacao"):
                 d = data_da_pista(p)
-                velha = d is None or (hoje - d).days > DIAS_DE_VIDA
+                velha = d is None or (hoje - d).days > DIAS_DE_VIDA  # a triagem conta pela noite (F90)
                 if velha:
                     if vence:
                         falhas.append(f"{nome}: pendente há mais de {DIAS_DE_VIDA} dias "

@@ -4,13 +4,13 @@
  "etapas": {
   "busca_web": {
    "brutos_periodo_ou_seca": 0,
-   "brutos_plancon": 160,
+   "brutos_plancon": 320,
    "brutos_siglas_e_variantes": 0,
    "coberto_sem_mencao": 0,
-   "com_resultado_bruto": 8,
-   "consultas": 10,
+   "com_resultado_bruto": 16,
+   "consultas": 20,
    "lacunas": 0,
-   "motor_sem_resposta": 2,
+   "motor_sem_resposta": 4,
    "nao_localizado_ate_o_momento": 0,
    "pistas": 1
   },
@@ -20,25 +20,53 @@
    "alvos_verificados": 11,
    "fila_acumulada": 126
   },
+  "diario_consorciado": {
+   "bloqueadas": 0,
+   "decretos_novos": 0,
+   "fontes": 16,
+   "fora_do_ar": 0,
+   "pistas": 59
+  },
+  "diario_municipal": {
+   "consultados": 0,
+   "decretos_novos": 0,
+   "lacunas": 0,
+   "pistas": 0
+  },
+  "doe": {
+   "ufs_com_resultado": 27,
+   "ufs_consultadas": 27
+  },
+  "funil_recursos_resposta": {
+   "com_resultado_bruto": 1,
+   "consultas": 1,
+   "pistas": 6
+  },
   "juiz": {
-   "com_documento": 614,
-   "pistas_recebidas": 694,
+   "com_documento": 678,
+   "pistas_recebidas": 774,
    "promovidas": 0,
-   "recusa_autoridade_nao_confirmada": 26,
-   "recusa_citacao_incompleta": 425,
-   "recusa_documento_inacessivel": 59,
+   "recusa_autoridade_nao_confirmada": 27,
+   "recusa_citacao_incompleta": 461,
+   "recusa_documento_inacessivel": 72,
    "recusa_ente_nao_confirmado": 1,
    "recusa_executivo_pendente": 1,
    "recusa_fora_do_objeto": 3,
-   "recusa_natureza_duvidosa": 41,
-   "recusa_noticia_institucional_nao_e_o_plano": 4,
+   "recusa_natureza_duvidosa": 45,
+   "recusa_noticia_institucional_nao_e_o_plano": 8,
    "recusa_plano_sem_identificacao": 3,
-   "recusa_texto_nao_extraivel": 21
+   "recusa_resposta": 1,
+   "recusa_texto_nao_extraivel": 24
+  },
+  "querido_diario": {
+   "com_cobertura": 9,
+   "entradas": 15,
+   "ufs_varridas": 7
   },
   "transferencias_municipais": {
-   "com_resultado_bruto": 20,
-   "consultas": 20,
-   "municipios": 111296
+   "com_resultado_bruto": 30,
+   "consultas": 30,
+   "municipios": 166944
   }
  },
  "verificador_imprensa": {
@@ -77,5 +105,5 @@
   "versao": "1.0 (29/09/2026)",
   "gravado_em": "2026-11-21T04:52:00"
  },
- "atualizado_em": "2026-11-21T08:51:34"
+ "atualizado_em": "2026-11-22T02:40:08"
 }

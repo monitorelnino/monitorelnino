@@ -44,6 +44,16 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>22/11/2026 · Buscador 2: sem via vira recusa, queda ou página sem candidato</dt>
+      <dd>O resumo da rodada chamava &quot;falha&quot; a pista sem via: recusa da fonte (403, muro de robô), queda de rede e página lida sem candidato. Uma função pura separa as três, com autoteste. Só rótulo; nenhum dado muda.</dd>
+      <dt>22/11/2026 · Triagem conta o prazo pela data da noite</dt>
+      <dd>A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90); a folga de um dia que o #1966 deu ao portão sai. 40 pistas vencidas fechadas por prazo.</dd>
+      <dt>22/11/2026 · Fila não humana: uma noite de folga para a triagem fechar a vencida</dt>
+      <dd>O portão reprovava a pista no dia em que ela passava de 21 dias, antes da triagem da noite seguinte, que é quem a fecha; o ramo principal ficou vermelho desde 03:03 UTC (três pistas de 31/10). Agora reprova a que a triagem já devia ter fechado (22 dias). Prazo e triagem inalterados; caso novo no autoteste.</dd>
+      <dt>21/11/2026 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)</dt>
+      <dd>`scripts/unir_conflito_de_rodada.py`: os relatos datados de cada classe de união (noites perdidas, contagens de incidente) viram uma linha cada; o relato completo vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica, autoteste verde, nenhum comportamento muda. Código +24/−108.</dd>
+      <dt>21/11/2026 · Rodada J18: leitura local do juiz 1.8 segue até o PDF</dt>
+      <dd>A leitura local de `evidencias/` parava na primeira cópia txt, mesmo falha (só marcadores de página). 144 documentos com PDF ao lado ficavam sem texto. Agora a leitura percorre txt, ocr.txt, html e pdf, com OCR quando o PDF não tem camada de texto. Rodada paralela: 420 para 564 documentos julgados. Produção não muda.</dd>
       <dt>20/11/2026 · Um só gravador dos relatórios internos de verificação</dt>
       <dd>Quatro rotinas de verificação e publicação gravavam seus relatórios internos com o mesmo trecho copiado, e só uma tentava de novo quando outra gravava ao mesmo tempo; o diagnóstico de uma verificação falhou por isso. Um único gravador passa a servir às quatro, com nova tentativa. Linhas líquidas: −14.</dd>
       <dt>20/11/2026 · Redução: história do coletor de diários estaduais ao histórico</dt>
@@ -154,16 +164,6 @@
       <dd>A dica sob a parcela da população com decreto, na inicial e na Saúde, passa a descrever só o que o número mede; sai a frase &quot;Não avalia a qualidade da resposta.&quot;. Catálogo, fallbacks e índice de conteúdo regerados.</dd>
       <dt>16/11/2026 · Resposta conta só decreto a partir de 29/06</dt>
       <dd>O contador de resposta passa a contar só decreto municipal de 29/06/2026 em diante, o corte do Boletim nº 1. Decretos de maio e junho reconhecidos em julho entravam, e a marca sem data do S2iD também. Saem 55 municípios de 11 UFs; o índice nacional vai de 19,2 para 18,3.</dd>
-      <dt>16/11/2026 · Válvula de dia não cruza a janela da noite</dt>
-      <dd>A válvula de dia (ramo `coleta-dia/*`) para antes de coletar quando o começo ou o fim do seu teto cai na janela da noite. Era o que deixava o juiz da válvula escrever os mesmos arquivos que o da noite. A união de conflito passa a somar pela base as tentativas de `busca_dirigida` e o log `promocoes_automaticas.json`, as duas recusas daquele caso.</dd>
-      <dt>15/11/2026 · Juiz da saúde: notícia não é o plano; risco do ciclo pela capa</dt>
-      <dd>O juiz da saúde exige o próprio plano, lê o risco do ciclo também na capa e, se o servidor não responde, a cópia da ponte. O plano promovido disputa o topo no degrau do plano de arboviroses; plano anterior a 2026 não é &quot;feito para o ciclo&quot;; pista recusada ou inalcançável há 21 dias sai da espera.</dd>
-      <dt>16/11/2026 · Planos municipais de arboviroses na consulta do município</dt>
-      <dd>A consulta do município na página de Saúde ganha o cartão &quot;Plano municipal de arboviroses&quot;: tipo do plano julgado, com documento, data e link, ou a classe de ausência. Juiz novo (régua da camada de saúde aplicada ao município) e busca na web para municípios sem diário no acervo. Primeira rodada: 52 municípios com plano. Peso zero (METODOLOGIA §32.4.4).</dd>
-      <dt>15/11/2026 · Juiz da saúde: plano de arboviroses e download de arquivo</dt>
-      <dd>O juiz da camada de saúde aceita o plano de arboviroses como objeto do ciclo (a régua municipal o punha fora do objeto: MA, SE) e reconhece como documento o arquivo servido por endereço de download (RN, TO). O teste da página passa a conhecer o tipo &quot;vigência encerrada&quot;.</dd>
-      <dt>15/11/2026 · Plano estadual de saúde com vigência encerrada</dt>
-      <dd>Quando o último plano de saúde localizado de um estado declara um período já encerrado, como 2024-2025, ele aparece na página como &quot;último plano localizado com vigência encerrada&quot;, com título e link, e não pontua. Plano sem período declarado segue a regra de sempre. A regra está na metodologia. O juiz passa a reconhecer plano em título que é nome de arquivo (RR, RO).</dd>
     </dl>
   </section>
 </main>
@@ -177,7 +177,7 @@
       <a href="https://institutoar.org.br/" target="_blank" rel="noopener" title="Instituto Ar" class="mast-logo"><img class="logo-parceiro" src="assets/parceiros/instituto-ar-positivo.svg?v=da374906" alt="Instituto Ar" width="124" height="26"></a></div>
     </div>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">21/11/2026</span> · Corte <span id="corteDados">21/11/2026</span> · Coleta <span id="metaColeta">21/11/2026</span> · Publicação <span id="metaPublicacao">21/11/2026</span></span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">22/11/2026</span> · Corte <span id="corteDados">22/11/2026</span> · Coleta <span id="metaColeta">22/11/2026</span> · Publicação <span id="metaPublicacao">22/11/2026</span></span>
     <span class="rodape-legal" data-conteudo-html="rodape.legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
