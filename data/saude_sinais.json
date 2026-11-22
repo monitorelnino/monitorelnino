@@ -48,8 +48,8 @@
    "orgao": "DOU / diários municipais",
    "papel": "RESPOSTA, peso zero",
    "status": "coletado",
-   "consultado_em": "20/11/2026",
-   "documento": "DOU seção 1, 2026-11-16 a 2026-11-20"
+   "consultado_em": "21/11/2026",
+   "documento": "DOU seção 1, 2026-06-29 a 2026-11-21"
   },
   "painel_calor_ms": {
    "nome": "Painel Nacional de Excesso de Calor",
@@ -584,15 +584,15 @@
   "fonte": "espin",
   "orgao": "Ministério da Saúde (DOU, seção 1)",
   "janela": {
-   "de": "2026-11-16",
-   "ate": "2026-11-20"
+   "de": "2026-06-29",
+   "ate": "2026-11-21"
   },
   "strings_buscadas": [
    "\"Emergência em Saúde Pública de Importância Nacional\"",
    "\"emergência em saúde pública\""
   ],
-  "consultado_em": "20/11/2026",
-  "resultados_lidos": 0,
+  "consultado_em": "21/11/2026",
+  "resultados_lidos": 40,
   "declaracoes": [],
   "pendente_leitura_automatica": [],
   "nao_lidos": [],
@@ -67940,10 +67940,10 @@
  ],
  "emergencias_busca": {
   "federal": {
-   "consultado_em": "20/11/2026",
+   "consultado_em": "21/11/2026",
    "janela": {
-    "de": "2026-11-16",
-    "ate": "2026-11-20"
+    "de": "2026-06-29",
+    "ate": "2026-11-21"
    }
   },
   "estadual": {
@@ -67957,9 +67957,9 @@
     "ate": "2026-11-12"
    },
    "AM": {
-    "consultado_em": "20/11/2026",
-    "edicoes_lidas": 95,
-    "ate": "2026-11-19"
+    "consultado_em": "21/11/2026",
+    "edicoes_lidas": 97,
+    "ate": "2026-11-20"
    },
    "AP": {
     "consultado_em": "19/11/2026",
@@ -68040,9 +68040,7 @@
     "ate": "2026-11-12"
    },
    "RS": {
-    "consultado_em": "19/11/2026",
-    "edicoes_lidas": 197,
-    "ate": "2026-11-18"
+    "lacuna": "edição com declaração não lida pelo juiz"
    },
    "SC": {
     "consultado_em": "19/11/2026",
@@ -68101,9 +68099,9 @@
    {
     "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54799/pdf",
     "uf": "RS",
-    "motivo": "edição sem verbo que declara (menção de passagem)"
+    "motivo": "documento não baixado: URLError"
    }
   ],
-  "julgado_em": "20/11/2026"
+  "julgado_em": "21/11/2026"
  }
 }
