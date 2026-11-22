@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-22 · #1969 · Rodada J18: rejulgamento paralelo 1.8 atualizado
+
+Só `data/paralelo_juiz18.json`; nada do índice lê o arquivo. Produção com 34.272 decisões; 564 julgadas com documento local; 9.684 seguem sem cópia local (ponte sem envio desde 21/11). Efeito das 564: 38 decisões mudam (33 perdem a promoção, 5 ganham), concentradas no RS. Efeito no índice por UF fica para o rejulgamento completo.
+
 ## 2026-11-22 · #1968 · Buscador 2: sem via vira recusa, queda ou página sem candidato
 O resumo da rodada chamava "falha" a pista sem via: recusa da fonte (403, muro de robô), queda de rede e página lida sem candidato. Uma função pura separa as três, com autoteste. Só rótulo; nenhum dado muda.
 

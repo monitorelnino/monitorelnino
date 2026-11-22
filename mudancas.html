@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>22/11/2026 · Rodada J18: rejulgamento paralelo 1.8 atualizado</dt>
+      <dd>Só `data/paralelo_juiz18.json`; nada do índice lê o arquivo. Produção com 34.272 decisões; 564 julgadas com documento local; 9.684 seguem sem cópia local (ponte sem envio desde 21/11). Efeito das 564: 38 decisões mudam (33 perdem a promoção, 5 ganham), concentradas no RS. Efeito no índice por UF fica para o rejulgamento completo.</dd>
       <dt>22/11/2026 · Buscador 2: sem via vira recusa, queda ou página sem candidato</dt>
       <dd>O resumo da rodada chamava &quot;falha&quot; a pista sem via: recusa da fonte (403, muro de robô), queda de rede e página lida sem candidato. Uma função pura separa as três, com autoteste. Só rótulo; nenhum dado muda.</dd>
       <dt>22/11/2026 · Triagem conta o prazo pela data da noite</dt>
@@ -162,8 +164,6 @@
       <dd>O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11.</dd>
       <dt>16/11/2026 · Dicas de decreto sem frase sobre qualidade da resposta</dt>
       <dd>A dica sob a parcela da população com decreto, na inicial e na Saúde, passa a descrever só o que o número mede; sai a frase &quot;Não avalia a qualidade da resposta.&quot;. Catálogo, fallbacks e índice de conteúdo regerados.</dd>
-      <dt>16/11/2026 · Resposta conta só decreto a partir de 29/06</dt>
-      <dd>O contador de resposta passa a contar só decreto municipal de 29/06/2026 em diante, o corte do Boletim nº 1. Decretos de maio e junho reconhecidos em julho entravam, e a marca sem data do S2iD também. Saem 55 municípios de 11 UFs; o índice nacional vai de 19,2 para 18,3.</dd>
     </dl>
   </section>
 </main>
