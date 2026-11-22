@@ -20,7 +20,7 @@
    "status_robots": "proibe",
    "crawl_delay": 30.0,
    "primeiro_acesso": "2026-09-23",
-   "total_acessos": 55,
+   "total_acessos": 56,
    "acessos": [
     {
      "url": "https://defesacivil.mt.gov.br/",
@@ -351,9 +351,15 @@
      "quando": "2026-10-26T07:46:02Z",
      "origem": "robo",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://defesacivil.mt.gov.br/",
+     "quando": "2026-11-22T02:36:02Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-10-26"
+   "ultimo_acesso": "2026-11-21"
   },
   "news.google.com": {
    "status_robots": "proibe",
@@ -3005,14 +3011,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 9450,
+   "total_acessos": 9451,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.886-de-3-de-setembro-de-2026-730234723",
-     "quando": "2026-11-22T02:27:11Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.884-de-3-de-setembro-de-2026-730216547",
      "quando": "2026-11-22T02:27:15Z",
@@ -4205,6 +4205,12 @@
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.979-de-12-de-novembro-de-2026-744142286",
      "quando": "2026-11-22T02:40:08Z",
      "origem": "coletar_recursos_resposta",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-mma-n-1.717-de-19-de-junho-de-2026-714110982",
+     "quando": "2026-11-22T01:13:29Z",
+     "origem": "coletar_prioritarios_mma",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
