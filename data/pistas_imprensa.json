@@ -10261,6 +10261,14 @@
     "hash_evidencia": "5b232aed6c90264dea93be0fd5d52e586df2cf0ee6cdcba7b63675e547c1cb83"
    },
    "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
    "preparacao": {
     "data": "23/11/2026",
     "versao": 2,
@@ -10279,15 +10287,7 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "resposta",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ]
+   }
   },
   {
    "municipio": "Votuporanga",
@@ -10311,6 +10311,14 @@
     "hash_evidencia": "52b3e7343617c34e3ef6b3d3bf43808cf8169e2a05349a6dfb822b798b904ab4"
    },
    "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
    "preparacao": {
     "data": "23/11/2026",
     "versao": 2,
@@ -10329,15 +10337,7 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "resposta",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ]
+   }
   },
   {
    "municipio": "Votuporanga",
@@ -10361,6 +10361,14 @@
     "hash_evidencia": "515cfa87d209bbab29c02ec57d3e37dca1c82e8d9590a4ecec6ee518a048368c"
    },
    "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
    "preparacao": {
     "data": "23/11/2026",
     "versao": 2,
@@ -10379,15 +10387,7 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "resposta",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ]
+   }
   },
   {
    "municipio": "Votuporanga",
@@ -12179,6 +12179,14 @@
     "hash_evidencia": "f3e150ff98b4d21f577f9d6b23d9bf349e88f2b62054a771393d58a1777a4d4c"
    },
    "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
    "preparacao": {
     "data": "23/11/2026",
     "versao": 2,
@@ -12197,15 +12205,7 @@
      "motivo": "portão automático: ato de 2024 — pode ser edição anterior; abstenção registrada"
     },
     "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "resposta",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ]
+   }
   },
   {
    "municipio": "Bom Jesus dos Perdões",
@@ -43710,7 +43710,7 @@
     "hash_evidencia": "880de0c1abd7ad3a561035b462359a4741a2503c838f5080adc64d25b1d365cb"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 1
+   "repeticoes": 2
   },
   {
    "municipio": "Votuporanga",
@@ -44245,11 +44245,6 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "proxima_tentativa_em": "2026-11-24",
-   "triagem": {
-    "em": "2026-11-23",
-    "desfecho": "sem documento oficial localizado",
-    "motivo": "54 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa"
-   },
    "juiz_tentativas": [
     {
      "em": "2026-11-23",
@@ -44257,7 +44252,12 @@
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "triagem": {
+    "em": "2026-11-23",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "54 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa"
+   }
   },
   {
    "municipio": "Colombo",
@@ -44621,11 +44621,6 @@
     "hash_evidencia": "69b707c3ba9d0f6172bceadc118031b333c9c80a0bb611265eb14dbfbc918567"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "triagem": {
-    "em": "2026-11-23",
-    "desfecho": "sem documento oficial localizado",
-    "motivo": "54 dias na fila (prazo de 21); lida e recusada: resposta"
-   },
    "juiz_tentativas": [
     {
      "em": "2026-11-23",
@@ -44633,7 +44628,12 @@
      "motivo": "titulo_nao_e_plano",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "triagem": {
+    "em": "2026-11-23",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "54 dias na fila (prazo de 21); lida e recusada: resposta"
+   }
   },
   {
    "municipio": "Pinhais",
@@ -44663,11 +44663,6 @@
     "hash_evidencia": "c0d53a8af4dd3c1b514f68bcdacfbb7da87c195be524079bd76b35125c0e320e"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "triagem": {
-    "em": "2026-11-23",
-    "desfecho": "sem documento oficial localizado",
-    "motivo": "54 dias na fila (prazo de 21); lida e recusada: resposta"
-   },
    "juiz_tentativas": [
     {
      "em": "2026-11-23",
@@ -44675,7 +44670,12 @@
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "triagem": {
+    "em": "2026-11-23",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "54 dias na fila (prazo de 21); lida e recusada: resposta"
+   }
   },
   {
    "municipio": "Pinhais",
@@ -46583,7 +46583,7 @@
     "hash_evidencia": "cf327af58c346333bafec67603779e352740204dccdc2bd737c0c93d90d07441"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 2,
+   "repeticoes": 3,
    "triagem": {
     "em": "2026-11-22",
     "desfecho": "sem documento oficial localizado",
@@ -47253,6 +47253,14 @@
     "hash_evidencia": "697a4b9031d8601a5f18a7844da912a876e0d6090fa4e61e23106edca7079378"
    },
    "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
    "preparacao": {
     "data": "23/11/2026",
     "versao": 2,
@@ -47271,15 +47279,7 @@
      "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
     },
     "resultado": "preparada"
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "resposta",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ]
+   }
   },
   {
    "municipio": "São Vicente",
@@ -55596,7 +55596,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "72ebce20bf388f77cdcf057808249d13a4ce0c871f7ee69cdf3c38ccb35480bb"
    },
-   "repeticoes": 3
+   "repeticoes": 5
   },
   {
    "municipio": "União da Vitória",
@@ -58587,7 +58587,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "759d6880470bda1221ccb105d3b730bd13fb808fd4bd59a90aa14ee9dff1c61e"
    },
-   "repeticoes": 3
+   "repeticoes": 4
   },
   {
    "municipio": "Ponta Porã",
@@ -300400,7 +300400,7 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "76faa0004f4b8427a4f3520f16e7784152a4f5c9937cdb494eb031f842d74194"
    },
-   "repeticoes": 2
+   "repeticoes": 3
   },
   {
    "municipio": "Itaquiraí",
@@ -366487,7 +366487,7 @@
     "julgado_em": "2026-11-19",
     "hash_evidencia": "f475aad3fbf274b064e4aa18567eec79d31e89df2737988ddf7bf5cecf0fd6ee"
    },
-   "repeticoes": 1
+   "repeticoes": 2
   },
   {
    "municipio": "Porto Acre",
@@ -390468,7 +390468,7 @@
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "repeticoes": 12
+   "repeticoes": 13
   },
   {
    "municipio": "Paty do Alferes",
@@ -403730,6 +403730,15 @@
     "julgado_em": "2026-11-23",
     "hash_evidencia": "ef99f79f2a189295dc0e033924392106cce0a499bdcd1933ac0935fc09f67642"
    },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
    "juiz_tentativas": [
     {
      "em": "2026-11-22",
@@ -403742,15 +403751,6 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
-    }
-   ],
-   "busca_dirigida": [
-    {
-     "em": "2026-11-23",
-     "fontes": [
-      "querido_diario"
-     ],
-     "encontrou": null
     }
    ]
   },
@@ -427743,7 +427743,7 @@
     "julgado_em": "2026-11-22",
     "hash_evidencia": "5344a4b004f80a8d017606a9cec64767555d48f0c1aaca181b541751cc6a1c00"
    },
-   "repeticoes": 1
+   "repeticoes": 3
   },
   {
    "municipio": "Cabo de Santo Agostinho",
@@ -437028,7 +437028,8 @@
     "hash_evidencia": "8b0483d349c25d88f340ba764e09c047295c3bda85b4a180c00523042576c133"
    },
    "ultima_busca_em": "2026-11-22",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "repeticoes": 1
   },
   {
    "municipio": "Santa Maria da Boa Vista",
@@ -442995,7 +442996,7 @@
    "atribuicao_corrigida_em": "2026-11-16",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "status_anterior": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
-   "repeticoes": 5,
+   "repeticoes": 6,
    "entrada": "municipio",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -449862,6 +449863,15 @@
     "julgado_em": "2026-11-23",
     "hash_evidencia": "26f538ce1f142fd1f9b007ad9a5413e050f502b40067e50838a90824da1a5674"
    },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
    "juiz_tentativas": [
     {
      "em": "2026-11-22",
@@ -449874,15 +449884,6 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
-    }
-   ],
-   "busca_dirigida": [
-    {
-     "em": "2026-11-23",
-     "fontes": [
-      "querido_diario"
-     ],
-     "encontrou": null
     }
    ]
   },
@@ -500252,6 +500253,15 @@
     ],
     "tentativas": 2
    },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
    "juiz_tentativas": [
     {
      "em": "2026-11-23",
@@ -500264,15 +500274,6 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
-    }
-   ],
-   "busca_dirigida": [
-    {
-     "em": "2026-11-23",
-     "fontes": [
-      "querido_diario"
-     ],
-     "encontrou": null
     }
    ]
   },
@@ -502466,8 +502467,6 @@
      "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-11-23",
-   "tentativas_de_busca_dirigida": 1,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -502477,7 +502476,9 @@
     "data": "11/11/2025",
     "julgado_em": "2026-11-23",
     "hash_evidencia": "9a2e68018614d4a2874f838d0888321fed408af85e6d1bb8a5484afc96137828"
-   }
+   },
+   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-23"
   },
   {
    "municipio": "Maravilha",
@@ -516911,8 +516912,6 @@
      "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-11-23",
-   "tentativas_de_busca_dirigida": 1,
    "juiz_tentativas": [
     {
      "em": "2026-11-23",
@@ -516920,7 +516919,9 @@
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-23"
   },
   {
    "municipio": "Balneário Barra do Sul",
@@ -521394,6 +521395,15 @@
    },
    "ultima_busca_em": "2026-11-23",
    "tentativas_de_busca_dirigida": 2,
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
    "juiz_tentativas": [
     {
      "em": "2026-11-23",
@@ -521406,15 +521416,6 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
-    }
-   ],
-   "busca_dirigida": [
-    {
-     "em": "2026-11-23",
-     "fontes": [
-      "querido_diario"
-     ],
-     "encontrou": null
     }
    ]
   },
@@ -525877,7 +525878,8 @@
     "data": "2022",
     "julgado_em": "2026-11-23",
     "hash_evidencia": "95880854628bc7bdcabaffeffb9efc9b17b5f85412a03d71b420e1652e853c12"
-   }
+   },
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -526205,7 +526207,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-30"
+   "proxima_tentativa_em": "2026-11-30",
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -593590,14 +593593,6 @@
     "lido_em": "2026-11-23",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "fora_do_objeto",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -593607,7 +593602,15 @@
     "data": "26/11/2024",
     "julgado_em": "2026-11-23",
     "hash_evidencia": "40dbcc7fdfe71618156bec9b282e5dd4366b6932795565a2263a801975f523cb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -644083,7 +644086,7 @@
    "tipo": "plano",
    "entrada": "uf",
    "nivel_confianca": "B",
-   "repeticoes": 1,
+   "repeticoes": 2,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -660898,7 +660901,6 @@
     "julgado_em": "2026-11-23",
     "hash_evidencia": "0396ff261f78c28cbe01af3616713afe5ceb3cb88e1b26003278da9c28892025"
    },
-   "repeticoes": 1,
    "juiz_tentativas": [
     {
      "em": "2026-11-23",
@@ -660906,7 +660908,8 @@
      "motivo": "titulo_nao_e_plano",
      "codebook": "1.8 (30/10/2026)"
     }
-   ]
+   ],
+   "repeticoes": 1
   },
   {
    "municipio": "Maracaju",
@@ -727988,7 +727991,7 @@
     "julgado_em": "2026-11-11",
     "hash_evidencia": "155f81ca6bb5f12fd6d6486a9f6f7753ec92a5de9a1f3a176247dceec84e8b52"
    },
-   "repeticoes": 8
+   "repeticoes": 9
   },
   {
    "municipio": "Água Doce do Norte",
@@ -742225,7 +742228,7 @@
    "alvo": "3201308",
    "entrada": "uf",
    "status": "pista — recusada pelo juiz: data_nao_confirmada",
-   "repeticoes": 5,
+   "repeticoes": 8,
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -744123,7 +744126,7 @@
    "alvo": "3202256",
    "entrada": "uf",
    "status": "promovida — o juiz leu o documento e promoveu (plano)",
-   "repeticoes": 3,
+   "repeticoes": 4,
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -748783,7 +748786,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "uf",
-   "repeticoes": 4,
+   "repeticoes": 5,
    "nivel_confianca": "A",
    "pontos_confianca": 8,
    "sinais": [
@@ -749401,7 +749404,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "uf",
-   "repeticoes": 3,
+   "repeticoes": 4,
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
@@ -756937,6 +756940,9 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 8,
    "sinais": [
@@ -756944,9 +756950,6 @@
     "municipio_no_titulo",
     "plano_no_titulo",
     "ato_formal"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -756976,15 +756979,15 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 6,
    "sinais": [
     "fonte_oficial",
     "plano_no_titulo",
     "ato_formal"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757014,6 +757017,7 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [],
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
@@ -757021,7 +757025,6 @@
     "municipio_na_url",
     "plano_no_titulo"
    ],
-   "alertas": [],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -757050,30 +757053,8 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — recusada pelo juiz: plano_sem_identificacao",
-   "nivel_confianca": "B",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo",
-    "ato_formal"
-   ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "plano_sem_identificacao",
-     "codebook": "1.8 (30/10/2026)"
-    }
    ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -757084,6 +757065,28 @@
     "data": null,
     "julgado_em": "2026-11-23",
     "hash_evidencia": "5b3bbbdd88e8d8f3c4560f005566df91cee72b932843badc6aea4be4fbd48d3a"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "nivel_confianca": "B",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_titulo",
+    "ato_formal"
+   ],
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-23",
+    "criterios": {}
    }
   },
   {
@@ -757106,15 +757109,15 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 6,
    "sinais": [
     "fonte_oficial",
     "plano_no_titulo",
     "ato_formal"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757144,15 +757147,15 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 6,
    "sinais": [
     "fonte_oficial",
     "plano_no_titulo",
     "ato_formal"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757182,30 +757185,8 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
-   "nivel_confianca": "B",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo",
-    "ato_formal"
-   ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-23",
-     "classe": "criterio",
-     "motivo": "titulo_nao_e_plano",
-     "codebook": "1.8 (30/10/2026)"
-    }
    ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -757216,6 +757197,28 @@
     "data": null,
     "julgado_em": "2026-11-23",
     "hash_evidencia": "78e4967d29a1eaa9265d58e72f5fdc8a6fa7b7665dd09932f8f0ef04f0febba0"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "nivel_confianca": "B",
+   "pontos_confianca": 6,
+   "sinais": [
+    "fonte_oficial",
+    "plano_no_titulo",
+    "ato_formal"
+   ],
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-23",
+    "criterios": {}
    }
   },
   {
@@ -757238,15 +757241,15 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 6,
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
     "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757276,6 +757279,9 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 6,
    "sinais": [
@@ -757283,9 +757289,6 @@
     "municipio_na_url",
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757315,6 +757318,7 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [],
    "nivel_confianca": "B",
    "pontos_confianca": 5,
    "sinais": [
@@ -757322,7 +757326,6 @@
     "municipio_na_url",
     "plano_no_titulo"
    ],
-   "alertas": [],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -757351,6 +757354,9 @@
    "entrada": "municipio",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 7,
    "sinais": [
@@ -757358,9 +757364,6 @@
     "municipio_na_url",
     "plano_no_titulo",
     "ato_formal"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757390,6 +757393,7 @@
    "entrada": "uf",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [],
    "nivel_confianca": "B",
    "pontos_confianca": 5,
    "sinais": [
@@ -757397,7 +757401,6 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": [],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -757426,15 +757429,15 @@
    "entrada": "uf",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 5,
    "sinais": [
     "fonte_oficial",
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757464,6 +757467,7 @@
    "entrada": "uf",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [],
    "nivel_confianca": "A",
    "pontos_confianca": 7,
    "sinais": [
@@ -757472,7 +757476,6 @@
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": [],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -757501,14 +757504,14 @@
    "entrada": "uf",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
     "fonte_oficial",
     "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757538,14 +757541,14 @@
    "entrada": "uf",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
     "fonte_oficial",
     "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757575,14 +757578,14 @@
    "entrada": "uf",
    "registrado_em": "2026-11-21",
    "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "alertas": [
+    "ano_anterior_ao_ciclo"
+   ],
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
     "fonte_oficial",
     "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
    ],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
@@ -757742,7 +757745,10 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "municipio",
+   "alertas": [],
    "buscador2_em": "2026-11-22",
+   "nivel_confianca": "B",
+   "pontos_confianca": 5,
    "seguimento": {
     "data": "22/11/2026",
     "via": "",
@@ -757753,14 +757759,11 @@
     ],
     "tentativas": 1
    },
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
     "plano_no_trecho"
    ],
-   "alertas": [],
    "verificacao_fonte": {
     "versao": "1.0 (29/09/2026)",
     "exibivel": false,
@@ -757798,32 +757801,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "buscador2_em": "2026-11-22",
-   "seguimento": {
-    "data": "22/11/2026",
-    "via": "",
-    "candidatos": 0,
-    "pistas_novas": 0,
-    "falhas": [
-     "pagina: URLError"
-    ],
-    "tentativas": 1
-   },
-   "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -757855,21 +757833,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "municipio",
-   "nivel_confianca": "A",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -757900,22 +757864,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "A",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -757947,21 +757896,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "municipio",
-   "repeticoes": 1,
-   "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -757993,24 +757928,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "municipio",
-   "repeticoes": 1,
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -758033,24 +757951,7 @@
    "alvo": "4101507",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758081,32 +757982,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "buscador2_em": "2026-11-22",
-   "seguimento": {
-    "data": "22/11/2026",
-    "via": "documento",
-    "candidatos": 0,
-    "pistas_novas": 0,
-    "falhas": []
-   },
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758137,22 +758013,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758175,24 +758036,7 @@
    "alvo": "3505906",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758223,31 +758067,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "buscador2_em": "2026-11-22",
-   "seguimento": {
-    "data": "22/11/2026",
-    "via": "documento",
-    "candidatos": 0,
-    "pistas_novas": 0,
-    "falhas": []
-   },
-   "nivel_confianca": "A",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758278,24 +758098,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758326,22 +758129,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "A",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758364,22 +758152,7 @@
    "alvo": "3506003",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "uf",
-   "nivel_confianca": "A",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_no_titulo",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "uf"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758410,21 +758183,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758455,23 +758214,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "A",
-   "pontos_confianca": 6,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758502,24 +758245,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758550,24 +758276,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo",
-    "familia_de_risco_do_ciclo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758598,24 +758307,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758646,23 +758338,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758693,22 +758369,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
-   "sinais": [
-    "fonte_oficial",
-    "municipio_na_url",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758739,23 +758400,7 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo"
-   ],
-   "alertas": [
-    "ano_anterior_ao_ciclo"
-   ],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "veiculo_nao_listado",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
@@ -758786,21 +758431,325 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Natal",
+   "uf": "RN",
+   "ibge": "2408102",
+   "url": "https://pmrr.natal.rn.gov.br/assets/arquivos/4_Resumo%20Executivo%20_-_PMRR_-_NATAL.pdf",
+   "titulo": "S24 · Aliança/PE: Plano Municipal de Redução de Riscos Município do Natal",
+   "trecho": "Plano Municipal de Redução de Riscos Município do Natal",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-22",
+   "registrado_em": "2026-11-22",
+   "origem_do_coletor": "descoberta",
+   "id": "d6f44bf74a",
+   "url_final": "https://pmrr.natal.rn.gov.br/assets/arquivos/4_Resumo%20Executivo%20_-_PMRR_-_NATAL.pdf",
+   "alvo": "2408102",
+   "municipio_atribuido_antes": {
+    "municipio": "Aliança",
+    "uf": "PE",
+    "ibge": "2600708",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-22",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "ibge": "4109401",
+   "url": "https://concidade.guarapuava.pr.gov.br/concidade/download/planos_municipais/Plano_Municipal_de_Saneamento_Guarapuava_2018_2021_versao_audiencia.pdf",
+   "titulo": "S24 · Campo Mourão/PR: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CONCIDADE",
+   "trecho": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CONCIDADE",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "f5c916148b",
+   "url_final": "https://concidade.guarapuava.pr.gov.br/concidade/download/planos_municipais/Plano_Municipal_de_Saneamento_Guarapuava_2018_2021_versao_audiencia.pdf",
+   "alvo": "4109401",
+   "municipio_atribuido_antes": {
+    "municipio": "Campo Mourão",
+    "uf": "PR",
+    "ibge": "4104303",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
    "entrada": "municipio",
-   "nivel_confianca": "B",
-   "pontos_confianca": 4,
-   "sinais": [
-    "fonte_oficial",
-    "plano_no_titulo"
-   ],
-   "alertas": [],
-   "verificacao_fonte": {
-    "versao": "1.0 (29/09/2026)",
-    "exibivel": false,
-    "motivo": "sem_https",
-    "lido_em": "2026-11-23",
-    "criterios": {}
-   }
+   "repeticoes": 1
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Cascavel",
+   "uf": "PR",
+   "ibge": "4104808",
+   "url": "https://www.sjp.pr.gov.br/wp-content/uploads/2017/11/PMSB-Volume-2-%C3%81gua-e-Esgoto.pdf",
+   "titulo": "S24 · Cascavel/PR: PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE SÃO JOSÉ ...",
+   "trecho": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE SÃO JOSÉ ...",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "4612268a93",
+   "url_final": "https://www.sjp.pr.gov.br/wp-content/uploads/2017/11/PMSB-Volume-2-%C3%81gua-e-Esgoto.pdf",
+   "alvo": "4104808",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Colombo",
+   "uf": "PR",
+   "ibge": "4105805",
+   "url": "https://prefeitura.colombo.pr.gov.br/wp-content/uploads/2024/08/01_Relatorio3PMRR_Volume1Palmital.pdf",
+   "titulo": "S24 · Colombo/PR: PLANO MUNICIPAL DE REDUÇÃO DE RISCOS - PMRR ETAPA 3",
+   "trecho": "PLANO MUNICIPAL DE REDUÇÃO DE RISCOS - PMRR ETAPA 3",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "3c7709d495",
+   "url_final": "https://prefeitura.colombo.pr.gov.br/wp-content/uploads/2024/08/01_Relatorio3PMRR_Volume1Palmital.pdf",
+   "alvo": "4105805",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Nova Fátima",
+   "uf": "PR",
+   "ibge": "4117008",
+   "url": "https://www.novafatima.pr.gov.br/sus/download/3/",
+   "titulo": "S24 · Cornélio Procópio/PR: Plano Municipal de Saúde 2022/2025",
+   "trecho": "Plano Municipal de Saúde 2022/2025",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "e1b8090292",
+   "url_final": "https://www.novafatima.pr.gov.br/sus/download/3/",
+   "alvo": "4117008",
+   "municipio_atribuido_antes": {
+    "municipio": "Cornélio Procópio",
+    "uf": "PR",
+    "ibge": "4106407",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Honório Serpa",
+   "uf": "PR",
+   "ibge": "4109658",
+   "url": "https://honorioserpa.pr.gov.br/arquivos/1645185131.pdf",
+   "titulo": "S24 · Coronel Vivida/PR: PLANO MUNICIPAL DE SAÚDE 2022-2025",
+   "trecho": "PLANO MUNICIPAL DE SAÚDE 2022-2025",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "214d543913",
+   "url_final": "https://honorioserpa.pr.gov.br/arquivos/1645185131.pdf",
+   "alvo": "4109658",
+   "municipio_atribuido_antes": {
+    "municipio": "Coronel Vivida",
+    "uf": "PR",
+    "ibge": "4106506",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Mangueirinha",
+   "uf": "PR",
+   "ibge": "4114401",
+   "url": "https://municipe.mangueirinha.pr.gov.br/assets/bancos/anexosaude/Plano%20Municipal%20de%20Saude%202022-2025.pdf",
+   "titulo": "S24 · Coronel Vivida/PR: PLANO MUNICIPAL DE SAÚDE 2022 – 2025",
+   "trecho": "PLANO MUNICIPAL DE SAÚDE 2022 – 2025",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "624dc839c8",
+   "url_final": "https://municipe.mangueirinha.pr.gov.br/assets/bancos/anexosaude/Plano%20Municipal%20de%20Saude%202022-2025.pdf",
+   "alvo": "4114401",
+   "municipio_atribuido_antes": {
+    "municipio": "Coronel Vivida",
+    "uf": "PR",
+    "ibge": "4106506",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Ivoti",
+   "uf": "RS",
+   "ibge": "4310801",
+   "url": "https://camaraivoti.rs.gov.br/assets/files/arquivos/Plano-Municipal-de-Saneamento-e-Residuos-Solidos-Item-p-e-q.pdf",
+   "titulo": "S24 · Bom Jardim/MA: plano municipal de saneamento básico",
+   "trecho": "plano municipal de saneamento básico",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "01938f39ec",
+   "url_final": "https://camaraivoti.rs.gov.br/assets/files/arquivos/Plano-Municipal-de-Saneamento-e-Residuos-Solidos-Item-p-e-q.pdf",
+   "alvo": "4310801",
+   "municipio_atribuido_antes": {
+    "municipio": "Bom Jardim",
+    "uf": "MA",
+    "ibge": "2102002",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Campos do Jordão",
+   "uf": "SP",
+   "ibge": "3509700",
+   "url": "http://camposdojordao.sp.gov.br/Arquivos_Publicacoes/PPA_LDO/22012020-103219-plano-municipal-integrado-de-saneamento-busico.pdf",
+   "titulo": "S24 · Campos do Jordão/SP: plano municipal integrado de saneamento básico campos do jordão",
+   "trecho": "plano municipal integrado de saneamento básico campos do jordão",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "c55a989655",
+   "url_final": "http://camposdojordao.sp.gov.br/Arquivos_Publicacoes/PPA_LDO/22012020-103219-plano-municipal-integrado-de-saneamento-busico.pdf",
+   "alvo": "3509700",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Jacareí",
+   "uf": "SP",
+   "ibge": "3524402",
+   "url": "https://www.jacarei.sp.gov.br/wp-content/uploads/2016/01/plano-de-saneamento-basico-jacarei.pdf",
+   "titulo": "S24 · Campos do Jordão/SP: plano municipal integrado de saneamento básico",
+   "trecho": "plano municipal integrado de saneamento básico",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "877ed6aceb",
+   "url_final": "https://www.jacarei.sp.gov.br/wp-content/uploads/2016/01/plano-de-saneamento-basico-jacarei.pdf",
+   "alvo": "3524402",
+   "municipio_atribuido_antes": {
+    "municipio": "Campos do Jordão",
+    "uf": "SP",
+    "ibge": "3509700",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Piquete",
+   "uf": "SP",
+   "ibge": "3538501",
+   "url": "https://www.piquete.sp.gov.br/instarenv/assets/uploads/file/tdu6fah9.pdf",
+   "titulo": "S24 · Campos do Jordão/SP: plano municipal integrado de saneamento básico piquete",
+   "trecho": "plano municipal integrado de saneamento básico piquete",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "c25cc41ed4",
+   "url_final": "https://www.piquete.sp.gov.br/instarenv/assets/uploads/file/tdu6fah9.pdf",
+   "alvo": "3538501",
+   "municipio_atribuido_antes": {
+    "municipio": "Campos do Jordão",
+    "uf": "SP",
+    "ibge": "3509700",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
   },
   {
    "documento_oficial_confirmado": null,
