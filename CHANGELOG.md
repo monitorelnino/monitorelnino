@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #1977 · Prepara RS: atalhos e planos sem data
+Os 30 planos da CREPDEC 07, publicados como atalhos para um endereço com certificado de outro nome, passam a ser lidos pela cópia pública do Internet Archive. As 59 recusas por falta de data, lidas antes do leitor com OCR, voltam uma vez ao juiz.
 ## 2026-11-23 · #1979 · Fila com prazo: quem espera há mais tempo vai primeiro
 
 O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ordem fixa: o rabo nunca chegava (257 documentos oficiais além de 14 dias; MS, RO e RR sem edição lida desde 11–12/11). Agora o juiz começa pela pista que espera há mais tempo e o canal 2 pela UF de leitura mais velha.

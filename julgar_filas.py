@@ -190,6 +190,9 @@ CORRECOES_DO_JUIZ = (
     ("2026-11-11", None, _de_escritorio),
     # J22 (17/11): o documento do repositório estadual de planos é plano pela origem.
     ("2026-11-17", MOTIVOS_DE_NATUREZA, _do_repositorio),
+    # 18/11: o leitor do juiz passou a ir ao OCR e à cópia pública (`obter_documento`, `com_ocr`); o plano sem data
+    # lida pelo leitor antigo (59 do Prepara RS, PDF escaneado) volta uma vez.
+    ("2026-11-19", ("data_nao_confirmada",), None),
     # 19/11 (Rio Branco/AC): a lei citada na base legal virava o ato do plano (`juiz.ato_proprio`), e o plano que se
     # declara "este plano" sem título no começo caía no J15 (`juiz.se_apresenta_como_plano`; antes, em 17/11, o J21
     # contava linhas). Vale até o fim do dia do merge: o que se julgou hoje com o juiz antigo volta também.
