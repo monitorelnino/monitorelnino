@@ -1,6 +1,6 @@
 {
  "_governanca": "Sondagem de repositórios estaduais de planos municipais (sondar_repositorios_estaduais.py, 13/11/2026). Uma entrada por UF, com a data da sondagem; UF sem página lida segue devida. `nota_de_origem` guarda o que a sondagem manual de 24/09/2026 anotou. Candidata não é repositório declarado: as pistas vão ao juiz, que lê cada documento.",
- "atualizado_em": "2026-11-21",
+ "atualizado_em": "2026-11-22",
  "ufs": {
   "AC": {
    "sondado_em": "2026-11-20",
@@ -392,79 +392,47 @@
    ]
   },
   "MT": {
-   "sondado_em": "2026-11-21",
-   "paginas_lidas": 3,
-   "busca_completa": false,
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 10,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
+   "noticias": [
+    {
+     "url": "https://www.gcnoticias.com.br/geral/15-municipios-de-mt-terao-planos-de-contingencia-para-enfrentar-situacoes-de-emergencia/269996784",
+     "titulo": "15 municípios de MT terão planos de contingência para enfrentar ..."
+    },
+    {
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Chuvas.pdf",
+     "titulo": "Plano de Contingência para desastres provocados por chuvas ..."
+    },
+    {
+     "url": "https://espigaodooeste.ro.gov.br/uploads/678686e2dd349.pdf",
+     "titulo": "COMPDEC PLANO DE CONTINGÊNCIA DE SECA E ESTIAGEM"
+    },
+    {
+     "url": "https://www.saude.ms.gov.br/ms-aprova-planos-de-contingencia-para-enfrentar-desastres-provocados-por-chuvas-e-incendios-florestais/",
+     "titulo": "MS aprova planos de contingência para enfrentar desastres ... - SES"
+    },
+    {
+     "url": "https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA"
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.mt.gov.br/"
    ]
   },
   "PA": {
-   "sondado_em": "2026-11-21",
-   "paginas_lidas": 2,
-   "busca_completa": false,
-   "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
-   ],
-   "paginas_conhecidas": [
-    "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
-    "https://defesacivil.pa.gov.br/"
-   ]
-  },
-  "PB": {
-   "sondado_em": "2026-11-21",
-   "paginas_lidas": 1,
-   "busca_completa": false,
-   "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
-   ],
-   "paginas_conhecidas": [
-    "https://www.defesacivil.pb.gov.br/"
-   ]
-  },
-  "PE": {
-   "sondado_em": "2026-11-21",
-   "paginas_lidas": 1,
-   "busca_completa": false,
-   "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
-   ],
-   "paginas_conhecidas": [
-    "https://www.defesacivil.pe.gov.br/"
-   ]
-  },
-  "PI": {
-   "sondado_em": "2026-11-21",
-   "paginas_lidas": 1,
-   "busca_completa": false,
-   "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
-   ],
-   "paginas_conhecidas": [
-    "https://www.pi.gov.br/planos-de-contigencia"
-   ]
-  },
-  "PR": {
-   "sondado_em": "2026-11-21",
-   "paginas_lidas": 16,
-   "busca_completa": false,
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 8,
+   "busca_completa": true,
    "candidatos": [],
    "noticias": [
+    {
+     "url": "https://www.youtube.com/watch?v=kFUwetLnW0M",
+     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
+    },
     {
      "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
      "titulo": "Elaboração de Plano de Contingencia"
@@ -474,27 +442,152 @@
      "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
     },
     {
+     "url": "https://www.facebook.com/mpseoficial/videos/-cidadesseguras-voc%C3%AA-sabe-o-que-%C3%A9-plano-de-conting%C3%AAncia-%C3%A9-um-documento-estrat%C3%A9gi/3340651579435938/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
+     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
+     "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
+    }
+   ],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
+    "https://defesacivil.pa.gov.br/"
+   ]
+  },
+  "PB": {
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 8,
+   "busca_completa": true,
+   "candidatos": [],
+   "noticias": [
+    {
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+    },
+    {
+     "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
+     "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
+    },
+    {
+     "url": "https://areal.rj.gov.br/wp-content/uploads/2026/06/plano-de-contingencia-estiagem-e-fogo-vegeta-o-areal-2026.pdf",
+     "titulo": "Plano de Contingência Estiagem e Fogo Vegetação – 2026"
+    },
+    {
+     "url": "https://www.scielo.br/j/sdeb/a/gXmPZ9bpWfVkWJVMyz5B6fK/?lang=pt",
+     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/CARIACICA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718201000",
+     "titulo": "cariacica - plano de contingência - 2025 - Cepdec-ES"
+    }
+   ],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.pb.gov.br/"
+   ]
+  },
+  "PE": {
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 8,
+   "busca_completa": true,
+   "candidatos": [],
+   "noticias": [
+    {
+     "url": "https://4fdfdc7ecc7eac3fcdc8af2e4ed6ae07.cdn.bubble.io/f1778090742623x739114112712558800/PLANO%20DE%20CONTING%C3%8ANCIA%20_%20PUBLICA%C3%87%C3%83O.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA - Bubble"
+    },
+    {
+     "url": "https://www.instagram.com/p/DZf4yxRoAwp/",
+     "titulo": "PLANO DE CONTINGÊNCIA 2026 A Prefeitura de São Lourenço da ..."
+    },
+    {
+     "url": "https://revistas.ceeinter.com.br/revistadeestudosinterdisciplinar/pt_BR/article/view/943",
+     "titulo": "governança pública nos planos de contingência de defesa civil ..."
+    },
+    {
+     "url": "https://www.pe.senac.br/gercom/downloads/plano-contingencia-biblioteca-senac.pdf",
+     "titulo": "plano de contingência - Senac"
+    },
+    {
+     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
+     "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
+    }
+   ],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.pe.gov.br/"
+   ]
+  },
+  "PI": {
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 7,
+   "busca_completa": true,
+   "candidatos": [],
+   "noticias": [
+    {
+     "url": "https://4fdfdc7ecc7eac3fcdc8af2e4ed6ae07.cdn.bubble.io/f1778090742623x739114112712558800/PLANO%20DE%20CONTING%C3%8ANCIA%20_%20PUBLICA%C3%87%C3%83O.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA - Bubble"
+    },
+    {
+     "url": "https://santana.ap.gov.br/wp-content/uploads/2025/01/PLANO_DE_CONTINGENCIA_DE_PROTECAO_E_DEFESA_CIVIL.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO ..."
+    },
+    {
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+    },
+    {
+     "url": "https://www.complexodopecem.com.br/wp-content/uploads/2021/06/Plano-de-Contigencia-para-Emergencias-em-Saude-Publica-1.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
+    },
+    {
+     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
+     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
+    }
+   ],
+   "falhas": [
+    "www.diariooficial.pi.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno 101] Network is un"
+   ],
+   "paginas_conhecidas": [
+    "https://www.pi.gov.br/planos-de-contigencia"
+   ]
+  },
+  "PR": {
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 16,
+   "busca_completa": true,
+   "candidatos": [],
+   "noticias": [
+    {
      "url": "https://saojose.sc.gov.br/wp-content/uploads/2025/09/Plano-de-Contingencia-da-SAS-2025.pdf",
      "titulo": "Plano de Contingência da SAS - Prefeitura Municipal De São José"
+    },
+    {
+     "url": "https://www.instagram.com/reel/DflKYBuu-kD/",
+     "titulo": "Orientações, elaboração de planos de contingência, reuniões e ..."
     },
     {
      "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
     },
     {
-     "url": "https://www.instagram.com/reel/DflKYBuu-kD/",
-     "titulo": "Orientações, elaboração de planos de contingência, reuniões e ..."
+     "url": "https://www.pmav.es.gov.br/uploads/documento/6621768484005.pdf",
+     "titulo": "plano de contingência da secretaria municipal de saúde para ..."
+    },
+    {
+     "url": "https://www.instagram.com/reel/Dd6H8mhOqj5/",
+     "titulo": "Rádio CBN Curitiba | Um plano de contingência meteorológica foi ..."
     }
    ],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
-   ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.pr.gov.br/"
    ]
   },
   "RJ": {
-   "sondado_em": "2026-11-21",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
@@ -508,7 +601,7 @@
    ]
   },
   "RN": {
-   "sondado_em": "2026-11-21",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
@@ -521,35 +614,38 @@
    ]
   },
   "RO": {
-   "sondado_em": "2026-11-21",
-   "paginas_lidas": 6,
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 7,
    "busca_completa": false,
    "candidatos": [],
    "noticias": [
+    {
+     "url": "https://calmon.sc.gov.br/uploads-amarp/sites/273/2021/12/2233722_PLANO_CONTINGENCIA_MUNICIPAL_CALMON_EDUCACAO.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA- EDUCAÇÃO"
+    },
     {
      "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
      "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
     },
     {
-     "url": "https://ipam.org.br/wp-content/uploads/2021/03/IPAM-PLANO-MITIGACAO-RIO-BRANCO_V34.pdf",
-     "titulo": "PLANO MUNICIPAL DE MITIGAÇÃO E ADAPTAÇÃO ÀS ..."
+     "url": "https://agencia.ac.gov.br/governo-planeja-acoes-de-contingencia-para-possiveis-cheias-dos-rios/",
+     "titulo": "Governo planeja ações de contingência para possíveis cheias dos ..."
     },
     {
-     "url": "https://pep.ifsp.edu.br/images/PDF/BIB/2024/Plano_de_contingncia_2024_com_anexos.pdf",
-     "titulo": "plano de contingência da biblioteca do instituto federal de educação ..."
+     "url": "https://ipam.org.br/wp-content/uploads/2021/03/IPAM-PLANO-MITIGACAO-RIO-BRANCO_V34.pdf",
+     "titulo": "PLANO MUNICIPAL DE MITIGAÇÃO E ADAPTAÇÃO ÀS ..."
     }
    ],
    "falhas": [
     "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]",
-    "www.defesacivil.ro.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno -3] Temporary fail",
-    "www.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno 104] Connection re"
+    "www.defesacivil.ro.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno -3] Temporary fail"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.ro.gov.br/"
    ]
   },
   "RR": {
-   "sondado_em": "2026-11-21",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [],
@@ -563,7 +659,7 @@
    ]
   },
   "RS": {
-   "sondado_em": "2026-11-21",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 1,
    "busca_completa": false,
    "candidatos": [

@@ -2819,7 +2819,7 @@
    "status_robots": "proibe",
    "crawl_delay": 30.0,
    "primeiro_acesso": "2026-09-23",
-   "total_acessos": 7,
+   "total_acessos": 12,
    "acessos": [
     {
      "url": "http://www.defesacivil.mt.gov.br/sitemap.xml",
@@ -2862,9 +2862,39 @@
      "quando": "2026-11-22T02:40:39Z",
      "origem": "sondar_repositorios_estaduais",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/",
+     "quando": "2026-11-23T01:59:58Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/w/defesa-civil-de-mt-refor%C3%A7a-planejamento-dos-munic%C3%ADpios-para-situa%C3%A7%C3%B5es-de-emerg%C3%AAncia-com-orienta%C3%A7%C3%B5es-t%C3%A9cnicas",
+     "quando": "2026-11-23T02:00:45Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/o-que-e-protecao-e-defesa-civil",
+     "quando": "2026-11-23T02:01:09Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/compdecs",
+     "quando": "2026-11-23T02:01:46Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.defesacivil.mt.gov.br/cursos-em-andamento",
+     "quando": "2026-11-23T02:01:57Z",
+     "origem": "sondar_repositorios_estaduais",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-21"
+   "ultimo_acesso": "2026-11-22"
   },
   "www.diariomunicipal.sc.gov.br": {
    "status_robots": "proibe",
@@ -19307,6 +19337,21 @@
      "url": "https://www.tomazina.pr.gov.br/pagina/9/documentos-secretaria-municipal-da-saude/download/49/",
      "quando": "2026-11-23T02:15:31Z",
      "origem": "buscador2",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-11-22"
+  },
+  "www.secom.mt.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": 30.0,
+   "primeiro_acesso": "2026-11-22",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "https://www.secom.mt.gov.br/documents/21013/63190222/Plano+de+Conting%C3%AAncia+contra+dengue.pdf/4ccf3c28-1137-1bff-4e36-4891041b8749?t=1707407981255",
+     "quando": "2026-11-23T02:01:03Z",
+     "origem": "sondar_repositorios_estaduais",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
