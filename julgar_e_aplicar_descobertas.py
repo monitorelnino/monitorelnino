@@ -153,7 +153,10 @@ def obter_documento(url, timeout=40, origem=None, buscar_fn=None):
 
 def com_ocr(raw, texto):
     """O texto do documento; PDF sem camada de texto vai ao OCR (o mesmo motor da preservação)."""
-    if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR:
+    # 23/11: a régua é por página. Um cabeçalho digitado repetido em cada página de um PDF escaneado
+    # (São Valentim do Sul/RS: 245 letras em 5 páginas) passava da régua total e o OCR não rodava.
+    paginas = max(1, len(re.findall(rb"/Type\s*/Page[^s]", raw)))
+    if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR * paginas:
         return texto_por_ocr(raw) or texto
     return texto
 
@@ -1115,6 +1118,15 @@ def self_test():
         z.writestr("word/document.xml", "<w:p><w:t>PLANO DE CONTING&#202;NCIA</w:t></w:p><w:p><w:t>Itati</w:t></w:p>")
     assert texto_do_documento(_b.getvalue(), "https://x/p.docx") == "PLANO DE CONTINGÊNCIA Itati"
     assert texto_do_documento(b"%PDF-1.4 sem texto", "https://x/p.pdf") == ""
+    # Régua do OCR por página: cabeçalho repetido em PDF escaneado não dispensa o OCR.
+    _ocr = globals()["texto_por_ocr"]
+    try:
+        globals()["texto_por_ocr"] = lambda raw: "TEXTO DO OCR"
+        _cinco = b"%PDF-1.4 " + b"/Type /Page " * 5
+        assert com_ocr(_cinco, "MUNICÍPIO DE SÃO VALENTIM DO SUL " * 9) == "TEXTO DO OCR"
+        assert com_ocr(b"%PDF-1.4 /Type /Page ", "PLANO DE CONTINGÊNCIA " * 20).startswith("PLANO")
+    finally:
+        globals()["texto_por_ocr"] = _ocr
     assert texto_do_documento(b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1" + b"x" * 900, "https://x/p.doc") == ""
     # 23/11: o .doc do Word 97–2003 passou a ser lido (6 planos do Prepara RS vinham vazios); o que não é do Word segue "".
     import base64 as _b64, zlib as _zl
