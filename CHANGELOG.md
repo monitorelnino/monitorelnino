@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #2001 · Defeso: aviso antigo na evidência vai à fonte
+
+A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.
+
 ## 2026-11-23 · #1996 · Leitor de .doc: só as correntes da raiz
 
 O .doc com objeto do Word embutido (Chuvisca/RS) saía sem texto: o leitor misturava o texto do documento com a tabela do objeto. Agora lê só as correntes da raiz do arquivo.
