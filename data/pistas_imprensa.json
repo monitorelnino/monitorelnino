@@ -52856,7 +52856,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "72ebce20bf388f77cdcf057808249d13a4ce0c871f7ee69cdf3c38ccb35480bb"
    },
-   "repeticoes": 3
+   "repeticoes": 4
   },
   {
    "municipio": "União da Vitória",
@@ -519275,7 +519275,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "proxima_tentativa_em": "2026-11-22",
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -717143,7 +717144,7 @@
     "julgado_em": "2026-11-11",
     "hash_evidencia": "155f81ca6bb5f12fd6d6486a9f6f7753ec92a5de9a1f3a176247dceec84e8b52"
    },
-   "repeticoes": 8
+   "repeticoes": 9
   },
   {
    "municipio": "Água Doce do Norte",
@@ -731340,7 +731341,7 @@
    "alvo": "3201308",
    "entrada": "uf",
    "status": "pista — recusada pelo juiz: data_nao_confirmada",
-   "repeticoes": 5,
+   "repeticoes": 6,
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -738459,7 +738460,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "uf",
-   "repeticoes": 3,
+   "repeticoes": 4,
    "nivel_confianca": "B",
    "pontos_confianca": 4,
    "sinais": [
@@ -746523,7 +746524,8 @@
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -747149,6 +747151,177 @@
     "veredito_do_juiz": null
    },
    "atribuicao_corrigida_em": "2026-11-22",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "ibge": "4109401",
+   "url": "https://concidade.guarapuava.pr.gov.br/concidade/download/planos_municipais/Plano_Municipal_de_Saneamento_Guarapuava_2018_2021_versao_audiencia.pdf",
+   "titulo": "S24 · Campo Mourão/PR: PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CONCIDADE",
+   "trecho": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO - CONCIDADE",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "f5c916148b",
+   "url_final": "https://concidade.guarapuava.pr.gov.br/concidade/download/planos_municipais/Plano_Municipal_de_Saneamento_Guarapuava_2018_2021_versao_audiencia.pdf",
+   "alvo": "4109401",
+   "municipio_atribuido_antes": {
+    "municipio": "Campo Mourão",
+    "uf": "PR",
+    "ibge": "4104303",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio",
+   "repeticoes": 1
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Cascavel",
+   "uf": "PR",
+   "ibge": "4104808",
+   "url": "https://www.sjp.pr.gov.br/wp-content/uploads/2017/11/PMSB-Volume-2-%C3%81gua-e-Esgoto.pdf",
+   "titulo": "S24 · Cascavel/PR: PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE SÃO JOSÉ ...",
+   "trecho": "PLANO MUNICIPAL DE SANEAMENTO BÁSICO DE SÃO JOSÉ ...",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "4612268a93",
+   "url_final": "https://www.sjp.pr.gov.br/wp-content/uploads/2017/11/PMSB-Volume-2-%C3%81gua-e-Esgoto.pdf",
+   "alvo": "4104808",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Colombo",
+   "uf": "PR",
+   "ibge": "4105805",
+   "url": "https://prefeitura.colombo.pr.gov.br/wp-content/uploads/2024/08/01_Relatorio3PMRR_Volume1Palmital.pdf",
+   "titulo": "S24 · Colombo/PR: PLANO MUNICIPAL DE REDUÇÃO DE RISCOS - PMRR ETAPA 3",
+   "trecho": "PLANO MUNICIPAL DE REDUÇÃO DE RISCOS - PMRR ETAPA 3",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "3c7709d495",
+   "url_final": "https://prefeitura.colombo.pr.gov.br/wp-content/uploads/2024/08/01_Relatorio3PMRR_Volume1Palmital.pdf",
+   "alvo": "4105805",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Nova Fátima",
+   "uf": "PR",
+   "ibge": "4117008",
+   "url": "https://www.novafatima.pr.gov.br/sus/download/3/",
+   "titulo": "S24 · Cornélio Procópio/PR: Plano Municipal de Saúde 2022/2025",
+   "trecho": "Plano Municipal de Saúde 2022/2025",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "e1b8090292",
+   "url_final": "https://www.novafatima.pr.gov.br/sus/download/3/",
+   "alvo": "4117008",
+   "municipio_atribuido_antes": {
+    "municipio": "Cornélio Procópio",
+    "uf": "PR",
+    "ibge": "4106407",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Honório Serpa",
+   "uf": "PR",
+   "ibge": "4109658",
+   "url": "https://honorioserpa.pr.gov.br/arquivos/1645185131.pdf",
+   "titulo": "S24 · Coronel Vivida/PR: PLANO MUNICIPAL DE SAÚDE 2022-2025",
+   "trecho": "PLANO MUNICIPAL DE SAÚDE 2022-2025",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "214d543913",
+   "url_final": "https://honorioserpa.pr.gov.br/arquivos/1645185131.pdf",
+   "alvo": "4109658",
+   "municipio_atribuido_antes": {
+    "municipio": "Coronel Vivida",
+    "uf": "PR",
+    "ibge": "4106506",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
+   "atribuicao_corrigida_por": "dominio_oficial_do_documento",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Mangueirinha",
+   "uf": "PR",
+   "ibge": "4114401",
+   "url": "https://municipe.mangueirinha.pr.gov.br/assets/bancos/anexosaude/Plano%20Municipal%20de%20Saude%202022-2025.pdf",
+   "titulo": "S24 · Coronel Vivida/PR: PLANO MUNICIPAL DE SAÚDE 2022 – 2025",
+   "trecho": "PLANO MUNICIPAL DE SAÚDE 2022 – 2025",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-23",
+   "registrado_em": "2026-11-23",
+   "origem_do_coletor": "descoberta",
+   "id": "624dc839c8",
+   "url_final": "https://municipe.mangueirinha.pr.gov.br/assets/bancos/anexosaude/Plano%20Municipal%20de%20Saude%202022-2025.pdf",
+   "alvo": "4114401",
+   "municipio_atribuido_antes": {
+    "municipio": "Coronel Vivida",
+    "uf": "PR",
+    "ibge": "4106506",
+    "veredito_do_juiz": null
+   },
+   "atribuicao_corrigida_em": "2026-11-23",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "nivel": "C",
    "tipo": "plano",
