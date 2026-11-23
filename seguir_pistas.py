@@ -98,12 +98,34 @@ def a_retentar(p: dict, d_hoje) -> bool:
     return bool(proxima) and proxima <= d_hoje
 
 
-def a_seguir(p: dict, d_hoje, refazer_dias: int = 7, reprocessar: bool = False) -> bool:
+PREFIXO_B2_SEM_RESOLVER = PREFIXO_FECHADA + "redirecionamento não resolvido"
+TETO_BUSCAS_VEICULO = 300   # por rodada: a cota do metabuscador é o limite, não a fila (handover B2)
+
+
+def titulo_de(p: dict, titulos_arquivados=None) -> str:
+    """O título da pista, ou o que o arquivo da limpeza (26/10) guardou para ela. Pura.
+
+    `compactar` (triagem de 19/10) tirou `titulo` e `trecho` das pistas encerradas: 1.863 links do
+    Google News fechados pelo B2 chegaram sem título, e sem ele a busca no veículo não tem o que
+    procurar. O título fica no arquivo da limpeza; a fila nova já o guarda (limpar_fila_de_pistas)."""
+    return " ".join(str(p.get("titulo") or (titulos_arquivados or {}).get(p.get("id")) or "").split())
+
+
+def e_b2_sem_busca(p: dict, titulos_arquivados=None) -> bool:
+    """Link do Google News que o B2 fechou sem resolver, com veículo e título, e que a busca no veículo
+    ainda não tentou. Função pura. É o que a reprocessamento reabre (B2, 23/11/2026)."""
+    return (str(p.get("status") or "").startswith(PREFIXO_B2_SEM_RESOLVER) and not p.get("busca_veiculo_em")
+            and bool(p.get("veiculo_dominio")) and bool(titulo_de(p, titulos_arquivados)))
+
+
+def a_seguir(p: dict, d_hoje, refazer_dias: int = 7, reprocessar: bool = False, titulos_arquivados=None) -> bool:
     """A pista entra nesta rodada do seguidor? Um critério só para `seguir()` e `restantes()`. Pura.
 
     Na noite, só o que chegou na janela de `refazer_dias` (a fila antiga é do reprocessamento, que
     corre pela válvula em lotes): sem isso o restante da noite seria a fila inteira, e a reserva
     redispararia o elo até as 08:00. No reprocessamento, toda pista que o Buscador 2 ainda não viu."""
+    if reprocessar and e_b2_sem_busca(p, titulos_arquivados):
+        return True
     status = str(p.get("status") or "")
     if not (status.startswith(("pista", "pendente_confirmacao_documento")) or e_rota(p)) \
             or "inacessivel_persistente" in status:
@@ -148,7 +170,8 @@ def restantes(fila: dict, hoje: str, refazer_dias: int = 7) -> int:
 
 
 def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_web_=None,
-           cobertura_qd=frozenset(), limite=60, refazer_dias=7, reprocessar=False, parar=None):
+           cobertura_qd=frozenset(), limite=60, refazer_dias=7, reprocessar=False, parar=None,
+           titulos_arquivados=None):
     """Segue as pistas na ordem do B6, com até `limite` URLs abertas na rede (fechar o que está fora da
     entrada não abre nada e não conta). Planeja só em memória e devolve a estatística:
     `novas_lista` vai à porta, `fechadas_lista` vai às rejeitadas, e o estado das existentes
@@ -161,7 +184,15 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
     existentes = {b2.url_normalizada(_url(p)) for p in pistas}
     est = {"seguidas": 0, "candidatos": 0, "novas": 0, "resolvidas": 0, "retentadas": 0, "lacunas": 0,
            "rotas_falharam": 0, "por_via": collections.Counter(), "motivos": collections.Counter(),
-           "novas_lista": [], "fechadas_lista": []}
+           "novas_lista": [], "fechadas_lista": [], "buscas_veiculo": 0}
+    buscas = [0]
+
+    def busca_capada(q):
+        """A busca no veículo (SearXNG) com teto por rodada: sem teto, a cota do motor zera na primeira hora."""
+        if not buscar_web_ or buscas[0] >= TETO_BUSCAS_VEICULO:
+            return []
+        buscas[0] += 1
+        return buscar_web_(q) or []
 
     def fechar(p, motivo):
         p["status_anterior"] = p.get("status")
@@ -197,7 +228,8 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
         classe = b2.classe_da_pista(p)[0]
         return (bool(classe) or e_rota(p)) and not (b2.e_documento(url) and not e_rota(p))
 
-    for p in sorted((p for p in pistas if a_seguir(p, d_hoje, refazer_dias, reprocessar)), key=b2.prioridade):
+    for p in sorted((p for p in pistas if a_seguir(p, d_hoje, refazer_dias, reprocessar, titulos_arquivados)),
+                    key=b2.prioridade):
         if parar and parar[0]:
             break   # o prazo do elo chegou (SIGINT do invólucro): grava o que já se fez
         url = _url(p)
@@ -207,17 +239,22 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
             rede[0] += 1
         est["seguidas"] += 1
         p["buscador2_em"] = hoje_iso
+        if p.get("veiculo_dominio") and titulo_de(p, titulos_arquivados) and e_b2_sem_busca(p, titulos_arquivados):
+            p["busca_veiculo_em"] = hoje_iso   # tentada agora: a fila não a reabre a cada rodada
         if b2.rotulo_no_lugar_do_municipio(p.get("municipio")):
             fechar(p, f"rótulo de setor no campo município ({p.get('municipio')}) (B1)")
             continue
         if b2.eh_redirecionador(url) or (not p.get("url_final") and b2.eh_redirecionador(p.get("url"))):
             # Sem a busca no veículo: 0 de ~4.000 links resolvidos em 3 lotes (27/10), 3,4 h de runner cada.
-            final, como = b2.resolver(p.get("url"), abrir=abrir_final)
+            titulo = titulo_de(p, titulos_arquivados)
+            final, como = b2.resolver(p.get("url"), abrir=abrir_final, veiculo=p.get("veiculo_dominio"),
+                                      titulo=titulo, buscar_web=busca_capada if titulo else None)
+            est["buscas_veiculo"] = buscas[0]
             if not final:
                 fechar(p, "redirecionamento não resolvido (B2)")
                 continue
             est["resolvidas"] += 1
-            novas = nova(p, final, p.get("titulo"), "B2")
+            novas = nova(p, final, titulo, "B2")
             fechar(p, f"redirecionamento resolvido (B2): segue como pista nova pela porta ({b2.host_de(final)})")
             est["novas"] += novas
             continue
@@ -268,6 +305,20 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
 
 
 ARQUIVO_AGREGADORES = "arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json"
+
+
+def titulos_do_arquivo() -> dict:
+    """id → título das pistas arquivadas pela limpeza de 26/10 (só leitura; o arquivo é do repositório)."""
+    try:
+        itens = (json.load(open(ARQUIVO_AGREGADORES, encoding="utf-8")) or {}).get("itens") or []
+    except (OSError, ValueError):
+        return {}
+    out = {}
+    for item in itens:
+        q = item.get("pista") or {}
+        if q.get("id") and q.get("titulo"):
+            out.setdefault(q["id"], q["titulo"])
+    return out
 
 
 def do_arquivo(itens, ja_tentadas, quantas) -> list:
@@ -345,12 +396,44 @@ def autoteste():
                 and len(e["fechadas_lista"]) == 3
                 and next(p for p in f["pistas"] if p["id"] == "e1")["status_anterior"] == STATUS_PENDENTE)
 
-    def t_opaco_fecha_sem_consultar_o_motor():
+    def t_opaco_sem_titulo_nao_consulta_o_motor():
         f = base(); g = next(x for x in f["pistas"] if x["id"] == "g1")
-        g.update(veiculo_dominio="jornal.example.com", titulo="Taió aprova plano - Jornal")
+        g.update(veiculo_dominio="jornal.example.com")   # sem título não há o que procurar: fecha com motivo
         q = []
         seguir(f, "26/10/2026", abrir=abrir, buscar_web_=lambda c: q.append(c) or [{"url": "https://jornal.example.com/n/1"}])
-        return status(f, "g1") == PREFIXO_FECHADA + "redirecionamento não resolvido (B2)" and not any("jornal.example" in c for c in q)
+        return status(f, "g1") == PREFIXO_FECHADA + "redirecionamento não resolvido (B2)" and not q
+
+    def t_b2_busca_no_veiculo_com_titulo_do_arquivo():
+        f = base(); g = next(x for x in f["pistas"] if x["id"] == "g1")
+        g.update(veiculo_dominio="jornal.example.com", status=PREFIXO_FECHADA + "redirecionamento não resolvido (B2)")
+        q = []
+        e = seguir(f, "26/10/2026", abrir=abrir, reprocessar=True, titulos_arquivados={"g1": "Taió aprova plano - Jornal"},
+                   buscar_web_=lambda c: q.append(c) or [{"url": "https://jornal.example.com/n/1"}])
+        return (e["resolvidas"] == 1 and e["buscas_veiculo"] == 1 and "Taió aprova plano" in q[0]
+                and "site:jornal.example.com" in q[0] and g.get("busca_veiculo_em") == "2026-10-26"
+                and any(n["url"] == "https://jornal.example.com/n/1" for n in e["novas_lista"]))
+
+    def t_b2_teto_de_buscas_no_veiculo():
+        pistas = [{"id": f"g{i}", "municipio": "Taió", "uf": "SC", "ibge": "4217808", "alvo": "4217808",
+                   "url": f"https://news.google.com/rss/articles/CBMi{i}AU_yq", "nivel": "A",
+                   "status": PREFIXO_FECHADA + "redirecionamento não resolvido (B2)",
+                   "veiculo_dominio": "jornal.example.com", "registrado_em": "2026-10-25"}
+                  for i in range(TETO_BUSCAS_VEICULO + 5)]
+        q = []
+        e = seguir({"pistas": pistas}, "26/10/2026", abrir=abrir, reprocessar=True, limite=10**6,
+                   titulos_arquivados={p["id"]: "Taió aprova plano" for p in pistas},
+                   buscar_web_=lambda c: q.append(c) or [])
+        return len(q) == TETO_BUSCAS_VEICULO and e["buscas_veiculo"] == TETO_BUSCAS_VEICULO
+
+    def t_b2_reprocesso_so_reabre_o_que_tem_titulo_e_veiculo_e_nao_repete():
+        g = {"id": "x", "status": PREFIXO_FECHADA + "redirecionamento não resolvido (B2)",
+             "veiculo_dominio": "j.example.com", "url": "https://news.google.com/rss/articles/CBMi1AU",
+             "registrado_em": "2026-10-25"}
+        d = datetime.date(2026, 10, 26)
+        return (not a_seguir(g, d, reprocessar=True)
+                and a_seguir(g, d, reprocessar=True, titulos_arquivados={"x": "Plano"})
+                and not a_seguir(dict(g, busca_veiculo_em="2026-10-25"), d, reprocessar=True,
+                                 titulos_arquivados={"x": "Plano"}))
 
     def t_redirecionador_resolvido_vira_pista_nova():
         f = base(); e = seguir(f, "26/10/2026", abrir=abrir, abrir_final=lambda u: "https://taio.sc.gov.br/plancon.pdf")
@@ -462,7 +545,10 @@ def autoteste():
             "arquivo: só link de agregador ainda não tentado, sem repetição": t_arquivo_so_agregador_ainda_nao_tentado,
             "rota (notícia) e página oficial (B4) viram pistas novas de documento": t_rota_e_b4_viram_pistas_novas,
             "lixo cai com motivo (B1, B2, B3), com o status anterior guardado": t_lixo_cai_com_motivo,
-            "link opaco do agregador fecha sem consultar o motor (B2)": t_opaco_fecha_sem_consultar_o_motor,
+            "link opaco sem título fecha sem consultar o motor (B2)": t_opaco_sem_titulo_nao_consulta_o_motor,
+            "B2: busca no veículo com o título do arquivo, e a URL achada entra como pista nova": t_b2_busca_no_veiculo_com_titulo_do_arquivo,
+            "B2: busca no veículo tem teto por rodada (300)": t_b2_teto_de_buscas_no_veiculo,
+            "B2: o reprocessamento reabre só o que tem título e veículo, uma vez": t_b2_reprocesso_so_reabre_o_que_tem_titulo_e_veiculo_e_nao_repete,
             "redirecionador resolvido: a URL final entra como pista nova (B2)": t_redirecionador_resolvido_vira_pista_nova,
             "B6: nível A é o primeiro da rodada": t_b6_ordem_nivel_a_primeiro,
             "B10: documento oficial não lido volta à fila, até três vezes": t_b10_documento_volta_ate_tres_vezes,
@@ -536,16 +622,17 @@ if __name__ == "__main__":
                   f"{balanco['gravadas']} pista(s) nova(s) ({balanco['recusadas']} recusada(s) na porta) · "
                   f"{len(e['fechadas_lista'])} fechada(s) · SearXNG={'sim' if web else 'não'}", flush=True)
         sys.exit(0)
+    titulos = titulos_do_arquivo() if a.reprocessar else None
     while True:
         e = seguir(fila, hoje, abrir=_abrir, abrir_final=None, consultar_qd_=qd, buscar_web_=web,
                    cobertura_qd=cob, limite=min(BLOCO, orcamento), refazer_dias=a.refazer_dias,
-                   reprocessar=a.reprocessar, parar=parar)
+                   reprocessar=a.reprocessar, parar=parar, titulos_arquivados=titulos)
         balanco = gravar_rodada(fila, e)
         orcamento -= e["rede"]
         print(f"Buscador 2: {e['seguidas']} seguida(s) · {len(e['fechadas_lista'])} fechada(s) {dict(e['motivos'])} · "
           f"{e['resolvidas']} redirecionamento(s) resolvido(s) · {e['candidatos']} candidato(s) · "
           f"{balanco['gravadas']} pista(s) nova(s) ({balanco['recusadas']} recusada(s) na porta) · "
-          f"{e['retentadas']} documento(s) de volta à fila · {e['lacunas']} lacuna(s) · vias {dict(e['por_via'])} · "
+          f"{e['retentadas']} documento(s) de volta à fila · {e['lacunas']} lacuna(s) · {e['buscas_veiculo']} busca(s) no veículo · vias {dict(e['por_via'])} · "
           f"SearXNG={'sim' if web else 'não'} · QD={'sim' if qd else 'não'}", flush=True)
         if parar[0] or orcamento <= 0 or e["rede"] == 0 or not a.reprocessar:
             break
