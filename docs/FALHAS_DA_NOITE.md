@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-23. 91 falhas; 84 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 2026-11-23. 92 falhas; 84 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -824,3 +824,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** data/pistas_imprensa.json em origin/main: 5.802 links do Google News, 2 com título; arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json: 1.863 desses links com título guardado
 - **Correção:** `compactar` guarda `titulo` nos links do Google News; `seguir` passa veículo e título ao B2, com teto de 300 buscas por rodada, e reabre uma vez as pistas fechadas que têm título e veículo (`e_b2_sem_busca`).
 - **Caso de teste:** `seguir_pistas.py --autoteste ('B2: busca no veículo com o título do arquivo, e a URL achada entra como pista nova')`
+
+## F92 · Elo do juiz caía no passo do Tesseract: trava do apt com órfão do navegador e espelho lento
+
+- **Noite:** 2026-11-19 e 2026-11-23 (juiz; 23/11 no ensaio real)
+- **Sintoma:** `Noturno — juiz automático` falhou antes da coleta: 19/11 (runs 44472852709 e 44498370064) com `Could not get lock /var/lib/dpkg/lock-frontend ... held by process 2804 (apt-get)`; 23/11 (run 45152658482) com o passo parado até o teto de 5 min.
+- **Causa:** O passo do navegador (`timeout 240 npx playwright install --with-deps`) bateu o teto; o `timeout` encerra o `npx`, não o `apt-get` filho sob `sudo`, que segue com a trava. O passo seguinte (`apt-get update && install` do Tesseract) não esperava trava nem repetia conexão parada.
+- **Prova:** job 137617766269: passo do navegador 2 min 22 s, passo do Tesseract 5 min até o teto; teste local (apt 2.8, Ubuntu 24.04): com a trava de `lists/` segura, `apt-get update` sai em 1 s com ou sem DPkg::Lock::Timeout; `install` espera a trava do dpkg com a opção
+- **Correção:** `_coletor.yml`: `install` com DPkg::Lock::Timeout=240; `update` repetido até 12 vezes a cada 10 s; Acquire::Retries=3 e Acquire::http::Timeout=30 contra espelho parado; teto do passo 8 min. Pacote que não instala derruba o elo com o nome do passo e a reserva refaz (D1).
+- **Caso de teste:** nenhum — falta: caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR

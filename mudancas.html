@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/11/2026 · Elo do juiz não cai mais na trava do apt</dt>
+      <dd>O passo do Tesseract em `_coletor.yml` passa a esperar a trava do apt deixada pelo passo do navegador e a repetir `update` e conexão parada; teto de 8 min. Pacote que não instala segue derrubando o elo com o nome do passo, e a reserva refaz. Catálogo: F92. Linhas líquidas: +19 (código +6, catálogo +13).</dd>
       <dt>23/11/2026 · História do coletor de sinais de risco ao histórico</dt>
       <dd>Consolidação: comentários de história do `coletar_sinais_risco.py` (catálogo de fontes, focos, RONI, avisos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento (AST idêntica). Código: −55 linhas líquidas.</dd>
       <dt>23/11/2026 · Plano da saúde no cartão do município</dt>
@@ -162,8 +164,6 @@
       <dd>Documento da pasta de planos recebidos pela Defesa Civil do RS (Prepara RS) passa a valer como plano pela origem; data e município seguem conferidos. Portais oficiais de prefeitura fora de .gov.br (atende.net, portaltp, equiplano, prefeitura.rio e outros) passam a ser reconhecidos, e encurtadores de link são resolvidos antes do julgamento. Mesquita/RJ e o plano municipal do Rio voltam ao juiz. Pista promovida deixa a fila e não é mais fechada pelo prazo como &quot;sem documento&quot;.</dd>
       <dt>17/11/2026 · Contribuições e Prepara RS chegam ao juiz e ao banco</dt>
       <dd>A pista que chegava no formato novo recebia o mesmo id de outras 50, e a contribuição de Mesquita/RJ se perdeu entre elas. O formulário passa a aceitar o domínio da Prefeitura do Rio e o link de compartilhamento do Google,; sete envios voltam a ser lidos. Acima de 5 MB, a camada de texto do documento é guardada como prova; 40 promoções do juiz voltam a ser aplicadas. Trinta atalhos do Prepara RS fechados sem leitura voltam à fila.</dd>
-      <dt>17/11/2026 · Internações e óbitos por município, mês a mês</dt>
-      <dd>As internações por doenças respiratórias agudas, por efeitos do calor e por desidratação (SIH/SUS) e os óbitos de todas as causas e por doenças respiratórias agudas (SIM) passam a ser contados também por município de residência, nos 319 municípios de 100 mil habitantes ou mais. O detalhe da Saúde os mostra no mapa que anda no tempo, mês a mês desde julho, na faixa habitual de 2019 a 2025. O histórico municipal entra aos poucos.</dd>
     </dl>
   </section>
 </main>
