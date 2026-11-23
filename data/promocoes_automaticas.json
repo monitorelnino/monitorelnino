@@ -1153990,6 +1153990,1752 @@
    "pista_id": "641f5782b9",
    "origem": "descoberta",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14628 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "avírus – COVID19 e dá outras providências. O Prefeito Municipal de São José dos Pinhais, Estado do Paraná, usando de suas atribuições legais, e conforme o dispo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DECRETO Nº 3.726, DE 17 DE MARÇO DE 2020 Dispõe sobre as medidas para enfrentamento da emergência de saúde pública de importância internacional decorrente do co",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "3.726",
+      "data": "17/03/2020",
+      "trecho": "DECRETO Nº 3.726, DE 17 DE MARÇO DE 2020 Dispõe sobre as medidas para enfrentamento da emergência de saúde pública de importância internacional decorrente do co"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a internacional decorrente do coronavírus – COVID19 e dá outras providências. O Prefeito Municipal de São José dos Pinhais, Estado do Paraná, usando de suas atr"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'estado de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "17/03/2020",
+   "natureza": "RESPOSTA",
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "url": "https://www.sjp.pr.gov.br/wp-content/uploads/2020/07/decreto-3726.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "b51ee35761",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "c0d53a8af4dd3c1b514f68bcdacfbb7da87c195be524079bd76b35125c0e320e"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "117481 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO ....................................................................................."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "............................................. 11 6.2.1 Estrutura Operacional da Secretaria Municipal de Defesa Civil ................................ 12 6.2.1.1"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "cos relacionados à queda de árvores, incêndios em vegetação durante períodos de estiagem e instabilidade de encostas. 3.6 Uso e Ocupação do Solo O município apr"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3513009",
+   "municipio": "Cotia",
+   "uf": "SP",
+   "url": "https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "5ad3b2bec8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CliOPINZINHO Memorando 2: 3.539/2020 Via 1/2 Chopinzinho/PR, 28 de Julho de 2020 às 16:28 De: Para: SMS-CLI - Licitações e Infraestrutura da SMA-LC - Licitações"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "a Miguel Procópio Kurpel, 3811, Bairrc São Miguel 85.560-000 CHOPINZINHO PARANÁ DECRETO N° 536/2019, DE 27 DE DEZEMBRO DE 2019 Nomeia a Comissão Permanente de L",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "536/2019",
+      "data": "27/12/2019",
+      "trecho": "a Miguel Procópio Kurpel, 3811, Bairrc São Miguel 85.560-000 CHOPINZINHO PARANÁ DECRETO N° 536/2019, DE 27 DE DEZEMBRO DE 2019 Nomeia a Comissão Permanente de L"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "6/2019, DE 27 DE DEZEMBRO DE 2019 Nomeia a Comissão Permanente de Licitações. 0 PREFEITO DO MUNICÍPIO DE CHOPINZINHO, ESTADO DO PARANÁ, no uso das atribuigt5es"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "27/12/2019",
+   "natureza": "RESPOSTA",
+   "ibge": "4105409",
+   "municipio": "Chopinzinho",
+   "uf": "PR",
+   "url": "https://www.chopinzinho.pr.gov.br/licitacoes/1596818625.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "ea2a2b273b",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "0b6236ee3127d5ec26caa24c39dd82c80ec216fb5b10dcde80e1230e771f38ca"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "75834 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ocasionados pela evolução gradual de um evento climático, tais como estiagens e secas; Quando forem constados danos humanos e/ou materiais de qualquer espécie."
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200201",
+   "municipio": "Alegre",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/defesacivil/Plano%20de%20Conting%C3%AAncia/Alegre.pdf",
+   "regras_18": [
+    "J19",
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "8ce3bfd95a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8f8aea95bccb52db21a003084a80489e1f15a2ca0d6ff2f46455abda60b4f82f"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15408 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANCG ON | 1º Edição | 2024/2025 DEFESA CIVIL - GUARAPARI/ES DEFESA CIVIL - GUARAPARI/ES PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 12 EDIÇÃ"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "1º Edição | 2024/2025 DEFESA CIVIL - GUARAPARI/ES DEFESA CIVIL - GUARAPARI/ES PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 12 EDIÇÃO Janeiro/202",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "1º Edição | 2024/2025 DEFESA CIVIL - GUARAPARI/ES DEFESA CIVIL - GUARAPARI/ES PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 12 EDIÇÃO Janeiro/202",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 12 EDIÇÃO Janeiro/2024 PREFEITURA MUNICIPAL DE GUARAPARI EDSON FIGUEIREDO MAGALHÃES Prefeito Municipa"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "multirrisco_pdc",
+     "trecho": "FESA CIVIL - GUARAPARI/ES DEFESA CIVIL - GUARAPARI/ES PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 12 EDIÇÃO Janeiro/2024 PREFEITURA MUNICIPAL DE"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2024",
+   "natureza": "EX_ANTE",
+   "ibge": "3202405",
+   "municipio": "Guarapari",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/GUARAPARI%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
+   "regras_18": [
+    "J22",
+    "J1"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "multirrisco_pdc",
+   "pista_id": "ffd6b34644",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e4786569720ba22d90b4ed77ceb531c73688d4d6cae698aed8d9645510233734"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "75834 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Alegre PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO 1. APRESENTAÇÃO 1.1 FINAL"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ocasionados pela evolução gradual de um evento climático, tais como estiagens e secas; Quando forem constados danos humanos e/ou materiais de qualquer espécie."
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200201",
+   "municipio": "Alegre",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/defesacivil/Plano%20de%20Conting%C3%AAncia/Alegre.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "8a9e459475",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8f8aea95bccb52db21a003084a80489e1f15a2ca0d6ff2f46455abda60b4f82f"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40426 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "cipais Comunidades 5- Cenários de Risco 5.1- Áreas de risco 6- Microdrenagem no Município de Pinheiros 6.1- Justificativa 6.2- Alcances econômicos e sociais e m"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ado, e as principais comunidades são: Vila Fernandes, São José do Jundiá, Lagoa Seca, Fazenda Cremasco, Brunelli, Santa Rita, Água Limpa, São Roque, Cacimba, Ja"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3204104",
+   "municipio": "Pinheiros",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/PINHEIROS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "9b9340c874",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "893078d242aece61bf589274eaa420ddb35662cf129723163f43da46a294a860"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40426 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "cipais Comunidades 5- Cenários de Risco 5.1- Áreas de risco 6- Microdrenagem no Município de Pinheiros 6.1- Justificativa 6.2- Alcances econômicos e sociais e m"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ado, e as principais comunidades são: Vila Fernandes, São José do Jundiá, Lagoa Seca, Fazenda Cremasco, Brunelli, Santa Rita, Água Limpa, São Roque, Cacimba, Ja"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3204104",
+   "municipio": "Pinheiros",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/PINHEIROS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
+   "regras_18": [
+    "J19",
+    "J1"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "1f5dcaaf6e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "893078d242aece61bf589274eaa420ddb35662cf129723163f43da46a294a860"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40426 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Pinheiros/ES 2026 03 / 1 ANIGÁP 25:01 6202/50/12 LANIGIRO OTNEMUCOD - SCOD-E - F4L4HK-6202 SUMÁRIO 1- Introdução 2- Finalidade 3",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "cipais Comunidades 5- Cenários de Risco 5.1- Áreas de risco 6- Microdrenagem no Município de Pinheiros 6.1- Justificativa 6.2- Alcances econômicos e sociais e m"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ado, e as principais comunidades são: Vila Fernandes, São José do Jundiá, Lagoa Seca, Fazenda Cremasco, Brunelli, Santa Rita, Água Limpa, São Roque, Cacimba, Ja"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3204104",
+   "municipio": "Pinheiros",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/PINHEIROS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
+   "regras_18": [
+    "J19",
+    "J1"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "3f112304a9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "893078d242aece61bf589274eaa420ddb35662cf129723163f43da46a294a860"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "59227 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "RESPOSTA",
+   "ibge": "1200401",
+   "municipio": "Rio Branco",
+   "uf": "AC",
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/wp-content/uploads/2013/09/PLANO-DE-CONTING%C3%8ANCIA-INUNDA%C3%87%C3%83O-GRADUAL-PMRB-2025.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "64981f42e7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b316d22907ff0bba06c226e5ea89128f87f8133c9b7f78f5d55bbd4eab4ef036"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "59227 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "RESPOSTA",
+   "ibge": "1200401",
+   "municipio": "Rio Branco",
+   "uf": "AC",
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/wp-content/uploads/2013/09/PLANO-DE-CONTING%C3%8ANCIA-INUNDA%C3%87%C3%83O-GRADUAL-PMRB-2025.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "b3cb318a35",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b316d22907ff0bba06c226e5ea89128f87f8133c9b7f78f5d55bbd4eab4ef036"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1200401",
+   "municipio": "Rio Branco",
+   "uf": "AC",
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/wp-content/uploads/2013/09/PLANO-DE-CONTING%C3%8ANCIA-INUNDA%C3%87%C3%83O-GRADUAL-PMRB-2025.pdf",
+   "regras_18": [],
+   "pista_id": "8c6c9e91bd",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38939 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "www.saogoncalo.rj.gov.br ESTADO DO RIO DE JANEIRO PREFEITURA DE SÃO GONÇALO SECRETARIA DE FAZENDA SUBSECRETARIA DE INFORMÁTICA DECRETO 331/2005. São Gonçalo, 04"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RO PREFEITURA DE SÃO GONÇALO SECRETARIA DE FAZENDA SUBSECRETARIA DE INFORMÁTICA DECRETO 331/2005. São Gonçalo, 04 de novembro de 2005. DISPÕE SOBRE A POLÍTICA D",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "331/2005",
+      "data": "04/11/2005",
+      "trecho": "RO PREFEITURA DE SÃO GONÇALO SECRETARIA DE FAZENDA SUBSECRETARIA DE INFORMÁTICA DECRETO 331/2005. São Gonçalo, 04 de novembro de 2005. DISPÕE SOBRE A POLÍTICA D"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "o 1º. A gestão do Sistema é responsabilidade do Subsecretário de Informática da Secretaria Municipal de Fazenda. Parágrafo 2º. Cada uma das Secretarias Municipa"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "teste-fósforo: menciona rota de reconhecimento federal/FIDE"
+    }
+   },
+   "categoria": null,
+   "data": "04/11/2005",
+   "natureza": "RESPOSTA",
+   "ibge": "3304904",
+   "municipio": "São Gonçalo",
+   "uf": "RJ",
+   "url": "https://www.pmsg.rj.gov.br/wp-content/uploads/2021/04/politicas-de-seguranca-da-informacao.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "41cd1f537d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d21becd06d5a9ea8680e33ddf482f844c9f698b72577efbe8cb8d400902c98fc"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21508 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o: (92)99463-9126 E-mail: [email&#160;protected] Ultima Atualização: 17/11/2025 Juruti Coordenador: João Paulo Vieira do Santos Contato: (93)98100-0505 E-mail:"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "17/11/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "17/11/2025",
+   "natureza": null,
+   "ibge": "1503903",
+   "municipio": "Juruti",
+   "uf": "PA",
+   "url": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "c979c94c58",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "330bb92df43b822ab409a77fe7d6b2242d05d6a1f63509d75bdca1995be52245",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "117481 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO ....................................................................................."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "............................................. 11 6.2.1 Estrutura Operacional da Secretaria Municipal de Defesa Civil ................................ 12 6.2.1.1"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "cos relacionados à queda de árvores, incêndios em vegetação durante períodos de estiagem e instabilidade de encostas. 3.6 Uso e Ocupação do Solo O município apr"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3513009",
+   "municipio": "Cotia",
+   "uf": "SP",
+   "url": "https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1-1.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "e8a988825e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "117481 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO ....................................................................................."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "............................................. 11 6.2.1 Estrutura Operacional da Secretaria Municipal de Defesa Civil ................................ 12 6.2.1.1"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "cos relacionados à queda de árvores, incêndios em vegetação durante períodos de estiagem e instabilidade de encostas. 3.6 Uso e Ocupação do Solo O município apr"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3513009",
+   "municipio": "Cotia",
+   "uf": "SP",
+   "url": "https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "3aa76f8fc6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18082 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DE 2020. “Reestrutura o Plano de Contingência da Defesa Civil do Município de Santa Cruz do Rio Pardo.” OTACÍLIO PARRAS ASSIS, Prefeito de Santa Cruz do Rio"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "\" hi Defeimura de anta Cr; do iu Durdo 12x ESTADO DE SÃO PAULO DECRETO Nº 309, DE 05 DE NOVEMBRO DE 2020. “Reestrutura o Plano de Contingência da Defesa Civil",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "309",
+      "data": "05/11/2020",
+      "trecho": "\" hi Defeimura de anta Cr; do iu Durdo 12x ESTADO DE SÃO PAULO DECRETO Nº 309, DE 05 DE NOVEMBRO DE 2020. “Reestrutura o Plano de Contingência da Defesa Civil"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Defesa Civil do Município de Santa Cruz do Rio Pardo.” OTACÍLIO PARRAS ASSIS, Prefeito de Santa Cruz do Rio Pardo, Estado de São Paulo, usando as atribuições"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "05/11/2020",
+   "natureza": "RESPOSTA",
+   "ibge": "3546405",
+   "municipio": "Santa Cruz do Rio Pardo",
+   "uf": "SP",
+   "url": "https://www.santacruzdoriopardo.sp.gov.br/assets/uploads/arquivos/plano-de-contigencia-defesa-civil.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "6f1a39ab92",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "80d4fa666178ee552af78a370f9a08e7534b417408328c30342882d9de8de629"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "28468 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ANO MUNICIPAL DE PREPARAÇÃO E RESPOSTA A EMERGÊNCIAS EM SAÚDE PÚBLICA (PPR-ESP) Balneário Barra do Sul / Santa Catarina, 2024 1. Informações Gerais 1.1 Nome do"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "01/01/1993",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/01/1993",
+   "natureza": null,
+   "ibge": "4202057",
+   "municipio": "Balneário Barra do Sul",
+   "uf": "SC",
+   "url": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/405-regional-de-saude-de-joinville.html?download=1448%3Appr-esp-balneario-barra-do-sul&Itemid=109",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "5e49410ad6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "24b68df09397c2cae0f9baa3dc7e23bf7361b0368b8b870093f2d9fb7eebf053",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "49370 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municipal de Ca"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municip",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municip",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municip"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "RESPOSTA",
+   "ibge": "5002704",
+   "municipio": "Campo Grande",
+   "uf": "MS",
+   "url": "https://cdn.campogrande.ms.gov.br/portal/prod/uploads/sites/30/2025/11/PLANO-DE-CONTINGENCIA-DO-SETOR-SAUDE-PARA-DESASTRES-POR-CHUVAS-INTENSAS-NO-MUNICIPIO-DE-CAMPO-GRANDEMS.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "8d377492c2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ad3d6dc1579fd0999b058a7827592738b93f9b6ddcb400abb78054f71dc4a420"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "117481 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO ....................................................................................."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA (PLANCON) – COTIA/SP SUMÁRIO 1. INTRODUÇÃO .....................................................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "............................................. 11 6.2.1 Estrutura Operacional da Secretaria Municipal de Defesa Civil ................................ 12 6.2.1.1"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "cos relacionados à queda de árvores, incêndios em vegetação durante períodos de estiagem e instabilidade de encostas. 3.6 Uso e Ocupação do Solo O município apr"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3513009",
+   "municipio": "Cotia",
+   "uf": "SP",
+   "url": "https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "cd18645012",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "83354 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA PREFEITURA MUNICIPAL DE DORES DE GUANHÃES - MG Defesa Civil de Dores de Guanhães - MG PLANO DE CONTIGÊNCIA Considerando a concepção do Sis"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA PREFEITURA MUNICIPAL DE DORES DE GUANHÃES - MG Defesa Civil de Dores de Guanhães - MG PLANO DE CONTIGÊNCIA Considerando a concepção do Sis",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA PREFEITURA MUNICIPAL DE DORES DE GUANHÃES - MG Defesa Civil de Dores de Guanhães - MG PLANO DE CONTIGÊNCIA Considerando a concepção do Sis",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA PREFEITURA MUNICIPAL DE DORES DE GUANHÃES - MG Defesa Civil de Dores de Guanhães - MG PLANO DE CONTIGÊNCIA Considerando a concepção do Sis"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "tros: Problemas relacionados ao clima no município: (X) Chuvas concentradas ( ) Seca (X) Geada (X) Chuva de granizo (X) Chuvas torrenciais (X) Frentes frias (X)"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3123106",
+   "municipio": "Dores de Guanhães",
+   "uf": "MG",
+   "url": "https://doresdeguanhaes.mg.gov.br/wp-content/uploads/2026/04/Plancon-Dores-de-Guanhaes.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "897c142cb6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b00c2062f79fe7b6f7397fc488bd37953878fce7cdc0bceb91fca275c9bd1950"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13365 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "), o Grupo Integrado de Ações Coordenadas de Defesa Civil (GRAC no Município de Tunápolis - SC e dá outras providências. O Prefeito do Município de Tunápolis,"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "LEI Nº 1658, DE 23 DE SETEMBRO DE 2025. Cria o Sistema Municipal de Defesa Civil (SIMPDEC), o Grupo Integrado de Ações Coordenadas de Defesa Civil (GRAC no Mun",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1658",
+      "data": "23/09/2025",
+      "trecho": "LEI Nº 1658, DE 23 DE SETEMBRO DE 2025. Cria o Sistema Municipal de Defesa Civil (SIMPDEC), o Grupo Integrado de Ações Coordenadas de Defesa Civil (GRAC no Mun"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Defesa Civil (GRAC no Município de Tunápolis - SC e dá outras providências. O Prefeito do Município de Tunápolis, Estado de Santa Catarina, FAZ SABER a todos"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "teste-fósforo: menciona rota de reconhecimento federal/FIDE"
+    }
+   },
+   "categoria": null,
+   "data": "23/09/2025",
+   "natureza": "RESPOSTA",
+   "ibge": "4218756",
+   "municipio": "Tunápolis",
+   "uf": "SC",
+   "url": "https://tunapolis.sc.gov.br/uploads/sites/461/2023/01/Lei-N%C2%B0-1658.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "7493ae03bb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "02f861e40c816db9723a804a89f9bbeb746c7292c6618890c1a8b4610751654b"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "28000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO PARÁ PaU'D'arco Pau D'arco PREFEITURA MUNICIPAL DE PAU DARCO O POVO UNt00 GOVERNA SECRETARIA MUNICIPAL DE PROMOÇÃO SOCIAL SECRETAZZaálesà_11,1:i. SECR"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "8104/8105 CNPJ: 19.073203/0001-36 / E-mail: assistenciasocialpaudarcoeqmail.com PLANO MUNICIPAL DE CONTINGÊNCIA CONTRA O NOVO CORONAVÍRUS DA SECRETARIA MUNICIPA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO PARÁ",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "8104/8105 CNPJ: 19.073203/0001-36 / E-mail: assistenciasocialpaudarcoeqmail.com PLANO MUNICIPAL DE CONTINGÊNCIA CONTRA O NOVO CORONAVÍRUS DA SECRETARIA MUNICIPA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DO PARÁ PaU'D'arco Pau D'arco PREFEITURA MUNICIPAL DE PAU DARCO O POVO UNt00 GOVERNA SECRETARIA MUNICIPAL DE PROMOÇÃO SOCIAL SECRETAZZaálesà_11,1:i. SECR"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "RESPOSTA",
+   "ibge": "1505551",
+   "municipio": "Pau d'Arco",
+   "uf": "PA",
+   "url": "https://paudarco.pa.gov.br/wp-content/uploads/2020/10/PLANO-DE-CONTINGENCIA-ASSISTENCIA-SOCIAL.pdf",
+   "regras_18": [
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "1d7e484909",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "59574e36b875146b77edf57a8691025353002c17a29def3414afb0f0c4405c6f"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15565 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ": PREFEITURA DO MUNICÍPIO DE TUIUTI Departamento de Assistência Social e Solidariedade COVID-19 Plano de Contingência da Política de Assistência Social para"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ICÍPIO DE TUIUTI Departamento de Assistência Social e Solidariedade COVID-19 Plano de Contingência da Política de Assistência Social para prevenção e atuação",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DO",
+      "titulo": "Plano de Contingência",
+      "trecho": "ICÍPIO DE TUIUTI Departamento de Assistência Social e Solidariedade COVID-19 Plano de Contingência da Política de Assistência Social para prevenção e atuação",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": ": PREFEITURA DO MUNICÍPIO DE TUIUTI Departamento de Assistência Social e Solidariedade COVID-19 Plano de Contingência da Política de Assistência Social para"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "declara anormalidade — é ato de resposta"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "RESPOSTA",
+   "ibge": "3554953",
+   "municipio": "Tuiuti",
+   "uf": "SP",
+   "url": "https://tuiuti.sp.gov.br/wp-content/uploads/2020/07/Plano-de-Contingência-da-Política-Social-1.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "38935bfd50",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "2c565c9b3172843e347671d058545fe75e798f2306b8995b8ad44dbf9f9ba0bc"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "48480 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ÁGUA DOCE DO NORTE Estado do Espírito Santo Coordenadoria Municipal de Proteção e Defesa Civil Página 1 de 26 72 / 1 ANIGÁP 74:80 6202/4"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "nto populacional em decréscimo anteriormente. Fonte: IBGE 2022. 5. FINALIDADE O Plano de Contingência de Proteção e Defesa Civil PLANCON para o município de Águ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "nto populacional em decréscimo anteriormente. Fonte: IBGE 2022. 5. FINALIDADE O Plano de Contingência de Proteção e Defesa Civil PLANCON para o município de Águ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE ÁGUA DOCE DO NORTE Estado do Espírito Santo Coordenadoria Municipal de Proteção e Defesa Civil Página 1 de 26 72 / 1 ANIGÁP 74:80 6202/4"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "superficiais com grande velocidade e energia, resultante de fortes chuvas. II. Estiagem Período prolongado de baixa pluviosidade ou sua ausência, em que a perd"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200169",
+   "municipio": "Água Doce do Norte",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/%C3%81GUA%20DOCE%20DO%20NORTE%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf?v=1781718141000",
+   "regras_18": [
+    "J22",
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "1c6aed8919",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "cac5c1cc825567d235a858069013c60293455be6e24a6d7a8c11ead8efda7b85"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21392 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ções bruscas ou processos geológicos ou hidrológicos correlatos do município de Alfredo Chaves, estabelece os procedimentos a serem adotados pelos órgãos envolv"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ÜÊFE§A CI\\III .!riirro srrro pLANo DE coNTrNcÊncra oe enoreçÃo E DEFEsA crvrl - pLANcoN Deslizamentos de grande impacto, inundaçôes bruscas ou processos geológi",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "pLANcoN",
+      "trecho": "ÜÊFE§A CI\\III .!riirro srrro pLANo DE coNTrNcÊncra oe enoreçÃo E DEFEsA crvrl - pLANcoN Deslizamentos de grande impacto, inundaçôes bruscas ou processos geológi",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "pacto, inundações bruscas ou processos geológicos ou hidrológicos correlatos do município de Alfredo Chaves, estabelece os procedimentos a serem adotados pelos"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "1.2.2.0.0, 1.3.2.1.4, 1.1.3.2.1"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200300",
+   "municipio": "Alfredo Chaves",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ALFREDO%20CHAVES%20-%20PLANO%20DE%20CONTIGENCIA%20-2025.pdf?v=1781718141000",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J10",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "6de85a31b1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5592e5928c03bd7e4461a78ac660174cd322fdbe9a9347b7c5e87502a144d1bd"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "85343 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "A E RECONSTRUÇÃO DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Município: Apiac"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "O DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Município: Apiacá Estado: Espír",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "O DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Município: Apiacá Estado: Espír",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "O, ASSISTÊNCIA E RECONSTRUÇÃO DOS CENÁRIOS DE DESASTRES, EM SITUAÇÃO ANORMAL NO MUNICÍPIO DE APIACÁ - ES. 3 Plano de Contingência de Proteção e Defesa Civil Mun"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANCON para INUNDAÇÕES, ALAGAMENTOS, DESLIZAMENTOS DE SOLO, PERÍODO INTENSO DE ESTIAGEM, INCÊNDIO E PRODUTOS PERIGOSOS do município de Apiacá- ES, estabelece o"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3200508",
+   "municipio": "Apiacá",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/APIAC%C3%81%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718142000",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "016e7132a1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "870b4816f7a8e2a136fcd7fc439613f88b67dc30d8012d3ae575f905a4530655"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "187123 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "............................................................12 4.1 MUNICIPIO DE CARIACICA ......................................................................"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "...........................................................................7 3. PLANO MUNICIPAL CONTINGÊNCIA....................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICIPIO DE",
+      "titulo": "PLANO MUNICIPAL CONTINGÊNCIA",
+      "trecho": "...........................................................................7 3. PLANO MUNICIPAL CONTINGÊNCIA....................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": ".........................................................................12 4.1 MUNICIPIO DE CARIACICA ........................................................."
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "stá imune a fenômenos extremos, como terremotos, tsunamis, furacões, enchentes, secas, incêndios florestais ou desastres tecnológicos. Assim, a Proteção e Defes"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3201308",
+   "municipio": "Cariacica",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/CARIACICA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718201000",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "eec0b6dd22",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "598713d9dd3d7d8d700531ce79015ba8f5f239d110120524216611c405b119bc"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "46454 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE MANTENÓPOLIS ESTADO DO ESPÍRITO SANTO COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E D"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "LIS ESTADO DO ESPÍRITO SANTO COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL 1 PREFEITURA MUNICIPA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "LIS ESTADO DO ESPÍRITO SANTO COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL 1 PREFEITURA MUNICIPA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE MANTENÓPOLIS ESTADO DO ESPÍRITO SANTO COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E D"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "Documento de Aprovação O Plano de Contingência para Deslizamentos, Enxurradas e Inundações Bruscas do Município de Mantenópolis/ES, elaborado e aprovado por mei"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3203304",
+   "municipio": "Mantenópolis",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/MANTEN%C3%93POLIS%20-%20PLANO%20%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718327000",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "4ce4acfa09",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "112002206255e2dc28cf1d7467ff01f5d6a97d74d0a0205e5369d240ae3e4306"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "242181 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ÇÃO O Plano de Contingência de Proteção e Defesa Civil (PLACON) do Município de Santa Maria de Jetibá, voltado aos cenários de movimento de massa, inundação, en"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "081 / 1 ANIGÁP 72:21 6202/50/02 LANIGIRO OTNEMUCOD - SCOD-E - QDGWMW-6202 PLANO DE CONTINGÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL SUMÁRIO 1. INTRODUÇÃO .....",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "081 / 1 ANIGÁP 72:21 6202/50/02 LANIGIRO OTNEMUCOD - SCOD-E - QDGWMW-6202 PLANO DE CONTINGÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL SUMÁRIO 1. INTRODUÇÃO .....",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "02 1. INTRODUÇÃO O Plano de Contingência de Proteção e Defesa Civil (PLACON) do Município de Santa Maria de Jetibá, voltado aos cenários de movimento de massa,"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "Município de Santa Maria de Jetibá, voltado aos cenários de movimento de massa, inundação, enxurrada e alagamento, estabelece as diretrizes, procedimentos e res"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "3204559",
+   "municipio": "Santa Maria de Jetibá",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/SANTA%20MARIA%20DE%20JETIB%C3%81%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf?v=1781718375000",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "cab52a5353",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9972e6f9a13a29bd470e1429aecfb50d932a5ac82d8376964930d42a09e24471"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "166483 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE SERRA Weverson Meirelles Prefeito Municipal Gracimeri Vieira Soeiro de Castro Gaviorno Vice-Prefeita Municipal e Secretária Municipal de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "te do Prefeito MUNICÍPIO DA SERRA ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇ",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "1.871",
+      "data": "10/12/2025",
+      "trecho": "te do Prefeito MUNICÍPIO DA SERRA ESTADO DO ESPÍRITO SANTO GABINETE DO PREFEITO DECRETO Nº 1.871, DE 10 DE DEZEMBRO DE 2025 INSTITUI O PLANO MUNICIPAL DE PROTEÇ"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE SERRA Weverson Meirelles Prefeito Municipal Gracimeri Vieira Soeiro de Castro Gaviorno Vice-Prefeita Municipal e Secretária Municipal de"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "multirrisco_pdc",
+     "trecho": "Prefeito ORGANIZAÇÃO Fábio Mauricio Rodrigues Pereira Coordenador Municipal de Proteção e Defesa Civil Ervan Miranda Júnior Assessor para Ações de Defesa Civil"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "ato de 10/12/2025, anterior ao Boletim nº 1 (29/06/2026)"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "10/12/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "3205002",
+   "municipio": "Serra",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/SERRA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718391000",
+   "regras_18": [
+    "J22",
+    "J1"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "multirrisco_pdc",
+   "pista_id": "e1c1303e9f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "1e7a7112177aa83411609de7d18605bd63cbd5499eebb1e530223c75ca9c5354"
   }
  ]
 }
