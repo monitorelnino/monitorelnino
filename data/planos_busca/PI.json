@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-22",
+ "gerado_em": "2026-11-23",
  "municipios": {
   "2211001": {
    "S16": {
@@ -524,6 +524,20 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2201507&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Batalha\" PI \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Batalha\" PI (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
    }
   },
   "2201903": {
@@ -560,6 +574,20 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2201903&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Bom Jesus\" PI \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Bom Jesus\" PI (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
    }
   },
@@ -598,6 +626,20 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2202000&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Buriti dos Lopes\" PI \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Buriti dos Lopes\" PI (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
    }
   },
   "2202208": {
@@ -635,6 +677,20 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2202208&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Campo Maior\" PI \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Campo Maior\" PI (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
    }
   },
   "2202307": {
@@ -671,6 +727,20 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2202307&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Canto do Buriti\" PI \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-23",
+    "situacao": "erro",
+    "consulta": "\"Canto do Buriti\" PI (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
    }
   },
