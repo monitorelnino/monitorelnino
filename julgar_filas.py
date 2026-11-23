@@ -200,6 +200,8 @@ CORRECOES_DO_JUIZ = (
     # 23/11 (editoria): o plano publicado que explica o reconhecimento federal não é ato de resposta. Até o fim do
     # dia do merge, como a linha acima.
     ("2026-11-24", ("resposta",), None),
+    # 23/11: o .doc do Word 97–2003 não tinha leitor (`texto_de_doc_binario`); o que saiu sem texto volta uma vez.
+    ("2026-11-24", ("texto_nao_extraivel",), _de_escritorio),
 )
 
 

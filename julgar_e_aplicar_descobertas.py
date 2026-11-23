@@ -205,8 +205,11 @@ def texto_do_documento(raw, url, tipo=""):
         xml = re.sub(r"</w:p>|</text:p>", " ", corpo.decode("utf-8", errors="ignore"))
         from html import unescape
         return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", "", xml))).strip()[:TETO_DA_LEITURA]
-    if raw[:8] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1":   # DOC binário (OLE): sem extrator no projeto
-        return ""
+    if raw[:8] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1":   # DOC binário (OLE): o texto está na tabela de peças
+        try:
+            return re.sub(r"\s+", " ", texto_de_doc_binario(raw)).strip()[:TETO_DA_LEITURA]
+        except Exception:  # noqa: BLE001 — arquivo truncado ou que não é do Word: obtido e sem texto
+            return ""
     try:
         html = raw.decode("utf-8")
     except UnicodeDecodeError:
@@ -215,6 +218,53 @@ def texto_do_documento(raw, url, tipo=""):
     texto = re.sub(r"<[^>]+>", " ", texto)
     texto = re.sub(r"\s+", " ", texto).strip()
     return texto[:TETO_DA_LEITURA]
+
+
+def texto_de_doc_binario(raw):
+    """Texto de um .doc do Word 97–2003 (contêiner OLE), sem dependência: lê as correntes `WordDocument` e
+    `0Table`/`1Table` e junta as peças da tabela de peças (CLX), cada uma em cp1252 ou UTF-16. Função pura."""
+    import struct
+    u16, u32 = (lambda b, o: struct.unpack_from("<H", b, o)[0]), (lambda b, o: struct.unpack_from("<I", b, o)[0])
+    ss, mss, corte = 1 << u16(raw, 30), 1 << u16(raw, 32), u32(raw, 56)
+    setor = lambda i: raw[(i + 1) * ss:(i + 2) * ss]
+
+    def cadeia(inicio, tabela, limite=1 << 20):
+        while inicio < 0xFFFFFFFA and limite:
+            yield inicio
+            inicio, limite = tabela[inicio], limite - 1
+    difat, prox = list(struct.unpack_from("<109I", raw, 76)), u32(raw, 68)
+    while prox < 0xFFFFFFFA and len(difat) < 1 << 16:
+        s = setor(prox)
+        difat += struct.unpack_from(f"<{ss // 4 - 1}I", s, 0)
+        prox = u32(s, ss - 4)
+    fat = [x for i in difat if i < 0xFFFFFFFA for x in struct.unpack(f"<{ss // 4}I", setor(i).ljust(ss, b"\xff"))]
+    ler = lambda inicio: b"".join(setor(i) for i in cadeia(inicio, fat))
+    diretorio = ler(u32(raw, 48))
+    entradas = {diretorio[o:o + u16(diretorio, o + 64) - 2].decode("utf-16-le", "ignore"): (u32(diretorio, o + 116), u32(diretorio, o + 120))
+                for o in range(0, len(diretorio) - 127, 128) if 2 <= u16(diretorio, o + 64) <= 64}
+    minifat = [x for x in struct.unpack(f"<{len(m) // 4}I", m)] if (m := ler(u32(raw, 60))) else []
+    mini = ler(entradas["Root Entry"][0])
+
+    def corrente(nome):
+        inicio, tamanho = entradas[nome]
+        if tamanho >= corte:
+            return ler(inicio)[:tamanho]
+        return b"".join(mini[i * mss:(i + 1) * mss] for i in cadeia(inicio, minifat))[:tamanho]
+    doc = corrente("WordDocument")
+    tabela = corrente("1Table" if u16(doc, 10) & 0x0200 else "0Table")
+    clx, o = tabela[u32(doc, 0x01A2):u32(doc, 0x01A2) + u32(doc, 0x01A6)], 0
+    while clx[o] == 1:                       # Prc: propriedades, não texto
+        o += 3 + u16(clx, o + 1)
+    n = (u32(clx, o + 1) - 4) // 12          # PlcPcd: n+1 posições de caractere e n peças de 8 bytes
+    cps, pecas, partes = o + 5, o + 5 + 4 * (n + 1), []
+    for i in range(n):
+        tam, fc = u32(clx, cps + 4 * i + 4) - u32(clx, cps + 4 * i), u32(clx, pecas + 8 * i + 2)
+        if fc & 0x40000000:
+            ini = (fc & 0x3FFFFFFF) // 2
+            partes.append(doc[ini:ini + tam].decode("cp1252", "ignore"))
+        else:
+            partes.append(doc[fc:fc + 2 * tam].decode("utf-16-le", "ignore"))
+    return re.sub(r"[\x00-\x1f]", " ", "".join(partes))
 
 
 def extrair_texto_pdf(raw):
@@ -1059,6 +1109,30 @@ def self_test():
     assert texto_do_documento(_b.getvalue(), "https://x/p.docx") == "PLANO DE CONTINGÊNCIA Itati"
     assert texto_do_documento(b"%PDF-1.4 sem texto", "https://x/p.pdf") == ""
     assert texto_do_documento(b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1" + b"x" * 900, "https://x/p.doc") == ""
+    # 23/11: o .doc do Word 97–2003 passou a ser lido (6 planos do Prepara RS vinham vazios); o que não é do Word segue "".
+    import base64 as _b64, zlib as _zl
+    _doc = _zl.decompress(_b64.b64decode(
+        "eNrtmd9Pm1UYx5/ztpS2m6WUighVOlYB2ej4MRDmVCiMQSfQjQnqfmChxXWuLUIXMfHCaEy8mAnGC29MjAleaQzqH6A3emfmzS52"
+        "N+OFMTHLNHqxi1G/53nPy7qOyduymI31IR/O+56+55znPOc5533ec36+WHnls69rf6E8eZostJZ1kC0nTwC3cYMLTeWtZbNZIztb"
+        "kvtKbqhUjqEV41cG5JiXAztwACfYAXaCh4ALVKhxr1RpSe5POUZp/GXIT4cohXSB3qRCpBoek1ufmTJrJp8zK6X2i2/fWL+Lmf/y"
+        "XSDnvwdUAS94mH2C6BFQAx4FtaAO+MBj4HFQD/xgF2hQOgSQPqGum5A2gydBC9gD9oJWEAT7QBtoBx2gE+wHXaAbPAV6QC84wO8z"
+        "ooPgGfAseA70gX4QAgNgEBwCQ+AwGAYjIAyOgOfBKBgD4yACjoJjYAIcBy+ASTAFXgQvgZfBCXASnAKnVR9fuQfWTgENLE7dh2wO"
+        "jX3ie901huT4jSZmF9KL6bmMfyq9EGsdTL92PhlPZdgnRidk3mB6lj1BXgdxw78He+jv3m9e39wXhR5GFC0eeJwTtZxgj9QF9nb/"
+        "mdXY7jaMVhqrWpKidE75cXuAWgKiPyC9KNRC42ELHQUD4RpKDjusiyAStlJq2GrPgNPhMorit+nhXut/6jJEa/WCNDHE82eY4mgz"
+        "Rgmsq6/yzKmgqpVr5F1ZIltAYHaMh21o2IaGfRQJl5PekA9+HHLLevbz/AtB/xhWZT/8K05LWKPlzHOTJ+YVAjVi3q1c4Nm0zy2E"
+        "R8hZZYWvJmiRn9UwR62o2w5/b0C9DaKP9RuAdvN4IoH6U6yfB7UtsX47oZ+HDdJtF7Ko7P8pu2jkHnYglSvFCMrFWCd5V8Wl9JYm"
+        "+bmQmOQVIgL7x2lufRwy+IujZG6PnFg99L4QW8YByziggReWcaJOB1TwspV93D9ehNhr5TLVbddXLnndY6f1qNWnUs2dkxHRVzZ2"
+        "hcPVy8KMmx2HmZJQdhFKjyF9A6l8dcruSON1oR4zfjyBgUzSDEpKZ+xsNNd6PwyXUA6ckBpXbl5GOsAMNF1gg+uD7Ef7ca5rzkSf"
+        "jtjMaTfGAUT6ltr9cK8wFk2ZJ5fWXpN1DbGrxFFK6rAoLSZt5C6+v0Y9uTYcKaJnej239SuwLERR/Zru2kq/RjlN84srTee5b/IZ"
+        "YyRht67i+2jUnt/bECaesH+A98IPcPYzYoPFXIUQdXwneKq+y4rcmmsUbbJwFMAzuiRbeA223f0689Yzv8lBKliTt7ei5FpWOpO2"
+        "UVxBV9779K/r42fcX3xopz1N316Wmr2l4luh4kOHigOdKr7boeI2GevGVLw7r4zx+w09dtVUL/ty2jNzvZH88bkQo34HLHvN812u"
+        "AdWbzEUD0fS5aKpnA7M6rNW0z3Xz3rfpd0IFT0Ohrm051/nyPv+/qubpVRNLiXzGW4h7abqVXSpd33nCfYdl6+5bW2RcmYSJZnLK"
+        "Nmr6V01JtqfU5vnf/yUaXS4ZvyQleaAlgg+SqAq2ZzmQ14Nx+V3txxd2RoX9B3AXpd/oV/wa5KikJNtC1O5FSR5IEUac/0/JFttc"
+        "nF6yBCgaWN/mlBvQopUOtlEftiRDEY3qV98J+ld/7N+1mrI2gN3LKWsAdOL35g5ytZn//pU52qWfLn0SrHN/9DG+f/de/0qeb5Tl"
+        "5Z1U5zQi53zf+Na9U35Jto/czfNf6Sf5Z0gblZEf9301xgI4wFvO8zhRm6GzVPj5j8Z+aTVOA0zK2fUFeBwRWLz4WY3WZbuWAtrX"
+        "6OZOSTu24aPoebE6uFT7hZz/Sl0vlpParJ1A1JnkTX859vJMJ/ekxjgdupM0o33jzNhs+7vBl+p6ituK4ew1zfGvPJBI8YmQya/3"
+        "IvovT6+MfbOy21ouzB49RbQ/DTJ0b5z//wuch+BC"))
+    assert texto_do_documento(_doc, "https://x/p.doc") == "Plano curto de Itati: ação.", texto_do_documento(_doc, "https://x/p.doc")
     assert canal_e_fonte("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/"
                          "Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/"
                          "3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/"
