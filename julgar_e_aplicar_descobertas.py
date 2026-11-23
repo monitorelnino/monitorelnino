@@ -118,8 +118,11 @@ def _ler_sharepoint_rs(url, timeout):
         try:
             corpo = obter_documento(destino, timeout)
         except Exception as e:
-            if not nome_resolve(destino):
-                raise DestinoForaDoAr(f"o endereço indicado pelo atalho não existe (DNS sem resposta): {destino[:90]}") from e
+            # Nome que não resolve, ou que resolve para um servidor que não é o do endereço (certificado de outro
+            # nome): o resultado depende do resolvedor (do Brasil, "domínio não encontrado"; do runner, outro
+            # servidor). Nos dois casos o site indicado não está mais no ar; a verificação nunca se desliga.
+            if not nome_resolve(destino) or "Hostname mismatch" in str(e) or "certificate is not valid for" in str(e):
+                raise DestinoForaDoAr(f"o endereço indicado pelo atalho não está mais disponível: {destino[:90]}") from e
             raise
     else:
         corpo = r.content
@@ -129,7 +132,7 @@ def _ler_sharepoint_rs(url, timeout):
 
 
 class DestinoForaDoAr(OSError):
-    """A fonte oficial indica um endereço cujo nome não existe mais (23/11/2026: os 30 atalhos da CREPDEC 07
+    """A fonte oficial indica um endereço que não está mais no ar (nome sem DNS, ou servidor de outro nome) (23/11/2026: os 30 atalhos da CREPDEC 07
     do Prepara RS apontam para casamilitar-rs.com.br, sem DNS). Causa nomeada, não "documento inacessível"."""
 
 
@@ -1131,7 +1134,10 @@ def self_test():
         try:
             globals().update(buscar=_falha, copia_arquivada=lambda u: (None, None), nome_resolve=lambda u: False)
             assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == "DestinoForaDoAr"
-            globals()["nome_resolve"] = lambda u: True
+            def _cert(u, timeout=40, origem=None): raise OSError("certificate verify failed: Hostname mismatch, certificate is not valid for 'x'")
+            globals().update(buscar=_cert, nome_resolve=lambda u: True)
+            assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == "DestinoForaDoAr"
+            globals().update(buscar=_falha)
             try:
                 _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf"))
                 assert False, "o erro da fonte que resolve deveria subir"
