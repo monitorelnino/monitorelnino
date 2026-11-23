@@ -1159734,6 +1159734,876 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "aa5de0ff6298bab2b3300add715aa8f78930b7f2e129af60eb859688253f69e4"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218608",
+   "municipio": "Trombudo Central",
+   "uf": "SC",
+   "url": "https://www.cmtc.sc.gov.br/proposicoes/Projetos-de-Leis-Complementares/0/1/0/11867",
+   "regras_18": [],
+   "pista_id": "0afdad3a07",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "35 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3505500",
+   "municipio": "Barretos",
+   "uf": "SP",
+   "url": "https://barretos.sp.gov.br/noticia/18516/barretos-abre-consulta-publica-e-agenda-audiencia-para-o-plano-municipal-pela-primeira-infancia-2026-2036",
+   "regras_18": [],
+   "pista_id": "26a712e98a",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1676 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Sítio D'Abadia - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis Rec"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5220702",
+   "municipio": "Sítio d'Abadia",
+   "uf": "GO",
+   "url": "https://acessoainformacao.sitiodabadia.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "0b6cbfb7c8",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "4916f6fd1535a21a2a81f273fba27002b45a3106eecc1e06cc82c295e084dc91"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1658 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de Sítio D'Abadia - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm."
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5220702",
+   "municipio": "Sítio d'Abadia",
+   "uf": "GO",
+   "url": "https://acessoainformacao.sitiodabadia.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "5ddb576230",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "c9319e7a47bf7be4ea976a428783ba0f108d5710efa4d73e7e2fce257fc92576"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "83 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212908",
+   "municipio": "Pinhalzinho",
+   "uf": "SC",
+   "url": "https://www.pinhalzinho.sc.gov.br/cidadao/pagina/plano-municipal-saneamento-basico",
+   "regras_18": [],
+   "pista_id": "7a621ba1bf",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "82 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212908",
+   "municipio": "Pinhalzinho",
+   "uf": "SC",
+   "url": "https://www.pinhalzinho.sc.gov.br/cidadao/pagina/plano-de-acao-e-aplicacao-do-fia",
+   "regras_18": [],
+   "pista_id": "6f40b94f30",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "82 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212908",
+   "municipio": "Pinhalzinho",
+   "uf": "SC",
+   "url": "https://www.pinhalzinho.sc.gov.br/cidadao/pagina/plano-de-acao-e-aplicacao-do-fmi",
+   "regras_18": [],
+   "pista_id": "ced62cd933",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2912806",
+   "municipio": "Ibirapuã",
+   "uf": "BA",
+   "url": "https://transparencia.ibirapua.ba.gov.br/plano-municipal-saude",
+   "regras_18": [],
+   "pista_id": "76819e7ed3",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2912806",
+   "municipio": "Ibirapuã",
+   "uf": "BA",
+   "url": "https://transparencia.ibirapua.ba.gov.br/plano-municipal-educacao",
+   "regras_18": [],
+   "pista_id": "22e7b67326",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "67 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100049",
+   "municipio": "Cacoal",
+   "uf": "RO",
+   "url": "https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/publicacoes/1224/442",
+   "regras_18": [],
+   "pista_id": "63e6df2711",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-municipal-de-educacao/20081",
+   "regras_18": [],
+   "pista_id": "e53c389681",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-m-de-saneamento-basico/10037",
+   "regras_18": [],
+   "pista_id": "0d26949c74",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2608255",
+   "municipio": "Jucati",
+   "uf": "PE",
+   "url": "https://www.jucati.pe.gov.br/v5/SIAFIC-Jucati%20PE.pdf",
+   "regras_18": [],
+   "pista_id": "75bc42bdf9",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217303",
+   "municipio": "Saudades",
+   "uf": "SC",
+   "url": "https://www.camarasaudades.sc.gov.br/tramitacoes/10/484/0",
+   "regras_18": [],
+   "pista_id": "444164bc99",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217303",
+   "municipio": "Saudades",
+   "uf": "SC",
+   "url": "https://www.camarasaudades.sc.gov.br/imprensa/noticias/0/2/2020/661",
+   "regras_18": [],
+   "pista_id": "b0ae43d5b6",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217303",
+   "municipio": "Saudades",
+   "uf": "SC",
+   "url": "https://www.camarasaudades.sc.gov.br/tramitacoes/2/509/0",
+   "regras_18": [],
+   "pista_id": "0bf2998c83",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2932101",
+   "municipio": "Ubaíra",
+   "uf": "BA",
+   "url": "https://www.comprasnet.ba.gov.br/sites/default/files/estudo_tecnico.pdf",
+   "regras_18": [],
+   "pista_id": "3306739f22",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2925204",
+   "municipio": "Pojuca",
+   "uf": "BA",
+   "url": "https://camarapojuca.ba.gov.br/pdf/legislacao/90256812429.pdf",
+   "regras_18": [],
+   "pista_id": "79bbc8ae8c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2925204",
+   "municipio": "Pojuca",
+   "uf": "BA",
+   "url": "https://camarapojuca.ba.gov.br/pdf/legislacao/90256812429.pdf",
+   "regras_18": [],
+   "pista_id": "e5c18220dd",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100338",
+   "municipio": "Nova Mamoré",
+   "uf": "RO",
+   "url": "https://novamamore.ro.gov.br/wp-content/uploads/2024/03/Plano-de-Contingencia-de-Protecao-e-Defesa-Civil-Nova-Mamore.pdf",
+   "regras_18": [],
+   "pista_id": "44456cec8b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2613008",
+   "municipio": "São Bento do Una",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2025-12-16%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "9efa73afe1",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2615300",
+   "municipio": "Timbaúba",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2026-05-26%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "bf620f1a9c",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2600500",
+   "municipio": "Águas Belas",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2026-02-25%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "1e10ff6628",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2613503",
+   "municipio": "São José do Belmonte",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?arquivo=%2FFlip%2Fpubs%2Fdiario-oficial-2026-08-12%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "5dadcbfa6d",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2614105",
+   "municipio": "Sertânia",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2026-05-26%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "6e3a4ce7e0",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2613602",
+   "municipio": "São José do Egito",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2026-02-25%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "561b1507b5",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2603009",
+   "municipio": "Cabrobó",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?arquivo=%2FFlip%2Fpubs%2Fdiario-oficial-2026-08-12%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "e890d46a8e",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "38 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3503307",
+   "municipio": "Araras",
+   "uf": "SP",
+   "url": "https://araras.sp.gov.br/pmpi/",
+   "regras_18": [],
+   "pista_id": "898c0dde54",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2615805",
+   "municipio": "Tupanatinga",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2026-05-26%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "03907d7519",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2616308",
+   "municipio": "Vicência",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-02042015-4%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "866e594609",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2614808",
+   "municipio": "Tacaratu",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?arquivo=%2FFlip%2Fpubs%2Fdiario-oficial-2026-08-12%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "e69b0c2ed4",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2600302",
+   "municipio": "Agrestina",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?arquivo=%2FFlip%2Fpubs%2Fdiario-oficial-2026-08-12%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "ad1eec518c",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2613305",
+   "municipio": "São Joaquim do Monte",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2026-02-25%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "14af53b814",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2608503",
+   "municipio": "Lagoa de Itaenga",
+   "uf": "PE",
+   "url": "https://www.alepe.pe.gov.br/servicos/showPdf.php?url=%2FFlip%2Fpubs%2Fdiario-oficial-2025-02-04%2FFlip.pdf",
+   "regras_18": [],
+   "pista_id": "7d578c3527",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "130 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4214805",
+   "municipio": "Rio do Sul",
+   "uf": "SC",
+   "url": "https://www.riodosul.sc.gov.br/cidadao/noticia/audiencia-publica-vai-apresentar-plano-de-contingencia-de-rio-do-sul-a-comunidade",
+   "regras_18": [],
+   "pista_id": "08a3b976cd",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "153 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4214805",
+   "municipio": "Rio do Sul",
+   "uf": "SC",
+   "url": "https://www.riodosul.sc.gov.br/cidadao/noticia/bairros-de-rio-do-sul-elaboram-plano-comunitario-de-contingencia-e-ampliam-integracao-com-a-defesa-civil",
+   "regras_18": [],
+   "pista_id": "73f705d6af",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219507",
+   "municipio": "Xanxerê",
+   "uf": "SC",
+   "url": "https://www.camaraxanxere.sc.gov.br/proposicoes/Leis-Complementares/2019/1/0/14417",
+   "regras_18": [],
+   "pista_id": "206c73c897",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208807",
+   "municipio": "Jaguaruna",
+   "uf": "SC",
+   "url": "https://www.camarajaguaruna.sc.gov.br/imprensa/noticias/0/1/0/1091",
+   "regras_18": [],
+   "pista_id": "5be170fe2d",
+   "origem": "busca_web",
+   "leu_documento": true
   }
  ]
 }
