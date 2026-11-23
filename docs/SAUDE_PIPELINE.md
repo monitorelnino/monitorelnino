@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-16 a 2026-11-23 (1583 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-16 a 2026-11-23 (1586 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -34,7 +34,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-22 07:29 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-22 01:37 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-22 07:27 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-23 12:03 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-23 12:49 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-22 06:54 | 501 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-23 08:55 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-22 04:10 | 11930 s | 147 | ok | — |
@@ -84,7 +84,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `coletar_siconfi_182.py` | coletor | 2026-11-22 06:35 | 0 s | — | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-23 07:27 | 2410 s | — | ok | — |
 | `coletar_sim.py` | coletor | 2026-11-23 07:16 | 617 s | — | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-11-23 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `coletar_sinais_risco.py` | coletor | 2026-11-23 12:06 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_sisab.py` | coletor | 2026-11-23 07:14 | 145 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-22 06:23 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-22 01:59 | 35 s | — | ok | — |
@@ -97,7 +97,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `desfechos_sus.py` | coletor | 2026-11-23 07:16 | 1 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-23 05:30 | 1 s | — | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-23 08:55 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `julgar_filas.py` | coletor | 2026-11-23 11:03 | 486 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-11-23 11:56 | 9 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-11-18 20:58 | 3850 s | — | ok | — |
 | `julgar_saude_municipal.py` | coletor | 2026-11-16 05:40 | 8409 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-23 08:15 | 3 s | — | ok | — |
