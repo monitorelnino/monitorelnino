@@ -84,9 +84,14 @@ def planos_sem_contar(pistas) -> dict:
             motivo = "nao_aberto"
         else:
             continue
-        if cod not in achados or (achados[cod]["motivo"], motivo) == ("nao_aberto", "sem_data"):
+        # 23/11/2026: o endereço que a fonte oficial indica não existe mais (DNS); a data é a da primeira constatação.
+        fora = [t["em"] for t in p.get("juiz_tentativas") or [] if t.get("causa") == "destino_fora_do_ar"]
+        if motivo == "nao_aberto" and fora and (p.get("juiz_tentativas") or [{}])[-1].get("causa") == "destino_fora_do_ar":
+            motivo = "fora_do_ar"
+        if cod not in achados or (achados[cod]["motivo"] != "sem_data" and motivo == "sem_data"):
             achados[cod] = {"motivo": motivo, "url": url, "fonte": REPOSITORIOS[uf_rep]["fonte"] if uf_rep else _host(url),
-                            "nome": p.get("municipio"), "uf": p.get("uf")}
+                            "nome": p.get("municipio"), "uf": p.get("uf"),
+                            **({"desde": "/".join(reversed(fora[0].split("-")))} if motivo == "fora_do_ar" else {})}
     return achados
 
 
@@ -238,6 +243,10 @@ def autoteste():
              "url": "https://ipixuna.am.gov.br/plancon.pdf", "juiz": {"promove": False, "motivo": "data_nao_confirmada", "leu_documento": True}},
             {"alvo": "4300001", "municipio": "Aratiba", "uf": "RS", "tipo": "plano", "status": "pista — na fila, aguardando busca dirigida e juiz",
              "url": rs_pasta + "PLANO%20Aratiba.url"},
+            {"alvo": "4300002", "municipio": "Palmitinho", "uf": "RS", "tipo": "plano", "status": "pista — na fila, aguardando busca dirigida e juiz",
+             "url": rs_pasta + "PLANO%20Palmitinho.url", "juiz_tentativas": [
+                 {"em": "2026-11-19", "classe": "tecnica", "motivo": "documento_inacessivel"},
+                 {"em": "2026-11-24", "classe": "tecnica", "motivo": "documento_inacessivel", "causa": "destino_fora_do_ar"}]},
             {"ibge": "4301602", "municipio": "Bagé", "uf": "RS", "tipo": "plano", "status": "pista — recusada pelo juiz: data_nao_confirmada",
              "url": "https://bage.rs.gov.br/p.pdf", "juiz": {"promove": False, "motivo": "data_nao_confirmada", "leu_documento": True}},
             {"ibge": "3500003", "municipio": "Recusado", "uf": "SP", "tipo": "plano", "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
@@ -256,6 +265,9 @@ def autoteste():
         a = c["4300001"]
         return (a["plano_sem_contar"]["motivo"] == "nao_aberto" and "Prepara RS" in a["plano_sem_contar"]["fonte"]
                 and a["categoria"] == "nao_verificado" and (a["nome"], a["uf"]) == ("Aratiba", "RS"))
+    def t_destino_fora_do_ar():
+        a = c["4300002"]["plano_sem_contar"]
+        return a["motivo"] == "fora_do_ar" and a["desde"] == "24/11/2026" and "desde" not in c["4300001"]["plano_sem_contar"]
     def t_plano_que_conta_nao_ganha_a_marca(): return "plano_sem_contar" not in c["4301602"]
     def t_outra_recusa_nao_vira_plano(): return "3500003" not in c
 
@@ -319,6 +331,7 @@ def autoteste():
         "23/11: plano lido sem data não é 'não localizado' (a categoria não muda)": t_plano_sem_data_nao_e_nao_localizado,
         "23/11: plano indicado no repositório estadual e não aberto ganha card": t_repositorio_nao_aberto,
         "23/11: município com plano que conta não ganha a marca": t_plano_que_conta_nao_ganha_a_marca,
+        "23/11: destino que não existe vira fora_do_ar, com a data da primeira constatação": t_destino_fora_do_ar,
         "23/11: outra recusa do juiz não vira plano localizado": t_outra_recusa_nao_vira_plano,
         "prioritário sem registro entra, com a varredura do livro": t_prioritario_sozinho_entra,
         "varredura sem achado: nao_localizado com nível e data do município": t_varredura_sem_achado_vira_nao_localizado,
