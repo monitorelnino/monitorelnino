@@ -7,7 +7,7 @@ cand = [i for i in ids if "MUNIC" in i.upper()]
 print("camadas", len(ids), cand, flush=True)
 out = {"camadas_municipais": cand, "todas": ids}
 try:
-    idx = sorted(cand)[-1]
+    idx = next(i for i in cand if "MUNICIPIOS_IBGE" in i)
     mun = ee.Image(ee.ImageCollection(mb.TERRITORIOS).filter(ee.Filter.eq("system:index", idx)).first()).rename("uf")
     ref = [m for m in json.load(open("data/municipios_ibge_referencia.json")) if m["uf"] == "PA"]
     pts = ee.FeatureCollection([ee.Feature(ee.Geometry.Point([m["lon"], m["lat"]]), {"ibge": str(m["codigo_ibge"])}) for m in ref])
