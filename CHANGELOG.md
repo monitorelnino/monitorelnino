@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #2006 · OCR por página
+
+PDF escaneado com cabeçalho digitado em cada página passava da régua de letras e não ia ao OCR (São Valentim do Sul/RS). A régua passa a ser por página.
+
 ## 2026-11-23 · #2001 · Defeso: aviso antigo na evidência vai à fonte
 
 A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.
