@@ -7572,19 +7572,32 @@
    "ibge": "2902252",
    "nome": "Arataca",
    "uf": "BA",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "18/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://data.queridodiario.ok.org.br/2902252/2026-11-18/6e61c038004d7461467b79bc5d422e2d696d13be.pdf",
+     "data": "18/11/2026",
+     "decreto": "Decreto municipal nº 316",
+     "hash": "b308a7855a9d982538b2d37f5d69f5cf6f21566f4a72f0a0efc512b2de9fb87c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 4
   },
   "4300901": {
    "ibge": "4300901",
@@ -54280,19 +54293,32 @@
    "ibge": "2917607",
    "nome": "Jaguaquara",
    "uf": "BA",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "17/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://data.queridodiario.ok.org.br/2917607/2026-11-17/3e1b19b4ec7cbc4744cf070ee0b8daacdb5e14e1.pdf",
+     "data": "17/11/2026",
+     "decreto": "Decreto municipal nº 257/2026",
+     "hash": "a001953b321c02eb8c5a52c20a7d67fe1bd5485499beeff2b7bbafb2e9a3e44d"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 5
   },
   "3135001": {
    "ibge": "3135001",

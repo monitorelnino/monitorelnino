@@ -204,7 +204,7 @@
   "TO": {
    "adaptador": "busca_to",
    "url": "https://diariooficial.to.gov.br",
-   "status": "erro: URLError",
+   "status": "ok",
    "ultima_tentativa": "2026-11-22",
    "reconferencia": {
     "em": "05/11/2026",
@@ -223,7 +223,7 @@
    "adaptador": "edicao_apinova",
    "url": "https://diario.imprensaoficial.al.gov.br/apinova/api",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -257,7 +257,7 @@
    "adaptador": null,
    "url": "https://www.egba.ba.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -301,7 +301,7 @@
    "adaptador": "edicao_ce",
    "url": "https://imagens.seplag.ce.gov.br/PDF/",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": "wordpress",
     "formularios_de_busca": [],
@@ -334,7 +334,7 @@
    "adaptador": null,
    "url": "https://diariooficial.ma.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "veredito": "erro",
     "motivo": "HTTPError: HTTP Error 500: Internal Server Error",
@@ -359,7 +359,7 @@
    "adaptador": "edicao_pb",
    "url": "https://auniao.pb.gov.br/servicos/doe",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": "plone",
     "formularios_de_busca": [
@@ -410,7 +410,7 @@
    "adaptador": null,
    "url": "https://diariooficial.cepe.com.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -444,7 +444,7 @@
    "adaptador": "edicao_pi",
    "url": "https://www.diario.pi.gov.br/doe/",
    "status": "erro: URLError",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "veredito": "nao_respondeu",
     "motivo": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
@@ -478,7 +478,7 @@
    "adaptador": null,
    "url": "https://www.diariooficial.rn.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -504,8 +504,8 @@
   "SE": {
    "adaptador": "apifront",
    "url": "https://iose.se.gov.br",
-   "status": "erro: HTTPError",
-   "ultima_tentativa": "2026-11-22",
+   "status": "ok",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": "apifront",
     "formularios_de_busca": [
@@ -547,7 +547,7 @@
    "adaptador": "edicao_df",
    "url": "https://www.sinj.df.gov.br/sinj",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "medido_em": "19/10/2026",
    "caminho": "o dodf.df.gov.br estoura tempo no runner; o SINJ-DF lista os diários (ashx/Datatable/ResultadoDePesquisaDiarioDatatable.ashx, ordem de data decrescente, o filtro de data do servidor não age; varredura de até 60 páginas de 100, e se não alcançar a data vira erro de tentativa, nunca dia sem edição) e serve o PDF em BaixarArquivoDiario.aspx?id_file= (DODF 194 de 19/10 = 2,7 MB; run 39272209875 e seguintes)",
    "lidas": {
@@ -573,7 +573,7 @@
    "adaptador": "apifront",
    "url": "https://diariooficial.abc.go.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -591,7 +591,7 @@
    "adaptador": "edicao_ms",
    "url": "https://www.spdo.ms.gov.br/diariodoe/",
    "status": "erro: URLError",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -624,7 +624,7 @@
    "adaptador": "apifront",
    "url": "https://www.iomat.mt.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -642,7 +642,7 @@
    "adaptador": "apifront",
    "url": "https://ioes.dio.es.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -660,7 +660,7 @@
    "adaptador": "edicao_mg",
    "url": "https://www.jornalminasgerais.mg.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": "angular",
     "formularios_de_busca": [],
@@ -693,7 +693,7 @@
    "adaptador": "edicao_rj",
    "url": "https://www.ioerj.com.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": "wordpress",
     "formularios_de_busca": [],
@@ -726,7 +726,7 @@
    "adaptador": "busca_sp",
    "url": "https://doe.sp.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -753,7 +753,7 @@
    "adaptador": "apifront",
    "url": "https://www.dioe.pr.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -771,7 +771,7 @@
    "adaptador": "edicao_rs",
    "url": "https://doe-backend.pro.rs.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": "angular",
     "formularios_de_busca": [],
@@ -812,7 +812,7 @@
    "adaptador": "edicao_sc",
    "url": "https://portal.doe.sea.sc.gov.br/apis",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-23",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
