@@ -1159672,6 +1159672,68 @@
    "pista_id": "3a1ba5632b",
    "origem": "descoberta",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8754 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SHAPE \\* MERGEFORMAT PLANO DE CONTINGÊNCIA Município de Chuvisca / RS Chuvisca, RS Município de Chuvisca/RS População: População estimada 4944 mil habitantes Ár"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "SHAPE \\* MERGEFORMAT PLANO DE CONTINGÊNCIA Município de Chuvisca / RS Chuvisca, RS Município de Chuvisca/RS População: População estimada 4944 mil habitantes Ár",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2077",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "SHAPE \\* MERGEFORMAT PLANO DE CONTINGÊNCIA Município de Chuvisca / RS Chuvisca, RS Município de Chuvisca/RS População: População estimada 4944 mil habitantes Ár",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "SHAPE \\* MERGEFORMAT PLANO DE CONTINGÊNCIA Município de Chuvisca / RS Chuvisca, RS Município de Chuvisca/RS População: População estimada 4944 mil habitantes Ár"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "lagamentos e as erosões, enquanto identifica-se no período de falta de chuvas a estiagem. ÁREAS DE RISCO E MÉDIO RISCO 1. ALAGAMENTOS, EROSÕES, GRANIZO, CHUVAS"
+    }
+   },
+   "categoria": null,
+   "data": "2077",
+   "natureza": "EX_ANTE",
+   "ibge": "4305447",
+   "municipio": "Chuvisca",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CHUVISCA.doc",
+   "regras_18": [
+    "J22",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "3a1ba5632b",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "aa5de0ff6298bab2b3300add715aa8f78930b7f2e129af60eb859688253f69e4"
   }
  ]
 }
