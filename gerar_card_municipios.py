@@ -126,6 +126,8 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
         # aprova não foi achado.
         if r.get("sem_ato_de_aprovacao"):
             c["sem_ato_de_aprovacao"] = True
+        if r.get("plano_da_saude"):   # 23/11/2026 (editoria): plano da saúde, não da defesa civil; o cartão diz
+            c["plano_da_saude"] = r["plano_da_saude"]
     for p in pistas:
         st = p.get("status") or ""
         if not st.startswith("pista") or p.get("nivel_confianca") not in NIVEIS_NO_CARD:
@@ -227,7 +229,7 @@ def autoteste():
         "1301803": {"exercicio": 2025, "classe": "sem_lancamento_182", "rs_hab": None, "valores": {}},
         "9999999": {"exercicio": 2025, "classe": "com_lancamento", "rs_hab": 9.9, "valores": {"liquidada": 1.0}},
     }}
-    mun = [{"nome": "Bagé", "uf": "RS", "categoria": "plano", "documento": "Decreto x", "url": "https://bage.rs.gov.br/d", "data": "10/07/2026"},
+    mun = [{"nome": "Bagé", "uf": "RS", "categoria": "plano", "documento": "Decreto x", "url": "https://bage.rs.gov.br/d", "data": "10/07/2026", "plano_da_saude": {"fonte": "bage.rs.gov.br"}},
            {"nome": "Taió", "uf": "SC", "categoria": "plano", "documento": "Plano publicado",
             "url": "https://defesacivil.taio.sc.gov.br/p.pdf", "data": "2026",
             "sem_ato_de_aprovacao": True}]
@@ -269,6 +271,7 @@ def autoteste():
         a = c["4300002"]["plano_sem_contar"]
         return a["motivo"] == "fora_do_ar" and a["desde"] == "24/11/2026" and "desde" not in c["4300001"]["plano_sem_contar"]
     def t_plano_que_conta_nao_ganha_a_marca(): return "plano_sem_contar" not in c["4301602"]
+    def t_plano_da_saude_vai_ao_card(): return c["4301602"]["plano_da_saude"] == {"fonte": "bage.rs.gov.br"}
     def t_outra_recusa_nao_vira_plano(): return "3500003" not in c
 
     def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and "varredura" in c["1301803"]
