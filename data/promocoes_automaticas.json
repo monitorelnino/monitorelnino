@@ -1159734,6 +1159734,854 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "aa5de0ff6298bab2b3300add715aa8f78930b7f2e129af60eb859688253f69e4"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3517000",
+   "municipio": "Getulina",
+   "uf": "SP",
+   "url": "https://www.getulina.sp.gov.br/portal/download/arquivos/GBxLA/",
+   "regras_18": [],
+   "pista_id": "3dd4ebeeb5",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3517000",
+   "municipio": "Getulina",
+   "uf": "SP",
+   "url": "https://www.getulina.sp.gov.br/portal/download/arquivos/GRxLA/",
+   "regras_18": [],
+   "pista_id": "834ebc1b9c",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202801",
+   "municipio": "Itapemirim",
+   "uf": "ES",
+   "url": "https://www.itapemirim.es.gov.br/downloads/categoria/plano-municipal-de-saude/10017",
+   "regras_18": [],
+   "pista_id": "da4136afa6",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3517000",
+   "municipio": "Getulina",
+   "uf": "SP",
+   "url": "https://www.getulina.sp.gov.br/portal/download/arquivos/GhxLA/",
+   "regras_18": [],
+   "pista_id": "e2e9fd8b06",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3517000",
+   "municipio": "Getulina",
+   "uf": "SP",
+   "url": "https://www.getulina.sp.gov.br/portal/download/arquivos/qsxLA/",
+   "regras_18": [],
+   "pista_id": "42928aade8",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1732 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de São João D'aliança - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos Norm. Portarias Decretos Leis"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5220009",
+   "municipio": "São João d'Aliança",
+   "uf": "GO",
+   "url": "https://acessoainformacao.saojoaodalianca.go.gov.br/cidadao/outras_informacoes/plano_municipal_saude",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "8ec68682a1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "58c927bdaf1a3abfd2199ae4eb26bef14c4ae2437839deca79eba671604eb4d9"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1734 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação Relatório de Resultados - Prefeitura de São João D'aliança - GO Habilite o JavaScript para utilizar o NúcleoGov. Menu Início Atos No"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5220009",
+   "municipio": "São João d'Aliança",
+   "uf": "GO",
+   "url": "https://acessoainformacao.saojoaodalianca.go.gov.br/cidadao/outras_informacoes/plano_municipal_educacao",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "9d0d16f158",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "62234b9e84bed43fabea93f1887611ffc937b5dbd37941ebb7138898a13340aa"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/prefeitura-de-queluzito-convoca-comunidade-para-participar-da-elaboracao-do-novo-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "b2f4717c93",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/oficina-de-instalacao-do-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "7f9aa36234",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "89 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4114609",
+   "municipio": "Marechal Cândido Rondon",
+   "uf": "PR",
+   "url": "https://www.mcr.pr.gov.br/cidadao/pagina/plano-municipal-de-educacao",
+   "regras_18": [],
+   "pista_id": "a95746ac29",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "91 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4114609",
+   "municipio": "Marechal Cândido Rondon",
+   "uf": "PR",
+   "url": "https://www.mcr.pr.gov.br/cidadao/pagina/plano-municipal-de-mobilidade",
+   "regras_18": [],
+   "pista_id": "7ada1496ea",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "85 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4118402",
+   "municipio": "Paranavaí",
+   "uf": "PR",
+   "url": "https://www.paranavai.pr.gov.br/cidadao/pagina/plano-municipal-de-saneamento-basico",
+   "regras_18": [],
+   "pista_id": "ea48de178b",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/noticia/38228/38228?titulo=Segundo+Workshop+para+Atualiza%C3%A7%C3%A3o+do+Plano+Municipal+de+Turismo+re%C3%BAne+agentes+p%C3%BAblicos+e+sociedade+civil",
+   "regras_18": [],
+   "pista_id": "b310714b11",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/evento/8077?titulo=Workshop+para+atualiza%C3%A7%C3%A3o+do+Plano+Municipal+de+Turismo",
+   "regras_18": [],
+   "pista_id": "f457bd91f9",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/convocacao-da-populacao-para-participacao-da-2-oficina-do-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "e3d2758b80",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2904902",
+   "municipio": "Cachoeira",
+   "uf": "BA",
+   "url": "https://transparencia.cachoeira.ba.gov.br/plano-municipal-saude",
+   "regras_18": [],
+   "pista_id": "444536785a",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2904902",
+   "municipio": "Cachoeira",
+   "uf": "BA",
+   "url": "https://transparencia.cachoeira.ba.gov.br/plano-municipal-educacao",
+   "regras_18": [],
+   "pista_id": "e8f693378c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "123 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204103",
+   "municipio": "Caxambu do Sul",
+   "uf": "SC",
+   "url": "https://caxambudosul.atende.net/cidadao/pagina/edital-plano-de-contingencia-caxambu-do-sul",
+   "regras_18": [],
+   "pista_id": "1b7e887266",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203353",
+   "municipio": "Marilândia",
+   "uf": "ES",
+   "url": "https://www.marilandia.es.gov.br/secretaria/ler/21/defesa-civil",
+   "regras_18": [],
+   "pista_id": "b198e270d0",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211306",
+   "municipio": "Navegantes",
+   "uf": "SC",
+   "url": "https://www.cvnavegantes.sc.gov.br/proposicoes/Leis-ordinarias/0/16/0/6912",
+   "regras_18": [],
+   "pista_id": "1d7518adb9",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211306",
+   "municipio": "Navegantes",
+   "uf": "SC",
+   "url": "https://www.cvnavegantes.sc.gov.br/imprensa/noticias/0/6/2018/2749",
+   "regras_18": [],
+   "pista_id": "7743f67d8a",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Projetos-de-Leis-Ordinarias/2024/2/0/139807",
+   "regras_18": [],
+   "pista_id": "80a3e7bdcc",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3161403",
+   "municipio": "São Francisco do Glória",
+   "uf": "MG",
+   "url": "https://www.saofranciscodogloria.mg.gov.br/detalhe-da-materia/info/mauro-figueroa-palestra-para-alunos-e-pais-da-rede-publica/6549",
+   "regras_18": [],
+   "pista_id": "989b436838",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3161403",
+   "municipio": "São Francisco do Glória",
+   "uf": "MG",
+   "url": "https://www.saofranciscodogloria.mg.gov.br/tur_est_vis.aspx?cd=11",
+   "regras_18": [],
+   "pista_id": "0314ee53d2",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3159100",
+   "municipio": "Santana dos Montes",
+   "uf": "MG",
+   "url": "https://santanadosmontes.mg.gov.br/noticias_relacionadas/",
+   "regras_18": [],
+   "pista_id": "0b2699907d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/noticia/37698/37698?titulo=Prefeitura+de+S%C3%A3o+Leopoldo+apresenta+a%C3%A7%C3%B5es+preventivas+para+enfrentar+impactos+do+El+Ni%C3%B1o",
+   "regras_18": [],
+   "pista_id": "c74f64707b",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/noticia/37805/37805?titulo=GCM+e+Defesa+Civil+usam+drones+para+monitorar+Rio+dos+Sinos+em+pontos+cr%C3%ADticos+de+alagamento",
+   "regras_18": [],
+   "pista_id": "b5b43103d0",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322707",
+   "municipio": "Vera Cruz",
+   "uf": "RS",
+   "url": "https://veracruz.rs.gov.br/cms---resolucao-",
+   "regras_18": [],
+   "pista_id": "e59ae597be",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "151 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301876",
+   "municipio": "Iguaba Grande",
+   "uf": "RJ",
+   "url": "https://www.portal.iguaba.rj.gov.br/relatorio.php?id=21&rel=IEFORCBBLk5UaXBvQXJxIElOICg5OSwxMDgsOTgsMjMsMzAsMzUsMTAsMjgsMjEsMiwxMDYsMzEsMTA5LDI5LDI3LDM0LDI2LDEwNywzMywyNSwzMiwxMDAp&sig=48464c3e1e632e6a373d3dd2200618513529e5e49556b8094cc0eaa12b2c42d6&exp=pdf",
+   "regras_18": [],
+   "pista_id": "e7d189d6b5",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Projetos-de-Leis-Complementares/0/7/0/5966",
+   "regras_18": [],
+   "pista_id": "3b54f59ae7",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.balneariocamboriu.sc.leg.br/proposicoes/Projetos-de-Leis-Complementares/0/1/0/149615",
+   "regras_18": [],
+   "pista_id": "25be55de42",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "154 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207502",
+   "municipio": "Indaial",
+   "uf": "SC",
+   "url": "https://indaial.atende.net/cidadao/noticia/prefeitura-de-indaial-reune-servidores-para-alinhar-acoes-da-assistencia-social-diante-de-eventos-climaticos",
+   "regras_18": [],
+   "pista_id": "84faf71e26",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "87 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215000",
+   "municipio": "Rio Negrinho",
+   "uf": "SC",
+   "url": "https://rionegrinho.atende.net/cidadao/pagina/planejamento-e-meio-ambiente",
+   "regras_18": [],
+   "pista_id": "c51b64136a",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "111 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205803",
+   "municipio": "Garuva",
+   "uf": "SC",
+   "url": "https://garuva.atende.net/cidadao/noticia/garuva-intensifica-acoes-preventivas-diante-da-previsao-do-el-nino",
+   "regras_18": [],
+   "pista_id": "799415420e",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "52 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205803",
+   "municipio": "Garuva",
+   "uf": "SC",
+   "url": "https://garuva.atende.net/cidadao/pagina/el-nino",
+   "regras_18": [],
+   "pista_id": "4093292ff0",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "61 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205803",
+   "municipio": "Garuva",
+   "uf": "SC",
+   "url": "https://garuva.atende.net/cidadao/noticia/categoria/defesa-civil",
+   "regras_18": [],
+   "pista_id": "61b8169876",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2507507",
+   "municipio": "João Pessoa",
+   "uf": "PB",
+   "url": "https://jpsustentavel.joaopessoa.pb.gov.br/wp-content/uploads/2023/10/Plano-de-Acao-de-Emergencia-e-Contingencia.pdf",
+   "regras_18": [],
+   "pista_id": "58f8f3b7a8",
+   "origem": "descoberta",
+   "leu_documento": false
   }
  ]
 }
