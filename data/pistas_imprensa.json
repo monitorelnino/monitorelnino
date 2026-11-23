@@ -44562,7 +44562,7 @@
    "url": "https://www.sjp.pr.gov.br/wp-content/uploads/2020/07/decreto-3726.pdf",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "fechada — sem documento oficial localizado: 54 dias na fila (prazo de 21); lida e recusada: resposta",
+   "status": "pista — recusada pelo juiz: resposta",
    "pista_origem": "9103511ece",
    "id": "b51ee35761",
    "nivel_confianca": "C",
@@ -44579,7 +44579,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "17/03/2020",
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "c0d53a8af4dd3c1b514f68bcdacfbb7da87c195be524079bd76b35125c0e320e"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -44587,7 +44587,15 @@
     "em": "2026-11-23",
     "desfecho": "sem documento oficial localizado",
     "motivo": "54 dias na fila (prazo de 21); lida e recusada: resposta"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pinhais",
@@ -47494,10 +47502,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8f8aea95bccb52db21a003084a80489e1f15a2ca0d6ff2f46455abda60b4f82f"
    },
-   "repeticoes": 6
+   "repeticoes": 6,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Serra",
@@ -50583,7 +50599,7 @@
    "url": "https://cotia.sp.gov.br/wp-content/uploads/2026/09/plano-municipal-de-contingencia-3-1.pdf",
    "data": "04/10/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "fechada — sem documento oficial localizado: 49 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "pista_origem": "49d4550b60",
    "id": "5ad3b2bec8",
    "nivel_confianca": "B",
@@ -50602,7 +50618,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -50611,7 +50627,15 @@
     "em": "2026-11-22",
     "desfecho": "sem documento oficial localizado",
     "motivo": "49 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Macaé",
@@ -55541,9 +55565,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "27/12/2019",
-    "julgado_em": "2026-11-01",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "0b6236ee3127d5ec26caa24c39dd82c80ec216fb5b10dcde80e1230e771f38ca"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Negro",
@@ -343216,7 +343248,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: data_nao_confirmada",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/GUARAPARI%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
    "alvo": "3202405",
@@ -343227,14 +343259,22 @@
    "repeticoes": 16,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "data_nao_confirmada",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-18",
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "e4786569720ba22d90b4ed77ceb531c73688d4d6cae698aed8d9645510233734"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Guarapari",
@@ -348433,9 +348473,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-04",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8f8aea95bccb52db21a003084a80489e1f15a2ca0d6ff2f46455abda60b4f82f"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Alegre",
@@ -350566,7 +350614,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: data_nao_confirmada",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/PINHEIROS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
    "alvo": "3204104",
@@ -350576,14 +350624,22 @@
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "data_nao_confirmada",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-04",
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "893078d242aece61bf589274eaa420ddb35662cf129723163f43da46a294a860"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pinheiros",
@@ -353201,7 +353257,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: data_nao_confirmada",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/PINHEIROS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
    "alvo": "3203502",
@@ -353211,14 +353267,22 @@
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "data_nao_confirmada",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-04",
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "893078d242aece61bf589274eaa420ddb35662cf129723163f43da46a294a860"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Montanha",
@@ -356545,7 +356609,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: data_nao_confirmada",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/PINHEIROS%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
    "alvo": "3201001",
@@ -356555,14 +356619,22 @@
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "data_nao_confirmada",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-04",
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "893078d242aece61bf589274eaa420ddb35662cf129723163f43da46a294a860"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Linhares",
@@ -363135,9 +363207,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-22",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "b316d22907ff0bba06c226e5ea89128f87f8133c9b7f78f5d55bbd4eab4ef036"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Branco",
@@ -366350,9 +366430,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-21",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "b316d22907ff0bba06c226e5ea89128f87f8133c9b7f78f5d55bbd4eab4ef036"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Porto Acre",
@@ -366668,7 +366756,16 @@
     "data": "2025",
     "julgado_em": "2026-11-22",
     "hash_evidencia": "b316d22907ff0bba06c226e5ea89128f87f8133c9b7f78f5d55bbd4eab4ef036"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-24"
   },
   {
    "municipio": "Plácido de Castro",
@@ -373252,9 +373349,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "04/11/2005",
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "d21becd06d5a9ea8680e33ddf482f844c9f698b72577efbe8cb8d400902c98fc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Duque de Caxias",
@@ -410188,7 +410293,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://defesacivil.pa.gov.br/defesa-civis-municipais/",
    "alvo": "1503903",
@@ -410206,18 +410311,35 @@
      "pagina: MuroDeRobo"
     ]
    },
-   "ultima_busca_em": "2026-11-18",
-   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-23",
+   "tentativas_de_busca_dirigida": 2,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "citacao_incompleta",
     "leu_documento": true,
     "categoria": null,
-    "data": "24/02/2021",
-    "julgado_em": "2026-11-18",
-    "hash_evidencia": "435f92ced861ceaf6dbeb3ab575ce88c41761fe7363eb02abc2402f6b3a6b99a"
-   }
+    "data": "17/11/2025",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "330bb92df43b822ab409a77fe7d6b2242d05d6a1f63509d75bdca1995be52245"
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Vigia",
@@ -471064,9 +471186,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -471095,9 +471225,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -472001,9 +472139,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "05/11/2020",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "80d4fa666178ee552af78a370f9a08e7534b417408328c30342882d9de8de629"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -515716,7 +515862,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "origem_do_coletor": "busca_web",
    "url_final": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/405-regional-de-saude-de-joinville.html?download=1448%3Appr-esp-balneario-barra-do-sul&Itemid=109",
    "alvo": "4202057",
@@ -515735,13 +515881,32 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "citacao_incompleta",
     "leu_documento": true,
     "categoria": null,
     "data": "01/01/1993",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "24b68df09397c2cae0f9baa3dc7e23bf7361b0368b8b870093f2d9fb7eebf053"
-   }
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-23",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Balneário Barra do Sul",
@@ -524734,9 +524899,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "ad3d6dc1579fd0999b058a7827592738b93f9b6ddcb400abb78054f71dc4a420"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -525106,9 +525279,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "9e282b35da144dc60466693753917d2891856bde6088725b4fb1eb9362a7a29f"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -556236,9 +556417,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "b00c2062f79fe7b6f7397fc488bd37953878fce7cdc0bceb91fca275c9bd1950"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Fortim",
@@ -662093,9 +662282,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "23/09/2025",
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "02f861e40c816db9723a804a89f9bbeb746c7292c6618890c1a8b4610751654b"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Fortuna",
@@ -691131,10 +691328,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "59574e36b875146b77edf57a8691025353002c17a29def3414afb0f0c4405c6f"
    },
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -719571,9 +719776,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2020",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "2c565c9b3172843e347671d058545fe75e798f2306b8995b8ad44dbf9f9ba0bc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -739993,10 +740206,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-13",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "cac5c1cc825567d235a858069013c60293455be6e24a6d7a8c11ead8efda7b85"
    },
-   "nivel_confianca": "C"
+   "nivel_confianca": "C",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -740089,10 +740310,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-13",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "5592e5928c03bd7e4461a78ac660174cd322fdbe9a9347b7c5e87502a144d1bd"
    },
-   "nivel_confianca": "C"
+   "nivel_confianca": "C",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -740187,10 +740416,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-13",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "870b4816f7a8e2a136fcd7fc439613f88b67dc30d8012d3ae575f905a4530655"
    },
-   "nivel_confianca": "C"
+   "nivel_confianca": "C",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -740444,9 +740681,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-14",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "598713d9dd3d7d8d700531ce79015ba8f5f239d110120524216611c405b119bc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -741084,9 +741329,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-14",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "112002206255e2dc28cf1d7467ff01f5d6a97d74d0a0205e5369d240ae3e4306"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -741630,9 +741883,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-14",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "9972e6f9a13a29bd470e1429aecfb50d932a5ac82d8376964930d42a09e24471"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -741846,19 +742107,27 @@
    "url_final": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/SERRA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718391000",
    "alvo": "3205002",
    "entrada": "uf",
-   "status": "pista — recusada pelo juiz: data_nao_confirmada",
+   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
    "repeticoes": 3,
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "data_nao_confirmada",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-18",
+    "categoria": "plano_antigo",
+    "data": "10/12/2025",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "1e7a7112177aa83411609de7d18605bd63cbd5499eebb1e530223c75ca9c5354"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
