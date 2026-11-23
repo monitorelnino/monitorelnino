@@ -42,6 +42,7 @@ jobs:
         with:
           sparse-checkout: |
             coletar_mapbiomas.py
+            fogo_municipal_pa.py
             data/mapbiomas
             data/municipios_ibge_referencia.json
           sparse-checkout-cone-mode: false
@@ -67,28 +68,10 @@ jobs:
           GEE_PROJECT: project-0735ac01-3417-4c02-ab5
           PRODUTOS: ${{ inputs.produtos }}
         run: |
-          python3 coletar_mapbiomas.py $PRODUTOS
-          # só vai ao artefato o que esta execução escreveu ou carimbou
-          git status --porcelain data/mapbiomas | grep -q . || rm -rf data/mapbiomas
+          python3 fogo_municipal_pa.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
-          name: mapbiomas
-          path: data/mapbiomas/
+          name: zoneamento
+          path: saida_zoneamento/
           if-no-files-found: ignore   # nada novo na fonte: sem artefato, e o elo não commita
           retention-days: 7
-
-  gravar:
-    needs: [somar]
-    permissions:
-      contents: read
-      actions: read
-    uses: ./.github/workflows/_coletor.yml
-    with:
-      nome: mapbiomas
-      grupo_de_concorrencia: dia-mapbiomas
-      timeout_minutos: 30
-      comandos: |
-        coletar_mapbiomas.py --do-artefato
-    secrets:
-      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
-      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
