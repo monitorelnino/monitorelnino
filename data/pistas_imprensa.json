@@ -159365,9 +159365,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-28",
+   "proxima_tentativa_em": "2026-11-30",
    "buscador2_em": "2026-11-21",
    "seguimento": {
     "data": "21/11/2026",
@@ -308841,6 +308847,12 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -433745,9 +433757,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-11-30",
    "buscador2_em": "2026-11-21",
    "seguimento": {
     "data": "21/11/2026",
@@ -453599,7 +453617,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/Plano%20de%20Conting%C3%AAncia%20S%C3%A3o%20Valentin%20do%20Sul.pdf",
    "alvo": "4319711",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "id": "8ecfeb513a",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -453677,6 +453695,12 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -453694,7 +453718,16 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30"
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "d074a5334081b59ebc99cde11309529aacb7c1231189e99f4a6d0b25fff35cb9"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -462612,7 +462645,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLACON%20Cristal%20do%20Sul.url",
    "alvo": "4306072",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "8d4f8e1d0c",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -462690,6 +462723,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -462718,7 +462757,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -462906,7 +462944,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Palmitinho.url",
    "alvo": "4313805",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "a8931e0c79",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -462984,6 +463022,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -463012,7 +463056,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -463141,7 +463184,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Aratiba.url",
    "alvo": "4300901",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "c64c51f9a3",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -463219,6 +463262,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -463247,7 +463296,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -463377,7 +463425,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Gramado%20dos%20Loureiros.url",
    "alvo": "4309126",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "76478e069d",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -463399,7 +463447,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-16",
     "desfecho": "sem documento oficial localizado",
@@ -463445,6 +463492,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -463467,7 +463520,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Barra%20Funda.url",
    "alvo": "4301958",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "bf61e26879",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -463545,6 +463598,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -463573,7 +463632,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -463627,7 +463685,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Ametista%20do%20Sul.url",
    "alvo": "4300646",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "7806445c71",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -463649,7 +463707,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-16",
     "desfecho": "sem documento oficial localizado",
@@ -463695,6 +463752,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -463717,7 +463780,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Entre%20Rios%20do%20Sul.url",
    "alvo": "4306957",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "a58ec79ad4",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -463795,6 +463858,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -463823,7 +463892,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -463846,7 +463914,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Erval%20Seco.url",
    "alvo": "4307302",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "933aa2c288",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -463868,7 +463936,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-16",
     "desfecho": "sem documento oficial localizado",
@@ -463914,6 +463981,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -463936,7 +464009,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Lajeado%20do%20Bugre.url",
    "alvo": "4311429",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "2d6a05cab2",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -464014,6 +464087,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -464042,7 +464121,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -464065,7 +464143,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Frederico%20Westphalen.url",
    "alvo": "4308508",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "1f7dda8c35",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -464087,7 +464165,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -464118,6 +464195,12 @@
     },
     {
      "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -464153,7 +464236,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Ira%C3%AD.url",
    "alvo": "4310504",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "7ab1630ac6",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -464175,7 +464258,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -464206,6 +464288,12 @@
     },
     {
      "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -464243,7 +464331,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Constantina.url",
    "alvo": "4305801",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "6977207a9e",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -464321,6 +464409,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -464349,7 +464443,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -464469,7 +464562,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Erval%20Grande.url",
    "alvo": "4307203",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "ef4c69b036",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -464547,6 +464640,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -464575,7 +464674,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -464598,7 +464696,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Itatiba%20do%20Sul.url",
    "alvo": "4310702",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "762e48c301",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -464620,7 +464718,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -464651,6 +464748,12 @@
     },
     {
      "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -464763,7 +464866,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANCON%202025%20Alpestre.url",
    "alvo": "4300505",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "7de36737be",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -464785,7 +464888,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -464832,6 +464934,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -464854,7 +464962,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Coqueiros%20do%20Sul.url",
    "alvo": "4305850",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "da2d051f2f",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -464932,6 +465040,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -464960,7 +465074,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -464983,7 +465096,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Liberato%20Salzano.url",
    "alvo": "4311601",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "25eeef4ca7",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -465005,7 +465118,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -465051,6 +465163,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -465071,7 +465189,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Jaboticaba.url",
    "alvo": "4310850",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "f6f7524dc9",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -465093,7 +465211,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -465125,6 +465242,12 @@
     },
     {
      "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -465255,7 +465378,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Barra%20do%20Rio%20Azul.url",
    "alvo": "4301925",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "d3b2e75ae5",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -465277,7 +465400,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -465323,6 +465445,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -465345,7 +465473,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Novo%20Xingu.url",
    "alvo": "4313466",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "1b9e56e431",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -465423,6 +465551,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -465451,7 +465585,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -465538,7 +465671,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Cerro%20Grande.url",
    "alvo": "4305157",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "9e72f654a4",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -465560,7 +465693,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -465606,6 +465738,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -465628,7 +465766,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Chapada.url",
    "alvo": "4305306",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "6200356ab2",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -465706,6 +465844,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -465734,7 +465878,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -465759,7 +465902,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Engenho%20Velho.url",
    "alvo": "4306924",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "7892dd5e58",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -465837,6 +465980,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -465865,7 +466014,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -465927,7 +466075,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Benjamim%20Constant%20do%20Sul.url",
    "alvo": "4302055",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "4e98ed692b",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -466005,6 +466153,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -466033,7 +466187,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -466058,7 +466211,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Almirante%20Tamandar%C3%A9%20do%20Sul.url",
    "alvo": "4300471",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "08378e8e79",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -466136,6 +466289,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -466164,7 +466323,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -466189,7 +466347,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Cruzaltense.url",
    "alvo": "4306130",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "7a1b192621",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -466267,6 +466425,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -466295,7 +466459,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -466320,7 +466483,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Cai%C3%A7ara.url",
    "alvo": "4303400",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "08dae6d099",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -466398,6 +466561,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -466426,7 +466595,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -466451,7 +466619,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Boa%20Vista%20das%20Miss%C3%B5es.url",
    "alvo": "4302154",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "fbdca92e99",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -466529,6 +466697,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -466557,7 +466731,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -466580,7 +466753,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Jacutinga.url",
    "alvo": "4310900",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "2fbee91965",
    "nivel_confianca": "C",
    "repeticoes": 1,
@@ -466602,7 +466775,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
@@ -466634,6 +466806,12 @@
     },
     {
      "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -466708,7 +466886,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/PLANO%20DE%20CONTINGENCIA%20Faxinalzinho.url",
    "alvo": "4308052",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — inacessivel_persistente: 5 tentativas sem leitura do documento; continua no registro, fora da fila",
    "id": "641f5782b9",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -466786,6 +466964,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -466814,7 +466998,6 @@
     "2026-11-16"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "proxima_tentativa_em": "2026-11-30",
    "reaberta": {
     "em": "2026-11-17",
     "motivo": "atalho .url da pasta do Prepara RS: o leitor passou a seguir o atalho em 11/11/2026; fechada pelo prazo sem nunca ter sido lida"
@@ -494294,6 +494477,12 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-30"
@@ -504324,6 +504513,12 @@
     },
     {
      "em": "2026-11-19",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
@@ -636267,9 +636462,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22"
+   "proxima_tentativa_em": "2026-11-30"
   },
   {
    "municipio": "Iporã do Oeste",
@@ -678666,9 +678867,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-22",
+   "proxima_tentativa_em": "2026-11-30",
    "repeticoes": 3
   },
   {
@@ -713204,9 +713411,15 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-19",
+   "proxima_tentativa_em": "2026-11-26",
    "repeticoes": 1
   },
   {
@@ -732454,11 +732667,17 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-23",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "nivel_confianca": "A",
    "pontos_confianca": 6,
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-24",
    "sinais": [
     "fonte_oficial",
     "municipio_no_titulo",
