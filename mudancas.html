@@ -45,7 +45,9 @@
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
       <dt>23/11/2026 · História do coletor de sinais de risco ao histórico</dt>
-      <dd>Consolidação: comentários de história do `coletar_sinais_risco.py` (catálogo de fontes, focos, RONI, avisos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento (AST idêntica). Código: −55 linhas líquidas.</dd>
+      <dd>Consolidação: comentários de história do `coletar_sinais_risco.py` (catálogo de fontes, focos, RONI, avisos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento (AST idêntica). Código: −55 linhas líquidas. =======</dd>
+      <dt>23/11/2026 · Destino fora do ar</dt>
+      <dd>Quando a fonte oficial indica um endereço que não existe mais (30 planos da 7ª regional do RS), a falha passa a ter nome próprio e data, e o cartão do município diz isso. &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</dd>
       <dt>23/11/2026 · Plano sem ato não é &quot;ato oficial&quot;</dt>
       <dd>O cartão dizia &quot;Ato oficial localizado&quot; para plano publicado sem ato de aprovação localizado. A frase passa a ser o rótulo do plano, em 372 registros de 21 estados.</dd>
       <dt>23/11/2026 · OCR por página</dt>
@@ -162,8 +164,6 @@
       <dd>Documento recebido por pedido de acesso à informação vai ao juiz pela vigia da noite (`busca_dirigida_do_ato.py --avisos`): com endereço, como pista direta; sem endereço, por busca dirigida semanal. Entram o plano de saúde de RO, os planos táticos do AM, o plano de crise hídrica de RO e os planos e decretos de MT; sai o arquivo de revisão manual de MT. Os planos do painel da Defesa Civil do AM também vão ao juiz (50 pistas).</dd>
       <dt>17/11/2026 · Saúde: SRAG por município</dt>
       <dd>O coletor do SIVEP-Gripe passa a contar também por município de residência, na mesma leitura do arquivo, nos 319 municípios de 100 mil habitantes ou mais (Censo 2022), com a faixa habitual de cada um. O mapa da respiratória grave na página de saúde passa a mostrar esses municípios ao lado dos estados. A primeira rodada relê os anos congelados.</dd>
-      <dt>17/11/2026 · Pré-noite: publicação recente não é fila presa; aviso comenta quando a causa muda</dt>
-      <dd>A checagem das 23h reprovava com a publicação de dados na fila ou rodando (15 e 16/11). Agora só conta como fila presa se estiver aberta há mais de 45 minutos. O aviso do projeto comenta na Issue aberta quando o texto da causa muda, em vez de deixar o corpo da primeira ocorrência.</dd>
     </dl>
   </section>
 </main>

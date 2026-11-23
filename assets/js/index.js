@@ -811,7 +811,7 @@ function renderMinha(uf, nome, card){
        art. 3º-A, § 6º) e fica só no dado (`sem_ato_de_aprovacao`); o cartão diz que o plano foi localizado. */
   } else if (status === 'sem_contar'){
     const sc = situacao.sem_contar;
-    html += `<p class="fv"><strong>${esc(T('index.municipio.sem_contar.' + sc.motivo, {fonte: sc.fonte}))}</strong>`
+    html += `<p class="fv"><strong>${esc(T('index.municipio.sem_contar.' + sc.motivo, {fonte: sc.fonte, desde: sc.desde}))}</strong>`
       + (sc.url ? ` <a href="${esc(sc.url)}" target="_blank" rel="noopener">${esc(T('index.municipio.sem_contar.ver'))}</a>` : '') + `</p>`;
   } else if (status === 'nomeado'){
     html += `<p class="fv"><strong>${fraseDoCitado(m)}</strong></p>`;

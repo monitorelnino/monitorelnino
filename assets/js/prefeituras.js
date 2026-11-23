@@ -60,7 +60,7 @@ window.addEventListener('load', function(){
       return cartao('argila', tx('plano.rotulo'), esc(tx('plano.localizado', {ato: sp.documento || sp.fonte || '', data: sp.data || ''}).replace(/,\s*$/, '')),
         sp.url ? '<a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(tx('plano.ver')) + '</a>' : '');
     if (sp.estado === 'sem_contar')
-      return cartao('argila', tx('plano.rotulo'), esc(tx('plano.sem_contar.' + sp.sem_contar.motivo, {fonte: sp.sem_contar.fonte})),
+      return cartao('argila', tx('plano.rotulo'), esc(tx('plano.sem_contar.' + sp.sem_contar.motivo, {fonte: sp.sem_contar.fonte, desde: sp.sem_contar.desde})),
         sp.sem_contar.url ? '<a href="' + esc(sp.sem_contar.url) + '" target="_blank" rel="noopener">' + esc(tx('plano.ver')) + '</a>' : '');
     if (sp.estado === 'nao_verificado') return cartao('argila', tx('plano.rotulo'), esc(tx('plano.nao_verificado')), esc(tx('plano.nao_verificado_nota')));
     const v = ConsultaMunicipio.varreduraLegivel(sp.varredura);

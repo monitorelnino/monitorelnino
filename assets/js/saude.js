@@ -352,7 +352,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const cartaoPlanoDoMunicipio = (sp, pl, uf, meta) => {
     const achou = sp.estado === 'encontrado' || sp.estado === 'estadual';
     if (sp.estado === 'sem_contar')
-      return cartao('musgo', TC('rotulo.plano_municipio'), esc(TC('plano.sem_contar.' + sp.sem_contar.motivo, {fonte: sp.sem_contar.fonte}))
+      return cartao('musgo', TC('rotulo.plano_municipio'), esc(TC('plano.sem_contar.' + sp.sem_contar.motivo, {fonte: sp.sem_contar.fonte, desde: sp.sem_contar.desde}))
         + (sp.sem_contar.url ? ' · <a href="' + esc(sp.sem_contar.url) + '" target="_blank" rel="noopener">' + esc(TC('plano.abrir')) + '</a>' : ''),
         '', {href: 'index.html#' + uf, pagina: textoSaude('consulta.cartao.pagina.inicial')});
     const valor = sp.estado === 'nao_verificado' ? TC('plano.nao_verificado')
