@@ -10,16 +10,19 @@ try:
     t = j.texto_de_doc_binario(raw); print("DIAG texto", len(t), "letras", sum(c.isalpha() for c in t)); print("DIAG inicio", re.sub(r"\s+", " ", t)[:600])
 except Exception:
     print("DIAG EXC", traceback.format_exc()[-900:])
-# nomes das correntes e FIB
+import struct
 u16 = lambda b, o: struct.unpack_from("<H", b, o)[0]; u32 = lambda b, o: struct.unpack_from("<I", b, o)[0]
-ss = 1 << u16(raw, 30)
-print("DIAG nFAT", u32(raw, 44), "dir", u32(raw, 48), "corte", u32(raw, 56), "miniFAT", u32(raw, 60), u32(raw, 64), "DIFAT", u32(raw, 68), u32(raw, 72))
-i = raw.find("WordDocument".encode("utf-16-le")); print("DIAG pos nome WordDocument", i)
-for nome in ("WordDocument", "1Table", "0Table", "Root Entry", "Data", "ObjectPool", "EncryptedPackage", "EncryptionInfo"):
-    k = raw.find(nome.encode("utf-16-le"))
-    if k >= 0: print("DIAG entrada", nome, "inicio", u32(raw, k + 116), "tam", u32(raw, k + 120))
-# texto bruto: quantas sequências legíveis longas há no arquivo
-lat = re.findall(rb"[A-Za-z\xc0-\xff ,.;:()\-]{40,}", raw); w = re.findall(rb"(?:[A-Za-z\xc0-\xff ,.;:()\-]\x00){40,}", raw)
-print("DIAG runs cp1252", len(lat), "utf16", len(w))
-for b in lat[:3]: print("DIAG lat", b[:150].decode("cp1252", "ignore"))
-for b in w[:3]: print("DIAG w", b[:300].decode("utf-16-le", "ignore"))
+ss = 512; setor = lambda i: raw[(i + 1) * ss:(i + 2) * ss]
+difat = [x for x in struct.unpack_from("<109I", raw, 76) if x < 0xFFFFFFFA]
+fat = [x for i in difat for x in struct.unpack("<128I", setor(i))]
+def cadeia(s):
+    out = []
+    while s < 0xFFFFFFFA and len(out) < 20000: out.append(s); s = fat[s]
+    return out
+d = b"".join(setor(i) for i in cadeia(u32(raw, 48)))
+print("DIAG dir setores", len(cadeia(u32(raw, 48))))
+for o in range(0, len(d), 128):
+    n = u16(d, o + 64)
+    if n: print("DIAG ent", o // 128, repr(d[o:o + n - 2].decode("utf-16-le", "ignore")), "tipo", d[o + 66], "ini", u32(d, o + 116), "tam", u32(d, o + 120))
+doc = b"".join(setor(i) for i in cadeia(0))
+print("DIAG doc", len(doc), "wIdent", hex(u16(doc, 0)), "nFib", hex(u16(doc, 2)), "flags", hex(u16(doc, 10)), "fcMin", u32(doc, 24), "fcMac", u32(doc, 28), "ccpText", u32(doc, 0x4C), "fcClx", u32(doc, 0x1A2), "lcbClx", u32(doc, 0x1A6))
