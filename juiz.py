@@ -1565,7 +1565,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return recusa(familia)
     veredito["familia_de_risco"] = familia
 
-    if not sem_ato and data_suspeita(veredito["data"], ano_corrente):
+    if data_suspeita(veredito["data"], ano_corrente):   # com ou sem ato: ano fora da faixa não é data (Chuvisca/RS, telefone "…-2077")
         return recusa("data_nao_confirmada", "J7")
     if sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
         return recusa("data_nao_confirmada", "J7")
@@ -1957,6 +1957,15 @@ def casos_18() -> list:
                               sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
         ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia)",
          _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"),
+        ("J7 plano sem ato: ano fora da faixa (fim de telefone, '…-2077') não é data, nem com período chuvoso no texto",
+         _v(("PLANO DE CONTINGÊNCIA Município de Chuvisca / RS Eventos Adversos Mais Comuns: Estiagens Enxurradas "
+             "MUNICÍPIO: CHUVISCA U.F. RS DDD/Telefone 51 92002-2077 COORDENADORIA MUNICIPAL DE DEFESA CIVIL O Plano de "
+             "Contingência estabelece os procedimentos dos órgãos na resposta às emergências de estiagem e enxurrada no "
+             "período de estiagem e no período chuvoso, com abrigos e contatos. ") * 3, "Chuvisca", "RS",
+            "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/"
+            "SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o"
+            "%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/"
+            "TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CHUVISCA.doc")["motivo"] == "data_nao_confirmada"),
         ("J10 PLANCON de marés de tempestade (COBRADE 1.3.1.1.2) não é seca por 'fatores contribuintes'",
          familia_18(PLANO_MARES_18)[:2] == (False, "fora_do_objeto")),
         ("J10 título de estiagem dá a família pelo título",
