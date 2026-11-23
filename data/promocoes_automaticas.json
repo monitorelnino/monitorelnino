@@ -1159734,6 +1159734,857 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "aa5de0ff6298bab2b3300add715aa8f78930b7f2e129af60eb859688253f69e4"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "370 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211454",
+   "municipio": "Nova Itaberaba",
+   "uf": "SC",
+   "url": "https://www.novaitaberaba.sc.gov.br/",
+   "regras_18": [],
+   "pista_id": "7eadfd954d",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/GnxAL/",
+   "regras_18": [],
+   "pista_id": "aa593ca105",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/qCxAL/",
+   "regras_18": [],
+   "pista_id": "e0b133d0dd",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504404",
+   "municipio": "Avanhandava",
+   "uf": "SP",
+   "url": "https://www.avanhandava.sp.gov.br/portal/download/arquivos/Rnzz/",
+   "regras_18": [],
+   "pista_id": "5bbd9a3528",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21946 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO PARÁ (0 PREFEITURA MUNICIPAL DE CACHOEIRA DO PIRIÁ | / es), | SECRETARIA MUNICIPAL DE SAÚDE CNPJ: 11.747.487/0001-97 PLANO DE CONTIGÊNCIA MUNICIPAL P"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RETARIA MUNICIPAL DE SAÚDE CNPJ: 11.747.487/0001-97 1- INTRODUÇÃO: O presente Plano de Contingência, é dinâmico e poderá ser alterado conforme necessidade, de",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2019",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO PARÁ",
+      "titulo": "Plano de Contingência",
+      "trecho": "RETARIA MUNICIPAL DE SAÚDE CNPJ: 11.747.487/0001-97 1- INTRODUÇÃO: O presente Plano de Contingência, é dinâmico e poderá ser alterado conforme necessidade, de",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DO PARÁ (0 PREFEITURA MUNICIPAL DE CACHOEIRA DO PIRIÁ | / es), | SECRETARIA MUNICIPAL DE SAÚDE CNPJ: 11.747.487/0001-97 PLANO DE CONTIGÊNCIA MUNICIPAL P"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "este documento se faz necessário fomentar e elencar conhecimentos a respeito do COVID - 19, para que os serviços de saúde, possam estar munidos de informações d"
+    }
+   },
+   "categoria": null,
+   "data": "2019",
+   "natureza": "EX_ANTE",
+   "ibge": "1501956",
+   "municipio": "Cachoeira do Piriá",
+   "uf": "PA",
+   "url": "https://cachoeiradopiria.pa.gov.br/wp-content/uploads/2020/05/PLANO-DE-CONTINGÊNCIA.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "f36c233fb0",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "595b2a406cfec8c2de2b2cb6145a1d2c3cca76746ed40b3edc7e24bfd0851ab9"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3556305",
+   "municipio": "Valparaíso",
+   "uf": "SP",
+   "url": "https://www.valparaiso.sp.gov.br/portal/download/arquivos/hnxAzP/",
+   "regras_18": [],
+   "pista_id": "a94f912b2f",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3556305",
+   "municipio": "Valparaíso",
+   "uf": "SP",
+   "url": "https://www.valparaiso.sp.gov.br/portal/download/arquivos/RKxALL/",
+   "regras_18": [],
+   "pista_id": "cdccfd97f3",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3500600",
+   "municipio": "Águas de São Pedro",
+   "uf": "SP",
+   "url": "https://www.aguasdesaopedro.sp.gov.br/portal/download/arquivos/sCzz/",
+   "regras_18": [],
+   "pista_id": "ff8a2a5dc5",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "15 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3132008",
+   "municipio": "Itacambira",
+   "uf": "MG",
+   "url": "https://itacambira.mg.gov.br/noticias/plano-de-acao-da-politica-de-educacao-em-tempo-integral",
+   "regras_18": [],
+   "pista_id": "9046be318c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3500600",
+   "municipio": "Águas de São Pedro",
+   "uf": "SP",
+   "url": "https://www.aguasdesaopedro.sp.gov.br/portal/download/arquivos/RKzz/",
+   "regras_18": [],
+   "pista_id": "a7aea84097",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "67 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "url": "https://transparencia.foz.pr.gov.br/portaltransparencia/1/publicacoes/54",
+   "regras_18": [],
+   "pista_id": "43f54dc1b2",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "67 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "url": "https://transparencia.foz.pr.gov.br/portaltransparencia/1/publicacoes/69",
+   "regras_18": [],
+   "pista_id": "a41752e23c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504404",
+   "municipio": "Avanhandava",
+   "uf": "SP",
+   "url": "https://www.avanhandava.sp.gov.br/portal/download/arquivos/qhzz/",
+   "regras_18": [],
+   "pista_id": "8ddaf6dd67",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/qnxAL/",
+   "regras_18": [],
+   "pista_id": "b6c07a3a20",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/dBxAL/",
+   "regras_18": [],
+   "pista_id": "cca3f3cf14",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3500600",
+   "municipio": "Águas de São Pedro",
+   "uf": "SP",
+   "url": "https://www.aguasdesaopedro.sp.gov.br/portal/download/arquivos/nRzz/",
+   "regras_18": [],
+   "pista_id": "4496c439b4",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504404",
+   "municipio": "Avanhandava",
+   "uf": "SP",
+   "url": "https://www.avanhandava.sp.gov.br/portal/download/arquivos/nRzz/",
+   "regras_18": [],
+   "pista_id": "c1a7ecb9a8",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3146305",
+   "municipio": "Padre Paraíso",
+   "uf": "MG",
+   "url": "https://www.padreparaiso.mg.gov.br/downloads/categoria/plano-municipal-de-educacao/10055",
+   "regras_18": [],
+   "pista_id": "b0e3c7a9fb",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "186 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300308",
+   "municipio": "Barra do Piraí",
+   "uf": "RJ",
+   "url": "https://barradopirai.rj.gov.br/todas-as-noticias/5870909b-5c3a-47b1-b1b4-356bca269eac",
+   "regras_18": [],
+   "pista_id": "411d126a0d",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "180 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300308",
+   "municipio": "Barra do Piraí",
+   "uf": "RJ",
+   "url": "https://barradopirai.rj.gov.br/todas-as-noticias/8725ffd6-d0bb-42ce-9925-572503e2307c",
+   "regras_18": [],
+   "pista_id": "356f90f25e",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "72 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202602",
+   "municipio": "Bom Retiro",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/43845",
+   "regras_18": [],
+   "pista_id": "67cd1d4f8d",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "120 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300102",
+   "municipio": "Anori",
+   "uf": "AM",
+   "url": "https://sistemas.sefaz.am.gov.br/silt/norma/constituicao/9cf6ed2b-f006-4067-859e-6910cb2881cf/constituicao-do-estado-do-amazonas",
+   "regras_18": [],
+   "pista_id": "c56a78d5fc",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "120 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1302801",
+   "municipio": "Maraã",
+   "uf": "AM",
+   "url": "https://sistemas.sefaz.am.gov.br/silt/norma/constituicao/9cf6ed2b-f006-4067-859e-6910cb2881cf/constituicao-do-estado-do-amazonas",
+   "regras_18": [],
+   "pista_id": "8f7995ac00",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202909",
+   "municipio": "Brusque",
+   "uf": "SC",
+   "url": "https://www.brusque.sc.gov.br/cidadao/noticia/acoes-preventivas-contra-o-el-nino-avancam-em-brusque",
+   "regras_18": [],
+   "pista_id": "2c9b2f8bf7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4311403",
+   "municipio": "Lajeado",
+   "uf": "RS",
+   "url": "http://www.lajeado.rs.gov.br/noticia/13487/892?titulo=Defesa+Civil+de+Lajeado+participa+de+encontro+t%C3%A9cnico+com+a+8%C2%AA+Coordenadoria+Regional+de+Prote%C3%A7%C3%A3o+e+Defesa+Civil+do+Estado",
+   "regras_18": [],
+   "pista_id": "d4a55c4a45",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203106",
+   "municipio": "Jerônimo Monteiro",
+   "uf": "ES",
+   "url": "https://www.jeronimomonteiro.es.gov.br/detalhe-da-materia/info/defesa-civil-de-jeronimo-monteiro/6803",
+   "regras_18": [],
+   "pista_id": "a3083456cf",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "165 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300308",
+   "municipio": "Barra do Piraí",
+   "uf": "RJ",
+   "url": "https://barradopirai.rj.gov.br/todas-as-noticias/c7c79a85-af17-4de6-81a0-7fa4d959bcd8",
+   "regras_18": [],
+   "pista_id": "141e34d6c5",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "66 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208203",
+   "municipio": "Itajaí",
+   "uf": "SC",
+   "url": "https://itajai.sc.gov.br/noticias/37659/defesa-civil-realiza-reunioes-com-secretarias-pala-alinhar-o-plano-de-contingencia-do-municipio",
+   "regras_18": [],
+   "pista_id": "793f88f2c4",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "99 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/44139",
+   "regras_18": [],
+   "pista_id": "328b86e57c",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "78 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/44091",
+   "regras_18": [],
+   "pista_id": "d28f825f5f",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "87 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202008",
+   "municipio": "Balneário Camboriú",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/43786",
+   "regras_18": [],
+   "pista_id": "2b9eaa4620",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "99 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/44139",
+   "regras_18": [],
+   "pista_id": "375e81ace0",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "78 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203204",
+   "municipio": "Camboriú",
+   "uf": "SC",
+   "url": "https://www.bc.sc.gov.br/noticia/44091",
+   "regras_18": [],
+   "pista_id": "e015da1eea",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218202",
+   "municipio": "Timbó",
+   "uf": "SC",
+   "url": "https://www.camaratimbo.sc.gov.br/proposicoes/Leis-Complementares/0/5/0/41444",
+   "regras_18": [],
+   "pista_id": "29951995cf",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211702",
+   "municipio": "Orleans",
+   "uf": "SC",
+   "url": "https://www.orleanscamara.sc.gov.br/atas/plenaria/2026/1/0/754",
+   "regras_18": [],
+   "pista_id": "c69bf23f2b",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211702",
+   "municipio": "Orleans",
+   "uf": "SC",
+   "url": "https://www.orleanscamara.sc.gov.br/proposicoes/Projetos-de-Lei-Ordinaria/2019",
+   "regras_18": [],
+   "pista_id": "671a53b848",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212106",
+   "municipio": "Palmitos",
+   "uf": "SC",
+   "url": "https://www.camarapalmitos.sc.gov.br/proposicoes/Requerimentos/2026/1/0/3249",
+   "regras_18": [],
+   "pista_id": "8eb1901ef2",
+   "origem": "busca_web",
+   "leu_documento": true
   }
  ]
 }
