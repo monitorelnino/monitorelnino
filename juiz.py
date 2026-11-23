@@ -867,11 +867,14 @@ def etapa4_natureza(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
     próprio instrumento nomeado no título, que a etapa 2 já conferiu.
 
     O que NÃO muda, e é o que protege o índice: ato que declara anormalidade continua RESPOSTA;
-    rota que depende de reconhecimento federal continua dúvida; e o gatilho (previsão, limiar ou
-    referência ao ciclo) continua exigido. Um "plano" que só fala de desastre ocorrido não passa.
+    no ATO, rota que depende de reconhecimento federal continua dúvida; e o gatilho (previsão, limiar
+    ou referência ao ciclo) continua exigido. Um "plano" que só fala de desastre ocorrido não passa.
     """
-    tem_rota_federal = bool(RE_ROTA_FEDERAL.search(texto))
-    decisao, motivo = classificar_natureza(texto, tem_reconhecimento_federal=tem_rota_federal)
+    # 23/11/2026 (editoria): no plano publicado, a menção ao reconhecimento federal é procedimento descrito, não
+    # dependência do ato (Rio Branco/AC, Campo Grande/MS e 56 PLANCONs recusados como resposta).
+    tem_rota_federal = not sem_ato_de_aprovacao and bool(RE_ROTA_FEDERAL.search(texto))
+    decisao, motivo = classificar_natureza(texto, tem_reconhecimento_federal=tem_rota_federal,
+                                           documento_e_o_plano=sem_ato_de_aprovacao)
     if decisao == "RESPOSTA":
         return "RESPOSTA", motivo, {}
     if decisao == "DUVIDA" and not sem_ato_de_aprovacao:
@@ -1927,6 +1930,11 @@ def casos_18() -> list:
          and vigencia_encerrada("Tipo de Risco: Seca e Estiagem Histórico: Nos anos de 2021/2022 /2023 e 2024 o fenômeno") == ""
          and vigencia_encerrada("", "Dengue 2024-2025, 2ª versão") == "2024-2025"
          and vigencia_encerrada("PLANO DE CONTINGÊNCIA 2025/2026 Prefeitura de X") == ""),
+        ("plano publicado que explica o reconhecimento federal não é ato de resposta; o decreto que depende dele segue fora",
+         etapa4_natureza(PLANO_PUBLICADO_SEM_ATO + " Para solicitar reconhecimento federal, o município registra o "
+                         "desastre no S2iD e preenche o FIDE.", True)[0] != "RESPOSTA"
+         and etapa4_natureza("DECRETO Nº 10, de 3 de julho de 2026. Fica instituído o Plano de Contingência, com "
+                             "recursos mediante reconhecimento federal e FIDE no S2iD.")[0] != "EX_ANTE"),
         ("J22 documento da pasta de PLANCONs do RS é plano pela origem: nem natureza nem título o recusam",
          _v("Município de Capitão, Rio Grande do Sul. Coordenadoria Municipal de Proteção e Defesa Civil, 2025. "
             + "cenários de risco de estiagem e enxurrada, recursos, acionamento e responsabilidades " * 40,
