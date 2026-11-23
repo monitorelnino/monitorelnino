@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #2004 · Plano localizado que não conta não é "não localizado"
+
+O cartão do município dizia "não localizamos" quando o plano tinha sido lido sem data ou indicado no repositório estadual e não aberto. Agora diz o que foi achado e por que não entra no índice, em todos os municípios.
+
 ## 2026-11-23 · #2001 · Defeso: aviso antigo na evidência vai à fonte
 
 A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.
