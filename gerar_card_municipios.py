@@ -63,6 +63,33 @@ def _data_key(d):
         return "0"
 
 
+def planos_sem_contar(pistas) -> dict:
+    """Pura. codigo_ibge → {motivo, url, fonte} do plano que o MARÉ localizou e que não entra no índice:
+    `sem_data` (o juiz leu o plano e não achou data no texto) ou `nao_aberto` (o repositório estadual o
+    indica, e o documento não foi lido). Lido sem data vence não aberto."""
+    from atualizar_instrumentos_estaduais import REPOSITORIOS, repositorio_do_documento
+    achados = {}
+    for p in pistas:
+        j, url = p.get("juiz") or {}, p.get("url_final") or p.get("url") or ""
+        try:
+            cod = int(p.get("ibge") or p.get("alvo") or 0)
+        except (TypeError, ValueError):
+            continue
+        if not cod or j.get("promove"):
+            continue
+        uf_rep = repositorio_do_documento(url)
+        if j.get("motivo") == "data_nao_confirmada" and j.get("leu_documento"):
+            motivo = "sem_data"
+        elif uf_rep and p.get("tipo") == "plano" and not j.get("leu_documento"):
+            motivo = "nao_aberto"
+        else:
+            continue
+        if cod not in achados or (achados[cod]["motivo"], motivo) == ("nao_aberto", "sem_data"):
+            achados[cod] = {"motivo": motivo, "url": url, "fonte": REPOSITORIOS[uf_rep]["fonte"] if uf_rep else _host(url),
+                            "nome": p.get("municipio"), "uf": p.get("uf")}
+    return achados
+
+
 def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verificacao=None):
     """Pura. Devolve dict codigo_ibge(str) → card.
 
@@ -142,6 +169,14 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
         c["varredura"] = {"nivel": r["nivel_verificacao"], "data": r["ultima_verificacao"]}
         if c.get("categoria") in (None, "nao_verificado"):
             c["categoria"] = "nao_localizado"
+    # 23/11/2026 (editoria): plano localizado que não entra no índice — lido e sem data no texto, ou
+    # indicado no repositório estadual e não aberto até o corte — não é "não localizado". O cartão diz
+    # o que foi achado e por que não conta; a categoria (o que conta no índice) não muda.
+    for cod, info in planos_sem_contar(pistas).items():
+        nome, uf = info.pop("nome"), info.pop("uf")
+        c = cards.setdefault(cod, {"nome": nome, "uf": uf, "prioritario": cod in prior})
+        if c.get("categoria") in (None, "nao_verificado", "nao_localizado"):
+            c["plano_sem_contar"] = info
     for c in cards.values():
         if "imprensa" in c:
             c["imprensa"].sort(key=lambda x: _data_key(x.get("data")), reverse=True)
@@ -195,11 +230,34 @@ def autoteste():
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "C", "titulo": "ruído", "url": "https://x", "data": "16/09/2026"},
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "rejeitada_pelo_juiz", "nivel_confianca": "A", "titulo": "rejeitada", "url": "https://y", "data": "17/09/2026"},
            {"ibge": "4301602", "municipio": "Bagé", "uf": "RS", "status": "pista — promover…", "nivel_confianca": "A", "titulo": "Bagé lança plano", "url": "https://g1.globo.com/b", "data": "01/09/2026"}]
+    rs_pasta = ("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/"
+                "SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o"
+                "%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/"
+                "TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/")
+    pis += [{"ibge": "1301803", "municipio": "Ipixuna", "uf": "AM", "tipo": "plano", "status": "pista — recusada pelo juiz: data_nao_confirmada",
+             "url": "https://ipixuna.am.gov.br/plancon.pdf", "juiz": {"promove": False, "motivo": "data_nao_confirmada", "leu_documento": True}},
+            {"alvo": "4300001", "municipio": "Aratiba", "uf": "RS", "tipo": "plano", "status": "pista — na fila, aguardando busca dirigida e juiz",
+             "url": rs_pasta + "PLANO%20Aratiba.url"},
+            {"ibge": "4301602", "municipio": "Bagé", "uf": "RS", "tipo": "plano", "status": "pista — recusada pelo juiz: data_nao_confirmada",
+             "url": "https://bage.rs.gov.br/p.pdf", "juiz": {"promove": False, "motivo": "data_nao_confirmada", "leu_documento": True}},
+            {"ibge": "3500003", "municipio": "Recusado", "uf": "SP", "tipo": "plano", "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+             "url": "https://recusado.sp.gov.br/p.pdf", "juiz": {"promove": False, "motivo": "minuta_ou_rascunho", "leu_documento": True}}]
     ver = [{"ibge": "1301803", "nome": "Ipixuna", "uf": "AM", "nivel_verificacao": "nacional", "ultima_verificacao": "2026-10-18"},
            {"ibge": "4301602", "nome": "Bagé", "uf": "RS", "nivel_verificacao": "estadual", "ultima_verificacao": "2026-10-19"},
            {"ibge": "3500002", "nome": "Só Varrido", "uf": "SP", "nivel_verificacao": "estadual", "ultima_verificacao": "2026-10-18"},
            {"ibge": "3529005", "nome": "Marília", "uf": "SP", "nivel_verificacao": None, "ultima_verificacao": None}]
     c = montar(ref, prior, mun, pis, dsp, ver)
+
+    def t_plano_sem_data_nao_e_nao_localizado():
+        a = c["1301803"]
+        return (a["categoria"] == "nao_localizado" and a["plano_sem_contar"]["motivo"] == "sem_data"
+                and a["plano_sem_contar"]["fonte"] == "ipixuna.am.gov.br")
+    def t_repositorio_nao_aberto():
+        a = c["4300001"]
+        return (a["plano_sem_contar"]["motivo"] == "nao_aberto" and "Prepara RS" in a["plano_sem_contar"]["fonte"]
+                and a["categoria"] == "nao_verificado" and (a["nome"], a["uf"]) == ("Aratiba", "RS"))
+    def t_plano_que_conta_nao_ganha_a_marca(): return "plano_sem_contar" not in c["4301602"]
+    def t_outra_recusa_nao_vira_plano(): return "3500003" not in c
 
     def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and "varredura" in c["1301803"]
     def t_sem_nada_nao_entra(): return "3500001" not in c
@@ -258,6 +316,10 @@ def autoteste():
 
     return rodar_autoteste({
         "§193 carimbo do derivado segue o relógio fixado, não o da parede": t_carimbo_segue_o_relogio_fixado,
+        "23/11: plano lido sem data não é 'não localizado' (a categoria não muda)": t_plano_sem_data_nao_e_nao_localizado,
+        "23/11: plano indicado no repositório estadual e não aberto ganha card": t_repositorio_nao_aberto,
+        "23/11: município com plano que conta não ganha a marca": t_plano_que_conta_nao_ganha_a_marca,
+        "23/11: outra recusa do juiz não vira plano localizado": t_outra_recusa_nao_vira_plano,
         "prioritário sem registro entra, com a varredura do livro": t_prioritario_sozinho_entra,
         "varredura sem achado: nao_localizado com nível e data do município": t_varredura_sem_achado_vira_nao_localizado,
         "varredura não apaga o registro que existe": t_varredura_nao_apaga_registro,

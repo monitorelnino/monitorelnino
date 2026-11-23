@@ -88,8 +88,13 @@
     decreto: 'decreto', plano_elaboracao: 'elaboracao', estrutura: 'outro_ato', nao_el_nino: 'outro_ato'};
   function situacaoDoPlano(reg) {
     const c = reg && reg.categoria;
+    const estado = !reg ? 'nao_verificado' : PLANO_ENCONTRADO.includes(c) ? 'encontrado' : (ESTADO_DA_CATEGORIA[c] || 'nao_verificado');
+    /* 23/11/2026 (editoria): plano localizado que não entra no índice (sem data no documento, ou
+       indicado no repositório estadual e não aberto) não é "não localizado" nem "não verificado". */
+    const semContar = (estado === 'nao_localizado' || estado === 'nao_verificado') && reg && reg.plano_sem_contar;
     return {
-      estado: !reg ? 'nao_verificado' : PLANO_ENCONTRADO.includes(c) ? 'encontrado' : (ESTADO_DA_CATEGORIA[c] || 'nao_verificado'),
+      estado: semContar ? 'sem_contar' : estado,
+      sem_contar: semContar || null,
       categoria: c || null, documento: (reg && reg.documento) || null, data: (reg && reg.data) || null,
       fonte: (reg && reg.fonte) || null, url: (reg && reg.url) || null,
       /* 19/10/2026 (editoria, §3.3 da auditoria da coleta municipal): dizer o que foi feito, não
