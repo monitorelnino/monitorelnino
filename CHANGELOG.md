@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.
 
+## 2026-11-23 · #1999 · União pela base soma `repeticoes` de pista
+
+O resolvedor de conflito recusava a pista cujo contador `repeticoes` subiu nos dois lados. Agora soma os acréscimos sobre a base, como os contadores do funil; decremento segue recusado.
+
 ## 2026-11-23 · #2000 · Juiz: ano fora da faixa não é data
 
 Plano sem ato de aprovação passava com ano impossível quando o texto citava período chuvoso: em Chuvisca/RS, o fim de um telefone virou 2077. A recusa por data suspeita passa a valer com ou sem ato.

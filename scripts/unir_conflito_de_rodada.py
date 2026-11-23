@@ -169,6 +169,7 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 #   juiz_historico  união dos dois lados (nada se perde).
 #   rejeitada_em    vence a data mais antiga (a primeira rejeição).
 #   seguimento      vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu (A1, 22/11).
+#   repeticoes      contador (`pistas.gravar_lote` soma 1): base + (nosso − base) + (deles − base) (A1, 23/11).
 #   busca_web_espera e cursor*  vence o lado da `main` (estado de fila, não registro).
 # Campos derivados do arquivo (`caracteres`, `sha256`) são recalculados do arquivo, nunca escolhidos:
 # nesta função não há o arquivo, então recusam e o resolvedor deixa o caso para a recalculagem.
@@ -190,6 +191,11 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
         return vence
     if campo in CAMPOS_QUE_SO_CRESCEM and isinstance(nosso_v, list) and isinstance(deles_v, list):
         return _multiconjunto(base_v if isinstance(base_v, list) else [], nosso_v, deles_v)
+    if campo == "repeticoes" and all(type(v) is int for v in (nosso_v, deles_v, base_v or 0)):
+        b = base_v or 0
+        if min(nosso_v, deles_v) < b:
+            raise Recusa(f"repeticoes desceu abaixo da base ({b}): não é acréscimo")
+        return nosso_v + deles_v - b
     if campo == "juiz_historico" and isinstance(nosso_v, list) and isinstance(deles_v, list):
         return _unir_listas(nosso_v, deles_v)
     if campo == "rejeitada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
@@ -844,6 +850,9 @@ def autoteste() -> int:
 
     # 0. 16/11/2026: as duas recusas que derrubaram o PR de dado da válvula
     _b = [{"em": "2026-11-10"}]
+    checar("repeticoes: os acréscimos dos dois lados somam pela base (2→4 e 2→3 dá 5); sem base, de 0",
+           _mesclar_pista({"repeticoes": 2}, {"repeticoes": 4}, {"repeticoes": 3})["repeticoes"] == 5
+           and _mesclar_pista({}, {"repeticoes": 1}, {"repeticoes": 2})["repeticoes"] == 3)
     checar("busca_dirigida: tentativas dos dois lados somam pela base",
            len(_mesclar_pista({"busca_dirigida": _b}, {"busca_dirigida": _b + [{"em": "2026-11-16", "a": 1}]},
                               {"busca_dirigida": _b + [{"em": "2026-11-16", "a": 2}]})["busca_dirigida"]) == 3)
