@@ -13,6 +13,13 @@ não pontuados permanecem na versão corrente.
 
 Quando a fonte oficial indica um endereço que não existe mais (30 planos da 7ª regional do RS), a falha passa a ter nome próprio e data, e o cartão do município diz isso.
 
+## 2026-11-23 · #2007 · Plano sem ato não é "ato oficial"
+
+O cartão dizia "Ato oficial localizado" para plano publicado sem ato de aprovação localizado. A frase passa a ser o rótulo do plano, em 372 registros de 21 estados.
+
+## 2026-11-23 · #2006 · OCR por página
+
+PDF escaneado com cabeçalho digitado em cada página passava da régua de letras e não ia ao OCR (São Valentim do Sul/RS). A régua passa a ser por página.
 ## 2026-11-23 · #2004 · Plano localizado que não conta não é "não localizado"
 
 O cartão do município dizia "não localizamos" quando o plano tinha sido lido sem data ou indicado no repositório estadual e não aberto. Agora diz o que foi achado e por que não entra no índice, em todos os municípios.

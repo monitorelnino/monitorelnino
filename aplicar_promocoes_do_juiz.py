@@ -468,7 +468,7 @@ def documento_do_veredito(v: dict) -> str:
         ano = str(v.get("data") or "")[-4:]
         cauda = f", {ano}" if ano.isdigit() else ""
         return f"Plano de contingência municipal — Prefeitura de {v['municipio']}{cauda}"
-    return documento_generico(v.get("categoria"))
+    return documento_generico(v.get("categoria"), v.get("sem_ato_de_aprovacao"))
 
 
 # 08/11/2026: `documento` também é texto público do cartão ("Localizamos …"). O rótulo da categoria é o
@@ -480,9 +480,11 @@ ROTULO_PUBLICO = {"plano": "plano de contingência", "plano_novo": "plano de con
                   "plano_elaboracao": "plano em elaboração", "estrutura": "estrutura de coordenação"}
 
 
-def documento_generico(categoria) -> str:
-    """A frase pública quando o documento não tem título legível: diz o que foi localizado. Função pura."""
-    return f"Ato oficial localizado: {ROTULO_PUBLICO.get(str(categoria), 'documento de preparação')}"
+def documento_generico(categoria, sem_ato=False) -> str:
+    """A frase pública quando o documento não tem título legível: diz o que foi localizado. Função pura.
+    23/11/2026 (editoria): o plano publicado sem ato de aprovação localizado é plano, não "ato oficial"."""
+    rotulo = ROTULO_PUBLICO.get(str(categoria), "documento de preparação")
+    return rotulo[:1].upper() + rotulo[1:] if sem_ato else f"Ato oficial localizado: {rotulo}"
 
 
 def autoteste() -> int:
@@ -761,7 +763,8 @@ def autoteste() -> int:
                   == "Agência Belém reproduzida por O Liberal, lido em 27/08/2026"))
     casos.append(("sem título legível, o documento diz o que foi localizado, sem jargão nem chave interna",
                   documento_generico("plano_antigo") == "Ato oficial localizado: plano de contingência vigente de ciclo anterior"
-                  and "juiz" not in documento_generico("plano") and "_" not in documento_generico("plano_novo")))
+                  and "juiz" not in documento_generico("plano") and "_" not in documento_generico("plano_novo")
+                  and documento_generico("plano_antigo", True) == "Plano de contingência vigente de ciclo anterior"))
     casos.append(("a ementa sai do objeto ex-ante",
                   r["documento"].startswith("Fica instituído o Plano Municipal")))
     sem_objeto = registro_do_veredito(dict(base, criterios={}), 0, 0, "DOM", "x", "28/09/2026")
