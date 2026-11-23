@@ -115,12 +115,34 @@ def _ler_sharepoint_rs(url, timeout):
         # 23/11/2026: o destino dos atalhos da CREPDEC 07 tem certificado de outro nome, e a verificação nunca se
         # desliga; o destino se lê pelo mesmo leitor do resto (fonte, cópia da ponte, cópia pública do Internet
         # Archive). Antes, a falha do destino virava `documento_inacessivel` para sempre (30 planos do RS).
-        corpo = obter_documento(destino, timeout)
+        try:
+            corpo = obter_documento(destino, timeout)
+        except Exception as e:
+            if not nome_resolve(destino):
+                raise DestinoForaDoAr(f"o endereço indicado pelo atalho não existe (DNS sem resposta): {destino[:90]}") from e
+            raise
     else:
         corpo = r.content
     if not corpo.startswith(ASSINATURAS_DE_DOCUMENTO):
         raise ValueError(f"resposta não é documento ({len(corpo)} bytes): {corpo[:90]!r}")
     return corpo
+
+
+class DestinoForaDoAr(OSError):
+    """A fonte oficial indica um endereço cujo nome não existe mais (23/11/2026: os 30 atalhos da CREPDEC 07
+    do Prepara RS apontam para casamilitar-rs.com.br, sem DNS). Causa nomeada, não "documento inacessível"."""
+
+
+def nome_resolve(url) -> bool:
+    import socket
+    try:
+        return bool(socket.getaddrinfo(__import__("urllib.parse").parse.urlparse(url).hostname or "", 443))
+    except (socket.gaierror, UnicodeError):
+        return False
+
+
+# A causa da última falha de leitura, por endereço, para a tentativa do juiz registrar (julgar_filas).
+CAUSAS_DE_FALHA: dict = {}
 
 
 def ler_documento(url, timeout=40, origem=None):
@@ -162,7 +184,9 @@ def buscar_texto(url, timeout=40):
     """O texto do documento, ou None quando nada se lê (perda de recall, nunca invenção de texto)."""
     try:
         raw = obter_documento(url, timeout, "julgamento de descobertas")
-    except Exception:  # noqa: BLE001 — a causa já saiu no log
+    except Exception as e:  # noqa: BLE001 — a causa já saiu no log
+        if isinstance(e, DestinoForaDoAr):
+            CAUSAS_DE_FALHA[url] = "destino_fora_do_ar"
         return None
     return com_ocr(raw, texto_do_documento(raw, url))
 
@@ -1087,7 +1111,7 @@ def self_test():
         _IDS_RS.clear()
         try:
             return _ler_sharepoint_rs(pasta + nome, 5)
-        except (ValueError, FileNotFoundError) as e:
+        except (ValueError, FileNotFoundError, DestinoForaDoAr) as e:
             return type(e).__name__
     try:
         assert _ler("PLANCON%20-%20D'%C3%81VILA.pdf", b"%PDF-1.7") == b"%PDF-1.7"
@@ -1101,6 +1125,20 @@ def self_test():
         assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == b"%PDF-destino"
         assert _ler("PLANO%20Aratiba.url", atalho("https://outro.com/p.pdf")) == "ValueError"
         assert _vistos == ["https://casamilitar-rs.com.br/pdfs/9.pdf"], _vistos
+        # 23/11: destino que não existe (DNS) é causa nomeada; o que resolve e falha segue o erro de antes.
+        _copia, _resolve = globals()["copia_arquivada"], globals()["nome_resolve"]
+        def _falha(u, timeout=40, origem=None): raise OSError("sem resposta")
+        try:
+            globals().update(buscar=_falha, copia_arquivada=lambda u: (None, None), nome_resolve=lambda u: False)
+            assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == "DestinoForaDoAr"
+            globals()["nome_resolve"] = lambda u: True
+            try:
+                _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf"))
+                assert False, "o erro da fonte que resolve deveria subir"
+            except OSError as e:
+                assert not isinstance(e, DestinoForaDoAr)
+        finally:
+            globals().update(buscar=_cb.buscar, copia_arquivada=_copia, nome_resolve=_resolve)
     finally:
         _cb.buscar = _buscar_real
         globals()["buscar"] = _buscar_deste
