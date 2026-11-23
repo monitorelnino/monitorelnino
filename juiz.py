@@ -443,6 +443,24 @@ RE_PLANO_DE_SAUDE_NO_TITULO = re.compile(
     r"emerg[êe]ncias?\s+em\s+sa[úu]de)|\bplano\s+municipal\s+de\s+sa[úu]de\b|"
     r"\bplano\s+de\s+conting[êe]ncia\s+(?:em|da|de)\s+sa[úu]de\b", re.I)
 
+# 23/11/2026 (editoria): o plano que a fonte disponibiliza como plano do município e que é da SAÚDE — a secretaria de
+# saúde assina antes do título (São Martinho da Serra/RS, plano de contingência para chuvas intensas do Vigidesastres) —
+# continua onde está, e o cartão diz que é um plano da saúde, não da defesa civil. Não vale quando o plano traz a
+# contingência da defesa civil (a coordenadoria municipal) dentro dele.
+RE_AUTOR_SAUDE = re.compile(r"secretaria\s+(?:municipal\s+)?(?:de\s+|da\s+)?sa[úu]de|vigil[âa]ncia\s+em\s+sa[úu]de|vigidesastres", re.I)
+RE_DEFESA_CIVIL_NO_PLANO = re.compile(
+    r"\bCOMP?DEC\b|coordenadoria\s+municipal\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil", re.I)
+
+
+def plano_da_saude(texto: str) -> bool:
+    """O plano é da saúde: o título é de saúde (J23) ou a secretaria de saúde assina antes do título, e o texto não
+    traz a coordenadoria municipal de defesa civil. Função pura."""
+    cabeca = (texto or "")[:600]
+    titulo = re.search(r"\bplan(?:o|con)\b", cabeca, re.I)
+    da_saude = RE_AUTOR_SAUDE.search(cabeca[:titulo.start()] if titulo else cabeca) or RE_PLANO_DE_SAUDE_NO_TITULO.search(cabeca)
+    return bool(da_saude) and not RE_DEFESA_CIVIL_NO_PLANO.search(texto or "")
+
+
 # --- Etapa 6 ---------------------------------------------------------------------------------
 BOLETIM_1 = "29/06/2026"   # §3: marco do ciclo
 ANO_DO_CICLO = int(BOLETIM_1[-4:])
@@ -2116,6 +2134,12 @@ def autoteste() -> int:
                                      "Estiagem e seca.")[1] == "fora_do_objeto"
          and etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL. Riscos: inundação, "
                                      "deslizamento e arboviroses.")[1] == "chuvas_inundacao_deslizamento"),
+        ("plano da saúde: a secretaria de saúde assina antes do título; com a coordenadoria de defesa civil, ou lista "
+         "a secretaria depois do título, não",
+         plano_da_saude("Município de São Martinho da Serra Secretaria Municipal de Saúde PLANO DE CONTINGÊNCIA PARA "
+                        "CHUVAS INTENSAS 2025. Alertas emitidos pela Defesa Civil.")
+         and not plano_da_saude("Secretaria Municipal de Saúde PLANO DE CONTINGÊNCIA. Aciona a COMPDEC.")
+         and not plano_da_saude("PLANO DE CONTINGÊNCIA MUNICIPAL. Abrigo: Secretaria de Saúde e Assistência Social")),
         ("arbovirose citada numa lista de riscos não torna o plano fora do objeto",
          etapa5_familia_de_risco("plano municipal para inundação, alagamento, deslizamento e "
                                  "também arbovirose")[1] == "chuvas_inundacao_deslizamento"),

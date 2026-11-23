@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Consolidação: comentários de história do `coletar_sinais_risco.py` (catálogo de fontes, focos, RONI, avisos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento (AST idêntica). Código: −55 linhas líquidas.
 
+## 2026-11-23 · #2028 · Plano da saúde no cartão do município
+Quando o plano que a fonte disponibiliza como plano do município é da saúde (a secretaria de saúde assina antes do título, sem a coordenadoria municipal de defesa civil no texto), o cartão diz: "O plano disponibilizado em {fonte} é um plano de contingência da saúde, não da defesa civil." Categoria e índice não mudam. Quatro registros hoje: São Martinho da Serra/RS, Fortaleza/CE, Porto Velho/RO e Angra dos Reis/RJ.
+
 ## 2026-11-23 · #2026 · OCR gira a página de cabeça para baixo
 Página digitalizada de cabeça para baixo ou de lado saía como letras sem sentido, e o juiz recusava o plano como ilegível (Humaitá e União da Serra/RS). Quando o texto lido tem menos de 5% das palavras mais frequentes do português, a detecção de orientação do Tesseract diz o giro e a página é lida de novo; o texto girado só entra quando lê melhor.
 ## 2026-11-23 · #2009 · Destino fora do ar

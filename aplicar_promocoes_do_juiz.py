@@ -171,6 +171,37 @@ def marcar_desatualizados(municipios: list, codigo_de, cadastro) -> int:
     return mudou
 
 
+def marcar_planos_da_saude(municipios: list, texto_da_copia) -> int:
+    """Marca `plano_da_saude` ({fonte}) no registro de plano cuja cópia preservada é um plano da saúde (`juiz.plano_da_saude`),
+    e tira a marca de quem deixou de ser; devolve quantos mudaram. `texto_da_copia(hash)` dá o texto ou "". Não muda
+    categoria nem índice (editoria, 23/11/2026): o cartão diz o que a fonte disponibilizou."""
+    from atualizar_instrumentos_estaduais import REPOSITORIOS, repositorio_do_documento
+    from juiz import plano_da_saude
+    mudou = 0
+    for m in municipios:
+        h, url = m.get("hash_evidencia"), m.get("url") or ""
+        uf_rep = repositorio_do_documento(url)
+        nova = ({"fonte": REPOSITORIOS[uf_rep]["fonte"] if uf_rep else re.sub(r"^www\.", "", url.split("/")[2] if "//" in url else url)}
+                if m.get("categoria") in CATEGORIAS_DE_PLANO + ("plano_novo", "plano_readaptado", "plano_recorrente")
+                and h and plano_da_saude(texto_da_copia(h)) else None)
+        if nova != m.get("plano_da_saude"):
+            if nova:
+                m["plano_da_saude"] = nova
+            else:
+                m.pop("plano_da_saude", None)
+            mudou += 1
+    return mudou
+
+
+def texto_da_copia_preservada(h: str) -> str:
+    """Texto da cópia preservada (camada de texto, ou o OCR), ou ""."""
+    for nome in (f"{h}.txt", f"{h}.ocr.txt"):
+        f = RAIZ / "evidencias" / nome
+        if f.exists():
+            return f.read_text(encoding="utf-8", errors="replace")
+    return ""
+
+
 def municipios_do_cadastro() -> set:
     """IBGE dos municípios INDICADOS pela União ao cadastro do art. 3º-A (`cadastro_casa_civil_2086`); a lista
     de inscritos não tem fonte pública (`cadastro_nacional_art3A` é null em todos)."""
@@ -497,6 +528,18 @@ def autoteste() -> int:
 
     # 08/10/2026 (A1-06, A4-08): o campo `documento` é o título do documento, nunca sobra de
     # página. Os quatro casos abaixo são os quatro registros reais que a ficha publicou errado.
+    _reg = [{"categoria": "plano_antigo", "hash_evidencia": "s", "url": ("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/"
+             "SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de"
+             "%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS"
+             "/CREPDEC%2003/a.pdf")},
+            {"categoria": "plano", "hash_evidencia": "d", "url": "https://www.x.gov.br/p.pdf", "plano_da_saude": {"fonte": "x"}},
+            {"categoria": "decreto", "hash_evidencia": "s", "url": "https://y.gov.br/d.pdf"}]
+    _txt = {"s": "Secretaria Municipal de Saúde PLANO DE CONTINGÊNCIA PARA CHUVAS INTENSAS",
+            "d": "PLANO DE CONTINGÊNCIA. Coordenadoria Municipal de Defesa Civil aciona."}
+    _n = marcar_planos_da_saude(_reg, lambda h: _txt.get(h, ""))
+    casos.append(("plano da saúde ganha a marca com a fonte; quem deixou de ser perde; decreto não entra",
+                  _n == 2 and "Prepara RS" in _reg[0]["plano_da_saude"]["fonte"] and "plano_da_saude" not in _reg[1]
+                  and "plano_da_saude" not in _reg[2] and marcar_planos_da_saude(_reg, lambda h: _txt.get(h, "")) == 0))
     casos.append(("ementa limpa continua sendo a ementa",
                   documento_do_veredito(base) == "Fica instituído o Plano Municipal de Proteção"))
     casos.append(("marcador de página vira título com órgão e ano",
@@ -804,10 +847,11 @@ def marcar_o_banco() -> int:
     ref = {(r["nome"], r["uf"]): str(r["codigo_ibge"]).zfill(7)
            for r in json.loads((MUNICIPIOS.parent / "municipios_ibge_referencia.json").read_text(encoding="utf-8"))}
     n = marcar_desatualizados(municipios, lambda m: ref.get((m.get("nome"), m.get("uf"))), municipios_do_cadastro())
-    if n:
+    s = marcar_planos_da_saude(municipios, texto_da_copia_preservada)
+    if n or s:
         gravar_em(MUNICIPIOS, municipios)
-    print(f"marca de plano desatualizado segundo a lei: {n} registro(s) mudaram")
-    return n
+    print(f"marca de plano desatualizado segundo a lei: {n} registro(s) mudaram; plano da saúde: {s}")
+    return n + s
 
 
 def main() -> int:

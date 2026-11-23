@@ -359,7 +359,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       : achou ? TC(sp.data ? 'plano.com_plano_data' : 'plano.com_plano', {documento: sp.documento || sp.fonte || '', data: sp.data || ''}) : TC('plano.sem_plano', {corte: (meta || {}).corte || ''});
     const camada = achou && pl ? TC(pl.pagina_citada ? 'plano.saude_no_plano' : 'plano.saude_no_plano_sem_pagina', {pagina: pl.pagina_citada}) : '';
     return cartao('musgo', TC('rotulo.plano_municipio'), esc(valor) + (achou && sp.url ? ' · <a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(TC('plano.abrir')) + '</a>' : ''),
-      [camada && esc(camada), achou && sp.fonte && esc(sp.fonte)].filter(Boolean).join(' · '),
+      [achou && sp.plano_da_saude && esc(TC('plano.da_saude', {fonte: sp.plano_da_saude.fonte})), camada && esc(camada), achou && sp.fonte && esc(sp.fonte)].filter(Boolean).join(' · '),
       {href: 'index.html#' + uf, pagina: textoSaude('consulta.cartao.pagina.inicial')});
   };
   /* O estado, nunca o município: a fonte não abre óbitos por município, e o cartão diz isso. */
