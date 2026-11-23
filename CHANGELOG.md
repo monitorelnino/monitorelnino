@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #2000 · Juiz: ano fora da faixa não é data
+
+Plano sem ato de aprovação passava com ano impossível quando o texto citava período chuvoso: em Chuvisca/RS, o fim de um telefone virou 2077. A recusa por data suspeita passa a valer com ou sem ato.
+
 ## 2026-11-23 · #1996 · Leitor de .doc: só as correntes da raiz
 
 O .doc com objeto do Word embutido (Chuvisca/RS) saía sem texto: o leitor misturava o texto do documento com a tabela do objeto. Agora lê só as correntes da raiz do arquivo.
