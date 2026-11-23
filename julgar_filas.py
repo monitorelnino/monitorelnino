@@ -135,7 +135,14 @@ def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> l
         if so_oficial and not url_em_dominio_oficial(url_da_pista(p)):
             continue
         fora.append(p)
-    return fora
+    # 23/11/2026: a rodada corta no prazo, e na ordem do arquivo o rabo nunca chegava (312 pistas oficiais com
+    # back-off vencido em 19/11, todas depois do índice 21.800; o juiz parava perto de 19.800). Quem espera há mais
+    # tempo (volta marcada ou registro mais velhos) vai primeiro; sem data, primeiro também.
+    from coletores_base import data_br_de
+    def espera(p):
+        br = data_br_de(p.get("proxima_tentativa_em") or p.get("registrado_em") or p.get("data")) or ""
+        return br[6:] + br[3:5] + br[:2]
+    return sorted(fora, key=espera)
 
 
 # 15/11/2026: até aqui o juiz baixava o documento por conta própria (20 s, sem a cadeia do `certifi`) e
@@ -765,6 +772,9 @@ def autoteste() -> int:
                   [p["id"] for p in selecionar(amostra, urls=["franca.sp.gov.br"])] == ["aaa111"]))
     casos.append(("os filtros se combinam",
                   selecionar(amostra, ids=["bbb"], so_oficial=True) == []))
+    casos.append(("quem espera há mais tempo vai primeiro: o prazo corta o recente, nunca o rabo do arquivo",
+                  [p["id"] for p in selecionar([{"id": "c", "registrado_em": "2026-11-20"}, {"id": "b", "proxima_tentativa_em": "2026-11-19"},
+                                                {"id": "a", "registrado_em": "29/10/2026"}, {"id": "z"}])] == ["z", "a", "b", "c"]))
     casos.append(("url vazia não é domínio oficial", not url_em_dominio_oficial("")))
     # 09/11/2026 (J18): pista só com os campos canônicos (`url_final`, `alvo`) é julgada sobre o documento
     canonica = {"id": "c1", "url_final": CANARIOS["plano_novo"]["url"], "alvo": "5002209",

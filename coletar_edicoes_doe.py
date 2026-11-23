@@ -1343,11 +1343,13 @@ def main() -> int:
     desde = desde_de(sys.argv, INICIO_DO_CICLO)
     ate = arg("--ate", hoje_editorial().isoformat())
     if "--recuperacao" in sys.argv:
-        # Toda UF com rota: a busca primeiro (minutos), as edições inteiras depois (o grosso do tempo).
+        # Toda UF com rota: a busca primeiro (minutos), as edições inteiras depois (o grosso do tempo), e entre
+        # estas a de leitura mais velha primeiro. 23/11/2026: na ordem fixa por população o prazo cortava em PI,
+        # e MS, RO e RR ficaram sem edição lida desde 11–12/11 enquanto AL relia 167 edições.
         from coletores_base import ler
         fontes = (ler("fontes_doe.json", {}) or {}).get("ufs") or {}
         alvos = sorted((uf for uf in UFS if rota_da_uf(uf, fontes)["tipo"]),
-                       key=lambda uf: rota_da_uf(uf, fontes)["tipo"] != "busca")
+                       key=lambda uf: (rota_da_uf(uf, fontes)["tipo"] != "busca", ultima_edicao_lida(ler(f"{PASTA}/{uf}.json", {}))))
     elif "--emergencias" in sys.argv:
         # Toda noite, só os estados com emergência estadual perto do vencimento (a prorrogação sai aí).
         from coletores_base import ler
