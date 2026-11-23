@@ -112,8 +112,10 @@ def _ler_sharepoint_rs(url, timeout):
         destino = alvo.group(1).decode("latin-1") if alvo else ""
         if not any(o in destino for o in REPOSITORIOS["RS"].get("origens", ())):
             raise ValueError(f"atalho sem destino na origem declarada: {destino[:90]!r}")
-        from coletores_base import buscar
-        corpo = buscar(destino, timeout=timeout)
+        # 23/11/2026: o destino dos atalhos da CREPDEC 07 tem certificado de outro nome, e a verificação nunca se
+        # desliga; o destino se lê pelo mesmo leitor do resto (fonte, cópia da ponte, cópia pública do Internet
+        # Archive). Antes, a falha do destino virava `documento_inacessivel` para sempre (30 planos do RS).
+        corpo = obter_documento(destino, timeout)
     else:
         corpo = r.content
     if not corpo.startswith(ASSINATURAS_DE_DOCUMENTO):
@@ -1020,7 +1022,9 @@ def self_test():
     pasta = "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/CREPDEC%2007/"
     import coletores_base as _cb
     _buscar_real, _vistos = _cb.buscar, []
-    _cb.buscar = lambda u, timeout=40: (_vistos.append(u), b"%PDF-destino")[1]
+    _cb.buscar = lambda u, timeout=40, origem=None: (_vistos.append(u), b"%PDF-destino")[1]
+    _buscar_deste = globals()["buscar"]
+    globals()["buscar"] = _cb.buscar   # o destino do atalho passa por `obter_documento`, que usa o `buscar` deste módulo
     def _ler(nome, corpo):
         _SESSAO_RS[:] = [_S(corpo)]
         _IDS_RS.clear()
@@ -1042,6 +1046,7 @@ def self_test():
         assert _vistos == ["https://casamilitar-rs.com.br/pdfs/9.pdf"], _vistos
     finally:
         _cb.buscar = _buscar_real
+        globals()["buscar"] = _buscar_deste
         _SESSAO_RS.clear(); _IDS_RS.clear()
     print("✓ self-test OK — arquivo do RS lido por UniqueId; resposta que não é documento é erro; atalho .url "
           "segue só para a origem declarada")
