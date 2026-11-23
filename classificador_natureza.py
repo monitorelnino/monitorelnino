@@ -106,7 +106,7 @@ def cita_instrumento_conhecido(texto_lower):
     return next((t for t in TERMOS_INSTRUMENTO if t in texto_lower), None)
 
 
-def classificar(texto, tem_reconhecimento_federal=False):
+def classificar(texto, tem_reconhecimento_federal=False, documento_e_o_plano=False):
     """Aplica o teste do objeto (3 critérios cumulativos + teste-fósforo, §5.2.1).
 
     Retorna (decisao, motivo). decisao é um de "EX_ANTE" / "RESPOSTA" / "DUVIDA".
@@ -122,7 +122,9 @@ def classificar(texto, tem_reconhecimento_federal=False):
     # vez, em vez de multiplicar variantes no dicionário.
     t = re.sub(r"\s+", " ", texto.lower())
 
-    if tem_reconhecimento_federal or any(s in t for s in SINAIS_FIDE_FEDERAL):
+    # 23/11/2026 (editoria): o plano de contingência publicado explica como pedir situação de emergência e
+    # reconhecimento federal; isso faz parte do plano e não o torna ato de resposta. O teste-fósforo é do ATO.
+    if not documento_e_o_plano and (tem_reconhecimento_federal or any(s in t for s in SINAIS_FIDE_FEDERAL)):
         return "RESPOSTA", "teste-fósforo: menciona rota de reconhecimento federal/FIDE"
 
     sinalizador_seguro = next((s for s in SINALIZADORES_RESPOSTA_SEGUROS if s in t), None)
