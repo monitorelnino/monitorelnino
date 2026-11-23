@@ -203,8 +203,14 @@ jobs:
 
       - name: Instalar Tesseract com o modelo português (§177)
         if: inputs.precisa_tesseract
-        timeout-minutes: 5
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por
+        # F92: o `timeout 240` do passo do navegador mata o `npx`, não o `apt-get` que ele pôs sob
+        # `sudo`; a trava do apt fica com o órfão. `install` espera a trava (DPkg::Lock::Timeout);
+        # `update` não espera, por isso tenta de novo. Espelho lento cai por tempo e repete.
+        timeout-minutes: 8
+        run: |
+          apt="sudo apt-get -qq -o DPkg::Lock::Timeout=240 -o Acquire::Retries=3 -o Acquire::http::Timeout=30"
+          for i in $(seq 12); do $apt update && break; [ "$i" = 12 ] && exit 1; sleep 10; done
+          $apt install -y tesseract-ocr tesseract-ocr-por
 
       # 03/10/2026 (item A.5 do handover da corrente noturna): a hora de INÍCIO do elo, guardada
       # antes de qualquer comando. O painel da noite precisa dela para dizer quanto durou e se
