@@ -1159187,6 +1159187,437 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "e0eaf7304acf43accfc48416a0da88b4430dabf7ad95f4467dfbe56bb4408a95"
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "57491 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "enção, Monitoramento e Controle da Transmissão de COVID 19 EMEI MUNDO ENCANTADO Capivari do Sul - RS Plano de Contingência para Prevenção, Monitoramento e Contr"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: ano ou ciclo"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304671",
+   "municipio": "Capivari do Sul",
+   "uf": "RS",
+   "url": "https://capivaridosul.rs.gov.br/wp-content/uploads/simple-file-list/Contingencia-Escolas-Municipais/Plano-de-contingencia-da-Emei.doc",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "ff74dca0e9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5b3bbbdd88e8d8f3c4560f005566df91cee72b932843badc6aea4be4fbd48d3a"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "30867 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "IPAL DE ENSINO FUNDAMENTAL CAPIVARI AV. DO QUILOMBO, 550 - FONE: (51) 3685 1290 CAPIVARI DO SUL - RS PLANO DE CONTENGÊNCIA CARACTERIZAÇÃO DA INSTITUIÇÃO DE ENSI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "alunos Número máximo de alunos Horário de funcionamento 1 2 3 4 5 6 7 Modelo de Plano de Contingência para Prevenção, Monitoramento e Controle da Transmissão de",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado do Rio",
+      "titulo": "Plano de Contingência",
+      "trecho": "alunos Número máximo de alunos Horário de funcionamento 1 2 3 4 5 6 7 Modelo de Plano de Contingência para Prevenção, Monitoramento e Controle da Transmissão de",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304671",
+   "municipio": "Capivari do Sul",
+   "uf": "RS",
+   "url": "https://capivaridosul.rs.gov.br/wp-content/uploads/simple-file-list/Contingencia-Escolas-Municipais/Plano-de-Contingencia-EMEF-Capivari.doc",
+   "regras_18": [
+    "J7",
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "9008db18d0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "78e4967d29a1eaa9265d58e72f5fdc8a6fa7b7665dd09932f8f0ef04f0febba0"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10704 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA Município de Novo Cabrais/ RS Março/2025 MUNICÍPIO Município: Novo Cabrais Eventos adversos mais comuns: I. Enchentes, chuvas torrenciais"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA Município de Novo Cabrais/ RS Março/2025 MUNICÍPIO Município: Novo Cabrais Eventos adversos mais comuns: I. Enchentes, chuvas torrenciais",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA Município de Novo Cabrais/ RS Março/2025 MUNICÍPIO Município: Novo Cabrais Eventos adversos mais comuns: I. Enchentes, chuvas torrenciais",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA Município de Novo Cabrais/ RS Março/2025 MUNICÍPIO Município: Novo Cabrais Eventos adversos mais comuns: I. Enchentes, chuvas torrenciais"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANO DE CONTINGÊNCIA Município de Novo Cabrais/ RS Março/2025 MUNICÍPIO Município: Novo Cabrais Eventos adversos mais comuns: I. Enchentes, chuvas torrenciais "
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4313391",
+   "municipio": "Novo Cabrais",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_NOVO_CABRAIS.doc",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "1eede587ac",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "e4afb1f971abb4dc5ed8d9cb917d46122dfe21fae484f070eb6668bfcc1fb3cd"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4947 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICÍPIO DE NOVA HARTZ / RS MAIO/ 2025 MUNICÍPIO Nome: Município de Nova Hartz População: 20.088 habitantes Área: 62,088 km² RCL: R$ 94.8"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICÍPIO DE NOVA HARTZ / RS MAIO/ 2025 MUNICÍPIO Nome: Município de Nova Hartz População: 20.088 habitantes Área: 62,088 km² RCL: R$ 94.8",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA MUNICÍPIO DE NOVA HARTZ / RS MAIO/ 2025 MUNICÍPIO Nome: Município de Nova Hartz População: 20.088 habitantes Área: 62,088 km² RCL: R$ 94.8",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICÍPIO DE NOVA HARTZ / RS MAIO/ 2025 MUNICÍPIO Nome: Município de Nova Hartz População: 20.088 habitantes Área: 62,088 km² RCL: R$ 94.8"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANO DE CONTINGÊNCIA MUNICÍPIO DE NOVA HARTZ / RS MAIO/ 2025 MUNICÍPIO Nome: Município de Nova Hartz População: 20.088 habitantes Área: 62,088 km² RCL: R$ 94.8"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4313060",
+   "municipio": "Nova Hartz",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20NOVA%20HARTZ%20-%202025.doc",
+   "regras_18": [
+    "J22",
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "002c5346bd",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d3d1e1eda3584b8ddf99ac482ef3dc4c7deab8d7de7bd4271228db8cfc1c8637"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7717 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA Município de MINAS DO LEÃO- RS JULHO/ 2025 Coordenador da Defesa Civil Edemilson Almeida Lima. MUNICÍPIO Nome: Minas do Leão População: 7."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA Município de MINAS DO LEÃO- RS JULHO/ 2025 Coordenador da Defesa Civil Edemilson Almeida Lima. MUNICÍPIO Nome: Minas do Leão População: 7.",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA Município de MINAS DO LEÃO- RS JULHO/ 2025 Coordenador da Defesa Civil Edemilson Almeida Lima. MUNICÍPIO Nome: Minas do Leão População: 7.",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA Município de MINAS DO LEÃO- RS JULHO/ 2025 Coordenador da Defesa Civil Edemilson Almeida Lima. MUNICÍPIO Nome: Minas do Leão População: 7."
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANO DE CONTINGÊNCIA Município de MINAS DO LEÃO- RS JULHO/ 2025 Coordenador da Defesa Civil Edemilson Almeida Lima. MUNICÍPIO Nome: Minas do Leão População: 7."
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4312252",
+   "municipio": "Minas do Leão",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20MINAS%20DO%20LE%C3%83O.doc",
+   "regras_18": [
+    "J22",
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "43a00a5add",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0acd8c6e64edbd99e199896cb2d53176b4bb40b1db0df65bd44d5de163eef218"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12080 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Nome: Esmeralda - RS População: 3287 Área: 829587 RCL: 37.824.969,84 Eventos Adversos Mais Comuns: Estiagens; Granizo; Vendavais. DADOS CADASTRAIS Município Esm"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "877209053 Outro Cargo Endereço Avenida: São João – 572, Centro de Esmeralda-RS. PLANO DE CONTINGÊNCIA 1. Objetivos do Plano. (Por que?) Estabelecer procedimento",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COORDENADORIA MUNICIPAL DE DEFESA CIVIL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "877209053 Outro Cargo Endereço Avenida: São João – 572, Centro de Esmeralda-RS. PLANO DE CONTINGÊNCIA 1. Objetivos do Plano. (Por que?) Estabelecer procedimento",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "@esmeraldars.net Vice-Prefeito Marcelo Mondadori DDD/Telefone (54)999428595 1.2 COORDENADORIA MUNICIPAL DE DEFESA CIVIL: Nome do Coordenador Alécio Piardi Borge"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "vendavais e granizo. Todo o Território Municipal. Médio Prejuízos causados pela Estiagem, especialmente por falta de água nas propriedades rurais, comprometendo"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "4307401",
+   "municipio": "Esmeralda",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/Plano%20de%20Conting%C3%AAncia%20de%20Esmeralda%20Planejado%201.doc",
+   "regras_18": [
+    "J22",
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "becb30528a",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "6113a91354725b2290f466ddc04e739bd8768eccb38f6cc495b3246c55b11b22"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5447 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "op/logo.jpg\" \\* MERGEFORMAT PLANO DE CONTINGÊNCIA MARÇO / 2025. MUNICÍPIO Nome: IBIRUBÁ População: 21.583 Área: 607,185 KM² RCL: (INSERIR A RECEITA CORRENTE LIQ"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "INCLUDEPICTURE \"../../Dudu%20Dell/Desktop/logo.jpg\" \\* MERGEFORMAT PLANO DE CONTINGÊNCIA MARÇO / 2025. MUNICÍPIO Nome: IBIRUBÁ População: 21.583 Área: 607,185 K",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COORDENADORIA MUNICIPAL DE DEFESA CIVIL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "INCLUDEPICTURE \"../../Dudu%20Dell/Desktop/logo.jpg\" \\* MERGEFORMAT PLANO DE CONTINGÊNCIA MARÇO / 2025. MUNICÍPIO Nome: IBIRUBÁ População: 21.583 Área: 607,185 K",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "s.gov.br Vice-Prefeito SILVESTRE ANTONIO REBELATO DDD/Telefone 54 3324 8520 1.2 COORDENADORIA MUNICIPAL DE DEFESA CIVIL: Nome do Coordenador ONEIDE NEULAND E-ma"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANO DE CONTINGÊNCIA MARÇO / 2025. MUNICÍPIO Nome: IBIRUBÁ População: 21.583 Área: 607,185 KM² RCL: (INSERIR A RECEITA CORRENTE LIQUIDA) Eventos Adversos Mais "
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4310009",
+   "municipio": "Ibirubá",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_Ibirub%C3%A1.doc",
+   "regras_18": [
+    "J22",
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "918e9901d7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "c4064306adae5f3a20f33574ca118b04ba75faf9b18657121038617cc4f01eb3"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305447",
+   "municipio": "Chuvisca",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CHUVISCA.doc",
+   "regras_18": [],
+   "pista_id": "3a1ba5632b",
+   "origem": "descoberta",
+   "leu_documento": false
   }
  ]
 }
