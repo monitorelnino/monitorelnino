@@ -240,10 +240,17 @@ def texto_de_doc_binario(raw):
     fat = [x for i in difat if i < 0xFFFFFFFA for x in struct.unpack(f"<{ss // 4}I", setor(i).ljust(ss, b"\xff"))]
     ler = lambda inicio: b"".join(setor(i) for i in cadeia(inicio, fat))
     diretorio = ler(u32(raw, 48))
-    entradas = {diretorio[o:o + u16(diretorio, o + 64) - 2].decode("utf-16-le", "ignore"): (u32(diretorio, o + 116), u32(diretorio, o + 120))
-                for o in range(0, len(diretorio) - 127, 128) if 2 <= u16(diretorio, o + 64) <= 64}
+    # Só as correntes da raiz: o objeto do Word embutido no documento traz o seu próprio `WordDocument` e `1Table`
+    # (Chuvisca/RS, 23/11), e a lista plana do diretório misturava o texto de um com a tabela do outro.
+    entradas, fila, vistos = {}, [u32(diretorio, 76)], set()
+    while fila:
+        if (i := fila.pop()) < 0xFFFFFFFA and i not in vistos and (o := i * 128) + 128 <= len(diretorio):
+            vistos.add(i)
+            entradas[diretorio[o:o + max(u16(diretorio, o + 64) - 2, 0)].decode("utf-16-le", "ignore")] = (
+                u32(diretorio, o + 116), u32(diretorio, o + 120))
+            fila += [u32(diretorio, o + 68), u32(diretorio, o + 72)]
     minifat = [x for x in struct.unpack(f"<{len(m) // 4}I", m)] if (m := ler(u32(raw, 60))) else []
-    mini = ler(entradas["Root Entry"][0])
+    mini = ler(u32(diretorio, 116))
 
     def corrente(nome):
         inicio, tamanho = entradas[nome]
@@ -1133,6 +1140,13 @@ def self_test():
         "6OZOSTu24aPoebE6uFT7hZz/Sl0vlpParJ1A1JnkTX859vJMJ/ekxjgdupM0o33jzNhs+7vBl+p6ituK4ew1zfGvPJBI8YmQya/3"
         "IvovT6+MfbOy21ouzB49RbQ/DTJ0b5z//wuch+BC"))
     assert texto_do_documento(_doc, "https://x/p.doc") == "Plano curto de Itati: ação.", texto_do_documento(_doc, "https://x/p.doc")
+    # Corrente homônima fora da raiz (objeto embutido) não entra na leitura.
+    import struct as _st
+    _dir = (_st.unpack_from("<I", _doc, 48)[0] + 1) * 512
+    _livre = next(o for o in range(_dir, _dir + 512 * 8, 128) if _st.unpack_from("<H", _doc, o + 64)[0] == 0)
+    _falso = "1Table".encode("utf-16-le").ljust(64, b"\0") + _st.pack("<HBB3I", 14, 2, 1, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF)
+    _doc2 = _doc[:_livre] + _falso.ljust(116, b"\0") + _st.pack("<III", 0, 10, 0) + _doc[_livre + 128:]
+    assert texto_do_documento(_doc2, "https://x/p.doc") == "Plano curto de Itati: ação.", texto_do_documento(_doc2, "https://x/p.doc")
     assert canal_e_fonte("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/"
                          "Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/"
                          "3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/"
