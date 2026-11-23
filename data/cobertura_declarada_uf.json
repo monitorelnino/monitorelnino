@@ -1,6 +1,6 @@
 {
  "_governanca": "Cobertura declarada por UF e por canal (§166, 23/09/2026). DERIVADO de data/log_buscas.json — não editar à mão; rode gerar_cobertura_declarada.py. Serve para que 'não localizamos até o corte' passe a ter escopo explícito: o leitor vê em que canais se procurou e quando. Canal com verificado=false NUNCA pode ser apresentado como ausência de plano. O canal 'lai' guarda só data e status, jamais texto ou registro de pedido (regra editorial). A ficha do estado (index) lê os canais verificados; a frase vive no catálogo (A3-18, 13/10/2026).",
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-09-28",
  "fonte": "data/log_buscas.json (log v2)",
  "nota_publica": null,
  "canais": [
@@ -16,37 +16,28 @@
   "AC": {
    "canais": {
     "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 384,
-     "verificacoes": 262,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 305,
-     "verificacoes": 68,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 13,
-     "verificacoes": 4,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "portal_transparencia": {
      "verificado": false,
@@ -57,15 +48,12 @@
      "canais_do_log": []
     },
     "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-19",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 233,
-     "verificacoes": 82,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "lai": {
      "verificado": false,
@@ -76,57 +64,41 @@
      "canais_do_log": []
     },
     "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 682,
-     "verificacoes": 630,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "rede_social"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     }
    },
-   "n_canais_verificados": 5
+   "n_canais_verificados": 0
   },
   "AL": {
    "canais": {
     "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1942,
-     "verificacoes": 1762,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 558,
-     "verificacoes": 407,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 8,
-     "verificacoes": 1,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "portal_transparencia": {
      "verificado": false,
@@ -137,15 +109,12 @@
      "canais_do_log": []
     },
     "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-19",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 522,
-     "verificacoes": 45,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "lai": {
      "verificado": false,
@@ -156,59 +125,41 @@
      "canais_do_log": []
     },
     "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1470,
-     "verificacoes": 1373,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     }
    },
-   "n_canais_verificados": 5
+   "n_canais_verificados": 0
   },
   "AP": {
    "canais": {
     "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 343,
-     "verificacoes": 188,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 211,
-     "verificacoes": 123,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "painel": {
      "verificado": false,
      "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 15,
+     "ultima_tentativa": null,
+     "execucoes": 0,
      "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
+     "canais_do_log": []
     },
     "portal_transparencia": {
      "verificado": false,
@@ -219,15 +170,12 @@
      "canais_do_log": []
     },
     "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-19",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 189,
-     "verificacoes": 69,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "lai": {
      "verificado": false,
@@ -238,58 +186,41 @@
      "canais_do_log": []
     },
     "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 354,
-     "verificacoes": 247,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     }
    },
-   "n_canais_verificados": 4
+   "n_canais_verificados": 0
   },
   "AM": {
    "canais": {
     "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 2759,
-     "verificacoes": 2490,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 454,
-     "verificacoes": 243,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 23,
-     "verificacoes": 9,
-     "canais_do_log": [
-      "painel AM",
-      "sonda de painéis"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "portal_transparencia": {
      "verificado": false,
@@ -300,15 +231,12 @@
      "canais_do_log": []
     },
     "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 659,
-     "verificacoes": 185,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "lai": {
      "verificado": false,
@@ -319,58 +247,41 @@
      "canais_do_log": []
     },
     "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1183,
-     "verificacoes": 991,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     }
    },
-   "n_canais_verificados": 5
+   "n_canais_verificados": 0
   },
   "BA": {
    "canais": {
     "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 2568,
-     "verificacoes": 2416,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-15",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1809,
-     "verificacoes": 1282,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 10,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "portal_transparencia": {
      "verificado": false,
@@ -381,15 +292,12 @@
      "canais_do_log": []
     },
     "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2064,
-     "verificacoes": 334,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "lai": {
      "verificado": false,
@@ -401,1758 +309,42 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 7520,
-     "verificacoes": 7089,
-     "canais_do_log": [
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "CE": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 992,
-     "verificacoes": 844,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 797,
-     "verificacoes": 706,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 14,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1146,
-     "verificacoes": 117,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 4352,
-     "verificacoes": 4052,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "DF": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 108,
-     "verificacoes": 88,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 137,
-     "verificacoes": 49,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 12,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 91,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 267,
-     "verificacoes": 181,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "ES": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 1286,
-     "verificacoes": 984,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1983,
-     "verificacoes": 235,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 11,
-     "verificacoes": 5,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 637,
-     "verificacoes": 159,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2059,
-     "verificacoes": 1652,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "GO": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 1137,
-     "verificacoes": 1101,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 954,
-     "verificacoes": 842,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 10,
-     "verificacoes": 4,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1163,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1613,
-     "verificacoes": 1432,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "MA": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 1635,
-     "verificacoes": 1099,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1051,
-     "verificacoes": 710,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 13,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1232,
-     "verificacoes": 9,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2525,
-     "verificacoes": 2179,
-     "canais_do_log": [
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "MT": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 718,
-     "verificacoes": 664,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 661,
-     "verificacoes": 511,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 10,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 908,
-     "verificacoes": 105,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1354,
-     "verificacoes": 1131,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "descoberta renderizada",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "MS": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 562,
-     "verificacoes": 507,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 448,
-     "verificacoes": 254,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 11,
-     "verificacoes": 1,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 449,
-     "verificacoes": 53,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1320,
-     "verificacoes": 1136,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "MG": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 3959,
-     "verificacoes": 3809,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 3726,
-     "verificacoes": 2046,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
      "execucoes": 7,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 4077,
-     "verificacoes": 767,
-     "canais_do_log": [
-      "busca_web",
-      "descobrir_planos",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 4663,
-     "verificacoes": 2861,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "PA": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1577,
-     "verificacoes": 1093,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 716,
-     "verificacoes": 512,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 14,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 945,
-     "verificacoes": 101,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1642,
-     "verificacoes": 1279,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura",
-      "rede_social"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "PB": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1246,
-     "verificacoes": 1024,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 923,
-     "verificacoes": 714,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 17,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 998,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1196,
-     "verificacoes": 1013,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "PR": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2424,
-     "verificacoes": 2067,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1765,
-     "verificacoes": 880,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 13,
-     "verificacoes": 5,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1698,
-     "verificacoes": 55,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2896,
-     "verificacoes": 2288,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "descoberta renderizada",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "PE": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 1583,
-     "verificacoes": 935,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 858,
-     "verificacoes": 643,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 12,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1303,
-     "verificacoes": 160,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2039,
-     "verificacoes": 1642,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "PI": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1054,
-     "verificacoes": 1037,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 932,
-     "verificacoes": 633,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 4,
-     "verificacoes": 1,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1045,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 339,
-     "verificacoes": 71,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "RJ": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 1227,
-     "verificacoes": 825,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 681,
-     "verificacoes": 378,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-26",
-     "ultima_tentativa": "2026-09-26",
-     "execucoes": 13,
-     "verificacoes": 4,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-18",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 647,
-     "verificacoes": 205,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 3303,
-     "verificacoes": 2980,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "imprensa",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "RN": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1114,
-     "verificacoes": 975,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 709,
-     "verificacoes": 487,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 12,
-     "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 780,
      "verificacoes": 7,
      "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 536,
-     "verificacoes": 335,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 4
-  },
-  "RS": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2790,
-     "verificacoes": 2533,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2326,
-     "verificacoes": 1127,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 8,
-     "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-10-18",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2837,
-     "verificacoes": 412,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 6863,
-     "verificacoes": 5856,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 4
-  },
-  "RO": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 413,
-     "verificacoes": 365,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 343,
-     "verificacoes": 73,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 12,
-     "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 295,
-     "verificacoes": 3,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 498,
-     "verificacoes": 263,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 4
-  },
-  "RR": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 329,
-     "verificacoes": 156,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-12",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 184,
-     "verificacoes": 42,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 10,
-     "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 160,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 138,
-     "verificacoes": 50,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 4
-  },
-  "SC": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2360,
-     "verificacoes": 1648,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2172,
-     "verificacoes": 230,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": true,
-     "ultima_verificacao": "2026-09-23",
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 10,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 1858,
-     "verificacoes": 343,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 6555,
-     "verificacoes": 5269,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 5
-  },
-  "SP": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 4327,
-     "verificacoes": 3942,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2645,
-     "verificacoes": 1694,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 5,
-     "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 2804,
-     "verificacoes": 45,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 3833,
-     "verificacoes": 2625,
-     "canais_do_log": [
-      "DOE",
-      "DOM-consorciado",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
-     ]
-    }
-   },
-   "n_canais_verificados": 4
-  },
-  "SE": {
-   "canais": {
-    "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 802,
-     "verificacoes": 703,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
-    },
-    "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 397,
-     "verificacoes": 266,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
-    },
-    "painel": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 7,
-     "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
-    },
-    "portal_transparencia": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 375,
-     "verificacoes": 2,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
-    },
-    "lai": {
-     "verificado": false,
-     "ultima_verificacao": null,
-     "ultima_tentativa": null,
-     "execucoes": 0,
-     "verificacoes": 0,
-     "canais_do_log": []
-    },
-    "outro": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 508,
-     "verificacoes": 422,
-     "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "descoberta renderizada",
-      "fontes abertas",
-      "juiz",
       "julgamento_automatico"
      ]
     }
    },
-   "n_canais_verificados": 4
+   "n_canais_verificados": 1
   },
-  "TO": {
+  "CE": {
    "canais": {
     "diario_oficial": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-22",
-     "ultima_tentativa": "2026-11-22",
-     "execucoes": 1083,
-     "verificacoes": 654,
-     "canais_do_log": [
-      "DOM",
-      "DOU"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "sitio_do_orgao": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 614,
-     "verificacoes": 422,
-     "canais_do_log": [
-      "orgao_estadual",
-      "repositorio_estadual",
-      "site_municipal"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "painel": {
      "verificado": false,
      "ultima_verificacao": null,
-     "ultima_tentativa": "2026-09-23",
-     "execucoes": 6,
+     "ultima_tentativa": null,
+     "execucoes": 0,
      "verificacoes": 0,
-     "canais_do_log": [
-      "sonda de painéis"
-     ]
+     "canais_do_log": []
     },
     "portal_transparencia": {
      "verificado": false,
@@ -2163,15 +355,12 @@
      "canais_do_log": []
     },
     "busca_web": {
-     "verificado": true,
-     "ultima_verificacao": "2026-11-17",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 667,
-     "verificacoes": 6,
-     "canais_do_log": [
-      "busca_web",
-      "motor_de_busca"
-     ]
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
     },
     "lai": {
      "verificado": false,
@@ -2183,21 +372,1313 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-11-23",
-     "ultima_tentativa": "2026-11-23",
-     "execucoes": 971,
-     "verificacoes": 884,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 26,
+     "verificacoes": 26,
      "canais_do_log": [
-      "DOE",
-      "busca ativa de domínio",
-      "fontes abertas",
-      "juiz",
-      "julgamento_automatico",
-      "portal da prefeitura"
+      "julgamento_automatico"
      ]
     }
    },
-   "n_canais_verificados": 4
+   "n_canais_verificados": 1
+  },
+  "DF": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "ES": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "GO": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "MA": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "MT": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "MS": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "MG": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 11,
+     "verificacoes": 11,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
+  },
+  "PA": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "PB": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "PR": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 33,
+     "verificacoes": 33,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
+  },
+  "PE": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "PI": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "RJ": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "RN": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 1,
+     "verificacoes": 1,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
+  },
+  "RS": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "RO": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 2,
+     "verificacoes": 2,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
+  },
+  "RR": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 3,
+     "verificacoes": 3,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
+  },
+  "SC": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    }
+   },
+   "n_canais_verificados": 0
+  },
+  "SP": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 35,
+     "verificacoes": 35,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
+  },
+  "SE": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 27,
+     "verificacoes": 27,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
+  },
+  "TO": {
+   "canais": {
+    "diario_oficial": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "sitio_do_orgao": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "painel": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "portal_transparencia": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "busca_web": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "lai": {
+     "verificado": false,
+     "ultima_verificacao": null,
+     "ultima_tentativa": null,
+     "execucoes": 0,
+     "verificacoes": 0,
+     "canais_do_log": []
+    },
+    "outro": {
+     "verificado": true,
+     "ultima_verificacao": "2026-09-28",
+     "ultima_tentativa": "2026-09-28",
+     "execucoes": 5,
+     "verificacoes": 5,
+     "canais_do_log": [
+      "julgamento_automatico"
+     ]
+    }
+   },
+   "n_canais_verificados": 1
   }
  }
 }
