@@ -102,6 +102,8 @@
          escreve a frase a partir dela. Município sem varredura no livro devolve `null`. */
       varredura: (reg && reg.varredura) || null,
       sem_ato_de_aprovacao: !!(reg && reg.sem_ato_de_aprovacao),
+      /* 23/11/2026 (editoria): o plano que a fonte disponibiliza é da saúde, não da defesa civil ({fonte}). */
+      plano_da_saude: (reg && reg.plano_da_saude) || null,
     };
   }
 
