@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #2025 · História do coletor de sinais de risco ao histórico
+
+Consolidação: comentários de história do `coletar_sinais_risco.py` (catálogo de fontes, focos, RONI, avisos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento (AST idêntica). Código: −55 linhas líquidas.
+
 ## 2026-11-23 · #2028 · Plano da saúde no cartão do município
 Quando o plano que a fonte disponibiliza como plano do município é da saúde (a secretaria de saúde assina antes do título, sem a coordenadoria municipal de defesa civil no texto), o cartão diz: "O plano disponibilizado em {fonte} é um plano de contingência da saúde, não da defesa civil." Categoria e índice não mudam. Quatro registros hoje: São Martinho da Serra/RS, Fortaleza/CE, Porto Velho/RO e Angra dos Reis/RJ.
 
