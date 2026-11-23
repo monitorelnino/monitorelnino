@@ -318,10 +318,37 @@ def ocr_pagina(png: bytes, exe: str, idioma: str, dpi: int = OCR_DPI) -> str:
     em CRLF no próprio stdout. `newline="\n"` na gravação não resolve — ele traduz o que o Python
     escreve, não o "\r" que já vem dentro do texto. Sem normalizar aqui, a cópia preservada sairia
     diferente byte a byte da que o runner produz, que é a série do §163 de novo, agora no conteúdo."""
+    texto = _tesseract(png, exe, "-l", idioma, "--dpi", str(dpi))
+    if legibilidade(texto) < LEGIBILIDADE_MINIMA:
+        # 23/11/2026: página digitalizada de cabeça para baixo ou de lado (Humaitá e União da Serra/RS)
+        # saía como letras sem sentido. A detecção de orientação do próprio Tesseract diz o giro; o texto
+        # girado só substitui o original quando lê melhor.
+        giro = re.search(r"Rotate: (\d+)", _tesseract(png, exe, "--psm", "0", saida_de_erro=True))
+        if giro and giro[1] != "0":
+            from PIL import Image
+            buf = io.BytesIO()
+            Image.open(io.BytesIO(png)).rotate(-int(giro[1]), expand=True).save(buf, format="PNG")
+            girado = _tesseract(buf.getvalue(), exe, "-l", idioma, "--dpi", str(dpi))
+            if legibilidade(girado) > legibilidade(texto):
+                texto = girado
+    return texto
+
+
+PALAVRAS_FREQUENTES = frozenset("de da do das dos as os em no na nos nas para com que por ao um uma".split())
+LEGIBILIDADE_MINIMA = 0.05   # texto em português corrido fica entre 0,15 e 0,3; página invertida, perto de zero
+
+
+def legibilidade(texto: str) -> float:
+    """Fração das palavras que estão entre as mais frequentes do português. Função pura; texto curto
+    demais para medir conta como legível (não há o que girar)."""
+    palavras = re.findall(r"[a-zà-ú]+", texto.lower())
+    return sum(p in PALAVRAS_FREQUENTES for p in palavras) / len(palavras) if len(palavras) >= 15 else 1.0
+
+
+def _tesseract(png: bytes, exe: str, *opcoes, saida_de_erro: bool = False) -> str:
     import subprocess
-    r = subprocess.run([exe, "-", "-", "-l", idioma, "--dpi", str(dpi)],
-                       input=png, capture_output=True, timeout=OCR_TIMEOUT_PAGINA)
-    bruto = r.stdout.decode("utf-8", errors="replace")
+    r = subprocess.run([exe, "-", "-", *opcoes], input=png, capture_output=True, timeout=OCR_TIMEOUT_PAGINA)
+    bruto = (r.stdout + (r.stderr if saida_de_erro else b"")).decode("utf-8", errors="replace")
     return bruto.replace("\r\n", "\n").replace("\r", "\n").strip()
 
 
@@ -439,6 +466,15 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) ->
 def autoteste_ocr() -> int:
     """Testes negativos permanentes das regras do §177, sem rede e sem Tesseract."""
     falhas = []
+    # 0c. (23/11/2026) página de cabeça para baixo é medida como ilegível e vai à detecção de orientação
+    _invertido = "s eIDUgIsIsse ep o apnes ep epnfe e uJoD 'oldjDIuntu Op 02 9p sesJe se ep sepeJlaJ uiaJoj anb sejlrwej se"
+    _corrido = ("Os abrigos ficam no ginásio municipal e na escola da sede, para as famílias que forem retiradas "
+                "das áreas de risco do município, com a ajuda da saúde")
+    if not legibilidade(_invertido) < LEGIBILIDADE_MINIMA <= legibilidade(_corrido) or legibilidade("PLANO") != 1.0:
+        falhas.append("legibilidade não separa página invertida de texto corrido")
+    import inspect as _insp
+    if '"--psm", "0"' not in _insp.getsource(ocr_pagina):
+        falhas.append("ocr_pagina perdeu a detecção de orientação — página invertida volta ilegível")
     # 1. a fila só chama quem foi lido e não tinha texto, e sai dela ao ganhar OCR
     itens = {
         "a" * 64: {"url": "http://x/p.pdf", "texto_arquivo": "evidencias/a.txt", "caracteres": 0},
@@ -470,7 +506,6 @@ def autoteste_ocr() -> int:
     if texto_da_copia("x.zip", b"PK..") != [] or texto_da_copia("x.docx", b"nao e zip") != []:
         falhas.append("cópia que não se lê produziu texto")
     # 1a. (A6-23) documento que mudou ganha hash próprio; o texto não vai para o hash antigo
-    import inspect as _insp
     _src = _insp.getsource(ler_pdfs)
     if "h_antigo, h = h, h_novo" not in _src or "documento_mudou_para" not in _src:
         falhas.append("A6-23: documento que mudou grava o texto novo sob o hash antigo")
