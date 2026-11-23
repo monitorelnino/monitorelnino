@@ -997,7 +997,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "16/11/1967",
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "f2714e333e0076ba89d98132666101f34b90ac97833547f808850659c6c1a963"
    },
    "status_anterior": "pista — recusada pelo juiz: resposta",
@@ -1007,7 +1007,15 @@
     "regra": "C.1 do handover de 03/10/2026"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Luiziânia",
@@ -1399,7 +1407,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "31/03/2021",
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "13387b901393cbb559300197d6150d5b602b36bab91c0372d4d7a9397dfd516d"
    },
    "ultima_busca_em": "2026-10-18",
@@ -1411,7 +1419,15 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "tentativas_de_busca_dirigida": 1,
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Antônio Olinto",
@@ -17079,10 +17095,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": "16/11/1967",
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "f2714e333e0076ba89d98132666101f34b90ac97833547f808850659c6c1a963"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Junqueirópolis",
@@ -17358,11 +17382,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "31/03/2021",
-    "julgado_em": "2026-10-31",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "13387b901393cbb559300197d6150d5b602b36bab91c0372d4d7a9397dfd516d"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 3
+   "tentativas_de_busca_dirigida": 3,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "DIVINÓPOLIS",
@@ -56843,9 +56875,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "20/04/2026",
-    "julgado_em": "2026-11-01",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "75c6d19479fd09bf5baf67ec46cce50d898debb0cebbbd060039170e3383c9c3"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Formosa do Rio Preto",
@@ -134144,7 +134184,7 @@
    "data_publicacao": "2026-09-21",
    "origem": "querido_diario",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-10-15",
    "registrado_em": "2026-10-15",
    "origem_do_coletor": "querido_diario",
@@ -134158,13 +134198,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "18/09/2026",
-    "julgado_em": "2026-11-03",
+    "data": "2026",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "2d58545f40e8555757b3e85a7c874b4a2c37d8b8bf9be8c363a702a3a7e13887"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "São José dos Campos",
@@ -582769,11 +582817,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "08/03/2024",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "7ce33714ea8259436a5351c167bec057c1e61395b26c8ba1c9d005e41f73ca5a"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -582803,11 +582859,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "04/02/2020",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "d809e722971325574b05a3fe88f15ffd7a60fbb5a9cba678038e7f5e0b4ab881"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -582889,11 +582953,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "22/05/2024",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "09bed3261f646da037376a14cc7c789d6a6c98e29211ae08fc91dd73951e1a8f"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -583006,11 +583078,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "03/04/2020",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "aa1fc1fe6436a63238a209ea939b0c2d68ae6940ee22639a035794dac43d5047"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -583845,7 +583925,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -583859,13 +583939,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "28/08/2024",
-    "julgado_em": "2026-11-06",
+    "data": "2024",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "6ed238b6412ca23ab9018a6af47191a3342496c40d9622f10bdb3b6445d8df26"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -586159,7 +586247,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -586173,15 +586261,23 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
-    "data": "28/06/2012",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "b495689cadace6b2ac24f7b90c42e9b0d06fb90689aa8608426293a55a6dee44"
+    "data": null,
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "bf19064dd7571a48933cf3c478b8fa1c1ebf8174a78b838f3337b6cdb871ef5b"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -586193,7 +586289,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -586207,15 +586303,23 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
-    "data": "28/06/2012",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "b495689cadace6b2ac24f7b90c42e9b0d06fb90689aa8608426293a55a6dee44"
+    "data": null,
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "7122e6b36a6f35ef2f37983101103d39aeb34546c529dc7711d87be58aa4a883"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -587627,9 +587731,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/05/2015",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "d742bcdd879e9602479eaf23594cf594ace9a57f630540ac7dbc94ebce356d9d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -587659,11 +587771,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "08/04/2015",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "000485192bd412eb5669eb1822f2f038e05f13012da51846e573c503a8510f35"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -587786,11 +587906,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "09/01/2024",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "5ab42871d859ec5ee18adfefb0cd9d26c57b3695ab05c544c2877f776b274b4b"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -587895,7 +588023,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -587909,13 +588037,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "13/08/2026",
-    "julgado_em": "2026-11-06",
+    "data": "2026",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "0af9956e40bdf61c52b7c65e8f1e2ad0e8c6c96072c1f43d57bf6f35fcc301ef"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -588836,11 +588972,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "14/10/2020",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "061571a4d1181c7ad38ade219fb050f595bcf7585f5443dfb4249e868bf13b13"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -588910,9 +589054,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "30/03/2017",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "72efe2d68c1f69e8c5898ef399b458d54f44fcc8121b9bca72ec6fdc54ae406e"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -589197,9 +589349,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "18/03/2020",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "f3afbd028620cb7d76311f3cfdbb261e8a59ac273def28713aa2b63142d7d39f"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -589429,11 +589589,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "09/06/2025",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "396494a76f3dbdc620e96bbd53e5e3e5ef01e126ecd27a95321210dcb4d2cc90"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -589935,11 +590103,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "12/04/2021",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "a2d411843b92d7af5a527ceca064d3de59fc8b5b03369bf12f0c1a8698a56b89"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -590381,11 +590557,28 @@
     "leu_documento": true,
     "categoria": null,
     "data": "12/01/2026",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "5c694dfc64c29b1694ae2fb8ed9af520fb8c2835ebf9dc056cb2a13107e7ff47"
    },
-   "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "tentativas_de_busca_dirigida": 2,
+   "ultima_busca_em": "2026-11-23",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": "https://data.queridodiario.ok.org.br/2408003/2026-01-12/56f52c32a092f94cb020352f57174e63abd7fc05.txt"
+    }
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -590397,7 +590590,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: nao_e_instrumento",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -590411,15 +590604,23 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "nao_e_instrumento",
     "leu_documento": true,
     "categoria": null,
-    "data": "12/01/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "5c694dfc64c29b1694ae2fb8ed9af520fb8c2835ebf9dc056cb2a13107e7ff47"
+    "data": "10/03/2014",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "353b381169e3307699f6c2428dfa00e8def29b1e848d6d51d691bcedbf55c979"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "nao_e_instrumento",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -590449,11 +590650,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": "12/01/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "5c694dfc64c29b1694ae2fb8ed9af520fb8c2835ebf9dc056cb2a13107e7ff47"
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "a3fd09f61b484c6323d900cd23947955d5215309320c2dff2747a6e3af5281de"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -592907,7 +593116,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -592921,13 +593130,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "12/06/2026",
-    "julgado_em": "2026-11-06",
+    "data": "2026",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "c15598c2c36f2d1324886d2f7fb541a518020140bd91a2c09bcbc1553c405a76"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -592939,7 +593156,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -592953,15 +593170,23 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "12/06/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "31a6e8dd49b8e20f8c500df548cd753de0988fdac16b077bd1f9c80e3a9f7d84"
+    "data": "2026",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "c0d389091cbbdb095f53eb9c8f45ebee78b43d4ef50970e6579bdf340cfe0810"
    },
    "tentativas_de_busca_dirigida": 1,
-   "ultima_busca_em": "2026-11-06"
+   "ultima_busca_em": "2026-11-06",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -594650,9 +594875,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "11/11/2016",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "9271a1a3d70f2883c7b59e7c3e2bb2d0898ffec50a120860262fc239b5178810"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -595246,9 +595479,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "14/01/2025",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "bd0535187de08ba0e13b3e1f90d7a3884a3b3dcf49d315012afd1cd8c7252802"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -595493,9 +595734,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "04/10/2024",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "0315d0680fc4181f1e2cebf1a469e05b0ed58f515463f31ad4ea979a1d62f1af"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -595507,7 +595756,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -595521,13 +595770,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "11/10/2024",
-    "julgado_em": "2026-11-06",
+    "data": null,
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "05c85797e6f52eea0e7a9b037a4c6ebac909ac76ab7ba3f3e84e13f8f9dbe645"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -596109,9 +596366,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "20/12/2023",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "53ef49182183864bd8584e3212e777aaec81088fb3a371e771d9889b325586fd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -596245,9 +596510,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "12/12/2023",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "e0d3a37354f4f9b982adc2bfb786b26bf0b29b6a068132940977d3dcc2aa9ba0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -596847,9 +597120,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "17/09/2026",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "ddb24e36189e9dc78a5d54602f49bc263e0e9359b9c8f5d09748f36ca3a0d858"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -596879,9 +597160,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "17/09/2026",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "ddb24e36189e9dc78a5d54602f49bc263e0e9359b9c8f5d09748f36ca3a0d858"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -597749,9 +598038,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/12/2017",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "4380676f7a24d2899d30059b3bd391468fe097914ebdcc1338c3c86bc2d0221a"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -598213,9 +598510,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "19/04/2022",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "ea0778c899c4b3abb86f71ac57aafa6db3224f359873cc94c8d26fc26c3ab845"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -598485,9 +598790,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "05/01/2007",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "30a4bd750618d86cef6984d47592587a827b21bd65a8fbd712dd2cbad6571682"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -598805,7 +599118,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -598821,14 +599134,22 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "natureza_duvidosa",
     "leu_documento": true,
     "categoria": null,
-    "data": "16/10/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "8c721489dec1f45be0c2d45effd85d35d711b9574de8039dec7657fc31c33ee1"
+    "data": "23/10/2026",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "c852f71e0afd951a02af14a77f06dd908a6799fbae70ecfb10cabc35791b2989"
    },
-   "repeticoes": 2
+   "repeticoes": 2,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -599074,7 +599395,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -599090,13 +599411,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "natureza_duvidosa",
     "leu_documento": true,
     "categoria": null,
-    "data": "09/06/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "d37147512d4f75e42414a46cb3da1b0269fe6a007e621be5cc7414bea19fc3c4"
-   }
+    "data": "02/03/2017",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "d8a71c4ae68b57311b43211ed5f30716ab59e4b09f3a1ed1311d9d4a4cee53c8"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -601767,9 +602096,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "04/11/2024",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "5bf4cce932394778d08e299e04687c8acb8738bbbbfd4d7a177506a0893a3c99"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -602455,7 +602792,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -602469,13 +602806,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "autoridade_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": "25/01/2020",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "fde6b026034a23aa811c259dc4b3d00b39156e46e4bf59d3ff7e8c274a502400"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -602655,7 +603000,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -602667,18 +603012,35 @@
    "id": "4886b81009",
    "nivel_confianca": "C",
    "repeticoes": 2,
-   "ultima_busca_em": "2026-11-06",
-   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-23",
+   "tentativas_de_busca_dirigida": 2,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "citacao_incompleta",
     "leu_documento": true,
     "categoria": null,
-    "data": "24/06/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "4f2881c5479db030d19fac4414f4b5d80093876935e86b005aa595bdfc9f08d6"
-   }
+    "data": "08/07/2026",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "0b5d17cacb8ed8f6ae02429070ab0012602770163f6bb646255df8f70b31b267"
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-11-23",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -602690,7 +603052,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "data": "2026-10-28",
    "registrado_em": "2026-10-28",
    "origem_do_coletor": "descoberta",
@@ -602706,13 +603068,21 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
-    "data": "24/06/2026",
-    "julgado_em": "2026-11-06",
-    "hash_evidencia": "4f2881c5479db030d19fac4414f4b5d80093876935e86b005aa595bdfc9f08d6"
-   }
+    "data": null,
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "837906988fe2afe91d315fb9a8afc09dc55922e046236a67806a9f03f92aa0c9"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -602810,9 +603180,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/03/2009",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "b85b37cc17ab121f601fa2c6a7f5ff07a5f8d60c785809eb3ec2e505a1faa753"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -602844,9 +603222,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/03/2009",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "bc46475ba1803df748f096ec8f6fdc681d503b4481ac0aa4d5e757fe644d7baa"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -602878,9 +603264,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/03/2009",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "aa5700e45a0461a4ba4de91a432c3c349aba1d22b0901869f217483c8befa7cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -602912,9 +603306,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/03/2009",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "fa0621570cf54cbc8b6b57b19a337c0474128bbe90200e6909fdf5e02c24bbaf"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -603214,9 +603616,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "26/02/2025",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "21dfc30ebcacbb18e0d709375adc539e80947b0517cb682eb2a657dd34e78a5d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -616531,9 +616941,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "07/04/2021",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "5eb364c4fa8c2754c27dcfcb6319343e82915f60a30dd23ca166476f9c33a522"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -617159,9 +617577,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "29/05/2020",
-    "julgado_em": "2026-11-06",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "0988f5b024f89f794d0cfb4fcf525c2db401e84ee7fbe11e8aa5de4e270b03d0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -618069,9 +618495,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "13/04/2020",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "562dcfb0d135bb1173cb528792cccd2f8c0a7446175fba3a4eedf86d9ae52e51"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -619218,9 +619652,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "07/01/2020",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "551d0dd2870ec01febda79971836d30087a8bdb002fb1a5a5c1e2980c4ed67d5"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -622351,9 +622793,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "30/01/2013",
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "0b3ed10edd4a63090be428c1ade25c76905f59237b0dd7ae8141e56f4f4411a5"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -659207,7 +659657,7 @@
    "data_publicacao": "2026-05-15",
    "origem": "querido_diario",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-11-02",
    "registrado_em": "2026-11-02",
    "origem_do_coletor": "querido_diario",
@@ -659221,14 +659671,22 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "15/05/2026",
-    "julgado_em": "2026-11-06",
+    "data": "2022",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "0396ff261f78c28cbe01af3616713afe5ceb3cb88e1b26003278da9c28892025"
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Maracaju",
@@ -748399,7 +748857,7 @@
    "data_publicacao": "2026-10-16",
    "origem": "querido_diario",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: resposta",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "data": "2026-11-16",
    "registrado_em": "2026-11-16",
    "origem_do_coletor": "querido_diario",
@@ -748413,14 +748871,22 @@
    "nivel_confianca": "A",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "resposta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": "16/10/2026",
-    "julgado_em": "2026-11-18",
+    "categoria": "plano",
+    "data": "15/10/2026",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "022f6106cd2eed21d847de3af3a67fbd0959f4e02643875dd885f5954bdd9e77"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "alvo": "5103403",
