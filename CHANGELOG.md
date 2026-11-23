@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-23 · #2026 · OCR gira a página de cabeça para baixo
 Página digitalizada de cabeça para baixo ou de lado saía como letras sem sentido, e o juiz recusava o plano como ilegível (Humaitá e União da Serra/RS). Quando o texto lido tem menos de 5% das palavras mais frequentes do português, a detecção de orientação do Tesseract diz o giro e a página é lida de novo; o texto girado só entra quando lê melhor.
+## 2026-11-23 · #2009 · Destino fora do ar
+
+Quando a fonte oficial indica um endereço que não existe mais (30 planos da 7ª regional do RS), a falha passa a ter nome próprio e data, e o cartão do município diz isso.
 
 ## 2026-11-23 · #2007 · Plano sem ato não é "ato oficial"
 
