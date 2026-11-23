@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #1974 · Buscador 2: B2 busca no veículo com o título guardado
+
+O redirecionamento do Google News não resolvia (0 de 5.802). A compactação de 19/10 tirava o título, e sem ele a busca no veículo não tinha o que procurar. Agora o título fica na fila, o B2 recebe veículo e título, a busca tem teto de 300 por rodada, e o reprocessamento reabre uma vez as pistas com título. Catálogo F91.
+
 ## 2026-11-22 · #1971 · Redução: história do julgar_e_aplicar_descobertas.py ao HISTORICO
 
 Comentários de história do aplicador (datas, lotes, contagens de incidente) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Comportamento igual (AST idêntica fora de uma docstring; `--self-test` verde). Código +27/−79 (−52).
