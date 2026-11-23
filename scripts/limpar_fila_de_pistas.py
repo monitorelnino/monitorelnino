@@ -149,11 +149,17 @@ def encerrada(pista: dict) -> bool:
     return not aberta(pista) or str(pista.get("status") or "").startswith("pista — recusada pelo juiz")
 
 
+# O título do link do Google News fica: é o que a busca no veículo procura (B2, 23/11/2026). Sem ele,
+# 1.863 links fechados pelo B2 não tinham o que procurar no veículo (5.802 no total, 2 com título).
+MANTIDO_NO_ENCERRADO = {"news.google.com": ("titulo",)}
+
+
 def compactar(pista: dict) -> dict:
     """A pista encerrada ou já recusada pelo juiz sem o texto de trabalho; a aberta, intacta. Função pura."""
     if not encerrada(pista):
         return pista
-    return {k: v for k, v in pista.items() if k not in TEXTO_DE_TRABALHO}
+    mantidos = next((c for host, c in MANTIDO_NO_ENCERRADO.items() if host in str(pista.get("url") or "")), ())
+    return {k: v for k, v in pista.items() if k not in TEXTO_DE_TRABALHO or k in mantidos}
 
 
 def decidir(pistas: list, decretados: set, hoje_iso: str) -> list:
@@ -249,6 +255,10 @@ def _autoteste() -> int:
     ok("recusada pelo juiz perde o texto de trabalho e guarda a decisão",
        compactar({"status": "pista — recusada pelo juiz: x", "titulo": "t", "juiz": {"promove": False}})
        == {"status": "pista — recusada pelo juiz: x", "juiz": {"promove": False}})
+    gn = {"id": "2", "url": "https://news.google.com/rss/articles/CBMi", "status": "fechada — y", "titulo": "t",
+          "trecho": "r", "veiculo_dominio": "j.com"}
+    ok("encerrada do Google News guarda o título (a busca no veículo precisa dele); o resto sai",
+       compactar(gn) == {"id": "2", "url": gn["url"], "status": "fechada — y", "titulo": "t", "veiculo_dominio": "j.com"})
     ok("aberta fica intacta; compactar não muda o original",
        compactar({"status": "pista — na fila", "titulo": "t"}) == {"status": "pista — na fila", "titulo": "t"}
        and "titulo" in enc)

@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-22. 90 falhas; 83 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 2026-11-23. 91 falhas; 84 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -815,3 +815,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 45005339883 (job `portoes · estrutura`): 3 pistas de 2026-10-31; run 44970676196 (triagem 22/11 01:16 UTC): triar_fila rodou com hoje=2026-11-21; o run de 08:37 pulou (triagem.feito); desfecho_por_prazo nas pendentes: 0 vencidas com 2026-11-21, 3 com 2026-11-22
 - **Correção:** O prazo da triagem conta pela data da noite (`janela_da_noite.noite_corrente`), que é o dia que vem; vencidas fechadas no próprio PR.
 - **Caso de teste:** `scripts/triar_fila.py --autoteste ('a triagem das 01:16 UTC fecha quem faz 22 dias naquele dia')`
+
+## F91 · O B2 nunca resolvia o Google News: a limpeza de 19/10 apagou o título de 5.802 links, e a busca no veículo não tinha o que procurar
+
+- **Noite:** 2026-11-23 (B2, reprocesso manual)
+- **Sintoma:** Lotes do Buscador 2 de 22 e 23/11 com 0 redirecionamento resolvido em 5.802 links do Google News; 195 de 199 pistas seguidas com falha de rede.
+- **Causa:** `scripts/limpar_fila_de_pistas.compactar` tirava `titulo` e `trecho` de toda pista encerrada (decisão de 19/10 para cortar tamanho). Os links do B2 fecharam sem título, e `resolver` só busca no veículo com título. Além disso, `seguir` não passava veículo nem título ao B2.
+- **Prova:** data/pistas_imprensa.json em origin/main: 5.802 links do Google News, 2 com título; arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json: 1.863 desses links com título guardado
+- **Correção:** `compactar` guarda `titulo` nos links do Google News; `seguir` passa veículo e título ao B2, com teto de 300 buscas por rodada, e reabre uma vez as pistas fechadas que têm título e veículo (`e_b2_sem_busca`).
+- **Caso de teste:** `seguir_pistas.py --autoteste ('B2: busca no veículo com o título do arquivo, e a URL achada entra como pista nova')`
