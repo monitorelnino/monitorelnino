@@ -187,6 +187,9 @@ CORRECOES_DO_JUIZ = (
     # declara "este plano" sem título no começo caía no J15 (`juiz.se_apresenta_como_plano`; antes, em 17/11, o J21
     # contava linhas). Vale até o fim do dia do merge: o que se julgou hoje com o juiz antigo volta também.
     ("2026-11-20", MOTIVOS_DO_ATO + ("titulo_nao_e_plano",), None),
+    # 23/11 (editoria): o plano publicado que explica o reconhecimento federal não é ato de resposta. Até o fim do
+    # dia do merge, como a linha acima.
+    ("2026-11-24", ("resposta",), None),
 )
 
 
