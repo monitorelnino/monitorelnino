@@ -22,6 +22,9 @@ Então:
   · não casou e a evidência está TRUNCADA      → inconclusivo: só decide com nova busca;
   · sem evidência em disco                     → inconclusivo: só decide com nova busca.
 
+Com nova busca, o aviso casado na evidência também vai à fonte: evidência de setembro não prova
+suspensão em novembro (A1, 23/11/2026: 13 fontes de MG, MA e PA ficaram suspensas depois do defeso).
+
 Inconclusivo NUNCA reabre sozinho. Com `--refazer-busca`, o script vai à fonte, decide pelo corpo
 atual e grava a procedência da decisão. Falha de rede mantém o estado e fica registrada — o §170
 vale aqui também: ausência de resposta não é prova de nada.
@@ -79,15 +82,15 @@ def reavaliar(fontes: dict, buscar_fn=None) -> dict:
         if escopo != "sitio":
             padrao = None           # §182: só o sítio fora do ar fecha o canal do Monitor
         procedencia = "evidência preservada"
-        if padrao is None and (texto is None or truncada):
-            # inconclusivo pela evidência: só a fonte resolve
-            if buscar_fn is None:
-                reg["reavaliada_em"] = hoje()
-                reg["reavaliacao"] = ("§182: inconclusivo pela evidência ("
-                                      + ("truncada nas 20 mil primeiras letras" if texto else "ausente em disco")
-                                      + "); estado mantido até nova busca")
-                r["inconclusivas"].append(url)
-                continue
+        if padrao is None and (texto is None or truncada) and buscar_fn is None:
+            reg["reavaliada_em"] = hoje()
+            reg["reavaliacao"] = ("§182: inconclusivo pela evidência ("
+                                  + ("truncada nas 20 mil primeiras letras" if texto else "ausente em disco")
+                                  + "); estado mantido até nova busca")
+            r["inconclusivas"].append(url)
+            continue
+        if buscar_fn is not None and (padrao is not None or texto is None or truncada):
+            # aviso antigo ou evidência inconclusiva: a fonte de hoje decide
             try:
                 corpo = buscar_fn(url, timeout=30)
             except Exception as e:  # noqa: BLE001
@@ -172,6 +175,10 @@ def autoteste() -> int:
                 falhas.append("a procedência da decisão por nova busca não foi registrada")
 
             f3 = {"https://muda.gov.br/": {"hash": "e" * 64, "suspensa": True}}
+            f4 = {"https://aviso.gov.br/": {"hash": "a" * 64, "suspensa": True}}
+            respostas["https://aviso.gov.br/"] = SO_ALT.encode()
+            if reavaliar(f4, buscar_fn=buscar_fake)["reabertas"] != ["https://aviso.gov.br/"]:
+                falhas.append("aviso antigo na evidência não dispensa a nova busca: a fonte de hoje decide")
             r3 = reavaliar(f3, buscar_fn=buscar_fake)
             if r3["sem_resposta"] != ["https://muda.gov.br/"] or f3["https://muda.gov.br/"]["suspensa"] is not True:
                 falhas.append("falha de rede tinha de manter o estado e ficar registrada")

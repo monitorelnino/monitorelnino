@@ -1155,9 +1155,9 @@
    "termos_achados": []
   },
   "2026-11-12": {
-   "decisao": "sem_edicao_na_data",
-   "em": "20/11/2026",
-   "motivo": "HTTPError: HTTP Error 404: Not Found"
+   "decisao": "vazio",
+   "em": "22/11/2026",
+   "motivo": "URLError: <urlopen error auniao.pb.gov.br sem resposta nesta rodada>"
   },
   "2026-11-11": {
    "decisao": "lida",
@@ -1216,17 +1216,22 @@
    "termos_achados": []
   },
   "2026-11-16": {
-   "decisao": "sem_edicao_na_data",
-   "em": "20/11/2026",
-   "motivo": "HTTPError: HTTP Error 404: Not Found"
+   "decisao": "vazio",
+   "em": "22/11/2026",
+   "motivo": "URLError: <urlopen error auniao.pb.gov.br sem resposta nesta rodada>"
+  },
+  "2026-11-20": {
+   "decisao": "vazio",
+   "em": "22/11/2026",
+   "motivo": "URLError: <urlopen error timed out>"
   }
  },
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "20/11/2026",
+  "em": "22/11/2026",
   "conta_como_consultado": true,
   "ultima_edicao_lida": "2026-11-19"
  },
- "atualizado_em": "20/11/2026",
+ "atualizado_em": "22/11/2026",
  "declaracoes_estaduais": {}
 }

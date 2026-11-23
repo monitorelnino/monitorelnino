@@ -867,11 +867,14 @@ def etapa4_natureza(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
     próprio instrumento nomeado no título, que a etapa 2 já conferiu.
 
     O que NÃO muda, e é o que protege o índice: ato que declara anormalidade continua RESPOSTA;
-    rota que depende de reconhecimento federal continua dúvida; e o gatilho (previsão, limiar ou
-    referência ao ciclo) continua exigido. Um "plano" que só fala de desastre ocorrido não passa.
+    no ATO, rota que depende de reconhecimento federal continua dúvida; e o gatilho (previsão, limiar
+    ou referência ao ciclo) continua exigido. Um "plano" que só fala de desastre ocorrido não passa.
     """
-    tem_rota_federal = bool(RE_ROTA_FEDERAL.search(texto))
-    decisao, motivo = classificar_natureza(texto, tem_reconhecimento_federal=tem_rota_federal)
+    # 23/11/2026 (editoria): no plano publicado, a menção ao reconhecimento federal é procedimento descrito, não
+    # dependência do ato (Rio Branco/AC, Campo Grande/MS e 56 PLANCONs recusados como resposta).
+    tem_rota_federal = not sem_ato_de_aprovacao and bool(RE_ROTA_FEDERAL.search(texto))
+    decisao, motivo = classificar_natureza(texto, tem_reconhecimento_federal=tem_rota_federal,
+                                           documento_e_o_plano=sem_ato_de_aprovacao)
     if decisao == "RESPOSTA":
         return "RESPOSTA", motivo, {}
     if decisao == "DUVIDA" and not sem_ato_de_aprovacao:
@@ -1562,7 +1565,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return recusa(familia)
     veredito["familia_de_risco"] = familia
 
-    if not sem_ato and data_suspeita(veredito["data"], ano_corrente):
+    if data_suspeita(veredito["data"], ano_corrente):   # com ou sem ato: ano fora da faixa não é data (Chuvisca/RS, telefone "…-2077")
         return recusa("data_nao_confirmada", "J7")
     if sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
         return recusa("data_nao_confirmada", "J7")
@@ -1927,6 +1930,11 @@ def casos_18() -> list:
          and vigencia_encerrada("Tipo de Risco: Seca e Estiagem Histórico: Nos anos de 2021/2022 /2023 e 2024 o fenômeno") == ""
          and vigencia_encerrada("", "Dengue 2024-2025, 2ª versão") == "2024-2025"
          and vigencia_encerrada("PLANO DE CONTINGÊNCIA 2025/2026 Prefeitura de X") == ""),
+        ("plano publicado que explica o reconhecimento federal não é ato de resposta; o decreto que depende dele segue fora",
+         etapa4_natureza(PLANO_PUBLICADO_SEM_ATO + " Para solicitar reconhecimento federal, o município registra o "
+                         "desastre no S2iD e preenche o FIDE.", True)[0] != "RESPOSTA"
+         and etapa4_natureza("DECRETO Nº 10, de 3 de julho de 2026. Fica instituído o Plano de Contingência, com "
+                             "recursos mediante reconhecimento federal e FIDE no S2iD.")[0] != "EX_ANTE"),
         ("J22 documento da pasta de PLANCONs do RS é plano pela origem: nem natureza nem título o recusam",
          _v("Município de Capitão, Rio Grande do Sul. Coordenadoria Municipal de Proteção e Defesa Civil, 2025. "
             + "cenários de risco de estiagem e enxurrada, recursos, acionamento e responsabilidades " * 40,
@@ -1949,6 +1957,15 @@ def casos_18() -> list:
                               sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
         ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia)",
          _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"),
+        ("J7 plano sem ato: ano fora da faixa (fim de telefone, '…-2077') não é data, nem com período chuvoso no texto",
+         _v(("PLANO DE CONTINGÊNCIA Município de Chuvisca / RS Eventos Adversos Mais Comuns: Estiagens Enxurradas "
+             "MUNICÍPIO: CHUVISCA U.F. RS DDD/Telefone 51 92002-2077 COORDENADORIA MUNICIPAL DE DEFESA CIVIL O Plano de "
+             "Contingência estabelece os procedimentos dos órgãos na resposta às emergências de estiagem e enxurrada no "
+             "período de estiagem e no período chuvoso, com abrigos e contatos. ") * 3, "Chuvisca", "RS",
+            "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/"
+            "SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o"
+            "%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/"
+            "TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CHUVISCA.doc")["motivo"] == "data_nao_confirmada"),
         ("J10 PLANCON de marés de tempestade (COBRADE 1.3.1.1.2) não é seca por 'fatores contribuintes'",
          familia_18(PLANO_MARES_18)[:2] == (False, "fora_do_objeto")),
         ("J10 título de estiagem dá a família pelo título",

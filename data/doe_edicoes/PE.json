@@ -2,9 +2,9 @@
  "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "19/11/2026",
+  "em": "22/11/2026",
   "conta_como_consultado": true,
-  "ultima_edicao_lida": "2026-11-19"
+  "ultima_edicao_lida": "2026-11-20"
  },
  "edicoes": {
   "2026-11-06": {
@@ -1507,8 +1507,27 @@
    "legal_versao": "2026-10-30",
    "emergencia_versao": "2026-11-15",
    "termos_achados": []
+  },
+  "2026-11-21": {
+   "decisao": "sem_edicao_na_data",
+   "em": "22/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "2026-11-20": {
+   "decisao": "lida",
+   "em": "22/11/2026",
+   "bytes": 3835802,
+   "paginas": 32,
+   "paginas_com_texto": 32,
+   "url": "https://diariooficial.cepe.com.br/1/arquivos/resumoDiario/2026-11-20/2026-11-20.pdf",
+   "impressao": "862691f1b17aaac9fb595910c30995c8cfc3f56e3c4c0b31e6d88b12f9cb8032",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
   }
  },
- "atualizado_em": "19/11/2026",
+ "atualizado_em": "22/11/2026",
  "declaracoes_estaduais": {}
 }

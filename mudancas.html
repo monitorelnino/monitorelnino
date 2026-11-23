@@ -44,6 +44,26 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/11/2026 · Defeso: aviso antigo na evidência vai à fonte</dt>
+      <dd>A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.</dd>
+      <dt>23/11/2026 · União pela base soma `repeticoes` de pista</dt>
+      <dd>O resolvedor de conflito recusava a pista cujo contador `repeticoes` subiu nos dois lados. Agora soma os acréscimos sobre a base, como os contadores do funil; decremento segue recusado.</dd>
+      <dt>23/11/2026 · Juiz: ano fora da faixa não é data</dt>
+      <dd>Plano sem ato de aprovação passava com ano impossível quando o texto citava período chuvoso: em Chuvisca/RS, o fim de um telefone virou 2077. A recusa por data suspeita passa a valer com ou sem ato.</dd>
+      <dt>23/11/2026 · Leitor de .doc: só as correntes da raiz</dt>
+      <dd>O .doc com objeto do Word embutido (Chuvisca/RS) saía sem texto: o leitor misturava o texto do documento com a tabela do objeto. Agora lê só as correntes da raiz do arquivo.</dd>
+      <dt>23/11/2026 · O juiz lê o .doc do Word 97–2003</dt>
+      <dd>Seis planos do Prepara RS em .doc antigo saíam sem texto: o leitor não tinha extrator para o formato. `texto_de_doc_binario` lê o contêiner e a tabela de peças, sem dependência nova. A recusa por texto não extraível em documento de escritório volta uma vez.</dd>
+      <dt>23/11/2026 · Prepara RS: atalhos e planos sem data</dt>
+      <dd>Os 30 planos da CREPDEC 07, publicados como atalhos para um endereço com certificado de outro nome, passam a ser lidos pela cópia pública do Internet Archive. As 59 recusas por falta de data, lidas antes do leitor com OCR, voltam uma vez ao juiz.</dd>
+      <dt>23/11/2026 · Fila com prazo: quem espera há mais tempo vai primeiro</dt>
+      <dd>O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ordem fixa: o rabo nunca chegava (257 documentos oficiais além de 14 dias; MS, RO e RR sem edição lida desde 11–12/11). Agora o juiz começa pela pista que espera há mais tempo e o canal 2 pela UF de leitura mais velha.</dd>
+      <dt>23/11/2026 · Juiz: plano publicado não é ato de resposta</dt>
+      <dd>O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.</dd>
+      <dt>23/11/2026 · Buscador 2: B2 busca no veículo com o título guardado</dt>
+      <dd>O redirecionamento do Google News não resolvia (0 de 5.802). A compactação de 19/10 tirava o título, e sem ele a busca no veículo não tinha o que procurar. Agora o título fica na fila, o B2 recebe veículo e título, a busca tem teto de 300 por rodada, e o reprocessamento reabre uma vez as pistas com título. Catálogo F91.</dd>
+      <dt>22/11/2026 · Redução: história do julgar_e_aplicar_descobertas.py ao HISTORICO</dt>
+      <dd>Comentários de história do aplicador (datas, lotes, contagens de incidente) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Comportamento igual (AST idêntica fora de uma docstring; `--self-test` verde). Código +27/−79 (−52).</dd>
       <dt>22/11/2026 · União de fila: regra para o seguimento</dt>
       <dd>Dois lotes que seguem a mesma página no mesmo dia deixavam de travar a união da fila: vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu a página; duas falhas somam. Destrava os PRs de lote do Buscador 2.</dd>
       <dt>22/11/2026 · Rodada J18: rejulgamento paralelo 1.8 atualizado</dt>
@@ -144,26 +164,6 @@
       <dd>O portão da fila não humana, a triagem e a limpeza contavam o prazo de 21 dias por datas diferentes; a pista sem `registrado_em` nunca vencia e reprovava a main. A data de entrada agora mora em `pistas.data_da_pista`, para os três, e a pendente de documento vence na fila inteira, não só na rodada do juiz. Nove pistas vencidas fechadas.</dd>
       <dt>17/11/2026 · Saúde: linha do topo soma 27, como o quadro dos estados</dt>
       <dd>Plano com vigência encerrada deixa de contar como plano localizado e ganha estatuto próprio (`plano_vencido`). A linha do topo da página de saúde passa a trazer as cinco contagens, que somam 27 e batem com o quadro dos tipos de plano; a escada do índice nomeia o valor do plano vencido. Índice nacional inalterado (59,2).</dd>
-      <dt>16/11/2026 · Documento anunciado por órgão: estado próprio e vigia noturna</dt>
-      <dd>Afirmação de órgão sem documento (comunicação direta) entra em `data/notas_lai.json` com o estado `plano_em_elaboracao`, distinto de ausência, sem pontuar; no cartão do estado, só a nota do que o órgão informou. O título dado pelo órgão se procura (`busca_dirigida_do_ato.py --avisos`); achado em domínio oficial vira pista e segue o juiz. Primeiro registro: RN.</dd>
-      <dt>16/11/2026 · Endereço que falha na rede vira pedido à ponte no Brasil</dt>
-      <dd>A tarefa semanal da ponte pedia a lista de endereços a trazer a um comando que não existia, e nenhum pedido chegava a ela; o diário do RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo endereço que falha na rede sem cópia passa a ser pedido, e `--pedidos` entrega os 40 mais recentes.</dd>
-      <dt>16/11/2026 · Correção do leitor vai ao juiz; registro nunca julgado cede ao julgado</dt>
-      <dd>A correção indicada pelo formulário ficava reservada à análise editorial e parada. Ela passa a ser pista de plano, lida pelo juiz. Plano registrado antes do juiz, sem julgamento, cede ao documento julgado de força igual ou maior. Primeiro caso: Rio de Janeiro/RJ, cujo registro apontava o plano estadual.</dd>
-      <dt>16/11/2026 · Cartão do município diz quando o decreto é anterior a 29 de junho</dt>
-      <dd>Na Defesa civil e no Proteja-se, o cartão do decreto passa a dizer quando o decreto do município é anterior a 29 de junho e foi reconhecido pela União depois dessa data. A linha do estado diz &quot;decreto publicado ou reconhecido desde 29 de junho&quot;.</dd>
-      <dt>16/11/2026 · Saúde no plano: plano lido pela cópia preservada e casado pelo hash</dt>
-      <dd>Vinte e nove planos municipais registrados ficavam sem a leitura de como tratam a saúde. Quinze tinham cópia em HTML ou DOCX, ou PDF sem &quot;.pdf&quot; no endereço, e nunca ganhavam texto; quatro já lidos não casavam porque a busca era pela URL. A camada de texto passa a sair da cópia preservada, e a leitura casa pelo hash do documento.</dd>
-      <dt>16/11/2026 · Focos: a série do ciclo se completa pelo arquivo mensal do INPE</dt>
-      <dd>A série de focos do satélite de referência não tinha 29/06 a 16/09 em nenhuma UF: a complementação buscava o arquivo anual, que o INPE só publica com o ano fechado. Ela passa a usar o arquivo mensal, que existe para todo mês e traz o código do município.</dd>
-      <dt>16/11/2026 · Financiamento preventivo estadual verificado pela máquina, toda noite</dt>
-      <dd>A bateria que procura repasse estadual fundo a fundo condicionado a plano de contingência existia só como texto para uma sessão rodar à mão: 26 UFs ficaram sem veredito desde 27/08. Ela passa a rodar no elo da descoberta, lê o documento oficial do estado e decide por regra; na dúvida, não classifica.</dd>
-      <dt>16/11/2026 · Ar só de monitor de referência; diário relê data que serviu outro arquivo</dt>
-      <dd>O ar medido na capital passa a aceitar só monitor de referência: Fortaleza mostrava um sensor de teste, e AM, BA, ES, PA e RO, sensores de baixo custo. No diário estadual, a data que serviu o arquivo de outra data (CE, 06/11) é relida por dez dias, e caderno lido antes dos termos atuais volta à fila (CE, DF, PI).</dd>
-      <dt>16/11/2026 · Resposta: decreto anterior reconhecido no ciclo volta a contar, marcado</dt>
-      <dd>Por decisão da editoria, decreto municipal anterior a 29/06 que a União reconheceu depois do anúncio volta a contar no ciclo (70 municípios), marcado no dado para o cartão do município dizer. O primeiro decreto de cada estado no ciclo segue sendo o de 29/06 em diante. A marca sem data do S2iD continua sem decidir.</dd>
-      <dt>16/11/2026 · Página de imprensa deixa de ser copiada; sessões na nuvem voltam a iniciar</dt>
-      <dd>O coletor de imprensa regional deixa de copiar a página de cada notícia: a imprensa é pista, a prova é o documento oficial. As 39.684 cópias (23 GB) saem da árvore e seguem no histórico; o índice mantém hash, URL, data e tamanho. A árvore cai de 29 para 6 GB, abaixo do disco das sessões agendadas, que falhavam ao iniciar desde 12/11.</dd>
     </dl>
   </section>
 </main>
@@ -177,7 +177,7 @@
       <a href="https://institutoar.org.br/" target="_blank" rel="noopener" title="Instituto Ar" class="mast-logo"><img class="logo-parceiro" src="assets/parceiros/instituto-ar-positivo.svg?v=da374906" alt="Instituto Ar" width="124" height="26"></a></div>
     </div>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">22/11/2026</span> · Corte <span id="corteDados">22/11/2026</span> · Coleta <span id="metaColeta">22/11/2026</span> · Publicação <span id="metaPublicacao">22/11/2026</span></span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">23/11/2026</span> · Corte <span id="corteDados">23/11/2026</span> · Coleta <span id="metaColeta">23/11/2026</span> · Publicação <span id="metaPublicacao">23/11/2026</span></span>
     <span class="rodape-legal" data-conteudo-html="rodape.legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
