@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-23 · #2007 · Plano sem ato não é "ato oficial"
+
+O cartão dizia "Ato oficial localizado" para plano publicado sem ato de aprovação localizado. A frase passa a ser o rótulo do plano, em 372 registros de 21 estados.
+
 ## 2026-11-23 · #2006 · OCR por página
 
 PDF escaneado com cabeçalho digitado em cada página passava da régua de letras e não ia ao OCR (São Valentim do Sul/RS). A régua passa a ser por página.
