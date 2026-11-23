@@ -10240,9 +10240,9 @@
     "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
-    "data": "15/06/2026",
-    "julgado_em": "2026-10-31",
-    "hash_evidencia": "e1e23c739b430f99dff5287c668ff755a220febe956e0af8bdbb87ad7c0c4375"
+    "data": "09/06/2026",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "5b232aed6c90264dea93be0fd5d52e586df2cf0ee6cdcba7b63675e547c1cb83"
    },
    "reaplicada_em": "reaplicacao da noite",
    "preparacao": {
@@ -10263,7 +10263,15 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Votuporanga",
@@ -10282,9 +10290,9 @@
     "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
-    "data": "25/07/2023",
-    "julgado_em": "2026-10-31",
-    "hash_evidencia": "6650a5cfd753cb64211424e55d2df206a65872fe1553fabe642103803c961d8a"
+    "data": "29/06/2023",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "52b3e7343617c34e3ef6b3d3bf43808cf8169e2a05349a6dfb822b798b904ab4"
    },
    "reaplicada_em": "reaplicacao da noite",
    "preparacao": {
@@ -10305,7 +10313,15 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Votuporanga",
@@ -10324,9 +10340,9 @@
     "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
-    "data": "04/04/2024",
-    "julgado_em": "2026-10-31",
-    "hash_evidencia": "21752c1219b55bc60a8ce62eb8b92df07d9ef5e6b531d5b2a4e71e94180bcc32"
+    "data": "13/04/2022",
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "515cfa87d209bbab29c02ec57d3e37dca1c82e8d9590a4ecec6ee518a048368c"
    },
    "reaplicada_em": "reaplicacao da noite",
    "preparacao": {
@@ -10347,7 +10363,15 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Votuporanga",
@@ -41741,7 +41765,7 @@
    "url": "https://defesacivil.blumenau.sc.gov.br/static/app/defesa-civil/PCDH_2024.pdf",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "fechada — sem documento oficial localizado: 48 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "pista_origem": "b16e877d25",
    "id": "9df60a76ba",
    "nivel_confianca": "B",
@@ -41762,14 +41786,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-15",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
    },
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
     "motivo": "48 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio dos Cedros",
@@ -44534,18 +44566,18 @@
    "url": "https://www.tce.pr.gov.br/lumis/portal/file/fileDownload.jsp?fileId=4936B6209D2C5746019D68DD278C30BD&inline=1",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "fechada — sem documento oficial localizado: 54 dias na fila (prazo de 21); lida e recusada: resposta",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "pista_origem": "9103511ece",
    "id": "0503d77f32",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "resposta",
+    "motivo": "titulo_nao_e_plano",
     "leu_documento": true,
     "categoria": null,
-    "data": "01/01/2021",
-    "julgado_em": "2026-10-31",
+    "data": null,
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "69b707c3ba9d0f6172bceadc118031b333c9c80a0bb611265eb14dbfbc918567"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -44553,7 +44585,15 @@
     "em": "2026-11-23",
     "desfecho": "sem documento oficial localizado",
     "motivo": "54 dias na fila (prazo de 21); lida e recusada: resposta"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pinhais",
@@ -51309,9 +51349,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-16",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8fa03dcdf3cd7049520a4bd07c6e322f9a0d5c41024bc38a8107ba743db0bf3d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Capinzal",
@@ -53209,14 +53257,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": "15/04/2013",
-    "julgado_em": "2026-11-01",
-    "hash_evidencia": "aa8e0ed1183718fc9d3240126bb1f58d2407601b84afaa30ae0c919ce335f565"
+    "julgado_em": "2026-11-23",
+    "hash_evidencia": "ff1343ab3a447c75fa3e54d533200772449ebb1e3310dac463ee675e91bdd1f9"
    },
    "quarentena": true,
    "destino": "quarentena",
    "motivo_da_quarentena": "fora do esquema de schemas/pista.json",
    "quarentenada_em": "2026-10-06",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Petrópolis",
@@ -65610,9 +65666,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-16",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8fa03dcdf3cd7049520a4bd07c6e322f9a0d5c41024bc38a8107ba743db0bf3d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Antas",
@@ -159328,9 +159392,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "30/01/2014",
-    "julgado_em": "2026-11-17",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "9108118f00633bd4a6ee44e414da6d6cd5cf489cbaca70fdef215b799f9bb46b"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "General Sampaio",
@@ -187306,9 +187378,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-17",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8fa03dcdf3cd7049520a4bd07c6e322f9a0d5c41024bc38a8107ba743db0bf3d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Glória",
@@ -258949,9 +259029,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2026",
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "7e24f3a4426fbbded16d64ad707bf41100b6bdb1841be3ad7fff8fed8e315d47"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Santa Maria",
@@ -389151,10 +389239,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": "07/12/1993",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "30338577d8292e7aa9f3c53e9e3fdfd037a3da8ccc7422fda574717049fa664e"
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Tanguá",
@@ -451676,10 +451772,18 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "125395127b17cb701e96e4f0772c57a841b77cde9cfab3e75ae694424f0596b0"
    },
-   "repeticoes": 3
+   "repeticoes": 3,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -486003,9 +486107,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Jaraguá do Sul",
@@ -491302,9 +491414,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio dos Cedros",
@@ -494518,9 +494638,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Timbó",
@@ -497473,9 +497601,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pomerode",
@@ -507836,9 +507972,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8fa03dcdf3cd7049520a4bd07c6e322f9a0d5c41024bc38a8107ba743db0bf3d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Blumenau",
@@ -508125,9 +508269,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8fa03dcdf3cd7049520a4bd07c6e322f9a0d5c41024bc38a8107ba743db0bf3d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ibirama",
@@ -508408,9 +508560,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "24337fb97fee15e0c183f753e2fe848316880e84f214d46c3a7aa3ef5d855b06"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Três Barras",
@@ -509282,9 +509442,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Xanxerê",
@@ -511504,9 +511672,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "002a5515317f81505504cef8d2c2e072dc82f347667440f0caa462a5c706e5b0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Massaranduba",
@@ -518812,9 +518988,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "8fa03dcdf3cd7049520a4bd07c6e322f9a0d5c41024bc38a8107ba743db0bf3d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Taió",
@@ -524467,9 +524651,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "22/06/2022",
-    "julgado_em": "2026-11-18",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "e0eaf7304acf43accfc48416a0da88b4430dabf7ad95f4467dfbe56bb4408a95"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -556093,7 +556285,7 @@
    "tipo": "plano",
    "entrada": "municipio",
    "registrado_em": "2026-10-26",
-   "status": "fechada — sem documento oficial localizado: 24 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -556102,14 +556294,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-10",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "47c07e271670b9be91cbcb8433b608b50dc6c61e45fc699077fab93c67e2a7eb"
    },
    "triagem": {
     "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
     "motivo": "24 dias na fila (prazo de 21); lida e recusada: data_nao_confirmada"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Goiânia",
@@ -635146,9 +635346,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "47d7d6e48439fc6ba8a1d765b44158e4a0f6aea96f489cd75cb8eb3dce3f5de1"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Porto Velho",
@@ -676020,9 +676228,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-19",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "e2499966d4bd245391a1eeb46c0ea2953301f96a3f0c2c8169a70e243be50243"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -717209,9 +717425,17 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2013",
-    "julgado_em": "2026-11-14",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "848c454ad4bc5cbc564f8b7a7f6c4a39fe7526ad8f2f931d88db066847a98bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -729660,11 +729884,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-12",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "d7630bdfe59ad92b56b8c94a74ab45c378e7d9cc6bea919121d402d9b1a914f1"
    },
    "nivel_confianca": "B",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -729693,11 +729925,19 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-12",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "d7630bdfe59ad92b56b8c94a74ab45c378e7d9cc6bea919121d402d9b1a914f1"
    },
    "nivel_confianca": "B",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -744887,10 +745127,18 @@
     "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
-    "data": "28/09/2020",
-    "julgado_em": "2026-11-18",
+    "data": "30/09/2020",
+    "julgado_em": "2026-11-23",
     "hash_evidencia": "7ffdecb4148e1a3876995e62c78b19fcc4a1f2ee852ed158bf6e9c232e939844"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-23",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Guapimirim",
