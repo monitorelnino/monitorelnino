@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ordem fixa: o rabo nunca chegava (257 documentos oficiais além de 14 dias; MS, RO e RR sem edição lida desde 11–12/11). Agora o juiz começa pela pista que espera há mais tempo e o canal 2 pela UF de leitura mais velha.
 
+## 2026-11-23 · #1976 · Juiz: plano publicado não é ato de resposta
+O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.
+
 ## 2026-11-23 · #1974 · Buscador 2: B2 busca no veículo com o título guardado
 
 O redirecionamento do Google News não resolvia (0 de 5.802). A compactação de 19/10 tirava o título, e sem ele a busca no veículo não tinha o que procurar. Agora o título fica na fila, o B2 recebe veículo e título, a busca tem teto de 300 por rodada, e o reprocessamento reabre uma vez as pistas com título. Catálogo F91.
