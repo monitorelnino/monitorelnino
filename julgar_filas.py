@@ -309,6 +309,10 @@ def julgar_uma(p: dict, buscar, preservar=None, propostas: tuple = ()) -> dict:
     veredito = julgar(texto, nome=nome, uf=uf, ibge=ibge, url=url, trecho=p.get("trecho"), propostas=propostas)
     veredito["pista_id"] = p.get("id")
     veredito["origem"] = p.get("origem")
+    if texto is None and oficial:
+        from julgar_e_aplicar_descobertas import CAUSAS_DE_FALHA
+        if CAUSAS_DE_FALHA.get(url):
+            veredito["causa"] = CAUSAS_DE_FALHA[url]
     # 13/11/2026 (J21): o documento estadual não morre na recusa. A pista da UF, ou a que o J14 encaminha ao
     # instrumento estadual, é lida atrás da estrutura criada para o ciclo; `--aplicar` a grava em estados.json.
     if texto and uf and (veredito.get("encaminhar") == "instrumento_estadual" or not (nome or ibge)):
@@ -459,7 +463,8 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
     classe = classe_da_recusa(v)
     tentativas = p.setdefault("juiz_tentativas", [])
     tentativas.append({"em": hoje.isoformat(), "classe": classe or "promocao",
-                       "motivo": v.get("motivo"), "codebook": v.get("codebook")})
+                       "motivo": v.get("motivo"), "codebook": v.get("codebook"),
+                       **({"causa": v["causa"]} if v.get("causa") else {})})
 
     if classe == "tecnica":
         # Não escreve `juiz`: a pista continua pendente, e volta na data do back-off.
