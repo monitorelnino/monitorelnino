@@ -1614,7 +1614,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>imprensa.numeros.num_valor_focos.texto</code></td><td>sem coleta até o corte</td></tr>
 </table>
-<h2>index <small>(61 trechos)</small></h2>
+<h2>index <small>(64 trechos)</small></h2>
 <h3>intro</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.intro</code></td><td>O MARÉ reúne dados e documentos oficiais sobre os riscos, a preparação dos governos e as respostas ao El Niño 2026/2027. Uma publicação do &lt;a href=&quot;https://www.futuraevidencelab.com.br/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Futura Evidence Lab&lt;/a&gt;, atualizada todos os dias.</td></tr>
@@ -1816,6 +1816,18 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>municipio · citado.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.municipio.citado.molde</code></td><td><span class="molde">Plano de contingência citado em fonte oficial ({fonte}{data}); o documento do plano não foi lido até o corte.</span><br><span class="ex">exemplo: Plano de contingência citado em fonte oficial (33); o documento do plano não foi lido até o corte.</span></td></tr>
+</table>
+<h3>municipio · sem_contar.sem_data</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.municipio.sem_contar.sem_data</code></td><td><span class="molde">Plano de contingência localizado ({fonte}), sem data no documento; não entra no índice.</span><br><span class="ex">exemplo: Plano de contingência localizado (3), sem data no documento; não entra no índice.</span></td></tr>
+</table>
+<h3>municipio · sem_contar.nao_aberto</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.municipio.sem_contar.nao_aberto</code></td><td><span class="molde">{fonte} indica um plano de contingência deste município; o documento não abriu até o corte e não entra no índice.</span><br><span class="ex">exemplo: 3 indica um plano de contingência deste município; o documento não abriu até o corte e não entra no índice.</span></td></tr>
+</table>
+<h3>municipio · sem_contar.ver</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.municipio.sem_contar.ver</code></td><td>Ver o documento →</td></tr>
 </table>
 <h3>municipio · citado.obs</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -2235,7 +2247,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.listas.rotulo.ambas</code></td><td>Nas duas listas</td></tr>
 </table>
-<h2>prefeituras <small>(95 trechos)</small></h2>
+<h2>prefeituras <small>(97 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>prefeituras.titulo_da_pagina</code></td><td>Para gestores</td></tr>
@@ -2502,6 +2514,14 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>municipio · plano.localizado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>prefeituras.municipio.plano.localizado</code></td><td><span class="molde">Localizado · {ato}, {data}</span><br><span class="ex">exemplo: Localizado · 3, 3</span></td></tr>
+</table>
+<h3>municipio · plano.sem_contar.sem_data</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.municipio.plano.sem_contar.sem_data</code></td><td><span class="molde">Plano de contingência localizado ({fonte}), sem data no documento; não entra no índice.</span><br><span class="ex">exemplo: Plano de contingência localizado (3), sem data no documento; não entra no índice.</span></td></tr>
+</table>
+<h3>municipio · plano.sem_contar.nao_aberto</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.municipio.plano.sem_contar.nao_aberto</code></td><td><span class="molde">{fonte} indica um plano de contingência deste município; o documento não abriu até o corte e não entra no índice.</span><br><span class="ex">exemplo: 3 indica um plano de contingência deste município; o documento não abriu até o corte e não entra no índice.</span></td></tr>
 </table>
 <h3>municipio · plano.ver</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3038,7 +3058,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(173 trechos)</small></h2>
+<h2>saude <small>(175 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · planos estaduais e registros de saúde no El Niño 2026/2027</td></tr>
@@ -3344,6 +3364,14 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>consulta · plano.com_plano_data</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.consulta.plano.com_plano_data</code></td><td><span class="molde">Plano de contingência: {documento}, {data}</span><br><span class="ex">exemplo: Plano de contingência: 3, 3</span></td></tr>
+</table>
+<h3>consulta · plano.sem_contar.sem_data</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.sem_contar.sem_data</code></td><td><span class="molde">Plano de contingência localizado ({fonte}), sem data no documento; não entra no índice.</span><br><span class="ex">exemplo: Plano de contingência localizado (3), sem data no documento; não entra no índice.</span></td></tr>
+</table>
+<h3>consulta · plano.sem_contar.nao_aberto</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.sem_contar.nao_aberto</code></td><td><span class="molde">{fonte} indica um plano de contingência deste município; o documento não abriu até o corte e não entra no índice.</span><br><span class="ex">exemplo: 3 indica um plano de contingência deste município; o documento não abriu até o corte e não entra no índice.</span></td></tr>
 </table>
 <h3>consulta · plano.abrir</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>

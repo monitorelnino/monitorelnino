@@ -351,6 +351,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
      "não localizamos até a data de corte"; a leitura da saúde no plano é a segunda linha descritiva. */
   const cartaoPlanoDoMunicipio = (sp, pl, uf, meta) => {
     const achou = sp.estado === 'encontrado' || sp.estado === 'estadual';
+    if (sp.estado === 'sem_contar')
+      return cartao('musgo', TC('rotulo.plano_municipio'), esc(TC('plano.sem_contar.' + sp.sem_contar.motivo, {fonte: sp.sem_contar.fonte}))
+        + (sp.sem_contar.url ? ' · <a href="' + esc(sp.sem_contar.url) + '" target="_blank" rel="noopener">' + esc(TC('plano.abrir')) + '</a>' : ''),
+        '', {href: 'index.html#' + uf, pagina: textoSaude('consulta.cartao.pagina.inicial')});
     const valor = sp.estado === 'nao_verificado' ? TC('plano.nao_verificado')
       : achou ? TC(sp.data ? 'plano.com_plano_data' : 'plano.com_plano', {documento: sp.documento || sp.fonte || '', data: sp.data || ''}) : TC('plano.sem_plano', {corte: (meta || {}).corte || ''});
     const camada = achou && pl ? TC(pl.pagina_citada ? 'plano.saude_no_plano' : 'plano.saude_no_plano_sem_pagina', {pagina: pl.pagina_citada}) : '';
