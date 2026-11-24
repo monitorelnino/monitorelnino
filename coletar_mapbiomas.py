@@ -297,6 +297,11 @@ def autoteste() -> int:
             precisa_somar(False, None, "t") and precisa_somar(True, "t0", "t1")
             and not precisa_somar(True, "t1", "t1") and not precisa_somar(True, None, "t1"),
         "id da imagem do Monitor vira mês": mes_do_id("projects/x/assets/brazil-2026-9") == "2026-09",
+        # 24/11/2026: o job da soma baixa só o que `mapbiomas.yml` lista; `coletores_base` faltava e a
+        # consulta sem número novo caiu em ModuleNotFoundError (run 45467506424).
+        "todo módulo local que o coletor usa está na cópia do job da soma":
+            all(m + ".py" in (RAIZ / ".github" / "workflows" / "mapbiomas.yml").read_text(encoding="utf-8")
+                for m in ("coletores_base",) if m in pathlib.Path(__file__).read_text(encoding="utf-8")),
         "trava estrutural: só escreve em data/mapbiomas/":
             pathlib.Path(__file__).read_text(encoding="utf-8").split("def autoteste")[0].count("write_text") == 1,
     }

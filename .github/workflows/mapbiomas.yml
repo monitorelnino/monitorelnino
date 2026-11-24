@@ -42,6 +42,7 @@ jobs:
         with:
           sparse-checkout: |
             coletar_mapbiomas.py
+            coletores_base.py
             data/mapbiomas
             data/municipios_ibge_referencia.json
           sparse-checkout-cone-mode: false
