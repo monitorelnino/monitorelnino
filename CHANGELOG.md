@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2059 · Reposição manual registra o relatório pela função compartilhada
+A reposição manual do domínio publicou o site e depois terminou vermelha ao arquivar o relatório, por uma cópia própria do registro que clonava o repositório de notas inteiro e escondia o erro. Ela passa a usar o mesmo registro dos outros workflows; se o relatório falhar, o job avisa sem reprovar.
+
 ## 2026-11-24 · #2058 · Válvula: conferir enxerga o módulo base
 
 A etapa `conferir` da válvula de dia baixava só `scripts/saude_pipeline.py`, e o script importa `coletores_base.py` da raiz; os lotes J18 caíram antes de conferir a entrada. O checkout esparso passa a incluir `coletores_base.py`. Sem mudança de coleta, dado ou página.
