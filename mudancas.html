@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/11/2026 · Válvula: SearXNG sobe sozinho quando o comando usa o metabuscador</dt>
+      <dd>As válvulas de planos de MG e RJ pediram S24 e S27 sem a chave do metabuscador e gravaram recusa de conexão em todo município. `coleta_de_dia.yml` passa a inferir a chave do comando (S24, S27, seguidor e busca web), como já fazia com o Node e o OCR.</dd>
       <dt>24/11/2026 · MapBiomas: o job da soma baixa o que a gravação usa</dt>
       <dd>A coleta do MapBiomas caiu ao gravar a data da consulta porque o job que soma os mapas baixava só parte do repositório e não tinha o módulo da data. O módulo entra na lista, e o autoteste passa a reprovar quando o coletor usa um módulo que o job não baixa.</dd>
       <dt>24/11/2026 · Legendas do MapBiomas: a amostra reproduz o traço</dt>
@@ -162,8 +164,6 @@
       <dd>Decisão da editoria (20/11/2026). Fora do cadastro federal do art. 3º-A, o plano municipal com edição de mais de dois anos, contados do Boletim nº 1 (anterior a 29/06/2024), passa de 1,0 a 0,65 na cobertura. No cadastro, segue a regra de 17/11: mais de um ano sem atualização vale zero. São 67 planos. Efeito: RS 66,7 → 66,2; SE 72,1 → 71,8; MG 18,2 → 18,1; SP 35,9 → 35,8; média nacional 42,6. Metodologia §129.</dd>
       <dt>20/11/2026 · Leitura parada: pista em back-off do juiz não conta como parada</dt>
       <dd>O alarme contava como &quot;sem veredito&quot; pistas oficiais que o juiz já tentou e marcou para voltar (`proxima_tentativa_em` futura). Eram 595 em 20/11, todas tentadas nos últimos dez dias; fora do back-off restam 79, abaixo do teto de 150. A pista vencida e não tentada segue contando.</dd>
-      <dt>20/11/2026 · Elo commita o PDF-índice junto do dado que o gera</dt>
-      <dd>O elo da noite regenerava `MARE_Indice_Documentacao.pdf` e selava o hash novo no manifesto, mas não o commitava: a `main` ficava vermelha no portão 12 até o publicador seguinte (triagem de 18/11 e 20/11). O PDF entra no `git add` do `_coletor.yml`; conflito nele já se resolve por regeneração. Falha F89 no catálogo.</dd>
     </dl>
   </section>
 </main>
