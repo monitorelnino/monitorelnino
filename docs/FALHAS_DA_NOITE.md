@@ -834,7 +834,7 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Correção:** `_coletor.yml`: `install` com DPkg::Lock::Timeout=240; `update` repetido até 12 vezes a cada 10 s; Acquire::Retries=3 e Acquire::http::Timeout=30 contra espelho parado; teto do passo 8 min. Pacote que não instala derruba o elo com o nome do passo e a reserva refaz (D1).
 - **Caso de teste:** nenhum — falta: caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR
 
-## F92 · O teto de 300 buscas no veículo valia por bloco, não por rodada: o lote fez cerca de 1.500 buscas
+## F93 · O teto de 300 buscas no veículo valia por bloco, não por rodada: o lote fez cerca de 1.500 buscas
 
 - **Noite:** 2026-11-23→2026-11-24 (reprocesso manual, run 45305563320)
 - **Sintoma:** Run 45305563320: blocos de 193–200 buscas, em sete blocos; 0 links do Google News resolvidos, e o commit da rodada foi recusado pela união.
