@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2060 · União de fila: marca do Buscador 2 pela data mais nova
+
+O seguidor regrava `buscador2_em` e `busca_veiculo_em` a cada passada; quando a válvula e a noite passavam pela mesma pista, a união recusava a fila inteira (F100: lote de 24/11 perdido). Os dois campos passam a unir pela data mais nova, a última passada. Caso no autoteste da união.
+
 ## 2026-11-24 · #2058 · Válvula: conferir enxerga o módulo base
 
 A etapa `conferir` da válvula de dia baixava só `scripts/saude_pipeline.py`, e o script importa `coletores_base.py` da raiz; os lotes J18 caíram antes de conferir a entrada. O checkout esparso passa a incluir `coletores_base.py`. Sem mudança de coleta, dado ou página.
