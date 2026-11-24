@@ -232,6 +232,14 @@ def problemas(registros: dict, codigos_do_pais: set) -> list:
     return ruins
 
 
+def tentativa_falhou(motivo: str, agora: str = None, escrever: bool = True) -> dict:
+    """Sem gravar o cadastro, a tentativa fica no painel: o frescor mede a idade do dado e não
+    reprova quem tentou (regra de 01/11/2026; F95, noite 21→22/11)."""
+    from coletores_base import registrar_tentativa_coletor
+    return registrar_tentativa_coletor("coletar_cadastro_prioritarios", {
+        "resultado": "falhou", "motivo": motivo[:200], "arquivos": [SAIDA.name]}, agora=agora, escrever=escrever)
+
+
 def autoteste() -> int:
     casos = []
     pagina = ("14\nAC\nRio Branco\n1200401\n15\nAC\nRodrigues Alves\n1200427\n"
@@ -324,6 +332,11 @@ def autoteste() -> int:
                   confirmacao_midr("<p>Cadastro</p>") == {"cita_2095": False, "notas_citadas": [], "atualizado_em": None}))
     casos.append(("e diz que a LAI continua de pé", "continua de pé" in GOVERNANCA))
     casos.append(("e declara peso zero", "PESO ZERO" in GOVERNANCA))
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    from verificar_frescor import recusadas
+    painel = tentativa_falhou("nt2_2025: URLError: Connection reset by peer", agora="2026-11-22", escrever=False)
+    casos.append(("nota técnica que não abre deixa tentativa que o frescor aceita (F95)",
+                  SAIDA.name in recusadas(painel, "2026-11-24")))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
@@ -347,6 +360,10 @@ def main() -> int:
 
     from coletores_base import buscar, gravar_em, hoje_editorial, preservar_evidencia, registrar_lacuna
     hoje = hoje_editorial()
+
+    def falhou(motivo: str) -> int:
+        tentativa_falhou(motivo)
+        return 1
     midr = {"orgao": "MIDR", "url": MIDR}
     try:
         pagina = buscar(MIDR, timeout=60, origem="coletar_cadastro_prioritarios")
@@ -362,7 +379,11 @@ def main() -> int:
     print(f"MIDR: {json.dumps({k: v for k, v in midr.items() if k != 'url'}, ensure_ascii=False)}")
     textos, hashes = {}, {}
     for nome, url in FONTES.items():
-        corpo = buscar(url, timeout=120, origem="coletar_cadastro_prioritarios")
+        try:
+            corpo = buscar(url, timeout=120, origem="coletar_cadastro_prioritarios")
+        except Exception as e:  # noqa: BLE001 — sem a nota técnica não há cadastro a gravar
+            print(f"X {nome}: {type(e).__name__}: {e} — nada foi gravado")
+            return falhou(f"{nome}: {type(e).__name__}: {e}")
         hashes[nome] = preservar_evidencia(corpo, url, "pdf", "coletar_cadastro_prioritarios")
         textos[nome] = texto_do_pdf(corpo)
         print(f"{nome}: {len(corpo)} bytes · evidência {hashes[nome][:12]}")
@@ -388,7 +409,7 @@ def main() -> int:
         print("X VALIDAÇÃO — nada foi gravado:")
         for r in ruins:
             print("   -", r)
-        return 1
+        return falhou("validação: " + "; ".join(ruins))
 
     # Os enderecos dos PDFs ficam gravados: o cartao cita a nota tecnica, e a citacao precisa do
     # link do documento lido, nao da pagina que o hospeda.
