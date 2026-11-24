@@ -1210,7 +1210,8 @@ def ensaio_valvula_traz_a_main(diz) -> bool:
     `pull_request`. Roda o trecho do próprio `_coletor.yml` num repositório temporário: os dois lados
     acrescentam ao log, o ramo tem de terminar descendente da `main`, com o log unido pela base comum.
     """
-    import json, os, re, subprocess, tempfile, pathlib
+    import json, os, re, shutil, subprocess, tempfile, pathlib
+    from coletores_base import gravar_em
 
     fonte = (RAIZ / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
     m = re.search(r'\n( *)if \[\[ "\$\{RAMO\}" == coleta-dia/\* \]\]; then\n.*?\n\1fi\n', fonte, re.S)
@@ -1226,13 +1227,12 @@ def ensaio_valvula_traz_a_main(diz) -> bool:
         subprocess.run(["git", "init", "-q", "-b", "main", str(rep)], check=True)
         g("config", f"url.{origem}.insteadOf", "git@github.com:o/r.git")
         (rep / "scripts").mkdir()  # cópia, não link: o resolvedor acha o repositório pelo próprio caminho
-        (rep / "scripts" / "unir_conflito_de_rodada.py").write_text(
-            (RAIZ / "scripts" / "unir_conflito_de_rodada.py").read_text(encoding="utf-8"), encoding="utf-8")
+        shutil.copy(RAIZ / "scripts" / "unir_conflito_de_rodada.py", rep / "scripts")
         env["PYTHONPATH"] = f"{RAIZ}{os.pathsep}{RAIZ / 'scripts'}"
         (rep / "data").mkdir()
         log = rep / "data" / "historico_mudancas.json"
         def escreve(itens):
-            log.write_text(json.dumps({"versao": 1, "eventos": itens}, ensure_ascii=False, indent=1) + "\n")
+            gravar_em(log, {"versao": 1, "eventos": itens})
         escreve([{"n": 0}])
         g("add", "data"); g("commit", "-qm", "base"); g("remote", "add", "o", str(origem)); g("push", "-q", "o", "main")
         g("checkout", "-qb", "coleta-dia/x"); escreve([{"n": 0}, {"n": "valvula"}]); g("commit", "-qam", "elo")
