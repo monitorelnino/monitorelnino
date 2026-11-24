@@ -46,6 +46,8 @@
     <dl class="mudancas-lista">
       <dt>24/11/2026 · Portão de tamanho reconhece retrato por chave</dt>
       <dd>Em 18/11 o arquivo de alertas em vigor cresceu 34% porque os alertas foram de 4.024 para 5.690, e o portão de tamanho reprovou a `main` como se fosse duplicação. A regra que absolve leitura nova só enxergava listas no topo do arquivo; passa a contar também os itens das listas de cada chave. Registro repetido continua barrado.</dd>
+      <dt>24/11/2026 · Aviso: outro run com a mesma causa não comenta a Issue</dt>
+      <dd>O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.</dd>
       <dt>24/11/2026 · Um envio conferido por PR</dt>
       <dd>O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.</dd>
       <dt>24/11/2026 · Cadastro federal: coleta que falha deixa tentativa</dt>
@@ -162,8 +164,6 @@
       <dd>O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.</dd>
       <dt>17/11/2026 · Saúde: cartões desde o marco zero do ciclo</dt>
       <dd>A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.</dd>
-      <dt>17/11/2026 · Endereço de PDF que responde página</dt>
-      <dd>O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.</dd>
     </dl>
   </section>
 </main>
