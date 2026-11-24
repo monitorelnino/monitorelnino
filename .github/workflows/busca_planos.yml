@@ -48,7 +48,7 @@ jobs:
     outputs:
       matriz: ${{ steps.matriz.outputs.matriz }}
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with: { persist-credentials: false, sparse-checkout: scripts }
       - id: matriz
         env:
