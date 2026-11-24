@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2039 · Aviso: outro run com a mesma causa não comenta a Issue
+
+O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
+
 ## 2026-11-23 · #2033 · Elo do juiz não cai mais na trava do apt
 
 O passo do Tesseract em `_coletor.yml` passa a esperar a trava do apt deixada pelo passo do navegador e a repetir `update` e conexão parada; teto de 8 min. Pacote que não instala segue derrubando o elo com o nome do passo, e a reserva refaz. Catálogo: F92. Linhas líquidas: +19 (código +6, catálogo +13).
