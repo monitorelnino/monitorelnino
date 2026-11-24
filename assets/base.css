@@ -1512,8 +1512,7 @@ input.busca{display:block; box-sizing:border-box; width:100%; max-width:100%; mi
 .g-mb .tk{fill:var(--muted); font-family:var(--font-dado); font-size:var(--fs-caption);}
 .g-mb .grade{stroke:var(--faixa-1); stroke-width:1;}
 .g-mb .faixa{fill:var(--faixa-2);}
-.g-mb .mediana{fill:none; stroke:var(--muted); stroke-width:1;}
-.g-mb .mediana--tracejada{stroke-dasharray:4 3;}
+.g-mb .mediana{fill:none; stroke:var(--ink); stroke-width:1.5;}
 .g-mb .ano{fill:none; stroke-width:2; stroke-linejoin:round;}
 .g-mb .ano--agora{stroke:var(--pacifico-agora);}
 .g-mb .ano--2024{stroke:var(--mineral); stroke-dasharray:5 3;}
@@ -1521,4 +1520,5 @@ input.busca{display:block; box-sizing:border-box; width:100%; max-width:100%; mi
 .g-mb .coluna--agora{fill:var(--pacifico-agora);}
 .g-mb .coluna--2024{fill:var(--mineral);}
 .g-mb .toque{fill:transparent;}
-.map-legend i.leg-tracejada{width:14px; height:0; border-top:2px dashed currentColor; background:none; border-radius:0;}
+.map-legend i.leg-tracejada{width:16px; height:0; border-radius:0;}
+.map-legend i.leg-tracejada::before{content:""; display:block; width:16px; height:2px; background:repeating-linear-gradient(90deg, currentColor 0 5px, transparent 5px 8px);}

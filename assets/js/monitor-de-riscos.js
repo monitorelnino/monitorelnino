@@ -1343,7 +1343,7 @@ figuraDeEpisodios({
       const g = document.getElementById('graficoFogoMes'); g.innerHTML = ''; g.appendChild(r.svg);
       MonitorMapas.legenda('legFogoMes', [{cor: 'var(--pacifico-agora)', classe: 'linha', rotulo: T('leg_ano', {ano: ano})},
         {cor: 'var(--mineral)', classe: 'tracejada', rotulo: '2024'}, {cor: 'var(--faixa-2)', rotulo: T('leg_faixa')},
-        {cor: 'var(--muted)', classe: 'linha', rotulo: T('leg_mediana')}]);
+        {cor: 'var(--ink)', classe: 'linha', rotulo: T('leg_mediana')}]);
       MonitorMapas.credito('boxFogoMes', {fontes: [FM.produto], consultado: FM.consultado_em});
     } else lacuna('legFogoMes', 'graficoFogoMes', 'subFogoMes');
     /* Fogo, coleção: 2015 e 2024 sobre a faixa calculada neste produto. */
@@ -1353,7 +1353,7 @@ figuraDeEpisodios({
       const g = document.getElementById('graficoFogoColecao'); g.innerHTML = ''; g.appendChild(r.svg);
       MonitorMapas.legenda('legFogoColecao', [{cor: 'var(--pacifico-agora)', classe: 'linha', rotulo: '2015'},
         {cor: 'var(--mineral)', classe: 'tracejada', rotulo: '2024'}, {cor: 'var(--faixa-2)', rotulo: T('leg_faixa')},
-        {cor: 'var(--muted)', classe: 'linha', rotulo: T('leg_mediana')}]);
+        {cor: 'var(--ink)', classe: 'linha', rotulo: T('leg_mediana')}]);
       MonitorMapas.credito('boxFogoColecao', {fontes: [FC.produto], consultado: FC.consultado_em});
     } else lacuna('legFogoColecao', 'graficoFogoColecao', 'subFogoColecao');
     /* Água: barras de 2005 ao último ano, eixo a partir de zero. */
@@ -1368,11 +1368,11 @@ figuraDeEpisodios({
         svg.appendChild(comValor(el('rect', {x: (x(i) - w / 2).toFixed(1), y: y(v[i]).toFixed(1), width: w.toFixed(1), height: (y(0) - y(v[i])).toFixed(1), class: cls}),
           a + ': ' + num(v[i], e) + ' ' + T(e.un)));
       });
-      svg.appendChild(el('line', {x1: L, x2: L + pw, y1: y(med).toFixed(1), y2: y(med).toFixed(1), class: 'mediana mediana--tracejada'}));
+      svg.appendChild(el('line', {x1: L, x2: L + pw, y1: y(med).toFixed(1), y2: y(med).toFixed(1), class: 'mediana'}));
       document.getElementById('subAguaAnual').textContent = T('agua.sub', {territorio: terr, inicio: anos[0], fim: anos[anos.length - 1], unidade: T(e.un)});
       const g = document.getElementById('graficoAguaAnual'); g.innerHTML = ''; g.appendChild(svg);
       MonitorMapas.legenda('legAguaAnual', [{cor: 'var(--pacifico-agora)', rotulo: '2015'}, {cor: 'var(--mineral)', rotulo: '2024'},
-        {cor: 'var(--muted)', classe: 'tracejada', rotulo: T('leg_mediana')}]);
+        {cor: 'var(--ink)', classe: 'linha', rotulo: T('leg_mediana')}]);
       MonitorMapas.credito('boxAguaAnual', {fontes: [AG.produto], consultado: AG.consultado_em});
     } else lacuna('legAguaAnual', 'graficoAguaAnual', 'subAguaAnual');
   }
