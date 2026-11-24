@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-24. 98 falhas; 90 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-24. 99 falhas; 91 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -887,3 +887,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** reprodução na `main` `f21077be` (#1921); run do publicador de 19/11: 'a quarentena NÃO limpou a fila ativa'
 - **Correção:** A quarentena confere cada pista sozinha; o coletor grava pela porta (`pistas.gravar_lote`) e sai de `escritores_legados.json` (#1921). Caso da pista sem `id` e sem endereço acrescentado em 24/11 (#2049).
 - **Caso de teste:** `scripts/verificar_esquema_de_pista.py --autoteste: pista sem `id` (identidade = URL, com dois-pontos) também sai da fila ativa`
+
+## F99 · PR de dado da válvula nascia em conflito e os Portões não rodavam nele
+
+- **Noite:** 2026-11-23→2026-11-24
+- **Sintoma:** #2038 e #2045 abertos pela válvula `dirty` e sem run de `pull_request`; a A3 disparou `portoes.yml` à mão, numa base sem o #2037, e leu vermelho de frescor que a `main` já não tinha.
+- **Causa:** O ramo `coleta-dia/*` nasce da `main` do disparo e o `_coletor.yml` só fazia rebase sobre o próprio ramo; em duas horas de coleta a `main` mudou log, filas e manifesto. PR em conflito não ganha run de `pull_request`.
+- **Prova:** #2045: mergeable_state dirty, só run de workflow_dispatch (45384876602); #2038: só run de workflow_dispatch
+- **Correção:** Na válvula, antes do push, `git merge` da `main` com a união pela base comum (`unir_conflito_de_rodada.py`); se a união recusar, o PR sai como antes e o aviso nomeia /merge-main.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_valvula_traz_a_main`
