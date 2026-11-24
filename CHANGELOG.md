@@ -12,6 +12,11 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2053 · Válvula confere a entrada antes de subir o executor
 Em 17/11 a coleta de dia recebeu linhas de Python soltas no lugar de comandos e rodou cada uma como programa. Agora um passo curto, antes do executor, recusa a entrada se alguma linha não começar por um script do repositório (com prazo e intérprete opcionais). A noite não muda.
 
+## 2026-11-24 · #2052 · Log de busca das válvulas de 15/11 recuperado
+Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.
+
+## 2026-11-24 · #2050 · Catálogo de falhas: três noites sem linha e o horário do F90
+Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.
 ## 2026-11-24 · #2049 · Portões leem o repositório, não a cópia local
 O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.
 ## 2026-11-24 · #2047 · Portão: PR não devolve arquivo a uma versão anterior da main
