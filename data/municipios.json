@@ -116,6 +116,9 @@
    "fonte": "Prefeitura de Fortaleza (anúncio oficial, 28/01/2026)",
    "data": "29/01/2026",
    "hash_evidencia": "f303ded4df0d3cbe992ddc4726f17942a760d567658eae1a711be0c074b38853"
+  },
+  "plano_da_saude": {
+   "fonte": "ms.dados.sms.fortaleza.ce.gov.br"
   }
  },
  {
@@ -319,6 +322,9 @@
    "fonte": "Prefeitura de Porto Velho",
    "data": "07-08/2026",
    "hash_evidencia": null
+  },
+  "plano_da_saude": {
+   "fonte": "dvs.portovelho.ro.gov.br"
   }
  },
  {
@@ -1371,24 +1377,33 @@
  {
   "nome": "São Francisco",
   "uf": "SE",
-  "categoria": "plano_nomeado",
-  "documento": "PLANCON edição 2026",
-  "data": "2026",
-  "fonte": "Defesa Civil SE (repositório PLANCON)",
-  "url": null,
+  "categoria": "plano",
+  "documento": "Plano de contingência",
+  "data": "19/08/2026",
+  "fonte": "Defesa Civil SE (DEPEC/SUPDEC) — repositório estadual de PLANCONs — plano publicado em domínio oficial do ente, lido em 23/11/2026; ato de aprovação não localizado até o corte",
+  "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plano-de-Contingencia-2026_compressed.pdf",
   "lat": -10.3442,
   "lon": -36.8869,
-  "canal": "repositorio_estadual",
-  "localizado_em": "26/08/2026",
+  "canal": "orgao_estadual",
+  "hash_evidencia": "e57bc8669ce9a992468c5328c7eaa560495eb48d65742ed34e3e8b98d247d929",
+  "pista_id": "3beab34ec9",
+  "codebook": "1.8 (30/10/2026)",
+  "julgado_em": "23/11/2026",
+  "criterios": "promocoes_automaticas.json",
+  "sem_ato_de_aprovacao": true,
+  "marca_na_ficha": "sem ato de aprovação localizado",
+  "data_da_edicao": "2026-08-19",
+  "indicado_ao_cadastro_art3A": false,
+  "atualizacao_anual_localizada": true,
+  "vigencia_declarada_encerrada": null,
   "registro_anterior": {
-   "categoria": "plano",
+   "categoria": "plano_nomeado",
    "documento": "PLANCON edição 2026",
    "url": null,
    "fonte": "Defesa Civil SE (repositório PLANCON)",
-   "data": "2026"
-  },
-  "por_que_nomeado": "D1 (08/10/2026): sem endereço de documento. O plano é citado por fonte oficial e o documento não foi localizado até o corte. Crédito 0 até a busca dirigida anexar o documento.",
-  "buscas_dirigidas_sem_documento": 2
+   "data": "2026",
+   "hash_evidencia": null
+  }
  },
  {
   "nome": "Maruim",
@@ -2787,24 +2802,33 @@
  {
   "nome": "Malhada dos Bois",
   "uf": "SE",
-  "categoria": "plano_nomeado",
-  "documento": "PLANCON edição 2025 (repositório estadual)",
+  "categoria": "plano",
+  "documento": "Plano de contingência",
   "data": "2025",
-  "fonte": "Defesa Civil SE (DEPEC) — repositório estadual de PLANCONs",
-  "url": null,
+  "fonte": "Defesa Civil SE (DEPEC/SUPDEC) — repositório estadual de PLANCONs — plano publicado em domínio oficial do ente, lido em 23/11/2026; ato de aprovação não localizado até o corte",
+  "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plancon-Malhada_dos_bois_assinado_assinado.pdf",
   "lat": -10.3418,
   "lon": -36.9252,
-  "canal": "repositorio_estadual",
-  "localizado_em": "26/08/2026",
+  "canal": "orgao_estadual",
+  "hash_evidencia": "ef6091deb113456e4fd2a29f5c2556869647f47f7347d76b5c32df864620bc54",
+  "pista_id": "edb879abdd",
+  "codebook": "1.8 (30/10/2026)",
+  "julgado_em": "23/11/2026",
+  "criterios": "promocoes_automaticas.json",
+  "sem_ato_de_aprovacao": true,
+  "marca_na_ficha": "sem ato de aprovação localizado",
+  "data_da_edicao": "2025-12-31",
+  "indicado_ao_cadastro_art3A": false,
+  "atualizacao_anual_localizada": true,
+  "vigencia_declarada_encerrada": null,
   "registro_anterior": {
-   "categoria": "plano",
+   "categoria": "plano_nomeado",
    "documento": "PLANCON edição 2025 (repositório estadual)",
    "url": null,
    "fonte": "Defesa Civil SE (DEPEC) — repositório estadual de PLANCONs",
-   "data": "26/08/2026"
-  },
-  "por_que_nomeado": "D1 (08/10/2026): sem endereço de documento. O plano é citado por fonte oficial e o documento não foi localizado até o corte. Crédito 0 até a busca dirigida anexar o documento.",
-  "buscas_dirigidas_sem_documento": 2
+   "data": "2025",
+   "hash_evidencia": null
+  }
  },
  {
   "nome": "Cedro de São João",
@@ -4228,24 +4252,33 @@
  {
   "nome": "Guarulhos",
   "uf": "SP",
-  "categoria": "plano_nomeado",
-  "documento": "Plano da Defesa Civil para o verão (anual, apresentado à Câmara Municipal) + Operação Estiagem — Compdec de Guarulhos",
-  "data": "Recorrente (apresentação anual à Câmara)",
-  "fonte": "Prefeitura de Guarulhos / Câmara Municipal de Guarulhos (oficial)",
-  "url": "https://www.guarulhos.sp.leg.br/noticia/plano-da-defesa-civil-para-o-verao-e-apresentado-na-camara-323",
+  "categoria": "plano",
+  "documento": "Plano de contingência",
+  "data": "2025",
+  "fonte": "Portal oficial (www.guarulhos.sp.gov.br) — plano publicado em domínio oficial do ente, lido em 23/11/2026; ato de aprovação não localizado até o corte",
+  "url": "https://www.guarulhos.sp.gov.br/sites/default/files/file/arquivos/PLANO%20MUNICIPAL%20DE%20ESTIAGEM%20DE%20GUARULHOS%20-%202025.pdf",
   "lat": -23.4538,
   "lon": -46.5333,
   "canal": "site_municipal",
-  "hash_evidencia": "919eb327cbfd97740e1bf4100d8c6a9e980b747677f77a83ded873dcfe18c9d7",
+  "hash_evidencia": "41a61f9dce4d46740cfd2563348fb591147ccbd1da5827228f37c48e1dc02e1b",
+  "pista_id": "a7dd88699c",
+  "codebook": "1.8 (30/10/2026)",
+  "julgado_em": "23/11/2026",
+  "criterios": "promocoes_automaticas.json",
+  "sem_ato_de_aprovacao": true,
+  "marca_na_ficha": "sem ato de aprovação localizado",
+  "data_da_edicao": "2025-12-31",
+  "indicado_ao_cadastro_art3A": true,
+  "atualizacao_anual_localizada": true,
+  "vigencia_declarada_encerrada": null,
   "registro_anterior": {
-   "categoria": "plano",
+   "categoria": "plano_nomeado",
    "documento": "Plano da Defesa Civil para o verão (anual, apresentado à Câmara Municipal) + Operação Estiagem — Compdec de Guarulhos",
    "url": "https://www.guarulhos.sp.leg.br/noticia/plano-da-defesa-civil-para-o-verao-e-apresentado-na-camara-323",
    "fonte": "Prefeitura de Guarulhos / Câmara Municipal de Guarulhos (oficial)",
-   "data": "Recorrente (apresentação anual à Câmara)"
-  },
-  "por_que_nomeado": "D1 (08/10/2026): o endereço é de notícia, não do documento. O plano é citado por fonte oficial e o documento não foi localizado até o corte. Crédito 0 até a busca dirigida anexar o documento.",
-  "buscas_dirigidas_sem_documento": 2
+   "data": "Recorrente (apresentação anual à Câmara)",
+   "hash_evidencia": "919eb327cbfd97740e1bf4100d8c6a9e980b747677f77a83ded873dcfe18c9d7"
+  }
  },
  {
   "nome": "Campinas",
@@ -13141,7 +13174,10 @@
   "marca_na_ficha": "sem ato de aprovação localizado",
   "data_da_edicao": "2025-05-23",
   "indicado_ao_cadastro_art3A": false,
-  "atualizacao_anual_localizada": false
+  "atualizacao_anual_localizada": false,
+  "plano_da_saude": {
+   "fonte": "Defesa Civil do Rio Grande do Sul — Prepara RS"
+  }
  },
  {
   "nome": "Tupanciretã",
@@ -13964,7 +14000,10 @@
   "marca_na_ficha": "sem ato de aprovação localizado · plano desatualizado segundo a lei: sem atualização anual localizada (Lei 12.340/2010, art. 3º-A, parágrafo 6º)",
   "data_da_edicao": "2018-12-31",
   "indicado_ao_cadastro_art3A": true,
-  "atualizacao_anual_localizada": false
+  "atualizacao_anual_localizada": false,
+  "plano_da_saude": {
+   "fonte": "portal.angra.rj.gov.br"
+  }
  },
  {
   "nome": "Santa Luzia do Itanhy",
