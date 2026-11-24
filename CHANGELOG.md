@@ -12,6 +12,8 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2039 · Aviso: outro run com a mesma causa não comenta a Issue
 
 O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
+## 2026-11-24 · #2040 · Um envio conferido por PR
+O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.
 ## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
 
 A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.
