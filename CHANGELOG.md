@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2044 · Teste de figuras espera a condição, não a rede
+Em 21/11 o portão de figuras estourou 30 segundos esperando a rede ficar ociosa em `defesa-civil.html` e deixou a `main` vermelha por 38 minutos. Cada verificação já esperava a própria condição; a espera pela rede saiu, e a verificação do mouse passa a esperar os quatro mapas que lê.
+
 ## 2026-11-24 · #2040 · Um envio conferido por PR
 O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.
 ## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
