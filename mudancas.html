@@ -44,6 +44,12 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/11/2026 · Reaplicação não recusa arquivo novo dos dois lados</dt>
+      <dd>`reaplicar_noite.py` separa &quot;commit-base fora do histórico&quot; de &quot;arquivo ausente na base&quot;. O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.</dd>
+      <dt>24/11/2026 · Rodada de domingo não perde o commit por `julgamento_automatico`</dt>
+      <dd>Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).</dd>
+      <dt>24/11/2026 · Cadastro federal: coleta que falha deixa tentativa</dt>
+      <dd>O coletor do cadastro federal de municípios suscetíveis caía sem registro quando o gov.br não entregava a nota técnica, e o portão de frescor avermelhava a main. Agora a falha fica no painel de tentativas, e a idade exibida continua sendo a do dado (F95).</dd>
       <dt>23/11/2026 · Elo do juiz não cai mais na trava do apt</dt>
       <dd>O passo do Tesseract em `_coletor.yml` passa a esperar a trava do apt deixada pelo passo do navegador e a repetir `update` e conexão parada; teto de 8 min. Pacote que não instala segue derrubando o elo com o nome do passo, e a reserva refaz. Catálogo: F92. Linhas líquidas: +19 (código +6, catálogo +13).</dd>
       <dt>23/11/2026 · História do coletor de sinais de risco ao histórico</dt>
@@ -78,6 +84,8 @@
       <dd>O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ordem fixa: o rabo nunca chegava (257 documentos oficiais além de 14 dias; MS, RO e RR sem edição lida desde 11–12/11). Agora o juiz começa pela pista que espera há mais tempo e o canal 2 pela UF de leitura mais velha.</dd>
       <dt>23/11/2026 · Juiz: plano publicado não é ato de resposta</dt>
       <dd>O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.</dd>
+      <dt>24/11/2026 · Buscador 2: teto de buscas no veículo vale para a rodada, não para o bloco</dt>
+      <dd>O teto de 300 buscas no veículo era zerado a cada bloco de 200 URLs: o lote de 24/11 fez cerca de 1.500 buscas e nenhum link do Google News resolveu. O contador passa a ser da rodada. Catálogo F92.</dd>
       <dt>23/11/2026 · Buscador 2: B2 busca no veículo com o título guardado</dt>
       <dd>O redirecionamento do Google News não resolvia (0 de 5.802). A compactação de 19/10 tirava o título, e sem ele a busca no veículo não tinha o que procurar. Agora o título fica na fila, o B2 recebe veículo e título, a busca tem teto de 300 por rodada, e o reprocessamento reabre uma vez as pistas com título. Catálogo F91.</dd>
       <dt>22/11/2026 · Redução: história do julgar_e_aplicar_descobertas.py ao HISTORICO</dt>
@@ -156,14 +164,6 @@
       <dd>O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.</dd>
       <dt>17/11/2026 · Saúde: cartões desde o marco zero do ciclo</dt>
       <dd>A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.</dd>
-      <dt>17/11/2026 · Endereço de PDF que responde página</dt>
-      <dd>O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.</dd>
-      <dt>17/11/2026 · Plano de saúde não é plano de defesa civil; Mesquita de novo ao juiz</dt>
-      <dd>Plano cujo título é de saúde (arboviroses, dengue, emergências em saúde pública) fica fora da conta do MARÉ Legal: Angra dos Reis/RJ não entra e Água Branca/PB sai. O juiz passa a reconhecer o título do plano repetido no alto das páginas também no PDF lido como linha única; Mesquita/RJ e 111 recusas por título voltam ao juiz. Documento escaneado acima de 5 MB tem o OCR guardado como prova.</dd>
-      <dt>17/11/2026 · Canais oficiais fora do sítio da prefeitura</dt>
-      <dd>Documento da pasta de planos recebidos pela Defesa Civil do RS (Prepara RS) passa a valer como plano pela origem; data e município seguem conferidos. Portais oficiais de prefeitura fora de .gov.br (atende.net, portaltp, equiplano, prefeitura.rio e outros) passam a ser reconhecidos, e encurtadores de link são resolvidos antes do julgamento. Mesquita/RJ e o plano municipal do Rio voltam ao juiz. Pista promovida deixa a fila e não é mais fechada pelo prazo como &quot;sem documento&quot;.</dd>
-      <dt>17/11/2026 · Contribuições e Prepara RS chegam ao juiz e ao banco</dt>
-      <dd>A pista que chegava no formato novo recebia o mesmo id de outras 50, e a contribuição de Mesquita/RJ se perdeu entre elas. O formulário passa a aceitar o domínio da Prefeitura do Rio e o link de compartilhamento do Google,; sete envios voltam a ser lidos. Acima de 5 MB, a camada de texto do documento é guardada como prova; 40 promoções do juiz voltam a ser aplicadas. Trinta atalhos do Prepara RS fechados sem leitura voltam à fila.</dd>
     </dl>
   </section>
 </main>

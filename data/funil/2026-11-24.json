@@ -3,10 +3,26 @@
  "formato_versao": 1,
  "etapas": {
   "descobrir_planos": {
-   "alvos_consultados": 40,
-   "alvos_verificados": 10,
+   "alvos_consultados": 60,
+   "alvos_verificados": 15,
    "achados_novos": 0,
-   "fila_acumulada": 84
+   "fila_acumulada": 126
+  },
+  "juiz": {
+   "pistas_recebidas": 505,
+   "com_documento": 505,
+   "promovidas": 0,
+   "recusa_citacao_incompleta": 160,
+   "recusa_autoridade_nao_confirmada": 38,
+   "recusa_plano_sem_identificacao": 1,
+   "recusa_natureza_duvidosa": 176,
+   "recusa_fora_do_objeto": 3,
+   "recusa_resposta": 62
+  },
+  "transferencias_municipais": {
+   "consultas": 10,
+   "com_resultado_bruto": 10,
+   "municipios": 55648
   }
  },
  "verificador_imprensa": {
@@ -43,7 +59,7 @@
    "teto_global": 600
   },
   "versao": "1.0 (29/09/2026)",
-  "gravado_em": "2026-11-24T04:27:21"
+  "gravado_em": "2026-11-24T05:10:41"
  },
- "atualizado_em": "2026-11-24T04:11:06"
+ "atualizado_em": "2026-11-24T08:52:52"
 }
