@@ -9,12 +9,12 @@
    "pendente": "mover para o publicador, provado pelo ensaio da noite (item 5)"
   },
   "data/paralelo_juiz18.json": {
-   "escritor": "rodada_paralela_j18",
-   "por_que": "Rejulgamento paralelo pelo codebook 1.8 (rodada J18): gerado por `juiz.py --rejulgar-paralelo` a partir de evidencias/ local. Nenhum workflow o commita; nenhuma página o lê; o índice não muda."
+   "escritor": "coleta_de_dia.yml",
+   "por_que": "Rejulgamento paralelo pelo codebook 1.8 (rodada J18). Escritores: `juiz.py --rejulgar-paralelo` (evidencias/ local) e o lote `juiz.py --lote-paralelo-18` pela válvula `coleta_de_dia.yml` (documento lido pela porta de rede, sem preservar). Nenhuma página o lê; o índice não muda."
   },
   "data/paralelo_fila18.json": {
-   "escritor": "rodada_paralela_j18",
-   "por_que": "Rejulgamento paralelo da fila pelo codebook 1.8 (rodada J18): gerado por `juiz.py --rejulgar-fila-paralela` a partir de evidencias/ local. Nenhum workflow o commita; nenhuma página o lê; a fila de produção não muda."
+   "escritor": "coleta_de_dia.yml",
+   "por_que": "Rejulgamento paralelo da fila pelo codebook 1.8 (rodada J18). Escritores: `juiz.py --rejulgar-fila-paralela` (evidencias/ local) e o lote `juiz.py --lote-paralelo-18 fila` pela válvula `coleta_de_dia.yml`. Nenhuma página o lê; a fila de produção não muda."
   },
   "data/pistas_imprensa.json": {
    "escritor": "qualquer_elo",

@@ -2310,7 +2310,7 @@ def autoteste() -> int:
          etapa0_documento_primario("https://x.gov.br/a.pdf",
                                    "PLANO DE CONTINGENCIA " * 60)[0] is True),
     ]
-    checagens += casos_18() + casos_18_medidos() + casos_leitura_local_18()
+    checagens += casos_18() + casos_18_medidos() + casos_leitura_local_18() + casos_lote_18()
     _fila = [{"id": "a", "hash_evidencia": "h" * 64, "juiz": {"promove": True, "motivo": None, "codebook": "1.8"}},
              {"id": "b", "hash": "h" * 64, "juiz": {"promove": True}},
              {"id": "c", "url": "https://x.gov.br/a.pdf"}]
@@ -2410,6 +2410,45 @@ def rejulgar_paralelo_18(decisoes: list, ler_texto=texto_local_18) -> tuple:
     return registros, resumo
 
 
+def casos_lote_18() -> list:
+    """Travas do lote de leitura: transporte falho vira `sem_leitura`, texto curto não é julgado, a segunda
+    passada não relê o que já foi julgado, e o rejulgamento local não apaga o que o lote leu."""
+    import tempfile
+    plano = ("<html><body>" + "PLANO DE CONTINGENCIA MUNICIPAL DE DEFESA CIVIL do município de Teste. " * 12
+             + "</body></html>").encode("utf-8")
+    alvos = [{"hash": "1" * 64, "url": "https://x.gov.br/plano.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+             {"hash": "2" * 64, "url": "https://y.gov.br/caiu.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+             {"hash": "3" * 64, "url": "https://z.gov.br/curto.html", "municipio": "Teste", "uf": "RS", "ibge": None}]
+
+    def transporte(url, timeout=40):
+        if "caiu" in url:
+            raise urllib.error.URLError("sem resposta de teste")
+        return plano if "plano" in url else b"<html>curto</html>"
+
+    with tempfile.TemporaryDirectory() as tmp:
+        destino = pathlib.Path(tmp) / "paralelo_teste.json"
+        lote_paralelo_18(alvos, destino, "teste", limite=10, buscar_fn=transporte)
+        a = _ler_paralelo_18(destino)
+        lote_paralelo_18(alvos, destino, "teste", limite=10, buscar_fn=transporte)
+        b = _ler_paralelo_18(destino)
+        gravar_paralelo_18([], destino, "teste")
+        c = _ler_paralelo_18(destino)
+        motivos = {f["hash_evidencia"]: f["motivo"] for f in a["sem_leitura"]}
+        return [
+            ("lote: documento lido é julgado pelo 1.8 e leva o hash do texto lido",
+             len(a["decisoes"]) == 1 and a["decisoes"][0].get("lote") is True
+             and len(a["decisoes"][0]["hash_lido"]) == 64 and a["decisoes"][0]["codebook"] == CODEBOOK_VERSAO),
+            ("lote: falha de transporte vai para sem_leitura com a causa, nunca para julgado",
+             motivos.get("2" * 64, "").startswith("fonte: URLError")),
+            ("lote: texto curto não é julgado e fica como texto_nao_extraivel",
+             motivos.get("3" * 64) == "texto_nao_extraivel"),
+            ("lote: segunda passada não relê o que já foi julgado",
+             len(b["decisoes"]) == 1 and b["resumo"]["lido_neste_lote"] == 0),
+            ("lote: rejulgamento local não apaga os registros do lote",
+             any(r.get("lote") for r in c["decisoes"]) and c["resumo"].get("lote_julgadas") == 1),
+        ]
+
+
 PARALELO_FILA18 = RAIZ / "data" / "paralelo_fila18.json"
 
 
@@ -2424,19 +2463,112 @@ def decisoes_da_fila_18(pistas: list) -> list:
             for p in pistas if p.get("hash_evidencia")]
 
 
-def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
-    """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo."""
-    registros, resumo = rejulgar_paralelo_18(decisoes)
+def _ler_paralelo_18(destino: pathlib.Path) -> dict:
+    return json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {"decisoes": [], "sem_leitura": []}
+
+
+def _escrever_paralelo_18(destino: pathlib.Path, fonte: str, registros: list, sem_leitura: list, resumo: dict) -> dict:
     saida = {"_governanca": (f"PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18) de {fonte}. Nada do "
-                             f"índice lê este arquivo. Escritor: juiz.py --rejulgar-paralelo ou --rejulgar-fila-paralela."),
+                             f"índice lê este arquivo. Escritores: juiz.py --rejulgar-paralelo, --rejulgar-fila-paralela "
+                             f"e --lote-paralelo-18 (registros com \"lote\": true, lidos pela porta de rede)."),
              "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
-             "resumo": resumo, "decisoes": registros}
+             "resumo": resumo, "decisoes": registros, "sem_leitura": sem_leitura}
     from coletores_base import gravar_em   # §229: escrita de data/ só pela porta atômica
     # Compacto: o arquivo paralelo cresce 34% em registros únicos; indentado, +38% em bytes e o portão de
     # tamanho (novidade_real) barrava o PR. Sem indentação, +17%: o mesmo conteúdo, sem linhas de enfeite.
     gravar_em(destino, saida, compacto=True)
     print(json.dumps(resumo, ensure_ascii=False))
     return resumo
+
+
+def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
+    """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo.
+    Os registros do lote de leitura (`"lote": true`) que já estão no arquivo não se perdem no rejulgamento local."""
+    registros, resumo = rejulgar_paralelo_18(decisoes)
+    anteriores = _ler_paralelo_18(destino)
+    vistos = {r["hash_evidencia"] for r in registros}
+    lote = [r for r in anteriores["decisoes"] if r.get("lote") and r["hash_evidencia"] not in vistos]
+    resumo["lote_julgadas"] = len(lote)
+    return _escrever_paralelo_18(destino, fonte, registros + lote, anteriores.get("sem_leitura", []), resumo)
+
+
+# Lote de leitura da rodada paralela J18: documento que não está em `evidencias/` é lido pela porta de rede
+# (`obter_documento`, a mesma dos juízes; NADA é preservado em evidencias/ nem em evidencias.json), julgado pelo
+# 1.8 e gravado SÓ nos arquivos paralelo. O registro leva o hash da decisão de produção (`hash_evidencia`) e o do
+# texto lido (`hash_lido`). Falha de leitura vai para `sem_leitura` com o motivo; nunca vira "mantida".
+LOTE_FORA_18 = ("news.google.com",)   # resolvido pelo B2 (rodada própria); a pasta do RS tem sessão própria
+
+
+def tem_copia_local_18(hash_: str) -> bool:
+    return any((RAIZ / "evidencias" / f"{hash_}{s}").is_file() for s in (".txt", ".ocr.txt", ".html", ".pdf"))
+
+
+def alvos_do_lote_18(fonte: str) -> list:
+    """Decisões de `producao` (fora de 1.8) ou pistas de `fila` com hash e URL, sem cópia local e fora de
+    LOTE_FORA_18, uma por hash. Ordem estável: as que nunca foram lidas vêm antes do que falhou."""
+    if fonte == "producao":
+        base = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))["decisoes"]
+        base = [d for d in base if (d.get("codebook") or "")[:3] != "1.8"]
+    else:
+        base = decisoes_da_fila_18(json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))["pistas"])
+    alvos, vistos = [], set()
+    for d in base:
+        h, url = d.get("hash_evidencia"), d.get("url")
+        if not h or not url or h in vistos or tem_copia_local_18(h):
+            continue
+        if any(f in url for f in LOTE_FORA_18):
+            continue
+        vistos.add(h)
+        alvos.append({**d, "hash": h})
+    return alvos
+
+
+def lote_paralelo_18(alvos: list, destino: pathlib.Path, fonte: str, limite: int = 300, buscar_fn=None) -> dict:
+    """Lê até `limite` documentos de `alvos` (que ainda não estão julgados em `destino`), julga pelo 1.8 e grava."""
+    import hashlib
+    from julgar_e_aplicar_descobertas import com_ocr, obter_documento, texto_do_documento
+    atual = _ler_paralelo_18(destino)
+    julgados = {r["hash_evidencia"] for r in atual["decisoes"]}
+    falhados = {r["hash_evidencia"] for r in atual.get("sem_leitura", [])}
+    pendentes = [a for a in alvos if a["hash"] not in julgados]
+    pendentes.sort(key=lambda a: a["hash"] in falhados)   # nunca lidos primeiro; falhas de rodadas anteriores depois
+    novos, falhas = [], []
+    for a in pendentes[:limite]:
+        try:
+            raw = obter_documento(a["url"], timeout=40, origem="rodada paralela J18", buscar_fn=buscar_fn)
+        except Exception as e:  # noqa: BLE001 — a causa vai para o registro, nunca para "mantida"
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": f"fonte: {type(e).__name__}"})
+            continue
+        texto = com_ocr(raw, texto_do_documento(raw, a["url"]))
+        if sum(c.isalpha() for c in re.sub(r"=== página \d+ ===", " ", texto or "")) < 300:
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": "texto_nao_extraivel"})
+            continue
+        v = julgar(texto, nome=a.get("municipio") or "", uf=a.get("uf") or "", ibge=a.get("ibge"),
+                   url=a["url"], propostas=PROPOSTAS_MEDIDAS_18)
+        novos.append({**v, "pista_id": a.get("pista_id"), "origem": a.get("origem"), "hash_evidencia": a["hash"],
+                      "hash_lido": hashlib.sha256(raw).hexdigest(), "leu_documento": True, "lote": True,
+                      "prod": {"promove": a.get("promove"), "motivo": a.get("motivo"),
+                               "codebook": a.get("codebook"), "categoria": a.get("categoria"), "data": a.get("data")}})
+    ids_novos = {r["hash_evidencia"] for r in novos}
+    sem_leitura = [f for f in atual.get("sem_leitura", []) if f["hash_evidencia"] not in {x["hash_evidencia"] for x in falhas} | ids_novos] + falhas
+    registros = atual["decisoes"] + novos
+    regras = {}
+    for r in registros:
+        for x in r.get("regras_18") or []:
+            regras[x] = regras.get(x, 0) + 1
+    resumo = {"julgadas": len(registros), "lote_julgadas": sum(1 for r in registros if r.get("lote")),
+              "sem_leitura": len(sem_leitura), "lido_neste_lote": len(novos), "falhas_neste_lote": len(falhas),
+              "a_ler": len(pendentes) - len(novos) - len(falhas), "regras_acionadas": dict(sorted(regras.items()))}
+    return _escrever_paralelo_18(destino, fonte, registros, sem_leitura, resumo)
+
+
+def lote_paralelo_18_cli(args: list) -> int:
+    """`juiz.py --lote-paralelo-18 producao|fila [limite]`: um lote da rodada paralela J18."""
+    fonte = args[0] if args else "producao"
+    limite = int(args[1]) if len(args) > 1 else 300
+    destino = PARALELO_JUIZ18 if fonte == "producao" else PARALELO_FILA18
+    lote_paralelo_18(alvos_do_lote_18(fonte), destino, fonte, limite=limite)
+    return 0
 
 
 def rejulgar_paralelo_cli() -> int:
@@ -2461,4 +2593,6 @@ if __name__ == "__main__":
         sys.exit(rejulgar_paralelo_cli())
     if "--rejulgar-fila-paralela" in sys.argv:
         sys.exit(rejulgar_fila_paralela_cli())
+    if "--lote-paralelo-18" in sys.argv:
+        sys.exit(lote_paralelo_18_cli(sys.argv[sys.argv.index("--lote-paralelo-18") + 1:]))
     sys.exit(0)
