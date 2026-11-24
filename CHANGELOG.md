@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2046 · Monitor de riscos: abertura sem instrução de interação
+
+A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou toque nos pontos do mapa, porque essa interação não está implementada. Fica a frase sobre os quatro riscos que o boletim prevê para este El Niño. Catálogo, texto de reserva da página e índice de conteúdo ajustados.
+
 ## 2026-11-24 · #2042 · Mesclagem recusada fecha quando o arquivo volta a se unir
 
 A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.
