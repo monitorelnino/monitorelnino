@@ -171,7 +171,7 @@ def restantes(fila: dict, hoje: str, refazer_dias: int = 7) -> int:
 
 def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_web_=None,
            cobertura_qd=frozenset(), limite=60, refazer_dias=7, reprocessar=False, parar=None,
-           titulos_arquivados=None):
+           titulos_arquivados=None, contador_buscas=None):
     """Segue as pistas na ordem do B6, com até `limite` URLs abertas na rede (fechar o que está fora da
     entrada não abre nada e não conta). Planeja só em memória e devolve a estatística:
     `novas_lista` vai à porta, `fechadas_lista` vai às rejeitadas, e o estado das existentes
@@ -185,7 +185,10 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
     est = {"seguidas": 0, "candidatos": 0, "novas": 0, "resolvidas": 0, "retentadas": 0, "lacunas": 0,
            "rotas_falharam": 0, "por_via": collections.Counter(), "motivos": collections.Counter(),
            "novas_lista": [], "fechadas_lista": [], "buscas_veiculo": 0}
-    buscas = [0]
+    # o contador é da RODADA, não da chamada: a rodada segue a fila em blocos de BLOCO URLs (cada um uma
+    # chamada de seguir()). Com o contador zerado por bloco, o teto de 300 valia por bloco: 1.500 buscas
+    # no lote de 24/11 (run 45305563320).
+    buscas = contador_buscas if contador_buscas is not None else [0]
 
     def busca_capada(q):
         """A busca no veículo (SearXNG) com teto por rodada: sem teto, a cota do motor zera na primeira hora."""
@@ -425,6 +428,23 @@ def autoteste():
                    buscar_web_=lambda c: q.append(c) or [])
         return len(q) == TETO_BUSCAS_VEICULO and e["buscas_veiculo"] == TETO_BUSCAS_VEICULO
 
+    def t_b2_teto_vale_entre_blocos():
+        def pistas_de(prefixo):
+            return [{"id": f"{prefixo}{i}", "municipio": "Taió", "uf": "SC", "ibge": "4217808", "alvo": "4217808",
+                     "url": f"https://news.google.com/rss/articles/CBMi{prefixo}{i}AU_yq", "nivel": "A",
+                     "status": PREFIXO_FECHADA + "redirecionamento não resolvido (B2)",
+                     "veiculo_dominio": "jornal.example.com", "registrado_em": "2026-10-25"} for i in range(200)]
+        titulos = {}
+        for pr in ("a", "b"):
+            for p in pistas_de(pr):
+                titulos[p["id"]] = "Taió aprova plano"
+        q, contador = [], [0]
+        for prefixo in ("a", "b"):   # dois blocos de 200, como na rodada
+            seguir({"pistas": pistas_de(prefixo)}, "26/10/2026", abrir=abrir, reprocessar=True, limite=10**6,
+                   titulos_arquivados=titulos, contador_buscas=contador,
+                   buscar_web_=lambda c: q.append(c) or [])
+        return len(q) == TETO_BUSCAS_VEICULO and contador[0] == TETO_BUSCAS_VEICULO
+
     def t_b2_reprocesso_so_reabre_o_que_tem_titulo_e_veiculo_e_nao_repete():
         g = {"id": "x", "status": PREFIXO_FECHADA + "redirecionamento não resolvido (B2)",
              "veiculo_dominio": "j.example.com", "url": "https://news.google.com/rss/articles/CBMi1AU",
@@ -548,6 +568,7 @@ def autoteste():
             "link opaco sem título fecha sem consultar o motor (B2)": t_opaco_sem_titulo_nao_consulta_o_motor,
             "B2: busca no veículo com o título do arquivo, e a URL achada entra como pista nova": t_b2_busca_no_veiculo_com_titulo_do_arquivo,
             "B2: busca no veículo tem teto por rodada (300)": t_b2_teto_de_buscas_no_veiculo,
+            "B2: o teto vale para a rodada inteira, somado entre blocos": t_b2_teto_vale_entre_blocos,
             "B2: o reprocessamento reabre só o que tem título e veículo, uma vez": t_b2_reprocesso_so_reabre_o_que_tem_titulo_e_veiculo_e_nao_repete,
             "redirecionador resolvido: a URL final entra como pista nova (B2)": t_redirecionador_resolvido_vira_pista_nova,
             "B6: nível A é o primeiro da rodada": t_b6_ordem_nivel_a_primeiro,
@@ -623,10 +644,12 @@ if __name__ == "__main__":
                   f"{len(e['fechadas_lista'])} fechada(s) · SearXNG={'sim' if web else 'não'}", flush=True)
         sys.exit(0)
     titulos = titulos_do_arquivo() if a.reprocessar else None
+    contador_buscas = [0]   # teto de buscas no veículo por rodada, somado entre os blocos
     while True:
         e = seguir(fila, hoje, abrir=_abrir, abrir_final=None, consultar_qd_=qd, buscar_web_=web,
                    cobertura_qd=cob, limite=min(BLOCO, orcamento), refazer_dias=a.refazer_dias,
-                   reprocessar=a.reprocessar, parar=parar, titulos_arquivados=titulos)
+                   reprocessar=a.reprocessar, parar=parar, titulos_arquivados=titulos,
+                   contador_buscas=contador_buscas)
         balanco = gravar_rodada(fila, e)
         orcamento -= e["rede"]
         print(f"Buscador 2: {e['seguidas']} seguida(s) · {len(e['fechadas_lista'])} fechada(s) {dict(e['motivos'])} · "
