@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2048 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista
+
+O botão do mapa passa a dizer "Animar desde 29 de junho" e "Pausar". As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. "Ver em lista" usa a tabela do componente padrão, no lugar do `<dl>` sem estilo. Portão novo: a alternativa de dados só contém tabela.
+
 ## 2026-11-24 · #2046 · Monitor de riscos: abertura sem instrução de interação
 
 A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou toque nos pontos do mapa, porque essa interação não está implementada. Fica a frase sobre os quatro riscos que o boletim prevê para este El Niño. Catálogo, texto de reserva da página e índice de conteúdo ajustados.
