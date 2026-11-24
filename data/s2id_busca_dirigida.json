@@ -1847,10 +1847,10 @@
    "candidatos": 6
   },
   "4205407": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": null,
    "situacao": "portal_nao_verificado",
-   "motivo": "https://www.pmf.sc.gov.br: timeout; http://www.pmf.sc.gov.br: timeout; https://florianopolis.sc.gov.br: timeout; http://florianopolis.sc.gov.br: timeout; https://www.florianopolis.sc.gov.br: timeout; http://www.florianopolis.sc.gov.br: timeout; https://prefeituradeflorianopolis.sc.gov.br: DNS; http://prefeituradeflorianopolis.sc.gov.br: DNS; https://prefeituraflorianopolis.sc.gov.br: DNS; http://p",
+   "motivo": "a busca não respondeu",
    "pistas": 0,
    "candidatos": 7
   },
@@ -4644,7 +4644,12 @@
    "situacao": "lido",
    "motivo": null,
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 6,
+   "ultima_tentativa": {
+    "consultado_em": "2026-11-16",
+    "situacao": "nao_verificado",
+    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: sem resposta; busca no domínio: 0 link(s)"
+   }
   },
   "3501608": {
    "consultado_em": "2026-11-12",
@@ -6186,12 +6191,12 @@
    "candidatos": 6
   },
   "1200401": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "www.riobranco.ac.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 4,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2703205": {
    "consultado_em": "2026-11-12",
@@ -6242,12 +6247,12 @@
    "candidatos": 6
   },
   "2704302": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "maceio.al.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 2,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2705101": {
    "consultado_em": "2026-11-12",
@@ -6658,12 +6663,12 @@
    "candidatos": 6
   },
   "1302603": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "manaus.am.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 3,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1304302": {
    "consultado_em": "2026-11-12",
@@ -6767,12 +6772,12 @@
    "candidatos": 6
   },
   "1600303": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "macapa.ap.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 1,
-   "candidatos": 6
+   "candidatos": 7
   },
   "1600808": {
    "consultado_em": "2026-11-12",
@@ -7651,12 +7656,12 @@
    "candidatos": 6
   },
   "2927408": {
-   "consultado_em": "2026-11-12",
-   "dominio": "salvador.ba.gov.br",
+   "consultado_em": "2026-11-16",
+   "dominio": "www.salvador.ba.gov.br",
    "situacao": "lido",
-   "motivo": null,
+   "motivo": "cópia arquivada de 2026-10-14",
    "pistas": 2,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2927200": {
    "consultado_em": "2026-11-12",
@@ -8074,7 +8079,7 @@
    "candidatos": 6
   },
   "2304400": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "www.fortaleza.ce.gov.br",
    "situacao": "lido",
    "motivo": "cópia arquivada de 2026-11-04",
@@ -8839,12 +8844,12 @@
    "candidatos": 6
   },
   "5300108": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": null,
    "situacao": "portal_nao_verificado",
-   "motivo": "https://df.gov.br: timeout; df.gov.br: HTTP 503; https://brasilia.df.gov.br: timeout; http://brasilia.df.gov.br: timeout; https://www.brasilia.df.gov.br: timeout; http://www.brasilia.df.gov.br: timeout; https://prefeituradebrasilia.df.gov.br: TLS; prefeituradebrasilia.df.gov.br: respondeu, mas não se identifica como a prefeitura de Brasília; https://prefeiturabrasilia.df.gov.br: TLS; prefeiturabra",
+   "motivo": "a busca não respondeu",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3204559": {
    "consultado_em": "2026-11-12",
@@ -9015,12 +9020,12 @@
    "candidatos": 6
   },
   "3205309": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "vitoria.es.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 16,
-   "candidatos": 6
+   "candidatos": 7
   },
   "3200169": {
    "consultado_em": "2026-11-12",
@@ -9055,12 +9060,12 @@
    "candidatos": 6
   },
   "5208707": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "www.goiania.go.gov.br",
    "situacao": "lido",
    "motivo": null,
-   "pistas": 0,
-   "candidatos": 6
+   "pistas": 1,
+   "candidatos": 7
   },
   "5208806": {
    "consultado_em": "2026-11-12",
@@ -9876,12 +9881,12 @@
    "candidatos": 6
   },
   "2111300": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "saoluis.ma.gov.br",
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2111409": {
    "consultado_em": "2026-11-12",
@@ -10301,9 +10306,9 @@
    "pistas": 3,
    "candidatos": 6,
    "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
+    "consultado_em": "2026-11-16",
     "situacao": "portal_nao_verificado",
-    "motivo": "portalbelohorizonte.com.br: respondeu, mas não se identifica como a prefeitura de Belo Horizonte; https://belohorizonte.mg.gov.br: timeout; http://belohorizonte.mg.gov.br: timeout; https://www.belohorizonte.mg.gov.br: TLS; www.belohorizonte.mg.gov.br: HTTP 404; https://prefeituradebelohorizonte.mg.gov.br: DNS; http://prefeituradebelohorizonte.mg.gov.br: DNS; https://prefeiturabelohorizonte.mg.gov."
+    "motivo": "a busca não respondeu"
    }
   },
   "3110608": {
@@ -12179,7 +12184,12 @@
    "situacao": "lido",
    "motivo": null,
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 6,
+   "ultima_tentativa": {
+    "consultado_em": "2026-11-16",
+    "situacao": "nao_verificado",
+    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: sem resposta; busca no domínio: 0 link(s)"
+   }
   },
   "5007109": {
    "consultado_em": "2026-11-12",
@@ -12294,12 +12304,12 @@
    "candidatos": 6
   },
   "5103403": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "cuiaba.mt.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 4,
-   "candidatos": 6
+   "candidatos": 7
   },
   "5101803": {
    "consultado_em": "2026-11-12",
@@ -12826,7 +12836,7 @@
    "pistas": 0,
    "candidatos": 6,
    "ultima_tentativa": {
-    "consultado_em": "2026-11-12",
+    "consultado_em": "2026-11-16",
     "situacao": "portal_nao_verificado",
     "motivo": "cópia arquivada de 2025-05-15, anterior ao ciclo"
    }
@@ -13306,12 +13316,12 @@
    "candidatos": 6
   },
   "2507507": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "joaopessoa.pb.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "situacao": "portal_nao_verificado",
+   "motivo": "cópia arquivada de 2026-06-12, anterior ao ciclo",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2506905": {
    "consultado_em": "2026-11-12",
@@ -14039,7 +14049,12 @@
    "situacao": "lido",
    "motivo": null,
    "pistas": 1,
-   "candidatos": 6
+   "candidatos": 6,
+   "ultima_tentativa": {
+    "consultado_em": "2026-11-16",
+    "situacao": "nao_verificado",
+    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: sem resposta; busca no domínio: 0 link(s)"
+   }
   },
   "2612406": {
    "consultado_em": "2026-11-12",
@@ -14750,7 +14765,7 @@
    "candidatos": 6
   },
   "4106902": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "curitiba.pr.gov.br",
    "situacao": "recusa_de_fonte",
    "motivo": "HTTP 403",
@@ -14843,7 +14858,7 @@
    "candidatos": 6
   },
   "2211001": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "pmt.pi.gov.br",
    "situacao": "portal_nao_verificado",
    "motivo": "cópia arquivada de 2025-04-28, anterior ao ciclo",
@@ -15633,10 +15648,10 @@
    "candidatos": 6
   },
   "3304557": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": null,
    "situacao": "portal_nao_verificado",
-   "motivo": "https://riodejaneiro.rj.gov.br: DNS; http://riodejaneiro.rj.gov.br: DNS; https://www.riodejaneiro.rj.gov.br: DNS; http://www.riodejaneiro.rj.gov.br: DNS; https://prefeituraderiodejaneiro.rj.gov.br: DNS; http://prefeituraderiodejaneiro.rj.gov.br: DNS; https://prefeiturariodejaneiro.rj.gov.br: DNS; http://prefeiturariodejaneiro.rj.gov.br: DNS; https://pmriodejaneiro.rj.gov.br: DNS; http://pmriodejan",
+   "motivo": "a busca não respondeu",
    "pistas": 0,
    "candidatos": 7
   },
@@ -15886,12 +15901,12 @@
    "candidatos": 6
   },
   "2408102": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "natal.rn.gov.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 2,
-   "candidatos": 6
+   "candidatos": 7
   },
   "2403251": {
    "consultado_em": "2026-11-12",
@@ -16046,12 +16061,12 @@
    "candidatos": 6
   },
   "1100205": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "portovelho.ro.gov.br",
    "situacao": "lido",
    "motivo": null,
-   "pistas": 0,
-   "candidatos": 6
+   "pistas": 1,
+   "candidatos": 7
   },
   "4300877": {
    "consultado_em": "2026-11-12",
@@ -16198,12 +16213,12 @@
    "candidatos": 6
   },
   "1400100": {
-   "consultado_em": "2026-11-12",
-   "dominio": "transparencia.pmbv.rr.gov.br",
-   "situacao": "recusa_de_fonte",
-   "motivo": "HTTP 403",
+   "consultado_em": "2026-11-16",
+   "dominio": null,
+   "situacao": "portal_nao_verificado",
+   "motivo": "a busca não respondeu",
    "pistas": 0,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4302105": {
    "consultado_em": "2026-11-12",
@@ -16869,12 +16884,12 @@
    "candidatos": 6
   },
   "4314902": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "prefeitura.poa.br",
    "situacao": "lido",
    "motivo": null,
    "pistas": 1,
-   "candidatos": 6
+   "candidatos": 7
   },
   "4314100": {
    "consultado_em": "2026-11-11",
@@ -18791,7 +18806,12 @@
    "situacao": "lido",
    "motivo": null,
    "pistas": 1,
-   "candidatos": 6
+   "candidatos": 6,
+   "ultima_tentativa": {
+    "consultado_em": "2026-11-16",
+    "situacao": "nao_verificado",
+    "motivo": "sem API; 0 link(s) candidato(s) no HTML; render: sem resposta; busca no domínio: 0 link(s)"
+   }
   },
   "2800605": {
    "consultado_em": "2026-11-12",
@@ -19012,12 +19032,12 @@
    "candidatos": 6
   },
   "1721000": {
-   "consultado_em": "2026-11-12",
+   "consultado_em": "2026-11-16",
    "dominio": "palmas.to.gov.br",
    "situacao": "lido",
    "motivo": null,
-   "pistas": 1,
-   "candidatos": 6
+   "pistas": 4,
+   "candidatos": 7
   },
   "1713304": {
    "consultado_em": "2026-11-12",
@@ -45409,5 +45429,5 @@
    "candidatos": 6
   }
  },
- "gerado_em": "2026-11-12"
+ "gerado_em": "2026-11-16"
 }
