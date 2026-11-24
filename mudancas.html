@@ -44,6 +44,10 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/11/2026 · Válvula traz a main antes do PR de dado</dt>
+      <dd>O ramo `coleta-dia/*` nasce da `main` do disparo e a coleta leva horas; o PR de dado nascia em conflito e, em conflito, os Portões não rodavam (#2038, #2045). Antes do push, a válvula une a `main` ao ramo pela base comum, com o mesmo resolvedor do rebase. Falha F99; ensaio 30 roda o trecho do próprio workflow.</dd>
+      <dt>24/11/2026 · Juiz 1.8: lote de leitura da rodada paralela J18</dt>
+      <dd>Rejulgamento paralelo passa a ler documento fora de `evidencias/` pela porta de rede, sem preservar nada, e grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`. Índice e produção não mudam. Seis travas novas no autoteste.</dd>
       <dt>24/11/2026 · Ações do GitHub em Node 24</dt>
       <dd>Todo registro de execução avisava que as ações de checkout, Node, Python, cache e artefato rodavam em Node 20, que o GitHub descontinuou. Cada uma passa à primeira versão que já roda em Node 24, com o endereço fixo conferido na própria versão: a menor mudança que encerra o aviso.</dd>
       <dt>24/11/2026 · Válvula confere a entrada antes de subir o executor</dt>
@@ -160,10 +164,6 @@
       <dd>A leitura da data aceitava qualquer ano: o plano de Tobias Barreto/SE, digitalizado, entrou datado de 2067 e trocou o decreto do município. Ano no futuro deixa de ser data do documento; o registro voltou ao de ontem e a pista volta ao juiz.</dd>
       <dt>19/11/2026 · Quarentena confere pista por pista; imprensa regional grava pela porta</dt>
       <dd>A quarentena da fila recortava a identidade do texto do problema, e a pista sem `id` (identidade = URL) nunca casava: 29 pistas ficaram na fila ativa e a publicação reprovou desde 03:23 UTC. Agora cada pista se confere sozinha. A origem delas, `monitorar_imprensa_regional.py`, deixa de gravar a fila por fora e passa por `pistas.gravar_lote`.</dd>
-      <dt>18/11/2026 · Plano de edição anterior não substitui o mais novo</dt>
-      <dd>A atualização de registro deixava um documento de força igual trocar o registro sem julgamento do juiz, mesmo sendo mais antigo: Cachoeiro de Itapemirim e Pancas/ES perderam o plano de 2025 para o de 2023, e o índice do ES caiu. Edição anterior não substitui mais; os dois registros voltaram.</dd>
-      <dt>18/11/2026 · Um leitor só para o documento, também na saúde e na descoberta</dt>
-      <dd>O juiz da saúde passa a ler como o juiz municipal: fonte, cópia da ponte no Brasil e cópia pública quando a fonte cai, com OCR do PDF escaneado. Muro de robô volta a ser recusa, não falha de rede. A guarda da prova usa o mesmo leitor. A busca de planos pede à ponte o portal da prefeitura que não abre de fora do país.</dd>
     </dl>
   </section>
 </main>

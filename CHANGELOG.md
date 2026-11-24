@@ -9,10 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2056 · Válvula traz a main antes do PR de dado
+
+O ramo `coleta-dia/*` nasce da `main` do disparo e a coleta leva horas; o PR de dado nascia em conflito e, em conflito, os Portões não rodavam (#2038, #2045). Antes do push, a válvula une a `main` ao ramo pela base comum, com o mesmo resolvedor do rebase. Falha F99; ensaio 30 roda o trecho do próprio workflow.
+
+## 2026-11-24 · #2055 · Juiz 1.8: lote de leitura da rodada paralela J18
+
+Rejulgamento paralelo passa a ler documento fora de `evidencias/` pela porta de rede, sem preservar nada, e grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`. Índice e produção não mudam. Seis travas novas no autoteste.
+
 ## 2026-11-24 · #2054 · Ações do GitHub em Node 24
 Todo registro de execução avisava que as ações de checkout, Node, Python, cache e artefato rodavam em Node 20, que o GitHub descontinuou. Cada uma passa à primeira versão que já roda em Node 24, com o endereço fixo conferido na própria versão: a menor mudança que encerra o aviso.
+
 ## 2026-11-24 · #2053 · Válvula confere a entrada antes de subir o executor
 Em 17/11 a coleta de dia recebeu linhas de Python soltas no lugar de comandos e rodou cada uma como programa. Agora um passo curto, antes do executor, recusa a entrada se alguma linha não começar por um script do repositório (com prazo e intérprete opcionais). A noite não muda.
+
 ## 2026-11-24 · #2057 · Monitor de riscos: fogo e água do MapBiomas
 
 Três figuras entram no bloco de seca e fogo, com um seletor de território (Brasil e os 27 estados): área queimada por mês no ano em curso, em 2015 e 2024, e superfície de água por ano. A faixa de 2019 a 2025, sem 2024, e a mediana saem das próprias séries. A fonte de cada figura é o produto do MapBiomas e a data da consulta.
@@ -20,13 +30,16 @@ Três figuras entram no bloco de seca e fogo, com um seletor de território (Bra
 ## 2026-11-24 · #2048 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista
 
 O botão do mapa passa a dizer "Animar desde 29 de junho" e "Pausar". As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. "Ver em lista" usa a tabela do componente padrão, no lugar do `<dl>` sem estilo. Portão novo: a alternativa de dados só contém tabela.
+
 ## 2026-11-24 · #2052 · Log de busca das válvulas de 15/11 recuperado
 Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.
 
 ## 2026-11-24 · #2050 · Catálogo de falhas: três noites sem linha e o horário do F90
 Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.
+
 ## 2026-11-24 · #2049 · Portões leem o repositório, não a cópia local
 O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.
+
 ## 2026-11-24 · #2047 · Portão: PR não devolve arquivo a uma versão anterior da main
 O #2043 levou, por engano, seis arquivos em versões anteriores da `main` e desfaria a regra D2 do resolvedor sem conflito nenhum. A regra nova `regressao` do verificador do repositório reprova o PR cujo arquivo de código, configuração, catálogo ou documento é igual a uma das 15 versões anteriores da `main`. Reversão de propósito diz "Reverte" num commit do PR.
 
@@ -39,6 +52,7 @@ Em 21/11 o portão de figuras estourou 30 segundos esperando a rede ficar ociosa
 
 ## 2026-11-24 · #2043 · Portão de tamanho reconhece retrato por chave
 Em 18/11 o arquivo de alertas em vigor cresceu 34% porque os alertas foram de 4.024 para 5.690, e o portão de tamanho reprovou a `main` como se fosse duplicação. A regra que absolve leitura nova só enxergava listas no topo do arquivo; passa a contar também os itens das listas de cada chave. Registro repetido continua barrado.
+
 ## 2026-11-24 · #2046 · Monitor de riscos: abertura sem instrução de interação
 
 A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou toque nos pontos do mapa, porque essa interação não está implementada. Fica a frase sobre os quatro riscos que o boletim prevê para este El Niño. Catálogo, texto de reserva da página e índice de conteúdo ajustados.
@@ -46,11 +60,14 @@ A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou to
 ## 2026-11-24 · #2042 · Mesclagem recusada fecha quando o arquivo volta a se unir
 
 A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.
+
 ## 2026-11-24 · #2039 · Aviso: outro run com a mesma causa não comenta a Issue
 
 O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
+
 ## 2026-11-24 · #2040 · Um envio conferido por PR
 O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.
+
 ## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
 
 A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.
@@ -80,6 +97,7 @@ Quando o plano que a fonte disponibiliza como plano do município é da saúde (
 
 ## 2026-11-23 · #2026 · OCR gira a página de cabeça para baixo
 Página digitalizada de cabeça para baixo ou de lado saía como letras sem sentido, e o juiz recusava o plano como ilegível (Humaitá e União da Serra/RS). Quando o texto lido tem menos de 5% das palavras mais frequentes do português, a detecção de orientação do Tesseract diz o giro e a página é lida de novo; o texto girado só entra quando lê melhor.
+
 ## 2026-11-23 · #2009 · Destino fora do ar
 
 Quando a fonte oficial indica um endereço que não existe mais (30 planos da 7ª regional do RS), a falha passa a ter nome próprio e data, e o cartão do município diz isso.
@@ -91,6 +109,7 @@ O cartão dizia "Ato oficial localizado" para plano publicado sem ato de aprova�
 ## 2026-11-23 · #2006 · OCR por página
 
 PDF escaneado com cabeçalho digitado em cada página passava da régua de letras e não ia ao OCR (São Valentim do Sul/RS). A régua passa a ser por página.
+
 ## 2026-11-23 · #2004 · Plano localizado que não conta não é "não localizado"
 
 O cartão do município dizia "não localizamos" quando o plano tinha sido lido sem data ou indicado no repositório estadual e não aberto. Agora diz o que foi achado e por que não entra no índice, em todos os municípios.
