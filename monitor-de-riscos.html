@@ -28,8 +28,8 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=99e0b770">
-<script src="assets/mapas.js?v=6d303be4"></script>
+<link rel="stylesheet" href="assets/base.css?v=0e40ffbf">
+<script src="assets/mapas.js?v=960ba3f3"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -117,7 +117,7 @@
 
   <div class="panel" id="riscos">
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao_2">Os riscos no Brasil</h2>
-    <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño. Passe o cursor ou toque nos pontos e nos estados do mapa para ver os dados disponíveis. As cores e a legenda identificam o tipo ou a intensidade do registro.</p>
+    <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño.</p>
 
     <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto deixa de ser mapa e
          vira uma faixa de etiquetas por família; cada bloco de família abre com "Boletim prevê para".
@@ -165,6 +165,28 @@
         </div>
         <div class="map-legend" id="legFogo"></div>
         <p class="figura-nota" data-conteudo="monitor-de-riscos.fogo.nota">Foco não é incêndio: um incêndio grande gera muitos focos, e queimadas autorizadas também entram.</p>
+      </figure>
+    </div>
+    <p class="hint"><label for="ufMapbiomas" data-conteudo="monitor-de-riscos.mapbiomas.seletor">Território</label>
+      <select id="ufMapbiomas" class="seletor"></select></p>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
+      <figure class="figura figura--grafico cartao-mapa" id="boxFogoMes">
+        <h3 class="figura-titulo" id="tituloFogoMes" data-conteudo="monitor-de-riscos.mapbiomas.fogo_mes.titulo_reserva">Área queimada por mês no ano corrente</h3>
+        <p class="figura-sub" id="subFogoMes"></p>
+        <div class="figura-midia grafico-pacifico" id="graficoFogoMes"></div>
+        <div class="map-legend" id="legFogoMes"></div>
+      </figure>
+      <figure class="figura figura--grafico cartao-mapa" id="boxFogoColecao">
+        <h3 class="figura-titulo" id="tituloFogoColecao" data-conteudo="monitor-de-riscos.mapbiomas.fogo_colecao.titulo">Área queimada por mês em 2015 e 2024</h3>
+        <p class="figura-sub" id="subFogoColecao"></p>
+        <div class="figura-midia grafico-pacifico" id="graficoFogoColecao"></div>
+        <div class="map-legend" id="legFogoColecao"></div>
+      </figure>
+      <figure class="figura figura--grafico cartao-mapa" id="boxAguaAnual">
+        <h3 class="figura-titulo" id="tituloAguaAnual" data-conteudo="monitor-de-riscos.mapbiomas.agua.titulo">Superfície de água por ano</h3>
+        <p class="figura-sub" id="subAguaAnual"></p>
+        <div class="figura-midia grafico-pacifico" id="graficoAguaAnual"></div>
+        <div class="map-legend" id="legAguaAnual"></div>
       </figure>
     </div>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
@@ -249,7 +271,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/consulta-municipio.js?v=6afcc0b1" defer></script><script src="assets/js/monitor-de-riscos.js?v=59aaf5d2" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/consulta-municipio.js?v=6afcc0b1" defer></script><script src="assets/js/monitor-de-riscos.js?v=c7f1e472" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

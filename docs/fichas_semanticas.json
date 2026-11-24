@@ -407,6 +407,77 @@
       ],
       "funcao_narrativa": "contexto de mortalidade ao lado dos desfechos de saúde, sem peso no índice",
       "acao_relacionada": null
+    },
+    "monitor-de-riscos.html#boxFogoMes": {
+      "dimensao_da_preparacao": null,
+      "denominador": null,
+      "acao_relacionada": null,
+      "universo": "os 27 estados, somados para o Brasil ou escolhidos um a um no seletor de território",
+      "unidade_de_analise": "mês (hectares queimados no território)",
+      "territorio": "Brasil ou o estado escolhido",
+      "tipo": "série temporal",
+      "pergunta_que_responde": "Quanto se queimou em cada mês do ano em curso, frente a 2024 e à faixa dos anos de 2019 a 2025, sem 2024?",
+      "periodo": "de janeiro ao último mês publicado do ano em curso",
+      "variavel_principal": "área queimada por mês (hectares), somada dos mapas do MapBiomas por estado",
+      "fonte": "MapBiomas · Monitor do Fogo, consultado na data da linha de fonte",
+      "metodologia": "A faixa é o menor e o maior valor de cada mês entre 2019 e 2025, sem 2024, e a mediana é a desses mesmos anos; as duas saem da própria série, sem dado novo. O dado não entra no índice.",
+      "conclusoes_permitidas": [
+        "quantos hectares o MapBiomas registra queimados em cada mês do ano em curso",
+        "se o mês do ano em curso ficou dentro ou fora da faixa dos anos de referência"
+      ],
+      "conclusoes_nao_permitidas": [
+        "tratar área queimada como dano ou como causa de decreto",
+        "ordenar estados por área queimada, que é comparação construída",
+        "comparar o valor desta figura com o da outra figura de fogo, que usa outro produto do MapBiomas"
+      ],
+      "funcao_narrativa": "o fogo observado no ano em curso, como contexto do risco de fogo previsto"
+    },
+    "monitor-de-riscos.html#boxFogoColecao": {
+      "dimensao_da_preparacao": null,
+      "denominador": null,
+      "acao_relacionada": null,
+      "universo": "os 27 estados, somados para o Brasil ou escolhidos um a um no seletor de território",
+      "unidade_de_analise": "mês (hectares queimados no território)",
+      "territorio": "Brasil ou o estado escolhido",
+      "tipo": "série temporal",
+      "pergunta_que_responde": "Quanto se queimou em cada mês de 2015 e de 2024, frente à faixa dos anos de 2019 a 2025, sem 2024?",
+      "periodo": "janeiro a dezembro, com 2015 e 2024 desenhados",
+      "variavel_principal": "área queimada por mês (hectares), somada dos mapas do MapBiomas por estado",
+      "fonte": "MapBiomas · Fogo, coleção 5.1, consultado na data da linha de fonte",
+      "metodologia": "A faixa e a mediana são calculadas sobre este produto, com os mesmos anos de referência da outra figura de fogo; os dois produtos dão números diferentes para o mesmo mês e por isso ficam em figuras separadas. O dado não entra no índice.",
+      "conclusoes_permitidas": [
+        "quantos hectares o MapBiomas registra queimados em cada mês de 2015 e de 2024",
+        "se 2015 e 2024 ficaram dentro ou fora da faixa dos anos de referência"
+      ],
+      "conclusoes_nao_permitidas": [
+        "tratar área queimada como dano ou como causa de decreto",
+        "ordenar estados por área queimada, que é comparação construída",
+        "comparar o valor desta figura com o da outra figura de fogo, que usa outro produto do MapBiomas"
+      ],
+      "funcao_narrativa": "os dois anos de El Niño forte de referência e a faixa habitual, no produto consolidado do MapBiomas"
+    },
+    "monitor-de-riscos.html#boxAguaAnual": {
+      "dimensao_da_preparacao": null,
+      "denominador": null,
+      "acao_relacionada": null,
+      "universo": "os 27 estados, somados para o Brasil ou escolhidos um a um no seletor de território",
+      "unidade_de_analise": "ano (hectares de superfície de água no território)",
+      "territorio": "Brasil ou o estado escolhido",
+      "tipo": "barras por mês",
+      "pergunta_que_responde": "Qual era a superfície de água por ano, de 2005 ao último ano publicado, e onde ficaram 2015 e 2024 frente à mediana de 2019 a 2025, sem 2024?",
+      "periodo": "de 2005 ao último ano publicado",
+      "variavel_principal": "superfície de água por ano (hectares), somada dos mapas do MapBiomas por estado",
+      "fonte": "MapBiomas · Água, coleção 5, consultado na data da linha de fonte",
+      "metodologia": "A mediana é a dos anos de 2019 a 2025, sem 2024, calculada sobre a própria série; o eixo parte de zero. O dado não entra no índice.",
+      "conclusoes_permitidas": [
+        "quantos hectares de superfície de água o MapBiomas registra em cada ano",
+        "se 2015 e 2024 ficaram acima ou abaixo da mediana dos anos de referência"
+      ],
+      "conclusoes_nao_permitidas": [
+        "tratar a variação da superfície de água como seca ou cheia decretada",
+        "ordenar estados por superfície de água, que é comparação construída"
+      ],
+      "funcao_narrativa": "a água observada em anos de referência, como contexto do risco de seca"
     }
   }
 }
