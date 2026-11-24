@@ -60,6 +60,7 @@ def elo_e_run(nome_do_artefato: str) -> tuple:
 MANIFESTO_DA_PERDA = "data/coleta_perdida.json"
 
 
+SEM_BASE = object()   # o commit-base do elo não está nesta árvore (≠ arquivo ausente na base: None)
 CAMPOS_DE_ARQUIVO = ("arquivo", "texto_arquivo", "texto_integral", "ocr_arquivo")
 
 
@@ -79,7 +80,7 @@ def reaplicar_arquivo(rel: str, alterados, base, arvore, artefato, destino, exis
         pathlib.Path(destino).parent.mkdir(parents=True, exist_ok=True)
         u._escrever(destino, artefato)
         feito = "copiado"
-    elif base is None:
+    elif base is SEM_BASE:
         return "recusa: a base do elo não está no histórico desta árvore"
     else:
         try:
@@ -97,9 +98,10 @@ def reaplicar_arquivo(rel: str, alterados, base, arvore, artefato, destino, exis
 
 
 def _na_base(base: str, rel: str):
-    """Conteúdo de `rel` no commit `base`, ou None (sem a base ou sem o arquivo). Só lê."""
-    if not base:
-        return None
+    """Conteúdo de `rel` no commit `base`; None se o arquivo não existia lá; SEM_BASE sem o commit. Só lê.
+    24/11/2026: `data/funil/<dia>.json` novo dos dois lados era recusado como "base fora do histórico"."""
+    if not base or subprocess.run(["git", "cat-file", "-e", f"{base}^{{commit}}"], cwd=RAIZ).returncode:
+        return SEM_BASE
     r = subprocess.run(["git", "show", f"{base}:{rel}"], cwd=RAIZ, capture_output=True)
     return r.stdout.decode("utf-8") if r.returncode == 0 else None
 
@@ -251,8 +253,12 @@ def _autoteste() -> int:
         ok("F45: outro escritor sem classe de união → recusa nomeada",
            r("data/clima.json", ["data/clima.json"], "v1", "v3", "v2").startswith("recusa"))
         ok("sem a base no histórico → recusa nomeada",
-           r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"], None, "a\n", "b\n")
+           r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"], SEM_BASE, "a\n", "b\n")
            .startswith("recusa"))
+        _fn = lambda n: json.dumps({"data": "2026-11-22", "etapas": {"e": {"contagem": n}}})
+        ok("funil do dia novo dos dois lados (ausente na base) une pela base vazia, não recusa",
+           not r("data/funil/2026-11-22.json", ["data/funil/2026-11-22.json"], None, _fn(2), _fn(3)).startswith("recusa")
+           and json.loads(lido())["etapas"]["e"]["contagem"] == 5)
         ok("log mensal une pela base comum (a do resolvedor)",
            not r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"],
                  "a\n", "a\nb\n", "a\nc\n").startswith("recusa")
