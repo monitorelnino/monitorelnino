@@ -60,7 +60,6 @@ def elo_e_run(nome_do_artefato: str) -> tuple:
 MANIFESTO_DA_PERDA = "data/coleta_perdida.json"
 
 
-SEM_BASE = object()   # o commit-base do elo não está nesta árvore (≠ arquivo ausente na base: None)
 CAMPOS_DE_ARQUIVO = ("arquivo", "texto_arquivo", "texto_integral", "ocr_arquivo")
 
 
@@ -80,7 +79,7 @@ def reaplicar_arquivo(rel: str, alterados, base, arvore, artefato, destino, exis
         pathlib.Path(destino).parent.mkdir(parents=True, exist_ok=True)
         u._escrever(destino, artefato)
         feito = "copiado"
-    elif base is SEM_BASE:
+    elif base is None:
         return "recusa: a base do elo não está no histórico desta árvore"
     else:
         try:
@@ -98,10 +97,9 @@ def reaplicar_arquivo(rel: str, alterados, base, arvore, artefato, destino, exis
 
 
 def _na_base(base: str, rel: str):
-    """Conteúdo de `rel` no commit `base`; None se o arquivo não existia lá; SEM_BASE sem o commit. Só lê.
-    24/11/2026: `data/funil/<dia>.json` novo dos dois lados era recusado como "base fora do histórico"."""
-    if not base or subprocess.run(["git", "cat-file", "-e", f"{base}^{{commit}}"], cwd=RAIZ).returncode:
-        return SEM_BASE
+    """Conteúdo de `rel` no commit `base`, ou None (sem a base ou sem o arquivo). Só lê."""
+    if not base:
+        return None
     r = subprocess.run(["git", "show", f"{base}:{rel}"], cwd=RAIZ, capture_output=True)
     return r.stdout.decode("utf-8") if r.returncode == 0 else None
 
@@ -115,21 +113,15 @@ def caminho_do_reaplicado(noite: str, elo: str) -> str:
 def artefatos_da_noite(noite: str) -> list:
     """Os artefatos `coleta-perdida-*` não expirados, mais novos que a abertura da noite. ESCREVE
     nada; só lê a API."""
-    # 24/11/2026: a API devolve do mais novo para o mais velho, 100 por página; só a primeira página
-    # deixava de fora o artefato de 22/11 (coleta-perdida-atualizar-44980777132) num dia de 100+
-    # artefatos. Lê página a página até passar da abertura da noite.
-    linhas, pagina = [], 1
-    while True:
-        saida = _gh(["api", f"repos/{{owner}}/{{repo}}/actions/artifacts?per_page=100&page={pagina}",
-                     "--jq", '.artifacts[] | [.name, (.id|tostring), .created_at, (.expired|tostring)] | @tsv'],
-                    timeout=600)
-        pag = [l.split("\t") for l in saida.splitlines() if l.count("\t") == 3]
-        linhas += [p[:3] for p in pag if p[3] == "false" and p[0].startswith(PREFIXO)]
-        if len(pag) < 100 or not noite or min(p[2] for p in pag)[:10] < noite:
-            break
-        pagina += 1
+    saida = _gh(["api", "repos/{owner}/{repo}/actions/artifacts?per_page=100",
+                 "--jq", '.artifacts[] | select(.expired == false) '
+                         '| select(.name | startswith("' + PREFIXO + '")) '
+                         '| [.name, (.id|tostring), .created_at] | @tsv'], timeout=600)
     fora = []
-    for partes in linhas:
+    for linha in saida.splitlines():
+        partes = linha.split("\t")
+        if len(partes) != 3:
+            continue
         nome, ident, criado = partes
         elo, run = elo_e_run(nome)
         if not elo:
@@ -158,13 +150,6 @@ def main(argv: list) -> int:
     # sem arrastar os outros.
     escolhidos = [argv[i + 1] for i, a in enumerate(argv)
                   if a == "--artefato" and i + 1 < len(argv)]
-    # 24/11/2026 (D3): `--caminho` (com `--artefato`) refaz só os caminhos que a união recusou da
-    # primeira vez, depois que a regra deles chegou. Ignora o marcador: os outros caminhos já
-    # voltaram, e reaplicá-los dobraria as linhas novas dos logs.
-    caminhos = {argv[i + 1] for i, a in enumerate(argv) if a == "--caminho" and i + 1 < len(argv)}
-    if caminhos and not escolhidos:
-        print("X --caminho exige --artefato")
-        return 2
 
     artefatos = artefatos_da_noite(noite)
     if escolhidos:
@@ -182,7 +167,7 @@ def main(argv: list) -> int:
         marcador = RAIZ / caminho_do_reaplicado(noite, a["elo"])
         ja = marcador.exists() and a["run"] in marcador.read_text(encoding="utf-8")
         print(f"   · {a['nome']} ({a['criado_em']})" + (" — já reaplicado" if ja else ""))
-        if ja and not caminhos:
+        if ja:
             continue
         if not aplicar:
             continue
@@ -203,8 +188,6 @@ def main(argv: list) -> int:
         n_portas = {}
         for q in arquivos:
             rel = str(q.relative_to(destino)).replace("\\", "/")
-            if caminhos and rel not in caminhos:
-                continue
             arv = (RAIZ / rel).read_text(encoding="utf-8") if (RAIZ / rel).exists() else None
             try:
                 art = q.read_text(encoding="utf-8")
@@ -268,12 +251,8 @@ def _autoteste() -> int:
         ok("F45: outro escritor sem classe de união → recusa nomeada",
            r("data/clima.json", ["data/clima.json"], "v1", "v3", "v2").startswith("recusa"))
         ok("sem a base no histórico → recusa nomeada",
-           r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"], SEM_BASE, "a\n", "b\n")
+           r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"], None, "a\n", "b\n")
            .startswith("recusa"))
-        _fn = lambda n: json.dumps({"data": "2026-11-22", "etapas": {"e": {"contagem": n}}})
-        ok("funil do dia novo dos dois lados (ausente na base) une pela base vazia, não recusa",
-           not r("data/funil/2026-11-22.json", ["data/funil/2026-11-22.json"], None, _fn(2), _fn(3)).startswith("recusa")
-           and json.loads(lido())["etapas"]["e"]["contagem"] == 5)
         ok("log mensal une pela base comum (a do resolvedor)",
            not r("data/log_buscas/2026-10.jsonl", ["data/log_buscas/2026-10.jsonl"],
                  "a\n", "a\nb\n", "a\nc\n").startswith("recusa")

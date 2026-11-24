@@ -170,8 +170,6 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 #   rejeitada_em    vence a data mais antiga (a primeira rejeição).
 #   seguimento      vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu (A1, 22/11).
 #   repeticoes      contador (`pistas.gravar_lote` soma 1): base + (nosso − base) + (deles − base) (A1, 23/11).
-#   julgamento_automatico  APLICADA vence ABSTENCAO; duas ABSTENCAO: a `data` mais nova, no mesmo dia a da
-#                   `main`; o resto deixa a pista como na `main` e a união segue (D2, central, 23/11/2026).
 #   busca_web_espera e cursor*  vence o lado da `main` (estado de fila, não registro).
 # Campos derivados do arquivo (`caracteres`, `sha256`) são recalculados do arquivo, nunca escolhidos:
 # nesta função não há o arquivo, então recusam e o resolvedor deixa o caso para a recalculagem.
@@ -211,28 +209,10 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
         return nosso_v                   # duas falhas: o nome da exceção não é dado
     if campo == "seguimento" and isinstance(nosso_v, dict) and isinstance(deles_v, dict):
         return _seguimento_que_vence(nosso_v, deles_v)
-    if campo == "julgamento_automatico":
-        return _julgamento_que_vence(nosso_v, deles_v)
     if campo in _CAMPOS_DO_ARQUIVO:
         raise Recusa(f"campo derivado do arquivo {campo!r} muda nos dois lados: recalcular do arquivo")
     raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
                  f"diferentes — qual vence é política, e este script não adivinha")
-
-
-def _dia(s: dict) -> str:
-    """`data` dd/mm/aaaa de um registro como aaaammdd, para comparar."""
-    return "".join(reversed(str((s if isinstance(s, dict) else {}).get("data") or "").split("/")))
-
-
-def _julgamento_que_vence(main, outro) -> dict:
-    """D2 (central, 23/11/2026): `main` é o lado de cima (`nosso`)."""
-    dec = lambda j: j.get("decisao") if isinstance(j, dict) else None
-    par = {dec(main), dec(outro)}
-    if par == {"APLICADA", "ABSTENCAO"}:
-        return main if dec(main) == "APLICADA" else outro
-    if par == {"ABSTENCAO"}:
-        return outro if _dia(outro) > _dia(main) else main
-    raise FicaComoNaMain(f"julgamento_automatico {dec(main)} na main e {dec(outro)} do outro lado")
 
 
 def _seguimento_que_vence(a: dict, b: dict) -> dict:
@@ -242,8 +222,9 @@ def _seguimento_que_vence(a: dict, b: dict) -> dict:
     recusou = [s for s in (a, b) if any(r in str(f) for f in s.get("falhas") or [] for r in RECUSAS_DA_PAGINA)]
     if len(recusou) == 1:
         return recusou[0]
-    if _dia(a) != _dia(b):
-        return max(a, b, key=_dia)
+    dia = lambda s: "".join(reversed(str(s.get("data") or "").split("/")))
+    if dia(a) != dia(b):
+        return max(a, b, key=dia)
     if bool(a.get("falhas")) != bool(b.get("falhas")):
         return b if a.get("falhas") else a
     if a.get("falhas"):
@@ -280,7 +261,7 @@ def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
         eles_mudou = deles_v != na_base
         if nos_mudou and eles_mudou and nosso_v != deles_v:
             if _AUSENTE in (nosso_v, deles_v):
-                raise (FicaComoNaMain if campo == "julgamento_automatico" else Recusa)(f"o campo {campo!r} foi removido de um lado e mudado no outro")
+                raise Recusa(f"o campo {campo!r} foi removido de um lado e mudado no outro")
             escolhido = _politica_do_campo(campo, nosso_v, deles_v, perdidos,
                                            None if na_base is _AUSENTE else na_base)
         else:
@@ -344,11 +325,7 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
         nossa = por_chave_nosso.get(k)
         delas = por_chave_deles.get(k)
         if na_base is not None and nossa is not None and delas is not None:
-            try:
-                uniao.append(_mesclar_pista(na_base, nossa, delas))
-            except FicaComoNaMain as e:
-                uniao.append(nossa)
-                print(f"::warning::{caminho}: pista {k} fica como na main ({e})")
+            uniao.append(_mesclar_pista(na_base, nossa, delas))
             if nossa != delas:
                 mescladas += 1
         else:
@@ -473,10 +450,6 @@ CARIMBOS = ("atualizado_em", "gerado_em", "atualizado", "gravado_em", "corte", "
 
 class Recusa(Exception):
     """O script não sabe resolver este caminho, e adivinhar apagaria dado."""
-
-
-class FicaComoNaMain(Recusa):
-    """D2 (central, 23/11/2026): o caso que a regra não decide deixa a PISTA como está na `main`; a fila une."""
 
 
 def git(*args, repo=None, binario=False):
@@ -1360,26 +1333,6 @@ def autoteste() -> int:
     except Recusa:
         recusou = True
     checar("regra 7: juiz com mesma data nos dois lados é recusado, não adivinhado", recusou)
-
-    # D2 (central, 23/11/2026): `julgamento_automatico`, uma checagem por linha da regra.
-    _j = lambda d, dt: {"decisao": d, "data": dt, "motivo": d}
-    _jm = lambda n, d: _mesclar_pista({"id": 1}, dict(id=1, julgamento_automatico=n),
-                                      dict(id=1, julgamento_automatico=d))["julgamento_automatico"]
-    checar("D2: APLICADA vence ABSTENCAO, dos dois lados",
-           _jm(_j("ABSTENCAO", "22/11/2026"), _j("APLICADA", "01/11/2026"))["decisao"] == "APLICADA"
-           and _jm(_j("APLICADA", "01/11/2026"), _j("ABSTENCAO", "22/11/2026"))["decisao"] == "APLICADA")
-    checar("D2: duas ABSTENCAO, vence a data mais nova (dd/mm/aaaa, não texto)",
-           _jm(_j("ABSTENCAO", "09/12/2026"), _j("ABSTENCAO", "10/11/2026"))["data"] == "09/12/2026")
-    checar("D2: duas ABSTENCAO no mesmo dia, vale a da main",
-           _jm(dict(_j("ABSTENCAO", "22/11/2026"), motivo="m"), _j("ABSTENCAO", "22/11/2026"))["motivo"] == "m")
-    _fj = lambda *js: json.dumps({"pistas": [dict(url=f"https://x.gov.br/{i}", alvo="PA", **j) for i, j in enumerate(js)]})
-    _a, _b2 = {"julgamento_automatico": _j("APLICADA", "20/11/2026")}, {"julgamento_automatico": _j("APLICADA", "22/11/2026")}
-    _u = unir_fila_de_pistas("data/pistas_imprensa.json", _fj({}, {}), _fj(dict(_a, x="main"), {}),
-                             _fj(dict(_b2, x="elo"), {"y": 1}, {"z": 2}))[0]["pistas"]
-    checar("D2: duas APLICADA diferentes deixam a pista como na main, e o resto da fila une",
-           _u[0] == dict(url="https://x.gov.br/0", alvo="PA", x="main", **_a) and _u[1].get("y") == 1 and len(_u) == 3)
-    _u = unir_fila_de_pistas("data/pistas_imprensa.json", _fj(_a), _fj({}), _fj(_b2))[0]["pistas"]
-    checar("D2: caso que a regra não cobre (removido de um lado) deixa a pista como na main", "julgamento_automatico" not in _u[0])
 
     b = {"gerado_em": "2026-11-14", "fontes": {"a": {"status": "coletado", "em": "13"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}
     n = {"gerado_em": "2026-11-15", "fontes": {"a": {"status": "coletado", "em": "15"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}

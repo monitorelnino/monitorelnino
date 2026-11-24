@@ -80,8 +80,7 @@ def _repo(tmp: pathlib.Path):
 # ───────────────────────────────── 1. dois elos em paralelo ─────────────────────────────────
 
 def ensaio_dois_elos_em_paralelo(diz) -> bool:
-    """O conflito de rebase entre dois elos NÃO perde pista. É o que custou 114 minutos.
-    F81/D2 (23/11): o juiz e a rodada de domingo julgam a MESMA pista na mesma noite e o commit fica."""
+    """O conflito de rebase entre dois elos NÃO perde pista. É o que custou 114 minutos."""
     import unir_conflito_de_rodada as u
     with tempfile.TemporaryDirectory() as t:
         tmp = pathlib.Path(t)
@@ -105,15 +104,14 @@ def ensaio_dois_elos_em_paralelo(diz) -> bool:
         # O elo B (diários) grava e empurra primeiro.
         g("checkout", "-qb", "elo_b")
         do_b = _pista("diarios1", "5002704")
-        julgada = lambda d, dt: dict(base, julgamento_automatico={"data": dt, "decisao": d, "motivo": d})
-        caminho.write_text(_fila(julgada("APLICADA", "22/11/2026"), do_b), encoding="utf-8", newline="\n")
+        caminho.write_text(_fila(base, do_b), encoding="utf-8", newline="\n")
         livro.write_text(marca("DOU", "QD"), encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "diarios")
 
         # O elo A (busca web) estava correndo em paralelo e grava a SUA pista.
         g("checkout", "-q", "main")
         do_a = _pista("buscaweb1", "5003207")
-        caminho.write_text(_fila(julgada("ABSTENCAO", "22/11/2026"), do_a), encoding="utf-8", newline="\n")
+        caminho.write_text(_fila(base, do_a), encoding="utf-8", newline="\n")
         livro.write_text(marca("DOU", "Busca web"), encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "busca web")
 
@@ -131,9 +129,6 @@ def ensaio_dois_elos_em_paralelo(diz) -> bool:
         ids = sorted(p["id"] for p in doc["pistas"])
         if ids != ["base1", "buscaweb1", "diarios1"]:
             diz(f"  ✗ perda de pista na união: ficaram {ids}")
-            return False
-        if doc["pistas"][0]["julgamento_automatico"]["decisao"] != "APLICADA":
-            diz("  ✗ D2: ABSTENCAO venceu APLICADA na mesma pista")
             return False
         fontes = sorted(f["fonte"] for f in json.loads(livro.read_text(encoding="utf-8"))
                         ["municipios"]["5002704"]["fontes"])

@@ -64,7 +64,13 @@ def _listas(obj) -> dict:
     if isinstance(obj, list):
         return {"": obj}
     if isinstance(obj, dict):
-        return {k: v for k, v in obj.items() if isinstance(v, list)}
+        # 24/11/2026: retrato indexado por chave (`alertas/vigentes.json`: município → listas de alertas) não tem
+        # lista no topo; os registros são os itens das listas de cada chave. Em 18/11 os alertas foram de 4.024
+        # para 5.690 (+41%) e o arquivo de 1,0 para 1,3 MB (+34%): leitura nova, reprovada como duplicação.
+        aninhadas = {k: [[c, campo, i] for c, r in v.items() if isinstance(r, dict)
+                         for campo, x in r.items() if isinstance(x, list) for i in x]
+                     for k, v in obj.items() if isinstance(v, dict)}
+        return {**{k: v for k, v in obj.items() if isinstance(v, list)}, **{k: v for k, v in aninhadas.items() if v}}
     return {}
 
 
@@ -175,6 +181,11 @@ def _autoteste() -> int:
     ok("únicos que crescem menos que os bytes não absolvem",
        not novidade_real({"decisoes": reg(0, 4951)}, {"decisoes": reg(0, 6000)}, 0.74))
     ok("lista de raiz também conta", novidade_real(reg(0, 10), reg(0, 40), 0.5))
+    ret = lambda n, k: {"municipios": {str(m): {"nome": "x", "inmet": [{"id": f"{m}-{i}"} for i in range(k)]} for m in range(n)}}
+    ok("retrato por chave: alertas novos absolvem; os mesmos alertas repetidos em cada chave, não",
+       novidade_real(ret(100, 1), ret(120, 2), 0.34)
+       and not novidade_real(ret(100, 1), {"municipios": {m: {**r, "inmet": r["inmet"] * 2}
+                                                          for m, r in ret(100, 1)["municipios"].items()}}, 0.34))
     ok("cresceu_demais respeita o veredito de legitimidade",
        cresceu_demais({"a.json": 28 * MB}, {"a.json": 56 * MB}, legitimo=lambda c, t: True) == [])
 
