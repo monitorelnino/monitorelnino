@@ -37,11 +37,11 @@ jobs:
         shell: bash
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         # 50 commits de histórico: o vigia de frescor precisa do último commit que tocou
         # `data/`, e com profundidade 1 esse commit pode não estar no clone.
         with: { fetch-depth: 50 }
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with: { node-version: "20", cache: npm }   # §267 item 5: este roda `npm ci`; o cache vale
       - name: Verificar
         continue-on-error: true

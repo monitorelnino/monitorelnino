@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2054 · Ações do GitHub em Node 24
+Todo registro de execução avisava que as ações de checkout, Node, Python, cache e artefato rodavam em Node 20, que o GitHub descontinuou. Cada uma passa à primeira versão que já roda em Node 24, com o endereço fixo conferido na própria versão: a menor mudança que encerra o aviso.
 ## 2026-11-24 · #2053 · Válvula confere a entrada antes de subir o executor
 Em 17/11 a coleta de dia recebeu linhas de Python soltas no lugar de comandos e rodou cada uma como programa. Agora um passo curto, antes do executor, recusa a entrada se alguma linha não começar por um script do repositório (com prazo e intérprete opcionais). A noite não muda.
 ## 2026-11-24 · #2057 · Monitor de riscos: fogo e água do MapBiomas
