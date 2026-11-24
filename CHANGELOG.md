@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2071 · Válvula: SearXNG sobe sozinho quando o comando usa o metabuscador
+
+As válvulas de planos de MG e RJ pediram S24 e S27 sem a chave do metabuscador e gravaram recusa de conexão em todo município. `coleta_de_dia.yml` passa a inferir a chave do comando (S24, S27, seguidor e busca web), como já fazia com o Node e o OCR.
+
 ## 2026-11-24 · #2067 · MapBiomas: o job da soma baixa o que a gravação usa
 A coleta do MapBiomas caiu ao gravar a data da consulta porque o job que soma os mapas baixava só parte do repositório e não tinha o módulo da data. O módulo entra na lista, e o autoteste passa a reprovar quando o coletor usa um módulo que o job não baixa.
 ## 2026-11-24 · #2065 · Legendas do MapBiomas: a amostra reproduz o traço
