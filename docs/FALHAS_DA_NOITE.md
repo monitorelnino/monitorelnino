@@ -834,7 +834,7 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Correção:** `_coletor.yml`: `install` com DPkg::Lock::Timeout=240; `update` repetido até 12 vezes a cada 10 s; Acquire::Retries=3 e Acquire::http::Timeout=30 contra espelho parado; teto do passo 8 min. Pacote que não instala derruba o elo com o nome do passo e a reserva refaz (D1).
 - **Caso de teste:** nenhum — falta: caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR
 
-## F93 · Rodada de domingo perde o commit quando ela e o juiz julgam a mesma pista na mesma noite
+## F94 · Rodada de domingo perde o commit quando ela e o juiz julgam a mesma pista na mesma noite
 
 - **Noite:** 2026-11-15 e 2026-11-22 (atualizar, domingo)
 - **Sintoma:** `atualizar / coletar` (run 44980777132, 22/11, 4h09 de coleta) perdeu o commit: `pistas_imprensa.json` recusado por `julgamento_automatico` e `pistas_imprensa_saude.json` por `repeticoes`; a reaplicação (job 137144544975) recusou de novo as duas filas.

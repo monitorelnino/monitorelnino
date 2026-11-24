@@ -1265,7 +1265,7 @@
    "falta": "caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR"
   },
   {
-   "id": "F93",
+   "id": "F94",
    "noite": "2026-11-15 e 2026-11-22 (atualizar, domingo)",
    "titulo": "Rodada de domingo perde o commit quando ela e o juiz julgam a mesma pista na mesma noite",
    "sintoma": "`atualizar / coletar` (run 44980777132, 22/11, 4h09 de coleta) perdeu o commit: `pistas_imprensa.json` recusado por `julgamento_automatico` e `pistas_imprensa_saude.json` por `repeticoes`; a reaplicação (job 137144544975) recusou de novo as duas filas.",
