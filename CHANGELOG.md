@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2042 · Mesclagem recusada fecha quando o arquivo volta a se unir
+
+A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.
+
 ## 2026-11-24 · #2034 · Rodada de domingo não perde o commit por `julgamento_automatico`
 
 Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).
