@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-24. 99 falhas; 91 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-24. 100 falhas; 92 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -896,3 +896,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** #2045: mergeable_state dirty, só run de workflow_dispatch (45384876602); #2038: só run de workflow_dispatch
 - **Correção:** Na válvula, antes do push, `git merge` da `main` com a união pela base comum (`unir_conflito_de_rodada.py`); se a união recusar, o PR sai como antes e o aviso nomeia /merge-main.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_valvula_traz_a_main`
+
+## F100 · Lote do Buscador 2 perdido: a união recusou `buscador2_em` com datas diferentes
+
+- **Noite:** 2026-11-23→2026-11-24
+- **Sintoma:** Válvula `buscador2-reab-2026-11-24` (run 45305563320, 01:33→04:11) falhou no commit; 2h38 de trabalho só no artefato `coleta-perdida-…`.
+- **Causa:** O seguidor regrava `buscador2_em` (e `busca_veiculo_em`) com a data de cada passada; o lote e a noite passaram pela mesma pista em dias diferentes e `_politica_do_campo` não tinha regra para o campo, então recusava a fila inteira.
+- **Prova:** LOTES 24/11 04:12: conflito de rebase em `data/pistas_imprensa.json`, campo `buscador2_em` dos dois lados; seguir_pistas.py: `p["buscador2_em"] = hoje_iso` a cada pista seguida; `restantes` compara com a data de hoje
+- **Correção:** Os dois campos unem pela data mais nova (a última passada), como `rejeitada_em` une pela mais antiga.
+- **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste ('F100: buscador2_em e busca_veiculo_em vencem a data mais nova (última passada)')`
