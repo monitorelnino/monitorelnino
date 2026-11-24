@@ -232,6 +232,10 @@ def problemas_de_componentes(d1280: dict, regras: dict, contrato: dict = None, p
     p = []
     if c.get("secao_sem_numeracao"):
         p += [f"seção numerada: {h!r}" for h in (d1280.get("h2") or []) if _RE_NUMERACAO.match(h)]
+    if c.get("alternativa_de_dados_so_tabela"):
+        for a in d1280.get("alternativas_de_dados") or []:
+            if not a.get("tem_tabela") or a.get("extras"):
+                p.append(f"alternativa de dados '{a.get('id') or '?'}' sem .tbl-wrap > table ou com conteúdo além do summary")
     fl = c.get("figura_larga") or {}
     fp = fl.get("figura_principal") or {}
     from verificar_layout import ids_da_figura_principal
@@ -449,6 +453,15 @@ def _autoteste() -> int:
            problemas_de_figura([dict(fig[0], legenda="Municípios sob alerta")], regras)))
     ok("mídia sem rótulo reprova",
        any("sem rótulo" in x for x in problemas_de_figura([dict(fig[0], rotulada=False)], regras)))
+    _rc = {"componentes": {"alternativa_de_dados_so_tabela": True}}
+    ok("alternativa de dados só com tabela passa",
+       problemas_de_componentes({"alternativas_de_dados": [{"id": "b", "tem_tabela": True, "extras": 0}]}, _rc) == [])
+    ok("alternativa de dados sem tabela reprova",
+       any("alternativa de dados" in x for x in problemas_de_componentes(
+           {"alternativas_de_dados": [{"id": "b", "tem_tabela": False, "extras": 0}]}, _rc)))
+    ok("alternativa de dados com conteúdo extra reprova",
+       any("alternativa de dados" in x for x in problemas_de_componentes(
+           {"alternativas_de_dados": [{"id": "b", "tem_tabela": True, "extras": 1}]}, _rc)))
     ok("figura invisível não é julgada",
        problemas_de_figura([dict(fig[0], visivel=False, titulo="")], regras) == [])
 
