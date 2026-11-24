@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-23. 92 falhas; 84 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-24. 93 falhas; 85 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -833,3 +833,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** job 137617766269: passo do navegador 2 min 22 s, passo do Tesseract 5 min até o teto; teste local (apt 2.8, Ubuntu 24.04): com a trava de `lists/` segura, `apt-get update` sai em 1 s com ou sem DPkg::Lock::Timeout; `install` espera a trava do dpkg com a opção
 - **Correção:** `_coletor.yml`: `install` com DPkg::Lock::Timeout=240; `update` repetido até 12 vezes a cada 10 s; Acquire::Retries=3 e Acquire::http::Timeout=30 contra espelho parado; teto do passo 8 min. Pacote que não instala derruba o elo com o nome do passo e a reserva refaz (D1).
 - **Caso de teste:** nenhum — falta: caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR
+
+## F95 · Coletor do cadastro federal caiu sem deixar tentativa e o frescor avermelhou a main
+
+- **Noite:** 2026-11-21→22 (semanal sinais e links); main vermelha de 24/11 03:32 em diante
+- **Sintoma:** Portões no push da `main` vermelhos desde 24/11 03:32: `FRESCOR — DEFESA CIVIL: cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14 (limite 9)`.
+- **Causa:** No run 44970135352 (22/11 01:09) `coletar_cadastro_prioritarios.py` recebeu `Connection reset by peer` do gov.br ao baixar a nota técnica e terminou em exceção, sem gravar nem registrar tentativa; o run das 15:33 foi adiado pela guarda (fora da janela). Sem tentativa no painel, a regra de 01/11 (fonte que recusa) não se aplicava.
+- **Prova:** run 44970135352, passo `coletar_cadastro_prioritarios.py`: `URLError ... [Errno 104] Connection reset by peer`, status erro; run 45327223052 (Portões na main): `cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14`
+- **Correção:** Falha ao baixar nota técnica ou validação reprovada registra a tentativa (`registrar_tentativa_coletor`, resultado `falhou`, motivo, arquivo) e sai com erro; o frescor passa a medir a idade do dado sem reprovar quem tentou. Coleta refeita por dispatch na janela (run 45332094178).
+- **Caso de teste:** `coletar_cadastro_prioritarios.py --autoteste: nota técnica que não abre deixa tentativa que o frescor aceita`
