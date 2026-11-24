@@ -9,6 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2067 · MapBiomas: o job da soma baixa o que a gravação usa
+A coleta do MapBiomas caiu ao gravar a data da consulta porque o job que soma os mapas baixava só parte do repositório e não tinha o módulo da data. O módulo entra na lista, e o autoteste passa a reprovar quando o coletor usa um módulo que o job não baixa.
+## 2026-11-24 · #2065 · Legendas do MapBiomas: a amostra reproduz o traço
+
+Monitor de riscos, três figuras do MapBiomas. A amostra tracejada da legenda aparecia contínua (o fundo inline da amostra anulava o desenho) e a mediana mudava de traço entre fogo e água. Agora a amostra reproduz o traço da série e a codificação é uma só: mediana contínua escura, 2024 cinza pontilhado (barra cinza na água) e ano em destaque laranja. Nenhum texto novo; capturas a 375 e 1280 px conferidas.
+
+## 2026-11-24 · #2062 · MapBiomas: a data da consulta avança a cada consulta
+As figuras do MapBiomas diziam "consultado em 15/11" depois de a fonte ter sido consultada de novo em 24/11, porque sem número novo o arquivo guardava a data antiga. Agora cada consulta completa grava a data do dia nos três arquivos; os números só mudam quando a fonte muda.
+
 ## 2026-11-24 · #2060 · União de fila: marca do Buscador 2 pela data mais nova
 
 O seguidor regrava `buscador2_em` e `busca_veiculo_em` a cada passada; quando a válvula e a noite passavam pela mesma pista, a união recusava a fila inteira (F100: lote de 24/11 perdido). Os dois campos passam a unir pela data mais nova, a última passada. Caso no autoteste da união.
