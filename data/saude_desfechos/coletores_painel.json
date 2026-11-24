@@ -777,6 +777,15 @@
    "em": "2026-11-23",
    "resultado": "lacuna",
    "motivo": "e-SUS Notifica recusa acesso automatizado nas duas rotas que o portal declara — API: HTTPError: HTTP Error 403: Forbidden; CSV: HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+   "coletor": "coletar_cadastro_prioritarios",
+   "em": "2026-11-24",
+   "resultado": "falhou",
+   "motivo": "nt2_2025: URLError: <urlopen error [Errno 104] Connection reset by peer>",
+   "arquivos": [
+    "cadastro_prioritarios_federal.json"
+   ]
   }
  ]
 }
