@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-24. 93 falhas; 86 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 2026-11-24. 94 falhas; 86 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -733,7 +733,7 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Causa:** `atualizar.py` chamava `coletar_sinais_risco.py`, cujos arquivos têm dono único em `config/escritores.json` (`noturno_sinais.yml`, elo das 01:17): no domingo as duas coletas gravavam os mesmos caminhos na mesma madrugada e o resolvedor recusava.
 - **Prova:** `atualizar.py` linha 165 (antes do #1616) rodava `coletar_sinais_risco.py`; `config/escritores.json` declara `data/riscos_municipio/` de `noturno_sinais.yml`; logs do run 42433051903, linhas 2324–2368, 33 caminhos RECUSADO; mesma assinatura nos dois domingos anteriores; ensaio real 42468692596 (main e2731670, depois do #1616) verde
 - **Correção:** A chamada saiu de `atualizar.py` (#1616, −8 linhas): o elo `noturno_sinais` segue como único coletor, todo dia.
-- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo`
+- **Caso de teste:** nenhum — falta: O ensaio simulado não roda `atualizar.py` com a coleta de sinais do elo na mesma noite; a prova é o ensaio real verde e a ausência da chamada no código.
 
 ## F82 · Elo grava `.feito` mesmo quando o prazo pulou o último comando; a válvula registra `python3 x.py` como o script `python3`
 
@@ -842,3 +842,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** logs do run 44980777132 e do job 137144544975 (handover de erros do GitHub, item 2); `julgar_e_aplicar_descobertas.py` grava `pista['julgamento_automatico'] = {'data': hoje, **r}`
 - **Correção:** D2 no resolvedor: APLICADA vence ABSTENCAO; duas ABSTENCAO, a data mais nova e, no mesmo dia, a da `main`; duas APLICADA diferentes ou caso não coberto: a pista fica como na `main`, a fila une e o caso sai como aviso no log. `repeticoes` já soma pela base (A1, 23/11). Cinco casos D2 em `unir_conflito_de_rodada.py --autoteste`.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo`
+
+## F95 · Coletor do cadastro federal caiu sem deixar tentativa e o frescor avermelhou a main
+
+- **Noite:** 2026-11-21→22 (semanal sinais e links); main vermelha de 24/11 03:32 em diante
+- **Sintoma:** Portões no push da `main` vermelhos desde 24/11 03:32: `FRESCOR — DEFESA CIVIL: cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14 (limite 9)`.
+- **Causa:** No run 44970135352 (22/11 01:09) `coletar_cadastro_prioritarios.py` recebeu `Connection reset by peer` do gov.br ao baixar a nota técnica e terminou em exceção, sem gravar nem registrar tentativa; o run das 15:33 foi adiado pela guarda (fora da janela). Sem tentativa no painel, a regra de 01/11 (fonte que recusa) não se aplicava.
+- **Prova:** run 44970135352, passo `coletar_cadastro_prioritarios.py`: `URLError ... [Errno 104] Connection reset by peer`, status erro; run 45327223052 (Portões na main): `cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14`
+- **Correção:** Falha ao baixar nota técnica ou validação reprovada registra a tentativa (`registrar_tentativa_coletor`, resultado `falhou`, motivo, arquivo) e sai com erro; o frescor passa a medir a idade do dado sem reprovar quem tentou. Coleta refeita por dispatch na janela (run 45332094178).
+- **Caso de teste:** `coletar_cadastro_prioritarios.py --autoteste: nota técnica que não abre deixa tentativa que o frescor aceita`
