@@ -545,6 +545,25 @@ jobs:
               fi
             fi
 
+            # 24/11/2026 (F99): a válvula traz a `main` antes de empurrar. O ramo `coleta-dia/*` nasce
+            # da `main` do disparo e a coleta leva horas; nesse meio a `main` muda log, filas e
+            # manifesto, e o PR de dado nascia em conflito (#2038, #2045: `dirty`). PR em conflito
+            # não ganha run de `pull_request`: os Portões nunca rodavam. A união é a mesma do rebase.
+            if [[ "${RAMO}" == coleta-dia/* ]]; then
+              ANTES_DA_MAIN=$(git rev-parse HEAD)
+              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+              if ! git merge --no-edit FETCH_HEAD; then
+                # o resolvedor só dá 0 com tudo resolvido e já adicionado; o commit fecha o merge
+                if git rev-parse -q --verify MERGE_HEAD >/dev/null && python3 scripts/unir_conflito_de_rodada.py \
+                   && GIT_EDITOR=true git commit --no-edit; then
+                  echo "main trazida ao ramo pela base comum"
+                else
+                  git merge --abort 2>/dev/null || true
+                  echo "::warning::a main não se uniu ao ramo; o PR de dado pode nascer em conflito (/merge-main)"
+                fi
+              fi
+            fi
+
             # 08/10/2026 (A2-09): REBASE SEM CONFLITO TAMBEM MOVE O DADO. Os derivados e o
             # manifesto sao funcao do dado; se a `main` andou e o rebase passou limpo, o que este
             # elo traz foi recalculado sobre outra base — e o manifesto chega obsoleto, que e o
@@ -560,6 +579,8 @@ jobs:
             if GIT_SSH_COMMAND="$SSH" python3 scripts/empurrar.py "${RAMO}" "$TENTATIVA"; then
               EMPURROU=1; break
             fi
+            # o rebase da próxima tentativa achataria o merge da main: volta ao commit do elo
+            [[ "${RAMO}" == coleta-dia/* ]] && git reset -q --hard "$ANTES_DA_MAIN"
           done
           rm -f ~/.ssh/robo
           if [ "$EMPURROU" != "1" ]; then

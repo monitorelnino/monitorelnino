@@ -1202,6 +1202,54 @@ def ensaio_regime_de_prioridade_suspende_so_o_listado(diz) -> bool:
     return ok
 
 
+def ensaio_valvula_traz_a_main(diz) -> bool:
+    """30. A válvula traz a `main` ao ramo antes de empurrar (F99).
+
+    24/11/2026: o ramo `coleta-dia/*` nasce da `main` do disparo; a coleta leva horas e a `main` muda
+    o log nesse meio. O PR de dado nascia em conflito (#2038, #2045) e PR em conflito não ganha run de
+    `pull_request`. Roda o trecho do próprio `_coletor.yml` num repositório temporário: os dois lados
+    acrescentam ao log, o ramo tem de terminar descendente da `main`, com o log unido pela base comum.
+    """
+    import json, os, re, subprocess, tempfile, pathlib
+
+    fonte = (RAIZ / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    m = re.search(r'\n( *)if \[\[ "\$\{RAMO\}" == coleta-dia/\* \]\]; then\n.*?\n\1fi\n', fonte, re.S)
+    if not m or "git merge" not in m.group(0):
+        diz("   ✗ o `_coletor.yml` não traz a `main` ao ramo `coleta-dia/*` antes de empurrar")
+        return False
+    with tempfile.TemporaryDirectory() as t:
+        origem, rep = pathlib.Path(t, "origem.git"), pathlib.Path(t, "rep")
+        env = {**os.environ, "GIT_AUTHOR_NAME": "e", "GIT_AUTHOR_EMAIL": "e@e", "GIT_COMMITTER_NAME": "e",
+               "GIT_COMMITTER_EMAIL": "e@e", "RAMO": "coleta-dia/x", "SSH": "ssh", "GITHUB_REPOSITORY": "o/r"}
+        g = lambda *a: subprocess.run(["git", *a], cwd=rep, env=env, check=True, capture_output=True, text=True)
+        subprocess.run(["git", "init", "-q", "--bare", "-b", "main", str(origem)], check=True)
+        subprocess.run(["git", "init", "-q", "-b", "main", str(rep)], check=True)
+        g("config", f"url.{origem}.insteadOf", "git@github.com:o/r.git")
+        (rep / "scripts").mkdir()  # cópia, não link: o resolvedor acha o repositório pelo próprio caminho
+        (rep / "scripts" / "unir_conflito_de_rodada.py").write_text(
+            (RAIZ / "scripts" / "unir_conflito_de_rodada.py").read_text(encoding="utf-8"), encoding="utf-8")
+        env["PYTHONPATH"] = f"{RAIZ}{os.pathsep}{RAIZ / 'scripts'}"
+        (rep / "data").mkdir()
+        log = rep / "data" / "historico_mudancas.json"
+        def escreve(itens):
+            log.write_text(json.dumps({"versao": 1, "eventos": itens}, ensure_ascii=False, indent=1) + "\n")
+        escreve([{"n": 0}])
+        g("add", "data"); g("commit", "-qm", "base"); g("remote", "add", "o", str(origem)); g("push", "-q", "o", "main")
+        g("checkout", "-qb", "coleta-dia/x"); escreve([{"n": 0}, {"n": "valvula"}]); g("commit", "-qam", "elo")
+        g("checkout", "-q", "main"); escreve([{"n": 0}, {"n": "main"}]); g("commit", "-qam", "main andou")
+        g("push", "-q", "o", "main"); g("checkout", "-q", "coleta-dia/x")
+        subprocess.run(["bash", "-c", m.group(0)], cwd=rep, env=env, capture_output=True, text=True)
+        desc = subprocess.run(["git", "merge-base", "--is-ancestor", "FETCH_HEAD", "HEAD"],
+                              cwd=rep, env=env).returncode == 0
+        itens = json.loads(log.read_text()).get("eventos", []) if log.exists() else []
+        ok = desc and [i.get("n") for i in itens] in ([0, "main", "valvula"], [0, "valvula", "main"])
+    if not ok:
+        diz(f"   ✗ a válvula não trouxe a `main` pela base comum (descende: {desc}; log: {itens})")
+        return False
+    diz("   ✓ a válvula traz a `main` ao ramo antes do PR, com o log unido pela base comum")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1241,6 +1289,7 @@ ENSAIOS = (
     ("28. fila maior que o prazo: três rodadas, um `.feito`", ensaio_fila_maior_que_o_prazo),
     ("29. o regime de prioridade suspende só o listado",
      ensaio_regime_de_prioridade_suspende_so_o_listado),
+    ("30. a válvula traz a `main` antes do PR de dado", ensaio_valvula_traz_a_main),
 )
 
 
