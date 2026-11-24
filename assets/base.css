@@ -1506,3 +1506,19 @@ input.busca{display:block; box-sizing:border-box; width:100%; max-width:100%; mi
 .cartao-mapa > details > summary{font-size:var(--fs-small); line-height:var(--lh-small);}
 .cartao-mapa > details > p{font-size:var(--fs-small); line-height:var(--lh-small); margin:0 0 var(--sp-3);}
 .cartao-mapa > h3.titulo-bloco > a{display:inline-flex; align-items:center; min-height:var(--alvo-toque); color:inherit; text-decoration-thickness:1px; text-underline-offset:3px;}
+
+/* MapBiomas no Monitor de riscos (24/11/2026): três gráficos de linha e barra, só com tokens. */
+.g-mb{width:100%; height:auto; display:block;}
+.g-mb .tk{fill:var(--muted); font-family:var(--font-dado); font-size:var(--fs-caption);}
+.g-mb .grade{stroke:var(--faixa-1); stroke-width:1;}
+.g-mb .faixa{fill:var(--faixa-2);}
+.g-mb .mediana{fill:none; stroke:var(--muted); stroke-width:1;}
+.g-mb .mediana--tracejada{stroke-dasharray:4 3;}
+.g-mb .ano{fill:none; stroke-width:2; stroke-linejoin:round;}
+.g-mb .ano--agora{stroke:var(--pacifico-agora);}
+.g-mb .ano--2024{stroke:var(--mineral); stroke-dasharray:5 3;}
+.g-mb .coluna{fill:var(--chuva);}
+.g-mb .coluna--agora{fill:var(--pacifico-agora);}
+.g-mb .coluna--2024{fill:var(--mineral);}
+.g-mb .toque{fill:transparent;}
+.map-legend i.leg-tracejada{width:14px; height:0; border-top:2px dashed currentColor; background:none; border-radius:0;}
