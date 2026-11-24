@@ -29,8 +29,8 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=99e0b770">
-<script src="assets/mapas.js?v=6d303be4"></script>
+<link rel="stylesheet" href="assets/base.css?v=c63390e0">
+<script src="assets/mapas.js?v=f7dfcd8d"></script>
 <script src="assets/semana.js?v=2368585c"></script>
 </head>
 <body class="pagina-dados">
@@ -179,7 +179,6 @@
         <span data-conteudo="saude.observado.registram.legenda">Linha: valor observado · faixa cinza: habitual para a época (2019–2025)</span></p>
       <div class="grade-numeros grade-numeros--3 grade-numeros--empilha" id="gradeDesfechos"></div>
       <p class="note" id="desfechosLacuna" hidden></p>
-      <p class="hint" data-conteudo="saude.observado.registram.detalhe.dica">Série e mapa do indicador selecionado nos cartões acima.</p>
       <figure class="figura figura--grafico figura--dupla cartao-mapa r-chuva" id="boxDesfecho" hidden>
         <h3 class="figura-titulo" id="tituloDesfecho" data-conteudo="saude.observado.registram.detalhe.titulo_reserva">Série do desfecho escolhido</h3>
         <p class="figura-sub" id="legendaDesfecho" data-conteudo="saude.observado.registram.detalhe.legenda_reserva">Valor observado por 100 mil sobre a faixa habitual para a época · sem coleta até o corte</p>
@@ -188,7 +187,7 @@
           <div class="tempo-mapa">
             <div class="mapa-dupla"><svg id="mapaDesfecho" role="img" aria-label="Mapa do Brasil com a posição de cada lugar na faixa habitual da época, no período escolhido" viewBox="0 0 480 460"></svg></div>
             <div class="tempo-controles">
-              <button type="button" class="chip-risco" id="tocarDesfecho" aria-pressed="false" data-conteudo="saude.observado.registram.detalhe.tocar">Ver passar os períodos</button>
+              <button type="button" class="chip-risco" id="tocarDesfecho" aria-pressed="false" data-conteudo="saude.observado.registram.detalhe.tocar">Animar desde 29 de junho</button>
               <label class="tempo-periodo"><span id="rotuloPeriodoDesfecho"></span><input type="range" id="periodoDesfecho" min="0" max="0" step="1" value="0"></label>
             </div>
             <div class="tempo-regua" id="reguaDesfecho" role="group" aria-labelledby="rotuloReguaDesfecho" hidden>
@@ -200,9 +199,10 @@
           </div>
           <div class="linhas-estados" id="linhasDesfecho"></div>
         </div>
+        <div class="map-legend map-legend--centro" id="legLinhasDesfecho"></div>
         <p class="figura-nota" id="notaDesfecho"></p>
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.observado.registram.detalhe.lista">Ver em lista</summary>
-          <dl class="dl-dados" id="dlDesfechoUF"></dl>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblDesfechoUF"><thead><tr><th data-conteudo="saude.observado.registram.detalhe.col_estado">Estado</th><th data-conteudo="saude.observado.registram.detalhe.col_valor">Por 100 mil habitantes</th><th data-conteudo="saude.observado.registram.detalhe.col_posicao">Posição na faixa habitual</th></tr></thead><tbody></tbody></table></div>
         </details>
       </figure>
     </div>
@@ -242,7 +242,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=6afcc0b1" defer></script><script src="assets/js/saude.js?v=aed0d69f" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=6afcc0b1" defer></script><script src="assets/js/saude.js?v=d8140f4d" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

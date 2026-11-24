@@ -25,9 +25,9 @@
 <title>Mudanças no MARÉ: os textos da editoria sobre o El Niño</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/mapas.js?v=6d303be4"></script>
+<script src="assets/mapas.js?v=f7dfcd8d"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=99e0b770">
+<link rel="stylesheet" href="assets/base.css?v=c63390e0">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -44,6 +44,12 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/11/2026 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista</dt>
+      <dd>O botão do mapa passa a dizer &quot;Animar desde 29 de junho&quot; e &quot;Pausar&quot;. As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. &quot;Ver em lista&quot; usa a tabela do componente padrão, no lugar do `&lt;dl&gt;` sem estilo. Portão novo: a alternativa de dados só contém tabela.</dd>
+      <dt>24/11/2026 · Log de busca das válvulas de 15/11 recuperado</dt>
+      <dd>Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.</dd>
+      <dt>24/11/2026 · Catálogo de falhas: três noites sem linha e o horário do F90</dt>
+      <dd>Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.</dd>
       <dt>24/11/2026 · Portões leem o repositório, não a cópia local</dt>
       <dd>O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.</dd>
       <dt>24/11/2026 · Portão: PR não devolve arquivo a uma versão anterior da main</dt>
@@ -158,12 +164,6 @@
       <dd>Site que não responde ao robô deixa de gastar a rodada: sai dela, e o endereço vai à cópia da ponte ou vira pedido. Certificado sem o intermediário é completado pelo emissor que a folha declara, com verificação plena. Plano escaneado acima de 5 MB chega ao OCR e à prova (13 do RS estavam fora do banco). Documento trazido pela ponte fica no ramo do lote; a `main` guarda o índice.</dd>
       <dt>18/11/2026 · Credencial de terceiro em JSON é redigida; a ponte guarda página já redigida</dt>
       <dd>A redação de credencial não via a forma do JSON (`&quot;access_token&quot;:&quot;…&quot;`), a aspa escapada nem a maiúscula: a página inicial de uma secretaria trouxe a ficha do Instagram dela, e só o portão do PR a barrou. A porta de redação passa a cobrir essas formas, e o portão usa o padrão dela. A cópia de página da ponte entra redigida, com o sha256 de origem; corpo vazio e muro de robô não entram; `--receber` guarda lote com manifesto.</dd>
-      <dt>18/11/2026 · Pré-noite sem fila fantasma</dt>
-      <dd>A checagem das 23h deixa de contar como fila presa o run aberto há mais de 24 h: o de 05/11 tinha o job concluído e o run preso em queued há 13 dias, e reprovava a noite. Autoteste novo.</dd>
-      <dt>18/11/2026 · Plano de saúde com equipe na capa</dt>
-      <dd>O juiz da saúde lia a capa só nos primeiros 1.500 caracteres e não reconhecia &quot;Plano de Adaptação&quot; como título de plano. O plano de RO para o El Niño 2026–2027, recebido por pedido de acesso à informação, tem a lista da equipe antes do título e foi recusado como fora do ciclo. A capa passa a ser o mesmo cabeçalho do juiz, e &quot;plano de adaptação&quot; é título de plano.</dd>
-      <dt>18/11/2026 · O blog sai da metodologia</dt>
-      <dd>Com o blog fora do site, a metodologia deixa de descrevê-lo: saem a seção sobre os textos do blog e a seção sobre como eles eram produzidos, e as menções ao blog nas seções de contratos e do boletim semanal. Pedido da editoria, que autorizou mexer na metodologia congelada para isso.</dd>
     </dl>
   </section>
 </main>
