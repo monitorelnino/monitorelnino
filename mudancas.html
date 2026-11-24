@@ -25,9 +25,9 @@
 <title>Mudanças no MARÉ: os textos da editoria sobre o El Niño</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/mapas.js?v=960ba3f3"></script>
+<script src="assets/mapas.js?v=f7dfcd8d"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=0e40ffbf">
+<link rel="stylesheet" href="assets/base.css?v=38cc5f94">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/11/2026 · Legendas do MapBiomas: a amostra reproduz o traço</dt>
+      <dd>Monitor de riscos, três figuras do MapBiomas. A amostra tracejada da legenda aparecia contínua (o motor de legenda punha fundo inline em toda amostra com classe) e a mediana mudava de traço entre fogo e água. Agora a amostra reproduz o traço da série e a codificação é uma só: mediana contínua escura, 2024 cinza pontilhado (barra cinza na água) e ano em destaque laranja. Nenhum texto novo.</dd>
       <dt>24/11/2026 · União de fila: marca do Buscador 2 pela data mais nova</dt>
       <dd>O seguidor regrava `buscador2_em` e `busca_veiculo_em` a cada passada; quando a válvula e a noite passavam pela mesma pista, a união recusava a fila inteira (F100: lote de 24/11 perdido). Os dois campos passam a unir pela data mais nova, a última passada. Caso no autoteste da união.</dd>
       <dt>24/11/2026 · Reposição manual registra o relatório pela função compartilhada</dt>
@@ -162,8 +164,6 @@
       <dd>Os comentários de história do catálogo de fontes de `coletar_sinais_risco.py` passam a `docs/HISTORICO_DE_REGIMES.md` (código idêntico); `detectar_marcos_federais.py` usa o leitor de RSS de `monitorar_imprensa_regional.py` em vez da cópia. Sem mudança de comportamento; −55 linhas de código.</dd>
       <dt>19/11/2026 · Juiz: o ato que aprova é o que aprova o plano</dt>
       <dd>O ato citado no plano só conta como ato dele quando aprova, institui, homologa ou atualiza o próprio plano (`RE_APROVA_O_PLANO`). &quot;Fica instituída a COMPDEC&quot; deixa de contar: no plano de 2026 de Muqui/ES, a lei de 2003 virava a data do plano.</dd>
-      <dt>19/11/2026 · Juiz: ato próprio e plano que se declara plano</dt>
-      <dd>A lei citada na base legal de um plano deixa de ser tomada como o ato dele (`juiz.ato_proprio`), também nos juízes da Saúde; o plano que diz &quot;este plano de contingência&quot; conta como título (J15). As reaberturas de recusas viram uma tabela (`CORRECOES_DO_JUIZ`), e 3.345 recusas por ato, citação, natureza ou título voltam uma vez. Origem: PLANCON 2025 de Rio Branco/AC.</dd>
     </dl>
   </section>
 </main>
