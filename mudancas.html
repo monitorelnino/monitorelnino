@@ -27,7 +27,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/mapas.js?v=960ba3f3"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=0e40ffbf">
+<link rel="stylesheet" href="assets/base.css?v=4fa1997d">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -46,6 +46,8 @@
     <dl class="mudancas-lista">
       <dt>24/11/2026 · MapBiomas: o job da soma baixa o que a gravação usa</dt>
       <dd>A coleta do MapBiomas caiu ao gravar a data da consulta porque o job que soma os mapas baixava só parte do repositório e não tinha o módulo da data. O módulo entra na lista, e o autoteste passa a reprovar quando o coletor usa um módulo que o job não baixa.</dd>
+      <dt>24/11/2026 · Legendas do MapBiomas: a amostra reproduz o traço</dt>
+      <dd>Monitor de riscos, três figuras do MapBiomas. A amostra tracejada da legenda aparecia contínua (o fundo inline da amostra anulava o desenho) e a mediana mudava de traço entre fogo e água. Agora a amostra reproduz o traço da série e a codificação é uma só: mediana contínua escura, 2024 cinza pontilhado (barra cinza na água) e ano em destaque laranja. Nenhum texto novo; capturas a 375 e 1280 px conferidas.</dd>
       <dt>24/11/2026 · MapBiomas: a data da consulta avança a cada consulta</dt>
       <dd>As figuras do MapBiomas diziam &quot;consultado em 15/11&quot; depois de a fonte ter sido consultada de novo em 24/11, porque sem número novo o arquivo guardava a data antiga. Agora cada consulta completa grava a data do dia nos três arquivos; os números só mudam quando a fonte muda.</dd>
       <dt>24/11/2026 · União de fila: marca do Buscador 2 pela data mais nova</dt>
@@ -162,8 +164,6 @@
       <dd>O alarme contava como &quot;sem veredito&quot; pistas oficiais que o juiz já tentou e marcou para voltar (`proxima_tentativa_em` futura). Eram 595 em 20/11, todas tentadas nos últimos dez dias; fora do back-off restam 79, abaixo do teto de 150. A pista vencida e não tentada segue contando.</dd>
       <dt>20/11/2026 · Elo commita o PDF-índice junto do dado que o gera</dt>
       <dd>O elo da noite regenerava `MARE_Indice_Documentacao.pdf` e selava o hash novo no manifesto, mas não o commitava: a `main` ficava vermelha no portão 12 até o publicador seguinte (triagem de 18/11 e 20/11). O PDF entra no `git add` do `_coletor.yml`; conflito nele já se resolve por regeneração. Falha F89 no catálogo.</dd>
-      <dt>19/11/2026 · Redução: história das fontes ao histórico; parser RSS único</dt>
-      <dd>Os comentários de história do catálogo de fontes de `coletar_sinais_risco.py` passam a `docs/HISTORICO_DE_REGIMES.md` (código idêntico); `detectar_marcos_federais.py` usa o leitor de RSS de `monitorar_imprensa_regional.py` em vez da cópia. Sem mudança de comportamento; −55 linhas de código.</dd>
     </dl>
   </section>
 </main>
