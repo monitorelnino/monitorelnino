@@ -52,6 +52,12 @@
       <dd>O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.</dd>
       <dt>24/11/2026 · Um envio conferido por PR</dt>
       <dd>O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.</dd>
+      <dt>24/11/2026 · Reaplicação vê os artefatos da noite inteira</dt>
+      <dd>A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.</dd>
+      <dt>24/11/2026 · Reaplicação não recusa arquivo novo dos dois lados</dt>
+      <dd>`reaplicar_noite.py` separa &quot;commit-base fora do histórico&quot; de &quot;arquivo ausente na base&quot;. O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.</dd>
+      <dt>24/11/2026 · Rodada de domingo não perde o commit por `julgamento_automatico`</dt>
+      <dd>Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).</dd>
       <dt>24/11/2026 · Cadastro federal: coleta que falha deixa tentativa</dt>
       <dd>O coletor do cadastro federal de municípios suscetíveis caía sem registro quando o gov.br não entregava a nota técnica, e o portão de frescor avermelhava a main. Agora a falha fica no painel de tentativas, e a idade exibida continua sendo a do dado (F95).</dd>
       <dt>23/11/2026 · Elo do juiz não cai mais na trava do apt</dt>
@@ -88,6 +94,8 @@
       <dd>O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ordem fixa: o rabo nunca chegava (257 documentos oficiais além de 14 dias; MS, RO e RR sem edição lida desde 11–12/11). Agora o juiz começa pela pista que espera há mais tempo e o canal 2 pela UF de leitura mais velha.</dd>
       <dt>23/11/2026 · Juiz: plano publicado não é ato de resposta</dt>
       <dd>O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.</dd>
+      <dt>24/11/2026 · Buscador 2: teto de buscas no veículo vale para a rodada, não para o bloco</dt>
+      <dd>O teto de 300 buscas no veículo era zerado a cada bloco de 200 URLs: o lote de 24/11 fez cerca de 1.500 buscas e nenhum link do Google News resolveu. O contador passa a ser da rodada. Catálogo F92.</dd>
       <dt>23/11/2026 · Buscador 2: B2 busca no veículo com o título guardado</dt>
       <dd>O redirecionamento do Google News não resolvia (0 de 5.802). A compactação de 19/10 tirava o título, e sem ele a busca no veículo não tinha o que procurar. Agora o título fica na fila, o B2 recebe veículo e título, a busca tem teto de 300 por rodada, e o reprocessamento reabre uma vez as pistas com título. Catálogo F91.</dd>
       <dt>22/11/2026 · Redução: história do julgar_e_aplicar_descobertas.py ao HISTORICO</dt>
@@ -156,14 +164,6 @@
       <dd>O juiz recusava como minuta qualquer plano com &quot;consulta pública&quot; ou &quot;minuta&quot; no corpo, como o plano de contingência 2025/2026 do Rio de Janeiro (&quot;permitindo sua consulta pública&quot;). A declaração passa a ser lida só no cabeçalho do documento, e &quot;consulta pública&quot; só como &quot;em&quot; ou &quot;para consulta pública&quot;. As 29 pistas recusadas assim voltam ao juiz.</dd>
       <dt>17/11/2026 · Diarreias por município, mês a mês</dt>
       <dd>O relatório público do SISAB passa a ser lido também com a linha Município: atendimentos de diarreia por mês nos municípios de 100 mil habitantes ou mais, na mesma faixa habitual dos outros desfechos municipais. Anos fechados são lidos uma vez; célula vazia é lacuna, nunca zero.</dd>
-      <dt>15/11/2026 · MapBiomas por estado pelo Earth Engine</dt>
-      <dd>Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.</dd>
-      <dt>17/11/2026 · Saúde: legenda do mapa do detalhe centralizada</dt>
-      <dd>A legenda do mapa do detalhe da Saúde (acima, dentro e abaixo da faixa habitual) passa a ficar centralizada sob o mapa, por uma variante do componente de legenda, sem ajuste manual de pixel.</dd>
-      <dt>17/11/2026 · Plano desatualizado segundo a lei, em todo o país</dt>
-      <dd>Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como &quot;plano desatualizado segundo a lei&quot; e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.</dd>
-      <dt>17/11/2026 · Uma regra só para &quot;é fonte oficial?&quot;</dt>
-      <dd>O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.</dd>
     </dl>
   </section>
 </main>

@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-24. 93 falhas; 85 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-24. 95 falhas; 87 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -833,6 +833,24 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** job 137617766269: passo do navegador 2 min 22 s, passo do Tesseract 5 min até o teto; teste local (apt 2.8, Ubuntu 24.04): com a trava de `lists/` segura, `apt-get update` sai em 1 s com ou sem DPkg::Lock::Timeout; `install` espera a trava do dpkg com a opção
 - **Correção:** `_coletor.yml`: `install` com DPkg::Lock::Timeout=240; `update` repetido até 12 vezes a cada 10 s; Acquire::Retries=3 e Acquire::http::Timeout=30 contra espelho parado; teto do passo 8 min. Pacote que não instala derruba o elo com o nome do passo e a reserva refaz (D1).
 - **Caso de teste:** nenhum — falta: caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR
+
+## F93 · O teto de 300 buscas no veículo valia por bloco, não por rodada: o lote fez cerca de 1.500 buscas
+
+- **Noite:** 2026-11-23→2026-11-24 (reprocesso manual, run 45305563320)
+- **Sintoma:** Run 45305563320: blocos de 193–200 buscas, em sete blocos; 0 links do Google News resolvidos, e o commit da rodada foi recusado pela união.
+- **Causa:** `seguir()` criava o contador de buscas por chamada, e a rodada chama `seguir()` a cada bloco de BLOCO URLs. O teto valia por bloco.
+- **Prova:** log do run 45305563320: sete blocos com 'busca(s) no veículo' de 193 a 200 cada
+- **Correção:** `contador_buscas` é da rodada e passa a cada bloco; teste que roda dois blocos e conta 300.
+- **Caso de teste:** `seguir_pistas.py --autoteste ('B2: o teto vale para a rodada inteira, somado entre blocos')`
+
+## F94 · Rodada de domingo perde o commit quando ela e o juiz julgam a mesma pista na mesma noite
+
+- **Noite:** 2026-11-15 e 2026-11-22 (atualizar, domingo)
+- **Sintoma:** `atualizar / coletar` (run 44980777132, 22/11, 4h09 de coleta) perdeu o commit: `pistas_imprensa.json` recusado por `julgamento_automatico` e `pistas_imprensa_saude.json` por `repeticoes`; a reaplicação (job 137144544975) recusou de novo as duas filas.
+- **Causa:** `atualizar.py` roda `julgar_e_aplicar_descobertas.py`, que grava `julgamento_automatico` na pista; o elo do juiz grava o mesmo campo na mesma noite. O resolvedor não tinha regra para o campo e recusava o arquivo inteiro.
+- **Prova:** logs do run 44980777132 e do job 137144544975 (handover de erros do GitHub, item 2); `julgar_e_aplicar_descobertas.py` grava `pista['julgamento_automatico'] = {'data': hoje, **r}`
+- **Correção:** D2 no resolvedor: APLICADA vence ABSTENCAO; duas ABSTENCAO, a data mais nova e, no mesmo dia, a da `main`; duas APLICADA diferentes ou caso não coberto: a pista fica como na `main`, a fila une e o caso sai como aviso no log. `repeticoes` já soma pela base (A1, 23/11). Cinco casos D2 em `unir_conflito_de_rodada.py --autoteste`.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo`
 
 ## F95 · Coletor do cadastro federal caiu sem deixar tentativa e o frescor avermelhou a main
 

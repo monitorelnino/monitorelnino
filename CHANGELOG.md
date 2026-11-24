@@ -20,6 +20,17 @@ A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas 
 O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
 ## 2026-11-24 · #2040 · Um envio conferido por PR
 O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.
+## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
+
+A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.
+
+## 2026-11-24 · #2035 · Reaplicação não recusa arquivo novo dos dois lados
+
+`reaplicar_noite.py` separa "commit-base fora do histórico" de "arquivo ausente na base". O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.
+
+## 2026-11-24 · #2034 · Rodada de domingo não perde o commit por `julgamento_automatico`
+
+Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).
 
 ## 2026-11-24 · #2037 · Cadastro federal: coleta que falha deixa tentativa
 
@@ -85,6 +96,10 @@ O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ord
 
 ## 2026-11-23 · #1976 · Juiz: plano publicado não é ato de resposta
 O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.
+
+## 2026-11-24 · #2036 · Buscador 2: teto de buscas no veículo vale para a rodada, não para o bloco
+
+O teto de 300 buscas no veículo era zerado a cada bloco de 200 URLs: o lote de 24/11 fez cerca de 1.500 buscas e nenhum link do Google News resolveu. O contador passa a ser da rodada. Catálogo F92.
 
 ## 2026-11-23 · #1974 · Buscador 2: B2 busca no veículo com o título guardado
 
