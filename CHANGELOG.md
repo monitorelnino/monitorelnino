@@ -12,6 +12,7 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2060 · União de fila: marca do Buscador 2 pela data mais nova
 
 O seguidor regrava `buscador2_em` e `busca_veiculo_em` a cada passada; quando a válvula e a noite passavam pela mesma pista, a união recusava a fila inteira (F100: lote de 24/11 perdido). Os dois campos passam a unir pela data mais nova, a última passada. Caso no autoteste da união.
+
 ## 2026-11-24 · #2059 · Reposição manual registra o relatório pela função compartilhada
 A reposição manual do domínio publicou o site e depois terminou vermelha ao arquivar o relatório, por uma cópia própria do registro que clonava o repositório de notas inteiro e escondia o erro. Ela passa a usar o mesmo registro dos outros workflows; se o relatório falhar, o job avisa sem reprovar.
 
