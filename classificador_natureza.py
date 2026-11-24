@@ -106,7 +106,7 @@ def cita_instrumento_conhecido(texto_lower):
     return next((t for t in TERMOS_INSTRUMENTO if t in texto_lower), None)
 
 
-def classificar(texto, tem_reconhecimento_federal=False):
+def classificar(texto, tem_reconhecimento_federal=False, documento_e_o_plano=False):
     """Aplica o teste do objeto (3 critérios cumulativos + teste-fósforo, §5.2.1).
 
     Retorna (decisao, motivo). decisao é um de "EX_ANTE" / "RESPOSTA" / "DUVIDA".
@@ -122,7 +122,9 @@ def classificar(texto, tem_reconhecimento_federal=False):
     # vez, em vez de multiplicar variantes no dicionário.
     t = re.sub(r"\s+", " ", texto.lower())
 
-    if tem_reconhecimento_federal or any(s in t for s in SINAIS_FIDE_FEDERAL):
+    # 23/11/2026 (editoria): o plano de contingência publicado explica como pedir situação de emergência e
+    # reconhecimento federal; isso faz parte do plano e não o torna ato de resposta. O teste-fósforo é do ATO.
+    if not documento_e_o_plano and (tem_reconhecimento_federal or any(s in t for s in SINAIS_FIDE_FEDERAL)):
         return "RESPOSTA", "teste-fósforo: menciona rota de reconhecimento federal/FIDE"
 
     sinalizador_seguro = next((s for s in SINALIZADORES_RESPOSTA_SEGUROS if s in t), None)
@@ -155,20 +157,28 @@ def classificar(texto, tem_reconhecimento_federal=False):
     return "DUVIDA", "nenhum padrão claro bateu — não classificar sozinho"
 
 
+def ano_possivel(data) -> bool:
+    """O ano da data não está no futuro (19/11/2026: o OCR leu "Versão 201 8" como 2067 e o plano de Tobias
+    Barreto/SE entrou como edição de 2067). Ano de dois dígitos fica como está. Função pura."""
+    from coletores_base import hoje_editorial
+    ano = str(data or "").replace(".", "/").split("/")[-1]
+    return not (len(ano) == 4 and ano.isdigit() and int(ano) > hoje_editorial().year)
+
+
 def extrair_data(texto):
     """Prefere SEMPRE uma data completa (dd/mm/aaaa), não importa onde apareça no
     texto, sobre um ano solto que apareça antes dela — achado real do teste de
     ponta a ponta de 31/08/2026 (Sorocaba): 'ciclo El Niño 2026/2027' vinha antes
-    de 'de 15/08/2026' no texto, e um re.search ingênuo pegava o '2026' errado."""
-    m_completa = RE_DATA_COMPLETA.search(texto)
-    if m_completa:
-        return m_completa.group(0)
+    de 'de 15/08/2026' no texto, e um re.search ingênuo pegava o '2026' errado.
+    Data com ano no futuro não é data do documento: segue para a próxima."""
+    for m in RE_DATA_COMPLETA.finditer(texto):
+        if ano_possivel(m.group(0)):
+            return m.group(0)
     for m_ext in RE_DATA_EXTENSO.finditer(texto):   # 22/09/2026: por extenso vence ano solto
         d = data_extenso_para_numerica(m_ext)
-        if d:
+        if d and ano_possivel(d):
             return d
-    m_ano = RE_DATA_ANO_SOLTO.search(texto)
-    return m_ano.group(0) if m_ano else None
+    return next((m.group(0) for m in RE_DATA_ANO_SOLTO.finditer(texto) if ano_possivel(m.group(0))), None)
 
 
 JANELA_DA_DATA_DO_ATO = 90
@@ -204,6 +214,10 @@ def citacao_completa(numero_e_data_texto):
 def self_test():
     """Reproduz a validação de 31/08/2026 contra a base real (223 casos) + 12 casos
     de calibração manual. Levanta AssertionError se qualquer taxa de erro > 0."""
+    # 19/11/2026: ano no futuro não é data do documento (Tobias Barreto/SE entrou datado de 2067).
+    assert extrair_data("Versão 2067 · elaborado em 2018") == "2018", extrair_data("Versão 2067 · elaborado em 2018")
+    assert extrair_data("em 12/03/2099 e 05/04/2019") == "05/04/2019" and extrair_data("ano 2099") is None
+    assert extrair_data("de 15 de agosto de 2026") == "15/08/2026" and ano_possivel("2026") and not ano_possivel("31/12/2099")
     m = json.load(open(RAIZ / "data" / "municipios.json", encoding="utf-8"))
 
     planos = [i for i in m if i.get("categoria") in ("plano", "plano_antigo")]

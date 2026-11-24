@@ -1,43 +1,51 @@
 {
  "_governanca": "Sondagem de repositórios estaduais de planos municipais (sondar_repositorios_estaduais.py, 13/11/2026). Uma entrada por UF, com a data da sondagem; UF sem página lida segue devida. `nota_de_origem` guarda o que a sondagem manual de 24/09/2026 anotou. Candidata não é repositório declarado: as pistas vão ao juiz, que lê cada documento.",
- "atualizado_em": "2026-11-15",
+ "atualizado_em": "2026-11-23",
  "ufs": {
   "AC": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-20",
    "paginas_lidas": 7,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
+     "url": "https://ac24horas.com/2023/11/21/tce-ac-reune-prefeitos-e-discute-plano-de-contingencia-para-enfrentar-eventos-climaticos/",
+     "titulo": "TCE-AC reúne prefeitos e discute plano de contingência para ..."
+    },
+    {
      "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
      "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
-     "url": "https://dopaonlineupload.procempa.com.br/dopaonlineupload/4419_ce_366883_2.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIAS DE PROTEÇÃO E DEFESA CIVIL"
-    },
-    {
-     "url": "http://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
-     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
     },
     {
      "url": "https://ipam.org.br/wp-content/uploads/2021/03/IPAM-PLANO-MITIGACAO-RIO-BRANCO_V34.pdf",
      "titulo": "PLANO MUNICIPAL DE MITIGAÇÃO E ADAPTAÇÃO ÀS ..."
+    },
+    {
+     "url": "https://macae.rj.gov.br/conteudo/arquivo/id/16288",
+     "titulo": "PLANO MUNICIPAL DO SUAS EM SITUAÇÃO DE CALAMIDADE E ..."
     }
    ],
    "falhas": [
-    "www.defesacivil.ac.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: "
+    "www.defesacivil.ac.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.ac.gov.br/"
    ]
   },
   "AL": {
-   "sondado_em": "2026-11-13",
-   "paginas_lidas": 5,
+   "sondado_em": "2026-11-20",
+   "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
+    {
+     "url": "https://cdnpm.dhost.cloud/documentos/PREVINE-MACEIO-2026.pdf",
+     "titulo": "PREVINE MACEIÓ | 2026 PLANO MUNICIPAL DE AÇÕES ..."
+    },
     {
      "url": "https://www.portodemaceio.com.br/portal/downloads/planos_ambientais/plano_de_contingencia_em_saude_apmc_2020.pdf",
      "titulo": "Plano de Contingência para Emergência de Saúde Pública do Porto ..."
@@ -47,22 +55,22 @@
      "titulo": "PLANO DE CONTINGÊNCIAS DE PROTEÇÃO E DEFESA CIVIL"
     },
     {
-     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
-     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
+    },
+    {
+     "url": "https://www.preventionweb.net/media/73057/download",
+     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb.net"
     }
    ],
-   "falhas": [
-    "seades.al.gov.br: Error: page.evaluate: Execution context was destroyed, most ",
-    "www.alagoas.al.gov.br: Error: page.evaluate: Execution context was destroyed, most ",
-    "transparencia.al.gov.br: Error: page.evaluate: Execution context was destroyed, most "
-   ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://defesacivil.al.gov.br/planos-de-contigencia"
    ]
   },
   "AM": {
-   "sondado_em": "2026-11-13",
-   "paginas_lidas": 6,
+   "sondado_em": "2026-11-20",
+   "paginas_lidas": 7,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
@@ -75,88 +83,85 @@
      "titulo": "Elaboração de Plano de Contingencia"
     },
     {
+     "url": "https://www.facebook.com/mpseoficial/videos/-cidadesseguras-voc%C3%AA-sabe-o-que-%C3%A9-plano-de-conting%C3%AAncia-%C3%A9-um-documento-estrat%C3%A9gi/3340651579435938/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
      "url": "https://santana.ap.gov.br/wp-content/uploads/2025/01/PLANO_DE_CONTINGENCIA_DE_PROTECAO_E_DEFESA_CIVIL.pdf",
      "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO ..."
     },
     {
-     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/10/Plano-de-Contingencia-Estadual-Arboviroses-2025-2026.pdf",
-     "titulo": "Plano de Contingência Estadual das Arboviroses"
-    },
-    {
-     "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+     "url": "https://www.pjf.mg.gov.br/subsecretarias/sspdc/arquivos/Periodo-Chuvoso-2026-2027.pdf",
      "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
     }
    ],
    "falhas": [
-    "www.defesacivil.am.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: ",
-    "www.transparencia.am.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: "
+    "www.defesacivil.am.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno 104] Connection re"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.am.gov.br/"
    ]
   },
   "AP": {
-   "sondado_em": "2026-11-13",
-   "paginas_lidas": 4,
+   "sondado_em": "2026-11-20",
+   "paginas_lidas": 6,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
-     "url": "https://mosquito.saude.es.gov.br/Media/dengue/Notas-Tecnicas-Alertas-Epidemiologicos/Plano%20Conting%C3%AAncia%20Arbo%202024-2026_Formatado.pdf",
-     "titulo": "Plano de Contingência Estadual das Arboviroses 2024-2026"
-    },
-    {
-     "url": "https://repositorio.ufba.br/bitstream/ri/32942/25/vol2_cap23_An%C3%A1lise%20dos%20planos%20de%20conting%C3%AAncia%20de%20oito%20estados%20brasileiros....pdf",
-     "titulo": "Cap. 23 Análise dos planos de contingência de oito estados ..."
-    },
-    {
-     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
-     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
      "url": "https://api-site.apiaca.es.gov.br/arquivos/editor/1602032024090466d8aeab6d9e8.pdf",
      "titulo": "Plano de Contingência da Saúde para Desastres Naturais"
     },
     {
-     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
-     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+     "url": "https://repositorio.ufba.br/bitstream/ri/32942/25/vol2_cap23_An%C3%A1lise%20dos%20planos%20de%20conting%C3%AAncia%20de%20oito%20estados%20brasileiros....pdf",
+     "titulo": "Cap. 23 Análise dos planos de contingência de oito estados ..."
+    },
+    {
+     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
+     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
+    },
+    {
+     "url": "https://riodoscedros.sc.gov.br/uploads/sites/444/2021/12/2056430_plano_de_contingencia_versao_107.pdf",
+     "titulo": "Plano Municipal de Contingência Inundações e Deslizamentos"
     }
    ],
    "falhas": [
-    "www.defesacivil.ap.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: ",
-    "jucap.ap.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: ",
-    "cartaservico.portal.ap.gov.br: Error: networkidle: TimeoutError | load: TimeoutError | domc",
-    "seadantigo.portal.ap.gov.br: Error: networkidle: TimeoutError | load: TimeoutError | domc"
+    "www.defesacivil.ap.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno -2] Name or servic",
+    "jucap.ap.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno 104] Connection re"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.ap.gov.br/"
    ]
   },
   "BA": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-20",
    "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
-     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
-     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
+     "url": "https://dialnet.unirioja.es/descarga/articulo/8628803.pdf",
+     "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
     },
     {
-     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
-     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
+     "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
+     "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
     },
     {
      "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
      "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
-     "url": "https://www.pmav.es.gov.br/uploads/documento/6621768484005.pdf",
-     "titulo": "plano de contingência da secretaria municipal de saúde para ..."
+     "url": "https://www.saojeronimo.rs.gov.br/uploads/paginadinamica/37422/Plano_Municipal_de_Contingncia_2026_2027.pdf",
+     "titulo": "Plano Municipal de Contingência"
     },
     {
-     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/GOVERNADOR%20LINDENBERG%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202026.pdf",
-     "titulo": "governador lindenberg - plano de contingência - 2026 - Cepdec-ES"
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
     }
    ],
    "falhas": [],
@@ -165,8 +170,40 @@
    ]
   },
   "CE": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-20",
    "paginas_lidas": 8,
+   "busca_completa": true,
+   "candidatos": [],
+   "noticias": [
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
+    },
+    {
+     "url": "https://www.complexodopecem.com.br/wp-content/uploads/2021/06/Plano-de-Contigencia-para-Emergencias-em-Saude-Publica-1.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
+    },
+    {
+     "url": "https://4fdfdc7ecc7eac3fcdc8af2e4ed6ae07.cdn.bubble.io/f1778090742623x739114112712558800/PLANO%20DE%20CONTING%C3%8ANCIA%20_%20PUBLICA%C3%87%C3%83O.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA - Bubble"
+    },
+    {
+     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
+     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
+    },
+    {
+     "url": "https://www.jica.go.jp/brazil/portuguese/office/publications/c8h0vm000001w9k8-att/volume3.pdf",
+     "titulo": "MANUAL DE PLANOS DE CONTINGÊNCIA PARA DESASTRES DE ..."
+    }
+   ],
+   "falhas": [],
+   "paginas_conhecidas": [
+    "https://www.defesacivil.ce.gov.br/"
+   ]
+  },
+  "DF": {
+   "sondado_em": "2026-11-21",
+   "paginas_lidas": 6,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
@@ -177,38 +214,6 @@
     {
      "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
      "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
-    },
-    {
-     "url": "https://www.complexodopecem.com.br/wp-content/uploads/2021/06/Plano-de-Contigencia-para-Emergencias-em-Saude-Publica-1.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
-    },
-    {
-     "url": "https://santana.ap.gov.br/wp-content/uploads/2025/01/PLANO_DE_CONTINGENCIA_DE_PROTECAO_E_DEFESA_CIVIL.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO ..."
-    },
-    {
-     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/",
-     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
-    }
-   ],
-   "falhas": [],
-   "paginas_conhecidas": [
-    "https://www.defesacivil.ce.gov.br/"
-   ]
-  },
-  "DF": {
-   "sondado_em": "2026-11-13",
-   "paginas_lidas": 3,
-   "busca_completa": true,
-   "candidatos": [],
-   "noticias": [
-    {
-     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
-     "titulo": "Elaboração de Plano de Contingencia"
-    },
-    {
-     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
-     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
     },
     {
      "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/GUA%C3%87U%C3%8D%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025%20-%202028.pdf",
@@ -219,23 +224,19 @@
      "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS"
     },
     {
-     "url": "https://www.jica.go.jp/brazil/portuguese/office/publications/c8h0vm000001w9k8-att/volume3.pdf",
-     "titulo": "MANUAL DE PLANOS DE CONTINGÊNCIA PARA DESASTRES DE ..."
+     "url": "https://espigaodooeste.ro.gov.br/uploads/678686e2dd349.pdf",
+     "titulo": "COMPDEC PLANO DE CONTINGÊNCIA DE SECA E ESTIAGEM"
     }
    ],
    "falhas": [
-    "www.defesacivil.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
-    "defesacivil.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
-    "www.saude.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
-    "www.seduh.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake",
-    "www.economia.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake"
+    "www.defesacivil.df.gov.br: Error: networkidle: TimeoutError | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error _ssl.c:994: The handshake"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.df.gov.br/"
    ]
   },
   "ES": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-21",
    "paginas_lidas": 12,
    "busca_completa": true,
    "candidatos": [
@@ -247,8 +248,12 @@
    ],
    "noticias": [
     {
-     "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+     "url": "https://www.pjf.mg.gov.br/subsecretarias/sspdc/arquivos/Periodo-Chuvoso-2026-2027.pdf",
      "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
+    },
+    {
+     "url": "https://www.preventionweb.net/media/73057/download",
+     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb.net"
     }
    ],
    "falhas": [],
@@ -257,7 +262,7 @@
    ]
   },
   "GO": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-21",
    "paginas_lidas": 7,
    "busca_completa": true,
    "candidatos": [],
@@ -271,12 +276,12 @@
      "titulo": "Plano de Contingência para desastres provocados por chuvas ..."
     },
     {
-     "url": "https://www.cbngoiania.com.br/tarde-cbn/goias-elabora-planos-de-contingencia-para-combater-impactos-do-super-el-ni-o-1.3427902",
-     "titulo": "Goiás elabora planos de contingência para combater impactos do ..."
+     "url": "https://www.jica.go.jp/brazil/portuguese/office/publications/c8h0vm000001w9k8-att/volume3.pdf",
+     "titulo": "MANUAL DE PLANOS DE CONTINGÊNCIA PARA DESASTRES DE ..."
     },
     {
-     "url": "https://www.youtube.com/watch?v=xggoIeTwinM",
-     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
+     "url": "https://www.dgrm.pt/documents/20143/646385/PCRE+3IBES+FACTORY.pdf/6b84ed7b-1be4-ec12-4044-65dfeab06c9b",
+     "titulo": "PLANO DE CONTINGÊNCIA E RESPOSTA DE EMERGÊNCIA DO ..."
     },
     {
      "url": "https://periodicos.ufsc.br/index.php/adm/article/view/84312",
@@ -291,7 +296,7 @@
    ]
   },
   "MA": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-21",
    "paginas_lidas": 9,
    "busca_completa": true,
    "candidatos": [],
@@ -301,20 +306,20 @@
      "titulo": "PLANO DE CONTINGÊNCIA PARA EMERGÊNCIA EM SAÚDE ..."
     },
     {
-     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
-     "titulo": "Elaboração de Plano de Contingencia"
-    },
-    {
      "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
      "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
-     "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
-     "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
     },
     {
-     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
-     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
+     "url": "https://4fdfdc7ecc7eac3fcdc8af2e4ed6ae07.cdn.bubble.io/f1778090742623x739114112712558800/PLANO%20DE%20CONTING%C3%8ANCIA%20_%20PUBLICA%C3%87%C3%83O.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA - Bubble"
+    },
+    {
+     "url": "https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf",
+     "titulo": "plano de contingência da secretaria de estado da saúde - SESA"
     }
    ],
    "falhas": [],
@@ -323,30 +328,30 @@
    ]
   },
   "MG": {
-   "sondado_em": "2026-11-13",
-   "paginas_lidas": 11,
+   "sondado_em": "2026-11-21",
+   "paginas_lidas": 9,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
-     "url": "https://www.instagram.com/reel/DW9esgADvQg/",
-     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+     "url": "https://s3-apps-01.mgdata.com.br/portalbrumadinho/brumadinho/media%20-1769115146587.pdf",
+     "titulo": "Plano de Contingência Municipal (PLANCON) de Brumadinho ..."
     },
     {
      "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
      "titulo": "Elaboração de Plano de Contingencia"
     },
     {
-     "url": "https://s3-apps-01.mgdata.com.br/portalbrumadinho/brumadinho/media%20-1769115146587.pdf",
-     "titulo": "Plano de Contingência Municipal (PLANCON) de Brumadinho ..."
+     "url": "https://www.instagram.com/p/DWy2IxViSaL/",
+     "titulo": "O plano de contingência da sua cidade funciona na prática? Na ..."
+    },
+    {
+     "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Chuvas.pdf",
+     "titulo": "Plano de Contingência para desastres provocados por chuvas ..."
     },
     {
      "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
      "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS"
-    },
-    {
-     "url": "https://dialnet.unirioja.es/descarga/articulo/8628803.pdf",
-     "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
     }
    ],
    "falhas": [],
@@ -355,15 +360,11 @@
    ]
   },
   "MS": {
-   "sondado_em": "2026-11-13",
-   "paginas_lidas": 12,
+   "sondado_em": "2026-11-21",
+   "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
-    {
-     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
-     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
-    },
     {
      "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
      "titulo": "Elaboração de Plano de Contingencia"
@@ -373,12 +374,16 @@
      "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
     },
     {
-     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
-     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
-    },
-    {
      "url": "https://espigaodooeste.ro.gov.br/uploads/678686e2dd349.pdf",
      "titulo": "COMPDEC PLANO DE CONTINGÊNCIA DE SECA E ESTIAGEM"
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
+    },
+    {
+     "url": "https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA"
     }
    ],
    "falhas": [],
@@ -387,11 +392,15 @@
    ]
   },
   "MT": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 10,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
+    {
+     "url": "https://www.gcnoticias.com.br/geral/15-municipios-de-mt-terao-planos-de-contingencia-para-enfrentar-situacoes-de-emergencia/269996784",
+     "titulo": "15 municípios de MT terão planos de contingência para enfrentar ..."
+    },
     {
      "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/06/Plano-de-Contingencia-Chuvas.pdf",
      "titulo": "Plano de Contingência para desastres provocados por chuvas ..."
@@ -405,12 +414,8 @@
      "titulo": "MS aprova planos de contingência para enfrentar desastres ... - SES"
     },
     {
-     "url": "https://dialnet.unirioja.es/descarga/articulo/8628803.pdf",
-     "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
-    },
-    {
-     "url": "https://www.scielosp.org/article/csc/2023.v28n5/1377-1386/",
-     "titulo": "prioridades nos planos estaduais e nacional de contingência Ações ..."
+     "url": "https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA"
     }
    ],
    "falhas": [],
@@ -419,30 +424,30 @@
    ]
   },
   "PA": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
-     "url": "https://www.youtube.com/watch?v=xggoIeTwinM",
+     "url": "https://www.youtube.com/watch?v=kFUwetLnW0M",
      "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
-    },
-    {
-     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
-     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
     },
     {
      "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
      "titulo": "Elaboração de Plano de Contingencia"
     },
     {
-     "url": "https://www.youtube.com/watch?v=kFUwetLnW0M",
-     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
+     "url": "https://www.instagram.com/reel/DW9esgADvQg/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
     },
     {
-     "url": "https://leis.org/camara/sc/rodeio/lei/lei-ordinaria/2026/2389/lei-ordinaria-n-2389-2026-institui-o-plano-de-contingencia-da-defesa-civil-plancon-do-municipio-de-rodeio-e-da-outras-providencias",
-     "titulo": "institui o plano de contingência da defesa civil - Leis.org"
+     "url": "https://www.facebook.com/mpseoficial/videos/-cidadesseguras-voc%C3%AA-sabe-o-que-%C3%A9-plano-de-conting%C3%AAncia-%C3%A9-um-documento-estrat%C3%A9gi/3340651579435938/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
+     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
+     "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
     }
    ],
    "falhas": [],
@@ -452,30 +457,30 @@
    ]
   },
   "PB": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
-     "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
-     "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
-    },
-    {
-     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
-     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
-    },
-    {
      "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
      "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
-     "url": "https://www.ceivap.org.br/mata/Silverania.pdf",
-     "titulo": "Plano Municipal de Saneamento Básico – Silverânia/MG - CEIVAP"
+     "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
+     "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
     },
     {
-     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIT%C3%93RIA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202024-2025.pdf",
-     "titulo": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PMPDC"
+     "url": "https://areal.rj.gov.br/wp-content/uploads/2026/06/plano-de-contingencia-estiagem-e-fogo-vegeta-o-areal-2026.pdf",
+     "titulo": "Plano de Contingência Estiagem e Fogo Vegetação – 2026"
+    },
+    {
+     "url": "https://www.scielo.br/j/sdeb/a/gXmPZ9bpWfVkWJVMyz5B6fK/?lang=pt",
+     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/CARIACICA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718201000",
+     "titulo": "cariacica - plano de contingência - 2025 - Cepdec-ES"
     }
    ],
    "falhas": [],
@@ -484,7 +489,7 @@
    ]
   },
   "PE": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
@@ -494,20 +499,20 @@
      "titulo": "PLANO DE CONTINGÊNCIA - Bubble"
     },
     {
-     "url": "https://revistas.ceeinter.com.br/revistadeestudosinterdisciplinar/article/view/943",
+     "url": "https://www.instagram.com/p/DZf4yxRoAwp/",
+     "titulo": "PLANO DE CONTINGÊNCIA 2026 A Prefeitura de São Lourenço da ..."
+    },
+    {
+     "url": "https://revistas.ceeinter.com.br/revistadeestudosinterdisciplinar/pt_BR/article/view/943",
      "titulo": "governança pública nos planos de contingência de defesa civil ..."
-    },
-    {
-     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
-     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
-    },
-    {
-     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
-     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
      "url": "https://www.pe.senac.br/gercom/downloads/plano-contingencia-biblioteca-senac.pdf",
      "titulo": "plano de contingência - Senac"
+    },
+    {
+     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
+     "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
     }
    ],
    "falhas": [],
@@ -516,15 +521,11 @@
    ]
   },
   "PI": {
-   "sondado_em": "2026-11-13",
-   "paginas_lidas": 8,
+   "sondado_em": "2026-11-22",
+   "paginas_lidas": 7,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
-    {
-     "url": "https://www.instagram.com/reel/DW9esgADvQg/",
-     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
-    },
     {
      "url": "https://4fdfdc7ecc7eac3fcdc8af2e4ed6ae07.cdn.bubble.io/f1778090742623x739114112712558800/PLANO%20DE%20CONTING%C3%8ANCIA%20_%20PUBLICA%C3%87%C3%83O.pdf",
      "titulo": "PLANO DE CONTINGÊNCIA - Bubble"
@@ -534,37 +535,31 @@
      "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO ..."
     },
     {
-     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
-     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
-     "url": "https://www.instagram.com/p/DcwT-wpD29B/",
-     "titulo": "Plano de contingência do Piauí para enfrentar o El Niño ... - Instagram"
+     "url": "https://www.complexodopecem.com.br/wp-content/uploads/2021/06/Plano-de-Contigencia-para-Emergencias-em-Saude-Publica-1.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
+    },
+    {
+     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
+     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
     }
    ],
-   "falhas": [],
+   "falhas": [
+    "www.diariooficial.pi.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno 101] Network is un"
+   ],
    "paginas_conhecidas": [
     "https://www.pi.gov.br/planos-de-contigencia"
    ]
   },
   "PR": {
-   "sondado_em": "2026-11-13",
+   "sondado_em": "2026-11-22",
    "paginas_lidas": 16,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
-    {
-     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
-     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
-    },
-    {
-     "url": "https://www.youtube.com/watch?v=xggoIeTwinM",
-     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
-    },
-    {
-     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
-     "titulo": "Elaboração de Plano de Contingencia"
-    },
     {
      "url": "https://saojose.sc.gov.br/wp-content/uploads/2025/09/Plano-de-Contingencia-da-SAS-2025.pdf",
      "titulo": "Plano de Contingência da SAS - Prefeitura Municipal De São José"
@@ -572,6 +567,18 @@
     {
      "url": "https://www.instagram.com/reel/DflKYBuu-kD/",
      "titulo": "Orientações, elaboração de planos de contingência, reuniões e ..."
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
+    },
+    {
+     "url": "https://www.pmav.es.gov.br/uploads/documento/6621768484005.pdf",
+     "titulo": "plano de contingência da secretaria municipal de saúde para ..."
+    },
+    {
+     "url": "https://www.instagram.com/reel/Dd6H8mhOqj5/",
+     "titulo": "Rádio CBN Curitiba | Um plano de contingência meteorológica foi ..."
     }
    ],
    "falhas": [],
@@ -580,8 +587,8 @@
    ]
   },
   "RJ": {
-   "sondado_em": "2026-11-14",
-   "paginas_lidas": 7,
+   "sondado_em": "2026-11-23",
+   "paginas_lidas": 6,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
@@ -590,20 +597,20 @@
      "titulo": "Plancon.pdf - Defesa Civil"
     },
     {
-     "url": "https://www.jica.go.jp/brazil/portuguese/office/publications/c8h0vm000001w9k8-att/volume3.pdf",
-     "titulo": "MANUAL DE PLANOS DE CONTINGÊNCIA PARA DESASTRES DE ..."
-    },
-    {
      "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
      "titulo": "Elaboração de Plano de Contingencia"
     },
     {
-     "url": "https://revistas.ceeinter.com.br/revistadeestudosinterdisciplinar/article/view/943",
-     "titulo": "governança pública nos planos de contingência de defesa civil ..."
+     "url": "https://www.jica.go.jp/brazil/portuguese/office/publications/c8h0vm000001w9k8-att/volume3.pdf",
+     "titulo": "MANUAL DE PLANOS DE CONTINGÊNCIA PARA DESASTRES DE ..."
     },
     {
      "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
      "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS"
+    },
+    {
+     "url": "https://www.pjf.mg.gov.br/subsecretarias/sspdc/arquivos/Periodo-Chuvoso-2026-2027.pdf",
+     "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
     }
    ],
    "falhas": [
@@ -615,7 +622,7 @@
    ]
   },
   "RN": {
-   "sondado_em": "2026-11-14",
+   "sondado_em": "2026-11-23",
    "paginas_lidas": 7,
    "busca_completa": true,
    "candidatos": [],
@@ -629,16 +636,16 @@
      "titulo": "PLANO DE CONTINGÊNCIA DA SAÚDE PARA DESASTRES"
     },
     {
-     "url": "https://www.preventionweb.net/media/73057/download",
-     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb.net"
+     "url": "https://santana.ap.gov.br/wp-content/uploads/2025/01/PLANO_DE_CONTINGENCIA_DE_PROTECAO_E_DEFESA_CIVIL.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL DO ..."
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
     },
     {
      "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
      "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
-    },
-    {
-     "url": "https://www.pmav.es.gov.br/uploads/documento/6621768484005.pdf",
-     "titulo": "plano de contingência da secretaria municipal de saúde para ..."
     }
    ],
    "falhas": [
@@ -649,49 +656,45 @@
    ]
   },
   "RO": {
-   "sondado_em": "2026-11-14",
+   "sondado_em": "2026-11-23",
    "paginas_lidas": 7,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
     {
-     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/",
-     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
-    },
-    {
      "url": "https://sedurb.es.gov.br/media/Importacao/Redu%C3%A7%C3%A3o%20de%20risco/Mimoso%20do%20Sul/Relat%C3%B3rio%20I.pdf",
      "titulo": "ELABORAÇÃO DO PLANO MUNICIPAL DE REDUÇÃO DE RISCO ..."
     },
     {
-     "url": "https://transparencia.cabo.pe.gov.br/uploads/5117/1/atos-oficiais/2024/servicos-de-saude/1715780166_plano-municipal-de-contingencia-vigidesastres--cabo.pdf",
-     "titulo": "Plano de Contingência para Enfrentamento de Desastres de Origem ..."
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
     },
     {
-     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/VIT%C3%93RIA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202024-2025.pdf",
-     "titulo": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL PMPDC"
+     "url": "https://www.scielosp.org/article/sdeb/2024.v48n142/e9229/pt/",
+     "titulo": "Planos de contingência e coordenação estadual do SUS na ..."
     },
     {
      "url": "https://ipam.org.br/wp-content/uploads/2021/03/IPAM-PLANO-MITIGACAO-RIO-BRANCO_V34.pdf",
      "titulo": "PLANO MUNICIPAL DE MITIGAÇÃO E ADAPTAÇÃO ÀS ..."
+    },
+    {
+     "url": "https://agencia.ac.gov.br/governo-planeja-acoes-de-contingencia-para-possiveis-cheias-dos-rios/",
+     "titulo": "Governo planeja ações de contingência para possíveis cheias dos ..."
     }
    ],
    "falhas": [
-    "www.defesacivil.ro.gov.br: Error: networkidle: TimeoutError | load: TimeoutError | domcontentloaded: Error; estático: URLError: <urlopen error [Errno -3] Temporary fail"
+    "www.defesacivil.ro.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: URLError: <urlopen error [Errno -3] Temporary fail"
    ],
    "paginas_conhecidas": [
     "https://www.defesacivil.ro.gov.br/"
    ]
   },
   "RR": {
-   "sondado_em": "2026-11-14",
+   "sondado_em": "2026-11-23",
    "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
-    {
-     "url": "https://portalopoder.com.br/2026/10/30/mpam-solicita-plano-de-contingencia-para-queimadas-em-sao-gabriel-da-cachoeira/",
-     "titulo": "MPAM solicita plano de contingência para queimadas em São ..."
-    },
     {
      "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
      "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
@@ -701,12 +704,12 @@
      "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
     },
     {
-     "url": "https://www.redalyc.org/journal/1005/100566937024/html/",
-     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+     "url": "https://ojs.revistacontemporanea.com/ojs/index.php/home/article/download/7877/5533",
+     "titulo": "plano nacional de contingência de desastres em"
     },
     {
-     "url": "https://publi.ludomedia.org/index.php/ntqr/article/download/709/706",
-     "titulo": "Plano de Contingência da Assistência Social na Pandemia COVID ..."
+     "url": "https://amazoniareal.com.br/crise-na-venezuela-plano-de-contingencia-inclui-abrigo-de-passagem-na-fronteira-de-roraima/",
+     "titulo": "Crise na Venezuela: Plano de contingência inclui “abrigo de ..."
     }
    ],
    "falhas": [],
@@ -715,7 +718,7 @@
    ]
   },
   "RS": {
-   "sondado_em": "2026-11-14",
+   "sondado_em": "2026-11-23",
    "paginas_lidas": 9,
    "busca_completa": true,
    "candidatos": [
@@ -729,20 +732,20 @@
    ],
    "noticias": [
     {
-     "url": "https://www.youtube.com/watch?v=xggoIeTwinM",
-     "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
-    },
-    {
      "url": "https://www.youtube.com/watch?v=kFUwetLnW0M",
      "titulo": "Planos de Contingência Municipais: o Olhar do MP - YouTube"
     },
     {
-     "url": "https://www.instagram.com/p/Dd6NDeVD088/",
-     "titulo": "Você conhece o Plano de Contingência Municipal? O ... - Instagram"
+     "url": "https://alana.org.br/wp-content/uploads/2025/10/plancon-escolar-guia-eventos-climaticos-digital.pdf",
+     "titulo": "Planos de Contingência Escolares para Eventos Climáticos"
     },
     {
      "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
      "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
+    },
+    {
+     "url": "https://www.instagram.com/reel/DflKYBuu-kD/",
+     "titulo": "Orientações, elaboração de planos de contingência, reuniões e ..."
     },
     {
      "url": "https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf",
@@ -755,130 +758,75 @@
    ]
   },
   "SC": {
-   "sondado_em": "2026-11-14",
-   "paginas_lidas": 10,
+   "sondado_em": "2026-11-23",
+   "paginas_lidas": 8,
    "busca_completa": true,
    "candidatos": [],
    "noticias": [
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+     "titulo": "Elaboração de Plano de Contingencia"
+    },
     {
      "url": "https://leis.org/camara/sc/rodeio/lei/lei-ordinaria/2026/2389/lei-ordinaria-n-2389-2026-institui-o-plano-de-contingencia-da-defesa-civil-plancon-do-municipio-de-rodeio-e-da-outras-providencias",
      "titulo": "institui o plano de contingência da defesa civil - Leis.org"
     },
     {
-     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
-     "titulo": "Elaboração de Plano de Contingencia"
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
     },
     {
-     "url": "https://www.preventionweb.net/media/73057/download",
-     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb.net"
+     "url": "https://www.pjf.mg.gov.br/subsecretarias/sspdc/arquivos/Periodo-Chuvoso-2026-2027.pdf",
+     "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
     },
     {
      "url": "https://periodicos.ufsc.br/index.php/adm/article/view/84312",
      "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
-    },
-    {
-     "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
-     "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
     }
    ],
-   "falhas": [],
+   "falhas": [
+    "saojose.sc.gov.br: Error: networkidle: Error | load: Error | domcontentloaded: Error; estático: HTTPError: HTTP Error 522: <none>"
+   ],
    "paginas_conhecidas": [
     "https://www.defesacivil.sc.gov.br/municipios/"
    ]
   },
   "SE": {
-   "sondado_em": "2026-11-15",
-   "paginas_lidas": 8,
-   "busca_completa": true,
+   "sondado_em": "2026-11-23",
+   "paginas_lidas": 1,
+   "busca_completa": false,
    "candidatos": [],
-   "noticias": [
-    {
-     "url": "https://www.facebook.com/mpseoficial/videos/-cidadesseguras-voc%C3%AA-sabe-o-que-%C3%A9-plano-de-conting%C3%AAncia-%C3%A9-um-documento-estrat%C3%A9gi/3340651579435938/",
-     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
-    },
-    {
-     "url": "https://www.instagram.com/reel/DW9esgADvQg/",
-     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
-    },
-    {
-     "url": "https://www.defesacivil.rj.gov.br/images/2025/11/PLANCON-24_25-REVISADO---VERSO-2.0---25_26.docx.pdf",
-     "titulo": "PLANCON 24_25 (REVISADO) - VERSÃO 2.0 - Defesa Civil"
-    },
-    {
-     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
-     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
-    },
-    {
-     "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
-     "titulo": "Plano de Contingência de Chuvas - Período Chuvoso 2026-2027 ..."
-    }
+   "noticias": [],
+   "falhas": [
+    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
-   "falhas": [],
    "paginas_conhecidas": [
     "https://defesacivil.se.gov.br/planos-de-contigencia/"
    ]
   },
   "SP": {
-   "sondado_em": "2026-11-15",
-   "paginas_lidas": 8,
-   "busca_completa": true,
+   "sondado_em": "2026-11-23",
+   "paginas_lidas": 1,
+   "busca_completa": false,
    "candidatos": [],
-   "noticias": [
-    {
-     "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
-     "titulo": "Elaboração de Plano de Contingencia"
-    },
-    {
-     "url": "https://www.instagram.com/p/DY3FB4hjnh5/?hl=en",
-     "titulo": "\"Prefeitura atualiza Plano de Contingência e reforça preparo para ..."
-    },
-    {
-     "url": "https://dialnet.unirioja.es/descarga/articulo/8628803.pdf",
-     "titulo": "Planos de Contingência do SUS e do SUAS no contexto de pandemia"
-    },
-    {
-     "url": "https://revistaft.com.br/plano-de-contingencia-para-desastres-ambientais-uma-analise-da-publicidade-e-acesso-a-populacao-dos-municipios-da-regiao-metropolitana-do-vale-do-aco-rmva-e-do-seu-colar-metropolitano/",
-     "titulo": "PLANO DE CONTINGÊNCIA PARA DESASTRES AMBIENTAIS"
-    },
-    {
-     "url": "https://www.preventionweb.net/media/73057/download",
-     "titulo": "plano de contingência de proteção e defesa civil - PreventionWeb.net"
-    }
+   "noticias": [],
+   "falhas": [
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
-   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.sp.gov.br/planos-de-contigencia"
    ]
   },
   "TO": {
-   "sondado_em": "2026-11-15",
-   "paginas_lidas": 9,
-   "busca_completa": true,
+   "sondado_em": "2026-11-23",
+   "paginas_lidas": 1,
+   "busca_completa": false,
    "candidatos": [],
-   "noticias": [
-    {
-     "url": "https://cavalcante.go.gov.br/wp-content/uploads/2026/03/PLANCON-APROVADO.pdf",
-     "titulo": "Plano de Contingência Municipal PLANCON"
-    },
-    {
-     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
-     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
-    },
-    {
-     "url": "https://www.complexodopecem.com.br/wp-content/uploads/2021/06/Plano-de-Contigencia-para-Emergencias-em-Saude-Publica-1.pdf",
-     "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
-    },
-    {
-     "url": "https://parauapebas.pa.gov.br/wp-content/uploads/2024/02/PLANCON-PARAUAPEBAS-vs.2-2023-1.pdf",
-     "titulo": "PLANCON-PARAUAPEBAS-vs.2-2023-1.pdf"
-    },
-    {
-     "url": "https://www.redalyc.org/journal/1005/100566937024/html/",
-     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
-    }
-   ],
+   "noticias": [],
    "falhas": [
-    "doe.to.gov.br: saída do renderizador não é JSON; estático: URLError: <urlopen error timed out>"
+    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
+    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
    ],
    "paginas_conhecidas": [
     "https://bombeiros.to.gov.br/planos-de-contigencia"

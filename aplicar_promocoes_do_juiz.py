@@ -101,6 +101,105 @@ def atualizacao_anual_localizada(data):
 
 
 ROTULO_SEM_ATUALIZACAO = "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)"
+# 17/11/2026 (editoria: "deixar indicado que é um plano desatualizado segundo a lei, valendo para todos os estados e
+# municípios e pontuando zero"): a regra que era só do repositório estadual vale para todo plano de município
+# indicado ao cadastro do art. 3º-A. O plano entra no banco, aparece na ficha com a marca e vale zero no índice.
+PLANOS_DA_LEI = ("plano", "plano_antigo", "plano_nomeado")
+# Na ficha, a lei por extenso: o "§" é marca de seção da Metodologia, e o portão de jargão o recusa em dado exibido.
+# A mesma frase do MARÉ Saúde para o plano estadual com período encerrado.
+MARCA_ENCERRADO = "último plano localizado com vigência encerrada"
+MARCA_DESATUALIZADO = ("plano desatualizado segundo a lei: sem atualização anual localizada "
+                       "(Lei 12.340/2010, art. 3º-A, parágrafo 6º)")
+
+
+def desatualizado_pela_lei(categoria, data, ibge, cadastro) -> bool:
+    """Plano de município indicado ao cadastro do art. 3º-A cuja edição é anterior a 29/06/2025? Sem data
+    identificável, não (data insuficiente para o cômputo). Função pura dado o cadastro."""
+    return (categoria in PLANOS_DA_LEI and str(ibge or "") in cadastro
+            and atualizacao_anual_localizada(data) is False)
+
+
+def vigencia_encerrada_no_ciclo(periodo, data) -> bool:
+    """O período que o plano declara ("2024-2025") terminou antes do ciclo, e a edição não é do fim dele?
+    Editoria, 15/11/2026 (vale zero) e 20/11/2026 (na dúvida, não encerra): a edição datada, com mês, no segundo
+    semestre do último ano do período é a atualização para a estação seguinte (Vitória/ES, "Verão 2024/2025,
+    1ª atualização", de 10/2025). Data só com o ano não mostra isso, e o plano fica encerrado. Função pura."""
+    import datetime
+    fim = int(str(periodo or "0")[-4:] or 0)
+    if not fim:
+        return False
+    d = data_da_edicao(data) if re.search(r"\d{1,2}[/-]\d{4}|\d{4}-\d{2}", str(data or "")) else None
+    return not (d and d >= datetime.date(fim, 7, 1))
+
+
+def faixa_de_idade(categoria, data, ibge, cadastro, periodo=None):
+    """A categoria que a idade do plano dá ao índice, ou None quando ele conta pela própria (editoria,
+    20/11/2026; idade contada do Boletim nº 1). Vigência declarada encerrada: `plano_com_vigencia_encerrada`
+    (zero). Município indicado ao cadastro do art. 3º-A com edição de mais de um ano: `plano_desatualizado`
+    (zero, a regra de 17/11). Fora do cadastro, edição de mais de dois anos: `plano_de_mais_de_2_anos` (0,65).
+    Sem data identificável, None. Função pura dado o cadastro."""
+    import datetime
+    from juiz import BOLETIM_1
+    if categoria in ("plano", "plano_antigo") and vigencia_encerrada_no_ciclo(periodo, data):
+        return "plano_com_vigencia_encerrada"
+    if desatualizado_pela_lei(categoria, data, ibge, cadastro):
+        return "plano_desatualizado"
+    d = data_da_edicao(data) if categoria in ("plano", "plano_antigo") else None
+    inicio = datetime.datetime.strptime(BOLETIM_1, "%d/%m/%Y").date()
+    return "plano_de_mais_de_2_anos" if d and d < inicio.replace(year=inicio.year - 2) else None
+
+
+def marcar_desatualizados(municipios: list, codigo_de, cadastro) -> int:
+    """Põe ou tira a marca na ficha de cada registro, conforme a regra; devolve quantos mudaram. A marca de
+    plano sem ato de aprovação, quando há, continua junto."""
+    mudou = 0
+    for m in municipios:
+        marcas = [x for x in str(m.get("marca_na_ficha") or "").split(" · ") if x and x != MARCA_DESATUALIZADO]
+        marcas = [x for x in marcas if not x.startswith(MARCA_ENCERRADO)]
+        if m.get("categoria") in ("plano", "plano_antigo") and vigencia_encerrada_no_ciclo(
+                m.get("vigencia_declarada_encerrada"), m.get("data")):
+            marcas.append(f"{MARCA_ENCERRADO} ({m['vigencia_declarada_encerrada']})")
+        elif desatualizado_pela_lei(m.get("categoria"), m.get("data"), codigo_de(m), cadastro):
+            marcas.append(MARCA_DESATUALIZADO)
+        nova = " · ".join(marcas) or None
+        if nova != m.get("marca_na_ficha"):
+            if nova:
+                m["marca_na_ficha"] = nova
+            else:
+                m.pop("marca_na_ficha", None)
+            mudou += 1
+    return mudou
+
+
+def marcar_planos_da_saude(municipios: list, texto_da_copia) -> int:
+    """Marca `plano_da_saude` ({fonte}) no registro de plano cuja cópia preservada é um plano da saúde (`juiz.plano_da_saude`),
+    e tira a marca de quem deixou de ser; devolve quantos mudaram. `texto_da_copia(hash)` dá o texto ou "". Não muda
+    categoria nem índice (editoria, 23/11/2026): o cartão diz o que a fonte disponibilizou."""
+    from atualizar_instrumentos_estaduais import REPOSITORIOS, repositorio_do_documento
+    from juiz import plano_da_saude
+    mudou = 0
+    for m in municipios:
+        h, url = m.get("hash_evidencia"), m.get("url") or ""
+        uf_rep = repositorio_do_documento(url)
+        nova = ({"fonte": REPOSITORIOS[uf_rep]["fonte"] if uf_rep else re.sub(r"^www\.", "", url.split("/")[2] if "//" in url else url)}
+                if m.get("categoria") in CATEGORIAS_DE_PLANO + ("plano_novo", "plano_readaptado", "plano_recorrente")
+                and h and plano_da_saude(texto_da_copia(h)) else None)
+        if nova != m.get("plano_da_saude"):
+            if nova:
+                m["plano_da_saude"] = nova
+            else:
+                m.pop("plano_da_saude", None)
+            mudou += 1
+    return mudou
+
+
+def texto_da_copia_preservada(h: str) -> str:
+    """Texto da cópia preservada (camada de texto, ou o OCR), ou ""."""
+    for nome in (f"{h}.txt", f"{h}.ocr.txt"):
+        f = RAIZ / "evidencias" / nome
+        if f.exists():
+            return f.read_text(encoding="utf-8", errors="replace")
+    return ""
 
 
 def municipios_do_cadastro() -> set:
@@ -131,23 +230,21 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
             continue
         # a abstenção da regra antiga ("atualização não se presume") volta uma vez, para a regra nova decidir
         if v.get("superada_por") or v.get("aplicado_em") or (
-                v.get("nao_aplicado") and (v["nao_aplicado"] is True or v["nao_aplicado"].get("motivo") != ABSTENCAO_ANTIGA)):
+                v.get("nao_aplicado") and (v["nao_aplicado"] is True or not (
+                    v["nao_aplicado"].get("motivo") == ABSTENCAO_ANTIGA
+                    or str(v["nao_aplicado"].get("motivo") or "").startswith(LIMITE_NOSSO)))):
             continue
+        if cadastro is None:
+            cadastro = municipios_do_cadastro()
+        v["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "") or None
+        v["indicado_ao_cadastro_art3A"] = str(v.get("ibge")) in cadastro
+        v["atualizacao_anual_localizada"] = atualizacao_anual_localizada(v.get("data"))
+        if desatualizado_pela_lei(v.get("categoria"), v.get("data"), v.get("ibge"), cadastro):
+            v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO   # entra no banco com a marca e vale zero no índice
+            sem_atualizacao += 1
         repo = repositorio_do_documento(v.get("url") or "")
         if repo:
-            if cadastro is None:
-                cadastro = municipios_do_cadastro()
-            cfg = REPOSITORIOS[repo]
-            v["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "") or None
-            v["indicado_ao_cadastro_art3A"] = str(v.get("ibge")) in cadastro
-            v["atualizacao_anual_localizada"] = atualizacao_anual_localizada(v.get("data"))
-            # sem data identificável não rebaixa (data insuficiente para o cômputo): só `False` exclui
-            if (cfg.get("contar_so_com_atualizacao_anual") and v["indicado_ao_cadastro_art3A"]
-                    and v["atualizacao_anual_localizada"] is False):
-                v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO
-                sem_atualizacao += 1
-                continue
-            if cfg.get("aplicar_no_banco") is False:
+            if REPOSITORIOS[repo].get("aplicar_no_banco") is False:
                 retidos += 1
                 continue
         if dominio_divergente(v, resolver(v.get("url") or "")):
@@ -156,8 +253,8 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
             continue
         fora.append(v)
     if retidos or sem_atualizacao:
-        print(f"   repositório estadual: {sem_atualizacao} de município indicado ao cadastro sem atualização anual "
-              f"localizada (fora da contagem pelo sinal); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
+        print(f"   {sem_atualizacao} plano(s) de município indicado ao cadastro sem atualização anual localizada "
+              f"(entram com a marca e valem zero); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
     return fora
 
 
@@ -180,6 +277,10 @@ def ja_no_banco(municipios: list, nome: str, uf: str) -> bool:
 # `registro_anterior`. Igual, mais fraco ou sem data comparável: nada muda.
 JA_CONSTA = "já consta no banco — "
 ABSTENCAO_ANTIGA = JA_CONSTA + "abstenção registrada (atualização não se presume)"
+# 17/11/2026: "acima do limite de evidência" é limite da nossa guarda (o arquivo passa de 5 MB e o Wayback não
+# lê pasta privada), não decisão sobre o caso; a marca enterrava 40 promoções. Como a falha de acesso, não marca,
+# e a marca antiga volta para ser aplicada agora que a camada de texto é guardada.
+LIMITE_NOSSO = ("documento não pôde ser preservado", "documento acima do limite de evidência")
 CATEGORIAS_DE_PLANO = ("plano", "plano_antigo", "plano_elaboracao")
 RE_MES_NO_ENDERECO = re.compile(r"/((?:19|20)\d{2})/(0[1-9]|1[0-2])/")
 
@@ -209,11 +310,22 @@ def atualiza(existente: dict, v: dict) -> str:
         return ""
     if FORCA[nova] > FORCA.get(atual, 0):
         return f"categoria mais forte ({atual} → {nova})"
+    # 16/11/2026: registro que o juiz nunca julgou (sem `codebook`, anterior a 27/09; 84 planos) não segura o documento julgado de
+    # força igual. Rio de Janeiro/RJ tinha "plano" apontando a página estadual, sem data comparável, e
+    # a correção do leitor com o plano municipal nunca entraria.
     a, n = quando(existente.get("data"), existente.get("url")), quando(v.get("data"), v.get("url"))
-    if atual == nova and nova in CATEGORIAS_DE_PLANO and a and n:
-        ate = min(len([x for x in a if x]), len([x for x in n if x]))    # compara até onde as duas datas dizem
-        if n[:ate] > a[:ate]:
-            return f"documento posterior ({existente.get('data')} → {v.get('data')})"
+    ate = min(len([x for x in a if x]), len([x for x in n if x])) if a and n else 0   # compara até onde as duas datas dizem
+    # 18/11/2026: documento de força igual e edição ANTERIOR nunca substitui (Cachoeiro de Itapemirim e Pancas/ES:
+    # PLANCON 2025 trocado pelo de 2023 e o índice do ES caiu de 58,3 para 56,6).
+    if FORCA[nova] == FORCA.get(atual, 0) and ate and n[:ate] < a[:ate]:
+        return ""
+    if "codebook" not in existente and FORCA[nova] >= FORCA.get(atual, 0) and nova in CATEGORIAS_DE_PLANO:
+        return "registro anterior sem julgamento do juiz"
+    # 16/11/2026: o ato de aprovação achado depois completa o plano que entrou sem ele (Taió/SC).
+    if atual == nova and nova in CATEGORIAS_DE_PLANO and existente.get("sem_ato_de_aprovacao") and not v.get("sem_ato_de_aprovacao"):
+        return "ato de aprovação localizado"
+    if atual == nova and nova in CATEGORIAS_DE_PLANO and ate and n[:ate] > a[:ate]:
+        return f"documento posterior ({existente.get('data')} → {v.get('data')})"
     return ""
 
 
@@ -234,16 +346,14 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
     if not url:
         return None
     try:
-        from coletores_base import buscar, ler, preservar_evidencia
+        from coletores_base import ler, preservar_evidencia
         # 24/10/2026: já preservado (índice + arquivo em disco) não se baixa de novo; sem isso a
         # passada interrompida pelo prazo refazia do zero os PDFs que já tinha guardado.
         for h, it in (ler("evidencias.json", {"itens": {}}).get("itens") or {}).items():
             if it.get("url") == url and prova_do_item(it):
                 return h
-        from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, _ler_sharepoint_rs
-        # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
-        # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
-        corpo = _ler_sharepoint_rs(url, 60) if HOST_SHAREPOINT_RS in url else buscar(url)
+        from julgar_e_aplicar_descobertas import obter_documento
+        corpo = obter_documento(url, 60)   # o que o juiz leu: a fonte ou, se ela caiu, a cópia pública
         # o atalho `.url` do RS entrega o PDF de destino: a extensão vem dos bytes, não do nome
         ext = "pdf" if corpo[:5] == b"%PDF-" else (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
@@ -297,11 +407,13 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         registro["marca_na_ficha"] = "sem ato de aprovação localizado"
         registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido em {hoje}; "
                              "ato de aprovação não localizado até o corte")
-    # 10/11/2026 (editoria): documento de repositório estadual só entra dentro da atualização anual, e o
-    # registro diz por quê, com a edição datada que a regra leu.
-    for campo in ("data_da_edicao", "indicado_ao_cadastro_art3A", "atualizacao_anual_localizada"):
-        if campo in v:   # anotados por `aplicaveis` no repositório estadual
+    # O registro diz, com a edição datada que a regra leu, se o plano está em dia com a lei (17/11/2026: todos).
+    for campo in ("data_da_edicao", "indicado_ao_cadastro_art3A", "atualizacao_anual_localizada",
+                  "vigencia_declarada_encerrada"):
+        if campo in v:   # anotados por `aplicaveis`
             registro[campo] = v[campo]
+    if v.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO:
+        registro["marca_na_ficha"] = " · ".join(x for x in (registro.get("marca_na_ficha"), MARCA_DESATUALIZADO) if x)
     return registro
 
 
@@ -387,7 +499,7 @@ def documento_do_veredito(v: dict) -> str:
         ano = str(v.get("data") or "")[-4:]
         cauda = f", {ano}" if ano.isdigit() else ""
         return f"Plano de contingência municipal — Prefeitura de {v['municipio']}{cauda}"
-    return documento_generico(v.get("categoria"))
+    return documento_generico(v.get("categoria"), v.get("sem_ato_de_aprovacao"))
 
 
 # 08/11/2026: `documento` também é texto público do cartão ("Localizamos …"). O rótulo da categoria é o
@@ -399,9 +511,11 @@ ROTULO_PUBLICO = {"plano": "plano de contingência", "plano_novo": "plano de con
                   "plano_elaboracao": "plano em elaboração", "estrutura": "estrutura de coordenação"}
 
 
-def documento_generico(categoria) -> str:
-    """A frase pública quando o documento não tem título legível: diz o que foi localizado. Função pura."""
-    return f"Ato oficial localizado: {ROTULO_PUBLICO.get(str(categoria), 'documento de preparação')}"
+def documento_generico(categoria, sem_ato=False) -> str:
+    """A frase pública quando o documento não tem título legível: diz o que foi localizado. Função pura.
+    23/11/2026 (editoria): o plano publicado sem ato de aprovação localizado é plano, não "ato oficial"."""
+    rotulo = ROTULO_PUBLICO.get(str(categoria), "documento de preparação")
+    return rotulo[:1].upper() + rotulo[1:] if sem_ato else f"Ato oficial localizado: {rotulo}"
 
 
 def autoteste() -> int:
@@ -414,6 +528,18 @@ def autoteste() -> int:
 
     # 08/10/2026 (A1-06, A4-08): o campo `documento` é o título do documento, nunca sobra de
     # página. Os quatro casos abaixo são os quatro registros reais que a ficha publicou errado.
+    _reg = [{"categoria": "plano_antigo", "hash_evidencia": "s", "url": ("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/"
+             "SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de"
+             "%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS"
+             "/CREPDEC%2003/a.pdf")},
+            {"categoria": "plano", "hash_evidencia": "d", "url": "https://www.x.gov.br/p.pdf", "plano_da_saude": {"fonte": "x"}},
+            {"categoria": "decreto", "hash_evidencia": "s", "url": "https://y.gov.br/d.pdf"}]
+    _txt = {"s": "Secretaria Municipal de Saúde PLANO DE CONTINGÊNCIA PARA CHUVAS INTENSAS",
+            "d": "PLANO DE CONTINGÊNCIA. Coordenadoria Municipal de Defesa Civil aciona."}
+    _n = marcar_planos_da_saude(_reg, lambda h: _txt.get(h, ""))
+    casos.append(("plano da saúde ganha a marca com a fonte; quem deixou de ser perde; decreto não entra",
+                  _n == 2 and "Prepara RS" in _reg[0]["plano_da_saude"]["fonte"] and "plano_da_saude" not in _reg[1]
+                  and "plano_da_saude" not in _reg[2] and marcar_planos_da_saude(_reg, lambda h: _txt.get(h, "")) == 0))
     casos.append(("ementa limpa continua sendo a ementa",
                   documento_do_veredito(base) == "Fica instituído o Plano Municipal de Proteção"))
     casos.append(("marcador de página vira título com órgão e ano",
@@ -472,47 +598,79 @@ def autoteste() -> int:
     try:
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = False
         _retido = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad) == []
-        _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=False)
+        _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = True
         _velho = dict(_rs, data="05/2025")
-        _conta_hoje = len(aplicaveis([_velho], V, resolver=sem_dono, cadastro=_cad)) == 1
-        _aie.REPOSITORIOS["RS"]["contar_so_com_atualizacao_anual"] = True
-        _fora_da_conta = aplicaveis([dict(_velho)], V, resolver=sem_dono, cadastro=_cad) == []
-        _livre = len(aplicaveis([dict(_rs, data="2012")], V, resolver=sem_dono, cadastro=_fora)) == 1
+        _entra = aplicaveis([_velho], V, resolver=sem_dono, cadastro=_cad)
+        _livre = dict(_rs, data="2012")
+        aplicaveis([_livre], V, resolver=sem_dono, cadastro=_fora)
+        _sem_data = dict(_rs, data=None)
+        aplicaveis([_sem_data], V, resolver=sem_dono, cadastro=_cad)
+        _fora_do_repo = dict(base, data="2023", ibge="4300001", url="https://x.rs.gov.br/p.pdf")
+        aplicaveis([_fora_do_repo], V, resolver=sem_dono, cadastro=_cad)
         _ok = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad)
     finally:
         _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
     casos.append(("repositório com aplicar_no_banco desligado fica retido, sem marca", _retido))
+    casos.append(("vigência declarada encerrada vale zero; a edição datada no fim do período não encerra; só ano encerra",
+                  faixa_de_idade("plano", "2025", "2", {"1"}, "2024-2025") == "plano_com_vigencia_encerrada"
+                  and faixa_de_idade("plano", "10/2025", "2", {"1"}, "2024-2025") is None
+                  and faixa_de_idade("plano", "10/12/2025", "2", {"1"}, "2024-2025") is None
+                  and faixa_de_idade("plano_antigo", "15/03/2025", "2", {"1"}, "2024-2025") == "plano_com_vigencia_encerrada"
+                  and faixa_de_idade("plano", "2026", "2", {"1"}, None) is None))
+    _enc = [{"categoria": "plano", "data": "2025", "vigencia_declarada_encerrada": "2024-2025"}]
+    casos.append(("vigência encerrada aparece na ficha com o período, e a marca não se repete",
+                  marcar_desatualizados(_enc, lambda m: "9", set()) == 1
+                  and _enc[0]["marca_na_ficha"] == MARCA_ENCERRADO + " (2024-2025)"
+                  and marcar_desatualizados(_enc, lambda m: "9", set()) == 0))
+    casos.append(("idade do plano: com risco e mais de 1 ano, desatualizado (zero); sem risco, só mais de 2 anos reduz; "
+                  "sem data e até 1 ano contam pela categoria",
+                  faixa_de_idade("plano_antigo", "30/06/2025", "1", {"1"}) is None
+                  and faixa_de_idade("plano_antigo", "28/06/2025", "1", {"1"}) == "plano_desatualizado"
+                  and faixa_de_idade("plano_antigo", "2020", "1", {"1"}) == "plano_desatualizado"
+                  and faixa_de_idade("plano_antigo", "28/06/2025", "2", {"1"}) is None
+                  and faixa_de_idade("plano", "2023", "2", {"1"}) == "plano_de_mais_de_2_anos"
+                  and faixa_de_idade("plano_antigo", "2024", "2", {"1"}) is None
+                  and faixa_de_idade("plano_antigo", None, "2", {"1"}) is None
+                  and faixa_de_idade("estrutura", "2020", "2", {"1"}) is None))
     casos.append(("atualização anual localizada: de 29/06/2025 em diante (só ano = 31/12; mm/aaaa = último dia); "
                   "sem data, None",
                   atualizacao_anual_localizada("2025") is True and atualizacao_anual_localizada("2024") is False
                   and atualizacao_anual_localizada(None) is None and atualizacao_anual_localizada("28/06/2025") is False
                   and atualizacao_anual_localizada("29/06/2025") and atualizacao_anual_localizada("06/2025")
                   and atualizacao_anual_localizada("05/2025") is False and atualizacao_anual_localizada("2026-05-13")))
-    casos.append(("campos descritivos no veredito; sinal desligado conta como hoje; ligado, indicado sem atualização "
-                  "fica fora; não indicado conta com qualquer data",
-                  _conta_hoje and _velho.get("indicado_ao_cadastro_art3A") is True
-                  and _velho.get("atualizacao_anual_localizada") is False and _velho.get("data_da_edicao") == "2025-05-31"
-                  and _fora_da_conta and _livre and "vencido" not in json.dumps(_velho)))
-    _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=True)
-    try:
-        _x = dict(_rs, data="2024")
-        _sem_data = len(aplicaveis([dict(_rs, data=None)], V, resolver=sem_dono, cadastro=_cad)) == 1
-        aplicaveis([_x], V, resolver=sem_dono, cadastro=_cad)
-    finally:
-        _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
-    casos.append(("sem data identificável não rebaixa; fora da contagem leva o rótulo descritivo",
-                  _sem_data and _x.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO))
+    casos.append(("17/11: indicado ao cadastro sem atualização ENTRA com o rótulo (vale zero no índice), em qualquer "
+                  "canal; não indicado e sem data, sem rótulo; nada diz 'vencido'",
+                  len(_entra) == 1 and _velho.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO
+                  and _velho.get("data_da_edicao") == "2025-05-31"
+                  and _fora_do_repo.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO
+                  and "rotulo_contagem" not in _livre and "rotulo_contagem" not in _sem_data
+                  and "vencido" not in json.dumps(_velho)))
+    _marcados = [{"nome": "A", "uf": "RS", "categoria": "plano_antigo", "data": "2023"},
+                 {"nome": "B", "uf": "RS", "categoria": "plano", "data": "2024", "marca_na_ficha": "sem ato de aprovação localizado"},
+                 {"nome": "C", "uf": "RS", "categoria": "plano", "data": "2026"},
+                 {"nome": "D", "uf": "RS", "categoria": "decreto", "data": "2020"}]
+    _n = marcar_desatualizados(_marcados, lambda m: "4300001", _cad)
+    casos.append(("a marca na ficha: só plano fora da atualização; junta-se à marca do ato; idempotente",
+                  _n == 2 and _marcados[0]["marca_na_ficha"] == MARCA_DESATUALIZADO
+                  and _marcados[1]["marca_na_ficha"] == "sem ato de aprovação localizado · " + MARCA_DESATUALIZADO
+                  and "marca_na_ficha" not in _marcados[2] and "marca_na_ficha" not in _marcados[3]
+                  and marcar_desatualizados(_marcados, lambda m: "4300001", _cad) == 0))
     _reg = registro_do_veredito(_ok[0], 0, 0, "orgao_estadual", "F", "10/11/2026") if _ok else {}
-    casos.append(("o registro leva os três campos descritivos (só no repositório)",
+    _r_velho = registro_do_veredito(_velho, 0, 0, "orgao_estadual", "F", "17/11/2026")
+    casos.append(("o registro leva os três campos descritivos que `aplicaveis` anotou, e a marca quando fora da lei",
                   _reg.get("data_da_edicao") == "2026-05-31" and _reg.get("indicado_ao_cadastro_art3A") is True
-                  and _reg.get("atualizacao_anual_localizada") is True
-                  and "indicado_ao_cadastro_art3A" not in registro_do_veredito(base, 0, 0, "x", "F", "10/11/2026")))
+                  and _reg.get("atualizacao_anual_localizada") is True and "marca_na_ficha" not in _reg
+                  and MARCA_DESATUALIZADO in str(_r_velho.get("marca_na_ficha"))
+                  and "indicado_ao_cadastro_art3A" not in registro_do_veredito(
+                      {k: v for k, v in base.items() if k not in ("data_da_edicao", "indicado_ao_cadastro_art3A",
+                                                                  "atualizacao_anual_localizada")},
+                      0, 0, "x", "F", "10/11/2026")))
     casos.append(("recusa nunca é aplicável",
                   aplicaveis([dict(base, promove=False)], V) == []))
 
     mun = [{"nome": "Serra", "uf": "ES"}]
     casos.append(("município já no banco é reconhecido", ja_no_banco(mun, "serra", "es")))
-    _reg = {"categoria": "plano_antigo", "data": "2024", "url": "https://x.rj.gov.br/wp-content/uploads/2024/10/a.pdf"}
+    _reg = {"categoria": "plano_antigo", "data": "2024", "url": "https://x.rj.gov.br/wp-content/uploads/2024/10/a.pdf", "codebook": V}
     casos.append(("registro atualiza por categoria mais forte, e nunca por mais fraca ou pelo mesmo documento",
                   atualiza(_reg, {"categoria": "plano", "data": "2026", "url": "https://x.rj.gov.br/b.pdf"}).startswith("categoria")
                   and atualiza(dict(_reg, categoria="plano"), {"categoria": "plano_antigo", "data": "2026", "url": "u"}) == ""
@@ -526,8 +684,78 @@ def autoteste() -> int:
     _jan, _ago = "https://d.sc.gov.br/wp-content/uploads/2026/01/p.pdf", "https://d.sc.gov.br/wp-content/uploads/2026/08/p.pdf"
     casos.append(("o mês do endereço completa a data que só traz o ano (Taió/SC: janeiro → agosto de 2026)",
                   quando("2026", _ago) == (2026, 8, 0) and quando("10/2025") == (2025, 10, 0) and quando("EL NIÑO") == ()
-                  and atualiza({"categoria": "plano", "data": "2026", "url": _jan}, {"categoria": "plano", "data": "2026", "url": _ago}) != ""
-                  and atualiza({"categoria": "plano", "data": "2026", "url": _ago}, {"categoria": "plano", "data": "2026", "url": _jan}) == ""))
+                  and atualiza({"categoria": "plano", "data": "2026", "url": _jan, "codebook": V}, {"categoria": "plano", "data": "2026", "url": _ago}) != ""
+                  and atualiza({"categoria": "plano", "data": "2026", "url": _ago, "codebook": V}, {"categoria": "plano", "data": "2026", "url": _jan}) == ""))
+    casos.append(("registro nunca julgado cede ao plano julgado de força igual; julgado não cede",
+                  atualiza({"categoria": "plano", "data": "vigente", "url": "https://rj.gov.br/p"},
+                           {"categoria": "plano", "data": "2025", "url": "https://rio/p.pdf"}) == "registro anterior sem julgamento do juiz"
+                  and atualiza({"categoria": "plano", "data": "vigente", "url": "https://rj.gov.br/p", "codebook": V},
+                               {"categoria": "plano", "data": "2025", "url": "https://rio/p.pdf"}) == ""
+                  and atualiza({"categoria": "plano", "data": "vigente", "url": "u1"}, {"categoria": "plano_antigo", "data": "2024", "url": "u2"}) == ""))
+    casos.append(("o ato de aprovação achado completa o plano que entrou sem ele; sem ato, não troca",
+                  atualiza({"categoria": "plano", "data": "2026", "url": "u1", "codebook": V, "sem_ato_de_aprovacao": True},
+                           {"categoria": "plano", "data": "2026", "url": "u2"}) == "ato de aprovação localizado"
+                  and atualiza({"categoria": "plano", "data": "2026", "url": "u1", "codebook": V, "sem_ato_de_aprovacao": True},
+                               {"categoria": "plano", "data": "2026", "url": "u2", "sem_ato_de_aprovacao": True}) == ""))
+    casos.append(("limite da nossa guarda (acima de 5 MB) não enterra a promoção: ela volta",
+                  len(aplicaveis([dict(base, nao_aplicado={"motivo": "documento acima do limite de evidência e sem cópia "
+                                                                     "externa — registro pontuável exige evidência guardada (portão 26)"})],
+                                 V, resolver=sem_dono)) == 1))
+    def guarda_do_escaneado():
+        """18/11/2026: PDF escaneado acima do limite, já no índice com texto de 0 caractere. O documento em mãos
+        tem de chegar ao OCR; com prova de verdade, não se refaz nada."""
+        import tempfile
+        import coletores_base as cb
+        corpo = b"%PDF-1.4 " + b"x" * 64
+        h, lidos = cb.sha256(corpo), []
+        banco = {"evidencias.json": {"itens": {h: {"url": "https://x.gov.br/a.pdf", "tamanho": len(corpo), "arquivo": None,
+                                                   "wayback": "tentativa falhou (URLError)",
+                                                   "texto_arquivo": f"evidencias/{h}.txt", "caracteres": 0}}}}
+        salvo = cb.LIMITE_EVIDENCIA, cb.ler, cb.gravar, cb._texto_de_evidencia
+        with tempfile.TemporaryDirectory():
+            try:
+                cb.LIMITE_EVIDENCIA = 16
+                cb.ler = lambda nome, padrao=None: banco.get(nome, padrao)
+                cb.gravar = lambda nome, obj, **k: banco.__setitem__(nome, obj)
+                cb._texto_de_evidencia = lambda c, u, hh: (lidos.append(hh), {"ocr_arquivo": f"evidencias/{hh}.ocr.txt",
+                                                                               "ocr_hash": "0" * 64, "ocr_caracteres": 900})[1]
+                sem_prova = prova_do_item(banco["evidencias.json"]["itens"][h])
+                cb.preservar_evidencia(corpo, "https://x.gov.br/a.pdf", "pdf", "autoteste")
+                com_prova = prova_do_item(banco["evidencias.json"]["itens"][h])
+                cb.preservar_evidencia(corpo, "https://x.gov.br/a.pdf", "pdf", "autoteste")
+                return (sem_prova, com_prova, lidos)
+            finally:
+                cb.LIMITE_EVIDENCIA, cb.ler, cb.gravar, cb._texto_de_evidencia = salvo
+    casos.append(("texto de 0 caractere não é prova: o escaneado acima do limite vai ao OCR, uma vez só",
+                  (lambda r: r[0] is False and r[1] is True and len(r[2]) == 1)(guarda_do_escaneado())))
+    def prova_pela_copia_publica():
+        """18/11/2026: sete promoções lidas pela cópia pública (o endereço original dava 404) nunca entravam no
+        banco: a guarda da prova só tentava o endereço original."""
+        import urllib.error
+        import coletores_base as cb
+        import julgar_e_aplicar_descobertas as jd
+        salvo, guardados = (cb.ler, cb.preservar_evidencia, jd.ler_documento, jd.copia_arquivada), []
+
+        def caiu(url, timeout=40, origem=None):
+            raise urllib.error.HTTPError(url, 404, "Not Found", None, None)
+        try:
+            cb.ler = lambda nome, padrao=None: padrao
+            cb.preservar_evidencia = lambda corpo, url, ext, origem: (guardados.append((corpo, ext)), "h" * 64)[1]
+            jd.ler_documento = caiu
+            jd.copia_arquivada = lambda url: (b"%PDF-1.4 copia publica", "20261101")
+            com = preservar_o_documento("https://x.gov.br/a.pdf")
+            jd.copia_arquivada = lambda url: (None, None)
+            return com, preservar_o_documento("https://x.gov.br/b.pdf"), guardados
+        finally:
+            cb.ler, cb.preservar_evidencia, jd.ler_documento, jd.copia_arquivada = salvo
+    casos.append(("endereço que caiu: a prova é a cópia pública que o juiz leu; sem cópia pública, não há prova",
+                  (lambda r: r[0] == "h" * 64 and r[1] is None and r[2] == [(b"%PDF-1.4 copia publica", "pdf")])(prova_pela_copia_publica())))
+    casos.append(("plano de edição anterior nunca substitui o de força igual, nem o registro sem julgamento do juiz",
+                  atualiza({"categoria": "plano", "data": "2025", "url": "u1"}, {"categoria": "plano", "data": "2023", "url": "u2"}) == ""
+                  and atualiza({"categoria": "plano", "data": "2025", "url": "u1", "codebook": V},
+                               {"categoria": "plano", "data": "2023", "url": "u2"}) == ""
+                  and atualiza({"categoria": "plano", "url": "u1"}, {"categoria": "plano", "data": "2023", "url": "u2"})
+                  == "registro anterior sem julgamento do juiz"))
     casos.append(("a abstenção da regra antiga volta uma vez; a da regra nova, não",
                   len(aplicaveis([dict(base, nao_aplicado={"motivo": ABSTENCAO_ANTIGA})], V, resolver=sem_dono)) == 1
                   and aplicaveis([dict(base, nao_aplicado={"motivo": JA_CONSTA + "mesmo documento, ou registro igual ou mais forte"})],
@@ -578,7 +806,8 @@ def autoteste() -> int:
                   == "Agência Belém reproduzida por O Liberal, lido em 27/08/2026"))
     casos.append(("sem título legível, o documento diz o que foi localizado, sem jargão nem chave interna",
                   documento_generico("plano_antigo") == "Ato oficial localizado: plano de contingência vigente de ciclo anterior"
-                  and "juiz" not in documento_generico("plano") and "_" not in documento_generico("plano_novo")))
+                  and "juiz" not in documento_generico("plano") and "_" not in documento_generico("plano_novo")
+                  and documento_generico("plano_antigo", True) == "Plano de contingência vigente de ciclo anterior"))
     casos.append(("a ementa sai do objeto ex-ante",
                   r["documento"].startswith("Fica instituído o Plano Municipal")))
     sem_objeto = registro_do_veredito(dict(base, criterios={}), 0, 0, "DOM", "x", "28/09/2026")
@@ -610,6 +839,21 @@ def autoteste() -> int:
     return 0
 
 
+def marcar_o_banco() -> int:
+    """A marca de plano desatualizado segundo a lei em todo o banco, a cada passada: a data do plano não muda, mas
+    o cadastro e o registro mudam."""
+    from coletores_base import gravar_em
+    municipios = json.loads(MUNICIPIOS.read_text(encoding="utf-8"))
+    ref = {(r["nome"], r["uf"]): str(r["codigo_ibge"]).zfill(7)
+           for r in json.loads((MUNICIPIOS.parent / "municipios_ibge_referencia.json").read_text(encoding="utf-8"))}
+    n = marcar_desatualizados(municipios, lambda m: ref.get((m.get("nome"), m.get("uf"))), municipios_do_cadastro())
+    s = marcar_planos_da_saude(municipios, texto_da_copia_preservada)
+    if n or s:
+        gravar_em(MUNICIPIOS, municipios)
+    print(f"marca de plano desatualizado segundo a lei: {n} registro(s) mudaram; plano da saúde: {s}")
+    return n + s
+
+
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
@@ -627,6 +871,8 @@ def main() -> int:
           f"de {len(decisoes)} decisão(ões) no registro")
     for v in alvo:
         print(f"  {v['municipio']}/{v['uf']} · {v['categoria']} · {v.get('data')} · {v.get('url')}")
+    if "--aplicar" in sys.argv:
+        marcar_o_banco()
     if not alvo:
         print("nada a aplicar")
         if "--aplicar" in sys.argv and any("indicado_ao_cadastro_art3A" in v for v in decisoes):  # e o rótulo
@@ -694,8 +940,8 @@ def main() -> int:
 
     for v, motivo in recusados:
         print(f"  não aplicado: {v['municipio']}/{v['uf']} — {motivo}")
-        if motivo.startswith("documento não pôde ser preservado"):
-            continue  # 24/10/2026: falha do nosso acesso, não decisão sobre o caso; a marca enterrou as 75 do RS
+        if motivo.startswith(LIMITE_NOSSO):
+            continue  # falha do nosso acesso ou da nossa guarda, não decisão sobre o caso (24/10 e 17/11/2026)
         v["nao_aplicado"] = {"em": hoje.isoformat(), "motivo": motivo}
 
     if not aplicados:

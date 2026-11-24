@@ -58,6 +58,8 @@ import urllib.parse
 
 from classificador_natureza import classificar as classificar_natureza
 from classificador_natureza import citacao_completa, data_do_ato, extrair_data
+from classificador_natureza import (JANELA_DA_DATA_DO_ATO, RE_DATA_COMPLETA, RE_DATA_EXTENSO,
+                                    RE_NUMERO_ATO, data_extenso_para_numerica)
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6)
@@ -69,6 +71,8 @@ sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6
 CODEBOOK_VERSAO = "1.8 (30/10/2026)"
 # 15/11/2026: J21 (título no cabeçalho corrido) entra sem subir a versão, porque só alcança o que o J15 recusou
 # (39 documentos, rejulgados por lista: `julgar_filas.py --rejulgar --urls-de`); subir devolveria a fila inteira.
+# 17/11/2026: a declaração de minuta passa a ser lida só no cabeçalho, também sem subir a versão: alcança só as
+# 29 pistas recusadas como minuta, rejulgadas por lista (`julgar_filas.py --rejulgar --ids`).
 # 1.8 (30/10/2026, central): a segunda leva (J14, J16, J19, J20) entra no padrão; a data sobe para devolver à fila
 # o que o 1.8 de 29/10 julgou sem ela. Só J8 e J9 seguem em `propostas`.
 # 1.8 (29/10/2026, central): regras J1–J7, J10, J11 e J15 do rejulgamento de 26/10 passam a ser o juiz (medidas em 28/10:
@@ -153,9 +157,11 @@ RE_APROVACAO_COLEGIADA = re.compile(
 # Condição 3 da decisão: **não ser minuta, rascunho, versão para consulta ou apresentação**. É a
 # trava assimétrica deste caminho — sem ato de aprovação, o que separa o documento publicado de um
 # esboço é o próprio documento dizer que é esboço. Falso positivo aqui creditaria preparação a quem
-# publicou uma minuta.
+# publicou uma minuta. A declaração é a do próprio documento, na capa e no cabeçalho (CABECALHO_18):
+# no corpo, "minuta" e "consulta pública" descrevem outras coisas ("permitindo sua consulta pública",
+# "minuta de decreto em anexo") — o Rio de Janeiro, 2025/2026, foi recusado assim em 17/11/2026.
 RE_MINUTA = re.compile(
-    r"\b(minuta|rascunho|vers[ãa]o\s+preliminar|vers[ãa]o\s+para\s+consulta|consulta\s+p[úu]blica|"
+    r"\b(minuta|rascunho|vers[ãa]o\s+preliminar|vers[ãa]o\s+para\s+consulta|(?:em|para)\s+consulta\s+p[úu]blica|"
     r"em\s+elabora[çc][ãa]o|documento\s+de\s+trabalho|draft|apresenta[çc][ãa]o\s+em\s+slides|"
     r"n[ãa]o\s+aprovado)\b", re.I)
 # Condição 2, primeira parte: o documento identifica o ÓRGÃO do ente. Publicação em domínio oficial
@@ -287,11 +293,12 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
     ok_doc, motivo_doc, provas_doc = e_o_proprio_plano(texto, url)
     if not ok_doc:
         return False, motivo_doc, provas_doc
-    if RE_MINUTA.search(texto or ""):
+    minuta = RE_MINUTA.search(str(texto or "")[:CABECALHO_18])
+    if minuta:
         return False, "minuta_ou_rascunho", {
             "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou "
                        "apresentação",
-            "trecho": trecho_em_volta(texto, RE_MINUTA.search(texto))}
+            "trecho": trecho_em_volta(texto, minuta)}
     orgao = RE_ORGAO_IDENTIFICADO.search(texto or "")
     titulo = RE_TITULO_DE_PLANO.search(texto or "")
     ano = RE_ANO_OU_CICLO.search(texto or "")
@@ -420,10 +427,67 @@ FORA_DO_OBJETO = ("geada", "frio", "onda de frio", "friagem", "arbovirose", "den
 RE_INSTRUMENTO_SETORIAL = re.compile(
     r"plano\s+de\s+conting[êe]ncia\s+(?:d[aeo]s?\s+)?(?:rede\s+(?:p[úu]blica\s+)?(?:municipal\s+)?"
     r"de\s+(?:ensino|educa[çc][ãa]o|sa[úu]de)|escola|unidades?\s+(?:escola|de\s+sa[úu]de|b[áa]sica)|"
-    r"hospita|creche|ensino)", re.I)
+    r"hospita|creche|ensino|assist[êe]ncia\s+social)", re.I)
+# 20/11/2026 (editoria, na linha do J23): o capítulo de contingência do plano de saneamento básico não é o plano de
+# proteção e defesa civil do município (Rodeio/SC, revisão do PMSB). Vale pelo título, e só sem defesa civil nele.
+RE_PLANO_DE_SANEAMENTO_NO_TITULO = re.compile(r"\bplano\s+municipal\s+de\s+saneamento\s+b[áa]sico\b|\bPMSB\b", re.I)
+
+# J23 (17/11/2026, editoria: "plano de saúde é plano de saúde"): o plano cujo TÍTULO é de saúde — de arboviroses,
+# de dengue, de emergências em saúde pública, o plano municipal de saúde — não é o plano de proteção e defesa civil
+# que o MARÉ Legal mede, mesmo que o texto cite chuva ou seca (Angra dos Reis/RJ, plano de arboviroses 2024–2026;
+# Água Branca/PB, emergências em saúde pública). Fica visível e não pontua; é da camada de saúde.
+RE_PLANO_DE_SAUDE_NO_TITULO = re.compile(
+    r"\bplano\b(?:\s+(?:municipal|estadual|integrado|intersetorial|de|da|do|das|dos|para|contra|frente|[àa]s?|aos?|"
+    r"o|a|e|conting[êe]ncia|enfrentamento|a[çc][ãa]o|preven[çc][ãa]o|controle|resposta|vigil[âa]ncia))*\s+"
+    r"(?:arboviroses?|dengue|chikungunya|zika|febre\s+amarela|influenza|covid|sarampo|"
+    r"emerg[êe]ncias?\s+em\s+sa[úu]de)|\bplano\s+municipal\s+de\s+sa[úu]de\b|"
+    r"\bplano\s+de\s+conting[êe]ncia\s+(?:em|da|de)\s+sa[úu]de\b", re.I)
+
+# 23/11/2026 (editoria): o plano que a fonte disponibiliza como plano do município e que é da SAÚDE — a secretaria de
+# saúde assina antes do título (São Martinho da Serra/RS, plano de contingência para chuvas intensas do Vigidesastres) —
+# continua onde está, e o cartão diz que é um plano da saúde, não da defesa civil. Não vale quando o plano traz a
+# contingência da defesa civil (a coordenadoria municipal) dentro dele.
+RE_AUTOR_SAUDE = re.compile(r"secretaria\s+(?:municipal\s+)?(?:de\s+|da\s+)?sa[úu]de|vigil[âa]ncia\s+em\s+sa[úu]de|vigidesastres", re.I)
+RE_DEFESA_CIVIL_NO_PLANO = re.compile(
+    r"\bCOMP?DEC\b|coordenadoria\s+municipal\s+de\s+(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil", re.I)
+
+
+def plano_da_saude(texto: str) -> bool:
+    """O plano é da saúde: o título é de saúde (J23) ou a secretaria de saúde assina antes do título, e o texto não
+    traz a coordenadoria municipal de defesa civil. Função pura."""
+    cabeca = (texto or "")[:600]
+    titulo = re.search(r"\bplan(?:o|con)\b", cabeca, re.I)
+    da_saude = RE_AUTOR_SAUDE.search(cabeca[:titulo.start()] if titulo else cabeca) or RE_PLANO_DE_SAUDE_NO_TITULO.search(cabeca)
+    return bool(da_saude) and not RE_DEFESA_CIVIL_NO_PLANO.search(texto or "")
+
 
 # --- Etapa 6 ---------------------------------------------------------------------------------
 BOLETIM_1 = "29/06/2026"   # §3: marco do ciclo
+ANO_DO_CICLO = int(BOLETIM_1[-4:])
+RE_PERIODO_DO_PLANO = re.compile(r"\b(20\d\d)\s*(?:[-–/]|\ba\b|\bà\b|\bat[ée]\b)\s*(20\d\d|\d\d)\b")
+# No texto, o período só é o do plano quando vem na mesma frase do título ("PLANCON – 2024-2025"); "Nos anos de
+# 2021/2022 a estiagem…" é histórico (Caseiros/RS, 20/11/2026). No título dado pelo chamador, vale onde estiver.
+RE_TITULO_ANTES_DO_PERIODO = re.compile(r"\b(?:plano|plancon|plamcon|placon|pmpdc|pmpdec)\b[^.:;]{0,120}$", re.I)
+
+
+def vigencia_encerrada(texto: str, titulo: str = "") -> str:
+    """O período que o próprio plano declara no título ou na capa, quando ele terminou antes do ano do
+    ciclo ("2023-2024"); "" quando o período alcança o ciclo ou o plano não declara período. Função pura.
+
+    Editoria, 15/11/2026: plano com vigência declarada já encerrada aparece como o último localizado e
+    vale 0 (não é "recorrente": não está em vigor). Só período explícito, de até quatro anos, no título
+    ou nas primeiras linhas; na dúvida, não encerra. Uma régua só, para o MARÉ Saúde e o MARÉ Legal."""
+    capa = (texto or "")[:1500]
+    junto = f"{titulo} {capa}"
+    for m in RE_PERIODO_DO_PLANO.finditer(junto):
+        if m.start() > len(titulo) and not RE_TITULO_ANTES_DO_PERIODO.search(junto[len(titulo):m.start()]):
+            continue
+        ini = int(m.group(1))
+        fim = int(m.group(2)) if len(m.group(2)) == 4 else 2000 + int(m.group(2))
+        if 0 < fim - ini <= 4:
+            return f"{ini}-{fim}" if fim < ANO_DO_CICLO else ""
+    return ""
+
 RE_INSTITUI = re.compile(
     r"fica\s+institu[íi]d|institui\s+o\s+plano|institui\s+o\s+programa|aprova\s+o\s+plano|"
     r"fica\s+aprovad[oa]\s+o\s+plano|atualiza\s+o\s+plano|fica\s+atualizad", re.I)
@@ -667,6 +731,38 @@ def etapa1_identidade(texto: str, nome: str, uf: str, homonimos=None) -> tuple:
 # =============================================================================================
 # Etapa 2 — citação completa (§3.2)
 # =============================================================================================
+JANELA_DO_ATO_QUE_APROVA = 240
+# Só o ato que aprova o PLANO: "fica instituída a COMPDEC" (Muqui/ES, lei de 2003 citada no plano de 2026) não é.
+RE_APROVA_O_PLANO = re.compile(
+    r"\b(?:aprova|institui|homologa|atualiza)\s+o\s+(?:presente\s+)?plano|"
+    r"\bfica(?:m)?\s+(?:aprovad|institu[íi]d|homologad|atualizad)[oa]s?\s+o\s+(?:presente\s+)?plano", re.I)
+JANELA_DO_TIMBRE = 300
+
+
+def ato_proprio(texto: str):
+    """O ato DO documento (o match de `RE_TIPO_E_NUMERO`), ou None quando ele só cita atos. PURA.
+
+    19/11/2026 (Rio Branco/AC, PLANCON 2025): o juiz tomava a PRIMEIRA citação de ato do texto como
+    o ato do documento. O plano lista a sua base legal ("Lei nº 1.908, 17/05/2012 – Cria a
+    Coordenadoria…"), a lei virava o ato do plano, e a etapa 3 cobrava dela a fórmula de promulgação.
+    Era a mesma causa dos 47 PLANCONs do RS (24/10) e do J1 (1.8). Ato próprio é só:
+      · o que abre o documento, logo depois do timbre (é assim que o ato e o recorte do diário começam);
+      · o título de ato em caixa alta ("DECRETO Nº 123") no cabeçalho, antes do título de um plano;
+      · ou o que aprova ou institui o plano (o ato de aprovação dentro do próprio PDF).
+    Lei citada no corpo, na base legal ou no índice é referência, não ato do documento. O texto chega
+    sem quebras de linha (a extração junta tudo), por isso a régua é a posição, não a linha."""
+    texto = texto or ""
+    titulo = RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])
+    fim_do_cabecalho = titulo.start() if titulo else CABECALHO_18
+    titulos_de_ato = [a.start() for a in RE_CABECALHO_DE_ATO.finditer(texto[:fim_do_cabecalho])]
+    for m in RE_TIPO_E_NUMERO.finditer(texto):
+        if m.start() < JANELA_DO_TIMBRE or m.start() in titulos_de_ato:
+            return m
+        if RE_APROVA_O_PLANO.search(texto[m.end(): m.end() + JANELA_DO_ATO_QUE_APROVA]):
+            return m
+    return None
+
+
 def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
                    como_plano: bool = False) -> tuple:
     """(ok, motivo, dados). Tipo de ato + número + data extraídos do PRÓPRIO texto.
@@ -674,7 +770,7 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
     Exceção declarada no handover: plano publicado como documento técnico sem número recebe a
     data de publicação e a identificação "plano de contingência …, versão/ano". **A data é
     obrigatória sempre** — sem data não há como situar o ato no ciclo (§5.3)."""
-    m = RE_TIPO_E_NUMERO.search(texto)
+    m = ato_proprio(texto)
     # 09/10/2026 (A1-21): a data do ATO, nao a primeira data do texto — num diario a primeira e a
     # da edicao. A regua tem um dono em `classificador_natureza.data_do_ato`.
     data = data_do_ato(texto)
@@ -685,13 +781,11 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
     tipo = (m.group(1).lower() if m else None)
     numero = (m.group(2) if m else None)
     dados = {"tipo": tipo, "numero": numero, "data": data}
-    # 24/10/2026 (central): documento do repositório estadual declarado é o PLANO publicado pelo canal
-    # do estado; a lei ou portaria citada no corpo (base legal, nomeação do coordenador) não é o ato
-    # dele. Sem isto 47 PLANCONs do RS citavam "Lei 4.111/2007" e caíam na exigência de fórmula do Executivo.
+    # O repositório estadual declarado e o plano pelo cabeçalho (J1) só decidem a recusa do caminho do
+    # plano; quem separa ato próprio de ato citado é `ato_proprio`, para todo documento.
     from atualizar_instrumentos_estaduais import documento_do_repositorio
-    # 1.8 (J1, paralelo): o documento que se apresenta como plano no cabeçalho é o plano, como o do repositório.
     no_repositorio = documento_do_repositorio(url) or como_plano
-    if m is None or no_repositorio:
+    if m is None:
         # CAMINHO DO PLANO SEM ATO (editoria, 03/10/2026): quando não há tipo e número de ato, o
         # documento pode ainda ser o PLANO publicado pelo ente. Aí a identificação exigida é outra
         # — órgão, título e ano —, e o ano solto basta. Este caminho vem ANTES da exigência de data
@@ -791,11 +885,14 @@ def etapa4_natureza(texto: str, sem_ato_de_aprovacao: bool = False) -> tuple:
     próprio instrumento nomeado no título, que a etapa 2 já conferiu.
 
     O que NÃO muda, e é o que protege o índice: ato que declara anormalidade continua RESPOSTA;
-    rota que depende de reconhecimento federal continua dúvida; e o gatilho (previsão, limiar ou
-    referência ao ciclo) continua exigido. Um "plano" que só fala de desastre ocorrido não passa.
+    no ATO, rota que depende de reconhecimento federal continua dúvida; e o gatilho (previsão, limiar
+    ou referência ao ciclo) continua exigido. Um "plano" que só fala de desastre ocorrido não passa.
     """
-    tem_rota_federal = bool(RE_ROTA_FEDERAL.search(texto))
-    decisao, motivo = classificar_natureza(texto, tem_reconhecimento_federal=tem_rota_federal)
+    # 23/11/2026 (editoria): no plano publicado, a menção ao reconhecimento federal é procedimento descrito, não
+    # dependência do ato (Rio Branco/AC, Campo Grande/MS e 56 PLANCONs recusados como resposta).
+    tem_rota_federal = not sem_ato_de_aprovacao and bool(RE_ROTA_FEDERAL.search(texto))
+    decisao, motivo = classificar_natureza(texto, tem_reconhecimento_federal=tem_rota_federal,
+                                           documento_e_o_plano=sem_ato_de_aprovacao)
     if decisao == "RESPOSTA":
         return "RESPOSTA", motivo, {}
     if decisao == "DUVIDA" and not sem_ato_de_aprovacao:
@@ -845,7 +942,9 @@ def etapa5_familia_de_risco(texto: str) -> tuple:
     Ordem deliberada: primeiro procura família do ciclo; só então considera `fora_do_objeto`. Um
     plano multirrisco que menciona arbovirose numa lista de riscos não é um plano de arbovirose —
     foi assim que Salvador travou num teste de 03/09/2026."""
-    setorial = RE_INSTRUMENTO_SETORIAL.search(texto)
+    cabeca = texto[:CABECALHO_18]
+    setorial = (RE_INSTRUMENTO_SETORIAL.search(texto) or RE_PLANO_DE_SAUDE_NO_TITULO.search(cabeca)
+                or (not RE_DEFESA_CIVIL_18.search(cabeca) and RE_PLANO_DE_SANEAMENTO_NO_TITULO.search(cabeca)))
     if setorial:
         return False, "fora_do_objeto", trecho_em_volta(texto, setorial)
     t = texto.lower()
@@ -930,7 +1029,9 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
 # Codebook 1.8 (handover da central de 26/10/2026, `HANDOVER_REJULGAMENTO_PARALELO`; em produção desde 29/10)
 # =============================================================================================
 # Cada regra nasce de erro medido na amostra de 40 decisões (26/10). `regras_18` diz qual regra agiu.
-PROPOSTAS_18 = ("J8", "J9")   # mexem em crédito: medidas à parte, decisão da editoria
+PROPOSTAS_18 = ("J8", "J9", "J13", "J18")   # mexem em crédito ou em data: medidas à parte, decisão da editoria
+# J17 é o J8 medido de novo na amostra de 100 (mesmos casos: Ajuricaba 2017, Mariana Pimentel 2012, Floriano
+# Peixoto 2018, Tijucas 2020): não tem código próprio. J12 (repetição) é do escritor do rejulgamento, não do juiz.
 
 
 # J11. Plataforma oficial terceirizada de diário: a URL da publicação no SIGPub. Vínculo provado pela
@@ -944,11 +1045,15 @@ PLATAFORMAS_OFICIAIS_DE_DIARIO = (("voxtecnologia.com.br", "sigpub.publicacao"),
 def fonte_oficial(url) -> bool:
     # 10/11/2026: imprensa oficial estadual fora de `.gov.br` (ioerj.com.br) é fonte oficial; sem ela o
     # Decreto RJ 50.357/2026 foi recusado como `sem_documento_primario` sem ser baixado.
+    # 17/11/2026: e o sítio oficial do município fora de `.gov.br` (`prefeitura.rio`, portais em plataforma) — a
+    # definição é a de `coletores_base._dominio_publico`, a mesma da porta e do formulário; o plano do Rio de
+    # Janeiro saía `sem_documento_primario` sem ser baixado.
+    from coletores_base import _dominio_publico
     from municipio_do_dominio import _host, diarios_estaduais
     u = str(url or "").lower()
     return (any(p in u for p in PADROES_FONTE_PROVAVEL_OFICIAL)
             or any(h in u and marca in u for h, marca in PLATAFORMAS_OFICIAIS_DE_DIARIO)
-            or _host(u) in diarios_estaduais())
+            or _host(u) in diarios_estaduais() or _dominio_publico(u))
 
 
 # J2. Página de notícia (caminho de notícia ou com data) não é documento, mesmo em domínio oficial.
@@ -1048,8 +1153,25 @@ def titulo_no_cabecalho_corrido(texto, minimo: int = 5) -> bool:
     """J21 (15/11/2026): o título do plano se repete como linha própria, o cabeçalho de página. Mesquita/RJ:
     capa em imagem, o texto começa no ÍNDICE e "PLANO DE CONTINGÊNCIA 2025 / 2026" vem no alto de 73 páginas;
     o J15 só olhava o começo do texto. Medida nos 39 documentos recusados por título: muda só esse. Pura."""
-    return sum(1 for l in str(texto or "").splitlines()
-               if len(l.strip()) <= 80 and RE_TITULO_DE_PLANO.match(l.strip())) >= minimo
+    # 17/11/2026: o leitor do juiz (`extrair_texto_pdf`) junta o PDF numa linha só — a regra por linha nunca
+    # valia ali, e Mesquita foi recusada de novo. O título em MAIÚSCULAS repetido é o cabeçalho de página,
+    # com ou sem quebra de linha.
+    t = str(texto or "")
+    linhas = sum(1 for l in t.splitlines() if len(l.strip()) <= 80 and RE_TITULO_DE_PLANO.match(l.strip()))
+    maiusculas = sum(1 for m in RE_TITULO_DE_PLANO.finditer(t) if m.group(0).isupper())
+    return max(linhas, maiusculas) >= minimo
+
+
+RE_PLANO_SE_DECLARA = re.compile(r"\b(?:este|o\s+presente)\s+(?:" + RE_TITULO_DE_PLANO.pattern + ")", re.I)
+
+
+def se_apresenta_como_plano(texto) -> bool:
+    """J15: o documento se apresenta como o plano — título no começo, título repetido no alto das páginas
+    (J21) ou o texto dizendo "este plano de contingência". 19/11/2026 (Rio Branco/AC): capa em imagem, o
+    texto começa no sumário, e a introdução diz "Este Plano de Contingência tem o objetivo…". Pura."""
+    t = str(texto or "")
+    return bool(RE_TITULO_DE_PLANO.search(t[:CABECALHO_18]) or titulo_no_cabecalho_corrido(t)
+                or RE_PLANO_SE_DECLARA.search(t))
 
 
 def e_plano_pelo_cabecalho(texto) -> bool:
@@ -1252,6 +1374,65 @@ def ente_do_repositorio_18(texto, url):
 # =============================================================================================
 # O juiz
 # =============================================================================================
+# J13 (proposta, 26/10): a data do ATO é a que vem colada ao número ("nº 1341/2021 de 31 de março de 2021"),
+# não a da edição. `data_do_ato` lia "134" (o número sem o ano) e, na janela, preferia a data numérica da
+# edição à data por extenso do ato. Aqui a janela começa depois de "número/ano" e vence a data mais próxima
+# do número, numérica ou por extenso. Sem data própria, em diário datado, a data é a da edição, com origem marcada.
+# O número inteiro e o "/ano" (RE_NUMERO_ATO corta "1341" em "134": a alternativa de 3 dígitos vem antes).
+RE_NUMERO_COM_ANO_18 = re.compile(
+    r"(decreto|portaria|lei|resolu[çc][ãa]o|instru[çc][ãa]o\s+normativa)\s*(estadual|municipal|est\.)?"
+    r"\s*[nº°.\s]*\d+(?:\.\d{3})*(?:/\d{2,4})?", re.I)
+RE_DATA_COMPLETA_4_18 = re.compile(r"(\d{1,2})[/.](\d{1,2})[/.](\d{4})")
+JANELA_DATA_COLADA_18 = 25
+RE_DIARIO_DATADO_18 = re.compile(r"di[áa]rio\s+oficial|edi[çc][ãa]o|\bDATA\s*:?\s*\d", re.I)
+
+
+def data_do_ato_18(texto) -> tuple:
+    """(data, origem): origem "ato" (data colada ao número) ou "edicao" (diário datado); (None, None) se nenhuma."""
+    texto = str(texto or "")
+    m = RE_NUMERO_COM_ANO_18.search(texto)
+    if m:
+        janela = texto[m.end(): m.end() + JANELA_DATA_COLADA_18]   # "de 31 de março de 2021" cola ao número
+        # Só data de quatro dígitos e separador de barra ou ponto, normalizada para dd/mm/aaaa: "24.07.15" é
+        # ambígua e não entra (no caso de Bagé/RS a data bogus recusava um plano de 2024 como "sem ano").
+        achados = [(x.start(), f"{int(x.group(1)):02d}/{int(x.group(2)):02d}/{x.group(3)}")
+                   for x in RE_DATA_COMPLETA_4_18.finditer(janela)
+                   if 1 <= int(x.group(1)) <= 31 and 1 <= int(x.group(2)) <= 12]
+        achados += [(x.start(), data_extenso_para_numerica(x)) for x in RE_DATA_EXTENSO.finditer(janela)
+                    if data_extenso_para_numerica(x)]
+        if achados:
+            return min(achados)[1], "ato"
+    # Sem data colada ao número, só a da edição vale, e só em diário datado (cabeçalho). Data solta no texto
+    # ("Relvado: Maio/2025" e um 09/05/1988 de corpo) não substitui a do documento.
+    data = data_do_ato(texto)
+    if not RE_DIARIO_DATADO_18.search(texto[:300]) or not re.fullmatch(r"\d{2}/\d{2}/\d{4}", str(data or "")):
+        return None, None
+    return data, "edicao"
+
+
+# J12 (1.8, 26/10): um documento (hash) é julgado uma vez por município; repetições colapsam na mais antiga e
+# não somam. Quem grava o rejulgamento passa as decisões em ordem de julgamento (a mais antiga primeiro).
+def colapsar_repeticoes_18(decisoes: list) -> tuple:
+    """(mantidas, colapsadas). Sem hash não há como reconhecer repetição: a decisão é mantida."""
+    vistos, mantidas, colapsadas = set(), [], 0
+    for d in decisoes:
+        chave = (str(d.get("hash") or ""), str(d.get("municipio") or ""), str(d.get("uf") or ""))
+        if chave[0] and chave in vistos:
+            colapsadas += 1
+            continue
+        vistos.add(chave)
+        mantidas.append(d)
+    return mantidas, colapsadas
+
+
+# J18 (proposta, 26/10): plano de saúde, de saneamento ou escolar não é o plano municipal de proteção e defesa
+# civil (reforça J9). Só no cabeçalho; "contingência" sozinha não basta, porque o de saúde também a usa.
+RE_PLANO_SETORIAL_18 = re.compile(
+    r"plano\s+(?:municipal\s+|estadual\s+)?(?:de\s+)?(?:sa[úu]de|saneamento(?:\s+b[áa]sico)?|educa[çc][ãa]o|ensino)\b"
+    r"|\bPMSB\b|\bPMS\b|\bPME\b", re.I)
+RE_DEFESA_CIVIL_18 = re.compile(r"defesa\s+civil|prote[çc][ãa]o\s+e\s+defesa|PLANCON|PMPDEC|COMDEC|COMPDEC", re.I)
+
+
 def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
            eh_estadual: bool = False, eh_plano_tecnico: bool = False, trecho: str = None,
            proveniencia: dict = None, propostas: tuple = (),
@@ -1325,7 +1506,14 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if not eh_estadual and not nome_comum_confirmado(texto_da_identidade or texto, nome, uf, url):
         return recusa("nome_comum_sem_ente", "J4")
 
-    como_plano = e_plano_pelo_cabecalho(texto)
+    # J22 (17/11/2026, editoria: "esses planos foram coletados em canais que, apesar de não serem sites da
+    # prefeitura, ainda assim são oficiais, como o Prepara RS"): documento do repositório estadual de planos
+    # (a pasta de PLANCONs recebidos pela Defesa Civil) é plano pela origem, como o cabeçalho o faria. Data,
+    # município e autoridade continuam conferidos no texto.
+    from atualizar_instrumentos_estaduais import documento_do_repositorio
+    como_plano = e_plano_pelo_cabecalho(texto) or documento_do_repositorio(url or "")
+    if como_plano and not e_plano_pelo_cabecalho(texto):
+        regras.append("J22")
     ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano)
     if ok and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
         ano, _ = ano_do_plano(texto, ano_corrente)
@@ -1334,11 +1522,17 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
             regras.append("J7")
     veredito["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     veredito["data"] = dados.get("data")
+    veredito["data_origem"] = None
+    if "J13" in propostas and ok:
+        d13, origem = data_do_ato_18(texto)
+        if d13 and d13 != veredito["data"]:
+            veredito["data"] = d13
+            regras.append("J13")
+        veredito["data_origem"] = origem
     if not ok:
         return recusa(motivo)
-    from atualizar_instrumentos_estaduais import documento_do_repositorio
-    if (dados.get("sem_ato_de_aprovacao") and not como_plano and not documento_do_repositorio(url)
-            and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18]) and not titulo_no_cabecalho_corrido(texto)):
+    if (dados.get("sem_ato_de_aprovacao") and not como_plano
+            and not se_apresenta_como_plano(texto)):
         # J15: o título manda — "Planejamento Estratégico" que cita um plano de contingência não é o plano (Propriá/SE).
         return recusa("titulo_nao_e_plano", "J15")
 
@@ -1346,6 +1540,8 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     # estado que o plano conta, e que o ato de aprovação não foi localizado.
     sem_ato = bool(dados.get("sem_ato_de_aprovacao"))
     veredito["sem_ato_de_aprovacao"] = sem_ato
+    if sem_ato or como_plano:   # o documento é o plano: o período que ele declara na capa vai no veredito
+        veredito["vigencia_declarada_encerrada"] = vigencia_encerrada(texto) or None
     ok, motivo, trecho = etapa3_autoridade(texto, sem_ato_de_aprovacao=sem_ato,
                                            esfera="estadual" if eh_estadual else "municipal",
                                            url=url, ente=None if eh_estadual else (nome, uf))
@@ -1375,6 +1571,10 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
 
     if "J9" in propostas and RE_SECRETARIA_SETORIAL.search(texto[:3000]):
         return recusa("plano_setorial", "J9")
+    if "J18" in propostas:
+        cabeca = texto[:CABECALHO_18]
+        if RE_PLANO_SETORIAL_18.search(cabeca) and not RE_DEFESA_CIVIL_18.search(cabeca):
+            return recusa("plano_setorial", "J18")
     ok, familia, trecho, regra = familia_18(texto)
     regras += [regra] if regra else []
     veredito["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None,
@@ -1383,7 +1583,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return recusa(familia)
     veredito["familia_de_risco"] = familia
 
-    if not sem_ato and data_suspeita(veredito["data"], ano_corrente):
+    if data_suspeita(veredito["data"], ano_corrente):   # com ou sem ato: ano fora da faixa não é data (Chuvisca/RS, telefone "…-2077")
         return recusa("data_nao_confirmada", "J7")
     if sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
         return recusa("data_nao_confirmada", "J7")
@@ -1643,6 +1843,37 @@ def _v(texto, nome, uf, url, **kw):
     return julgar(texto, nome=nome, uf=uf, url=url, **dict(_C18, **kw))
 
 
+def casos_18_medidos() -> list:
+    """Um caso por linha das regras medidas à parte em 26/10 (J12, J13, J18). J8/J9 estão em `casos_18`."""
+    import re as _re
+    canario = CANARIOS["plano_novo"]
+    setorial = _re.sub(RE_DEFESA_CIVIL_18, "Saúde", canario["texto"].replace(
+        "Plano de Contingência Municipal de Proteção e Defesa Civil", "Plano Municipal de Saúde"))
+    edicao_sem_ato = ("PLANO DE CONTINGÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL, versão 2026. Diário Oficial do "
+                      "Município, edição de 02/04/2021. " + "texto do plano " * 40)
+    decisoes = [{"hash": "a", "municipio": "Taió", "uf": "SC"}, {"hash": "a", "municipio": "Taió", "uf": "SC"},
+                {"hash": "b", "municipio": "Taió", "uf": "SC"}, {"municipio": "Taió", "uf": "SC"},
+                {"municipio": "Taió", "uf": "SC"}]
+    return [
+        ("J13 a data do ato vem colada ao número, não a da edição (nº 1341/2021 de 31 de março de 2021)",
+         data_do_ato_18("DECRETO Nº 1341/2021 de 31 de março de 2021. Diário Oficial 02/04/2021")
+         == ("31/03/2021", "ato")),
+        ("J13 ato sem data própria em diário datado recebe a data da edição, marcada como edição",
+         data_do_ato_18(edicao_sem_ato) == ("02/04/2021", "edicao")),
+        ("J13 sem número nem diário, a data do texto não substitui a do documento",
+         data_do_ato_18("Plano de contingência de 14/07/2026, sem diário") == (None, None)),
+        ("J13 no julgar: a data do ato e a origem vão no veredito quando a proposta está ligada",
+         _v(canario["texto"], "Bonito", "MS", canario["url"], propostas=("J13",))["data_origem"] == "ato"),
+        ("J12 repetição do mesmo documento no mesmo município colapsa na mais antiga, sem somar",
+         colapsar_repeticoes_18(decisoes) == ([decisoes[0], decisoes[2], decisoes[3], decisoes[4]], 1)),
+        ("J18 plano setorial de saúde (sem termo de defesa civil) é recusado quando a proposta está ligada",
+         (lambda v: v["promove"] is False and v["motivo"] == "plano_setorial" and "J18" in v["regras_18"])(
+             _v(setorial, "Bonito", "MS", canario["url"], propostas=("J18",)))),
+        ("J18 não age sem a proposta: o mesmo plano segue no juiz em produção",
+         _v(setorial, "Bonito", "MS", canario["url"])["promove"] is True),
+    ]
+
+
 def casos_18() -> list:
     sao_borja = _v(PLANO_RS_18, "São Borja", "RS", URL_RS_18)
     goiania = CANARIOS["plano_novo"]["texto"].replace("14 DE JULHO DE 2026", "21 DE AGOSTO DE 1959")
@@ -1698,10 +1929,45 @@ def casos_18() -> list:
             + "metas e programas " * 150 + "8. Gestão de Riscos: Plano de Contingência para seca e estiagem. "
             + "x " * 200, "Propriá", "SE", "https://www.propria.se.gov.br/files/PLANEJAMENTO.pdf")["motivo"]
          == "titulo_nao_e_plano"),
+        ("J15 o plano com capa em imagem que se declara 'este Plano de Contingência' e cita lei na base legal é o plano (Rio Branco/AC)",
+         _v("PREFEITURA MUNICIPAL DE RIO BRANCO COORDENADORIA MUNICIPAL DE DEFESA CIVIL SUMÁRIO "
+            + "1 - Introdução .......... 5 " * 60 + "1 - Introdução Este Plano de Contingência tem o objetivo de informar "
+            "os órgãos do município sobre a inundação gradual do rio Acre, 2025. cenários, acionamento e "
+            "responsabilidades. 13 – Legislação 2012 - Lei nº 1.908, 17/05/2012 – Cria a Coordenadoria. "
+            + "x " * 200, "Rio Branco", "AC", "https://portalcgm.riobranco.ac.gov.br/lai/PLANO-2025.pdf")["motivo"]
+         not in ("titulo_nao_e_plano", "autoridade_nao_confirmada", "citacao_incompleta")),
+        ("plano setorial não é o plano do município: assistência social (Florianópolis/SC) e saneamento (Rodeio/SC)",
+         etapa5_familia_de_risco("Resolução CMAS que aprova o Plano de Contingência da Assistência Social do "
+                                 "município, para inundação")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("Prognóstico e Plano de Contingência e Emergência. REVISÃO DO PLANO MUNICIPAL DE "
+                                     "SANEAMENTO BÁSICO. inundação e estiagem")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL. Conforme o Plano Municipal de "
+                                     "Saneamento Básico, inundação")[0] is True),
+        ("vigência declarada: o período vale junto do título do plano; em frase de histórico, não (Caseiros/RS)",
+         vigencia_encerrada("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - PLANCON – 2024-2025 Deslizamentos") == "2024-2025"
+         and vigencia_encerrada("Tipo de Risco: Seca e Estiagem Histórico: Nos anos de 2021/2022 /2023 e 2024 o fenômeno") == ""
+         and vigencia_encerrada("", "Dengue 2024-2025, 2ª versão") == "2024-2025"
+         and vigencia_encerrada("PLANO DE CONTINGÊNCIA 2025/2026 Prefeitura de X") == ""),
+        ("plano publicado que explica o reconhecimento federal não é ato de resposta; o decreto que depende dele segue fora",
+         etapa4_natureza(PLANO_PUBLICADO_SEM_ATO + " Para solicitar reconhecimento federal, o município registra o "
+                         "desastre no S2iD e preenche o FIDE.", True)[0] != "RESPOSTA"
+         and etapa4_natureza("DECRETO Nº 10, de 3 de julho de 2026. Fica instituído o Plano de Contingência, com "
+                             "recursos mediante reconhecimento federal e FIDE no S2iD.")[0] != "EX_ANTE"),
+        ("J22 documento da pasta de PLANCONs do RS é plano pela origem: nem natureza nem título o recusam",
+         _v("Município de Capitão, Rio Grande do Sul. Coordenadoria Municipal de Proteção e Defesa Civil, 2025. "
+            + "cenários de risco de estiagem e enxurrada, recursos, acionamento e responsabilidades " * 40,
+            "Capitão", "RS", "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/"
+            "Casa Militar/SUBCHEFIAS/SUBCHEFIA DE PROTEÇÃO E DEFESA CIVIL/3. Departamento de Gestão de Riscos/"
+            "Divisão Técnica de Riscos/Planos de contingência/TODOS PLANCONS RECEBIDOS/CREPDEC 08/CAPITAO.pdf")["motivo"]
+         not in ("natureza_duvidosa", "resposta", "titulo_nao_e_plano", "nao_e_instrumento")),
         ("J21 capa em imagem: o título no alto das páginas vale; citado duas vezes no meio de um informe, não",
          titulo_no_cabecalho_corrido("ÍNDICE\n01 INTRODUÇÃO\n" + "PLANO DE CONTINGÊNCIA 2025 / 2026\ntexto da página\n" * 6)
          and not titulo_no_cabecalho_corrido("INFORME DE MONITORAMENTO\n" + "PLANO DE CONTINGÊNCIA\nseca\n" * 3)
-         and not titulo_no_cabecalho_corrido("x\n" + "o município deve manter o plano de contingência atualizado e divulgado à população local\n" * 9)),
+         and not titulo_no_cabecalho_corrido("x\n" + "o município deve manter o plano de contingência atualizado e divulgado à população local\n" * 9)
+         and titulo_no_cabecalho_corrido("ÍNDICE " + "PLANO DE CONTINGÊNCIA 2025 / 2026 Manutenção Aguas do Rio – Responsável técnico "
+                                         "Mesquita 1.3 REGISTROS DE ALTERAÇÕES DATA " * 6)
+         and not titulo_no_cabecalho_corrido("x\n" + "Plano de contingência é o documento que registra o planejamento "
+                                             "elaborado a partir da percepção do risco\n" * 6)),
         ("J1 a equipe de elaboração citada no PLANCON não o rebaixa a plano_elaboracao",
          etapa6_categoria("equipe de elaboração do plano de contingência", "2025", sem_ato_de_aprovacao=True,
                           como_plano=True)[0] == "plano_antigo"
@@ -1709,6 +1975,15 @@ def casos_18() -> list:
                               sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
         ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia)",
          _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"),
+        ("J7 plano sem ato: ano fora da faixa (fim de telefone, '…-2077') não é data, nem com período chuvoso no texto",
+         _v(("PLANO DE CONTINGÊNCIA Município de Chuvisca / RS Eventos Adversos Mais Comuns: Estiagens Enxurradas "
+             "MUNICÍPIO: CHUVISCA U.F. RS DDD/Telefone 51 92002-2077 COORDENADORIA MUNICIPAL DE DEFESA CIVIL O Plano de "
+             "Contingência estabelece os procedimentos dos órgãos na resposta às emergências de estiagem e enxurrada no "
+             "período de estiagem e no período chuvoso, com abrigos e contatos. ") * 3, "Chuvisca", "RS",
+            "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/"
+            "SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o"
+            "%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/"
+            "TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CHUVISCA.doc")["motivo"] == "data_nao_confirmada"),
         ("J10 PLANCON de marés de tempestade (COBRADE 1.3.1.1.2) não é seca por 'fatores contribuintes'",
          familia_18(PLANO_MARES_18)[:2] == (False, "fora_do_objeto")),
         ("J10 título de estiagem dá a família pelo título",
@@ -1849,6 +2124,22 @@ def autoteste() -> int:
         ("família de risco específica vence multirrisco",
          etapa5_familia_de_risco("plano de contingência de proteção e defesa civil para a "
                                  "estiagem e a seca severa")[1] == "seca_estiagem_fogo"),
+        ("fonte oficial: o sítio da Prefeitura do Rio (prefeitura.rio) e portal municipal em plataforma; imprensa, não",
+         fonte_oficial("https://defesacivil.prefeitura.rio/wp-content/uploads/p.pdf")
+         and fonte_oficial("https://araquari.atende.net/cidadao/pagina/plano") and not fonte_oficial("https://itatiaia.com.br/x")),
+        ("J23 plano de saúde no título é fora do objeto; plano de defesa civil que lista arbovirose, não",
+         etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA PARA ARBOVIROSES Angra dos Reis 2024-2026. Período de chuvas "
+                                 "e inundação aumentam criadouros.")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("PLANO MUNICIPAL DE CONTINGÊNCIA FRENTE ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA. "
+                                     "Estiagem e seca.")[1] == "fora_do_objeto"
+         and etapa5_familia_de_risco("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL. Riscos: inundação, "
+                                     "deslizamento e arboviroses.")[1] == "chuvas_inundacao_deslizamento"),
+        ("plano da saúde: a secretaria de saúde assina antes do título; com a coordenadoria de defesa civil, ou lista "
+         "a secretaria depois do título, não",
+         plano_da_saude("Município de São Martinho da Serra Secretaria Municipal de Saúde PLANO DE CONTINGÊNCIA PARA "
+                        "CHUVAS INTENSAS 2025. Alertas emitidos pela Defesa Civil.")
+         and not plano_da_saude("Secretaria Municipal de Saúde PLANO DE CONTINGÊNCIA. Aciona a COMPDEC.")
+         and not plano_da_saude("PLANO DE CONTINGÊNCIA MUNICIPAL. Abrigo: Secretaria de Saúde e Assistência Social")),
         ("arbovirose citada numa lista de riscos não torna o plano fora do objeto",
          etapa5_familia_de_risco("plano municipal para inundação, alagamento, deslizamento e "
                                  "também arbovirose")[1] == "chuvas_inundacao_deslizamento"),
@@ -1871,6 +2162,9 @@ def autoteste() -> int:
         ("plano sem ato: versão para consulta não passa",
          plano_sem_ato("PLANO DE CONTINGENCIA — versão para consulta pública, 2026, "
                        "Prefeitura Municipal de X", URL_PDF_DE_PLANO)[1] == "minuta_ou_rascunho"),
+        ("plano sem ato: consulta pública no corpo, fora do cabeçalho, não é minuta",
+         plano_sem_ato(PLANO_PUBLICADO_SEM_ATO + "x" * CABECALHO_18 + " Este documento será acessível, permitindo "
+                       "sua consulta pública, e cita a minuta de decreto em anexo.", URL_PDF_DE_PLANO)[0] is True),
         ("plano sem ato: sem órgão não passa",
          plano_sem_ato("PLANO DE CONTINGENCIA 2026 — procedimentos de resposta", URL_PDF_DE_PLANO)[1]
          == "plano_sem_identificacao"),
@@ -1896,11 +2190,21 @@ def autoteste() -> int:
         ("plano sem ato em domínio federal NÃO é ato do município (Cubatão/SP)",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url="https://www.bndes.gov.br/r.pdf",
                            ente=("Taió", "SC"))[1] == "autoridade_nao_confirmada"),
-        ("plano na pasta da Casa Militar/RS que cita lei na base legal conta como plano sem ato; fora dela, a lei vale",
-         etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.", url=URL_PASTA_RS)[2]
-         .get("sem_ato_de_aprovacao") is True
-         and etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.",
-                            url=URL_PDF_DE_PLANO)[2].get("sem_ato_de_aprovacao") is not True),
+        # 19/11/2026: a lei da base legal é referência em QUALQUER domínio, não só na pasta do RS (Rio Branco/AC).
+        ("plano que cita lei na base legal conta como plano sem ato, na pasta do RS e fora dela",
+         all(etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.", url=u)[2]
+             .get("sem_ato_de_aprovacao") is True for u in (URL_PASTA_RS, URL_PDF_DE_PLANO))),
+        ("ato próprio: o que abre o documento, o título de ato em caixa alta antes do plano e o que aprova o plano",
+         ato_proprio("PREFEITURA MUNICIPAL DE X Gabinete do Prefeito Decreto nº 123, de 5 de março de 2026") is not None
+         and ato_proprio("x " * 200 + "ESTADO DE Y DECRETO Nº 77/2026 Dispõe sobre a defesa civil") is not None
+         and ato_proprio("x " * 400 + "Anexo: Decreto nº 1.580/2023 aprova o Plano de Contingência") is not None),
+        ("ato próprio: a lei citada que institui a COMPDEC não é o ato do plano (Muqui/ES)",
+         ato_proprio("x " * 400 + "conforme a Lei nº 1.234, de 27/05/2003, fica instituída a Coordenadoria "
+                     "Municipal de Proteção e Defesa Civil") is None),
+        ("ato próprio: lei citada no corpo, no índice ou depois do título do plano não é o ato do documento",
+         ato_proprio("Sumário " + ". " * 200 + " 13 – Legislação 2012 - Lei nº 1.908, 17/05/2012 – Cria a "
+                     "Coordenadoria Municipal de Defesa Civil") is None
+         and ato_proprio("x " * 200 + "PLANO DE CONTINGÊNCIA 2026 conforme a LEI Nº 12.608/2012") is None),
         ("plano sem ato na pasta da Casa Militar/RS: autoridade dada pelo repositório; SharePoint qualquer, não",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"), url=URL_PASTA_RS)[0] is True
          and etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"),
@@ -2006,7 +2310,12 @@ def autoteste() -> int:
          etapa0_documento_primario("https://x.gov.br/a.pdf",
                                    "PLANO DE CONTINGENCIA " * 60)[0] is True),
     ]
-    checagens += casos_18()
+    checagens += casos_18() + casos_18_medidos() + casos_leitura_local_18()
+    _fila = [{"id": "a", "hash_evidencia": "h" * 64, "juiz": {"promove": True, "motivo": None, "codebook": "1.8"}},
+             {"id": "b", "hash": "h" * 64, "juiz": {"promove": True}},
+             {"id": "c", "url": "https://x.gov.br/a.pdf"}]
+    checagens.append(("fila paralela: só pista com documento lido entra; o `hash` solto não conta",
+                      [d["pista_id"] for d in decisoes_da_fila_18(_fila)] == ["a"]))
     for nome_check, ok in checagens:
         print(f"  {'OK  ' if ok else 'FALHA'} {nome_check}")
         if not ok:
@@ -2021,6 +2330,135 @@ def autoteste() -> int:
     return 0
 
 
+# =============================================================================================
+# Rodada paralela J18: rejulgamento pelo 1.8 gravado à parte (`data/paralelo_juiz18.json`)
+# =============================================================================================
+# Só lê documento que já está em `evidencias/` (por hash). Sem texto local a decisão NÃO é rejulgada:
+# o relatório conta essas decisões como "sem documento local", nunca como "mantida". Nada da produção muda.
+PARALELO_JUIZ18 = RAIZ / "data" / "paralelo_juiz18.json"
+PROPOSTAS_MEDIDAS_18 = ("J13", "J18")   # medidas à parte: ligadas só no paralelo; J8/J9 ficam de fora (crédito)
+
+
+def texto_local_18(hash_: str, base=None) -> str:
+    """Texto da cópia local de `evidencias/<hash>`: a primeira fonte (txt, ocr.txt, html, pdf) com letras
+    suficientes. Cópia falha (txt só com "=== página N ===") não encerra a busca: 144 documentos da amostra
+    tinham o PDF ao lado. PDF sem camada de texto vai ao OCR, o mesmo caminho da produção (`com_ocr`)."""
+    from julgar_e_aplicar_descobertas import com_ocr, texto_do_documento
+    base = base or RAIZ / "evidencias"
+    for nome in (f"{hash_}.txt", f"{hash_}.ocr.txt", f"{hash_}.html", f"{hash_}.pdf"):
+        arq = base / nome
+        if not arq.is_file():
+            continue
+        if nome.endswith(".pdf"):
+            raw = arq.read_bytes()
+            texto = com_ocr(raw, texto_do_documento(raw, nome))
+        elif nome.endswith(".html"):
+            bruto = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", arq.read_text(encoding="utf-8", errors="replace"))
+            texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", bruto))
+        else:
+            texto = arq.read_text(encoding="utf-8", errors="replace")
+        letras = re.sub(r"=== página \d+ ===", " ", texto)
+        if sum(c.isalpha() for c in letras) >= 300:
+            return texto
+    return ""
+
+
+def casos_leitura_local_18() -> list:
+    """Travas da leitura local: a cópia falha não esconde a boa; sem letras suficientes, vazio."""
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        base = pathlib.Path(tmp)
+        h1, h2 = "a" * 64, "b" * 64
+        (base / f"{h1}.txt").write_text("=== página 1 ===\n=== página 2 ===", encoding="utf-8", newline="\n")
+        (base / f"{h1}.html").write_text("<html><body>" + "PLANO DE CONTINGENCIA municipal " * 20 + "</body></html>",
+                                         encoding="utf-8", newline="\n")
+        (base / f"{h2}.txt").write_text("=== página 1 ===", encoding="utf-8", newline="\n")
+        return [
+            ("leitura local: txt falho cai para o html com texto",
+             "PLANO DE CONTINGENCIA" in texto_local_18(h1, base=base)),
+            ("leitura local: sem letras suficientes em nenhuma cópia devolve vazio",
+             texto_local_18(h2, base=base) == ""),
+            ("leitura local: hash sem cópia devolve vazio",
+             texto_local_18("c" * 64, base=base) == ""),
+        ]
+
+
+def rejulgar_paralelo_18(decisoes: list, ler_texto=texto_local_18) -> tuple:
+    """(registros, resumo). Cada decisão com documento local é julgada pelo 1.8 com as propostas medidas
+    à parte; J12 colapsa repetições do mesmo hash e município (a mais antiga decide)."""
+    com_texto = [d for d in decisoes if d.get("hash_evidencia")]
+    mantidas, colapsadas = colapsar_repeticoes_18(
+        [{**d, "hash": d["hash_evidencia"]} for d in com_texto])
+    registros, sem_texto, regras_cont = [], 0, {}
+    for d in mantidas:
+        texto = ler_texto(d["hash_evidencia"])
+        if not texto.strip():
+            sem_texto += 1
+            continue
+        v = julgar(texto, nome=d.get("municipio") or "", uf=d.get("uf") or "", ibge=d.get("ibge"),
+                   url=d.get("url"), propostas=PROPOSTAS_MEDIDAS_18)
+        for r in v.get("regras_18") or []:
+            regras_cont[r] = regras_cont.get(r, 0) + 1
+        registros.append({**v, "pista_id": d.get("pista_id"), "origem": d.get("origem"),
+                          "hash_evidencia": d["hash_evidencia"], "leu_documento": True,
+                          "prod": {"promove": d.get("promove"), "motivo": d.get("motivo"),
+                                   "codebook": d.get("codebook"), "categoria": d.get("categoria"),
+                                   "data": d.get("data")}})
+    resumo = {"decisoes": len(decisoes), "com_hash": len(com_texto), "colapsadas_j12": colapsadas,
+              "julgadas": len(registros), "sem_documento_local": sem_texto,
+              "regras_acionadas": dict(sorted(regras_cont.items()))}
+    return registros, resumo
+
+
+PARALELO_FILA18 = RAIZ / "data" / "paralelo_fila18.json"
+
+
+def decisoes_da_fila_18(pistas: list) -> list:
+    """A fila (`pistas_imprensa.json`) na forma de decisão do rejulgamento: só pista com documento lido
+    (`hash_evidencia`). O `hash` solto da pista não é do documento e não entra."""
+    return [{"pista_id": p.get("id"), "origem": p.get("origem"), "municipio": p.get("municipio"),
+             "uf": p.get("uf"), "ibge": p.get("ibge"), "url": p.get("url"), "hash_evidencia": p["hash_evidencia"],
+             "promove": (p.get("juiz") or {}).get("promove"), "motivo": (p.get("juiz") or {}).get("motivo"),
+             "codebook": (p.get("juiz") or {}).get("codebook"), "categoria": (p.get("juiz") or {}).get("categoria"),
+             "data": p.get("data")}
+            for p in pistas if p.get("hash_evidencia")]
+
+
+def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
+    """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo."""
+    registros, resumo = rejulgar_paralelo_18(decisoes)
+    saida = {"_governanca": (f"PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18) de {fonte}. Nada do "
+                             f"índice lê este arquivo. Escritor: juiz.py --rejulgar-paralelo ou --rejulgar-fila-paralela."),
+             "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
+             "resumo": resumo, "decisoes": registros}
+    from coletores_base import gravar_em   # §229: escrita de data/ só pela porta atômica
+    # Compacto: o arquivo paralelo cresce 34% em registros únicos; indentado, +38% em bytes e o portão de
+    # tamanho (novidade_real) barrava o PR. Sem indentação, +17%: o mesmo conteúdo, sem linhas de enfeite.
+    gravar_em(destino, saida, compacto=True)
+    print(json.dumps(resumo, ensure_ascii=False))
+    return resumo
+
+
+def rejulgar_paralelo_cli() -> int:
+    """`juiz.py --rejulgar-paralelo`: promoções da produção, gravadas SÓ em `data/paralelo_juiz18.json`."""
+    producao = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))
+    gravar_paralelo_18(producao["decisoes"], PARALELO_JUIZ18, "data/promocoes_automaticas.json")
+    return 0
+
+
+def rejulgar_fila_paralela_cli() -> int:
+    """`juiz.py --rejulgar-fila-paralela`: pistas da fila com documento lido, gravadas SÓ em `data/paralelo_fila18.json`."""
+    fila = json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))
+    gravar_paralelo_18(decisoes_da_fila_18(fila["pistas"]), PARALELO_FILA18, "data/pistas_imprensa.json (fila)")
+    return 0
+
+
 if __name__ == "__main__":
     import sys
-    sys.exit(autoteste() if "--autoteste" in sys.argv else 0)
+    if "--autoteste" in sys.argv:
+        sys.exit(autoteste())
+    if "--rejulgar-paralelo" in sys.argv:
+        sys.exit(rejulgar_paralelo_cli())
+    if "--rejulgar-fila-paralela" in sys.argv:
+        sys.exit(rejulgar_fila_paralela_cli())
+    sys.exit(0)

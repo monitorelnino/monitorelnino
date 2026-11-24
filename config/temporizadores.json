@@ -606,6 +606,28 @@
     "index.html"
    ],
    "gravidade": "media"
+  },
+  {
+   "id": "mapbiomas",
+   "workflow": "mapbiomas.yml",
+   "finalidade": "área queimada (Monitor do Fogo, mensal) e coleções anuais de fogo e água do MapBiomas, por estado; só metadado se nada mudou na fonte (editoria, 15/11/2026: o Earth Engine cobra processamento)",
+   "cron_primario": "41 3 * * 2",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída nesta semana",
+   "tolerancia_atraso_min": 2880,
+   "idempotencia": "a soma compara a data de atualização de cada imagem na fonte com a guardada; igual, não soma nem grava",
+   "orcamento_min": 300,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "figuras de área queimada e de superfície de água por estado (Monitor de riscos)"
+   ],
+   "gravidade": "baixa"
   }
  ]
 }

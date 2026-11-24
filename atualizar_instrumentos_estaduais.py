@@ -184,9 +184,6 @@ REPOSITORIOS = {
         # SINAL DECLARADO (editoria, 11/11/2026, ligado depois do ensaio real 42986259132): a promoção do juiz
         # vai ao banco (`aplicar_promocoes_do_juiz.aplicaveis`), com a regra de contagem abaixo.
         "aplicar_no_banco": True,
-        # SINAL DECLARADO (editoria, 10/11/2026, 15:02, ligado): plano de município indicado ao cadastro do
-        # art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA, mesma data).
-        "contar_so_com_atualizacao_anual": True,
         # nome de arquivo que só a editoria resolve, conferido no documento: "17 - Plano de Contingência de MAC.pdf"
         # é Monte Alegre dos Campos (capa lida, 10/11/2026). Sigla sem conferência fica órfã.
         "apelidos": {"MAC": "Monte Alegre dos Campos"},

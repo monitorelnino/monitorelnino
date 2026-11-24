@@ -108,12 +108,58 @@ def partes_do_host(host: str, camara: bool = False):
 
 # Versão do resolvedor, como a do codebook: muda a cada correção dele. Recusa por autoridade julgada antes
 # dela, em domínio que o resolvedor em vigor dá ao próprio ente, volta ao juiz uma vez
-# (`julgar_filas.recusa_desmentida_pelo_dominio`). Sobe-se a data; nada de regra antiga guardada.
+# (`julgar_filas.CORRECOES_DO_JUIZ`). Sobe-se a data; nada de regra antiga guardada.
 RESOLVEDOR_DESDE = "2026-11-10"
 
 # Domínio municipal fora do padrão `<nome>.<uf>.gov.br`. Lista fechada, só de domínio conferido (a página
 # inicial se identifica como a prefeitura). Era cópia em `buscador2.py` (30/10/2026); uma lista só.
-MUNICIPAIS_SEM_UF = {"pbh.gov.br": ("Belo Horizonte", "MG")}
+MUNICIPAIS_SEM_UF = {"pbh.gov.br": ("Belo Horizonte", "MG"),
+                     # 17/11/2026: a Prefeitura do Rio publica em `prefeitura.rio` (e serviços em `rio.rj.gov.br`);
+                     # o Buscador 2 fechava 33 pistas de `saude.prefeitura.rio` como "domínio não oficial".
+                     "prefeitura.rio": ("Rio de Janeiro", "RJ"), "rio.rj.gov.br": ("Rio de Janeiro", "RJ"),
+                     "prefeitura.poa.br": ("Porto Alegre", "RS")}
+
+
+# 17/11/2026 (editoria: "o defeito do Rio com o domínio da prefeitura precisa ser verificado em outros estados e
+# cidades"): o sítio oficial de muitos municípios não está em `.gov.br`. Medido na fila e nas recusas: 142 hosts
+# com o nome do município recusados como "domínio não oficial", a maior parte em plataformas que hospedam o
+# portal ou a transparência da prefeitura (`<município>.atende.net`, `<município>-<uf>.portaltp.com.br`,
+# `<município><uf>.equiplano.com.br`, `<município>.<uf>.transparenciamunicipal.online`), e sítios próprios
+# `pm<município>.com.br` / `<município>-<uf>.com.br`. A plataforma só serve a quem a contrata; o subdomínio diz
+# o ente. Câmara (splonline, camarasempapel) fica de fora: não é o Executivo.
+PLATAFORMAS_MUNICIPAIS = ("atende.net", "portaltp.com.br", "equiplano.com.br", "transparenciamunicipal.online",
+                          "basemunicipal.com")
+
+
+def municipio_fora_do_gov_br(host: str, referencia=None):
+    """O município do sítio oficial fora de `.gov.br`, ou None. Função pura dada a referência. O nome tem de
+    casar inteiro; sem UF no host, só vale se um único município do país tem esse nome."""
+    h = str(host or "").lower().split(":")[0].rstrip(".")
+    h = h[4:] if h.startswith("www.") else h
+    plat = next((p for p in PLATAFORMAS_MUNICIPAIS if h.endswith("." + p)), None)
+    if plat:
+        rotulos = h[: -len(plat) - 1].split(".")
+        nome, uf = (rotulos[-2], rotulos[-1]) if len(rotulos) >= 2 and rotulos[-1] in UFS else (rotulos[-1], "")
+    elif re.fullmatch(r"(pm|prefeitura)?[a-z0-9-]+\.com\.br", h):
+        nome, uf = h[: -len(".com.br")], ""
+        if not (nome.startswith("pm") or re.search(r"-(%s)$" % "|".join(UFS), nome)):
+            return None
+        nome = nome[2:] if nome.startswith("pm") else nome
+    else:
+        return None
+    m = re.fullmatch(r"(.+?)-?(%s)?" % "|".join(UFS), nome)
+    candidatos = [(m.group(1), (m.group(2) or uf)), (nome.replace("-", ""), uf)] if m else [(nome, uf)]
+    indice = _indice(referencia)
+    for n, u in candidatos:
+        n = _norm(n)
+        if u:
+            if (n, u.upper()) in indice:
+                return indice[(n, u.upper())]
+        else:
+            casam = [v for (k, _uf), v in indice.items() if k == n]
+            if len(casam) == 1:
+                return casam[0]
+    return None
 
 
 def diarios_estaduais() -> dict:
@@ -195,7 +241,7 @@ def municipio_de(url: str, referencia=None, camara: bool = False):
             return indice.get((_norm(nome), uf_d))
     candidato, uf = partes_do_host(host, camara)
     if not candidato or not uf:
-        return None
+        return municipio_fora_do_gov_br(host, referencia)
     achado = indice.get((_norm(candidato), uf))
     if achado:
         return achado
@@ -318,6 +364,19 @@ def _autoteste() -> int:
     ok("camara segue fora (nao e Executivo)",
        partes_do_host("camara.leme.sp.leg.br") == (None, None))
     ok("host de estado segue sem municipio", partes_do_host("sp.gov.br") == (None, None))
+    ok("a Prefeitura do Rio fora do padrão: prefeitura.rio e rio.rj.gov.br",
+       (municipio_de("https://saude.prefeitura.rio/x", REF + [{"nome": "Rio de Janeiro", "uf": "RJ", "codigo_ibge": 3304557}]) or {}).get("ibge") == "3304557"
+       and (municipio_de("https://www.rio.rj.gov.br/x", REF + [{"nome": "Rio de Janeiro", "uf": "RJ", "codigo_ibge": 3304557}]) or {}).get("ibge") == "3304557")
+    R2 = [{"nome": "Araquari", "uf": "SC", "codigo_ibge": 4201307}, {"nome": "Mimoso do Sul", "uf": "ES", "codigo_ibge": 3203403},
+          {"nome": "Japurá", "uf": "PR", "codigo_ibge": 4112405}, {"nome": "Japurá", "uf": "AM", "codigo_ibge": 1302108},
+          {"nome": "Gentil", "uf": "RS", "codigo_ibge": 4308854}, {"nome": "Itatiaia", "uf": "RJ", "codigo_ibge": 3302254}]
+    ok("sítio oficial fora de .gov.br: plataforma do município e pm<nome>.com.br",
+       [(municipio_fora_do_gov_br(h, R2) or {}).get("ibge") for h in
+        ("araquari.atende.net", "mimosodosul-es.portaltp.com.br", "japurapr.equiplano.com.br", "pmgentil.com.br")]
+       == ["4201307", "3203403", "4112405", "4308854"])
+    ok("fora de .gov.br, sem UF e com homônimo, ou sem marca de ente, não se adivinha",
+       municipio_fora_do_gov_br("japura.atende.net", R2) is None and municipio_fora_do_gov_br("itatiaia.com.br", R2) is None
+       and municipio_fora_do_gov_br("araquari.blogspot.com", R2) is None)
 
     # A referência real existe e o índice se monta sobre ela (sem rede).
     if REFERENCIA.exists():

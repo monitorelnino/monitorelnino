@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 15/11/2026. 86 falhas; 79 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 2026-11-24. 95 falhas; 87 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -779,3 +779,84 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 43696015366 (15/11 08:45 UTC): job `publicar_lote`, HTTP 422 `size must be less than 2147483648`; noturno_juiz.yml em 15/11: 6 runs `skipped`, 1 `success`; noturno_evidencias.yml: 6 `failure`
 - **Correção:** O lote sai em partes pelo primeiro dígito do hash, cada uma abaixo do teto, publicadas uma a uma em workflow próprio (`lote_de_evidencias.yml`); `validar_workflows.py` reprova job acessório dentro de workflow de que um elo depende.
 - **Caso de teste:** `scripts/empacotar_evidencias.py --autoteste (caso das partes) e scripts/validar_workflows.py (job acessório em elo da corrente)`
+
+## F87 · Pista de imprensa nascia sem data de entrada e vencia no mesmo dia
+
+- **Noite:** 2026-11-17→2026-11-18
+- **Sintoma:** `main` vermelha depois da descoberta das 03:53 UTC de 18/11: portão da fila não humana com 4 pistas de imprensa pendentes há mais de 21 dias, gravadas naquela noite.
+- **Causa:** `monitorar_imprensa_regional.registrar` e `monitorar_imprensa_saude.registrar` gravavam a pista sem `registrado_em`; desde 17/11 `pistas.data_da_pista` cai em `data_publicacao`, e a matéria de 2025 ou de maio a julho de 2026 entrava já vencida.
+- **Prova:** commit da descoberta `249d7560` (18/11 03:53 UTC): 4 pistas sem `registrado_em`, `data_publicacao` anterior a 28/10; #1856: carimbo na criação; Portões verde (run 6843)
+- **Correção:** Os dois monitores carimbam `registrado_em` ao criar a pista (#1856). Raiz que fica: os dois escrevem a fila por fora de `scripts/pistas.py` (dívida nomeada em `config/escritores_legados.json`); a porta carimbaria sozinha.
+- **Caso de teste:** `monitorar_imprensa_regional.py --autoteste: pista nasceu sem a data de entrada`
+
+## F88 · Triagem e anotação de confiança desfaziam uma à outra toda noite
+
+- **Noite:** 2026-11-17→2026-11-18
+- **Sintoma:** `data/pistas_imprensa.json` com cerca de 150 mil linhas de diff por noite: 22.825 pistas encerradas perdem `sinais`, `alertas` e `pontos_confianca` na triagem e os recebem de volta na descoberta seguinte.
+- **Causa:** `triar_confianca_pistas.anotar_e_gerar_fila` anotava a fila inteira, inclusive a pista encerrada; `triar_fila.py --aplicar` compacta a encerrada (`limpar_fila_de_pistas.compactar`) e apaga esse texto de trabalho.
+- **Prova:** `main` 70b2ee5e (18/11): 22.825 de 22.825 encerradas com `sinais`/`alertas`/`pontos_confianca`; noturno_descoberta.yml roda `triar_confianca_pistas.py`; noturno_triagem.yml roda `scripts/triar_fila.py --aplicar`
+- **Correção:** A anotação pula a encerrada (`limpar_fila_de_pistas.encerrada`, a mesma regra que a verificação da descoberta já usa).
+- **Caso de teste:** `triar_confianca_pistas.py --autoteste: encerrada não recebe texto de trabalho`
+
+## F89 · Elo commitava o dado do PDF-índice sem o PDF e deixava a `main` vermelha até o publicador
+
+- **Noite:** 2026-11-17→2026-11-20
+- **Sintoma:** Portão 12 vermelho no push da `main` depois de commits de elo (triagem 18/11 02:09, 18/11 08:51, 20/11 04:05): `MARE_Indice_Documentacao.pdf` obsoleto; o publicador seguinte resselava e a `main` voltava a verde.
+- **Causa:** `_coletor.yml` regenera a cadeia canônica (que reescreve o PDF a partir de `data/verificacao_resumo.json` e afins) e sela o hash novo no manifesto, mas o `git add` do elo listava só `data/`, `dados-abertos/`, `feeds/`, `selos/`, `evidencias/` e o manifesto: o PDF ficava para trás e o `git checkout -- .` o descartava.
+- **Prova:** run 44672129649 (commit 681ebdda, triagem 20/11 04:05): job `portoes · dado`, 'DERIVADOS… MARE_Indice_Documentacao.pdf | 2 +-'; o commit muda `data/verificacao_resumo.json`; run 44221172481 (18/11 02:09, triagem): mesmo PDF obsoleto
+- **Correção:** O PDF-índice entra nas três listas de `git add` do elo; conflito nele já se resolve por regeneração (`unir_conflito_de_rodada.REGENERAVEIS`).
+- **Caso de teste:** `scripts/verificar_derivados.sh (portão 12 no push da `main`)`
+
+## F90 · Pista que completava 22 dias na madrugada só vencia na noite seguinte e deixava a `main` vermelha o dia inteiro
+
+- **Noite:** 2026-11-21→2026-11-22
+- **Sintoma:** Portões no push da `main` vermelhos desde ~08:22 UTC de 22/11: 'FILA NÃO HUMANA: 3 item(ns)… pendente há mais de 21 dias (2026-10-31)'.
+- **Causa:** `triar_fila.py` contava o prazo por `hoje_editorial()` (Brasília). A triagem roda ~01:15 UTC, 22h em Brasília do dia anterior: a pista com 21 dias não vencia; à meia-noite de Brasília passava a 22 e o portão (mesmo relógio, horas depois) reprovava até a triagem da noite seguinte.
+- **Prova:** run 45005339883 (job `portoes · estrutura`): 3 pistas de 2026-10-31; run 44970676196 (triagem 22/11 01:16 UTC): triar_fila rodou com hoje=2026-11-21; o run de 08:37 pulou (triagem.feito); desfecho_por_prazo nas pendentes: 0 vencidas com 2026-11-21, 3 com 2026-11-22
+- **Correção:** O prazo da triagem conta pela data da noite (`janela_da_noite.noite_corrente`), que é o dia que vem; vencidas fechadas no próprio PR.
+- **Caso de teste:** `scripts/triar_fila.py --autoteste ('a triagem das 01:16 UTC fecha quem faz 22 dias naquele dia')`
+
+## F91 · O B2 nunca resolvia o Google News: a limpeza de 19/10 apagou o título de 5.802 links, e a busca no veículo não tinha o que procurar
+
+- **Noite:** 2026-11-23 (B2, reprocesso manual)
+- **Sintoma:** Lotes do Buscador 2 de 22 e 23/11 com 0 redirecionamento resolvido em 5.802 links do Google News; 195 de 199 pistas seguidas com falha de rede.
+- **Causa:** `scripts/limpar_fila_de_pistas.compactar` tirava `titulo` e `trecho` de toda pista encerrada (decisão de 19/10 para cortar tamanho). Os links do B2 fecharam sem título, e `resolver` só busca no veículo com título. Além disso, `seguir` não passava veículo nem título ao B2.
+- **Prova:** data/pistas_imprensa.json em origin/main: 5.802 links do Google News, 2 com título; arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json: 1.863 desses links com título guardado
+- **Correção:** `compactar` guarda `titulo` nos links do Google News; `seguir` passa veículo e título ao B2, com teto de 300 buscas por rodada, e reabre uma vez as pistas fechadas que têm título e veículo (`e_b2_sem_busca`).
+- **Caso de teste:** `seguir_pistas.py --autoteste ('B2: busca no veículo com o título do arquivo, e a URL achada entra como pista nova')`
+
+## F92 · Elo do juiz caía no passo do Tesseract: trava do apt com órfão do navegador e espelho lento
+
+- **Noite:** 2026-11-19 e 2026-11-23 (juiz; 23/11 no ensaio real)
+- **Sintoma:** `Noturno — juiz automático` falhou antes da coleta: 19/11 (runs 44472852709 e 44498370064) com `Could not get lock /var/lib/dpkg/lock-frontend ... held by process 2804 (apt-get)`; 23/11 (run 45152658482) com o passo parado até o teto de 5 min.
+- **Causa:** O passo do navegador (`timeout 240 npx playwright install --with-deps`) bateu o teto; o `timeout` encerra o `npx`, não o `apt-get` filho sob `sudo`, que segue com a trava. O passo seguinte (`apt-get update && install` do Tesseract) não esperava trava nem repetia conexão parada.
+- **Prova:** job 137617766269: passo do navegador 2 min 22 s, passo do Tesseract 5 min até o teto; teste local (apt 2.8, Ubuntu 24.04): com a trava de `lists/` segura, `apt-get update` sai em 1 s com ou sem DPkg::Lock::Timeout; `install` espera a trava do dpkg com a opção
+- **Correção:** `_coletor.yml`: `install` com DPkg::Lock::Timeout=240; `update` repetido até 12 vezes a cada 10 s; Acquire::Retries=3 e Acquire::http::Timeout=30 contra espelho parado; teto do passo 8 min. Pacote que não instala derruba o elo com o nome do passo e a reserva refaz (D1).
+- **Caso de teste:** nenhum — falta: caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR
+
+## F93 · O teto de 300 buscas no veículo valia por bloco, não por rodada: o lote fez cerca de 1.500 buscas
+
+- **Noite:** 2026-11-23→2026-11-24 (reprocesso manual, run 45305563320)
+- **Sintoma:** Run 45305563320: blocos de 193–200 buscas, em sete blocos; 0 links do Google News resolvidos, e o commit da rodada foi recusado pela união.
+- **Causa:** `seguir()` criava o contador de buscas por chamada, e a rodada chama `seguir()` a cada bloco de BLOCO URLs. O teto valia por bloco.
+- **Prova:** log do run 45305563320: sete blocos com 'busca(s) no veículo' de 193 a 200 cada
+- **Correção:** `contador_buscas` é da rodada e passa a cada bloco; teste que roda dois blocos e conta 300.
+- **Caso de teste:** `seguir_pistas.py --autoteste ('B2: o teto vale para a rodada inteira, somado entre blocos')`
+
+## F94 · Rodada de domingo perde o commit quando ela e o juiz julgam a mesma pista na mesma noite
+
+- **Noite:** 2026-11-15 e 2026-11-22 (atualizar, domingo)
+- **Sintoma:** `atualizar / coletar` (run 44980777132, 22/11, 4h09 de coleta) perdeu o commit: `pistas_imprensa.json` recusado por `julgamento_automatico` e `pistas_imprensa_saude.json` por `repeticoes`; a reaplicação (job 137144544975) recusou de novo as duas filas.
+- **Causa:** `atualizar.py` roda `julgar_e_aplicar_descobertas.py`, que grava `julgamento_automatico` na pista; o elo do juiz grava o mesmo campo na mesma noite. O resolvedor não tinha regra para o campo e recusava o arquivo inteiro.
+- **Prova:** logs do run 44980777132 e do job 137144544975 (handover de erros do GitHub, item 2); `julgar_e_aplicar_descobertas.py` grava `pista['julgamento_automatico'] = {'data': hoje, **r}`
+- **Correção:** D2 no resolvedor: APLICADA vence ABSTENCAO; duas ABSTENCAO, a data mais nova e, no mesmo dia, a da `main`; duas APLICADA diferentes ou caso não coberto: a pista fica como na `main`, a fila une e o caso sai como aviso no log. `repeticoes` já soma pela base (A1, 23/11). Cinco casos D2 em `unir_conflito_de_rodada.py --autoteste`.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo`
+
+## F95 · Coletor do cadastro federal caiu sem deixar tentativa e o frescor avermelhou a main
+
+- **Noite:** 2026-11-21→22 (semanal sinais e links); main vermelha de 24/11 03:32 em diante
+- **Sintoma:** Portões no push da `main` vermelhos desde 24/11 03:32: `FRESCOR — DEFESA CIVIL: cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14 (limite 9)`.
+- **Causa:** No run 44970135352 (22/11 01:09) `coletar_cadastro_prioritarios.py` recebeu `Connection reset by peer` do gov.br ao baixar a nota técnica e terminou em exceção, sem gravar nem registrar tentativa; o run das 15:33 foi adiado pela guarda (fora da janela). Sem tentativa no painel, a regra de 01/11 (fonte que recusa) não se aplicava.
+- **Prova:** run 44970135352, passo `coletar_cadastro_prioritarios.py`: `URLError ... [Errno 104] Connection reset by peer`, status erro; run 45327223052 (Portões na main): `cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14`
+- **Correção:** Falha ao baixar nota técnica ou validação reprovada registra a tentativa (`registrar_tentativa_coletor`, resultado `falhou`, motivo, arquivo) e sai com erro; o frescor passa a medir a idade do dado sem reprovar quem tentou. Coleta refeita por dispatch na janela (run 45332094178).
+- **Caso de teste:** `coletar_cadastro_prioritarios.py --autoteste: nota técnica que não abre deixa tentativa que o frescor aceita`

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="PRODAP">
+        <meta name="description" content="100 Dias de Governo">
+        <meta name="keywords" content="Governo do Amapá">
+        <meta name="reply-to" content="cotec@prodap.ap.gov.br">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>100 DIAS - 100 Dias de Governo</title>
+        <base href="https://sims.portal.ap.gov.br:443/noticia_ler.php?slug=1004/integracao-dos-orgaos-de-defesa-e-chamadas-de-concursos-impulsionam-a-seguranca-publica-no-amapa" />
+        <meta property="fb:app_id"        content="197291277357883" />
+        <meta property="og:url"           content="https://prodap.ap.gov.br/noticia/1004/integracao-dos-orgaos-de-defesa-e-chamadas-de-concursos-impulsionam-a-seguranca-publica-no-amapa" />
+        <meta property="og:type"          content="website"/>
+        <meta property="og:title"         content="Integração dos órgãos de defesa e chamadas de concursos impulsionam a Segurança Pública no Amapá" />
+        <meta property="og:description"   content="100 Dias de Governo" />
+                    <meta property="og:image"         content="https://editor.amapa.gov.br/noticias/100 DIAS_ea214e3c0c803eb617277b6960281a33.jpg" />
+            <meta property="og:image:width"   content="600">
+            <meta property="og:image:height"  content="315">
+        
+        <link rel="stylesheet/less" type="text/css" href="scripts/css/estilo.less" />
+        <link href="scripts/css/bootstrap.min.css" rel="stylesheet">
+        <link href="scripts/css/bootstrap-select.css" rel="stylesheet">
+        <link href="scripts/css/layout.php" rel="stylesheet">
+        <link rel="stylesheet" href="scripts/css/tipped.css">
+        <link rel="stylesheet" href="scripts/css/font-awesome.min.css">
+        <link rel="stylesheet" href="scripts/css/jquery.bsPhotoGallery.css">
+        <link rel="stylesheet" href="scripts/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="scripts/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="scripts/css/modal-youtube.css">
+
+
+
+    </head>
+    <body>
+        <div class="scroll-to-top">
+            <a href="#" class="btn btn-primary"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
+        </div>
+
+        <!-- Modal Youtube -->
+        <div class="modal fade" id="youtubeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="videoModalContainer">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="CloseModalButton" type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Youtube -->
+
+        <!-- INICIO TOPO 1 -->
+<div class="container-fluid topo_um" style="background-color: #005675">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <span class="pull-left hidden-xs"><a href="https://www.amapa.gov.br" target="_blank"><div class="gov"><img src="img/bandeira.jpg" class="img-responsive" alt="">GOVERNO DO ESTADO DO AMAPÁ</div></a></span>
+                <span class="pull-left visible-xs"><a href="https://www.amapa.gov.br" target="_blank"><div class="gov"><img src="img/bandeira.jpg" class="img-responsive" alt=""></div></a></span>
+
+                <span class="pull-right">
+                    <img class="brasao" src="img/brasao_topo.png" alt="">
+                    
+                   <select onChange="window.open(this.options[this.selectedIndex].value, '_blank');" value="GO" id="lunch" class="selectpicker" data-live-search="true" title="Órgãos Governamentais">
+                                                <option value="http://www.sead.ap.gov.br" >Administração</option>
+                                                <option value="http://ageamapa.ap.gov.br" >Agência Amapá</option>
+                                                <option value="http://www.afap.ap.gov.br" >Agência de Fomento</option>
+                                                <option value="http://www.setec.ap.gov.br" >Ciência e Tecnologia</option>
+                                                <option value="http://www.cge.ap.gov.br" >Controladoria Geral</option>
+                                                <option value="https://bombeiros.portal.ap.gov.br/" >Corpo de Bombeiros</option>
+                                                <option value="http://www.detran.ap.gov.br" >Depto. de Trânsito </option>
+                                                <option value="https://cidades.portal.ap.gov.br" >Desenvolvimento Cidades  </option>
+                                                <option value="http://www.rurap.ap.gov.br" >Desenvolvimento Rural</option>
+                                                <option value="http://www.diagro.ap.gov.br" >Diagro</option>
+                                                <option value="http://www.seed.ap.gov.br" >Educação</option>
+                                                <option value="http://www.eap.ap.gov.br" >Escola de Administração</option>
+                                                <option value="http://www.ief.ap.gov.br" >Instituto de Florestas</option>
+                                                <option value="http://www.hemoap.ap.gov.br" >Instituto de Hematologia</option>
+                                                <option value="http://www.terrap.ap.gov.br" >Instituto de Terras</option>
+                                                <option value="http://www.rurap.ap.gov.br" >Instituto Rural</option>
+                                                <option value="http://www.jucap.ap.gov.br" >Junta Comercial</option>
+                                                <option value="https://sejuv.portal.ap.gov.br/" >Juventude</option>
+                                                <option value="http://www.lacen.ap.gov.br" >Laboratório Central</option>
+                                                <option value="http://www.sema.ap.gov.br" >Meio Ambiente</option>
+                                                <option value="http://www.sims.ap.gov.br" >Mobilização Social</option>
+                                                <option value="http://www.ipem.ap.gov.br" >Pesos e Medidas</option>
+                                                <option value="http://www.seplan.ap.gov.br" >Planejamento</option>
+                                                <option value="http://policiacientifica.ap.gov.br/" >Polícia Cientifica</option>
+                                                <option value="http://www.policiacivil.ap.gov.br" >Policia Civil</option>
+                                                <option value="http://www.pm.ap.gov.br" >Policia Militar</option>
+                                                <option value="http://www.procon.ap.gov.br" >Procon</option>
+                                                <option value="http://www.difusora.ap.gov.br" >Radio Difusora</option>
+                                                <option value="http://www.sefaz.ap.gov.br" >Receita</option>
+                                                <option value="http://www.seab.ap.gov.br" >Representação GEA Brasília </option>
+                                                <option value="http://www.saude.ap.gov.br" >Saúde</option>
+                                                <option value="https://cidades.portal.ap.gov.br/" >Secretaria do Desenvolvimento das Cidades</option>
+                                                <option value="http://www.prodap.ap.gov.br" >Tecnologia da Informação</option>
+                                                <option value="http://www.setrap.ap.gov.br" >Transporte</option>
+                                                <option value="http://www.setur.ap.gov.br" >Turismo</option>
+                                                <option value="http://www.ueap.ap.gov.br" >Universidade Estadual</option>
+                      
+                  </select>
+               </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM TOPO 1 -->
+
+<!-- INICIO TOPO 2-->
+<nav class="navbar topo_dois" style="background-color: #00A97A">
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="navbar-text navbar-right altura">
+
+                <div class="social">
+                                    </div>
+                <span class="busca">
+                <form class="navbar-form" method="post" role="search" action="busca_de_noticias">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar" name="b">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!-- FIM TOPO 2-->
+
+<!-- INICIO BANNER -->
+<div class="container-fluid">
+    <div class="row m-0 p-0">
+        <div class="col-sm-12 p-0 m-0" style="padding: 0 !important;">
+            <img src="img/banner-2000.png" class="img-responsive center-block" style="width: 100%" alt="Logo">
+        </div>
+    </div>
+</div>
+<!-- FIM BANNER -->
+
+<!-- INICIO MENU-->
+<div class="container-fluid menu" style="background-color: #00A97A">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default" style="background-color: #00A97A">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand visible-xs" href="./"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: #00A97A">
+                    <ul class="nav navbar-nav">
+
+                        <li class="hidden-xs"><a href="./"><span id="inst">PÁGINA INICIAL</span></a></li>
+
+                                                                                            <li><a href="noticias" >Notícias</a></li>
+                                                                                                                                                        <li><a href="galerias" >Galeria de Fotos</a></li>
+                                                                                    
+                        <!-- INICIO MENU DINAMICO -->
+                                                <!-- FIM MENU DINAMICO -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- FIM MENU-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+                    </div>
+    </div>
+</div>
+
+        <!-- CONTEÚDO À PARTIR DAQUI -->
+        <!-- ##################################################################################################### -->
+
+        <div class="container" id="breadcrumb">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb">
+                        <li><a href="./"><i class="fa fa-home"></i> Início</a></li>
+                        <li><a href="noticias">Todas as Notícias</a></li>
+                        <li class="active">Integração dos órgãos de defesa e chamadas de concursos impulsionam a Segurança Pública no Amapá</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="noticias">
+            <div class="row">
+                                    <div class="col-sm-9">
+                        <div class="data"><i class="fa fa-clock-o"></i> quinta, 06 de abril de 2023 - 18:00h</div>
+                        <div class="titulo">Integração dos órgãos de defesa e chamadas de concursos impulsionam a Segurança Pública no Amapá</div>
+                        <div class="chamada_principal">Em menos de três meses, Governo do Estado avançou na qualificação profissional e combate ao crime.</div>
+                        <div class="autor">Por: Da Redação                            <span class="pull-right">
+                                <div style="position: absolute; left: 15px">
+                                    <a href="whatsapp://send" data-text="Integração dos órgãos de defesa e chamadas de concursos impulsionam a Segurança Pública no Amapá" data-href="" class="wa_btn wa_btn_s" style="display:none">Whatsapp</a>
+                                </div>
+
+                                <div style="margin-left: 10px; float: right">
+                                    <div class="g-plusone" data-size="medium" data-annotation="none"></div>
+                                </div>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true">Tweet</a> <script>!function (d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                                        if (!d.getElementById(id)) {
+                                            js = d.createElement(s);
+                                            js.id = id;
+                                            js.src = p + '://platform.twitter.com/widgets.js';
+                                            fjs.parentNode.insertBefore(js, fjs);
+                                        }
+                                    }(document, 'script', 'twitter-wjs');</script>
+                                <div class="fb-share-button" style="float:right; margin-left: 10px" data-href="https://sims.portal.ap.gov.br:443/noticia_ler.php?slug=1004/integracao-dos-orgaos-de-defesa-e-chamadas-de-concursos-impulsionam-a-seguranca-publica-no-amapa" data-layout="button_count"></div>
+                            </span>
+                        </div>
+
+                                                    <img src="https://editor.amapa.gov.br/noticias/100 DIAS_ea214e3c0c803eb617277b6960281a33.jpg" class="img-responsive img_principal" width="100%" alt="">
+                                                            <div class="foto"><i><i class="fa fa-camera-retro" aria-hidden="true"></i> Foto: Lucas Brito/PC</i></div>
+                                                        <div class="legenda"><i>A política de união entre os órgãos de defesa fortaleceu segurança do estado</i></div>
+                                                <div class="texto_noticia">
+                            <p>O Governo do Amap&aacute;, nos <span style="color: #008080;"><strong>100 primeiros dias da gest&atilde;o</strong></span>, aumentou a produtividade policial no combate ao crime no Estado. O balan&ccedil;o aponta que nos tr&ecirc;s primeiros meses de governo, foram realizadas <span style="color: #008080;"><strong>9 opera&ccedil;&otilde;es</strong></span>, al&eacute;m de cursos de forma&ccedil;&atilde;o, compra de muni&ccedil;&otilde;es e equipamentos, entre outros investimentos.<br /><br />A pol&iacute;tica de uni&atilde;o entre os &oacute;rg&atilde;os de defesa foi uma das a&ccedil;&otilde;es que levou ao fortalecimento da seguran&ccedil;a no estado. <br /> <br /> A For&ccedil;a-Tarefa, que re&uacute;ne Secretaria de Justi&ccedil;a e Seguran&ccedil;a P&uacute;blica (Sejusp), Pol&iacute;cia Militar (PM-AP), Pol&iacute;cia Civil, Pol&iacute;cia Federal (PF), Pol&iacute;cia Rodovi&aacute;ria Federal (PRF) e o Instituto de Administra&ccedil;&atilde;o Penitenci&aacute;ria (Iapen), intensificaram o combate aos grupos criminosos.<br /> <br /> <strong>Investimentos</strong><br /> A gest&atilde;o investiu na compra de <strong><span style="color: #008080;">mais de 520 mil muni&ccedil;&otilde;es</span></strong> de v&aacute;rios calibres, <span style="color: #008080;"><strong>1,5 mil uniformes dos bombeiros</strong></span>, equipamento de prote&ccedil;&atilde;o individual de combate a inc&ecirc;ndio, prote&ccedil;&atilde;o respirat&oacute;ria, ve&iacute;culos, computadores e outros equipamentos.<br /><br /><strong>C&atilde;es policiais<br /></strong>No combate ao crime ou nas intera&ccedil;&otilde;es especiais com o p&uacute;blico, os <a href="https://www.amapa.gov.br/noticia/2303/policia-militar-do-amapa-faz-demonstracao-das-habilidades-dos-caes-policiais-que-atuam-no-combate-ao-crime"><span style="color: #008080;"><strong>cinco c&atilde;es policiais</strong></span></a> que atualmente integram o Canil do Batalh&atilde;o de Opera&ccedil;&otilde;es Especiais (Bope), est&atilde;o sempre preparados para aturem quando forem solicitados. A manuten&ccedil;&atilde;o e a integra&ccedil;&atilde;o deles nas corpora&ccedil;&otilde;es &eacute; fortalecida pelo Governo do Amap&aacute;, como um instrumento indispens&aacute;vel na seguran&ccedil;a p&uacute;blica, para se tornar cada vez mais refer&ecirc;ncia para outros estados.<br /><br />Este fortalecimento est&aacute; presente no 3&ordm; Curso de Cinotecnia Policial, <a href="https://www.amapa.gov.br/noticia/0303/policia-militar-treina-agentes-de-seguranca-do-amapa-santa-catarina-e-maranhao-para-o-trabalho-com-caes">que est&aacute; capacitando agentes de seguran&ccedil;a e c&atilde;es</a> do Amap&aacute; e dos estados de Santa Catarina e Maranh&atilde;o.<br /><br /><strong>Opera&ccedil;&otilde;es<br /> </strong>Foram realizadas <span style="color: #008080;"><strong>9 opera&ccedil;&otilde;es de combate a todo tipo de crime</strong></span>, desde o tr&aacute;fico de drogas a viol&ecirc;ncia contra a mulher.</p>
+<ul>
+<li>Opera&ccedil;&atilde;o <a href="https://www.amapa.gov.br/noticia/2701/operacao-revenge-forca-tarefa-realiza-acao-integrada-contra-o-crime-organizado">Revenge</a>: combate a grupos criminosos;</li>
+<li>Opera&ccedil;&atilde;o H&oacute;rus: coibir e reduzir a criminalidade nafronteira Brasil &ndash; Fran&ccedil;a, em Oiapoque;</li>
+<li>Opera&ccedil;&atilde;o de preven&ccedil;&atilde;o contra <a href="https://www.amapa.gov.br/noticia/2103/governo-do-amapa-faz-operacao-de-prevencao-contra-crimes-violentos-em-macapa-e-santana">crimes violentos </a>em Macap&aacute; e Santana;</li>
+<li>Opera&ccedil;&atilde;o <a href="https://www.amapa.gov.br/noticia/2101/operacao-impacto-intensifica-policiamento-na-regiao-metropolitana-de-macapa">Impacto</a>: contra o tr&aacute;fico de drogas em Macap&aacute;;</li>
+<li>Opera&ccedil;&atilde;o <a href="https://www.amapa.gov.br/noticia/2303/forca-tarefa-de-seguranca-publica-do-amapa-faz-operacao-contra-grupos-criminosos-em-macapa">Telum</a>: combate a grupos criminosos;</li>
+<li>Opera&ccedil;&atilde;o <a href="https://www.amapa.gov.br/noticia/2103/governo-do-amapa-faz-operacao-de-prevencao-contra-crimes-violentos-em-macapa-e-santana">Bessa</a>: combate a grupos criminosos;</li>
+<li>Opera&ccedil;&atilde;o <a href="https://www.amapa.gov.br/noticia/0704/operacao-saturacao-monitora-pontos-de-risco-em-macapa-e-santana-para-evitar-acoes-criminosas-no-ap">Satura&ccedil;&atilde;o</a>: combate a grupos criminosos;</li>
+<li>Opera&ccedil;&atilde;o<a href="https://www.amapa.gov.br/noticia/1503/policia-civil-e-procon-fazem-operacao-contra-crimes-de-saude-publica-e-do-consumidor"> Sa&uacute;de do Consumidor IV</a>: contra viola&ccedil;&otilde;es ao direito dos consumidores e comercializa&ccedil;&atilde;o de produtos impr&oacute;prios para o consumo humano.&nbsp;</li>
+<li>Opera&ccedil;&atilde;o <a href="https://www.amapa.gov.br/noticia/0404/no-amapa-operacao-atria-de-combate-a-crimes-contra-mulher-prende-77-agressores-em-33-dias">&Aacute;tria</a>: a&ccedil;&atilde;o nacional de combate a viol&ecirc;ncia contra a mulher e feminic&iacute;dio, resultando na pris&atilde;o de 77 agressores e 678 v&iacute;timas atendidas em seis munic&iacute;pios.</li>
+<li>Opera&ccedil;&atilde;o <a href="https://www.amapa.gov.br/noticia/0804/operacao-mercator-apreende-armas-e-municoes-no-interior-do-amapa">Mercator</a>: combate a grupos criminosos<br /><br /></li>
+</ul>
+<p><strong>Valoriza&ccedil;&atilde;o profissional<br /> </strong>Os agentes de seguran&ccedil;a foram o foco de v&aacute;rias <span style="color: #008080;"><strong>qualifica&ccedil;&otilde;es profissionais</strong></span>, entre elas, de aperfei&ccedil;oamento de opera&ccedil;&otilde;es fluviais, salvamento veicular e <a href="https://www.amapa.gov.br/noticia/2703/sejusp-promove-capacitacao-sobre-transparencia-de-processos-administrativos-para-profissionais-da-seguranca-publica">contrata&ccedil;&atilde;o p&uacute;blica</a>.</p>
+<p>O Governo concluiu ainda o curso de forma&ccedil;&atilde;o das carreiras de delegado de pol&iacute;cia, oficiais e agentes. Al&eacute;m da forma&ccedil;&atilde;o de <span style="color: #008080;"><strong>115 novos policiais</strong></span> habilitados em diversos cargos. <br /> <br /> <strong>Concursos p&uacute;blicos</strong><br /> Para refor&ccedil;ar o efetivo policial, o Governo do Amap&aacute; deu andamento aos <span style="color: #008080;"><strong>concursos p&uacute;blicos</strong></span>, realizando novas chamadas nos primeiros 100 dias.</p>
+<ul>
+<li>Na Pol&iacute;cia Civil, <span style="color: #008080;"><strong>115 novos agentes</strong></span> finalizaram os cursos de capacita&ccedil;&atilde;o e est&atilde;o habilitados para o ingresso na corpora&ccedil;&atilde;o.</li>
+<li>Para a Pol&iacute;cia Militar, quase <span style="color: #008080;"><strong>600 candidatos</strong></span> foram convocados para a realiza&ccedil;&atilde;o das etapas de avalia&ccedil;&atilde;o de capacidade f&iacute;sica.</li>
+<li>No Corpo de Bombeiros, mais <span style="color: #008080;"><strong>36 candidatos</strong></span> do concurso para soldados foram habilitados na prova objetiva e se unem aos<span style="color: #008080;"><strong> 300 j&aacute; convocados</strong> </span>para participarem da 2&ordf; fase.</li>
+</ul>
+<p><br /> Dentro dos certames todos ter&atilde;o a qualifica&ccedil;&atilde;o de tecn&oacute;logo em seguran&ccedil;a p&uacute;blica, certificados pela Universidade do Estado do Amap&aacute; (Ueap).<br /> <br /> Outra iniciativa do governador Cl&eacute;cio Lu&iacute;s foi a <span style="color: #008080;"><a style="color: #008080;" href="https://www.amapa.gov.br/noticia/1103/governo-do-amapa-prorroga-validade-dos-concursos-publicos-da-fcria-iapen-e-gestao-por-mais-dois-anos"><strong>prorroga&ccedil;&atilde;o dos concursos p&uacute;blicos</strong></a></span> da Funda&ccedil;&atilde;o da Crian&ccedil;a e do Adolescente (Fcria), do Instituto de Administra&ccedil;&atilde;o Penitenci&aacute;ria do Amap&aacute; (Iapen) e do Grupo Gest&atilde;o que passaram a valer at&eacute; 2025.<br /> <br /> <strong>Preven&ccedil;&atilde;o de desastres</strong> <br /> O Governo do Amap&aacute; investiu na <span style="color: #008080;"><strong>qualifica&ccedil;&atilde;o e valoriza&ccedil;&atilde;o dos bombeiros</strong>,</span> homens e mulheres, que integram a Coordenadoria de Defesa Civil do Amap&aacute; (Cedec). <br /> <br /> Agentes que nos primeiros 3 meses de 2023, atuaram em ocorr&ecirc;ncias nos munic&iacute;pios de Porto Grande, Cal&ccedil;oene e <a href="https://www.amapa.gov.br/noticia/1902/apos-chuvas-intensas-defesa-civil-do-estado-atende-ocorrencia-de-alagamentos-em-tartarugalzinho">Tartarugalzinho</a>, levando ajuda log&iacute;stica e orienta&ccedil;&otilde;es &agrave;s pessoas atingidas por enchentes. <br /> <br /> Em Macap&aacute;, a <a href="https://www.amapa.gov.br/noticia/0601/defesa-civil-do-amapa-coordena-planejamento-para-atender-ocorrencias-de-alagamentos-e-fortes-chuvas">Defesa Civil trabalhou na preven&ccedil;&atilde;o</a> com mapeamento e <span style="color: #008080;"><strong>monitoramento de 33 &aacute;reas com riscos de alagamento</strong></span>. Assim como na Regi&atilde;o Sul do estado, acompanhando a movimenta&ccedil;&atilde;o dos rios nas cidades de <a href="https://www.amapa.gov.br/noticia/1603/defesa-civil-estadual-monitora-rios-e-areas-com-risco-de-cheia-na-regiao-sul-do-amapa">Laranjal do Jari e Vit&oacute;ria do Jari</a>.<br /> <br /> Nos 100 dias de gest&atilde;o tamb&eacute;m foi atualizado o <span style="color: #008080;"><a style="color: #008080;" href="https://www.amapa.gov.br/noticia/2302/governo-do-amapa-intensifica-acoes-em-areas-atingidas-por-alagamentos-e-outros-desastres-naturais"><strong>Plano de Conting&ecirc;ncia</strong></a>,</span> que estuda a previs&atilde;o de poss&iacute;veis eventos clim&aacute;ticos, para que medidas preventivas sejam tomadas com anteced&ecirc;ncia.<br /><br /><strong>Sistema prisional<br /> </strong>Em tr&ecirc;s meses, o Instituto de Administra&ccedil;&atilde;o Penitenci&aacute;ria do Amap&aacute; (Iapen) promoveu a&ccedil;&otilde;es de refor&ccedil;o na pol&iacute;tica prisional, entre elas:</p>
+<ul>
+<li>Retorno das obras de reforma do Centro de Ressocializa&ccedil;&atilde;o do Cadei&atilde;o (Ceres);</li>
+<li>Reparos na estrutura do Pavilh&atilde;o F5, destinado &agrave; 256 vagasdo Sistema Prisional;</li>
+<li>Mutir&atilde;ojur&iacute;dico na Penitenci&aacute;ria Feminina doEstado (Copef) em parceria com a Defensoria P&uacute;blicado Estado (DPE), beneficiando 71 internas;</li>
+<li>Campanha de alunos policiais penais para <a href="https://www.amapa.gov.br/noticia/2303/mais-de-100-alunos-do-curso-de-formacao-do-iapen-se-reunem-para-doar-sangue-ao-hemoap-nbsp-">doa&ccedil;&atilde;o de sangue</a> ao Institutode Hematologia e Hemoterapia do Amap&aacute; (Hemoap);</li>
+<li>Treinamento das equipes para <a href="https://www.amapa.gov.br/noticia/0603/policia-penal-realiza-treinamento-com-alunos-do-curso-de-formacao-e-retira-mais-de-20-celulares-do-iapen">revistas</a>, ProgramaFazendo Justi&ccedil;a e o Bot&atilde;o do P&acirc;nico;</li>
+<li>A&ccedil;&atilde;o social para <a href="https://www.amapa.gov.br/noticia/0803/cooperacao-entre-iapen-e-policia-cientifica-do-amapa-garante-registro-civel-para-internos">emiss&atilde;o de Carteiras de Identidade</a> para pessoas privadas de liberdade;</li>
+<li>Entrega da primeira remessa de insumos odontol&oacute;gicos para o retorno dos atendimentos &agrave;s pessoas privadas de liberdade.</li>
+</ul>                        </div>
+
+                        
+                        
+                                                    <div id="titulos_menor">IMAGENS RELACIONADAS</div>
+                            <div class="block_titulo"></div>
+                            <div class="block_titulo_linha"></div>
+                            <div class="row relacionadas">
+                                <ul class="first list-unstyled">
+                                                                            <li>
+                                            <img alt="Bombeiros no desfile das escolas de samba no Sambódromo" class="simple-tooltip" title="Bombeiros no desfile das escolas de samba no Sambódromo"  src="https://editor.amapa.gov.br/not_imagens/100 DIAS_e8df4994d8878e18c795cef0f9b80b91.jpg">
+                                        </li>
+                                                                            <li>
+                                            <img alt="Polícia Militar do Amapá" class="simple-tooltip" title="Polícia Militar do Amapá"  src="https://editor.amapa.gov.br/not_imagens/100 DIAS_edea90c4f25b5debaf20d51becb30373.jpg">
+                                        </li>
+                                                                            <li>
+                                            <img alt="Operação Átria prende homens em flagrante por violência contra a mulher " class="simple-tooltip" title="Operação Átria prende homens em flagrante por violência contra a mulher "  src="https://editor.amapa.gov.br/not_imagens/100 DIAS_604106d12d7713aa0bfaa55381e5afcb.jpg">
+                                        </li>
+                                                                            <li>
+                                            <img alt="Cães policiais da PM-AP" class="simple-tooltip" title="Cães policiais da PM-AP"  src="https://editor.amapa.gov.br/not_imagens/100 DIAS_4e1c031ffd31c91aa9cb337a293b51cf.jpg">
+                                        </li>
+                                                                            <li>
+                                            <img alt="Grupo Tático Operacional (GTA)" class="simple-tooltip" title="Grupo Tático Operacional (GTA)"  src="https://editor.amapa.gov.br/not_imagens/100 DIAS_a1ac213667bca0b8ba765cdef4ca358d.jpg">
+                                        </li>
+                                                                            <li>
+                                            <img alt="Batalhão de Operações Especiais (Bope)" class="simple-tooltip" title="Batalhão de Operações Especiais (Bope)"  src="https://editor.amapa.gov.br/not_imagens/100 DIAS_e95aa6b8bcf6aa301abe3b4993eb91d4.jpg">
+                                        </li>
+                                                                    </ul>
+                            </div>
+                        
+
+                        
+                                            </div>
+                
+                <div class="col-sm-3" id="mais_lidas">
+                        <div id="titulos_menor">+ notícias mais lidas</div>
+    <div class="block_titulo"></div>
+    <div class="block_titulo_linha"></div>
+
+            <a href="noticia/1004/integracao-dos-orgaos-de-defesa-e-chamadas-de-concursos-impulsionam-a-seguranca-publica-no-amapa">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> qui, 06 abr  23 - 18:00h - <i class="fa fa-eye" aria-hidden="true"></i> 1524</div>
+                    <div class="chamada">Integração dos órgãos de defesa e chamadas de concursos impulsionam a Segurança Pública no Amapá</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/1004/prioridade-maxima-do-governo-do-amapa-saude-foi-a-area-que-mais-recebeu-investimentos-em-100-dias-de-gestao">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sex, 07 abr  23 - 07:30h - <i class="fa fa-eye" aria-hidden="true"></i> 1478</div>
+                    <div class="chamada"> Prioridade máxima do Governo do Amapá, Saúde foi a área que mais recebeu investimentos em 100 dias de gestão</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/1004/caminhos-para-garantir-a-melhora-da-infraestrutura-e-mobilidade-urbana-sao-pavimentados-no-amapa">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sex, 07 abr  23 - 07:00h - <i class="fa fa-eye" aria-hidden="true"></i> 1460</div>
+                    <div class="chamada">Caminhos para garantir a melhora da infraestrutura e mobilidade urbana são pavimentados no Amapá</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/0904/com-obras-novos-leitos-e-acoes-de-atendimento-governo-do-amapa-atua-na-recuperacao-do-he">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> sex, 07 abr  23 - 08:00h - <i class="fa fa-eye" aria-hidden="true"></i> 1370</div>
+                    <div class="chamada">Com obras, novos leitos e ações de atendimento, Governo do Amapá atua na recuperação do HE</div>
+                </div>
+            </div>
+        </a>
+            <a href="noticia/1004/governo-do-amapa-resgata-festividades-e-fortalece-a-identidade-cultural-e-turismo">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="data"><i class="fa fa-clock-o"></i> qui, 06 abr  23 - 15:43h - <i class="fa fa-eye" aria-hidden="true"></i> 1356</div>
+                    <div class="chamada">Governo do Amapá resgata festividades e fortalece a identidade cultural e turismo</div>
+                </div>
+            </div>
+        </a>
+                        <a href="noticias" class="btn btn-primary btn-xs">+ ler todas</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- ##################################################################################################### -->
+        <!-- CONTEÚDO ANTES DAQUI -->
+
+        <!-- INICIO LINKS UTEIS-->
+<div class="container" id="links-rodape">
+    <div id="rodape" class="row">
+        <div class="col-sm-12">
+            <div id="titulos">LINKS ÚTEIS</div>
+            <div class="block_titulo"></div>
+            <div class="block_titulo_linha"></div>
+            <div class="owl-carousel owl-theme">
+                                    <a href="http://agendadoservidor.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>AGENDA DO SERVIDOR</h4>
+                                <p>Tenha acesso a agenda do servidor aqui nesse link</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.ecorregedoria.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-address-book fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>CERTIDÃO FUNCIONAL</h4>
+                                <p>Sistema para emissão de certidão funcional</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://diofe.portal.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-universal-access fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>DIÁRIO OFICIAL</h4>
+                                <p>Diário Oficial do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.edoc.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>E-DOC</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://esic.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>e-SIC</h4>
+                                <p>Sistema Eletrônico do Serviço de Informações ao Cidadão</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://acessoainformacao.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>INFORMAÇÃO AO CIDADÃO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://ouvamapa.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>OUV</h4>
+                                <p>Sistema de Ouvidoria pública do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.transparencia.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-id-card-o fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DA TRANSPARÊNCIA</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="https://servicos.portal.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa fa-wrench fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DE SERVIÇOS</h4>
+                                <p>Portal de Serviços do Governo do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.amapa.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-university fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PORTAL DO GOVERNO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://www.processoseletivo.ap.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-graduation-cap fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PROCESSO SELETIVO</h4>
+                                <p>Descrição para o link. Acessar a página clique aqui.</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://prodoc.ap.gov.br/login" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-file-text fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PRODOC</h4>
+                                <p>Gestor de Documentos do Governo do Amapá</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="https://www.portal.ap.gov.br/docs/politica_protecao.pdf" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa-lock fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>PROTEÇÃO</h4>
+                                <p>Politicas de Proteção de Dados Pessoais e Privacidade</p>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="http://portal.convenios.gov.br/" target="_blank">
+                        <div class="thumbnail">
+                            <i class="fa fa fa-users fa-3x" aria-hidden="true"></i>
+                            <div class="caption">
+                                <h4>REDE MAIS BRASIL</h4>
+                                <p>Convênios do Governo Federal</p>
+                            </div>
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM LINKS UTEIS-->
+
+<!-- INICIO RODAPE UM -->
+<div class="container-fluid" id="rodape_um" style="background-color: #00A97A; margin-top: 15px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-child" aria-hidden="true"></i> CIDADÃO</div>
+                <ul class="list-unstyled">
+                                            <li><a href="https://agw.csa-equatorial.com.br/Home/InfoSegundaVia" target="_blank">2ª via da Conta de Água</a></li>
+                                            <li><a href="https://ap.equatorialenergia.com.br/2via-simples/" target="_blank">2ª via da Conta de Energia</a></li>
+                                            <li><a href="https://delegaciavirtual.sinesp.gov.br/portal/comunicacaofato/AP/natureza" target="_blank">Boletim de Ocorrência Online</a></li>
+                                            <li><a href="https://sead.portal.ap.gov.br/concursos" target="_blank">Concursos</a></li>
+                                            <li><a href="https://www.detran.ap.gov.br/detranap/veiculo/consulta-de-veiculos/" target="_blank">Consulta de Veículos</a></li>
+                                            <li><a href="https://www.detran.ap.gov.br/detranap/habilitacao/consulta-habilitacao/" target="_blank">Consultar Habilitação</a></li>
+                                            <li><a href="https://prematricula.escolapublica.ap.gov.br/home" target="_blank">Matrícula 2023</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-industry" aria-hidden="true"></i> EMPRESAS</div>
+                <ul class="list-unstyled">
+                                            <li><a href="http://www.siga.ap.gov.br/auto-cadastro/#/validado/login/externo?uri=http:%2F%2Fwww.siga.ap.gov.br%2Fefornecedor%2F&produto=efornecedor" target="_blank">Cadastro de Fornecedores</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=DIA_060" target="_blank">Certidão Negativa</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=ARR_305" target="_blank">DAR Avulso</a></li>
+                                            <li><a href="http://www.sefaz.ap.gov.br/index.php/diap-icms" target="_blank">DIAP-ICMS Eletrônica</a></li>
+                                            <li><a href="https://amapa.gov.br/docs/justificativa_sefaz.pdf" target="_blank">Justificativas</a></li>
+                                            <li><a href="http://www.compras.ap.gov.br/" target="_blank">Licitações do Estado</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-users" aria-hidden="true"></i> SERVIDORES</div>
+                <ul class="list-unstyled">
+                                            <li><a href="http://www.ecorregedoria.ap.gov.br/" target="_blank">Certidão Funcional </a></li>
+                                            <li><a href="http://servidor.apconsig.ap.gov.br/login" target="_blank">Consignataria On line</a></li>
+                                            <li><a href="https://portaldoservidor.ap.gov.br/login" target="_blank">Contracheque</a></li>
+                                            <li><a href="https://sougov.economia.gov.br/sougov/" target="_blank">Serviços do Servidor Federal</a></li>
+                                            <li><a href="https://servicos.portal.ap.gov.br/servicos/solicitar-certidao-de-tempo-de-servico-sead80" target="_blank">Solicitar Certidão de Tempo de Serviço</a></li>
+                                    </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="titulos"><i class="fa fa-thumbs-up" aria-hidden="true"></i> REDES SOCIAIS DO GEA</div>
+                <ul class="list-unstyled">
+                                        <li><a href="http://www.facebook.com/governoamapa" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                    <li><a href="https://twitter.com/governodoamapa" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                    <li><a href="https://www.instagram.com/governoamapa/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                    <li><a href="http://www.youtube.com/user/GovernodoAmapa" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i> Youtube</a></li>
+                    <li><a href="https://www.flickr.com/photos/governodoamapa/albums" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i> Flickr</a></li>
+                    <a href="https://promail.ap.gov.br/" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Webmail GOV</a>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- FIM RODAPE UM -->
+
+<!-- INICIO RODAPE DOIS-->
+<div class="container-fluid" id="rodape_dois" style="background-color: #005675">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pull-left">
+                    <strong>100 Dias de Governo</strong><br/>
+                    Site desenvolvido e hospedado pelo <a href="http://www.prodap.ap.gov.br" target="_blank">PRODAP - Centro de Gestão da Tecnologia da Informação</a><br/>
+                    2017 - 2026 Licença Creative Commons 3.0 International
+                </div>
+                <div class="pull-right hidden-xs">
+                    <img src="img/brasao.png" alt="Amapá">
+                </div>
+                <div class="visible-xs text-center">
+                    <img src="img/brasao.png" alt="Amapá">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM RODAPE DOIS-->
+
+
+        <script src="scripts/js/jquery.min.js"></script>
+        <script src="scripts/js/bootstrap.min.js"></script>
+        <script src="scripts/js/bootstrap-select.js"></script>
+        <script src="scripts/js/less-1.3.3.min.js"></script>
+        <script src="scripts/js/PageSlide.js"></script>
+        <script src="scripts/js/PageSlide-script.js"></script>
+        <script src="scripts/js/tipped.js"></script>
+        <script src="scripts/js/whatsapp-button.js"></script>
+        <script src="scripts/js/jquery.bsPhotoGallery.js"></script>
+        <script src="scripts/js/owl.carousel.js"></script>
+        <script src="scripts/js/owl-scripts.js"></script>
+        <script src="scripts/js/YouTubePopUp.jquery.js"></script>
+        <script src="scripts/js/jquery.mask.js" type="text/javascript"></script>
+        <script type="text/javascript">
+                                    $(function () {
+                                        $('#new_celular').mask('(00)00000-0000', {clearIfNotMatch: true});
+                                    });
+        </script>
+
+        <script type="text/javascript">
+            jQuery(function () {
+                jQuery("a.vd-1").YouTubePopUp();
+            });
+        </script>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '197291277357883',
+                    xfbml: true,
+                    version: 'v2.5'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script type="text/javascript">
+            window.___gcfg = {lang: 'pt-BR'};
+
+            (function () {
+                var po = document.createElement('script');
+                po.type = 'text/javascript';
+                po.async = true;
+                po.src = 'https://apis.google.com/js/platform.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Tipped.create('.simple-tooltip');
+            });
+        </script>
+        <script>
+            $('ul.first').bsPhotoGallery({
+                "classes": "col-sm-3 col-xs-6",
+                "hasModal": true
+            });
+        </script>
+
+        <!-- PERSONALIZADOS -->
+    </body>
+</html>

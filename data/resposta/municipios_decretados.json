@@ -1,8 +1,39 @@
 {
  "_governanca": "RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois, e — desde 15/09/2026 (§32.4) — o ÍNDICE de resposta 0–100, igual a 100 × fração da população (Censo 2022) em município sob decreto no ciclo. Sem faixa, sem peso; nunca combinado com o índice de antecipação (C17). Peso zero no MARÉ (portão verificar_resposta.py). Fatia 'evento observado' em_classificacao até o adaptador municipal existir (C16). Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a). Arquivo reduzido para a página: só municípios sob decreto; ausência = 'não consta decreto reconhecido no ciclo' (S2iD completo; DOE/DOM parcial).",
- "gerado_em": "16/11/2026",
+ "gerado_em": "24/11/2026",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
  "municipios": {
+  "1500107": {
+   "ibge": "1500107",
+   "nome": "Abaetetuba",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2900108": {
    "ibge": "2900108",
    "nome": "Abaíra",
@@ -102,7 +133,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "1500131": {
    "ibge": "1500131",
@@ -121,6 +152,7 @@
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva",
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 19,
@@ -148,9 +180,48 @@
      "data": "20/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.591",
      "hash": null
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
+   "dias_sem_reconhecimento": null
+  },
+  "1500206": {
+   "ibge": "1500206",
+   "nome": "Acará",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2200053": {
@@ -337,7 +408,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 63
+   "dias_sem_reconhecimento": 71
   },
   "2600104": {
    "ibge": "2600104",
@@ -396,6 +467,37 @@
      "data": "03/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2203",
      "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1500305": {
+   "ibge": "1500305",
+   "nome": "Afuá",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -700,6 +802,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "4100301": {
+   "ibge": "4100301",
+   "nome": "Agudos do Sul",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "17/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_121650_2026-11-17_bcd98d199b40450fd164205cd270e31d.pdf",
+     "data": "17/11/2026",
+     "decreto": "Decreto nº 166",
+     "hash": "1b2f6ecb1146f2c116582d286673433899bde445e30455f66291db2b02fa4ac7"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 7
+  },
   "2600609": {
    "ibge": "2600609",
    "nome": "Alagoinha",
@@ -868,6 +1001,37 @@
      "data": "15/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.305",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1500503": {
+   "ibge": "1500503",
+   "nome": "Almeirim",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -1051,19 +1215,20 @@
    "nome": "Alto Alegre",
    "uf": "RR",
    "decreto": true,
-   "primeiro_decreto": "30/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "29/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "seca"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 19,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -1080,10 +1245,18 @@
      "data": "12/11/2026",
      "decreto": "Decreto nº 150/2026/",
      "hash": "acbe46d0ab1e7e8e7bda665d8a887087ed10c4739ead0ee2d786c3a28681e8e7"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 2,
-   "dias_sem_reconhecimento": 17
+   "n_eventos": 3,
+   "dias_sem_reconhecimento": null
   },
   "4300554": {
    "ibge": "4300554",
@@ -1518,7 +1691,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 73
+   "dias_sem_reconhecimento": 81
   },
   "2901205": {
    "ibge": "2901205",
@@ -1566,6 +1739,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 64,
@@ -1577,9 +1751,17 @@
      "data": "04/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.804",
      "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "1300086": {
@@ -1680,9 +1862,17 @@
      "data": "04/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.804",
      "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4200804": {
@@ -1776,7 +1966,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "3502101": {
    "ibge": "3502101",
@@ -1807,7 +1997,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 38
+   "dias_sem_reconhecimento": 46
   },
   "4101150": {
    "ibge": "4101150",
@@ -1878,7 +2068,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 32
+   "dias_sem_reconhecimento": 40
   },
   "4300703": {
    "ibge": "4300703",
@@ -1940,7 +2130,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 68
+   "dias_sem_reconhecimento": 76
   },
   "2100832": {
    "ibge": "2100832",
@@ -2033,7 +2223,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 31
+   "dias_sem_reconhecimento": 39
   },
   "4201273": {
    "ibge": "4201273",
@@ -2356,6 +2546,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2902252": {
+   "ibge": "2902252",
+   "nome": "Arataca",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "18/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://data.queridodiario.ok.org.br/2902252/2026-11-18/6e61c038004d7461467b79bc5d422e2d696d13be.pdf",
+     "data": "18/11/2026",
+     "decreto": "Decreto municipal nº 316",
+     "hash": "b308a7855a9d982538b2d37f5d69f5cf6f21566f4a72f0a0efc512b2de9fb87c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 6
+  },
   "2601201": {
    "ibge": "2601201",
    "nome": "Arcoverde",
@@ -2633,9 +2854,17 @@
      "data": "11/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.579",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4301305": {
@@ -2760,7 +2989,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "2301604": {
    "ibge": "2301604",
@@ -3092,10 +3321,18 @@
      "data": "21/10/2026",
      "decreto": "Decreto nº 076/2026",
      "hash": "ff2bdec86b93f6efb43553531e4a83ebfce3d80c157d0a8d41e1e3b9d46f5344"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118988_2026-11-16_e1405978fe6e53a9a5de66a69e573c0f.pdf",
+     "data": "17/11/2026",
+     "decreto": "Decreto nº 76",
+     "hash": "29cd6c4d75f841c39b7a0df11c6d20cb4fd8d8215b9b493401ea8b64eebb3632"
     }
    ],
-   "n_eventos": 3,
-   "dias_sem_reconhecimento": 33
+   "n_eventos": 4,
+   "dias_sem_reconhecimento": 41
   },
   "1501006": {
    "ibge": "1501006",
@@ -3168,6 +3405,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1501105": {
+   "ibge": "1501105",
+   "nome": "Bagre",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4102406": {
    "ibge": "4102406",
    "nome": "Bandeirantes",
@@ -3197,7 +3465,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "dias_sem_reconhecimento": 19
   },
   "4301701": {
    "ibge": "4301701",
@@ -3330,7 +3598,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 39
+   "dias_sem_reconhecimento": 47
   },
   "2501575": {
    "ibge": "2501575",
@@ -3943,6 +4211,37 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "1501451": {
+   "ibge": "1501451",
+   "nome": "Belterra",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "1300607": {
    "ibge": "1300607",
    "nome": "Benjamin Constant",
@@ -4163,6 +4462,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 17,
@@ -4190,9 +4490,17 @@
      "data": "22/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.655",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "2601805": {
@@ -4625,7 +4933,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 19
+   "dias_sem_reconhecimento": 27
   },
   "2903805": {
    "ibge": "2903805",
@@ -4749,7 +5057,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "2602001": {
    "ibge": "2602001",
@@ -5117,7 +5425,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "2201929": {
    "ibge": "2201929",
@@ -5361,7 +5669,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 25
+   "dias_sem_reconhecimento": 33
   },
   "4302501": {
    "ibge": "4302501",
@@ -5482,6 +5790,37 @@
    "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
+  "1501709": {
+   "ibge": "1501709",
+   "nome": "Bragança",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2701100": {
    "ibge": "2701100",
    "nome": "Branquinha",
@@ -5511,7 +5850,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 109
+   "dias_sem_reconhecimento": 117
   },
   "1501725": {
    "ibge": "1501725",
@@ -5528,6 +5867,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 8,
@@ -5539,9 +5879,17 @@
      "data": "29/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.766",
      "hash": "7dd91836a87ef4fa113029336e2df0eb38a9ac0293badcef042c0d11aac491e5"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "1200104": {
@@ -5684,7 +6032,7 @@
     }
    ],
    "n_eventos": 11,
-   "dias_sem_reconhecimento": 96
+   "dias_sem_reconhecimento": 104
   },
   "2602506": {
    "ibge": "2602506",
@@ -5850,6 +6198,37 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "1501808": {
+   "ibge": "1501808",
+   "nome": "Breves",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2904506": {
    "ibge": "2904506",
    "nome": "Brotas de Macaúbas",
@@ -5879,7 +6258,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 95
+   "dias_sem_reconhecimento": 103
   },
   "2904605": {
    "ibge": "2904605",
@@ -5907,6 +6286,37 @@
      "data": "05/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.394",
      "hash": "a760c90a28fa0801e35cd5c1ee1c40eb1cabf2921d43143f682800f9f94e28c3"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "3109204": {
+   "ibge": "3109204",
+   "nome": "Buenópolis",
+   "uf": "MG",
+   "decreto": true,
+   "primeiro_decreto": "18/09/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 56,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.998-de-13-de-novembro-de-2026-744408715",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.998",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
    "n_eventos": 1,
@@ -6153,7 +6563,38 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
+  },
+  "1502004": {
+   "ibge": "1502004",
+   "nome": "Cachoeira do Arari",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
   },
   "1501956": {
    "ibge": "1501956",
@@ -6170,6 +6611,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 18,
@@ -6181,9 +6623,17 @@
      "data": "16/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.584",
      "hash": "9809e3a4251e41e8b14a16d043b49b21c38bd8ea8fa9a39b91d2f1862043d987"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4303004": {
@@ -6248,6 +6698,37 @@
     }
    ],
    "n_eventos": 5,
+   "dias_sem_reconhecimento": null
+  },
+  "3508603": {
+   "ibge": "3508603",
+   "nome": "Cachoeira Paulista",
+   "uf": "SP",
+   "decreto": true,
+   "primeiro_decreto": "07/11/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 6,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.003-de-13-de-novembro-de-2026-744731345",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.003",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2603108": {
@@ -6946,6 +7427,37 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "1502103": {
+   "ibge": "1502103",
+   "nome": "Cametá",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "3110905": {
    "ibge": "3110905",
    "nome": "Campanha",
@@ -6975,7 +7487,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 24
+   "dias_sem_reconhecimento": 32
   },
   "4303707": {
    "ibge": "4303707",
@@ -7291,6 +7803,37 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "3111507": {
+   "ibge": "3111507",
+   "nome": "Campos Altos",
+   "uf": "MG",
+   "decreto": true,
+   "primeiro_decreto": "18/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Mineiros (AMM-MG))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118481_2026-11-17_7fd9d8e83f0e031e7a379f65a74d854e.pdf",
+     "data": "18/11/2026",
+     "decreto": "Decreto nº 1.176/2026",
+     "hash": "2707217f82f66d13c69ff41a55ecf9090bd2d09a068fc7cbeafbaa169d89cfeb"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 6
   },
   "2302701": {
    "ibge": "2302701",
@@ -8208,6 +8751,37 @@
    "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
+  "3112109": {
+   "ibge": "3112109",
+   "nome": "Caparaó",
+   "uf": "MG",
+   "decreto": true,
+   "primeiro_decreto": "09/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 35,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.004-de-13-de-novembro-de-2026-744977470",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.004",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2906857": {
    "ibge": "2906857",
    "nome": "Capela do Alto Alegre",
@@ -8268,7 +8842,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 48
+   "dias_sem_reconhecimento": 56
   },
   "4104600": {
    "ibge": "4104600",
@@ -8308,6 +8882,37 @@
     }
    ],
    "n_eventos": 2,
+   "dias_sem_reconhecimento": null
+  },
+  "1502301": {
+   "ibge": "1502301",
+   "nome": "Capitão Poço",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "1200179": {
@@ -8401,7 +9006,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "2906899": {
    "ibge": "2906899",
@@ -8471,7 +9076,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "3113107": {
    "ibge": "3113107",
@@ -8723,9 +9328,17 @@
      "data": "13/11/2026",
      "decreto": "Decreto nº 089",
      "hash": "b4be3bf8a5cb5f0ec6b25f01adddd52fe7b6abad1b3b7df53b19840d20768590"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118990_2026-11-18_9d198648c5873cd77361a70a241e928a.pdf",
+     "data": "19/11/2026",
+     "decreto": "Decreto nº 089",
+     "hash": "e09625f766eaae969be1f584032228c29f3a8808f07de30bc94f9f489275da38"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "2801405": {
@@ -8754,6 +9367,37 @@
      "data": "12/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.582, nº 2.582, nº 2.583, nº 2.584, nº 2.584, nº 2.585, nº 2.585)",
      "hash": "5db0444cf0ce122602da6898b40e48f8c0c5f3c9abaecb6d48aa966c36dae2e7"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "3113701": {
+   "ibge": "3113701",
+   "nome": "Carlos Chagas",
+   "uf": "MG",
+   "decreto": true,
+   "primeiro_decreto": "18/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 26,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.004-de-13-de-novembro-de-2026-744977470",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.004",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
    "n_eventos": 1,
@@ -8788,7 +9432,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "2402501": {
    "ibge": "2402501",
@@ -9163,7 +9807,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 21
+   "dias_sem_reconhecimento": 29
   },
   "2504207": {
    "ibge": "2504207",
@@ -9539,7 +10183,7 @@
     }
    ],
    "n_eventos": 7,
-   "dias_sem_reconhecimento": 42
+   "dias_sem_reconhecimento": 50
   },
   "4305132": {
    "ibge": "4305132",
@@ -9705,6 +10349,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "4204202": {
+   "ibge": "4204202",
+   "nome": "Chapecó",
+   "uf": "SC",
+   "decreto": true,
+   "primeiro_decreto": "04/11/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 9,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.996-de-13-de-novembro-de-2026-744414170",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.996",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4305355": {
    "ibge": "4305355",
    "nome": "Charqueadas",
@@ -9739,6 +10414,46 @@
      "data": "05/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.400",
      "hash": "76ba135ec64656fc180bfc99f03e647dce9a7f7776c5a5086f286f06b5237957"
+    }
+   ],
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": null
+  },
+  "1502509": {
+   "ibge": "1502509",
+   "nome": "Chaves",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "22/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo",
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 22,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.999-de-13-de-novembro-de-2026-744410102",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.999",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 2,
@@ -9798,6 +10513,37 @@
     }
    ],
    "n_eventos": 4,
+   "dias_sem_reconhecimento": null
+  },
+  "2303931": {
+   "ibge": "2303931",
+   "nome": "Choró",
+   "uf": "CE",
+   "decreto": true,
+   "primeiro_decreto": "21/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 27,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4305439": {
@@ -9950,7 +10696,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 110
+   "dias_sem_reconhecimento": 118
   },
   "4305504": {
    "ibge": "4305504",
@@ -10060,7 +10806,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 27
+   "dias_sem_reconhecimento": 35
   },
   "5205513": {
    "ibge": "5205513",
@@ -10194,7 +10940,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 80
+   "dias_sem_reconhecimento": 88
   },
   "2202778": {
    "ibge": "2202778",
@@ -10253,6 +10999,37 @@
      "data": "06/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.546, nº 2.548, nº 2.548, nº 2.548, nº 2.549, nº 2.549, nº 2.553, nº 2.564)",
      "hash": "52f5bb458122516ff8f027392babaf5c8460ac1249898eea1810e9e390b24ca4"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "2504405": {
+   "ibge": "2504405",
+   "nome": "Conceição",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 29,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
    "n_eventos": 1,
@@ -10491,7 +11268,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 133
+   "dias_sem_reconhecimento": 141
   },
   "4305850": {
    "ibge": "4305850",
@@ -10733,7 +11510,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 12
+   "dias_sem_reconhecimento": 20
   },
   "2604700": {
    "ibge": "2604700",
@@ -10764,7 +11541,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "dias_sem_reconhecimento": 11
   },
   "4305959": {
    "ibge": "4305959",
@@ -10927,7 +11704,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 34
+   "dias_sem_reconhecimento": 42
   },
   "2203008": {
    "ibge": "2203008",
@@ -11094,6 +11871,37 @@
    ],
    "n_eventos": 3,
    "dias_sem_reconhecimento": null
+  },
+  "4106704": {
+   "ibge": "4106704",
+   "nome": "Cruzeiro do Sul",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "17/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17469",
+     "data": "17/11/2026",
+     "decreto": "Decreto municipal nº 252",
+     "hash": "c18963724ece5af2b901de3110e48c46c470eff0d790cdd5ff55c562e8fe2554"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 7
   },
   "4306205": {
    "ibge": "4306205",
@@ -11382,6 +12190,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1502806": {
+   "ibge": "1502806",
+   "nome": "Curralinho",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "04/11/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 13,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "1502855": {
    "ibge": "1502855",
    "nome": "Curuá",
@@ -11397,7 +12236,8 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "fogo"
+    "fogo",
+    "seca"
    ],
    "dias_ate_reconhecimento": 6,
    "fontes": [
@@ -11408,6 +12248,45 @@
      "data": "10/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.900",
      "hash": "7cdcbe7c676cd4426edd85d1e241a955ad6fc372854b4d7f8c30da83a1000ad0"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": null
+  },
+  "1502905": {
+   "ibge": "1502905",
+   "nome": "Curuçá",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -11442,7 +12321,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 19
+   "dias_sem_reconhecimento": 27
   },
   "2605103": {
    "ibge": "2605103",
@@ -11717,7 +12596,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 41
+   "dias_sem_reconhecimento": 49
   },
   "4306429": {
    "ibge": "4306429",
@@ -12134,7 +13013,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "1301407": {
    "ibge": "1301407",
@@ -12229,7 +13108,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 64
+   "dias_sem_reconhecimento": 72
   },
   "4306767": {
    "ibge": "4306767",
@@ -12367,9 +13246,17 @@
      "data": "11/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.579",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4205175": {
@@ -12831,6 +13718,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "4307559": {
+   "ibge": "4307559",
+   "nome": "Estação",
+   "uf": "RS",
+   "decreto": true,
+   "primeiro_decreto": "05/10/2026",
+   "primeiro_reconhecimento": "16/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 42,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.009-de-16-de-novembro-de-2026-744971924",
+     "data": "16/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.009",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4307708": {
    "ibge": "4307708",
    "nome": "Esteio",
@@ -12860,7 +13778,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "dias_sem_reconhecimento": 11
   },
   "4307807": {
    "ibge": "4307807",
@@ -13063,7 +13981,38 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 52
+   "dias_sem_reconhecimento": 60
+  },
+  "1503002": {
+   "ibge": "1503002",
+   "nome": "Faro",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
   },
   "4307906": {
    "ibge": "4307906",
@@ -13480,10 +14429,18 @@
      "data": "05/11/2026",
      "decreto": "Decreto municipal nº 88",
      "hash": "787b711572fcff091ff350248d877535b1b171e557eb03fb2b622e1cbe2dec0d"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17469",
+     "data": "17/11/2026",
+     "decreto": "Decreto municipal nº 91",
+     "hash": "c18963724ece5af2b901de3110e48c46c470eff0d790cdd5ff55c562e8fe2554"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 19
   },
   "4308250": {
    "ibge": "4308250",
@@ -13899,7 +14856,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "2204154": {
    "ibge": "2204154",
@@ -14180,6 +15137,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "4308607": {
+   "ibge": "4308607",
+   "nome": "Garibaldi",
+   "uf": "RS",
+   "decreto": true,
+   "primeiro_decreto": "28/09/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 50,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "1503077": {
    "ibge": "1503077",
    "nome": "Garrafão do Norte",
@@ -14206,6 +15194,37 @@
      "data": "29/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.766",
      "hash": "7dd91836a87ef4fa113029336e2df0eb38a9ac0293badcef042c0d11aac491e5"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "4308656": {
+   "ibge": "4308656",
+   "nome": "Garruchos",
+   "uf": "RS",
+   "decreto": true,
+   "primeiro_decreto": "05/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 39,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.996-de-13-de-novembro-de-2026-744414170",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.996",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
    "n_eventos": 1,
@@ -14452,7 +15471,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 133
+   "dias_sem_reconhecimento": 141
   },
   "4308854": {
    "ibge": "4308854",
@@ -14952,7 +15971,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 5
+   "dias_sem_reconhecimento": 13
   },
   "2606309": {
    "ibge": "2606309",
@@ -15107,7 +16126,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 33
+   "dias_sem_reconhecimento": 41
   },
   "4108809": {
    "ibge": "4108809",
@@ -15138,7 +16157,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 18
   },
   "1100106": {
    "ibge": "1100106",
@@ -15201,6 +16220,45 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "4108957": {
+   "ibge": "4108957",
+   "nome": "Guamiranga",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "18/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17483",
+     "data": "19/11/2026",
+     "decreto": "Decreto municipal nº 371",
+     "hash": "6ba30170f293c0038077fbcb78a930dffb4bf432443e62083055ddec3653d5c9"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17479",
+     "data": "18/11/2026",
+     "decreto": "Decreto municipal nº 371",
+     "hash": "6ba30170f293c0038077fbcb78a930dffb4bf432443e62083055ddec3653d5c9"
+    }
+   ],
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 6
   },
   "3128105": {
    "ibge": "3128105",
@@ -15324,7 +16382,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 42
+   "dias_sem_reconhecimento": 50
   },
   "4309506": {
    "ibge": "4309506",
@@ -15404,6 +16462,37 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "4109302": {
+   "ibge": "4109302",
+   "nome": "Guaraniaçu",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "16/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17465",
+     "data": "16/11/2026",
+     "decreto": "Decreto municipal nº 7.529",
+     "hash": "b56e4e95b49a50a707af9b6be299bdafe8476388ebb22b6f3ae1bfe41f2f4642"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 8
   },
   "4109401": {
    "ibge": "4109401",
@@ -15553,18 +16642,19 @@
    "uf": "PA",
    "decreto": true,
    "primeiro_decreto": "05/11/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_reconhecimento": "15/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "fogo"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 10,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -15573,10 +16663,18 @@
      "data": "05/11/2026",
      "decreto": "Decreto nº 150/2026",
      "hash": "fffea6b5eb5ebbc9a477d5fb154562d019d2ff9557b61b06ff662fca2bc585b2"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": null
   },
   "4307104": {
    "ibge": "4307104",
@@ -15638,7 +16736,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 25
   },
   "4309654": {
    "ibge": "4309654",
@@ -15679,10 +16777,11 @@
    "primeiro_decreto": "06/07/2026",
    "primeiro_reconhecimento": "23/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
@@ -15697,9 +16796,17 @@
      "data": "23/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.382",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117971_2026-11-13_246f42045baecd9ae17a58e79077f97c.pdf",
+     "data": "16/11/2026",
+     "decreto": "Decreto nº 114/2026",
+     "hash": "0e504ca6d80fa202ba0bdecdb8c91853b85a6e4389b966669ebe7d571d21ea08"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "5209903": {
@@ -15793,7 +16900,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 12
   },
   "2305266": {
    "ibge": "2305266",
@@ -16175,6 +17282,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1503309": {
+   "ibge": "1503309",
+   "nome": "Igarapé-Miri",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4310108": {
    "ibge": "4310108",
    "nome": "Igrejinha",
@@ -16272,6 +17410,37 @@
      "data": "03/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2203",
      "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "2913606": {
+   "ibge": "2913606",
+   "nome": "Ilhéus",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 25,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.997-de-13-de-novembro-de-2026-744434345",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.997",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
    "n_eventos": 1,
@@ -16376,7 +17545,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "2607000": {
    "ibge": "2607000",
@@ -16600,6 +17769,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1503457": {
+   "ibge": "1503457",
+   "nome": "Ipixuna do Pará",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4110607": {
    "ibge": "4110607",
    "nome": "Iporã",
@@ -16793,7 +17993,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 55
+   "dias_sem_reconhecimento": 63
   },
   "4310504": {
    "ibge": "4310504",
@@ -16934,7 +18134,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 73
+   "dias_sem_reconhecimento": 81
   },
   "2306108": {
    "ibge": "2306108",
@@ -17208,7 +18408,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "2607406": {
    "ibge": "2607406",
@@ -17380,7 +18580,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "dias_sem_reconhecimento": 19
   },
   "1301951": {
    "ibge": "1301951",
@@ -17408,6 +18608,37 @@
      "data": "21/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
      "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "2915809": {
+   "ibge": "2915809",
+   "nome": "Itambé",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "20/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 28,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
    "n_eventos": 1,
@@ -17535,7 +18766,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 12
   },
   "2507002": {
    "ibge": "2507002",
@@ -17769,7 +19000,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 119
+   "dias_sem_reconhecimento": 127
   },
   "1600253": {
    "ibge": "1600253",
@@ -17942,6 +19173,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 12,
@@ -17961,9 +19193,17 @@
      "data": "10/11/2026",
      "decreto": "Decreto nº 0068/2026-",
      "hash": "3d6f7d43c1760d8fff1adbf7fdc5ee7c8899d3a0e1885b1d15ea140cccb2c38c"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.002-de-13-de-novembro-de-2026-744743717",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.002",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "2917334": {
@@ -18026,7 +19266,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 31
+   "dias_sem_reconhecimento": 39
   },
   "4111506": {
    "ibge": "4111506",
@@ -18167,7 +19407,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 110
+   "dias_sem_reconhecimento": 118
   },
   "2405009": {
    "ibge": "2405009",
@@ -18291,7 +19531,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 5
+   "dias_sem_reconhecimento": 13
   },
   "2205151": {
    "ibge": "2205151",
@@ -18416,6 +19656,37 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "2917607": {
+   "ibge": "2917607",
+   "nome": "Jaguaquara",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "17/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM",
+     "fonte": "Diário oficial municipal (via Querido Diário)",
+     "url": "https://data.queridodiario.ok.org.br/2917607/2026-11-17/3e1b19b4ec7cbc4744cf070ee0b8daacdb5e14e1.pdf",
+     "data": "17/11/2026",
+     "decreto": "Decreto municipal nº 257/2026",
+     "hash": "a001953b321c02eb8c5a52c20a7d67fe1bd5485499beeff2b7bbafb2e9a3e44d"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 7
   },
   "3135001": {
    "ibge": "3135001",
@@ -18588,7 +19859,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 21
+   "dias_sem_reconhecimento": 29
   },
   "2306801": {
    "ibge": "2306801",
@@ -18969,7 +20240,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 18
   },
   "3136009": {
    "ibge": "3136009",
@@ -19093,7 +20364,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 21
+   "dias_sem_reconhecimento": 29
   },
   "3136306": {
    "ibge": "3136306",
@@ -19310,7 +20581,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "2406155": {
    "ibge": "2406155",
@@ -19341,7 +20612,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 45
+   "dias_sem_reconhecimento": 53
   },
   "3526100": {
    "ibge": "3526100",
@@ -19403,7 +20674,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 59
+   "dias_sem_reconhecimento": 67
   },
   "3136801": {
    "ibge": "3136801",
@@ -19466,6 +20737,37 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "1302207": {
+   "ibge": "1302207",
+   "nome": "Juruá",
+   "uf": "AM",
+   "decreto": true,
+   "primeiro_decreto": "19/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118990_2026-11-18_9d198648c5873cd77361a70a241e928a.pdf",
+     "data": "19/11/2026",
+     "decreto": "Decreto nº 36/2026",
+     "hash": "e09625f766eaae969be1f584032228c29f3a8808f07de30bc94f9f489275da38"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 5
   },
   "1503903": {
    "ibge": "1503903",
@@ -19533,6 +20835,37 @@
      "data": "23/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.702",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "2918605": {
+   "ibge": "2918605",
+   "nome": "Jussiape",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "18/10/2026",
+   "primeiro_reconhecimento": "16/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 29,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.007-de-16-de-novembro-de-2026-744960264",
+     "data": "16/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.007",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
    "n_eventos": 1,
@@ -19709,7 +21042,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 25
   },
   "4311270": {
    "ibge": "4311270",
@@ -20098,7 +21431,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 42
+   "dias_sem_reconhecimento": 50
   },
   "4113254": {
    "ibge": "4113254",
@@ -20279,7 +21612,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 61
+   "dias_sem_reconhecimento": 69
   },
   "4311601": {
    "ibge": "4311601",
@@ -20576,7 +21909,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "2803708": {
    "ibge": "2803708",
@@ -21251,7 +22584,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 32
+   "dias_sem_reconhecimento": 40
   },
   "1302702": {
    "ibge": "1302702",
@@ -21612,7 +22945,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "4311908": {
    "ibge": "4311908",
@@ -21814,19 +23147,20 @@
    "nome": "Maringá",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "11/11/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "10/11/2026",
+   "primeiro_reconhecimento": "13/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "vendaval"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 3,
    "fontes": [
     {
      "canal": "repositorio_estadual",
@@ -21835,10 +23169,18 @@
      "data": "11/11/2026",
      "decreto": "Decreto municipal nº 2.047",
      "hash": "892bd612c0d868d15abce58e6bedf9c3461821153b95450113299401b04d210d"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.996-de-13-de-novembro-de-2026-744414170",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.996",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 5
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": null
   },
   "4115309": {
    "ibge": "4115309",
@@ -21869,7 +23211,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "4115408": {
    "ibge": "4115408",
@@ -22010,9 +23352,17 @@
      "data": "03/11/2026",
      "decreto": "Decreto municipal nº 101",
      "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17465",
+     "data": "16/11/2026",
+     "decreto": "Decreto municipal nº 107",
+     "hash": "b56e4e95b49a50a707af9b6be299bdafe8476388ebb22b6f3ae1bfe41f2f4642"
     }
    ],
-   "n_eventos": 5,
+   "n_eventos": 6,
    "dias_sem_reconhecimento": null
   },
   "2407401": {
@@ -22248,7 +23598,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 12
   },
   "4115739": {
    "ibge": "4115739",
@@ -22279,7 +23629,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "dias_sem_reconhecimento": 11
   },
   "1302900": {
    "ibge": "1302900",
@@ -22318,7 +23668,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 55
+   "dias_sem_reconhecimento": 63
   },
   "2407500": {
    "ibge": "2407500",
@@ -22360,7 +23710,8 @@
    "primeiro_reconhecimento": "17/08/2026",
    "tipos": [
     "reconhecimento_federal",
-    "SE"
+    "SE",
+    "ECP"
    ],
    "reconhecido": true,
    "decretado": true,
@@ -22386,9 +23737,17 @@
      "data": "12/11/2026",
      "decreto": "Decreto nº 1.442",
      "hash": "1a1d3df8aa7f24c3f66da88f52a84ab7cd11a7dd104bce5937a1fd7b226af5e7"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117974_2026-11-18_5ed3cd16bfd470b715fc51ba94df7025.pdf",
+     "data": "19/11/2026",
+     "decreto": "Decreto nº 1.445/2026",
+     "hash": "bf7e5bfa01bba07fe704dae04228049a5edfc15f73b0d14bae77712da63f7e8f"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "1600402": {
@@ -22417,6 +23776,37 @@
      "data": "19/10/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
      "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "2921104": {
+   "ibge": "2921104",
+   "nome": "Medeiros Neto",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 25,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.997-de-13-de-novembro-de-2026-744434345",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.997",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
    "n_eventos": 1,
@@ -22519,6 +23909,37 @@
      "data": "09/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.483",
      "hash": "da4a8483ce1c79a9b51ec4096d1e2738dc7265575fac4442d017c0bbbc2e4600"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1504505": {
+   "ibge": "1504505",
+   "nome": "Melgaço",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -22747,7 +24168,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "dias_sem_reconhecimento": 11
   },
   "1504604": {
    "ibge": "1504604",
@@ -22806,6 +24227,37 @@
      "data": "21/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.147, nº 3.147, nº 3.150, nº 3.151)",
      "hash": "6eb2d58aa0b6cc3d31594d792c4f34a31ce1932f03c06d98118e060f6f333e40"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1504703": {
+   "ibge": "1504703",
+   "nome": "Moju",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -23225,7 +24677,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 53
+   "dias_sem_reconhecimento": 61
   },
   "2921500": {
    "ibge": "2921500",
@@ -23707,7 +25159,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 52
+   "dias_sem_reconhecimento": 60
   },
   "1504901": {
    "ibge": "1504901",
@@ -24055,7 +25507,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "2922656": {
    "ibge": "2922656",
@@ -24083,6 +25535,37 @@
      "data": "02/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.853, nº 2.855, nº 2.858, nº 2.865)",
      "hash": "a93102f465844db2b59799856f7a652939bf57774feef7b7a9beb5ffbead7218"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1400407": {
+   "ibge": "1400407",
+   "nome": "Normandia",
+   "uf": "RR",
+   "decreto": true,
+   "primeiro_decreto": "16/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 32,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
    "n_eventos": 1,
@@ -24352,7 +25835,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 28
+   "dias_sem_reconhecimento": 36
   },
   "2510105": {
    "ibge": "2510105",
@@ -24390,19 +25873,20 @@
    "nome": "Nova Ipixuna",
    "uf": "PA",
    "decreto": true,
-   "primeiro_decreto": "10/11/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "09/11/2026",
+   "primeiro_reconhecimento": "13/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "seca"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 4,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -24411,10 +25895,49 @@
      "data": "10/11/2026",
      "decreto": "Decreto nº .",
      "hash": "3d6f7d43c1760d8fff1adbf7fdc5ee7c8899d3a0e1885b1d15ea140cccb2c38c"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.002-de-13-de-novembro-de-2026-744743717",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.002",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": null
+  },
+  "2922805": {
+   "ibge": "2922805",
+   "nome": "Nova Itarana",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "08/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 40,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": null
   },
   "4117057": {
    "ibge": "4117057",
@@ -24598,7 +26121,8 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "chuva"
+    "chuva",
+    "vendaval"
    ],
    "dias_ate_reconhecimento": 25,
    "fontes": [
@@ -24609,9 +26133,17 @@
      "data": "16/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.583",
      "hash": "245a0a661adb7dd981215ab7fea19af6e2cb5c2ee6d832f4fb16462a48e3c821"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4117255": {
@@ -24725,6 +26257,37 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "1505007": {
+   "ibge": "1505007",
+   "nome": "Nova Timboteua",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 14,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4211603": {
    "ibge": "4211603",
    "nome": "Nova Veneza",
@@ -24751,6 +26314,37 @@
      "data": "06/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.423",
      "hash": "76ba135ec64656fc180bfc99f03e647dce9a7f7776c5a5086f286f06b5237957"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1303205": {
+   "ibge": "1303205",
+   "nome": "Novo Airão",
+   "uf": "AM",
+   "decreto": true,
+   "primeiro_decreto": "14/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 30,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.999-de-13-de-novembro-de-2026-744410102",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.999",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
    "n_eventos": 1,
@@ -24849,6 +26443,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1505031": {
+   "ibge": "1505031",
+   "nome": "Novo Progresso",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "1505064": {
    "ibge": "1505064",
    "nome": "Novo Repartimento",
@@ -24864,6 +26489,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 12,
@@ -24875,9 +26501,17 @@
      "data": "04/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.804",
      "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2206951": {
@@ -24926,7 +26560,8 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "chuva"
+    "chuva",
+    "vendaval"
    ],
    "dias_ate_reconhecimento": 14,
    "fontes": [
@@ -24937,9 +26572,17 @@
      "data": "17/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.343",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "3145372": {
@@ -25110,9 +26753,17 @@
      "data": "05/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.847",
      "hash": "0b35779a1432d6342cd2d5e7e166e45456ca37bf90f717dc2930c073363ebbd5"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.995-de-13-de-novembro-de-2026-744447766",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.995",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "2705705": {
@@ -25208,6 +26859,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2923209": {
+   "ibge": "2923209",
+   "nome": "Oliveira dos Brejinhos",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "09/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 39,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2706000": {
    "ibge": "2706000",
    "nome": "Olivença",
@@ -25254,6 +26936,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 7,
@@ -25265,9 +26948,17 @@
      "data": "29/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.766",
      "hash": "7dd91836a87ef4fa113029336e2df0eb38a9ac0293badcef042c0d11aac491e5"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2609709": {
@@ -25363,6 +27054,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1505437": {
+   "ibge": "1505437",
+   "nome": "Ourilândia do Norte",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "3534708": {
    "ibge": "3534708",
    "nome": "Ourinhos",
@@ -25392,7 +27114,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 126
+   "dias_sem_reconhecimento": 134
   },
   "2706109": {
    "ibge": "2706109",
@@ -25511,18 +27233,19 @@
    "uf": "PR",
    "decreto": true,
    "primeiro_decreto": "23/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_reconhecimento": "17/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "chuva"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 25,
    "fontes": [
     {
      "canal": "DOM",
@@ -25539,10 +27262,18 @@
      "data": "26/10/2026",
      "decreto": "Decreto municipal nº 119",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 2,
-   "dias_sem_reconhecimento": 24
+   "n_eventos": 3,
+   "dias_sem_reconhecimento": null
   },
   "5215504": {
    "ibge": "5215504",
@@ -25589,7 +27320,7 @@
     }
    ],
    "n_eventos": 3,
-   "dias_sem_reconhecimento": 52
+   "dias_sem_reconhecimento": 60
   },
   "1505486": {
    "ibge": "1505486",
@@ -25606,6 +27337,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 13,
@@ -25617,9 +27349,17 @@
      "data": "21/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.151",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "3146255": {
@@ -25868,7 +27608,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 25
   },
   "4117701": {
    "ibge": "4117701",
@@ -26043,7 +27783,7 @@
     }
    ],
    "n_eventos": 3,
-   "dias_sem_reconhecimento": 90
+   "dias_sem_reconhecimento": 98
   },
   "4313805": {
    "ibge": "4313805",
@@ -26432,7 +28172,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 55
+   "dias_sem_reconhecimento": 63
   },
   "4314035": {
    "ibge": "4314035",
@@ -26463,7 +28203,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 53
+   "dias_sem_reconhecimento": 61
   },
   "2408904": {
    "ibge": "2408904",
@@ -26525,7 +28265,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 18
+   "dias_sem_reconhecimento": 26
   },
   "1303403": {
    "ibge": "1303403",
@@ -26573,6 +28313,37 @@
     }
    ],
    "n_eventos": 3,
+   "dias_sem_reconhecimento": null
+  },
+  "2923803": {
+   "ibge": "2923803",
+   "nome": "Paripiranga",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "16/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 28,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.997-de-13-de-novembro-de-2026-744434345",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.997",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2610400": {
@@ -26799,7 +28570,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 25
   },
   "2207801": {
    "ibge": "2207801",
@@ -27036,6 +28807,37 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "2511103": {
+   "ibge": "2511103",
+   "nome": "Pedra Lavrada",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "23/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 21,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.997-de-13-de-novembro-de-2026-744434345",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.997",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2805000": {
    "ibge": "2805000",
    "nome": "Pedra Mole",
@@ -27065,7 +28867,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "2409605": {
    "ibge": "2409605",
@@ -27239,6 +29041,37 @@
    "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
+  "1505601": {
+   "ibge": "1505601",
+   "nome": "Peixe-Boi",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4314407": {
    "ibge": "4314407",
    "nome": "Pelotas",
@@ -27334,6 +29167,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "seca"
    ],
    "dias_ate_reconhecimento": 19,
@@ -27345,9 +29179,17 @@
      "data": "04/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.805",
      "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.034-de-17-de-novembro-de-2026-744976184",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.034",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2610905": {
@@ -27438,6 +29280,37 @@
      "data": "03/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.201",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1505635": {
+   "ibge": "1505635",
+   "nome": "Piçarra",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -27817,7 +29690,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 62
+   "dias_sem_reconhecimento": 70
   },
   "4119400": {
    "ibge": "4119400",
@@ -27899,6 +29772,37 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "5217203": {
+   "ibge": "5217203",
+   "nome": "Piranhas",
+   "uf": "GO",
+   "decreto": true,
+   "primeiro_decreto": "19/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Goiás (AGM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=3392&i=publicado_114672_2026-11-18_2b0c499803ea9bf3ac572105b53cbc56.pdf",
+     "data": "19/11/2026",
+     "decreto": "Decreto nº 157/2026",
+     "hash": "9ff8428cbf2fba217f312c1323297c29b33c926a868f39d8ed9282e9394ed9f0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 5
+  },
   "3151206": {
    "ibge": "3151206",
    "nome": "Pirapora",
@@ -27928,7 +29832,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 25
   },
   "4314605": {
    "ibge": "4314605",
@@ -28060,9 +29964,25 @@
      "data": "03/11/2026",
      "decreto": "Decreto nº 207",
      "hash": "d5db5bdcf5294ca4ca2f72f7b87cac83b3f9071de6de9d1aadc9edecfb214638"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118225_2026-11-13_1126836072cc7b9e3090551c7c8ff4d9.pdf",
+     "data": "16/11/2026",
+     "decreto": "Decreto nº 211",
+     "hash": "07a8d3a75b68e8e98c395f7db4ba89371970ccd5fed4f7eec04e0c6b5f24fee4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17465",
+     "data": "16/11/2026",
+     "decreto": "Decreto municipal nº 211",
+     "hash": "b56e4e95b49a50a707af9b6be299bdafe8476388ebb22b6f3ae1bfe41f2f4642"
     }
    ],
-   "n_eventos": 4,
+   "n_eventos": 6,
    "dias_sem_reconhecimento": null
   },
   "1505650": {
@@ -28080,6 +30000,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 10,
@@ -28091,9 +30012,17 @@
      "data": "06/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.869",
      "hash": "cb4173946253d8e1b8a3a307c500e588ea23fe8e4f34ed61bd604d24536f36a0"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "1200385": {
@@ -28502,6 +30431,46 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1505700": {
+   "ibge": "1505700",
+   "nome": "Ponta de Pedras",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "09/11/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo",
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 4,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.002-de-13-de-novembro-de-2026-744743717",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.002",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": null
+  },
   "4314787": {
    "ibge": "4314787",
    "nome": "Ponte Preta",
@@ -28564,6 +30533,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "5218003": {
+   "ibge": "5218003",
+   "nome": "Porangatu",
+   "uf": "GO",
+   "decreto": true,
+   "primeiro_decreto": "12/11/2026",
+   "primeiro_reconhecimento": "16/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 4,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.008-de-16-de-novembro-de-2026-744979090",
+     "data": "16/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.008",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4120002": {
    "ibge": "4120002",
    "nome": "Porecatu",
@@ -28593,7 +30593,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 18
   },
   "3152204": {
    "ibge": "3152204",
@@ -28717,7 +30717,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 118
+   "dias_sem_reconhecimento": 126
   },
   "4120150": {
    "ibge": "4120150",
@@ -28774,6 +30774,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 7,
@@ -28785,9 +30786,17 @@
      "data": "04/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.804",
      "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "1600535": {
@@ -29137,26 +31146,27 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 26
+   "dias_sem_reconhecimento": 34
   },
   "1506005": {
    "ibge": "1506005",
    "nome": "Prainha",
    "uf": "PA",
    "decreto": true,
-   "primeiro_decreto": "05/11/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "29/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "seca"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 15,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -29173,10 +31183,18 @@
      "data": "12/11/2026",
      "decreto": "Decreto nº 037/2026-",
      "hash": "107e6ebf1aaeaddc8c48ef1f47de5fd06b554f3f4c7fee7d11c6e6a5217010bf"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.995-de-13-de-novembro-de-2026-744447766",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.995",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
-   "n_eventos": 2,
-   "dias_sem_reconhecimento": 11
+   "n_eventos": 3,
+   "dias_sem_reconhecimento": null
   },
   "4120358": {
    "ibge": "4120358",
@@ -29309,7 +31327,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 18
   },
   "1303536": {
    "ibge": "1303536",
@@ -29346,9 +31364,17 @@
      "data": "09/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.481",
      "hash": "09334997631511107fdc0035977f10c7a87038902b6fe795881612d6e2c7118c"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118992_2026-11-19_738b5c592441d9f75a57c236acee972d.pdf",
+     "data": "23/11/2026",
+     "decreto": "Decreto nº 032",
+     "hash": "6fc0303662af0299c0d2ed018bf0cd9817a5edfc8f0a92e8f131c428dd5e3dd4"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "4214003": {
@@ -29839,7 +31865,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 20
+   "dias_sem_reconhecimento": 28
   },
   "2512606": {
    "ibge": "2512606",
@@ -30065,7 +32091,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 12
   },
   "4121505": {
    "ibge": "4121505",
@@ -30096,7 +32122,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "4315404": {
    "ibge": "4315404",
@@ -30175,7 +32201,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 62
+   "dias_sem_reconhecimento": 70
   },
   "4315453": {
    "ibge": "4315453",
@@ -30723,7 +32749,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "4122008": {
    "ibge": "4122008",
@@ -30754,7 +32780,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "dias_sem_reconhecimento": 19
   },
   "4122156": {
    "ibge": "4122156",
@@ -31057,7 +33083,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 42
+   "dias_sem_reconhecimento": 50
   },
   "1506161": {
    "ibge": "1506161",
@@ -31074,6 +33100,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 9,
@@ -31085,9 +33112,17 @@
      "data": "25/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.257",
      "hash": "0f50db6a1e5dbd16692a37576ce3d20122e876d6a43881dd995fc1f68340dfdf"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4122305": {
@@ -31368,9 +33403,17 @@
      "data": "09/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.883",
      "hash": "3d2af0493bea1d9e9cdc197623fb27f57685ce2760176e65368279d84347056d"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "4122602": {
@@ -31402,7 +33445,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 21
+   "dias_sem_reconhecimento": 29
   },
   "4316303": {
    "ibge": "4316303",
@@ -31665,6 +33708,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2513000": {
+   "ibge": "2513000",
+   "nome": "Salgadinho",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "15/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 33,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2612208": {
    "ibge": "2612208",
    "nome": "Salgueiro",
@@ -31744,6 +33818,37 @@
    "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
+  "1506203": {
+   "ibge": "1506203",
+   "nome": "Salinópolis",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2311959": {
    "ibge": "2311959",
    "nome": "Salitre",
@@ -31801,6 +33906,37 @@
      "data": "03/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2203",
      "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "4215356": {
+   "ibge": "4215356",
+   "nome": "Saltinho",
+   "uf": "SC",
+   "decreto": true,
+   "primeiro_decreto": "15/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 33,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
    "n_eventos": 1,
@@ -31978,6 +34114,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1506351": {
+   "ibge": "1506351",
+   "nome": "Santa Bárbara do Pará",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4316709": {
    "ibge": "4316709",
    "nome": "Santa Bárbara do Sul",
@@ -32100,7 +34267,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 12
   },
   "2411205": {
    "ibge": "2411205",
@@ -32265,7 +34432,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 24
+   "dias_sem_reconhecimento": 32
   },
   "1506401": {
    "ibge": "1506401",
@@ -32282,6 +34449,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca"
    ],
    "dias_ate_reconhecimento": 12,
@@ -32293,9 +34461,17 @@
      "data": "10/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.900",
      "hash": "7cdcbe7c676cd4426edd85d1e241a955ad6fc372854b4d7f8c30da83a1000ad0"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2612505": {
@@ -32559,6 +34735,46 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "1506500": {
+   "ibge": "1506500",
+   "nome": "Santa Izabel do Pará",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo",
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 8,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.002-de-13-de-novembro-de-2026-744743717",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.002",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": null
+  },
   "2209302": {
    "ibge": "2209302",
    "nome": "Santa Luz",
@@ -32588,6 +34804,46 @@
     }
    ],
    "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1506559": {
+   "ibge": "1506559",
+   "nome": "Santa Luzia do Pará",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "SE",
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Pará (FAMEP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=329&i=publicado_117209_2026-11-13_7785cf2c7f9edf9a7e41977db42c3db6.pdf",
+     "data": "16/11/2026",
+     "decreto": "Decreto nº 064/2026.",
+     "hash": "84f712b4329df0ee92cb990aeb6f0c751cded9d7ea25869a9f1addb8fe396b3c"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4316972": {
@@ -32790,9 +35046,48 @@
      "data": "18/08/2026",
      "decreto": "Decreto municipal nº 72",
      "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17465",
+     "data": "16/11/2026",
+     "decreto": "Decreto municipal nº 095",
+     "hash": "b56e4e95b49a50a707af9b6be299bdafe8476388ebb22b6f3ae1bfe41f2f4642"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
+   "dias_sem_reconhecimento": null
+  },
+  "1506609": {
+   "ibge": "1506609",
+   "nome": "Santa Maria do Pará",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4123907": {
@@ -32864,7 +35159,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 101
+   "dias_sem_reconhecimento": 109
   },
   "1200435": {
    "ibge": "1200435",
@@ -33138,7 +35433,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 54
+   "dias_sem_reconhecimento": 62
   },
   "2513505": {
    "ibge": "2513505",
@@ -33264,6 +35559,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2928307": {
+   "ibge": "2928307",
+   "nome": "Santanópolis",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "09/11/2026",
+   "primeiro_reconhecimento": "16/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 7,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.007-de-16-de-novembro-de-2026-744960264",
+     "data": "16/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.007",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "1506807": {
    "ibge": "1506807",
    "nome": "Santarém",
@@ -33280,6 +35606,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "outro_declarado",
     "seca"
    ],
@@ -33308,9 +35635,48 @@
      "data": "10/11/2026",
      "decreto": "Decreto nº 774/2026",
      "hash": "3d6f7d43c1760d8fff1adbf7fdc5ee7c8899d3a0e1885b1d15ea140cccb2c38c"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
+   "dias_sem_reconhecimento": null
+  },
+  "1506906": {
+   "ibge": "1506906",
+   "nome": "Santarém Novo",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4317400": {
@@ -33396,9 +35762,17 @@
      "data": "11/11/2026",
      "decreto": "Decreto nº 90/2026",
      "hash": "79337f075b32f7f845dc1b64eace8c14811f0f60b66de5937db7e812275db316"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117973_2026-11-17_d809148fc61fda6fa007a0ecab2545d4.pdf",
+     "data": "18/11/2026",
+     "decreto": "Decreto nº 90/2026",
+     "hash": "a5fe52e290c8f37469e3ba4c69d5db856b51b69856e5bc721e3c7caaeb021561"
     }
    ],
-   "n_eventos": 8,
+   "n_eventos": 9,
    "dias_sem_reconhecimento": null
   },
   "4215695": {
@@ -33501,7 +35875,38 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "dias_sem_reconhecimento": 19
+  },
+  "4124103": {
+   "ibge": "4124103",
+   "nome": "Santo Antônio da Platina",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "16/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17465",
+     "data": "16/11/2026",
+     "decreto": "Decreto municipal nº 602",
+     "hash": "b56e4e95b49a50a707af9b6be299bdafe8476388ebb22b6f3ae1bfe41f2f4642"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 8
   },
   "4317707": {
    "ibge": "4317707",
@@ -33537,9 +35942,17 @@
      "data": "10/11/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.904",
      "hash": "7cdcbe7c676cd4426edd85d1e241a955ad6fc372854b4d7f8c30da83a1000ad0"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.009-de-16-de-novembro-de-2026-744971924",
+     "data": "16/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.009",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "1303700": {
@@ -33870,6 +36283,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1507102": {
+   "ibge": "1507102",
+   "nome": "São Caetano de Odivelas",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4216107": {
    "ibge": "4216107",
    "nome": "São Domingos",
@@ -33932,6 +36376,68 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1507151": {
+   "ibge": "1507151",
+   "nome": "São Domingos do Araguaia",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507201": {
+   "ibge": "1507201",
+   "nome": "São Domingos do Capim",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4318051": {
    "ibge": "4318051",
    "nome": "São Domingos do Sul",
@@ -33958,6 +36464,37 @@
      "data": "11/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.579",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507300": {
+   "ibge": "1507300",
+   "nome": "São Félix do Xingu",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -34023,7 +36560,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 104
+   "dias_sem_reconhecimento": 112
   },
   "2513984": {
    "ibge": "2513984",
@@ -34101,7 +36638,7 @@
     }
    ],
    "n_eventos": 3,
-   "dias_sem_reconhecimento": 133
+   "dias_sem_reconhecimento": 141
   },
   "4318101": {
    "ibge": "4318101",
@@ -34205,6 +36742,68 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1507409": {
+   "ibge": "1507409",
+   "nome": "São Francisco do Pará",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507458": {
+   "ibge": "1507458",
+   "nome": "São Geraldo do Araguaia",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "3162104": {
    "ibge": "3162104",
    "nome": "São Gotardo",
@@ -34234,7 +36833,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "dias_sem_reconhecimento": 19
   },
   "4318408": {
    "ibge": "4318408",
@@ -34293,10 +36892,18 @@
      "data": "13/11/2026",
      "decreto": "Decreto municipal nº 234",
      "hash": "b0d108143b1bbb2e1c52e1baff33351dfcafa790667686b6efe619d7ffb4f51b"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118225_2026-11-13_1126836072cc7b9e3090551c7c8ff4d9.pdf",
+     "data": "16/11/2026",
+     "decreto": "Decreto nº 233/2",
+     "hash": "07a8d3a75b68e8e98c395f7db4ba89371970ccd5fed4f7eec04e0c6b5f24fee4"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 11
   },
   "2613206": {
    "ibge": "2613206",
@@ -34355,6 +36962,37 @@
      "data": "16/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.586",
      "hash": "3e3b7566c0cbbab4c5b42d5e2d4099d5f9fd72666f2131e0e5d3ea46a3c08d0b"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507466": {
+   "ibge": "1507466",
+   "nome": "São João da Ponta",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -34448,6 +37086,68 @@
      "data": "27/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.793, nº 2.794, nº 2.795, nº 2.796)",
      "hash": "69b9f9c6f2062a3bcaff606efa31d40178e1d54d5550ef17e1b2a6af77940e68"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507474": {
+   "ibge": "1507474",
+   "nome": "São João de Pirabas",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507508": {
+   "ibge": "1507508",
+   "nome": "São João do Araguaia",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -34575,7 +37275,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 18
   },
   "2613305": {
    "ibge": "2613305",
@@ -34637,7 +37337,38 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 41
+   "dias_sem_reconhecimento": 49
+  },
+  "2514206": {
+   "ibge": "2514206",
+   "nome": "São José da Lagoa Tapada",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "16/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 32,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
   },
   "2708402": {
    "ibge": "2708402",
@@ -35038,6 +37769,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "4125506": {
+   "ibge": "4125506",
+   "nome": "São José dos Pinhais",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "16/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17465",
+     "data": "16/11/2026",
+     "decreto": "Decreto municipal nº 7.451",
+     "hash": "b56e4e95b49a50a707af9b6be299bdafe8476388ebb22b6f3ae1bfe41f2f4642"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 8
+  },
   "4318705": {
    "ibge": "4318705",
    "nome": "São Leopoldo",
@@ -35334,7 +38096,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "4319125": {
    "ibge": "4319125",
@@ -35414,7 +38176,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 19
+   "dias_sem_reconhecimento": 27
   },
   "4319158": {
    "ibge": "4319158",
@@ -35476,7 +38238,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 60
+   "dias_sem_reconhecimento": 68
   },
   "2807006": {
    "ibge": "2807006",
@@ -35540,6 +38302,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1507607": {
+   "ibge": "1507607",
+   "nome": "São Miguel do Guamá",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "1100320": {
    "ibge": "1100320",
    "nome": "São Miguel do Guaporé",
@@ -35569,7 +38362,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 34
+   "dias_sem_reconhecimento": 42
   },
   "4125704": {
    "ibge": "4125704",
@@ -35742,7 +38535,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "2412708": {
    "ibge": "2412708",
@@ -35923,7 +38716,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "3164407": {
    "ibge": "3164407",
@@ -35951,6 +38744,37 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.072, nº 3.073, nº 3.073, nº 3.074, nº 3.074, nº 3.084)",
      "hash": "e6e4ae099af13fbaabef02fbd11df4adb85f2985f7da97788d20d6edd88dd09c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507706": {
+   "ibge": "1507706",
+   "nome": "São Sebastião da Boa Vista",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "12/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 32,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.002-de-13-de-novembro-de-2026-744743717",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.002",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,
@@ -36150,7 +38974,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 18
   },
   "4319737": {
    "ibge": "4319737",
@@ -36283,7 +39107,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 15
   },
   "4320008": {
    "ibge": "4320008",
@@ -36314,7 +39138,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 42
+   "dias_sem_reconhecimento": 50
   },
   "4320107": {
    "ibge": "4320107",
@@ -36376,7 +39200,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "4217501": {
    "ibge": "4217501",
@@ -37012,6 +39836,37 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "2930501": {
+   "ibge": "2930501",
+   "nome": "Serrinha",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "22/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 22,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.997-de-13-de-novembro-de-2026-744434345",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.997",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2614006": {
    "ibge": "2614006",
    "nome": "Serrita",
@@ -37103,7 +39958,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 61
+   "dias_sem_reconhecimento": 69
   },
   "4320578": {
    "ibge": "4320578",
@@ -37430,18 +40285,19 @@
    "uf": "PB",
    "decreto": true,
    "primeiro_decreto": "18/09/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_reconhecimento": "17/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "seca"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 60,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -37466,10 +40322,80 @@
      "data": "16/10/2026",
      "decreto": "Decreto nº 062/2026-",
      "hash": "ee9978c3229a4856abef601de903ac873ef892ed390342d95ed318b7aa212aae"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 3,
-   "dias_sem_reconhecimento": 59
+   "n_eventos": 4,
+   "dias_sem_reconhecimento": null
+  },
+  "1507904": {
+   "ibge": "1507904",
+   "nome": "Soure",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "2930808": {
+   "ibge": "2930808",
+   "nome": "Souto Soares",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 29,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.031-de-17-de-novembro-de-2026-744978449",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.031",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
   },
   "4126652": {
    "ibge": "4126652",
@@ -37697,6 +40623,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1507953": {
+   "ibge": "1507953",
+   "nome": "Tailândia",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "3168002": {
    "ibge": "3168002",
    "nome": "Taiobeiras",
@@ -37726,7 +40683,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 128
+   "dias_sem_reconhecimento": 136
   },
   "2413904": {
    "ibge": "2413904",
@@ -37757,7 +40714,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "2614857": {
    "ibge": "2614857",
@@ -37788,7 +40745,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 49
+   "dias_sem_reconhecimento": 57
   },
   "4126678": {
    "ibge": "4126678",
@@ -37887,6 +40844,37 @@
      "data": "08/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.942, nº 2.943)",
      "hash": "a42b968c212a0fb513b0eb622330c0c96f3e70e9889bd27acc7a07fd1ecc694f"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "3305752": {
+   "ibge": "3305752",
+   "nome": "Tanguá",
+   "uf": "RJ",
+   "decreto": true,
+   "primeiro_decreto": "10/11/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 3,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.998-de-13-de-novembro-de-2026-744408715",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.998",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
    "n_eventos": 1,
@@ -38070,7 +41058,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 18
   },
   "4321204": {
    "ibge": "4321204",
@@ -38244,10 +41232,11 @@
    "primeiro_decreto": "08/06/2026",
    "primeiro_reconhecimento": "02/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "decreto_anterior_ao_ciclo": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
@@ -38271,9 +41260,17 @@
      "data": "06/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.421",
      "hash": "ef2d9d6d5f3281fdba4b92398dc17b44835a778c12ba1f3df7b6b594dc47ebe1"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118989_2026-11-17_af4d41ee2fc40d651067448f1090ec35.pdf",
+     "data": "18/11/2026",
+     "decreto": "Decreto nº 071",
+     "hash": "42f56b3429007812598ad1aaea7c4c1ee795cf6c8712521bead0b47a54571f28"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "2516706": {
@@ -38336,7 +41333,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 13
+   "dias_sem_reconhecimento": 21
   },
   "2414159": {
    "ibge": "2414159",
@@ -38400,6 +41397,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "3168606": {
+   "ibge": "3168606",
+   "nome": "Teófilo Otoni",
+   "uf": "MG",
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 25,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.004-de-13-de-novembro-de-2026-744977470",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.004",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2615102": {
    "ibge": "2615102",
    "nome": "Terezinha",
@@ -38429,6 +41457,46 @@
     }
    ],
    "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1507961": {
+   "ibge": "1507961",
+   "nome": "Terra Alta",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "22/10/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo",
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 24,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.032-de-17-de-novembro-de-2026-744975471",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.032",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2615201": {
@@ -38491,7 +41559,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 6
+   "dias_sem_reconhecimento": 14
   },
   "1507979": {
    "ibge": "1507979",
@@ -38508,6 +41576,7 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "fogo",
     "seca",
     "vendaval"
    ],
@@ -38528,9 +41597,17 @@
      "data": "22/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.655",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "4127502": {
@@ -38602,7 +41679,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "dias_sem_reconhecimento": 11
   },
   "2615300": {
    "ibge": "2615300",
@@ -38728,6 +41805,37 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1508001": {
+   "ibge": "1508001",
+   "nome": "Tomé-Açu",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "2615409": {
    "ibge": "2615409",
    "nome": "Toritama",
@@ -38788,7 +41896,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 12
   },
   "3554755": {
    "ibge": "3554755",
@@ -39412,6 +42520,68 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1508084": {
+   "ibge": "1508084",
+   "nome": "Tucumã",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1508100": {
+   "ibge": "1508100",
+   "nome": "Tucuruí",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
   "4322152": {
    "ibge": "4322152",
    "nome": "Tunas",
@@ -39987,10 +43157,11 @@
    "primeiro_decreto": "14/10/2026",
    "primeiro_reconhecimento": "22/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
@@ -40005,9 +43176,17 @@
      "data": "22/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.655",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Pará (FAMEP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=329&i=publicado_117209_2026-11-13_7785cf2c7f9edf9a7e41977db42c3db6.pdf",
+     "data": "16/11/2026",
+     "decreto": "Decreto nº 0313/2026",
+     "hash": "84f712b4329df0ee92cb990aeb6f0c751cded9d7ea25869a9f1addb8fe396b3c"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "3170529": {
@@ -40079,6 +43258,37 @@
     }
    ],
    "n_eventos": 2,
+   "dias_sem_reconhecimento": null
+  },
+  "4322400": {
+   "ibge": "4322400",
+   "nome": "Uruguaiana",
+   "uf": "RS",
+   "decreto": true,
+   "primeiro_decreto": "16/10/2026",
+   "primeiro_reconhecimento": "16/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 31,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.009-de-16-de-novembro-de-2026-744971924",
+     "data": "16/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.009",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4322541": {
@@ -40265,7 +43475,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 81
+   "dias_sem_reconhecimento": 89
   },
   "2616001": {
    "ibge": "2616001",
@@ -40355,9 +43565,17 @@
      "data": "21/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.646",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2616100": {
@@ -40386,6 +43604,37 @@
      "data": "03/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2203",
      "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "2933257": {
+   "ibge": "2933257",
+   "nome": "Vereda",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "13/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 25,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.997-de-13-de-novembro-de-2026-744434345",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.997",
+     "hash": "b5eaf79e0c948673e17cd00ee14e01312a13fe2302822b0b64805a6df981b885"
     }
    ],
    "n_eventos": 1,
@@ -40553,7 +43802,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 55
+   "dias_sem_reconhecimento": 63
   },
   "2517209": {
    "ibge": "2517209",
@@ -40726,7 +43975,38 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 101
+   "dias_sem_reconhecimento": 109
+  },
+  "3556800": {
+   "ibge": "3556800",
+   "nome": "Viradouro",
+   "uf": "SP",
+   "decreto": true,
+   "primeiro_decreto": "17/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (SP)",
+     "url": "https://doe.sp.gov.br/executivo/decretos/decreto-n-70969-de-16-de-novembro-de-2026-202611161182022287801",
+     "data": "17/11/2026",
+     "decreto": "Decreto municipal nº 7.886",
+     "hash": "f21594462528b0b2e48254cc85d8c84a7deabc4fe36f5912f2294e249a8cd780"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 7
   },
   "3171600": {
    "ibge": "3171600",
@@ -40963,7 +44243,8 @@
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "fogo"
+    "fogo",
+    "seca"
    ],
    "dias_ate_reconhecimento": 13,
    "fontes": [
@@ -40974,9 +44255,17 @@
      "data": "22/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.655",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.002-de-13-de-novembro-de-2026-744743717",
+     "data": "13/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.002",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2933406": {
@@ -41116,6 +44405,68 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "4219606": {
+   "ibge": "4219606",
+   "nome": "Xavantina",
+   "uf": "SC",
+   "decreto": true,
+   "primeiro_decreto": "29/09/2026",
+   "primeiro_reconhecimento": "17/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 49,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.033-de-17-de-novembro-de-2026-744971205",
+     "data": "17/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.033",
+     "hash": "7bb37f571f66a7408dd72bd7a9d4678a381ead0d466a44d48feb596eda86457c"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": null
+  },
+  "1508407": {
+   "ibge": "1508407",
+   "nome": "Xinguara",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/11/2026",
+   "primeiro_reconhecimento": "15/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
+   "decretado": false,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.005-de-15-de-novembro-de-2026-744735491",
+     "data": "15/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 4.005",
+     "hash": "1347d20420086355be15f3c69c43c7d0e9ed32efac11f67a638e2b45ceb18eb0"
     }
    ],
    "n_eventos": 1,

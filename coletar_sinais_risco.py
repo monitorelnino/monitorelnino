@@ -146,20 +146,15 @@ FONTES = {
     "painel_el_nino": {
         "nome": "Painel El Niño 2026-2027", "orgao": "CEMADEN/INPE", "camada": "ciclo",
         "url_publica": "https://www.gov.br/cemaden/pt-br",
-        # 01/11/2026: o índice mensal dos boletins na ANA (pai da URL de `data/boletins.json`). Sem
-        # endpoint, `consultado_em` ficou em 07/10 enquanto as outras fontes tinham 30/10: só `--semear`
-        # o escrevia. Agora toda execução consulta o índice e carimba a data da consulta.
+        # Índice mensal dos boletins na ANA: toda execução o consulta e carimba `consultado_em`.
         "endpoint": "https://www.gov.br/ana/pt-br/sala-de-situacao/painel-el-nino/boletins/mensal-2026",
         "papel": "Risco projetado por região e a largada pública do ciclo.",
     },
     "monitor_secas": {
         "nome": "Monitor de Secas", "orgao": "ANA e parceiros estaduais", "camada": "observado",
         "url_publica": "https://monitordesecas.ana.gov.br/",
-        # 04/09/2026: catálogo antigo responde 404. API real: apimsbr.ana.gov.br/rpc/v1/<recurso>.
-        # 15/09/2026 (sonda com rede real): o RPC que alimenta a página "Dados tabulares" do
-        # Monitor é dados-tabulares-monitor?tipo_area=1&area=<código IBGE da UF> — devolve, por
-        # mapa mensal, a área em cada categoria S0–S4 da UF. change_maps (só PNGs) fica como
-        # inventário de mapas; o valor por UF vem daqui.
+        # RPC da página "Dados tabulares": por mapa mensal, a área em cada categoria S0–S4 da UF
+        # (`area` = código IBGE da UF). `change_maps` (só PNGs) é inventário de mapas.
         "endpoint": "https://apimsbr.ana.gov.br/rpc/v1/dados-tabulares-monitor?tipo_area=1&area=",
         "endpoint_mapas": "https://apimsbr.ana.gov.br/rpc/v1/change_maps",
         "papel": "Fração da área de cada UF em cada categoria de seca (S0 a S4), no mapa mensal mais recente.",
@@ -173,25 +168,19 @@ FONTES = {
     "inpe_fogo": {
         "nome": "Programa Queimadas — risco de fogo", "orgao": "INPE", "camada": "observado",
         "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
-        # 04/09/2026: endereço antigo devolvia HTML (o portal mudou). Diretório real,
-        # confirmado por diagnóstico: dataserver-coids.inpe.br, arquivos focos_diario_br_AAAAMMDD.csv.
+        # Diretório de arquivos focos_diario_br_AAAAMMDD.csv.
         "endpoint": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/",
         "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
     },
     "cemaden_alertas": {
         "nome": "Alertas hidrológicos e geológicos", "orgao": "CEMADEN", "camada": "observado",
         "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
-        # 04/09/2026: o JSON antigo não existe mais (404). Camada confirmada por GetCapabilities.
         "endpoint": ("https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0"
                       "&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000"),
         "papel": "Alertas vigentes emitidos aos municípios monitorados.",
     },
     "inmet_previsao_capitais": {
-        # 27/09/2026 (pedido da editoria: "temperatura reportada por órgão competente, para a gente
-        # referenciar um órgão de referência"). Até aqui a previsão vinha do Open-Meteo, que roda
-        # modelos europeus e americanos. O INMET publica previsão própria para as 27 capitais, em
-        # JSON aberto e sem chave — e já é a fonte dos avisos e das estações neste mesmo site.
-        # Conferido em 27/09/2026: 27 capitais, 27 UFs, cinco dias, com manhã, tarde e noite.
+        # Previsão do órgão oficial (INMET) para as 27 capitais, cinco dias, JSON aberto e sem chave.
         "nome": "Previsão do tempo para as capitais", "orgao": "INMET", "camada": "observado",
         "url_publica": "https://previsao.inmet.gov.br/",
         "endpoint": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
@@ -199,36 +188,13 @@ FONTES = {
         "natureza": NATUREZA_MODELO,
     },
     # ---------------------------------------------------------------------
-    # CAMADA DE MEDIÇÃO. O que ela promete é o que nenhuma estimativa de modelo substitui, e por
-    # isso cada fonte daqui só entra com o que de fato mediu.
-    #   OpenAQ v3: recusa com HTTP 401 sem `X-API-Key` (medido em 24/09/2026). 401 é bloqueio de
-    #     acesso real e se respeita, sempre. A chave vem do AMBIENTE (segredo da Action), nunca do
-    #     repositório — que é público. Em 26/09/2026 a sonda do §224 confirmou: a chave cadastrada
-    #     é ACEITA (HTTP 200).
-    #   Estações do INMET: **a credencial que travava esta fonte não era exigida pela rota que ela
-    #     usa.** Medido em 26/09/2026 — `https://apitempo.inmet.gov.br/estacoes/T` responde HTTP 200
-    #     com 262.904 bytes de JSON e 673 estações, SEM token nenhum, e é tudo o que
-    #     `parse_estacoes_inmet` consome. A fonte declarava `INMET_API_TOKEN`, e `coletar_fonte`
-    #     levantava `CredencialAusente` antes de tocar a rede: a camada de medição ficava vazia por
-    #     falta de uma chave que a rota não pede. O token saiu da declaração.
-    #
-    #     Ao lado, dois diagnósticos errados que ficavam aqui e foram conferidos: o comentário
-    #     afirmava que sem token a rota de dados devolve "204 com corpo vazio" — ela devolve **404**
-    #     (medido em `/estacao/diaria/2026-09-24/2026-09-25/A001`). E o papel declarado prometia
-    #     "máxima e mínima medidas", coisa que o adaptador não fazia: ele só escolhia a estação mais
-    #     próxima de cada capital. A promessa agora é cumprida pela rota pública
-    #     `/condicao/capitais/<data>` (200, 28 registros, sem token), abaixo.
+    # CAMADA DE MEDIÇÃO: cada fonte só entra com o que de fato mediu; nenhuma estimativa a substitui.
+    #   OpenAQ v3: 401 sem `X-API-Key` é recusa real; a chave vem do AMBIENTE (segredo da Action).
+    #   Estações do INMET: `/estacoes/T` é pública e não pede token.
     # ---------------------------------------------------------------------
     "openaq": {
-        # 27/09/2026: investigado a pedido da editoria, porque o campo nunca teve dado.
-        # A causa é só uma: a API v3 exige `X-API-Key` (responde 401 sem ela) e a v2 foi
-        # desativada (410). O código JÁ estava inteiro para isso — `credencial` declarada abaixo,
-        # `credencial_de()` lendo do AMBIENTE (nunca do repositório, que é público), o cabeçalho
-        # enviado no despacho, e `atualizar.yml` passando o segredo. O status
-        # `aguardando_credencial` que o registro mostrava era a coisa certa sendo dita.
-        # Faltava apenas o segredo existir. A editoria o cadastrou em 26/09/2026.
-        # NOTA: a chave é gratuita e viaja em cabeçalho, nunca em URL — por isso não entra no
-        # livro de consultas, que vai ao repositório público.
+        # A v3 exige `X-API-Key` (401 sem ela; a v2 foi desativada, 410). `credencial_de()` lê a chave do
+        # AMBIENTE; ela viaja em cabeçalho, nunca em URL, e por isso não entra no livro de consultas.
         "nome": "Qualidade do ar medida", "orgao": "OpenAQ (agrega redes oficiais brasileiras)",
         "camada": "apoio_tecnico",
         "url_publica": "https://openaq.org/",
@@ -246,45 +212,32 @@ FONTES = {
         "papel": "Máxima e mínima medidas na estação automática da capital.",
         "natureza": NATUREZA_MEDICAO,
         "licenca": "Dados abertos INMET",
-        # §233: a rota de condição das capitais, que traz a máxima e a mínima MEDIDAS. Pública,
-        # sem token, medida em 26/09/2026. É ela que cumpre o papel declarado acima.
+        # §233: condição das capitais (pública, sem token): a máxima e a mínima MEDIDAS do papel acima.
         "endpoint_medida": "https://apitempo.inmet.gov.br/condicao/capitais/{data}",
     },
     "noaa_oni": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
+        # Apoio técnico (30/09/2026): fora das páginas, citada na METODOLOGIA (§58), que o portão de sinais cobra.
         "nome": "Oceanic Niño Index (ONI)", "orgao": "NOAA/CPC", "camada": "apoio_tecnico",
         "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt",
         "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
     },
     "noaa_roni": {
-        # 17/09/2026 (achado ao checar o valor do ONI, pedido da editoria): desde agosto/2026 a NOAA
-        # usa o RONI, não mais o ONI clássico, como métrica oficial de classificação — o RONI desconta
-        # o aquecimento médio de todo o oceano tropical, então fica mais conservador em clima mais quente.
+        # Métrica oficial da NOAA desde agosto/2026: desconta o aquecimento médio do oceano tropical.
         "nome": "Relative Oceanic Niño Index (RONI)", "orgao": "NOAA/CPC", "camada": "enos",
         "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/RONI.ascii.txt",
         "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
     },
     "noaa_nino34_mensal": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
-        # 08/11/2026 (editoria): volta à página — o Monitor de riscos desenha a série desde 1950 na mesma
-        # forma do RONI (ciclo em curso × episódios). Camada de exibição de novo.
+        # Na página: série desde 1950, na forma do RONI (ciclo em curso × episódios).
         "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC", "camada": "enos",
         "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
     },
     "noaa_nino34_semanal": {
-        # 17/10/2026 (HANDOVER_NINO34_SEMANAL §1): a anomalia SEMANAL da Niño 3.4, sem o desconto do
-        # aquecimento tropical que define o RONI. Apoio técnico até a página creditá-la (a B1 a desenha
-        # abaixo do RONI); não substitui o RONI e não entra em índice nenhum.
+        # Sem o desconto do RONI; apoio técnico, não substitui o RONI e não entra em índice nenhum.
         "nome": "Anomalia semanal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC",
         "camada": "apoio_tecnico",
         "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for",
@@ -292,20 +245,8 @@ FONTES = {
         "papel": "Leitura semanal da anomalia na região Niño 3.4 (base 1991–2020 do arquivo wksst9120).",
     },
     "iri_plume": {
-        # 24/09/2026 (§209): varredura dos caminhos de DADO, com o resultado de que não há tabela
-        # aberta. Registrado para ninguém repetir:
-        #   · `~forecast/ensofcst/Data/ensofcst_ONI` e as duas variantes: HTTP 404 (desde ~15/09);
-        #   · `ensoforecast.iri.columbia.edu`, host novo que serve os gráficos da página:
-        #     HTTP 403 em tudo que não seja a imagem publicada. 403 é bloqueio de acesso real e
-        #     se respeita — não se insiste.
-        #
-        # 27/09/2026: aquela varredura procurou TABELA e por isso concluiu cedo demais. As
-        # probabilidades estão publicadas na mesma página, em PROSA, com os trimestres nomeados:
-        #   "El Niño probabilities remain at 100% from SON 2026 through FMA 2027, followed by
-        #    99% in MAM 2027 and 90% in AMJ, before declining to 61% in MJJ 2027."
-        # O endpoint passa a ser a própria página pública, lida por `parse_plume_prosa`. Esse
-        # leitor só aceita par explicito de porcentagem e trimestre nomeado, e guarda o TRECHO de
-        # onde cada número saiu — na dúvida ele não classifica, e a lacuna continua declarada.
+        # Sem tabela aberta: a página pública traz as probabilidades em prosa, lidas por `parse_plume_prosa`
+        # (só par explícito de porcentagem e trimestre, com o trecho guardado; na dúvida, lacuna).
         # `parse_plume_iri` fica, provado por fixture, para o dia em que a tabela voltar.
         "nome": "Probabilidades ENSO (plume IRI/CPC)", "orgao": "IRI/Columbia", "camada": "enos",
         "url_publica": "https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/",
@@ -313,37 +254,19 @@ FONTES = {
         "papel": "Probabilidade de El Niño, neutro e La Niña por trimestre.",
     },
     "cptec_prognostico": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
-        # 27/09/2026: esta fonte NUNCA teve endereço. O campo `enos.prognostico` que ela alimentava
-        # foi semeado à mão uma vez, em 07/09/2026, e nada no repositório o renovava: `leitura_em`
-        # não é escrito em lugar nenhum do módulo, e `coletar()` nunca tocava em `prognostico`. Como
-        # o registro é lido do arquivo e modificado, o campo sobrevivia a cada rodada — congelado.
-        # A página o exibia como leitura corrente. Fica declarado e sem coleta, até que exista
-        # endereço aberto: a leitura automática do estado do ENOS passou a vir de `cpc_ensodisc`.
+        # Apoio técnico (30/09/2026): fora das páginas, citada na METODOLOGIA (§58), que o portão de sinais cobra.
+        # Sem endereço aberto: declarada e sem coleta; o estado do ENOS vem de `cpc_ensodisc`.
         "nome": "Prognóstico climático trimestral", "orgao": "INMET/CPTEC-INPE", "camada": "apoio_tecnico",
         "url_publica": "https://portal.inmet.gov.br/boletinsagro",
         "endpoint": None,
-        # 01/11/2026: a "leitura humana do Boletim nº 3" (07/09) saiu: etapa humana é proibida (08/10)
-        # e o boletim já era outro. A previsão por tercil só existe como figura nos boletins do Painel,
-        # sem dado aberto; sem leitura de máquina, é lacuna declarada com o link do boletim vigente.
+        # Tercil só em figura nos boletins do Painel: lacuna declarada com o link do boletim vigente.
         "lacuna": "previsão por tercil só em figura nos boletins do Painel El Niño (sem dado aberto)",
         "papel": "A leitura brasileira da mesma previsão, em português.",
     },
     "cpc_ensodisc": {
-        # 30/09/2026: APOIO TÉCNICO. Esta fonte saiu das páginas quando o Monitor de riscos
-        # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
-        # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
-        # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
-        # 27/09/2026 (pedido da editoria: "construa coletores automáticos, pode até trocar a fonte").
-        # A Discussão Diagnóstica do ENOS é publicada pelo CPC todo mês, aberta, sem chave, com
-        # estrutura estável: data de emissão, "ENSO Alert System Status", sinopse e data da próxima.
-        # O coletor extrai FATOS (status, probabilidade declarada, datas) e guarda a sinopse
-        # original para conferência. A frase em inglês NÃO é traduzida automaticamente: tradução de
-        # máquina sem fonte é texto inventado, e a página compõe a frase em português a partir dos
-        # fatos, que é o que se pode afirmar.
+        # Apoio técnico (30/09/2026): fora das páginas, citada na METODOLOGIA (§58), que o portão de sinais cobra.
+        # Extrai FATOS (status, probabilidade declarada, datas) e guarda a sinopse original. A frase
+        # em inglês não é traduzida por máquina: a página compõe o português a partir dos fatos.
         "nome": "Discussão diagnóstica do ENOS", "orgao": "CPC/NCEP/NWS (NOAA)", "camada": "apoio_tecnico",
         "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
         "endpoint": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
@@ -790,31 +713,30 @@ def escolher_csv_focos(html_indice: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# FOCOS PELO SATÉLITE DE REFERÊNCIA (HANDOVER_MONITOR_DE_RISCOS §6a, 16/10/2026) → data/focos_referencia.json
-# O CSV diário traz a detecção de todos os satélites; o mesmo fogo aparece em vários (15/10/2026:
-# 35.850 linhas, 569 do AQUA_M-T). Comparar dias e anos só faz sentido pelo satélite de referência
-# do INPE, que é o que o arquivo anual de referência traz. Bioma e município vêm da fonte; terra
-# indígena e unidade de conservação NÃO vêm (sondado em 16/10) e não são estimados.
+# FOCOS PELO SATÉLITE DE REFERÊNCIA → data/focos_referencia.json. O CSV diário traz todos os satélites
+# (o mesmo fogo em vários); dias e anos só se comparam pelo satélite de referência do INPE. Bioma e
+# município vêm da fonte; terra indígena e unidade de conservação não vêm e não são estimados.
 # ---------------------------------------------------------------------------
 SATELITE_REFERENCIA = "AQUA_M-T"
 FOCOS_DIAS_SERIE = 400        # cobre o mesmo dia do ano anterior
 FOCOS_DIAS_MUNICIPIO = 30
-FOCOS_ANUAL_REF = "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/anual/Brasil_sat_ref/focos_br_ref_{ano}.zip"
+# O anual de referência só existe para ano fechado; o mensal (satélite e código IBGE, como o diário)
+# completa a janela do ano corrente.
+FOCOS_MENSAL = "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/mensal/Brasil/focos_mensal_br_{mes}.csv"
 
 
-def resumo_focos_ref(texto: str, filtrar_satelite: bool = True) -> dict:
+def resumo_focos_ref(texto: str) -> dict:
     """{dia ISO: {total, uf, bioma, municipio}} só do satélite de referência. Função pura.
 
-    O CSV diário traz `satelite`, `data_hora_gmt` e `municipio_id`; o anual de referência já vem
-    filtrado e traz `data_pas` e o nome do município, sem código — por isso `municipio` só existe
-    para o diário. O dia é o do horário GMT, como o INPE o publica."""
+    O CSV diário e o mensal trazem `satelite`, `data_hora_gmt` e `municipio_id`. O dia é o do horário
+    GMT, como o INPE o publica."""
     import csv
     import io
     saida = {}
     for linha in csv.DictReader(io.StringIO(texto or "")):
-        if filtrar_satelite and (linha.get("satelite") or "").strip() != SATELITE_REFERENCIA:
+        if (linha.get("satelite") or "").strip() != SATELITE_REFERENCIA:
             continue
-        dia = str(linha.get("data_hora_gmt") or linha.get("data_pas") or "").strip()[:10]
+        dia = str(linha.get("data_hora_gmt") or "").strip()[:10]
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", dia):
             continue
         r = saida.setdefault(dia, {"total": 0, "uf": {}, "bioma": {}, "municipio": {}})
@@ -838,11 +760,11 @@ def _ano_antes(dia: date) -> date:
         return dia.replace(year=dia.year - 1, day=28)
 
 
-def anos_a_completar(guardados: set, fim: date) -> list:
-    """Anos com algum dia faltando na janela de FOCOS_DIAS_SERIE, fora dos últimos FOCOS_DIAS_MUNICIPIO (que o
-    arquivo diário cobre). Função pura."""
+def meses_a_completar(guardados: set, fim: date) -> list:
+    """Meses (AAAAMM) com algum dia faltando na janela de FOCOS_DIAS_SERIE, fora dos últimos
+    FOCOS_DIAS_MUNICIPIO (que o arquivo diário cobre). Função pura."""
     faltam = {(fim - timedelta(days=i)) for i in range(FOCOS_DIAS_MUNICIPIO, FOCOS_DIAS_SERIE)}
-    return sorted({d.year for d in faltam if d.isoformat() not in guardados})
+    return sorted({d.strftime("%Y%m") for d in faltam if d.isoformat() not in guardados})
 
 
 def atualizar_focos_ref(anterior: dict, novos: dict, ultimo_dia: str) -> dict:
@@ -920,11 +842,13 @@ def parse_openaq_locais(dados, por_uf_capital: dict) -> dict:
     O OpenAQ agrega redes oficiais (CETESB, INEA, FEAM e outras) e a rede de origem tem de ser
     creditada junto — ela vem em `provider`/`owner` e é guardada. A seleção é pela coordenada mais
     próxima da capital, com teto de 30 km: monitor a 200 km da capital medindo outra cidade não é
-    "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Função pura."""
+    "medição na capital", e aceitar por proximidade folgada produziria crédito falso. Só monitor
+    de referência (`isMonitor`): sensor de baixo custo ou de teste não é medição da capital (16/11/2026:
+    o de Fortaleza era "211004_teste_modo_fixo"). Função pura."""
     itens = (dados or {}).get("results") if isinstance(dados, dict) else dados
     melhor = {}
     for loc in itens or []:
-        if not isinstance(loc, dict):
+        if not isinstance(loc, dict) or loc.get("isMonitor") is not True:
             continue
         coord = loc.get("coordinates") or {}
         lat, lon = coord.get("latitude"), coord.get("longitude")
@@ -1165,9 +1089,8 @@ def cidades_pm_diaria(locais_brutos: list, capitais: dict, extra: dict, agora_dt
     """{UF: {pm25: {...}, pm10: {...}, estacao, nome, rede_de_origem}} com a série de 31 dias de cada
     capital. Cada sensor falha sozinho e vira lacuna declarada, nunca zero. Usa a seleção de
     `parse_openaq_locais` (monitor a até 30 km da capital)."""
-    oficiais = [l for l in locais_brutos or [] if isinstance(l, dict) and l.get("isMonitor") is True]
-    escolhidos = parse_openaq_locais({"results": oficiais}, capitais)
-    por_id = {l.get("id"): l for l in oficiais}
+    escolhidos = parse_openaq_locais({"results": locais_brutos}, capitais)
+    por_id = {l.get("id"): l for l in locais_brutos or [] if isinstance(l, dict)}
     fim = agora_dt.date()
     de = fim - timedelta(days=OPENAQ_DIAS_JANELA)
     saida = {}
@@ -1799,19 +1722,7 @@ def coletar_fonte(chave: str):
         if len(serie) < 12:
             raise ValueError(f"série RONI curta demais ({len(serie)} pontos) — recusada")
         ultimo = serie[-1]
-        # 07/10/2026 (handover "Monitor de riscos, parte 1", item 3): a série do RONI deixa de ser
-        # cortada. Ela saía em `serie[-160:]`, os últimos 160 trimestres móveis — treze anos, a
-        # partir de 2013 —, e a página mostrava isso enquanto o subtítulo dizia "1950 a 2026".
-        # Quem precisa dos 1950 é o próprio gráfico: o leitor compara o ciclo em curso com os
-        # episódios anteriores, e os maiores da série estão fora da janela de treze anos.
-        #
-        # O custo foi medido na origem em 07/10/2026: 920 pontos, de DJF/1950 a JAS/2026, 49 KB de
-        # JSON. `data/sinais_risco.json` passa de 146 KB para cerca de 187 KB — longe do teto de
-        # 50 MB da trava de tamanho, e abaixo do piso de 1 MB a partir do qual a taxa de
-        # crescimento é conferida (`scripts/consolidar_noite.py`). O ONI segue cortado: ele é apoio
-        # técnico, vive na METODOLOGIA e não é figura de página.
-        #
-        # A página já lê o intervalo de anos do dado, então o título passa a dizer 1950 sozinho.
+        # Série inteira, desde 1950: o gráfico compara o ciclo em curso com os episódios anteriores.
         return {"serie": serie}, f"RONI, último trimestre {ultimo['trimestre']}/{ultimo['ano']}"
     if chave == "noaa_nino34_mensal":
         serie = parse_nino34_mensal(bruto)
@@ -1848,8 +1759,7 @@ def coletar_fonte(chave: str):
         nome = escolher_csv_focos(bruto)   # `bruto` é o ÍNDICE do diretório
         if not nome:
             raise ValueError("índice do INPE sem arquivo focos_diario_br_*.csv — recusado")
-        # 09/11/2026: `nome` já é o último dia completo (o do dia corrente enche ao longo do dia e
-        # em 29/09 nasceu só com cabeçalho); a queda "uma vez para o dia anterior" saiu com a causa.
+        # `nome` já é o último dia completo (o do dia corrente enche ao longo do dia).
         csv_focos = _buscar(fonte["endpoint"] + nome)
         focos = parse_focos_inpe(csv_focos)
         if not focos:
@@ -1858,9 +1768,7 @@ def coletar_fonte(chave: str):
     if chave == "inmet_avisos":
         dados = json.loads(bruto)
         registrar_consulta(chave, fonte["endpoint"], bruto)
-        # 24/09/2026: o agregado por UF continua (as páginas atuais o usam) E passa a sair o
-        # detalhe por aviso, com tipo, vigência e municípios — que já vinham na resposta e eram
-        # descartados na agregação.
+        # Agregado por UF (as páginas o usam) e detalhe por aviso (tipo, vigência, municípios).
         return ({"por_uf": parse_avisos_inmet(dados),
                  "detalhe": parse_avisos_inmet_detalhado(dados)},
                 "Avisos ativos no momento da consulta")
@@ -2295,12 +2203,9 @@ def gravar_secas_manchas() -> None:
     print("[aviso] secas: nenhum mapa publicado nos três últimos meses — arquivo anterior mantido.")
 def gravar_focos_referencia() -> None:
     """Lê o último dia COMPLETO de focos (o penúltimo arquivo do diretório: o do dia corrente
-    nasce vazio e enche ao longo do dia), completa os dias que faltam na janela de 30 e, se faltar
-    o mesmo dia do ano anterior, o arquivo anual de referência daquele ano — uma vez, porque o ano
-    inteiro fica na série. Cada resposta deixa URL, hora e hash no livro de consultas. Fonte que não
-    responde deixa o arquivo anterior, com a data dele."""
-    import io
-    import zipfile
+    nasce vazio e enche ao longo do dia), completa os dias que faltam na janela de 30 e, fora dela,
+    os meses com dia faltando pelo arquivo mensal. Cada resposta deixa URL, hora e hash no livro de
+    consultas. Fonte que não responde deixa o arquivo anterior, com a data dele."""
     destino = RAIZ / "data" / "focos_referencia.json"
     base = FONTES["inpe_fogo"]["endpoint"]
     try:
@@ -2321,20 +2226,16 @@ def gravar_focos_referencia() -> None:
                 texto = _buscar_registrado("inpe_fogo", f"{base}focos_diario_br_{d}.csv")
                 csv_ultimo = texto if iso == ultimo else csv_ultimo
                 novos.update(resumo_focos_ref(texto))
-        # 10/11/2026: só o dia de um ano antes buscava o arquivo anual; o dia que saía da janela de 30 sem ter
-        # sido lido nunca mais entrava, e a série do ciclo começava em 17/09. Todo ano com dia faltando na
-        # janela de 400, fora dos 30 que o diário cobre, busca o anual daquele ano — uma vez, e cada ano falha sozinho.
-        for ano in anos_a_completar(guardados | set(novos), fim):
-            url = FOCOS_ANUAL_REF.format(ano=ano)
+        # 10/11/2026: o dia que saía da janela de 30 sem ter sido lido nunca mais entrava. Todo mês com dia
+        # faltando na janela de 400, fora dos 30 que o diário cobre, busca o mensal daquele mês — uma vez, e
+        # cada mês falha sozinho.
+        for mes in meses_a_completar(guardados | set(novos), fim):
             try:
-                bruto = _buscar(url, binario=True)
-            except Exception as e:  # noqa: BLE001 — o ano fica com a lacuna, os outros seguem
-                print(f"[aviso] focos de referência: anual de {ano} indisponível ({type(e).__name__}).")
+                texto = _buscar_registrado("inpe_fogo", FOCOS_MENSAL.format(mes=mes))
+            except Exception as e:  # noqa: BLE001 — o mês fica com a lacuna, os outros seguem
+                print(f"[aviso] focos de referência: mensal de {mes} indisponível ({type(e).__name__}).")
                 continue
-            registrar_consulta("inpe_fogo", url, bruto)
-            z = zipfile.ZipFile(io.BytesIO(bruto))
-            anual = resumo_focos_ref(z.read(z.infolist()[0]).decode("utf-8", "replace"), filtrar_satelite=False)
-            novos.update({d: v for d, v in anual.items() if d not in novos and d not in guardados
+            novos.update({d: v for d, v in resumo_focos_ref(texto).items() if d not in novos and d not in guardados
                           and FOCOS_DIAS_MUNICIPIO <= (fim - date.fromisoformat(d)).days < FOCOS_DIAS_SERIE})
     except Exception as e:  # noqa: BLE001 — fonte externa: o arquivo anterior fica, com a data dele
         print(f"[aviso] focos de referência: {type(e).__name__}: {str(e)[:160]} — data/focos_referencia.json mantido.")
@@ -2677,11 +2578,11 @@ def autoteste() -> int:
     # ── Focos: anos com dia faltando na janela (10/11/2026) ─────
     _fim = date(2026, 11, 9)
     _cheio = {(_fim - timedelta(days=i)).isoformat() for i in range(FOCOS_DIAS_SERIE)}
-    checar("focos: série completa não busca anual nenhum", anos_a_completar(_cheio, _fim) == [])
-    checar("focos: buraco de julho busca só o anual de 2026",
-           anos_a_completar(_cheio - {"2026-07-15"}, _fim) == [2026])
+    checar("focos: série completa não busca mensal nenhum", meses_a_completar(_cheio, _fim) == [])
+    checar("focos: buraco de julho busca só o mensal de julho de 2026",
+           meses_a_completar(_cheio - {"2026-07-15"}, _fim) == ["202607"])
     checar("focos: buraco nos últimos 30 dias fica com o diário",
-           anos_a_completar(_cheio - {"2026-11-01"}, _fim) == [])
+           meses_a_completar(_cheio - {"2026-11-01"}, _fim) == [])
 
     # ── Histórico dos avisos do Inmet (10/11/2026) ─────
     _h = anotar_dia_de_avisos({}, {"RS": {"graus": {"Perigo": 2}}, "SC": {"graus": {"Perigo Potencial": 3}}}, "2026-11-10")
@@ -3026,13 +2927,15 @@ def autoteste() -> int:
              "SP": {"uf": "SP", "lat": -23.5505, "lon": -46.6333}}
     _locais = parse_openaq_locais({"results": [
         {"id": 1, "name": "Perto de Brasília", "coordinates": {"latitude": -15.80, "longitude": -47.89},
-         "provider": {"name": "Rede X"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede X"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 2, "name": "Mais perto ainda", "coordinates": {"latitude": -15.795, "longitude": -47.883},
-         "provider": {"name": "Rede Y"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede Y"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 3, "name": "Longe demais", "coordinates": {"latitude": -14.0, "longitude": -47.0},
-         "provider": {"name": "Rede Z"}, "sensors": [{"parameter": {"name": "pm25"}}]},
+         "provider": {"name": "Rede Z"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": True},
         {"id": 4, "name": "Sem PM2,5 em SP", "coordinates": {"latitude": -23.551, "longitude": -46.634},
-         "provider": {"name": "Rede W"}, "sensors": [{"parameter": {"name": "o3"}}]},
+         "provider": {"name": "Rede W"}, "sensors": [{"parameter": {"name": "o3"}}], "isMonitor": True},
+        {"id": 5, "name": "211004_teste_modo_fixo", "coordinates": {"latitude": -15.7939, "longitude": -47.8828},
+         "provider": {"name": "HabitatMap"}, "sensors": [{"parameter": {"name": "pm25"}}], "isMonitor": False},
     ]}, _caps)
     checar("OpenAQ: escolhe o monitor MAIS PRÓXIMO da capital",
            _locais["DF"]["id"] == 2 and _locais["DF"]["distancia_km"] < 1)
@@ -3041,6 +2944,8 @@ def autoteste() -> int:
     checar("OpenAQ: monitor além do teto de raio não representa a capital",
            all(v["id"] != 3 for v in _locais.values()))
     checar("OpenAQ: monitor sem PM2,5 não entra nesta figura", "SP" not in _locais)
+    checar("OpenAQ: sensor de baixo custo ou de teste não vira medição da capital, mesmo mais perto",
+           all(v["id"] != 5 for v in _locais.values()))
     checar("OpenAQ: rotula a natureza como medição, nunca como modelo",
            _locais["DF"]["natureza"] == NATUREZA_MEDICAO)
     checar("OpenAQ negativo: resposta vazia devolve vazio",
@@ -3153,10 +3058,10 @@ def autoteste() -> int:
            _r["2026-10-15"]["total"] == 2 and _r["2026-10-15"]["uf"] == {"PA": 1, "MA": 1}
            and _r["2026-10-15"]["bioma"] == {"Amazônia": 1, "Cerrado": 1} and _r["2026-10-14"]["total"] == 1)
     checar("Focos ref: município pelo código IBGE da fonte", _r["2026-10-15"]["municipio"] == {"1505650": 1, "2101400": 1})
-    _anual = resumo_focos_ref("id_bdq,data_pas,estado,municipio,bioma\n9,2025-10-15 16:52:00,PERNAMBUCO,SOLIDÃO,Caatinga\n",
-                              filtrar_satelite=False)
-    _f = atualizar_focos_ref({"serie": {"2024-01-01": {"total": 5, "uf": {}, "bioma": {}}}}, {**_r, **_anual}, "2026-10-15")
-    checar("Focos ref: mesmo dia do ano anterior vem do anual de referência",
+    _mensal = resumo_focos_ref("id,lat,lon,data_hora_gmt,satelite,municipio,estado,municipio_id,bioma\n"
+                               "9,-8,-40,2025-10-15 16:52:00,AQUA_M-T,SOLIDÃO,PERNAMBUCO,2614402,Caatinga\n")
+    _f = atualizar_focos_ref({"serie": {"2024-01-01": {"total": 5, "uf": {}, "bioma": {}}}}, {**_r, **_mensal}, "2026-10-15")
+    checar("Focos ref: mesmo dia do ano anterior vem do mensal daquele mês",
            _f["resumo"]["mesmo_dia_ano_anterior"] == {"dia": "2025-10-15", "total": 1})
     checar("Focos ref: mês e 30 dias somam só dias com arquivo e dizem quantos",
            _f["resumo"]["mes"] == {"total": 3, "dias_com_dado": 2}

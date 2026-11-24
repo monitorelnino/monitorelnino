@@ -70,8 +70,7 @@ PISTAS_IMPRENSA = RAIZ / "data" / "pistas_imprensa.json"
 LOG_BUSCAS = RAIZ / "data" / "log_buscas.json"
 
 
-# 09/10/2026 (lote 2.2, A1-20): teto de LEITURA, não de julgamento. Uma edição de diário com o ato
-# na página 60 tem de chegar inteira ao recorte; o juiz julga só o ato recortado (até 20.000).
+# Teto de LEITURA, não de julgamento: o juiz julga só o ato recortado (`juiz.TETO_DO_JULGAMENTO`).
 TETO_DA_LEITURA = 600000
 PAGINAS_DA_LEITURA = 300
 
@@ -108,14 +107,23 @@ def _ler_sharepoint_rs(url, timeout):
     r = _SESSAO_RS[0].get(f"{api}/GetFileById('{_IDS_RS[pasta][nome]}')/$value", timeout=timeout)
     r.raise_for_status()
     if nome.lower().endswith(".url"):
-        # 10/11/2026: na CREPDEC 07 o plano é um atalho para o PDF no sítio da Casa Militar (mesma fonte); o
-        # juiz lia as linhas do atalho (30 `texto_nao_extraivel`). Destino fora da origem declarada não se segue.
+        # Atalho `.url` segue só para a origem declarada.
         alvo = re.search(rb"(?im)^URL=(\S+)", r.content)
         destino = alvo.group(1).decode("latin-1") if alvo else ""
         if not any(o in destino for o in REPOSITORIOS["RS"].get("origens", ())):
             raise ValueError(f"atalho sem destino na origem declarada: {destino[:90]!r}")
-        from coletores_base import buscar
-        corpo = buscar(destino, timeout=timeout)
+        # 23/11/2026: o destino dos atalhos da CREPDEC 07 tem certificado de outro nome, e a verificação nunca se
+        # desliga; o destino se lê pelo mesmo leitor do resto (fonte, cópia da ponte, cópia pública do Internet
+        # Archive). Antes, a falha do destino virava `documento_inacessivel` para sempre (30 planos do RS).
+        try:
+            corpo = obter_documento(destino, timeout)
+        except Exception as e:
+            # Nome que não resolve, ou que resolve para um servidor que não é o do endereço (certificado de outro
+            # nome): o resultado depende do resolvedor (do Brasil, "domínio não encontrado"; do runner, outro
+            # servidor). Nos dois casos o site indicado não está mais no ar; a verificação nunca se desliga.
+            if not nome_resolve(destino) or "Hostname mismatch" in str(e) or "certificate is not valid for" in str(e):
+                raise DestinoForaDoAr(f"o endereço indicado pelo atalho não está mais disponível: {destino[:90]}") from e
+            raise
     else:
         corpo = r.content
     if not corpo.startswith(ASSINATURAS_DE_DOCUMENTO):
@@ -123,32 +131,70 @@ def _ler_sharepoint_rs(url, timeout):
     return corpo
 
 
-def buscar_texto(url, timeout=40, arquivada=None):
-    """Busca o conteúdo textual da URL. Tolerante a falha (retorna None, nunca lança).
-    Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
-    falha já usado no resto do pipeline (perda de recall, nunca invenção de texto)."""
+class DestinoForaDoAr(OSError):
+    """A fonte oficial indica um endereço que não está mais no ar (nome sem DNS, ou servidor de outro nome) (23/11/2026: os 30 atalhos da CREPDEC 07
+    do Prepara RS apontam para casamilitar-rs.com.br, sem DNS). Causa nomeada, não "documento inacessível"."""
+
+
+def nome_resolve(url) -> bool:
+    import socket
     try:
-        if arquivada:
-            raw, tipo = arquivada, ""
-        elif HOST_SHAREPOINT_RS in url:
-            raw, tipo = _ler_sharepoint_rs(url, timeout), ""
-        else:
-            # 15/11/2026: pela porta de rede do projeto (`coletores_base.buscar`), como todo coletor. O juiz
-            # abria a conexão por conta própria, com 20 s e sem a cadeia de certificados do `certifi`: em três
-            # rodadas, 90 de 153 falhas foram tempo esgotado e 15 foram cadeia TLS — documento oficial no ar
-            # saindo `documento_inacessivel` (1.397 pistas em domínio oficial paradas nisso).
-            raw, tipo = buscar(url, timeout=timeout, origem="julgamento de descobertas"), ""
-        texto = texto_do_documento(raw, url, tipo)
-        if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR:
-            texto = texto_por_ocr(raw) or texto
-        return texto
+        return bool(socket.getaddrinfo(__import__("urllib.parse").parse.urlparse(url).hostname or "", 443))
+    except (socket.gaierror, UnicodeError):
+        return False
+
+
+# A causa da última falha de leitura, por endereço, para a tentativa do juiz registrar (julgar_filas).
+CAUSAS_DE_FALHA: dict = {}
+
+
+def ler_documento(url, timeout=40, origem=None):
+    """Os bytes do documento pela porta que o entrega: a pasta do RS só abre com a sessão do link de
+    compartilhamento; o resto, pela porta de rede do projeto. Um leitor só para o juiz, a guarda da prova e o OCR
+    (18/11/2026: o OCR baixava a pasta do RS sem a sessão e 78 PDFs escaneados ficaram com `HTTPError`)."""
+    return _ler_sharepoint_rs(url, timeout) if HOST_SHAREPOINT_RS in url else buscar(url, timeout=timeout, origem=origem)
+
+
+def obter_documento(url, timeout=40, origem=None, buscar_fn=None):
+    """Os bytes do documento, por onde ele se lê: a fonte (pasta do RS com a sessão do link; o resto pela porta de
+    rede, que já lê a cópia da ponte) e, se a fonte caiu, recusou ou respondeu página no lugar do documento, a
+    cópia pública do Internet Archive (12/11/2026, editoria). Levanta o erro da fonte quando nada se lê.
+    O mesmo leitor para o juiz municipal, o juiz da saúde e a guarda da prova (18/11/2026: o juiz da saúde e a
+    guarda não liam a cópia pública, e 8 promoções ficaram fora do banco). `buscar_fn` é o transporte do
+    autoteste, que não vai à cópia pública."""
+    try:
+        raw = buscar_fn(url, timeout=timeout) if buscar_fn else ler_documento(url, timeout, origem)
+        if (url.lower().split("?")[0].endswith((".pdf", ".docx", ".doc", ".odt"))
+                and not raw.startswith(ASSINATURAS_DE_DOCUMENTO)):
+            raise ValueError(f"o endereço do documento respondeu página ({len(raw)} bytes), não o documento")
+        return raw
     except Exception as e:
-        # 24/10/2026: 170 de 481 PDFs do RS saíram `documento_inacessivel` sem a causa em lugar nenhum.
         print(f"  [buscar_texto] {type(e).__name__}: {str(e)[:140]} · {url[-70:]}", file=sys.stderr)
-        if arquivada or "archive.org" in url:
-            return None
-        raw, _ = copia_arquivada(url)   # 12/11/2026 (editoria): o site recusou ou caiu; lê-se a cópia pública antes de desistir
-        return buscar_texto(url, timeout, arquivada=raw) if raw else None
+        raw = None if buscar_fn or "archive.org" in url else copia_arquivada(url)[0]
+        if not raw:
+            raise
+        return raw
+
+
+def com_ocr(raw, texto):
+    """O texto do documento; PDF sem camada de texto vai ao OCR (o mesmo motor da preservação)."""
+    # 23/11: a régua é por página. Um cabeçalho digitado repetido em cada página de um PDF escaneado
+    # (São Valentim do Sul/RS: 245 letras em 5 páginas) passava da régua total e o OCR não rodava.
+    paginas = max(1, len(re.findall(rb"/Type\s*/Page[^s]", raw)))
+    if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR * paginas:
+        return texto_por_ocr(raw) or texto
+    return texto
+
+
+def buscar_texto(url, timeout=40):
+    """O texto do documento, ou None quando nada se lê (perda de recall, nunca invenção de texto)."""
+    try:
+        raw = obter_documento(url, timeout, "julgamento de descobertas")
+    except Exception as e:  # noqa: BLE001 — a causa já saiu no log
+        if isinstance(e, DestinoForaDoAr):
+            CAUSAS_DE_FALHA[url] = "destino_fora_do_ar"
+        return None
+    return com_ocr(raw, texto_do_documento(raw, url))
 
 
 LETRAS_SEM_OCR = 200      # abaixo disto o PDF é tratado como escaneado
@@ -174,13 +220,9 @@ def texto_por_ocr(raw):
 
 def texto_do_documento(raw, url, tipo=""):
     """Texto dos bytes já baixados. Função pura. Documento obtido que não dá texto devolve "" (o juiz o
-    recusa como `texto_nao_extraivel`); None fica só para "não obtido" (`documento_inacessivel`).
-    10/11/2026: os 170 PDFs do RS chegavam inteiros e saíam como inacessíveis, e o DOCX/DOC da pasta
-    era lido como bytes decodificados e julgado como se fosse texto (13 `ente_nao_confirmado`)."""
+    recusa como `texto_nao_extraivel`); None fica só para "não obtido" (`documento_inacessivel`)."""
     caminho = url.lower().split("?")[0]
-    # 22/09/2026 (§154): diário oficial é PDF — 41/41 pistas do Querido Diário e 24 da busca web eram
-    # invisíveis ao juiz, que só lia HTML. pdfplumber já é dependência (coletores de boletim); detecta
-    # por magic bytes (%PDF), não só pelo Content-Type/.pdf, porque servidores municipais mentem no tipo.
+    # PDF por magic bytes, não só pelo tipo declarado: servidores municipais mentem no tipo.
     if raw[:5] == b"%PDF-" or "application/pdf" in tipo or caminho.endswith(".pdf"):
         return (extrair_texto_pdf(raw) or "")[:TETO_DA_LEITURA]
     if raw[:4] == b"PK\x03\x04":   # DOCX/ODT: o texto é o XML do corpo; outro zip não é documento
@@ -193,8 +235,11 @@ def texto_do_documento(raw, url, tipo=""):
         xml = re.sub(r"</w:p>|</text:p>", " ", corpo.decode("utf-8", errors="ignore"))
         from html import unescape
         return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", "", xml))).strip()[:TETO_DA_LEITURA]
-    if raw[:8] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1":   # DOC binário (OLE): sem extrator no projeto
-        return ""
+    if raw[:8] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1":   # DOC binário (OLE): o texto está na tabela de peças
+        try:
+            return re.sub(r"\s+", " ", texto_de_doc_binario(raw)).strip()[:TETO_DA_LEITURA]
+        except Exception:  # noqa: BLE001 — arquivo truncado ou que não é do Word: obtido e sem texto
+            return ""
     try:
         html = raw.decode("utf-8")
     except UnicodeDecodeError:
@@ -202,9 +247,61 @@ def texto_do_documento(raw, url, tipo=""):
     texto = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S | re.I)
     texto = re.sub(r"<[^>]+>", " ", texto)
     texto = re.sub(r"\s+", " ", texto).strip()
-    # 09/10/2026 (lote 2.2, A1-20): o corte de 20.000 saiu daqui. Ele vinha ANTES do recorte do
-    # ato, e o ato além do corte nunca era lido. O juiz corta o que julga (`juiz.TETO_DO_JULGAMENTO`).
     return texto[:TETO_DA_LEITURA]
+
+
+def texto_de_doc_binario(raw):
+    """Texto de um .doc do Word 97–2003 (contêiner OLE), sem dependência: lê as correntes `WordDocument` e
+    `0Table`/`1Table` e junta as peças da tabela de peças (CLX), cada uma em cp1252 ou UTF-16. Função pura."""
+    import struct
+    u16, u32 = (lambda b, o: struct.unpack_from("<H", b, o)[0]), (lambda b, o: struct.unpack_from("<I", b, o)[0])
+    ss, mss, corte = 1 << u16(raw, 30), 1 << u16(raw, 32), u32(raw, 56)
+    setor = lambda i: raw[(i + 1) * ss:(i + 2) * ss]
+
+    def cadeia(inicio, tabela, limite=1 << 20):
+        while inicio < 0xFFFFFFFA and limite:
+            yield inicio
+            inicio, limite = tabela[inicio], limite - 1
+    difat, prox = list(struct.unpack_from("<109I", raw, 76)), u32(raw, 68)
+    while prox < 0xFFFFFFFA and len(difat) < 1 << 16:
+        s = setor(prox)
+        difat += struct.unpack_from(f"<{ss // 4 - 1}I", s, 0)
+        prox = u32(s, ss - 4)
+    fat = [x for i in difat if i < 0xFFFFFFFA for x in struct.unpack(f"<{ss // 4}I", setor(i).ljust(ss, b"\xff"))]
+    ler = lambda inicio: b"".join(setor(i) for i in cadeia(inicio, fat))
+    diretorio = ler(u32(raw, 48))
+    # Só as correntes da raiz: o objeto do Word embutido no documento traz o seu próprio `WordDocument` e `1Table`
+    # (Chuvisca/RS, 23/11), e a lista plana do diretório misturava o texto de um com a tabela do outro.
+    entradas, fila, vistos = {}, [u32(diretorio, 76)], set()
+    while fila:
+        if (i := fila.pop()) < 0xFFFFFFFA and i not in vistos and (o := i * 128) + 128 <= len(diretorio):
+            vistos.add(i)
+            entradas[diretorio[o:o + max(u16(diretorio, o + 64) - 2, 0)].decode("utf-16-le", "ignore")] = (
+                u32(diretorio, o + 116), u32(diretorio, o + 120))
+            fila += [u32(diretorio, o + 68), u32(diretorio, o + 72)]
+    minifat = [x for x in struct.unpack(f"<{len(m) // 4}I", m)] if (m := ler(u32(raw, 60))) else []
+    mini = ler(u32(diretorio, 116))
+
+    def corrente(nome):
+        inicio, tamanho = entradas[nome]
+        if tamanho >= corte:
+            return ler(inicio)[:tamanho]
+        return b"".join(mini[i * mss:(i + 1) * mss] for i in cadeia(inicio, minifat))[:tamanho]
+    doc = corrente("WordDocument")
+    tabela = corrente("1Table" if u16(doc, 10) & 0x0200 else "0Table")
+    clx, o = tabela[u32(doc, 0x01A2):u32(doc, 0x01A2) + u32(doc, 0x01A6)], 0
+    while clx[o] == 1:                       # Prc: propriedades, não texto
+        o += 3 + u16(clx, o + 1)
+    n = (u32(clx, o + 1) - 4) // 12          # PlcPcd: n+1 posições de caractere e n peças de 8 bytes
+    cps, pecas, partes = o + 5, o + 5 + 4 * (n + 1), []
+    for i in range(n):
+        tam, fc = u32(clx, cps + 4 * i + 4) - u32(clx, cps + 4 * i), u32(clx, pecas + 8 * i + 2)
+        if fc & 0x40000000:
+            ini = (fc & 0x3FFFFFFF) // 2
+            partes.append(doc[ini:ini + tam].decode("cp1252", "ignore"))
+        else:
+            partes.append(doc[fc:fc + 2 * tam].decode("utf-16-le", "ignore"))
+    return re.sub(r"[\x00-\x1f]", " ", "".join(partes))
 
 
 def extrair_texto_pdf(raw):
@@ -233,8 +330,6 @@ def extrair_numero_e_data(texto):
     número do ato ("DECRETO Nº 14.665 DE 21 DE AGOSTO DE 2026") é a data do ato; a primeira data do
     texto costuma ser a da EDIÇÃO do diário ("DATA 22/08/2026"), que vem antes. Prefere a janela
     imediata após o número; cai para a busca global só se ali não houver data."""
-    # 09/10/2026 (A1-21): a regra da janela mora em `classificador_natureza.data_do_ato`, que o
-    # juiz tambem usa. Duas copias da mesma regua discordaram por dezessete dias.
     from classificador_natureza import data_do_ato
     m_num = RE_NUMERO_ATO.search(texto)
     return (m_num.group(0).strip() if m_num else None), data_do_ato(texto)
@@ -246,9 +341,7 @@ def eh_estadual(rotulo):
     return rotulo.startswith("A-lac") or rotulo.startswith("C-estado-amplo")
 
 
-# Cadeia canônica de derivados (§163): a fonte de verdade é scripts/verificar_derivados.sh, lida
-# por `cadeia_do_portao12()`. 13/10/2026: a cópia em constante saiu — ela divergia a cada gerador
-# novo e um self-test existia só para cobrar a cópia.
+# Cadeia canônica de derivados (§163): a fonte de verdade é scripts/verificar_derivados.sh.
 
 
 def cadeia_do_portao12():
@@ -334,8 +427,7 @@ def backup_dados():
     backup["recalcular_mare.py"] = RECALCULAR_PY.read_bytes()
     backup["index.html"] = INDEX_HTML.read_bytes()  # gaugeNum é gravado aqui
     backup["defesa-civil.html"] = MAPAS_HTML.read_bytes()  # AREAS é gravado aqui
-    # 22/09/2026 (§158): rodar_portoes() agora regenera derivados antes de checar — o backup passa a cobrir
-    # TUDO que essa sincronização pode tocar, para a reversão continuar sendo reversão de verdade.
+    # rodar_portoes() regenera derivados: o backup cobre tudo o que a sincronização toca (§158).
     for d in DIRETORIOS_SINCRONIZADOS:
         base = RAIZ / d
         if base.exists():
@@ -486,19 +578,13 @@ def aplicar_estadual(uf, texto, numero, data, url, hoje, hash_evidencia=None):
 
     alvo["status"] = status_novo
     alvo["doc"] = f"{texto[:200].strip()} (ato {numero}, {data})" if numero else texto[:200].strip()
-    # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta no
-    # degrau da leitura, nos DOIS índices, com a marca visível na ficha. No estadual, "sem ato" é
-    # exatamente o caso em que não há número de ato a citar — e a ficha do estado passa a dizê-lo,
-    # em vez de mostrar o instrumento como se o ato tivesse sido localizado.
+    # Editoria, 03/10/2026: plano sem ato de aprovação localizado conta no degrau da leitura, com a marca na ficha.
     if numero:
         alvo.pop("sem_ato_de_aprovacao", None)
     else:
         alvo["sem_ato_de_aprovacao"] = True
     alvo["data"] = data
-    # 10/10/2026 (item 2b): PROVENIÊNCIA NA ORIGEM. O juiz lia o documento num endereço e o
-    # guardava só dentro da justificativa em prosa — e o cartão do estado ficava sem link (0 de 54
-    # instrumentos com `url` em 09/10). Quem julga grava o endereço que leu, a data e o hash, no
-    # campo que o cartão lê e no instrumento operacional que o espelha.
+    # Proveniência na origem: quem julga grava endereço, data e hash no campo que o cartão lê.
     if url:
         try:
             consultado = datetime.datetime.strptime(hoje, "%d/%m/%Y").date().isoformat()
@@ -634,9 +720,7 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
     if not hash_evidencia:
         return False, (f"{nome}/{uf}: documento não pôde ser preservado — registro pontuável "
                        f"exige evidência guardada (portão 26)")
-    # 08/11/2026: UM construtor de registro (`registro_do_veredito`), o mesmo do aplicador do juiz. Este
-    # caminho montava o seu à mão e escrevia "(codebook …)" em `fonte`, que o cartão exibe — a frase
-    # pública e a proveniência estruturada nascem num lugar só. Aqui o ato foi lido: a ementa é dele.
+    # Um construtor de registro, o mesmo do aplicador do juiz; aqui o ato foi lido: a ementa é dele.
     registro = registro_do_veredito({**(veredito or {}), "municipio": nome, "uf": uf, "categoria": categoria,
                                      "data": data, "url": url, "hash_evidencia": hash_evidencia},
                                     lat, lon, canal, fonte_base, hoje)
@@ -653,10 +737,9 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
     return True, "aplicado"
 
 
-# 28/09/2026: a decisão do aplicador vira execução do log v2 pela porta canônica.
-# O vocabulário é fechado, e o mapeamento diz o que cada saída significa de fato:
+# A decisão do aplicador vira execução do log v2 pela porta canônica; vocabulário fechado:
 #   APLICADA    entrou no banco                     -> registro
-#   ABSTENCAO   não aplica; continua pista, motivo gravado (até 09/10/2026 chamada FILA_HUMANA) -> pista
+#   ABSTENCAO   não aplica; continua pista, motivo gravado -> pista
 #   DESCARTADA  documento lido, não era plano        -> consultado sem achado
 #   REVERTIDA   aplicada e desfeita pelos portões    -> erro
 # "nada localizado" NUNCA entra aqui: aquele valor é da bateria municipal completa (§2.1), e usá-lo
@@ -753,9 +836,7 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
     if any((e["nome"], e["uf"], e["data"], e["causa"]) == chave for e in atos["eventos"]):
         return False, f"{municipio['nome']}/{uf} já tem esse evento registrado (mesma data e causa) — não duplicar"
 
-    # 08/11/2026: `fonte` sai no PDF do município ("Fonte: …") — é texto público, a mesma frase que os
-    # outros caminhos gravam (`canal_e_fonte` + data da leitura); dano não localizado é ausência (null),
-    # como nos demais eventos, não uma frase sobre o processo.
+    # `fonte` é texto público (PDF do município): a mesma frase dos outros caminhos; dano não localizado é null.
     _, fonte_base = canal_e_fonte(url)
     atos["eventos"].append({
         "nome": municipio["nome"], "uf": uf, "data": data, "causa": causa,
@@ -769,25 +850,17 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
     return True, "aplicado"
 
 
-# =============================================================================================
-# 09/10/2026 (lote 2.6, A1-08) — a fila de pendentes deixa de girar em falso
-# =============================================================================================
-# 2.876 pistas do Google News ficavam em `pendente_confirmacao_documento` para sempre: o link do
-# agregador não se resolvia, `processar_pista` devolvia "fonte não reconhecida", o status voltava o
-# mesmo, e o teto de 150 da noite era gasto nas MESMAS 150 primeiras da lista. Antes de julgar, cada
-# pendente é encaminhada:
+# Encaminhamento das pendentes, antes de julgar:
 #   - link de agregador: resolve-se (URL embutida, busca no veículo pelo título) só quando o veículo
-#     que o feed declara é oficial ou falta — veículo não oficial tem o mesmo destino com ou sem a
-#     URL final (13/10/2026: a rodada gastava as 200 resoluções em notícia de jornal); sem resolver
-#     em duas noites, fecha com o veículo e o título no motivo (reabre se a URL surgir por outra rota);
+#     que o feed declara é oficial ou falta; sem resolver em duas noites, fecha com o veículo e o
+#     título no motivo (reabre se a URL surgir por outra rota);
 #   - fonte que não é oficial: sai daqui para a fila do juiz (`julgar_filas`), que recusa por
 #     documento primário e faz a busca dirigida do ato — é lá que notícia vira documento;
 #   - alvo `resposta/…` sem fonte oficial: vai para a conferência da base oficial de resposta, como o
 #     decreto (não ocupa a fila de planos).
 # Só a pista de fonte oficial chega a `processar_pista`. A ordem é a da notícia mais nova.
 NOITES_PARA_FECHAR_AGREGADOR = 2
-# Cada resolução é uma consulta ao metabuscador (~8 s com o ritmo). 200 cabem no teto de 90 min do
-# elo junto com o juiz; as 3.415 pendentes de 09/10 passam todas em ~17 noites (as mais novas antes).
+# Cada resolução é uma consulta ao metabuscador (~8 s): 200 cabem no teto do elo junto com o juiz.
 RESOLUCOES_POR_RODADA = 200
 STATUS_PISTA_DO_JUIZ = "pista — promover a registro exige documento primário"
 STATUS_RESPOSTA_SEM_FONTE = ("pista de decreto — vai para a conferência da base oficial de resposta; "
@@ -883,7 +956,7 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     texto = buscar(pista["url"])
     if texto is None:
         return {"decisao": "ABSTENCAO", "motivo": "falha ao buscar o documento (tentar de novo na próxima execução)"}
-    # Este caminho não tem `trecho` para recortar: lê o que lia antes do lote 2.2 (A1-20).
+    # Este caminho não tem `trecho` para recortar.
     texto = texto[:20000]
 
     numero, data = extrair_numero_e_data(texto)
@@ -895,10 +968,8 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
     decisao, motivo = classificar(texto)
 
     if decisao == "RESPOSTA":
-        # 31/08/2026 (pedido de Patricia): ato de resposta não é mais descartado —
-        # entra no mapa de transparência (nunca no índice). Citação incompleta NÃO
-        # bloqueia aqui como bloqueia para ex-ante: o mapa registra "número não
-        # localizado" com honestidade, em vez de exigir a mesma barra do que pontua.
+        # Ato de resposta entra no mapa de transparência (nunca no índice); citação incompleta
+        # não bloqueia: o mapa registra "número não localizado".
         backup = backup_dados()
         aplicado, motivo_ap = aplicar_resposta(uf, texto, numero, data, pista["url"], hoje)
         if not aplicado:
@@ -914,9 +985,7 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
         motivo_completo = motivo if decisao == "DUVIDA" else f"citação incompleta (número={numero}, data={data})"
         return {"decisao": "ABSTENCAO", "motivo": motivo_completo}
 
-    # EX_ANTE + citação completa — aplicar, com backup real para rollback se os
-    # portões falharem depois (achado no teste de ponta a ponta de 31/08/2026:
-    # a primeira versão dizia "revertida" sem de fato desfazer nada em disco).
+    # EX_ANTE + citação completa — aplicar, com backup real para rollback se os portões falharem.
     backup = backup_dados()
     if eh_estadual(rotulo):
         aplicado, motivo_ap, status, antecip = aplicar_estadual(uf, texto, numero, data, pista["url"], hoje,
@@ -925,12 +994,8 @@ def processar_pista(pista, hoje, buscar=buscar_texto):
         nome_mun = pista["alvo"].split("/", 1)[1].rsplit("/", 1)[0] if rotulo.startswith("D-") else None
         if nome_mun is None:
             return {"decisao": "ABSTENCAO", "motivo": "não foi possível determinar o nome do município a partir do alvo"}
-        # 27/09/2026 (PR 2 do juiz automático): o juiz de `juiz.py` entra aqui como barreira
-        # ADICIONAL, nunca como substituto. Ele só pode recusar o que este caminho já aprovou — as
-        # etapas que ele acrescenta (identidade do ente, autoridade do Executivo, família de risco
-        # do ciclo) são as que faltavam, e todas as três derrubam falso positivo. A decisão de
-        # aplicar, o backup, os portões e o rollback continuam sendo deste arquivo, que os tem
-        # testados desde 31/08/2026.
+        # O juiz é barreira ADICIONAL: só recusa o que este caminho já aprovou; aplicar,
+        # backup, portões e rollback seguem deste arquivo.
         veredito = juiz.julgar(texto, nome=nome_mun, uf=uf, url=pista["url"])
         if not veredito["promove"]:
             return {"decisao": "ABSTENCAO",
@@ -1010,9 +1075,7 @@ def self_test():
         assert r5["decisao"] == "ABSTENCAO" and "citação incompleta" in r5["motivo"]
         print("✓ self-test OK — EX_ANTE confiante mas sem número/data vai para fila (citação incompleta)")
 
-        # 09/10/2026 (A1-15): a categoria do registro vem do VEREDITO, nunca fixa em "plano".
-        # Sem veredito com categoria, nada entra no banco — e a trava e pura: ela para antes de
-        # tocar disco, no primeiro `if` da funcao.
+        # A categoria vem do VEREDITO; sem ela nada entra no banco (trava pura, antes do disco).
         ok_sem, motivo_sem = aplicar_municipal("Taió", "SC", "texto", "12", "01/02/2026",
                                                "https://taio.sc.gov.br/a.pdf", "01/02/2026", {})
         assert ok_sem is False and "sem categoria" in motivo_sem, motivo_sem
@@ -1028,9 +1091,7 @@ def self_test():
     assert do_portao and do_portao[-1] == ("scripts/gerar_manifesto.py",), do_portao
     print(f"✓ self-test OK — cadeia de derivados lida do portão 12 ({len(do_portao)} passos)")
 
-    # 23/10/2026: arquivo da pasta do RS lê-se pela REST com a sessão do link, nunca pelo endereço cru.
-    # 10/11/2026: pelo UniqueId da listagem da pasta (o caminho longo estoura o maxUrlLength); resposta que
-    # não é documento é erro; o atalho `.url` segue só para a origem declarada.
+    # Pasta do RS: pela REST, pelo UniqueId da listagem; resposta que não é documento é erro.
     class _R:
         def __init__(self, content=b"", dados=None):
             self.content, self._dados = content, dados
@@ -1048,13 +1109,15 @@ def self_test():
     pasta = "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/CREPDEC%2007/"
     import coletores_base as _cb
     _buscar_real, _vistos = _cb.buscar, []
-    _cb.buscar = lambda u, timeout=40: (_vistos.append(u), b"%PDF-destino")[1]
+    _cb.buscar = lambda u, timeout=40, origem=None: (_vistos.append(u), b"%PDF-destino")[1]
+    _buscar_deste = globals()["buscar"]
+    globals()["buscar"] = _cb.buscar   # o destino do atalho passa por `obter_documento`, que usa o `buscar` deste módulo
     def _ler(nome, corpo):
         _SESSAO_RS[:] = [_S(corpo)]
         _IDS_RS.clear()
         try:
             return _ler_sharepoint_rs(pasta + nome, 5)
-        except (ValueError, FileNotFoundError) as e:
+        except (ValueError, FileNotFoundError, DestinoForaDoAr) as e:
             return type(e).__name__
     try:
         assert _ler("PLANCON%20-%20D'%C3%81VILA.pdf", b"%PDF-1.7") == b"%PDF-1.7"
@@ -1068,8 +1131,26 @@ def self_test():
         assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == b"%PDF-destino"
         assert _ler("PLANO%20Aratiba.url", atalho("https://outro.com/p.pdf")) == "ValueError"
         assert _vistos == ["https://casamilitar-rs.com.br/pdfs/9.pdf"], _vistos
+        # 23/11: destino que não existe (DNS) é causa nomeada; o que resolve e falha segue o erro de antes.
+        _copia, _resolve = globals()["copia_arquivada"], globals()["nome_resolve"]
+        def _falha(u, timeout=40, origem=None): raise OSError("sem resposta")
+        try:
+            globals().update(buscar=_falha, copia_arquivada=lambda u: (None, None), nome_resolve=lambda u: False)
+            assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == "DestinoForaDoAr"
+            def _cert(u, timeout=40, origem=None): raise OSError("certificate verify failed: Hostname mismatch, certificate is not valid for 'x'")
+            globals().update(buscar=_cert, nome_resolve=lambda u: True)
+            assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == "DestinoForaDoAr"
+            globals().update(buscar=_falha)
+            try:
+                _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf"))
+                assert False, "o erro da fonte que resolve deveria subir"
+            except OSError as e:
+                assert not isinstance(e, DestinoForaDoAr)
+        finally:
+            globals().update(buscar=_cb.buscar, copia_arquivada=_copia, nome_resolve=_resolve)
     finally:
         _cb.buscar = _buscar_real
+        globals()["buscar"] = _buscar_deste
         _SESSAO_RS.clear(); _IDS_RS.clear()
     print("✓ self-test OK — arquivo do RS lido por UniqueId; resposta que não é documento é erro; atalho .url "
           "segue só para a origem declarada")
@@ -1081,7 +1162,47 @@ def self_test():
         z.writestr("word/document.xml", "<w:p><w:t>PLANO DE CONTING&#202;NCIA</w:t></w:p><w:p><w:t>Itati</w:t></w:p>")
     assert texto_do_documento(_b.getvalue(), "https://x/p.docx") == "PLANO DE CONTINGÊNCIA Itati"
     assert texto_do_documento(b"%PDF-1.4 sem texto", "https://x/p.pdf") == ""
+    # Régua do OCR por página: cabeçalho repetido em PDF escaneado não dispensa o OCR.
+    _ocr = globals()["texto_por_ocr"]
+    try:
+        globals()["texto_por_ocr"] = lambda raw: "TEXTO DO OCR"
+        _cinco = b"%PDF-1.4 " + b"/Type /Page " * 5
+        assert com_ocr(_cinco, "MUNICÍPIO DE SÃO VALENTIM DO SUL " * 9) == "TEXTO DO OCR"
+        assert com_ocr(b"%PDF-1.4 /Type /Page ", "PLANO DE CONTINGÊNCIA " * 20).startswith("PLANO")
+    finally:
+        globals()["texto_por_ocr"] = _ocr
     assert texto_do_documento(b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1" + b"x" * 900, "https://x/p.doc") == ""
+    # 23/11: o .doc do Word 97–2003 passou a ser lido (6 planos do Prepara RS vinham vazios); o que não é do Word segue "".
+    import base64 as _b64, zlib as _zl
+    _doc = _zl.decompress(_b64.b64decode(
+        "eNrtmd9Pm1UYx5/ztpS2m6WUighVOlYB2ej4MRDmVCiMQSfQjQnqfmChxXWuLUIXMfHCaEy8mAnGC29MjAleaQzqH6A3emfmzS52"
+        "N+OFMTHLNHqxi1G/53nPy7qOyduymI31IR/O+56+55znPOc5533ec36+WHnls69rf6E8eZostJZ1kC0nTwC3cYMLTeWtZbNZIztb"
+        "kvtKbqhUjqEV41cG5JiXAztwACfYAXaCh4ALVKhxr1RpSe5POUZp/GXIT4cohXSB3qRCpBoek1ufmTJrJp8zK6X2i2/fWL+Lmf/y"
+        "XSDnvwdUAS94mH2C6BFQAx4FtaAO+MBj4HFQD/xgF2hQOgSQPqGum5A2gydBC9gD9oJWEAT7QBtoBx2gE+wHXaAbPAV6QC84wO8z"
+        "ooPgGfAseA70gX4QAgNgEBwCQ+AwGAYjIAyOgOfBKBgD4yACjoJjYAIcBy+ASTAFXgQvgZfBCXASnAKnVR9fuQfWTgENLE7dh2wO"
+        "jX3ie901huT4jSZmF9KL6bmMfyq9EGsdTL92PhlPZdgnRidk3mB6lj1BXgdxw78He+jv3m9e39wXhR5GFC0eeJwTtZxgj9QF9nb/"
+        "mdXY7jaMVhqrWpKidE75cXuAWgKiPyC9KNRC42ELHQUD4RpKDjusiyAStlJq2GrPgNPhMorit+nhXut/6jJEa/WCNDHE82eY4mgz"
+        "Rgmsq6/yzKmgqpVr5F1ZIltAYHaMh21o2IaGfRQJl5PekA9+HHLLevbz/AtB/xhWZT/8K05LWKPlzHOTJ+YVAjVi3q1c4Nm0zy2E"
+        "R8hZZYWvJmiRn9UwR62o2w5/b0C9DaKP9RuAdvN4IoH6U6yfB7UtsX47oZ+HDdJtF7Ko7P8pu2jkHnYglSvFCMrFWCd5V8Wl9JYm"
+        "+bmQmOQVIgL7x2lufRwy+IujZG6PnFg99L4QW8YByziggReWcaJOB1TwspV93D9ehNhr5TLVbddXLnndY6f1qNWnUs2dkxHRVzZ2"
+        "hcPVy8KMmx2HmZJQdhFKjyF9A6l8dcruSON1oR4zfjyBgUzSDEpKZ+xsNNd6PwyXUA6ckBpXbl5GOsAMNF1gg+uD7Ef7ca5rzkSf"
+        "jtjMaTfGAUT6ltr9cK8wFk2ZJ5fWXpN1DbGrxFFK6rAoLSZt5C6+v0Y9uTYcKaJnej239SuwLERR/Zru2kq/RjlN84srTee5b/IZ"
+        "YyRht67i+2jUnt/bECaesH+A98IPcPYzYoPFXIUQdXwneKq+y4rcmmsUbbJwFMAzuiRbeA223f0689Yzv8lBKliTt7ei5FpWOpO2"
+        "UVxBV9779K/r42fcX3xopz1N316Wmr2l4luh4kOHigOdKr7boeI2GevGVLw7r4zx+w09dtVUL/ty2jNzvZH88bkQo34HLHvN812u"
+        "AdWbzEUD0fS5aKpnA7M6rNW0z3Xz3rfpd0IFT0Ohrm051/nyPv+/qubpVRNLiXzGW4h7abqVXSpd33nCfYdl6+5bW2RcmYSJZnLK"
+        "Nmr6V01JtqfU5vnf/yUaXS4ZvyQleaAlgg+SqAq2ZzmQ14Nx+V3txxd2RoX9B3AXpd/oV/wa5KikJNtC1O5FSR5IEUac/0/JFttc"
+        "nF6yBCgaWN/mlBvQopUOtlEftiRDEY3qV98J+ld/7N+1mrI2gN3LKWsAdOL35g5ytZn//pU52qWfLn0SrHN/9DG+f/de/0qeb5Tl"
+        "5Z1U5zQi53zf+Na9U35Jto/czfNf6Sf5Z0gblZEf9301xgI4wFvO8zhRm6GzVPj5j8Z+aTVOA0zK2fUFeBwRWLz4WY3WZbuWAtrX"
+        "6OZOSTu24aPoebE6uFT7hZz/Sl0vlpParJ1A1JnkTX859vJMJ/ekxjgdupM0o33jzNhs+7vBl+p6ituK4ew1zfGvPJBI8YmQya/3"
+        "IvovT6+MfbOy21ouzB49RbQ/DTJ0b5z//wuch+BC"))
+    assert texto_do_documento(_doc, "https://x/p.doc") == "Plano curto de Itati: ação.", texto_do_documento(_doc, "https://x/p.doc")
+    # Corrente homônima fora da raiz (objeto embutido) não entra na leitura.
+    import struct as _st
+    _dir = (_st.unpack_from("<I", _doc, 48)[0] + 1) * 512
+    _livre = next(o for o in range(_dir, _dir + 512 * 8, 128) if _st.unpack_from("<H", _doc, o + 64)[0] == 0)
+    _falso = "1Table".encode("utf-16-le").ljust(64, b"\0") + _st.pack("<HBB3I", 14, 2, 1, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF)
+    _doc2 = _doc[:_livre] + _falso.ljust(116, b"\0") + _st.pack("<III", 0, 10, 0) + _doc[_livre + 128:]
+    assert texto_do_documento(_doc2, "https://x/p.doc") == "Plano curto de Itati: ação.", texto_do_documento(_doc2, "https://x/p.doc")
     assert canal_e_fonte("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/"
                          "Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/"
                          "3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/"
@@ -1090,9 +1211,7 @@ def self_test():
     assert canal_e_fonte("https://x.sharepoint.com/a.pdf")[0] == "imprensa", "SharePoint qualquer não é o repositório"
     print("✓ self-test OK — documento sem texto não é inacessível; DOCX lido; pasta do RS é órgão estadual")
 
-    # 28/09/2026: o log do aplicador. As 150 linhas da primeira noite saíram sem `strings` e sem
-    # `executor` e reprovaram `verificar_consistencia.py`; estas travas provam o esquema e o
-    # vocabulário sem escrever nada.
+    # Log do aplicador: esquema e vocabulário provados sem escrever nada.
     assert municipio_uf_do_alvo("D-municipio-prioritario/Camaçari/BA") == ("Camaçari", "BA")
     assert municipio_uf_do_alvo("A/B/Sao Paulo/SP") == ("Sao Paulo", "SP")
     assert municipio_uf_do_alvo("sem barra") == (None, None), "alvo sem UF não inventa território"
@@ -1111,7 +1230,7 @@ def self_test():
     assert "gravar_em(LOG_BUSCAS" not in _fonte, (
         "duas portas gravando o mesmo log é como se perde registro (§269)")
 
-    # 09/10/2026 (lote 2.6, A1-08): encaminhamento das pendentes, sem rede.
+    # Encaminhamento das pendentes, sem rede.
     gn = {"url": "https://news.google.com/rss/articles/CBMiOPAQUE", "alvo": "B-capital/TO",
           "veiculo_dominio": "https://www.palmas.to.gov.br", "titulo": "Palmas aprova plano"}
     p1 = dict(gn)
@@ -1158,6 +1277,10 @@ def self_test():
     with _mk.patch(f"{__name__}.buscar", side_effect=OSError("403")), \
          _mk.patch(f"{__name__}.copia_arquivada", return_value=(None, None)):
         assert buscar_texto("https://x.ms.gov.br/p.html") is None
+    # 17/11/2026: endereço de PDF que responde página (Rio de Janeiro/RJ) não é o documento: vale a cópia pública
+    with _mk.patch(f"{__name__}.buscar", return_value=b"<html><body>acesso</body></html>"), \
+         _mk.patch(f"{__name__}.copia_arquivada", return_value=(None, None)) as _arq:
+        assert buscar_texto("https://x.prefeitura.rio/p.pdf") is None and _arq.called, "página tomada por PDF"
 
     # 13/11/2026 (J21): a estrutura criada no ciclo sobe, com prova; a que já está no degrau não é regravada
     with tempfile.TemporaryDirectory() as _t:
@@ -1176,11 +1299,7 @@ def self_test():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--self-test", action="store_true")
-    # 28/09/2026 (item 1 do bloco de frescor): teto de pistas por execução. Sem ele, a fila de
-    # 1.495 pendentes era processada inteira, cada uma com busca de documento na rede, e o job de
-    # 90 min foi CANCELADO no meio — o `_coletor.yml` só commita ao final, então a noite inteira de
-    # trabalho foi perdida sem deixar rastro. Teto baixo que termina e commita vale mais que fila
-    # inteira que não chega ao fim.
+    # Teto por execução: fila que termina e commita vale mais que fila inteira cancelada no meio.
     ap.add_argument("--limite", type=int, default=None,
                     help="processa no máximo N pistas pendentes nesta execução")
     args = ap.parse_args()

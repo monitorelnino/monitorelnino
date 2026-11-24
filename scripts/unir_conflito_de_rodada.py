@@ -67,19 +67,10 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 LOGS_QUE_SO_CRESCEM = {
     "data/log_buscas.json": "execucoes",
     "data/historico_mudancas.json": "eventos",
-    # 05/10/2026: o painel de saúde acrescenta uma linha por execução e nunca reescreve as
-    # anteriores — é a mesma forma, e o portão `verificar_escritores.py` cobrou a classe.
     "data/saude_pipeline.json": "execucoes",
-    # 05/10/2026: o painel da noite acrescenta um registro por elo por noite e nunca reescreve os
-    # anteriores. Ele foi RECUSADO na triagem das 18:58 e levou a rodada junto -- o elo coletou e
-    # perdeu o commit, que e exatamente a perda que a regra 3 da corrente existe para evitar.
     "data/painel_da_noite.json": "noites",
-    # 29/10/2026: log de recusas, uma linha por recusa, e a MESMA pista recusada de novo é outra
-    # linha. Tratado como fila (dedup por chave) cada união colapsava as repetidas: 39.872 → 33.335
-    # entradas na `main` depois do #1314. Multiconjunto pela base não perde nenhuma.
-    "data/pistas_rejeitadas.json": "rejeitadas",
-    # 16/11/2026: uma decisão por promoção automática, nunca reescrita; sem classe, a união recusava
-    # o arquivo e o PR de dado da válvula inteiro.
+    "data/pistas_rejeitadas.json": "rejeitadas",   # a mesma pista recusada de novo é outra linha
+    "data/ponte_pedidos.json": "pedidos",
     "data/promocoes_automaticas.json": "decisoes",
 }
 
@@ -95,23 +86,17 @@ def gravar_no_formato_do_produtor(caminho, doc) -> None:
     from coletores_base import gravar_em
     gravar_em(caminho, doc)
 
-# JSONL que so cresce: uma linha por registro, uniao pela base comum nas LINHAS.
-# `data/log_buscas/<ano-mes>.jsonl` e o volume que saiu de `data/log_buscas.json` -- a mesma regra
-# append-only, em outro formato, e ate hoje sem classe: ele recusava e parava a rodada.
+# JSONL que só cresce: uma linha por registro, união pela base comum nas LINHAS.
 PREFIXOS_JSONL_QUE_SO_CRESCEM = ("data/log_buscas/",)
 
-# CONTADORES que só sobem. `data/funil/<data>.json` guarda, por etapa, quantas pistas passaram por
-# cada peneira naquele dia, e `funil.registrar` SOMA a cada rodada — ninguém reescreve o número de
-# ninguém. Dois elos que contaram no mesmo dia são dois acréscimos, e a união é a mesma de sempre,
-# aplicada a número em vez de item de lista: `base + (nosso − base) + (deles − base)`.
-# Lado que ficou MENOR que a base é decremento, não acréscimo, e aí se recusa.
+# CONTADORES que só sobem (`funil.registrar` soma): `base + (nosso − base) + (deles − base)`;
+# lado menor que a base é decremento e se recusa.
 PREFIXOS_CONTADORES_QUE_SO_CRESCEM = ("data/funil/",)
 
 # Função de outros dados: a cadeia canônica (`scripts/verificar_derivados.sh`) os reescreve do zero,
 # e o elo a roda depois do rebase. Resolve-se com a versão de cima. A lista é a MEDIDA, não a memória:
 # `verificar_idempotencia_dos_derivados.py` reprova o PR quando a cadeia escreve, sob o que o elo
-# commita, um arquivo que se refaz do zero e não está aqui (06/11/2026: `data/imprensa/semana.json`
-# entrou na cadeia em 27/10, ficou fora desta lista e o elo diários perdeu a noite de 05→06/11).
+# commita, um arquivo que se refaz do zero e não está aqui.
 REGENERAVEIS = (
     "docs/MANIFEST_SHA256.txt", "docs/FILA_PISTAS.md", "data/pistas_revisao.json",
     "data/blog/posts.json", "data/cadencia_publicacao.json", "data/citacao_incompleta.json",
@@ -127,16 +112,11 @@ REGENERAVEIS = (
     "mudancas.html",             # 10/11/2026: gerado do CHANGELOG (gerar_mudancas.py, na cadeia); todo PR com entrada conflitava nele
 )
 
-# 15/11/2026: arquivo que o próprio elo refaz inteiro a cada noite, a partir do que já está na `main`
-# (curadoria + edições lidas do diário). Vence o lado de cima; o que o elo somou volta na noite seguinte.
+# Arquivo que o próprio elo refaz inteiro a cada noite: vence o lado de cima.
 REFEITOS_PELO_ELO = ("data/emergencias_estaduais.json",)
 
-# 15/11/2026 (auditoria dos pontos de mesclagem): dez arquivos eram gravados por dois ou mais elos sem
-# política nenhuma — o primeiro conflito neles derrubaria o commit do elo inteiro, como derrubou a rodada
-# semanal. RETRATO é o arquivo refeito inteiro a cada coleta (sinais e alertas de agora): vale o mais
-# recente. POR_SECAO é o documento em que cada elo escreve a sua parte: a regra é a da pista, um nível
-# acima — seção que só um lado tocou entra; a mesma, mudada dos dois lados, desce um nível; valor
-# diferente no mesmo campo é recusado, nunca adivinhado (o carimbo é a exceção: vale o mais recente).
+# RETRATO: refeito inteiro a cada coleta, vale o mais recente. POR_SECAO: regra da pista um nível
+# acima (seção de um lado entra; dos dois, desce um nível; valor diferente recusa; carimbo: o mais recente).
 RETRATOS = ("data/alertas/vigentes.json", "data/sinais_risco.json", "data/sinais_risco_consultas.json")
 POR_SECAO = ("data/saude_sinais.json", "data/calendario/fontes_suspensas.json")
 
@@ -161,44 +141,17 @@ def unir_secoes(base, nosso, deles, _nivel: int = 0):
     return fora
 
 
-# 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se
-# regerando a partir do arquivo-fonte já unido, aqui mesmo — "versão de cima e a cadeia regenera"
-# não serve, porque a cadeia não os regera e `gerar_saude_pipeline.py --check` cobraria a diferença.
-# Foi o conflito mais frequente dos PRs de 11/10: cada publicação reescreve o painel.
+# Derivados fora da cadeia canônica (§273), com gerador próprio: regeram-se aqui da fonte já unida.
 DERIVADOS_COM_GERADOR = {
     "docs/SAUDE_PIPELINE.md": ("data/saude_pipeline.json", ("scripts/gerar_saude_pipeline.py",)),
 }
 
-# §252 (27/09/2026): prefixos que o PRÓPRIO projeto já declara derivados, em
-# `.claude/hooks/bloquear_derivados.py`: `dados-abertos/.+`, `feeds/.+\.xml`, `selos/.+\.svg`.
-# Medido na rodada de 27/09 às 08h29: o resolvedor recusou
-# `dados-abertos/verificacao_municipal.csv` por "política de mesclagem não decidida" — mas a
-# política DELE está decidida desde sempre: é derivado, logo resolve com a versão de cima e a
-# cadeia canônica regenera. Recusar derivado era conservadorismo sem razão, e custou a rodada.
-# Fica como PREFIXO, não nome exato, porque o conjunto cresce com o dado (um CSV novo em
-# dados-abertos/ nasce derivado, e não deve precisar de PR para ser resolvido).
+# §252: prefixos declarados derivados em `.claude/hooks/bloquear_derivados.py`; versão de cima,
+# a cadeia regenera. Prefixo, não nome, porque o conjunto cresce com o dado.
 PREFIXOS_REGENERAVEIS = ("dados-abertos/", "feeds/", "selos/")
 
-# 05/10/2026 (item 2 do handover da noite confiável) — AS FILAS DE PISTA PASSAM A SER RESOLVÍVEIS.
-#
-# Até hoje `data/pistas_imprensa.json` era RECUSADO de propósito, e o cabeçalho deste arquivo dizia
-# por quê: "os dois lados alteram os MESMOS registros (status de triagem) ... escolher qual vence é
-# política de mesclagem — decisão da editoria, não deste script". Estava certo: a política não
-# existia.
-#
-# Ela existe desde o PR #555. `scripts/pistas.py` é a única porta da fila e declara, com 46 casos de
-# autoteste, o que acontece com cada caso: pista nova é validada e acrescentada; pista que já está
-# lá tem os campos MESCLADOS; pista que só um lado conhece FICA. Esta classe aplica a mesma política
-# ao conflito de rebase — e é por isso que ela pode existir agora e não podia antes.
-#
-# O que ela continua recusando, e é o núcleo da política: quando os dois lados mudaram o MESMO campo
-# da MESMA pista para valores diferentes. Aí a pergunta "qual vence" é real, e adivinhar seria
-# exatamente o que custou 3.000 execuções em 23/09. Na prática é raro, porque cada elo escreve
-# campos distintos — a triagem escreve `triagem`, o seguimento escreve `seguimento`, o juiz escreve
-# `status`.
-#
-# O ganho medido: a busca web perdeu 114 minutos de trabalho na noite de 04→05/10 porque o rebase
-# conflitou quatro vezes nestes arquivos e o laço desistiu.
+# Filas de pista: a política de `scripts/pistas.py` aplicada ao rebase — pista nova entra, campos
+# mesclam, pista de um lado só fica; o MESMO campo mudado para valores diferentes recusa.
 FILAS_DE_PISTA = (
     "data/pistas_imprensa.json",
     "data/pistas_descobertas.json",
@@ -206,9 +159,7 @@ FILAS_DE_PISTA = (
     "data/pistas_sinais.json",
     "data/pistas_imprensa_saude.json",
 )
-# A fila de saúde guarda a mesma URL uma vez por alvo, consulta e dia de registro (15/11/2026: 882 entradas,
-# 783 URLs): pela chave da porta, a união apagaria 67 delas. Aqui a identidade é a linha inteira que o coletor
-# grava, e a repetição exata conta pela ordem.
+# Fila de saúde: a mesma URL por alvo, consulta e dia; a identidade é a linha inteira, e a repetição conta.
 IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consulta", "registrado_em")}
 
 
@@ -217,6 +168,10 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 #   juiz            vence o veredito de `julgado_em` mais recente; o outro vai para `juiz_historico`.
 #   juiz_historico  união dos dois lados (nada se perde).
 #   rejeitada_em    vence a data mais antiga (a primeira rejeição).
+#   seguimento      vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu (A1, 22/11).
+#   repeticoes      contador (`pistas.gravar_lote` soma 1): base + (nosso − base) + (deles − base) (A1, 23/11).
+#   julgamento_automatico  APLICADA vence ABSTENCAO; duas ABSTENCAO: a `data` mais nova, no mesmo dia a da
+#                   `main`; o resto deixa a pista como na `main` e a união segue (D2, central, 23/11/2026).
 #   busca_web_espera e cursor*  vence o lado da `main` (estado de fila, não registro).
 # Campos derivados do arquivo (`caracteres`, `sha256`) são recalculados do arquivo, nunca escolhidos:
 # nesta função não há o arquivo, então recusam e o resolvedor deixa o caso para a recalculagem.
@@ -224,7 +179,6 @@ _CAMPOS_DO_ARQUIVO = ("caracteres", "sha256")
 
 
 # Campos da pista que são registro de tentativas: só crescem, e cada tentativa conta (mesmo idêntica).
-# 16/11/2026: `busca_dirigida` (uma linha por busca dirigida) recusou o PR de dado da válvula.
 CAMPOS_QUE_SO_CRESCEM = ("busca_dirigida",)
 
 
@@ -239,6 +193,11 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
         return vence
     if campo in CAMPOS_QUE_SO_CRESCEM and isinstance(nosso_v, list) and isinstance(deles_v, list):
         return _multiconjunto(base_v if isinstance(base_v, list) else [], nosso_v, deles_v)
+    if campo == "repeticoes" and all(type(v) is int for v in (nosso_v, deles_v, base_v or 0)):
+        b = base_v or 0
+        if min(nosso_v, deles_v) < b:
+            raise Recusa(f"repeticoes desceu abaixo da base ({b}): não é acréscimo")
+        return nosso_v + deles_v - b
     if campo == "juiz_historico" and isinstance(nosso_v, list) and isinstance(deles_v, list):
         return _unir_listas(nosso_v, deles_v)
     if campo == "rejeitada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
@@ -250,10 +209,47 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
             if str(v).startswith("https://web.archive.org/"):
                 return v
         return nosso_v                   # duas falhas: o nome da exceção não é dado
+    if campo == "seguimento" and isinstance(nosso_v, dict) and isinstance(deles_v, dict):
+        return _seguimento_que_vence(nosso_v, deles_v)
+    if campo == "julgamento_automatico":
+        return _julgamento_que_vence(nosso_v, deles_v)
     if campo in _CAMPOS_DO_ARQUIVO:
         raise Recusa(f"campo derivado do arquivo {campo!r} muda nos dois lados: recalcular do arquivo")
     raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
                  f"diferentes — qual vence é política, e este script não adivinha")
+
+
+def _dia(s: dict) -> str:
+    """`data` dd/mm/aaaa de um registro como aaaammdd, para comparar."""
+    return "".join(reversed(str((s if isinstance(s, dict) else {}).get("data") or "").split("/")))
+
+
+def _julgamento_que_vence(main, outro) -> dict:
+    """D2 (central, 23/11/2026): `main` é o lado de cima (`nosso`)."""
+    dec = lambda j: j.get("decisao") if isinstance(j, dict) else None
+    par = {dec(main), dec(outro)}
+    if par == {"APLICADA", "ABSTENCAO"}:
+        return main if dec(main) == "APLICADA" else outro
+    if par == {"ABSTENCAO"}:
+        return outro if _dia(outro) > _dia(main) else main
+    raise FicaComoNaMain(f"julgamento_automatico {dec(main)} na main e {dec(outro)} do outro lado")
+
+
+def _seguimento_que_vence(a: dict, b: dict) -> dict:
+    """A1, 22/11/2026: dois lotes seguiram a mesma página. Vence a recusa da fonte (nunca se retenta);
+    senão a data mais nova; no mesmo dia, a leitura que abriu a página; duas falhas somam-se."""
+    from seguir_pistas import RECUSAS_DA_PAGINA
+    recusou = [s for s in (a, b) if any(r in str(f) for f in s.get("falhas") or [] for r in RECUSAS_DA_PAGINA)]
+    if len(recusou) == 1:
+        return recusou[0]
+    if _dia(a) != _dia(b):
+        return max(a, b, key=_dia)
+    if bool(a.get("falhas")) != bool(b.get("falhas")):
+        return b if a.get("falhas") else a
+    if a.get("falhas"):
+        return {**a, "falhas": _unir_listas(a["falhas"], b["falhas"]),
+                "tentativas": max(int(a.get("tentativas") or 1), int(b.get("tentativas") or 1))}
+    raise Recusa("duas leituras da mesma página no mesmo dia com resultados diferentes")
 
 
 def _unir_listas(a: list, b: list) -> list:
@@ -284,7 +280,7 @@ def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
         eles_mudou = deles_v != na_base
         if nos_mudou and eles_mudou and nosso_v != deles_v:
             if _AUSENTE in (nosso_v, deles_v):
-                raise Recusa(f"o campo {campo!r} foi removido de um lado e mudado no outro")
+                raise (FicaComoNaMain if campo == "julgamento_automatico" else Recusa)(f"o campo {campo!r} foi removido de um lado e mudado no outro")
             escolhido = _politica_do_campo(campo, nosso_v, deles_v, perdidos,
                                            None if na_base is _AUSENTE else na_base)
         else:
@@ -339,9 +335,7 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 
     # A ORDEM é a da base, depois os acréscimos nossos, depois os deles. Ordem estável mantém o
     # diff legível e faz a união ser a mesma qualquer que seja o lado em que o rebase corre.
-    # Cada chave entra UMA vez: a identidade da pista é a chave. Com a lista da base inteira, uma
-    # chave repetida emitia a mesma pista mesclada tantas vezes quantas aparecia (22/10/2026:
-    # 20.569 cópias idênticas, 24 MB, e o portão de tamanho vermelho na `main`).
+    # Cada chave entra UMA vez: a identidade da pista é a chave.
     ordem = list(dict.fromkeys((*por_chave_base, *por_chave_nosso, *por_chave_deles)))
 
     uniao, mescladas = [], 0
@@ -350,7 +344,11 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
         nossa = por_chave_nosso.get(k)
         delas = por_chave_deles.get(k)
         if na_base is not None and nossa is not None and delas is not None:
-            uniao.append(_mesclar_pista(na_base, nossa, delas))
+            try:
+                uniao.append(_mesclar_pista(na_base, nossa, delas))
+            except FicaComoNaMain as e:
+                uniao.append(nossa)
+                print(f"::warning::{caminho}: pista {k} fica como na main ({e})")
             if nossa != delas:
                 mescladas += 1
         else:
@@ -369,21 +367,9 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
     return fundido, len(ln), len(ld), len(uniao), mescladas
 
 
-# 14/10/2026 (F55): dois índices que todo elo escreve e que o resolvedor recusava — o push dos
-# diários da noite 13→14 caiu nos dois. O índice de evidências é endereçado pelo conteúdo: entrada
-# nova de um lado entra; a mesma entrada mudada nos dois lados segue a regra da pista (campo a campo).
-# O registro de robots é contador + trilha por host: os acessos se unem pela base comum (multiconjunto,
-# teto de 200 do produtor), o total soma o que cada lado acrescentou.
-# 15/10/2026: o livro de fontes (`data/fontes_consultadas.json`) por município, com a regra do
-# próprio produtor (`coletores_base.marcar_fonte_consultada`): consultas dos dois lados pela janela
-# de fontes, nível nunca rebaixa, a última verificação é a mais recente; fato binário mudado nos dois
-# lados para valores diferentes segue a regra da pista (recusa). Diários e busca web escrevem fontes
-# diferentes do mesmo município desde 14/10 — o push dos diários da noite 14→15 caiu nele.
-# 07/11/2026: o registro da varredura do sítio (`descobrir_planos.rodar_municipios`, um registro por
-# município) — lotes paralelos do cadastro escrevem códigos distintos; o mesmo código mudado nos dois
-# lados segue a regra da pista.
-# 15/11/2026: `data/ponte_brasil.json` é `{copias: {url: cópia}}`; cada PR da ponte acrescenta
-# endereços próprios (a união de #1780 com #1781 caiu nele).
+# Índices por chave: entrada de um lado entra; a mesma entrada mudada nos dois lados segue a regra
+# da pista. Robots: acessos pela base comum (multiconjunto, teto 200), total soma os acréscimos.
+# Livro de fontes: regra de `coletores_base.marcar_fonte_consultada` (nível nunca rebaixa).
 INDICES_POR_CHAVE = {"data/evidencias.json": "itens", "data/robots_registro.json": "hosts",
                      "data/fontes_consultadas.json": "municipios",
                      "data/doe_ocorrencias.json": "ufs",
@@ -487,6 +473,10 @@ CARIMBOS = ("atualizado_em", "gerado_em", "atualizado", "gravado_em", "corte", "
 
 class Recusa(Exception):
     """O script não sabe resolver este caminho, e adivinhar apagaria dado."""
+
+
+class FicaComoNaMain(Recusa):
+    """D2 (central, 23/11/2026): o caso que a regra não decide deixa a PISTA como está na `main`; a fila une."""
 
 
 def git(*args, repo=None, binario=False):
@@ -641,16 +631,7 @@ def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
     uniao = _multiconjunto(lb, ln, ld)
 
     # Os escalares do topo: vêm do lado de quem reaplica (deles), que é a rodada.
-    #
-    # CARIMBO NÃO É MUDANÇA DE FORMATO (08/10/2026, A2-02). Esta conferência recusava o conflito
-    # quando QUALQUER escalar diferia — e `atualizado_em` difere sempre, porque cada elo grava a
-    # hora em que rodou. `data/saude_pipeline.json` é commitado por todos os elos, então todo
-    # conflito da noite caía aqui: na noite de 07→08/10 o laço tentou cinco vezes a mesma união e
-    # perdeu diários inteiros (2h23 de coleta), uma descoberta, um juiz e dois sinais.
-    #
-    # Carimbo de tempo une pelo MAIOR, que é o que `unir_contadores` já fazia. Divergência nos
-    # demais escalares continua sendo recusa: ali é mudança de formato, e para isso o script não
-    # serve.
+    # Carimbo de tempo une pelo MAIOR; divergência nos demais escalares é mudança de formato: recusa.
     escalares_n = {k: v for k, v in nosso.items() if k != chave}
     escalares_d = {k: v for k, v in deles.items() if k != chave}
     carimbos = {}
@@ -730,8 +711,7 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
     15/10/2026: a MESMA união serve ao conflito de rebase (`resolver`) e à reaplicação da coleta
     perdida (`scripts/reaplicar_noite.py`, base = a do elo, nosso = árvore, deles = artefato)."""
     if any(isinstance(x, bytes) for x in (base_txt, nosso_txt, deles_txt)):
-        # 07/11/2026: a união dos lotes do cadastro caiu no PDF do índice — o resolvedor derrubava
-        # tudo com UnicodeDecodeError. Binário só se aceita como derivado regenerável; o resto é recusa.
+        # Binário só se aceita como derivado regenerável; o resto é recusa.
         if not e_regeneravel(norm):
             raise Recusa("arquivo binário sem política de mesclagem")
         if nosso_txt is None:
@@ -785,8 +765,7 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
         _escrever(destino, nosso_txt)
         return "versão de cima (o elo refaz na noite seguinte)"
     if norm.endswith("_cursor.json"):
-        # Decisão da central (25/10/2026, item 7): cursor é estado de fila, não registro; vence o lado da
-        # `main`. 15/11/2026: a rodada semanal perdeu o commit inteiro em `imprensa_cursor` e `resposta_cursor`.
+        # Cursor é estado de fila, não registro: vence o lado da `main` (central, 25/10/2026).
         if nosso_txt is None:
             raise Recusa("o lado de cima não tem o arquivo")
         _escrever(destino, nosso_txt)
@@ -898,6 +877,9 @@ def autoteste() -> int:
 
     # 0. 16/11/2026: as duas recusas que derrubaram o PR de dado da válvula
     _b = [{"em": "2026-11-10"}]
+    checar("repeticoes: os acréscimos dos dois lados somam pela base (2→4 e 2→3 dá 5); sem base, de 0",
+           _mesclar_pista({"repeticoes": 2}, {"repeticoes": 4}, {"repeticoes": 3})["repeticoes"] == 5
+           and _mesclar_pista({}, {"repeticoes": 1}, {"repeticoes": 2})["repeticoes"] == 3)
     checar("busca_dirigida: tentativas dos dois lados somam pela base",
            len(_mesclar_pista({"busca_dirigida": _b}, {"busca_dirigida": _b + [{"em": "2026-11-16", "a": 1}]},
                               {"busca_dirigida": _b + [{"em": "2026-11-16", "a": 2}]})["busca_dirigida"]) == 3)
@@ -921,9 +903,7 @@ def autoteste() -> int:
         checar("o caminho resolvido foi adicionado ao índice",
                not em_conflito(repo=r))
 
-    # 1-b. O caso que perdeu a noite de 07→08/10 (A2-02): `data/saude_pipeline.json` com carimbos
-    # diferentes nos dois lados, porque cada elo grava a hora em que rodou. Antes disto, recusa em
-    # TODO conflito do arquivo que TODO elo commita.
+    # 1-b. Carimbos diferentes nos dois lados (cada elo grava a hora em que rodou) unem pelo maior.
     with tempfile.TemporaryDirectory() as t2:
         S = "data/saude_pipeline.json"
         r = _repo_com_conflito(
@@ -1208,13 +1188,8 @@ def autoteste() -> int:
         checar("data/municipios.json segue RECUSADO (política não decidida)",
                not res and len(rec) == 1 and "não está decidida" in rec[0])
 
-    # 8. O CASO DE 23/09, e o único que separa união-pela-base de dedução-por-conteúdo.
-    #    Execuções IDÊNTICAS no log v2 são tentativas reais distintas e CONTAM. Uma dedução
-    #    por conteúdo colapsaria as duas em uma e apagaria uma tentativa sem aviso — foi assim
-    #    que quase 3.000 execuções sumiram. Sem esta asserção o autoteste passa com o defeito
-    #    dentro: descoberto ao restaurar o defeito de propósito, em 27/09/2026.
-    #    Os dois lados precisam DIFERIR em algo, senão o git mescla limpo e não há conflito
-    #    para resolver — por isso cada um traz também uma execução só sua.
+    # 8. Execuções IDÊNTICAS são tentativas distintas e CONTAM (união pela base, nunca por conteúdo).
+    #    Cada lado traz também uma execução só sua, senão o git mescla limpo e não há conflito.
     with tempfile.TemporaryDirectory() as t:
         igual = {"municipio": "Recife", "consulta": "plano de contingência", "achou": 0}
         r = _repo_com_conflito(
@@ -1266,6 +1241,14 @@ def autoteste() -> int:
         d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
         checar("evidências: o mesmo documento preservado por dois lotes — a cópia aceita pelo Wayback vence a tentativa falhada",
                not rec and d["itens"]["a"]["wayback"] == W)
+    ok_ = {"data": "21/11/2026", "via": "B4", "falhas": []}
+    f403, frst = ({"data": "21/11/2026", "via": "", "falhas": [f"pagina: {e}"], "tentativas": 1}
+                  for e in ("HTTPError 403", "ConnectionResetError"))
+    checar("seguimento: a recusa da fonte vence; no mesmo dia, a leitura que abriu vence a falha; duas falhas somam",
+           _seguimento_que_vence(ok_, f403) is f403 and _seguimento_que_vence(frst, ok_) is ok_
+           and _seguimento_que_vence({**ok_, "data": "22/11/2026"}, f403) is f403
+           and _seguimento_que_vence({**frst, "data": "20/11/2026"}, ok_) is ok_
+           and len(_seguimento_que_vence(frst, {**frst, "falhas": ["pagina: URLError"]})["falhas"]) == 2)
     with tempfile.TemporaryDirectory() as t:
         PB = "data/planos_busca/DF.json"
         pl = lambda g, m: json.dumps({"gerado_em": g, "municipios": m})
@@ -1378,6 +1361,26 @@ def autoteste() -> int:
         recusou = True
     checar("regra 7: juiz com mesma data nos dois lados é recusado, não adivinhado", recusou)
 
+    # D2 (central, 23/11/2026): `julgamento_automatico`, uma checagem por linha da regra.
+    _j = lambda d, dt: {"decisao": d, "data": dt, "motivo": d}
+    _jm = lambda n, d: _mesclar_pista({"id": 1}, dict(id=1, julgamento_automatico=n),
+                                      dict(id=1, julgamento_automatico=d))["julgamento_automatico"]
+    checar("D2: APLICADA vence ABSTENCAO, dos dois lados",
+           _jm(_j("ABSTENCAO", "22/11/2026"), _j("APLICADA", "01/11/2026"))["decisao"] == "APLICADA"
+           and _jm(_j("APLICADA", "01/11/2026"), _j("ABSTENCAO", "22/11/2026"))["decisao"] == "APLICADA")
+    checar("D2: duas ABSTENCAO, vence a data mais nova (dd/mm/aaaa, não texto)",
+           _jm(_j("ABSTENCAO", "09/12/2026"), _j("ABSTENCAO", "10/11/2026"))["data"] == "09/12/2026")
+    checar("D2: duas ABSTENCAO no mesmo dia, vale a da main",
+           _jm(dict(_j("ABSTENCAO", "22/11/2026"), motivo="m"), _j("ABSTENCAO", "22/11/2026"))["motivo"] == "m")
+    _fj = lambda *js: json.dumps({"pistas": [dict(url=f"https://x.gov.br/{i}", alvo="PA", **j) for i, j in enumerate(js)]})
+    _a, _b2 = {"julgamento_automatico": _j("APLICADA", "20/11/2026")}, {"julgamento_automatico": _j("APLICADA", "22/11/2026")}
+    _u = unir_fila_de_pistas("data/pistas_imprensa.json", _fj({}, {}), _fj(dict(_a, x="main"), {}),
+                             _fj(dict(_b2, x="elo"), {"y": 1}, {"z": 2}))[0]["pistas"]
+    checar("D2: duas APLICADA diferentes deixam a pista como na main, e o resto da fila une",
+           _u[0] == dict(url="https://x.gov.br/0", alvo="PA", x="main", **_a) and _u[1].get("y") == 1 and len(_u) == 3)
+    _u = unir_fila_de_pistas("data/pistas_imprensa.json", _fj(_a), _fj({}), _fj(_b2))[0]["pistas"]
+    checar("D2: caso que a regra não cobre (removido de um lado) deixa a pista como na main", "julgamento_automatico" not in _u[0])
+
     b = {"gerado_em": "2026-11-14", "fontes": {"a": {"status": "coletado", "em": "13"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}
     n = {"gerado_em": "2026-11-15", "fontes": {"a": {"status": "coletado", "em": "15"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}
     d = {"gerado_em": "2026-11-14", "fontes": {"a": {"status": "coletado", "em": "13"}, "b": {"status": "coletado"},
@@ -1412,6 +1415,10 @@ def autoteste() -> int:
     checar("recusa vira Issue por arquivo, uma só enquanto estiver aberta",
            avisar_recusa(["data/a.json: caminho sem resolução conhecida", "data/b.json: caminho sem resolução conhecida"],
                          gh=_falso) == ["Mesclagem recusada: data/b.json"])
+    _chamadas.clear()
+    avisar_recusa([], ["data/a.json: unido pela base", "data/c.json: unido pela base"], gh=_falso)
+    checar("arquivo que volta a se unir fecha a sua Issue, e só a sua",
+           [c[2] for c in _chamadas if c[:2] == ["issue", "close"]] == ["7"])
 
     if falhas:
         print(f"\n✗ UNIÃO DE CONFLITO: {len(falhas)} falha(s).")
@@ -1420,9 +1427,10 @@ def autoteste() -> int:
     return 0
 
 
-def avisar_recusa(recusados: list, gh=None) -> list:
+def avisar_recusa(recusados: list, resolvidos: list = (), gh=None) -> list:
     """Uma Issue por arquivo recusado (`scripts/avisos.py`): a recusa deixa de viver só no log de um run
-    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). Devolve os títulos abertos."""
+    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). O arquivo que volta a se unir
+    fecha a sua (24/11/2026: nada fechava). Devolve os títulos abertos."""
     from scripts import avisos
     gh = gh or avisos._gh
     abertas, feitas = avisos.issues_abertas(gh), []
@@ -1433,6 +1441,9 @@ def avisar_recusa(recusados: list, gh=None) -> list:
                          f"mesclagem ({motivo}). O trabalho foi para o artefato do run. Declarar a política em "
                          f"`scripts/unir_conflito_de_rodada.py`.", gh=gh, abertas=abertas) == "aberta":
             feitas.append(titulo)
+    for linha in resolvidos if abertas is not None else []:
+        avisos.avisar(f"Mesclagem recusada: {str(linha).partition(': ')[0]}", gh=gh, abertas=abertas,
+                      ao_fechar="O arquivo voltou a se unir numa rodada. Fechada.")
     return feitas
 
 
@@ -1450,13 +1461,13 @@ def main() -> int:
         print(f"  RECUSADO   {r}")
     if regenerar:
         print("REGENERAR=" + " ".join(regenerar))
+    try:
+        avisar_recusa(recusados, resolvidos)
+    except Exception as e:  # noqa: BLE001 — o aviso é do GitHub; a recusa já está no log
+        print(f"::warning::aviso de recusa não enviado: {type(e).__name__}")
     if recusados:
         print(f"::error::{len(recusados)} caminho(s) sem resolução conhecida; a rodada não "
               f"comita. Adivinhar a mesclagem apagaria dado sem aviso.")
-        try:
-            avisar_recusa(recusados)
-        except Exception as e:  # noqa: BLE001 — o aviso é do GitHub; a recusa já está no log
-            print(f"::warning::aviso de recusa não enviado: {type(e).__name__}")
         return 2
     print(f"{len(resolvidos)} caminho(s) resolvido(s).")
     return 0

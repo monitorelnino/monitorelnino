@@ -8,6 +8,14 @@
    "por_que": "Derivado de tudo o mais. Conflito nele resolve-se com a versão de cima e a cadeia canônica regenera — `scripts/unir_conflito_de_rodada.py`, classe REGENERAVEIS. O handover pede que só o publicador o commite; a mudança fica para o PR do ensaio da noite, porque remover o manifesto do commit do elo deixa a `main` com manifesto obsoleto entre o elo e o publicador, e isso tem de ser provado no ensaio antes de valer. Até lá o conflito está resolvido, não evitado.",
    "pendente": "mover para o publicador, provado pelo ensaio da noite (item 5)"
   },
+  "data/paralelo_juiz18.json": {
+   "escritor": "rodada_paralela_j18",
+   "por_que": "Rejulgamento paralelo pelo codebook 1.8 (rodada J18): gerado por `juiz.py --rejulgar-paralelo` a partir de evidencias/ local. Nenhum workflow o commita; nenhuma página o lê; o índice não muda."
+  },
+  "data/paralelo_fila18.json": {
+   "escritor": "rodada_paralela_j18",
+   "por_que": "Rejulgamento paralelo da fila pelo codebook 1.8 (rodada J18): gerado por `juiz.py --rejulgar-fila-paralela` a partir de evidencias/ local. Nenhum workflow o commita; nenhuma página o lê; a fila de produção não muda."
+  },
   "data/pistas_imprensa.json": {
    "escritor": "qualquer_elo",
    "por_que": "A fila tem UMA porta (`scripts/pistas.py`) e uma política de mesclagem declarada e testada: acréscimo dos dois lados entra, campo que só um lado tocou entra, mesmo campo com valores diferentes é recusado. `unir_conflito_de_rodada.py` aplica essa política ao conflito de rebase, classe FILAS_DE_PISTA. A corrida é resolvida, não evitada — e é por isso que este arquivo pode ter vários elos."
@@ -19,6 +27,18 @@
   "data/pistas_doe.json": {
    "escritor": "qualquer_elo",
    "por_que": "Fila, classe FILAS_DE_PISTA."
+  },
+  "data/mapbiomas/fogo_monitor.json": {
+   "escritor": "mapbiomas.yml",
+   "por_que": "Soma do MapBiomas no Earth Engine; um job soma, o elo do invólucro grava."
+  },
+  "data/mapbiomas/fogo_colecao.json": {
+   "escritor": "mapbiomas.yml",
+   "por_que": "Soma do MapBiomas no Earth Engine; um job soma, o elo do invólucro grava."
+  },
+  "data/mapbiomas/agua_anual.json": {
+   "escritor": "mapbiomas.yml",
+   "por_que": "Soma do MapBiomas no Earth Engine; um job soma, o elo do invólucro grava."
   },
   "data/pistas_sinais.json": {
    "escritor": "qualquer_elo",
@@ -106,7 +126,6 @@
    ],
    "publicar_dados.yml": [
     "assets/",
-    "blog/",
     "dados-abertos/",
     "data/",
     "docs/",
@@ -178,6 +197,18 @@
   "data/saude_desfechos/obitos.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Desfecho do SUS (E1/E2): escrito só pelo elo `noturno_desfechos.yml`, pela função comum `desfechos_sus.gravar_desfecho`; esquema fora da forma vai à quarentena."
+  },
+  "data/saude_desfechos/sim_por_municipio.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por município de residência (editoria, 16/11/2026): escrito só por `coletar_sim.py` no elo dos desfechos, junto das séries por UF; peso zero."
+  },
+  "data/saude_desfechos/sih_por_municipio.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Internações do SIH por município de residência (editoria, 16/11/2026): escrito só por `coletar_sih.py` no elo dos desfechos, junto das séries por UF; peso zero."
+  },
+  "data/saude_desfechos/sisab_por_municipio.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Atendimentos de diarreia na atenção primária (SISAB) por município (editoria, 16/11/2026): escrito só por `coletar_sisab.py` no elo dos desfechos, junto da série por UF; peso zero."
   },
   "data/saude_desfechos/internacoes_respiratorias.json": {
    "escritor": "noturno_desfechos.yml",
@@ -257,13 +288,17 @@
   },
   "data/ponte_brasil.json": {
    "escritor": "qualquer_elo",
-   "por_que": "Índice da ponte no Brasil (15/11/2026): url → cópia em ponte/ pelo sha256. Só scripts/ponte_brasil.py --guardar escreve; uma chave por URL.",
+   "por_que": "Índice da ponte no Brasil (15/11/2026): url → cópia em ponte/ pelo sha256 ou, para documento de lote, no ramo ponte-local/* (18/11/2026). Só scripts/ponte_brasil.py escreve; uma chave por URL.",
    "pendente": "classe de união por chave no resolvedor quando a ponte rodar como elo; até lá, só entra por PR"
   },
   "ponte/": {
    "escritor": "qualquer_elo",
    "sem_colisao_possivel": true,
    "por_que": "Endereçado pelo conteúdo: o nome é o sha256, como em evidencias/."
+  },
+  "data/ponte_pedidos.json": {
+   "escritor": "qualquer_elo",
+   "por_que": "Fila de pedidos à ponte no Brasil, que só cresce: todo elo que pede rede pode acrescentar. União pela base comum, classe LOGS_QUE_SO_CRESCEM."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."

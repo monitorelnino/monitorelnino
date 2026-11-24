@@ -203,8 +203,14 @@ jobs:
 
       - name: Instalar Tesseract com o modelo português (§177)
         if: inputs.precisa_tesseract
-        timeout-minutes: 5
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por
+        # F92: o `timeout 240` do passo do navegador mata o `npx`, não o `apt-get` que ele pôs sob
+        # `sudo`; a trava do apt fica com o órfão. `install` espera a trava (DPkg::Lock::Timeout);
+        # `update` não espera, por isso tenta de novo. Espelho lento cai por tempo e repete.
+        timeout-minutes: 8
+        run: |
+          apt="sudo apt-get -qq -o DPkg::Lock::Timeout=240 -o Acquire::Retries=3 -o Acquire::http::Timeout=30"
+          for i in $(seq 12); do $apt update && break; [ "$i" = 12 ] && exit 1; sleep 10; done
+          $apt install -y tesseract-ocr tesseract-ocr-por
 
       # 03/10/2026 (item A.5 do handover da corrente noturna): a hora de INÍCIO do elo, guardada
       # antes de qualquer comando. O painel da noite precisa dela para dizer quanto durou e se
@@ -296,7 +302,7 @@ jobs:
             python3 scripts/reaplicar_noite.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY" || true
             git add -A data/ && git diff --cached --quiet && break
             bash scripts/verificar_derivados.sh --regenerar-para-commit >/dev/null || true
-            git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+            git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
             git commit -qm "reaplicação da noite ($(date -u +%H:%M) UTC)"
             git push -q "$REMOTO" "HEAD:${RAMO}" && break
           done
@@ -479,7 +485,7 @@ jobs:
           # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
           # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
           # à `main` — e ele chegava junto, no mesmo commit.
-          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+          git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -546,9 +552,9 @@ jobs:
             # tiver andado.
             if ! git diff --quiet FETCH_HEAD..HEAD -- data/; then
               bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+              git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
               git diff --cached --quiet || git commit --amend --no-edit
-              git checkout -- . 2>/dev/null || true   # o que o elo não comita (PDF, páginas) não trava o próximo rebase
+              git checkout -- . 2>/dev/null || true   # o que o elo não comita (páginas) não trava o próximo rebase
             fi
 
             if GIT_SSH_COMMAND="$SSH" python3 scripts/empurrar.py "${RAMO}" "$TENTATIVA"; then

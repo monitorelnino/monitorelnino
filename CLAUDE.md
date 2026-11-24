@@ -89,12 +89,13 @@ governança; o mais restritivo prevalece) · `.github/workflows/portoes.yml` (li
 4. Rodar os portões que `python3 scripts/quais_portoes.py` indicar (`--comando` dá a linha); na dúvida,
    `python3 scripts/portoes_locais.py tudo` (ou `paginas` | `dados`; `--listar` mostra sem rodar).
    Nada sobe com portão vermelho.
-5. `CHANGELOG.md`: entrada `## AAAA-MM-DD · #PR · título`, até 80 palavras (portão
-   `verificar_changelog_curto.py`); fundamentação longa vai para a `METODOLOGIA.md`.
-6. Todo PR resela o manifesto: `bash scripts/verificar_derivados.sh` e commit (portão 12); derivado não
-   se edita à mão (hook bloqueia).
-7. Push, conferir que chegou (`git merge-base --is-ancestor HEAD origin/<ramo>`), PR, Action "Portões"
-   verde, merge.
+5. Push e PR **em rascunho** (`-F draft=true`): dá o número e não roda os portões.
+6. `CHANGELOG.md`: entrada `## AAAA-MM-DD · #número · título`, até 80 palavras (portão `changelog`);
+   fundamentação longa vai no PR ou nas notas. Depois `python3 scripts/gerar_codemap.py` e
+   `bash scripts/verificar_derivados.sh`; derivado não se edita à mão (hook bloqueia).
+7. Um commit, push, conferir que chegou (`git merge-base --is-ancestor HEAD origin/<ramo>`), tirar do
+   rascunho (`POST .../pulls/<n>/ccr/ready_for_review`), Action "Portões" verde, merge. Nenhum PR fica
+   pronto sem CHANGELOG e sem selo (editoria, 24/11/2026).
 - Não abrir PR para uma frase: pedido pequeno de texto entra no próximo PR de página ou num "ajustes de
   texto de dd/mm" — salvo "publica isso agora".
 - Portão 12 vermelho: `verificar_derivados.sh` → `git add -A` → commit → rodar de novo; antes de assumir
@@ -226,3 +227,8 @@ acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/`. Tamanhos envelhecem:
 - Bloqueio real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre.
 - Recusa servida com `200` (muro de robô, geobloqueio de WAF) é recusa:
   `coletores_base.detectar_muro_de_robo` levanta antes de preservar; nomear a recusa certo.
+- Site que não responde ao robô de fora do país e responde no Brasil lê-se pela ponte no computador da
+  editoria, com o cliente identificado; recusa nunca vai à ponte; documento de lote fica no ramo
+  `ponte-local/*` e a `main` guarda só o índice (editoria, 18/11/2026; `scripts/ponte_brasil.py --autoteste`).
+- Certificado sem o intermediário completa-se na porta de rede, com verificação plena; de outro nome ou
+  vencido, não se lê; site sem resposta sai do resto da rodada (`scripts/testar_espera_de_rede.py`).

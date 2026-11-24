@@ -135,7 +135,14 @@ def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> l
         if so_oficial and not url_em_dominio_oficial(url_da_pista(p)):
             continue
         fora.append(p)
-    return fora
+    # 23/11/2026: a rodada corta no prazo, e na ordem do arquivo o rabo nunca chegava (312 pistas oficiais com
+    # back-off vencido em 19/11, todas depois do índice 21.800; o juiz parava perto de 19.800). Quem espera há mais
+    # tempo (volta marcada ou registro mais velhos) vai primeiro; sem data, primeiro também.
+    from coletores_base import data_br_de
+    def espera(p):
+        br = data_br_de(p.get("proxima_tentativa_em") or p.get("registrado_em") or p.get("data")) or ""
+        return br[6:] + br[3:5] + br[:2]
+    return sorted(fora, key=espera)
 
 
 # 15/11/2026: até aqui o juiz baixava o documento por conta própria (20 s, sem a cadeia do `certifi`) e
@@ -148,29 +155,67 @@ def tentativa_que_conta(t: dict) -> bool:
     return t.get("classe") == "tecnica" and str(t.get("em") or "") >= LEITOR_PELA_PORTA_DESDE
 
 
-def recusa_desmentida_pelo_dominio(p: dict, juiz: dict) -> bool:
-    """Recusa por autoridade, julgada antes da versão em vigor do resolvedor de domínio, num documento
-    servido no domínio do próprio ente: volta uma vez. 10/11/2026: o resolvedor não via subdomínio do ente
-    (`codesal.salvador.ba.gov.br`) nem `prefeitura.pbh.gov.br`, e a etapa 3 recusava o plano como "fora do
-    domínio do ente". Rejulgada, a pista ganha `julgado_em` novo e não volta de novo. Pura dada a malha."""
-    from municipio_do_dominio import RESOLVEDOR_DESDE, municipio_de
-    if juiz.get("motivo") != "autoridade_nao_confirmada" or str(juiz.get("julgado_em") or "") >= RESOLVEDOR_DESDE:
-        return False
+def _do_proprio_ente(p: dict) -> bool:
+    from municipio_do_dominio import municipio_de
     dono = municipio_de(url_da_pista(p)) or {}
     nome, uf, ibge = ente_da_pista(p)
     return bool(dono) and (str(dono.get("ibge")) == str(ibge or "") or
                            (dono.get("nome"), dono.get("uf")) == (nome, str(uf).upper()))
 
 
-# 10/11/2026: até aqui o leitor decodificava DOCX/DOC como bytes, e o juiz julgava o lixo (13 PLANCONs do RS
-# recusados como `ente_nao_confirmado`). Recusa julgada antes do leitor novo, num desses formatos, volta uma vez.
-LEITOR_DE_ESCRITORIO_DESDE = "2026-11-11"
+def _do_repositorio(p: dict) -> bool:
+    from atualizar_instrumentos_estaduais import documento_do_repositorio
+    return bool(documento_do_repositorio(str(url_da_pista(p) or "")))
 
 
-def recusa_de_leitura_ilegivel(p: dict, juiz: dict) -> bool:
-    """Recusa por critério sobre DOCX/DOC/ODT lido pelo leitor antigo: volta uma vez. Função pura."""
-    return (not juiz.get("promove") and str(juiz.get("julgado_em") or "") < LEITOR_DE_ESCRITORIO_DESDE
-            and str(url_da_pista(p) or "").lower().split("?")[0].endswith((".docx", ".doc", ".odt")))
+def _de_escritorio(p: dict) -> bool:
+    return str(url_da_pista(p) or "").lower().split("?")[0].endswith((".docx", ".doc", ".odt"))
+
+
+def _resolvedor_desde() -> str:
+    from municipio_do_dominio import RESOLVEDOR_DESDE
+    return RESOLVEDOR_DESDE
+
+
+MOTIVOS_DE_NATUREZA = ("natureza_duvidosa", "resposta", "titulo_nao_e_plano", "nao_e_instrumento",
+                       "estrutura_de_defesa_civil")
+MOTIVOS_DO_ATO = ("autoridade_nao_confirmada", "citacao_incompleta", "natureza_duvidosa")
+# Correções do juiz dentro do codebook em vigor: a recusa julgada ANTES da correção, que ela pode desfazer,
+# volta uma vez (rejulgada, ganha `julgado_em` novo e não volta de novo). Uma linha por correção:
+# (desde, motivos que ela desfaz ou None = qualquer recusa, condição sobre a pista ou None).
+CORRECOES_DO_JUIZ = (
+    # 10/11: o resolvedor não via subdomínio do ente; a etapa 3 recusava o plano como fora do domínio dele.
+    (_resolvedor_desde, ("autoridade_nao_confirmada",), _do_proprio_ente),
+    # 10/11: o leitor decodificava DOCX/DOC como bytes, e o juiz julgava o lixo (13 PLANCONs do RS).
+    ("2026-11-11", None, _de_escritorio),
+    # J22 (17/11): o documento do repositório estadual de planos é plano pela origem.
+    ("2026-11-17", MOTIVOS_DE_NATUREZA, _do_repositorio),
+    # 18/11: o leitor do juiz passou a ir ao OCR e à cópia pública (`obter_documento`, `com_ocr`); o plano sem data
+    # lida pelo leitor antigo (59 do Prepara RS, PDF escaneado) volta uma vez.
+    ("2026-11-19", ("data_nao_confirmada",), None),
+    # 19/11 (Rio Branco/AC): a lei citada na base legal virava o ato do plano (`juiz.ato_proprio`), e o plano que se
+    # declara "este plano" sem título no começo caía no J15 (`juiz.se_apresenta_como_plano`; antes, em 17/11, o J21
+    # contava linhas). Vale até o fim do dia do merge: o que se julgou hoje com o juiz antigo volta também.
+    ("2026-11-20", MOTIVOS_DO_ATO + ("titulo_nao_e_plano",), None),
+    # 23/11 (editoria): o plano publicado que explica o reconhecimento federal não é ato de resposta. Até o fim do
+    # dia do merge, como a linha acima.
+    ("2026-11-24", ("resposta",), None),
+    # 23/11: o .doc do Word 97–2003 não tinha leitor (`texto_de_doc_binario`); o que saiu sem texto volta uma vez.
+    ("2026-11-24", ("texto_nao_extraivel",), _de_escritorio),
+)
+
+
+def recusa_anterior_a_correcao(p: dict, juiz: dict) -> bool:
+    """Recusa que uma correção posterior do juiz pode desfazer: volta uma vez. Pura dada a malha."""
+    if juiz.get("promove"):
+        return False
+    julgado = str(juiz.get("julgado_em") or "")
+    for desde, motivos, condicao in CORRECOES_DO_JUIZ:
+        desde = desde() if callable(desde) else desde
+        if (julgado < desde and (motivos is None or juiz.get("motivo") in motivos)
+                and (condicao is None or condicao(p))):
+            return True
+    return False
 
 
 PREFIXO_FECHADA_POR_PRAZO = "fechada — sem documento oficial localizado"
@@ -201,7 +246,7 @@ def pendente(p: dict, hoje=None) -> bool:
         url = url_da_pista(p)
         if not juiz.get("leu_documento"):
             return bool(url and fonte_oficial(url))
-        return recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
+        return recusa_anterior_a_correcao(p, juiz)
     tentativas = p.get("juiz_tentativas") or []
     if tentativas and not any(tentativa_que_conta(t) for t in tentativas) and tentativas[-1].get("classe") == "tecnica":
         return True     # só falhou com o leitor antigo: volta já, sem esperar o back-off nem ficar persistente
@@ -264,6 +309,10 @@ def julgar_uma(p: dict, buscar, preservar=None, propostas: tuple = ()) -> dict:
     veredito = julgar(texto, nome=nome, uf=uf, ibge=ibge, url=url, trecho=p.get("trecho"), propostas=propostas)
     veredito["pista_id"] = p.get("id")
     veredito["origem"] = p.get("origem")
+    if texto is None and oficial:
+        from julgar_e_aplicar_descobertas import CAUSAS_DE_FALHA
+        if CAUSAS_DE_FALHA.get(url):
+            veredito["causa"] = CAUSAS_DE_FALHA[url]
     # 13/11/2026 (J21): o documento estadual não morre na recusa. A pista da UF, ou a que o J14 encaminha ao
     # instrumento estadual, é lida atrás da estrutura criada para o ciclo; `--aplicar` a grava em estados.json.
     if texto and uf and (veredito.get("encaminhar") == "instrumento_estadual" or not (nome or ibge)):
@@ -310,6 +359,17 @@ def classe_da_recusa(v: dict) -> str:
 
 # Recusas que a busca dirigida ataca: as duas em que o problema é o DOCUMENTO, não o conteúdo dele.
 MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA = ("sem_documento_primario", "citacao_incompleta")
+
+
+def procurar_ato_de_aprovacao(p: dict, v: dict) -> bool:
+    """Plano promovido sem ato de aprovação, e a pista cita tipo e número de um ato. Função pura."""
+    if not (v.get("promove") and v.get("sem_ato_de_aprovacao")):
+        return False
+    import importlib
+    import sys as _sys
+    _sys.path.insert(0, str(RAIZ / "scripts"))
+    ident = importlib.import_module("busca_dirigida_do_ato").identificadores(p)
+    return bool(ident.get("tipo") and ident.get("numero"))
 
 
 def tentar_busca_dirigida(p: dict, v: dict, buscar_texto, preservar) -> dict:
@@ -403,7 +463,8 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
     classe = classe_da_recusa(v)
     tentativas = p.setdefault("juiz_tentativas", [])
     tentativas.append({"em": hoje.isoformat(), "classe": classe or "promocao",
-                       "motivo": v.get("motivo"), "codebook": v.get("codebook")})
+                       "motivo": v.get("motivo"), "codebook": v.get("codebook"),
+                       **({"causa": v["causa"]} if v.get("causa") else {})})
 
     if classe == "tecnica":
         # Não escreve `juiz`: a pista continua pendente, e volta na data do back-off.
@@ -423,6 +484,7 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
                  "data": v["data"], "julgado_em": hoje.isoformat(),
                  "hash_evidencia": v.get("hash_evidencia")}
     if v["promove"]:
+        p["status"] = f"promovida — o juiz leu o documento e promoveu ({v['categoria']})"
         return "promovida"
     p["status"] = f"pista — recusada pelo juiz: {v['motivo']}"
     return "recusada"
@@ -511,6 +573,10 @@ def autoteste() -> int:
         raise AssertionError(f"baixou {u}")
     v_imprensa = julgar_uma({"id": "x", "municipio": "Bonito", "uf": "MS",
                              "url": "https://g1.globo.com/ms/plano.html"}, _nao_baixe)
+    casos.append(("plano promovido sem ato e com o número do ato na pista vai à busca do ato; sem número ou já com ato, não",
+                  procurar_ato_de_aprovacao({"ato_citado": "Decreto 9584/2026"}, {"promove": True, "sem_ato_de_aprovacao": True})
+                  and not procurar_ato_de_aprovacao({"titulo": "Plano"}, {"promove": True, "sem_ato_de_aprovacao": True})
+                  and not procurar_ato_de_aprovacao({"ato_citado": "Decreto 9584/2026"}, {"promove": True})))
     casos.append(("URL de imprensa é recusada sem download",
                   v_imprensa["motivo"] == "sem_documento_primario"))
     # 09/10/2026 (lote 2.5, A1-16): fechada por prazo depois de leitura volta com codebook novo.
@@ -521,7 +587,7 @@ def autoteste() -> int:
                   pendente(fechada_lida)))
     casos.append(("fechada por prazo e já julgada por este codebook não volta",
                   not pendente({**fechada_lida, "juiz": {**fechada_lida["juiz"],
-                                                         "codebook": CODEBOOK_VERSAO}})))
+                                                         "codebook": CODEBOOK_VERSAO, "julgado_em": "2026-11-20"}})))
     recusada = {"status": "pista — recusada pelo juiz: natureza_duvidosa",
                 "juiz": {"codebook": CODEBOOK_VERSAO, "promove": False, "leu_documento": True}}
     casos.append(("recusada pela versão em vigor só volta nomeada E com --rejulgar; promovida nunca",
@@ -713,6 +779,9 @@ def autoteste() -> int:
                   [p["id"] for p in selecionar(amostra, urls=["franca.sp.gov.br"])] == ["aaa111"]))
     casos.append(("os filtros se combinam",
                   selecionar(amostra, ids=["bbb"], so_oficial=True) == []))
+    casos.append(("quem espera há mais tempo vai primeiro: o prazo corta o recente, nunca o rabo do arquivo",
+                  [p["id"] for p in selecionar([{"id": "c", "registrado_em": "2026-11-20"}, {"id": "b", "proxima_tentativa_em": "2026-11-19"},
+                                                {"id": "a", "registrado_em": "29/10/2026"}, {"id": "z"}])] == ["z", "a", "b", "c"]))
     casos.append(("url vazia não é domínio oficial", not url_em_dominio_oficial("")))
     # 09/11/2026 (J18): pista só com os campos canônicos (`url_final`, `alvo`) é julgada sobre o documento
     canonica = {"id": "c1", "url_final": CANARIOS["plano_novo"]["url"], "alvo": "5002209",
@@ -735,11 +804,11 @@ def autoteste() -> int:
                          "motivo": "autoridade_nao_confirmada", "julgado_em": "2026-11-01"}}
     casos.append(("recusa por autoridade no domínio do próprio ente volta uma vez", pendente(salvador)))
     casos.append(("rejulgada depois da correção, não volta de novo",
-                  not pendente({**salvador, "juiz": {**salvador["juiz"], "julgado_em": "2026-11-10"}})))
-    casos.append(("recusa por autoridade em domínio de outro ente não volta",
-                  not pendente({**salvador, "alvo": "2800308"})))
+                  not pendente({**salvador, "juiz": {**salvador["juiz"], "julgado_em": "2026-11-20"}})))
+    casos.append(("a correção do resolvedor não alcança o domínio de outro ente",
+                  _do_proprio_ente(salvador) and not _do_proprio_ente({**salvador, "alvo": "2800308"})))
     casos.append(("recusa por outro motivo não volta",
-                  not pendente({**salvador, "juiz": {**salvador["juiz"], "motivo": "natureza_duvidosa"}})))
+                  not pendente({**salvador, "juiz": {**salvador["juiz"], "motivo": "ente_nao_confirmado"}})))
     # e o caminho sem preservador devolve veredito sem hash
     v_sem = julgar_uma({"id": "z", "municipio": "Bonito", "uf": "MS",
                         "url": CANARIOS["plano_novo"]["url"]}, buscar, None)
@@ -811,9 +880,15 @@ def autoteste() -> int:
     _docx = {"url": "https://rsgovbr-my.sharepoint.com/personal/x/PLANCON.docx"}
     _velho = {"promove": False, "motivo": "ente_nao_confirmado", "julgado_em": "2026-11-05"}
     casos.append(("recusa de DOCX lido pelo leitor antigo volta uma vez; a do leitor novo e a de PDF não",
-                  recusa_de_leitura_ilegivel(_docx, _velho)
-                  and not recusa_de_leitura_ilegivel(_docx, {**_velho, "julgado_em": LEITOR_DE_ESCRITORIO_DESDE})
-                  and not recusa_de_leitura_ilegivel({"url": "https://x/p.pdf"}, _velho)))
+                  recusa_anterior_a_correcao(_docx, _velho)
+                  and not recusa_anterior_a_correcao(_docx, {**_velho, "julgado_em": "2026-11-11"})
+                  and not recusa_anterior_a_correcao({"url": "https://x/p.pdf"}, _velho)))
+    casos.append(("recusa por autoridade ou citação julgada antes do ato próprio volta uma vez; a de depois e a promoção não",
+                  recusa_anterior_a_correcao({"url": "https://x/p.pdf"}, {"promove": False, "motivo": "citacao_incompleta",
+                                                                        "julgado_em": "2026-11-18"})
+                  and not recusa_anterior_a_correcao({"url": "https://x/p.pdf"}, {"promove": False, "motivo": "citacao_incompleta",
+                                                                            "julgado_em": "2026-11-20"})
+                  and not recusa_anterior_a_correcao({"url": "https://x/p.pdf"}, {"promove": True, "julgado_em": "2026-11-01"})))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
@@ -871,6 +946,12 @@ def main() -> int:
         # aponta a notícia, e a notícia não é o ato — mas diz que ele existe e onde procurar.
         if dirigida and v.get("motivo") in MOTIVOS_QUE_PEDEM_BUSCA_DIRIGIDA:
             v = tentar_busca_dirigida(p, v, buscar_texto, hash_do_texto)
+        elif dirigida and procurar_ato_de_aprovacao(p, v):
+            # 16/11/2026 (editoria, regra geral): a pista que cita o número de um ato orienta a busca
+            # também quando o plano já foi promovido sem ato de aprovação. Achado e lido o ato, vale o
+            # veredito com o ato; não achado, fica a promoção que já havia, com o registro da busca.
+            v2 = tentar_busca_dirigida(p, dict(v), buscar_texto, hash_do_texto)
+            v = v2 if v2.get("promove") and not v2.get("sem_ato_de_aprovacao") else dict(v, busca_dirigida=v2.get("busca_dirigida"))
         return v
 
     vereditos, por_fila = [], {}

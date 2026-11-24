@@ -1,0 +1,94 @@
+# Área queimada e superfície de água por estado, somadas dos mapas do MapBiomas no Earth Engine.
+#
+# Dois jobs porque são duas permissões: a soma entra no Google com a identidade do repositório
+# (`id-token`, sem chave guardada em lugar nenhum) e guarda os três arquivos como artefato; o elo do
+# invólucro dos coletores traz o artefato, confere de novo e faz o commit como todo coletor.
+#
+# Cadência (editoria, 15/11/2026: o Earth Engine cobra processamento): toda terça de madrugada o job
+# pergunta à fonte, só por metadado, se há mês novo do Monitor do Fogo ou coleção nova de fogo ou de água.
+# Só soma o que mudou; sem mudança, não há processamento nem commit. Registro em config/temporizadores.json.
+name: MapBiomas (fogo e água por estado)
+
+on:
+  schedule:
+    - cron: "41 3 * * 2"
+  workflow_dispatch:
+    inputs:
+      do_run:
+        description: "Reaproveitar a soma guardada como artefato por outro run (id), em vez de somar de novo"
+        required: false
+        default: ""
+        type: string
+      produtos:
+        description: "Vazio = os três; ou --monitor, --colecao, --agua (pode combinar); --desde-zero refaz o Monitor inteiro"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+  actions: read        # o invólucro dos coletores pede (job `vez`); sem isto o run nem começa
+
+jobs:
+  somar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: read
+      actions: read        # baixar a soma de outro run (do_run)
+      id-token: write      # a identidade do repositório no Google; não há chave do Earth Engine
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: |
+            coletar_mapbiomas.py
+            data/mapbiomas
+            data/municipios_ibge_referencia.json
+          sparse-checkout-cone-mode: false
+      - uses: google-github-actions/auth@c200f3691d83b41bf9bbd8638997a462592937ed # v2
+        with:
+          workload_identity_provider: projects/587772025616/locations/global/workloadIdentityPools/github/providers/monitorelnino
+          service_account: mare-coleta@project-0735ac01-3417-4c02-ab5.iam.gserviceaccount.com
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q earthengine-api==1.7.52
+      - name: Reaproveitar uma soma já feita
+        if: inputs.do_run != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DO_RUN: ${{ inputs.do_run }}
+        run: |
+          gh run download "$DO_RUN" -R "$GITHUB_REPOSITORY" --pattern 'mapbiomas*' --dir /tmp/soma
+          mkdir -p data/mapbiomas && find /tmp/soma -name '*.json' -exec cp {} data/mapbiomas/ \;
+          ls -la data/mapbiomas
+      - name: Somar por estado
+        env:
+          GEE_PROJECT: project-0735ac01-3417-4c02-ab5
+          PRODUTOS: ${{ inputs.produtos }}
+        run: |
+          python3 coletar_mapbiomas.py $PRODUTOS
+          # só vai ao artefato o que esta execução escreveu ou carimbou
+          git status --porcelain data/mapbiomas | grep -q . || rm -rf data/mapbiomas
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: mapbiomas
+          path: data/mapbiomas/
+          if-no-files-found: ignore   # nada novo na fonte: sem artefato, e o elo não commita
+          retention-days: 7
+
+  gravar:
+    needs: [somar]
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: mapbiomas
+      grupo_de_concorrencia: dia-mapbiomas
+      timeout_minutos: 30
+      comandos: |
+        coletar_mapbiomas.py --do-artefato
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

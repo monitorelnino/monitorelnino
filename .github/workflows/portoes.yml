@@ -7,6 +7,9 @@ name: Portões (pull request)
 on:
   pull_request:
     branches: [main]
+    # 24/11/2026: PR em rascunho não roda os portões. O PR nasce em rascunho para ter número, recebe o
+    # CHANGELOG e o selo dos derivados e só então fica pronto: um envio conferido por PR.
+    types: [opened, synchronize, reopened, ready_for_review]
   # 30/09/2026 (§314): a suíte passa a rodar também NA `main`. É lá que o portão 12 cobra derivado
   # obsoleto de verdade — no PR ele só confere que a cadeia regenera. Sem esta linha, tirar a
   # cobrança do PR a tiraria do projeto inteiro, que não é o que o item 2 pede.
@@ -25,6 +28,7 @@ jobs:
   # qualquer um dos três não terminar em sucesso. Cada job detecta o que mudou por conta própria.
   estrutura:
     name: portoes · estrutura
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -173,6 +177,7 @@ jobs:
 
   navegador:
     name: portoes · navegador
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -244,6 +249,7 @@ jobs:
 
   dado:
     name: portoes · dado
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -304,9 +310,7 @@ jobs:
             echo "--- diff (texto, 120 linhas) ---"; git diff -- . ':!data/snapshot_feed.json' ':!*.pdf' | head -120
             echo "--- versoes ---"; python3 --version; node --version; python3 -c "import reportlab,pypdf;print('reportlab',reportlab.Version,'pypdf',pypdf.__version__)"; fc-list 2>/dev/null | wc -l
           } > /tmp/relatorio.txt 2>&1
-          git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/registro
-          mkdir -p /tmp/registro/relatorios && cp /tmp/relatorio.txt "/tmp/registro/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_portoes_p12.txt"
-          cd /tmp/registro && git config user.name monitor-el-nino-bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -q -m "portoes p12 diagnostico" && git push -q
+          bash scripts/registrar_no_robo.sh "portoes p12 diagnostico" portoes_p12=/tmp/relatorio.txt
           exit 1
       - name: Portão 17 — robustez a atualização de dados (cópia perturbada)
         if: steps.diff.outputs.dado_mudou == 'true'
@@ -338,7 +342,7 @@ jobs:
   portoes:
     name: portoes
     needs: [estrutura, navegador, dado]
-    if: always()
+    if: always() && (github.event_name != 'pull_request' || !github.event.pull_request.draft)
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

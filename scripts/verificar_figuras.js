@@ -76,7 +76,8 @@ function autoteste() {
 }
 
 async function mouse(page, falhas) {
-  await page.waitForFunction(() => document.querySelectorAll("#mapaTemperatura path.uf-path").length >= 27, null, { timeout: 20000 });
+  // 24/11/2026: espera a condição de cada mapa, não a rede ociosa (em 21/11 o `networkidle` estourou 30 s na `main`).
+  await page.waitForFunction((ids) => ids.every(id => document.querySelectorAll(`#${id} path.uf-path, #${id} circle`).length >= 27), MAPAS, { timeout: 20000 });
   for (const id of MAPAS) {
     const textos = await page.evaluate((id) => {
       const svg = document.getElementById(id); if (!svg) return [];
@@ -133,7 +134,7 @@ async function principal() {
   try {
     for (const [pagina, regra] of [["monitor-de-riscos", mouse], ["defesa-civil", figuras]]) {
       const page = await b.newPage({ viewport: { width: 1280, height: 900 } });
-      await page.goto(`http://127.0.0.1:${srv.address().port}/${pagina}.html`, { waitUntil: "networkidle" });
+      await page.goto(`http://127.0.0.1:${srv.address().port}/${pagina}.html`, { waitUntil: "domcontentloaded" });
       await regra(page, falhas);
     }
   } finally { await b.close(); srv.close(); }

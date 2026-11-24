@@ -54,7 +54,7 @@ sys.path.insert(0, str(RAIZ))
 
 FILA = "pistas_imprensa.json"
 TETO_POR_MUNICIPIO = 5
-DIAS_DE_VIDA = 21
+from pistas import DIAS_DE_VIDA, dias_na_fila  # noqa: E402  (a mesma data de entrada do portão)
 TENTATIVAS_MAXIMAS = 2
 # Acima disto, o mesmo artigo atribuído a N municípios é notícia genérica, e não notícia da cidade.
 TETO_DE_MUNICIPIOS_POR_ARTIGO = 3
@@ -121,24 +121,13 @@ def peso_da_pista(pista: dict) -> tuple:
     return nivel, str(pista.get("registrado_em") or pista.get("data") or "")
 
 
-def dias_na_fila(pista: dict, hoje_iso: str):
-    """Dias desde o registro. Função pura; None sem data legível."""
-    bruto = str(pista.get("registrado_em") or "")[:10]
-    for fmt in ("%Y-%m-%d", "%d/%m/%Y"):
-        try:
-            d = dt.datetime.strptime(bruto, fmt).date()
-            break
-        except ValueError:
-            d = None
-    if d is None:
-        return None
-    return (dt.date.fromisoformat(hoje_iso) - d).days
-
-
 def aberta(pista: dict) -> bool:
     """A pista ainda ocupa a fila? Função pura."""
     status = str(pista.get("status") or "")
-    return not status.startswith(("fechada", "aplicada", "rejeitada", "pista de decreto"))
+    # 17/11/2026: a promovida pelo juiz já tem desfecho; continuava "na fila" e o prazo a fechava como
+    # "sem documento oficial localizado" (103 promovidas) — motivo falso sobre documento lido e aprovado.
+    return (not status.startswith(("fechada", "aplicada", "rejeitada", "pista de decreto", "promovida"))
+            and not (pista.get("juiz") or {}).get("promove"))
 
 
 # Pista encerrada guarda o que a reabertura precisa (endereço, alvo, status, decisão do juiz, tentativas)
@@ -160,11 +149,17 @@ def encerrada(pista: dict) -> bool:
     return not aberta(pista) or str(pista.get("status") or "").startswith("pista — recusada pelo juiz")
 
 
+# O título do link do Google News fica: é o que a busca no veículo procura (B2, 23/11/2026). Sem ele,
+# 1.863 links fechados pelo B2 não tinham o que procurar no veículo (5.802 no total, 2 com título).
+MANTIDO_NO_ENCERRADO = {"news.google.com": ("titulo",)}
+
+
 def compactar(pista: dict) -> dict:
     """A pista encerrada ou já recusada pelo juiz sem o texto de trabalho; a aberta, intacta. Função pura."""
     if not encerrada(pista):
         return pista
-    return {k: v for k, v in pista.items() if k not in TEXTO_DE_TRABALHO}
+    mantidos = next((c for host, c in MANTIDO_NO_ENCERRADO.items() if host in str(pista.get("url") or "")), ())
+    return {k: v for k, v in pista.items() if k not in TEXTO_DE_TRABALHO or k in mantidos}
 
 
 def decidir(pistas: list, decretados: set, hoje_iso: str) -> list:
@@ -245,6 +240,9 @@ def _autoteste() -> int:
     ok("o plano vence o decreto quando os dois aparecem",
        not e_de_resposta({"titulo": "Com plano de contingência aprovado, cidade decreta emergência"}))
 
+    ok("promovida pelo juiz não ocupa a fila nem vence pelo prazo",
+       not aberta({"status": "pista — na fila", "juiz": {"promove": True}}) and not aberta({"status": "promovida — x"})
+       and aberta({"status": "pista — na fila", "juiz": {"promove": False}}))
     ok("dias na fila em ISO", dias_na_fila({"registrado_em": "2026-09-01"}, "2026-10-03") == 32)
     ok("dias na fila em data brasileira",
        dias_na_fila({"registrado_em": "01/09/2026"}, "2026-10-03") == 32)
@@ -257,6 +255,10 @@ def _autoteste() -> int:
     ok("recusada pelo juiz perde o texto de trabalho e guarda a decisão",
        compactar({"status": "pista — recusada pelo juiz: x", "titulo": "t", "juiz": {"promove": False}})
        == {"status": "pista — recusada pelo juiz: x", "juiz": {"promove": False}})
+    gn = {"id": "2", "url": "https://news.google.com/rss/articles/CBMi", "status": "fechada — y", "titulo": "t",
+          "trecho": "r", "veiculo_dominio": "j.com"}
+    ok("encerrada do Google News guarda o título (a busca no veículo precisa dele); o resto sai",
+       compactar(gn) == {"id": "2", "url": gn["url"], "status": "fechada — y", "titulo": "t", "veiculo_dominio": "j.com"})
     ok("aberta fica intacta; compactar não muda o original",
        compactar({"status": "pista — na fila", "titulo": "t"}) == {"status": "pista — na fila", "titulo": "t"}
        and "titulo" in enc)

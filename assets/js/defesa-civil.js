@@ -119,7 +119,7 @@ function __init(){
         const fontes = m.fontes || [];
         return {cod: m.ibge, nome: m.nome, uf: m.uf, eventos: eventos, classificado: Array.isArray(ev),
                 familia: familiaDe(eventos[0]), decreto: m.primeiro_decreto || null, reconhecimento: m.primeiro_reconhecimento || null,
-                reconhecida: !!m.reconhecido, tipos: m.tipos || [],
+                reconhecida: !!m.reconhecido, tipos: m.tipos || [], anterior: !!m.decreto_anterior_ao_ciclo,
                 atoLocalizado: !!m.decretado,
                 atoMunicipal: fontes.find(f => f.canal !== 'DOU') || null, portaria: fontes.find(f => f.canal === 'DOU') || null};
       })
@@ -221,7 +221,8 @@ function __init(){
         ? texto_molde('defesa-civil.municipio.decreto.ato_localizado.molde',
             {documento: docLink(m.atoMunicipal) || 'Decreto', data: esc(m.atoMunicipal && m.atoMunicipal.data || m.decreto || '')})
         : texto_molde('defesa-civil.municipio.decreto.ato_inferido.molde',
-            {corte: esc(corteDecretos || 'sem registro'), data: esc(m.reconhecimento || (m.portaria || {}).data || '')}));
+            {corte: esc(corteDecretos || 'sem registro'), data: esc(m.reconhecimento || (m.portaria || {}).data || '')}))
+        + (m.anterior ? '<span class="cartao-s">' + esc((C && C.texto('defesa-civil.municipio.decreto.anterior')) || '') + '</span>' : '');
       corpoRec = m.reconhecida
         ? linhaT('Reconhecido em ' + esc(m.reconhecimento || (m.portaria || {}).data || ''), m.portaria ? docLink(m.portaria) : '')
         : linhaT(esc(lacunaDe('reconhecimento', corteDecretos)));

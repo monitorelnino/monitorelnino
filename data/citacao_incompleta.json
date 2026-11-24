@@ -3,6 +3,15 @@
  "regra": "revogada em 08/10/2026 (D3): esta fila não tira ponto de registro nenhum",
  "fila": [
   {
+   "nome": "Rio Branco",
+   "uf": "AC",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
    "nome": "Manaus",
    "uf": "AM",
    "categoria": "plano",
@@ -47,6 +56,15 @@
    ]
   },
   {
+   "nome": "Natal",
+   "uf": "RN",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
    "nome": "Porto Velho",
    "uf": "RO",
    "categoria": "plano_antigo",
@@ -81,16 +99,34 @@
    ]
   },
   {
-   "nome": "Florianópolis",
+   "nome": "Itajaí",
    "uf": "SC",
-   "categoria": "plano_antigo",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Congo",
+   "uf": "PB",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Francisco",
+   "uf": "SE",
+   "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato"
    ]
   },
   {
-   "nome": "Itajaí",
-   "uf": "SC",
+   "nome": "Itabaiana",
+   "uf": "SE",
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato",
@@ -155,8 +191,68 @@
    ]
   },
   {
+   "nome": "Blumenau",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
    "nome": "Joinville",
    "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Jaraguá do Sul",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Malhada dos Bois",
+   "uf": "SE",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Divina Pastora",
+   "uf": "SE",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Cristóvão",
+   "uf": "SE",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Itabaianinha",
+   "uf": "SE",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Riachuelo",
+   "uf": "SE",
    "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
@@ -761,8 +857,7 @@
    "uf": "ES",
    "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao"
+    "sem_numero_de_ato"
    ]
   },
   {
@@ -795,6 +890,15 @@
   {
    "nome": "Vila Velha",
    "uf": "ES",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Guarulhos",
+   "uf": "SP",
    "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato",
@@ -1643,8 +1747,7 @@
    "uf": "SP",
    "categoria": "plano_antigo",
    "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao"
+    "sem_numero_de_ato"
    ]
   },
   {
@@ -1880,7 +1983,7 @@
   {
    "nome": "Caxias do Sul",
    "uf": "RS",
-   "categoria": "plano_antigo",
+   "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
@@ -2033,7 +2136,7 @@
   {
    "nome": "Colinas",
    "uf": "RS",
-   "categoria": "plano_antigo",
+   "categoria": "plano",
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"
@@ -2720,21 +2823,11 @@
    ]
   },
   {
-   "nome": "Água Branca",
-   "uf": "PB",
-   "categoria": "plano_antigo",
-   "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao"
-   ]
-  },
-  {
    "nome": "Areal",
    "uf": "RJ",
-   "categoria": "plano_antigo",
+   "categoria": "plano",
    "problemas": [
-    "sem_numero_de_ato",
-    "data_fora_do_padrao"
+    "sem_numero_de_ato"
    ]
   },
   {
@@ -3457,6 +3550,1568 @@
    "nome": "Seropédica",
    "uf": "RJ",
    "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Paraty",
+   "uf": "RJ",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ubá",
+   "uf": "MG",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Mato Castelhano",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Tupanci do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Arroio do Meio",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Capitão",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Eldorado do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Pato Branco",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Borrazópolis",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Manfrinópolis",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Rafard",
+   "uf": "SP",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Rebouças",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Cotiporã",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Espumoso",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São José do Ouro",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Redentora",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Horizontina",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Cerro Branco",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Piratini",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Tupandi",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Capela de Santana",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Nova Santa Rita",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Riozinho",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Hulha Negra",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Morrinhos do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Santa Maria",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Pelotas",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Igrejinha",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Alto Feliz",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Salto do Lontra",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Boa Vista da Aparecida",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Dores do Rio Preto",
+   "uf": "ES",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Senador Canedo",
+   "uf": "GO",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Mesquita",
+   "uf": "RJ",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Barão do Triunfo",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Urussanga",
+   "uf": "SC",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Lages",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Pirangi",
+   "uf": "SP",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Jaguarão",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Caçapava do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Lavras do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Garibaldi",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Jorge",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São José dos Ausentes",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Vanini",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Santo Antônio do Palma",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Vila Maria",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Lagoa Bonita do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Pantano Grande",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Torres",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Capivari do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Alegria",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Senador Salgado Filho",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Selbach",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Nova Esperança do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Saldanha Marinho",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Cerrito",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Rolante",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Morro Reuter",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Tapes",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Itacurubi",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Aceguá",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Nova Bassano",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Bom Jesus",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Coronel Pilar",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Carlos Gomes",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Santa Cecília do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Áurea",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Sertão",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Segredo",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ibarama",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Capão da Canoa",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Tramandaí",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Itati",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Crissiumal",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Vista Alegre",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Salto do Jacuí",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Silveira Martins",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Quinze de Novembro",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Mata",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Lourenço do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Pedro da Serra",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Dom Pedrito",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "São Borja",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Guabiju",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Farroupilha",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Guaporé",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Sananduva",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Nova Alvorada",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Marcelino Ramos",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Estrela Velha",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Passa Sete",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Vale do Sol",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Mampituba",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Terra de Areia",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Tiradentes do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Pejuçara",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Entre-Ijuís",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Jóia",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Nova Palma",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Fortaleza dos Valos",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Turuçu",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Amaral Ferrador",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Araricá",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Presidente Lucena",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Sapiranga",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Quaraí",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Barra do Quaraí",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Francisco de Paula",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Pinto Bandeira",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Marau",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Capão Bonito do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ibirapuitã",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Jacuizinho",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Marques de Souza",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ilópolis",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Encruzilhada do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Xangri-lá",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Três Forquilhas",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Alecrim",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Santo Cristo",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Condor",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Miguel das Missões",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Martinho da Serra",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Tupanciretã",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Francisco de Assis",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Arroio Grande",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Capão do Leão",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Cristal",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Dom Feliciano",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Canoas",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Marcos",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Barros Cassal",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ibiaçá",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Taquari",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Santa Clara do Sul",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Vale Verde",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Sepé",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Gabriel",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Nova Araçá",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Quatro Irmãos",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Mariano Moro",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Júlio de Castilhos",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Arambaré",
+   "uf": "RS",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Rio Bonito do Iguaçu",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Jaboatão dos Guararapes",
+   "uf": "PE",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Pouso Redondo",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Aperibé",
+   "uf": "RJ",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ribeirão Claro",
+   "uf": "PR",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Barracão",
+   "uf": "PR",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Saltinho",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Barra do Garças",
+   "uf": "MT",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Paulo Lopes",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Barra do Corda",
+   "uf": "MA",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Petrópolis",
+   "uf": "RJ",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "São Domingos",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Irati",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Piraí",
+   "uf": "RJ",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Abdon Batista",
+   "uf": "SC",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Xaxim",
+   "uf": "SC",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Angra dos Reis",
+   "uf": "RJ",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Santa Luzia do Itanhy",
+   "uf": "SE",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Resende",
+   "uf": "RJ",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Teresópolis",
+   "uf": "RJ",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Mogi Guaçu",
+   "uf": "SP",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Itaporanga",
+   "uf": "SP",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Lavínia",
+   "uf": "SP",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Três Pontas",
+   "uf": "MG",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Arraial do Cabo",
+   "uf": "RJ",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Tangará da Serra",
+   "uf": "MT",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Santa Luzia",
+   "uf": "MG",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ibiraiaras",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Jundiaí",
+   "uf": "SP",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Valinhos",
+   "uf": "SP",
+   "categoria": "plano",
+   "problemas": [
+    "sem_numero_de_ato"
+   ]
+  },
+  {
+   "nome": "Novo Cabrais",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Nova Hartz",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Minas do Leão",
+   "uf": "RS",
+   "categoria": "plano_antigo",
+   "problemas": [
+    "sem_numero_de_ato",
+    "data_fora_do_padrao"
+   ]
+  },
+  {
+   "nome": "Ibirubá",
+   "uf": "RS",
+   "categoria": "plano_antigo",
    "problemas": [
     "sem_numero_de_ato",
     "data_fora_do_padrao"

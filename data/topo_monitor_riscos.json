@@ -1,67 +1,67 @@
 {
  "_governanca": "INSTANTÂNEO dos números de agora do Monitor de riscos, para a Imprensa e a página lerem em vez de recalcular (handover de 02/10/2026, item 1; HANDOVER_TEXTOS_B §10.3). Não é fonte de nada. Cada cartão guarda em `anterior` o valor e a referência da leitura anterior; sem leitura anterior, o campo não existe. Avisos: avisos distintos no país. O de temperatura é o maior DESVIO em relação à normal 1991–2020 do Inmet, e não a máxima absoluta: 35 °C é normal em Cuiabá e muito quente em Porto Alegre, e publicar a máxima absoluta era publicar geografia como se fosse notícia — mesma régua do mapa de calor da página.",
- "gerado_em": "16/11/2026",
+ "gerado_em": "24/11/2026",
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 4.3,
-   "referencia": "15/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belo Horizonte",
-   "capital": "Belo Horizonte",
-   "uf": "MG",
+   "valor": 3.6,
+   "referencia": "24/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Teresina",
+   "capital": "Teresina",
+   "uf": "PI",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 32.0 °C contra a média de 27.7 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 40.0 °C contra a média de 36.4 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 3.3,
-    "referencia": "14/11/2026"
+    "valor": 5.2,
+    "referencia": "23/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 9731,
-   "referencia": "Focos do dia — focos_diario_br_20261115.csv",
+   "valor": 24387,
+   "referencia": "Focos do dia — focos_diario_br_20261123.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 13884,
-    "referencia": "Focos do dia — focos_diario_br_20261114.csv"
+    "valor": 21803,
+    "referencia": "Focos do dia — focos_diario_br_20261122.csv"
    }
   },
   {
    "id": "seca_estados_grave_ou_pior",
-   "valor": 2,
-   "referencia": "Setembro de 2026",
+   "valor": 6,
+   "referencia": "Outubro de 2026",
    "fonte": "Monitor de Secas (ANA)",
    "sem_coleta": false,
    "anterior": {
-    "valor": 0,
-    "referencia": "Agosto de 2026"
+    "valor": 2,
+    "referencia": "Setembro de 2026"
    }
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 2,
-   "perigo_ou_maior": 0,
-   "referencia": "15/11/2026 22:14",
+   "valor": 4,
+   "perigo_ou_maior": 2,
+   "referencia": "24/11/2026 05:50",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 3,
-    "referencia": "15/11/2026 03:54"
+    "valor": 6,
+    "referencia": "23/11/2026 22:13"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "15/11/2026",
+   "referencia": "24/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "14/11/2026"
+    "referencia": "23/11/2026"
    }
   }
  ]

@@ -64,7 +64,6 @@ PALAVRAS = {
     "decreto": ["decreta", "situacao de emergencia", "estado de calamidade",
                 "emergencia", "calamidade publica"],
 }
-DOMINIOS_OFICIAIS = (".gov.br", ".leg.br", ".jus.br", ".mp.br", ".def.br")
 AUTOAPLICAR = False  # suspenso em 02/09/2026 (auditoria externa AUD-02/AUD-03)
 
 
@@ -107,7 +106,10 @@ def host_oficial(url: str):
     if u.username or u.password: return False, "", "URL com credenciais"
     host = (u.hostname or "").lower().rstrip(".")
     if not host or host != host.encode("idna").decode("ascii", "ignore") or " " in host: return False, host, "hostname inválido"
-    permitido = host.endswith(DOMINIOS_OFICIAIS) or any(host == d or host.endswith("." + d) for d in DIARIOS_MUNICIPAIS_OFICIAIS)
+    # 17/11/2026: "é oficial?" tem uma definição só, a do juiz (`coletores_base._dominio_publico`). A lista
+    # própria daqui recusava `defesacivil.prefeitura.rio`, o domínio da Prefeitura do Rio de Janeiro.
+    from coletores_base import _dominio_publico
+    permitido = _dominio_publico(f"https://{host}/") or any(host == d or host.endswith("." + d) for d in DIARIOS_MUNICIPAIS_OFICIAIS)
     if not permitido: return False, host, f"domínio '{host}' fora das fontes oficiais aceitas (R4)"
     try:
         infos = socket.getaddrinfo(host, 443, proto=socket.IPPROTO_TCP)
@@ -118,6 +120,42 @@ def host_oficial(url: str):
         if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved or ip.is_multicast or ip.is_unspecified:
             return False, host, f"resolve para endereço não público ({ip})"
     return True, host, ""
+
+
+class _Destino(Exception):
+    """O destino do link de compartilhamento, achado sem abri-lo."""
+
+
+class _SoOPrimeiroSalto(urllib.request.HTTPRedirectHandler):
+    """Segue o redirecionador e para no primeiro destino que não é redirecionador, sem pedi-lo:
+    quem o valida é `host_oficial`, antes de qualquer acesso (AUD-03)."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        from buscador2 import eh_redirecionador
+        if not eh_redirecionador(newurl):
+            raise _Destino(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def desembrulhar(url: str, abrir=None):
+    """(url, motivo): o endereço do documento quando o leitor colou um link de compartilhamento
+    (`share.google`, 16–17/11/2026: três envios de Mesquita/RJ recusados pelo domínio do atalho).
+    Endereço que não é redirecionador volta como veio; o que não se resolve volta None, com o motivo."""
+    from buscador2 import eh_redirecionador
+    if not eh_redirecionador(url):
+        return url, ""
+    try:
+        if abrir:
+            destino = abrir(url)
+        else:
+            opener = urllib.request.build_opener(_SoOPrimeiroSalto())
+            opener.addheaders = [("User-Agent", ua_de("contribuições públicas"))]
+            opener.open(url, timeout=30).close()
+            destino = None
+    except _Destino as d:
+        destino = str(d)
+    except Exception as e:  # noqa: BLE001
+        return None, f"link de compartilhamento não resolvido ({type(e).__name__})"
+    return (destino, "") if destino and not eh_redirecionador(destino) else (None, "link de compartilhamento não resolvido")
 
 
 class _SemRedirect(urllib.request.HTTPRedirectHandler):
@@ -176,7 +214,11 @@ def canal_do_dominio(host, uf):
 # não aplicado, com abstenção registrada, como antes.
 TIPO_DA_PISTA = {"plano": "plano", "plano_elaboracao": "plano", "plano_antigo": "plano",
                  "plano_saude": "plano", "decreto": "decreto", "ato_antecipatorio": "decreto",
-                 "estrutura": "estrutura"}
+                 "estrutura": "estrutura",
+                 # 16/11/2026: a correção do leitor traz o documento certo (Rio de Janeiro/RJ: o registro
+                 # apontava o plano estadual). Ficava "reservada à análise editorial", isto é, parada;
+                 # o juiz lê o documento como lê qualquer pista, e a não-regressão do aplicador decide.
+                 "correcao": "plano"}
 
 
 def pista_da_contribuicao(dados: dict, ibge: str, hoje_iso: str):
@@ -188,9 +230,15 @@ def pista_da_contribuicao(dados: dict, ibge: str, hoje_iso: str):
     url = (dados.get("link_oficial") or "").strip()
     if not tipo or not url.startswith("https://") or not ibge:
         return None
-    return {"url_final": url, "tipo": tipo, "alvo": str(ibge).zfill(7), "nivel": "C",
-            "data": hoje_iso, "origem": "contribuicao",
-            "titulo": f"Contribuição de leitor ({tipo})"}
+    pista = {"url_final": url, "tipo": tipo, "alvo": str(ibge).zfill(7), "nivel": "C",
+             "data": hoje_iso, "origem": "contribuicao",
+             "titulo": f"Contribuição de leitor ({tipo})"}
+    # 16/11/2026 (Taió/SC: o leitor informou "Decreto 9584/2026" e o número se perdia): o "número e data"
+    # já validado (curto, sem marcação; R4-bis) vai com a pista, e a busca dirigida o lê como lê qualquer
+    # campo. Não é prova: a prova é o documento oficial, que o juiz lê.
+    if dados.get("numero_data") and numero_data_valido(dados["numero_data"]):
+        pista["ato_citado"] = dados["numero_data"].strip()
+    return pista
 
 
 def autoteste() -> int:
@@ -202,6 +250,13 @@ def autoteste() -> int:
     """
     casos = [
         ("número e data curtos passam", numero_data_valido("Decreto 123, de 02/07/2026")),
+        ("link share.google vira o endereço do documento",
+         desembrulhar("https://share.google/abc", abrir=lambda u: "https://x.rj.gov.br/p.pdf") == ("https://x.rj.gov.br/p.pdf", "")),
+        ("link que não resolve é recusado com motivo, não adivinhado",
+         desembrulhar("https://share.google/abc", abrir=lambda u: "https://share.google/abc")[0] is None),
+        ("endereço comum passa como veio", desembrulhar("https://x.gov.br/p.pdf", abrir=lambda u: 1 / 0) == ("https://x.gov.br/p.pdf", "")),
+        ("o domínio da Prefeitura do Rio (prefeitura.rio) é oficial pela regra do juiz",
+         __import__("coletores_base")._dominio_publico("https://defesacivil.prefeitura.rio/")),
         ("campo vazio reprova", not numero_data_valido("")),
         ("campo longo reprova", not numero_data_valido("x" * (TAM_MAX_NUMERO_DATA + 1))),
         ("marcação reprova", not numero_data_valido("<script>alert(1)</script>")),
@@ -222,8 +277,16 @@ def autoteste() -> int:
          _p == {"url_final": "https://x.se.gov.br/p.pdf", "tipo": "plano", "alvo": "2800308",
                 "nivel": "C", "data": "2026-10-12", "origem": "contribuicao",
                 "titulo": "Contribuição de leitor (plano)"}),
-        ("A6-19: 'correção' não vira pista",
-         pista_da_contribuicao({"tipo": "correcao", "link_oficial": "https://x.gov.br"}, "2800308",
+        ("o número e data validado vai com a pista; com marcação, não",
+         (pista_da_contribuicao({"tipo": "plano", "link_oficial": "https://x.gov.br/p.pdf", "numero_data": "Decreto 9584/2026"},
+                                "4217808", "2026-11-12") or {}).get("ato_citado") == "Decreto 9584/2026"
+         and "ato_citado" not in pista_da_contribuicao({"tipo": "plano", "link_oficial": "https://x.gov.br/p.pdf",
+                                                         "numero_data": "<b>Decreto 1</b>"}, "3302858", "2026-11-15")),
+        ("correção com documento vira pista de plano para o juiz",
+         (pista_da_contribuicao({"tipo": "correcao", "link_oficial": "https://x.gov.br/p.pdf"}, "2800308",
+                                "2026-10-12") or {}).get("tipo") == "plano"),
+        ("tipo que não é de documento não vira pista",
+         pista_da_contribuicao({"tipo": "outro_ato", "link_oficial": "https://x.gov.br"}, "2800308",
                                "2026-10-12") is None),
         ("A6-19: sem https não vira pista",
          pista_da_contribuicao({"tipo": "decreto", "link_oficial": "http://x.gov.br"}, "2800308",
@@ -283,6 +346,10 @@ def main():
         # AUTOAPLICAÇÃO SUSPENSA (auditoria externa de 02/09/2026, AUD-02/AUD-03): até a
         # editoria reativar por escrito, toda contribuição fica não aplicada (abstenção registrada). Reativar =
         # AUTOAPLICAR = True, somente após os testes negativos de XSS/SSRF passarem no CI.
+        url, motivo_link = desembrulhar(url)
+        if not url:
+            recusa(sid, uf, municipio, motivo_link + " (R4)"); continue
+        d = {**d, "link_oficial": url}
         if not AUTOAPLICAR:
             # A6-19 (12/10/2026, D7): com a autoaplicação suspensa, a contribuição de documento vira
             # PISTA pela porta única e segue o juiz automático — que lê o documento oficial, como

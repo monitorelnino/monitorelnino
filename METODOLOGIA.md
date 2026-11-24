@@ -249,7 +249,7 @@ Toda decisão do juiz é registrada em `data/promocoes_automaticas.json` com a p
 
 Explicação em linguagem de leitor: §5.3.1.
 
-**Camada documentada — regra vigente (§12.4.2, desde 27/08/2026; créditos atualizados pelo §196 e pelo C28, errata de texto de 27/09/2026 — §257):** crédito populacional por categoria: plano preventivo 1,0 · **edição anterior 1,0** · em elaboração 0,45 · coberto pelo estado 0,3 · decreto 0 (Correção B) · nada localizado 0 · ainda não verificado 0 (§25) · ato alheio ao ciclo 0. A **escada municipal**, criada pelo C28 com as mesmas proporções da escada estadual: **plano do ciclo 1,0 · plano readaptado 0,65 · plano recorrente 0,45**; e o crédito de **estrutura de coordenação 0,45**. *O §196 pôs a edição anterior em 1,0 — plano vigente de ciclo anterior conta integral —, e até 27/09/2026 este parágrafo ainda grafava o 0,6 da redação anterior; o cálculo publicado sempre usou o valor decidido pela editoria.* *Histórico (v2.1, para auditoria): plano 1,0 · desatualizado 0,7 · decreto 0,4 — peso do decreto removido pela Correção B; o registro permanece no banco.* Agregados oficiais tipados entram quando há número verificado sem lista nominal, com o peso da sua categoria e descontando os municípios já nomeados individualmente: RO 38 planos apresentados ao MP-RO (1,0). *Os agregados tipo decreto — PB 146 e RN 166 — foram excluídos da pontuação pela Correção B (§12.4.1), pela mesma razão estrutural do peso individual do decreto: são atos de resposta, nunca ex-ante. Permanecem no banco e nas estatísticas de cobertura bruta (`percentual_uf.json`) como registro de transparência.*
+**Camada documentada — regra vigente (§12.4.2, desde 27/08/2026; créditos atualizados pelo §196 e pelo C28, errata de texto de 27/09/2026 — §257):** crédito populacional por categoria: plano preventivo 1,0 · **edição anterior 1,0** · em elaboração 0,45 · coberto pelo estado 0,3 · decreto 0 (Correção B) · nada localizado 0 · ainda não verificado 0 (§25) · ato alheio ao ciclo 0 · plano desatualizado segundo a lei 0 e plano com mais de dois anos fora do cadastro 0,65 (§129). A **escada municipal**, criada pelo C28 com as mesmas proporções da escada estadual: **plano do ciclo 1,0 · plano readaptado 0,65 · plano recorrente 0,45**; e o crédito de **estrutura de coordenação 0,45**. *O §196 pôs a edição anterior em 1,0 — plano vigente de ciclo anterior conta integral —, e até 27/09/2026 este parágrafo ainda grafava o 0,6 da redação anterior; o cálculo publicado sempre usou o valor decidido pela editoria.* *Histórico (v2.1, para auditoria): plano 1,0 · desatualizado 0,7 · decreto 0,4 — peso do decreto removido pela Correção B; o registro permanece no banco.* Agregados oficiais tipados entram quando há número verificado sem lista nominal, com o peso da sua categoria e descontando os municípios já nomeados individualmente: RO 38 planos apresentados ao MP-RO (1,0). *Os agregados tipo decreto — PB 146 e RN 166 — foram excluídos da pontuação pela Correção B (§12.4.1), pela mesma razão estrutural do peso individual do decreto: são atos de resposta, nunca ex-ante. Permanecem no banco e nas estatísticas de cobertura bruta (`percentual_uf.json`) como registro de transparência.*
 
 **Cobertura populacional:** cada município do banco contribui população_Censo2022 × crédito da categoria. Os créditos em vigor estão no parágrafo anterior e no código, em `recalcular_mare.CRED_POP`; este parágrafo não os repete — até 08/10/2026 ele grafava `plano_antigo 0,6`, revogado pelo §196 em 24/09, e a divergência chegou ao PDF público (A3-05, A3-16). Em 08/10/2026 entra `plano_nomeado 0` (§104, decisão D1). Fora da lista: decreto 0 (Correção B) · **nao_el_nino 0** (desvio declarado da letra do §12.4.2, que herdaria 0,1 da escala da capital: o vocabulário obrigatório do §4 veda crédito a ato alheio ao ciclo, e a simulação de 27/08/2026 demonstrou o vício — o AP ganharia 2,6 pontos de cobertura por emergência sanitária). Agregados sem lista nominal entram pelo excedente × **população municipal mediana da UF** × crédito (RO, 38 planos). Denominador: população total da UF no Censo 2022, validado por `atualizar_populacao.py` (5.570 municípios exatos, total exato da apuração oficial identificada, cinco sentinelas nominais). Boa Esperança do Norte/MT (instalado em 2025, pós-Censo) tem peso populacional 0, com seus habitantes contidos nos municípios de origem. A junção banco↔malha exige a grafia oficial IBGE; o motor falha em caso de não-casamento.
 
@@ -373,7 +373,7 @@ Primeiro dataset nominal de transferências da plataforma: Prepara RS (Resoluç�
 
 **10.2 Calibrações declaradas (julgamento, não derivação)**
 
--   Créditos populacionais vigentes da cobertura documentada: plano 1,0 · **edição anterior 1,0** (§196) · em elaboração 0,45 · coberto pelo estado 0,3 · decreto 0 (§12.4.2); e a escada municipal do C28: **plano do ciclo 1,0 · plano readaptado 0,65 · plano recorrente 0,45 · estrutura de coordenação 0,45**. Declarada = metade do crédito da categoria ("declaração vale metade do documento") — o que, com edição anterior em 1,0, põe o **declarado desatualizado em 0,5**.
+-   Créditos populacionais vigentes da cobertura documentada: plano 1,0 · **edição anterior 1,0** (§196) · em elaboração 0,45 · coberto pelo estado 0,3 · decreto 0 (§12.4.2) · plano desatualizado segundo a lei 0 e plano com mais de dois anos fora do cadastro 0,65 (§129); e a escada municipal do C28: **plano do ciclo 1,0 · plano readaptado 0,65 · plano recorrente 0,45 · estrutura de coordenação 0,45**. Declarada = metade do crédito da categoria ("declaração vale metade do documento") — o que, com edição anterior em 1,0, põe o **declarado desatualizado em 0,5**.
 
 -   Piso 5 na agregação geométrica; expoente 0,45 na intensidade do mapa de composição.
 
@@ -3874,8 +3874,8 @@ exceção que não se declara é regra desligada em silêncio.
 
 ### 100.4 Contrato para toda página pública, inclusive as que não têm seção
 
-Nove contratos, de cinco para nove: entraram a inicial, o Monitor de riscos, o Para gestores e o
-Blog. Três dessas páginas **não usam `<section>`** — os blocos são `div` sem id —, e por isso o
+Toda página pública passou a ter contrato: entraram a inicial, o Monitor de riscos e o Para
+gestores. Essas páginas **não usam `<section>`** — os blocos são `div` sem id —, e por isso o
 contrato delas declara na raiz o que se pode provar sem reescrever a marcação: a ordem dos
 títulos, as figuras que têm de existir e estar no componente, o texto exigido e o proibido.
 Divergência declarada em cada um: é menos do que um contrato de seção prova.
@@ -4099,9 +4099,9 @@ Pista com **duas tentativas** de busca dirigida sem documento, ou **21 dias** na
 **reabre sozinha** se surgir evidência nova para o mesmo município e assunto. Fechar não é apagar:
 o registro fica, e é por ele que a reabertura sabe o que já foi tentado.
 
-## 103. Dizemos o que disponibilizamos; o blog conta o ciclo (03/10/2026)
+## 103. Dizemos o que disponibilizamos (03/10/2026)
 
-Duas regras editoriais que valem para **todo o site**, e duas páginas refeitas por causa delas.
+Uma regra editorial que vale para **todo o site**, e as páginas refeitas por causa dela.
 
 ### 103.1 A regra do que se diz sobre o que se oferece
 
@@ -4126,45 +4126,23 @@ repositório**. Remover os arquivos quebraria a cadeia de derivados, que os rege
 que os cobra. O que desfaz a publicação sem mexer na cadeia é a regra de redirecionamento — e é o
 que está no `netlify.toml`.
 
-### 103.2 O blog conta o ciclo, em prosa
-
-O blog **não trata** de decisões, método, correções nem funcionamento do site: isso vive na
-metodologia e na página nova **Mudanças no MARÉ** (`mudancas.html`), ligada da metodologia e **sem
-link no menu** — ela é material de quem audita, não de quem chega. A página nasce do `CHANGELOG.md`,
-que já era o registro canônico: 57 entradas na primeira geração.
-
-Cada texto do blog conta uma condição do ciclo como história de fatos — onde, quando, quanto,
-quem, com fonte — em **texto corrido**. Sem tópicos, sem listas, sem cartões no meio do texto: os
-números vivem nas páginas, e o texto pode citá-los. A verificação é na **geração**, porque é ali
-que o texto se torna página: `gerar_blog.py` recusa corpo com lista ou cartão, e recusa texto sem
-`aprovado: sim`.
-
-**O fluxo editorial é a trava:** a central entrega em `robo-registro/blog/<data>-<slug>.md`, com a
-marca de aprovação, e o Code copia e publica **só o que estiver lá**. Nada gerado automaticamente
-vai ao ar como texto do blog — e o release gerado, que existia, **deixou de existir**.
-
-As etiquetas passam a ser **Boletim** e **Acontecimento**. "Análise" e "Diário do monitoramento"
-saíram: a primeira convidava texto de opinião, e a segunda era por onde os registros técnicos
-entravam no blog. O texto de 22/09 foi **retirado** — ele usava "nota de antecipação", vocabulário
-revogado; a editoria decide se volta reescrito.
-
-### 103.3 O boletim é congelado por edição
+### 103.2 O boletim é congelado por edição
 
 Uma edição por semana, com três números — municípios que decretaram emergência na semana,
 municípios sob alerta do Cemaden, casos prováveis de dengue na última semana fechada. Eles vêm do
 motor da semana, que lê o instantâneo do topo de cada página (§101.5): **nenhuma conta nova
 nasce no boletim**.
 
-O que o boletim faz é **congelar**: `data/blog/boletins/<data>.json` guarda os números daquela
+O que o boletim faz é **congelar**: o arquivo de cada edição guarda os números daquela
 edição. Um boletim de três semanas atrás mostrando o número de hoje seria outro documento, e quem
 cita a edição cita o que ela dizia. Cartão sem dado **sai** do boletim, e a ausência fica
 declarada no próprio arquivo.
 
-### 103.4 A imprensa passa a ter só o estável
+### 103.3 A imprensa passa a ter só o estável
 
 Saíram "Esta semana em números", o release gerado com o botão de copiar, a variação semanal e a
 planilha da edição. O que muda toda semana — e que, por mudar, pedia conferência toda semana —
-vive agora no boletim do blog, escrito por pessoa. Na imprensa fica o **ponteiro**: a data da
+vive agora no boletim semanal. Na imprensa fica o **ponteiro**: a data da
 edição, os três números congelados e o caminho para ela.
 
 O portão de coerência **continua**, no lugar certo: ele compara o motor da semana com as páginas
@@ -4399,22 +4377,6 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **Provas.** Conta refeita à mão para as 27 UFs, pelos dois caminhos (soma das contribuições e Σ índice × população ÷ Σ população); o autoteste de `gerar_monitor_saude.py` reprova se o índice receber argumento de data ou de cobertura, se `c_uf` entrar no índice, se uma UF sair do denominador ou se a contribuição das UFs em elaboração for zero; o portão `verificar_saude.py` (m) exige índice igual ao instrumento, `c_uf` igual a 1, nenhuma antecipação no arquivo e o nacional igual à conta ponderada; `definicao_dos_indices` lê `metodo.pesos` e `metodo.agregacao_nacional` do arquivo, de modo que a Imprensa e a abertura da Saúde descrevem o método sem texto escrito à mão.
 
 **O que não muda.** Nenhuma constante, peso ou denominador do MARÉ Legal, que segue com a média simples dos estados. Peso zero do Saúde no MARÉ (o motor do Legal não lê este arquivo).
-## 124. Blog do MARÉ: como os textos são produzidos (25/10/2026)
-
-*Regras aprovadas pela editoria em 25/10/2026.*
-
-Os textos do Blog do MARÉ são escritos integralmente por inteligência artificial e aprovados pela editoria antes da publicação. São duas editorias: Legal e financiamento, publicada às segundas, e Saúde, publicada às quintas.
-
-**Seleção.** A pauta prioriza os estados e as regiões mais atingidos por seca, estiagem, fogo, chuva forte, enchentes e inundações, segundo contagens publicadas no MARÉ: municípios sob decreto de emergência, população desses municípios, reconhecimentos federais, focos de calor e notificações acima da faixa habitual. A escolha do recorte é editorial; o texto informa as contagens do lugar escolhido.
-
-**Fontes e números.** Cada texto parte do pacote de fatos da semana, gerado a partir dos dados do MARÉ, com fonte, endereço e data de cada fato. Todo número e toda data do texto estão nesse pacote. Fato com mais de nove dias na data do pacote é declarado como lacuna.
-
-**Construção.** Fatos de fontes diferentes aparecem juntos quando compartilham território, risco, população, mecanismo legal ou decisão pública. O texto descreve os fatos e a relação entre eles que os documentos sustentam; causa, razão, percentual e ordenação entre estados ficam com o leitor.
-
-**Saúde.** Os textos informam que as semanas mais recentes são parciais e sobem com as notificações atrasadas, que notificação é diferente de caso confirmado e que os números não indicam relação com o El Niño.
-
-**Forma.** Seis parágrafos em prosa, título factual, linha fina e, ao final, as fontes com a data de consulta. Cada texto fica no seu endereço permanente.
-
 ## 125. Juiz automático, codebook 1.8: regras que passam a valer (29/10/2026)
 
 *Decisão da central em 28/10/2026, sobre a medição de 28/10.*
@@ -4451,9 +4413,21 @@ Entram no juiz as regras J14, J16, J19 e J20, que ficaram fora em 29/10 (§125).
 
 Instrumento federal de saúde anunciado e não localizado (`data/saude_desfechos/instrumentos.json`, `federais`) é reconferido a cada sete dias pelo elo dos desfechos (`reconferir_instrumentos_federais.py`): lê o portal de publicações do Ministério da Saúde e a página já registrada do instrumento, e procura um link gov.br para PDF cujo endereço ou texto traga as palavras do instrumento. Achou: grava `url` e `consultado_em`. Não achou, com ao menos uma fonte lida por inteiro: grava `endereco_lacuna` com a data (mesmo formato dos estados, "não localizado até dd/mm"). Fonte que não respondeu não é "não localizado": a data não anda. Peso zero; nunca lido pelo motor.
 
-## 129. Plano do repositório estadual e a atualização anual do art. 3º-A (10/11/2026)
+## 129. Idade do plano municipal e a atualização anual do art. 3º-A (20/11/2026)
 
-A Lei nº 12.340/2010, art. 3º-A, §2º, diz que "Os Municípios incluídos no cadastro deverão: II - elaborar Plano de Contingência"; o §6º (redação da Lei nº 14.750/2023), que o plano será "elaborado no prazo de 1 (um) ano, contado da inclusão do Município no cadastro ..., submetido a avaliação e a prestação de contas anuais ... e atualizado, anualmente". No plano lido em repositório estadual (hoje, a pasta do Prepara RS), município da lista de **indicados** pela União ao cadastro (`cadastro_casa_civil_2086`) com edição anterior a 29/06/2025 — doze meses antes do Boletim nº 1 — fica fora da contagem, com o rótulo "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)". Só ano vale 31/12; mês e ano, o último dia do mês. Sem data identificável, não rebaixa. Fora da lista, o plano conta como antes. Ressalva: indicado não é inscrito — a lista de incluídos no cadastro não tem fonte pública — e a lei não diz que o plano perde validade.
+A Lei nº 12.340/2010, art. 3º-A, §2º, diz que "Os Municípios incluídos no cadastro deverão: II - elaborar Plano de Contingência"; o §6º (redação da Lei nº 14.750/2023), que o plano será "elaborado no prazo de 1 (um) ano, contado da inclusão do Município no cadastro ..., submetido a avaliação e a prestação de contas anuais ... e atualizado, anualmente".
+
+Decisão da editoria. A idade do plano municipal conta do Boletim nº 1 (29/06/2026) para trás, pela data da edição ou da última atualização que o próprio plano declara. Só ano vale 31/12; mês e ano, o último dia do mês. Sem data identificável, o plano conta pela categoria, sem redução. A regra vale em todos os estados e por qualquer canal em que o plano tenha sido localizado.
+
+| Idade da edição | Município indicado ao cadastro do art. 3º-A | Demais municípios |
+|---|---|---|
+| até um ano (de 29/06/2025 em diante) | conta pela categoria | conta pela categoria |
+| de um a dois anos | 0 | conta pela categoria |
+| mais de dois anos (anterior a 29/06/2024) | 0 | 0,65 |
+
+**Vigência declarada encerrada.** Em qualquer município, o plano cujo título ou capa declara um período já encerrado antes do ciclo ("2023/2024", "Operação Verão 2013/2014") aparece na ficha como "último plano localizado com vigência encerrada", com o período, e vale zero. A leitura é automática e é a mesma do plano estadual de saúde (§32.4.3): só período explícito, de até quatro anos, junto do título; período citado em frase de histórico não conta. Na dúvida, o plano não é dado como encerrado: quando a edição é datada, com mês, do segundo semestre do último ano do período, ela é lida como atualização para a estação seguinte.
+
+No município da lista de **indicados** pela União ao cadastro (`cadastro_casa_civil_2086`), o plano sem atualização anual localizada aparece na ficha como "plano desatualizado segundo a lei" e vale zero na cobertura populacional. Nos demais, a lei não pede atualização anual; o plano com mais de dois anos continua contando, com o crédito 0,65, que é o degrau do plano readaptado da escada municipal: nenhum peso novo foi criado. Ressalva: indicado não é inscrito — a lista de incluídos no cadastro não tem fonte pública — e a lei não diz que o plano perde validade; o que se mede é a atualização localizada, e o teto da afirmação segue sendo "não localizamos até o corte".
 
 ## 130. Site que recusa ou saiu do ar: cópia arquivada antes de desistir (12/11/2026)
 

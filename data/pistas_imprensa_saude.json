@@ -788,9 +788,9 @@
    "juiz": {
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "06/08/2025",
+    "data": "07/2026",
     "institui": [
      "coordenacao",
      "instrumento"
@@ -811,24 +811,27 @@
    "oficial": true,
    "origem": "funil_saude_estadual",
    "registrado_em": "01/10/2026",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "documento_oficial_confirmado": "https://www.saude.ms.gov.br/wp-content/uploads/2025/10/Plano-de-Contingencia-Estadual-Arboviroses-2025-2026.pdf",
+   "promovivel": true,
+   "status": "promovido_pelo_juiz",
    "juiz": {
-    "promove": false,
-    "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
-    "categoria": null,
-    "data": "18/12/2015",
+    "promove": true,
+    "motivo": null,
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": "plano_antigo",
+    "data": "10/2025",
     "institui": [
      "coordenacao",
      "instrumento"
     ],
-    "status_instrumento": null,
-    "coordenacao": null
+    "status_instrumento": "VIG",
+    "coordenacao": {
+     "degrau": "REATIVADO_CICLO",
+     "motivo": "ato que nomeia o ciclo, sem data de 2026 confirmada"
+    }
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 1
+   "repeticoes": 10
   },
   {
    "alvo": "funil-saude/MS",
@@ -847,7 +850,7 @@
    "juiz": {
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [
@@ -958,8 +961,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "27/06/2024",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -1311,8 +1326,21 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/RJ",
@@ -1921,8 +1949,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "22/12/2005",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/DF",
@@ -1937,8 +1975,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "24/10/2024",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/DF",
@@ -1953,8 +2003,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/DF",
@@ -1969,8 +2029,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "10/01/2017",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/DF",
@@ -1985,8 +2055,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -3170,7 +3250,7 @@
    "juiz": {
     "promove": false,
     "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "19/07/1955",
     "institui": [],
@@ -3196,7 +3276,7 @@
    "juiz": {
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [],
@@ -3222,7 +3302,7 @@
    "juiz": {
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [],
@@ -3244,14 +3324,14 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "status": "pista — recusada pelo juiz: documento não baixado: HTTPError",
    "juiz": {
     "promove": false,
-    "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "motivo": "documento não baixado: HTTPError",
+    "codebook": null,
     "categoria": null,
     "data": null,
-    "institui": [],
+    "institui": null,
     "status_instrumento": null,
     "coordenacao": null
    },
@@ -3274,7 +3354,7 @@
    "juiz": {
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [],
@@ -3300,7 +3380,7 @@
    "juiz": {
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [],
@@ -3326,7 +3406,7 @@
    "juiz": {
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [],
@@ -3352,7 +3432,7 @@
    "juiz": {
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [],
@@ -3374,8 +3454,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "15/10/2025",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3390,8 +3480,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: executivo_pendente",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "executivo_pendente",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "14/06/2018",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3406,8 +3506,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "10/02/2017",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3422,8 +3532,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3438,8 +3558,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3454,8 +3584,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3470,8 +3610,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3486,8 +3638,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "21/11/2025",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MT",
@@ -3502,8 +3664,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "05/06/2024",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/PA",
@@ -3522,7 +3694,7 @@
    "juiz": {
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "30/08/1951",
     "institui": [],
@@ -3548,7 +3720,7 @@
    "juiz": {
     "promove": false,
     "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "14/02/2019",
     "institui": [],
@@ -3574,7 +3746,7 @@
    "juiz": {
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "30/08/1951",
     "institui": [],
@@ -3600,7 +3772,7 @@
    "juiz": {
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "30/08/1951",
     "institui": [],
@@ -5763,8 +5935,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/SP",
@@ -5779,8 +5961,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/SP",
@@ -5795,8 +5987,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/SP",
@@ -5811,8 +6015,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/SP",
@@ -5827,8 +6041,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/SP",
@@ -5843,8 +6067,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/SP",
@@ -5859,8 +6093,18 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "25/05/2012",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/TO",
@@ -5875,8 +6119,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/TO",
@@ -5891,8 +6147,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/TO",
@@ -5907,8 +6175,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/TO",
@@ -5923,8 +6203,20 @@
    "registrado_em": "01/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -6295,7 +6587,7 @@
    "juiz": {
     "promove": false,
     "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "19/11/2025",
     "institui": [],
@@ -6316,8 +6608,18 @@
    "registrado_em": "02/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -6696,8 +6998,18 @@
    "registrado_em": "02/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -6738,8 +7050,18 @@
    "registrado_em": "02/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -6754,8 +7076,18 @@
    "registrado_em": "02/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -7798,7 +8130,7 @@
     "motivo": "citacao_incompleta",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "14/11/2026",
+    "data": "18/11/2026",
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -7824,7 +8156,7 @@
     "motivo": "noticia_institucional_nao_e_o_plano",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "14/11/2026",
+    "data": null,
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -7928,7 +8260,7 @@
     "motivo": "citacao_incompleta",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "15/11/2026",
+    "data": "17/11/2026",
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -7982,7 +8314,7 @@
     "motivo": "citacao_incompleta",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "15/11/2026",
+    "data": "17/11/2026",
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -8008,7 +8340,7 @@
     "motivo": "citacao_incompleta",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "15/11/2026",
+    "data": "17/11/2026",
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -8034,7 +8366,7 @@
     "motivo": "citacao_incompleta",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "15/11/2026",
+    "data": "17/11/2026",
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -8060,7 +8392,7 @@
     "motivo": "citacao_incompleta",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "15/11/2026",
+    "data": "17/11/2026",
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -8086,7 +8418,7 @@
     "motivo": "citacao_incompleta",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "15/11/2026",
+    "data": "17/11/2026",
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
@@ -8201,7 +8533,19 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "10/06/2026",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AC",
@@ -8595,8 +8939,20 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "10/06/2026",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AC",
@@ -8611,8 +8967,18 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: resposta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "resposta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "02/02/2022",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AC",
@@ -8675,8 +9041,18 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "28/08/2024",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AC",
@@ -9076,8 +9452,18 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AL",
@@ -9247,7 +9633,7 @@
    "juiz": {
     "promove": false,
     "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [
@@ -9386,7 +9772,7 @@
    "juiz": {
     "promove": false,
     "motivo": "ente_nao_confirmado",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "07/07/2005",
     "institui": [
@@ -9429,9 +9815,9 @@
    "juiz": {
     "promove": false,
     "motivo": "risco_fora_do_ciclo",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "03/02/2020",
+    "data": "11/2014",
     "institui": [
      "coordenacao",
      "instrumento"
@@ -9469,14 +9855,14 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "pista — recusada pelo juiz: executivo_pendente",
    "reaplicada_em": "reaplicacao da noite",
    "juiz": {
     "promove": false,
-    "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
+    "motivo": "executivo_pendente",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "03/01/2002",
+    "data": "03/2025",
     "institui": [
      "instrumento"
     ],
@@ -9497,14 +9883,14 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "reaplicada_em": "reaplicacao da noite",
    "juiz": {
     "promove": false,
-    "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "20/02/2025",
+    "data": null,
     "institui": [
      "instrumento"
     ],
@@ -9578,7 +9964,7 @@
    "juiz": {
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "07/02/2024",
     "institui": [
@@ -9686,7 +10072,7 @@
    "juiz": {
     "promove": false,
     "motivo": "ente_nao_confirmado",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [
@@ -9746,9 +10132,9 @@
    "juiz": {
     "promove": false,
     "motivo": "risco_fora_do_ciclo",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "03/02/2020",
+    "data": "11/2014",
     "institui": [
      "coordenacao",
      "instrumento"
@@ -9850,14 +10236,14 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "reaplicada_em": "reaplicacao da noite",
    "juiz": {
     "promove": false,
-    "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "21/08/2026",
+    "data": null,
     "institui": [
      "instrumento"
     ],
@@ -9883,7 +10269,7 @@
    "juiz": {
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "03/09/2026",
     "institui": [
@@ -9954,8 +10340,20 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -9986,7 +10384,17 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: resposta",
+   "juiz": {
+    "promove": false,
+    "motivo": "resposta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "31/03/2021",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -10109,8 +10517,18 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: resposta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "resposta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "06/01/2023",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -10295,8 +10713,18 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: resposta",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "resposta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "31/03/2021",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/BA",
@@ -11495,11 +11923,11 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "status": "pista — recusada pelo juiz: risco_fora_do_ciclo",
    "reaplicada_em": "reaplicacao da noite",
    "juiz": {
     "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "motivo": "risco_fora_do_ciclo",
     "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "02/2022",
@@ -11586,9 +12014,9 @@
    "juiz": {
     "promove": false,
     "motivo": "executivo_pendente",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "21/09/2017",
+    "data": "2018",
     "institui": [
      "coordenacao",
      "instrumento"
@@ -11615,7 +12043,7 @@
    "juiz": {
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "10/06/2022",
     "institui": [
@@ -11638,14 +12066,14 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "reaplicada_em": "reaplicacao da noite",
    "juiz": {
     "promove": false,
-    "motivo": "autoridade_nao_confirmada",
-    "codebook": "1.7 (24/10/2026)",
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": "31/01/2023",
+    "data": null,
     "institui": [
      "instrumento"
     ],
@@ -13360,8 +13788,18 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: documento não baixado: MuroDeRobo",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: MuroDeRobo",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -14004,8 +14442,21 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/GO",
@@ -14754,8 +15205,18 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
-   "reaplicada_em": "reaplicacao da noite"
+   "status": "pista — recusada pelo juiz: documento não baixado: MuroDeRobo",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: MuroDeRobo",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -15078,15 +15539,15 @@
    "registrado_em": "14/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: documento não baixado: HTTPError",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "reaplicada_em": "reaplicacao da noite",
    "juiz": {
     "promove": false,
-    "motivo": "documento não baixado: HTTPError",
-    "codebook": null,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": null,
-    "institui": null,
+    "data": "14/10/2026",
+    "institui": [],
     "status_instrumento": null,
     "coordenacao": null
    }
@@ -15104,15 +15565,15 @@
    "registrado_em": "14/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: documento não baixado: HTTPError",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "reaplicada_em": "reaplicacao da noite",
    "juiz": {
     "promove": false,
-    "motivo": "documento não baixado: HTTPError",
-    "codebook": null,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
-    "data": null,
-    "institui": null,
+    "data": "13/10/2026",
+    "institui": [],
     "status_instrumento": null,
     "coordenacao": null
    }
@@ -15552,7 +16013,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "10/06/2026",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AC",
@@ -15731,7 +16204,7 @@
    "juiz": {
     "promove": false,
     "motivo": "citacao_incompleta",
-    "codebook": "1.6 (15/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [
@@ -16273,7 +16746,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "juiz": {
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "17/02/2016",
+    "institui": [
+     "coordenacao"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/CE",
@@ -16292,7 +16777,7 @@
    "juiz": {
     "promove": false,
     "motivo": "ente_nao_confirmado",
-    "codebook": "1.6 (15/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [
@@ -16671,7 +17156,17 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: documento não baixado: MuroDeRobo",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: MuroDeRobo",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -16996,7 +17491,20 @@
    "registrado_em": "21/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: risco_fora_do_ciclo",
+   "juiz": {
+    "promove": false,
+    "motivo": "risco_fora_do_ciclo",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "25/06/2024",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AC",
@@ -17188,7 +17696,7 @@
    "juiz": {
     "promove": false,
     "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "10/05/2021",
     "institui": [
@@ -17230,7 +17738,7 @@
    "juiz": {
     "promove": false,
     "motivo": "citacao_incompleta",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": "08/11/2021",
     "institui": [
@@ -17655,7 +18163,20 @@
    "registrado_em": "21/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "30/12/2014",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/CE",
@@ -17747,7 +18268,7 @@
    "juiz": {
     "promove": false,
     "motivo": "ente_nao_confirmado",
-    "codebook": "1.7 (24/10/2026)",
+    "codebook": "1.8 (30/10/2026)",
     "categoria": null,
     "data": null,
     "institui": [
@@ -17870,7 +18391,17 @@
    "registrado_em": "21/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: documento não baixado: MuroDeRobo",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: MuroDeRobo",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -17971,7 +18502,17 @@
    "registrado_em": "21/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: documento não baixado: MuroDeRobo",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: MuroDeRobo",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -18207,7 +18748,17 @@
    "registrado_em": "21/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "juiz": {
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "09/09/2021",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -18419,7 +18970,19 @@
    "registrado_em": "21/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte"
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -18867,10 +19430,10 @@
    "url_final": "https://legisla.imprensaoficial.am.gov.br/diario_am/41534/2026/6/19165",
    "registrado_em": "2026-10-24",
    "juiz": {
-    "promove": false,
-    "motivo": "risco_fora_do_ciclo",
-    "codebook": "1.7 (24/10/2026)",
-    "categoria": null,
+    "promove": true,
+    "motivo": null,
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": "plano_antigo",
     "data": "27/11/2020",
     "institui": [],
     "status_instrumento": null,
@@ -19079,11 +19642,23 @@
    "oficial": true,
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — inacessivel_persistente: o executor não alcança o servidor; volta com cópia da ponte",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "origem": "busca_web",
    "origem_do_coletor": "busca_web",
    "url_final": "https://www.to.gov.br/semarh/comite-do-fogo/er3fbvb9j2k",
-   "registrado_em": "2026-10-24"
+   "registrado_em": "2026-10-24",
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "20/08/1998",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "PI",
@@ -19290,7 +19865,7 @@
      "motivo": "ato de 2026 que institui a estrutura e nomeia o ciclo"
     }
    },
-   "repeticoes": 1
+   "repeticoes": 7
   },
   {
    "uf": "RO",
@@ -19303,28 +19878,31 @@
    "data": "2026-09-23",
    "consulta": "wp-json/rondonia.ro.gov.br",
    "registrado_em": "15/11/2026",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "documento_oficial_confirmado": "https://rondonia.ro.gov.br/wp-content/uploads/2026/09/Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__2_.pdf",
+   "promovivel": true,
+   "status": "promovido_pelo_juiz",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
    "id": "94d6f73eb3",
    "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2026/09/Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__2_.pdf",
    "entrada": "uf",
    "juiz": {
-    "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "promove": true,
+    "motivo": null,
     "codebook": "1.8 (30/10/2026)",
-    "categoria": null,
+    "categoria": "plano",
     "data": "09/2026",
     "institui": [
      "coordenacao",
      "instrumento"
     ],
-    "status_instrumento": null,
-    "coordenacao": null
+    "status_instrumento": "NOVO",
+    "coordenacao": {
+     "degrau": "REATIVADO_CICLO",
+     "motivo": "ato de 2026 que reativa estrutura e nomeia o ciclo"
+    }
    },
-   "repeticoes": 1
+   "repeticoes": 10
   },
   {
    "uf": "RO",
@@ -19337,28 +19915,31 @@
    "data": "2026-09-23",
    "consulta": "wp-json/rondonia.ro.gov.br",
    "registrado_em": "15/11/2026",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "pista — recusada pelo juiz: minuta_ou_rascunho",
+   "documento_oficial_confirmado": "https://rondonia.ro.gov.br/wp-content/uploads/2026/09/Anexo_76935480_Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__1_.pdf",
+   "promovivel": true,
+   "status": "promovido_pelo_juiz",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
    "id": "551630a0a0",
    "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2026/09/Anexo_76935480_Plano_Adaptacao_Saude_RO_ElNino_2026_2027_RONDONIA.pdf__1_.pdf",
    "entrada": "uf",
    "juiz": {
-    "promove": false,
-    "motivo": "minuta_ou_rascunho",
+    "promove": true,
+    "motivo": null,
     "codebook": "1.8 (30/10/2026)",
-    "categoria": null,
+    "categoria": "plano",
     "data": "09/2026",
     "institui": [
      "coordenacao",
      "instrumento"
     ],
-    "status_instrumento": null,
-    "coordenacao": null
+    "status_instrumento": "NOVO",
+    "coordenacao": {
+     "degrau": "REATIVADO_CICLO",
+     "motivo": "ato de 2026 que reativa estrutura e nomeia o ciclo"
+    }
    },
-   "repeticoes": 1
+   "repeticoes": 10
   },
   {
    "uf": "RO",
@@ -19391,7 +19972,7 @@
     "status_instrumento": null,
     "coordenacao": null
    },
-   "repeticoes": 1
+   "repeticoes": 10
   },
   {
    "uf": "RO",
@@ -19422,7 +20003,7 @@
     "status_instrumento": null,
     "coordenacao": null
    },
-   "repeticoes": 1
+   "repeticoes": 10
   },
   {
    "uf": "RO",
@@ -19456,7 +20037,7 @@
     "status_instrumento": null,
     "coordenacao": null
    },
-   "repeticoes": 1
+   "repeticoes": 10
   },
   {
    "uf": "MA",
@@ -19600,9 +20181,9 @@
    "data": "2026-07-01",
    "oficial": true,
    "consulta": "ponte no Brasil: saude.se.gov.br",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "documento_oficial_confirmado": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+   "promovivel": true,
+   "status": "promovido_pelo_juiz",
    "registrado_em": "15/11/2026",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
@@ -19610,17 +20191,20 @@
    "url_final": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
    "entrada": "uf",
    "juiz": {
-    "promove": false,
-    "motivo": "fora_do_objeto",
+    "promove": true,
+    "motivo": null,
     "codebook": "1.8 (30/10/2026)",
-    "categoria": null,
+    "categoria": "plano",
     "data": "07/2026",
     "institui": [
      "coordenacao",
      "instrumento"
     ],
-    "status_instrumento": null,
-    "coordenacao": null
+    "status_instrumento": "NOVO",
+    "coordenacao": {
+     "degrau": "PERMANENTE",
+     "motivo": "ato institui a estrutura e não nomeia o ciclo"
+    }
    }
   },
   {
@@ -19652,12 +20236,13 @@
      "coordenacao",
      "instrumento"
     ],
-    "status_instrumento": "NOVO",
+    "status_instrumento": "VIG",
     "coordenacao": {
      "degrau": "PERMANENTE",
      "motivo": "ato institui a estrutura e não nomeia o ciclo"
     }
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MS",
@@ -19690,7 +20275,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MS",
@@ -19723,7 +20309,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MS",
@@ -19756,7 +20343,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MS",
@@ -19789,7 +20377,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MG",
@@ -19821,7 +20410,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MG",
@@ -19854,7 +20444,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MG",
@@ -19890,7 +20481,8 @@
      "degrau": "PERMANENTE",
      "motivo": "ato institui a estrutura e não nomeia o ciclo"
     }
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MG",
@@ -19922,7 +20514,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "MG",
@@ -19958,7 +20551,8 @@
      "degrau": "PERMANENTE",
      "motivo": "ato institui a estrutura e não nomeia o ciclo"
     }
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "PA",
@@ -19988,7 +20582,8 @@
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "PA",
@@ -20018,7 +20613,8 @@
     "institui": [],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "PA",
@@ -20051,7 +20647,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "PA",
@@ -20084,7 +20681,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "PA",
@@ -20117,7 +20715,8 @@
     ],
     "status_instrumento": null,
     "coordenacao": null
-   }
+   },
+   "repeticoes": 9
   },
   {
    "uf": "SE",
@@ -20132,12 +20731,22 @@
    "registrado_em": "16/11/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
    "id": "1dda14c427",
    "url_final": "https://cides.se.gov.br/instrumentos-de-planejamento/",
-   "entrada": "uf"
+   "entrada": "uf",
+   "juiz": {
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "07/10/2026",
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "uf": "SE",
@@ -20172,12 +20781,25 @@
    "registrado_em": "16/11/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento",
+   "status": "pista — recusada pelo juiz: risco_fora_do_ciclo",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
    "id": "ca81e651db",
    "url_final": "http://cides.se.gov.br/wp-content/uploads/2017/08/PES-2016-2019-SERGIPE-24-1-2017-com-altera%C3%A7%C3%A3o-do-CES-2.pdf",
-   "entrada": "uf"
+   "entrada": "uf",
+   "juiz": {
+    "promove": false,
+    "motivo": "risco_fora_do_ciclo",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "08/2017",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "uf": "SE",
@@ -20192,12 +20814,24 @@
    "registrado_em": "16/11/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
    "id": "eea1aa0db2",
    "url_final": "https://www.sefaz.se.gov.br/transparencia/SitePages/ppa.aspx?RootFolder=/transparencia/Ciclo%20Oramentrio/Plano%20Plurianual%20-%20PPA&FolderCTID=0x012000FF756FE706E8044A912A97C105A91CDD&View=%7b108CE464-9BD1-4D27-9277-CA50AE95DAD7%7d",
-   "entrada": "uf"
+   "entrada": "uf",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "uf": "SE",
@@ -20328,12 +20962,25 @@
    "registrado_em": "16/11/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "origem": "descoberta",
    "origem_do_coletor": "descoberta",
    "id": "6833d18e0a",
    "url_final": "https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=@gtf-escriba-sesa@39d1a6cb-649f-464a-ae63-7f321c0ef332&emPg=true",
-   "entrada": "uf"
+   "entrada": "uf",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "uf": "PR",
@@ -20429,6 +21076,610 @@
     "status_instrumento": null,
     "coordenacao": null
    }
+  },
+  {
+   "uf": "MS",
+   "alvo": "MS",
+   "url": "https://www.saude.ms.gov.br/wp-content/uploads/2021/07/Plano-de-Contingencia-para-Resposta-as-Emergencias-em-Saude-Publica-Versao-07.pdf",
+   "titulo": "Plano de Contingência para Resposta às Emergências em Saúde Pública Versão 07",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-07-09",
+   "consulta": "wp-json/www.saude.ms.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "13d6cbe273",
+   "url_final": "https://www.saude.ms.gov.br/wp-content/uploads/2021/07/Plano-de-Contingencia-para-Resposta-as-Emergencias-em-Saude-Publica-Versao-07.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "07/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "MS",
+   "alvo": "MS",
+   "url": "https://www.saude.ms.gov.br/wp-content/uploads/2021/07/PLANO-CONTINGENCIA-ATUALIZADO-V7.pdf",
+   "titulo": "PLANO CONTINGÊNCIA ATUALIZADO V7",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-07-08",
+   "consulta": "wp-json/www.saude.ms.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "c5939fda6b",
+   "url_final": "https://www.saude.ms.gov.br/wp-content/uploads/2021/07/PLANO-CONTINGENCIA-ATUALIZADO-V7.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "07/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "MS",
+   "alvo": "MS",
+   "url": "https://www.saude.ms.gov.br/wp-content/uploads/2021/03/PLANO-CONTINGENCIA-ATUALIZADO-V6-1-1.pdf",
+   "titulo": "PLANO-CONTINGENCIA-ATUALIZADO-V6-1",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-03-31",
+   "consulta": "wp-json/www.saude.ms.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "f853741943",
+   "url_final": "https://www.saude.ms.gov.br/wp-content/uploads/2021/03/PLANO-CONTINGENCIA-ATUALIZADO-V6-1-1.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "03/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "MS",
+   "alvo": "MS",
+   "url": "https://www.saude.ms.gov.br/wp-content/uploads/2021/03/Plano_0015513692_Plano_de_contingencia_DSEI_MS.pdf",
+   "titulo": "Plano_0015513692_Plano_de_contingencia_DSEI_MS",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-03-31",
+   "consulta": "wp-json/www.saude.ms.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "d2b96f4916",
+   "url_final": "https://www.saude.ms.gov.br/wp-content/uploads/2021/03/Plano_0015513692_Plano_de_contingencia_DSEI_MS.pdf",
+   "entrada": "uf",
+   "repeticoes": 2,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "03/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "MG",
+   "alvo": "MG",
+   "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2021/01/22-01-Plano-de-Contingencia-Emergencial-em-caso-de-falta-de-energia-eletrica-nas-URS-397.pdf",
+   "titulo": "22-01-Plano-de-Contingencia-Emergencial-em-caso-de-falta-de-energia-eletrica-nas-URS-397",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-01-22",
+   "consulta": "wp-json/saude.mg.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: risco_fora_do_ciclo",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "247d22701f",
+   "url_final": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2021/01/22-01-Plano-de-Contingencia-Emergencial-em-caso-de-falta-de-energia-eletrica-nas-URS-397.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "risco_fora_do_ciclo",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "01/2021",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "MG",
+   "alvo": "MG",
+   "url": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2019/11/Plano-de-Contingencia-Estadual-Aedes-2019_2020_final-112.pdf",
+   "titulo": "Plano-de-Contingencia-Estadual-Aedes-2019_2020_final-112",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2019-11-18",
+   "consulta": "wp-json/saude.mg.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2019/11/Plano-de-Contingencia-Estadual-Aedes-2019_2020_final-112.pdf",
+   "promovivel": true,
+   "status": "promovido_pelo_juiz",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "d45806993a",
+   "url_final": "https://blobstorage.saude.mg.gov.br/ses-mg-wp/2019/11/Plano-de-Contingencia-Estadual-Aedes-2019_2020_final-112.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": true,
+    "motivo": null,
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": "plano",
+    "data": "11/2019",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": "VENC",
+    "coordenacao": {
+     "degrau": "PERMANENTE",
+     "motivo": "ato institui a estrutura e não nomeia o ciclo"
+    }
+   }
+  },
+  {
+   "uf": "PA",
+   "alvo": "PA",
+   "url": "https://www.saude.pa.gov.br/wp-content/uploads/2021/08/COE-Plano_de_Contingencia_Estadual_Oficial_4edicao-REV.pdf",
+   "titulo": "",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-08-27",
+   "consulta": "wp-json/www.saude.pa.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "98c94826e0",
+   "url_final": "https://www.saude.pa.gov.br/wp-content/uploads/2021/08/COE-Plano_de_Contingencia_Estadual_Oficial_4edicao-REV.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "30/12/2010",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "PA",
+   "alvo": "PA",
+   "url": "https://www.saude.pa.gov.br/wp-content/uploads/2021/06/Nota-Tecnica-Plano-de-Contingencia-Estadual-para-resposta-a-Emergencia-de-Saude-Publica-COVID-19-Abril-2021-1.pdf",
+   "titulo": "Nota Técnica &#8211; Plano de Contingência Estadual para resposta à Emergência de Saúde Pública &#8211; COVID-19 Abril 2021",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-06-15",
+   "consulta": "wp-json/www.saude.pa.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: risco_fora_do_ciclo",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "03a805bbe9",
+   "url_final": "https://www.saude.pa.gov.br/wp-content/uploads/2021/06/Nota-Tecnica-Plano-de-Contingencia-Estadual-para-resposta-a-Emergencia-de-Saude-Publica-COVID-19-Abril-2021-1.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "risco_fora_do_ciclo",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "06/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "PA",
+   "alvo": "PA",
+   "url": "https://www.saude.pa.gov.br/wp-content/uploads/2021/06/Nota-Tecnica-Plano-de-Contingencia-Estadual-para-resposta-a-Emergencia-de-Saude-Publica-COVID-19-Abril-2021.pdf",
+   "titulo": "Nota Técnica &#8211; Plano de Contingência Estadual para resposta à Emergência de Saúde Pública &#8211; COVID-19 Abril 2021",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-06-15",
+   "consulta": "wp-json/www.saude.pa.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: risco_fora_do_ciclo",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "10ad776987",
+   "url_final": "https://www.saude.pa.gov.br/wp-content/uploads/2021/06/Nota-Tecnica-Plano-de-Contingencia-Estadual-para-resposta-a-Emergencia-de-Saude-Publica-COVID-19-Abril-2021.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "risco_fora_do_ciclo",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "06/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "RO",
+   "alvo": "RO",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2021/11/11o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU.pdf",
+   "titulo": "11º Adendo ao Plano de Contingência COVID 19_RO_ SESAU",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-11-04",
+   "consulta": "wp-json/rondonia.ro.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "efde790e05",
+   "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2021/11/11o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "11/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "RO",
+   "alvo": "RO",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2021/10/10o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU.pdf",
+   "titulo": "10º Adendo ao Plano de Contingência COVID 19_RO_ SESAU",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-10-01",
+   "consulta": "wp-json/rondonia.ro.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "61a4efdc69",
+   "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2021/10/10o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "10/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "RO",
+   "alvo": "RO",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2021/08/9o-Adendo-ao-Plano-de-Contingencia-COVID19_RO_-SESAU-1.pdf",
+   "titulo": "9º Adendo ao Plano de Contingência COVID19_RO_ SESAU",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-08-25",
+   "consulta": "wp-json/rondonia.ro.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "c745780f89",
+   "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2021/08/9o-Adendo-ao-Plano-de-Contingencia-COVID19_RO_-SESAU-1.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "08/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "RO",
+   "alvo": "RO",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2021/08/9o-Adendo-ao-Plano-de-Contingencia-COVID19_RO_-SESAU.pdf",
+   "titulo": "9º Adendo ao Plano de Contingência COVID19_RO_ SESAU",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-08-25",
+   "consulta": "wp-json/rondonia.ro.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "759f1dd305",
+   "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2021/08/9o-Adendo-ao-Plano-de-Contingencia-COVID19_RO_-SESAU.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "08/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "uf": "RO",
+   "alvo": "RO",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2021/04/7o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU-2.pdf",
+   "titulo": "7º Adendo ao Plano de Contingência COVID 19_RO_ SESAU (2)",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-04-26",
+   "consulta": "wp-json/rondonia.ro.gov.br",
+   "registrado_em": "17/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "4fc73ab554",
+   "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2021/04/7o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU-2.pdf",
+   "entrada": "uf",
+   "repeticoes": 8,
+   "juiz": {
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "codebook": "1.8 (30/10/2026)",
+    "categoria": null,
+    "data": "04/2021",
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
+  },
+  {
+   "alvo": "C-amplo/BA",
+   "query": "\"plano de ações de saúde para o enfrentamento ao El Niño\" Bahia secretaria de saúde OR Sesab OR SesBA 2026",
+   "titulo": "ÁUDIO: Sesab testa capacidade de resposta do SUS diante dos impactos do El Niño na Bahia - ba.gov.br",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPTll4QV80Q0JaRTFKa1pNWTY4RkJXSTRvdWFPU3ZhemQ1ZHBBTHM0X0VEbGtDT3psYWRTR0lOdGRMNEdRUmRhSWRJdE0xc1d1bWJ0czlzMkJuWnZncklDS1JSQ0xPejd1cXVzM0pvS01kQTlLc2NXcEp4c05kZ1JXc2lIazJWUEFXZ0RLQVAwVE9mZUNUcVpyclhYV0tKUEg3WTBBYkZMeUI3dnc5M1czLTlfQ0FmMk56eUJlZjQ2VURoQmo4N0ZNZmVaZw?oc=5",
+   "data_publicacao": "Mon, 16 Nov 2026 15:29:11 GMT",
+   "fonte_veiculo": "ba.gov.br",
+   "veiculo_dominio": "https://www.ba.gov.br",
+   "hash": "ebc803eb99f9273d",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "51acc9623658e9493f6e2775838beeba74a1ab3a59743913783a3afabf2edb62",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — fonte não oficial: o juiz da saúde lê só o documento do órgão"
+  },
+  {
+   "uf": "MS",
+   "alvo": "MS",
+   "url": "https://www.saude.ms.gov.br/wp-content/uploads/2026/11/Plano-de-contingencia-Virus-Respiratorios-MATO-GROSSO-SO-SUL-SES-11-11-2026.pdf",
+   "titulo": "Plano de contingência &#8211; Vírus Respiratórios MATO GROSSO SO SUL SES 11 11 2026",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2026-11-18",
+   "consulta": "wp-json/www.saude.ms.gov.br",
+   "registrado_em": "20/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "1b7aac6b9e",
+   "url_final": "https://www.saude.ms.gov.br/wp-content/uploads/2026/11/Plano-de-contingencia-Virus-Respiratorios-MATO-GROSSO-SO-SUL-SES-11-11-2026.pdf",
+   "entrada": "uf",
+   "repeticoes": 5
+  },
+  {
+   "uf": "RO",
+   "alvo": "RO",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2021/04/7o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU.pdf",
+   "titulo": "7º Adendo ao Plano de Contingência COVID 19_RO_ SESAU",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-04-14",
+   "consulta": "wp-json/rondonia.ro.gov.br",
+   "registrado_em": "20/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "d734122ac3",
+   "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2021/04/7o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU.pdf",
+   "entrada": "uf",
+   "repeticoes": 5
+  },
+  {
+   "uf": "RO",
+   "alvo": "RO",
+   "url": "https://rondonia.ro.gov.br/wp-content/uploads/2021/03/6o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU-2-1.pdf",
+   "titulo": "6º Adendo ao Plano de Contingência COVID 19_RO_ SESAU (2) (1)",
+   "oficial": true,
+   "tipo": "plano",
+   "nivel": "A",
+   "data": "2021-03-22",
+   "consulta": "wp-json/rondonia.ro.gov.br",
+   "registrado_em": "20/11/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento",
+   "origem": "descoberta",
+   "origem_do_coletor": "descoberta",
+   "id": "5e998708c7",
+   "url_final": "https://rondonia.ro.gov.br/wp-content/uploads/2021/03/6o-Adendo-ao-Plano-de-Contingencia-COVID-19_RO_-SESAU-2-1.pdf",
+   "entrada": "uf",
+   "repeticoes": 5
+  },
+  {
+   "alvo": "C-amplo/BA",
+   "query": "\"plano de ações de saúde para o enfrentamento ao El Niño\" Bahia secretaria de saúde OR Sesab OR SesBA 2026",
+   "titulo": "Sesab testa capacidade de resposta do SUS diante dos impactos do El Niño na Bahia - ba.gov.br",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNbTVVdHNoNzF1ZGE2d0VZZHBxRGtNWUNkc2pBNk9sLWx6aVkxSk80ZHRhTVZwNEljRVhKaDFncmhEcnk5MEhBYWZZWDJ6V0hGM3FGZWtjZVlPcDBfR0xub0dON19KTXl6UkJwYlhlWW1MbHI3QTlKU1lSaUtvS0tNUWdUUko1Zno4ajNCVUJNSmRSM1phNXo4Y1ZIZDRzMTZwbzNKWWVlQnF4c2ppTThMalM3eGMwUFFUSWw2NVJGTXRmNm5Ed3hCUEtZZWQ?oc=5",
+   "data_publicacao": "Fri, 13 Nov 2026 20:10:08 GMT",
+   "fonte_veiculo": "ba.gov.br",
+   "veiculo_dominio": "http://www.ba.gov.br",
+   "hash": "795ba0fd392185cf",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "a945575e003be88295cbe7ba9693713678c6a9c29fe78d0c4f85ebfc07824eca",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "registrado_em": "2026-11-21",
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "C-amplo/BA",
+   "query": "\"plano de ações de saúde para o enfrentamento ao El Niño\" Bahia secretaria de saúde OR Sesab OR SesBA 2026",
+   "titulo": "Sesab testa resposta do SUS a ondas de calor e queimadas na Bahia - Blog do Caique Santos",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOM2NGTUZmM2YyWjdHSm8zNHlKZXZDUllWV2ZHWmRxeDJXaWd2TzdOLU5LOHJvM0hNUTBpaUNsLThUWEc4UnZWVFd1cHdkb0xyRDZzM3F5ejgxY0xBa29BLThUamVFR2FvTElCVXc2VXQ3Y3Fpam4tb3BSN0JCRXo2Z3BvU0tSU1c4YzZQQlVB?oc=5",
+   "data_publicacao": "Fri, 20 Nov 2026 15:30:00 GMT",
+   "fonte_veiculo": "Blog do Caique Santos",
+   "veiculo_dominio": "https://blogdocaiquesantos.com.br",
+   "hash": "b3739bd373f01104",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "098380014aba7daa4beab501785015d7526afb88ab13217207afbb667f66c7de",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "registrado_em": "2026-11-21",
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "C-amplo/BA",
+   "query": "\"plano de ações de saúde para o enfrentamento ao El Niño\" Bahia secretaria de saúde OR Sesab OR SesBA 2026",
+   "titulo": "ÁUDIO: Sesab testa capacidade de resposta do SUS diante dos impactos do El Niño na Bahia - ba.gov.br",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNbzllcUU4TzJ6TnoxZ1hXTXdpaE1zN1pmVzdXQVRyRVR2TXlNNGVuQkd4NUluZUJMQ3dmRnJELWV2UHV6RFc1U2VmeFdTN0RHTERVdFFWdC16VDNqX3plZEtPRHViY2NIeWtJR2YxMV95eERxNjFDVTBvQ19zLVYyRTQ0UEV4al9BWkh3MlFEaGc0NklOOXBiSXBKSmlWM01YX1hKbE1VVXVSR1FYUTFzM1NDaXNLeGpRRmdmeklNaHp2ckljZFI5NjdB?oc=5",
+   "data_publicacao": "Mon, 16 Nov 2026 15:29:11 GMT",
+   "fonte_veiculo": "ba.gov.br",
+   "veiculo_dominio": "http://www.ba.gov.br",
+   "hash": "f66c3383cb25b463",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "3092a9c701c621460d58c6fe43e02fbecf9e96ec65bf39696b222013703d1601",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "registrado_em": "2026-11-23",
+   "status": "pendente_confirmacao_documento"
   }
  ]
 }

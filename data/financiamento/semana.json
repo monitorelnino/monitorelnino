@@ -1,6 +1,6 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "16/11/2026",
+ "corte": "24/11/2026",
  "janela_dias": 7,
  "cartoes": [
   {
@@ -25,20 +25,20 @@
   },
   {
    "id": "resposta_liberado_semana",
-   "valor": 570300.0,
+   "valor": 0,
    "unidade": "reais",
    "periodo": "últimos 7 dias",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "1 município(s) em 1 portaria(s)",
+   "detalhe": "nenhuma portaria de resposta publicada nos últimos 7 dias",
    "sem_coleta": false,
-   "municipios_semana": 1,
-   "valor_ciclo": 247307946.11,
-   "municipios_ciclo": 97,
+   "municipios_semana": 0,
+   "valor_ciclo": 251608544.37,
+   "municipios_ciclo": 100,
    "por_acao_ciclo": {
     "outra": 13878788.0,
-    "recuperacao": 215340866.33,
-    "resposta": 18088291.78
+    "recuperacao": 219050886.59,
+    "resposta": 18678869.78
    },
    "desde": "29/06/2026"
   },
@@ -67,20 +67,20 @@
   },
   {
    "id": "pago_ate_agora",
-   "valor": 593568666.49,
+   "valor": 632613126.41,
    "unidade": "reais",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
    "url_fonte": null,
    "detalhe": null,
    "sem_coleta": false,
-   "variacao_mes": 88380121.98,
+   "variacao_mes": 127424581.9,
    "mes_variacao": "202611",
    "mes_variacao_parcial": true
   },
   {
    "id": "gasto_direto_uniao",
-   "valor": 95.1,
+   "valor": 95.4,
    "unidade": "% do valor pago",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
@@ -90,18 +90,18 @@
   },
   {
    "id": "defesa_civil_ciclo",
-   "valor": 247307946.11,
+   "valor": 251608544.37,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "97 municípios",
+   "detalhe": "100 municípios",
    "sem_coleta": false,
-   "municipios": 97,
+   "municipios": 100,
    "por_acao": {
     "outra": 13878788.0,
-    "recuperacao": 215340866.33,
-    "resposta": 18088291.78
+    "recuperacao": 219050886.59,
+    "resposta": 18678869.78
    }
   },
   {
@@ -126,14 +126,14 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor do Ministério do Meio Ambiente e Mudança do Clima, no valor de R$ 337.483.432,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624",
-    "lido_em": "15/11/2026"
+    "lido_em": "22/11/2026"
    },
    "pct_gasto_direto": 99.6,
    "acao": {
     "dotacao_atualizada": 1021814781.0,
     "valor_do_ato": 337483432,
-    "empenhado": 389079986.09,
-    "pago": 424706001.47,
+    "empenhado": 390381269.62,
+    "pago": 432175490.77,
     "periodo_execucao": [
      "202606",
      "202611"
@@ -170,7 +170,7 @@
     },
     {
      "mes": "202611",
-     "pago": 63518211.12,
+     "pago": 70987700.42,
      "parcial": true
     }
    ]
@@ -183,14 +183,14 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor dos Ministérios do Desenvolvimento Agrário e Agricultura Familiar e do Desenvolvimento e Assistência Social, Família e Combate à Fome, no valor de R$ 924.985.960,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455",
-    "lido_em": "15/11/2026"
+    "lido_em": "22/11/2026"
    },
-   "pct_gasto_direto": 83.8,
+   "pct_gasto_direto": 86.4,
    "acao": {
     "dotacao_atualizada": 2197781135.0,
     "valor_do_ato": 924985960,
-    "empenhado": 422348108.38,
-    "pago": 168862665.02,
+    "empenhado": 422966276.25,
+    "pago": 200437635.64,
     "periodo_execucao": [
      "202608",
      "202611"
@@ -217,7 +217,7 @@
     },
     {
      "mes": "202611",
-     "pago": 24861910.86,
+     "pago": 56436881.48,
      "parcial": true
     }
    ]
@@ -3123,10 +3123,10 @@
    "cod_ibge": "4303004",
    "origem": "defesa_civil",
    "repassado": 28633.2,
-   "autorizado": null,
-   "ato": null,
-   "data": null,
-   "url": null,
+   "autorizado": 63168.0,
+   "ato": "Portaria 3.945",
+   "data": "2026-11-12",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.945-de-12-de-novembro-de-2026-744745512",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Cachoeira do Sul",
@@ -4743,11 +4743,20 @@
   "sem_sede": 0
  },
  "autorizado_sem_repasse": {
-  "corte": "16/11/2026",
+  "corte": "24/11/2026",
   "ultimo_mes_lido": "202609",
-  "n": 62,
-  "autorizado_total": 150422807.64,
+  "n": 64,
+  "autorizado_total": 154660237.9,
   "municipios": [
+   {
+    "cod_ibge": "1300144",
+    "nome": "Apuí",
+    "uf": "AM",
+    "autorizado": 527410.0,
+    "ato": "Portaria 3.954",
+    "data": "2026-11-12",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.954-de-12-de-novembro-de-2026-744745422"
+   },
    {
     "cod_ibge": "1300300",
     "nome": "Autazes",
@@ -4846,6 +4855,15 @@
     "ato": "Portaria 3.832",
     "data": "2026-11-04",
     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.832-de-4-de-novembro-de-2026-742436345"
+   },
+   {
+    "cod_ibge": "1502954",
+    "nome": "Eldorado do Carajás",
+    "uf": "PA",
+    "autorizado": 2750000.0,
+    "ato": "Portaria 4.021",
+    "data": "2026-11-16",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.021-de-16-de-novembro-de-2026-745258645"
    },
    {
     "cod_ibge": "1505635",
@@ -4995,10 +5013,10 @@
     "cod_ibge": "3136009",
     "nome": "Joaíma",
     "uf": "MG",
-    "autorizado": 416281.64,
-    "ato": "Portaria 3.181",
-    "data": "2026-09-24",
-    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.181-de-24-de-setembro-de-2026-734499331"
+    "autorizado": 857301.9,
+    "ato": "Portaria 3.984",
+    "data": "2026-10-12",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.984-de-12-de-outubro-de-2026-744738821"
    },
    {
     "cod_ibge": "3138005",
@@ -5157,10 +5175,10 @@
     "cod_ibge": "4304614",
     "nome": "Canudos do Vale",
     "uf": "RS",
-    "autorizado": 949800.0,
-    "ato": "Portaria 3.200",
-    "data": "2026-09-24",
-    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.200-de-24-de-setembro-de-2026-735120414"
+    "autorizado": 1468800.0,
+    "ato": "Portaria 4.019",
+    "data": "2026-11-16",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.019-de-16-de-novembro-de-2026-745280321"
    },
    {
     "cod_ibge": "4304713",
@@ -5336,27 +5354,27 @@
    },
    {
     "mes": "202610",
-    "defesa_civil": 13479357.39,
+    "defesa_civil": 13920377.65,
     "saude": 1304169.68,
     "parcial": false
    },
    {
     "mes": "202611",
-    "defesa_civil": 31593912.69,
+    "defesa_civil": 35453490.69,
     "saude": null,
     "parcial": true
    }
   ],
   "saude_desde": "202607",
   "saude_ultimo_mes": "202610",
-  "total_defesa_civil": 247307946.11,
+  "total_defesa_civil": 251608544.37,
   "total_saude": 9552011.72
  },
  "funil_defesa_civil": {
-  "referencia": "16/11/2026",
-  "n_decretaram": 1193,
-  "n_reconhecidos": 1050,
-  "n_com_recurso": 97,
-  "n_com_recurso_e_decretaram": 61
+  "referencia": "24/11/2026",
+  "n_decretaram": 1286,
+  "n_reconhecidos": 1138,
+  "n_com_recurso": 100,
+  "n_com_recurso_e_decretaram": 66
  }
 }

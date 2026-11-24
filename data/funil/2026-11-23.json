@@ -1,0 +1,104 @@
+{
+ "data": "2026-11-23",
+ "formato_versao": 1,
+ "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 160,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 8,
+   "consultas": 10,
+   "lacunas": 0,
+   "motor_sem_resposta": 2,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 21
+  },
+  "descobrir_planos": {
+   "achados_novos": 48,
+   "alvos_consultados": 60,
+   "alvos_verificados": 12,
+   "fila_acumulada": 126
+  },
+  "diario_consorciado": {
+   "bloqueadas": 0,
+   "decretos_novos": 1,
+   "fontes": 16,
+   "fora_do_ar": 0,
+   "pistas": 50
+  },
+  "diario_municipal": {
+   "consultados": 9,
+   "decretos_novos": 0,
+   "lacunas": 0,
+   "pistas": 6
+  },
+  "doe": {
+   "ufs_com_resultado": 54,
+   "ufs_consultadas": 54
+  },
+  "funil_recursos_resposta": {
+   "com_resultado_bruto": 1,
+   "consultas": 1,
+   "pistas": 5
+  },
+  "juiz": {
+   "com_documento": 648,
+   "pistas_recebidas": 1237,
+   "promovidas": 14,
+   "recusa_autoridade_nao_confirmada": 43,
+   "recusa_citacao_incompleta": 175,
+   "recusa_documento_inacessivel": 251,
+   "recusa_ente_nao_confirmado": 1,
+   "recusa_fora_do_objeto": 3,
+   "recusa_natureza_duvidosa": 129,
+   "recusa_noticia_institucional_nao_e_o_plano": 12,
+   "recusa_plano_sem_identificacao": 7,
+   "recusa_resposta": 96,
+   "recusa_sem_documento_primario": 1,
+   "recusa_texto_nao_extraivel": 337
+  },
+  "transferencias_municipais": {
+   "com_resultado_bruto": 20,
+   "consultas": 20,
+   "municipios": 111296
+  }
+ },
+ "verificador_imprensa": {
+  "na_fila": 1144,
+  "lidas": 1,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "sem_marcador_do_ciclo": 1,
+   "veiculo_nao_listado": 1057,
+   "sem_https": 86
+  },
+  "crescimento_da_lista": {
+   "candidatos": 4,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 1,
+    "sem_pagina_de_expediente": 3
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 1,
+   "por_host": {
+    "rbtv.com.br": 1
+   },
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-23T05:46:31"
+ },
+ "atualizado_em": "2026-11-24T02:45:18"
+}

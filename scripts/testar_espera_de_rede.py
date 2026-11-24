@@ -380,6 +380,148 @@ def t_503_sem_muro_continua_esperando():
     return cb.buscar("u", buscar_fn=falha, dormir=dormidas.append) == b"ok" and len(dormidas) == 1
 
 
+def t_site_sem_resposta_sai_do_resto_da_rodada():
+    """18/11/2026: no juiz da noite de 17→18 (run 44250436643), 26 de 190 leituras esgotaram o tempo ao conectar,
+    perto de metade dos 75 min do elo. Tempo esgotado ao conectar, já com a repetição, tira o site do resto da
+    rodada; falha imediata (conexão recusada) só na segunda busca seguida. O outro site segue normal, e o autoteste
+    que troca o transporte não mexe na conta do processo."""
+    conta, tentativas, antes = {}, [], dict(cb._SEM_RESPOSTA)
+
+    def esgota(url, timeout=None):
+        tentativas.append(url)
+        raise urllib.error.URLError(TimeoutError("timed out"))
+
+    def recusada(url, timeout=None):
+        tentativas.append(url)
+        raise urllib.error.URLError(ConnectionRefusedError(111, "Connection refused"))
+
+    def cai(fn, url):
+        try:
+            cb.buscar(url, buscar_fn=fn, dormir=lambda s: None, sem_resposta=conta)
+        except urllib.error.URLError:
+            return len(tentativas)
+
+    a = (cai(esgota, "https://morto.gov.br/1.pdf"), cai(esgota, "https://morto.gov.br/2.pdf"))
+    b = (cai(recusada, "https://cai.gov.br/1"), cai(recusada, "https://cai.gov.br/2"), cai(recusada, "https://cai.gov.br/3"))
+    vivo = cb.buscar("https://vivo.gov.br/x", buscar_fn=lambda u, timeout=None: b"ok", sem_resposta=conta)
+    try:
+        cb.buscar("https://morto.gov.br/3.pdf", buscar_fn=esgota, dormir=lambda s: None)
+    except urllib.error.URLError:
+        pass
+    return a == (2, 2) and b == (4, 6, 6) and vivo == b"ok" and cb._SEM_RESPOSTA == antes
+
+
+def t_resposta_zera_a_conta_e_leitura_cortada_nao_conta():
+    """Site fora da rodada é o que não chegou a conversar. Resposta HTTP (até 404) zera a conta; tempo esgotado
+    no meio do corpo é conexão que existiu, e não conta."""
+    conta = {}
+
+    def chama(fn):
+        try:
+            return cb.buscar("https://x.gov.br/a", buscar_fn=fn, dormir=lambda s: None, sem_resposta=conta)
+        except Exception as e:  # noqa: BLE001
+            return type(e).__name__
+
+    def recusada(url, timeout=None):
+        raise urllib.error.URLError(ConnectionRefusedError(111, "Connection refused"))
+
+    def nao_achado(url, timeout=None):
+        raise urllib.error.HTTPError(url, 404, "x", None, None)
+
+    def no_meio(url, timeout=None):
+        raise TimeoutError("lendo o corpo")
+
+    chama(recusada)
+    um = dict(conta)
+    chama(nao_achado)
+    zerou = dict(conta)
+    lidas, sem_contar = [chama(no_meio) for _ in range(3)], dict(conta)
+    chama(recusada)
+    entregue = chama(lambda u, timeout=None: b"ok")
+    chama(recusada)
+    return (um == {"x.gov.br": 1} and zerou == {} and lidas == ["TimeoutError"] * 3 and sem_contar == {}
+            and entregue == b"ok" and conta == {"x.gov.br": 1})
+
+
+def t_cadeia_incompleta_aprende_so_intermediario():
+    """18/11/2026: ce.gov.br e mais sete sites oficiais enviam a folha sem o intermediário que a assinou. O robô
+    busca o emissor no endereço "CA Issuers" da folha, como o navegador. O que não pode acontecer: raiz vinda da
+    rede virar âncora, resposta que não é certificado derrubar o contexto, a verificação afrouxar."""
+    import re
+    import ssl
+    import certifi
+    inter = ssl.PEM_cert_to_DER_cert(cb.INTERMEDIARIOS_QUE_O_SERVIDOR_NAO_ENVIA)
+    raiz = ssl.PEM_cert_to_DER_cert(re.search(r"-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----",
+                                              pathlib.Path(certifi.where()).read_text(encoding="utf-8"), re.S).group(0))
+    (e, t), (er, tr) = cb.emissor_e_titular(inter), cb.emissor_e_titular(raiz)
+    puras = (cb.emissores_no_certificado(inter) == ["http://crt.sectigo.com/SectigoPublicServerAuthenticationRootR46.p7c"]
+             and cb.emissores_no_certificado(b"") == [] and e != t and er == tr)
+    salvo = dict(cb._INTERMEDIARIOS_APRENDIDOS)
+
+    def tenta(baixar=None, folha=lambda h, p, t: inter):
+        cb._INTERMEDIARIOS_APRENDIDOS.clear()
+        return cb.completar_cadeia("x.gov.br", folha_fn=folha, baixar_fn=baixar), len(cb._INTERMEDIARIOS_APRENDIDOS)
+
+    def sem_rede(h, p, t):
+        raise OSError("sem rede")
+
+    try:
+        aprende = tenta(lambda u, timeout=None: inter)
+        ctx = cb.contexto_tls()
+        raiz_fica_fora = tenta(lambda u, timeout=None: raiz)
+        lixo_fica_fora = tenta(lambda u, timeout=None: b"<html>pagina</html>")
+        cortado_fica_fora = tenta(lambda u, timeout=None: inter[:-40])
+        falha_de_rede = tenta(folha=sem_rede)
+    finally:
+        cb._INTERMEDIARIOS_APRENDIDOS.clear()
+        cb._INTERMEDIARIOS_APRENDIDOS.update(salvo)
+    return (puras and aprende == (True, 1) and raiz_fica_fora == lixo_fica_fora == cortado_fica_fora == falha_de_rede == (False, 0)
+            and ctx.verify_mode == ssl.CERT_REQUIRED and ctx.check_hostname
+            and not ctx.verify_flags & ssl.VERIFY_X509_PARTIAL_CHAIN)
+
+
+def t_pedido_se_repete_uma_vez_depois_de_completar_a_cadeia():
+    """Só "falta o emissor" (códigos 2, 20 e 21) leva a completar a cadeia e repetir; certificado vencido ou de
+    outro nome sobe na hora, e sem intermediário aprendido não há segunda tentativa."""
+    import ssl
+    import urllib.request
+
+    def erro(codigo):
+        e = ssl.SSLCertVerificationError(1, "certificate verify failed")
+        e.verify_code = codigo
+        return urllib.error.URLError(e)
+
+    def roda(codigo, aprende):
+        idas = []
+
+        def abre(req, timeout=None, context=None):
+            idas.append(1)
+            if len(idas) == 1:
+                raise erro(codigo)
+            return "resposta"
+        salvo = urllib.request.urlopen, cb.completar_cadeia
+        urllib.request.urlopen, cb.completar_cadeia = abre, (lambda netloc, timeout=20: aprende)
+        try:
+            return cb._abrir(urllib.request.Request("https://x.gov.br/a"), 5), len(idas)
+        except urllib.error.URLError:
+            return "sobe", len(idas)
+        finally:
+            urllib.request.urlopen, cb.completar_cadeia = salvo
+
+    return (roda(20, True) == ("resposta", 2) and roda(21, True) == ("resposta", 2)
+            and roda(10, True) == ("sobe", 1) and roda(62, True) == ("sobe", 1) and roda(20, False) == ("sobe", 1))
+
+
+def t_so_a_conexao_sem_conversa_vai_a_ponte():
+    """18/11/2026: a ponte no Brasil é para o site que não conversa com o robô de fora do país. Recusa (HTTP,
+    muro) e nome que não resolve nunca viram pedido."""
+    import socket
+    s = cb.sem_conversa_http
+    return (s(urllib.error.URLError(TimeoutError("t"))) and s(TimeoutError()) and s(ConnectionResetError())
+            and not s(urllib.error.URLError(socket.gaierror(-2, "x"))) and not s(urllib.error.HTTPError("u", 403, "x", None, None))
+            and not s(cb.MuroDeRobo("u", "m")) and not s(OSError("dns")))
+
+
 if __name__ == "__main__":
     sys.exit(rodar_autoteste({
         "tabela de esperas por status é pura": t_esperas_para_e_pura,
@@ -402,4 +544,9 @@ if __name__ == "__main__":
         "lacuna de HTTPError leva o código (A6-14)": t_lacuna_de_httperror_leva_o_codigo,
         "muro servido com 503 é nomeado e não repete (A6-09)": t_muro_com_503_e_nomeado_e_nao_repete,
         "negativo: 503 sem muro segue esperando (A6-09)": t_503_sem_muro_continua_esperando,
+        "site sem resposta sai do resto da rodada; o vizinho e a conta do processo não mudam": t_site_sem_resposta_sai_do_resto_da_rodada,
+        "resposta HTTP zera a conta; tempo esgotado no meio do corpo não conta": t_resposta_zera_a_conta_e_leitura_cortada_nao_conta,
+        "cadeia incompleta: aprende só intermediário, nunca raiz nem lixo; verificação plena": t_cadeia_incompleta_aprende_so_intermediario,
+        "negativo: só falta de emissor repete o pedido, e uma vez": t_pedido_se_repete_uma_vez_depois_de_completar_a_cadeia,
+        "só a conexão sem conversa HTTP vai à ponte; recusa e nome inexistente, nunca": t_so_a_conexao_sem_conversa_vai_a_ponte,
     }))

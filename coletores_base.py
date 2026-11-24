@@ -28,6 +28,8 @@ from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
 DATA = RAIZ / "data"
+# Boletim nº 1 do ciclo (29/06/2026): marco zero de toda série do ciclo (editoria, 16/11/2026: a saúde também).
+INICIO_DO_CICLO = "2026-06-29"
 EVID = RAIZ / "evidencias"
 LIMITE_EVIDENCIA = 5 * 1024 * 1024  # bytes
 UA = "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; coletor da Pista A)"
@@ -386,7 +388,7 @@ def classe_de_dominio(url: str) -> str:
     """
     import urllib.parse
     host = urllib.parse.urlparse(str(url or "")).netloc.lower()
-    return "oficial" if host.endswith((".gov.br", ".leg.br", ".jus.br", ".mp.br")) else "outros"
+    return "oficial" if host.endswith((".gov.br", ".leg.br", ".jus.br", ".mp.br")) or _dominio_publico(str(url or "")) else "outros"
 
 
 def validar_pista(pista: dict, existentes: list = None) -> tuple:
@@ -665,8 +667,9 @@ def _dominio_publico(url: str) -> bool:
     if h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h:
         return True
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "scripts"))
-    from municipio_do_dominio import _host, diarios_estaduais   # imprensa oficial fora de .gov.br (IOERJ)
-    return _host(url) in diarios_estaduais()
+    from municipio_do_dominio import _host, diarios_estaduais, municipio_fora_do_gov_br
+    # imprensa oficial fora de .gov.br (IOERJ); e o sítio oficial do município fora de .gov.br (17/11/2026)
+    return _host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
 
 
 def setor_da_url(url: str) -> str:
@@ -774,9 +777,12 @@ def redigir_dados_pessoais(texto: str) -> tuple:
 
 
 PADROES_DE_SEGREDO = (
-    # Atribuição de chave em código ou configuração salvos dentro da página preservada.
+    # Atribuição de chave em código ou configuração salvos dentro da página preservada. 18/11/2026: também
+    # com a aspa que fecha a chave em JSON (`"access_token":"…"`), escapada ou em entidade HTML, e sem
+    # diferença de maiúscula — a ficha do Instagram na página inicial de uma secretaria passava sem redação.
     (re.compile(r"((?:api[_-]?key|apikey|access[_-]?token|client[_-]?secret|secret[_-]?key|"
-                r"authorization)\s*[:=]\s*[\"']?)([A-Za-z0-9_\-\.]{16,})"), r"\1[SEGREDO REDIGIDO]"),
+                r"authorization)(?:\\?[\"']|&quot;|&#0?3[49];)?\s*[:=]\s*(?:\\?[\"']|&quot;|&#0?3[49];)?)"
+                r"([A-Za-z0-9_\-\.]{16,})", re.I), r"\1[SEGREDO REDIGIDO]"),
     # Prefixos que identificam a credencial sozinhos, sem precisar do nome do campo.
     (re.compile(r"\b(AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{20,}|"
                 r"sk-[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9\-]{10,})"), "[SEGREDO REDIGIDO]"),
@@ -1062,7 +1068,8 @@ def contexto_tls():
         ctx = ssl.create_default_context(cafile=certifi.where())
     except ImportError:
         return None
-    ctx.load_verify_locations(cadata=INTERMEDIARIOS_QUE_O_SERVIDOR_NAO_ENVIA)
+    ctx.verify_flags &= ~ssl.VERIFY_X509_PARTIAL_CHAIN   # intermediário só ajuda a montar a cadeia; âncora é raiz do certifi
+    ctx.load_verify_locations(cadata=INTERMEDIARIOS_QUE_O_SERVIDOR_NAO_ENVIA + "".join(_INTERMEDIARIOS_APRENDIDOS.values()))
     return ctx
 
 
@@ -1111,6 +1118,98 @@ JEltkYnTAH41QJ6SAWO66GrrUESwN/cgZzL4JLEqz1Y=
 -----END CERTIFICATE-----
 """
 
+# 18/11/2026: o caso do DOE-MG não era um só. Medido de fora do país (runs 44287718891 e 44289866701): ce.gov.br,
+# srh.ce.gov.br, casacivil.ac.gov.br, legis.ac.gov.br, cagepa.pb.gov.br, pmsg.rj.gov.br e mogimirim.sp.gov.br enviam
+# a folha sem o intermediário que a assinou ("unable to get local issuer certificate"). O navegador fecha a cadeia
+# buscando o emissor no endereço "CA Issuers" que a própria folha declara; o robô passa a fazer o mesmo, uma vez por
+# emissor e por processo. Nada afrouxa: o que se aprende é só cadeia adicional (certificado autoassinado nunca entra,
+# e `contexto_tls` desliga a cadeia parcial), e o pedido se repete com a verificação plena de cadeia, nome e validade.
+_INTERMEDIARIOS_APRENDIDOS = {}   # endereço "CA Issuers" -> PEM
+_OID_CA_ISSUERS = bytes.fromhex("06082b06010505073002")
+CADEIA_INCOMPLETA = (2, 20, 21)   # códigos do OpenSSL para "falta o certificado do emissor"
+
+
+def _tlv(der: bytes, i: int) -> tuple:
+    """(etiqueta, início do valor, fim do valor) do elemento DER que começa em `i`. Função pura."""
+    n = der[i + 1]
+    if n < 0x80:
+        return der[i], i + 2, i + 2 + n
+    q = n & 0x7F
+    return der[i], i + 2 + q, i + 2 + q + int.from_bytes(der[i + 2:i + 2 + q], "big")
+
+
+def emissor_e_titular(der: bytes) -> tuple:
+    """(emissor, titular) de um certificado DER, em bytes; iguais, é autoassinado. Função pura."""
+    _, i, _ = _tlv(der, 0)                     # Certificate
+    etiqueta, i, _ = _tlv(der, i)              # tbsCertificate
+    if etiqueta != 0x30:
+        raise ValueError("não é certificado X.509")
+    campos = []
+    while len(campos) < 5:                     # série, algoritmo, EMISSOR, validade, TITULAR
+        etiqueta, _, fim = _tlv(der, i)
+        if etiqueta != 0xA0:                   # [0] versão, opcional
+            campos.append(der[i:fim])
+        i = fim
+    return campos[2], campos[4]
+
+
+def emissores_no_certificado(der: bytes) -> list:
+    """Endereços http "CA Issuers" que o certificado DER declara (RFC 5280, 4.2.2.1). Função pura."""
+    urls, i = [], der.find(_OID_CA_ISSUERS)
+    while i != -1:
+        j = i + len(_OID_CA_ISSUERS)
+        if der[j:j + 1] == b"\x86":            # uniformResourceIdentifier
+            _, a, b = _tlv(der, j)
+            urls.append(der[a:b].decode("ascii", "replace"))
+        i = der.find(_OID_CA_ISSUERS, j)
+    return [u for u in urls if re.match(r"http://[A-Za-z0-9.-]+\.[A-Za-z]{2,}(:\d+)?/", u)]
+
+
+def _folha_apresentada(host: str, porta: int, timeout: int) -> bytes:
+    """O certificado que o servidor apresenta, em DER. Este aperto de mão não verifica e nenhum pedido passa por
+    ele: serve só para ler, na folha, o endereço do emissor."""
+    import socket
+    ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+    ctx.check_hostname, ctx.verify_mode = False, ssl.CERT_NONE
+    with socket.create_connection((host, porta), timeout=timeout) as s, ctx.wrap_socket(s, server_hostname=host) as t:
+        return t.getpeercert(binary_form=True)
+
+
+def completar_cadeia(netloc: str, timeout: int = 20, folha_fn=None, baixar_fn=None) -> bool:
+    """Aprende o(s) intermediário(s) que o servidor de `netloc` não envia. True se aprendeu algum."""
+    host, _, porta = netloc.partition(":")
+    antes = len(_INTERMEDIARIOS_APRENDIDOS)
+    try:
+        der = (folha_fn or _folha_apresentada)(host, int(porta or 443), min(timeout, 20))
+        for _ in range(3):
+            url = next(iter(emissores_no_certificado(der)), None)
+            if not url or url in _INTERMEDIARIOS_APRENDIDOS:
+                break
+            der = (baixar_fn or buscar_uma_vez)(url, timeout=min(timeout, 20))
+            if der.lstrip().startswith(b"-----BEGIN"):
+                der = ssl.PEM_cert_to_DER_cert(der.decode("ascii", "ignore"))
+            emissor, titular = emissor_e_titular(der)
+            if emissor == titular:
+                break                          # raiz não se aprende da rede: âncora é só a do `certifi`
+            pem = ssl.DER_cert_to_PEM_cert(der)
+            ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT).load_verify_locations(cadata=pem)   # não carrega: levanta, e nada se aprende
+            _INTERMEDIARIOS_APRENDIDOS[url] = pem
+    except Exception:  # noqa: BLE001 — sem o intermediário, a verificação segue recusando como antes
+        pass
+    return len(_INTERMEDIARIOS_APRENDIDOS) > antes
+
+
+def _abrir(req, timeout: int):
+    """`urlopen` com o contexto TLS do projeto. Cadeia incompleta é completada e o pedido se repete uma vez."""
+    try:
+        return urllib.request.urlopen(req, timeout=timeout, context=contexto_tls())
+    except urllib.error.URLError as e:
+        r = getattr(e, "reason", None)
+        if not (isinstance(r, ssl.SSLCertVerificationError) and r.verify_code in CADEIA_INCOMPLETA
+                and completar_cadeia(urllib.parse.urlparse(req.full_url).netloc, timeout)):
+            raise
+        return urllib.request.urlopen(req, timeout=timeout, context=contexto_tls())
+
 
 # Os arquivos do banco: nenhum coletor ou gerador de camada de contexto escreve neles, e o autoteste de
 # cada um lê o PRÓPRIO código-fonte para conferir que não ganhou essa escrita numa edição futura.
@@ -1146,7 +1245,7 @@ def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
     robots = robots_de(host) if host else {"status": "indeterminado", "crawl_delay": None, "rp": None}
     _respeitar_ritmo(host, robots.get("crawl_delay"))
     req = urllib.request.Request(url_ascii(url), headers={"User-Agent": UA, "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
+    with _abrir(req, timeout) as r:
         corpo = exigir_corpo(url, getattr(r, "status", None), r.read())
         ct = (r.headers.get("Content-Type") or "").lower()
         corpo = descomprimir(corpo, r.headers.get("Content-Encoding"))
@@ -1366,7 +1465,7 @@ def _abrir_fluxo(url: str, timeout: int, origem, desde: int = 0):
             registrar_acesso_contra_robots(host, url, origem)
         except Exception:  # noqa: BLE001
             pass
-    return urllib.request.urlopen(req, timeout=timeout, context=contexto_tls())
+    return _abrir(req, timeout)
 
 
 # Quanto esperar antes de repetir, por status HTTP. Nasceu local em coletar_diarios_municipais.py
@@ -1472,7 +1571,7 @@ def enviar_uma_vez(url: str, dados: dict, timeout: int = 40, origem: str = None)
         headers={"User-Agent": UA, "Accept": "*/*",
                  "Content-Type": "application/x-www-form-urlencoded",
                  "X-Requested-With": "XMLHttpRequest"})
-    with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
+    with _abrir(req, timeout) as r:
         corpo = exigir_corpo(url, getattr(r, "status", None), r.read())
         ct = (r.headers.get("Content-Type") or "").lower()
         corpo = descomprimir(corpo, r.headers.get("Content-Encoding"))
@@ -1512,7 +1611,8 @@ def enviar(url: str, dados: dict, timeout: int = 40, origem: str = None, enviar_
     return com_espera(uma_vez, dormir=dormir)
 
 
-def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None) -> bytes:
+def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None,
+           sem_resposta: dict = None) -> bytes:
     """`buscar_uma_vez` com a espera do §226: repete quando a fonte pede tempo (429 e 5xx) ou
     quando a conexão nem virou conversa HTTP (reset, TLS, DNS, timeout), e sobe na hora quando
     repetir não ajudaria — 4xx e muro de robô, que são recusa e não indisponibilidade.
@@ -1522,36 +1622,95 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
     num autoteste continua funcionando — o mock substitui a função inteira, repetição incluída.
 
     `buscar_fn` e `dormir` existem para o autoteste, que precisa provar a espera sem rede e sem
-    esperar de verdade."""
+    esperar de verdade; `sem_resposta` é a conta dos sites fora da rodada (o autoteste que troca o
+    transporte não herda a de ninguém)."""
     def uma_vez():
         if buscar_fn is not None:
             return buscar_fn(url, timeout=timeout)
         return buscar_uma_vez(url, timeout=timeout, origem=origem)
 
+    host = (urllib.parse.urlparse(url).netloc or "").lower()
+    if sem_resposta is None:
+        sem_resposta = _SEM_RESPOSTA if buscar_fn is None else {}
     try:
-        return com_espera(uma_vez, dormir=dormir)
+        if sem_resposta.get(host, 0) >= 2:
+            raise urllib.error.URLError(f"{host} sem resposta nesta rodada")
+        corpo = com_espera(uma_vez, dormir=dormir)
+        sem_resposta.pop(host, None)
+        return corpo
     except urllib.error.HTTPError:
+        sem_resposta.pop(host, None)
         raise   # a fonte respondeu "não": recusa, que nenhuma cópia substitui
-    except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead):
+    except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead) as e:
+        if host and type(e) is urllib.error.URLError:   # a conexão nem começou; corpo cortado e 200 vazio são resposta
+            sem_resposta[host] = sem_resposta.get(host, 0) + (2 if isinstance(e.reason, TimeoutError) else 1)
         # 15/11/2026 (editoria): o servidor público que não responde ao robô de fora do Brasil
         # (to.gov.br, saude.ap.gov.br, saude.rn.gov.br) é lido pela ponte no Brasil, cliente identificado.
         copia, _ = copia_da_ponte(url)
         if copia is None:
+            if buscar_fn is None:   # rede de verdade: o endereço vira pedido à ponte (o autoteste não pede)
+                pedir_a_ponte(url, origem)
             raise
         return copia
 
 
+def sem_conversa_http(e) -> bool:
+    """A conexão nem virou conversa HTTP (tempo esgotado, reset, rede inalcançável, TLS), e o nome existe: é o
+    caso da ponte no Brasil. Recusa (HTTPError, muro) e nome que não resolve não são. Função pura."""
+    import socket
+    if isinstance(e, urllib.error.HTTPError) or isinstance(e, MuroDeRobo):
+        return False
+    r = getattr(e, "reason", None)
+    return isinstance(e, (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead)) \
+        and not isinstance(r, socket.gaierror)
+
+
+def pedir_a_ponte(url: str, origem: str = None) -> None:
+    """O endereço vira pedido à ponte no Brasil, gravado uma vez no fim do processo (`ponte_pedidos.json`)."""
+    _PEDIDOS_DA_PONTE[url] = origem or ""
+
+
+# 18/11/2026: site que não responde ao robô custava a espera inteira em CADA endereço da rodada (juiz da noite de
+# 17→18, run 44250436643: 26 de 190 leituras esgotaram o tempo, perto de metade dos 75 min do elo). Tempo esgotado
+# ao conectar, já com a repetição, tira o site do resto da rodada; falha imediata (conexão recusada, DNS, TLS) tira
+# na segunda busca seguida. Fora da rodada, o endereço vai direto à cópia da ponte ou vira pedido; resposta HTTP zera.
+_SEM_RESPOSTA = {}   # host -> peso das buscas seguidas sem conversa HTTP, neste processo
 PONTE = "ponte_brasil.json"
+PEDIDOS_DA_PONTE = "ponte_pedidos.json"
+RAMOS_CRUS = f"https://raw.githubusercontent.com/{os.environ.get('GITHUB_REPOSITORY') or 'monitorelnino/monitorelnino'}/refs/heads"
+# 16/11/2026: a tarefa semanal da ponte lê `scripts/ponte_brasil.py --pedidos`, que não existia; nenhum
+# endereço chegava a ela e o DOE-RS ficou 20 datas sem leitura por conexão recusada ao robô. Todo
+# endereço que falha na rede sem cópia vira pedido, gravado uma vez, no fim do processo.
+_PEDIDOS_DA_PONTE = {}
 
 
-def copia_da_ponte(url: str) -> tuple:
+def _gravar_pedidos_da_ponte():
+    if not _PEDIDOS_DA_PONTE:
+        return
+    hoje = hoje_editorial().isoformat()
+    doc = ler(PEDIDOS_DA_PONTE, {}) or {}
+    doc.setdefault("_governanca", "Endereços que falharam na rede, sem cópia da ponte no Brasil: um pedido por "
+                                  "falha, nunca reescrito. `scripts/ponte_brasil.py --pedidos` lê esta fila.")
+    doc["pedidos"] = list(doc.get("pedidos") or []) + [{"url": u, "origem": o, "em": hoje}
+                                                       for u, o in _PEDIDOS_DA_PONTE.items()]
+    gravar(PEDIDOS_DA_PONTE, doc)
+    _PEDIDOS_DA_PONTE.clear()
+
+
+import atexit as _atexit  # noqa: E402
+_atexit.register(_gravar_pedidos_da_ponte)
+
+
+def copia_da_ponte(url: str, buscar_fn=None) -> tuple:
     """(bytes, "AAAA-MM-DD") da cópia que a ponte no Brasil trouxe deste mesmo endereço, conferida pelo
-    sha256; (None, None) sem cópia. Só cobre conexão que não virou conversa HTTP: recusa não chega aqui."""
+    sha256; (None, None) sem cópia. Só cobre conexão que não virou conversa HTTP: recusa não chega aqui.
+    18/11/2026: documento trazido em lote fica no ramo do lote (`ramo`), que já o guarda; lê-se de lá."""
     c = ((ler(PONTE, {}) or {}).get("copias") or {}).get(url) or {}
-    arquivo = RAIZ / c["arquivo"] if c.get("arquivo") else None
-    if not arquivo or not arquivo.exists():
+    try:
+        corpo = ((buscar_fn or buscar_uma_vez)(f"{RAMOS_CRUS}/{c['ramo']}/{c['ramo']}/{c['sha256']}", timeout=120)
+                 if c.get("ramo") else (RAIZ / c["arquivo"]).read_bytes())
+    except Exception:  # noqa: BLE001 — sem registro, sem arquivo ou sem rede: não há cópia
         return None, None
-    corpo = arquivo.read_bytes()
     return (corpo, c.get("obtido_em")) if sha256(corpo) == c.get("sha256") else (None, None)
 
 
@@ -1733,10 +1892,13 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
     idx = ler("evidencias.json", {"_governanca": "Índice de evidências preservadas (§3.8, v2.2.4). "
                                    "Chave = sha256 do documento; nunca lido pelo cálculo do índice.",
                                    "itens": {}})
-    if h in idx["itens"]:
+    # 18/11/2026: "tem `texto_arquivo`" dava por provado o PDF escaneado cujo texto tem 0 caractere; o documento em
+    # mãos nunca chegava ao OCR e 13 planos do RS promovidos pelo juiz ficaram fora do banco. Vale a régua do portão 26.
+    from verificar_evidencias import prova_preservada
+    if h in idx["itens"] and (len(conteudo) <= LIMITE_EVIDENCIA or prova_preservada(idx["itens"][h])):
         return h
-    item = {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
-            "arquivo": None, "wayback": None}
+    item = idx["itens"].get(h) or {"url": url, "origem": origem, "preservado_em": hoje(), "tamanho": len(conteudo),
+                                   "arquivo": None, "wayback": None}
     if redigidos:
         item["segredos_redigidos"] = redigidos
     if cpfs:
@@ -1750,14 +1912,43 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
             destino.write_bytes(conteudo)
         item["arquivo"] = destino.relative_to(RAIZ).as_posix()
     else:
-        try:
-            buscar("https://web.archive.org/save/" + url, timeout=60)
-            item["wayback"] = "https://web.archive.org/web/*/" + url
-        except Exception as e:  # noqa: BLE001
-            item["wayback"] = f"tentativa falhou ({type(e).__name__})"
+        if not item.get("wayback"):
+            try:
+                buscar("https://web.archive.org/save/" + url, timeout=60)
+                item["wayback"] = "https://web.archive.org/web/*/" + url
+            except Exception as e:  # noqa: BLE001
+                item["wayback"] = f"tentativa falhou ({type(e).__name__})"
+        # 17/11/2026: acima do limite só ficava o pedido ao Wayback, que não lê pasta privada (o OneDrive da
+        # Casa Militar/RS); 40 promoções do juiz ficaram fora do banco por falta de prova (portão 26). A camada
+        # de texto do documento, com segredo e CPF redigidos, é cópia legível com hash próprio (§10.1).
+        item.update(_texto_de_evidencia(conteudo, url, h))
     idx["itens"][h] = item
     gravar("evidencias.json", idx)
     return h
+
+
+def _texto_de_evidencia(conteudo: bytes, url: str, h: str) -> dict:
+    """Os campos `texto_arquivo`, `texto_hash` e `caracteres` da camada de texto do documento, gravada em
+    `evidencias/<hash>.txt`; vazio quando o documento não dá texto."""
+    from julgar_e_aplicar_descobertas import LETRAS_SEM_OCR, texto_do_documento, texto_por_ocr
+    campo, sufixo = "texto", "txt"
+    try:
+        texto = texto_do_documento(conteudo, url) or ""
+        # 17/11/2026: o PDF grande quase sempre é escaneado; sem camada de texto, a prova é o OCR, que o portão 26
+        # aceita em campo próprio (`ocr_*`, §177) para não virar insumo de classificação.
+        if conteudo[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto)) < LETRAS_SEM_OCR:
+            texto, campo, sufixo = texto_por_ocr(conteudo) or "", "ocr", "ocr.txt"
+    except Exception:  # noqa: BLE001 — documento que não dá texto fica sem esta cópia
+        texto = ""
+    texto, _ = redigir_segredos(texto)
+    texto, _ = redigir_dados_pessoais(texto)
+    if not texto.strip():
+        return {}
+    EVID.mkdir(exist_ok=True)
+    destino = EVID / f"{h}.{sufixo}"
+    destino.write_text(texto, encoding="utf-8", newline="\n")
+    return {f"{campo}_arquivo": destino.relative_to(RAIZ).as_posix(), f"{campo}_hash": sha256(destino.read_bytes()),
+            "caracteres" if campo == "texto" else "ocr_caracteres": len(texto)}
 
 
 def _indexar_texto_integral(h: str, destino, origem=None) -> str:

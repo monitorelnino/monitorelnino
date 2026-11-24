@@ -53,8 +53,8 @@ import juiz
 # de fonte oficial?" tem de ter UMA resposta nos dois lados. Duas cópias divergem na primeira
 # exceção de domínio que alguém acrescentar a um dos arquivos.
 from coletar_saude_estadual import UFS, oficial
-from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
-from coletores_base import copia_da_ponte as cb_copia_da_ponte
+from coletores_base import MuroDeRobo, buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
+from julgar_e_aplicar_descobertas import com_ocr, obter_documento
 from julgar_filas import julgar_lista
 
 FILA = "pistas_imprensa_saude.json"
@@ -70,7 +70,7 @@ RE_COORDENACAO = re.compile(
     r"|grupo\s+condutor|\bGC\s+El\s*Ni[ñn]o"
     r"|gabinete\s+de\s+crise|comit[êe]\s+(?:gestor|de\s+crise|de\s+enfrentamento))", re.I)
 RE_PLANO = re.compile(r"(plano\s+(?:estadual\s+)?(?:de\s+)?(?:conting[êe]ncia|prepara[çc][ãa]o|"
-                      r"a[çc][ãa]o|enfrentamento|resposta))", re.I)
+                      r"a[çc][ãa]o|enfrentamento|resposta|adapta[çc][ãa]o))", re.I)
 # Menção NOMINAL ao ciclo: é o que separa "criado para o ciclo" de "permanente".
 RE_CICLO = re.compile(r"El\s*Ni[ñn]o", re.I)
 RE_REATIVA = re.compile(r"(reativa|reinstitui|prorroga|renova|reconduz)", re.I)
@@ -429,23 +429,8 @@ def degrau_coordenacao(texto: str, data: str) -> tuple:
     return "PERMANENTE", "ato institui a estrutura e não nomeia o ciclo"
 
 
-ANO_DO_CICLO = 2026
-RE_PERIODO_DO_PLANO = re.compile(r"\b(20\d\d)\s*(?:[-–/]|\ba\b|\bà\b|\bat[ée]\b)\s*(20\d\d|\d\d)\b")
-
-
-def vigencia_encerrada(texto: str, titulo: str = "") -> str:
-    """O período que o próprio plano declara no título ou na capa, quando ele terminou antes do ano do
-    ciclo ("2023-2024"); "" quando o período alcança o ciclo ou o plano não declara período. Função pura.
-
-    Editoria, 15/11/2026: plano com vigência declarada já encerrada aparece como o último localizado e
-    vale 0 (não é "recorrente": não está em vigor). Só período explícito, de até quatro anos, no título
-    ou nas primeiras linhas; na dúvida, não encerra."""
-    for m in RE_PERIODO_DO_PLANO.finditer(f"{titulo} {(texto or '')[:1500]}"):
-        ini = int(m.group(1))
-        fim = int(m.group(2)) if len(m.group(2)) == 4 else 2000 + int(m.group(2))
-        if 0 < fim - ini <= 4:
-            return f"{ini}-{fim}" if fim < ANO_DO_CICLO else ""
-    return ""
+# A régua da vigência declarada é uma só, a do juiz (20/11/2026: passou a valer também no MARÉ Legal).
+ANO_DO_CICLO, vigencia_encerrada = juiz.ANO_DO_CICLO, juiz.vigencia_encerrada
 
 
 DIAS_DE_VIDA_DA_PISTA = 21   # o `dias_de_vida` do esquema (schemas/pista.json)
@@ -564,12 +549,13 @@ def risco_do_documento(titulo: str, texto: str) -> tuple:
 
     15/11/2026 (SE): a capa diz "PLANO DE CONTINGÊNCIA … POR DENGUE, CHIKUNGUNYA E ZIKA", mas o título
     lido podia ser o da pista ("Plano de Contingência 2026-2027"). A capa é o documento falando de si;
+    18/11/2026 (RO): a capa é o cabeçalho do juiz (`CABECALHO_18`): a de 1.500 caracteres acabava na lista
+    da equipe e não via "Plano de Adaptação … El Niño", 1.647 caracteres depois do início.
     o corpo (lista de riscos de um plano de outra doença) continua de fora."""
     ok, casou = trata_de_risco_do_ciclo(titulo)
-    return (ok, casou) if ok else trata_de_risco_do_ciclo(str(texto or "")[:CAPA_DO_PLANO])
+    return (ok, casou) if ok else trata_de_risco_do_ciclo(str(texto or "")[:juiz.CABECALHO_18])
 
 
-CAPA_DO_PLANO = 1500
 
 
 # A5-37: `etapa2`/`extrair_data` tomavam a PRIMEIRA data do texto, e o preâmbulo de um ato cita
@@ -857,11 +843,9 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     return v
 
 
-# 16/10/2026 (F68): host que não respondeu (rede, não HTTP) fica de fora do resto da rodada. Em
-# 15/10 as 16 pistas do AP bateram uma a uma no mesmo host morto, ~4,5 min cada com as repetições
-# de `buscar`, e o prazo do elo acabou na 17ª de 251 — e cada uma ficou RECUSADA para sempre por
-# uma queda de rede. Falha de rede agora é PENDENTE: não grava veredito e volta na rodada seguinte.
-_HOSTS_SEM_RESPOSTA = set()
+# 16/10/2026 (F68): falha de rede é PENDENTE: não grava veredito e volta na rodada seguinte. 18/11/2026: o host
+# que não respondeu sai do resto da rodada na porta de rede (`coletores_base.buscar`), para todo coletor; o atalho
+# local que fazia isso aqui (e tratava muro como rede) saiu.
 PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError)")
 
 
@@ -880,23 +864,12 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     """Baixa, lê e julga uma pista. Devolve o veredito com o que o ato institui."""
     url = p.get("url")
     uf = p.get("uf")
-    host = urllib.parse.urlparse(url or "").netloc.lower()
     corpo, hash_ev, falha = None, None, None
-    if host in _HOSTS_SEM_RESPOSTA:
-        # 15/11/2026 (SE): o atalho do host morto pulava a cópia da ponte no Brasil, que `buscar` só
-        # consulta quando tenta a rede. O plano 2026-2027 de SE ficou pendente atrás de outra URL do host.
-        corpo = cb_copia_da_ponte(url)[0]
-        if corpo is None:
-            falha = {"promove": False, "pendente": True, "uf": uf,
-                     "motivo": "documento não baixado: host sem resposta nesta rodada"}
-    else:
-        try:
-            corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
-        except Exception as e:  # noqa: BLE001
-            if not isinstance(e, urllib.error.HTTPError):
-                _HOSTS_SEM_RESPOSTA.add(host)
-            falha = {"promove": False, "pendente": not isinstance(e, urllib.error.HTTPError), "uf": uf,
-                     "motivo": f"documento não baixado: {type(e).__name__}"}
+    try:   # 18/11/2026: o leitor do juiz municipal (fonte, ponte, pasta do RS e cópia pública)
+        corpo = obter_documento(url or "", 150, "julgar_saude", buscar_fn=buscar_fn)
+    except Exception as e:  # noqa: BLE001
+        recusa = isinstance(e, (urllib.error.HTTPError, MuroDeRobo))
+        falha = {"promove": False, "pendente": not recusa, "uf": uf, "motivo": f"documento não baixado: {type(e).__name__}"}
     if falha:
         # Fonte que não abre para o runner (03/11/2026: portal.pi.gov.br, TCP 443 sem resposta) não impede
         # reler o que já foi lido: a cópia preservada do mesmo endereço, com o hash do instrumento.
@@ -905,7 +878,7 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
             return falha
         texto, hash_ev = copia
     else:
-        texto = texto_do_documento(corpo, url)
+        texto = com_ocr(corpo, texto_do_documento(corpo, url))
     if not texto.strip():
         return {"promove": False, "motivo": "documento sem texto extraível (PDF sem OCR?)", "uf": uf}
     institui = o_que_institui(texto)
@@ -915,7 +888,7 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     # handover do juiz fixou: ligar quando o documento é plano E não traz tipo e número de ato no
     # texto. A data continua obrigatória — sem data não há como situar o ato no ciclo.
     plano_tecnico = ("instrumento" in institui
-                     and juiz.RE_TIPO_E_NUMERO.search(texto) is None)
+                     and juiz.ato_proprio(texto) is None)
     v = julgar_camada_saude(texto, uf, url, plano_tecnico, p.get("titulo") or "")
     v["institui"] = sorted(institui)
     v["uf"] = uf
@@ -1483,7 +1456,7 @@ def autoteste() -> int:
             lambda: ou(d_coe)["promove"] and ou(d_coe)["funcoes_da_estrutura"] == {"F1": True, "F2": False}
                     and not ou("Portaria de nomeação de servidor")["promove"],
     })
-    # F68: falha de rede é pendente e derruba o host para o resto da rodada; HTTP é recusa.
+    # F68: falha de rede é pendente; HTTP e muro são recusa (o host fora da rodada é da porta de rede).
     chamadas = []
 
     def cai(url, **kw):
@@ -1541,11 +1514,20 @@ def autoteste() -> int:
                                buscar_fn=lambda u, **k: t_am_doe.encode(), preservar_fn=lambda *a: "h")
     casos["grafia \"N.º\" do diário do AM: o decreto datado é identificado e a emergência entra"] = (
         lambda: len(e4) == 1 and e4[0].get("uf") == "AM")
-    _HOSTS_SEM_RESPOSTA.clear()
     v1 = julgar_pista({"url": "https://morto.ap.gov.br/a.pdf", "uf": "AP"}, buscar_fn=cai)
-    v2 = julgar_pista({"url": "https://morto.ap.gov.br/b.pdf", "uf": "AP"}, buscar_fn=cai)
     v3 = julgar_pista({"url": "https://vivo.pa.gov.br/c.pdf", "uf": "PA"}, buscar_fn=nega)
-    _HOSTS_SEM_RESPOSTA.clear()
+
+    def murado(url, **kw):
+        raise MuroDeRobo(url, "just a moment...")
+    v4 = julgar_pista({"url": "https://muro.ma.gov.br/d.pdf", "uf": "MA"}, buscar_fn=murado)
+    _pdf_imagem = b"%PDF-1.4 " + b"\x00" * 40
+    import julgar_e_aplicar_descobertas as _jd
+    _salvo_ocr = _jd.texto_por_ocr
+    try:
+        _jd.texto_por_ocr = lambda raw: "PLANO DE CONTINGÊNCIA DE ARBOVIROSES texto lido pelo OCR"
+        _ocr = com_ocr(_pdf_imagem, "")
+    finally:
+        _jd.texto_por_ocr = _salvo_ocr
     _u = "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf"
     _t = ("PLANO ESTADUAL DE PREPARACAO DO SETOR SAUDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NINO EQUIPE GESTORA "
           + "Fulano de Tal Secretario de Estado da Saude Superintendencia de Gestao " * 30
@@ -1556,6 +1538,12 @@ def autoteste() -> int:
     casos["PI: plano publicado com ações de resposta no corpo não vira `resposta` na etapa 4 (J1)"] = (
         lambda: julgar_camada_saude(_t2, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
         .get("criterios", {}).get("4_natureza", {}).get("ok") is True)
+    _ro = ("GOVERNO DO ESTADO DE RONDÔNIA SECRETARIA DE ESTADO DA SAÚDE — SESAU/RO " + "Fulano de Tal CARGO " * 80
+           + "Plano de Adaptação da Saúde de Rondônia para o Enfrentamento dos Impactos do El Niño — Ciclo 2026–2027 "
+           "Instrumento operacional, articulado ao Plano Estadual de Contingência do Setor Saúde.")
+    casos["RO: capa de equipe antes do título; o título é o do plano de adaptação e o risco do ciclo é lido"] = (
+        lambda: titulo_do_documento(_ro, "", _u).startswith("Plano de Adaptação da Saúde de Rondônia")
+        and risco_do_documento(titulo_do_documento(_ro, "", _u), _ro)[0] is True)
     casos["PI: plano com capa de equipe e lei na base legal passa a etapa 2 quando a pista é o plano"] = (
         lambda: julgar_camada_saude(_t, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
         .get("criterios", {}).get("2_citacao", {}).get("ok") is True)
@@ -1569,9 +1557,10 @@ def autoteste() -> int:
         lambda: [i["status"] for i in _su["uf"]["PI"]["instrumentos"]] == ["NOVO"]
         and _su["uf"]["PI"]["instrumentos"][0]["url"] == _u
         and _su["uf"]["PI"]["status"] == "NOVO" and _su["uf"]["PI"]["url"] == _u)
-    casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
-        lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
-    _HOSTS_SEM_RESPOSTA.clear()
+    casos["F68: falha de rede é pendente; muro de robô é recusa, não rede"] = (
+        lambda: v1["pendente"] and len(chamadas) == 1 and v4["pendente"] is False and "MuroDeRobo" in v4["motivo"])
+    casos["PDF escaneado vai ao OCR, como no juiz municipal (18/11/2026: 27 recusas por falta de OCR)"] = (
+        lambda: "ARBOVIROSES" in _ocr)
 
     def sem_rede(u, **k):
         raise urllib.error.URLError("timed out")
@@ -1579,8 +1568,7 @@ def autoteste() -> int:
     _vn = julgar_pista({"url": "https://portal.pi.gov.br/outra", "uf": "PI"}, buscar_fn=sem_rede, copia_de=lambda u: None)
     casos["PI: fonte que não abre relê a cópia preservada do mesmo endereço; sem cópia segue pendente"] = (
         lambda: _vc.get("pendente") is None and _vc.get("hash_evidencia") in ("h0", None) and _vn["pendente"])
-    casos["F68: HTTP 404 é recusa, não pendente, e não derruba o host"] = (
-        lambda: v3["pendente"] is False and "vivo.pa.gov.br" not in _HOSTS_SEM_RESPOSTA)
+    casos["F68: HTTP 404 é recusa, não pendente"] = lambda: v3["pendente"] is False
     casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP não"] = (
         lambda: PAD_FALHA_DE_REDE.match("documento não baixado: URLError")
         and not PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError"))

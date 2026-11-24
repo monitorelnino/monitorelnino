@@ -800,12 +800,20 @@ function renderMinha(uf, nome, card){
 
   __repintarMeuCard = () => renderMinha(uf, nome, card);
   carregarLivroDeVarredura();   // na primeira consulta, não na carga da página
-  const situacao = ConsultaMunicipio.situacaoDoPlano(m), status = situacao.estado;
+  /* 23/11/2026 (editoria): o município sem registro no banco pode ter plano localizado que não conta
+     no índice; isso vem do card (o mesmo de Prefeituras), que chega depois e repinta. */
+  const doCard = VARREDURA && codigoDigitado ? VARREDURA[String(codigoDigitado)] : null;
+  const situacao = ConsultaMunicipio.situacaoDoPlano(!(m && m.categoria) && doCard && doCard.plano_sem_contar ? doCard : m), status = situacao.estado;
   const varrido = fraseDeVarredura(situacao, varreduraDe(uf, m ? m.nome : nome));
   if (status === 'encontrado' || status === 'estadual'){
-    html += `<p class="fv"><strong>Plano de contingência localizado${status === 'estadual' ? ', no âmbito estadual' : ''}.</strong></p>`;
+    html += `<p class="fv"><strong>Plano de contingência localizado${status === 'estadual' ? ', no âmbito estadual' : ''}.</strong>`
+      + (situacao.plano_da_saude ? ' ' + esc(T('index.municipio.plano_da_saude', {fonte: situacao.plano_da_saude.fonte})) : '') + `</p>`;
     /* DECISÃO DA EDITORIA, 15/11/2026: o ato de aprovação não é exigido pela lei federal (Lei 12.340,
        art. 3º-A, § 6º) e fica só no dado (`sem_ato_de_aprovacao`); o cartão diz que o plano foi localizado. */
+  } else if (status === 'sem_contar'){
+    const sc = situacao.sem_contar;
+    html += `<p class="fv"><strong>${esc(T('index.municipio.sem_contar.' + sc.motivo, {fonte: sc.fonte, desde: sc.desde}))}</strong>`
+      + (sc.url ? ` <a href="${esc(sc.url)}" target="_blank" rel="noopener">${esc(T('index.municipio.sem_contar.ver'))}</a>` : '') + `</p>`;
   } else if (status === 'nomeado'){
     html += `<p class="fv"><strong>${fraseDoCitado(m)}</strong></p>`;
   } else if (status === 'nao_localizado'){
