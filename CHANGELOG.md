@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2058 · Válvula: conferir enxerga o módulo base
+
+A etapa `conferir` da válvula de dia baixava só `scripts/saude_pipeline.py`, e o script importa `coletores_base.py` da raiz; os lotes J18 caíram antes de conferir a entrada. O checkout esparso passa a incluir `coletores_base.py`. Sem mudança de coleta, dado ou página.
 ## 2026-11-24 · #2056 · Válvula traz a main antes do PR de dado
 
 O ramo `coleta-dia/*` nasce da `main` do disparo e a coleta leva horas; o PR de dado nascia em conflito e, em conflito, os Portões não rodavam (#2038, #2045). Antes do push, a válvula une a `main` ao ramo pela base comum, com o mesmo resolvedor do rebase. Falha F99; ensaio 30 roda o trecho do próprio workflow.
