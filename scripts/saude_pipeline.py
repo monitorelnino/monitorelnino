@@ -41,6 +41,7 @@ de `data/` que a interrupção deixe ilegível volta à versão do git: dado pel
 
 USO
   python3 scripts/saude_pipeline.py [--prazo <epoch>] --rodar [prazo=Nmin] <script> [args...]
+  printf '%s\n' "$COMANDOS" | python3 scripts/saude_pipeline.py --conferir-comandos   # a válvula, antes de subir
   python3 scripts/saude_pipeline.py --listar
   python3 scripts/saude_pipeline.py --autoteste
 """
@@ -159,6 +160,32 @@ def decidir_prazo(prazo, agora: float, minimo: float = MINIMO_PARA_COMECAR_S):
     if resta < minimo:
         return "pular", 0
     return "rodar", resta
+
+
+INTERPRETES = ("python3", "python", "node", "bash")
+
+
+def linha_que_nao_e_comando(linha: str, existe) -> str:
+    """O motivo de a linha não ser um comando da fila, ou '' quando é. Função pura: `existe(caminho)`.
+
+    17/11/2026 (`sonda-sisab-mun`, run 44139731701): a entrada da válvula trouxe linhas de Python
+    soltas, e cada uma foi executada como programa ("No such file or directory: 'import'"). Comando é
+    [prazo=Nmin] [intérprete] <script .py/.js/.sh que existe no repositório> [argumentos]."""
+    palavras = str(linha or "").split()
+    if not palavras or palavras[0].startswith("#"):
+        return ""
+    if re.fullmatch(r"prazo=\d+min", palavras[0]):
+        palavras = palavras[1:]
+    if palavras and palavras[0] in INTERPRETES:
+        palavras = palavras[1:]
+    if not palavras:
+        return "sem script"
+    script = palavras[0]
+    if not script.endswith((".py", ".js", ".sh")):
+        return f"{script!r} não é script (.py, .js ou .sh)"
+    if not existe(script):
+        return f"{script} não existe no repositório"
+    return ""
 
 
 def prazo_proprio(alvo: list, prazo, agora: float):
@@ -352,6 +379,16 @@ def autoteste() -> int:
                   and terminou_pulando(execs, corte + 7200) == ""))
     casos.append(("linha sem prazo=Nmin fica como está",
                   prazo_proprio(["x.py", "prazo=1min"], 9.0, 0.0) == (9.0, ["x.py", "prazo=1min"])))
+    existe = {"coletar_x.py", "scripts/y.js"}.__contains__
+    casos.append(("válvula: linha de Python solta não é comando",
+                  "não é script" in linha_que_nao_e_comando("import json", existe)))
+    casos.append(("válvula: script que não existe é recusado",
+                  "não existe" in linha_que_nao_e_comando("prazo=5min z.py", existe)))
+    casos.append(("válvula: prazo, intérprete e argumentos passam",
+                  linha_que_nao_e_comando("prazo=30min python3 coletar_x.py --limite 3", existe) == ""
+                  and linha_que_nao_e_comando("node scripts/y.js", existe) == ""))
+    casos.append(("válvula: linha vazia e comentário passam",
+                  linha_que_nao_e_comando("   ", existe) == "" and linha_que_nao_e_comando("# nota", existe) == ""))
     textos = {"data/a.json": '{"x": 1}', "data/b.json": '{"x": ', "data/c.txt": "{"}
     casos.append(("JSON pela metade é achado; texto e JSON inteiro não",
                   json_ilegiveis(list(textos), textos.__getitem__) == ["data/b.json"]))
@@ -389,6 +426,15 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    if "--conferir-comandos" in sys.argv:
+        ruins = [(linha.strip(), motivo) for linha in sys.stdin.read().splitlines()
+                 if (motivo := linha_que_nao_e_comando(linha, set(subprocess.run(
+                     ["git", "ls-files"], cwd=RAIZ, capture_output=True, text=True).stdout.split()).__contains__))]
+        for linha, motivo in ruins:
+            print(f"✗ {linha[:120]!r}: {motivo}")
+        print("✗ a válvula recusa a entrada: um comando por linha, cada um começando por um script do "
+              "repositório" if ruins else "✓ todas as linhas são comandos")
+        return 1 if ruins else 0
     if "--listar" in sys.argv:
         return listar()
     if "--terminou-pulando" in sys.argv:
