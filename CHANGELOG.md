@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2055 · Juiz 1.8: lote de leitura da rodada paralela J18
+
+Rejulgamento paralelo passa a ler documento fora de `evidencias/` pela porta de rede, sem preservar nada, e grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`. Índice e produção não mudam. Seis travas novas no autoteste.
+
 ## 2026-11-24 · #2050 · Catálogo de falhas: três noites sem linha e o horário do F90
 Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.
 ## 2026-11-24 · #2049 · Portões leem o repositório, não a cópia local
