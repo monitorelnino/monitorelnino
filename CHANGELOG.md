@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2044 · Teste de figuras espera a condição, não a rede
+Em 21/11 o portão de figuras estourou 30 segundos esperando a rede ficar ociosa em `defesa-civil.html` e deixou a `main` vermelha por 38 minutos. Cada verificação já esperava a própria condição; a espera pela rede saiu, e a verificação do mouse passa a esperar os quatro mapas que lê.
+
 ## 2026-11-24 · #2043 · Portão de tamanho reconhece retrato por chave
 Em 18/11 o arquivo de alertas em vigor cresceu 34% porque os alertas foram de 4.024 para 5.690, e o portão de tamanho reprovou a `main` como se fosse duplicação. A regra que absolve leitura nova só enxergava listas no topo do arquivo; passa a contar também os itens das listas de cada chave. Registro repetido continua barrado.
 ## 2026-11-24 · #2046 · Monitor de riscos: abertura sem instrução de interação
