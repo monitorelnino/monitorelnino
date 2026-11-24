@@ -1520,4 +1520,5 @@ input.busca{display:block; box-sizing:border-box; width:100%; max-width:100%; mi
 .g-mb .coluna--agora{fill:var(--pacifico-agora);}
 .g-mb .coluna--2024{fill:var(--mineral);}
 .g-mb .toque{fill:transparent;}
-.map-legend i.leg-tracejada{width:16px; height:2px; background:repeating-linear-gradient(90deg, currentColor 0 5px, transparent 5px 8px); border-radius:0;}
+.map-legend i.leg-tracejada{width:16px; height:0; border-radius:0;}
+.map-legend i.leg-tracejada::before{content:""; display:block; width:16px; height:2px; background:repeating-linear-gradient(90deg, currentColor 0 5px, transparent 5px 8px);}
