@@ -22,11 +22,15 @@ AS REGRAS
               `atualizar.py` antes da primeira verificação (01/10/2026).
   scripts     todo script citado por workflow existe (A1-25), as listas de escritor de pista apontam
               para arquivos reais (09/10/2026) e nenhum `.py` usa nome indefinido (F56, pyflakes).
+  regressao   PR não devolve arquivo de código, configuração ou texto a uma versão anterior da `main`
+              (24/11/2026: o #2043 levou, por `git add -A` num diretório defasado, o resolvedor de antes
+              do #2034 e desfaria a regra D2 sem conflito nenhum). Reversão de propósito diz "Reverte"
+              na mensagem de um commit do PR.
   cliente     um cliente só e nunca disfarçado: nenhum `User-Agent` literal fora de `coletores_base`,
               nenhum token de navegador, cabeçalho ASCII por propósito, pedido cru identifica o cliente
               (§228, §235; por AST).
 
-BARRA A PUBLICAÇÃO (editoria, 06/10/2026) só `marcadores` e `escrita`; as outras cinco reprovam o PR e
+BARRA A PUBLICAÇÃO (editoria, 06/10/2026) só `marcadores` e `escrita`; as outras reprovam o PR e
 não seguram o publicador. Por isso a CI chama o executor duas vezes: `--barra` e `--resto`.
 
 USO
@@ -47,6 +51,8 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "scripts"))
+from _versionados import versionados  # noqa: E402
 
 
 def _git(*args) -> list:
@@ -163,21 +169,16 @@ def caracteres_de_controle(texto: str, nome: str = "<fonte>") -> list:
 
 def real_escrita():
     problemas, arquivos = [], 0
-    for p in sorted(RAIZ.rglob("*.py")):
-        if "__pycache__" in p.parts:
+    for rel in versionados("*.py", fora=("node_modules",)):   # o repositório, não a cópia local de trabalho
+        arquivos += 1
+        fonte = (RAIZ / rel).read_text(encoding="utf-8")
+        problemas += problemas_escrita(fonte, rel) + caracteres_de_controle(fonte, rel)
+    for rel in versionados("*.js", "*.yml", "*.sh", fora=("node_modules", "arquivo")):   # portão em JS também já teve alternativa morta por backspace
+        try:
+            problemas += caracteres_de_controle((RAIZ / rel).read_text(encoding="utf-8"), rel)
+        except (OSError, UnicodeDecodeError):
             continue
         arquivos += 1
-        fonte, rel = p.read_text(encoding="utf-8"), p.relative_to(RAIZ).as_posix()
-        problemas += problemas_escrita(fonte, rel) + caracteres_de_controle(fonte, rel)
-    for alvo in ("*.js", "*.yml", "*.sh"):     # portão em JS também já teve alternativa morta por backspace
-        for p in sorted(RAIZ.rglob(alvo)):
-            if any(x in p.parts for x in ("node_modules", "__pycache__", ".git", "arquivo")):
-                continue
-            try:
-                problemas += caracteres_de_controle(p.read_text(encoding="utf-8"), p.relative_to(RAIZ).as_posix())
-            except (OSError, UnicodeDecodeError):
-                continue
-            arquivos += 1
     if problemas:
         problemas.append(f'Conserto: acrescentar newline="\\n" (ou lineterminator="\\n" no csv). Exceção '
                          f'justificada declara "# {MARCA_EXCECAO} <motivo>" na própria linha.')
@@ -581,6 +582,68 @@ def _casos_cliente() -> list:
         ("fonte que não compila é acusada", acusa("def (", "não compila")),
     ]
 
+# ───────────────────────────── regressão ─────────────────────────────
+VIGIADOS = (".py", ".js", ".yml", ".yaml", ".css", ".md")
+FORA_DA_REGRESSAO = ("data/", "dados-abertos/", "evidencias/", "selos/", "feeds/", "assets/vendor/",
+                     "docs/MANIFEST_SHA256.txt", "CHANGELOG.md", "CODEMAP.md")
+VERSOES_OLHADAS = 15
+
+
+def vigiado(rel: str) -> bool:
+    return (not rel.startswith(FORA_DA_REGRESSAO)
+            and (rel.endswith(VIGIADOS) or rel.startswith(("config/", "conteudo/", "layout/"))))
+
+
+def problemas_regressao(mudados: dict, anteriores: dict) -> list:
+    """[(caminho, commit)] em que o blob do PR é o de uma versão ANTERIOR da `main`. Função pura.
+
+    `mudados`: caminho -> (blob no PR, blob na `main`); `anteriores`: caminho -> [(commit, blob)],
+    da mais nova para a mais antiga, sem a versão atual."""
+    achados = []
+    for rel, (no_pr, na_main) in sorted(mudados.items()):
+        if not vigiado(rel) or not no_pr or no_pr == na_main:
+            continue
+        achados += [(rel, c) for c, b in anteriores.get(rel, [])[:VERSOES_OLHADAS] if b == no_pr][:1]
+    return achados
+
+
+def _blob(ref: str, rel: str) -> str:
+    saida = subprocess.run(["git", "rev-parse", "-q", "--verify", f"{ref}:{rel}"],
+                           cwd=RAIZ, capture_output=True, text=True).stdout.split()
+    return saida[0] if saida else ""
+
+
+def real_regressao():
+    try:
+        base = _git("merge-base", "origin/main", "HEAD")[0].strip()
+    except (RuntimeError, IndexError):
+        return [], "sem `origin/main` neste clone: nada a comparar"
+    if "Reverte" in "".join(_git("log", "--format=%B%x00", f"{base}..HEAD")):
+        return [], "um commit do PR declara reversão"
+    mudados = {rel: (_blob("HEAD", rel), _blob("origin/main", rel))
+               for rel in _git("diff", "--name-only", "-z", base, "HEAD") if vigiado(rel)}
+    anteriores = {}
+    for rel in mudados:
+        commits = "".join(_git("log", "--format=%H ", "-n", str(VERSOES_OLHADAS + 1),
+                               "origin/main", "--", rel)).split()
+        anteriores[rel] = [(c, _blob(c, rel)) for c in commits[1:]]
+    falhas = [f"{rel} é a versão da `main` em {c[:9]}: o PR desfaria o que veio depois. Tire-o do PR "
+              f"(`git checkout origin/main -- {rel}`) ou, se a reversão for de propósito, diga "
+              f"\"Reverte\" num commit do PR." for rel, c in problemas_regressao(mudados, anteriores)]
+    return falhas, f"{len(mudados)} arquivo(s) do PR conferido(s) contra versões anteriores da `main`"
+
+
+def _casos_regressao() -> list:
+    hist = {"scripts/x.py": [("c2", "b2"), ("c1", "b1")]}
+    return [("acusa o arquivo que volta a uma versão anterior",
+             problemas_regressao({"scripts/x.py": ("b1", "b3")}, hist) == [("scripts/x.py", "c1")]),
+            ("mudança nova não acusa", problemas_regressao({"scripts/x.py": ("b9", "b3")}, hist) == []),
+            ("igual à main não acusa", problemas_regressao({"scripts/x.py": ("b3", "b3")}, hist) == []),
+            ("dado regenerado fica fora",
+             problemas_regressao({"data/x.json": ("b1", "b3")}, {"data/x.json": hist["scripts/x.py"]}) == []),
+            ("arquivo apagado no PR não acusa", problemas_regressao({"scripts/x.py": ("", "b3")}, hist) == []),
+            ("catálogo de texto é vigiado, selo não", vigiado("conteudo/saude.json") and not vigiado("selos/a.svg"))]
+
 
 # ───────────────────────────── executor ─────────────────────────────
 # (nome, barra a publicação, confere o disco, casos do autoteste, roda o autoteste antes da conferência)
@@ -590,7 +653,8 @@ REGRAS = [("marcadores", True, real_marcadores, _casos_marcadores, False),
           ("changelog", False, real_changelog, _casos_changelog, False),
           ("carimbo", False, real_carimbo, _casos_carimbo, True),
           ("scripts", False, real_scripts, _casos_scripts, False),
-          ("cliente", False, real_cliente, _casos_cliente, False)]
+          ("cliente", False, real_cliente, _casos_cliente, False),
+          ("regressao", False, real_regressao, _casos_regressao, False)]
 
 
 def _ruins(nome, casos) -> list:

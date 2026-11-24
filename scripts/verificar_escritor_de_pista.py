@@ -35,6 +35,8 @@ import re
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ / "scripts"))
+from _versionados import versionados  # noqa: E402
 
 # A porta, e a rede de segurança da porta.
 ESCRITORES = (
@@ -293,12 +295,9 @@ def main() -> int:
     if _autoteste() != 0:   # 16/10/2026: o autoteste roda antes da conferência, num comando só
         return 1
     fontes = {}
-    for caminho in RAIZ.rglob("*.py"):
-        rel = relativo(caminho)
-        if rel.startswith((".git/", "node_modules/")):
-            continue
+    for rel in versionados("*.py", fora=("node_modules",)):   # cópia local de trabalho não é o repositório
         try:
-            fontes[rel] = caminho.read_text(encoding="utf-8", errors="replace")
+            fontes[rel] = (RAIZ / rel).read_text(encoding="utf-8", errors="replace")
         except OSError:
             continue
     divida = legados()
