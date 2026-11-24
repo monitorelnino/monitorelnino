@@ -12,6 +12,13 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2042 · Mesclagem recusada fecha quando o arquivo volta a se unir
 
 A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.
+## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
+
+A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.
+
+## 2026-11-24 · #2035 · Reaplicação não recusa arquivo novo dos dois lados
+
+`reaplicar_noite.py` separa "commit-base fora do histórico" de "arquivo ausente na base". O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.
 
 ## 2026-11-24 · #2034 · Rodada de domingo não perde o commit por `julgamento_automatico`
 

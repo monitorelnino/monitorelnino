@@ -46,6 +46,10 @@
     <dl class="mudancas-lista">
       <dt>24/11/2026 · Mesclagem recusada fecha quando o arquivo volta a se unir</dt>
       <dd>A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.</dd>
+      <dt>24/11/2026 · Reaplicação vê os artefatos da noite inteira</dt>
+      <dd>A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.</dd>
+      <dt>24/11/2026 · Reaplicação não recusa arquivo novo dos dois lados</dt>
+      <dd>`reaplicar_noite.py` separa &quot;commit-base fora do histórico&quot; de &quot;arquivo ausente na base&quot;. O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.</dd>
       <dt>24/11/2026 · Rodada de domingo não perde o commit por `julgamento_automatico`</dt>
       <dd>Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).</dd>
       <dt>24/11/2026 · Cadastro federal: coleta que falha deixa tentativa</dt>
@@ -160,10 +164,6 @@
       <dd>Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como &quot;plano desatualizado segundo a lei&quot; e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.</dd>
       <dt>17/11/2026 · Uma regra só para &quot;é fonte oficial?&quot;</dt>
       <dd>O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.</dd>
-      <dt>17/11/2026 · Saúde: cartões desde o marco zero do ciclo</dt>
-      <dd>A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.</dd>
-      <dt>17/11/2026 · Endereço de PDF que responde página</dt>
-      <dd>O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.</dd>
     </dl>
   </section>
 </main>
