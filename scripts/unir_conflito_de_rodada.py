@@ -168,6 +168,8 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 #   juiz            vence o veredito de `julgado_em` mais recente; o outro vai para `juiz_historico`.
 #   juiz_historico  união dos dois lados (nada se perde).
 #   rejeitada_em    vence a data mais antiga (a primeira rejeição).
+#   buscador2_em, busca_veiculo_em  vence a data mais nova: o seguidor regrava a data a cada passada,
+#                   então o campo é a ÚLTIMA passada, e `restantes` só a reconhece se for a de hoje (A1, 24/11).
 #   seguimento      vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu (A1, 22/11).
 #   repeticoes      contador (`pistas.gravar_lote` soma 1): base + (nosso − base) + (deles − base) (A1, 23/11).
 #   julgamento_automatico  APLICADA vence ABSTENCAO; duas ABSTENCAO: a `data` mais nova, no mesmo dia a da
@@ -202,6 +204,8 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
         return _unir_listas(nosso_v, deles_v)
     if campo == "rejeitada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
         return min(nosso_v, deles_v)     # ISO: a menor data é a primeira rejeição
+    if campo in ("buscador2_em", "busca_veiculo_em") and isinstance(nosso_v, str) and isinstance(deles_v, str):
+        return max(nosso_v, deles_v)     # ISO: a maior data é a última passada (F100)
     if campo == "busca_web_espera" or campo.startswith("cursor"):
         return nosso_v                   # lado da `main`: estado de fila
     if campo == "wayback":               # 07/11/2026: dois lotes preservaram o mesmo documento no mesmo dia;
@@ -1352,6 +1356,10 @@ def autoteste() -> int:
     checar("regra 7: o veredito que perdeu vai para juiz_historico (nada se perde)",
            m.get("juiz_historico") == [{"promove": False, "julgado_em": "2026-10-20"}])
     checar("regra 7: rejeitada_em vence a data mais antiga", m["rejeitada_em"] == "2026-10-11")
+    checar("F100: buscador2_em e busca_veiculo_em vencem a data mais nova (última passada)",
+           _mesclar_pista({"id": 1}, {"id": 1, "buscador2_em": "2026-11-24", "busca_veiculo_em": "2026-11-20"},
+                          {"id": 1, "buscador2_em": "2026-11-23", "busca_veiculo_em": "2026-11-24"})
+           == {"id": 1, "buscador2_em": "2026-11-24", "busca_veiculo_em": "2026-11-24"})
     checar("regra 7: busca_web_espera (estado de fila) vence o lado da main", m["busca_web_espera"] == "a2")
     try:
         _mesclar_pista(base, dict(base, juiz={"x": 1, "julgado_em": "2026-10-24"}),
