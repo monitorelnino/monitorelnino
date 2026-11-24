@@ -50,7 +50,21 @@ permissions:
   actions: read        # o job `vez` do coletor lê a fila de runs
 
 jobs:
+  # 24/11/2026 (handover de erros do GitHub, item 6): em 17/11 a entrada trouxe linhas de Python soltas
+  # e o executor rodou cada uma como programa. A entrada se confere antes de subir o executor: só a
+  # lista de arquivos do repositório, sem o conteúdo (nada de `evidencias/`).
+  conferir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: { persist-credentials: false, filter: "blob:none", sparse-checkout: scripts/saude_pipeline.py, sparse-checkout-cone-mode: false }
+      - name: Uma linha, um comando com script do repositório
+        env:
+          COMANDOS: ${{ inputs.comandos }}
+        run: printf '%s\n' "$COMANDOS" | python3 scripts/saude_pipeline.py --conferir-comandos
   coletar:
+    needs: conferir
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: ${{ inputs.nome }}
