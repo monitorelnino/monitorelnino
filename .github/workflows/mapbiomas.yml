@@ -42,6 +42,7 @@ jobs:
         with:
           sparse-checkout: |
             coletar_mapbiomas.py
+            coletores_base.py
             data/mapbiomas
             data/municipios_ibge_referencia.json
           sparse-checkout-cone-mode: false
@@ -74,7 +75,7 @@ jobs:
         with:
           name: mapbiomas
           path: data/mapbiomas/
-          if-no-files-found: ignore   # nada novo na fonte: sem artefato, e o elo não commita
+          if-no-files-found: ignore   # nada mudou, nem a data da consulta: sem artefato, e o elo não commita
           retention-days: 7
 
   gravar:

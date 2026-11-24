@@ -220,8 +220,8 @@ def do_artefato() -> int:
     with tempfile.TemporaryDirectory() as tmp:
         r = subprocess.run(["gh", "run", "download", os.environ["GITHUB_RUN_ID"], "--name", "mapbiomas", "--dir", tmp],
                            capture_output=True, text=True, timeout=300)
-        if r.returncode != 0:   # a soma só guarda artefato quando a fonte mudou
-            print(f"nada novo na fonte do MapBiomas: sem artefato ({r.stderr.strip()[:120]})")
+        if r.returncode != 0:   # sem artefato: nada mudou desde a última gravação, nem a data da consulta
+            print(f"MapBiomas: nada a gravar, nem a data da consulta ({r.stderr.strip()[:120]})")
             return 0
         ok = True
         for nome, chave in ARQUIVOS.items():
@@ -264,16 +264,19 @@ def main() -> int:
     estados = mapa = None
     if somar_mon or somar_col or somar_agu:
         estados, mapa = _estados(ee)
-    if somar_mon or (mon and mon.get("na_fonte") != agora["monitor"] and not somar_mon):
+    # 24/11/2026: `consultado_em` é o dia em que a fonte foi consultada, com ou sem número novo. Antes, sem
+    # nada a somar, o arquivo guardava a data antiga e a figura dizia "consultado em 15/11" depois da consulta
+    # de 24/11 (editoria). Consultada a fonte, os três arquivos saem com a data de hoje.
+    if somar_mon or mon:
         doc = coletar_monitor(ee, estados, mapa, mon, somar_mon, agora["monitor"]) if somar_mon else \
-            dict(_sem_meta(mon), na_fonte=agora["monitor"])   # só carimba a impressão: nada a somar
-        ok &= gravar("fogo_monitor.json", doc, doc["meses"], None if somar_mon else mon.get("consultado_em"))
-    if somar_col or (col and col.get("na_fonte") is None):
+            dict(_sem_meta(mon), na_fonte=agora["monitor"])   # nada a somar: só a impressão e a data da consulta
+        ok &= gravar("fogo_monitor.json", doc, doc["meses"])
+    if somar_col or col:
         doc = coletar_colecao(ee, estados, mapa) if somar_col else dict(_sem_meta(col), na_fonte=agora["colecao"])
-        ok &= gravar("fogo_colecao.json", doc, doc["meses"], None if somar_col else col.get("consultado_em"))
-    if somar_agu or (agu and agu.get("na_fonte") is None):
+        ok &= gravar("fogo_colecao.json", doc, doc["meses"])
+    if somar_agu or agu:
         doc = coletar_agua(ee, estados, mapa) if somar_agu else dict(_sem_meta(agu), na_fonte=agora["agua"])
-        ok &= gravar("agua_anual.json", doc, doc["anos"], None if somar_agu else agu.get("consultado_em"))
+        ok &= gravar("agua_anual.json", doc, doc["anos"])
     return 0 if ok else 1
 
 
@@ -294,6 +297,11 @@ def autoteste() -> int:
             precisa_somar(False, None, "t") and precisa_somar(True, "t0", "t1")
             and not precisa_somar(True, "t1", "t1") and not precisa_somar(True, None, "t1"),
         "id da imagem do Monitor vira mês": mes_do_id("projects/x/assets/brazil-2026-9") == "2026-09",
+        # 24/11/2026: o job da soma baixa só o que `mapbiomas.yml` lista; `coletores_base` faltava e a
+        # consulta sem número novo caiu em ModuleNotFoundError (run 45467506424).
+        "todo módulo local que o coletor usa está na cópia do job da soma":
+            all(m + ".py" in (RAIZ / ".github" / "workflows" / "mapbiomas.yml").read_text(encoding="utf-8")
+                for m in ("coletores_base",) if m in pathlib.Path(__file__).read_text(encoding="utf-8")),
         "trava estrutural: só escreve em data/mapbiomas/":
             pathlib.Path(__file__).read_text(encoding="utf-8").split("def autoteste")[0].count("write_text") == 1,
     }
