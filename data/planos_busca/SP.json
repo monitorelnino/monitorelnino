@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-11-24",
  "municipios": {
   "3550308": {
    "S16": {
@@ -2371,6 +2371,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513009&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513009&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cotia\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cotia\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3513405": {
@@ -2393,6 +2414,27 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513405&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513405&pagina=1&tamanhoPagina=500",
+    "motivo": "1403 contratação(ões) lida(s) em 54 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cruzeiro\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cruzeiro\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
     "dominio": null
    }
   },
@@ -2417,6 +2459,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513504&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513504&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cubatão\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cubatão\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3513801": {
@@ -2439,6 +2502,27 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513801&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513801&pagina=1&tamanhoPagina=500",
+    "motivo": "1034 contratação(ões) lida(s) em 47 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Diadema\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Diadema\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
     "dominio": null
    }
   },
@@ -2463,6 +2547,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3514403&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3514403&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Dracena\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Dracena\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3515004": {
@@ -2486,6 +2591,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3515004&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3515004&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3515103": {
@@ -2508,6 +2620,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3515103&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3515103&pagina=1&tamanhoPagina=500",
+    "motivo": "405 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
