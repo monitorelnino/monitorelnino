@@ -46,6 +46,10 @@
     <dl class="mudancas-lista">
       <dt>24/11/2026 · Portão: PR não devolve arquivo a uma versão anterior da main</dt>
       <dd>O #2043 levou, por engano, seis arquivos em versões anteriores da `main` e desfaria a regra D2 do resolvedor sem conflito nenhum. A regra nova `regressao` do verificador do repositório reprova o PR cujo arquivo de código, configuração, catálogo ou documento é igual a uma das 15 versões anteriores da `main`. Reversão de propósito diz &quot;Reverte&quot; num commit do PR.</dd>
+      <dt>24/11/2026 · Teste de figuras espera a condição, não a rede</dt>
+      <dd>Em 21/11 o portão de figuras estourou 30 segundos esperando a rede ficar ociosa em `defesa-civil.html` e deixou a `main` vermelha por 38 minutos. Cada verificação já esperava a própria condição; a espera pela rede saiu, e a verificação do mouse passa a esperar os quatro mapas que lê.</dd>
+      <dt>24/11/2026 · Portão de tamanho reconhece retrato por chave</dt>
+      <dd>Em 18/11 o arquivo de alertas em vigor cresceu 34% porque os alertas foram de 4.024 para 5.690, e o portão de tamanho reprovou a `main` como se fosse duplicação. A regra que absolve leitura nova só enxergava listas no topo do arquivo; passa a contar também os itens das listas de cada chave. Registro repetido continua barrado.</dd>
       <dt>24/11/2026 · Monitor de riscos: abertura sem instrução de interação</dt>
       <dd>A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou toque nos pontos do mapa, porque essa interação não está implementada. Fica a frase sobre os quatro riscos que o boletim prevê para este El Niño. Catálogo, texto de reserva da página e índice de conteúdo ajustados.</dd>
       <dt>24/11/2026 · Mesclagem recusada fecha quando o arquivo volta a se unir</dt>
@@ -160,10 +164,6 @@
       <dd>Com o blog fora do site, a metodologia deixa de descrevê-lo: saem a seção sobre os textos do blog e a seção sobre como eles eram produzidos, e as menções ao blog nas seções de contratos e do boletim semanal. Pedido da editoria, que autorizou mexer na metodologia congelada para isso.</dd>
       <dt>18/11/2026 · Pista de imprensa nasce com a data de entrada</dt>
       <dd>Os monitores de imprensa regional e de saúde gravavam a pista sem `registrado_em`; a idade na fila contava da data da notícia e a matéria antiga nascia vencida (&gt;21 dias). O portão da fila não humana reprovou a `main` das 03:53 UTC até aqui. Os dois monitores carimbam a entrada na criação (+9/−1 em código); as 4 vencidas na fila foram fechadas por prazo.</dd>
-      <dt>17/11/2026 · O blog sai do site</dt>
-      <dd>Por decisão da editoria, a página do blog, os textos publicados e o feed saem do site, do menu, do mapa do site e da página de Imprensa; os endereços antigos levam à inicial. Ficam guardados para uso interno os textos, o pacote semanal de dados e o verificador de texto.</dd>
-      <dt>17/11/2026 · Minuta só na capa</dt>
-      <dd>O juiz recusava como minuta qualquer plano com &quot;consulta pública&quot; ou &quot;minuta&quot; no corpo, como o plano de contingência 2025/2026 do Rio de Janeiro (&quot;permitindo sua consulta pública&quot;). A declaração passa a ser lida só no cabeçalho do documento, e &quot;consulta pública&quot; só como &quot;em&quot; ou &quot;para consulta pública&quot;. As 29 pistas recusadas assim voltam ao juiz.</dd>
     </dl>
   </section>
 </main>
