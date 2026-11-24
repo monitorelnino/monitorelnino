@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2053 · Válvula confere a entrada antes de subir o executor
 Em 17/11 a coleta de dia recebeu linhas de Python soltas no lugar de comandos e rodou cada uma como programa. Agora um passo curto, antes do executor, recusa a entrada se alguma linha não começar por um script do repositório (com prazo e intérprete opcionais). A noite não muda.
 
+## 2026-11-24 · #2048 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista
+
+O botão do mapa passa a dizer "Animar desde 29 de junho" e "Pausar". As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. "Ver em lista" usa a tabela do componente padrão, no lugar do `<dl>` sem estilo. Portão novo: a alternativa de dados só contém tabela.
 ## 2026-11-24 · #2052 · Log de busca das válvulas de 15/11 recuperado
 Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.
 
