@@ -115,15 +115,21 @@ def caminho_do_reaplicado(noite: str, elo: str) -> str:
 def artefatos_da_noite(noite: str) -> list:
     """Os artefatos `coleta-perdida-*` não expirados, mais novos que a abertura da noite. ESCREVE
     nada; só lê a API."""
-    saida = _gh(["api", "repos/{owner}/{repo}/actions/artifacts?per_page=100",
-                 "--jq", '.artifacts[] | select(.expired == false) '
-                         '| select(.name | startswith("' + PREFIXO + '")) '
-                         '| [.name, (.id|tostring), .created_at] | @tsv'], timeout=600)
+    # 24/11/2026: a API devolve do mais novo para o mais velho, 100 por página; só a primeira página
+    # deixava de fora o artefato de 22/11 (coleta-perdida-atualizar-44980777132) num dia de 100+
+    # artefatos. Lê página a página até passar da abertura da noite.
+    linhas, pagina = [], 1
+    while True:
+        saida = _gh(["api", f"repos/{{owner}}/{{repo}}/actions/artifacts?per_page=100&page={pagina}",
+                     "--jq", '.artifacts[] | [.name, (.id|tostring), .created_at, (.expired|tostring)] | @tsv'],
+                    timeout=600)
+        pag = [l.split("\t") for l in saida.splitlines() if l.count("\t") == 3]
+        linhas += [p[:3] for p in pag if p[3] == "false" and p[0].startswith(PREFIXO)]
+        if len(pag) < 100 or not noite or min(p[2] for p in pag)[:10] < noite:
+            break
+        pagina += 1
     fora = []
-    for linha in saida.splitlines():
-        partes = linha.split("\t")
-        if len(partes) != 3:
-            continue
+    for partes in linhas:
         nome, ident, criado = partes
         elo, run = elo_e_run(nome)
         if not elo:
@@ -152,6 +158,13 @@ def main(argv: list) -> int:
     # sem arrastar os outros.
     escolhidos = [argv[i + 1] for i, a in enumerate(argv)
                   if a == "--artefato" and i + 1 < len(argv)]
+    # 24/11/2026 (D3): `--caminho` (com `--artefato`) refaz só os caminhos que a união recusou da
+    # primeira vez, depois que a regra deles chegou. Ignora o marcador: os outros caminhos já
+    # voltaram, e reaplicá-los dobraria as linhas novas dos logs.
+    caminhos = {argv[i + 1] for i, a in enumerate(argv) if a == "--caminho" and i + 1 < len(argv)}
+    if caminhos and not escolhidos:
+        print("X --caminho exige --artefato")
+        return 2
 
     artefatos = artefatos_da_noite(noite)
     if escolhidos:
@@ -169,7 +182,7 @@ def main(argv: list) -> int:
         marcador = RAIZ / caminho_do_reaplicado(noite, a["elo"])
         ja = marcador.exists() and a["run"] in marcador.read_text(encoding="utf-8")
         print(f"   · {a['nome']} ({a['criado_em']})" + (" — já reaplicado" if ja else ""))
-        if ja:
+        if ja and not caminhos:
             continue
         if not aplicar:
             continue
@@ -190,6 +203,8 @@ def main(argv: list) -> int:
         n_portas = {}
         for q in arquivos:
             rel = str(q.relative_to(destino)).replace("\\", "/")
+            if caminhos and rel not in caminhos:
+                continue
             arv = (RAIZ / rel).read_text(encoding="utf-8") if (RAIZ / rel).exists() else None
             try:
                 art = q.read_text(encoding="utf-8")
