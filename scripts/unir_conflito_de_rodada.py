@@ -1368,6 +1368,10 @@ def autoteste() -> int:
     checar("recusa vira Issue por arquivo, uma só enquanto estiver aberta",
            avisar_recusa(["data/a.json: caminho sem resolução conhecida", "data/b.json: caminho sem resolução conhecida"],
                          gh=_falso) == ["Mesclagem recusada: data/b.json"])
+    _chamadas.clear()
+    avisar_recusa([], ["data/a.json: unido pela base", "data/c.json: unido pela base"], gh=_falso)
+    checar("arquivo que volta a se unir fecha a sua Issue, e só a sua",
+           [c[2] for c in _chamadas if c[:2] == ["issue", "close"]] == ["7"])
 
     if falhas:
         print(f"\n✗ UNIÃO DE CONFLITO: {len(falhas)} falha(s).")
@@ -1376,9 +1380,10 @@ def autoteste() -> int:
     return 0
 
 
-def avisar_recusa(recusados: list, gh=None) -> list:
+def avisar_recusa(recusados: list, resolvidos: list = (), gh=None) -> list:
     """Uma Issue por arquivo recusado (`scripts/avisos.py`): a recusa deixa de viver só no log de um run
-    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). Devolve os títulos abertos."""
+    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). O arquivo que volta a se unir
+    fecha a sua (24/11/2026: nada fechava). Devolve os títulos abertos."""
     from scripts import avisos
     gh = gh or avisos._gh
     abertas, feitas = avisos.issues_abertas(gh), []
@@ -1389,6 +1394,9 @@ def avisar_recusa(recusados: list, gh=None) -> list:
                          f"mesclagem ({motivo}). O trabalho foi para o artefato do run. Declarar a política em "
                          f"`scripts/unir_conflito_de_rodada.py`.", gh=gh, abertas=abertas) == "aberta":
             feitas.append(titulo)
+    for linha in resolvidos if abertas is not None else []:
+        avisos.avisar(f"Mesclagem recusada: {str(linha).partition(': ')[0]}", gh=gh, abertas=abertas,
+                      ao_fechar="O arquivo voltou a se unir numa rodada. Fechada.")
     return feitas
 
 
@@ -1406,13 +1414,13 @@ def main() -> int:
         print(f"  RECUSADO   {r}")
     if regenerar:
         print("REGENERAR=" + " ".join(regenerar))
+    try:
+        avisar_recusa(recusados, resolvidos)
+    except Exception as e:  # noqa: BLE001 — o aviso é do GitHub; a recusa já está no log
+        print(f"::warning::aviso de recusa não enviado: {type(e).__name__}")
     if recusados:
         print(f"::error::{len(recusados)} caminho(s) sem resolução conhecida; a rodada não "
               f"comita. Adivinhar a mesclagem apagaria dado sem aviso.")
-        try:
-            avisar_recusa(recusados)
-        except Exception as e:  # noqa: BLE001 — o aviso é do GitHub; a recusa já está no log
-            print(f"::warning::aviso de recusa não enviado: {type(e).__name__}")
         return 2
     print(f"{len(resolvidos)} caminho(s) resolvido(s).")
     return 0
