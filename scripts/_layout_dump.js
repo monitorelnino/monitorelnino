@@ -209,9 +209,16 @@ const COLETA = () => {
         || (m.getAttribute("aria-label") || m.getAttribute("alt") || "").trim().length > 3),
     visivel: vis(f),
   }));
+  // 24/11/2026: a alternativa de dados tem um componente só, `.tbl-wrap > table`; mede-se o que a página renderizou.
+  const alternativasDeDados = [...document.querySelectorAll('details[data-alternativa="dados"], details.cartao-mapa-dados')]
+    .filter(d => !d.closest("[hidden]")).map(d => ({
+      id: (d.closest("[id]") || {}).id || "",
+      tem_tabela: !!d.querySelector(":scope > .tbl-wrap > table"),
+      extras: [...d.children].filter(c => c.tagName !== "SUMMARY" && !c.matches(".tbl-wrap")).length,
+    }));
   return {
     titulo: document.title,
-    tipografia, alvos_de_toque: alvos, figuras_completas: figurasCompletas,
+    tipografia, alvos_de_toque: alvos, figuras_completas: figurasCompletas, alternativas_de_dados: alternativasDeDados,
     fundo_do_corpo: getComputedStyle(document.body).backgroundColor,
     largura_main: Math.round((document.querySelector("main") || document.body).getBoundingClientRect().width),
     h2: [...document.querySelectorAll("main h2")].map(h => (h.textContent || "").trim()).filter(Boolean),

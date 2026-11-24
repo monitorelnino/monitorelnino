@@ -25,9 +25,9 @@
 <title>Mudanças no MARÉ: os textos da editoria sobre o El Niño</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/mapas.js?v=6d303be4"></script>
+<script src="assets/mapas.js?v=f7dfcd8d"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=99e0b770">
+<link rel="stylesheet" href="assets/base.css?v=c63390e0">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -46,6 +46,8 @@
     <dl class="mudancas-lista">
       <dt>24/11/2026 · Juiz 1.8: lote de leitura da rodada paralela J18</dt>
       <dd>Rejulgamento paralelo passa a ler documento fora de `evidencias/` pela porta de rede, sem preservar nada, e grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`. Índice e produção não mudam. Seis travas novas no autoteste.</dd>
+      <dt>24/11/2026 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista</dt>
+      <dd>O botão do mapa passa a dizer &quot;Animar desde 29 de junho&quot; e &quot;Pausar&quot;. As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. &quot;Ver em lista&quot; usa a tabela do componente padrão, no lugar do `&lt;dl&gt;` sem estilo. Portão novo: a alternativa de dados só contém tabela.</dd>
       <dt>24/11/2026 · Log de busca das válvulas de 15/11 recuperado</dt>
       <dd>Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.</dd>
       <dt>24/11/2026 · Catálogo de falhas: três noites sem linha e o horário do F90</dt>
@@ -162,8 +164,6 @@
       <dd>A descoberta anotava `sinais`, `alertas` e `pontos_confianca` nas 22.825 pistas encerradas e a triagem os apagava na mesma noite: ~150 mil linhas de diff por noite em `data/pistas_imprensa.json`. `triar_confianca_pistas.py` pula a encerrada (`limpar_fila_de_pistas.encerrada`), com caso no autoteste. Catálogo da noite: F87 (pista sem data de entrada, #1856) e F88.</dd>
       <dt>18/11/2026 · Site sem resposta sai da rodada; cadeia de certificado completa; prova do plano escaneado</dt>
       <dd>Site que não responde ao robô deixa de gastar a rodada: sai dela, e o endereço vai à cópia da ponte ou vira pedido. Certificado sem o intermediário é completado pelo emissor que a folha declara, com verificação plena. Plano escaneado acima de 5 MB chega ao OCR e à prova (13 do RS estavam fora do banco). Documento trazido pela ponte fica no ramo do lote; a `main` guarda o índice.</dd>
-      <dt>18/11/2026 · Credencial de terceiro em JSON é redigida; a ponte guarda página já redigida</dt>
-      <dd>A redação de credencial não via a forma do JSON (`&quot;access_token&quot;:&quot;…&quot;`), a aspa escapada nem a maiúscula: a página inicial de uma secretaria trouxe a ficha do Instagram dela, e só o portão do PR a barrou. A porta de redação passa a cobrir essas formas, e o portão usa o padrão dela. A cópia de página da ponte entra redigida, com o sha256 de origem; corpo vazio e muro de robô não entram; `--receber` guarda lote com manifesto.</dd>
     </dl>
   </section>
 </main>
