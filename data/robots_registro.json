@@ -3041,14 +3041,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 10036,
+   "total_acessos": 10037,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.970-de-9-de-setembro-de-2026-730978443",
-     "quando": "2026-11-23T03:31:55Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.943-de-8-de-setembro-de-2026-730775565",
      "quando": "2026-11-23T03:32:03Z",
@@ -4242,9 +4236,15 @@
      "quando": "2026-11-23T03:48:36Z",
      "origem": "coletar_recursos_resposta",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-mma-n-1.717-de-19-de-junho-de-2026-714110982",
+     "quando": "2026-11-24T05:19:49Z",
+     "origem": "coletar_prioritarios_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-23"
+   "ultimo_acesso": "2026-11-24"
   },
   "www.saopaulo.sp.gov.br": {
    "status_robots": "proibe",
