@@ -12,6 +12,18 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2044 · Teste de figuras espera a condição, não a rede
 Em 21/11 o portão de figuras estourou 30 segundos esperando a rede ficar ociosa em `defesa-civil.html` e deixou a `main` vermelha por 38 minutos. Cada verificação já esperava a própria condição; a espera pela rede saiu, e a verificação do mouse passa a esperar os quatro mapas que lê.
 
+## 2026-11-24 · #2043 · Portão de tamanho reconhece retrato por chave
+Em 18/11 o arquivo de alertas em vigor cresceu 34% porque os alertas foram de 4.024 para 5.690, e o portão de tamanho reprovou a `main` como se fosse duplicação. A regra que absolve leitura nova só enxergava listas no topo do arquivo; passa a contar também os itens das listas de cada chave. Registro repetido continua barrado.
+## 2026-11-24 · #2046 · Monitor de riscos: abertura sem instrução de interação
+
+A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou toque nos pontos do mapa, porque essa interação não está implementada. Fica a frase sobre os quatro riscos que o boletim prevê para este El Niño. Catálogo, texto de reserva da página e índice de conteúdo ajustados.
+
+## 2026-11-24 · #2042 · Mesclagem recusada fecha quando o arquivo volta a se unir
+
+A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.
+## 2026-11-24 · #2039 · Aviso: outro run com a mesma causa não comenta a Issue
+
+O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
 ## 2026-11-24 · #2040 · Um envio conferido por PR
 O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.
 ## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
@@ -90,6 +102,10 @@ O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ord
 
 ## 2026-11-23 · #1976 · Juiz: plano publicado não é ato de resposta
 O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.
+
+## 2026-11-24 · #2036 · Buscador 2: teto de buscas no veículo vale para a rodada, não para o bloco
+
+O teto de 300 buscas no veículo era zerado a cada bloco de 200 URLs: o lote de 24/11 fez cerca de 1.500 buscas e nenhum link do Google News resolveu. O contador passa a ser da rodada. Catálogo F92.
 
 ## 2026-11-23 · #1974 · Buscador 2: B2 busca no veículo com o título guardado
 
