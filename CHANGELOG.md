@@ -12,6 +12,14 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2039 · Aviso: outro run com a mesma causa não comenta a Issue
 
 O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
+## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
+
+A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.
+
+## 2026-11-24 · #2035 · Reaplicação não recusa arquivo novo dos dois lados
+
+`reaplicar_noite.py` separa "commit-base fora do histórico" de "arquivo ausente na base". O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.
+
 ## 2026-11-24 · #2034 · Rodada de domingo não perde o commit por `julgamento_automatico`
 
 Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).
