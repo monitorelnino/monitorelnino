@@ -9,10 +9,12 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-17 a 2026-11-24 (1584 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-17 a 2026-11-24 (1599 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
+- coletar_cadastro_prioritarios.py: erro em 2 rodadas seguidas — urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer>
+- coletar_pab_brasil.py: erro em 2 rodadas seguidas — urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer>
 - verificar_links.py: erro em 2 rodadas seguidas — erro: https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf
 
 ## Cobertura em 15 dias
@@ -33,7 +35,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-22 07:29 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-23 01:34 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-22 07:27 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-24 07:09 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-24 07:34 | 4 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-22 06:54 | 501 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-24 06:48 | 2 s | 0 | ok | — |
 | `atualizar.py` | coletor | 2026-11-22 04:10 | 11930 s | 147 | ok | — |
@@ -46,15 +48,15 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `buscar_financiamento_preventivo.py` | coletor | 2026-11-24 05:00 | 0 s | — | ok | — |
 | `buscar_planos_fontes_abertas.py` | coletor | 2026-11-22 18:49 | 31 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-11-21 01:18 | 12 s | 41 | ok | — |
-| `classificar_planos_municipais.py` | coletor | 2026-11-21 01:18 | 1 s | — | ok | — |
+| `classificar_planos_municipais.py` | coletor | 2026-11-24 05:24 | 1 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-11-23 01:34 | 1 s | — | ok | — |
 | `coletar_arboviroses_sinan.py` | coletor | 2026-11-23 01:33 | 56 s | — | ok | — |
 | `coletar_boletim_df_arboviroses.py` | coletor | 2026-11-23 01:26 | 408 s | — | ok | — |
 | `coletar_boletim_ms_dengue.py` | coletor | 2026-11-23 01:25 | 21 s | — | ok | — |
 | `coletar_boletim_pb_arboviroses.py` | coletor | 2026-11-23 01:33 | 2 s | — | ok | — |
 | `coletar_boletim_pe_arboviroses.py` | coletor | 2026-11-23 01:33 | 6 s | — | ok | — |
-| `coletar_cadastro_prioritarios.py` | coletor | 2026-11-21 01:12 | 63 s | — | **erro** | urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer> |
-| `coletar_cobertura_qd.py` | coletor | 2026-11-21 01:18 | 2277 s | — | ok | — |
+| `coletar_cadastro_prioritarios.py` | coletor | 2026-11-24 05:18 | 62 s | — | **erro** (2 seguidas) | urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer> |
+| `coletar_cobertura_qd.py` | coletor | 2026-11-24 05:24 | 7587 s | — | **erro** | interrompido pelo prazo do elo |
 | `coletar_datasus_dbc.py` | coletor | 2026-11-23 07:13 | 38 s | — | ok | — |
 | `coletar_dda.py` | coletor | 2026-11-23 01:25 | 54 s | — | ok | — |
 | `coletar_declarado_nacional.py` | coletor | 2026-11-22 04:32 | 73 s | — | ok | — |
@@ -67,31 +69,31 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `coletar_execucao_mps.py` | coletor | 2026-11-22 06:35 | 26 s | — | ok | — |
 | `coletar_financiamento.py` | coletor | 2026-11-22 06:35 | 2 s | — | ok | — |
 | `coletar_mapbiomas.py` | coletor | 2026-11-23 01:13 | 1 s | — | ok | — |
-| `coletar_normais_inmet.py` | coletor | 2026-11-21 01:13 | 4 s | — | ok | — |
+| `coletar_normais_inmet.py` | coletor | 2026-11-24 05:19 | 4 s | — | ok | — |
 | `coletar_obitos.py` | coletor | 2026-11-23 07:16 | 4 s | — | ok | — |
 | `coletar_obitos_registro_civil.py` | coletor | 2026-11-23 01:34 | 40 s | — | ok | — |
-| `coletar_pab_brasil.py` | coletor | 2026-11-21 01:13 | 37 s | — | **erro** | urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer> |
+| `coletar_pab_brasil.py` | coletor | 2026-11-24 05:19 | 36 s | — | **erro** (2 seguidas) | urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer> |
 | `coletar_planos_arboviroses.py` | coletor | 2026-11-23 08:07 | 480 s | — | ok | — |
-| `coletar_prioritarios_mma.py` | coletor | 2026-11-21 01:13 | 3 s | — | ok | — |
+| `coletar_prioritarios_mma.py` | coletor | 2026-11-24 05:19 | 3 s | — | ok | — |
 | `coletar_projecao_cil.py` | coletor | 2026-11-23 07:27 | 1 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-11-23 02:43 | 40 s | — | **erro** | urllib.error.HTTPError: HTTP Error 502: Bad Gateway |
 | `coletar_s2id.py` | coletor | 2026-11-23 02:41 | 98 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-11-23 01:12 | 78 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-11-18 03:00 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `coletar_semiarido_sudene.py` | coletor | 2026-11-21 01:13 | 3 s | — | ok | — |
+| `coletar_semiarido_sudene.py` | coletor | 2026-11-24 05:19 | 2 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-11-23 02:15 | 8 s | — | ok | — |
 | `coletar_siconfi_182.py` | coletor | 2026-11-22 06:35 | 0 s | — | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-23 07:27 | 2410 s | — | ok | — |
 | `coletar_sim.py` | coletor | 2026-11-23 07:16 | 617 s | — | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-11-23 01:12 | 152 s | — | ok | — |
 | `coletar_sisab.py` | coletor | 2026-11-23 07:14 | 145 s | — | ok | — |
-| `coletar_srag_gripe.py` | coletor | 2026-11-22 06:23 | 144 s | — | ok | — |
+| `coletar_srag_gripe.py` | coletor | 2026-11-24 05:22 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-23 02:14 | 36 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-11-22 06:35 | 2 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-23 01:14 | 60 s | — | ok | — |
 | `conferir_emergencias_estaduais.py` | coletor | 2026-11-23 01:16 | 1 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-11-23 01:17 | 92 s | — | **erro** | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
-| `descobrir_dominios.py` | coletor | 2026-11-22 01:56 | 5326 s | — | **erro** | interrompido pelo prazo do elo |
+| `descobrir_dominios.py` | coletor | 2026-11-24 07:31 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `descobrir_planos.py` | coletor | 2026-11-24 04:49 | 469 s | 42 | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-23 07:16 | 1 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-24 04:48 | 11 s | — | ok | — |
@@ -114,7 +116,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `node scripts/verificar_runtime_sinais.js` | coletor | 2026-11-22 07:27 | 3 s | — | ok | — |
 | `node scripts/verificar_texto_publico.js` | coletor | 2026-11-22 07:28 | 26 s | — | ok | — |
 | `preencher_fallback_estatico.py` | coletor | 2026-11-22 07:29 | 1 s | — | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-11-24 06:59 | 75 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-11-24 07:09 | 103 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-11-24 05:17 | 1 s | — | ok | — |
 | `reconferir_instrumentos_federais.py` | coletor | 2026-11-23 08:15 | 32 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-11-24 05:18 | 722 s | — | ok | — |
@@ -122,11 +124,11 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-23 · por canal: we
 | `scripts/busca_dirigida_do_ato.py` | coletor | 2026-11-24 05:00 | 60 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-24 05:18 | 1 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-11-18 03:00 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-24 07:00 | 2 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-24 07:11 | 2 s | — | ok | — |
 | `scripts/proveniencia_estadual.py` | coletor | 2026-11-23 03:18 | 1 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-24 05:12 | 826 s | — | ok | — |
 | `scripts/remediar_segredos_evidencias.py` | coletor | 2026-11-18 12:52 | 165 s | — | ok | — |
-| `scripts/sondar_boletim_infogripe.py` | coletor | 2026-11-21 01:14 | 104 s | — | ok | — |
+| `scripts/sondar_boletim_infogripe.py` | coletor | 2026-11-24 05:20 | 109 s | — | ok | — |
 | `scripts/sondar_credenciais.py` | coletor | 2026-11-23 01:15 | 2 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-11-23 02:15 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-23 02:49 | 2 s | — | ok | — |
