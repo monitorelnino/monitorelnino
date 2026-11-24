@@ -51,6 +51,8 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "scripts"))
+from _versionados import versionados  # noqa: E402
 
 
 def _git(*args) -> list:
@@ -167,21 +169,16 @@ def caracteres_de_controle(texto: str, nome: str = "<fonte>") -> list:
 
 def real_escrita():
     problemas, arquivos = [], 0
-    for p in sorted(RAIZ.rglob("*.py")):
-        if "__pycache__" in p.parts:
+    for rel in versionados("*.py", fora=("node_modules",)):   # o repositório, não a cópia local de trabalho
+        arquivos += 1
+        fonte = (RAIZ / rel).read_text(encoding="utf-8")
+        problemas += problemas_escrita(fonte, rel) + caracteres_de_controle(fonte, rel)
+    for rel in versionados("*.js", "*.yml", "*.sh", fora=("node_modules", "arquivo")):   # portão em JS também já teve alternativa morta por backspace
+        try:
+            problemas += caracteres_de_controle((RAIZ / rel).read_text(encoding="utf-8"), rel)
+        except (OSError, UnicodeDecodeError):
             continue
         arquivos += 1
-        fonte, rel = p.read_text(encoding="utf-8"), p.relative_to(RAIZ).as_posix()
-        problemas += problemas_escrita(fonte, rel) + caracteres_de_controle(fonte, rel)
-    for alvo in ("*.js", "*.yml", "*.sh"):     # portão em JS também já teve alternativa morta por backspace
-        for p in sorted(RAIZ.rglob(alvo)):
-            if any(x in p.parts for x in ("node_modules", "__pycache__", ".git", "arquivo")):
-                continue
-            try:
-                problemas += caracteres_de_controle(p.read_text(encoding="utf-8"), p.relative_to(RAIZ).as_posix())
-            except (OSError, UnicodeDecodeError):
-                continue
-            arquivos += 1
     if problemas:
         problemas.append(f'Conserto: acrescentar newline="\\n" (ou lineterminator="\\n" no csv). Exceção '
                          f'justificada declara "# {MARCA_EXCECAO} <motivo>" na própria linha.')

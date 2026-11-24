@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2049 · Portões leem o repositório, não a cópia local
+O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.
 ## 2026-11-24 · #2047 · Portão: PR não devolve arquivo a uma versão anterior da main
 O #2043 levou, por engano, seis arquivos em versões anteriores da `main` e desfaria a regra D2 do resolvedor sem conflito nenhum. A regra nova `regressao` do verificador do repositório reprova o PR cujo arquivo de código, configuração, catálogo ou documento é igual a uma das 15 versões anteriores da `main`. Reversão de propósito diz "Reverte" num commit do PR.
 
