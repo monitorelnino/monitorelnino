@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2056 · Válvula traz a main antes do PR de dado
+
+O ramo `coleta-dia/*` nasce da `main` do disparo e a coleta leva horas; o PR de dado nascia em conflito e, em conflito, os Portões não rodavam (#2038, #2045). Antes do push, a válvula une a `main` ao ramo pela base comum, com o mesmo resolvedor do rebase. Falha F99; ensaio 30 roda o trecho do próprio workflow.
+
 ## 2026-11-24 · #2052 · Log de busca das válvulas de 15/11 recuperado
 Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.
 
