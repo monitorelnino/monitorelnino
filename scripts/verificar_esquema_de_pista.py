@@ -340,6 +340,9 @@ def _autoteste() -> int:
     ok("pista sem `id` (identidade = URL, com dois-pontos) também sai da fila ativa",
        quarentenar([dict({k: v for k, v in ruim.items() if k != "id"}, url="https://x.example/a")],
                    esquema)[1] != {})
+    ok("pista sem `id` e sem endereço nenhum também sai da fila ativa (handover de 23/11, item 3)",
+       quarentenar([{k: v for k, v in ruim.items() if k not in ("id", "url", "url_final")}],
+                   esquema)[0][0].get("destino") == "quarentena")
     ok("fila só de pistas boas não move nada", quarentenar([boa], esquema) == ([boa], {}))
     ok("fila vazia não quebra a quarentena", quarentenar([], esquema) == ([], {}))
     ok("a quarentena é idempotente: a segunda passada não move nada",

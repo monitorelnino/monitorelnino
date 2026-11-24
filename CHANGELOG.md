@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2049 · Portões leem o repositório, não a cópia local
+O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.
+
 ## 2026-11-24 · #2043 · Portão de tamanho reconhece retrato por chave
 Em 18/11 o arquivo de alertas em vigor cresceu 34% porque os alertas foram de 4.024 para 5.690, e o portão de tamanho reprovou a `main` como se fosse duplicação. A regra que absolve leitura nova só enxergava listas no topo do arquivo; passa a contar também os itens das listas de cada chave. Registro repetido continua barrado.
 ## 2026-11-24 · #2046 · Monitor de riscos: abertura sem instrução de interação
