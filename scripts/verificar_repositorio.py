@@ -282,7 +282,7 @@ def problemas_changelog(texto: str) -> list:
             ruins.append(f"{titulo[:60]}: título fora do formato `AAAA-MM-DD · #PR · título`")
         elif palavras(corpo) > TETO_DE_PALAVRAS:
             ruins.append(f"{titulo[:60]}: {palavras(corpo)} palavras, acima do teto de {TETO_DE_PALAVRAS} — "
-                         f"fundamentação longa vai para a METODOLOGIA")
+                         f"fundamentação longa vai no PR ou nas notas")
     return ruins
 
 
