@@ -3074,7 +3074,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(177 trechos)</small></h2>
+<h2>saude <small>(184 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · planos estaduais e registros de saúde no El Niño 2026/2027</td></tr>
@@ -3112,7 +3112,7 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>observado · registram.detalhe</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>saude.observado.registram.detalhe.titulo</code></td><td><span class="molde">{desfecho} por 100 mil habitantes, por estado, desde 29 de junho</span><br><span class="ex">exemplo: 3 por 100 mil habitantes, por estado, desde 29 de junho</span></td></tr>
-<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Faixa habitual: da mediana ao percentil 90 de 2019 a 2025 · cada linha na sua escala · último período fechado: {periodo} · {parciais}</span><br><span class="ex">exemplo: Faixa habitual: da mediana ao percentil 90 de 2019 a 2025 · cada linha na sua escala · último período fechado: 3 · 3</span></td></tr>
+<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Último período fechado: {periodo} · {parciais}</span><br><span class="ex">exemplo: Último período fechado: 3 · 3</span></td></tr>
 </table>
 <h3>observado · registram.detalhe.lista</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3549,10 +3549,6 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.topo.resposta.dica</code></td><td>Parcela da população em estados com decreto de emergência em saúde registrado desde 29 de junho de 2026.</td></tr>
 </table>
-<h3>observado · registram.detalhe.dica</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.dica</code></td><td>Mapa e linhas por estado do indicador selecionado nos cartões acima, desde 29 de junho.</td></tr>
-</table>
 <h3>consulta · resultado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>nota</td><td><code>saude.consulta.resultado.nota</code></td><td>Os resultados reúnem informações do município e do estado, identificadas em cada cartão. Confira o território, o período e a fonte.</td></tr>
@@ -3691,7 +3687,39 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>observado · registram.detalhe.tocar</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.observado.registram.detalhe.tocar</code></td><td>Ver passar os períodos</td></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.tocar</code></td><td>Animar desde 29 de junho</td></tr>
+</table>
+<h3>observado · registram.detalhe.tocar_pausa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.tocar_pausa</code></td><td>Pausar</td></tr>
+</table>
+<h3>observado · registram.detalhe.col_estado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.col_estado</code></td><td>Estado</td></tr>
+</table>
+<h3>observado · registram.detalhe.col_valor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.col_valor</code></td><td><span class="molde">{unidade} por 100 mil habitantes</span><br><span class="ex">exemplo: 3 por 100 mil habitantes</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.col_posicao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.col_posicao</code></td><td>Posição na faixa habitual</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_faixa</code></td><td>Faixa habitual: da mediana ao percentil 90, 2019 a 2025</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_linha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_linha</code></td><td>Valor por 100 mil habitantes, na escala de cada estado</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_cursor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_cursor</code></td><td>Período escolhido no mapa</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_acima</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_acima</code></td><td>Período acima da faixa habitual</td></tr>
 </table>
 <h3>observado · registram.detalhe.na_semana</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
