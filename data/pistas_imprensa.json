@@ -37709,9 +37709,9 @@
     "julgado_em": "2026-11-20",
     "hash_evidencia": "e377c30ef0874c911b597c1abbe71ccdf69fad3f38f55e420fecf5ec24080367"
    },
-   "buscador2_em": "2026-11-13",
+   "buscador2_em": "2026-11-24",
    "seguimento": {
-    "data": "13/11/2026",
+    "data": "24/11/2026",
     "via": "B4",
     "candidatos": 0,
     "pistas_novas": 0,
@@ -345279,7 +345279,7 @@
    "tipo": "plano",
    "id": "19a433b5d4",
    "nivel_confianca": "C",
-   "buscador2_em": "2026-10-27",
+   "buscador2_em": "2026-11-24",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
    "reaberta": {
@@ -345296,6 +345296,13 @@
     "data": null,
     "julgado_em": "2026-11-18",
     "hash_evidencia": "adaeb887999eea98c58d81e5083aec8f895dd6b54ae1f7cd2d45cf0f29b19172"
+   },
+   "seguimento": {
+    "data": "24/11/2026",
+    "via": "B4",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -351731,7 +351738,7 @@
    "tipo": "plano",
    "id": "9d18c55cfe",
    "nivel_confianca": "C",
-   "buscador2_em": "2026-10-27",
+   "buscador2_em": "2026-11-24",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
    "reaberta": {
@@ -351750,6 +351757,13 @@
     "data": null,
     "julgado_em": "2026-11-19",
     "hash_evidencia": "59bb39add614eed115776ffb3644a2d8b80346be42ae67fbe9931efb49aed840"
+   },
+   "seguimento": {
+    "data": "24/11/2026",
+    "via": "B7",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -490067,7 +490081,7 @@
    "tipo": "plano",
    "id": "20a679c70d",
    "nivel_confianca": "C",
-   "buscador2_em": "2026-10-27",
+   "buscador2_em": "2026-11-24",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
    "alertas": [],
@@ -490114,7 +490128,15 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-30"
+   "proxima_tentativa_em": "2026-11-30",
+   "seguimento": {
+    "data": "24/11/2026",
+    "via": "B9",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [],
+    "lacuna": "página não legível até 2026-11-24"
+   }
   },
   {
    "municipio": "Canoinhas",
@@ -674060,7 +674082,7 @@
     "falhas": [
      "pagina: URLError"
     ],
-    "tentativas": 3
+    "tentativas": 4
    }
   },
   {
@@ -678066,7 +678088,7 @@
     "decisao": "ABSTENCAO",
     "motivo": "falha ao buscar o documento (tentar de novo na próxima execução)"
    },
-   "buscador2_em": "2026-11-21",
+   "buscador2_em": "2026-11-24",
    "status_anterior": "pendente_confirmacao_documento",
    "fechada_em": "2026-11-07",
    "municipio_atribuido_antes": {
@@ -678108,14 +678130,14 @@
    ],
    "proxima_tentativa_em": "2026-11-19",
    "seguimento": {
-    "data": "21/11/2026",
+    "data": "24/11/2026",
     "via": "",
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    }
   },
   {
@@ -678790,7 +678812,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 3
+    "tentativas": 4
    }
   },
   {
@@ -727145,7 +727167,7 @@
    "fechada_em": "2026-11-17",
    "id": "4616379fde",
    "nivel_confianca": "C",
-   "repeticoes": 4
+   "repeticoes": 5
   },
   {
    "alvo": "D-municipio-prioritario/Simão Dias/SE",
@@ -738954,7 +738976,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    }
   },
   {
@@ -739018,13 +739040,10 @@
    "proxima_tentativa_em": "2026-11-20",
    "seguimento": {
     "data": "24/11/2026",
-    "via": "",
+    "via": "B7",
     "candidatos": 0,
     "pistas_novas": 0,
-    "falhas": [
-     "pagina: HTTPError 522"
-    ],
-    "tentativas": 1
+    "falhas": []
    }
   },
   {
@@ -740836,7 +740855,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 4
+    "tentativas": 5
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
@@ -744777,7 +744796,7 @@
     "falhas": [
      "pagina: HTTPError 404"
     ],
-    "tentativas": 4
+    "tentativas": 5
    }
   },
   {
@@ -747164,7 +747183,7 @@
     "falhas": []
    },
    "nivel_confianca": "C",
-   "repeticoes": 17,
+   "repeticoes": 18,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -748947,16 +748966,16 @@
     "lido_em": "2026-11-24",
     "criterios": {}
    },
-   "buscador2_em": "2026-11-22",
+   "buscador2_em": "2026-11-24",
    "seguimento": {
-    "data": "22/11/2026",
+    "data": "24/11/2026",
     "via": "",
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": [
      "pagina: URLError"
     ],
-    "tentativas": 2
+    "tentativas": 3
    }
   },
   {
@@ -748992,16 +749011,16 @@
     "lido_em": "2026-11-24",
     "criterios": {}
    },
-   "buscador2_em": "2026-11-22",
+   "buscador2_em": "2026-11-24",
    "seguimento": {
-    "data": "22/11/2026",
+    "data": "24/11/2026",
     "via": "",
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": [
      "pagina: URLError"
     ],
-    "tentativas": 2
+    "tentativas": 3
    }
   },
   {
@@ -749036,16 +749055,16 @@
     "lido_em": "2026-11-24",
     "criterios": {}
    },
-   "buscador2_em": "2026-11-22",
+   "buscador2_em": "2026-11-24",
    "seguimento": {
-    "data": "22/11/2026",
+    "data": "24/11/2026",
     "via": "",
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": [
      "pagina: URLError"
     ],
-    "tentativas": 2
+    "tentativas": 3
    }
   },
   {
@@ -749470,16 +749489,16 @@
     "lido_em": "2026-11-24",
     "criterios": {}
    },
-   "buscador2_em": "2026-11-21",
+   "buscador2_em": "2026-11-24",
    "seguimento": {
-    "data": "21/11/2026",
+    "data": "24/11/2026",
     "via": "",
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    }
   },
   {
@@ -749519,16 +749538,16 @@
     "lido_em": "2026-11-24",
     "criterios": {}
    },
-   "buscador2_em": "2026-11-21",
+   "buscador2_em": "2026-11-24",
    "seguimento": {
-    "data": "21/11/2026",
+    "data": "24/11/2026",
     "via": "",
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    }
   },
   {
@@ -749674,7 +749693,7 @@
      },
      "A1_corpo": {
       "ok": true,
-      "trecho": "8477 caracteres"
+      "trecho": "8515 caracteres"
      },
      "B4_ciclo_e_genero": {
       "ok": true,
@@ -749694,8 +749713,8 @@
      }
     },
     "lido_em": "2026-11-24",
-    "tamanho_do_corpo": 8477,
-    "hash_do_corpo": "2d66eaf139e54b429de490c0a1431c82bb47dc90d7d14000d28072821840b3fa",
+    "tamanho_do_corpo": 8515,
+    "hash_do_corpo": "51cb46f8fc06b6960c231baacfa92d70dc5e0c49cb7c2f686d5b06d37ebdac25",
     "data_da_materia": "2026-11-03 (degrau: json_ld)"
    },
    "buscador2_em": "2026-11-21",
@@ -750586,7 +750605,7 @@
     "falhas": [
      "pagina: URLError"
     ],
-    "tentativas": 2
+    "tentativas": 3
    },
    "nivel_confianca": "B",
    "pontos_confianca": 4,
@@ -753100,6 +753119,14 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-24",
     "criterios": {}
+   },
+   "buscador2_em": "2026-11-24",
+   "seguimento": {
+    "data": "24/11/2026",
+    "via": "B7",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
   },
   {
@@ -753500,6 +753527,17 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-24",
     "criterios": {}
+   },
+   "buscador2_em": "2026-11-24",
+   "seguimento": {
+    "data": "24/11/2026",
+    "via": "",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "pagina: HTTPError 403"
+    ],
+    "tentativas": 1
    }
   },
   {
@@ -753539,6 +753577,17 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-24",
     "criterios": {}
+   },
+   "buscador2_em": "2026-11-24",
+   "seguimento": {
+    "data": "24/11/2026",
+    "via": "",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "pagina: HTTPError 403"
+    ],
+    "tentativas": 1
    }
   },
   {
