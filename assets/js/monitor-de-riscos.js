@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, AVISOS, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR, ENQ;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
+let BR_GEOJSON, SINAIS, MARE, AVISOS, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR, ENQ, MAPBIOMAS;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 
@@ -23,6 +23,9 @@ async function __load(){
   FOCOS = await fetch('data/focos_pontos.json').then(r => r.ok ? r.json() : null).catch(() => null);
   /* 16/10/2026: contagens do satélite de referência (dia, série, mês, UF, bioma). Ausente = lacuna. */
   FOGO_REF = await fetch('data/focos_referencia.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  /* 24/11/2026: MapBiomas (fogo e água), dado de contexto por estado. Ausente = a figura declara a lacuna. */
+  MAPBIOMAS = await Promise.all(['fogo_monitor', 'fogo_colecao', 'agua_anual'].map(f =>
+    fetch('data/mapbiomas/' + f + '.json').then(r => r.ok ? r.json() : null).catch(() => null)));
   SECAS_MANCHAS = await fetch('data/secas_manchas.json').then(r => r.ok ? r.json() : null).catch(() => null);
   AR = await fetch('data/ar_medido.json').then(r => r.ok ? r.json() : null).catch(() => null);
   ENQ = await fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(() => null);
@@ -1269,6 +1272,115 @@ figuraDeEpisodios({
 /* Estado → município, como na inicial; o arquivo `data/riscos_municipio/<UF>.json` é carregado só ao
    escolher o estado. Uma tabela, uma linha por sinal, cada uma com a fonte e a data; o que é do estado
    diz que é do estado; ausência no arquivo é dita como ausência, nunca como zero. */
+/* 24/11/2026 (editoria, 17/11 "ok siga"): fogo e água do MapBiomas, três figuras com um seletor de território.
+   Dado de contexto: nada entra no índice e nada se calcula além do que a figura mostra — a faixa (menor a maior
+   valor de 2019 a 2025, sem 2024) e a mediana saem da própria série. Os dois produtos de fogo ficam em figuras
+   separadas porque dão números diferentes para o mesmo mês: 2026 nunca se compara com a coleção. */
+(function figurasMapbiomas(){
+  const sel = document.getElementById('ufMapbiomas'); if (!sel) return;
+  const [FM, FC, AG] = MAPBIOMAS || [];
+  const I = 'monitor-de-riscos.mapbiomas.';
+  const T = (id, v, reserva) => txtCat(I + id, v, reserva);
+  const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  const CURTO = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  const REF = ['2019', '2020', '2021', '2022', '2023', '2025'];   // 2019 a 2025, sem 2024
+  const W = 320, H = 220, L = 46, R = 8, TOP = 10, B = 24, pw = W - L - R, ph = H - TOP - B;
+  const mediana = v => { const o = v.slice().sort((a, b) => a - b), m = o.length >> 1; return o.length % 2 ? o[m] : (o[m - 1] + o[m]) / 2; };
+  const soma = (D, chave) => sel.value === 'BR' ? Object.values(D.ufs).reduce((s, u) => s + (u[chave] || 0), 0) : (D.ufs[sel.value] || {})[chave];
+  const nomeTerr = () => sel.value === 'BR' ? 'Brasil' : nomeUF(sel.value);
+  /* A unidade sai da escala do que está desenhado: hectares, mil ou milhões. */
+  const escala = max => max >= 1e6 ? {d: 1e6, un: 'un_mi'} : max >= 1e4 ? {d: 1e3, un: 'un_mil'} : {d: 1, un: 'un_ha'};
+  /* Teto do eixo: o próximo múltiplo de 1, 2 ou 5 na casa do maior valor, para os três marcos (0, metade, teto) saírem redondos. */
+  const redondo = (max, e) => { const m = max / e.d, p = Math.pow(10, Math.floor(Math.log10(m))), f = m / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p * e.d; };
+  const num = (v, e) => MonitorMapas.numBR(v / e.d, e.d === 1 ? 0 : 1);
+  const el = (n, a, t) => svgEl(n, a, t);
+  const pontos = (v, x, y) => v.map((p, i) => p == null ? null : x(i).toFixed(1) + ',' + y(p).toFixed(1)).filter(Boolean).join(' ');
+  function moldura(svg, max, e, ticksX) {
+    const y = v => TOP + (1 - v / max) * ph;
+    [0, max / 2, max].forEach(v => {
+      svg.appendChild(el('line', {x1: L, x2: L + pw, y1: y(v).toFixed(1), y2: y(v).toFixed(1), class: 'grade'}));
+      svg.appendChild(el('text', {x: L - 6, y: (y(v) + 4).toFixed(1), class: 'tk', 'text-anchor': 'end'}, num(v, e)));
+    });
+    ticksX.forEach(([x, r]) => svg.appendChild(el('text', {x: x.toFixed(1), y: H - 6, class: 'tk', 'text-anchor': 'middle'}, r)));
+    return y;
+  }
+  function lacuna(box, grafico, sub) {
+    document.getElementById(grafico).innerHTML = '';
+    document.getElementById(sub).textContent = '';
+    MonitorMapas.legenda(box, []);
+    document.getElementById(grafico).appendChild(Object.assign(document.createElement('p'), {className: 'figura-nota', textContent: T('sem_dado', null, 'Sem coleta até o corte.')}));
+  }
+  function mensal(D, anos, ids, aria) {
+    const meses = Array.from({length: 12}, (_, m) => String(m + 1).padStart(2, '0'));
+    const serie = a => meses.map(m => { const k = a + '-' + m; return D.meses.includes(k) ? soma(D, k) : null; });
+    const refs = meses.map((m, i) => REF.map(a => serie(a)[i]).filter(v => v != null));
+    const faixa = refs.map(v => v.length ? [Math.min(...v), Math.max(...v), mediana(v)] : null);
+    const linhas = anos.map(a => serie(a));
+    const max = Math.max(1, ...faixa.filter(Boolean).map(f => f[1]), ...linhas.flat().filter(v => v != null));
+    const e = escala(max), topo = redondo(max, e);
+    const x = i => L + (i / 11) * pw;
+    const svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, class: 'g-mb', role: 'img', 'aria-label': aria});
+    const y = moldura(svg, topo, e, [0, 2, 4, 6, 8, 10].map(i => [x(i), CURTO[i]]));
+    const f = faixa.map((v, i) => v ? [i, v] : null).filter(Boolean);
+    svg.appendChild(el('polygon', {class: 'faixa', points: f.map(([i, v]) => x(i).toFixed(1) + ',' + y(v[1]).toFixed(1)).concat(f.slice().reverse().map(([i, v]) => x(i).toFixed(1) + ',' + y(v[0]).toFixed(1))).join(' ')}));
+    svg.appendChild(el('polyline', {class: 'mediana', points: pontos(faixa.map(v => v && v[2]), x, y)}));
+    linhas.forEach((s, k) => svg.appendChild(el('polyline', {class: 'ano ano--' + ids[k], points: pontos(s, x, y)})));
+    meses.forEach((m, i) => {
+      const dica = T('tip_mes', {mes: MESES[i], valores: anos.map((a, k) => linhas[k][i] == null ? null : a + ' · ' + num(linhas[k][i], e) + ' ' + T(e.un)).filter(Boolean)
+        .concat(faixa[i] ? [T('tip_faixa', {min: num(faixa[i][0], e), max: num(faixa[i][1], e)}) + ' · ' + T('tip_mediana', {valor: num(faixa[i][2], e)})] : []).join(' · ')});
+      svg.appendChild(comValor(el('rect', {x: (x(i) - pw / 22).toFixed(1), y: TOP, width: (pw / 11).toFixed(1), height: ph, class: 'toque'}), dica));
+    });
+    return {svg, e};
+  }
+  function pintar() {
+    const terr = nomeTerr();
+    /* Fogo 2026: janeiro ao último mês publicado. */
+    if (FM) {
+      const ano = FM.ultimo_mes.slice(0, 4), mes = MESES[Number(FM.ultimo_mes.slice(5)) - 1];
+      const tit = T('fogo_mes.titulo', {ano: ano}), r = mensal(FM, [ano, '2024'], ['agora', '2024'], T('aria', {titulo: tit, territorio: terr}));
+      document.getElementById('tituloFogoMes').textContent = tit;
+      document.getElementById('subFogoMes').textContent = T('fogo_mes.sub', {territorio: terr, mes: mes, ano: ano, unidade: T(r.e.un)});
+      const g = document.getElementById('graficoFogoMes'); g.innerHTML = ''; g.appendChild(r.svg);
+      MonitorMapas.legenda('legFogoMes', [{cor: 'var(--pacifico-agora)', classe: 'linha', rotulo: T('leg_ano', {ano: ano})},
+        {cor: 'var(--mineral)', classe: 'tracejada', rotulo: '2024'}, {cor: 'var(--faixa-2)', rotulo: T('leg_faixa')},
+        {cor: 'var(--muted)', classe: 'linha', rotulo: T('leg_mediana')}]);
+      MonitorMapas.credito('boxFogoMes', {fontes: [FM.produto], consultado: FM.consultado_em});
+    } else lacuna('legFogoMes', 'graficoFogoMes', 'subFogoMes');
+    /* Fogo, coleção: 2015 e 2024 sobre a faixa calculada neste produto. */
+    if (FC) {
+      const tit = T('fogo_colecao.titulo'), r = mensal(FC, ['2015', '2024'], ['agora', '2024'], T('aria', {titulo: tit, territorio: terr}));
+      document.getElementById('subFogoColecao').textContent = T('fogo_colecao.sub', {territorio: terr, unidade: T(r.e.un)});
+      const g = document.getElementById('graficoFogoColecao'); g.innerHTML = ''; g.appendChild(r.svg);
+      MonitorMapas.legenda('legFogoColecao', [{cor: 'var(--pacifico-agora)', classe: 'linha', rotulo: '2015'},
+        {cor: 'var(--mineral)', classe: 'tracejada', rotulo: '2024'}, {cor: 'var(--faixa-2)', rotulo: T('leg_faixa')},
+        {cor: 'var(--muted)', classe: 'linha', rotulo: T('leg_mediana')}]);
+      MonitorMapas.credito('boxFogoColecao', {fontes: [FC.produto], consultado: FC.consultado_em});
+    } else lacuna('legFogoColecao', 'graficoFogoColecao', 'subFogoColecao');
+    /* Água: barras de 2005 ao último ano, eixo a partir de zero. */
+    if (AG) {
+      const anos = AG.anos.filter(a => Number(a) >= 2005), v = anos.map(a => soma(AG, a));
+      const med = mediana(REF.map(a => soma(AG, a))), e0 = escala(Math.max(...v, med)), max = redondo(Math.max(...v, med), e0);
+      const e = e0, tit = T('agua.titulo'), x = i => L + (i + .5) * pw / anos.length;
+      const svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, class: 'g-mb', role: 'img', 'aria-label': T('aria', {titulo: tit, territorio: terr})});
+      const y = moldura(svg, max, e, anos.map((a, i) => [x(i), a]).filter(([, a]) => (Number(a) - 2005) % 5 === 0));
+      anos.forEach((a, i) => {
+        const w = pw / anos.length * .7, cls = a === '2015' ? 'coluna coluna--agora' : a === '2024' ? 'coluna coluna--2024' : 'coluna';
+        svg.appendChild(comValor(el('rect', {x: (x(i) - w / 2).toFixed(1), y: y(v[i]).toFixed(1), width: w.toFixed(1), height: (y(0) - y(v[i])).toFixed(1), class: cls}),
+          a + ': ' + num(v[i], e) + ' ' + T(e.un)));
+      });
+      svg.appendChild(el('line', {x1: L, x2: L + pw, y1: y(med).toFixed(1), y2: y(med).toFixed(1), class: 'mediana mediana--tracejada'}));
+      document.getElementById('subAguaAnual').textContent = T('agua.sub', {territorio: terr, inicio: anos[0], fim: anos[anos.length - 1], unidade: T(e.un)});
+      const g = document.getElementById('graficoAguaAnual'); g.innerHTML = ''; g.appendChild(svg);
+      MonitorMapas.legenda('legAguaAnual', [{cor: 'var(--pacifico-agora)', rotulo: '2015'}, {cor: 'var(--mineral)', rotulo: '2024'},
+        {cor: 'var(--muted)', classe: 'tracejada', rotulo: T('leg_mediana')}]);
+      MonitorMapas.credito('boxAguaAnual', {fontes: [AG.produto], consultado: AG.consultado_em});
+    } else lacuna('legAguaAnual', 'graficoAguaAnual', 'subAguaAnual');
+  }
+  sel.innerHTML = '<option value="BR">Brasil</option>' + UFS.map(u => '<option value="' + u + '">' + esc(nomeUF(u)) + '</option>').join('');
+  sel.addEventListener('change', pintar);
+  pintar();
+})();
+
 (function consultaMunicipio(){
   const cache = {}, porUF = {};
   const linha = (rotulo, valor, fonte) => '<tr><th scope="row">' + esc(rotulo) + '</th> <td>' + valor + '</td> <td class="dica-fonte">' + esc(fonte) + '</td></tr>';

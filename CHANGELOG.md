@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Rejulgamento paralelo passa a ler documento fora de `evidencias/` pela porta de rede, sem preservar nada, e grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`. Índice e produção não mudam. Seis travas novas no autoteste.
 
+## 2026-11-24 · #2057 · Monitor de riscos: fogo e água do MapBiomas
+
+Três figuras entram no bloco de seca e fogo, com um seletor de território (Brasil e os 27 estados): área queimada por mês no ano em curso, em 2015 e 2024, e superfície de água por ano. A faixa de 2019 a 2025, sem 2024, e a mediana saem das próprias séries. A fonte de cada figura é o produto do MapBiomas e a data da consulta.
+
 ## 2026-11-24 · #2048 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista
 
 O botão do mapa passa a dizer "Animar desde 29 de junho" e "Pausar". As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. "Ver em lista" usa a tabela do componente padrão, no lugar do `<dl>` sem estilo. Portão novo: a alternativa de dados só contém tabela.
