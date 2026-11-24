@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2040 · Um envio conferido por PR
+O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.
+
 ## 2026-11-24 · #2037 · Cadastro federal: coleta que falha deixa tentativa
 
 O coletor do cadastro federal de municípios suscetíveis caía sem registro quando o gov.br não entregava a nota técnica, e o portão de frescor avermelhava a main. Agora a falha fica no painel de tentativas, e a idade exibida continua sendo a do dado (F95).
