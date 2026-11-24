@@ -1166574,6 +1166574,3663 @@
    "pista_id": "58f8f3b7a8",
    "origem": "descoberta",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6959 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Rio das Ostras\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "28/10/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "28/10/2026",
+   "natureza": null,
+   "ibge": "3304524",
+   "municipio": "Rio das Ostras",
+   "uf": "RJ",
+   "url": "https://www.riodasostras.rj.gov.br/rio-das-ostras-presta-contas-ao-mp-com-relacao-as-acoes-de-combate-aos-impactos-climaticos-do-el-nino/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "7886699542",
+   "origem": null,
+   "leu_documento": true,
+   "hash_evidencia": "1e090651b67ad80d52364cce3d876850d03a3d29d062bb89b5125be88bb56d7e",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6114 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Contingência - Prefeitura de Tubarão Skip to content 6 de novembro de 2025 Últimas Notícias Construções abandonadas abrigam pessoas em situação de rua"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "19/04/2022",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "19/04/2022",
+   "natureza": null,
+   "ibge": "4218707",
+   "municipio": "Tubarão",
+   "uf": "SC",
+   "url": "https://tubarao.sc.gov.br/galeria/pagina-20596/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "f21bc01fa3",
+   "origem": null,
+   "leu_documento": true,
+   "hash_evidencia": "99519da00f80eef0db726a8c5940f506230cc85c086b1ccd3ff6fe8cff5a3b15",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62202 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ensagem --> Acesse na íntegra DECRETO Nº 20472, 09 DE JUNHO DE 2026 Assunto(s): Plano de Contingência de Proteção e Defesa Civil - PLANCON Em vigor DECRETO Nº 2",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "09/06/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura de",
+      "titulo": "Plano de Contingência",
+      "trecho": "ensagem --> Acesse na íntegra DECRETO Nº 20472, 09 DE JUNHO DE 2026 Assunto(s): Plano de Contingência de Proteção e Defesa Civil - PLANCON Em vigor DECRETO Nº 2",
+      "prova_de_que_e_o_plano": "página com estrutura de plano e sem marca de notícia"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "09/06/2026",
+   "natureza": "RESPOSTA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://www.votuporanga.sp.gov.br/portal/leis_decretos/13164/",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "a9a8b28bac",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "76b202b7d9b7f0e3de41d6f0e79a15e94a0823dc2da0595cc52eaf6bec846880"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "63001 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ensagem --> Acesse na íntegra DECRETO Nº 15899, 29 DE JUNHO DE 2023 Assunto(s): Plano de Contingência de Proteção e Defesa Civil - PLANCON Em vigor DECRETO Nº 1",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "29/06/2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura de",
+      "titulo": "Plano de Contingência",
+      "trecho": "ensagem --> Acesse na íntegra DECRETO Nº 15899, 29 DE JUNHO DE 2023 Assunto(s): Plano de Contingência de Proteção e Defesa Civil - PLANCON Em vigor DECRETO Nº 1",
+      "prova_de_que_e_o_plano": "página com estrutura de plano e sem marca de notícia"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "29/06/2023",
+   "natureza": "RESPOSTA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://www.votuporanga.sp.gov.br/portal/leis_decretos/1427/",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "84a881d48b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "4f5d4279de7c45929c2cec82b91360a4d86d5cef8386dc7f6b5dcdc2c902e47c"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "60597 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ensagem --> Acesse na íntegra DECRETO Nº 14462, 13 DE ABRIL DE 2022 Assunto(s): Plano de Contingência de Proteção e Defesa Civil - PLANCON Em vigor DECRETO Nº 1",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "13/04/2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura de",
+      "titulo": "Plano de Contingência",
+      "trecho": "ensagem --> Acesse na íntegra DECRETO Nº 14462, 13 DE ABRIL DE 2022 Assunto(s): Plano de Contingência de Proteção e Defesa Civil - PLANCON Em vigor DECRETO Nº 1",
+      "prova_de_que_e_o_plano": "página com estrutura de plano e sem marca de notícia"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura de Votuporanga - Legislação Ir para o conteúdo --> Prefeitura de Votuporanga e os cookies: nosso site usa cookies para melhorar a sua experiência de"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "13/04/2022",
+   "natureza": "RESPOSTA",
+   "ibge": "3557105",
+   "municipio": "Votuporanga",
+   "uf": "SP",
+   "url": "https://www.votuporanga.sp.gov.br/portal/leis_decretos/4360",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "241d37933f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "b3bb404afc5387621e80cf9a255e22be67a0b515af6348ecac73eb5c77dc8cb6"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "133157 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "março de 2024 ANO XIV - EDIÇÃO Nº 1076 Órgão Oficial do Município Município de Santo Antônio de Posse – Estado de São Paulo | Conforme Lei Municipal nº 3.151,"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Município Município de Santo Antônio de Posse – Estado de São Paulo | Conforme Lei Municipal nº 3.151, de 11 de julho de 2018 www.pmsaposse.sp.gov.br | www.imp",
+     "dados": {
+      "tipo": "lei",
+      "numero": "3.151",
+      "data": "11/07/2018",
+      "trecho": "Município Município de Santo Antônio de Posse – Estado de São Paulo | Conforme Lei Municipal nº 3.151, de 11 de julho de 2018 www.pmsaposse.sp.gov.br | www.imp"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Santo Antônio de Posse, 08 de março de 2024 PODER EXECUTIVO JOÃO LEANDRO LOLLI Prefeito Municipal Poder Executivo Registre-se no Setor de Expediente e Registro"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "11/07/2018",
+   "natureza": "RESPOSTA",
+   "ibge": "3548005",
+   "municipio": "Santo Antônio de Posse",
+   "uf": "SP",
+   "url": "https://pmsaposse.sp.gov.br/wp-content/uploads/2024/03/Edicao-1076.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "756e6a8b69",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "f3e150ff98b4d21f577f9d6b23d9bf349e88f2b62054a771393d58a1777a4d4c"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14628 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "avírus – COVID19 e dá outras providências. O Prefeito Municipal de São José dos Pinhais, Estado do Paraná, usando de suas atribuições legais, e conforme o dispo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DECRETO Nº 3.726, DE 17 DE MARÇO DE 2020 Dispõe sobre as medidas para enfrentamento da emergência de saúde pública de importância internacional decorrente do co",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "3.726",
+      "data": "17/03/2020",
+      "trecho": "DECRETO Nº 3.726, DE 17 DE MARÇO DE 2020 Dispõe sobre as medidas para enfrentamento da emergência de saúde pública de importância internacional decorrente do co"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a internacional decorrente do coronavírus – COVID19 e dá outras providências. O Prefeito Municipal de São José dos Pinhais, Estado do Paraná, usando de suas atr"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'estado de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "17/03/2020",
+   "natureza": "RESPOSTA",
+   "ibge": "4119152",
+   "municipio": "Pinhais",
+   "uf": "PR",
+   "url": "https://www.sjp.pr.gov.br/wp-content/uploads/2020/07/decreto-3726.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "b51ee35761",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "c0d53a8af4dd3c1b514f68bcdacfbb7da87c195be524079bd76b35125c0e320e"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "150538 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AGUAÍ PLANO DE CONTINGÊNCIA MUNICIPAL DO NOVO CORONAVÍRUS (COVID-19) 3ª Revisão Setembro de 2021 Aguaí – SP FICHA TÉCNICA Prefeito Munic"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AGUAÍ PLANO DE CONTINGÊNCIA MUNICIPAL DO NOVO CORONAVÍRUS (COVID-19) 3ª Revisão Setembro de 2021 Aguaí – SP FICHA TÉCNICA Prefeito Munic",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PREFEITURA MUNICIPAL DE AGUAÍ PLANO DE CONTINGÊNCIA MUNICIPAL DO NOVO CORONAVÍRUS (COVID-19) 3ª Revisão Setembro de 2021 Aguaí – SP FICHA TÉCNICA Prefeito Munic",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AGUAÍ PLANO DE CONTINGÊNCIA MUNICIPAL DO NOVO CORONAVÍRUS (COVID-19) 3ª Revisão Setembro de 2021 Aguaí – SP FICHA TÉCNICA Prefeito Munic"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "declara anormalidade — é ato de resposta"
+    }
+   },
+   "categoria": null,
+   "data": "2021",
+   "natureza": "RESPOSTA",
+   "ibge": "3500303",
+   "municipio": "Aguaí",
+   "uf": "SP",
+   "url": "https://aguai.sp.gov.br/home/wp-content/uploads/2021/12/Anexo-Decreto-Municipal-4554-Plano-de-Contingencia-Coronovirus-Revisao-3.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "d9a4ddc7c1",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "697a4b9031d8601a5f18a7844da912a876e0d6090fa4e61e23106edca7079378"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "58481 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Petrópolis\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "2014 A CÂMARA MUNICIPAL DE PETRÓPOLIS DECRETOU E EU SANCIONO A SEGUINTE &nbsp; LEI Nº 7.056 DE 15 DE ABRIL DE 2013 Art. 1º. &nbsp; Fica criada, no âmbito da Es",
+     "dados": {
+      "tipo": "lei",
+      "numero": "7.056",
+      "data": "15/04/2013",
+      "trecho": "2014 A CÂMARA MUNICIPAL DE PETRÓPOLIS DECRETOU E EU SANCIONO A SEGUINTE &nbsp; LEI Nº 7.056 DE 15 DE ABRIL DE 2013 Art. 1º. &nbsp; Fica criada, no âmbito da Es"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Número 7056 Ano 2013 Data 15 de Abril de 2013 Ementa DISPÕE SOBRE A CRIAÇÃO DA SECRETARIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL, NA ESTRUTURA ORGANIZACIONAL DA"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "15/04/2013",
+   "natureza": "RESPOSTA",
+   "ibge": "3303906",
+   "municipio": "Petrópolis",
+   "uf": "RJ",
+   "url": "https://sapl.petropolis.rj.leg.br/ta/383/text",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "1ace46e674",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "ff1343ab3a447c75fa3e54d533200772449ebb1e3310dac463ee675e91bdd1f9"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CliOPINZINHO Memorando 2: 3.539/2020 Via 1/2 Chopinzinho/PR, 28 de Julho de 2020 às 16:28 De: Para: SMS-CLI - Licitações e Infraestrutura da SMA-LC - Licitações"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "a Miguel Procópio Kurpel, 3811, Bairrc São Miguel 85.560-000 CHOPINZINHO PARANÁ DECRETO N° 536/2019, DE 27 DE DEZEMBRO DE 2019 Nomeia a Comissão Permanente de L",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "536/2019",
+      "data": "27/12/2019",
+      "trecho": "a Miguel Procópio Kurpel, 3811, Bairrc São Miguel 85.560-000 CHOPINZINHO PARANÁ DECRETO N° 536/2019, DE 27 DE DEZEMBRO DE 2019 Nomeia a Comissão Permanente de L"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "6/2019, DE 27 DE DEZEMBRO DE 2019 Nomeia a Comissão Permanente de Licitações. 0 PREFEITO DO MUNICÍPIO DE CHOPINZINHO, ESTADO DO PARANÁ, no uso das atribuigt5es"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "27/12/2019",
+   "natureza": "RESPOSTA",
+   "ibge": "4105409",
+   "municipio": "Chopinzinho",
+   "uf": "PR",
+   "url": "https://www.chopinzinho.pr.gov.br/licitacoes/1596818625.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "ea2a2b273b",
+   "origem": "seguimento",
+   "leu_documento": true,
+   "hash_evidencia": "0b6236ee3127d5ec26caa24c39dd82c80ec216fb5b10dcde80e1230e771f38ca"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "558366 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "aria de Proteção Civil e Segurança Pública - SEPROT. O Prefeito do Município de Joinville, no exercício de suas atribuições, conforme artigos 42 e 68, VI, da Le"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "1 de 276 Nº 2781, quinta-feira, 14 de agosto de 2025 LEI COMPLEMENTAR Nº 716, DE 14 DE AGOSTO DE 2025. Altera as Leis Complementares nº 397, de 19 de dezembro d",
+     "dados": {
+      "tipo": "lei",
+      "numero": "716",
+      "data": "30/01/2014",
+      "trecho": "1 de 276 Nº 2781, quinta-feira, 14 de agosto de 2025 LEI COMPLEMENTAR Nº 716, DE 14 DE AGOSTO DE 2025. Altera as Leis Complementares nº 397, de 19 de dezembro d"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "2021, no âmbito da Secretaria de Proteção Civil e Segurança Pública - SEPROT. O Prefeito do Município de Joinville, no exercício de suas atribuições, conforme a"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "30/01/2014",
+   "natureza": "RESPOSTA",
+   "ibge": "4209102",
+   "municipio": "Joinville",
+   "uf": "SC",
+   "url": "https://www.joinville.sc.gov.br/public/portaladm/pdf/jornal/12d8fafb3ecc0f7ef13e3439e5d60692.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "04b1e17945",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9108118f00633bd4a6ee44e414da6d6cd5cf489cbaca70fdef215b799f9bb46b"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4309951",
+   "municipio": "Ibirapuitã",
+   "uf": "RS",
+   "url": "https://ibirapuita.rs.gov.br/uploads/norma/20244/79.pdf",
+   "regras_18": [],
+   "pista_id": "35748c5521",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "102190 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL MUNICÍPIO DE ROCA SALES COORDENADORIA MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA Município de Roca Sales - RS Prefeitura Munici"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "O GRANDE DO SUL MUNICÍPIO DE ROCA SALES COORDENADORIA MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA Município de Roca Sales - RS Prefeitura Municipal de Roca",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO RIO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "O GRANDE DO SUL MUNICÍPIO DE ROCA SALES COORDENADORIA MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA Município de Roca Sales - RS Prefeitura Municipal de Roca",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL MUNICÍPIO DE ROCA SALES COORDENADORIA MUNICIPAL DE DEFESA CIVIL PLANO DE CONTINGÊNCIA Município de Roca Sales - RS Prefeitura Munici"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": "RESPOSTA",
+   "ibge": "4315800",
+   "municipio": "Roca Sales",
+   "uf": "RS",
+   "url": "https://rocasales-rs.com.br/wp-content/uploads/2026/06/PLANCON_Jun-2026-Revisado.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "03899ea569",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7e24f3a4426fbbded16d64ad707bf41100b6bdb1841be3ad7fff8fed8e315d47"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "59227 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "RESPOSTA",
+   "ibge": "1200401",
+   "municipio": "Rio Branco",
+   "uf": "AC",
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/wp-content/uploads/2013/09/PLANO-DE-CONTING%C3%8ANCIA-INUNDA%C3%87%C3%83O-GRADUAL-PMRB-2025.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "64981f42e7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b316d22907ff0bba06c226e5ea89128f87f8133c9b7f78f5d55bbd4eab4ef036"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "59227 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano de Contingência",
+      "trecho": "c.gov.br/sigaex/public/app/autenticar?n=438050.2915238-8216 1 - Introdução Este Plano de Contingência tem o objetivo de informar e mostrar aos órgãos do municíp",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE RIO BRANCO SECRETARIA DA CASA CIVIL COORDENADORIA MUNICIPAL DE DEFESA CIVIL 101105202IFOCCMS Assinado com senha por CLAUDIO FALCÃO DE SO"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "RESPOSTA",
+   "ibge": "1200401",
+   "municipio": "Rio Branco",
+   "uf": "AC",
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/wp-content/uploads/2013/09/PLANO-DE-CONTING%C3%8ANCIA-INUNDA%C3%87%C3%83O-GRADUAL-PMRB-2025.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "b3cb318a35",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b316d22907ff0bba06c226e5ea89128f87f8133c9b7f78f5d55bbd4eab4ef036"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38939 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "www.saogoncalo.rj.gov.br ESTADO DO RIO DE JANEIRO PREFEITURA DE SÃO GONÇALO SECRETARIA DE FAZENDA SUBSECRETARIA DE INFORMÁTICA DECRETO 331/2005. São Gonçalo, 04"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "RO PREFEITURA DE SÃO GONÇALO SECRETARIA DE FAZENDA SUBSECRETARIA DE INFORMÁTICA DECRETO 331/2005. São Gonçalo, 04 de novembro de 2005. DISPÕE SOBRE A POLÍTICA D",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "331/2005",
+      "data": "04/11/2005",
+      "trecho": "RO PREFEITURA DE SÃO GONÇALO SECRETARIA DE FAZENDA SUBSECRETARIA DE INFORMÁTICA DECRETO 331/2005. São Gonçalo, 04 de novembro de 2005. DISPÕE SOBRE A POLÍTICA D"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "o 1º. A gestão do Sistema é responsabilidade do Subsecretário de Informática da Secretaria Municipal de Fazenda. Parágrafo 2º. Cada uma das Secretarias Municipa"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "teste-fósforo: menciona rota de reconhecimento federal/FIDE"
+    }
+   },
+   "categoria": null,
+   "data": "04/11/2005",
+   "natureza": "RESPOSTA",
+   "ibge": "3304904",
+   "municipio": "São Gonçalo",
+   "uf": "RJ",
+   "url": "https://www.pmsg.rj.gov.br/wp-content/uploads/2021/04/politicas-de-seguranca-da-informacao.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "41cd1f537d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d21becd06d5a9ea8680e33ddf482f844c9f698b72577efbe8cb8d400902c98fc"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "64822 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO DE JANEIRO PREFEITURA MUNICIPAL DE QUEIMADOS SECRETARIA MUNICIPAL DE DEFESA CIVIL PLANCON QUEIMADOS PLANO DE CONTINGÊNCIA FRENTE A EVENTOS ADVERSO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "JANEIRO PREFEITURA MUNICIPAL DE QUEIMADOS SECRETARIA MUNICIPAL DE DEFESA CIVIL PLANCON QUEIMADOS PLANO DE CONTINGÊNCIA FRENTE A EVENTOS ADVERSOS DE GRANDE IMPA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO RIO",
+      "titulo": "PLANCON",
+      "trecho": "JANEIRO PREFEITURA MUNICIPAL DE QUEIMADOS SECRETARIA MUNICIPAL DE DEFESA CIVIL PLANCON QUEIMADOS PLANO DE CONTINGÊNCIA FRENTE A EVENTOS ADVERSOS DE GRANDE IMPA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO DE JANEIRO PREFEITURA MUNICIPAL DE QUEIMADOS SECRETARIA MUNICIPAL DE DEFESA CIVIL PLANCON QUEIMADOS PLANO DE CONTINGÊNCIA FRENTE A EVENTOS ADVERSO"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": "RESPOSTA",
+   "ibge": "3304144",
+   "municipio": "Queimados",
+   "uf": "RJ",
+   "url": "https://transparencia.queimados.rj.gov.br/webrun/tmp/lai_lei_projetos/7A7F3022-855B-453E-BE16-C00E4D1BDF10_Plancon-2026-R1_v2_1.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "a7aec1f044",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "504d8ca68d3f7b41b08558afbc090f845f828e66394ed06ce54beb0cc0e320f9"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "81237 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "2 Tanguá - Edição Nº 869- 06 de janeiro de 2025 RESOLUÇÃO CMAS Nº 014/2024 PORTARIA SEMFA Nº 001/2025 O CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL, no uso de suas"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "2 Tanguá - Edição Nº 869- 06 de janeiro de 2025 RESOLUÇÃO CMAS Nº 014/2024 PORTARIA SEMFA Nº 001/2025 O CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL, no uso de suas",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "014/2024",
+      "data": "07/12/1993",
+      "trecho": "2 Tanguá - Edição Nº 869- 06 de janeiro de 2025 RESOLUÇÃO CMAS Nº 014/2024 PORTARIA SEMFA Nº 001/2025 O CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL, no uso de suas"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "nº 8742 de 07 de dezembro de 1993 e Lei 0708 de 30 de junho de 2009, resolve: O Secretário Municipal de Fazenda e Planejamento, no uso de suas atri- buições leg"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "07/12/1993",
+   "natureza": "RESPOSTA",
+   "ibge": "3305752",
+   "municipio": "Tanguá",
+   "uf": "RJ",
+   "url": "https://tangua.rj.gov.br/portaldatransparencia/conselhosmunicipais/cmas_conselho_municipal_de_assistencia_social/resolucoes/2024/pdfs/Resolu%C3%A7%C3%B5es%20n%C2%B0%20014%20e%20n%C2%B0%20015%20de%202024.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "9ea6e55eae",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "30338577d8292e7aa9f3c53e9e3fdfd037a3da8ccc7422fda574717049fa664e"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "278357 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rogas Gilberto Prazeres Costa Ana Rita Suassuna Wanderley Gabinete do Centro do Recife Secretaria de Saúde do Recife Ana Paula de Oliveira Vilaça Leal Luciana A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "S DE ASSISTÊNCIA HUMANITÁRIA 74 FIGURA 45 - DIVULGAÇÃO DO BANCO DE ALIMENTOS DA PREFEITURA DO RECIFE 75 FIGURA 46 – ÓRGÃOS QUE COMPÕEM O SIMPDEC – RECIFE 78 FIG"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": "RESPOSTA",
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "7277af411d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "636f72d14b94997e32bb9aab38a9e29a5d8dd2c8e83d5e514ac82f9a53063afe"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "278357 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rogas Gilberto Prazeres Costa Ana Rita Suassuna Wanderley Gabinete do Centro do Recife Secretaria de Saúde do Recife Ana Paula de Oliveira Vilaça Leal Luciana A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "S DE ASSISTÊNCIA HUMANITÁRIA 74 FIGURA 45 - DIVULGAÇÃO DO BANCO DE ALIMENTOS DA PREFEITURA DO RECIFE 75 FIGURA 46 – ÓRGÃOS QUE COMPÕEM O SIMPDEC – RECIFE 78 FIG"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": "RESPOSTA",
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "24befc54ec",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "636f72d14b94997e32bb9aab38a9e29a5d8dd2c8e83d5e514ac82f9a53063afe"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "278357 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rogas Gilberto Prazeres Costa Ana Rita Suassuna Wanderley Gabinete do Centro do Recife Secretaria de Saúde do Recife Ana Paula de Oliveira Vilaça Leal Luciana A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "S DE ASSISTÊNCIA HUMANITÁRIA 74 FIGURA 45 - DIVULGAÇÃO DO BANCO DE ALIMENTOS DA PREFEITURA DO RECIFE 75 FIGURA 46 – ÓRGÃOS QUE COMPÕEM O SIMPDEC – RECIFE 78 FIG"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": "RESPOSTA",
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "3653e4bc10",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "636f72d14b94997e32bb9aab38a9e29a5d8dd2c8e83d5e514ac82f9a53063afe"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3546405",
+   "municipio": "Santa Cruz do Rio Pardo",
+   "uf": "SP",
+   "url": "https://www.santacruzdoriopardo.sp.gov.br/assets/uploads/arquivos/plano-de-contigencia-defesa-civil.pdf",
+   "regras_18": [],
+   "pista_id": "6f1a39ab92",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "278357 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rogas Gilberto Prazeres Costa Ana Rita Suassuna Wanderley Gabinete do Centro do Recife Secretaria de Saúde do Recife Ana Paula de Oliveira Vilaça Leal Luciana A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "AR Pedro José de Albuquerque Pontes João Charamba Sumário 1. INTRODUÇÃO 10 1.1. PLANO DE CONTINGÊNCIA RECIFE 10 1.2.FINALIDADE DO PLANO DE CONTINGÊNCIA 11 1.3.",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "S DE ASSISTÊNCIA HUMANITÁRIA 74 FIGURA 45 - DIVULGAÇÃO DO BANCO DE ALIMENTOS DA PREFEITURA DO RECIFE 75 FIGURA 46 – ÓRGÃOS QUE COMPÕEM O SIMPDEC – RECIFE 78 FIG"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": "RESPOSTA",
+   "ibge": "2611606",
+   "municipio": "Recife",
+   "uf": "PE",
+   "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2024/04/002-PLANO-DE-CONTINGE%CC%82NCIA-2024.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "ff2f49e8f7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "636f72d14b94997e32bb9aab38a9e29a5d8dd2c8e83d5e514ac82f9a53063afe"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "32249 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA MUNICÍPIO DE LUIZ ALVES GABINETE DO PREFEITO OFÍCIO N.º 304/2026/GP Luiz Alves/SC, 17 de setembro de 2026. Ao Excelentíssimo Senhor C A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e da Câmara Municipal de Vereadores Luiz Alves/SC Assunto: Encaminha Projeto de Lei Ordinária n.º /2026. Excelentíssimo Presidente, Encaminho o Projeto de Lei O",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2026",
+      "data": "27/09/2017",
+      "trecho": "e da Câmara Municipal de Vereadores Luiz Alves/SC Assunto: Encaminha Projeto de Lei Ordinária n.º /2026. Excelentíssimo Presidente, Encaminho o Projeto de Lei O"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA MUNICÍPIO DE LUIZ ALVES GABINETE DO PREFEITO OFÍCIO N.º 304/2026/GP Luiz Alves/SC, 17 de setembro de 2026. Ao Excelentíssimo Senhor C A"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'calamidade pública' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "27/09/2017",
+   "natureza": "RESPOSTA",
+   "ibge": "4210001",
+   "municipio": "Luiz Alves",
+   "uf": "SC",
+   "url": "https://sapl.luizalves.sc.leg.br/media/sapl/public/materialegislativa/2026/5218/pl_80_2026.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "26ab757e04",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "84aca57b3afea20b55b291c3c8783d581d8ee333385eb1bfd1d582340bb8e64c"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "49370 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municipal de Ca"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municip",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municip",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DO SETOR SAÚDE PARA DESASTRES POR CHUVAS INTENSAS NO MUNICÍPIO DE CAMPO GRANDE/MS 2025 Vigência julho/2025 a julho/2027 Prefeitura Municip"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "RESPOSTA",
+   "ibge": "5002704",
+   "municipio": "Campo Grande",
+   "uf": "MS",
+   "url": "https://cdn.campogrande.ms.gov.br/portal/prod/uploads/sites/30/2025/11/PLANO-DE-CONTINGENCIA-DO-SETOR-SAUDE-PARA-DESASTRES-POR-CHUVAS-INTENSAS-NO-MUNICIPIO-DE-CAMPO-GRANDEMS.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "8d377492c2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ad3d6dc1579fd0999b058a7827592738b93f9b6ddcb400abb78054f71dc4a420"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27431 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA DE PONTE SERRADA SECRETARIA MUNICIPAL DE SAÚDE Plano de Contingência para Epidemia de Dengue, Chikungunya e Zika Ponte Serrada 2025 2 Secretaria Muni"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA DE PONTE SERRADA SECRETARIA MUNICIPAL DE SAÚDE Plano de Contingência para Epidemia de Dengue, Chikungunya e Zika Ponte Serrada 2025 2 Secretaria Muni",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA DE",
+      "titulo": "Plano de Contingência",
+      "trecho": "PREFEITURA DE PONTE SERRADA SECRETARIA MUNICIPAL DE SAÚDE Plano de Contingência para Epidemia de Dengue, Chikungunya e Zika Ponte Serrada 2025 2 Secretaria Muni",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA DE PONTE SERRADA SECRETARIA MUNICIPAL DE SAÚDE Plano de Contingência para Epidemia de Dengue, Chikungunya e Zika Ponte Serrada 2025 2 Secretaria Muni"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "DUVIDA",
+   "ibge": "4213401",
+   "municipio": "Ponte Serrada",
+   "uf": "SC",
+   "url": "https://ponteserrada.sc.gov.br/uploads/sites/458/2025/05/PLANO_DE_CONTINGENCIA_DENGUE_2025_V1__assinado.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "0370274d75",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4c1622b9ebd41256e139eb307104c9fe9dbfabd19e106bcf7578a458e6c5fd7f"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5472 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Secretaria de Saúde - PREFEITURA DE PONTE SERRADA Skip to content 29 de outubro de 2025 Últimas Notícias Ponte Serrada recebe novo trator de esteira para reforç"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "07/05/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "07/05/2025",
+   "natureza": null,
+   "ibge": "4213401",
+   "municipio": "Ponte Serrada",
+   "uf": "SC",
+   "url": "https://ponteserrada.sc.gov.br/pagina-2518/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "5002c69a41",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2fb6948fc4e1c46b6392879fed02993f5a1dca42cb225d0271f89ed25e8792ca",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7082 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Secretaria de Educação, Cultura, Esporte e Lazer - PREFEITURA DE PONTE SERRADA Skip to content 1 de novembro de 2025 Últimas Notícias Ponte Serrada recebe novo"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "10/02/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/02/2021",
+   "natureza": null,
+   "ibge": "4213401",
+   "municipio": "Ponte Serrada",
+   "uf": "SC",
+   "url": "https://ponteserrada.sc.gov.br/galeria/pagina-2517/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "5944bb63b2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "a17ec945aede6ad1114147d59857c057b4daa6a118711eae12ea4238507172f2",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "102428 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado de Santa Catarina Prefeitura Municipal de Catanduvas Secretaria Municipal de Saúde PLANO MUNICIPAL DE PREPARAÇÃO E RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e Recuperação de danos resultantes desses desastres. Está em consonância com o Plano de Contingência da Secretaria Executiva de Proteção e Defesa Civil e dos p",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado de Santa",
+      "titulo": "Plano de Contingência",
+      "trecho": "e Recuperação de danos resultantes desses desastres. Está em consonância com o Plano de Contingência da Secretaria Executiva de Proteção e Defesa Civil e dos p",
+      "prova_de_que_e_o_plano": "página com estrutura de plano e sem marca de notícia"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "4204004",
+   "municipio": "Catanduvas",
+   "uf": "SC",
+   "url": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/398-regional-de-saude-de-joacaba.html?download=1203%3Appr-esp-catanduvas&Itemid=109",
+   "regras_18": [
+    "J7",
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "8185bd96d1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "96e818359ab26105138dcb75a1447f5cf88536bba688fbf391dd576a88a2191b"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5925 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Contingência - Município de Benedito Novo Skip to content 26 de novembro de 2023 Últimas Notícias Audiência Pública &#8211; Plano Diretor Tá quase na h"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "05/12/2017",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "05/12/2017",
+   "natureza": null,
+   "ibge": "4202206",
+   "municipio": "Benedito Novo",
+   "uf": "SC",
+   "url": "https://beneditonovo.sc.gov.br/pagina-25056/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "4259258874",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "18b7970fae8cb5f9f923ee130717e24ea285299ecc378c0819bc92327aa647e4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6168 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Diretor - Município de Benedito Novo Skip to content 16 de outubro de 2023 Últimas Notícias Edital de Projetos 2024 &#8211; CMDCA Abertas as Inscrições pa"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "08/03/2016",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "08/03/2016",
+   "natureza": null,
+   "ibge": "4202206",
+   "municipio": "Benedito Novo",
+   "uf": "SC",
+   "url": "https://beneditonovo.sc.gov.br/pagina-8253/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "ec7fabfb73",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bd7b0207a8cc442cb2d6b0ac556e050567d2fd06df3209904073a0136b03b4c1",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4819 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Meio Ambiente - Município de Benedito Novo Skip to content 16 de outubro de 2023 Últimas Notícias Edital de Projetos 2024 &#8211; CMDCA Abertas as Inscrições pa"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "16/10/2023",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "16/10/2023",
+   "natureza": null,
+   "ibge": "4202206",
+   "municipio": "Benedito Novo",
+   "uf": "SC",
+   "url": "https://beneditonovo.sc.gov.br/pagina-152664/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "458e47cad9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "a60025fc0be44f3de6203b67873a18385070b439ace0db729409a7ae3dd29dbf",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "..........642 Palhoça ......................................................965 Alfredo Wagner .............................................10 Galvão .........."
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "24/07/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "24/07/2024",
+   "natureza": null,
+   "ibge": "4200705",
+   "municipio": "Alfredo Wagner",
+   "uf": "SC",
+   "url": "https://edicao.dom.sc.gov.br/2024/07/1721926879_edicao_4594_assinada.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "36711dc117",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "db095b0cda1b3b57b9876869f5d3d7fad08cded56bbc55f1d8f7c2a38039254b",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "...........508 Joaçaba ....................................................1183 Alfredo Wagner .............................................34 Coronel Martins ."
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "17/07/2002",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "17/07/2002",
+   "natureza": null,
+   "ibge": "4200705",
+   "municipio": "Alfredo Wagner",
+   "uf": "SC",
+   "url": "https://edicao.dom.sc.gov.br/2024/03/1709743997_edicao_4476_assinada.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "7c45f7a6c0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0a96ba301f587f0b13e27616e3ef3ea26d94bf6df184679e5302fe6abb4ef2b4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2945 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Planos Municipais - MunicÍpio de IRANI Skip to content 8 de julho de 2024 Últimas Notícias MunicÍpio de IRANI Facebook Instagram Mail Início Município Apresenta"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "08/07/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "08/07/2024",
+   "natureza": null,
+   "ibge": "4207809",
+   "municipio": "Irani",
+   "uf": "SC",
+   "url": "https://irani.sc.gov.br/planos-municipais/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "34b58cb9f1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e100c915780068c548d6b2d63290b1644b85f3a154354580283888457bb4d81c",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3617 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saneamento Básico - MunicÍpio de IRANI Skip to content 8 de julho de 2024 Últimas Notícias MunicÍpio de IRANI Facebook Instagram Mail Início"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "10/02/2022",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/02/2022",
+   "natureza": null,
+   "ibge": "4207809",
+   "municipio": "Irani",
+   "uf": "SC",
+   "url": "https://irani.sc.gov.br/planos-municipais/pagina-46407/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "605908aa59",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "248e35d5e95337b7f32568b39a86be076ba7d208d99d947096f12074ab0cac17",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "31621 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA MUNICÍPIO DE PESCARIA BRAVA SECRETARIA DE EDUCAÇÃO PLANO DE MATRÍCULA 2021/2022 Educação Infantil e Ensino Fundamental Ano Letivo de 20"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "11/08/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "11/08/2021",
+   "natureza": null,
+   "ibge": "4212650",
+   "municipio": "Pescaria Brava",
+   "uf": "SC",
+   "url": "https://pescariabrava.sc.gov.br/uploads/sites/357/2021/12/2283781_PLANO_DE_MATRICULA___2022.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "77d94f5486",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1a4ed9bc0ba095a13710593b5cca54ea519e35357a85ed7e6d3cc13ad77dff0a",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "479852 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "baixar os seguintes atos, no âmbito da CoorDEnaDoria ATOS DO PODER JUDICIÁRIO 1 Campo Erê ......................................................................"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "12/12/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "12/12/2024",
+   "natureza": null,
+   "ibge": "4203501",
+   "municipio": "Campo Erê",
+   "uf": "SC",
+   "url": "https://portal.doe.sea.sc.gov.br/repositorio/2024/20241216/Jornal/22417.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "95741bbe08",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fc7a0f267e6f0d2beec29e96aa3d91d1137ecfdd6f9b970d2d8373ed795ef2be",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3556206",
+   "municipio": "Valinhos",
+   "uf": "SP",
+   "url": "https://www.valinhos.sp.gov.br/portal/leis_decretos/20365/",
+   "regras_18": [],
+   "pista_id": "b35cabe16d",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "147226 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ATUALIZAÇÃO PREFEITURA MUNICIPAL DE SALVADOR DEFESA CIVIL DE SALVADOR - CODESAL Rua Mário Leal Ferreira, nº 80 CEO 40285-280 Tel.: (71) 3202-4500 Site: www.code"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "EXO VI – Mapa de Risco de Incêndio ANEXO XII – Planilha dos Imóveis Cadastrados PLANO DE CONTINGÊNCIA DO CENTRO HISTÓRICO 8 PLANO DE CONTINGÊNCIA DO CENTRO HIST",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "EXO VI – Mapa de Risco de Incêndio ANEXO XII – Planilha dos Imóveis Cadastrados PLANO DE CONTINGÊNCIA DO CENTRO HISTÓRICO 8 PLANO DE CONTINGÊNCIA DO CENTRO HIST",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ATUALIZAÇÃO PREFEITURA MUNICIPAL DE SALVADOR DEFESA CIVIL DE SALVADOR - CODESAL Rua Mário Leal Ferreira, nº 80 CEO 40285-280 Tel.: (71) 3202-4500 Site: www.code"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "RESPOSTA",
+   "ibge": "2927408",
+   "municipio": "Salvador",
+   "uf": "BA",
+   "url": "https://codesal.salvador.ba.gov.br/wp-content/uploads/2026/09/PLANO-DE-CONTINGENCIA-DO-CENTRO-HISTORICO-VERSAO-2025-2026.pdf",
+   "regras_18": [
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "encaminhar": "atos_resposta",
+   "pista_id": "2722e6b1c3",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "47d7d6e48439fc6ba8a1d765b44158e4a0f6aea96f489cd75cb8eb3dce3f5de1"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2394 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "16/06/26, 16:49 Prefeitura Municipal de Porto Velho ESTADO DE RONDÔNIA PREFEITURA MUNICIPAL DE PORTO VELHO SUPERINTENDÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PAL DE PORTO VELHO SUPERINTENDÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL- SMPDC PORTARIA N.° 29/2026/SGOV/SMPDC, PORTO VELHO, 23 DE MARÇO DE 2026 Dispõe sobre a",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "29/2026",
+      "data": "23/03/2026",
+      "trecho": "PAL DE PORTO VELHO SUPERINTENDÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL- SMPDC PORTARIA N.° 29/2026/SGOV/SMPDC, PORTO VELHO, 23 DE MARÇO DE 2026 Dispõe sobre a"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "23/03/2026",
+   "natureza": null,
+   "ibge": "1100205",
+   "municipio": "Porto Velho",
+   "uf": "RO",
+   "url": "https://transp-arquivos.portovelho.ro.gov.br/uploads/arquivos/1781801175-Portaria%20n%C2%BA%2029%20-%202026%20-%20Designa%C3%A7%C3%A3o%20-%20SMPDC.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "0985824b0d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "15633d6c16b4788aea5504eb06ec79df20b711662df8aa3f86c6452d00e0e829"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "105321 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "...................................19 5 ÁREAS DE RISCO NATURAIS DO MUNICÍPIO DE ARACAJU...........................20 5.1 ÁREAS DE RISCOS NATURAIS DO MUNICÍPIO D"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "........................................................................9 2.1.1 PLANO DE CONTINGÊNCIA...........................................................",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE CALAMIDADE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "........................................................................9 2.1.1 PLANO DE CONTINGÊNCIA...........................................................",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "................................................19 5 ÁREAS DE RISCO NATURAIS DO MUNICÍPIO DE ARACAJU...........................20 5.1 ÁREAS DE RISCOS NATURAIS D"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": ".......................................................7 Figura 5: Acumulado de chuvas em 2022 vs Média histórica (1991-2022).............................7 Figu"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "2800308",
+   "municipio": "Aracaju",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2024/10/Plano_de_contingencia_2024-Aracaju.pdf",
+   "regras_18": [
+    "J7",
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "901015b7f7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "073087242c7e331d495b1e7f0783c968513b50d5acc012bb2bbb1f80d9cfc134"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "30699 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Gabinete do Coordenador PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE GUARULHOS ESTIAGEM Guarulhos 2025 Gabinete do Coordenador Prefeitura de Guarulhos Lucas Sa"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Gabinete do Coordenador PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE GUARULHOS ESTIAGEM Guarulhos 2025 Gabinete do Coordenador Prefeitura de Guarulhos Lucas Sa",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura de",
+      "titulo": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL",
+      "trecho": "Gabinete do Coordenador PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE GUARULHOS ESTIAGEM Guarulhos 2025 Gabinete do Coordenador Prefeitura de Guarulhos Lucas Sa",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ÇÃO E DEFESA CIVIL DE GUARULHOS ESTIAGEM Guarulhos 2025 Gabinete do Coordenador Prefeitura de Guarulhos Lucas Sanches - Prefeito Coordenadoria Municipal de Prot"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "sinalizador 'estado de calamidade pública' presente, mas sem dano nem disclaimer claro",
+     "objeto": "o documento É o instrumento nomeado: Gabinete do Coordenador PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE GUARULHOS ESTIAGEM Guarulhos 2025 Gabinete do Coordenador Prefeitura de Guarulhos Lucas Sa",
+     "gatilho": "icipal de Proteção e Defesa Civil - SIMPDEC na adoção de medidas preventivas no período de estiagem; 2) estabelecer os procedimentos padrões de atuação em circu",
+     "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE GUARULHOS ESTIAGEM Guarulhos 2025 Gabinete do Coordenador Prefeitura de Guarulhos Lucas Sanches - Prefeito Coorden"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2025) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "3518800",
+   "municipio": "Guarulhos",
+   "uf": "SP",
+   "url": "https://www.guarulhos.sp.gov.br/sites/default/files/file/arquivos/PLANO%20MUNICIPAL%20DE%20ESTIAGEM%20DE%20GUARULHOS%20-%202025.pdf",
+   "regras_18": [
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "a7dd88699c",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "41a61f9dce4d46740cfd2563348fb591147ccbd1da5827228f37c48e1dc02e1b",
+   "data_da_edicao": "2025-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "categoria mais forte (plano_nomeado → plano)",
+   "aplicado_em": "2026-11-23"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "16544 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MUNICÍPIO DE CARAGUATATUBA Estado de São Paulo DECRETO Nº 2.381, DE 11 DE NOVEMBRO DE 2025. \"Dispõe sobre a vigência e a organização do Plano Preventivo de Defe"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "MUNICÍPIO DE CARAGUATATUBA Estado de São Paulo DECRETO Nº 2.381, DE 11 DE NOVEMBRO DE 2025. \"Dispõe sobre a vigência e a organização do Plano Preventivo de Defe",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "2.381",
+      "data": "11/11/2025",
+      "trecho": "MUNICÍPIO DE CARAGUATATUBA Estado de São Paulo DECRETO Nº 2.381, DE 11 DE NOVEMBRO DE 2025. \"Dispõe sobre a vigência e a organização do Plano Preventivo de Defe"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "nicípio de Caraguatatuba, e dá outras providências\". MATEUS VENEZIANI DA SILVA, Prefeito do Município da Estância Balneária de Caraguatatuba, usando das atribui"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "11/11/2025",
+   "natureza": "DUVIDA",
+   "ibge": "3510500",
+   "municipio": "Caraguatatuba",
+   "uf": "SP",
+   "url": "https://www.caraguatatuba.sp.gov.br/pmc/wp-content/uploads/2025/11/PPDC-2025-2026-Plano-de-Defesa-Civil.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "304ba0283e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "eb0614b7c9af5389ac50589109f343f4c0296061659965b974da2df30856a01f"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "67474 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Suzano Estado de São Paulo Secretaria Municipal de Segurança Cidadã Rua Alfredo Batista Pizzolato, 599, Vila Figueira, Suzano, SP CEP 08"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "armazenamento de substâncias perigosas ou nocivas, contaminações de solo etc. O Plano de Prevenção e Defesa – PPDC/2025-2026, tem caráter anual com ênfase ao pe",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/12/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "Plano de Prevenção",
+      "trecho": "armazenamento de substâncias perigosas ou nocivas, contaminações de solo etc. O Plano de Prevenção e Defesa – PPDC/2025-2026, tem caráter anual com ênfase ao pe",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/12/2025",
+   "natureza": null,
+   "ibge": "3552502",
+   "municipio": "Suzano",
+   "uf": "SP",
+   "url": "https://suzano.sp.gov.br/wp-content/uploads/2026/04/Plano-Verao-2025-2026.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "d0a882ceb3",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b7fa300625f485e22c0c3b73305615d884d16d1c25d9b9f6ff2437258873be1c"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "114921 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial do MUNICÍPIO PREFEITURA MUNICIPAL DE SÃO FRANCISCO Ano I Edição Nº 357 de quarta-feira, 19 de agosto de 2026 Nº de páginas: 85 SUMÁRIO: ●PlanodeC"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "agosto de 2026 Nº de páginas: 85 SUMÁRIO: ●PlanodeContingênciaSãoFrancisco2026 -PLANCON-PLANODECONTINGÊNCIAMUNICÍPIODESÃOFRANCISCO/SERGIPE2026. CE CEP: 49.000-0",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "19/08/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANCON",
+      "trecho": "agosto de 2026 Nº de páginas: 85 SUMÁRIO: ●PlanodeContingênciaSãoFrancisco2026 -PLANCON-PLANODECONTINGÊNCIAMUNICÍPIODESÃOFRANCISCO/SERGIPE2026. CE CEP: 49.000-0",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Diário Oficial do MUNICÍPIO PREFEITURA MUNICIPAL DE SÃO FRANCISCO Ano I Edição Nº 357 de quarta-feira, 19 de agosto de 2026 Nº de páginas: 85 SUMÁRIO: ●PlanodeC"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "EOGRÁFICOS ................................................. 5 4.3 – PERÍODO DE SECA /CHUVOSO 5 – PRINCIPAIS CONCEITOS. ........................................"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (19/08/2026) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "19/08/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "2806909",
+   "municipio": "São Francisco",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plano-de-Contingencia-2026_compressed.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "3beab34ec9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "e57bc8669ce9a992468c5328c7eaa560495eb48d65742ed34e3e8b98d247d929",
+   "data_da_edicao": "2026-08-19",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "categoria mais forte (plano_nomeado → plano)",
+   "aplicado_em": "2026-11-23"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "66777 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANCON PLANO DE CONTINGÊNCIA MUNICÍPIO DE MALHADA DOS BOIS - SE 2025 OO PLANO DE CONTINGÊNCIA MUNICIPAL ESTABELECE DIRETIZES PARA AÇÕES DE RESPOSTA AO DESASTRE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANCON PLANO DE CONTINGÊNCIA MUNICÍPIO DE MALHADA DOS BOIS - SE 2025 OO PLANO DE CONTINGÊNCIA MUNICIPAL ESTABELECE DIRETIZES PARA AÇÕES DE RESPOSTA AO DESASTRE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANCON",
+      "trecho": "PLANCON PLANO DE CONTINGÊNCIA MUNICÍPIO DE MALHADA DOS BOIS - SE 2025 OO PLANO DE CONTINGÊNCIA MUNICIPAL ESTABELECE DIRETIZES PARA AÇÕES DE RESPOSTA AO DESASTRE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANCON PLANO DE CONTINGÊNCIA MUNICÍPIO DE MALHADA DOS BOIS - SE 2025 OO PLANO DE CONTINGÊNCIA MUNICIPAL ESTABELECE DIRETIZES PARA AÇÕES DE RESPOSTA AO DESASTRE"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANCON PLANO DE CONTINGÊNCIA MUNICÍPIO DE MALHADA DOS BOIS - SE 2025 OO PLANO DE CONTINGÊNCIA MUNICIPAL ESTABELECE DIRETIZES PARA AÇÕES DE RESPOSTA AO DESASTRE"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2025) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "2803807",
+   "municipio": "Malhada dos Bois",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plancon-Malhada_dos_bois_assinado_assinado.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "edb879abdd",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ef6091deb113456e4fd2a29f5c2556869647f47f7347d76b5c32df864620bc54",
+   "data_da_edicao": "2025-12-31",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "categoria mais forte (plano_nomeado → plano)",
+   "aplicado_em": "2026-11-23"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5042 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "São Domingos dá sequência ao projeto de coleta de lixo no interior. - Prefeitura de São Domingos Skip to content 12 de dezembro de 2025 Últimas Notícias Xadrez"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "12/12/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "12/12/2025",
+   "natureza": null,
+   "ibge": "4216107",
+   "municipio": "São Domingos",
+   "uf": "SC",
+   "url": "https://saodomingos.sc.gov.br/sao-domingos-da-sequencia-ao-projeto-de-coleta-de-lixo-no-interior-3/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "2388f4ef64",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "6fc678d2abedf68b6bd26e62b7e29039e01a6ebfb01aff82431efd7667a25e9c",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "76968 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "os seguintes municípios: Abdon Batista, Brunópolis, Campos Novos, Celso Ramos, Monte Carlo, Vargem e Zortéa. 2 – VIGIDESASTRES - Programa de Vigilância em Saúd"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "09/07/2013",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2013",
+   "natureza": null,
+   "ibge": "4211058",
+   "municipio": "Monte Carlo",
+   "uf": "SC",
+   "url": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/398-regional-de-saude-de-joacaba.html?download=1200%3Appr-esp-brunopolis&Itemid=109",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "54bfb4410a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4f08de7903be17506cdd520ef36d59c46e3491b8443cca9ab9b660ef6f37cb90",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4546 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "cesso à Informação Ouvidoria Proteção de Dados e-CIGA Mapa do Site município DE PAULO LOPES Instagram Facebook Google Mail Início Município Histórico Hino do Mu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "10/06/2015",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/06/2015",
+   "natureza": null,
+   "ibge": "4212304",
+   "municipio": "Paulo Lopes",
+   "uf": "SC",
+   "url": "https://paulolopes.sc.gov.br/cartaservicos/index-detalhes-codservico-9956/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "50f2531e66",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2f2e69dbdf2072c256134c266fd3f5b20c899fd6735e127cae94424b2fb9aacd",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4561 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "cesso à Informação Ouvidoria Proteção de Dados e-CIGA Mapa do Site município DE PAULO LOPES Instagram Facebook Google Mail Início Município Histórico Hino do Mu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "02/11/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "02/11/2025",
+   "natureza": null,
+   "ibge": "4212304",
+   "municipio": "Paulo Lopes",
+   "uf": "SC",
+   "url": "https://paulolopes.sc.gov.br/cartaservicos/index-detalhes-codservico-1253/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "a0bf5994ea",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "04ea32ba72e65ae4c4dcd759e7c3a4d4cc570470d38d781ec06546e1ea623726",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2522 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "em 23 de junho de 2026. Atenciosamente, Ingrid Sateré Mawé (PSOL) Vereadora Rua Anita Garibaldi, 35, Centro, CEP: 88010-500 Florianópolis/SC, Tel.: (48) 3027-57"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "stre, o estudo psicossocial sugerido pode também vir a orientar a elaboração de Plano de Contingência específico para o bairro que inclua ações intersetoriais d",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE SANTA",
+      "titulo": "Plano de Contingência",
+      "trecho": "stre, o estudo psicossocial sugerido pode também vir a orientar a elaboração de Plano de Contingência específico para o bairro que inclua ações intersetoriais d",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://www.cmf.sc.gov.br/assinatura/assinado/2026/06/26062316091310C376.pdf?vh=5557254"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4201000",
+   "municipio": "Anita Garibaldi",
+   "uf": "SC",
+   "url": "https://www.cmf.sc.gov.br/assinatura/assinado/2026/06/26062316091310C376.pdf?vh=5557254",
+   "regras_18": [
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "cec0596e3a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1a76d3da1f0812a50625cc39b4f60e2325a28cce82d34a058a7edc27908bcea0"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4062 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Diretor - Prefeitura de Tangará Skip to content 26 de janeiro de 2023 Prefeitura de Tangará Facebook Instagram Google Mail Início Município Governo Contat"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "29/09/2022",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "29/09/2022",
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/galeria/pagina-19110/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "4d26c795ae",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "73c36e80ca3a59bc1e666f30d2efb4b4192d18ad4482c73fa2b1de4c2e4b6026",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "87730 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇÃO/ENSINO SANTA TEREZINHA DO PROGRESSO PLANCON-EDU/COVID-19 Outubro de 2020 COMITÊ ESTRATÉ"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇ",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇ",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://staterezinhaprogresso.sc.gov.br/uploads/sites/442/2021/12/2001945_SANTA_TEREZINHA_DO_PROGRESSO_Plancon_municipal.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": null,
+   "ibge": "4215679",
+   "municipio": "Santa Terezinha",
+   "uf": "SC",
+   "url": "https://staterezinhaprogresso.sc.gov.br/uploads/sites/442/2021/12/2001945_SANTA_TEREZINHA_DO_PROGRESSO_Plancon_municipal.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "f5ef52f07e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b3ba96fadc568ebb2b60dd0c6f2475968eecc52429c5be41924625962889e7b3"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3578 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Qualidade de Vida - Prefeitura de Maracajá Skip to content 29 de outubro de 2025 Últimas Notícias Matrículas e rematrículas para o ano letivo de 2026 na Rede Mu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "29/10/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "29/10/2025",
+   "natureza": null,
+   "ibge": "4210407",
+   "municipio": "Maracajá",
+   "uf": "SC",
+   "url": "https://maracaja.sc.gov.br/pagina-5087/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "e343f198aa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8c7dfdbe35dc1787dfb03751612bcf8b4752e88a30435770aa768b4bed1f9d47",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3925 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "AUDIÊNCIAS PÚBLICAS - Prefeitura de Maracajá Skip to content 10 de novembro de 2025 Últimas Notícias Maracajá recebe R$ 200 mil para reforçar os serviços de saú"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "12/06/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "12/06/2025",
+   "natureza": null,
+   "ibge": "4210407",
+   "municipio": "Maracajá",
+   "uf": "SC",
+   "url": "https://maracaja.sc.gov.br/audiencias-publicas/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "c6a256c021",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d49178a106140ed85cb77a8ac2751ce4ac0f73deaa2259e06b7438d2c7a028e6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "524647 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "oambiental Municipal CONTRATO: Nº 021/2019 CONTRATANTE: Prefeitura Municipal de Salete CONTRATADA: Integral Soluções em Engenharia Eireli. REALIZAÇÃO: Prefeitur"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "09/06/2014",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "09/06/2014",
+   "natureza": null,
+   "ibge": "4215307",
+   "municipio": "Salete",
+   "uf": "SC",
+   "url": "https://salete.sc.gov.br/uploads/2021/12/2035011_01_ETSA_Salete___Descritivo___v1_Aprovacao.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "0656218dbc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2edd75b4b1c120d62c8c8c428e6f8d12ecdb5d6643a1a38489351d3a87dc3a5e",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "40274 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "LINGER Vice-Prefeito RUBENS BERNADO SCHMIDT Secretária Municipal de Saúde MARIA SALETE LOURENÇO Secretário Municipal de Meio Ambiente ROBERTO BORELLA Secretário"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento não identifica: título de plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215307",
+   "municipio": "Salete",
+   "uf": "SC",
+   "url": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/408-regional-de-saude-de-videira.html?download=1324%3Appr-esp-ponte-alta-do-norte&Itemid=109",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d14db4cfbe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "329a3fd88f03a538c9ad7d32adb0984fdc13144049cbb7f6866094ddbea4f9e7"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "39272 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações Major Vieira – Santa Catarina Março de 2018 SUMÁRIO 1. INTRODUÇÃO E OBJETIVOS .."
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "22/03/2018",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "22/03/2018",
+   "natureza": null,
+   "ibge": "4210308",
+   "municipio": "Major Vieira",
+   "uf": "SC",
+   "url": "https://majorvieira.sc.gov.br/uploads/sites/382/2022/05/1295832_Relatorio_Major_Vieira.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "1afb128372",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "37bc9b5dd00b912911d4320d5281d45e8135c2e18cdc4aa872af2ce799393c21",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1667 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rtos Apresentação Normas de Publicação Página inicial / Prefeitura municipal de Treze Tílias / Autopublicação / 8875927 Prefeitura municipal de Treze Tílias Pre"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "o 8875927 Publicação oficial Salvar original Ver texto extraído Copiar link pdf RESOLUÇÃO CMAS N.º 11/2026 APROVA O PLANO DE CONTINGÊNCIA DA ASSISTÊNCIA SOCIAL,",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "11/2026",
+      "data": "29/10/2026",
+      "trecho": "o 8875927 Publicação oficial Salvar original Ver texto extraído Copiar link pdf RESOLUÇÃO CMAS N.º 11/2026 APROVA O PLANO DE CONTINGÊNCIA DA ASSISTÊNCIA SOCIAL,"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "29/10/2026",
+   "natureza": null,
+   "ibge": "4218509",
+   "municipio": "Treze Tílias",
+   "uf": "SC",
+   "url": "https://diariomunicipal.sc.gov.br/atos/8875927",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "fc4ffcf50b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8820c8219b1a4f8f35e6b1a2b1f2d52074dffa15ec9ec40036057b0457bfa997"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11911 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o último caso das Américas, em Santa Catarina, no ano de 1980, no município de Petrolândia, foi notificado o último caso de poliomielite confirmado laboratoria"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "19/05/2020",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "19/05/2020",
+   "natureza": null,
+   "ibge": "4212700",
+   "municipio": "Petrolândia",
+   "uf": "SC",
+   "url": "https://dive.saude.sc.gov.br/index.php/component/phocadownload/category/21-doencas-e-agravos/51-poliomielite?download=698%3Asituacao-epidemiologica-da-vigilancia-das-paralisias-flacidas-agudas-poliomielite-santa-catarina-2014-2019&Itemid=101",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "dfa2f5d5c5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "507a10d2f8ec4578e535d18c94a4d396686ca910e30f7ed151ff34c0b1a3c722",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "29231 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "hapeco.sc.gov.br Rua Porto União, 968 – CNPJ: 82.804.212/0001-96 CEP 89883-000 –Águas de Chapeco (SC) Chapa em aço carbono com espessura de 1,20mm (com detalhes"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4200507",
+   "municipio": "Águas de Chapecó",
+   "uf": "SC",
+   "url": "https://aguasdechapeco.sc.gov.br/uploads/sites/347/2026/06/20-TR-modelo-atualizado-MODULO-8-LUGARES.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "353a8dac03",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b9974a3c6341a40cb25a865b3a3542ed82770c73246add589af42ed75e0426bc",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9337 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Secretaria Municipal de Agricultura e Meio Ambiente - Prefeitura de Anchieta Skip to content 26 de maio de 2025 Últimas Notícias VISÃO QUE TRANSFORMA PROGRAMA S"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "16/01/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "16/01/2024",
+   "natureza": null,
+   "ibge": "4200804",
+   "municipio": "Anchieta",
+   "uf": "SC",
+   "url": "https://www.anchieta.sc.gov.br/galeria/secretaria-de-agricultura/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "bf79a44530",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e61450af39bbb6d4a5e2ae8c78ba1daeb5ace4c000b1be19233c642de117f0d2",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "11124 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Secretaria Municipal de Educação e Esportes - Prefeitura de Anchieta Skip to content 25 de maio de 2025 Últimas Notícias VISÃO QUE TRANSFORMA PROGRAMA SC MAIS M"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "20/05/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "20/05/2025",
+   "natureza": null,
+   "ibge": "4200804",
+   "municipio": "Anchieta",
+   "uf": "SC",
+   "url": "https://www.anchieta.sc.gov.br/galeria/pagina-23553/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "47ab7210a8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c733ca8aec21c74af6ec0775c1b2dc8ced2fc43b02c419fe71ea8e182dbb164c",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4200804",
+   "municipio": "Anchieta",
+   "uf": "SC",
+   "url": "https://www.anchieta.sc.gov.br/uploads/sites/403/2023/08/1.-Requerimento-e-Plano-de-Trabalho-Creche.pdf",
+   "regras_18": [],
+   "pista_id": "7108551aa4",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218756",
+   "municipio": "Tunápolis",
+   "uf": "SC",
+   "url": "https://tunapolis.sc.gov.br/uploads/sites/461/2023/01/Lei-N%C2%B0-1658.pdf",
+   "regras_18": [],
+   "pista_id": "7493ae03bb",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "42016 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ão não está previsto no Plano de Contratações Anual, uma vez que o Município de Rio Fortuna/SC ainda está em processo de elaboração deste instrumento de planeja"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "das situações de caso fortuito ou força maior. 5.15. A contratada deverá manter plano de contingência, com veículos e motoristas de reserva disponíveis, a fim d",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "estado de conservação",
+      "titulo": "plano de contingência",
+      "trecho": "das situações de caso fortuito ou força maior. 5.15. A contratada deverá manter plano de contingência, com veículos e motoristas de reserva disponíveis, a fim d",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4214904",
+   "municipio": "Rio Fortuna",
+   "uf": "SC",
+   "url": "https://riofortuna.sc.gov.br/uploads/sites/368/2025/10/4._Termo_de_Referencia_29_assinado-14.pdf",
+   "regras_18": [
+    "J7",
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "0408f3025a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d64dc28a5a6a2cc36b523638c50c0ab58fbd9fff35b177c590160b63abc4094c"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215208",
+   "municipio": "Romelândia",
+   "uf": "SC",
+   "url": "https://romelandia.sc.gov.br/uploads/sites/465/2021/12/1980142_TERMO_DE_RESPONSABILIDADE_MILENA_SCHAFER.pdf",
+   "regras_18": [],
+   "pista_id": "0808ebbb94",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "140982 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA MUNICÍPIO DE IPIRA SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO MUNICIPALDEPREPARAÇÃO E RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚB"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "prova": "SAÚDE 1.OBJETIVOS. 1.1OBJETIVO GERAL. A Secretaria Municipal de Saúde de Ipira apresenta o Plano Municipal de Vigilância para Emergências em Saúde Pública – VI",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207601",
+   "municipio": "Ipira",
+   "uf": "SC",
+   "url": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/393-regional-de-saude-de-concordia.html?download=1125%3Appr-esp-ipira&Itemid=109",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "0a424a8199",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "70204fda9e0b2a76a96e15effe8a0b4d1d09e04cb2867ae861878edcd8a7c038"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "31110 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "/2024 (Codajás), nº 424/2024 (Careiro), nº 1.304/2024 (Humaitá), nº 1.389/2024 (Tabatinga), nº 1.761/2024 (Atalaia do Norte), entre outros julgados relativos ao"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e cada Município, mediante as seguintes providências: 1. ATUALIZAR E REFORÇAR O PLANO MUNICIPAL DE CONTINGÊNCIA 1.1. Revisar e atualizar o Plano Municipal de Co",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado do Amazonas",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "e cada Município, mediante as seguintes providências: 1. ATUALIZAR E REFORÇAR O PLANO MUNICIPAL DE CONTINGÊNCIA 1.1. Revisar e atualizar o Plano Municipal de Co",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1304062",
+   "municipio": "Tabatinga",
+   "uf": "AM",
+   "url": "https://mpc.am.gov.br/wp-content/uploads/2026/10/RECOMENDACAO_N._86_2026___MP_CMA.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "a68af0cf85",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "af166dc382d98f1b6718ff6c6f204914e7faecbc9200522ce9085163b3fe8d31"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8276 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "contingência da empresa sobre abertura das comportas de Balbina - Prefeitura de Presidente Figueiredo Ir para o conteúdo Prefeitura de Presidente Figueiredo Pag"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/11/2026",
+   "natureza": null,
+   "ibge": "1303536",
+   "municipio": "Presidente Figueiredo",
+   "uf": "AM",
+   "url": "https://www.presidentefigueiredo.am.gov.br/prefeitura-de-figueiredo-atua-junto-a-eletronorte-e-exige-plano-de-contingencia-da-empresa-sobre-abertura-das-comportas-de-balbina/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "0c9307d9ea",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f68d6130d9a4f766b0d7f3d73813dbd9646a86dc16843126f77abbee35bf5787",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "31116 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "7/2026 - MP-CMA URGENTE AO EXMO. SENHOR WALDER RIBEIRO DA COSTA MD. Prefeito de Santo Antônio do Içá Assunto: reforço dos Planos Municipais de Contingência e da"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "e cada Município, mediante as seguintes providências: 1. ATUALIZAR E REFORÇAR O PLANO MUNICIPAL DE CONTINGÊNCIA 1.1. Revisar e atualizar o Plano Municipal de Co",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado do Amazonas",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "e cada Município, mediante as seguintes providências: 1. ATUALIZAR E REFORÇAR O PLANO MUNICIPAL DE CONTINGÊNCIA 1.1. Revisar e atualizar o Plano Municipal de Co",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "2026",
+   "natureza": null,
+   "ibge": "1303700",
+   "municipio": "Santo Antônio do Içá",
+   "uf": "AM",
+   "url": "https://mpc.am.gov.br/wp-content/uploads/2026/10/67_Santo_Antonio_do_Ica_RECOMENDACAO_reforco_preparacao_Nino_2026.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "dda861f296",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "45af955399b83d0c354a3435811085ea8b6dca8cb7d64b654dadb4dc3206c3e2"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3590 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Joaquim Gomes conclui etapa de planejamento do Plano Municipal pela Primeira Infância Pular para conteúdo f ◎ ▶ Acesso à informação Ouvidoria Transparência ☰ Ab"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ade História Brasão/Bandeira/Hino Localização Prefeitura Prefeita Vice-Prefeito LEI Nº 14.129, DE 29 DE MARÇO DE 2021 Secretarias Notícias Selo Unicef Pesquisar",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.129",
+      "data": "29/03/2021",
+      "trecho": "ade História Brasão/Bandeira/Hino Localização Prefeitura Prefeita Vice-Prefeito LEI Nº 14.129, DE 29 DE MARÇO DE 2021 Secretarias Notícias Selo Unicef Pesquisar"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "29/03/2021",
+   "natureza": null,
+   "ibge": "2703809",
+   "municipio": "Joaquim Gomes",
+   "uf": "AL",
+   "url": "https://joaquimgomes.al.gov.br/joaquim-gomes-apresenta-plano-municipal-pela-primeira-infancia-e-fortalece-politicas-publicas-para-criancas/",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "104f8ddeef",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "198b826bf3973b66546c58ea6d360b25b05daf8db053637b370ea6aa75bd6922"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4036 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Documentos Saúde &#8211; Prefeitura Municipal Entre Rios Ir para o conteúdo Ir para o menu Ir para a busca Ir para o rodapé Conteúdo 1 Menu 2 Busca 3 Rodapé 4 P"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/11/2026",
+   "natureza": null,
+   "ibge": "2910503",
+   "municipio": "Entre Rios",
+   "uf": "BA",
+   "url": "https://entrerios.ba.gov.br/documentos-saude",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "b6069024b1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "124d0b28259816518bd6596bd3bc8a9bfcf7bbf241c8c70689de678304e6bdd1",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2017 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saneamento Básico | Prefeitura Municipal de Riachão das Neves &times; Previous Next Webmail Alterar senha Portal da transparência Ouvidoria T"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "279",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2926202",
+   "municipio": "Riachão das Neves",
+   "uf": "BA",
+   "url": "https://riachaodasneves.ba.gov.br/plano-municipal-de-saneamento-basico",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "4c05f7d6e3",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "57304fb6cd3de6c7018a142964a2c7fcb8d0b2f39f0a0143ec64b76d583fa16b",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3030 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Granja Participativo Página inicial Ajuda Prefeitura Municipal de Granja Para participar da audiência online e ter sua participação registrada, ba"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/01/2012",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/01/2012",
+   "natureza": null,
+   "ibge": "2304707",
+   "municipio": "Granja",
+   "uf": "CE",
+   "url": "https://granja.ce.gov.br/participativo.php?id=2",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "b549e25c2c",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "e34cfaf4d23b2735ecd834ab0f19f8678e6006f9145a91875892714e74b559da",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4575 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Maranguape Prefeitura Municipal de Maranguape Ouvidoria/Sic Transparência CORONAVÍRUS (COVID-19): Boletins, Ações, Transparência e material educat"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "17/12/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "17/12/2025",
+   "natureza": null,
+   "ibge": "2307700",
+   "municipio": "Maranguape",
+   "uf": "CE",
+   "url": "https://maranguape.ce.gov.br/portaria.php?id=2",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "2384a97c69",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "118024cf51ee3372e7fdb303dc427fc0975a8f115e1e9bcd03aa9047fc3ba0fb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4066 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Maranguape Prefeitura Municipal de Maranguape Ouvidoria/Sic Transparência CORONAVÍRUS (COVID-19): Boletins, Ações, Transparência e material educat"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/06/2015",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/06/2015",
+   "natureza": null,
+   "ibge": "2307700",
+   "municipio": "Maranguape",
+   "uf": "CE",
+   "url": "https://maranguape.ce.gov.br/leis.php?id=706",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "99d1a571cb",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "2dc50be5a3c721a445d1428037b966e58ebecd90752020c37c4cbee2418a1a44",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5276 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Mombaça Prefeitura Municipal de Mombaça Ouvidoria/Sic Transparência CORONAVÍRUS (COVID-19): Boletins, Ações, Transparência e material educativo -"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "s. Alimentos Paa Projeto de Lei Simpe &nbsp; --> --> Início Acesso a Informação Portaria Detalhe PUBLICAÇÃO: 251028/2026 Arquivos PDF Informações da portaria Da",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "251028/2026",
+      "data": "25/10/2026",
+      "trecho": "s. Alimentos Paa Projeto de Lei Simpe &nbsp; --> --> Início Acesso a Informação Portaria Detalhe PUBLICAÇÃO: 251028/2026 Arquivos PDF Informações da portaria Da"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Facebook X Instagram E-mail Pesquisa --> --> Início A Prefeitura Institucional Prefeito e Vice Galeria de Gestores Normativos Próprios O Município Obras Veícul"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "25/10/2026",
+   "natureza": "DUVIDA",
+   "ibge": "2308500",
+   "municipio": "Mombaça",
+   "uf": "CE",
+   "url": "https://mombaca.ce.gov.br/portaria.php?id=6142",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "e048de1e89",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "cdac7f9f466adf2035d524639feb9ad512125a0f885c588e438750e542be82d8"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5248 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Mombaça Prefeitura Municipal de Mombaça Ouvidoria/Sic Transparência CORONAVÍRUS (COVID-19): Boletins, Ações, Transparência e material educativo -"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "22/06/2015",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "22/06/2015",
+   "natureza": null,
+   "ibge": "2308500",
+   "municipio": "Mombaça",
+   "uf": "CE",
+   "url": "https://mombaca.ce.gov.br/leis.php?id=2295",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "8f617a0181",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "8731b52e71217471a711fd629ef924ba156407d6e3f418a5b76e98cb53788379",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }

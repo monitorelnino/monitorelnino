@@ -6435,7 +6435,12 @@
   {"data": "2026-11-23", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-24T01:23:45", "duracao_s": 2650.2, "itens": 50, "status": "ok", "erro": ""},
   {"data": "2026-11-23", "script": "coletar_doe.py", "inicio": "2026-11-24T02:07:55", "duracao_s": 2031.3, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-23", "script": "coletar_s2id.py", "inicio": "2026-11-24T02:41:46", "duracao_s": 97.9, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-23", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-24T02:43:24", "duracao_s": 39.7, "itens": null, "status": "erro", "erro": "urllib.error.HTTPError: HTTP Error 502: Bad Gateway"}
+  {"data": "2026-11-23", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-24T02:43:24", "duracao_s": 39.7, "itens": null, "status": "erro", "erro": "urllib.error.HTTPError: HTTP Error 502: Bad Gateway"},
+  {"data": "2026-11-23", "script": "scripts/triar_fila.py", "inicio": "2026-11-24T02:15:35", "duracao_s": 1.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-23", "script": "julgar_filas.py", "inicio": "2026-11-24T02:15:36", "duracao_s": 1784.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-23", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-24T02:45:20", "duracao_s": 258.7, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-23", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-24T02:49:38", "duracao_s": 2.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-23", "script": "scripts/verificar_leituras_paradas.py", "inicio": "2026-11-24T02:49:40", "duracao_s": 2.2, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-24T02:43:24"
+ "atualizado_em": "2026-11-24T02:49:40"
 }
