@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-24 · #2040 · Um envio conferido por PR
 O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.
+## 2026-11-24 · #2041 · Reaplicação vê os artefatos da noite inteira
+
+A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.
+
 ## 2026-11-24 · #2035 · Reaplicação não recusa arquivo novo dos dois lados
 
 `reaplicar_noite.py` separa "commit-base fora do histórico" de "arquivo ausente na base". O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.
