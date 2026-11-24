@@ -64,6 +64,8 @@
       <dd>O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.</dd>
       <dt>24/11/2026 · Portão: PR não devolve arquivo a uma versão anterior da main</dt>
       <dd>O #2043 levou, por engano, seis arquivos em versões anteriores da `main` e desfaria a regra D2 do resolvedor sem conflito nenhum. A regra nova `regressao` do verificador do repositório reprova o PR cujo arquivo de código, configuração, catálogo ou documento é igual a uma das 15 versões anteriores da `main`. Reversão de propósito diz &quot;Reverte&quot; num commit do PR.</dd>
+      <dt>24/11/2026 · Buscador 2: busca no veículo lê o SearXNG; motor sem resposta volta à fila</dt>
+      <dd>A busca no veículo (B2) recebia o JSON do SearXNG como se fosse lista e nunca achava a matéria. Corrigido na origem em `seguir_pistas.py`. Motor sem resposta deixa a pista na fila com data (até três noites), em vez de fechá-la como definitiva. Linhas líquidas: +90 em `seguir_pistas.py`.</dd>
       <dt>24/11/2026 · Teste de figuras espera a condição, não a rede</dt>
       <dd>Em 21/11 o portão de figuras estourou 30 segundos esperando a rede ficar ociosa em `defesa-civil.html` e deixou a `main` vermelha por 38 minutos. Cada verificação já esperava a própria condição; a espera pela rede saiu, e a verificação do mouse passa a esperar os quatro mapas que lê.</dd>
       <dt>24/11/2026 · Portão de tamanho reconhece retrato por chave</dt>
@@ -162,8 +164,6 @@
       <dd>A leitura da data aceitava qualquer ano: o plano de Tobias Barreto/SE, digitalizado, entrou datado de 2067 e trocou o decreto do município. Ano no futuro deixa de ser data do documento; o registro voltou ao de ontem e a pista volta ao juiz.</dd>
       <dt>19/11/2026 · Quarentena confere pista por pista; imprensa regional grava pela porta</dt>
       <dd>A quarentena da fila recortava a identidade do texto do problema, e a pista sem `id` (identidade = URL) nunca casava: 29 pistas ficaram na fila ativa e a publicação reprovou desde 03:23 UTC. Agora cada pista se confere sozinha. A origem delas, `monitorar_imprensa_regional.py`, deixa de gravar a fila por fora e passa por `pistas.gravar_lote`.</dd>
-      <dt>18/11/2026 · Plano de edição anterior não substitui o mais novo</dt>
-      <dd>A atualização de registro deixava um documento de força igual trocar o registro sem julgamento do juiz, mesmo sendo mais antigo: Cachoeiro de Itapemirim e Pancas/ES perderam o plano de 2025 para o de 2023, e o índice do ES caiu. Edição anterior não substitui mais; os dois registros voltaram.</dd>
     </dl>
   </section>
 </main>

@@ -43,6 +43,10 @@ O portão do escritor de pista e a regra de escrita portável varriam o disco e 
 ## 2026-11-24 · #2047 · Portão: PR não devolve arquivo a uma versão anterior da main
 O #2043 levou, por engano, seis arquivos em versões anteriores da `main` e desfaria a regra D2 do resolvedor sem conflito nenhum. A regra nova `regressao` do verificador do repositório reprova o PR cujo arquivo de código, configuração, catálogo ou documento é igual a uma das 15 versões anteriores da `main`. Reversão de propósito diz "Reverte" num commit do PR.
 
+## 2026-11-24 · #2051 · Buscador 2: busca no veículo lê o SearXNG; motor sem resposta volta à fila
+
+A busca no veículo (B2) recebia o JSON do SearXNG como se fosse lista e nunca achava a matéria. Corrigido na origem em `seguir_pistas.py`. Motor sem resposta deixa a pista na fila com data (até três noites), em vez de fechá-la como definitiva. Linhas líquidas: +90 em `seguir_pistas.py`.
+
 ## 2026-11-24 · #2044 · Teste de figuras espera a condição, não a rede
 Em 21/11 o portão de figuras estourou 30 segundos esperando a rede ficar ociosa em `defesa-civil.html` e deixou a `main` vermelha por 38 minutos. Cada verificação já esperava a própria condição; a espera pela rede saiu, e a verificação do mouse passa a esperar os quatro mapas que lê.
 
