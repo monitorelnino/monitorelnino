@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2062 · MapBiomas: a data da consulta avança a cada consulta
+As figuras do MapBiomas diziam "consultado em 15/11" depois de a fonte ter sido consultada de novo em 24/11, porque sem número novo o arquivo guardava a data antiga. Agora cada consulta completa grava a data do dia nos três arquivos; os números só mudam quando a fonte muda.
+
 ## 2026-11-24 · #2060 · União de fila: marca do Buscador 2 pela data mais nova
 
 O seguidor regrava `buscador2_em` e `busca_veiculo_em` a cada passada; quando a válvula e a noite passavam pela mesma pista, a união recusava a fila inteira (F100: lote de 24/11 perdido). Os dois campos passam a unir pela data mais nova, a última passada. Caso no autoteste da união.
