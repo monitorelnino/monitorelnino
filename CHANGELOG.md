@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2053 · Válvula confere a entrada antes de subir o executor
+Em 17/11 a coleta de dia recebeu linhas de Python soltas no lugar de comandos e rodou cada uma como programa. Agora um passo curto, antes do executor, recusa a entrada se alguma linha não começar por um script do repositório (com prazo e intérprete opcionais). A noite não muda.
+
 ## 2026-11-24 · #2049 · Portões leem o repositório, não a cópia local
 O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.
 ## 2026-11-24 · #2047 · Portão: PR não devolve arquivo a uma versão anterior da main
