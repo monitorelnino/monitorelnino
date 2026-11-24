@@ -12,6 +12,13 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-24 · #2039 · Aviso: outro run com a mesma causa não comenta a Issue
 
 O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
+## 2026-11-24 · #2034 · Rodada de domingo não perde o commit por `julgamento_automatico`
+
+Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).
+
+## 2026-11-24 · #2037 · Cadastro federal: coleta que falha deixa tentativa
+
+O coletor do cadastro federal de municípios suscetíveis caía sem registro quando o gov.br não entregava a nota técnica, e o portão de frescor avermelhava a main. Agora a falha fica no painel de tentativas, e a idade exibida continua sendo a do dado (F95).
 
 ## 2026-11-23 · #2033 · Elo do juiz não cai mais na trava do apt
 
