@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-24 · #2042 · Mesclagem recusada fecha quando o arquivo volta a se unir
+
+A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.
 ## 2026-11-24 · #2039 · Aviso: outro run com a mesma causa não comenta a Issue
 
 O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.
