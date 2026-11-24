@@ -1861,7 +1861,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.titulo_da_secao_3.dica</code></td><td>Selecione um estado para ver como a preparação dele foi documentada e quais atos foram localizados. Pesos, critérios e limites estão na &lt;a href=&quot;METODOLOGIA.pdf&quot;&gt;metodologia&lt;/a&gt;.</td></tr>
 </table>
-<h2>monitor-de-riscos <small>(102 trechos)</small></h2>
+<h2>monitor-de-riscos <small>(121 trechos)</small></h2>
 <h3>situacao · roni</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>rotulo</td><td><code>monitor-de-riscos.situacao.roni.rotulo</code></td><td>RONI mais recente</td></tr>
@@ -2142,6 +2142,82 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>fogo · serie_rotulo</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.fogo.serie_rotulo</code></td><td>Últimos 30 dias, focos por dia</td></tr>
+</table>
+<h3>mapbiomas · seletor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.seletor</code></td><td>Território</td></tr>
+</table>
+<h3>mapbiomas · fogo_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>monitor-de-riscos.mapbiomas.fogo_mes.titulo</code></td><td><span class="molde">Área queimada por mês em {ano}</span><br><span class="ex">exemplo: Área queimada por mês em 3</span></td></tr>
+</table>
+<h3>mapbiomas · fogo_mes.titulo_reserva</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.fogo_mes.titulo_reserva</code></td><td>Área queimada por mês no ano corrente</td></tr>
+</table>
+<h3>mapbiomas · fogo_mes.sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.fogo_mes.sub</code></td><td><span class="molde">{territorio} · janeiro a {mes} de {ano} · {unidade}</span><br><span class="ex">exemplo: 3 · janeiro a 3 de 3 · 3</span></td></tr>
+</table>
+<h3>mapbiomas · fogo_colecao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>monitor-de-riscos.mapbiomas.fogo_colecao.titulo</code></td><td>Área queimada por mês em 2015 e 2024</td></tr>
+</table>
+<h3>mapbiomas · fogo_colecao.sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.fogo_colecao.sub</code></td><td><span class="molde">{territorio} · janeiro a dezembro · {unidade}</span><br><span class="ex">exemplo: 3 · janeiro a dezembro · 3</span></td></tr>
+</table>
+<h3>mapbiomas · agua</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>monitor-de-riscos.mapbiomas.agua.titulo</code></td><td>Superfície de água por ano</td></tr>
+</table>
+<h3>mapbiomas · agua.sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.agua.sub</code></td><td><span class="molde">{territorio} · {inicio} a {fim} · {unidade}</span><br><span class="ex">exemplo: 3 · 3 a 3 · 3</span></td></tr>
+</table>
+<h3>mapbiomas · leg_ano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.leg_ano</code></td><td><span class="molde">{ano}</span><br><span class="ex">exemplo: 3</span></td></tr>
+</table>
+<h3>mapbiomas · leg_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.leg_faixa</code></td><td>Menor a maior valor de 2019 a 2025, sem 2024</td></tr>
+</table>
+<h3>mapbiomas · leg_mediana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.leg_mediana</code></td><td>Mediana de 2019 a 2025, sem 2024</td></tr>
+</table>
+<h3>mapbiomas · aria</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.aria</code></td><td><span class="molde">{titulo}: {territorio}</span><br><span class="ex">exemplo: 3: 3</span></td></tr>
+</table>
+<h3>mapbiomas · tip_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.tip_mes</code></td><td><span class="molde">{mes}: {valores}</span><br><span class="ex">exemplo: 3: 3</span></td></tr>
+</table>
+<h3>mapbiomas · tip_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.tip_faixa</code></td><td><span class="molde">faixa de {min} a {max}</span><br><span class="ex">exemplo: faixa de 3 a 3</span></td></tr>
+</table>
+<h3>mapbiomas · tip_mediana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.tip_mediana</code></td><td><span class="molde">mediana {valor}</span><br><span class="ex">exemplo: mediana 3</span></td></tr>
+</table>
+<h3>mapbiomas · un_ha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.un_ha</code></td><td>hectares</td></tr>
+</table>
+<h3>mapbiomas · un_mil</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.un_mil</code></td><td>mil hectares</td></tr>
+</table>
+<h3>mapbiomas · un_mi</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.un_mi</code></td><td>milhões de hectares</td></tr>
+</table>
+<h3>mapbiomas · sem_dado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.mapbiomas.sem_dado</code></td><td>Sem coleta até o corte.</td></tr>
 </table>
 <h3>titulo_fogo</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
