@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2090 · A `main` se sela sozinha
+
+O publicador passa a regenerar e commitar o mapa do código junto com o manifesto e a página de mudanças. No push da `main`, entre o merge de um PR e a publicação seguinte, derivado velho passa com aviso; depois da publicação volta a reprovar. Ensaio 33 e falha F103.
+
 ## 2026-11-25 · #2083 · Prévia: o relatório lê o código de saída do deploy
 
 Em `publicar_previa.yml` o redirecionamento estava no `rm` depois do deploy: `codigo_saida` era o do `rm` (sempre 0) e o filtro lia arquivo vazio. A saída do deploy volta ao arquivo e o código é o dele. O veredito ("Deploy is live") não muda. Item 6 do handover de erros do GitHub: o "Site not found" de 18/11 foi 1 em 4.073 prévias, sem corrida com a renomeação.
