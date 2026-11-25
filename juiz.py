@@ -2449,6 +2449,10 @@ def casos_lote_18() -> list:
         b = _ler_paralelo_18(destino)
         gravar_paralelo_18([], destino, "teste")
         c = _ler_paralelo_18(destino)
+        sem_lote = {"hash_evidencia": "9" * 64, "uf": "RS", "municipio": "Outro", "promove": True, "lote": False}
+        _escrever_paralelo_18(destino, "teste", [sem_lote], [], {})
+        gravar_paralelo_18([], destino, "teste")
+        d = _ler_paralelo_18(destino)
         motivos = {f["hash_evidencia"]: f["motivo"] for f in a["sem_leitura"]}
         return [
             ("lote: documento lido é julgado pelo 1.8 e leva o hash do texto lido",
@@ -2462,6 +2466,8 @@ def casos_lote_18() -> list:
              len(b["decisoes"]) == 1 and b["resumo"]["lido_neste_lote"] == 0),
             ("lote: rejulgamento local não apaga os registros do lote",
              any(r.get("lote") for r in c["decisoes"]) and c["resumo"].get("lote_julgadas") == 1),
+            ("rejulgamento local não apaga registros de rodadas anteriores sem lote (25/11: 564 perdidos)",
+             len(d["decisoes"]) == 1 and d["decisoes"][0]["hash_evidencia"] == "9" * 64),
         ]
 
 
@@ -2499,13 +2505,17 @@ def _escrever_paralelo_18(destino: pathlib.Path, fonte: str, registros: list, se
 
 def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
     """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo.
-    Os registros do lote de leitura (`"lote": true`) que já estão no arquivo não se perdem no rejulgamento local."""
+    Log que só cresce (26/10 e 25/11): todo registro já gravado sobrevive, salvo quando este rejulgamento
+    julga de novo o mesmo documento e município. Antes só o lote (`"lote": true`) sobrevivia; o rejulgamento
+    local sem cópia do documento gravava `decisoes` vazio e apagava os 564 registros da produção."""
     registros, resumo = rejulgar_paralelo_18(decisoes)
     anteriores = _ler_paralelo_18(destino)
-    vistos = {r["hash_evidencia"] for r in registros}
-    lote = [r for r in anteriores["decisoes"] if r.get("lote") and r["hash_evidencia"] not in vistos]
-    resumo["lote_julgadas"] = len(lote)
-    return _escrever_paralelo_18(destino, fonte, registros + lote, anteriores.get("sem_leitura", []), resumo)
+    chave = lambda r: (r.get("hash_evidencia"), r.get("uf"), r.get("municipio"))
+    novas = {chave(r) for r in registros}
+    mantidos = [r for r in anteriores["decisoes"] if chave(r) not in novas]
+    resumo["mantidas_de_rodadas_anteriores"] = len(mantidos)
+    resumo["lote_julgadas"] = sum(1 for r in mantidos if r.get("lote"))
+    return _escrever_paralelo_18(destino, fonte, registros + mantidos, anteriores.get("sem_leitura", []), resumo)
 
 
 # Lote de leitura da rodada paralela J18: documento que não está em `evidencias/` é lido pela porta de rede
