@@ -13,9 +13,18 @@ não pontuados permanecem na versão corrente.
 
 O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.
 
+## 2026-11-25 · #2097 · Rodada J18: rejulgamento paralelo guarda o que já julgou
+
+O juiz 1.8 paralelo não apaga mais os registros já julgados quando uma rodada não tem o documento local: a correção está em `gravar_paralelo_18`, com trava. A rodada grava só em arquivos paralelos (`data/paralelo_*`); índice, produção e páginas não mudam.
+
+## 2026-11-25 · #2092 · Buscador 2: queda de rede não conta como vista
+
+O reprocessamento do Buscador 2 tratava como vista a pista cuja busca caiu na rede, porque a marca do dia era gravada antes do resultado. Agora só a busca que termina (achado, nada ou recusa da fonte) conta como vista; a queda volta ao reprocessamento. Autoteste com caso novo.
+
 ## 2026-11-25 · #2089 · Portarias de recursos: resposta, art. 1º e retificação
 
 O coletor só consultava "Autoriza a transferência de recursos" e perdia as portarias de resposta ("Autoriza o empenho e a transferência"): 745 atos contra 624 de 26/04 a 23/11. Passa a ler as duas redações, o município e o valor do art. 1º, a retificação como correção do ato citado e um ato por número e processo. Não casado deixa de acumular; Segredo/RS deixa de contar duas vezes. Janela ou ato que falha é relido na rodada seguinte.
+
 ## 2026-11-25 · #2090 · A `main` se sela sozinha
 
 O publicador passa a regenerar e commitar o mapa do código junto com o manifesto e a página de mudanças. No push da `main`, entre o merge de um PR e a publicação seguinte, derivado velho passa com aviso; depois da publicação volta a reprovar. Ensaio 33 e falha F103.
