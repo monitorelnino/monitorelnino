@@ -258,26 +258,8 @@ def e_o_proprio_plano(texto: str, url: str = None) -> tuple:
                       "estrutura": sorted(estrutura)[:4]}
 
 
-JANELA_DA_DATA_DO_PLANO = 600
-
-
-def data_junto_ao_titulo(texto: str, titulo, ano: str):
-    """Data completa (dd/mm/aaaa) logo depois do título do plano, do mesmo ano; senão None.
-
-    12/10/2026 (A1-21 → A1-28 do relatório D): o plano sem ato gravava só o ano, mesmo quando a
-    capa trazia a data. A data vem da JANELA do título, nunca da primeira do documento — num plano
-    de sessenta páginas a primeira data pode ser de uma referência bibliográfica — e só vale se for
-    do mesmo ano que o documento declara. Função pura."""
-    if not titulo or not texto:
-        return None
-    janela = texto[titulo.start(): titulo.end() + JANELA_DA_DATA_DO_PLANO]
-    d = extrair_data(janela)
-    if d and re.fullmatch(r"\d{1,2}[/-]\d{1,2}[/-]\d{4}", d) and str(ano or "") and d.endswith(str(ano)):
-        return d
-    return None
-
-
-def plano_sem_ato(texto: str, url: str = None) -> tuple:
+def plano_sem_ato(texto: str, url: str = None, documento: str = None, municipio: str = None,
+                  ano_corrente: int = None) -> tuple:
     """(ok, motivo, dados) do caminho "plano publicado sem ato de aprovação localizado". PURA.
 
     Decisão da editoria de 03/10/2026. O índice mede **preparação publicada e verificável**: a
@@ -289,6 +271,11 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
       1. domínio oficial do ente — já exigido na etapa 0, pela URL;
       2. órgão, título e ano (ou o ciclo) identificados NO documento;
       3. não ser minuta, rascunho, versão para consulta ou apresentação.
+
+    A data é a que o plano informa de si (`data_do_plano`, METODOLOGIA §129), lida no `documento` inteiro quando o
+    chamador o tem (o `texto` julgado vem cortado em `TETO_DO_JULGAMENTO`, e o fecho e a assinatura ficam no fim).
+    Sem data própria e com carimbo de impressão do formulário estadual, fica o ANO do carimbo, com a origem dita:
+    é o que o juiz já gravava, e se o carimbo conta é decisão da editoria.
     """
     ok_doc, motivo_doc, provas_doc = e_o_proprio_plano(texto, url)
     if not ok_doc:
@@ -307,11 +294,15 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
     if faltam:
         return False, "plano_sem_identificacao", {
             "detalhe": "o documento não identifica: " + ", ".join(faltam)}
-    ano_txt = (ano.group(1) if ano.lastindex else None) or ano.group(0)
+    from data_do_plano import carimbo_de_impressao, data_do_plano
+    data, origem, onde = data_do_plano(documento or texto, municipio, ano_corrente)
+    if not data:
+        carimbo = carimbo_de_impressao(documento or texto, ano_corrente)
+        data, origem, onde = (carimbo[-4:], "impressao", carimbo) if carimbo else (None, None, None)
     return True, "", {
         "tipo": "plano publicado sem ato de aprovação localizado",
         "numero": None,
-        "data": data_junto_ao_titulo(texto, titulo, ano_txt) or ano_txt,
+        "data": data, "data_origem": origem, "data_trecho": onde,
         "sem_ato_de_aprovacao": True,
         "orgao": orgao.group(0),
         "titulo": titulo.group(0),
@@ -378,6 +369,7 @@ def objeto_ex_ante(texto: str) -> tuple:
 RE_GATILHO_CICLO = re.compile(
     r"per[íi]odo\s+(?:chuvoso|de\s+chuvas|seco|de\s+estiagem)|esta[çc][ãa]o\s+(?:chuvosa|seca)|"
     r"2026\s*[/-]\s*2027|2026/2027|ciclo\s+2026", re.I)
+RE_NOMEIA_O_CICLO = re.compile(r"2026\s*[/-]\s*2027|ciclo\s+2026|\bel\s*ni[ñn]o\b", re.I)
 RE_GATILHO_OBSERVACIONAL = re.compile(
     r"previs|progn[óo]stic|boletim|painel\s+el\s+ni|cemaden|inmet|noaa|monitor\s+de\s+secas|"
     r"alerta\s+clim|aviso\s+meteorol[óo]gic|iminente|imin[êe]ncia", re.I)
@@ -764,7 +756,8 @@ def ato_proprio(texto: str):
 
 
 def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
-                   como_plano: bool = False) -> tuple:
+                   como_plano: bool = False, documento: str = None, municipio: str = None,
+                   ano_corrente: int = None) -> tuple:
     """(ok, motivo, dados). Tipo de ato + número + data extraídos do PRÓPRIO texto.
 
     Exceção declarada no handover: plano publicado como documento técnico sem número recebe a
@@ -791,7 +784,7 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
         # — órgão, título e ano —, e o ano solto basta. Este caminho vem ANTES da exigência de data
         # completa, de propósito: data completa é como se situa um ATO, e aqui não há ato.
         apresenta_se_como_ato = not no_repositorio and RE_ATO_SEM_NUMERO.search(texto or "")
-        ok_plano, motivo_plano, dados_plano = plano_sem_ato(texto, url)
+        ok_plano, motivo_plano, dados_plano = plano_sem_ato(texto, url, documento, municipio, ano_corrente)
         if ok_plano and not apresenta_se_como_ato:
             return True, "", dados_plano
         if no_repositorio:
@@ -998,7 +991,7 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
         # Nenhuma categoria nova, nenhum peso novo: são os degraus que já existem, atribuídos pela
         # mesma pergunta que o resto do codebook faz — o documento cobre este ciclo?
         if RE_GATILHO_CICLO.search(texto or ""):
-            return "plano", f"plano publicado ({data}) que cita o ciclo; ato de aprovação não localizado"
+            return "plano", f"plano publicado ({data or 'sem data no documento'}) que cita o ciclo; ato de aprovação não localizado"
         ano = None
         m_ano = re.search(r"(20\d{2})", str(data or ""))
         if m_ano:
@@ -1185,49 +1178,9 @@ def e_plano_pelo_cabecalho(texto) -> bool:
     return len({normalizar(m.group(1))[:6] for m in RE_SECAO_DE_PLANO.finditer(texto)}) >= 2
 
 
-# J7. Data do plano: a do cabeçalho, da versão ou da última atualização; nunca a de lei citada, de
-# fundação ou de população. Fora de 1990..ano corrente é suspeita.
+# J7. Data do plano: a que ele informa de si (`data_do_plano.py`); nunca a de lei citada, de fundação, de população
+# ou de evento do histórico. Fora de 1990..ano corrente é suspeita.
 ANO_MINIMO_18 = 1990
-RE_ANO_DE_VERSAO = re.compile(
-    r"(?:vers[ãa]o|atualiza[çc](?:[ãa]o|[õo]es)|atualizad[oa]\s+em|revis[ãa]o|revisad[oa]\s+em|elaborad[oa]\s+em)"
-    r"[^\n]{0,40}?\b((?:19|20)\d{2})\b", re.I)
-# A citação de ato ("Lei nº 12.608, de 10 de abril de 2012", "Leis 12.608, de abril de 2012, e 12.983, de junho de
-# 2014", "Lei Municipal nº 0967/2006 de 19 de abril de 2006"): todo ano dentro dela é do ato citado, não do plano
-# (lote 7 da J18 e diagnóstico de 28/10: PLANCONs do RS de 2025 saíam datados de 2012).
-RE_DATA_DE_ATO_CITADO = re.compile(
-    r"\b(?:leis?|decretos?|portarias?|resolu[çc][ãa]o|resolu[çc][õo]es)\b(?:[\s\d.,/º°ª()–-]|\bn[º°o.]*|\bde\b|\be\b|"
-    r"\bfedera(?:l|is)\b|\bmunicipa(?:l|is)\b|\bestadua(?:l|is)\b|\bcomplementar(?:es)?\b|\b(?:janeiro|fevereiro|"
-    r"mar[çc]o|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)\b)*", re.I)
-RE_ANO_CITADO = re.compile(r"(?:\blei|decreto|portaria|censo|ibge|fundad[oa]|funda[çc][ãa]o|criad[oa]|cria[çc][ãa]o|"
-                           r"popula[çc][ãa]o|emancipad[oa]|emancipa[çc][ãa]o|instalad[oa]|\bn[º°o.])"
-                           r"(?:\s+(?:em|de|do|da|no|na))?[^a-zà-ÿ\n]{0,12}$", re.I)
-
-
-# J7 (25/11, Tobias Barreto/SE): o OCR parte o ano ("Versão 201 8"). Sem juntar, a versão some e o ano vem de
-# outro trecho (2067). Só o quebra de quatro dígitos colados por um espaço; número solto não é tocado.
-RE_ANO_QUEBRADO_18 = re.compile(r"(?<!\d)((?:19|20)\d)\s(\d)(?!\d)")
-
-
-def ano_do_plano(texto, ano_corrente: int = None):
-    """(ano, suspeito). ano None quando não há ano confiável; suspeito quando só havia ano fora da faixa."""
-    teto = ano_corrente or _ano_de_hoje()
-    texto = RE_ANO_QUEBRADO_18.sub(r"\1\2", str(texto or ""))
-    fora = False
-    versoes = [int(m.group(1)) for m in RE_ANO_DE_VERSAO.finditer(str(texto or "")[:5000])]
-    if any(ANO_MINIMO_18 <= a <= teto for a in versoes):   # a última atualização vence a primeira versão (Tubarão)
-        return max(a for a in versoes if ANO_MINIMO_18 <= a <= teto), False
-    fora = bool(versoes)
-    cabeca = str(texto or "")[:1500]
-    citados = [m.span() for m in RE_DATA_DE_ATO_CITADO.finditer(cabeca)]
-    for m in re.finditer(r"\b((?:19|20)\d{2})\b", cabeca):
-        if (any(i <= m.start() < f for i, f in citados)
-                or RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()])):
-            continue
-        a = int(m.group(1))
-        if ANO_MINIMO_18 <= a <= teto:
-            return a, False
-        fora = True
-    return None, fora
 
 
 def _ano_de_hoje() -> int:
@@ -1501,7 +1454,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
             veredito["criterios"]["2_citacao"] = {"ok": False, "trecho": "", "dados": {
                 "detalhe": "ato do excerto não localizado na edição com vários atos"}}
             return recusa("citacao_incompleta")
-    texto = texto[:TETO_DO_JULGAMENTO]
+    documento, texto = texto, texto[:TETO_DO_JULGAMENTO]
 
     if not eh_estadual and uf_do_dominio(url) and uf_do_dominio(url) != str(uf or "").upper():
         return recusa("uf_do_dominio_diverge", "J3")
@@ -1520,16 +1473,12 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     como_plano = e_plano_pelo_cabecalho(texto) or documento_do_repositorio(url or "")
     if como_plano and not e_plano_pelo_cabecalho(texto):
         regras.append("J22")
-    ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano)
-    if ok and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
-        ano, _ = ano_do_plano(texto, ano_corrente)
-        if str(ano or "") != str(dados.get("data") or "")[-4:]:
-            dados["data"] = str(ano) if ano else None
-            regras.append("J7")
+    ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano,
+                                       documento=documento, municipio=nome, ano_corrente=ano_corrente)
     veredito["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     veredito["data"] = dados.get("data")
-    veredito["data_origem"] = None
-    if "J13" in propostas and ok:
+    veredito["data_origem"] = dados.get("data_origem")
+    if "J13" in propostas and ok and not dados.get("sem_ato_de_aprovacao"):   # J13 data o ATO; o plano sem ato já vem datado por si
         d13, origem = data_do_ato_18(texto)
         if d13 and d13 != veredito["data"]:
             veredito["data"] = d13
@@ -1591,7 +1540,9 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
 
     if data_suspeita(veredito["data"], ano_corrente):   # com ou sem ato: ano fora da faixa não é data (Chuvisca/RS, telefone "…-2077")
         return recusa("data_nao_confirmada", "J7")
-    if sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
+    # §101, condição 2: o plano sem ato identifica o ano ou o CICLO. Sem data própria, só o que nomeia o ciclo
+    # segue; "período chuvoso" é estação de todo ano e não situa o documento (Chuvisca/RS, Catuípe/RS).
+    if sem_ato and not veredito["data"] and not RE_NOMEIA_O_CICLO.search(texto):
         return recusa("data_nao_confirmada", "J7")
     categoria, motivo_cat = etapa6_categoria(texto, veredito["data"], eh_estadual,
                                              sem_ato_de_aprovacao=sem_ato, como_plano=como_plano)
@@ -1881,6 +1832,11 @@ def casos_18_medidos() -> list:
 
 
 def casos_18() -> list:
+    from data_do_plano import data_do_plano
+
+    def ano_do_plano(t, _ano=2026, municipio=None):   # o ano da data que o plano informa de si; "" quando não informa
+        return (data_do_plano(t, municipio, _ano)[0] or "")[-4:]
+
     sao_borja = _v(PLANO_RS_18, "São Borja", "RS", URL_RS_18)
     goiania = CANARIOS["plano_novo"]["texto"].replace("14 DE JULHO DE 2026", "21 DE AGOSTO DE 1959")
     plano_2015 = PLANO_PUBLICADO_SEM_ATO.replace("Versao 01/2026", "Versao 01/2015").replace(
@@ -1911,22 +1867,22 @@ def casos_18() -> list:
          ente_18("", "", "", None, "https://parauapebas.pa.gov.br/wp-content/uploads/PLANCON.pdf")[0] == "Parauapebas"
          and (ente_do_cabecalho("DIÁRIO OFICIAL Prefeitura Municipal de Osasco - SP Edição 1") or ("",))[0] == "Osasco"),
         ("J7 data da versão, não de lei citada nem futura (Rio das Ostras 2024; 'Lei nº 2004'; 2034 suspeito)",
-         ano_do_plano(PLANO_MARES_18, 2026) == (2024, False)
-         and ano_do_plano("PLANO DE CONTINGÊNCIA criado pela Lei nº 2004 em 2019", 2026) == (2019, False)
-         and ano_do_plano("PLANO DE CONTINGÊNCIA Versão 2034", 2026) == (None, True)),
+         ano_do_plano(PLANO_MARES_18, 2026) == "2024"
+         and ano_do_plano("PLANO DE CONTINGÊNCIA criado pela Lei nº 2004 do município. Versão 2019", 2026) == "2019"
+         and ano_do_plano("PLANO DE CONTINGÊNCIA Versão 2034", 2026) == ""),
         ("J7 ano de lei citada não é o do plano ('Lei nº 12.608, de 10 de abril de 2012'; 'Lei 12.608/2012')",
-         ano_do_plano("PLANO DE CONTINGÊNCIA conforme a Lei nº 12.608, de 10 de abril de 2012. Mormaço 2025", 2026)
-         == (2025, False)
-         and ano_do_plano("PLANCON - base legal Lei 12.608/2012 - Município de X 2024", 2026) == (2024, False)),
+         ano_do_plano("PLANO DE CONTINGÊNCIA conforme a Lei nº 12.608, de 10 de abril de 2012. Mormaço 2025", 2026, "Mormaço")
+         == "2025"
+         and ano_do_plano("PLANCON - base legal Lei 12.608/2012 - Município de Xis/RS 2024", 2026) == "2024"),
         ("J7 todo ano dentro da citação de lei é do ato; a última atualização vence a primeira versão (RS, Tubarão/SC)",
          all(ano_do_plano(t, 2026) == esperado for t, esperado in (
-             ("PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua 2025", (2025, False)),
-             ("PLANCON Lei Federal nº 12.608 - 10 de abril de 2012. Município 2025", (2025, False)),
+             ("PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua/RS 2025", "2025"),
+             ("PLANCON Lei Federal nº 12.608 - 10 de abril de 2012. PLANCON 2025", "2025"),
              ("COMPDEC Lei Municipal nº 0967/2006 de 19 de abril de 2006 PLANO DE CONTINGÊNCIA PICADA CAFÉ/RS "
-              "AGOSTO/2025", (2025, False)),
+              "AGOSTO/2025", "2025"),
              ("PLANO DE CONTINGÊNCIA VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO Foram seguidas as diretrizes das "
-              "Leis 12.608, de abril de 2012, e 12.983, de Junho de 2014. 1.2 PÁGINA DE ASSINATURAS", (None, False)),
-             ("Data da Primeira Versão: 2014 Atualizações: 03/2024 Município de Tubarão/SC", (2024, False))))),
+              "Leis 12.608, de abril de 2012, e 12.983, de Junho de 2014. 1.2 PÁGINA DE ASSINATURAS", ""),
+             ("Data da Primeira Versão: 2014 Atualizações: 03/2024 Município de Tubarão/SC", "2024")))),
         ("J2 página de 'informes' que 'inicia elaboração do plano' é notícia (Sobral/CE)",
          e_noticia_18("https://www.sobral.ce.gov.br/informes/principais/prefeitura-inicia-elaboracao-do-plano", "")
          and e_noticia_18("https://x.ce.gov.br/p", "Prefeitura inicia elaboração do Plano de Contingência")),
@@ -1980,8 +1936,8 @@ def casos_18() -> list:
          and etapa6_categoria("equipe de elaboração do plano de contingência", "2025",
                               sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
         ("J7 versão com ano partido pelo OCR ('Versão 201 8') lê 2018, não o 2067 de outro trecho (Tobias Barreto/SE)",
-         ano_do_plano("PLANO DE CONTINGÊNCIA DESLIZAMENTO MUNICIPAL - Versão 201 8 Tobias Barreto - SE", 2026) == (2018, False)
-         and ano_do_plano("PLANO DE CONTINGÊNCIA Protocolo SEIDH 2067 Versão 2 0 1 8", 2026) == (None, True)
+         ano_do_plano("PLANO DE CONTINGÊNCIA DESLIZAMENTO MUNICIPAL - Versão 201 8 Tobias Barreto - SE", 2026) == "2018"
+         and ano_do_plano("PLANO DE CONTINGÊNCIA Protocolo SEIDH 2067 Versão 2 0 1 8", 2026) == "2018"
          and (lambda v: v["promove"] and v["data"] == "2018")(_v(
              ("PLANO DE CONTINGÊNCIA DESLIZAMENTO MUNICIPAL - Versão 201 8. Município de Tobias Barreto - SE. A COMPDEC "
               "realizará exercícios simulados conjuntos uma vez ao ano, sob a coordenação da COMPDEC, emitindo relatório "
@@ -2050,6 +2006,10 @@ def casos_18() -> list:
          and e_estrutura_18("DECRETO N°020 DE 08 DE MARÇO DE 2021 Regulamenta a Lei n° 1.075 de 12 de dezembro de 2006 "
                             "que cria a Coordenadoria Municipal de Defesa Civil - COMDEC")
          and not e_estrutura_18("Institui o Plano de Contingência e a COMPDEC participa do acionamento")),
+        ("J13 não troca a data do plano sem ato pela da lei que ele cita, e a origem da data viaja no veredito",
+         (lambda v: (v["data"], v["data_origem"]) == ("2026", "atualizacao"))(
+             _v(PLANO_PUBLICADO_SEM_ATO + " Base legal: Lei nº 12.608, de 10 de abril de 2012.",
+                "Taió", "SC", URL_PDF_DE_PLANO, propostas=("J13",)))),
         ("o veredito traz o codebook em vigor e as regras que agiram",
          julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["codebook"] == CODEBOOK_VERSAO
          and "J1" in julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["regras_18"]),
@@ -2068,14 +2028,13 @@ def autoteste() -> int:
         marca = "OK  " if all(v.get(k) == x for k, x in esperado.items()) else "FALHA"
         print(f"  {marca} {nome_canario}: promove={v['promove']} categoria={v['categoria']} motivo={v['motivo']}")
 
-    # A1-28 (12/10/2026): plano sem ato leva a data da capa, nunca a de uma referência
+    # A1-28 (12/10/2026): plano sem ato leva a data que informa de si, nunca a de uma referência
+    from data_do_plano import data_do_plano
     _t = ("PREFEITURA MUNICIPAL DE X\nPLANO MUNICIPAL DE CONTINGÊNCIA El Niño 2026\n"
           "Aprovado em 14/08/2026\n" + "x " * 400 + "Referência: Lei de 12/03/2012")
-    _tit = RE_TITULO_DE_PLANO.search(_t)
-    if data_junto_ao_titulo(_t, _tit, "2026") != "14/08/2026":
+    if plano_sem_ato(_t, URL_PDF_DE_PLANO, ano_corrente=2026)[2].get("data") != "14/08/2026":
         falhas.append("A1-28: data da capa do plano sem ato não foi lida")
-    if data_junto_ao_titulo("PLANO DE CONTINGÊNCIA 2026\n" + "x " * 400 + "de 12/03/2012",
-                            RE_TITULO_DE_PLANO.search("PLANO DE CONTINGÊNCIA 2026"), "2026") is not None:
+    if data_do_plano("PLANO DE CONTINGÊNCIA 2026\n" + "x " * 400 + "de 12/03/2012", None, 2026)[0] != "2026":
         falhas.append("A1-28: data longe do título ou de outro ano virou data do plano")
 
     # travas que não são canário de documento
@@ -2449,6 +2408,10 @@ def casos_lote_18() -> list:
         b = _ler_paralelo_18(destino)
         gravar_paralelo_18([], destino, "teste")
         c = _ler_paralelo_18(destino)
+        sem_lote = {"hash_evidencia": "9" * 64, "uf": "RS", "municipio": "Outro", "promove": True, "lote": False}
+        _escrever_paralelo_18(destino, "teste", [sem_lote], [], {})
+        gravar_paralelo_18([], destino, "teste")
+        d = _ler_paralelo_18(destino)
         motivos = {f["hash_evidencia"]: f["motivo"] for f in a["sem_leitura"]}
         return [
             ("lote: documento lido é julgado pelo 1.8 e leva o hash do texto lido",
@@ -2462,6 +2425,8 @@ def casos_lote_18() -> list:
              len(b["decisoes"]) == 1 and b["resumo"]["lido_neste_lote"] == 0),
             ("lote: rejulgamento local não apaga os registros do lote",
              any(r.get("lote") for r in c["decisoes"]) and c["resumo"].get("lote_julgadas") == 1),
+            ("rejulgamento local não apaga registros de rodadas anteriores sem lote (25/11: 564 perdidos)",
+             len(d["decisoes"]) == 1 and d["decisoes"][0]["hash_evidencia"] == "9" * 64),
         ]
 
 
@@ -2499,13 +2464,17 @@ def _escrever_paralelo_18(destino: pathlib.Path, fonte: str, registros: list, se
 
 def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
     """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo.
-    Os registros do lote de leitura (`"lote": true`) que já estão no arquivo não se perdem no rejulgamento local."""
+    Log que só cresce (26/10 e 25/11): todo registro já gravado sobrevive, salvo quando este rejulgamento
+    julga de novo o mesmo documento e município. Antes só o lote (`"lote": true`) sobrevivia; o rejulgamento
+    local sem cópia do documento gravava `decisoes` vazio e apagava os 564 registros da produção."""
     registros, resumo = rejulgar_paralelo_18(decisoes)
     anteriores = _ler_paralelo_18(destino)
-    vistos = {r["hash_evidencia"] for r in registros}
-    lote = [r for r in anteriores["decisoes"] if r.get("lote") and r["hash_evidencia"] not in vistos]
-    resumo["lote_julgadas"] = len(lote)
-    return _escrever_paralelo_18(destino, fonte, registros + lote, anteriores.get("sem_leitura", []), resumo)
+    chave = lambda r: (r.get("hash_evidencia"), r.get("uf"), r.get("municipio"))
+    novas = {chave(r) for r in registros}
+    mantidos = [r for r in anteriores["decisoes"] if chave(r) not in novas]
+    resumo["mantidas_de_rodadas_anteriores"] = len(mantidos)
+    resumo["lote_julgadas"] = sum(1 for r in mantidos if r.get("lote"))
+    return _escrever_paralelo_18(destino, fonte, registros + mantidos, anteriores.get("sem_leitura", []), resumo)
 
 
 # Lote de leitura da rodada paralela J18: documento que não está em `evidencias/` é lido pela porta de rede

@@ -105,10 +105,11 @@ Atualizado em 25/11/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_municipios.json`, `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+8) | — | **178** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+8) | — | **179** | não |
 | `conferir_emergencias_estaduais.py` | — | `emergencias_estaduais.json` | — | 1 | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
+| `data_do_plano.py` | — | — | — | 1 | não |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
 | `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 5 | não |
 | `desfechos_sus.py` | — | — | — | 7 | não |
