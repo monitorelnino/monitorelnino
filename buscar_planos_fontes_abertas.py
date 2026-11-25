@@ -264,6 +264,7 @@ MODALIDADES_PNCP = (8, 9, 6, 4, 5, 7, 12, 10)   # dispensa, inexigibilidade, pre
 ANO_PNCP_DESDE = 2023
 TAMANHO_PNCP = 500                              # páginas grandes: 10 capitais em 200 min a 50 por página; o servidor que recusa (400) volta a 50
 PAGINAS_PNCP = 40                               # teto por consulta; estourar sem achado é erro, não ausência
+TETO_PNCP_S = 20 * 60                           # teto por município (25/11: Recife comeu os 120 min da válvula de PE, 0 lidos)
 PADRAO_OBJETO = re.compile(PADRAO_PLANO.pattern + r"|redu[cç][aã]o de risco|pmrr|defesa civil", re.I)
 
 
@@ -294,12 +295,17 @@ def ler_pncp(corpo: bytes) -> tuple:
     return saida, len(d["data"]), int(d.get("totalPaginas") or 1)
 
 
-def consultar_pncp(buscar, ibge: str, hoje: str, paginas: int = PAGINAS_PNCP) -> tuple:
-    """(consulta, achados, motivo): todas as modalidades e anos; só diz `sem_resultado` se leu tudo."""
-    achados, lidas, consultas, truncada, tam = [], 0, 0, False, TAMANHO_PNCP
+def consultar_pncp(buscar, ibge: str, hoje: str, paginas: int = PAGINAS_PNCP, relogio=time.monotonic) -> tuple:
+    """(consulta, achados, motivo): todas as modalidades e anos; só diz `sem_resultado` se leu tudo. Passado o
+    teto do município, o que falta não se lê: com achado é `lido`, sem achado é erro (volta no fim da fila)."""
+    achados, lidas, consultas, truncada, tam, fim = [], 0, 0, False, TAMANHO_PNCP, relogio() + TETO_PNCP_S
     for ano in range(ANO_PNCP_DESDE, int(hoje[:4]) + 1):
         for mod in MODALIDADES_PNCP:
             for pag in range(1, paginas + 1):
+                if relogio() > fim:
+                    if achados:
+                        return url_qd(PNCP, parametros_pncp(ibge, MODALIDADES_PNCP[0], ANO_PNCP_DESDE, hoje, 1)), achados, None
+                    raise ValueError(f"leitura incompleta: teto de {TETO_PNCP_S // 60} min no município, {lidas} contratação(ões) lida(s); não vale como ausência")
                 try:
                     corpo = buscar(url_qd(PNCP, parametros_pncp(ibge, mod, ano, hoje, pag, tam)), 60)
                 except urllib.error.HTTPError as e:
@@ -679,6 +685,9 @@ def autoteste() -> int:
         "S22: páginas de 500; 400 na primeira chamada volta a 50 para o resto, sem repetir o 500": lambda: (
             lambda v: consultar_pncp(lambda u, t: (v.append(u), (_ for _ in ()).throw(urllib.error.HTTPError(u, 400, "x", {}, None)) if "tamanhoPagina=500" in u else pn(1, [pc("Plano de Contingência", 7)]))[1], "1", "2026-10-22")[1] != []
             and "tamanhoPagina=500" in v[0] and sum("tamanhoPagina=500" in u for u in v) == 1 and "tamanhoPagina=50&" in v[1] + "&")([]),
+        "S22: teto do município: sem achado é erro (não ausência), com achado é o que leu": lambda: (
+            _levanta(lambda: consultar_pncp(lambda u, t: pn(1, [pc("Compra de papel", 8)]), "1", "2026-10-22", relogio=iter(range(0, 10**6, 600)).__next__))
+            and consultar_pncp(lambda u, t: pn(1, [pc("Plano de Contingência", 7)]), "1", "2026-10-22", relogio=iter(range(0, 10**6, 600)).__next__)[1] != []),
         "S22: 403 é recusa; falha de conexão é erro": lambda: (
             um(["S22"], {**base, "pncp.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S22"]["situacao"] == "recusa_de_fonte"
             and um(["S22"], {**base, "pncp.gov.br": OSError("tls")})["S22"]["situacao"] == "erro"),
