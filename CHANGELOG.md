@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2097 · Rodada J18: rejulgamento paralelo guarda o que já julgou
+
+O juiz 1.8 paralelo não apaga mais os registros já julgados quando uma rodada não tem o documento local: a correção está em `gravar_paralelo_18`, com trava. A rodada grava só em arquivos paralelos (`data/paralelo_*`); índice, produção e páginas não mudam.
+
 ## 2026-11-25 · #2089 · Portarias de recursos: resposta, art. 1º e retificação
 
 O coletor só consultava "Autoriza a transferência de recursos" e perdia as portarias de resposta ("Autoriza o empenho e a transferência"): 745 atos contra 624 de 26/04 a 23/11. Passa a ler as duas redações, o município e o valor do art. 1º, a retificação como correção do ato citado e um ato por número e processo. Não casado deixa de acumular; Segredo/RS deixa de contar duas vezes. Janela ou ato que falha é relido na rodada seguinte.
