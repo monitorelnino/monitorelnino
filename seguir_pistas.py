@@ -98,6 +98,17 @@ def a_retentar(p: dict, d_hoje) -> bool:
     return bool(proxima) and proxima <= d_hoje
 
 
+def falha_de_rede(p: dict) -> bool:
+    """A última busca desta pista caiu na rede (queda ou tempo esgotado, sem recusa da fonte)? Função pura.
+
+    25/11/2026: `seguir()` marca `buscador2_em` ao abrir a pista, antes de saber o resultado. Uma queda
+    de rede contava como "vista", e o reprocessamento não a pegava de volta quando a rede voltasse: 191
+    pistas de rj.gov.br, saude.mt.gov.br e paineldoclima.am.gov.br no lote 3. Só a busca que terminou
+    (com ou sem achado) conta como vista; a que caiu continua elegível ao reprocessamento."""
+    s = p.get("seguimento") or {}
+    return classe_sem_via(s.get("falhas") or [], s.get("lacuna", "")) == "falha_de_rede"
+
+
 PREFIXO_B2_SEM_RESOLVER = PREFIXO_FECHADA + "redirecionamento não resolvido"
 TETO_BUSCAS_VEICULO = 300   # por rodada: a cota do metabuscador é o limite, não a fila (handover B2)
 
@@ -136,7 +147,7 @@ def a_seguir(p: dict, d_hoje, refazer_dias: int = 7, reprocessar: bool = False, 
     if a_retentar(p, d_hoje):
         return True
     if reprocessar:
-        if p.get("buscador2_em"):
+        if p.get("buscador2_em") and not falha_de_rede(p):   # vista = a busca terminou, não caiu na rede
             return False
     elif str(p.get("registrado_em") or "9999")[:10] < (d_hoje - datetime.timedelta(days=refazer_dias)).isoformat():
         return False   # sem data de registro (pendência do descobrir_planos) = nunca vista: entra
@@ -638,10 +649,30 @@ def autoteste():
         p = gn_b2(6, retentar_busca_veiculo_em="2026-10-26")
         return a_seguir(p, datetime.date(2026, 10, 26), reprocessar=True)
 
+    def t_falha_de_rede_volta_ao_reprocesso_e_recusa_nao():
+        d = datetime.date(2026, 11, 25)
+        pag = lambda falha, buscada_em="25/11/2026", via="": {
+            "id": "q", "municipio": "Taió", "uf": "SC", "ibge": "4217808", "alvo": "4217808",
+            "registrado_em": "2026-10-01", "url": "https://taio.sc.gov.br/noticia",
+            "status": "pista — recusada pelo juiz: citacao_incompleta", "buscador2_em": "2026-11-25",
+            "seguimento": {"data": buscada_em, "via": via, "falhas": [falha] if falha else [], "tentativas": 3}}
+        import urllib.error
+        def cai(u): raise urllib.error.URLError("rede")
+        f = {"pistas": [pag("pagina: URLError")]}
+        seguir(f, "25/11/2026", abrir=cai, reprocessar=True)
+        return (a_seguir(pag("pagina: URLError"), d, reprocessar=True)            # queda: volta ao reprocesso
+                and not a_seguir(pag("pagina: HTTPError 403"), d, reprocessar=True)  # recusa se respeita
+                and not a_seguir(pag("", via="B4"), d, reprocessar=True)              # busca que terminou: vista
+                and f["pistas"][0]["buscador2_em"] == "2026-11-25"                   # a marca do dia segue
+                and f["pistas"][0]["seguimento"]["falhas"] == ["pagina: URLError"]
+                and a_seguir(f["pistas"][0], d, reprocessar=True))                    # e a próxima rodada a pega
+
     try:
         return rodar_autoteste({
             "página que falhou volta fora da janela, até três vezes; recusa da fonte não volta; a falha diz o código":
                 t_pagina_que_falhou_volta_e_recusa_nao,
+            "reprocessamento: queda de rede não conta como vista (recusa e busca que terminou contam)":
+                t_falha_de_rede_volta_ao_reprocesso_e_recusa_nao,
             "sem via, o resumo separa recusa da fonte, queda de rede e página sem candidato":
                 t_classe_sem_via_separa_recusa_de_rede,
             "arquivo: só link de agregador ainda não tentado, sem repetição": t_arquivo_so_agregador_ainda_nao_tentado,

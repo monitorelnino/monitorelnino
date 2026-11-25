@@ -9,6 +9,11 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2092 · Buscador 2: queda de rede não conta como vista
+
+O reprocessamento do Buscador 2 tratava como vista a pista cuja busca caiu na rede, porque a marca do dia era gravada antes do resultado. Agora só a busca que termina (achado, nada ou recusa da fonte) conta como vista; a queda volta ao reprocessamento. Autoteste com caso novo.
+
+
 ## 2026-11-25 · #2089 · Portarias de recursos: resposta, art. 1º e retificação
 
 O coletor só consultava "Autoriza a transferência de recursos" e perdia as portarias de resposta ("Autoriza o empenho e a transferência"): 745 atos contra 624 de 26/04 a 23/11. Passa a ler as duas redações, o município e o valor do art. 1º, a retificação como correção do ato citado e um ato por número e processo. Não casado deixa de acumular; Segredo/RS deixa de contar duas vezes. Janela ou ato que falha é relido na rodada seguinte.
