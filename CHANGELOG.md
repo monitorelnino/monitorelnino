@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.
 
+## 2026-11-25 · #2097 · Rodada J18: rejulgamento paralelo guarda o que já julgou
+
+O juiz 1.8 paralelo não apaga mais os registros já julgados quando uma rodada não tem o documento local: a correção está em `gravar_paralelo_18`, com trava. A rodada grava só em arquivos paralelos (`data/paralelo_*`); índice, produção e páginas não mudam.
 ## 2026-11-25 · #2092 · Buscador 2: queda de rede não conta como vista
 
 O reprocessamento do Buscador 2 tratava como vista a pista cuja busca caiu na rede, porque a marca do dia era gravada antes do resultado. Agora só a busca que termina (achado, nada ou recusa da fonte) conta como vista; a queda volta ao reprocessamento. Autoteste com caso novo.
