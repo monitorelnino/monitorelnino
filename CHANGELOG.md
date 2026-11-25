@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Em `publicar_previa.yml` o redirecionamento estava no `rm` depois do deploy: `codigo_saida` era o do `rm` (sempre 0) e o filtro lia arquivo vazio. A saída do deploy volta ao arquivo e o código é o dele. O veredito ("Deploy is live") não muda. Item 6 do handover de erros do GitHub: o "Site not found" de 18/11 foi 1 em 4.073 prévias, sem corrida com a renomeação.
 
+## 2026-11-25 · #2082 · Válvula não comita o log da corrente
+
+O PR de dado da válvula levava as próprias linhas de `data/saude_pipeline.json`; de dia a publicação anexa ao mesmo log a cada run e o #2078 conflitou três vezes no GitHub. No commit do `_coletor.yml`, o ramo `coleta-dia/*` devolve o log à base; as linhas da válvula ficam no resumo do job. F102 no catálogo; ensaio 32.
+
 ## 2026-11-25 · #2080 · Checagem pré-noite tolera Portões e prévia do push na main
 
 A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.

@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-11-24",
+ "atualizado_em": "2026-11-25",
  "falhas": [
   {
    "id": "F01",
@@ -1379,6 +1379,18 @@
    ],
    "correcao": "O laço põe no índice todo arquivo rastreado que a regeneração mudou (`git add -u`), o mesmo conjunto que o commit local já leva; `--somente-indice` sai do `commit_do_elo.py`.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_publicador_segue_o_rebase"
+  },
+  {
+   "id": "F102",
+   "noite": "2026-11-24→2026-11-25",
+   "titulo": "PR de dado da válvula conflita com a publicação em `data/saude_pipeline.json`",
+   "sintoma": "#2078 (D3, válvula `a1-d3b`) nasceu limpo e conflitou três vezes enquanto os Portões rodavam; merge só depois de tirar à mão a linha da válvula do log.",
+   "causa": "A válvula comitava as próprias linhas de `data/saude_pipeline.json`; de dia a publicação automática anexa ao mesmo log a cada run, e o merge do GitHub não usa o resolvedor da base comum.",
+   "prova": [
+    "LOTES 25/11 10:5x e 11:0x: três realinhamentos do #2078, conflito só em `data/saude_pipeline.json`"
+   ],
+   "correcao": "No commit do `_coletor.yml`, ramo `coleta-dia/*` devolve o log da corrente à base antes do `git add`; as linhas da válvula ficam no resumo do job.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_valvula_nao_comita_o_log"
   }
  ]
 }

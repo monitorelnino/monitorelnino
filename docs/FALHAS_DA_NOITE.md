@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-24. 101 falhas; 93 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-25. 102 falhas; 94 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -914,3 +914,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do job `publicar` do run 45526087142: "4 caminho(s) resolvido(s)", "caminho sem escritor declarado, fora do commit: data/municipios_card.json", "You must edit all merge conflicts" ×5
 - **Correção:** O laço põe no índice todo arquivo rastreado que a regeneração mudou (`git add -u`), o mesmo conjunto que o commit local já leva; `--somente-indice` sai do `commit_do_elo.py`.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_publicador_segue_o_rebase`
+
+## F102 · PR de dado da válvula conflita com a publicação em `data/saude_pipeline.json`
+
+- **Noite:** 2026-11-24→2026-11-25
+- **Sintoma:** #2078 (D3, válvula `a1-d3b`) nasceu limpo e conflitou três vezes enquanto os Portões rodavam; merge só depois de tirar à mão a linha da válvula do log.
+- **Causa:** A válvula comitava as próprias linhas de `data/saude_pipeline.json`; de dia a publicação automática anexa ao mesmo log a cada run, e o merge do GitHub não usa o resolvedor da base comum.
+- **Prova:** LOTES 25/11 10:5x e 11:0x: três realinhamentos do #2078, conflito só em `data/saude_pipeline.json`
+- **Correção:** No commit do `_coletor.yml`, ramo `coleta-dia/*` devolve o log da corrente à base antes do `git add`; as linhas da válvula ficam no resumo do job.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_valvula_nao_comita_o_log`

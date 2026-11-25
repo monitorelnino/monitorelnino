@@ -485,6 +485,10 @@ jobs:
           # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
           # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
           # à `main` — e ele chegava junto, no mesmo commit.
+          # 25/11/2026 (F102): a válvula não comita o log da corrente. De dia a publicação anexa a ele a
+          # cada run, e o PR de dado conflitava no GitHub, que não usa o resolvedor (#2078, três vezes).
+          # As linhas da válvula ficam no resumo do job (`--listar`).
+          case "${RAMO}" in coleta-dia/*) git checkout HEAD -- data/saude_pipeline.json 2>/dev/null || true ;; esac
           git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
