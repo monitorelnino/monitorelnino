@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2098 · Cartão do município: autodeclaração de plano
+
+O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.
 ## 2026-11-25 · #2093 · Juiz: a data do plano é a que o documento informa
 
 O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.
