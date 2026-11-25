@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>25/11/2026 · Portarias de recursos: resposta, art. 1º e retificação</dt>
+      <dd>O coletor só consultava &quot;Autoriza a transferência de recursos&quot; e perdia as portarias de resposta (&quot;Autoriza o empenho e a transferência&quot;): 745 atos contra 624 de 26/04 a 23/11. Passa a ler as duas redações, o município e o valor do art. 1º, a retificação como correção do ato citado e um ato por número e processo. Não casado deixa de acumular; Segredo/RS deixa de contar duas vezes.</dd>
       <dt>25/11/2026 · Prévia: o relatório lê o código de saída do deploy</dt>
       <dd>Em `publicar_previa.yml` o redirecionamento estava no `rm` depois do deploy: `codigo_saida` era o do `rm` (sempre 0) e o filtro lia arquivo vazio. A saída do deploy volta ao arquivo e o código é o dele. O veredito (&quot;Deploy is live&quot;) não muda. Item 6 do handover de erros do GitHub: o &quot;Site not found&quot; de 18/11 foi 1 em 4.073 prévias, sem corrida com a renomeação.</dd>
       <dt>25/11/2026 · Válvula não comita o log da corrente</dt>
@@ -162,8 +164,6 @@
       <dd>Só `data/paralelo_juiz18.json`; nada do índice lê o arquivo. Produção com 34.272 decisões; 564 julgadas com documento local; 9.684 seguem sem cópia local (ponte sem envio desde 21/11). Efeito das 564: 38 decisões mudam (33 perdem a promoção, 5 ganham), concentradas no RS. Efeito no índice por UF fica para o rejulgamento completo.</dd>
       <dt>22/11/2026 · Buscador 2: sem via vira recusa, queda ou página sem candidato</dt>
       <dd>O resumo da rodada chamava &quot;falha&quot; a pista sem via: recusa da fonte (403, muro de robô), queda de rede e página lida sem candidato. Uma função pura separa as três, com autoteste. Só rótulo; nenhum dado muda.</dd>
-      <dt>22/11/2026 · Triagem conta o prazo pela data da noite</dt>
-      <dd>A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90); a folga de um dia que o #1966 deu ao portão sai. 40 pistas vencidas fechadas por prazo.</dd>
     </dl>
   </section>
 </main>
