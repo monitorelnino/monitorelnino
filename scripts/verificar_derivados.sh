@@ -114,6 +114,8 @@ SEM_PAINEL=(':!data/snapshot_feed.json' ':!capturas-ci' ':!data/saude_pipeline.j
             ':!docs/SAUDE_PIPELINE.md' ':!data/painel_da_noite.json')
 if git diff --quiet --exit-code -- . "${SEM_PAINEL[@]}"; then
   echo "✓ DERIVADOS OK — cadeia canônica regenerada em árvore limpa sem diferença (índice, selos, feeds, dados abertos, PDFs, manifesto)."
+elif python3 scripts/selo_da_main.py DERIVADOS; then   # D4 (25/11/2026): merge sem selo; o publicador sela
+  git diff --stat -- . "${SEM_PAINEL[@]}" | tail -8
 else
   echo "✗ DERIVADOS: a regeneração alterou arquivos versionados — havia derivado obsoleto:"; git diff --stat -- . "${SEM_PAINEL[@]}" | tail -8; exit 1
 fi
