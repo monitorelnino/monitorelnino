@@ -9,12 +9,37 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2080 · Checagem pré-noite tolera Portões e prévia do push na main
+
+A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.
+
+## 2026-11-25 · #2079 · Despachante reconfere o plano antes de cada disparo
+
+Na abertura de 25/11 o relógio e o tique oportunista da válvula montaram o plano antes de qualquer disparo e dispararam a noite inteira duas vezes; a segunda cópia do DOE incremental perdeu o commit em `saude_sinais.json`. Agora cada item é reconferido contra as execuções do seu workflow logo antes do disparo, e o que outro observador já disparou é pulado.
+
+## 2026-11-25 · #2073 · Juiz 1.8 (rodada J18): ano partido pelo OCR lê-se inteiro
+
+A leitura da versão do plano junta dígitos separados pelo OCR ("Versão 201 8" lê-se 2018). Antes, a versão sumia e o ano vinha de outro trecho do documento (2067, Tobias Barreto/SE). Trava nova no autoteste do juiz: 117 travas. Produção (codebook 1.7) não muda; a rodada paralela rejulga depois do merge.
+
+## 2026-11-25 · #2075 · Publicador segue o rebase depois de unir e regenerar
+
+Na noite 24→25 o publicador perdeu o commit nas cinco tentativas: depois de unir o conflito e regenerar os derivados, punha no índice só os caminhos com escritor declarado, e o cartão, as páginas e os PDFs regenerados travavam o rebase. O laço passa a pôr no índice todo arquivo rastreado que a regeneração mudou. Falha F101; ensaio 31.
+
+## 2026-11-25 · #2074 · Busca de planos: um ramo e um PR de dado por grupo de UF
+
+Os seis grupos da matriz empurravam no mesmo ramo e o grupo que terminava junto com os irmãos perdia as cinco tentativas de push (CO, 23/11). Agora cada grupo coleta e empurra no próprio ramo `<ramo>-<grupo>` e abre o próprio PR de dado.
+
+## 2026-11-25 · #2077 · Reaplicação lê a base de noite antiga no clone raso
+
+A reaplicação recusava o artefato de uma noite antiga porque a base dele não estava no clone raso do runner. Agora busca a base pelo sha antes de desistir.
+
 ## 2026-11-24 · #2071 · Válvula: SearXNG sobe sozinho quando o comando usa o metabuscador
 
 As válvulas de planos de MG e RJ pediram S24 e S27 sem a chave do metabuscador e gravaram recusa de conexão em todo município. `coleta_de_dia.yml` passa a inferir a chave do comando (S24, S27, seguidor e busca web), como já fazia com o Node e o OCR.
 
 ## 2026-11-24 · #2067 · MapBiomas: o job da soma baixa o que a gravação usa
 A coleta do MapBiomas caiu ao gravar a data da consulta porque o job que soma os mapas baixava só parte do repositório e não tinha o módulo da data. O módulo entra na lista, e o autoteste passa a reprovar quando o coletor usa um módulo que o job não baixa.
+
 ## 2026-11-24 · #2065 · Legendas do MapBiomas: a amostra reproduz o traço
 
 Monitor de riscos, três figuras do MapBiomas. A amostra tracejada da legenda aparecia contínua (o fundo inline da amostra anulava o desenho) e a mediana mudava de traço entre fogo e água. Agora a amostra reproduz o traço da série e a codificação é uma só: mediana contínua escura, 2024 cinza pontilhado (barra cinza na água) e ano em destaque laranja. Nenhum texto novo; capturas a 375 e 1280 px conferidas.
@@ -32,6 +57,7 @@ A reposição manual do domínio publicou o site e depois terminou vermelha ao a
 ## 2026-11-24 · #2058 · Válvula: conferir enxerga o módulo base
 
 A etapa `conferir` da válvula de dia baixava só `scripts/saude_pipeline.py`, e o script importa `coletores_base.py` da raiz; os lotes J18 caíram antes de conferir a entrada. O checkout esparso passa a incluir `coletores_base.py`. Sem mudança de coleta, dado ou página.
+
 ## 2026-11-24 · #2056 · Válvula traz a main antes do PR de dado
 
 O ramo `coleta-dia/*` nasce da `main` do disparo e a coleta leva horas; o PR de dado nascia em conflito e, em conflito, os Portões não rodavam (#2038, #2045). Antes do push, a válvula une a `main` ao ramo pela base comum, com o mesmo resolvedor do rebase. Falha F99; ensaio 30 roda o trecho do próprio workflow.

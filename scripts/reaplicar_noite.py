@@ -100,7 +100,12 @@ def reaplicar_arquivo(rel: str, alterados, base, arvore, artefato, destino, exis
 def _na_base(base: str, rel: str):
     """Conteúdo de `rel` no commit `base`; None se o arquivo não existia lá; SEM_BASE sem o commit. Só lê.
     24/11/2026: `data/funil/<dia>.json` novo dos dois lados era recusado como "base fora do histórico"."""
-    if not base or subprocess.run(["git", "cat-file", "-e", f"{base}^{{commit}}"], cwd=RAIZ).returncode:
+    tem = lambda: not subprocess.run(["git", "cat-file", "-e", f"{base}^{{commit}}"], cwd=RAIZ,  # noqa: E731
+                                     capture_output=True).returncode
+    # 25/11/2026: o clone do runner é raso; a base de uma noite antiga vem pelo sha, sem o histórico.
+    if base and not tem():
+        subprocess.run(["git", "fetch", "-q", "--depth=1", "origin", base], cwd=RAIZ, capture_output=True)
+    if not base or not tem():
         return SEM_BASE
     r = subprocess.run(["git", "show", f"{base}:{rel}"], cwd=RAIZ, capture_output=True)
     return r.stdout.decode("utf-8") if r.returncode == 0 else None
