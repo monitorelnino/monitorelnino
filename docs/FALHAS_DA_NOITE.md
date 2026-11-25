@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-25. 102 falhas; 94 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-25. 103 falhas; 95 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -923,3 +923,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** LOTES 25/11 10:5x e 11:0x: três realinhamentos do #2078, conflito só em `data/saude_pipeline.json`
 - **Correção:** No commit do `_coletor.yml`, ramo `coleta-dia/*` devolve o log da corrente à base antes do `git add`; as linhas da válvula ficam no resumo do job.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_valvula_nao_comita_o_log`
+
+## F103 · Portões de PR rodam no commit anterior ao selo; execução pulada conta como aprovada
+
+- **Noite:** 2026-11-24→2026-11-25
+- **Sintoma:** De 24/11 10:35 a 25/11 09:30 UTC, 11 de 12 execuções vermelhas de "Portões" em PR (`✗ DERIVADOS: o manifesto está obsoleto`) rodaram no commit sem selo; o commit selado teve os quatro jobs pulados (#2059, run 45447763800).
+- **Causa:** O PR carregava derivados que são função do repositório inteiro (manifesto, `mudancas.html`, `CODEMAP.md`); o `ready_for_review` do #2040 corria com o push do selo.
+- **Prova:** robo-registro notas/HANDOVER_SELO_NA_MAIN_25-11-2026.md §1: tabela por execução (head testado × commit do selo × hora do "pronto")
+- **Correção:** PR 1 (D3/D4): o publicador regenera e commita `CODEMAP.md` com o resto; no push da `main`, derivado velho passa com aviso enquanto a `main` aguarda selo (`scripts/selo_da_main.py`) e reprova quando selada. PR 2 (D1/D2): o selo sai do PR.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_main_se_sela`
