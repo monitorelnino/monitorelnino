@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2093 · Juiz: a data do plano é a que o documento informa
+
+O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.
+
 ## 2026-11-25 · #2090 · A `main` se sela sozinha
 
 O publicador passa a regenerar e commitar o mapa do código junto com o manifesto e a página de mudanças. No push da `main`, entre o merge de um PR e a publicação seguinte, derivado velho passa com aviso; depois da publicação volta a reprovar. Ensaio 33 e falha F103.
