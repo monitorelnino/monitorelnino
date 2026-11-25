@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-25 · #2073 · Juiz 1.8 (rodada J18): ano partido pelo OCR lê-se inteiro
 
 A leitura da versão do plano junta dígitos separados pelo OCR ("Versão 201 8" lê-se 2018). Antes, a versão sumia e o ano vinha de outro trecho do documento (2067, Tobias Barreto/SE). Trava nova no autoteste do juiz: 117 travas. Produção (codebook 1.7) não muda; a rodada paralela rejulga depois do merge.
+## 2026-11-25 · #2077 · Reaplicação lê a base de noite antiga no clone raso
+
+A reaplicação recusava o artefato de uma noite antiga porque a base dele não estava no clone raso do runner. Agora busca a base pelo sha antes de desistir.
 
 ## 2026-11-24 · #2071 · Válvula: SearXNG sobe sozinho quando o comando usa o metabuscador
 
