@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2101 · Cartão do município: linhas de autodeclaração
+
+O cartão do município, na página inicial e em Prefeituras, mostra o que ele declarou ao Indicador de Capacidade Municipal da Defesa Civil Nacional (2026), à pesquisa MUNIC do IBGE (2020) e ao S2iD, com a fonte do indicador em link. Quando o município declarou ter plano e o documento não foi localizado, a linha diz isso até o corte. Uma função só monta as linhas; os moldes vivem no catálogo.
+
 ## 2026-11-25 · #2098 · Cartão do município: autodeclaração de plano
 
 O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.
