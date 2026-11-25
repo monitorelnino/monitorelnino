@@ -225,6 +225,12 @@ def plano_da_reserva(execucoes_por_workflow: dict, feitos: set, agora: dt.dateti
     return []
 
 
+def plano_completo(registro: dict, execucoes: dict, feitos: set, agora: dt.datetime) -> list:
+    """Temporizadores devidos e, depois, a reserva. Função pura."""
+    plano = plano_de_disparo(registro, execucoes, agora)
+    return plano + plano_da_reserva(execucoes, feitos, agora, ja_no_plano=[x["workflow"] for x in plano])
+
+
 def atraso_min(temporizador: dict, agora: dt.datetime) -> int:
     """Minutos desde o horário primário previsto, dentro da janela. Função pura."""
     cron = str(temporizador.get("cron_primario") or "")
@@ -534,6 +540,11 @@ def _autoteste() -> int:
        [x["elo"] for x in plano_da_reserva({"noturno_diarios.yml": [canc],
                                             "noturno_triagem.yml": [canc]}, set(), t_r)]
        == ["diarios"])
+    ok("disparo de outro observador entre o plano e o disparo tira o item (25/11)",
+       [x["id"] for x in plano_completo(reg, {"a.yml": []}, set(), agora)] == ["abertura", "outro"]
+       and [x["id"] for x in plano_completo(reg, {"a.yml": [{"createdAt": "2026-10-04T02:33:05Z",
+                                                            "status": "queued"}]}, set(), agora)]
+       == ["outro"])
     ok("a reserva desiste depois de três tentativas",
        plano_da_reserva({"noturno_diarios.yml": [canc] * 3}, set(), t_r) == [])
     ok("a reserva não dispara depois das 08:00 UTC (não terminaria na janela)",
@@ -608,9 +619,8 @@ def despachar(origem: str, relatorio: bool = False, silencioso: bool = False) ->
     workflows = sorted({t.get("workflow") for t in reg.get("temporizadores") or []}
                        | {w for _, w, _ in ELOS_DA_RESERVA})
     execucoes = {w: execucoes_de(w) for w in workflows if w}
-    plano = plano_de_disparo(reg, execucoes, agora)
-    plano += plano_da_reserva(execucoes, elos_feitos(agora), agora,
-                              ja_no_plano=[x["workflow"] for x in plano])
+    feitos = elos_feitos(agora)
+    plano = plano_completo(reg, execucoes, feitos, agora)
 
     if not silencioso:
         print(f"despachante · {hora_utc(agora)} UTC · origem {origem} · "
@@ -625,6 +635,13 @@ def despachar(origem: str, relatorio: bool = False, silencioso: bool = False) ->
         if item["rejeitado"]:
             print(f"  ✗ {item['id']} ({item['workflow']}): o GitHub REJEITOU o arquivo — a última "
                   f"execução falhou com zero jobs. Disparar não conserta isto.")
+        # 25/11/2026: o plano é de antes do primeiro disparo, e disparar 11 itens leva um minuto.
+        # O relógio (01:08) e o tique da válvula (01:09) dispararam a noite inteira duas vezes,
+        # e a 2ª cópia do DOE perdeu o commit (`saude_sinais.json`). Reconfere item a item.
+        execucoes[item["workflow"]] = execucoes_de(item["workflow"])
+        if item["id"] not in {x["id"] for x in plano_completo(reg, execucoes, feitos, agora)}:
+            print(f"  = {item['id']} ({item['workflow']}): outro observador já disparou")
+            continue
         aceito = disparar(item, origem) and not item["rejeitado"]
         if precisa_alarmar(item, aceito):
             abrir_issue(item)
