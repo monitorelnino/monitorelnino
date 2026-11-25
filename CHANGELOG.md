@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2074 · Busca de planos: um ramo e um PR de dado por grupo de UF
+
+Os seis grupos da matriz empurravam no mesmo ramo e o grupo que terminava junto com os irmãos perdia as cinco tentativas de push (CO, 23/11). Agora cada grupo coleta e empurra no próprio ramo `<ramo>-<grupo>` e abre o próprio PR de dado.
+
 ## 2026-11-24 · #2071 · Válvula: SearXNG sobe sozinho quando o comando usa o metabuscador
 
 As válvulas de planos de MG e RJ pediram S24 e S27 sem a chave do metabuscador e gravaram recusa de conexão em todo município. `coleta_de_dia.yml` passa a inferir a chave do comando (S24, S27, seguidor e busca web), como já fazia com o Node e o OCR.
