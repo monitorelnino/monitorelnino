@@ -4,278 +4,264 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "24/11/2026 05:51",
+ "gerado_em": "24/11/2026 22:14",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 411473,
-   "sha256": "e13e8892daf3565e782fff14dfcba375ccb86afd4d61e66b9f07350e959d3fcb"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 655494,
+   "sha256": "595a9d8ca65f73d060bcfac070daf32e1c7a4fa89c03ea3c5144029978b145cc"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 3925376,
-   "sha256": "bf9cdf0716486ff8f48527df568c9d49e0d15c0a3501cad0ed3e941a81144f80"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 3330632,
+   "sha256": "a304aba86f5bf8831a3741a1dba67bad93b112b847416708c97bb87e72cfc7dc"
   },
   {
    "fonte": "inmet_previsao_capitais",
    "url": "https://apiprevmet3.inmet.gov.br/previsao/capitais",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 6185030,
-   "sha256": "83f9af102b64243888f8c318ecdae7e5df7f94b6203682524cc5e737e894e1c3"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 6731677,
+   "sha256": "06032ab1804b74875d9399f8a68c82017ef02318eb5170d1598e0d6d99feebb4"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations?iso=BR&limit=1000",
-   "consultado_em": "24/11/2026 05:50",
+   "consultado_em": "24/11/2026 22:13",
    "bytes": 117253,
-   "sha256": "bb614df8cca5674c809d56f27a62ade77efdd148ee26fefc0d82eb817bdf0d49"
-  },
-  {
-   "fonte": "inmet_estacoes",
-   "url": "https://apitempo.inmet.gov.br/estacoes/T",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 260646,
-   "sha256": "b8fc8fd44703a7303b84963f1e01a887dac53a785a898264f14495e3d3566a01"
-  },
-  {
-   "fonte": "inmet_estacoes",
-   "url": "https://apitempo.inmet.gov.br/condicao/capitais/2026-11-24",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 2263,
-   "sha256": "bbd496638d899563cb534c13a3ac85b62bfe1e41b1b8af193d3a968841a1321f"
+   "sha256": "180f2a07c4ff7786ce782a8a10f37b5c855c66ffa1707b099a98973b183d641c"
   },
   {
    "fonte": "monitorar",
    "url": "https://monitorar-backend.mma.gov.br/v1/estacao/todas",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 455713,
-   "sha256": "3ba9a7c03552c5a9e6488e9e373352a7e05040dee0ef381ce0568b4ae181c251"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 454681,
+   "sha256": "d4025686e985ba5f8e01e66b562827d1eaf65205b89071f6cc9c1fb923f8e884"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5110474/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 472,
-   "sha256": "047f84a5d1c0b1668e88066527e06aac30c1c12dba48b9bd3adb3950d42f6dca"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 473,
+   "sha256": "9e1934a7ece8515542a8a8946be6eb014baae0e1fbd9da458b0cb9e5d5b70f13"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5110511/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 473,
-   "sha256": "f0f67e6758c093a2132849b0ba9e8d33f4b5c6ae65e28b9977f0cd29a8bb4c1a"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 474,
+   "sha256": "a7a95fc4c38d1c913625cd94f7e793a5fbeb4a51b8c431d4e79370255f1d71b0"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5110512/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 475,
-   "sha256": "744c5e817c12c5fc894189d2cadb25834f506c5c2797dedd11079e476e1d9e8c"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 473,
+   "sha256": "a3973197e93acaedd4f5ad21f468479136a67d5325a0f145d2e9fb6c1ee05426"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5110513/latest",
-   "consultado_em": "24/11/2026 05:50",
+   "consultado_em": "24/11/2026 22:13",
    "bytes": 474,
-   "sha256": "f59080033db1d1877c8767b3938df059d9551613213e4c6e8a04a8b21ff6e0b8"
+   "sha256": "82dc27274009ded19e495b64ccfb8485d8558e9cffde5abadb5ae775f91d5bba"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5110514/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 475,
-   "sha256": "c524aa9bb64cd4fb015c9faf87c2a571244ff731b7274544cec4082e74a02dd9"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 474,
+   "sha256": "ae7efe950982bb109ab50c144a34737714b00b6eade513bc24b76aca8740b1f8"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5636852/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 470,
-   "sha256": "13e5ac28bc5b0462f39465dd65d1f5cdee45fc1982270e4598cb78471b7be919"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 472,
+   "sha256": "bc83c796b4d5585b0e823d1ca8d945ec1a775d40572e6479bded74e40c28d5b0"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5636888/latest",
-   "consultado_em": "24/11/2026 05:50",
+   "consultado_em": "24/11/2026 22:13",
    "bytes": 471,
-   "sha256": "338b8ae97dad8a4f819381391a52bc4afa88f59f021b79c23524c7b4db95e1e4"
+   "sha256": "21a5f38b18191fc758fd5348ebfbf64ff70fbe509e310d1f2fb15784e5ddcdc2"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/5648811/latest",
-   "consultado_em": "24/11/2026 05:50",
+   "consultado_em": "24/11/2026 22:13",
    "bytes": 472,
-   "sha256": "97fea788de6170da7e92e65a3062726241e3cada990b71ffbd3d78dac88c0e4d"
+   "sha256": "86e297b7fc2ef077d91f3b04ecd82de7aa2a46b0733b55e8e951d35939ab2723"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6152581/latest",
-   "consultado_em": "24/11/2026 05:50",
+   "consultado_em": "24/11/2026 22:13",
    "bytes": 474,
-   "sha256": "7b8fab411528578d10ee41f9db403ba3a74c642c5f622214930d7f84c506b567"
+   "sha256": "702dbd12affa3f21503c7b876b470cdf79b53e0b27e864c84a3fbcf86c6e6470"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6152584/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 475,
-   "sha256": "b74a4852624f88cbe84f22e996d21237c14ececc6a36820b9a3827dfd8e7624f"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 474,
+   "sha256": "c3e986b7c7abcbd9b753dff08575f5e2b50d7a8c3a93d0e683d6343b537c1357"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6152586/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 862,
-   "sha256": "5cf1f3737523840dc9ac26005680d1f11958ad9e51dc6773489ab2fd3b3bbcc2"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 864,
+   "sha256": "e8fc534c38d3b984c1ed9d388618f1f29a76febc35d6d4bff878946deac310a6"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6152588/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 475,
-   "sha256": "72c83474cdc25bf6e5faddc9175791f921a2265524903df2f238d6e8223f1acd"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 474,
+   "sha256": "865cbadc24b60c0432c99c135f88196b7c3ba414b63e9a92b98936e4f692a609"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6152592/latest",
-   "consultado_em": "24/11/2026 05:50",
+   "consultado_em": "24/11/2026 22:13",
    "bytes": 475,
-   "sha256": "e742e936f54a2a63f6e788262981c0e850a1c4e78f5289ab3c6126b5a7c96a12"
+   "sha256": "5047f5c6dc8017082c5ca873a1755b30092fe512f5c61b5a1572564ef1f0f24c"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6152595/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 474,
-   "sha256": "d1035f21092b17fd08993d6bfdf8bd976299324b64614dfb3032052bba02d44a"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 475,
+   "sha256": "e178b31a21140c6de5cfe104d4bf695595dcfc81ccf5ba5e17599e823a4d44de"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6152598/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 475,
-   "sha256": "4baf008e55faf2715f4f6985f15a0148d225405d6068d73a12c7947f9c7481de"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 474,
+   "sha256": "1e85ea4fd63ec207453341f494ea047cf76758ffe6f1e296f0e913109e4aa572"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6178275/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 475,
-   "sha256": "9747de9901cc1ba875ee5abcdc1de619e97eab5f6ebb6361aa06b94ec04fe71f"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 472,
+   "sha256": "8ea24480ed6f16e5ec7a4c1711942e72bbe81158cebc68df8b8cd5dce36d00b2"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6199572/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 475,
-   "sha256": "69cff1f06dd4240b244dc481783349f1e7928ba0585002b7549009d8817f97ae"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 474,
+   "sha256": "817670753ad24b1e4f983dbf7d331883375b6d3acbb7d33a1049b35f97e64421"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6285443/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 472,
-   "sha256": "e3968fd2c451b8cef5e78966e211ff06152ba9cbac9a38983f49115a28283d8f"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 474,
+   "sha256": "4e2d24edf4c487ddfc66cdfc6b33d08682691204a05c6976bb17f769466ab4dd"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6285444/latest",
-   "consultado_em": "24/11/2026 05:50",
+   "consultado_em": "24/11/2026 22:13",
    "bytes": 474,
-   "sha256": "7268cd33f72eccce2a253392b974b1fe7276de626761783ae32993e2a1761be5"
+   "sha256": "e016747cd506c6f5532bad0bd6e7e11531de5b174a38688456536d0a412fb115"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/6418495/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 861,
-   "sha256": "e6bdf53de5f8907c918c1716411015ce1ce0074c2f3803d8d7e6bc74ca447e32"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 862,
+   "sha256": "ac9ed3f6a368b9cb32e347065278fa170af86a950be3b8f654cf5a9114c1997f"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/820323/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 852,
-   "sha256": "1844ff078ce6d116846f1119747007600d49da652bbbea14a9a2709322e15568"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 854,
+   "sha256": "25f10b21c2a92318ee8e52a7317dd89a349210ae6a8ca3d018678984d3f17370"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/locations/820326/latest",
-   "consultado_em": "24/11/2026 05:50",
-   "bytes": 1620,
-   "sha256": "7c787d3ced8281a6aeb9859869bb9aab6f4afd4e4e915fcdb8be3fc101581f58"
+   "consultado_em": "24/11/2026 22:13",
+   "bytes": 1621,
+   "sha256": "8effa39a7af5496447a58bf778e1d4fb408079ce649c6ce18d754ed6f6f25824"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/sensors/13626932/days?date_from=2026-10-24&date_to=2026-11-24&limit=100",
-   "consultado_em": "24/11/2026 05:51",
-   "bytes": 22349,
-   "sha256": "ddf782e5d99d4657af89a1956897e068176a1b8634ba2d58c61b6471e0652f7f"
+   "consultado_em": "24/11/2026 22:14",
+   "bytes": 23154,
+   "sha256": "db8a80f6d57a5fb803fa1db126fcc76f52f2608893bc8698b885707db43a2bec"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/sensors/13626934/days?date_from=2026-10-24&date_to=2026-11-24&limit=100",
-   "consultado_em": "24/11/2026 05:51",
-   "bytes": 22439,
-   "sha256": "aef5309415bceaea8fc3232c53c8c21b4bc2850508a921e6f35432d1f359b732"
+   "consultado_em": "24/11/2026 22:14",
+   "bytes": 23258,
+   "sha256": "f132a8175fcd0eac67ddbf7871d668b82708c1e3e61001925f142b02c7666093"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/sensors/13701/days?date_from=2026-10-24&date_to=2026-11-24&limit=100",
-   "consultado_em": "24/11/2026 05:51",
+   "consultado_em": "24/11/2026 22:14",
    "bytes": 88,
    "sha256": "16e19fd68a809e19858e829939b21b8ac92af736ffc5963cd91c0c8d9849ee2d"
   },
   {
    "fonte": "openaq",
    "url": "https://api.openaq.org/v3/sensors/13729/days?date_from=2026-10-24&date_to=2026-11-24&limit=100",
-   "consultado_em": "24/11/2026 05:51",
+   "consultado_em": "24/11/2026 22:14",
    "bytes": 88,
    "sha256": "16e19fd68a809e19858e829939b21b8ac92af736ffc5963cd91c0c8d9849ee2d"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/",
-   "consultado_em": "24/11/2026 05:51",
+   "consultado_em": "24/11/2026 22:14",
    "bytes": 11646,
-   "sha256": "c2c9d7fca64bbb86168dab6a1d2cc97d808f799e2bef5aa29b52e540185dc72d"
-  },
-  {
-   "fonte": "inpe_fogo",
-   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261122.csv",
-   "consultado_em": "24/11/2026 05:51",
-   "bytes": 3299202,
-   "sha256": "eda01f89bfb1313c0261f9f22626e2bf6c32011b1902c0dd7efe98ecaa0b87a3"
+   "sha256": "d90ee65786a0e7da19d2c658c4be4bc34c7dfe0371dca8ec81093ec0ae4de86d"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261123.csv",
-   "consultado_em": "24/11/2026 05:51",
-   "bytes": 3496062,
-   "sha256": "5afcb6bf8354bb7778717e247ec9a70e5cd653c84e1cbfea9f444dcc61a7a780"
+   "consultado_em": "24/11/2026 22:14",
+   "bytes": 3688486,
+   "sha256": "55eec706743695a035e2719555796c75d8e29f7e5e3d5858ff101f5b29552686"
+  },
+  {
+   "fonte": "inpe_fogo",
+   "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20261124.csv",
+   "consultado_em": "24/11/2026 22:14",
+   "bytes": 4824909,
+   "sha256": "03a4ead9fd5e89fb205a3c03a510385c9980fabd5cc2f754042c99362aa25119"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/mensal/Brasil/focos_mensal_br_202512.csv",
-   "consultado_em": "24/11/2026 05:51",
+   "consultado_em": "24/11/2026 22:14",
    "bytes": 23626789,
    "sha256": "b6f9b421725faa47c8008c21f765bc600919a632351108751fde586a6d84802c"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/mensal/Brasil/focos_mensal_br_202605.csv",
-   "consultado_em": "24/11/2026 05:51",
+   "consultado_em": "24/11/2026 22:14",
    "bytes": 12994618,
    "sha256": "352d625a68a75c2857e48ddc279a19f5ee29668ecfe874e52d32ceb7e8993754"
   },
   {
    "fonte": "inpe_fogo",
    "url": "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/mensal/Brasil/focos_mensal_br_202607.csv",
-   "consultado_em": "24/11/2026 05:51",
+   "consultado_em": "24/11/2026 22:14",
    "bytes": 25168071,
    "sha256": "8ef86ddfe417b9fb719f34a0ddb7efdca10425dddffdc9aa84c337b9cfe784d9"
   }
