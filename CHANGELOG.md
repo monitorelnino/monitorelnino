@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2075 · Publicador segue o rebase depois de unir e regenerar
+
+Na noite 24→25 o publicador perdeu o commit nas cinco tentativas: depois de unir o conflito e regenerar os derivados, punha no índice só os caminhos com escritor declarado, e o cartão, as páginas e os PDFs regenerados travavam o rebase. O laço passa a pôr no índice todo arquivo rastreado que a regeneração mudou. Falha F101; ensaio 31.
+
 ## 2026-11-24 · #2071 · Válvula: SearXNG sobe sozinho quando o comando usa o metabuscador
 
 As válvulas de planos de MG e RJ pediram S24 e S27 sem a chave do metabuscador e gravaram recusa de conexão em todo município. `coleta_de_dia.yml` passa a inferir a chave do comando (S24, S27, seguidor e busca web), como já fazia com o Node e o OCR.

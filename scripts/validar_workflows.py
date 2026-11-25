@@ -152,7 +152,7 @@ for f, wf in carregados.items():
         continue
     for linha in texto.splitlines():
         t = linha.strip()
-        if not t.startswith("git add ") or " -A" in t:
+        if not t.startswith("git add ") or " -A" in t or " -u" in t:   # -u: toda página rastreada
             continue
         caminhos = t[len("git add "):].split()
         if "*.html" in caminhos or "." in caminhos:

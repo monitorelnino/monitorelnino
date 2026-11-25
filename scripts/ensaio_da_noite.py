@@ -1268,15 +1268,15 @@ def ensaio_publicador_segue_o_rebase(diz) -> bool:
         shutil.copy(RAIZ / "scripts" / "commit_do_elo.py", tmp / "scripts")
         shutil.copy(RAIZ / "config" / "escritores.json", tmp / "config")
         card = tmp / "data" / "municipios_card.json"
-        card.write_text("base\n"); g("add", "-A"); g("commit", "-qm", "base")
-        g("checkout", "-qb", "publicador"); card.write_text("nosso\n"); g("commit", "-qam", "publicação")
-        g("checkout", "-q", "main"); card.write_text("deles\n"); g("commit", "-qam", "main andou")
+        card.write_text("base\n", newline="\n"); g("add", "-A"); g("commit", "-qm", "base")
+        g("checkout", "-qb", "publicador"); card.write_text("nosso\n", newline="\n"); g("commit", "-qam", "publicação")
+        g("checkout", "-q", "main"); card.write_text("deles\n", newline="\n"); g("commit", "-qam", "main andou")
         g("checkout", "-q", "publicador")
         if g("rebase", "main", pode_falhar=True) == 0:
             diz("  ✗ o ensaio não produziu conflito: ele não está medindo o que diz medir")
             return False
-        card.write_text("deles\n"); g("add", "data/municipios_card.json")   # a união: versão de cima
-        card.write_text("regenerado\n")                                     # a cadeia canônica
+        card.write_text("deles\n", newline="\n"); g("add", "data/municipios_card.json")   # a união: versão de cima
+        card.write_text("regenerado\n", newline="\n")                                     # a cadeia canônica
         subprocess.run(["bash", "-c", trecho], cwd=tmp, capture_output=True)
         seguiu = subprocess.run(["git", "-c", "core.editor=true", "rebase", "--continue"], cwd=tmp,
                                 capture_output=True, env={**os.environ, "GIT_AUTHOR_NAME": "e",

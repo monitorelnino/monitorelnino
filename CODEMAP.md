@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_conformidade.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 24/11/2026.
+Atualizado em 25/11/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
@@ -159,7 +159,7 @@ Atualizado em 24/11/2026.
 | `scripts/consolidar_noite.py` | — | `focos_pontos.json`, `historico_mudancas.json`, `inventado.json`, `log_buscas.json`, `painel_da_noite.json`, `pistas_imprensa.json` (+2) | — | — | não |
 | `scripts/corrigir_atribuicao_por_dominio.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/deduplicar_fila_de_pistas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_rejeitadas.json`, `pistas_sinais.json` | — | — | não |
-| `scripts/ensaio_da_noite.py` | — | `clima.json`, `outro.json` | — | — | não |
+| `scripts/ensaio_da_noite.py` | — | `clima.json`, `municipios_card.json`, `outro.json` | — | — | não |
 | `scripts/fechar_saude.py` | — | `saude_fechamento.json` | — | — | não |
 | `scripts/fila_do_juiz_querido_diario.py` | — | `fila_qd_169.json` | — | — | não |
 | `scripts/gerar_boletim.py` | — | `blog/boletim_mais_recente.json` | — | — | não |
