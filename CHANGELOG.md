@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2079 · Despachante reconfere o plano antes de cada disparo
+
+Na abertura de 25/11 o relógio e o tique oportunista da válvula montaram o plano antes de qualquer disparo e dispararam a noite inteira duas vezes; a segunda cópia do DOE incremental perdeu o commit em `saude_sinais.json`. Agora cada item é reconferido contra as execuções do seu workflow logo antes do disparo, e o que outro observador já disparou é pulado.
+
 ## 2026-11-25 · #2074 · Busca de planos: um ramo e um PR de dado por grupo de UF
 
 Os seis grupos da matriz empurravam no mesmo ramo e o grupo que terminava junto com os irmãos perdia as cinco tentativas de push (CO, 23/11). Agora cada grupo coleta e empurra no próprio ramo `<ramo>-<grupo>` e abre o próprio PR de dado.
