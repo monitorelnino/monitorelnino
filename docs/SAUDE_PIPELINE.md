@@ -9,11 +9,11 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-18 a 2026-11-25 (1670 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-18 a 2026-11-25 (1672 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- buscar_planos_fontes_abertas.py: erro em 4 rodadas seguidas — interrompido pelo prazo do elo
+- buscar_planos_fontes_abertas.py: erro em 5 rodadas seguidas — interrompido pelo prazo do elo
 - coletar_cadastro_prioritarios.py: erro em 3 rodadas seguidas — X nt2_2025: URLError: <urlopen error [Errno 104] Connection reset by peer> — nada foi gravado
 - coletar_pab_brasil.py: erro em 2 rodadas seguidas — urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer>
 - consultar_querido_diario.py: erro em 3 rodadas seguidas — portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 520: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail
@@ -38,7 +38,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-25 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-22 07:29 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-24 01:55 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-22 07:27 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-25 09:00 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-25 09:34 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-22 06:54 | 501 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-25 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-22 04:10 | 11930 s | 147 | ok | — |
@@ -49,7 +49,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-25 · por canal: we
 | `atualizar_transferencias.py` | coletor | 2026-11-22 07:02 | 1476 s | — | ok | — |
 | `bash scripts/verificar_derivados.sh --idempotencia` | coletor | 2026-11-22 07:28 | 74 s | — | ok | — |
 | `buscar_financiamento_preventivo.py` | coletor | 2026-11-25 07:11 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `buscar_planos_fontes_abertas.py` | coletor | 2026-11-24 17:04 | 7188 s | — | **erro** (4 seguidas) | interrompido pelo prazo do elo |
+| `buscar_planos_fontes_abertas.py` | coletor | 2026-11-24 21:11 | 7203 s | — | **erro** (5 seguidas) | interrompido pelo prazo do elo |
 | `buscar_protocolo_calor.py` | coletor | 2026-11-24 02:01 | 58 s | 41 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-11-24 05:24 | 1 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-11-24 01:55 | 1 s | — | ok | — |
