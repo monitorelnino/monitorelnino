@@ -767,12 +767,13 @@ function dataCompleta(v){
    5.571 é `municipios_card.json`, o mesmo arquivo que Prefeituras usa — e é dele que sai o que foi
    feito em cada cidade. Ele entra DEPOIS do carregamento da página, sem bloquear nada, e quando
    chega repinta o cartão que estiver aberto. Sem ele, a frase é a de antes: nada quebra. */
-let VARREDURA = null, __repintarMeuCard = null, __pedindoLivro = false;
+let VARREDURA = null, FONTES_DECLARADO = null, __repintarMeuCard = null, __pedindoLivro = false;
 function carregarLivroDeVarredura(){
   if (VARREDURA || __pedindoLivro) return;
   __pedindoLivro = true;
   fetch('data/municipios_card.json').then(r => (r.ok ? r.json() : null)).then(d => {
     VARREDURA = (d && d.municipios) || null;
+    FONTES_DECLARADO = (d && d.fontes_declarado) || null;
     if (VARREDURA && __repintarMeuCard) __repintarMeuCard();
   }).catch(e => console.error('[MARÉ] livro de verificação não carregou (a frase da varredura fica com a de antes):', e));
 }
@@ -849,6 +850,10 @@ function renderMinha(uf, nome, card){
       ? `<p class="fv"><strong>${esc(varrido)}</strong></p>`
       : `<p class="fv"><strong>${T('index.municipio.nao_verificado')}</strong> ${T('index.nao_verificado.ressalva')}</p>`;
   }
+
+  /* 25/11/2026 (editoria): o que o município declarou ao ICM, à MUNIC e ao S2iD, com a fonte. */
+  ConsultaMunicipio.declarado(doCard, FONTES_DECLARADO, ['encontrado', 'estadual', 'sem_contar'].includes(status), (typeof META !== 'undefined' && META && META.corte) || '')
+    .forEach(l => { html += `<p class="note">${l}</p>`; });
 
   html += riscoBox(uf);
   html += enquadramentoBox(uf, m ? m.nome : nome, codigoDigitado);
