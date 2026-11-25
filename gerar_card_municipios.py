@@ -109,7 +109,8 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
 
     `declarado` é `declarado_nacional.json`: o que o município respondeu ao ICM/Sedec (variável 8) e à
     MUNIC/IBGE sobre ter plano de contingência (editoria, 25/11/2026: a autodeclaração vai ao cartão, com a
-    fonte). `icm` é a resposta, sim ou não; `munic` só entra quando é sim (a edição é de 2020). Declarar não
+    fonte). `icm` é a resposta, sim ou não; `munic` só entra quando é sim (a edição é de 2020); `s2id` é a data da
+    última versão do plano que o município registrou no S2iD, pela relação que a Sedec forneceu. Declarar não
     é publicar: a categoria, que é o que o MARÉ localizou e leu, não muda."""
     por_nome = {(m["nome"], m["uf"]): int(m["codigo_ibge"]) for m in referencia}
     prior = {int(m["codigo_ibge"]) for m in prioritarios}
@@ -192,10 +193,12 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
     for cod, d in ((declarado or {}).get("municipios") or {}).items():
         c = cards.get(int(cod)) if str(cod).isdigit() else None
         resposta = {"sim": True, "nao": False}.get(d.get("icm_var8_plano_contingencia"))
-        if c is None or (resposta is None and d.get("munic_plano_contingencia") != "sim"):
+        s2id = (d.get("s2id_plancon") or {}).get("ultima_versao")   # plano registrado no sistema federal (relação da Sedec)
+        if c is None or (resposta is None and d.get("munic_plano_contingencia") != "sim" and not s2id):
             continue                     # sem resposta não é "não": a linha simplesmente não existe
         c["declarado"] = {**({"icm": resposta} if resposta is not None else {}),
-                          **({"munic": True} if d.get("munic_plano_contingencia") == "sim" else {})}
+                          **({"munic": True} if d.get("munic_plano_contingencia") == "sim" else {}),
+                          **({"s2id": s2id} if s2id else {})}
     for c in cards.values():
         if "imprensa" in c:
             c["imprensa"].sort(key=lambda x: _data_key(x.get("data")), reverse=True)
@@ -225,7 +228,9 @@ def gerar():
                            "variável 8; MUNIC/IBGE só quando sim); a fonte e a edição de cada um estão em "
                            "`fontes_declarado`. Declarar não é publicar: não muda a categoria."),
            "fontes_declarado": {k: {"nome": (fontes.get(k) or {}).get("nome"), "edicao": (fontes.get(k) or {}).get("edicao"),
-                                    "url": (fontes.get(k) or {}).get("url")} for k in ("icm", "munic") if fontes.get(k)},
+                                    "url": (fontes.get(k) or {}).get("url")} for k in ("icm", "munic") if fontes.get(k)}
+           | {"s2id": {"nome": "S2iD (Defesa Civil Nacional), módulo de planos de contingência: relação dos municípios com plano registrado",
+                       "edicao": "versões registradas até 2024", "url": None}},
            "gerado_em": data_de_geracao(), "total": len(cards),
            "com_registro": sum(1 for c in cards.values()
                                if c.get("categoria") not in ("nao_localizado", "nao_verificado")),
@@ -279,6 +284,7 @@ def autoteste():
     dec = {"municipios": {"4301602": {"icm_var8_plano_contingencia": "nao", "munic_plano_contingencia": "sim"},
                           "1301803": {"icm_var8_plano_contingencia": "sim", "munic_plano_contingencia": "nao"},
                           "4300001": {"icm_var8_plano_contingencia": None, "munic_plano_contingencia": "NA"},
+                          "4300002": {"icm_var8_plano_contingencia": None, "s2id_plancon": {"ultima_versao": "2023-09-28"}},
                           "3500001": {"icm_var8_plano_contingencia": "sim", "munic_plano_contingencia": "sim"}}}
     c = montar(ref, prior, mun, pis, dsp, ver, dec)
 
@@ -286,7 +292,8 @@ def autoteste():
         return (c["1301803"]["declarado"] == {"icm": True} and c["1301803"]["categoria"] == "nao_localizado"
                 and c["4301602"]["declarado"] == {"icm": False, "munic": True} and c["4301602"]["categoria"] == "plano")
     def t_sem_resposta_nao_e_nao_e_a_declaracao_nao_cria_card():
-        return "declarado" not in c["4300001"] and "3500001" not in c
+        return ("declarado" not in c["4300001"] and "3500001" not in c
+                and c["4300002"]["declarado"] == {"s2id": "2023-09-28"})
     def t_plano_sem_data_nao_e_nao_localizado():
         a = c["1301803"]
         return (a["categoria"] == "nao_localizado" and a["plano_sem_contar"]["motivo"] == "sem_data"

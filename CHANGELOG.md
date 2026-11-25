@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-25 · #2098 · Cartão do município: autodeclaração de plano
 
-O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não) e MUNIC/IBGE de 2020 (quando sim), com nome, edição e endereço das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.
+O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.
 
 ## 2026-11-25 · #2092 · Buscador 2: queda de rede não conta como vista
 
