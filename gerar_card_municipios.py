@@ -95,7 +95,7 @@ def planos_sem_contar(pistas) -> dict:
     return achados
 
 
-def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verificacao=None):
+def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verificacao=None, declarado=None):
     """Pura. Devolve dict codigo_ibge(str) → card.
 
     `despesa_182` é a camada A do dinheiro próprio do município (§207): peso ZERO, uma linha só,
@@ -105,7 +105,12 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
     `verificacao` é o livro de varredura (`verificacao_municipal.json`). Todo município varrido ganha
     `varredura: {nivel, data}` (a `ultima_verificacao` dele, não a da rodada) e, se nada foi
     localizado, a categoria `nao_localizado`; sem varredura no livro, segue `nao_verificado`
-    (editoria, 19/10/2026: o cartão diz o que foi feito e o que falta)."""
+    (editoria, 19/10/2026: o cartão diz o que foi feito e o que falta).
+
+    `declarado` é `declarado_nacional.json`: o que o município respondeu ao ICM/Sedec (variável 8) e à
+    MUNIC/IBGE sobre ter plano de contingência (editoria, 25/11/2026: a autodeclaração vai ao cartão, com a
+    fonte). `icm` é a resposta, sim ou não; `munic` só entra quando é sim (a edição é de 2020). Declarar não
+    é publicar: a categoria, que é o que o MARÉ localizou e leu, não muda."""
     por_nome = {(m["nome"], m["uf"]): int(m["codigo_ibge"]) for m in referencia}
     prior = {int(m["codigo_ibge"]) for m in prioritarios}
     cards = {}
@@ -184,6 +189,13 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
         c = cards.setdefault(cod, {"nome": nome, "uf": uf, "prioritario": cod in prior})
         if c.get("categoria") in (None, "nao_verificado", "nao_localizado"):
             c["plano_sem_contar"] = info
+    for cod, d in ((declarado or {}).get("municipios") or {}).items():
+        c = cards.get(int(cod)) if str(cod).isdigit() else None
+        resposta = {"sim": True, "nao": False}.get(d.get("icm_var8_plano_contingencia"))
+        if c is None or (resposta is None and d.get("munic_plano_contingencia") != "sim"):
+            continue                     # sem resposta não é "não": a linha simplesmente não existe
+        c["declarado"] = {**({"icm": resposta} if resposta is not None else {}),
+                          **({"munic": True} if d.get("munic_plano_contingencia") == "sim" else {})}
     for c in cards.values():
         if "imprensa" in c:
             c["imprensa"].sort(key=lambda x: _data_key(x.get("data")), reverse=True)
@@ -200,20 +212,27 @@ def gerar():
     mun = ler("municipios.json") or []
     pis = (ler("pistas_imprensa.json") or {}).get("pistas", [])
     dsp = ler("financiamento/municipios/despesa_182.json") or {}
-    cards = montar(ref, prior, mun, pis, dsp, ler("verificacao_municipal.json") or [])
+    dec, fontes = ler("declarado_nacional.json") or {}, ler("fontes_declarado.json") or {}
+    cards = montar(ref, prior, mun, pis, dsp, ler("verificacao_municipal.json") or [], dec)
     out = {"_governanca": ("Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. "
                            "`prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). "
                            "`imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o "
                            "leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro e sem varredura = não verificado; "
                            "`varredura` = nível e data da última varredura do município. "
                            "`defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, "
-                           "peso ZERO; classe de ausência nunca vira zero."),
+                           "peso ZERO; classe de ausência nunca vira zero. "
+                           "`declarado` = o que o município respondeu sobre ter plano de contingência (ICM/Sedec, "
+                           "variável 8; MUNIC/IBGE só quando sim); a fonte e a edição de cada um estão em "
+                           "`fontes_declarado`. Declarar não é publicar: não muda a categoria."),
+           "fontes_declarado": {k: {"nome": (fontes.get(k) or {}).get("nome"), "edicao": (fontes.get(k) or {}).get("edicao"),
+                                    "url": (fontes.get(k) or {}).get("url")} for k in ("icm", "munic") if fontes.get(k)},
            "gerado_em": data_de_geracao(), "total": len(cards),
            "com_registro": sum(1 for c in cards.values()
                                if c.get("categoria") not in ("nao_localizado", "nao_verificado")),
            "com_imprensa": sum(1 for c in cards.values() if c.get("imprensa")),
            "prioritarios": sum(1 for c in cards.values() if c.get("prioritario")),
            "com_despesa_182": sum(1 for c in cards.values() if c.get("defesa_civil_orcamento")),
+           "declaram_ter_plano": sum(1 for c in cards.values() if (c.get("declarado") or {}).get("icm")),
            "municipios": cards}
     gravar("municipios_card.json", out, compacto=True)   # a página o carrega inteiro (§221)
     return out
@@ -257,8 +276,17 @@ def autoteste():
            {"ibge": "4301602", "nome": "Bagé", "uf": "RS", "nivel_verificacao": "estadual", "ultima_verificacao": "2026-10-19"},
            {"ibge": "3500002", "nome": "Só Varrido", "uf": "SP", "nivel_verificacao": "estadual", "ultima_verificacao": "2026-10-18"},
            {"ibge": "3529005", "nome": "Marília", "uf": "SP", "nivel_verificacao": None, "ultima_verificacao": None}]
-    c = montar(ref, prior, mun, pis, dsp, ver)
+    dec = {"municipios": {"4301602": {"icm_var8_plano_contingencia": "nao", "munic_plano_contingencia": "sim"},
+                          "1301803": {"icm_var8_plano_contingencia": "sim", "munic_plano_contingencia": "nao"},
+                          "4300001": {"icm_var8_plano_contingencia": None, "munic_plano_contingencia": "NA"},
+                          "3500001": {"icm_var8_plano_contingencia": "sim", "munic_plano_contingencia": "sim"}}}
+    c = montar(ref, prior, mun, pis, dsp, ver, dec)
 
+    def t_autodeclaracao_vai_ao_card_sem_mudar_a_categoria():
+        return (c["1301803"]["declarado"] == {"icm": True} and c["1301803"]["categoria"] == "nao_localizado"
+                and c["4301602"]["declarado"] == {"icm": False, "munic": True} and c["4301602"]["categoria"] == "plano")
+    def t_sem_resposta_nao_e_nao_e_a_declaracao_nao_cria_card():
+        return "declarado" not in c["4300001"] and "3500001" not in c
     def t_plano_sem_data_nao_e_nao_localizado():
         a = c["1301803"]
         return (a["categoria"] == "nao_localizado" and a["plano_sem_contar"]["motivo"] == "sem_data"
