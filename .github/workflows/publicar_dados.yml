@@ -246,6 +246,12 @@ jobs:
         timeout-minutes: 3
         run: python3 preencher_fallback_estatico.py
 
+      # 25/11/2026 (handover do selo, D3): a `main` se sela sozinha. O PR não carrega mais o mapa;
+      # quem o regenera é a publicação que segue cada merge, antes do manifesto que o sela.
+      - name: Regenerar o mapa do código
+        timeout-minutes: 3
+        run: python3 scripts/gerar_codemap.py
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         # 04/10/2026: era `--idempotencia`, que mede determinismo e não comparação
@@ -307,7 +313,7 @@ jobs:
           # Agora cada caminho é adicionado por conta própria, e o que não existe é DITO — a lista
           # envelhece sozinha quando uma pasta sai do site, e envelhecer em silêncio foi o defeito.
           falhou=0
-          for alvo in data/ dados-abertos/ feeds/ selos/ docs/ assets/ CITATION.cff *.html *.pdf; do
+          for alvo in data/ dados-abertos/ feeds/ selos/ docs/ assets/ CITATION.cff CODEMAP.md *.html *.pdf; do
             # `-e` e não `compgen`: o `for` já expandiu `*.html` e `*.pdf`, então cada `$alvo`
             # é um caminho concreto — e `compgen -G "blog/"` responde "casou" mesmo sem a pasta,
             # porque trata a barra como padrão. Medido antes de confiar.
@@ -381,6 +387,7 @@ jobs:
               # A2-09: depois de unir, os derivados são função do dado unido — regenerar ANTES de
               # continuar, senão o manifesto chega obsoleto à `main`.
               python3 recalcular_mare.py --write || true
+              python3 scripts/gerar_codemap.py || true
               bash scripts/verificar_derivados.sh --regenerar-para-commit || true
               # F101 (25/11/2026): o commit local põe TUDO o que a cadeia escreve; aqui era o índice só dos
               # caminhos com escritor declarado, e o derivado regenerado (cartão, páginas, PDFs) ficava

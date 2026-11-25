@@ -1391,6 +1391,18 @@
    ],
    "correcao": "No commit do `_coletor.yml`, ramo `coleta-dia/*` devolve o log da corrente à base antes do `git add`; as linhas da válvula ficam no resumo do job.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_valvula_nao_comita_o_log"
+  },
+  {
+   "id": "F103",
+   "noite": "2026-11-24→2026-11-25",
+   "titulo": "Portões de PR rodam no commit anterior ao selo; execução pulada conta como aprovada",
+   "sintoma": "De 24/11 10:35 a 25/11 09:30 UTC, 11 de 12 execuções vermelhas de \"Portões\" em PR (`✗ DERIVADOS: o manifesto está obsoleto`) rodaram no commit sem selo; o commit selado teve os quatro jobs pulados (#2059, run 45447763800).",
+   "causa": "O PR carregava derivados que são função do repositório inteiro (manifesto, `mudancas.html`, `CODEMAP.md`); o `ready_for_review` do #2040 corria com o push do selo.",
+   "prova": [
+    "robo-registro notas/HANDOVER_SELO_NA_MAIN_25-11-2026.md §1: tabela por execução (head testado × commit do selo × hora do \"pronto\")"
+   ],
+   "correcao": "PR 1 (D3/D4): o publicador regenera e commita `CODEMAP.md` com o resto; no push da `main`, derivado velho passa com aviso enquanto a `main` aguarda selo (`scripts/selo_da_main.py`) e reprova quando selada. PR 2 (D1/D2): o selo sai do PR.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_main_se_sela"
   }
  ]
 }
