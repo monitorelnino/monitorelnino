@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2083 · Prévia: o relatório lê o código de saída do deploy
+
+Em `publicar_previa.yml` o redirecionamento estava no `rm` depois do deploy: `codigo_saida` era o do `rm` (sempre 0) e o filtro lia arquivo vazio. A saída do deploy volta ao arquivo e o código é o dele. O veredito ("Deploy is live") não muda. Item 6 do handover de erros do GitHub: o "Site not found" de 18/11 foi 1 em 4.073 prévias, sem corrida com a renomeação.
+
 ## 2026-11-25 · #2080 · Checagem pré-noite tolera Portões e prévia do push na main
 
 A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.
