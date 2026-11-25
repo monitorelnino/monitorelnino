@@ -1316,6 +1316,40 @@ def ensaio_valvula_nao_comita_o_log(diz) -> bool:
     return True
 
 
+def ensaio_main_se_sela(diz) -> bool:
+    """33. A `main` se sela sozinha (F103; handover do selo, D3/D4, 25/11/2026).
+
+    Merge sem selo: o push da `main` passa com aviso e dispara o publicador, que regenera e commita
+    `mudancas.html`, `CODEMAP.md` e o manifesto; depois disso a `main` está selada e o elo que deixa
+    derivado velho reprova. Roda o `selo_da_main.py` de verdade sobre um histórico de verdade.
+    """
+    pub = (RAIZ / ".github/workflows/publicar_dados.yml").read_text(encoding="utf-8")
+    mapa, cadeia = pub.find("scripts/gerar_codemap.py\n"), pub.find("- name: Regenerar a cadeia canônica")
+    sela = 0 <= mapa < cadeia and "CITATION.cff CODEMAP.md" in pub
+    portoes = all("selo_da_main" in (RAIZ / f).read_text(encoding="utf-8") for f in
+                  ("scripts/verificar_derivados.sh", "scripts/gerar_mudancas.py", "scripts/gerar_codemap.py"))
+    visto = []
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        _repo(tmp)
+        amb = {**os.environ, "GITHUB_EVENT_NAME": "push", "GITHUB_REF": "refs/heads/main"}
+        for quem, assunto in (("monitor-el-nino-bot", "Publicação automática (base)"),
+                              ("GitHub", "PR sem selo (#1)"),
+                              ("monitor-el-nino-bot", "Publicação automática (selo)"),
+                              ("monitor-el-nino-bot", "Noturno — elo com derivado velho")):
+            subprocess.run(["git", "commit", "-q", "--allow-empty", "-m", assunto], cwd=tmp, check=True,
+                           env={**amb, "GIT_AUTHOR_NAME": quem, "GIT_AUTHOR_EMAIL": "e@e",
+                                "GIT_COMMITTER_NAME": quem, "GIT_COMMITTER_EMAIL": "e@e"})
+            visto.append(subprocess.run([sys.executable, str(RAIZ / "scripts" / "selo_da_main.py"), "DERIVADOS"],
+                                        cwd=tmp, env=amb, capture_output=True).returncode == 0)
+    if not (sela and portoes and visto == [False, True, False, False]):
+        diz(f"  ✗ a `main` não se sela (F103): publicador sela={sela}, portões leem o selo={portoes}, "
+            f"tolerância por commit={visto} (esperado [False, True, False, False])")
+        return False
+    diz("  ✓ merge sem selo passa com aviso; o publicador sela; a `main` selada volta a ser estrita")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1358,6 +1392,7 @@ ENSAIOS = (
     ("30. a válvula traz a `main` antes do PR de dado", ensaio_valvula_traz_a_main),
     ("31. o publicador segue o rebase depois de unir e regenerar", ensaio_publicador_segue_o_rebase),
     ("32. a válvula não comita o log da corrente", ensaio_valvula_nao_comita_o_log),
+    ("33. a `main` se sela sozinha; selada, volta a ser estrita", ensaio_main_se_sela),
 )
 
 

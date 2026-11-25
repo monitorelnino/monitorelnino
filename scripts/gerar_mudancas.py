@@ -153,6 +153,10 @@ def main() -> int:
     if "--check" in sys.argv:
         atual = SAIDA.read_text(encoding="utf-8") if SAIDA.exists() else ""
         if atual != pagina:
+            import selo_da_main
+            if selo_da_main.tolerante():
+                selo_da_main.avisar("mudancas.html obsoleto")
+                return 0
             print("✗ mudancas.html está obsoleto — rode python3 scripts/gerar_mudancas.py")
             return 1
         print("✓ mudancas.html em dia")

@@ -109,6 +109,7 @@ REGENERAVEIS = (
     "data/verificacao_municipal.json", "data/verificacao_resumo.json",
     "MARE_Indice_Documentacao.pdf", "METODOLOGIA.pdf",   # 07/11/2026: binários da cadeia (gerar_pdf_*.py)
     "indice-de-conteudo.html",   # 09/11/2026: gerado do catálogo (gerar_indice_de_conteudo.py); dois PRs de texto conflitavam nele
+    "CODEMAP.md",                # 25/11/2026: o publicador o regenera depois de cada merge (selo, D3)
     "mudancas.html",             # 10/11/2026: gerado do CHANGELOG (gerar_mudancas.py, na cadeia); todo PR com entrada conflitava nele
 )
 

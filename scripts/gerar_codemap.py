@@ -493,6 +493,10 @@ def main() -> int:
         # A data muda todo dia e não é o que importa: compara-se a TABELA.
         corpo = lambda t: t[t.index("| arquivo |"):] if "| arquivo |" in t else t  # noqa: E731
         if corpo(atual) != corpo(novo):
+            import selo_da_main
+            if selo_da_main.tolerante():
+                selo_da_main.avisar("CODEMAP desatualizado")
+                return 0
             print("✗ CODEMAP desatualizado — rode `python3 scripts/gerar_codemap.py` e commite.")
             return 1
         print(f"✓ CODEMAP OK — {len(linhas)} arquivos mapeados, tabela em dia.")
