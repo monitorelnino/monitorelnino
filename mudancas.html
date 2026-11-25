@@ -46,6 +46,8 @@
     <dl class="mudancas-lista">
       <dt>25/11/2026 · Despachante reconfere o plano antes de cada disparo</dt>
       <dd>Na abertura de 25/11 o relógio e o tique oportunista da válvula montaram o plano antes de qualquer disparo e dispararam a noite inteira duas vezes; a segunda cópia do DOE incremental perdeu o commit em `saude_sinais.json`. Agora cada item é reconferido contra as execuções do seu workflow logo antes do disparo, e o que outro observador já disparou é pulado.</dd>
+      <dt>25/11/2026 · Juiz 1.8 (rodada J18): ano partido pelo OCR lê-se inteiro</dt>
+      <dd>A leitura da versão do plano junta dígitos separados pelo OCR (&quot;Versão 201 8&quot; lê-se 2018). Antes, a versão sumia e o ano vinha de outro trecho do documento (2067, Tobias Barreto/SE). Trava nova no autoteste do juiz: 117 travas. Produção (codebook 1.7) não muda; a rodada paralela rejulga depois do merge.</dd>
       <dt>25/11/2026 · Publicador segue o rebase depois de unir e regenerar</dt>
       <dd>Na noite 24→25 o publicador perdeu o commit nas cinco tentativas: depois de unir o conflito e regenerar os derivados, punha no índice só os caminhos com escritor declarado, e o cartão, as páginas e os PDFs regenerados travavam o rebase. O laço passa a pôr no índice todo arquivo rastreado que a regeneração mudou. Falha F101; ensaio 31.</dd>
       <dt>25/11/2026 · Busca de planos: um ramo e um PR de dado por grupo de UF</dt>
@@ -162,8 +164,6 @@
       <dd>`scripts/unir_conflito_de_rodada.py`: os relatos datados de cada classe de união (noites perdidas, contagens de incidente) viram uma linha cada; o relato completo vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica, autoteste verde, nenhum comportamento muda. Código +24/−108.</dd>
       <dt>21/11/2026 · Rodada J18: leitura local do juiz 1.8 segue até o PDF</dt>
       <dd>A leitura local de `evidencias/` parava na primeira cópia txt, mesmo falha (só marcadores de página). 144 documentos com PDF ao lado ficavam sem texto. Agora a leitura percorre txt, ocr.txt, html e pdf, com OCR quando o PDF não tem camada de texto. Rodada paralela: 420 para 564 documentos julgados. Produção não muda.</dd>
-      <dt>20/11/2026 · Um só gravador dos relatórios internos de verificação</dt>
-      <dd>Quatro rotinas de verificação e publicação gravavam seus relatórios internos com o mesmo trecho copiado, e só uma tentava de novo quando outra gravava ao mesmo tempo; o diagnóstico de uma verificação falhou por isso. Um único gravador passa a servir às quatro, com nova tentativa. Linhas líquidas: −14.</dd>
     </dl>
   </section>
 </main>
