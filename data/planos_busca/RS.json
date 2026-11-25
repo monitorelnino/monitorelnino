@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-11-25",
  "municipios": {
   "4314902": {
    "S16": {
@@ -587,6 +587,13 @@
     "consulta": "\"Antônio Prado\" RS (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4300802&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "4300877": {
@@ -665,6 +672,13 @@
     "situacao": "erro",
     "consulta": "\"Araricá\" RS (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4300877&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -745,6 +759,13 @@
     "consulta": "\"Arroio Grande\" RS (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301305&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "4301008": {
@@ -823,6 +844,13 @@
     "situacao": "erro",
     "consulta": "\"Arroio do Meio\" RS (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301008&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -903,6 +931,13 @@
     "consulta": "\"Arroio do Sal\" RS (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301057&pagina=1&tamanhoPagina=500",
+    "motivo": "610 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "4301206": {
@@ -968,6 +1003,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=4301206&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301206&pagina=1&tamanhoPagina=500",
+    "motivo": "0 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "4301107": {
@@ -1019,6 +1061,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=4301107&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301107&pagina=1&tamanhoPagina=500",
+    "motivo": "3 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "4301404": {
@@ -1055,6 +1104,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=4301404&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301404&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1093,6 +1149,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=4301503&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301503&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "4301602": {
@@ -1129,6 +1192,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=4301602&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-25",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=4301602&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
