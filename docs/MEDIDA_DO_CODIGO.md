@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **105.751 linhas** em **304 arquivos** .py/.js; **41 workflows**.
+- **107.015 linhas** em **305 arquivos** .py/.js; **41 workflows**.
 - **66 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 45.
-- **159 nomes de função** definidos em mais de um arquivo.
+- **160 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 61502 |
-| `scripts` | 37413 |
-| `assets` | 6568 |
+| `(raiz)` | 62130 |
+| `scripts` | 37924 |
+| `assets` | 6693 |
 | `.claude` | 268 |
 
 ## Os 25 maiores
@@ -20,30 +20,30 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | arquivo | linhas |
 |---|---:|
 | `coletar_sinais_risco.py` | 3252 |
+| `juiz.py` | 2624 |
 | `coletores_base.py` | 2524 |
-| `juiz.py` | 2440 |
 | `verificar_pista_imprensa.py` | 1705 |
 | `coletar_doe.py` | 1661 |
-| `julgar_saude.py` | 1658 |
-| `scripts/unir_conflito_de_rodada.py` | 1422 |
+| `julgar_saude.py` | 1585 |
+| `scripts/unir_conflito_de_rodada.py` | 1486 |
+| `assets/js/monitor-de-riscos.js` | 1443 |
+| `scripts/ensaio_da_noite.py` | 1431 |
 | `scripts/verificar_regras_de_dado.py` | 1395 |
 | `coletar_edicoes_doe.py` | 1372 |
 | `julgar_e_aplicar_descobertas.py` | 1354 |
 | `descobrir_planos.py` | 1351 |
-| `assets/js/monitor-de-riscos.js` | 1331 |
-| `scripts/ensaio_da_noite.py` | 1274 |
-| `assets/js/index.js` | 1244 |
+| `assets/js/index.js` | 1245 |
 | `coletar_painel_am.py` | 1154 |
 | `gerar_imprensa_semana.py` | 1116 |
 | `recalcular_mare.py` | 1086 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `julgar_filas.py` | 1024 |
-| `aplicar_promocoes_do_juiz.py` | 939 |
+| `aplicar_promocoes_do_juiz.py` | 983 |
 | `gerar_pacote_blog.py` | 913 |
 | `scripts/pistas.py` | 867 |
-| `assets/js/saude.js` | 776 |
+| `assets/js/saude.js` | 785 |
+| `seguir_pistas.py` | 783 |
 | `coletar_s2id.py` | 762 |
-| `monitorar_busca_web.py` | 755 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 
@@ -66,6 +66,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `carregar` | 6 | `aplicar_revisao.py`, `scripts/testar_ordem_prioridade_ufs.py`, `scripts/validar_dicionario.py`, `verificar_financiamento.py` … |
 | `decidir` | 6 | `buscar_financiamento_preventivo.py`, `coletar_saude_estadual.py`, `coletar_sg_esus.py`, `monitorar_busca_web.py` … |
 | `agregar` | 5 | `coletar_datasus_dbc.py`, `coletar_execucao_mps.py`, `coletar_sih.py`, `coletar_sim.py` … |
+| `avisar` | 5 | `conferir_emergencias_estaduais.py`, `scripts/avisos.py`, `scripts/checagem_pre_noite.py`, `scripts/selo_da_main.py` … |
 | `carregar_fila` | 5 | `descobrir_planos.py`, `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` … |
 | `fundir` | 5 | `coletar_pab_brasil.py`, `coletar_prioritarios_mma.py`, `coletar_recursos_resposta.py`, `coletar_semiarido_sudene.py` … |
 | `medir` | 5 | `scripts/cobertura_docstrings.py`, `scripts/diagnostico_fontes_saude.py`, `scripts/medir_codigo.py`, `scripts/medir_revocacao_das_consultas.py` … |
@@ -76,7 +77,6 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `_host` | 4 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `scripts/municipio_do_dominio.py`, `triar_confianca_pistas.py` |
 | `_levanta` | 4 | `buscar_planos_fontes_abertas.py`, `coletar_pab_brasil.py`, `coletar_transferencias_municipais.py`, `scripts/testar_busca_dou.py` |
 | `_sem_acento` | 4 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py`, `scripts/vocabulario.py` |
-| `avisar` | 4 | `conferir_emergencias_estaduais.py`, `scripts/avisos.py`, `scripts/checagem_pre_noite.py`, `scripts/verificar_leituras_paradas.py` |
 | `conferir` | 4 | `reconferir_instrumentos_federais.py`, `scripts/gerar_saude_pipeline.py`, `scripts/verificar_funil.py`, `scripts/verificar_texto_blog.py` |
 | `data_br` | 4 | `coletar_transferegov.py`, `gerar_resposta.py`, `scripts/cruzar_ocp_com_atos.py`, `scripts/gerar_mudancas.py` |
 | `faixa` | 4 | `gerar_dados_abertos.py`, `gerar_monitor_saude.py`, `gerar_selos.py`, `robustez_saude.py` |

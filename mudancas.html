@@ -46,6 +46,10 @@
     <dl class="mudancas-lista">
       <dt>25/11/2026 · Cartão do município: autodeclaração de plano</dt>
       <dd>O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.</dd>
+      <dt>25/11/2026 · Juiz: a data do plano é a que o documento informa</dt>
+      <dd>O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.</dd>
+      <dt>25/11/2026 · Redução: história do `julgar_saude.py` ao HISTORICO</dt>
+      <dd>Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).</dd>
       <dt>25/11/2026 · Rodada J18: rejulgamento paralelo guarda o que já julgou</dt>
       <dd>O juiz 1.8 paralelo não apaga mais os registros já julgados quando uma rodada não tem o documento local: a correção está em `gravar_paralelo_18`, com trava. A rodada grava só em arquivos paralelos (`data/paralelo_*`); índice, produção e páginas não mudam.</dd>
       <dt>25/11/2026 · Buscador 2: queda de rede não conta como vista</dt>
@@ -160,10 +164,6 @@
       <dd>O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ordem fixa: o rabo nunca chegava (257 documentos oficiais além de 14 dias; MS, RO e RR sem edição lida desde 11–12/11). Agora o juiz começa pela pista que espera há mais tempo e o canal 2 pela UF de leitura mais velha.</dd>
       <dt>23/11/2026 · Juiz: plano publicado não é ato de resposta</dt>
       <dd>O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.</dd>
-      <dt>24/11/2026 · Buscador 2: teto de buscas no veículo vale para a rodada, não para o bloco</dt>
-      <dd>O teto de 300 buscas no veículo era zerado a cada bloco de 200 URLs: o lote de 24/11 fez cerca de 1.500 buscas e nenhum link do Google News resolveu. O contador passa a ser da rodada. Catálogo F92.</dd>
-      <dt>23/11/2026 · Buscador 2: B2 busca no veículo com o título guardado</dt>
-      <dd>O redirecionamento do Google News não resolvia (0 de 5.802). A compactação de 19/10 tirava o título, e sem ele a busca no veículo não tinha o que procurar. Agora o título fica na fila, o B2 recebe veículo e título, a busca tem teto de 300 por rodada, e o reprocessamento reabre uma vez as pistas com título. Catálogo F91.</dd>
     </dl>
   </section>
 </main>
