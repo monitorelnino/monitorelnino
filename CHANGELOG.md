@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2082 · Válvula não comita o log da corrente
+
+O PR de dado da válvula levava as próprias linhas de `data/saude_pipeline.json`; de dia a publicação anexa ao mesmo log a cada run e o #2078 conflitou três vezes no GitHub. No commit do `_coletor.yml`, o ramo `coleta-dia/*` devolve o log à base; as linhas da válvula ficam no resumo do job. F102 no catálogo; ensaio 32.
+
 ## 2026-11-25 · #2080 · Checagem pré-noite tolera Portões e prévia do push na main
 
 A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.
