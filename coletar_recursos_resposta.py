@@ -348,7 +348,11 @@ def fundir(anterior: dict, registros: list, retificacoes: list, janela: dict, re
         "janela_lida": janela,
         # A cobertura só soma janelas lidas com as MESMAS consultas: a redação nova começa onde foi lida.
         "cobertura": {"desde": min(cob["desde"], janela["desde"]) if mesma else janela.get("desde"),
-                      "ate": janela.get("ate"), "consultas": list(CONSULTAS)},
+                      "ate": janela.get("ate"), "consultas": list(CONSULTAS),
+                      # O que falhou nesta rodada (janela da busca ou ato) é devido à próxima; o que ela devia, releu.
+                      "a_reler": [dict(t) for t in sorted({(("de", j["de"]), ("ate", j["ate"]), ("consulta", j.get("consulta")))
+                                                           for j in janela.get("janelas_incompletas") or [] if j.get("erro")},
+                                                          key=str)]},
         "recusas": recusas,
         "atos_novos_nesta_rodada": len(set(atos) - antes),
         "atualizado_em": hoje_editorial().strftime("%d/%m/%Y"),
@@ -376,23 +380,38 @@ def fundir(anterior: dict, registros: list, retificacoes: list, janela: dict, re
 # =============================================================================================
 # A rodada
 # =============================================================================================
-def varrer(desde: datetime.date, ate: datetime.date, buscar_fn) -> tuple:
-    """(itens, janelas incompletas) das duas consultas, em janelas de `JANELA_DA_BUSCA` dias. Janela que a busca
-    não entrega fica declarada com a causa; as outras seguem."""
-    itens, incompletas, vistos = [], [], set()
-    for q in CONSULTAS:
-        a = desde
-        while a <= ate:
-            b = min(a + datetime.timedelta(days=JANELA_DA_BUSCA - 1), ate)
-            try:
-                achados, inc = varrer_busca_dou(q, a, b, buscar_fn=buscar_fn)
-            except Exception as e:  # noqa: BLE001 — janela que não veio é lacuna declarada, não fim da rodada
-                achados, inc = [], [{"de": a.isoformat(), "ate": b.isoformat(), "erro": f"{type(e).__name__}: {str(e)[:120]}"}]
-                registrar_lacuna("recursos_resposta", f"busca {q} de {a} a {b}: {type(e).__name__}: {e}",
-                                 canal="DOU", camada=1, nivel="nacional", strings=[q])
-            incompletas += [{**j, "consulta": q} for j in (inc or [])]
-            itens += [it for it in achados if it.get("url") not in vistos]
-            vistos.update(it.get("url") for it in achados)
+def a_reler_de(anterior: dict, desde: datetime.date) -> list:
+    """[(consulta ou None, de, até)] que o arquivo ainda deve: janela ou ato que falhou em rodada anterior e, se o
+    arquivo veio de outras consultas, o ciclo até a véspera de `desde` pelas consultas de hoje. Função pura."""
+    cob = anterior.get("cobertura") or {}
+    devidas = [(p.get("consulta"), datetime.date.fromisoformat(p["de"]), datetime.date.fromisoformat(p["ate"]))
+               for p in cob.get("a_reler") or []]
+    if anterior.get("municipios") and cob.get("consultas") != list(CONSULTAS) and desde > CICLO:
+        devidas.append((None, CICLO, desde - datetime.timedelta(days=1)))
+    return devidas
+
+
+def varrer(desde: datetime.date, ate: datetime.date, buscar_fn, a_reler=()) -> tuple:
+    """(itens, janelas incompletas) das duas consultas, em janelas de `JANELA_DA_BUSCA` dias: primeiro o que ficou
+    devido (`a_reler`), depois de `desde` a `ate`. Janela que a busca não entrega fica declarada com a causa; as
+    outras seguem."""
+    itens, incompletas, vistos, feitas = [], [], set(), set()
+    pedidos = [(q, de, fim) for q0, de, fim in a_reler for q in ([q0] if q0 else CONSULTAS)]
+    for q, de, fim in pedidos + [(q, desde, ate) for q in CONSULTAS]:
+        a = de
+        while a <= fim:
+            b = min(a + datetime.timedelta(days=JANELA_DA_BUSCA - 1), fim)
+            if (q, a, b) not in feitas:
+                feitas.add((q, a, b))
+                try:
+                    achados, inc = varrer_busca_dou(q, a, b, buscar_fn=buscar_fn)
+                except Exception as e:  # noqa: BLE001 — janela que não veio é lacuna declarada, não fim da rodada
+                    achados, inc = [], [{"de": a.isoformat(), "ate": b.isoformat(), "erro": f"{type(e).__name__}: {str(e)[:120]}"}]
+                    registrar_lacuna("recursos_resposta", f"busca {q} de {a} a {b}: {type(e).__name__}: {e}",
+                                     canal="DOU", camada=1, nivel="nacional", strings=[q])
+                incompletas += [{**j, "consulta": q} for j in (inc or [])]
+                itens += [it for it in achados if it.get("url") not in vistos]
+                vistos.update(it.get("url") for it in achados)
             a = b + datetime.timedelta(days=1)
     return itens, incompletas
 
@@ -400,7 +419,8 @@ def varrer(desde: datetime.date, ate: datetime.date, buscar_fn) -> tuple:
 def coletar(desde: datetime.date, ate: datetime.date = None, buscar_fn=None) -> dict:
     _buscar = buscar_fn or buscar
     ate = ate or hoje_editorial()
-    itens, incompletas = varrer(desde, ate, _buscar)
+    anterior = ler(SAIDA) or {}
+    itens, incompletas = varrer(desde, ate, _buscar, a_reler_de(anterior, desde))
     _, por_nome = referencia_ibge()
     por_nome_solto = {(normalizar_nome(n), uf): cod for (n, uf), cod in por_nome.items()}
 
@@ -417,6 +437,10 @@ def coletar(desde: datetime.date, ate: datetime.date = None, buscar_fn=None) -> 
             bruto = _buscar(url, timeout=90, origem=ORIGEM)
         except Exception as e:  # noqa: BLE001 — ato que não abre é lacuna de um ato
             recusas["ato_nao_lido"] += 1
+            dia = re.search(r"(\d{2})/(\d{2})/(\d{4})", str(it.get("data") or ""))   # o ato que não abriu volta pelo dia dele
+            dia = "-".join(reversed(dia.groups())) if dia else None
+            incompletas.append({"de": dia or desde.isoformat(), "ate": dia or ate.isoformat(),
+                                "erro": f"ato não lido: {type(e).__name__}", "url": url})
             registrar_lacuna("recursos_resposta", f"{url}: {type(e).__name__}: {e}",
                              canal="DOU", camada=1, nivel="nacional", strings=[url])
             continue
@@ -429,7 +453,7 @@ def coletar(desde: datetime.date, ate: datetime.date = None, buscar_fn=None) -> 
 
     janela = {"desde": desde.isoformat(), "ate": ate.isoformat(),
               "atos_na_busca": len(itens), "janelas_incompletas": incompletas}
-    dados = fundir(ler(SAIDA) or {}, registros, retificacoes, janela, recusas, codigo_de)
+    dados = fundir(anterior, registros, retificacoes, janela, recusas, codigo_de)
     corpo = json.dumps({"consultas": CONSULTAS, "janela": janela, "recusas": recusas, "atos": registros,
                         "retificacoes": retificacoes}, ensure_ascii=False, indent=1).encode("utf-8")
     h = preservar_evidencia(corpo, "https://www.in.gov.br/consulta/-/buscar/dou", "json", ORIGEM)
@@ -527,6 +551,10 @@ def autoteste() -> int:
     de_novo = fundir(corrigido, [], [retif["retificacao"]], {}, {}, codigo_de)
     solto = {**errada, "municipio": "Quevedo", "uf": "RS", "ibge": None}
     pendente = fundir(fundir({}, [solto], [], {}, {}), [solto], [], {}, {})
+    devido = fundir({}, [], [], {"desde": "2026-06-29", "ate": "2026-11-25", "janelas_incompletas": [
+        {"de": "2026-07-09", "ate": "2026-07-18", "erro": "HTTPError: 502", "consulta": CONSULTAS[1]},
+        {"de": "2026-07-09", "ate": "2026-07-09", "erro": "ato não lido: HTTPError", "url": "https://x/ato"},
+        {"de": "2026-08-03", "ate": "2026-08-03", "lidos": 50, "total": 61, "consulta": CONSULTAS[0]}]}, {})
     chamadas = []
 
     def busca_falsa(q, de, ate, buscar_fn=None):
@@ -542,6 +570,9 @@ def autoteste() -> int:
     varrer_busca_dou, registrar_lacuna = busca_falsa, lambda *a, **k: lacunas.append(a)
     try:
         varridos, incompletas = varrer(datetime.date(2026, 4, 26), datetime.date(2026, 5, 20), None)
+        feitas = len(chamadas)
+        varrer(datetime.date(2026, 11, 18), datetime.date(2026, 11, 25), None, a_reler_de(devido, datetime.date(2026, 11, 18)))
+        relidas, chamadas = chamadas[feitas:], chamadas[:feitas]
     finally:
         varrer_busca_dou, registrar_lacuna = originais
 
@@ -612,7 +643,23 @@ def autoteste() -> int:
                      and "502" in incompletas[0]["erro"] and len(lacunas) == 1),
         "a cobertura declarada cresce com a janela lida pelas mesmas consultas":
             lambda: (um["cobertura"]["desde"] == "2026-10-01" and dois["cobertura"] == {
-                "desde": "2026-09-25", "ate": "2026-10-03", "consultas": list(CONSULTAS)}),
+                "desde": "2026-09-25", "ate": "2026-10-03", "consultas": list(CONSULTAS), "a_reler": []}),
+        "a janela e o ato que falham ficam devidos, e a rodada seguinte os relê antes da janela do dia":
+            lambda: (devido["cobertura"]["a_reler"] == [
+                         {"de": "2026-07-09", "ate": "2026-07-09", "consulta": None},
+                         {"de": "2026-07-09", "ate": "2026-07-18", "consulta": CONSULTAS[1]}]
+                     and a_reler_de(devido, datetime.date(2026, 11, 18))
+                     == [(None, datetime.date(2026, 7, 9), datetime.date(2026, 7, 9)),
+                         (CONSULTAS[1], datetime.date(2026, 7, 9), datetime.date(2026, 7, 18))]
+                     and relidas == [(CONSULTAS[0], datetime.date(2026, 7, 9), datetime.date(2026, 7, 9)),
+                                     (CONSULTAS[1], datetime.date(2026, 7, 9), datetime.date(2026, 7, 9)),
+                                     (CONSULTAS[1], datetime.date(2026, 7, 9), datetime.date(2026, 7, 18)),
+                                     (CONSULTAS[0], datetime.date(2026, 11, 18), datetime.date(2026, 11, 25)),
+                                     (CONSULTAS[1], datetime.date(2026, 11, 18), datetime.date(2026, 11, 25))]
+                     and fundir(devido, [], [], {"desde": "2026-11-18", "ate": "2026-11-25"}, {})["cobertura"]["a_reler"] == []),
+        "arquivo lido só pela redação antiga deve o ciclo pelas consultas de hoje":
+            lambda: (a_reler_de({"municipios": {"1": {}}, "janela_lida": {"ate": "2026-11-24"}}, datetime.date(2026, 11, 17))
+                     == [(None, CICLO, datetime.date(2026, 11, 16))] and a_reler_de({}, datetime.date(2026, 11, 17)) == []),
         # O arquivo: um ato por portaria, e as duas finalidades separadas.
         "o mesmo ato lido duas vezes entra uma vez":
             lambda: (dois["municipios"]["3135605"]["atos"].__len__() == 2
