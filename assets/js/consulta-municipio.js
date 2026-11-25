@@ -16,7 +16,8 @@
  * município (editoria, 03/11/2026, §5 do handover do risco de base): declara o território do dado
  * ("município", ou "dados do estado de {estado}; …" quando `estado` vem) e leva sempre o link
  * "ver em {pagina}" para onde o dado vive (`ver` = {href, pagina, ficha?}). `valor` e `nota` chegam
- * como HTML já escapado; `aba` acrescenta o link "O que fazer" da página. Os textos vivem em `_comum.json`. */
+ * como HTML já escapado; `aba` acrescenta o link "O que fazer" da página. Os textos vivem em `_comum.json`.
+ * `declarado(reg, fontes, localizado, corte)` dá as linhas de autodeclaração do município (ICM, MUNIC, S2iD). */
 (function (global) {
   'use strict';
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
@@ -113,5 +114,22 @@
     return m ? {nivel: NIVEL_DA_VARREDURA[v.nivel], data: m[3] + '/' + m[2] + '/' + m[1]} : null;
   }
 
-  global.ConsultaMunicipio = { montar, cartao, nrm, situacaoDoPlano, varreduraLegivel };
+  /* Autodeclaração do município (editoria, 25/11/2026): o que ele disse ao ICM (Defesa Civil Nacional), à
+   * MUNIC (IBGE) e ao S2iD, com a fonte do ICM em link. `reg` e `fontes` vêm de `municipios_card.json`
+   * (`declarado`, `fontes_declarado`); `localizado` diz se o MARÉ localizou o documento. Devolve a lista de
+   * linhas em HTML já escapado (vazia sem `declarado.icm` booleano nem S2iD); só descreve, sem juízo. */
+  function declarado(reg, fontes, localizado, corte) {
+    const d = (reg && reg.declarado) || {}, url = fontes && fontes.icm && fontes.icm.url, linhas = [];
+    if (typeof d.icm === 'boolean') {
+      const nome = esc(T('declarado.icm.fonte')), fonte = /^https:\/\//.test(url || '') ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + nome + '</a>' : nome;
+      linhas.push(T('declarado.icm.' + (!d.icm ? 'sem_plano' : localizado ? 'com_plano' : 'sem_documento'),
+        {fonte, edicao: esc(T('declarado.icm.edicao')), corte: esc(corte || '')}));
+      if (d.icm && d.munic) linhas.push(T('declarado.munic'));
+    }
+    const s = /^(\d{4})-(\d{2})-(\d{2})/.exec(d.s2id || '');
+    if (s) linhas.push(T('declarado.s2id', {data: s[3] + '/' + s[2] + '/' + s[1]}));
+    return linhas;
+  }
+
+  global.ConsultaMunicipio = { montar, cartao, nrm, situacaoDoPlano, varreduraLegivel, declarado };
 })(window);
