@@ -61,8 +61,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude",
+   "data_verificacao": "25/11/2026",
+   "log_ref": "julgar_saude_25-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -75,6 +75,19 @@
      "justificativa_ex_ante": "plano sazonal recorrente para 2026, lançado 10/02/2026, publicado no portal oficial da Sesau; documento integral em link do Google Drive citado na própria página oficial",
      "tipo": "recorrente_arboviroses",
      "hash_pagina_citada": "de31e2f567292715b8e8721f4cda5f0e0a6c3780a16aa95de2623a9b21229c28"
+    },
+    {
+     "status": "VIG",
+     "orgao": "SES-AL",
+     "doc": "PLANO ESTADUAL DE ENFRENTAMENTO À SECA E ESTIAGEM 2025-2031 VERSÃO 2025 CONSULTA PÚBLICA Participe da revisão anual do Plano Estadual de Enfrentamento à Seca e Estiagem Aponte a câ",
+     "observacao": null,
+     "numero": null,
+     "data": "2025",
+     "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-06/Plano%20Estadual%20de%20Enfrentamento%20%C3%A0%20Seca%20e%20Estiagem%202025-2031.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "ebfa06fb0bbe79842fffda7297bc13150b23af4f216c773736b93c5016babfa1",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "VIG",
@@ -89,7 +102,21 @@
    "hash_pagina_citada": "de31e2f567292715b8e8721f4cda5f0e0a6c3780a16aa95de2623a9b21229c28",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
    "procedencia_da_pagina": "fonte direta",
-   "hash_evidencia": null
+   "hash_evidencia": null,
+   "coordenacao": {
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "PLANO ESTADUAL DE ENFRENTAMENTO À SECA E ESTIAGEM 2025-2031 VERSÃO 2025 CONSULTA PÚBLICA Participe da revisão anual do Plano Estadual de Enfrentamento à Seca e Estiagem Aponte a câ",
+     "numero": null,
+     "data": "2025",
+     "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-06/Plano%20Estadual%20de%20Enfrentamento%20%C3%A0%20Seca%20e%20Estiagem%202025-2031.pdf",
+     "hash_evidencia": "ebfa06fb0bbe79842fffda7297bc13150b23af4f216c773736b93c5016babfa1",
+     "justificativa_degrau": "estrutura da saúde que integra a defesa civil na composição, com atribuição escrita no ato",
+     "atribuicao_citada": "GOVERNO DO ESTADO DE MINAS GERAIS GABINETE MILITAR DO GOVERNADOR COORDENADORIA ESTADUAL DE DEFESA CIVIL PLANO ESTADUAL DE ENFRENTAMENTO À SECA E ESTIAGEM 2025-2031 VERSÃO 2025 CONSULTA PÚBLICA Participe da revisão anual do Plano Estadual de",
+     "data_verificacao": "25/11/2026",
+     "log_ref": "julgar_saude_25-11-2026"
+    }
+   }
   },
   "AM": {
    "risco_sanitario_projetado": [
@@ -214,8 +241,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "25/11/2026",
+   "log_ref": "julgar_saude_25-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -230,21 +257,78 @@
      "tipo": "recorrente_arboviroses",
      "procedencia_do_documento": "captura do Wayback",
      "nota_interna": "apresentado em 01/07/2025 na oficina de emergências com o MS"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-CE",
+     "doc": "Plano de Contingência Link: Manual de Febre Amarela Link: Guia de Vigilância Febre do Oropouche",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": "10.175",
+     "data": "23/01/2026",
+     "url": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2018/06/NOTA_Vigilancia-das-Arboviroses_2026.pptx.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "5007137bd311f4e57bcd0ec8f384d6b1a3aed0b8cfdad234385a9a4a1656f42a",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+    },
+    {
+     "status": "VIG",
+     "orgao": "SES-CE",
+     "doc": "Plano Estadual de Preparação e Resposta do Setor Saúde aos Impactos da Seca, Estiagem e Escassez Hídrica associados ao Fenômeno El Niño",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "02/2022",
+     "url": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2022/02/DIAG-Plano-Estadual-El-Nino.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "ad8a95b0e7ff15dba34185c7e98d64e846ad5d3099801ddb4a78a20792de23cc",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "VIG",
-   "orgao": "SESA-CE / SEVIR",
-   "doc": "Plano Estadual de Enfrentamento das Arboviroses 2025/2026",
-   "numero": null,
-   "data": "01/07/2025",
-   "url": "https://www.saude.ce.gov.br/wp-content/uploads/sites/9/2022/02/2025_PLANO-ESTADUAL_ENFRENTAMENTO-ARBOVIROSES.pptx.pdf",
-   "hash_evidencia": "be6e3a6731896a792eed4fa2f05d05668724c0fb99afe56c0eff6843365eb02b",
-   "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano sazonal recorrente para 2025/2026; PDF no portal oficial da SESA",
-   "procedencia_do_documento": "captura do Wayback",
-   "preservado_em": "2026-09-26",
-   "evidencia_e": "o documento (PDF)",
-   "nota_interna": "apresentado em 01/07/2025 na oficina de emergências com o MS"
+   "status": "NOVO",
+   "orgao": "SES-CE",
+   "doc": "Plano de Contingência Link: Manual de Febre Amarela Link: Guia de Vigilância Febre do Oropouche",
+   "numero": "10.175",
+   "data": "23/01/2026",
+   "url": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2018/06/NOTA_Vigilancia-das-Arboviroses_2026.pptx.pdf",
+   "hash_evidencia": "5007137bd311f4e57bcd0ec8f384d6b1a3aed0b8cfdad234385a9a4a1656f42a",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "REATIVADO_CICLO",
+    "orgao": "SES-CE",
+    "doc": "Plano Estadual de Preparação e Resposta do Setor Saúde aos Impactos da Seca, Estiagem e Escassez Hídrica associados ao Fenômeno El Niño",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "02/2022",
+    "url": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2022/02/DIAG-Plano-Estadual-El-Nino.pdf",
+    "hash_evidencia": "ad8a95b0e7ff15dba34185c7e98d64e846ad5d3099801ddb4a78a20792de23cc",
+    "justificativa_degrau": "ato que nomeia o ciclo, sem data de 2026 confirmada",
+    "data_verificacao": "25/11/2026",
+    "log_ref": "julgar_saude_25-11-2026",
+    "f1": {
+     "status": "REATIVADO_CICLO",
+     "doc": "Plano Estadual de Preparação e Resposta do Setor Saúde aos Impactos da Seca, Estiagem e Escassez Hídrica associados ao Fenômeno El Niño",
+     "numero": null,
+     "data": "02/2022",
+     "url": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2022/02/DIAG-Plano-Estadual-El-Nino.pdf",
+     "hash_evidencia": "ad8a95b0e7ff15dba34185c7e98d64e846ad5d3099801ddb4a78a20792de23cc",
+     "justificativa_degrau": "ato que nomeia o ciclo, sem data de 2026 confirmada",
+     "data_verificacao": "25/11/2026"
+    },
+    "f2": {
+     "status": "LISTADA_SEM_ATRIBUICAO",
+     "doc": "Plano Estadual de Preparação e Resposta do Setor Saúde aos Impactos da Seca, Estiagem e Escassez Hídrica associados ao Fenômeno El Niño",
+     "numero": null,
+     "data": "02/2022",
+     "url": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2022/02/DIAG-Plano-Estadual-El-Nino.pdf",
+     "hash_evidencia": "ad8a95b0e7ff15dba34185c7e98d64e846ad5d3099801ddb4a78a20792de23cc",
+     "justificativa_degrau": "o ato cita a defesa civil como convidada, sem integrá-la à composição",
+     "atribuicao_citada": "de do Estado do Ceará Antonio Silva Lima Neto Secretário Executivo de Vigilância em Saúde Ana Maria Peixoto Cabral Maia Coordenadora da Coordenadoria de Vigilância Epidemiológica e Prevenção em Saúde Eloilson Carneiro do Nascimento Orientad",
+     "data_verificacao": "25/11/2026",
+     "log_ref": "julgar_saude_25-11-2026"
+    }
+   }
   },
   "DF": {
    "risco_sanitario_projetado": [
@@ -289,8 +373,8 @@
   "ES": {
    "risco_sanitario_projetado": [],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "25/11/2026",
+   "log_ref": "julgar_saude_25-11-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -305,21 +389,78 @@
      "tipo": "recorrente_arboviroses",
      "procedencia_do_documento": "fonte direta",
      "nota_interna": "PDF no portal oficial 'mosquito.saude.es.gov.br'; sem data de edição no documento localizado"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-ES",
+     "doc": "Plano de Contingência para o Enfrentamento dos Efeitos do El Niño 2026",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "El Niño",
+     "url": "https://saude.es.gov.br/media/Concurso%20publico%202010/plano-el-nino-venda-nova-do-imigrante-2026.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "e686b3efc96570ce97b01e0ccb9f4b74eb6dbe5e16b15ac72552a574b50e3f17",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-ES",
+     "doc": "PLANO DE CONTINGÊNCIA DA SECRETARIA DE ESTADO DA SAÚDE PARA O ENFRENTAMENTO DE DESASTRE POR CALOR EXTREMO NO ESTADO DO ESPÍRITO SANTO VITÓRIA, ES 2026 Subsecretaria de Vigilância e",
+     "observacao": null,
+     "numero": null,
+     "data": "2026",
+     "url": "https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "809b0433c3cb45dfe6b8c4051a3f7df3c36819c0f1697baa8234a4adbb06d37b",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "VIG",
-   "orgao": "SESA-ES",
-   "doc": "Plano de Contingência Estadual das Arboviroses — Dengue, Zika e Chikungunya",
+   "status": "NOVO",
+   "orgao": "SES-ES",
+   "doc": "Plano de Contingência para o Enfrentamento dos Efeitos do El Niño 2026",
    "numero": null,
-   "data": null,
-   "url": "https://mosquito.saude.es.gov.br/Media/dengue/Notas-Tecnicas-Alertas-Epidemiologicos/Plano%20Conting%C3%AAncia%20Arboviroses.pdf",
-   "hash_evidencia": "3c6f165c01411c3068bf8e48246e564f89060d09f6d903ea937e5bb448732439",
-   "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano recorrente no portal oficial; série histórica do documento vai até 2022 — edição/data a confirmar",
-   "procedencia_do_documento": "fonte direta",
-   "preservado_em": "2026-09-26",
-   "evidencia_e": "o documento (PDF)",
-   "nota_interna": "PDF no portal oficial 'mosquito.saude.es.gov.br'; sem data de edição no documento localizado"
+   "data": "El Niño",
+   "url": "https://saude.es.gov.br/media/Concurso%20publico%202010/plano-el-nino-venda-nova-do-imigrante-2026.pdf",
+   "hash_evidencia": "e686b3efc96570ce97b01e0ccb9f4b74eb6dbe5e16b15ac72552a574b50e3f17",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "REATIVADO_CICLO",
+    "orgao": "SES-ES",
+    "doc": "Plano de Contingência para o Enfrentamento dos Efeitos do El Niño 2026",
+    "observacao": "sem ato de aprovação localizado",
+    "numero": null,
+    "data": "El Niño",
+    "url": "https://saude.es.gov.br/media/Concurso%20publico%202010/plano-el-nino-venda-nova-do-imigrante-2026.pdf",
+    "hash_evidencia": "e686b3efc96570ce97b01e0ccb9f4b74eb6dbe5e16b15ac72552a574b50e3f17",
+    "justificativa_degrau": "ato que nomeia o ciclo, sem data de 2026 confirmada",
+    "data_verificacao": "25/11/2026",
+    "log_ref": "julgar_saude_25-11-2026",
+    "f1": {
+     "status": "REATIVADO_CICLO",
+     "doc": "Plano de Contingência para o Enfrentamento dos Efeitos do El Niño 2026",
+     "numero": null,
+     "data": "El Niño",
+     "url": "https://saude.es.gov.br/media/Concurso%20publico%202010/plano-el-nino-venda-nova-do-imigrante-2026.pdf",
+     "hash_evidencia": "e686b3efc96570ce97b01e0ccb9f4b74eb6dbe5e16b15ac72552a574b50e3f17",
+     "justificativa_degrau": "ato que nomeia o ciclo, sem data de 2026 confirmada",
+     "data_verificacao": "25/11/2026"
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Plano de Contingência para o Enfrentamento dos Efeitos do El Niño 2026",
+     "numero": null,
+     "data": "El Niño",
+     "url": "https://saude.es.gov.br/media/Concurso%20publico%202010/plano-el-nino-venda-nova-do-imigrante-2026.pdf",
+     "hash_evidencia": "e686b3efc96570ce97b01e0ccb9f4b74eb6dbe5e16b15ac72552a574b50e3f17",
+     "justificativa_degrau": "estrutura da saúde que integra a defesa civil na composição, com atribuição escrita no ato",
+     "atribuicao_citada": "isão Técnica Tadeu Sossai Secretário de Saúde Joemilly Grecco Cezati Gerente da Vigilância em Saúde João Magno Guarnier Coordenador Saúde do Trabalhador e Vigidesastre APRESENTAÇÃO O El Niño é um fenômeno climático associado ao aquecimento ",
+     "data_verificacao": "25/11/2026",
+     "log_ref": "julgar_saude_25-11-2026"
+    }
+   }
   },
   "GO": {
    "risco_sanitario_projetado": [
@@ -369,32 +510,45 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "15/11/2026",
-   "log_ref": "julgar_saude_15-11-2026",
+   "data_verificacao": "25/11/2026",
+   "log_ref": "julgar_saude_25-11-2026",
    "instrumentos": [
+    {
+     "status": "VIG",
+     "orgao": "SES-MA",
+     "doc": "PLANO DE CONTINGÊNCIA DEZEMBRO DE 2023 PARA ENFRENTAMENTO DAS ARBOVIROSES NO MARANHÃO Elaboração Jorge Luiz Pinto Moraes Programa de Controle das Arboviroses DE/SECD/SAPAPVS/SES/MA",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": null,
+     "data": "12/2023",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2023/12/PLANO_CONTINGENCIA_ARBOVIROSES_2023.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "5b0f4bf21d23c0f90444c2d200126374a9e7993d73472d33b00eb6c9fcb716ef",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+    },
     {
      "status": "VENC",
      "orgao": "SES-MA",
-     "doc": "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025",
+     "doc": "Plano de Contingência para Prevenção e Enfrentamento de Epidemias de Arboviroses do Estado do Maranhão DENGUE, CHIKUNGUNYA E ZIKA Nº 01/2022  SAPAPVS/SECD/ ESTADO DO MARANHÃO SECR",
      "observacao": "sem ato de aprovação localizado",
      "numero": null,
-     "data": "01/2025",
-     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2025/01/Plano_arboviroses_-_2024_2025.pdf",
+     "data": "12/2022",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2022/12/PLANO-ESTADUAL-DE-CONTINGENCIA-ARBOVIRORES.pdf",
      "natureza_doc": "EX_ANTE",
      "tipo": "saude_do_ciclo",
-     "hash_evidencia": "43fa8becf9f2b65a732fc1f1ef671a05bb224e00118bc86dc3b4cf320c02691c",
-     "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
+     "hash_evidencia": "99d6b50c3b7aea1a939bc939e8a6173631306f721ccaf23afb8d32de91808f6a",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "VENC",
+   "status": "VIG",
    "orgao": "SES-MA",
-   "doc": "Plano de ação para enfrentamento das arboviroses no Maranhão 2024-2025",
+   "doc": "PLANO DE CONTINGÊNCIA DEZEMBRO DE 2023 PARA ENFRENTAMENTO DAS ARBOVIROSES NO MARANHÃO Elaboração Jorge Luiz Pinto Moraes Programa de Controle das Arboviroses DE/SECD/SAPAPVS/SES/MA",
    "numero": null,
-   "data": "01/2025",
-   "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2025/01/Plano_arboviroses_-_2024_2025.pdf",
-   "hash_evidencia": "43fa8becf9f2b65a732fc1f1ef671a05bb224e00118bc86dc3b4cf320c02691c",
+   "data": "12/2023",
+   "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2023/12/PLANO_CONTINGENCIA_ARBOVIROSES_2023.pdf",
+   "hash_evidencia": "5b0f4bf21d23c0f90444c2d200126374a9e7993d73472d33b00eb6c9fcb716ef",
    "natureza_doc": "EX_ANTE",
-   "justificativa_ex_ante": "promovido por julgar_saude.py em 15/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 25/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
    "coordenacao": {
     "status": "PERMANENTE",
     "orgao": "SES-MA",
@@ -416,6 +570,18 @@
      "hash_evidencia": "021cea8d53cfac1b7926f8882cae3443f934d1426e3a8f2e6e01d4945d9e9c8d",
      "justificativa_degrau": "ato institui a estrutura e não nomeia o ciclo",
      "data_verificacao": "15/11/2026"
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "Plano de Contingência para Prevenção e Enfrentamento de Epidemias de Arboviroses do Estado do Maranhão DENGUE, CHIKUNGUNYA E ZIKA Nº 01/2022  SAPAPVS/SECD/ ESTADO DO MARANHÃO SECR",
+     "numero": null,
+     "data": "12/2022",
+     "url": "https://www1.saude.ma.gov.br/wp-content/uploads/2022/12/PLANO-ESTADUAL-DE-CONTINGENCIA-ARBOVIRORES.pdf",
+     "hash_evidencia": "99d6b50c3b7aea1a939bc939e8a6173631306f721ccaf23afb8d32de91808f6a",
+     "justificativa_degrau": "estrutura intersetorial do estado com a saúde citada, com atribuição escrita no ato",
+     "atribuicao_citada": "VIGILÂNCIA AMBIENTAL LACEN-MA UNIDADE GESTORA DA ÁREA MEIO/SAAD UNIDADE GESTORA DAS URS’s Maria das Graças Lírio Leite Coordenadora PECD André Luiz Abenante Vasconcelos Enfermeiro / Vig.Epi. Willian Vieira Ferreira Enfermeira/ Técnica Flávi",
+     "data_verificacao": "25/11/2026",
+     "log_ref": "julgar_saude_25-11-2026"
     }
    }
   },

@@ -16319,7 +16319,7 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-11-16",
-   "total_acessos": 4,
+   "total_acessos": 8,
    "acessos": [
     {
      "url": "https://www.gdfsaude.df.gov.br/web/guest/w/saude-apresenta-plano-de-contingencia-contra-dengue-e-outras-arboviroses-ao-ministerio-publico",
@@ -16344,9 +16344,33 @@
      "quando": "2026-11-22T02:15:49Z",
      "origem": "sondar_repositorios_estaduais",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.gdfsaude.df.gov.br/web/guest/topicos?tag=plano+de+conting%C3%AAncia&sort=createDate-",
+     "quando": "2026-11-25T03:44:00Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.gdfsaude.df.gov.br/web/guest/w/saude-apresenta-plano-de-contingencia-contra-dengue-e-outras-arboviroses-ao-ministerio-publico",
+     "quando": "2026-11-25T03:44:03Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.gdfsaude.df.gov.br/web/guest/topicos?tag=plano+de+conting%C3%AAncia&sort=createDate-",
+     "quando": "2026-11-25T03:44:11Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.gdfsaude.df.gov.br/web/guest/w/ubss-intensificam-acoes-para-prevenir-a-dengue",
+     "quando": "2026-11-25T03:44:16Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-21"
+   "ultimo_acesso": "2026-11-25"
   },
   "www.bastos.sp.gov.br": {
    "status_robots": "proibe",
@@ -20418,6 +20442,21 @@
     }
    ],
    "ultimo_acesso": "2026-11-24"
+  },
+  "www.pinhal.sp.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-11-25",
+   "total_acessos": 1,
+   "acessos": [
+    {
+     "url": "https://www.pinhal.sp.gov.br/diario-oficial-eletronico/download/2286",
+     "quando": "2026-11-25T03:45:17Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-11-25"
   }
  }
 }
