@@ -39,6 +39,7 @@ from __future__ import annotations
 import json
 import os
 import pathlib
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -1250,6 +1251,44 @@ def ensaio_valvula_traz_a_main(diz) -> bool:
     return True
 
 
+def ensaio_publicador_segue_o_rebase(diz) -> bool:
+    """31. O publicador segue o rebase depois de unir e regenerar (F101).
+
+    25/11/2026, run 45526087142: a união resolveu os quatro caminhos, a cadeia regenerou o cartão e as
+    páginas, e o laço punha no índice só os caminhos com escritor declarado; `rebase --continue`
+    recusava a árvore suja nas cinco tentativas. Roda o trecho do próprio `publicar_dados.yml` num
+    repositório temporário, com o derivado regenerado depois da união.
+    """
+    fonte = (RAIZ / ".github/workflows/publicar_dados.yml").read_text(encoding="utf-8")
+    trecho = fonte.split("--regenerar-para-commit || true", 1)[-1].split("if ! GIT_EDITOR=true git rebase --continue", 1)[0]
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        g = _repo(tmp)
+        (tmp / "scripts").mkdir(); (tmp / "config").mkdir(); (tmp / "data").mkdir()
+        shutil.copy(RAIZ / "scripts" / "commit_do_elo.py", tmp / "scripts")
+        shutil.copy(RAIZ / "config" / "escritores.json", tmp / "config")
+        card = tmp / "data" / "municipios_card.json"
+        card.write_text("base\n", newline="\n"); g("add", "-A"); g("commit", "-qm", "base")
+        g("checkout", "-qb", "publicador"); card.write_text("nosso\n", newline="\n"); g("commit", "-qam", "publicação")
+        g("checkout", "-q", "main"); card.write_text("deles\n", newline="\n"); g("commit", "-qam", "main andou")
+        g("checkout", "-q", "publicador")
+        if g("rebase", "main", pode_falhar=True) == 0:
+            diz("  ✗ o ensaio não produziu conflito: ele não está medindo o que diz medir")
+            return False
+        card.write_text("deles\n", newline="\n"); g("add", "data/municipios_card.json")   # a união: versão de cima
+        card.write_text("regenerado\n", newline="\n")                                     # a cadeia canônica
+        subprocess.run(["bash", "-c", trecho], cwd=tmp, capture_output=True)
+        seguiu = subprocess.run(["git", "-c", "core.editor=true", "rebase", "--continue"], cwd=tmp,
+                                capture_output=True, env={**os.environ, "GIT_AUTHOR_NAME": "e",
+                                "GIT_AUTHOR_EMAIL": "e@e", "GIT_COMMITTER_NAME": "e",
+                                "GIT_COMMITTER_EMAIL": "e@e"}).returncode == 0
+    if not seguiu:
+        diz("  ✗ derivado regenerado ficou fora do índice: o `rebase --continue` recusa (F101)")
+        return False
+    diz("  ✓ depois da união e da regeneração, o rebase do publicador segue")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1290,6 +1329,7 @@ ENSAIOS = (
     ("29. o regime de prioridade suspende só o listado",
      ensaio_regime_de_prioridade_suspende_so_o_listado),
     ("30. a válvula traz a `main` antes do PR de dado", ensaio_valvula_traz_a_main),
+    ("31. o publicador segue o rebase depois de unir e regenerar", ensaio_publicador_segue_o_rebase),
 )
 
 
