@@ -45,7 +45,9 @@ QUEM_PODE_ESTAR_RODANDO = ("checagem_pre_noite.yml", "despachante.yml", "relogio
 ABERTOS = ("queued", "requested", "waiting", "pending", "in_progress")
 # 17/11/2026: a publicação de dados (merge do dia) está na fila ou rodando às 23h sem estar presa; só
 # reprova se estiver aberta há mais que isto (minutos). Era vermelho nas noites de 15 e 16/11.
-TOLERADOS_POR_IDADE = {"publicar_dados.yml": 45}
+# 25/11/2026: o mesmo para os Portões e a prévia que todo push na `main` dispara (22:46 de 24/11:
+# os dois com 1 min de vida reprovaram a noite).
+TOLERADOS_POR_IDADE = {"publicar_dados.yml": 45, "portoes.yml": 45, "publicar_previa.yml": 45}
 # 18/11/2026: run "queued" há mais de um dia é fantasma da plataforma (o de 05/11 tem o job concluído
 # e o run preso em queued há 13 dias): não ocupa a fila e reprovava toda noite.
 FANTASMA_H = 24
@@ -312,6 +314,9 @@ def autoteste() -> int:
        avaliar(dict(bom, runs_abertos=_pub), agora)[2]["ok"]
        and not avaliar(dict(bom, runs_abertos=[dict(_pub[0], desde="2026-10-10T21:40:00Z")]), agora)[2]["ok"]
        and not avaliar(dict(bom, runs_abertos=[dict(_pub[0], workflow="noturno_triagem.yml")]), agora)[2]["ok"])
+    ok("Portões e prévia do push na main com 20 min não são fila presa (24/11)",
+       avaliar(dict(bom, runs_abertos=[dict(_pub[0], workflow="portoes.yml", status="in_progress"),
+                                       dict(_pub[0], workflow="publicar_previa.yml")]), agora)[2]["ok"])
     _f43 = abertos_da_api([{"workflow_runs": [
         {"id": 7, "path": ".github/workflows/noturno_diarios.yml", "status": "in_progress",
          "head_branch": "ensaio-real/2026-10-11-1"},
