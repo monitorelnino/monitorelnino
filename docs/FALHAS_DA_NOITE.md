@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-24. 100 falhas; 92 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-24. 101 falhas; 93 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -905,3 +905,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** LOTES 24/11 04:12: conflito de rebase em `data/pistas_imprensa.json`, campo `buscador2_em` dos dois lados; seguir_pistas.py: `p["buscador2_em"] = hoje_iso` a cada pista seguida; `restantes` compara com a data de hoje
 - **Correção:** Os dois campos unem pela data mais nova (a última passada), como `rejeitada_em` une pela mais antiga.
 - **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste ('F100: buscador2_em e busca_veiculo_em vencem a data mais nova (última passada)')`
+
+## F101 · Publicador perde o commit: derivado regenerado depois da união fica fora do índice
+
+- **Noite:** 2026-11-24→2026-11-25
+- **Sintoma:** Run 45526087142 (01:29): job `publicar` morreu em "Empurrar com rebase (item 1a)" com "commit perdido para main em movimento"; recuperado pelo run das 01:51.
+- **Causa:** No laço de rebase, depois da união e da cadeia canônica, o índice recebia só os caminhos com escritor declarado (`commit_do_elo.py publicar --somente-indice`); o cartão, as páginas e os PDFs regenerados ficavam sujos e `rebase --continue` recusava nas cinco tentativas.
+- **Prova:** log do job `publicar` do run 45526087142: "4 caminho(s) resolvido(s)", "caminho sem escritor declarado, fora do commit: data/municipios_card.json", "You must edit all merge conflicts" ×5
+- **Correção:** O laço põe no índice todo arquivo rastreado que a regeneração mudou (`git add -u`), o mesmo conjunto que o commit local já leva; `--somente-indice` sai do `commit_do_elo.py`.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_publicador_segue_o_rebase`
