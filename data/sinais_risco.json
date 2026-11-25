@@ -129,7 +129,7 @@
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
    "consultado_em": "24/11/2026",
-   "documento": "Focos do dia — focos_diario_br_20261123.csv",
+   "documento": "Focos do dia — focos_diario_br_20261124.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -11666,7 +11666,7 @@
    },
    "fonte": "noaa_nino34_semanal",
    "documento": "Niño 3.4 semanal, semana de 2026-11-18",
-   "consultado_em": "24/11/2026 05:50"
+   "consultado_em": "24/11/2026 22:25"
   }
  },
  "uf": {
@@ -11716,12 +11716,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 124,
+    "focos_24h": 169,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -11730,14 +11730,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Rio Branco",
     "data": "24/11/2026",
     "tmax": 34.0,
-    "tmin": 24.0,
-    "resumo": "Muitas nuvens",
+    "tmin": 25.0,
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -11816,12 +11816,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 71,
+    "focos_24h": 91,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -11830,7 +11830,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Maceió",
@@ -11908,21 +11908,17 @@
     "consultado_em": "24/11/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 474,
+    "focos_24h": 631,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -11931,14 +11927,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Manaus",
     "data": "24/11/2026",
     "tmax": 35.0,
     "tmin": 27.0,
-    "resumo": "Poucas nuvens",
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -12013,12 +12009,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 2057,
+    "focos_24h": 2598,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -12027,7 +12023,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Macapá",
@@ -12115,12 +12111,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 216,
+    "focos_24h": 442,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -12129,12 +12125,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Salvador",
     "data": "24/11/2026",
-    "tmax": 32.0,
+    "tmax": 35.0,
     "tmin": 24.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -12215,12 +12211,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 377,
+    "focos_24h": 728,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -12229,13 +12225,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Fortaleza",
     "data": "24/11/2026",
     "tmax": 33.0,
-    "tmin": 27.0,
+    "tmin": 26.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -12294,12 +12290,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -12308,7 +12304,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Brasília",
@@ -12392,32 +12388,26 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 3,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 3,
-    "niveis": {
-     "Moderado": 3
-    },
-    "municipios": [
-     "ITARANA",
-     "IÚNA",
-     "MUNIZ FREIRE"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Vitória",
     "data": "24/11/2026",
-    "tmax": 31.0,
+    "tmax": 34.0,
     "tmin": 24.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -12499,12 +12489,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 17,
+    "focos_24h": 12,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -12513,14 +12503,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Goiânia",
     "data": "24/11/2026",
-    "tmax": 29.0,
+    "tmax": 31.0,
     "tmin": 21.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -12591,22 +12581,21 @@
     "consultado_em": "24/11/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 1
     },
     "exemplos": [
-     "Baixa Umidade",
-     "Tempestade"
+     "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 3827,
+    "focos_24h": 5500,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -12615,7 +12604,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "São Luís",
@@ -12680,39 +12669,39 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 19,
+    "focos_24h": 17,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 8,
+    "total": 9,
     "niveis": {
      "Moderado": 7,
-     "Alto": 1
+     "Cessar": 2
     },
     "municipios": [
-     "CHALÉ",
      "CONSELHEIRO LAFAIETE",
-     "ESPERA FELIZ",
      "EUGENÓPOLIS",
      "GOVERNADOR VALADARES",
      "JUIZ DE FORA",
-     "MANTENA"
+     "MALACACHETA",
+     "MANTENA",
+     "MARIANA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Belo Horizonte",
     "data": "24/11/2026",
     "tmax": 28.0,
     "tmin": 20.0,
-    "resumo": "Muitas nuvens com chuva",
+    "resumo": "Nublado com pancadas de chuva e trovoadas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -12794,32 +12783,28 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 4,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
-    "niveis": {
-     "Cessar": 1
-    },
-    "municipios": [
-     "BELA VISTA"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Campo Grande",
     "data": "24/11/2026",
-    "tmax": 31.0,
+    "tmax": 30.0,
     "tmin": 22.0,
-    "resumo": "Muitas nuvens com chuva",
+    "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -12898,12 +12883,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 110,
+    "focos_24h": 65,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -12912,13 +12897,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Cuiabá",
     "data": "24/11/2026",
     "tmax": 36.0,
-    "tmin": 28.0,
+    "tmin": 26.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -12990,21 +12975,17 @@
     "consultado_em": "24/11/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 14898,
+    "focos_24h": 20379,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -13013,13 +12994,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Belém",
     "data": "24/11/2026",
-    "tmax": 35.0,
-    "tmin": 24.0,
+    "tmax": 36.0,
+    "tmin": 25.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -13099,12 +13080,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 87,
+    "focos_24h": 126,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -13113,7 +13094,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "João Pessoa",
@@ -13199,12 +13180,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 206,
+    "focos_24h": 266,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -13213,7 +13194,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Recife",
@@ -13300,12 +13281,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 603,
+    "focos_24h": 1056,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -13314,7 +13295,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Teresina",
@@ -13402,28 +13383,35 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 0,
-    "niveis": {},
-    "municipios": [],
+    "total": 4,
+    "niveis": {
+     "Moderado": 2,
+     "Alto": 1,
+     "Cessar": 1
+    },
+    "municipios": [
+     "FRANCISCO BELTRÃO",
+     "PATO BRANCO"
+    ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Curitiba",
     "data": "24/11/2026",
-    "tmax": 25.0,
+    "tmax": 26.0,
     "tmin": 19.0,
-    "resumo": "Muitas nuvens",
+    "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -13500,37 +13488,35 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 7,
+    "total": 4,
     "niveis": {
-     "Moderado": 5,
-     "Alto": 2
+     "Moderado": 4
     },
     "municipios": [
      "ITALVA",
-     "NOVA FRIBURGO",
      "PETRÓPOLIS",
      "RESENDE",
      "TERESÓPOLIS"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Rio de Janeiro",
     "data": "24/11/2026",
     "tmax": 31.0,
-    "tmin": 23.0,
-    "resumo": "Muitas nuvens com névoa úmida",
+    "tmin": 24.0,
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -13570,7 +13556,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 2 capital(is) com monitor de PM2,5",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:25"
    }
   },
   "RN": {
@@ -13622,12 +13608,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 49,
+    "focos_24h": 69,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -13636,7 +13622,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Natal",
@@ -13723,12 +13709,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 214,
+    "focos_24h": 245,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -13737,14 +13723,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Porto Velho",
     "data": "24/11/2026",
     "tmax": 34.0,
-    "tmin": 26.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "tmin": 25.0,
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -13819,12 +13805,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 893,
+    "focos_24h": 906,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -13833,7 +13819,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Boa Vista",
@@ -13900,28 +13886,34 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 30,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 0,
-    "niveis": {},
-    "municipios": [],
+    "total": 3,
+    "niveis": {
+     "Moderado": 2,
+     "Cessar": 1
+    },
+    "municipios": [
+     "SOLEDADE",
+     "VERANÓPOLIS"
+    ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Porto Alegre",
     "data": "24/11/2026",
-    "tmax": 31.0,
-    "tmin": 18.0,
-    "resumo": "Muitas nuvens",
+    "tmax": 25.0,
+    "tmin": 20.0,
+    "resumo": "Nublado com pancadas de chuva e trovoadas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -14002,32 +13994,35 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
+    "total": 4,
     "niveis": {
-     "Moderado": 1
+     "Moderado": 3,
+     "Cessar": 1
     },
     "municipios": [
-     "LAURO MULLER"
+     "CORONEL FREITAS",
+     "LAURO MULLER",
+     "XANXERÊ"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Florianópolis",
     "data": "24/11/2026",
     "tmax": 27.0,
     "tmin": 22.0,
-    "resumo": "Muitas nuvens com névoa úmida",
+    "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -14106,12 +14101,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 25,
+    "focos_24h": 31,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -14120,13 +14115,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Aracaju",
     "data": "24/11/2026",
-    "tmax": 32.0,
-    "tmin": 25.0,
+    "tmax": 31.0,
+    "tmin": 26.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -14207,28 +14202,23 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 13,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
-    "total": 13,
+    "total": 8,
     "niveis": {
-     "Alto": 1,
-     "Moderado": 12
+     "Moderado": 8
     },
     "municipios": [
-     "BRAGANÇA PAULISTA",
      "CARAGUATATUBA",
      "CUBATÃO",
-     "GUARULHOS",
      "ILHABELA",
-     "ITATIBA",
-     "JUNDIAÍ",
      "MOGI DAS CRUZES",
      "SÃO PAULO",
      "SÃO SEBASTIÃO",
@@ -14237,14 +14227,14 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "São Paulo",
     "data": "24/11/2026",
-    "tmax": 30.0,
-    "tmin": 20.0,
-    "resumo": "Muitas nuvens com névoa úmida",
+    "tmax": 28.0,
+    "tmin": 21.0,
+    "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -14276,7 +14266,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 2 capital(is) com monitor de PM2,5",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:25"
    }
   },
   "TO": {
@@ -14329,12 +14319,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "fogo": {
-    "focos_24h": 85,
+    "focos_24h": 250,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261123.csv",
+    "documento": "Focos do dia — focos_diario_br_20261124.csv",
     "consultado_em": "24/11/2026"
    },
    "alertas_cemaden": {
@@ -14343,14 +14333,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "24/11/2026 05:50"
+    "consultado_em": "24/11/2026 22:24"
    },
    "temperatura": {
     "capital": "Palmas",
     "data": "24/11/2026",
-    "tmax": 33.0,
-    "tmin": 25.0,
-    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
+    "tmax": 34.0,
+    "tmin": 24.0,
+    "resumo": "Muitas nuvens com chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",

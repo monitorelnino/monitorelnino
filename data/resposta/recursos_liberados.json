@@ -2494,6 +2494,69 @@
     }
    ],
    "total_autorizado": 2750000.0
+  },
+  "4308250": {
+   "nome": "Floriano Peixoto",
+   "uf": "RS",
+   "por_acao": {
+    "recuperacao": 751950.31
+   },
+   "atos": [
+    {
+     "municipio": "Floriano Peixoto",
+     "uf": "RS",
+     "portaria": "4.048",
+     "data": "2026-11-18",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 751950.31,
+     "processo_sei": "59053.024892/2026-17",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.048-de-18-de-novembro-de-2026-745824358"
+    }
+   ],
+   "total_autorizado": 751950.31
+  },
+  "2707701": {
+   "nome": "Rio Largo",
+   "uf": "AL",
+   "por_acao": {
+    "recuperacao": 379983.12
+   },
+   "atos": [
+    {
+     "municipio": "Rio Largo",
+     "uf": "AL",
+     "portaria": "4.047",
+     "data": "2026-11-18",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 379983.12,
+     "processo_sei": "59053.024571/2026-12",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.047-de-18-de-novembro-de-2026-745822106"
+    }
+   ],
+   "total_autorizado": 379983.12
+  },
+  "3128402": {
+   "nome": "Guarani",
+   "uf": "MG",
+   "por_acao": {
+    "recuperacao": 655036.52
+   },
+   "atos": [
+    {
+     "municipio": "Guarani",
+     "uf": "MG",
+     "portaria": "4.049",
+     "data": "2026-11-18",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 655036.52,
+     "processo_sei": "59053.024544/2026-31",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-4.049-de-18-de-novembro-de-2026-745811376"
+    }
+   ],
+   "total_autorizado": 655036.52
   }
  },
  "nao_casados": {
@@ -2502,26 +2565,26 @@
   "BA|Cacequi": 9226995.1
  },
  "janela_lida": {
-  "desde": "2026-11-14",
-  "ate": "2026-11-23",
-  "atos_na_busca": 17,
+  "desde": "2026-11-16",
+  "ate": "2026-11-25",
+  "atos_na_busca": 32,
   "janelas_incompletas": []
  },
  "recusas": {
   "fora_do_orgao": 0,
-  "prorrogacao_de_prazo": 9,
+  "prorrogacao_de_prazo": 18,
   "sem_municipio_legivel": 1,
-  "sem_valor_declarado": 2,
+  "sem_valor_declarado": 5,
   "ato_nao_lido": 0
  },
- "atos_novos_nesta_rodada": 0,
- "atualizado_em": "23/11/2026",
+ "atos_novos_nesta_rodada": 3,
+ "atualizado_em": "25/11/2026",
  "total_por_acao": {
-  "recuperacao": 240465377.48,
+  "recuperacao": 242252347.43,
   "resposta": 18678869.78,
   "outra": 13878788.0
  },
- "municipios_com_ato": 104,
+ "municipios_com_ato": 107,
  "_governanca": "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta \"Autoriza a transferência de recursos\"). `valor_autorizado` é o que a portaria autoriza transferir — a saída do dinheiro é outro fato, e quem o registra é o Portal da Transparência: a página diz 'liberado', nunca 'pago'. As ações de RESPOSTA e de RECUPERAÇÃO ficam separadas em `por_acao`, com o rótulo que o próprio ato usou, porque somá-las num cartão de resposta inflaria o número com dinheiro de outra finalidade. Ato sem valor declarado não vira zero: entra em `recusas.sem_valor_declarado`. Município que não casa com a referência do IBGE entra em `nao_casados`, com o nome como o ato o escreveu. Derivado de coletar_recursos_resposta.py — não se edita à mão.",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a)."
 }

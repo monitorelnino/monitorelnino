@@ -2,27 +2,64 @@
  "data": "2026-11-24",
  "formato_versao": 1,
  "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 320,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 16,
+   "consultas": 20,
+   "lacunas": 0,
+   "motor_sem_resposta": 4,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 36
+  },
   "descobrir_planos": {
+   "achados_novos": 0,
    "alvos_consultados": 60,
    "alvos_verificados": 15,
-   "achados_novos": 0,
    "fila_acumulada": 126
   },
+  "diario_consorciado": {
+   "bloqueadas": 0,
+   "decretos_novos": 6,
+   "fontes": 16,
+   "fora_do_ar": 0,
+   "pistas": 82
+  },
+  "diario_municipal": {
+   "consultados": 0,
+   "decretos_novos": 0,
+   "lacunas": 0,
+   "pistas": 0
+  },
+  "doe": {
+   "ufs_com_resultado": 27,
+   "ufs_consultadas": 27
+  },
+  "funil_saude_estadual": {
+   "com_resultado_bruto": 51,
+   "consultas": 265,
+   "pistas": 523
+  },
   "juiz": {
-   "pistas_recebidas": 505,
-   "com_documento": 505,
+   "com_documento": 661,
+   "pistas_recebidas": 665,
    "promovidas": 0,
-   "recusa_citacao_incompleta": 160,
-   "recusa_autoridade_nao_confirmada": 38,
-   "recusa_plano_sem_identificacao": 1,
-   "recusa_natureza_duvidosa": 176,
+   "recusa_autoridade_nao_confirmada": 51,
+   "recusa_citacao_incompleta": 288,
+   "recusa_documento_inacessivel": 1,
    "recusa_fora_do_objeto": 3,
-   "recusa_resposta": 62
+   "recusa_natureza_duvidosa": 182,
+   "recusa_noticia_institucional_nao_e_o_plano": 2,
+   "recusa_plano_sem_identificacao": 1,
+   "recusa_resposta": 64,
+   "recusa_texto_nao_extraivel": 3
   },
   "transferencias_municipais": {
-   "consultas": 10,
-   "com_resultado_bruto": 10,
-   "municipios": 55648
+   "com_resultado_bruto": 30,
+   "consultas": 30,
+   "municipios": 166984
   }
  },
  "verificador_imprensa": {
@@ -61,5 +98,5 @@
   "versao": "1.0 (29/09/2026)",
   "gravado_em": "2026-11-24T05:10:41"
  },
- "atualizado_em": "2026-11-24T08:52:52"
+ "atualizado_em": "2026-11-25T02:42:25"
 }
