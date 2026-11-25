@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2080 · Checagem pré-noite tolera Portões e prévia do push na main
+
+A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.
+
 ## 2026-11-25 · #2075 · Publicador segue o rebase depois de unir e regenerar
 
 Na noite 24→25 o publicador perdeu o commit nas cinco tentativas: depois de unir o conflito e regenerar os derivados, punha no índice só os caminhos com escritor declarado, e o cartão, as páginas e os PDFs regenerados travavam o rebase. O laço passa a pôr no índice todo arquivo rastreado que a regeneração mudou. Falha F101; ensaio 31.
