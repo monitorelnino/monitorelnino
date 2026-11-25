@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2080 · Checagem pré-noite tolera Portões e prévia do push na main
+
+A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.
+
 ## 2026-11-25 · #2079 · Despachante reconfere o plano antes de cada disparo
 
 Na abertura de 25/11 o relógio e o tique oportunista da válvula montaram o plano antes de qualquer disparo e dispararam a noite inteira duas vezes; a segunda cópia do DOE incremental perdeu o commit em `saude_sinais.json`. Agora cada item é reconferido contra as execuções do seu workflow logo antes do disparo, e o que outro observador já disparou é pulado.
