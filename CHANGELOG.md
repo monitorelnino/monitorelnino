@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-25 · #2073 · Juiz 1.8 (rodada J18): ano partido pelo OCR lê-se inteiro
 
 A leitura da versão do plano junta dígitos separados pelo OCR ("Versão 201 8" lê-se 2018). Antes, a versão sumia e o ano vinha de outro trecho do documento (2067, Tobias Barreto/SE). Trava nova no autoteste do juiz: 117 travas. Produção (codebook 1.7) não muda; a rodada paralela rejulga depois do merge.
+## 2026-11-25 · #2075 · Publicador segue o rebase depois de unir e regenerar
+
+Na noite 24→25 o publicador perdeu o commit nas cinco tentativas: depois de unir o conflito e regenerar os derivados, punha no índice só os caminhos com escritor declarado, e o cartão, as páginas e os PDFs regenerados travavam o rebase. O laço passa a pôr no índice todo arquivo rastreado que a regeneração mudou. Falha F101; ensaio 31.
+
 ## 2026-11-25 · #2074 · Busca de planos: um ramo e um PR de dado por grupo de UF
 
 Os seis grupos da matriz empurravam no mesmo ramo e o grupo que terminava junto com os irmãos perdia as cinco tentativas de push (CO, 23/11). Agora cada grupo coleta e empurra no próprio ramo `<ramo>-<grupo>` e abre o próprio PR de dado.

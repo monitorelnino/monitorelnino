@@ -159,7 +159,7 @@ Atualizado em 25/11/2026.
 | `scripts/consolidar_noite.py` | — | `focos_pontos.json`, `historico_mudancas.json`, `inventado.json`, `log_buscas.json`, `painel_da_noite.json`, `pistas_imprensa.json` (+2) | — | — | não |
 | `scripts/corrigir_atribuicao_por_dominio.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/deduplicar_fila_de_pistas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_rejeitadas.json`, `pistas_sinais.json` | — | — | não |
-| `scripts/ensaio_da_noite.py` | — | `clima.json`, `outro.json` | — | — | não |
+| `scripts/ensaio_da_noite.py` | — | `clima.json`, `municipios_card.json`, `outro.json` | — | — | não |
 | `scripts/fechar_saude.py` | — | `saude_fechamento.json` | — | — | não |
 | `scripts/fila_do_juiz_querido_diario.py` | — | `fila_qd_169.json` | — | — | não |
 | `scripts/gerar_boletim.py` | — | `blog/boletim_mais_recente.json` | — | — | não |
