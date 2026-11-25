@@ -1203,9 +1203,15 @@ RE_ANO_CITADO = re.compile(r"(?:\blei|decreto|portaria|censo|ibge|fundad[oa]|fun
                            r"(?:\s+(?:em|de|do|da|no|na))?[^a-zà-ÿ\n]{0,12}$", re.I)
 
 
+# J7 (25/11, Tobias Barreto/SE): o OCR parte o ano ("Versão 201 8"). Sem juntar, a versão some e o ano vem de
+# outro trecho (2067). Só o quebra de quatro dígitos colados por um espaço; número solto não é tocado.
+RE_ANO_QUEBRADO_18 = re.compile(r"(?<!\d)((?:19|20)\d)\s(\d)(?!\d)")
+
+
 def ano_do_plano(texto, ano_corrente: int = None):
     """(ano, suspeito). ano None quando não há ano confiável; suspeito quando só havia ano fora da faixa."""
     teto = ano_corrente or _ano_de_hoje()
+    texto = RE_ANO_QUEBRADO_18.sub(r"\1\2", str(texto or ""))
     fora = False
     versoes = [int(m.group(1)) for m in RE_ANO_DE_VERSAO.finditer(str(texto or "")[:5000])]
     if any(ANO_MINIMO_18 <= a <= teto for a in versoes):   # a última atualização vence a primeira versão (Tubarão)
@@ -1973,6 +1979,16 @@ def casos_18() -> list:
                           como_plano=True)[0] == "plano_antigo"
          and etapa6_categoria("equipe de elaboração do plano de contingência", "2025",
                               sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
+        ("J7 versão com ano partido pelo OCR ('Versão 201 8') lê 2018, não o 2067 de outro trecho (Tobias Barreto/SE)",
+         ano_do_plano("PLANO DE CONTINGÊNCIA DESLIZAMENTO MUNICIPAL - Versão 201 8 Tobias Barreto - SE", 2026) == (2018, False)
+         and ano_do_plano("PLANO DE CONTINGÊNCIA Protocolo SEIDH 2067 Versão 2 0 1 8", 2026) == (None, True)
+         and (lambda v: v["promove"] and v["data"] == "2018")(_v(
+             ("PLANO DE CONTINGÊNCIA DESLIZAMENTO MUNICIPAL - Versão 201 8. Município de Tobias Barreto - SE. A COMPDEC "
+              "realizará exercícios simulados conjuntos uma vez ao ano, sob a coordenação da COMPDEC, emitindo relatório "
+              "ao final. Protocolo SEIDH 2067. Fenômeno El Niño e chuvas intensas. 1.2.5.1.0 Deslizamento. Prefeitura "
+              "Municipal de Tobias Barreto, Defesa Civil. Seção 1 objetivo do plano de contingência, cenários, "
+              "acionamento, responsabilidades. ") * 3, "Tobias Barreto", "SE",
+             "https://defesacivil.se.gov.br/wp-content/uploads/2019/03/Plano-de-Contingencia-do-Municipio-de-Tobias-Barreto-2.pdf"))),
         ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia)",
          _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"),
         ("J7 plano sem ato: ano fora da faixa (fim de telefone, '…-2077') não é data, nem com período chuvoso no texto",
