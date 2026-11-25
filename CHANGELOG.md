@@ -13,6 +13,14 @@ não pontuados permanecem na versão corrente.
 
 A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.
 
+## 2026-11-25 · #2079 · Despachante reconfere o plano antes de cada disparo
+
+Na abertura de 25/11 o relógio e o tique oportunista da válvula montaram o plano antes de qualquer disparo e dispararam a noite inteira duas vezes; a segunda cópia do DOE incremental perdeu o commit em `saude_sinais.json`. Agora cada item é reconferido contra as execuções do seu workflow logo antes do disparo, e o que outro observador já disparou é pulado.
+
+## 2026-11-25 · #2073 · Juiz 1.8 (rodada J18): ano partido pelo OCR lê-se inteiro
+
+A leitura da versão do plano junta dígitos separados pelo OCR ("Versão 201 8" lê-se 2018). Antes, a versão sumia e o ano vinha de outro trecho do documento (2067, Tobias Barreto/SE). Trava nova no autoteste do juiz: 117 travas. Produção (codebook 1.7) não muda; a rodada paralela rejulga depois do merge.
+
 ## 2026-11-25 · #2075 · Publicador segue o rebase depois de unir e regenerar
 
 Na noite 24→25 o publicador perdeu o commit nas cinco tentativas: depois de unir o conflito e regenerar os derivados, punha no índice só os caminhos com escritor declarado, e o cartão, as páginas e os PDFs regenerados travavam o rebase. O laço passa a pôr no índice todo arquivo rastreado que a regeneração mudou. Falha F101; ensaio 31.
