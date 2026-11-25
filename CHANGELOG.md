@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).
 
+## 2026-11-25 · #2097 · Rodada J18: rejulgamento paralelo guarda o que já julgou
+
+O juiz 1.8 paralelo não apaga mais os registros já julgados quando uma rodada não tem o documento local: a correção está em `gravar_paralelo_18`, com trava. A rodada grava só em arquivos paralelos (`data/paralelo_*`); índice, produção e páginas não mudam.
+
 ## 2026-11-25 · #2092 · Buscador 2: queda de rede não conta como vista
 
 O reprocessamento do Buscador 2 tratava como vista a pista cuja busca caiu na rede, porque a marca do dia era gravada antes do resultado. Agora só a busca que termina (achado, nada ou recusa da fonte) conta como vista; a queda volta ao reprocessamento. Autoteste com caso novo.
