@@ -49,25 +49,28 @@ window.addEventListener('load', function(){
     });
   }).catch(_erroGest('gestores:fontes'));
 
-  const cartao = (acento, rotulo, valor, nota) => '<div class="cartao cartao--acento-' + acento + '">'
+  /* `extra`: linhas já escapadas depois da nota (a autodeclaração do município); a última fecha o cartão. */
+  const cartao = (acento, rotulo, valor, nota, extra) => '<div class="cartao cartao--acento-' + acento + '">'
     + '<p class="cartao-numero-rotulo">' + esc(rotulo) + '</p><p>' + valor + '</p>'
-    + (nota ? '<p class="note u-mb-0">' + nota + '</p>' : '') + '</div>';
+    + (nota ? '<p class="note' + (extra && extra.length ? '' : ' u-mb-0') + '">' + nota + '</p>' : '')
+    + (extra || []).map((l, k, a) => '<p class="note' + (k === a.length - 1 ? ' u-mb-0' : '') + '">' + l + '</p>').join('') + '</div>';
 
   /* Três valores, como no handover: localizado (com o ato e o documento), não localizado (com a
      varredura do livro, 19/10 §3.3, ou até o corte, sem ela) e ainda não verificado. */
-  function cartaoPlano(sp, corte) {
+  function cartaoPlano(sp, corte, decl) {
+    const c = (valor, nota) => cartao('argila', tx('plano.rotulo'), valor, nota, decl);
     if (sp.estado === 'encontrado' || sp.estado === 'estadual')
-      return cartao('argila', tx('plano.rotulo'), esc(tx('plano.localizado', {ato: sp.documento || sp.fonte || '', data: sp.data || ''}).replace(/,\s*$/, '')),
+      return c(esc(tx('plano.localizado', {ato: sp.documento || sp.fonte || '', data: sp.data || ''}).replace(/,\s*$/, '')),
         [sp.plano_da_saude && esc(tx('plano.da_saude', {fonte: sp.plano_da_saude.fonte})),
          sp.url && '<a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(tx('plano.ver')) + '</a>'].filter(Boolean).join(' '));
     if (sp.estado === 'sem_contar')
-      return cartao('argila', tx('plano.rotulo'), esc(tx('plano.sem_contar.' + sp.sem_contar.motivo, {fonte: sp.sem_contar.fonte, desde: sp.sem_contar.desde})),
+      return c(esc(tx('plano.sem_contar.' + sp.sem_contar.motivo, {fonte: sp.sem_contar.fonte, desde: sp.sem_contar.desde})),
         sp.sem_contar.url ? '<a href="' + esc(sp.sem_contar.url) + '" target="_blank" rel="noopener">' + esc(tx('plano.ver')) + '</a>' : '');
-    if (sp.estado === 'nao_verificado') return cartao('argila', tx('plano.rotulo'), esc(tx('plano.nao_verificado')), esc(tx('plano.nao_verificado_nota')));
+    if (sp.estado === 'nao_verificado') return c(esc(tx('plano.nao_verificado')), esc(tx('plano.nao_verificado_nota')));
     const v = ConsultaMunicipio.varreduraLegivel(sp.varredura);
     const valor = v && v.nivel !== 'municipal' ? tx('plano.varredura', {nivel: tx('plano.nivel.' + v.nivel), data: v.data})
       : tx('plano.nao_localizado', {corte: corte || tx('sem_coleta')});
-    return cartao('argila', tx('plano.rotulo'), esc(valor), tx('plano.nao_localizado_nota'));
+    return c(esc(valor), tx('plano.nao_localizado_nota'));
   }
 
   function mostrar(uf, nome, card, ref, enq, sinais, fin, plano, corte) {
@@ -93,8 +96,9 @@ window.addEventListener('load', function(){
       notaRec = tx('recursos.nota', {mes: ultimo ? MES[+ultimo.slice(4) - 1] + ' de ' + ultimo.slice(0, 4) : tx('sem_coleta'),
         ano: String((D || {}).exercicio || ''), classe: esc(classe)});
     }
+    const rp0 = (((plano || {}).municipios) || {})[cod], sp = ConsultaMunicipio.situacaoDoPlano(rp0);
     card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-figuras">'
-      + cartaoPlano(ConsultaMunicipio.situacaoDoPlano((((plano || {}).municipios) || {})[cod]), corte)
+      + cartaoPlano(sp, corte, ConsultaMunicipio.declarado(rp0, (plano || {}).fontes_declarado, ['encontrado', 'estadual', 'sem_contar'].includes(sp.estado), corte))
       + cartao('neutro', tx('cadastro.rotulo'), esc(tx(marcas.ch || marcas.geo ? 'cadastro.indicado' : 'cadastro.fora')), tx('cadastro.nota'))
       + cartao('musgo', tx('risco.rotulo'), esc(familias.length ? tx('risco.valor', {familias: lista(familias).replace(/^./, c => c.toUpperCase())}) : tx('risco.sem_sinal')),
           doc ? tx('risco.nota', {data_boletim: esc(doc.split(/\s+[—-]\s+/).pop())}) : '')
