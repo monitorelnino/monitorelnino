@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>25/11/2026 · Redução: história do `julgar_saude.py` ao HISTORICO</dt>
+      <dd>Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).</dd>
       <dt>25/11/2026 · A `main` se sela sozinha</dt>
       <dd>O publicador passa a regenerar e commitar o mapa do código junto com o manifesto e a página de mudanças. No push da `main`, entre o merge de um PR e a publicação seguinte, derivado velho passa com aviso; depois da publicação volta a reprovar. Ensaio 33 e falha F103.</dd>
       <dt>25/11/2026 · Prévia: o relatório lê o código de saída do deploy</dt>
@@ -162,8 +164,6 @@
       <dd>Dois lotes que seguem a mesma página no mesmo dia deixavam de travar a união da fila: vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu a página; duas falhas somam. Destrava os PRs de lote do Buscador 2.</dd>
       <dt>22/11/2026 · Rodada J18: rejulgamento paralelo 1.8 atualizado</dt>
       <dd>Só `data/paralelo_juiz18.json`; nada do índice lê o arquivo. Produção com 34.272 decisões; 564 julgadas com documento local; 9.684 seguem sem cópia local (ponte sem envio desde 21/11). Efeito das 564: 38 decisões mudam (33 perdem a promoção, 5 ganham), concentradas no RS. Efeito no índice por UF fica para o rejulgamento completo.</dd>
-      <dt>22/11/2026 · Buscador 2: sem via vira recusa, queda ou página sem candidato</dt>
-      <dd>O resumo da rodada chamava &quot;falha&quot; a pista sem via: recusa da fonte (403, muro de robô), queda de rede e página lida sem candidato. Uma função pura separa as três, com autoteste. Só rótulo; nenhum dado muda.</dd>
     </dl>
   </section>
 </main>

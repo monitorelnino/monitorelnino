@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2095 · Redução: história do `julgar_saude.py` ao HISTORICO
+
+Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).
+
 ## 2026-11-25 · #2090 · A `main` se sela sozinha
 
 O publicador passa a regenerar e commitar o mapa do código junto com o manifesto e a página de mudanças. No push da `main`, entre o merge de um PR e a publicação seguinte, derivado velho passa com aviso; depois da publicação volta a reprovar. Ensaio 33 e falha F103.
