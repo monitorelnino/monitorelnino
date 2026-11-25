@@ -1,6 +1,6 @@
 {
  "_governanca": "Sondagem de repositórios estaduais de planos municipais (sondar_repositorios_estaduais.py, 13/11/2026). Uma entrada por UF, com a data da sondagem; UF sem página lida segue devida. `nota_de_origem` guarda o que a sondagem manual de 24/09/2026 anotou. Candidata não é repositório declarado: as pistas vão ao juiz, que lê cada documento.",
- "atualizado_em": "2026-11-23",
+ "atualizado_em": "2026-11-24",
  "ufs": {
   "AC": {
    "sondado_em": "2026-11-20",
@@ -792,41 +792,94 @@
    ]
   },
   "SE": {
-   "sondado_em": "2026-11-23",
-   "paginas_lidas": 1,
-   "busca_completa": false,
+   "sondado_em": "2026-11-24",
+   "paginas_lidas": 8,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
+   "noticias": [
+    {
+     "url": "https://www.facebook.com/mpseoficial/videos/-cidadesseguras-voc%C3%AA-sabe-o-que-%C3%A9-plano-de-conting%C3%AAncia-%C3%A9-um-documento-estrat%C3%A9gi/3340651579435938/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
+     "url": "https://www.instagram.com/reel/DW9esgADvQg/",
+     "titulo": "#CidadesSeguras Você sabe o que é Plano de Contingência? É ..."
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/CARIACICA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf?v=1781718201000",
+     "titulo": "cariacica - plano de contingência - 2025 - Cepdec-ES"
+    },
+    {
+     "url": "https://www.scielo.br/j/rbso/a/GDbZD8x5kpq5kVG5QbDtLdQ/?lang=pt",
+     "titulo": "análise dos planos de contingência das capitais brasileiras em ..."
+    },
+    {
+     "url": "https://www.acessounico.com.br/arquivos/51/8e9bd63e3f7352b4f9b897af97c5e844.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA MUNICIPAL COVID-19 JAPARATUBA ..."
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://defesacivil.se.gov.br/planos-de-contigencia/"
    ]
   },
   "SP": {
-   "sondado_em": "2026-11-23",
-   "paginas_lidas": 1,
-   "busca_completa": false,
+   "sondado_em": "2026-11-24",
+   "paginas_lidas": 8,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
-   "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
+   "noticias": [
+    {
+     "url": "https://revistas.ceeinter.com.br/revistadeestudosinterdisciplinar/pt_BR/article/view/943",
+     "titulo": "governança pública nos planos de contingência de defesa civil ..."
+    },
+    {
+     "url": "https://www.instagram.com/p/DWy2IxViSaL/",
+     "titulo": "O plano de contingência da sua cidade funciona na prática? Na ..."
+    },
+    {
+     "url": "https://4fdfdc7ecc7eac3fcdc8af2e4ed6ae07.cdn.bubble.io/f1778090742623x739114112712558800/PLANO%20DE%20CONTING%C3%8ANCIA%20_%20PUBLICA%C3%87%C3%83O.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA - Bubble"
+    },
+    {
+     "url": "https://prefeitura.poa.br/sites/default/files/usu_doc/hotsites/sms/vigilancia-em-saude/PC_ChuvasIntensas_final_nov24.pdf",
+     "titulo": "Plano de Contingência para Enfrentamento a Chuvas Intensas"
+    },
+    {
+     "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/mp-pede-plano-de-contingencia-da-prefeitura-apos-enchentes-em-sp/",
+     "titulo": "MP pede plano de contingência da prefeitura após enchentes em SP"
+    }
    ],
+   "falhas": [],
    "paginas_conhecidas": [
     "https://www.defesacivil.sp.gov.br/planos-de-contigencia"
    ]
   },
   "TO": {
-   "sondado_em": "2026-11-23",
-   "paginas_lidas": 1,
-   "busca_completa": false,
+   "sondado_em": "2026-11-24",
+   "paginas_lidas": 9,
+   "busca_completa": true,
    "candidatos": [],
-   "noticias": [],
+   "noticias": [
+    {
+     "url": "https://www.complexodopecem.com.br/wp-content/uploads/2021/06/Plano-de-Contigencia-para-Emergencias-em-Saude-Publica-1.pdf",
+     "titulo": "PLANO DE CONTINGÊNCIA EM SAÚDE PÚBLICA"
+    },
+    {
+     "url": "https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/ITARANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-%202025.pdf",
+     "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA - Cepdec-ES"
+    },
+    {
+     "url": "https://odia.ig.com.br/brasil/2025/05/7058600-gripe-aviaria-agricultura-diz-que-plano-de-contingencia-esta-sendo-realizado-com-eficiencia.html",
+     "titulo": "Gripe Aviária: Agricultura diz que Plano de Contingência está sendo ..."
+    },
+    {
+     "url": "https://www.lages.sc.gov.br/source/edital/geral/1755882399370.pdf",
+     "titulo": "Plano de Contingência Municipal de Assistência Social PLACOM - AS"
+    }
+   ],
    "falhas": [
-    "busca: ValueError: sem cobertura: [['google cse', 'too many requests']]",
-    "busca: ValueError: sem cobertura: [['google cse', 'Suspended: too many requests']]"
+    "doe.to.gov.br: saída do renderizador não é JSON; estático: URLError: <urlopen error timed out>"
    ],
    "paginas_conhecidas": [
     "https://bombeiros.to.gov.br/planos-de-contigencia"
