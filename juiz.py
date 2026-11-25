@@ -1478,7 +1478,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     veredito["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     veredito["data"] = dados.get("data")
     veredito["data_origem"] = dados.get("data_origem")
-    if "J13" in propostas and ok:
+    if "J13" in propostas and ok and not dados.get("sem_ato_de_aprovacao"):   # J13 data o ATO; o plano sem ato já vem datado por si
         d13, origem = data_do_ato_18(texto)
         if d13 and d13 != veredito["data"]:
             veredito["data"] = d13
@@ -2006,6 +2006,10 @@ def casos_18() -> list:
          and e_estrutura_18("DECRETO N°020 DE 08 DE MARÇO DE 2021 Regulamenta a Lei n° 1.075 de 12 de dezembro de 2006 "
                             "que cria a Coordenadoria Municipal de Defesa Civil - COMDEC")
          and not e_estrutura_18("Institui o Plano de Contingência e a COMPDEC participa do acionamento")),
+        ("J13 não troca a data do plano sem ato pela da lei que ele cita, e a origem da data viaja no veredito",
+         (lambda v: (v["data"], v["data_origem"]) == ("2026", "atualizacao"))(
+             _v(PLANO_PUBLICADO_SEM_ATO + " Base legal: Lei nº 12.608, de 10 de abril de 2012.",
+                "Taió", "SC", URL_PDF_DE_PLANO, propostas=("J13",)))),
         ("o veredito traz o codebook em vigor e as regras que agiram",
          julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["codebook"] == CODEBOOK_VERSAO
          and "J1" in julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["regras_18"]),
