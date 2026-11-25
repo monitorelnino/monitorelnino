@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2093 · Juiz: a data do plano é a que o documento informa
+
+O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.
 ## 2026-11-25 · #2095 · Redução: história do `julgar_saude.py` ao HISTORICO
 
 Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).

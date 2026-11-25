@@ -202,6 +202,9 @@ CORRECOES_DO_JUIZ = (
     ("2026-11-24", ("resposta",), None),
     # 23/11: o .doc do Word 97–2003 não tinha leitor (`texto_de_doc_binario`); o que saiu sem texto volta uma vez.
     ("2026-11-24", ("texto_nao_extraivel",), _de_escritorio),
+    # 25/11 (auditoria do RS): a data do plano passa a ser a que ele informa de si (`data_do_plano.py`); o plano
+    # recusado sem data pelo leitor antigo (22 dos 60 do RS tinham data no documento) volta uma vez.
+    ("2026-11-27", ("data_nao_confirmada",), None),
 )
 
 
