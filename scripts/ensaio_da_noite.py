@@ -1289,6 +1289,33 @@ def ensaio_publicador_segue_o_rebase(diz) -> bool:
     return True
 
 
+def ensaio_valvula_nao_comita_o_log(diz) -> bool:
+    """32. A válvula não comita o log da corrente (F102).
+
+    25/11/2026, #2078: a publicação anexa `data/saude_pipeline.json` a cada run de dia; o PR de dado
+    da válvula levava as próprias linhas e conflitava no GitHub três vezes. Roda o trecho do commit
+    do próprio `_coletor.yml` num repositório temporário: o log volta à base, o dado da válvula fica.
+    """
+    fonte = (RAIZ / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    trecho = next((l for l in fonte.splitlines() if "coleta-dia/*)" in l and "saude_pipeline" in l), "")
+    resultado = {}
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        g = _repo(tmp)
+        (tmp / "data").mkdir()
+        log, dado = tmp / "data" / "saude_pipeline.json", tmp / "data" / "x.json"
+        log.write_text("base\n", newline="\n"); dado.write_text("base\n", newline="\n"); g("add", "data"); g("commit", "-qm", "base")
+        for ramo in ("coleta-dia/x", "main"):
+            log.write_text("base\nlinha\n", newline="\n"); dado.write_text("novo\n", newline="\n")
+            subprocess.run(["bash", "-c", trecho], cwd=tmp, env={**os.environ, "RAMO": ramo}, check=False)
+            resultado[ramo] = (log.read_text(), dado.read_text())
+    if not trecho or resultado != {"coleta-dia/x": ("base\n", "novo\n"), "main": ("base\nlinha\n", "novo\n")}:
+        diz(f"  ✗ a válvula comita o log da corrente (F102): {resultado}")
+        return False
+    diz("  ✓ a válvula devolve o log da corrente à base e comita só o seu dado")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1330,6 +1357,7 @@ ENSAIOS = (
      ensaio_regime_de_prioridade_suspende_so_o_listado),
     ("30. a válvula traz a `main` antes do PR de dado", ensaio_valvula_traz_a_main),
     ("31. o publicador segue o rebase depois de unir e regenerar", ensaio_publicador_segue_o_rebase),
+    ("32. a válvula não comita o log da corrente", ensaio_valvula_nao_comita_o_log),
 )
 
 

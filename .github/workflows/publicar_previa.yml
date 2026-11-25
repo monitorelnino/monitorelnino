@@ -52,9 +52,9 @@ jobs:
             # indexada — noindex por cabeçalho e robots.txt de bloqueio só neste deploy
             printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > _headers
             printf 'User-agent: *\nDisallow: /\n' > robots.txt
-            npx --yes netlify-cli@17 deploy --alias="$ALIAS" --dir=. --message "Prévia de ${GITHUB_REF_NAME} ${GITHUB_SHA::7}"
-            rm -f _headers > /tmp/deploy_out.txt 2>&1
-            echo "codigo_saida=$?"
+            # 25/11/2026: o redirecionamento estava no `rm`; o código de saída era o dele e o filtro lia arquivo vazio.
+            npx --yes netlify-cli@17 deploy --alias="$ALIAS" --dir=. --message "Prévia de ${GITHUB_REF_NAME} ${GITHUB_SHA::7}" > /tmp/deploy_out.txt 2>&1
+            echo "codigo_saida=$?"; rm -f _headers
             grep -vE "npm warn" /tmp/deploy_out.txt | grep -E "Error|error|422|Deploy is live|Website|Unique deploy|Deployed to" | head -c 1500
           } > /tmp/relatorio.txt 2>&1
           sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/relatorio.txt
