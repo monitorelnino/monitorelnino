@@ -22,21 +22,48 @@ RE_ESTADO = re.compile(r"\bao Estado d[oae]\s+([A-ZÀ-Ú][^,/()]{2,40})")
 RE_VALOR_SOLTO = re.compile(r"R\$\s*([\d.]+,\d{2})")
 saida = {"de": de.isoformat(), "ate": ate.isoformat(), "consultas": {}, "atos": [], "falhas": {}}
 vistos = {}
+import time
+
+
+def janelas(a, b, passo=10):
+    while a <= b:
+        f = min(a + datetime.timedelta(days=passo - 1), b)
+        yield a, f
+        a = f + datetime.timedelta(days=1)
+
+
 for nome, q in CONSULTAS.items():
-    try:
-        itens, incompletas = varrer_busca_dou(q, de, ate)
-    except Exception as e:  # noqa: BLE001
-        saida["falhas"][nome] = f"{type(e).__name__}: {str(e)[:200]}"
-        print(nome, "FALHA", saida["falhas"][nome], flush=True)
-        continue
-    saida["consultas"][nome] = {"q": q, "n": len(itens), "incompletas": incompletas, "urls": [it["url"] for it in itens]}
-    print(nome, len(itens), "itens;", len(incompletas), "janelas incompletas", flush=True)
-    for it in itens:
-        vistos.setdefault(it["url"], it)
+    reg = saida["consultas"][nome] = {"q": q, "n": 0, "incompletas": [], "urls": [], "janelas_com_falha": []}
+    for a, b in janelas(de, ate):
+        itens = None
+        for tentativa in range(4):
+            try:
+                itens, incompletas = varrer_busca_dou(q, a, b)
+                break
+            except Exception as e:  # noqa: BLE001
+                erro = f"{type(e).__name__}: {str(e)[:120]}"
+                time.sleep(20 * (tentativa + 1))
+        if itens is None:
+            reg["janelas_com_falha"].append({"de": a.isoformat(), "ate": b.isoformat(), "erro": erro})
+            print(nome, a, b, "FALHA", erro, flush=True)
+            continue
+        reg["incompletas"] += incompletas
+        for it in itens:
+            if it["url"] not in reg["urls"]:
+                reg["urls"].append(it["url"])
+            vistos.setdefault(it["url"], it)
+        time.sleep(2)
+    reg["n"] = len(reg["urls"])
+    print(nome, reg["n"], "itens;", len(reg["incompletas"]), "incompletas;", len(reg["janelas_com_falha"]), "janelas com falha", flush=True)
+so_transferencia = set(saida["consultas"]["transferencia"]["urls"]) - set(saida["consultas"]["empenho_e_transferencia"]["urls"]) - set(saida["consultas"]["empenho_e_a_transferencia"]["urls"])
 for n, (url, it) in enumerate(vistos.items(), 1):
     reg = {"url": url, "titulo": it.get("titulo"), "data_pub": it.get("data"), "orgao": it.get("orgao"),
            "trecho": it.get("trecho"),
            "redacao": [k for k, v in saida["consultas"].items() if url in v["urls"]]}
+    if url in so_transferencia:
+        reg["nao_aberto"] = "só na redação que o coletor já consulta"
+        saida["atos"].append(reg)
+        continue
     if not re.search(r"Defesa Civil", (it.get("orgao") or "") + " " + (it.get("trecho") or ""), re.I):
         reg["nao_aberto"] = "órgão e trecho sem 'Defesa Civil'"
         saida["atos"].append(reg)
