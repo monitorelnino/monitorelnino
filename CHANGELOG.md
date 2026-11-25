@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2092 · Buscador 2: queda de rede não conta como vista
+
+O reprocessamento do Buscador 2 tratava como vista a pista cuja busca caiu na rede, porque a marca do dia era gravada antes do resultado. Agora só a busca que termina (achado, nada ou recusa da fonte) conta como vista; a queda volta ao reprocessamento. Autoteste com caso novo.
+
 ## 2026-11-25 · #2090 · A `main` se sela sozinha
 
 O publicador passa a regenerar e commitar o mapa do código junto com o manifesto e a página de mudanças. No push da `main`, entre o merge de um PR e a publicação seguinte, derivado velho passa com aviso; depois da publicação volta a reprovar. Ensaio 33 e falha F103.
