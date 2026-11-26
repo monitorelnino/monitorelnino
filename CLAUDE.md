@@ -223,7 +223,8 @@ acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/`. Tamanhos envelhecem:
 - `robots.txt` é pedido, não tranca (RFC 9309 §1.3): respeitar `Crawl-delay`, cliente sempre
   identificado, rastro em `data/robots_registro.json`; nunca disfarçar o cliente
   (portão `verificar_cliente_identificado.py`).
-- Bloqueio real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre.
+- Bloqueio real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre; o `403` visto de fora do país
+  só é recusa depois da sonda da ponte, que para na recusa (editoria, 26/11/2026; `coletores_base.so_de_fora`).
 - Recusa servida com `200` (muro de robô, geobloqueio de WAF) é recusa:
   `coletores_base.detectar_muro_de_robo` levanta antes de preservar; nomear a recusa certo.
 - Site que não responde ao robô de fora do país e responde no Brasil lê-se pela ponte no computador da
