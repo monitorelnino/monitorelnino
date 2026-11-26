@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Portão de imprensa reconhece o arquivo do portal da prefeitura</dt>
+      <dd>O portão que confere a fonte dos registros pontuáveis julgava só o domínio e reprovava os planos de Cunha, Parapuã e Bragança Paulista, guardados pelo portal oficial no domínio do fornecedor (e-Crie), que o juiz já aceita desde o #2131. Agora ele recebe o endereço inteiro e aplica a mesma regra única do juiz; caso novo no autoteste.</dd>
       <dt>26/11/2026 · Planos guardados pelo portal da prefeitura em domínio do fornecedor</dt>
       <dd>Prefeituras cujo portal é feito na plataforma e-Crie guardam os arquivos no domínio do fornecedor, e o plano publicado pela própria prefeitura era recusado como fonte não oficial. Agora o arquivo é atribuído ao município cujo portal oficial o publica, com a página oficial como prova. Primeiros casos: Cunha, Parapuã e Bragança Paulista.</dd>
       <dt>26/11/2026 · Leitura dos sites de prefeitura gravada no prazo</dt>
@@ -162,8 +164,6 @@
       <dd>Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).</dd>
       <dt>24/11/2026 · Cadastro federal: coleta que falha deixa tentativa</dt>
       <dd>O coletor do cadastro federal de municípios suscetíveis caía sem registro quando o gov.br não entregava a nota técnica, e o portão de frescor avermelhava a main. Agora a falha fica no painel de tentativas, e a idade exibida continua sendo a do dado (F95).</dd>
-      <dt>23/11/2026 · Elo do juiz não cai mais na trava do apt</dt>
-      <dd>O passo do Tesseract em `_coletor.yml` passa a esperar a trava do apt deixada pelo passo do navegador e a repetir `update` e conexão parada; teto de 8 min. Pacote que não instala segue derrubando o elo com o nome do passo, e a reserva refaz. Catálogo: F92. Linhas líquidas: +19 (código +6, catálogo +13).</dd>
     </dl>
   </section>
 </main>
