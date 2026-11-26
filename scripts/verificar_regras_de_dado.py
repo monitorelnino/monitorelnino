@@ -492,13 +492,15 @@ HOSTS_OFICIAIS = {"www.diariomunicipal.com.br", "diariomunicipal.com.br", "prefe
                   "rsgovbr-my.sharepoint.com"}
 
 
-def host_oficial(host: str) -> bool:
+def host_oficial(host: str, url: str = "") -> bool:
     host = host.lower()
     # 17/11/2026: e o sítio oficial do município fora de `.gov.br` (`prefeitura.rio`, portal em plataforma), pela
     # regra única de `coletores_base._dominio_publico` — a mesma do juiz que o promoveu.
     from coletores_base import _dominio_publico
     return (host in HOSTS_OFICIAIS or "queridodiario.ok.org.br" in host or "data.queridodiario" in host
-            or host.endswith(SUFIXOS_OFICIAIS) or _dominio_publico(f"https://{host}/"))
+            or host.endswith(SUFIXOS_OFICIAIS) or _dominio_publico(url or f"https://{host}/"))
+    # 26/11/2026: com a URL inteira, o arquivo do portal da prefeitura no domínio do fornecedor (e-Crie) é
+    # reconhecido pelo caminho, como no juiz (`municipio_do_dominio.arquivo_de_portal`); só o host não basta.
 
 
 def problemas_imprensa(nome: str, registros) -> list:
@@ -512,7 +514,7 @@ def problemas_imprensa(nome: str, registros) -> list:
         if not url:
             continue   # URL ausente é outro defeito, de outra regra (`proveniencia`)
         host = urlparse(url).netloc
-        if host and not host_oficial(host):
+        if host and not host_oficial(host, url):
             quem = f"{r.get('nome') or r.get('uf') or '?'} ({r.get('uf', '?')})"
             falhas.append(f"{nome}: {quem} pontua como '{r['categoria']}' com URL em '{host}' — não é "
                           f"domínio oficial nem diário. Troque pela fonte primária ou rebaixe a pista (C10).")
@@ -539,6 +541,9 @@ CASOS_IMPRENSA = [
     ("decreto não pontua e não é conferido",
      problemas_imprensa("m", [{"categoria": "decreto", "url": "https://jornal.com/x"}]) == []),
     ("URL ausente não é deste portão", problemas_imprensa("m", [{"categoria": "plano"}]) == []),
+    ("arquivo do portal da prefeitura no domínio do fornecedor é oficial; outro arquivo do fornecedor não",
+     problemas_imprensa("m", [{"categoria": "plano", "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_270_0_1_1.pdf"}]) == []
+     and len(problemas_imprensa("m", [{"categoria": "plano", "url": "https://ecrie.com.br/outra/pagina"}])) == 1),
 ]
 
 
