@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-19 a 2026-11-26 (1571 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-19 a 2026-11-26 (1595 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -18,7 +18,6 @@ Janela: 2026-11-19 a 2026-11-26 (1571 execução(ões) registrada(s), 7 dias de 
 - coletar_datasus_dbc.py: erro em 2 rodadas seguidas — [lacuna declarada] ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/ (malaria): TimeoutError: timed out; o arquivo anterior fica
 - coletar_pab_brasil.py: erro em 2 rodadas seguidas — urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer>
 - consultar_querido_diario.py: erro em 4 rodadas seguidas — portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable | queridodiario.ok.org.br: HTTPError HTTP Error 503: Service Unavailable | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail
-- julgar_filas.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 - verificar_links.py: erro em 3 rodadas seguidas — interrompido pelo prazo do elo
 
 ## Cobertura em 15 dias
@@ -39,9 +38,9 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-25 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-22 07:29 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-25 01:37 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-22 07:27 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-26 08:49 | 6 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-26 09:53 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-22 06:54 | 501 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-26 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-22 04:10 | 11930 s | 147 | ok | — |
 | `atualizar_boletins.py` | coletor | 2026-11-22 04:10 | 21 s | — | ok | — |
 | `atualizar_instrumentos_estaduais.py` | coletor | 2026-11-22 06:35 | 82 s | — | **erro** | código de saída 1 |
@@ -68,7 +67,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-25 · por canal: we
 | `coletar_diarios_consorciados.py` | coletor | 2026-11-25 01:13 | 2280 s | 74 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-11-25 01:13 | 2 s | 0 | ok | — |
 | `coletar_doe.py` | coletor | 2026-11-25 01:51 | 1572 s | — | ok | — |
-| `coletar_edicoes_doe.py` | coletor | 2026-11-25 01:15 | 141 s | — | ok | — |
+| `coletar_edicoes_doe.py` | coletor | 2026-11-26 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_espin.py` | coletor | 2026-11-25 04:21 | 271 s | — | ok | — |
 | `coletar_execucao_mps.py` | coletor | 2026-11-22 06:35 | 26 s | — | ok | — |
 | `coletar_financiamento.py` | coletor | 2026-11-22 06:35 | 2 s | — | ok | — |
@@ -89,21 +88,21 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-25 · por canal: we
 | `coletar_siconfi_182.py` | coletor | 2026-11-22 06:35 | 0 s | — | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-26 07:40 | 73 s | — | sem novidade | — |
 | `coletar_sim.py` | coletor | 2026-11-26 07:35 | 276 s | — | **erro** | TimeoutError: timed out |
-| `coletar_sinais_risco.py` | coletor | 2026-11-25 01:12 | 138 s | — | ok | — |
+| `coletar_sinais_risco.py` | coletor | 2026-11-26 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_sisab.py` | coletor | 2026-11-26 07:32 | 144 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-24 05:22 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-25 02:10 | 41 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-11-22 06:35 | 2 s | — | ok | — |
-| `coletar_transferencias_municipais.py` | coletor | 2026-11-25 01:14 | 41 s | — | ok | — |
-| `conferir_emergencias_estaduais.py` | coletor | 2026-11-25 01:17 | 1 s | — | ok | — |
+| `coletar_transferencias_municipais.py` | coletor | 2026-11-26 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `conferir_emergencias_estaduais.py` | coletor | 2026-11-26 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `consultar_querido_diario.py` | coletor | 2026-11-25 01:13 | 2 s | — | **erro** (4 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable \| queridodiario.ok.org.br: HTT |
 | `descobrir_dominios.py` | coletor | 2026-11-24 07:31 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `descobrir_planos.py` | coletor | 2026-11-26 06:55 | 448 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-26 07:35 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-26 06:55 | 11 s | — | ok | — |
 | `juiz.py` | coletor | 2026-11-24 15:45 | 14401 s | — | **erro** | interrompido pelo prazo do elo |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `julgar_filas.py` | coletor | 2026-11-26 07:58 | 2821 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-26 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `julgar_filas.py` | coletor | 2026-11-26 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_saude.py` | coletor | 2026-11-25 02:48 | 4136 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-26 07:45 | 2 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-26 06:52 | 183 s | 25552 | ok | — |
@@ -121,19 +120,19 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-25 · por canal: we
 | `node scripts/verificar_runtime_sinais.js` | coletor | 2026-11-22 07:27 | 3 s | — | ok | — |
 | `node scripts/verificar_texto_publico.js` | coletor | 2026-11-22 07:28 | 26 s | — | ok | — |
 | `preencher_fallback_estatico.py` | coletor | 2026-11-22 07:29 | 1 s | — | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-11-26 06:34 | 55 s | — | ok | — |
-| `processar_contribuicoes.py` | coletor | 2026-11-26 07:22 | 1 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-11-26 08:55 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `processar_contribuicoes.py` | coletor | 2026-11-26 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `reconferir_instrumentos_federais.py` | coletor | 2026-11-26 07:45 | 3 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-11-26 07:22 | 2135 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `revisar_pistas.py` | coletor | 2026-11-26 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-26 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/busca_dirigida_do_ato.py` | coletor | 2026-11-26 07:07 | 58 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-26 07:22 | 1 s | — | ok | — |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-26 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/fechar_saude.py` | coletor | 2026-11-25 04:00 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-26 06:35 | 2 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-26 08:55 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/proveniencia_estadual.py` | coletor | 2026-11-25 04:26 | 1 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-26 05:12 | 788 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-11-24 05:20 | 109 s | — | ok | — |
-| `scripts/sondar_credenciais.py` | coletor | 2026-11-25 01:15 | 1 s | — | ok | — |
+| `scripts/sondar_credenciais.py` | coletor | 2026-11-26 08:56 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/triar_fila.py` | coletor | 2026-11-25 02:09 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-25 02:41 | 3 s | — | ok | — |
 | `scripts/verificar_funil.py` | coletor | 2026-11-22 03:37 | 0 s | — | ok | — |

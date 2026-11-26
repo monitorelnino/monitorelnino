@@ -1317,7 +1317,7 @@ def ensaio_valvula_nao_comita_o_log(diz) -> bool:
 
 
 def ensaio_main_se_sela(diz) -> bool:
-    """33. A `main` se sela sozinha (F103; handover do selo, D3/D4, 25/11/2026).
+    """33. A `main` se sela sozinha (F103; handover do selo, D1–D4, 25–26/11/2026).
 
     Merge sem selo: o push da `main` passa com aviso e dispara o publicador, que regenera e commita
     `mudancas.html`, `CODEMAP.md` e o manifesto; depois disso a `main` está selada e o elo que deixa
@@ -1328,6 +1328,9 @@ def ensaio_main_se_sela(diz) -> bool:
     sela = 0 <= mapa < cadeia and "CITATION.cff CODEMAP.md" in pub
     portoes = all("selo_da_main" in (RAIZ / f).read_text(encoding="utf-8") for f in
                   ("scripts/verificar_derivados.sh", "scripts/gerar_mudancas.py", "scripts/gerar_codemap.py"))
+    # D2 (26/11): todo envio a um PR roda os portões; job pulado por rascunho contava como aprovado.
+    wf = (RAIZ / ".github/workflows/portoes.yml").read_text(encoding="utf-8")
+    portoes = portoes and "pull_request.draft" not in wf and "ready_for_review" not in wf
     visto = []
     with tempfile.TemporaryDirectory() as t:
         tmp = pathlib.Path(t)
@@ -1344,7 +1347,7 @@ def ensaio_main_se_sela(diz) -> bool:
                                         cwd=tmp, env=amb, capture_output=True).returncode == 0)
     if not (sela and portoes and visto == [False, True, False, False]):
         diz(f"  ✗ a `main` não se sela (F103): publicador sela={sela}, portões leem o selo={portoes}, "
-            f"tolerância por commit={visto} (esperado [False, True, False, False])")
+            f"tolerância por commit={visto} (esperado [False, True, False, False]); PR sem rascunho pulado (D2)")
         return False
     diz("  ✓ merge sem selo passa com aviso; o publicador sela; a `main` selada volta a ser estrita")
     return True

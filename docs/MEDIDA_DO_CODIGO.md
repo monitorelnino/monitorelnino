@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **107.015 linhas** em **305 arquivos** .py/.js; **41 workflows**.
+- **107.470 linhas** em **306 arquivos** .py/.js; **42 workflows**.
 - **66 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 45.
-- **160 nomes de função** definidos em mais de um arquivo.
+- **163 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 62130 |
-| `scripts` | 37924 |
-| `assets` | 6693 |
+| `(raiz)` | 62447 |
+| `scripts` | 38035 |
+| `assets` | 6720 |
 | `.claude` | 268 |
 
 ## Os 25 maiores
@@ -20,7 +20,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | arquivo | linhas |
 |---|---:|
 | `coletar_sinais_risco.py` | 3252 |
-| `juiz.py` | 2624 |
+| `juiz.py` | 2583 |
 | `coletores_base.py` | 2524 |
 | `verificar_pista_imprensa.py` | 1705 |
 | `coletar_doe.py` | 1661 |
@@ -32,18 +32,18 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `coletar_edicoes_doe.py` | 1372 |
 | `julgar_e_aplicar_descobertas.py` | 1354 |
 | `descobrir_planos.py` | 1351 |
-| `assets/js/index.js` | 1245 |
+| `assets/js/index.js` | 1250 |
 | `coletar_painel_am.py` | 1154 |
 | `gerar_imprensa_semana.py` | 1116 |
 | `recalcular_mare.py` | 1086 |
 | `coletar_diarios_consorciados.py` | 1040 |
-| `julgar_filas.py` | 1024 |
+| `julgar_filas.py` | 1027 |
 | `aplicar_promocoes_do_juiz.py` | 983 |
 | `gerar_pacote_blog.py` | 913 |
 | `scripts/pistas.py` | 867 |
 | `assets/js/saude.js` | 785 |
 | `seguir_pistas.py` | 783 |
-| `coletar_s2id.py` | 762 |
+| `buscar_planos_fontes_abertas.py` | 762 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 
@@ -65,6 +65,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `_plano` | 6 | `classificar_saude_no_plano.py`, `coletar_dda.py`, `coletar_srag_gripe.py`, `coletar_transferegov.py` … |
 | `carregar` | 6 | `aplicar_revisao.py`, `scripts/testar_ordem_prioridade_ufs.py`, `scripts/validar_dicionario.py`, `verificar_financiamento.py` … |
 | `decidir` | 6 | `buscar_financiamento_preventivo.py`, `coletar_saude_estadual.py`, `coletar_sg_esus.py`, `monitorar_busca_web.py` … |
+| `_host` | 5 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `scripts/municipio_do_dominio.py`, `scripts/ponte_brasil.py` … |
 | `agregar` | 5 | `coletar_datasus_dbc.py`, `coletar_execucao_mps.py`, `coletar_sih.py`, `coletar_sim.py` … |
 | `avisar` | 5 | `conferir_emergencias_estaduais.py`, `scripts/avisos.py`, `scripts/checagem_pre_noite.py`, `scripts/selo_da_main.py` … |
 | `carregar_fila` | 5 | `descobrir_planos.py`, `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` … |
@@ -74,7 +75,6 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `relatorio` | 5 | `coletar_cobertura_qd.py`, `scripts/busca_dirigida_do_ato.py`, `scripts/fechar_saude.py`, `scripts/medir_codigo.py` … |
 | `__init` | 4 | `assets/js/defesa-civil.js`, `assets/js/financiamento.js`, `assets/js/index.js`, `assets/js/monitor-de-riscos.js` |
 | `_git` | 4 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_repositorio.py`, `scripts/verificar_tamanho_dos_dados.py` |
-| `_host` | 4 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `scripts/municipio_do_dominio.py`, `triar_confianca_pistas.py` |
 | `_levanta` | 4 | `buscar_planos_fontes_abertas.py`, `coletar_pab_brasil.py`, `coletar_transferencias_municipais.py`, `scripts/testar_busca_dou.py` |
 | `_sem_acento` | 4 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py`, `scripts/vocabulario.py` |
 | `conferir` | 4 | `reconferir_instrumentos_federais.py`, `scripts/gerar_saude_pipeline.py`, `scripts/verificar_funil.py`, `scripts/verificar_texto_blog.py` |
