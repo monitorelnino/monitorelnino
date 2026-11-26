@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-26 · #2142 · Data do plano: a lista de referências não data o plano
 
-Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes). A data do plano agora se lê no corpo, até a seção de referências; o registro de revisões passa a datar (2022). Fecho com local e data, assinatura digital e a obra do próprio município seguem valendo no texto todo. Medido em 470 planos preservados: cinco datas mudam; só a de Francisco Morato muda de faixa de idade.
+Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes). A data do plano agora se lê no corpo, até a seção de referências; o registro de revisões passa a datar (2022). Fecho com local e data, assinatura digital e a obra do próprio município seguem valendo no texto todo. Medido em 470 planos preservados: cinco datas mudam, nenhuma de faixa de idade.
 
 ## 2026-11-26 · #2136 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão
 
