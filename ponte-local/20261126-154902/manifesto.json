@@ -1,0 +1,960 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-26T15:59:12+00:00",
+ "itens": [
+  {
+   "url": "http://www.rubiacea.sp.gov.br/arquivos_cliente/Plano Municipal de Imunização.pdf",
+   "em": "2026-11-26T15:49:02+00:00",
+   "erro": "InvalidURL: URL can't contain control characters. '/arquivos_cliente/Plano Municipal de Imunização.pdf' (found at least ' ')"
+  },
+  {
+   "url": "https://juquitiba.sp.gov.br/wp-content/uploads/2021/03/Plano-Municipal-de-Educação-2014-2023.pdf",
+   "em": "2026-11-26T15:49:02+00:00",
+   "erro": "UnicodeEncodeError: 'ascii' codec can't encode characters in position 56-57: ordinal not in range(128)"
+  },
+  {
+   "url": "https://juquitiba.sp.gov.br/wp-content/uploads/2021/05/PLANO-DE-AÇÃO-DURANTE-A-PANDEMIA-COVID-2021.pdf",
+   "em": "2026-11-26T15:49:04+00:00",
+   "erro": "UnicodeEncodeError: 'ascii' codec can't encode characters in position 42-43: ordinal not in range(128)"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205706&size=1",
+   "em": "2026-11-26T15:49:07+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205805&size=1",
+   "em": "2026-11-26T15:49:07+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205854&size=1",
+   "em": "2026-11-26T15:49:10+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206001&size=1",
+   "em": "2026-11-26T15:49:13+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206050&size=1",
+   "em": "2026-11-26T15:49:16+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206100&size=1",
+   "em": "2026-11-26T15:49:19+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206209&size=1",
+   "em": "2026-11-26T15:49:22+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206308&size=1",
+   "em": "2026-11-26T15:49:26+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206357&size=1",
+   "em": "2026-11-26T15:49:29+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206407&size=1",
+   "em": "2026-11-26T15:49:32+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206605&size=1",
+   "em": "2026-11-26T15:49:35+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206654&size=1",
+   "em": "2026-11-26T15:49:38+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206670&size=1",
+   "em": "2026-11-26T15:49:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206696&size=1",
+   "em": "2026-11-26T15:49:44+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206704&size=1",
+   "em": "2026-11-26T15:49:47+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206720&size=1",
+   "em": "2026-11-26T15:49:50+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206753&size=1",
+   "em": "2026-11-26T15:49:53+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206803&size=1",
+   "em": "2026-11-26T15:49:56+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206902&size=1",
+   "em": "2026-11-26T15:49:59+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206951&size=1",
+   "em": "2026-11-26T15:50:02+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207009&size=1",
+   "em": "2026-11-26T15:50:05+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207108&size=1",
+   "em": "2026-11-26T15:50:09+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207207&size=1",
+   "em": "2026-11-26T15:50:12+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207306&size=1",
+   "em": "2026-11-26T15:50:15+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207355&size=1",
+   "em": "2026-11-26T15:50:18+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/17506077176858276566abf.pdf",
+   "em": "2026-11-26T15:50:21+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174490324168011c4982e7a.pdf",
+   "em": "2026-11-26T15:50:21+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174403542267f3de5e3c565.pdf",
+   "em": "2026-11-26T15:50:25+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/17492129136842def1c9079.pdf",
+   "em": "2026-11-26T15:50:28+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/1702591372657b7b8c44509.pdf",
+   "em": "2026-11-26T15:50:31+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/9.pdf",
+   "em": "2026-11-26T15:50:34+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://es.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://defesacivil.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.defesacivil.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://go.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.defesacivil.to.gov.br/",
+   "em": "2026-11-26T15:50:38+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cbm.to.gov.br/",
+   "em": "2026-11-26T15:50:39+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.bombeiros.to.gov.br/",
+   "em": "2026-11-26T15:50:40+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cedec.to.gov.br/",
+   "em": "2026-11-26T15:50:40+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.to.gov.br/",
+   "em": "2026-11-26T15:50:40+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.to.def.br/",
+   "em": "2026-11-26T15:50:40+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.to.gov.br/",
+   "em": "2026-11-26T15:50:40+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://to.gov.br/",
+   "em": "2026-11-26T15:50:40+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://portal.saude.mt.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.mt.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.mt.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.mt.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.mt.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://mt.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://defesacivil.ms.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://saude.ms.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://saude.pa.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.pb.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.defesacivil.pb.gov.br/",
+   "em": "2026-11-26T15:50:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cbm.pb.gov.br/",
+   "em": "2026-11-26T15:50:42+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.saude.pb.gov.br/",
+   "em": "2026-11-26T15:50:42+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://portal.saude.pb.gov.br/",
+   "em": "2026-11-26T15:51:18+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://ses.pb.gov.br/",
+   "em": "2026-11-26T15:51:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.pb.gov.br/",
+   "em": "2026-11-26T15:51:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.pb.gov.br/",
+   "em": "2026-11-26T15:51:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.pb.gov.br/",
+   "em": "2026-11-26T15:51:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.pb.gov.br/",
+   "em": "2026-11-26T15:51:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.pb.gov.br/",
+   "em": "2026-11-26T15:51:54+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://pb.gov.br/",
+   "em": "2026-11-26T15:51:55+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.defesacivil.ac.gov.br/",
+   "em": "2026-11-26T15:51:55+00:00",
+   "erro": "URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://cbm.ac.gov.br/",
+   "em": "2026-11-26T15:51:55+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.ac.gov.br/",
+   "em": "2026-11-26T15:51:55+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.ac.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cedec.ac.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.ac.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.ac.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.ac.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ac.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://defesacivil.pe.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.pe.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.pe.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://saude.pe.gov.br/",
+   "em": "2026-11-26T15:51:56+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://defesacivil.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cedec.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.pi.def.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.pi.gov.br/",
+   "em": "2026-11-26T15:51:57+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://ses.pi.gov.br/",
+   "em": "2026-11-26T15:52:33+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.pi.gov.br/",
+   "em": "2026-11-26T15:52:33+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.pi.gov.br/",
+   "em": "2026-11-26T15:52:33+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.pi.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.rj.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.rj.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.rj.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.rj.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.rj.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.rj.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://rj.gov.br/",
+   "em": "2026-11-26T15:52:34+00:00",
+   "status": 503,
+   "erro": "HTTP 503"
+  },
+  {
+   "url": "https://defesacivil.rn.gov.br/",
+   "em": "2026-11-26T15:52:35+00:00",
+   "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>"
+  },
+  {
+   "url": "https://www.defesacivil.rn.gov.br/",
+   "em": "2026-11-26T15:53:11+00:00",
+   "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>"
+  },
+  {
+   "url": "https://bombeiros.rn.gov.br/",
+   "em": "2026-11-26T15:53:47+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.rn.gov.br/",
+   "em": "2026-11-26T15:53:47+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cedec.rn.gov.br/",
+   "em": "2026-11-26T15:53:47+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.rn.def.br/",
+   "em": "2026-11-26T15:53:47+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.rn.gov.br/",
+   "em": "2026-11-26T15:53:47+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.rn.gov.br/",
+   "em": "2026-11-26T15:53:47+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://rn.gov.br/",
+   "em": "2026-11-26T15:53:47+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://portal.saude.rn.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.rn.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.rn.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.rn.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.rn.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.rs.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.rs.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://sesa.rs.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.rs.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.rs.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.rs.gov.br/",
+   "em": "2026-11-26T15:54:24+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://defesacivil.ro.gov.br/",
+   "em": "2026-11-26T15:54:30+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.defesacivil.ro.gov.br/",
+   "em": "2026-11-26T15:55:04+00:00",
+   "erro": "URLError: <urlopen error [Errno 11002] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.ro.gov.br/",
+   "em": "2026-11-26T15:55:37+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://bombeiros.ro.gov.br/",
+   "em": "2026-11-26T15:55:37+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.ro.gov.br/",
+   "em": "2026-11-26T15:55:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cedec.ro.gov.br/",
+   "em": "2026-11-26T15:55:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.ro.gov.br/",
+   "em": "2026-11-26T15:55:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.ro.def.br/",
+   "em": "2026-11-26T15:55:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.ro.gov.br/",
+   "em": "2026-11-26T15:55:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11002] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.ro.gov.br/",
+   "em": "2026-11-26T15:56:11+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ro.gov.br/",
+   "em": "2026-11-26T15:56:12+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://saude.ro.gov.br/",
+   "em": "2026-11-26T15:56:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.saude.ro.gov.br/",
+   "em": "2026-11-26T15:56:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.ro.gov.br/",
+   "em": "2026-11-26T15:56:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.ro.gov.br/",
+   "em": "2026-11-26T15:56:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.ro.gov.br/",
+   "em": "2026-11-26T15:56:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.ro.gov.br/",
+   "em": "2026-11-26T15:56:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.ro.gov.br/",
+   "em": "2026-11-26T15:56:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ioepa.com.br/pages/2026/2026.08.25.DOE.pdf",
+   "em": "2026-11-26T15:56:13+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://ioepa.com.br/pages/2026/2026.08.25.DOE.pdf",
+   "bytes": 917504,
+   "sha256": "7fb0ec0985605ebcde5e89bdddb58aa94738a4722f5d98b9fe043d53c2219220"
+  },
+  {
+   "url": "https://mage.rj.gov.br/tag/barragem/",
+   "em": "2026-11-26T15:57:47+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://mage.rj.gov.br/tag/barragem/",
+   "bytes": 232407,
+   "sha256": "30c29e02fb0ab5b535498d8dcb7d9567002ef1c69093da6ad649c88ecbcb2d91"
+  },
+  {
+   "url": "https://sergipe.se.gov.br/index.php",
+   "em": "2026-11-26T15:57:50+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://sergipe.se.gov.br/index.php",
+   "bytes": 110710,
+   "sha256": "a578427161e349272d8518186afa102864487c2c62d099769da354105c3b23fb"
+  },
+  {
+   "url": "https://www.alepe.pe.gov.br/sitemap.xml",
+   "em": "2026-11-26T15:57:51+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.alepe.pe.gov.br/wp-sitemap.xml",
+   "bytes": 135660,
+   "sha256": "c6742be562818233d9d928069e2a7e77816a5b8708ace39705ef781d78a88045"
+  },
+  {
+   "url": "https://www.rj.gov.br/sitemap.xml",
+   "em": "2026-11-26T15:57:55+00:00",
+   "status": 200,
+   "tipo": "text/html",
+   "final": "https://www.rj.gov.br/sitemap.xml",
+   "bytes": 7720,
+   "sha256": "ffac18bf060feb3e92de995d14dc66db28e56dbcf96581012e68bcc8294241b2"
+  },
+  {
+   "url": "https://www.se.gov.br/governo",
+   "em": "2026-11-26T15:57:56+00:00",
+   "status": 404
+  },
+  {
+   "url": "https://www.sas.sc.gov.br/index.php/noticias/2607-assistencia-social-e-defesa-civil-entregam-selo-de-homologacao-de-planos-de-contingencia-da-assistencia-social-para-19-municipios",
+   "em": "2026-11-26T15:57:56+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www.sas.sc.gov.br/index.php/noticias/2607-assistencia-social-e-defesa-civil-entregam-selo-de-homologacao-de-planos-de-contingencia-da-assistencia-social-para-19-municipios",
+   "bytes": 25642,
+   "sha256": "5a99c5c304226cc3b5df86dc8bfa721e0dd74c92af4bb6c221857e7a8d1a4483"
+  },
+  {
+   "url": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "em": "2026-11-26T15:57:56+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.tcm.ba.gov.br/wp-content/uploads/2020/01/anuario-completo-versao-final-2015.pdf",
+   "bytes": 24512658,
+   "sha256": "40af1c9d6f9dd9f45016d8c06294f87b69cd1592463b5d5e8490d23cbd52baba"
+  },
+  {
+   "url": "https://servidores.rhbahia.ba.gov.br/sites/default/files/concursos/editais/2020-04/Convoca%C3%A7%C3%A3o%20para%20Exames%20Pr%C3%A9%20Admissionais.pdf",
+   "em": "2026-11-26T15:58:36+00:00",
+   "status": 200,
+   "tipo": "application/octect-stream",
+   "final": "https://servidores.rhbahia.ba.gov.br/sites/default/files/concursos/editais/2020-04/Convoca%C3%A7%C3%A3o%20para%20Exames%20Pr%C3%A9%20Admissionais.pdf",
+   "bytes": 2416906,
+   "sha256": "40161198e5f7658cbdb5b848745300793c5d7995a04c761b811e171af545cc00"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/002_boaspraticas_iniciativacomunidades_tremor_terra_saiba_como_agir_ceara_fev2022.pdf",
+   "em": "2026-11-26T15:58:38+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/002_boaspraticas_iniciativacomunidades_tremor_terra_saiba_como_agir_ceara_fev2022.pdf",
+   "bytes": 2703344,
+   "sha256": "4f2e00d9a08ed17e239e1fced42165594ca517583d7ddde94cdefd7c9bb2b795"
+  },
+  {
+   "url": "https://capacitacaoespi.manaus.am.gov.br/course/index.php?categoryid=23",
+   "em": "2026-11-26T15:58:39+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://capacitacaoespi.manaus.am.gov.br/course/index.php?categoryid=23",
+   "bytes": 190125,
+   "sha256": "6cfcfaf7eccedd7179f95b9c608509aa1c1002bcac7487abfc558d2283642100"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/006_boaspraticas_iniciativacomunidades_comunidades_resilientes_nova_iguacu_rj_fev2022.pdf",
+   "em": "2026-11-26T15:58:41+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/006_boaspraticas_iniciativacomunidades_comunidades_resilientes_nova_iguacu_rj_fev2022.pdf",
+   "bytes": 1995764,
+   "sha256": "64bf0f11119ce558ee5ae447142ee295cdd1d5942cdc431dbab4c01027571757"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/base_completa_icm_082026.xlsx",
+   "em": "2026-11-26T15:58:43+00:00",
+   "status": 200,
+   "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/base_completa_icm_082026.xlsx",
+   "bytes": 879291,
+   "sha256": "4d72b43d4541fb5b8ecc8c84a0ffe60efa158ad4650ee7314ead95209edbc0a6"
+  },
+  {
+   "url": "https://diariooficial.to.gov.br/busca?por=texto&texto=situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-22",
+   "em": "2026-11-26T15:58:47+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://diariooficial.to.gov.br/busca?por=texto&texto=situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-22",
+   "bytes": 16906,
+   "sha256": "552aa8377e7a06ada243a7610aad963e4dae549272dcc93bb2d939d9f3541335"
+  },
+  {
+   "url": "https://api.queridodiario.org.br/gazettes?territory_ids=1303601&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "em": "2026-11-26T15:58:49+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=1303601&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://api.queridodiario.org.br/gazettes?territory_ids=3205200&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "em": "2026-11-26T15:58:51+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=3205200&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://api.queridodiario.org.br/gazettes?territory_ids=3203908&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "em": "2026-11-26T15:58:55+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=3203908&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3203908&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "em": "2026-11-26T15:58:58+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=3203908&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://api.queridodiario.org.br/gazettes?territory_ids=3200904&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "em": "2026-11-26T15:58:59+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=3200904&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=3200904&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "em": "2026-11-26T15:59:02+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=3200904&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://api.queridodiario.org.br/gazettes?territory_ids=3204559&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "em": "2026-11-26T15:59:03+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=3204559&published_since=2026-06-29&querystring=%22situa%C3%A7%C3%A3o+de+emerg%C3%AAncia%22+OR+%22estado+de+calamidade+p%C3%BAblica%22+OR+%22plano+de+conting%C3%AAncia%22+OR+%22El+Ni%C3%B1o%22+OR+%22plano+de+a%C3%A7%C3%A3o%22+OR+%22PLANCON%22+OR+%22PLAMCON%22+OR+%22PLACON%22+OR+%22plano+operacional%22+OR+%22plano+preventivo%22+OR+%22plano+de+enfrentamento%22&size=50",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://www.viscondedoriobranco.mg.gov.br/wp-content/uploads/2021/02/Plano-Diretor-VRB.pdf",
+   "em": "2026-11-26T15:59:05+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.viscondedoriobranco.mg.gov.br/wp-content/uploads/2021/02/Plano-Diretor-VRB.pdf",
+   "bytes": 1013591,
+   "sha256": "f09e0ec6d0b6c5bf34016e82c55208f1343ddada63b9b0412f9ecdbb9f3c80f8"
+  },
+  {
+   "url": "https://www.ibram.df.gov.br/documents/d/bras%C3%ADlia-ambiental/sei_194598110_termo_de_referencia_28-do-plano-de-contingencia-e-emergencia",
+   "em": "2026-11-26T15:59:05+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.ibram.df.gov.br/documents/d/bras%C3%ADlia-ambiental/sei_194598110_termo_de_referencia_28-do-plano-de-contingencia-e-emergencia",
+   "bytes": 43557,
+   "sha256": "b75c5c1ce92be0680056ff95741f352c98e4a37f965edbfa20fd33a0a93cd3b6"
+  },
+  {
+   "url": "https://maraba.pa.gov.br/defesa-civil-plano-contingencia-inverno/",
+   "em": "2026-11-26T15:59:06+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://maraba.pa.gov.br/defesa-civil-plano-contingencia-inverno/",
+   "bytes": 171017,
+   "sha256": "ab14e6c3ade60b58a8561d912ba037ca063b6e0606a6eb921e76273aab435436",
+   "sha256_de_origem": "66738a5e65f1625c0cd54240ef3b6f9e0486ebc10c107f7750047b30753ad4bf",
+   "segredos_redigidos": 1,
+   "cpfs_redigidos": 0
+  },
+  {
+   "url": "https://maraba.pa.gov.br/defesa-civil-reuniao-acoes-operacao-enchente-2026/",
+   "em": "2026-11-26T15:59:07+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://maraba.pa.gov.br/defesa-civil-reuniao-acoes-operacao-enchente-2026/",
+   "bytes": 199119,
+   "sha256": "11c6653575ab310a9be40f8f5c39c051d920e19d80ab7e7463b25204f6e9e311",
+   "sha256_de_origem": "d96be5df350654968b002fb72eaa214dbccebaf0d8fdd6d701cb18640d9eff12",
+   "segredos_redigidos": 1,
+   "cpfs_redigidos": 0
+  }
+ ]
+}
