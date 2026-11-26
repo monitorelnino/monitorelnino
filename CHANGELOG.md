@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
+
+A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
+
 ## 2026-11-25 · #2101 · Cartão do município: linhas de autodeclaração
 
 O cartão do município, na página inicial e em Prefeituras, mostra o que ele declarou ao Indicador de Capacidade Municipal da Defesa Civil Nacional (2026), à pesquisa MUNIC do IBGE (2020) e ao S2iD, com a fonte do indicador em link. Quando o município declarou ter plano e o documento não foi localizado, a linha diz isso até o corte. Uma função só monta as linhas; os moldes vivem no catálogo.
