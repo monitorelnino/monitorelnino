@@ -2,18 +2,18 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 108713,
+   "valor": 110577,
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-11-24",
-   "n": 147,
+   "periodo_fim": "2026-11-25",
+   "n": 148,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.desde_dias",
    "periodo_vars": {
     "data": "29/06/2026",
-    "n": 147
+    "n": 148
    }
   },
   {
@@ -29,18 +29,18 @@
   },
   {
    "id": "dias_alerta_laranja_vermelho",
-   "valor": 49,
+   "valor": 50,
    "unidade": "dias",
    "periodo_inicio": "2026-09-15",
-   "periodo_fim": "2026-11-24",
-   "n": 67,
+   "periodo_fim": "2026-11-25",
+   "n": 68,
    "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.dias_observados",
    "periodo_vars": {
     "data": "15/09/2026",
-    "n": 67
+    "n": 68
    }
   },
   {
@@ -60,7 +60,7 @@
    "valor": 0,
    "unidade": "cidades",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-24",
+   "periodo_fim": "2026-11-25",
    "n": 1,
    "fonte": "OpenAQ (monitores de referência das capitais), limite de 24 h da OMS",
    "sem_coleta": false,
@@ -68,7 +68,7 @@
    "denominador": 1,
    "periodo_molde": "imprensa.numeros.periodo.capitais_medidas",
    "periodo_vars": {
-    "data": "24/11/2026",
+    "data": "25/11/2026",
     "n": 1
    }
   },
@@ -560,116 +560,108 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 33602,
+   "valor": 38574,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "24/11/2026",
+   "consultado_em": "25/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261124.csv",
+   "nota": "Focos do dia — focos_diario_br_20261125.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 20379
+     "valor": 25750
     },
     {
      "uf": "MA",
-     "valor": 5500
+     "valor": 4162
     },
     {
      "uf": "AP",
-     "valor": 2598
-    },
-    {
-     "uf": "PI",
-     "valor": 1056
-    },
-    {
-     "uf": "RR",
-     "valor": 906
-    },
-    {
-     "uf": "CE",
-     "valor": 728
+     "valor": 3002
     },
     {
      "uf": "AM",
-     "valor": 631
+     "valor": 1135
+    },
+    {
+     "uf": "PI",
+     "valor": 1123
+    },
+    {
+     "uf": "CE",
+     "valor": 689
+    },
+    {
+     "uf": "RR",
+     "valor": 586
     },
     {
      "uf": "BA",
-     "valor": 442
+     "valor": 539
     },
     {
      "uf": "PE",
-     "valor": 266
-    },
-    {
-     "uf": "TO",
-     "valor": 250
+     "valor": 247
     },
     {
      "uf": "RO",
-     "valor": 245
+     "valor": 241
     },
     {
-     "uf": "AC",
-     "valor": 169
-    },
-    {
-     "uf": "PB",
-     "valor": 126
+     "uf": "TO",
+     "valor": 225
     },
     {
      "uf": "AL",
-     "valor": 91
-    },
-    {
-     "uf": "RN",
-     "valor": 69
+     "valor": 211
     },
     {
      "uf": "MT",
-     "valor": 65
+     "valor": 192
     },
     {
-     "uf": "SE",
-     "valor": 31
+     "uf": "AC",
+     "valor": 125
+    },
+    {
+     "uf": "PB",
+     "valor": 116
     },
     {
      "uf": "MG",
-     "valor": 17
+     "valor": 71
     },
     {
-     "uf": "SP",
-     "valor": 13
+     "uf": "RN",
+     "valor": 63
+    },
+    {
+     "uf": "SE",
+     "valor": 57
     },
     {
      "uf": "GO",
-     "valor": 12
-    },
-    {
-     "uf": "MS",
-     "valor": 4
-    },
-    {
-     "uf": "ES",
-     "valor": 1
-    },
-    {
-     "uf": "PR",
-     "valor": 1
-    },
-    {
-     "uf": "RJ",
-     "valor": 1
+     "valor": 13
     },
     {
      "uf": "RS",
+     "valor": 13
+    },
+    {
+     "uf": "ES",
+     "valor": 11
+    },
+    {
+     "uf": "RJ",
+     "valor": 2
+    },
+    {
+     "uf": "MS",
      "valor": 1
     }
    ],
