@@ -2285,7 +2285,8 @@ def autoteste() -> int:
          etapa0_documento_primario("https://x.gov.br/a.pdf",
                                    "PLANO DE CONTINGENCIA " * 60)[0] is True),
     ]
-    checagens += casos_18() + casos_18_medidos() + casos_leitura_local_18() + casos_lote_18()
+    checagens += (casos_18() + casos_18_medidos() + casos_leitura_local_18() + casos_lote_18()
+                  + casos_lote_18_persistencia())
     _fila = [{"id": "a", "hash_evidencia": "h" * 64, "juiz": {"promove": True, "motivo": None, "codebook": "1.8"}},
              {"id": "b", "hash": "h" * 64, "juiz": {"promove": True}},
              {"id": "c", "url": "https://x.gov.br/a.pdf"}]
@@ -2508,9 +2509,14 @@ def alvos_do_lote_18(fonte: str) -> list:
     return alvos
 
 
-def lote_paralelo_18(alvos: list, destino: pathlib.Path, fonte: str, limite: int = 300, buscar_fn=None) -> dict:
-    """Lê até `limite` documentos de `alvos` (que ainda não estão julgados em `destino`), julga pelo 1.8 e grava."""
+def lote_paralelo_18(alvos: list, destino: pathlib.Path, fonte: str, limite: int = 300, buscar_fn=None,
+                     intervalo_s: float = 120) -> dict:
+    """Lê até `limite` documentos de `alvos` (que ainda não estão julgados em `destino`), julga pelo 1.8 e grava.
+    Grava a cada `intervalo_s` segundos e no fim: quando o prazo do job interrompe o lote, perde-se no máximo esse
+    intervalo, nunca o lote inteiro (26/11: 150 min de produção acabaram sem nenhum registro gravado). Falha de
+    leitura, de extração ou do juiz num documento vai para `sem_leitura` com a causa e o lote segue."""
     import hashlib
+    import time
     from julgar_e_aplicar_descobertas import com_ocr, obter_documento, texto_do_documento
     atual = _ler_paralelo_18(destino)
     julgados = {r["hash_evidencia"] for r in atual["decisoes"]}
@@ -2518,33 +2524,96 @@ def lote_paralelo_18(alvos: list, destino: pathlib.Path, fonte: str, limite: int
     pendentes = [a for a in alvos if a["hash"] not in julgados]
     pendentes.sort(key=lambda a: a["hash"] in falhados)   # nunca lidos primeiro; falhas de rodadas anteriores depois
     novos, falhas = [], []
+
+    def consolidar() -> dict:
+        ids_refeitos = {x["hash_evidencia"] for x in falhas} | {r["hash_evidencia"] for r in novos}
+        sem_leitura = [f for f in atual.get("sem_leitura", []) if f["hash_evidencia"] not in ids_refeitos] + falhas
+        registros = atual["decisoes"] + novos
+        regras = {}
+        for r in registros:
+            for x in r.get("regras_18") or []:
+                regras[x] = regras.get(x, 0) + 1
+        resumo = {"julgadas": len(registros), "lote_julgadas": sum(1 for r in registros if r.get("lote")),
+                  "sem_leitura": len(sem_leitura), "lido_neste_lote": len(novos), "falhas_neste_lote": len(falhas),
+                  "a_ler": len(pendentes) - len(novos) - len(falhas), "regras_acionadas": dict(sorted(regras.items()))}
+        return _escrever_paralelo_18(destino, fonte, registros, sem_leitura, resumo)
+
+    ultimo = time.monotonic()
     for a in pendentes[:limite]:
         try:
             raw = obter_documento(a["url"], timeout=40, origem="rodada paralela J18", buscar_fn=buscar_fn)
         except Exception as e:  # noqa: BLE001 — a causa vai para o registro, nunca para "mantida"
             falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": f"fonte: {type(e).__name__}"})
             continue
-        texto = com_ocr(raw, texto_do_documento(raw, a["url"]))
+        try:
+            texto = com_ocr(raw, texto_do_documento(raw, a["url"]))
+        except Exception as e:  # noqa: BLE001 — PDF quebrado não derruba o lote (26/11: pdfplumber parou a produção)
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": f"extracao: {type(e).__name__}"})
+            continue
         if sum(c.isalpha() for c in re.sub(r"=== página \d+ ===", " ", texto or "")) < 300:
             falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": "texto_nao_extraivel"})
             continue
-        v = julgar(texto, nome=a.get("municipio") or "", uf=a.get("uf") or "", ibge=a.get("ibge"),
-                   url=a["url"], propostas=PROPOSTAS_MEDIDAS_18)
+        try:
+            v = julgar(texto, nome=a.get("municipio") or "", uf=a.get("uf") or "", ibge=a.get("ibge"),
+                       url=a["url"], propostas=PROPOSTAS_MEDIDAS_18)
+        except Exception as e:  # noqa: BLE001
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": f"juiz: {type(e).__name__}"})
+            continue
         novos.append({**v, "pista_id": a.get("pista_id"), "origem": a.get("origem"), "hash_evidencia": a["hash"],
                       "hash_lido": hashlib.sha256(raw).hexdigest(), "leu_documento": True, "lote": True,
                       "prod": {"promove": a.get("promove"), "motivo": a.get("motivo"),
                                "codebook": a.get("codebook"), "categoria": a.get("categoria"), "data": a.get("data")}})
-    ids_novos = {r["hash_evidencia"] for r in novos}
-    sem_leitura = [f for f in atual.get("sem_leitura", []) if f["hash_evidencia"] not in {x["hash_evidencia"] for x in falhas} | ids_novos] + falhas
-    registros = atual["decisoes"] + novos
-    regras = {}
-    for r in registros:
-        for x in r.get("regras_18") or []:
-            regras[x] = regras.get(x, 0) + 1
-    resumo = {"julgadas": len(registros), "lote_julgadas": sum(1 for r in registros if r.get("lote")),
-              "sem_leitura": len(sem_leitura), "lido_neste_lote": len(novos), "falhas_neste_lote": len(falhas),
-              "a_ler": len(pendentes) - len(novos) - len(falhas), "regras_acionadas": dict(sorted(regras.items()))}
-    return _escrever_paralelo_18(destino, fonte, registros, sem_leitura, resumo)
+        if time.monotonic() - ultimo >= intervalo_s:
+            consolidar()
+            ultimo = time.monotonic()
+    return consolidar()
+
+
+class _Interrompido(BaseException):
+    """Imita o prazo do job: derruba o processo sem passar pelos `except Exception` do lote."""
+
+
+def casos_lote_18_persistencia() -> list:
+    """Travas do lote tolerante: um PDF quebrado não derruba o lote; interrupção no meio preserva o já julgado."""
+    import tempfile
+    plano = ("<html><body>" + "PLANO DE CONTINGENCIA MUNICIPAL DE DEFESA CIVIL do município de Teste. " * 12
+             + "</body></html>").encode("utf-8")
+
+    def transporte_quebrado(url, timeout=40):
+        if "quebrado" in url:
+            return b"%PDF-1.4 quebrado \x00\xff"
+        return plano
+
+    def transporte_interrompe(url, timeout=40):
+        if "interrompe" in url:
+            raise _Interrompido()
+        return plano
+
+    base = [{"hash": "1" * 64, "url": "https://x.gov.br/plano1.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+            {"hash": "2" * 64, "url": "https://x.gov.br/plano2.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+            {"hash": "3" * 64, "url": "https://x.gov.br/quebrado.pdf", "municipio": "Teste", "uf": "RS", "ibge": None},
+            {"hash": "4" * 64, "url": "https://x.gov.br/plano4.html", "municipio": "Teste", "uf": "RS", "ibge": None}]
+    with tempfile.TemporaryDirectory() as tmp:
+        destino = pathlib.Path(tmp) / "paralelo_quebrado.json"
+        lote_paralelo_18(base, destino, "teste", limite=10, buscar_fn=transporte_quebrado)
+        a = _ler_paralelo_18(destino)
+        julgados = {r["hash_evidencia"] for r in a["decisoes"]}
+        motivos = {f["hash_evidencia"]: f["motivo"] for f in a["sem_leitura"]}
+        alvos_i = [base[0], base[1], {**base[3], "hash": "5" * 64, "url": "https://x.gov.br/interrompe_plano5.html"}]
+        destino2 = pathlib.Path(tmp) / "paralelo_interrompido.json"
+        try:
+            lote_paralelo_18(alvos_i, destino2, "teste", limite=10, buscar_fn=transporte_interrompe, intervalo_s=0)
+            interrompido = False
+        except _Interrompido:
+            interrompido = True
+        b = _ler_paralelo_18(destino2)
+        return [
+            ("lote: PDF quebrado vai para sem_leitura com a causa e o lote segue até o fim",
+             "3" * 64 not in julgados and (motivos.get("3" * 64) == "texto_nao_extraivel" or motivos.get("3" * 64, "").startswith("extracao:"))
+             and {"1" * 64, "2" * 64, "4" * 64} <= julgados),
+            ("lote: interrupção no meio (prazo do job) não perde o que já foi julgado",
+             interrompido and {r["hash_evidencia"] for r in b["decisoes"]} == {"1" * 64, "2" * 64}),
+        ]
 
 
 def lote_paralelo_18_cli(args: list) -> int:
