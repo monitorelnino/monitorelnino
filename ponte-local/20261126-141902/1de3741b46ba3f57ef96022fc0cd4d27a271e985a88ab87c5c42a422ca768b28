@@ -1,0 +1,1517 @@
+<!DOCTYPE html> <html class="ltr" dir="ltr" lang="pt-BR"> <head> <meta charset="UTF-8"> <title> Defesa Civil do Distrito Federal </title> <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"> </noscript> <link rel="preload" href="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/css/1.3.0/css/line-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript> <link rel="stylesheet" href="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/css/1.3.0/css/line-awesome.min.css"> </noscript> <meta content="text/html; charset=UTF-8" http-equiv="content-type" /> <script type="importmap">{"imports":{"react-dom":"/o/frontend-js-react-web/__liferay__/exports/react-dom.js","@clayui/breadcrumb":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$breadcrumb.js","@clayui/form":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$form.js","@clayui/popover":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$popover.js","@clayui/charts":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$charts.js","@clayui/shared":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$shared.js","@clayui/localized-input":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$localized-input.js","@clayui/modal":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$modal.js","@clayui/empty-state":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$empty-state.js","react":"/o/frontend-js-react-web/__liferay__/exports/react.js","@clayui/color-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$color-picker.js","@clayui/navigation-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$navigation-bar.js","@clayui/pagination":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$pagination.js","@clayui/icon":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$icon.js","@clayui/table":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$table.js","@clayui/autocomplete":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$autocomplete.js","@clayui/slider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$slider.js","@clayui/management-toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$management-toolbar.js","@clayui/multi-select":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$multi-select.js","@clayui/nav":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$nav.js","@clayui/time-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$time-picker.js","@clayui/provider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$provider.js","@clayui/upper-toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$upper-toolbar.js","@clayui/loading-indicator":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$loading-indicator.js","@clayui/panel":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$panel.js","@clayui/drop-down":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$drop-down.js","@clayui/list":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$list.js","@clayui/date-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$date-picker.js","@clayui/label":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$label.js","@clayui/data-provider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$data-provider.js","@liferay/frontend-js-api/data-set":"/o/frontend-js-dependencies-web/__liferay__/exports/@liferay$js-api$data-set.js","@clayui/core":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$core.js","@clayui/pagination-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$pagination-bar.js","@clayui/layout":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$layout.js","@clayui/multi-step-nav":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$multi-step-nav.js","@liferay/frontend-js-api":"/o/frontend-js-dependencies-web/__liferay__/exports/@liferay$js-api.js","@clayui/css":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$css.js","@clayui/toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$toolbar.js","@clayui/alert":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$alert.js","@clayui/badge":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$badge.js","@clayui/link":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$link.js","@clayui/card":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$card.js","@clayui/progress-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$progress-bar.js","@clayui/tooltip":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$tooltip.js","@clayui/button":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$button.js","@clayui/tabs":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$tabs.js","@clayui/sticker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$sticker.js"},"scopes":{}}</script><script data-senna-track="temporary">var Liferay = window.Liferay || {};Liferay.Icons = Liferay.Icons || {};Liferay.Icons.controlPanelSpritemap = 'https://defesacivil.df.gov.br/o/admin-theme/images/clay/icons.svg';Liferay.Icons.spritemap = 'https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images/clay/icons.svg';</script> <script data-senna-track="permanent" src="/combo?browserId=other&minifierType=js&languageId=pt_BR&t=1794259112318&/o/frontend-js-jquery-web/jquery/jquery.min.js&/o/frontend-js-jquery-web/jquery/init.js&/o/frontend-js-jquery-web/jquery/ajax.js&/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&/o/frontend-js-jquery-web/jquery/collapsible_search.js&/o/frontend-js-jquery-web/jquery/fm.js&/o/frontend-js-jquery-web/jquery/form.js&/o/frontend-js-jquery-web/jquery/popper.min.js&/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"></script> <script data-senna-track="permanent" type="text/javascript">window.Liferay = window.Liferay || {}; window.Liferay.CSP = {nonce: ''};</script> <link data-senna-track="temporary" href="https://defesacivil.df.gov.br" rel="canonical" /> <link data-senna-track="temporary" href="https://defesacivil.df.gov.br" hreflang="pt-BR" rel="alternate" /> <link data-senna-track="temporary" href="https://defesacivil.df.gov.br" hreflang="x-default" rel="alternate" /> <meta property="og:locale" content="pt_BR"> <meta property="og:locale:alternate" content="pt_BR"> <meta property="og:site_name" content="Defesa Civil do Distrito Federal"> <meta property="og:title" content="Página Inicial - Defesa Civil do Distrito Federal - GDF"> <meta property="og:type" content="website"> <meta property="og:url" content="https://defesacivil.df.gov.br"> <link href="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images/favicon.ico" rel="apple-touch-icon" /> <link href="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images/favicon.ico" rel="icon" /> <link class="lfr-css-file" data-senna-track="temporary" href="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/css/clay.css?browserId=other&amp;themeId=secretariasdogdf2026_WAR_gdfsecretariaslf7_42026theme&amp;minifierType=css&amp;languageId=pt_BR&amp;t=1790294774000" id="liferayAUICSS" rel="stylesheet" type="text/css" /> <link href="/combo?browserId=other&amp;minifierType=css&amp;themeId=secretariasdogdf2026_WAR_gdfsecretariaslf7_42026theme&amp;languageId=pt_BR&amp;agenciahighlight_INSTANCE_s6XhlUAWcyvr:%2Fo%2Fagencia-highlight%2Fcss%2Fstyles.css&amp;com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn:%2Fo%2Fasset-publisher-web%2Fcss%2Fmain.css&amp;com_liferay_commerce_product_asset_categories_navigation_web_internal_portlet_CPAssetCategoriesNavigationPortlet_INSTANCE_cpAssetCategoriesNavigationPortlet_navigation_menu:%2Fo%2Fcommerce-product-asset-categories-navigation-web%2Fcss%2Fmain.css&amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW:%2Fo%2Fjournal-content-web%2Fcss%2Fmain.css&amp;com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch:%2Fo%2Fportal-search-web%2Fcss%2Fmain.css&amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fo%2Fproduct-navigation-product-menu-web%2Fcss%2Fmain.css&amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fo%2Fproduct-navigation-user-personal-bar-web%2Fcss%2Fmain.css&amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet:%2Fo%2Fsite-navigation-menu-web%2Fcss%2Fmain.css&amp;t=1790294774000" rel="stylesheet" type="text/css" data-senna-track="temporary" id="5b0b708e" /> <script type="text/javascript" data-senna-track="temporary">
+	// <![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return false;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			
+		];
+
+		(function () {
+			var available = {};
+
+			var direction = {};
+
+			
+
+				available['pt_BR'] = 'português\x20\x28Brasil\x29';
+				direction['pt_BR'] = 'ltr';
+
+			
+
+				available['en_US'] = 'inglês\x20\x28Estados\x20Unidos\x29';
+				direction['en_US'] = 'ltr';
+
+			
+
+			Liferay.Language = {
+				available,
+				direction,
+				get: function(key) {
+					return key;
+				}
+			};
+		})();
+
+		var featureFlags = {"LPD-11018":false,"LPS-193884":false,"LPS-178642":false,"LPS-193005":false,"LPS-187284":false,"LPS-187285":false,"LPS-114786":false,"LPS-192957":false,"COMMERCE-8087":false,"LRAC-10757":false,"LPS-180090":false,"LPS-170809":false,"LPS-178052":false,"LPS-189856":false,"LPS-187436":false,"LPS-182184":false,"LPS-185892":false,"LPS-186620":false,"COMMERCE-12754":false,"LPS-184404":false,"LPS-180328":false,"LPS-198183":false,"LPS-171364":false,"LPS-153714":false,"LPS-96845":false,"LPS-170670":false,"LPS-141392":false,"LPS-169981":false,"LPD-15804":false,"LPS-153839":false,"LPS-200135":false,"LPS-187793":false,"LPS-177027":false,"LPD-10793":false,"COMMERCE-12192":false,"LPD-11003":false,"LPS-196768":false,"LPS-196724":false,"LPS-196847":false,"LPS-163118":false,"LPS-114700":false,"LPS-135430":false,"LPS-134060":false,"LPS-164563":false,"LPS-122920":false,"LPS-203351":false,"LPS-194395":false,"LPD-6368":false,"LPD-10701":false,"LPS-202104":false,"COMMERCE-9599":false,"LPS-187142":false,"LPD-15596":false,"LPS-198959":false,"LPS-196935":false,"LPS-187854":false,"LPS-176691":false,"LPS-197909":false,"LPS-202534":false,"COMMERCE-8949":false,"COMMERCE-11922":false,"LPS-194362":false,"LPS-165481":false,"LPS-153813":false,"LPS-174455":false,"LPD-10735":false,"COMMERCE-13024":false,"LPS-194763":false,"LPS-165482":false,"LPS-193551":false,"LPS-197477":false,"LPS-174816":false,"LPS-186360":false,"LPS-153332":false,"COMMERCE-12170":false,"LPS-179669":false,"LPS-174417":false,"LPS-183882":false,"LPS-155284":false,"LRAC-15017":false,"LPS-200108":false,"LPS-159643":false,"LPS-161033":false,"LPS-164948":false,"LPS-186870":false,"LPS-186871":false,"LPS-188058":false,"LPS-129412":false,"LPS-166126":false,"LPS-169837":false};
+
+		Liferay.FeatureFlags = Object.keys(featureFlags).reduce(
+			(acc, key) => ({
+				...acc, [key]: featureFlags[key] === 'true' || featureFlags[key] === true
+			}), {}
+		);
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 9223372036854775807
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '1';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/defesacivil/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/pagina-inicial';
+				},
+				getLayoutURL: function() {
+					return 'https://defesacivil.df.gov.br/pagina-inicial';
+				},
+				getParentLayoutId: function() {
+					return '0';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'pt-BR';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fdefesacivil\x2edf\x2egov\x2ebr';
+			},
+			getCDNBaseURL: function() {
+				return 'https://defesacivil.df.gov.br';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '20119';
+			},
+			getCompanyId: function() {
+				return '57149678738875';
+			},
+			getDefaultLanguageId: function() {
+				return 'pt_BR';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'pt_BR';
+			},
+			getParentGroupId: function() {
+				return '4958487';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/gdf-secretarias-lf7_4-2026-theme';
+			},
+			getPlid: function() {
+				return '17766';
+			},
+			getPortalURL: function() {
+				return 'https://defesacivil.df.gov.br';
+			},
+			getRealUserId: function() {
+				return '20095';
+			},
+			getRemoteAddr: function() {
+				return '10.230.70.20';
+			},
+			getRemoteHost: function() {
+				return '10.230.70.20';
+			},
+			getScopeGroupId: function() {
+				return '4958487';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '4958487';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://defesacivil.df.gov.br/group/defesacivil/~/control_panel/manage?p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '4958487';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=17766';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fdefesacivil\x2edf\x2egov\x2ebr\x2fweb\x2fguest';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '20095';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+
+			isStagedPortlet: function() {
+				
+					
+						return false;
+					
+				
+			},
+
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getCombine: function() {
+				return true;
+			},
+			getComboPath: function() {
+				return '/combo/?browserId=other&minifierType=&languageId=pt_BR&t=1760656126302&';
+			},
+			getDateFormat: function() {
+				return '%d/%m/%Y';
+			},
+			getEditorCKEditorPath: function() {
+				return '/o/frontend-editor-ckeditor-web';
+			},
+			getFilter: function() {
+				var filter = 'raw';
+
+				
+					
+						filter = 'min';
+					
+					
+
+				return filter;
+			},
+			getFilterConfig: function() {
+				var instance = this;
+
+				var filterConfig = null;
+
+				if (!instance.getCombine()) {
+					filterConfig = {
+						replaceStr: '.js' + instance.getStaticResourceURLParams(),
+						searchExp: '\\.js$'
+					};
+				}
+
+				return filterConfig;
+			},
+			getJavaScriptRootPath: function() {
+				return '/o/frontend-js-web';
+			},
+			getPortletRootPath: function() {
+				return '/html/portlet';
+			},
+			getStaticResourceURLParams: function() {
+				return '?browserId=other&minifierType=&languageId=pt_BR&t=1760656126302';
+			}
+		};
+
+		Liferay.authToken = 'RH6KKnjJ';
+
+		
+
+		Liferay.currentURL = '\x2f';
+		Liferay.currentURLEncoded = '\x252F';
+	// ]]>
+</script> <script data-senna-track="temporary" type="text/javascript">window.__CONFIG__= {basePath: '',combine: true, defaultURLParams: null, explainResolutions: false, exposeGlobal: false, logLevel: 'warn', moduleType: 'module', namespace:'Liferay', nonce: '', reportMismatchedAnonymousModules: 'warn', resolvePath: '/o/js_resolve_modules', url: '/combo/?browserId=other&minifierType=js&languageId=pt_BR&t=1760656126302&', waitTimeout: 60000};</script><script data-senna-track="permanent" src="/o/frontend-js-loader-modules-extender/loader.js?&mac=9WaMmhziBCkScHZwrrVcOR7VZF4=&browserId=other&languageId=pt_BR&minifierType=js" type="text/javascript"></script><script data-senna-track="permanent" src="/combo?browserId=other&minifierType=js&languageId=pt_BR&t=1760656126302&/o/frontend-js-aui-web/aui/aui/aui-min.js&/o/frontend-js-aui-web/liferay/modules.js&/o/frontend-js-aui-web/liferay/aui_sandbox.js&/o/frontend-js-aui-web/aui/attribute-base/attribute-base-min.js&/o/frontend-js-aui-web/aui/attribute-complex/attribute-complex-min.js&/o/frontend-js-aui-web/aui/attribute-core/attribute-core-min.js&/o/frontend-js-aui-web/aui/attribute-observable/attribute-observable-min.js&/o/frontend-js-aui-web/aui/attribute-extras/attribute-extras-min.js&/o/frontend-js-aui-web/aui/event-custom-base/event-custom-base-min.js&/o/frontend-js-aui-web/aui/event-custom-complex/event-custom-complex-min.js&/o/frontend-js-aui-web/aui/oop/oop-min.js&/o/frontend-js-aui-web/aui/aui-base-lang/aui-base-lang-min.js&/o/frontend-js-aui-web/liferay/dependency.js&/o/frontend-js-aui-web/liferay/util.js&/o/oauth2-provider-web/js/liferay.js&/o/frontend-js-web/liferay/dom_task_runner.js&/o/frontend-js-web/liferay/events.js&/o/frontend-js-web/liferay/lazy_load.js&/o/frontend-js-web/liferay/liferay.js&/o/frontend-js-web/liferay/global.bundle.js&/o/frontend-js-web/liferay/portlet.js&/o/frontend-js-web/liferay/workflow.js" type="text/javascript"></script> <script data-senna-track="temporary" type="text/javascript">window.Liferay = Liferay || {}; window.Liferay.OAuth2 = {getAuthorizeURL: function() {return 'https://defesacivil.df.gov.br/o/oauth2/authorize';}, getBuiltInRedirectURL: function() {return 'https://defesacivil.df.gov.br/o/oauth2/redirect';}, getIntrospectURL: function() { return 'https://defesacivil.df.gov.br/o/oauth2/introspect';}, getTokenURL: function() {return 'https://defesacivil.df.gov.br/o/oauth2/token';}, getUserAgentApplication: function(externalReferenceCode) {return Liferay.OAuth2._userAgentApplications[externalReferenceCode];}, _userAgentApplications: {}}</script><script data-senna-track="temporary" type="text/javascript">try {var MODULE_MAIN='staging-processes-web@5.0.54/index';var MODULE_PATH='/o/staging-processes-web';AUI().applyConfig({groups:{stagingprocessesweb:{base:MODULE_PATH+"/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-staging-processes-export-import":{path:"js/main.js",requires:["aui-datatype","aui-dialog-iframe-deprecated","aui-modal","aui-parse-content","aui-toggler","liferay-portlet-base","liferay-util-window"]}},root:MODULE_PATH+"/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='exportimport-web@5.0.82/index';var MODULE_PATH='/o/exportimport-web';AUI().applyConfig({groups:{exportimportweb:{base:MODULE_PATH+"/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-export-import-export-import":{path:"js/main.js",requires:["aui-datatype","aui-dialog-iframe-deprecated","aui-modal","aui-parse-content","aui-toggler","liferay-portlet-base","liferay-util-window"]}},root:MODULE_PATH+"/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='portal-search-web@6.0.126/index';var MODULE_PATH='/o/portal-search-web';AUI().applyConfig({groups:{search:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-search-custom-filter":{path:"custom_filter.js",requires:[]},"liferay-search-date-facet":{path:"date_facet.js",requires:["aui-form-validator","liferay-search-facet-util"]},"liferay-search-facet-util":{path:"facet_util.js",requires:[]},"liferay-search-modified-facet":{path:"modified_facet.js",requires:["aui-form-validator","liferay-search-facet-util"]},"liferay-search-sort-configuration":{path:"sort_configuration.js",requires:["aui-node"]},"liferay-search-sort-util":{path:"sort_util.js",requires:[]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/frontend-js-react-web@5.0.36/index';var MODULE_PATH='/o/frontend-js-react-web';AUI().applyConfig({groups:{react:{mainModule:MODULE_MAIN}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/frontend-js-state-web@1.0.19/index';var MODULE_PATH='/o/frontend-js-state-web';AUI().applyConfig({groups:{state:{mainModule:MODULE_MAIN}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='frontend-js-components-web@2.0.62/index';var MODULE_PATH='/o/frontend-js-components-web';AUI().applyConfig({groups:{components:{mainModule:MODULE_MAIN}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='frontend-editor-alloyeditor-web@5.0.45/index';var MODULE_PATH='/o/frontend-editor-alloyeditor-web';AUI().applyConfig({groups:{alloyeditor:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-alloy-editor":{path:"alloyeditor.js",requires:["aui-component","liferay-portlet-base","timers"]},"liferay-alloy-editor-source":{path:"alloyeditor_source.js",requires:["aui-debounce","liferay-fullscreen-source-editor","liferay-source-editor","plugin"]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='contacts-web@5.0.56/index';var MODULE_PATH='/o/contacts-web';AUI().applyConfig({groups:{contactscenter:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-contacts-center":{path:"main.js",requires:["aui-io-plugin-deprecated","aui-toolbar","autocomplete-base","datasource-io","json-parse","liferay-portlet-base","liferay-util-window"]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='dynamic-data-mapping-web@5.0.99/index';var MODULE_PATH='/o/dynamic-data-mapping-web';!function(){const a=Liferay.AUI;AUI().applyConfig({groups:{ddm:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:a.getFilterConfig(),modules:{"liferay-ddm-form":{path:"ddm_form.js",requires:["aui-base","aui-datatable","aui-datatype","aui-image-viewer","aui-parse-content","aui-set","aui-sortable-list","json","liferay-form","liferay-map-base","liferay-translation-manager","liferay-util-window"]},"liferay-portlet-dynamic-data-mapping":{condition:{trigger:"liferay-document-library"},path:"main.js",requires:["arraysort","aui-form-builder-deprecated","aui-form-validator","aui-map","aui-text-unicode","json","liferay-menu","liferay-translation-manager","liferay-util-window","text"]},"liferay-portlet-dynamic-data-mapping-custom-fields":{condition:{trigger:"liferay-document-library"},path:"custom_fields.js",requires:["liferay-portlet-dynamic-data-mapping"]}},root:MODULE_PATH+"/js/"}}})}();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='calendar-web@5.0.88/index';var MODULE_PATH='/o/calendar-web';AUI().applyConfig({groups:{calendar:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-calendar-a11y":{path:"calendar_a11y.js",requires:["calendar"]},"liferay-calendar-container":{path:"calendar_container.js",requires:["aui-alert","aui-base","aui-component","liferay-portlet-base"]},"liferay-calendar-date-picker-sanitizer":{path:"date_picker_sanitizer.js",requires:["aui-base"]},"liferay-calendar-interval-selector":{path:"interval_selector.js",requires:["aui-base","liferay-portlet-base"]},"liferay-calendar-interval-selector-scheduler-event-link":{path:"interval_selector_scheduler_event_link.js",requires:["aui-base","liferay-portlet-base"]},"liferay-calendar-list":{path:"calendar_list.js",requires:["aui-template-deprecated","liferay-scheduler"]},"liferay-calendar-message-util":{path:"message_util.js",requires:["liferay-util-window"]},"liferay-calendar-recurrence-converter":{path:"recurrence_converter.js",requires:[]},"liferay-calendar-recurrence-dialog":{path:"recurrence.js",requires:["aui-base","liferay-calendar-recurrence-util"]},"liferay-calendar-recurrence-util":{path:"recurrence_util.js",requires:["aui-base","liferay-util-window"]},"liferay-calendar-reminders":{path:"calendar_reminders.js",requires:["aui-base"]},"liferay-calendar-remote-services":{path:"remote_services.js",requires:["aui-base","aui-component","liferay-calendar-util","liferay-portlet-base"]},"liferay-calendar-session-listener":{path:"session_listener.js",requires:["aui-base","liferay-scheduler"]},"liferay-calendar-simple-color-picker":{path:"simple_color_picker.js",requires:["aui-base","aui-template-deprecated"]},"liferay-calendar-simple-menu":{path:"simple_menu.js",requires:["aui-base","aui-template-deprecated","event-outside","event-touch","widget-modality","widget-position","widget-position-align","widget-position-constrain","widget-stack","widget-stdmod"]},"liferay-calendar-util":{path:"calendar_util.js",requires:["aui-datatype","aui-io","aui-scheduler","aui-toolbar","autocomplete","autocomplete-highlighters"]},"liferay-scheduler":{path:"scheduler.js",requires:["async-queue","aui-datatype","aui-scheduler","dd-plugin","liferay-calendar-a11y","liferay-calendar-message-util","liferay-calendar-recurrence-converter","liferay-calendar-recurrence-util","liferay-calendar-util","liferay-scheduler-event-recorder","liferay-scheduler-models","promise","resize-plugin"]},"liferay-scheduler-event-recorder":{path:"scheduler_event_recorder.js",requires:["dd-plugin","liferay-calendar-util","resize-plugin"]},"liferay-scheduler-models":{path:"scheduler_models.js",requires:["aui-datatype","dd-plugin","liferay-calendar-util"]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/document-library-web@6.0.176/document_library/js/index';var MODULE_PATH='/o/document-library-web';AUI().applyConfig({groups:{dl:{base:MODULE_PATH+"/document_library/js/legacy/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"document-library-upload-component":{path:"DocumentLibraryUpload.js",requires:["aui-component","aui-data-set-deprecated","aui-overlay-manager-deprecated","aui-overlay-mask-deprecated","aui-parse-content","aui-progressbar","aui-template-deprecated","liferay-search-container","querystring-parse-simple","uploader"]}},root:MODULE_PATH+"/document_library/js/legacy/"}}});
+} catch(error) {console.error(error);}</script> <script type="text/javascript" data-senna-track="temporary">
+	// <![CDATA[
+		
+			
+				
+		
+
+		
+	// ]]>
+</script> <link class="lfr-css-file" data-senna-track="temporary" href="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/css/main.css?browserId=other&amp;themeId=secretariasdogdf2026_WAR_gdfsecretariaslf7_42026theme&amp;minifierType=css&amp;languageId=pt_BR&amp;t=1790294774000" id="liferayThemeCSS" rel="stylesheet" type="text/css" /> <style data-senna-track="temporary" type="text/css">
+		
+
+	</style> <style data-senna-track="temporary" type="text/css">
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_agenciahighlight_INSTANCE_s6XhlUAWcyvr_ .portlet-content {
+background-color: #;
+border-top-width:;
+border-right-width:;
+border-bottom-width:;
+border-left-width:;
+border-top-color: #;
+border-right-color: #;
+border-bottom-color: #;
+border-left-color: #;
+margin-top:;
+margin-right:;
+margin-bottom:;
+margin-left:;
+padding-top:;
+padding-right:;
+padding-bottom:;
+padding-left:;
+color: #
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU_ .portlet-content {
+background-color: #;
+border-top-color: #;
+border-right-color: #;
+border-bottom-color: #;
+border-left-color: #;
+color: #
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+	</style> <script data-senna-track="temporary">var Liferay = window.Liferay || {}; Liferay.CommerceContext = {"commerceAccountGroupIds":[],"accountEntryAllowedTypes":["person"],"commerceChannelId":"0","showUnselectableOptions":false,"currency":{"currencyId":"29733","currencyCode":"USD"},"showSeparateOrderItems":false,"commerceSiteType":0};</script><link href="/o/commerce-frontend-js/styles/main.css" rel="stylesheet" type="text/css" /> <style data-senna-track="temporary" type="text/css">
+</style> <script type="module">
+import {default as init} from '/o/frontend-js-spa-web/__liferay__/index.js';
+{
+init({"navigationExceptionSelectors":":not([target=\"_blank\"]):not([data-senna-off]):not([data-resource-href]):not([data-cke-saved-href]):not([data-cke-saved-href])","cacheExpirationTime":-1,"clearScreensCache":true,"portletsBlacklist":["com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet","com_liferay_site_navigation_directory_web_portlet_SitesDirectoryPortlet","com_liferay_questions_web_internal_portlet_QuestionsPortlet","com_liferay_account_admin_web_internal_portlet_AccountUsersRegistrationPortlet","com_liferay_portal_language_override_web_internal_portlet_PLOPortlet","com_liferay_login_web_portlet_LoginPortlet","com_liferay_login_web_portlet_FastLoginPortlet"],"excludedTargetPortlets":["com_liferay_users_admin_web_portlet_UsersAdminPortlet","com_liferay_server_admin_web_portlet_ServerAdminPortlet"],"validStatusCodes":[221,490,494,499,491,492,493,495,220],"debugEnabled":false,"loginRedirect":"","excludedPaths":["/c/document_library","/documents","/image"],"userNotification":{"message":"Parece que isso está demorando mais do que o esperado.","title":"Opa","timeout":30000},"requestTimeout":0});
+}
+
+</script><link data-senna-track="permanent" href="https://defesacivil.df.gov.br/combo?browserId=other&minifierType=css&languageId=pt_BR&t=1760656132493&/o/gdf-theme-contributor/css/gdf-contributor.css" rel="stylesheet" type = "text/css" /> <script data-senna-track="permanent" src="https://defesacivil.df.gov.br/combo?browserId=other&minifierType=js&languageId=pt_BR&t=1760656132493&/o/gdf-theme-contributor/js/gdf-contributor.js" type = "text/javascript"></script> <script type="text/javascript" data-senna-track="temporary">
+	if (window.Analytics) {
+		window._com_liferay_document_library_analytics_isViewFileEntry = false;
+	}
+</script> <script type="text/javascript">
+Liferay.on(
+	'ddmFieldBlur', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'fieldBlurred',
+				'Form',
+				{
+					fieldName: event.fieldName,
+					focusDuration: event.focusDuration,
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFieldFocus', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'fieldFocused',
+				'Form',
+				{
+					fieldName: event.fieldName,
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title:event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormPageShow', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'pageViewed',
+				'Form',
+				{
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormSubmit', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'formSubmitted',
+				'Form',
+				{
+					formId: event.formId,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormView', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'formViewed',
+				'Form',
+				{
+					formId: event.formId,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+</script><script>
+
+</script> </head> <body class="other controls-visible default-theme yui3-skin-sam signed-out public-page site pagina-inicial " itemscope itemtype="http://schema.org/WebPage"> <nav aria-label="Links rápidos" class="bg-dark cadmin quick-access-nav text-center text-white" id="bqql_quickAccessNav"> <a class="d-block p-2 sr-only sr-only-focusable text-reset" href="#main-content"> Pular para o Conteúdo principal </a> </nav> <div class="d-flex flex-column min-vh-100"> <div class="d-flex flex-column flex-fill" id="wrapper"> <header id="banner" role="banner"> <div class="barra-gdf bg-black"> <div class="px-3 d-flex justify-content-between w-100 align-items-center"> <ul class="nav nav-pills "> <li class="nav-item"> <a class="nav-link" href="https://www.df.gov.br/category/sobre-o-governo/" target="_blank"> Sobre o Governo </a> </li> <li class="nav-item"> <a class="nav-link" href="https://www.sinj.df.gov.br/sinj/Norma/32f5ae1f6e4c4babbb90ede4587c8e79/Decreto_37297_29_04_2016.htm" target="_blank"> Código de Ética </a> </li> <li class="nav-item"> <a class="nav-link" href="http://www.transparencia.df.gov.br/" target="_blank"> Transparência </a> </li> <li class="nav-item"> <a class="nav-link" href="http://www.ouvidoria.df.gov.br/" target="_blank"> Ouvidoria </a> </li> <li class="nav-item"> <a class="nav-link" href="https://lai.cg.df.gov.br/" target="_blank"> Acesso à Informação </a> </li> <li class="nav-item"> <a class="nav-link" href="https://www.dodf.df.gov.br/" target="_blank"> Diário Oficial </a> </li> <li class="nav-item"> <a class="nav-link" href="https://www.agenciabrasilia.df.gov.br/" target="_blank"> Agência Brasília </a> </li> <li class="nav-item"> <a class="nav-link" href="http://www.brasilia.df.gov.br" target="_blank"> Portal do Governo de Brasília </a> </li> <li class="nav-item"> <a class="nav-link" href="http://www.dados.df.gov.br/" target="_blank"> Dados Abertos </a> </li> <li class="nav-item"> <a class="nav-link" href="http://www.lgpd.df.gov.br/" target="_blank"> LGPD </a> </li> <li class="nav-item"> <a class="nav-link" href="https://www.pcdf.df.gov.br/servicos/delegacia-eletronica/violencia-domestica-contra-mulher" target="_blank"> Maria da Penha Online </a> </li> </ul> <ul class="nav nav-pills"> <li class="nav-item"> <a class="nav-link" href="https://www.df.gov.br/acessibilidade" target="_blank"> Acessibilidade </a> </li> <span>|</span> <li class="nav-item"> <div class="dropdown"> <button class="nav-link btn" class="nav-link" type="button" data-toggle="dropdown" aria-expanded="false" data-placement="bottom"> Aa </button> <div class="dropdown-menu dropdown-menu-center" id="dropdown-acessibilidade"> <div class="cntAcessibilidade"> <div class="titulo">Tamanho de fonte</div> <div class="aMenor">A</div> <div class="ranger"><input type="range" id="sizeFont" min="1" max="8" value="4" step="1"></div> <div class="aMaior">A</div> <div class="clearfix"></div> <div class="bg-verde"> <div class="areacheckbox"> <div class="checkboxCampoInterno"> <input type="checkbox" value="1" id="checkboxAcessibilidade" name> <label for="checkboxAcessibilidade"></label> </div> </div> <div class="info-contraste">Alto contraste desligado</div> </div> </div> </div> </div> </li> <span>|</span> <li class="nav-item px-2"> <a href="http://www.vlibras.gov.br/" target="_blank"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"> <rect fill="#00529B" width="16" height="16" /> <path fill="#FFFFFF" d="M4.804,13.962c-0.285-0.071-0.557-0.178-0.726-0.311c-0.291-0.229-0.435-1.027-1.651-1.977 c0,0-0.461-0.731,0.131-1.898C3.151,8.611,3.893,7.742,4.154,7.4c0.262-0.343,0.498-0.862,0.777-2.165 c0.28-1.303,0.578-2.196,0.702-2.525c0.063-0.167,0.271-0.24,0.453-0.195C6.258,2.558,6.406,2.708,6.38,2.982 C6.33,3.546,6.001,5.685,5.989,5.967C5.983,6.133,6.056,6.425,6.208,6.463c0.108,0.026,0.255-0.077,0.441-0.45 c0.447-0.894,1.313-3.002,1.546-3.477C8.42,2.08,8.637,2.05,8.754,2.08C8.811,2.094,8.843,2.12,8.843,2.12s0.005,0.002,0.013,0.003 C8.927,2.141,9.27,2.249,9.146,2.662C9.01,3.125,7.844,6.134,7.776,6.44c-0.042,0.183-0.031,0.341,0.06,0.364 c0.061,0.016,0.158-0.03,0.301-0.168c0.356-0.348,2.403-2.492,3.04-3.234c0.131-0.151,0.31-0.166,0.462-0.128 c0.115,0.029,0.216,0.087,0.27,0.139c0.124,0.119,0.161,0.461,0.05,0.654C11.846,4.26,9.531,7.174,9.233,7.53 C9.032,7.766,9.015,8.048,9.197,8.093C9.29,8.116,9.434,8.08,9.631,7.948c0.591-0.394,3.081-1.875,3.385-2.079 c0.138-0.093,0.258-0.114,0.36-0.089c0.123,0.031,0.219,0.126,0.288,0.241c0.13,0.216,0.121,0.472-0.099,0.656 c-0.22,0.183-3.467,2.694-4.058,3.386c-0.559,0.654-1.5,1.652-0.272,1.955c0.069,0.018,0.145,0.033,0.228,0.046 c0.496,0.074,0.847,0.142,1.104,0.205c0.55,0.137,0.656,0.251,0.812,0.357c0.228,0.158,0.51,0.496,0.329,0.696 s-0.768-0.057-1.041-0.026c-0.273,0.029-0.273,0.029-0.273,0.029s-1.181,0.017-1.986,0.241" /> </svg> </a> </li> <span>|</span> <li class="nav-item"> <a href="#" class="nav-link" data-toggle="modal" data-target="#loginPortlet" title=" Entrar "> Entrar </a> </li> <div aria-labelledby="loginPortletLabel" class="fade modal" id="loginPortlet" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;"> <div class="modal-dialog modal-md modal-dialog-centered"> <div class="modal-content"> <div class="modal-header"> <div class="modal-title" id="loginPortletLabel">Entrar</div> <button aria-labelledby="Close" class="close" data-dismiss="modal" role="button" type="button"> <i class="las la-times"></i> </button> </div> <div class="modal-body "> <div class="portlet-boundary portlet-boundary_com_liferay_login_web_portlet_LoginPortlet_ portlet-static portlet-static-end portlet-decorate portlet-login " id="p_p_id_com_liferay_login_web_portlet_LoginPortlet_"> <span id="p_com_liferay_login_web_portlet_LoginPortlet"></span> <section class="portlet" id="portlet_com_liferay_login_web_portlet_LoginPortlet"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Autenticação </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <div class="login-container"> <form action="https://defesacivil.df.gov.br/pagina-inicial?p_p_id=com_liferay_login_web_portlet_LoginPortlet&amp;p_p_lifecycle=1&amp;p_p_state=normal&amp;p_p_mode=view&amp;_com_liferay_login_web_portlet_LoginPortlet_javax.portlet.action=%2Flogin%2Flogin&amp;_com_liferay_login_web_portlet_LoginPortlet_mvcRenderCommandName=%2Flogin%2Flogin&amp;p_auth=RH6KKnjJ" class="form sign-in-form " data-fm-namespace="_com_liferay_login_web_portlet_LoginPortlet_" id="_com_liferay_login_web_portlet_LoginPortlet_loginForm" method="post" name="_com_liferay_login_web_portlet_LoginPortlet_loginForm" autocomplete="on" > <div aria-label="Autenticação" class="input-container" role="group"> <input  class="field form-control"  id="_com_liferay_login_web_portlet_LoginPortlet_formDate"    name="_com_liferay_login_web_portlet_LoginPortlet_formDate"     type="hidden" value="1795703281929"   /> <input  class="field form-control"  id="_com_liferay_login_web_portlet_LoginPortlet_saveLastPath"    name="_com_liferay_login_web_portlet_LoginPortlet_saveLastPath"     type="hidden" value="false"   /> <input  class="field form-control"  id="_com_liferay_login_web_portlet_LoginPortlet_redirect"    name="_com_liferay_login_web_portlet_LoginPortlet_redirect"     type="hidden" value=""   /> <input  class="field form-control"  id="_com_liferay_login_web_portlet_LoginPortlet_doActionAfterLogin"    name="_com_liferay_login_web_portlet_LoginPortlet_doActionAfterLogin"     type="hidden" value="false"   /> <div class="inline-alert-container lfr-alert-container"></div> <div class="alert alert-danger" id="_com_liferay_login_web_portlet_LoginPortlet_cookieDisabled" style="display: none;"> Falha na autenticação. Por favor, habilite os cookies no navegador e tente novamente. </div> <fieldset class="" > <legend class="sr-only"> Autenticação </legend> <div class="show " id="Content" role="presentation"> <div class="panel-body"> <div class="form-group input-text-wrapper"> <label class=" control-label" for="_com_liferay_login_web_portlet_LoginPortlet_login"> Endereço de e-mail </label> <input  class="field clearable form-control"  id="_com_liferay_login_web_portlet_LoginPortlet_login"    name="_com_liferay_login_web_portlet_LoginPortlet_login"     type="text" value="@liferay.com"   /> </div> <div class="form-group input-text-wrapper"> <label class=" control-label" for="_com_liferay_login_web_portlet_LoginPortlet_password"> Senha </label> <input  class="field form-control"  id="_com_liferay_login_web_portlet_LoginPortlet_password"    name="_com_liferay_login_web_portlet_LoginPortlet_password"     type="password" value=""   /> </div> <span id="_com_liferay_login_web_portlet_LoginPortlet_passwordCapsLockSpan" style="display: none;">Caps Lock está ativado.</span> </div> </div> </fieldset> <div class="button-holder " > <button class="btn btn-primary" id="_com_liferay_login_web_portlet_LoginPortlet_gums" type="submit" > <span class="lfr-btn-label">Entrar</span> </button> </div> </div> </form> <script>
+AUI().use(
+  'liferay-form',
+function(A) {
+(function() {
+var $ = AUI.$;var _ = AUI._;
+	Liferay.Form.register(
+		{
+			id: '_com_liferay_login_web_portlet_LoginPortlet_loginForm'
+
+			
+				, fieldRules: [
+
+					
+
+							
+
+							{
+								body: '',
+								custom: false,
+								errorMessage: '\u004f\u0020\u0063\u0061\u006d\u0070\u006f\u0020\u0053\u0065\u006e\u0068\u0061\u0020\u00e9\u0020\u006f\u0062\u0072\u0069\u0067\u0061\u0074\u00f3\u0072\u0069\u006f\u002e',
+								fieldName: '_com_liferay_login_web_portlet_LoginPortlet_password',
+								validatorName: 'required'
+							}
+
+					
+
+							,
+
+							{
+								body: '',
+								custom: false,
+								errorMessage: '\u004f\u0020\u0063\u0061\u006d\u0070\u006f\u0020\u0045\u006e\u0064\u0065\u0072\u0065\u00e7\u006f\u0020\u0064\u0065\u0020\u0065\u002d\u006d\u0061\u0069\u006c\u0020\u00e9\u0020\u006f\u0062\u0072\u0069\u0067\u0061\u0074\u00f3\u0072\u0069\u006f\u002e',
+								fieldName: '_com_liferay_login_web_portlet_LoginPortlet_login',
+								validatorName: 'required'
+							}
+
+					
+
+							,
+
+							{
+								body: '',
+								custom: false,
+								errorMessage: '',
+								fieldName: '_com_liferay_login_web_portlet_LoginPortlet_login',
+								validatorName: 'email'
+							}
+
+					
+
+				]
+			
+
+			
+				, onSubmit: function(event) {
+					event.preventDefault();
+				}
+			
+
+			, validateOnBlur: false
+		}
+	);
+
+	var onDestroyPortlet = function(event) {
+		if (event.portletId === 'com_liferay_login_web_portlet_LoginPortlet') {
+			delete Liferay.Form._INSTANCES['_com_liferay_login_web_portlet_LoginPortlet_loginForm'];
+		}
+	};
+
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+
+	
+		A.all('#_com_liferay_login_web_portlet_LoginPortlet_loginForm .input-container').removeAttribute('disabled');
+	
+
+	Liferay.fire(
+		'_com_liferay_login_web_portlet_LoginPortlet_formReady',
+		{
+			formName: '_com_liferay_login_web_portlet_LoginPortlet_loginForm'
+		}
+	);
+})();
+});
+
+</script> <div class="c-mt-3 navigation"> <span class="text-4" > <a href="https://defesacivil.df.gov.br/pagina-inicial?p_p_id=com_liferay_login_web_portlet_LoginPortlet&amp;p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view&amp;_com_liferay_login_web_portlet_LoginPortlet_mvcRenderCommandName=%2Flogin%2Fforgot_password&amp;saveLastPath=false" target="_self" class=" lfr-icon-item taglib-icon" id="_com_liferay_login_web_portlet_LoginPortlet_ctvk____" > <span class="taglib-text ">Esqueci a senha</span> </a> </span> </div> </div> <script type="text/javascript">
+(function() {var $ = AUI.$;var _ = AUI._;
+			var form = document.getElementById('_com_liferay_login_web_portlet_LoginPortlet_loginForm');
+
+			if (form) {
+				form.addEventListener('submit', (event) => {
+					
+						if (!navigator.cookieEnabled) {
+							document.getElementById(
+								'_com_liferay_login_web_portlet_LoginPortlet_cookieDisabled'
+							).style.display = '';
+
+							return;
+						}
+					
+
+					
+
+					submitForm(form);
+				});
+
+				var password = form.querySelector('#_com_liferay_login_web_portlet_LoginPortlet_password');
+
+				if (password) {
+					password.addEventListener('keypress', (event) => {
+						Liferay.Util.showCapsLock(
+							event,
+							'_com_liferay_login_web_portlet_LoginPortlet_passwordCapsLockSpan'
+						);
+					});
+				}
+			}
+		})();
+
+</script><script>
+
+</script> </div> </div> </div> </section> </div> </div> </div> </div> </div> </ul> </div> </div> <div class="topo-titulo-site"> <div class="container"> <div class="row d-flex align-items-center justify-content-between navbar-expand-lg navbar-light"> <div class="col d-flex"> <a> <a class="d-none d-md-block logo default-logo" href="/" title="Ir para a Pagina Inicial!"> <img class="logo" alt="Governo do Distrito Federal" src="/documents/d/defesacivil/logo-da-sudec" /> </a> </div> <button aria-controls="navigationCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navigationCollapse" data-toggle="liferay-collapse" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <div class="col-auto social-networks"> <div class="d-flex flex-column"> <div aria-label="Redes Sociais" class="btn-group justify-content-end" role="group"> <a class="btn btn-monospaced btn-primary" href="https://www.facebook.com/govdf" target="_blank"> <i class="lab la-facebook-f"></i> </a> <a class="btn btn-monospaced btn-primary" href="https://x.com/gov_df" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" fill="transparent" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 509.64"><rect width="512" height="509.64" rx="115.61" ry="115.61"/><path fill="#fff" fill-rule="nonzero" d="M323.74 148.35h36.12l-78.91 90.2 92.83 122.73h-72.69l-56.93-74.43-65.15 74.43h-36.14l84.4-96.47-89.05-116.46h74.53l51.46 68.04 59.53-68.04zm-12.68 191.31h20.02l-129.2-170.82H180.4l130.66 170.82z"/></svg> </a> </div> </div> </div> </div> </div> </div> <div class="menubar"> <div class="mobile"> <nav class="main-navigation collapse" id="navigationCollapse" role="navigation"> <ul class="nav nav-pills w-100" aria-label="Páginas do site" role="menubar"> <li class="fale-com-a-secretaria-mobile d-block d-md-none"> <a data-target="#loginPortlet" data-toggle="modal" type="button" title="Entrar"> Entrar </a> </li> <li class="nav-item dropdown d-none d-md-block" data-dropdown-action="hover"> <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="https://defesacivil.df.gov.br/category/defesa-civil" role="button" aria-haspopup="true" aria-expanded="false"> Defesa Civil </a> <ul class="dropdown-menu dropdown-black"> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_4" href="https://defesacivil.df.gov.br/a-defesa-civil-do-distrito-federal" role="menuitem"> Histórico </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_5" href="https://defesacivil.df.gov.br/estrutura" role="menuitem"> Institucional </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_6" href="https://defesacivil.df.gov.br/perfil-do-secretario-executivo" role="menuitem"> Perfil do Secretário Executivo </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_7" href="https://defesacivil.df.gov.br/quem-e-quem" role="menuitem"> Quem é Quem </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_8" href="https://defesacivil.df.gov.br/contatos" role="menuitem"> Contatos </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_9" href="https://defesacivil.df.gov.br/legislacao" role="menuitem"> Legislação e Manuais </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_10" href="https://defesacivil.df.gov.br/galeria-dos-ex-titulares" role="menuitem"> Galeria dos Ex-Titulares </a> <!-- Renderiza subitens se houver --> </li> </ul> </li> <li class="responsive-nav-item-with-child d-md-none d-block"> <a class="responsive-menu-item" href="https://defesacivil.df.gov.br/category/defesa-civil" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="navCollapse-3" data-nav-toggle="submenu" data-nav-target="#navCollapse-3"> Defesa Civil </a> <ul class="collapse responsive-dropdown-menu p-0" id="navCollapse-3" aria-expanded="false"> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_4" href="https://defesacivil.df.gov.br/a-defesa-civil-do-distrito-federal" role="menuitem"> Histórico </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_5" href="https://defesacivil.df.gov.br/estrutura" role="menuitem"> Institucional </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_6" href="https://defesacivil.df.gov.br/perfil-do-secretario-executivo" role="menuitem"> Perfil do Secretário Executivo </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_7" href="https://defesacivil.df.gov.br/quem-e-quem" role="menuitem"> Quem é Quem </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_8" href="https://defesacivil.df.gov.br/contatos" role="menuitem"> Contatos </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_9" href="https://defesacivil.df.gov.br/legislacao" role="menuitem"> Legislação e Manuais </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_10" href="https://defesacivil.df.gov.br/galeria-dos-ex-titulares" role="menuitem"> Galeria dos Ex-Titulares </a> </li> </ul> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/servicos-ao-cidadao" role="menuitem"> Serviços ao Cidadão </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/servicos-ao-cidadao" role="menuitem"> Serviços ao Cidadão </a> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/dicas-e-orientacoes" role="menuitem"> Dicas e Orientações </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/dicas-e-orientacoes" role="menuitem"> Dicas e Orientações </a> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/acesso-a-informacao" role="menuitem"> Acesso a Informação </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/acesso-a-informacao" role="menuitem"> Acesso a Informação </a> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/ouvidoria" role="menuitem"> Ouvidoria </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/ouvidoria" role="menuitem"> Ouvidoria </a> </li> </ul> </nav> </div> </div> <div class="gdf-e-busca container "> <div class="row d-flex align-items-center justify-content-between"> <div class="gdf col-auto"> <a href="https://www.df.gov.br/" target="_blank" title="Ir para Site do Governo"> <img class="logo" alt="Governo do Distrito Federal" src="/documents/d/global/images" /> </a> </div> <div class="busca col-right"> <div class="portlet-boundary portlet-boundary_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_ portlet-static portlet-static-end portlet-decorate portlet-search-bar " id="p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_"> <span id="p_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch"></span> <section class="portlet" id="portlet_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Barra de busca </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <form action="https://defesacivil.df.gov.br/busca" class="form " data-fm-namespace="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_" id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm" method="get" name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm" > <input  class="field form-control"  id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_formDate"    name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_formDate"     type="hidden" value="1795703281943"   /> <fieldset class="search-bar" > <legend class="sr-only"> Barra de busca </legend> <div class="show " id="Content" role="presentation"> <div class="panel-body"> <input  class="field search-bar-empty-search-input form-control"  id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_emptySearchEnabled"    name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_emptySearchEnabled"     type="hidden" value="false"   /> <div class="input-group search-bar-simple"> <div class="input-group-item search-bar-keywords-input-wrapper"> <input
+					autocomplete="off"
+					class="form-control input-group-inset input-group-inset-before search-bar-keywords-input"
+					data-qa-id="searchInput"
+					id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_qvwn"
+					name="q"
+					placeholder="Digite aqui o que você procura"
+					title="Buscar"
+					type="text"
+					value=""
+				/> <div class="input-group-inset-item input-group-inset-item-before"> <button class="btn btn-monospaced btn-unstyled" type="submit" aria-label="Buscar" ><span class="inline-item"><svg class="lexicon-icon lexicon-icon-search" role="presentation" viewBox="0 0 512 512"><use xlink:href="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images/clay/icons.svg#search" /></svg></span></button> </div> <input  class="field form-control"  id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_scope"    name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_scope"     type="hidden" value=""   /> </div> </div> </div> </div> </fieldset> <style> #p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_ .portlet-content { all: unset; } </style> </form> <script>
+AUI().use(
+  'liferay-form',
+function(A) {
+(function() {
+var $ = AUI.$;var _ = AUI._;
+	Liferay.Form.register(
+		{
+			id: '_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm'
+
+			
+				, fieldRules: [
+
+					
+
+				]
+			
+
+			
+
+			, validateOnBlur: true
+		}
+	);
+
+	var onDestroyPortlet = function(event) {
+		if (event.portletId === 'com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch') {
+			delete Liferay.Form._INSTANCES['_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm'];
+		}
+	};
+
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+
+	
+
+	Liferay.fire(
+		'_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_formReady',
+		{
+			formName: '_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm'
+		}
+	);
+})();
+});
+
+</script> <script>
+Liferay.Loader.require(
+'portal-search-web@6.0.126/js/SearchBar',
+function(SearchBar) {
+try {
+(function() {
+Liferay.component('__UNNAMED_COMPONENT__baf07759-8435-2e35-b342-c63dcbd52840', new SearchBar.default({"spritemap":"https:\/\/defesacivil.df.gov.br\/o\/gdf-secretarias-lf7_4-2026-theme\/images\/clay\/icons.svg","namespace":"_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_"}), { destroyOnNavigate: true, portletId: 'com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch'});
+})();
+} catch (err) {
+	console.error(err);
+}
+});
+
+</script> </div> </div> </div> </section> </div> </div> </div> </div> <div class="menubar"> <div class="desktop"> <div class="container"> <nav class="main-navigation collapse" id="navigationCollapse" role="navigation"> <ul class="nav nav-pills w-100" aria-label="Páginas do site" role="menubar"> <li class="fale-com-a-secretaria-mobile d-block d-md-none"> <a data-target="#loginPortlet" data-toggle="modal" type="button" title="Entrar"> Entrar </a> </li> <li class="nav-item dropdown d-none d-md-block" data-dropdown-action="hover"> <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="https://defesacivil.df.gov.br/category/defesa-civil" role="button" aria-haspopup="true" aria-expanded="false"> Defesa Civil </a> <ul class="dropdown-menu dropdown-black"> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_4" href="https://defesacivil.df.gov.br/a-defesa-civil-do-distrito-federal" role="menuitem"> Histórico </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_5" href="https://defesacivil.df.gov.br/estrutura" role="menuitem"> Institucional </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_6" href="https://defesacivil.df.gov.br/perfil-do-secretario-executivo" role="menuitem"> Perfil do Secretário Executivo </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_7" href="https://defesacivil.df.gov.br/quem-e-quem" role="menuitem"> Quem é Quem </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_8" href="https://defesacivil.df.gov.br/contatos" role="menuitem"> Contatos </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_9" href="https://defesacivil.df.gov.br/legislacao" role="menuitem"> Legislação e Manuais </a> <!-- Renderiza subitens se houver --> </li> <li class="dropdown-menu-item d-none d-md-block"> <!-- Verifica se tem filhos --> <a class="" aria-labelledby="layout_10" href="https://defesacivil.df.gov.br/galeria-dos-ex-titulares" role="menuitem"> Galeria dos Ex-Titulares </a> <!-- Renderiza subitens se houver --> </li> </ul> </li> <li class="responsive-nav-item-with-child d-md-none d-block"> <a class="responsive-menu-item" href="https://defesacivil.df.gov.br/category/defesa-civil" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="navCollapse-3" data-nav-toggle="submenu" data-nav-target="#navCollapse-3"> Defesa Civil </a> <ul class="collapse responsive-dropdown-menu p-0" id="navCollapse-3" aria-expanded="false"> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_4" href="https://defesacivil.df.gov.br/a-defesa-civil-do-distrito-federal" role="menuitem"> Histórico </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_5" href="https://defesacivil.df.gov.br/estrutura" role="menuitem"> Institucional </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_6" href="https://defesacivil.df.gov.br/perfil-do-secretario-executivo" role="menuitem"> Perfil do Secretário Executivo </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_7" href="https://defesacivil.df.gov.br/quem-e-quem" role="menuitem"> Quem é Quem </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_8" href="https://defesacivil.df.gov.br/contatos" role="menuitem"> Contatos </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_9" href="https://defesacivil.df.gov.br/legislacao" role="menuitem"> Legislação e Manuais </a> </li> <li class="responsive-dropdown-menu-item d-md-none d-flex"> <a class=" px-2" aria-labelledby="layout_10" href="https://defesacivil.df.gov.br/galeria-dos-ex-titulares" role="menuitem"> Galeria dos Ex-Titulares </a> </li> </ul> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/servicos-ao-cidadao" role="menuitem"> Serviços ao Cidadão </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/servicos-ao-cidadao" role="menuitem"> Serviços ao Cidadão </a> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/dicas-e-orientacoes" role="menuitem"> Dicas e Orientações </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/dicas-e-orientacoes" role="menuitem"> Dicas e Orientações </a> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/acesso-a-informacao" role="menuitem"> Acesso a Informação </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/acesso-a-informacao" role="menuitem"> Acesso a Informação </a> </li> <li class="nav-item d-none d-md-block"> <a class="nav-link " href="https://defesacivil.df.gov.br/category/ouvidoria" role="menuitem"> Ouvidoria </a> </li> <li class="responsive-nav-item d-block d-md-none"> <a href="https://defesacivil.df.gov.br/category/ouvidoria" role="menuitem"> Ouvidoria </a> </li> </ul> </nav> </div> </div> </div> </header> <main class="flex-fill" id="content"> <div class="container pt-2"> <div class="row"> <h3 class="page-title-custom text-uppercase mt-6 col-12"> Página Inicial </h3> </div> </div> <style type="text/css">
+			.master-layout-fragment .portlet-header {
+				display: none;
+			}
+		</style> <div class="columns-1" id="main-content" role="main"> <div class="portlet-layout row"> <div class="col-md-12 portlet-column portlet-column-only" id="column-1"> <div class="portlet-dropzone portlet-column-content portlet-column-content-only" id="layout-column_column-1"> <div class="portlet-boundary portlet-boundary_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_ portlet-static portlet-static-end portlet-borderless portlet-nested-portlets mt-5" id="p_p_id_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU_"> <span id="p_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU"></span> <section class="portlet" id="portlet_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Aplicações Aninhadas </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <div class="columns-2" id="_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__main-content" role="main"> <div class="portlet-layout row"> <div class="col-md-8 portlet-column portlet-column-first" id="_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__column-1"> <div class="portlet-dropzone portlet-column-content portlet-column-content-first" id="layout-column__com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__column-1"> <div class="portlet-boundary portlet-boundary_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_ portlet-static portlet-static-end portlet-borderless portlet-asset-publisher " id="p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn_"> <span id="p_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn"></span> <section class="portlet" id="portlet_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Publicador de Conteúdos e Mídias </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <div class="alert alert-info"> <p><em>Ainda não há conteúdo a ser exibido.</em></p> </div> <script>
+document.addEventListener('DOMContentLoaded', function() {
+  $('#carousel_CsCtsvsjRQvn').carousel({
+    interval: 5000,
+    wrap: true,
+    keyboard: true
+  });
+  
+  // Pausa o carrossel quando o usuário passar o mouse
+  $('#carousel_CsCtsvsjRQvn').hover(
+    function() { $(this).carousel('pause'); },
+    function() { $(this).carousel('cycle'); }
+  );
+  
+  // Pré-carregamento de imagens para transição mais suave
+  $('#carousel_CsCtsvsjRQvn').on('slide.bs.carousel', function (e) {
+    const nextSlide = $(e.relatedTarget);
+    const images = nextSlide.find('img[loading="lazy"]');
+    images.attr('loading', 'eager');
+  });
+  
+  // Melhoria de acessibilidade
+  $('.carousel-indicators li').attr('role', 'button');
+  $('.carousel-indicators li').attr('aria-label', 'Navegar para slide');
+});
+</script> </div> </div> </div> </section> </div> </div> </div> <div class="col-md-4 portlet-column portlet-column-last" id="_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__column-2"> <div class="portlet-dropzone portlet-column-content portlet-column-content-last" id="layout-column__com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__column-2"> <div class="portlet-boundary portlet-boundary_com_liferay_journal_content_web_portlet_JournalContentPortlet_ portlet-static portlet-static-end portlet-borda-azul portlet-journal-content " id="p_p_id_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW_"> <span id="p_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW"></span> <section class="portlet" id="portlet_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Destaques </h2> </div> <div class="autofit-col autofit-col-end"> <div class="autofit-section"> <div class="visible-interaction"> </div> </div> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <div class="" data-fragments-editor-item-id="28449-5157018" data-fragments-editor-item-type="fragments-editor-mapped-item" > <div class="journal-content-article " data-analytics-asset-id="5157016" data-analytics-asset-title="Lista de links" data-analytics-asset-type="web-content" data-analytics-web-content-resource-pk="5157018"> <div> <div class="lista-de-links"> <ul class="list-unstyled"> <li> <a href="/declaracao-de-situacao-de-emergencia-em-razao-das-chuvas-no-distrito-federal/" target="_blank" class="btn btn-link text-left"> Declaração de situação de emergência em razão das chuvas no Distrito Federal. </a> </li> <li> <a href="/declaracao-de-situacao-de-emergencia-no-ambito-da-saude-publica-no-distrito-federal-em-razao-do-risco-de-epidemia-por-doencas-transmitidas-pelo-aedes/" target="_blank" class="btn btn-link text-left"> Declaração de situação de emergência no âmbito da saúde pública no Distrito Federal, em razão do risco de epidemia por doenças transmitidas pelo Aedes. </a> </li> </ul> </div> </div> <style> .bg-dark-blue { background: #030474 } .btn-verde { background-color: #ffffff; border-color: #4cae4c; color: #4cae4c; border-radius: 10px; margin: 0 8px 8px 10px; padding: 11px 25px; font-family: "Montserrat", sans-serif; &:hover { background-color: #4cae4c; color: white; } } .bg-transparent .btn-secondary { background-color: none; border-color: #00a858 !important; color: #00a858 !important; border-radius: 10px !important; margin: 0 8px 8px 10px !important; padding: 11px 25px !important; font-family: "Montserrat", sans-serif !important; &:hover { border: 1px solid #00a858 !important; color: white !important; background-color: #00a858 !important; text-decoration: none !important; } } </style> </div> </div> </div> </div> </div> </section> </div> </div> </div> </div> </div> </div> </div> </div> </section> </div> <div class="portlet-boundary portlet-boundary_agenciahighlight_ portlet-static portlet-static-end portlet-borderless " id="p_p_id_agenciahighlight_INSTANCE_s6XhlUAWcyvr_"> <span id="p_agenciahighlight_INSTANCE_s6XhlUAWcyvr"></span> <section class="portlet" id="portlet_agenciahighlight_INSTANCE_s6XhlUAWcyvr"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <div id="js-portlet-_agenciahighlight_INSTANCE_s6XhlUAWcyvr_"></div><script  type="text/javascript">
+	Liferay.Loader.require(
+		"agencia-highlight@1.0.0",
+		function(module) {
+			var initializer;
+
+			if (typeof module.default === 'function') {
+				initializer = module.default;
+			}
+			else if (typeof module === 'function') {
+				initializer = module;
+			}
+
+			if (initializer) {
+				initializer(
+					{
+						configuration: {
+							portletInstance: JSON.parse('{"endpointUrl":"https://www.agenciabrasilia.df.gov.br/o/noticias-destaques","portalUrl":"https://www.agenciabrasilia.df.gov.br"}'),
+							system: JSON.parse('{"endpointUrlGlobal":"https:\\/\\/www.agenciabrasilia.df.gov.br\\/o\\/noticias-destaques"}')
+						},
+						contextPath: '/o/agencia-highlight',
+						portletElementId: 'js-portlet-_agenciahighlight_INSTANCE_s6XhlUAWcyvr_',
+						portletNamespace: '_agenciahighlight_INSTANCE_s6XhlUAWcyvr_'
+					});
+			}
+			else {
+				console.error(
+					'Module', 'agencia-highlight@1.0.0',
+					'is not exporting a function: cannot initialize it.');
+			}
+
+		});
+</script> </div> </div> </div> </section> </div> <div class="portlet-boundary portlet-boundary_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_ portlet-static portlet-static-end portlet-borderless portlet-nested-portlets " id="p_p_id_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V_"> <span id="p_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V"></span> <section class="portlet" id="portlet_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Aplicações Aninhadas </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <div class="columns-2" id="_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__main-content" role="main"> <div class="portlet-layout row"> <div class="col-md-8 portlet-column portlet-column-first" id="_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__column-1"> <div class="portlet-dropzone portlet-column-content portlet-column-content-first" id="layout-column__com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__column-1"> <div class="portlet-boundary portlet-boundary_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_ portlet-static portlet-static-end portlet-borderless portlet-asset-publisher " id="p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk_"> <span id="p_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk"></span> <section class="portlet" id="portlet_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Publicador de Conteúdos e Mídias </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <div class="row"> <div class="col-md-6 h-100"> <div class="journal-content-article flex-grow-1 h-100" data-analytics-asset-id="5157404" data-analytics-asset-title="Acesso a informação" data-analytics-asset-type="web-content" data-analytics-web-content-resource-pk="5157406"> <div class="text-center content-card-access"> <div class="card-access" style=""> <a class="overflow-hidden" href=""> <picture data-fileentryid="5157184"><source media="(max-width:300px)" srcset="/o/adaptive-media/image/5157184/Thumbnail-300x300/logo-acesso-info.jpg?t=1739479029333" /><source media="(max-width:1000px) and (min-width:300px)" srcset="/o/adaptive-media/image/5157184/Preview-1000x0/logo-acesso-info.jpg?t=1739479029333" /><img style="width: 60%;" alt="" data-fileentryid="5157184" src="https://defesacivil.df.gov.br/documents/4958487/5157146/logo-acesso-info.jpg/bbd10d6a-8515-ca23-6da5-31280588eeb1?t=1739479029333"/></picture> </a> <p class="subtitle-acessinformation" style="margin-top: 20px; margin-bottom: 20px; line-height: 1.4em;"> Acesso à informações produzidas e armazenadas pela Secretaria </p> <a class="btn-green" style="" href="/category/acesso-a-informacao/"> Acesso à informação </a> </div> </div> <style> @media (max-width: 600px) { .subtitle-acessinformation { display: none; } } .card-access{ height: 263px; padding: 15px; position: relative; font-size: 14px; color: #515151; border: 1px solid #e0e0e0; border-radius: 10px; background-color: white; margin-bottom: 25px; display: flex; flex-direction: column; justify-content: space-around; } .card-access .journal-content-article img { margin-bottom: 0rem !important; } .btn-green { font-size: 14px; bottom: 15px; width: 92%; padding: 15px 10px; color: white; font-size: 16.5px; font-family: "Montserrat", sans-serif; border-radius: 10px; background-color: #a83d8d; transition: all linear 0.1s; display: block; width: 100%; text-align: center; margin: 0 auto; box-shadow: 0 3px 1px #cbcbcb; font-weight: 600; } .content-card-access a:hover { text-decoration: none; color: white; } @media only screen and (max-width: 800px) { .card-access{ height: 350px; } } </style> </div> </div> <div class="col-md-6 h-100"> <div class="journal-content-article flex-grow-1 h-100" data-analytics-asset-id="5157390" data-analytics-asset-title="SICOPWEB" data-analytics-asset-type="web-content" data-analytics-web-content-resource-pk="5157392"> <div class="text-center content-card-access"> <div class="card-access" style=""> <a class="overflow-hidden" href=""> <picture data-fileentryid="5157307"><source media="(max-width:300px)" srcset="/o/adaptive-media/image/5157307/Preview-1000x0/logo-sicop.png?t=1739479030201" /><source media="(max-width:300px) and (min-width:300px)" srcset="/o/adaptive-media/image/5157307/Thumbnail-300x300/logo-sicop.png?t=1739479030201" /><img style="width: 60%; height: calc(100% - 30%);" alt="" data-fileentryid="5157307" src="https://defesacivil.df.gov.br/documents/4958487/5157146/logo-sicop.png/8db9a38c-3263-6884-9e27-622f1d8b6b9b?t=1739479030201"/></picture> </a> <a class="btn-green" style="" href="http://consulta.sicop.df.gov.br/"> Consultar </a> </div> </div> <style> @media (max-width: 600px) { .subtitle-acessinformation { display: none; } } .card-access{ height: 263px; padding: 15px; position: relative; font-size: 14px; color: #515151; border: 1px solid #e0e0e0; border-radius: 10px; background-color: white; margin-bottom: 25px; display: flex; flex-direction: column; justify-content: space-around; } .card-access .journal-content-article img { margin-bottom: 0rem !important; } .btn-green { font-size: 14px; bottom: 15px; width: 92%; padding: 15px 10px; color: white; font-size: 16.5px; font-family: "Montserrat", sans-serif; border-radius: 10px; background-color: #a83d8d; transition: all linear 0.1s; display: block; width: 100%; text-align: center; margin: 0 auto; box-shadow: 0 3px 1px #cbcbcb; font-weight: 600; } .content-card-access a:hover { text-decoration: none; color: white; } @media only screen and (max-width: 800px) { .card-access{ height: 350px; } } </style> </div> </div> <div class="col-md-6 h-100"> <div class="journal-content-article flex-grow-1 h-100" data-analytics-asset-id="5157374" data-analytics-asset-title="Ouvidoria" data-analytics-asset-type="web-content" data-analytics-web-content-resource-pk="5157376"> <div class="text-center content-card-access"> <div class="card-access" style=""> <a class="overflow-hidden" href=""> <picture data-fileentryid="5157195"><source media="(max-width:253px)" srcset="/o/adaptive-media/image/5157195/Preview-1000x0/logo-ouvidoria.png?t=1739479029873" /><source media="(max-width:253px) and (min-width:253px)" srcset="/o/adaptive-media/image/5157195/Thumbnail-300x300/logo-ouvidoria.png?t=1739479029873" /><img style="width: 60%; height: calc(100% - 30%);" alt="" data-fileentryid="5157195" src="https://defesacivil.df.gov.br/documents/4958487/5157146/logo-ouvidoria.png/3b33c7d1-a922-9e50-3527-b44c791d00f2?t=1739479029873"/></picture> </a> <a class="btn-green" style="" href="/category/ouvidoria/"> Ouvidoria </a> </div> </div> <style> @media (max-width: 600px) { .subtitle-acessinformation { display: none; } } .card-access{ height: 263px; padding: 15px; position: relative; font-size: 14px; color: #515151; border: 1px solid #e0e0e0; border-radius: 10px; background-color: white; margin-bottom: 25px; display: flex; flex-direction: column; justify-content: space-around; } .card-access .journal-content-article img { margin-bottom: 0rem !important; } .btn-green { font-size: 14px; bottom: 15px; width: 92%; padding: 15px 10px; color: white; font-size: 16.5px; font-family: "Montserrat", sans-serif; border-radius: 10px; background-color: #a83d8d; transition: all linear 0.1s; display: block; width: 100%; text-align: center; margin: 0 auto; box-shadow: 0 3px 1px #cbcbcb; font-weight: 600; } .content-card-access a:hover { text-decoration: none; color: white; } @media only screen and (max-width: 800px) { .card-access{ height: 350px; } } </style> </div> </div> <div class="col-md-6 h-100"> <div class="journal-content-article flex-grow-1 h-100" data-analytics-asset-id="5157338" data-analytics-asset-title="Lista de links" data-analytics-asset-type="web-content" data-analytics-web-content-resource-pk="5157340"> <div class="text-center content-card-access"> <div class="card-access" style=""> <a class="overflow-hidden" href="https://dflegis.df.gov.br/"> <picture data-fileentryid="5157160"><source media="(max-width:300px)" srcset="/o/adaptive-media/image/5157160/Preview-1000x0/icone-df-legis.png?t=1739479028351" /><source media="(max-width:300px) and (min-width:300px)" srcset="/o/adaptive-media/image/5157160/Thumbnail-300x300/icone-df-legis.png?t=1739479028351" /><img style="width: 60%;" alt="" data-fileentryid="5157160" src="https://defesacivil.df.gov.br/documents/4958487/5157146/icone-df-legis.png/5ae9867c-8393-5707-31f1-4c4dcd9959bc?t=1739479028351"/></picture> </a> <a class="overflow-hidden" href="/category/carta-de-servicos/"> <picture data-fileentryid="5157148"><source media="(max-width:300px)" srcset="/o/adaptive-media/image/5157148/Preview-1000x0/icone-carta-servico.png?t=1739479027869" /><source media="(max-width:300px) and (min-width:300px)" srcset="/o/adaptive-media/image/5157148/Thumbnail-300x300/icone-carta-servico.png?t=1739479027869" /><img style="width: 60%;" alt="" data-fileentryid="5157148" src="https://defesacivil.df.gov.br/documents/4958487/5157146/icone-carta-servico.png/5ea0bdbc-b407-d442-e3b1-78f4c52723a8?t=1739479027869"/></picture> </a> <a class="overflow-hidden" href="http://www.sinj.df.gov.br/sinj/"> <picture data-fileentryid="5157172"><source media="(max-width:300px)" srcset="/o/adaptive-media/image/5157172/Preview-1000x0/icone-sinjdf.png?t=1739479028651" /><source media="(max-width:300px) and (min-width:300px)" srcset="/o/adaptive-media/image/5157172/Thumbnail-300x300/icone-sinjdf.png?t=1739479028651" /><img style="width: 60%;" alt="" data-fileentryid="5157172" src="https://defesacivil.df.gov.br/documents/4958487/5157146/icone-sinjdf.png/384dc1dc-c9c2-ae2b-74ab-543870351e87?t=1739479028651"/></picture> </a> </div> </div> <style> @media (max-width: 600px) { .subtitle-acessinformation { display: none; } } .card-access{ height: 263px; padding: 15px; position: relative; font-size: 14px; color: #515151; border: 1px solid #e0e0e0; border-radius: 10px; background-color: white; margin-bottom: 25px; display: flex; flex-direction: column; justify-content: space-around; } .card-access .journal-content-article img { margin-bottom: 0rem !important; } .btn-green { font-size: 14px; bottom: 15px; width: 92%; padding: 15px 10px; color: white; font-size: 16.5px; font-family: "Montserrat", sans-serif; border-radius: 10px; background-color: #a83d8d; transition: all linear 0.1s; display: block; width: 100%; text-align: center; margin: 0 auto; box-shadow: 0 3px 1px #cbcbcb; font-weight: 600; } .content-card-access a:hover { text-decoration: none; color: white; } @media only screen and (max-width: 800px) { .card-access{ height: 350px; } } </style> </div> </div> </div> </div> </div> </div> </section> </div> </div> </div> <div class="col-md-4 portlet-column portlet-column-last" id="_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__column-2"> <div class="portlet-dropzone portlet-column-content portlet-column-content-last" id="layout-column__com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__column-2"> <div class="portlet-boundary portlet-boundary_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_ portlet-static portlet-static-end portlet-borderless portlet-asset-publisher " id="p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX_"> <span id="p_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX"></span> <section class="portlet" id="portlet_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> Publicador de Conteúdos e Mídias </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <style> #dodf-file-list{ overflow-y: auto !important; } </style> <div class="ml-auto p-0"> <div id="box-diario-oficial" class="margin-top-40"> <h2 class="titulo"> Diário Oficial <img src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images/img-diario-azul.svg" alt="Diário Oficial"> </h2> <form action="https://www.dodf.df.gov.br/dodf/materia/busca" method="get" target="_blank"> <input type="text" name="termo" id="busca" placeholder="Faça sua busca" required=""> <h5 class="text-center"> Ou selecione uma data </h5> </form> <div class="clearfix"></div> <div id="miniCalendario" class="miniCalendario"> <div class="cabecalho"> <div class="seta seta-verde esquerda"> <span class="glyphicon glyphicon-menu-left"><i class="las la-angle-left"></i></span> </div> <div class="seta seta-verde direita"> <span class="glyphicon glyphicon-menu-right"><i class="las la-angle-right"></i></span> </div> <div class="area-central"> <div class="verde" data-id="11"> novembro </div> <div class="azul" data-id="2026"> 2026 </div> </div> <div class="seta seta-azul esquerda"> <span class="glyphicon glyphicon-menu-left"><i class="las la-angle-left"></i></span> </div> <div class="seta seta-azul direita"> <span class="glyphicon glyphicon-menu-right"><i class="las la-angle-right"></i></span> </div> </div> <div class="clearfix"></div> <table> <thead> <tr> <th>Do</th> <th>Se</th> <th>Te</th> <th>Qu</th> <th>Qu</th> <th>Se</th> <th>Sa</th> </tr> </thead> <tbody> <tr> <td class=""> <span class="active">1</span> </td> <td class=""> <span class="">2</span> </td> <td class=""> <span class="">3</span> </td> <td class=""> <span class="">4</span> </td> <td class=""> <span class="">5</span> </td> </tr> <tr> <td class=""> <span class="">6</span> </td> <td class=""> <span class="">7</span> </td> <td class=""> <span class="">8</span> </td> <td class=""> <span class="">9</span> </td> <td class=""> <span class="">10</span> </td> <td class=""> <span class="">11</span> </td> <td class=""> <span class="">12</span> </td> </tr> <tr> <td class=""> <span class="">13</span> </td> <td class=""> <span class="">14</span> </td> <td class=""> <span class="">15</span> </td> <td class=""> <span class="">16</span> </td> <td class=""> <span class="">17</span> </td> <td class=""> <span class="">18</span> </td> <td class=""> <span class="">19</span> </td> </tr> <tr> <td class=""> <span class="">20</span> </td> <td class=""> <span class="">21</span> </td> <td class=""> <span class="">22</span> </td> <td class=""> <span class="">23</span> </td> <td class=""> <span class="">24</span> </td> <td class=""> <span class="">25</span> </td> <td class=""> <span class="">26</span> </td> </tr> <tr> <td class=""> <span class="">27</span> </td> <td class=""> <span class="">28</span> </td> <td class=""> <span class="">29</span> </td> <td class=""> <span class="">30</span> </td> <td class=""> <span class="">31</span> </td> </tr> </tbody> </table> </div> <div class="area-select-dodf"> <ul id="dodf-file-list"> </ul> </div> </div> </div> </div> </div> </div> </section> </div> </div> </div> </div> </div> </div> </div> </div> </section> </div> </div> </div> </div> </div> <form action="#" aria-hidden="true" class="hide" id="hrefFm" method="post" name="hrefFm"><span></span><button hidden type="submit">Oculto</button></form> </main> <footer class="footer" id="footer" role="contentinfo"> <div class="container"> <div class="row"> <div class="col-md-3"> <div class="portlet-boundary portlet-boundary_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_ portlet-static portlet-static-end portlet-borderless portlet-navigation " id="p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter_"> <span id="p_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter"></span> <section class="portlet" id="portlet_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter"> <div class="portlet-content"> <div class="autofit-float autofit-row portlet-header"> <div class="autofit-col autofit-col-expand"> <h2 class="portlet-title-text"> - Governo do Distrito Federal </h2> </div> </div> <div class=" portlet-content-container"> <div class="portlet-body"> <style> .journal-content-article img { min-width: unset !important; margin-bottom: 1rem; } .main-navigation{ justify-content: unset !IMPORTANT; } </style> </div> </div> </div> </section> </div> </div> <div class="col-md-3"> <ul class="nav flex-column"> <li class="nav-item"> <a class="nav-link" href=""> Fale com a Secretaria </a> </li> <li class="nav-item"> <a class="nav-link" href=""> Acesso à informação </a> </li> <li class="nav-item"> <a class="nav-link" href="http://www.participa.df.gov.br/"> Ouvidoria </a> </li> </ul> </div> <div class="col-md-3"> <ul class="nav flex-column"> <li class="nav-item"> <a class="nav-link" href="http://www.brasilia.df.gov.br"> Acesse o Portal do Governo do Distrito Federal </a> </li> <li class="nav-item"> <p class="endereco"> SAM - Conjunto A, Bloco E, Edíficio Sede II - Térreo - Bairro Asa Norte CEP 70.620-000 - DF <br> Telefone: 3441-8255 / 3441-8232 / 3441-8249 <br> E-mail: defesa.civil@ssp.df.gov.br <br> </p> </li> </ul> </div> <div class="col-md-3 d-flex flex-column align-items-center align-items-md-end py-2 py-md-0"> </div> </div> </div> </footer> </div> </div> <div class="icone-maria-da-penha"> <a href="https://www.pcdf.df.gov.br/servicos/delegacia-eletronica/violencia-domestica-contra-mulher" alt="Governo do Distrito Federal" target="_blank"> Maria da Penha ONLINE <img src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images/ico-maria-da-penha.svg" alt="Governo do Distrito Federal"> </a> </div> <div vw class="enabled"> <div vw-access-button class="active"></div> <div vw-plugin-wrapper> <div class="vw-plugin-top-wrapper"></div> </div> </div> <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script> <div class="atendimento-externo-libras"> <a href="https://nuvidio.com/vns.atendimento.gdf" title="Atendimento 156 em libras" target="_blank" rel="noopener noreferrer"> <img src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/images/atendimento-virtual.png" alt="Governo do Distrito Federal" loading="lazy" /> </a> </div> <script type="text/javascript">
+
+	
+		
+
+			
+
+			
+		
+	
+
+
+</script><script>
+
+</script> <script type="text/javascript">
+(function() {var $ = AUI.$;var _ = AUI._;
+	var onDestroyPortlet = function () {
+		Liferay.detach('messagePosted', onMessagePosted);
+		Liferay.detach('destroyPortlet', onDestroyPortlet);
+	};
+
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+
+	var onMessagePosted = function (event) {
+		if (window.Analytics) {
+			const eventProperties = {
+				className: event.className,
+				classPK: event.classPK,
+				commentId: event.commentId,
+				text: event.text,
+			};
+
+			const blogNode = document.querySelector(
+				'[data-analytics-asset-id="' + event.classPK + '"]'
+			);
+
+			const dmNode = document.querySelector(
+				'[data-analytics-file-entry-id="' + event.classPK + '"]'
+			);
+
+			if (blogNode) {
+				eventProperties.title = blogNode.dataset.analyticsAssetTitle;
+			}
+			else if (dmNode) {
+				eventProperties.title = dmNode.dataset.analyticsFileEntryTitle;
+			}
+
+			Analytics.send('posted', 'Comment', eventProperties);
+		}
+	};
+
+	Liferay.on('messagePosted', onMessagePosted);
+})();
+
+	function getValueByAttribute(node, attr) {
+		return (
+			node.dataset[attr] ||
+			(node.parentElement && node.parentElement.dataset[attr])
+		);
+	}
+
+	function sendDocumentDownloadedAnalyticsEvent(anchor) {
+		var fileEntryId = getValueByAttribute(
+			anchor,
+			'analyticsFileEntryId'
+		);
+		var title = getValueByAttribute(
+			anchor,
+			'analyticsFileEntryTitle'
+		);
+		var version = getValueByAttribute(
+			anchor,
+			'analyticsFileEntryVersion'
+		);
+
+		if (fileEntryId) {
+			Analytics.send('documentDownloaded', 'Document', {
+				groupId: themeDisplay.getScopeGroupId(),
+				fileEntryId,
+				preview: !!window._com_liferay_document_library_analytics_isViewFileEntry,
+				title,
+				version,
+			});
+		}
+	}
+
+	function handleDownloadClick(event) {
+		if (window.Analytics) {
+			if (event.target.nodeName.toLowerCase() === 'a') {
+				sendDocumentDownloadedAnalyticsEvent(
+					event.target
+				);
+			}
+			else if (
+				event.target.parentNode &&
+				event.target.parentNode.nodeName.toLowerCase() === 'a'
+			) {
+				sendDocumentDownloadedAnalyticsEvent(
+					event.target.parentNode
+				);
+			}
+			else {
+				var target = event.target;
+				var matchTextContent =
+					target.textContent &&
+					target.textContent.toLowerCase() ===
+						'baixar';
+				var matchTitle =
+					target.title && target.title.toLowerCase() === 'download';
+				var matchAction = target.action === 'download';
+				var matchLexiconIcon = !!target.querySelector(
+					'.lexicon-icon-download'
+				);
+				var matchLexiconClassName = target.classList.contains(
+					'lexicon-icon-download'
+				);
+				var matchParentTitle =
+					target.parentNode &&
+					target.parentNode.title &&
+					target.parentNode.title.toLowerCase() === 'download';
+				var matchParentLexiconClassName =
+					target.parentNode &&
+					target.parentNode.classList.contains('lexicon-icon-download');
+
+				if (
+					matchTextContent ||
+					matchTitle ||
+					matchParentTitle ||
+					matchAction ||
+					matchLexiconIcon ||
+					matchLexiconClassName ||
+					matchParentLexiconClassName
+				) {
+					var selectedFiles = document.querySelectorAll(
+						'.form .custom-control-input:checked'
+					);
+
+					selectedFiles.forEach(({value}) => {
+						var selectedFile = document.querySelector(
+							'[data-analytics-file-entry-id="' + value + '"]'
+						);
+
+						sendDocumentDownloadedAnalyticsEvent(
+							selectedFile
+						);
+					});
+				}
+			}
+		}
+	}
+
+	Liferay.once('destroyPortlet', () => {
+		document.body.removeEventListener(
+			'click',
+			handleDownloadClick
+		);
+	});
+
+	Liferay.once('portletReady', () => {
+		document.body.addEventListener(
+			'click',
+			handleDownloadClick
+		);
+	});
+
+(function() {var $ = AUI.$;var _ = AUI._;
+	var onVote = function (event) {
+		if (window.Analytics) {
+			let title = event.contentTitle;
+
+			if (!title) {
+				const dmNode = document.querySelector(
+					'[data-analytics-file-entry-id="' + event.classPK + '"]'
+				);
+
+				if (dmNode) {
+					title = dmNode.dataset.analyticsFileEntryTitle;
+				}
+			}
+
+			Analytics.send('VOTE', 'Ratings', {
+				className: event.className,
+				classPK: event.classPK,
+				ratingType: event.ratingType,
+				score: event.score,
+				title,
+			});
+		}
+	};
+
+	var onDestroyPortlet = function () {
+		Liferay.detach('ratings:vote', onVote);
+		Liferay.detach('destroyPortlet', onDestroyPortlet);
+	};
+
+	Liferay.on('ratings:vote', onVote);
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+})();
+(function() {var $ = AUI.$;var _ = AUI._;
+	var onShare = function (data) {
+		if (window.Analytics) {
+			Analytics.send('shared', 'SocialBookmarks', {
+				className: data.className,
+				classPK: data.classPK,
+				type: data.type,
+				url: data.url,
+			});
+		}
+	};
+
+	var onDestroyPortlet = function () {
+		Liferay.detach('socialBookmarks:share', onShare);
+		Liferay.detach('destroyPortlet', onDestroyPortlet);
+	};
+
+	Liferay.on('socialBookmarks:share', onShare);
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+})();
+
+	if (window.svg4everybody && Liferay.Data.ICONS_INLINE_SVG) {
+		svg4everybody(
+			{
+				polyfill: true,
+				validate: function (src, svg, use) {
+					return !src || !src.startsWith('#');
+				}
+			}
+		);
+	}
+
+
+	// <![CDATA[
+
+		
+
+		Liferay.currentURL = '\x2f';
+		Liferay.currentURLEncoded = '\x252F';
+
+	// ]]>
+
+
+		// <![CDATA[
+			
+				
+
+				
+
+				
+			
+		// ]]>
+	
+(function() {var $ = AUI.$;var _ = AUI._;
+	var assetEntryId =
+		'';
+
+	if (assetEntryId) {
+		window.location.hash = assetEntryId;
+	}
+})();
+
+	
+		Liferay.Portlet.register('com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX_',
+			portletId: 'com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_TBYusbupDpoX\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3d_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__column-2\x26p_p_col_pos\x3d0\x26p_p_col_count\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('agenciahighlight_INSTANCE_s6XhlUAWcyvr');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 1,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_agenciahighlight_INSTANCE_s6XhlUAWcyvr_',
+			portletId: 'agenciahighlight_INSTANCE_s6XhlUAWcyvr',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dagenciahighlight_INSTANCE_s6XhlUAWcyvr\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dcolumn-1\x26p_p_col_pos\x3d1\x26p_p_col_count\x3d3\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+	var nestedPortlet = document.getElementById(
+		'_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__main-content'
+	);
+
+	if (nestedPortlet != null) {
+		nestedPortlet.removeAttribute('role');
+	}
+
+
+	
+		Liferay.Portlet.register('com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 2,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V_',
+			portletId: 'com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dcolumn-1\x26p_p_col_pos\x3d2\x26p_p_col_count\x3d3\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter_',
+			portletId: 'com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_navigationFooter\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dnull\x26p_p_col_pos\x3dnull\x26p_p_col_count\x3dnull\x26p_p_static\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW_',
+			portletId: 'com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_LWvEUlRnRoKW\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3d_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__column-2\x26p_p_col_pos\x3d0\x26p_p_col_count\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_login_web_portlet_LoginPortlet');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_login_web_portlet_LoginPortlet_',
+			portletId: 'com_liferay_login_web_portlet_LoginPortlet',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_login_web_portlet_LoginPortlet\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dnull\x26p_p_col_pos\x3dnull\x26p_p_col_count\x3dnull\x26p_p_static\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+(function() {var $ = AUI.$;var _ = AUI._;
+	var assetEntryId =
+		'';
+
+	if (assetEntryId) {
+		window.location.hash = assetEntryId;
+	}
+})();
+
+	
+		Liferay.Portlet.register('com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn_',
+			portletId: 'com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_CsCtsvsjRQvn\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3d_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__column-1\x26p_p_col_pos\x3d0\x26p_p_col_count\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+	var nestedPortlet = document.getElementById(
+		'_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU__main-content'
+	);
+
+	if (nestedPortlet != null) {
+		nestedPortlet.removeAttribute('role');
+	}
+
+
+	
+		Liferay.Portlet.register('com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU_',
+			portletId: 'com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_tb8N8HKiJaLU\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dcolumn-1\x26p_p_col_pos\x3d0\x26p_p_col_count\x3d3\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_',
+			portletId: 'com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dnull\x26p_p_col_pos\x3dnull\x26p_p_col_count\x3dnull\x26p_p_static\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+(function() {var $ = AUI.$;var _ = AUI._;
+	var assetEntryId =
+		'';
+
+	if (assetEntryId) {
+		window.location.hash = assetEntryId;
+	}
+})();
+
+	
+		Liferay.Portlet.register('com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk_',
+			portletId: 'com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d17766\x26p_p_id\x3dcom_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_sb4UJOfYaIOk\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3d_com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet_INSTANCE_CPzsxFWqHo7V__column-1\x26p_p_col_pos\x3d0\x26p_p_col_count\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F',
+			refreshURLData: {}
+		}
+	);
+
+
+</script><script type="module">
+import {InfoItemActionHandler as ComponentModule} from '/o/layout-taglib/__liferay__/index.js';
+Liferay.Loader.require(
+'frontend-js-web/index',
+function(frontendJsWeb) {
+try {
+AUI().use(
+  'liferay-menu',
+function(A) {
+{
+Liferay.component('infoItemActionComponent', new ComponentModule({"executeInfoItemActionURL":"https:\/\/defesacivil.df.gov.br\/c\/portal\/execute_info_item_action?p_l_mode=view&plid=17766","namespace":"","spritemap":"https:\/\/defesacivil.df.gov.br\/o\/gdf-secretarias-lf7_4-2026-theme\/images\/clay\/icons.svg"}), { destroyOnNavigate: true, portletId: ''});
+}
+(function() {
+var $ = AUI.$;var _ = AUI._;
+	var {delegate} = frontendJsWeb;
+
+	delegate(
+		document,
+		'focusin',
+		'.portlet',
+		function(event) {
+			event.delegateTarget.closest('.portlet').classList.add('open');
+		}
+	);
+
+	delegate(
+		document,
+		'focusout',
+		'.portlet',
+		function(event) {
+			event.delegateTarget.closest('.portlet').classList.remove('open');
+		}
+	);
+})();
+(function() {
+var $ = AUI.$;var _ = AUI._;
+	new Liferay.Menu();
+
+	var liferayNotices = Liferay.Data.notices;
+
+	for (var i = 0; i < liferayNotices.length; i++) {
+		Liferay.Util.openToast(liferayNotices[i]);
+	}
+
+})();
+(function() {
+var $ = AUI.$;var _ = AUI._;
+		var {openToast} = frontendJsWeb;
+
+		AUI().use(
+			'liferay-session',
+			function() {
+				Liferay.Session = new Liferay.SessionBase(
+					{
+						autoExtend: true,
+						redirectOnExpire: false,
+						redirectUrl: 'https\x3a\x2f\x2fdefesacivil\x2edf\x2egov\x2ebr\x2fweb\x2fguest',
+						sessionLength: 21600,
+						sessionTimeoutOffset: 70,
+						warningLength: 0
+					}
+				);
+
+				
+			}
+		);
+	
+})();
+});
+} catch (err) {
+	console.error(err);
+}
+});
+
+</script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/main.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000" type="text/javascript"></script> <script type="module">
+import {default as main} from '/o/frontend-js-dropdown-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-alert-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-collapse-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-tabs-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-tooltip-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {runThirdPartyCookiesInterval} from '/o/cookies-banner-web/__liferay__/index.js';
+{
+runThirdPartyCookiesInterval();
+}
+
+</script><script type="text/javascript">
+Liferay.CustomDialogs = {enabled: false};
+
+</script><script>
+
+</script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/doudf.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/full-calendar.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/pagination.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/agenda.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/translate.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/jquery-ui.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/jquery-ui-pt_BR.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> <script src="https://defesacivil.df.gov.br/o/gdf-secretarias-lf7_4-2026-theme/js/jquery.maskedinput.min.js?browserId=other&amp;minifierType=js&amp;languageId=pt_BR&amp;t=1790294774000"></script> </body> </html> 
