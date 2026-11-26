@@ -1,12 +1,12 @@
 {
  "_governanca": "Focos de calor do INPE pelo satélite de referência (AQUA_M-T) no último dia completo, agregados numa grade de 0.1° (~11 km) para desenho. Cada item é [lat, lon, focos na célula]. Peso zero, sinal físico. O dado foco a foco é do INPE e não é redistribuído aqui.",
- "gerado_em": "25/11/2026",
+ "gerado_em": "26/11/2026",
  "fonte": "INPE — Programa Queimadas",
  "dia": "2026-11-25",
  "satelite_referencia": "AQUA_M-T",
  "arquivo_de_origem": "focos_diario_br_20261125.csv",
  "passo_grau": 0.1,
- "celulas": 801,
+ "celulas": 802,
  "por_uf": {
   "CE": 9,
   "PE": 4,
@@ -21,9 +21,10 @@
   "MA": 20,
   "RR": 25,
   "AP": 142,
-  "AM": 78
+  "AM": 78,
+  "AC": 1
  },
- "focos": 1810,
+ "focos": 1811,
  "pontos": [
   [
    -1.3,
@@ -2303,6 +2304,11 @@
   [
    -9.2,
    -36.1,
+   1
+  ],
+  [
+   -8.4,
+   -72.8,
    1
   ],
   [
