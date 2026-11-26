@@ -9,14 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-11-26 · #2123 · lote J18 grava periodicamente e isola falha por documento
 O lote da rodada paralela J18 gravava só no fim: a produção da válvula de 26/11 bateu no prazo de 150 min e não salvou nada. Agora grava a cada 2 minutos. Um PDF quebrado não derruba mais o lote: a falha vai para sem_leitura com a causa. Duas travas novas no autoteste do juiz. Produção e índice não mudam.
-=======
+
 ## 2026-11-26 · #2121 · Pedidos à ponte para sites de prefeitura de SP
 
 Entram na fila da ponte no Brasil as páginas de defesa civil e as buscas por plano de contingência de 88 sites de prefeitura de São Paulo que recusavam o robô de fora do país e abrem a partir do Brasil.
->>>>>>> origin/main
 
 ## 2026-11-26 · #2119 · 403 visto de fora do país vai à sonda da ponte
 
