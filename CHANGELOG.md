@@ -9,6 +9,33 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2117 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura
+
+O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
+
+## 2026-11-26 · #2149 · Ceará: emergências estaduais no mapa
+
+Entram os Decretos estaduais nº 37.608 (13/11/2026, situação de emergência em 65 municípios por estiagem e seca ligadas ao El Niño, 180 dias) e nº 37.624 (19/11/2026, emergência ambiental em todo o estado por risco de incêndios, até fevereiro de 2027), conferidos no texto publicado pelo portal do Diário Oficial do Estado do Ceará, com cópia preservada.
+
+## 2026-11-26 · #2145 · Buscador 2: união aceita o primeiro fechamento de pista
+
+O seguidor grava `fechada_em` quando fecha uma pista, e o resolvedor de união não tinha regra para esse campo. Quando a válvula do Buscador 2 e a noite fechavam a mesma pista em dias diferentes, o lote inteiro era recusado (1.100 pistas no lote de 26/11). Agora vence o primeiro fechamento, como em `rejeitada_em`. Autoteste F101.
+
+## 2026-11-26 · #2143 · Emergência ou calamidade, e o nível que a regra permite afirmar
+
+Cada município sob decreto passa a ter o tipo de declaração e o nível de intensidade da Portaria MDR nº 260/2022, art. 5º: calamidade pública é nível III; emergência reconhecida pela União é nível II, porque o nível I não pede reconhecimento; emergência sem reconhecimento fica sem nível. O coletor federal passa a buscar também os reconhecimentos de calamidade, que não entravam.
+
+## 2026-11-26 · #2142 · Data do plano: a lista de referências não data o plano
+
+Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes). A data do plano agora se lê no corpo, até a seção de referências; o registro de revisões passa a datar (2022). Fecho com local e data, assinatura digital e a obra do próprio município seguem valendo no texto todo. Medido em 470 planos preservados: cinco datas mudam, nenhuma de faixa de idade.
+
+## 2026-11-26 · #2136 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão
+
+O lote trazido do Brasil registra o endereço final de cada documento. Arquivo de prefeitura guardado em nuvem (S3 pré-assinado) traz na consulta a chave de acesso do órgão, e o registro é publicado pela raiz: o portão de segredos reprovou o PR de dado. O endereço passa agora pela mesma redação de segredos das evidências, na porta da ponte; autoteste novo.
+## 2026-11-26 · #2140 · Portão de imprensa reconhece o arquivo do portal da prefeitura
+
+O portão que confere a fonte dos registros pontuáveis julgava só o domínio e reprovava os planos de Cunha, Parapuã e Bragança Paulista, guardados pelo portal oficial no domínio do fornecedor (e-Crie), que o juiz já aceita desde o #2131. Agora ele recebe o endereço inteiro e aplica a mesma regra única do juiz; caso novo no autoteste.
+
 ## 2026-11-26 · #2131 · Planos guardados pelo portal da prefeitura em domínio do fornecedor
 
 Prefeituras cujo portal é feito na plataforma e-Crie guardam os arquivos no domínio do fornecedor, e o plano publicado pela própria prefeitura era recusado como fonte não oficial. Agora o arquivo é atribuído ao município cujo portal oficial o publica, com a página oficial como prova. Primeiros casos: Cunha, Parapuã e Bragança Paulista.

@@ -207,6 +207,8 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
         return min(nosso_v, deles_v)     # ISO: a menor data é a primeira rejeição
     if campo in ("buscador2_em", "busca_veiculo_em") and isinstance(nosso_v, str) and isinstance(deles_v, str):
         return max(nosso_v, deles_v)     # ISO: a maior data é a última passada (F100)
+    if campo == "fechada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
+        return min(nosso_v, deles_v)     # ISO: o primeiro fechamento (seguir_pistas.fechar); 26/11, lote 45840832005
     if campo == "busca_web_espera" or campo.startswith("cursor"):
         return nosso_v                   # lado da `main`: estado de fila
     if campo == "wayback":               # 07/11/2026: dois lotes preservaram o mesmo documento no mesmo dia;
@@ -1361,6 +1363,9 @@ def autoteste() -> int:
            _mesclar_pista({"id": 1}, {"id": 1, "buscador2_em": "2026-11-24", "busca_veiculo_em": "2026-11-20"},
                           {"id": 1, "buscador2_em": "2026-11-23", "busca_veiculo_em": "2026-11-24"})
            == {"id": 1, "buscador2_em": "2026-11-24", "busca_veiculo_em": "2026-11-24"})
+    checar("F101: fechada_em (fechamento pelo seguidor) vence o primeiro fechamento",
+           _mesclar_pista({"id": 1}, {"id": 1, "fechada_em": "2026-11-26"}, {"id": 1, "fechada_em": "2026-11-25"})
+           == {"id": 1, "fechada_em": "2026-11-25"})
     checar("regra 7: busca_web_espera (estado de fila) vence o lado da main", m["busca_web_espera"] == "a2")
     try:
         _mesclar_pista(base, dict(base, juiz={"x": 1, "julgado_em": "2026-10-24"}),
