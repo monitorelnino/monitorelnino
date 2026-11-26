@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Casa, Civil, Casa Civil, Governo, Acre, Rio Branco">
+        <meta name="author" content="Equipe de Desenvolvimento da Casa Civil - Rio Branco - Acre">
+        <meta name="theme-color" content="#000000">
+        <meta name="msapplication-navbutton-color" content="#000000">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+        <meta name="application-name" content="Casa Civil"/>
+		
+		<link rel="canonical" href="https://www.casacivil.ac.gov.br/"/>
+	
+		<!-- Primary Meta Tags -->
+		<title>Casa Civil :: Governo do Estado do Acre</title>
+		<meta name="title" content="Casa Civil :: Governo do Estado do Acre" />
+		<meta name="description" content="Portal da Casa Civil do Estado do Acre. Inicio · Casa Civil · Notícias · Sistemas · Sei · Serviços · Webmail · Treinamento ·" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.casacivil.ac.gov.br/" />
+		<meta property="og:title" content="Casa Civil :: Governo do Estado do Acre" />
+		<meta property="og:description" content="Portal da Casa Civil do Estado do Acre. Inicio · Casa Civil · Notícias · Sistemas · Sei · Serviços · Webmail · Treinamento ·" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://www.casacivil.ac.gov.br/" />
+		<meta property="twitter:title" content="Casa Civil :: Governo do Estado do Acre" />
+		<meta property="twitter:description" content="Portal da Casa Civil do Estado do Acre. Inicio · Casa Civil · Notícias · Sistemas · Sei · Serviços · Webmail · Treinamento ·" />
+
+        <!-- App Icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://casacivil.ac.gov.br/assets/img/icon/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="https://casacivil.ac.gov.br/assets/img/icon/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="https://casacivil.ac.gov.br/assets/img/icon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="https://casacivil.ac.gov.br/assets/img/icon/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="https://casacivil.ac.gov.br/assets/img/icon/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="https://casacivil.ac.gov.br/assets/img/icon/favicon-128.png" sizes="128x128" />
+
+        <!-- Plugins -->
+        <link rel="stylesheet" href="https://casacivil.ac.gov.br/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+        <!-- Font Face -->
+        <link rel="stylesheet" href="https://casacivil.ac.gov.br/assets/fonts/fonts.css">
+
+        <!-- Font Icons -->
+        <link rel="stylesheet" href="https://casacivil.ac.gov.br/assets/fontawesome/css/all.css">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="https://casacivil.ac.gov.br/assets/css/style.css">
+
+        <!-- Sweet Alert -->
+        <link href="https://casacivil.ac.gov.br/assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Audio Player CSS -->
+        <link rel="stylesheet" href="https://casacivil.ac.gov.br/assets/plugins/audioplayer/css/style.css" media="screen">
+
+        <!-- Datatables Bootstrap -->
+        <link type="text/css" rel="stylesheet" media="all" href="https://casacivil.ac.gov.br/assets/plugins/gull-html/styles/vendor/datatables.min.css">
+
+    </head>
+
+    <body id="body" onscroll="myFunction()">
+        <div class="top">
+            <div class="container">
+                <ul>
+                    <li data-toggle="modal" data-target=".bs-example-modal-lg"><a href="#" data-toggle="tooltip" data-placement="bottom" title="reportar erro"><i class="fal fa-exclamation-triangle"></i></a></li>
+                    <li data-toggle="modal" data-target=".bs-example-modal-lg-2"><a href="#" data-toggle="tooltip" data-placement="bottom" title="entrar em contato"><i class="fal fa-phone-square"></i></a></li>
+                    <li><a href="https://casacivil.ac.gov.br/portal/mapa/estrutura/index" data-toggle="tooltip" data-placement="bottom" title="mapa do site"><i class="fal fa-sitemap"></i></a></li>
+                    <li><a id="anterior_fonte" style="cursor: pointer" data-toggle="tooltip" data-placement="bottom" title="texto normal"><i class="fal fa-search"></i></a></li>
+                    <li><a id="aumentar_fonte" style="cursor: pointer" data-toggle="tooltip" data-placement="bottom" title="aumentar texto"><i class="fal fa-search-plus"></i></a></li>
+                    <li><a id="diminuir_fonte" style="cursor: pointer" data-toggle="tooltip" data-placement="bottom" title="diminuir texto"><i class="fal fa-search-minus"></i></a></li>
+                    <li><a href="http://webmail.ac.gov.br/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="webmail"><i class="fal fa-envelope"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MODAL -->
+<form id="modal_erro" name="modal_erro" method="POST" action="#">
+    <div class="modal modal-evaluation fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fal fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="gradient-gov header-modal"></div>
+                    <h1 class="text-center">Reportar Error</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="div_nome" class="form-group">
+                                <label>Nome</label>
+                                <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" value="">
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="div_email" class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="">
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="div_descricao" class="form-group">
+                                <label>Descrição</label>
+                                <textarea id="descricao" name="descricao" class="form-control" maxlength="225" rows="3" placeholder="Por favor, informe a descrição do erro encontrado aqui"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Enviar</button> 
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</form>
+
+<!-- MODAL 2 -->
+<form id="modal_contato" name="modal_contato" method="POST" action="#">
+    <div class="modal modal-evaluation fade bs-example-modal-lg-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fal fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="gradient-gov header-modal"></div>
+                        <h1 class="text-center">Informações de Contato</h1>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="div_nome_2" class="form-group">
+                                    <label>Nome</label>
+                                    <input type="text" id="nome_2" name="nome_2" class="form-control" placeholder="Nome" value="">
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="div_email_2" class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="email_2" name="email_2" class="form-control" placeholder="Email" value="">
+                                </div>  
+                            </div>
+                            <div class="col-md-12">
+                                <div id="div_assunto_2" class="form-group">
+                                    <label>Assunto</label>
+                                    <input type="text" id="assunto_2" name="assunto_2" class="form-control" placeholder="Assunto" value="">
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="div_descricao_2" class="form-group">
+                                    <label>Descrição</label>
+                                    <textarea id="descricao_2" name="descricao_2" class="form-control" maxlength="225" rows="3" placeholder="Por favor, informe a descrição aqui"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Enviar</button> 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+</form>
+        <header id="header_no_fixed" style="position: fixed; top: 25px; z-index: 50;">
+            <div class="bar gradient-gov"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-7">
+                        <a href="https://casacivil.ac.gov.br/" class="logo">
+                            <img src="https://casacivil.ac.gov.br/assets/img/logo.svg" alt="">
+                            <h1>GOVERNO DO <br> ESTADO DO ACRE</h1>
+                            <h6>acre.gov.br</h6>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-sm-5">
+                        <div class="secretary">
+                            <h2>Secretaria de Estado da</h2>
+                            <h1>CASA CIVIL</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg menu">
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://casacivil.ac.gov.br/">Início</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://casacivil.ac.gov.br/portal/casa/civil/">Casa Civil</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://casacivil.ac.gov.br/portal/noticias/categoria/resultados_geral">Notícias</a>
+                            </li>
+
+                            <li class="nav-item dropdown" style="position:static;">
+                                <a href="#" class="nav-link dropdown-toggle citizen" id="sistemas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistemas</a>
+                                <div class="dropdown">
+                                    <div class="dropdown-menu dropdown-simple" aria-labelledby="sistemas">
+                                        <a target="_blank" class="dropdown-item" href="http://grp.ac.gov.br/asi/apresentacao/IndexASI.html">Compras/GRP</a>
+                                        <a target="_blank" class="dropdown-item" href="http://siag.ac.gov.br/sigo/login.asp?redirectPage=/sigo/index.asp&rqMsg=">SIAG/CPR/ADA</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown" style="position:static;">
+                                <a href="#" class="nav-link dropdown-toggle citizen" id="sei" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sei!</a>
+                                <div class="dropdown">
+                                    <div class="dropdown-menu dropdown-simple" aria-labelledby="sei">
+                                        <a target="_blank" class="dropdown-item" href="https://app.sei.ac.gov.br/sip/login.php?sigla_orgao_sistema=AC&sigla_sistema=SEI">Sistema</a>
+                                        <a target="_blank" class="dropdown-item" href="https://casacivil.ac.gov.br/pdf/POP-Procedimento-Operacional-Padr%C3%A3o-V2.6-1.pdf">P.O.P</a>
+                                        <a target="_blank" class="dropdown-item" href="https://casacivil.ac.gov.br/pdf/Projeto-Manual-Enap-sem-Papel.pdf">Manual de Uso</a>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://casacivil.ac.gov.br/modulos">Serviços</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a target="_blank" class="nav-link" href="http://webmail.ac.gov.br/">Webmail</a>
+                            </li>
+							<li class="nav-item">
+                                <a target="_blank" class="nav-link" href="https://www.casacivil.ac.gov.br/pdf/Gest%C3%A3o-Fiscaliza%C3%A7%C3%A3o-de-Contratos-Administrativos-CGE.pdf">Treinamento</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <a class="toggle mobile menu-btn"><i class="fal fa-bars"></i></a>
+                    <a onclick="mostrar_search()" class="pull-right btn-search" style="font-size: 20px; cursor: pointer"><i class="fal fa-search"></i></a>
+                </div>
+            </nav>
+        </header>
+        <div id="busca_serach" class="search">
+            <div class="container">
+                <form id="form_pesquisar" name="form_pesquisar" action="https://casacivil.ac.gov.br/portal/noticias/categoria/resultados" method="POST">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Pesquisar">
+                        <div class="input-group-append">
+                            <button class="btn btn-default" type="submit"><i class="fal fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <input type="hidden" id="radio_on_off" name="radio_on_off" value="0" rel="0" radioplay="0" />
+
+        <!-- Pushy Menu -->
+        <nav class="pushy pushy-left" data-focus="#first-link">
+            <div class="pushy-content">
+                <div class="box-logo">
+                    <img src="https://casacivil.ac.gov.br/assets/img/logo.svg" alt="" class="logo" />
+                </div>
+                <ul>
+                    <li class="pushy-link"><a href="https://casacivil.ac.gov.br/">INÍCIO</a></li>
+                    <li class="pushy-link"><a href="https://casacivil.ac.gov.br/portal/casa/civil/">CASA CIVIL</a></li>
+                    <li class="pushy-link"><a href="https://casacivil.ac.gov.br/portal/noticias/categoria/resultados_geral" target="_blank">NOTÍCIAS</a></li>
+                    <li class="pushy-link">
+                        <a data-toggle="collapse" href="#sistemas" role="button" aria-expanded="false" class="pushy-link collapse-link">
+                            SISTEMAS
+                        </a>
+                        <div class="collapse" id="sistemas">
+                            <a href="http://grp.ac.gov.br/asi/apresentacao/IndexASI.html" target="_blank">COMPRAS / GRP</a>
+                            <a href="http://siag.ac.gov.br/sigo/login.asp?redirectPage=/sigo/index.asp&rqMsg=" target="_blank">SIAG / CRP / ADA</a>
+                        </div>
+                    </li>
+                    <li class="pushy-link">
+                        <a data-toggle="collapse" href="#sei" role="button" aria-expanded="false" class="pushy-link collapse-link">
+                            SEI
+                        </a>
+                        <div class="collapse" id="sei">
+                            <a target="_blank" class="dropdown-item" href="https://app.sei.ac.gov.br/sip/login.php?sigla_orgao_sistema=AC&sigla_sistema=SEI">Sistema</a>
+                            <a target="_blank" class="dropdown-item" href="https://casacivil.ac.gov.br/pdf/POP-Procedimento-Operacional-Padr%C3%A3o-V2.6-1.pdf">P.O.P</a>
+                            <a target="_blank" class="dropdown-item" href="https://casacivil.ac.gov.br/pdf/Projeto-Manual-Enap-sem-Papel.pdf">Manual de Uso</a>
+                        </div>
+                    </li>
+					<li class="nav-item">
+                          <a class="nav-link" href="https://casacivil.ac.gov.br/modulos">SERVIÇOS</a>
+                    </li>
+                    <li class="pushy-link"><a href="http://webmail.ac.gov.br/" target="_blank">WEBMAIL</a></li>
+					<li class="pushy-link"><a href="https://www.casacivil.ac.gov.br/pdf/Gest%C3%A3o-Fiscaliza%C3%A7%C3%A3o-de-Contratos-Administrativos-CGE.pdf" target="_blank">TREINAMENTO</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Site Overlay -->
+        <div class="site-overlay"></div><!-- <nav class="menu">
+    <div class="container-fluid">
+        <a href="#">Portal</a>
+        <a href="#">Diário Oficial</a>
+        <a href="#">SEI</a>
+        <a href="#">Agência de Notícias</a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                Right-aligned but left aligned when large screen
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+        </div>
+    </div>
+</nav> -->
+<!--<nav id="menu_yes_fiexed" class="navbar navbar-expand-lg menu">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Início</a>
+                </li>
+
+                <li class="nav-item dropdown has-mega-menu" style="position:static;">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Governo</a>
+
+                    <div class="dropdown-menu" style="width:100%">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4>Governo</h4>
+                                    <a class="dropdown-item" href="#">Área de Gestão Pública</a>
+                                    <a class="dropdown-item" href="#">Política de Atendimento ao Cidadão</a>
+                                    <a class="dropdown-item" href="#">Ferramentas de Gestão</a>
+                                    <a class="dropdown-item" href="#">Transparência de Gestão</a>
+                                    <a class="dropdown-item" href="#">Gestão do Patrimônio</a>
+                                    <a class="dropdown-item" href="#">Comitê de Gestão Púlica</a>
+                                    <a class="dropdown-item" href="#">Produtos e Serviços de TIC</a>
+                                    <a class="dropdown-item" href="#">Programas e Projetos</a>
+                                    <a class="dropdown-item" href="#">Publicações</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4>Órgãos e Entidades</h4>
+                                    <a class="dropdown-item" href="#">Governador</a>
+                                    <a class="dropdown-item" href="#">Governadoria</a>
+                                    <a class="dropdown-item" href="#">Secretarias</a>
+                                    <a class="dropdown-item" href="#">Autarquias</a>
+                                    <a class="dropdown-item" href="#">Fundações Públicas</a>
+                                    <a class="dropdown-item" href="#">Empresas Públicas</a>
+                                    <a class="dropdown-item" href="#">Sociedade de Economia Mista</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown" style="position:static;">
+                    <a href="#" class="nav-link dropdown-toggle citizen" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cidadão</a>
+                    <div class="dropdown">
+                        <div class="dropdown-menu dropdown-simple" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Concursos</a>
+                            <a class="dropdown-item" href="#">Licitações</a>
+                            <a class="dropdown-item" href="#">Orientações ao Estagiário</a>
+                            <a class="dropdown-item" href="#">Central de Serviços Públicos</a>
+                            <a class="dropdown-item" href="#">Inclusão Digital</a>
+                            <a class="dropdown-item" href="#">Informações e Serviços na Internet</a>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown has-mega-menu" style="position:static;">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Órgãos e Entidades</a>
+
+                    <div class="dropdown-menu" style="width:100%">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4>Secretarias</h4>
+                                    <a class="dropdown-item" href="#"><strong>CASA CIVIL</strong><span>Secretaria de Estado da Casa Civil</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEFAZ</strong><span>Secretaria de Estado de Planejamento</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SESACRE</strong><span>Secretaria de Estado da Saúde</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEE</strong><span>Secretaria de Estado da Educação, Cultura e Esportes</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEJUSP</strong><span>Secretaria de Estado da Justiça e Segurança Pública</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEET</strong><span>Secretaria de Estado de Empreendedorismo e Turismo</span></a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav id="menu_no_fiexed" class="navbar navbar-expand-lg menu menu-fixed" style="display: none">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Início</a>
+                </li>
+
+                <li class="nav-item dropdown has-mega-menu" style="position:static;">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Governo</a>
+
+                    <div class="dropdown-menu" style="width:100%">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4>Governo</h4>
+                                    <a class="dropdown-item" href="#">Área de Gestão Pública</a>
+                                    <a class="dropdown-item" href="#">Política de Atendimento ao Cidadão</a>
+                                    <a class="dropdown-item" href="#">Ferramentas de Gestão</a>
+                                    <a class="dropdown-item" href="#">Transparência de Gestão</a>
+                                    <a class="dropdown-item" href="#">Gestão do Patrimônio</a>
+                                    <a class="dropdown-item" href="#">Comitê de Gestão Púlica</a>
+                                    <a class="dropdown-item" href="#">Produtos e Serviços de TIC</a>
+                                    <a class="dropdown-item" href="#">Programas e Projetos</a>
+                                    <a class="dropdown-item" href="#">Publicações</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4>Órgãos e Entidades</h4>
+                                    <a class="dropdown-item" href="#">Governador</a>
+                                    <a class="dropdown-item" href="#">Governadoria</a>
+                                    <a class="dropdown-item" href="#">Secretarias</a>
+                                    <a class="dropdown-item" href="#">Autarquias</a>
+                                    <a class="dropdown-item" href="#">Fundações Públicas</a>
+                                    <a class="dropdown-item" href="#">Empresas Públicas</a>
+                                    <a class="dropdown-item" href="#">Sociedade de Economia Mista</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown" style="position:static;">
+                    <a href="#" class="nav-link dropdown-toggle citizen" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cidadão</a>
+                    <div class="dropdown">
+                        <div class="dropdown-menu dropdown-simple" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Concursos</a>
+                            <a class="dropdown-item" href="#">Licitações</a>
+                            <a class="dropdown-item" href="#">Orientações ao Estagiário</a>
+                            <a class="dropdown-item" href="#">Central de Serviços Públicos</a>
+                            <a class="dropdown-item" href="#">Inclusão Digital</a>
+                            <a class="dropdown-item" href="#">Informações e Serviços na Internet</a>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown has-mega-menu" style="position:static;">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Órgãos e Entidades</a>
+
+                    <div class="dropdown-menu" style="width:100%">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4>Secretarias</h4>
+                                    <a class="dropdown-item" href="#"><strong>CASA CIVIL</strong><span>Secretaria de Estado da Casa Civil</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEFAZ</strong><span>Secretaria de Estado de Planejamento</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SESACRE</strong><span>Secretaria de Estado da Saúde</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEE</strong><span>Secretaria de Estado da Educação, Cultura e Esportes</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEJUSP</strong><span>Secretaria de Estado da Justiça e Segurança Pública</span></a>
+                                    <a class="dropdown-item" href="#"><strong>SEET</strong><span>Secretaria de Estado de Empreendedorismo e Turismo</span></a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Or a link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>-->
+<div id="radio_difusora" style="display: none" class="radio">
+    <div class="audio-player">
+        <a style="cursor: pointer" class="close" id="close_audio"><i class="fal fa-times"></i></a>
+        <img id="img_radio" class="cover" src="" alt="">
+        <h5 id="nome_radio"></h5>
+        <audio id="audio-player" src="" type="audio/mp3" controls="controls"></audio>
+    </div>
+</div>
+
+<div class="fab">
+    <button class="main"></button>
+    <ul>
+        <li>
+            <label for="opcao1">DIFUSORA</label>
+            <button id="opcao1">
+                <img src="https://casacivil.ac.gov.br/assets/img/difusora.svg" alt="">
+            </button>
+        </li>
+        <li>
+            <label for="opcao2">ALDEIA FM</label>
+            <button id="opcao2">
+                <img src="https://casacivil.ac.gov.br/assets/img/difusora-fm.svg" alt="">
+            </button>
+        </li>
+        <li>
+            <label for="opcao3">TV ALDEIA</label>
+            <a href="https://www.youtube.com/user/noticiasdoacre/" target="_blank">
+                <button id="opcao3">
+                    <img src="https://casacivil.ac.gov.br/assets/img/tv-aldeia.svg" alt="">
+                </button>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="button_top" class="scroll-top">
+    <button><i class="fal fa-arrow-up"></i></button>
+</div>
+<section class="news">
+    <div id="div_container" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-news">
+                    <div class="card-content flow-text">
+                        <a class="chip Meio Ambiente white-text z-depth-1-half">Meio Ambiente</a>
+                        <div class="">
+                            <h1>
+			
+				Sepi reúne instituições para fortalecer plano de contingência voltado aos povos indígenas			
+		</h1>
+                        </div>
+                    </div>
+
+                    <div class="card-action info-post">
+                        <span class="autor-post">
+                            
+										Danna Anute					                        </span>
+                        <br>
+                        <span class="data-post">01/06/2026</span>
+                        <span  class="hora-post">às 17:55</span>
+                        <br>
+                                                <div class="clearfix"></div>
+                    </div>
+                    
+					<p><span style="font-weight: 400;">Com ênfase nas ações preventivas e emergenciais voltadas às populações originárias do Acre, o governo do Estado, por meio da Secretaria Extraordinária dos Povos Indígenas (Sepi), reuniu, na última sexta-feira, 29, representantes de órgãos estaduais e instituições parceiras para debater o plano de contingência elaborado pela pasta.</span></p>
+<p><span style="font-weight: 400;">Realizado de forma presencial e virtual, o encontro ampliou a participação dos órgãos envolvidos na definição de estratégias integradas. O plano em questão orienta ações antecipadas para reduzir riscos e fortalecer a proteção dos povos indígenas diante de possíveis emergências.</span></p>
+<figure id="attachment_951016" aria-describedby="caption-attachment-951016" style="width: 800px" class="wp-caption aligncenter"><a href="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12.jpeg"><img fetchpriority="high" fetchpriority="high" decoding="async" data-attachment-id="951016" data-permalink="https://agencia.ac.gov.br/sepi-reune-instituicoes-para-fortalecer-plano-de-contingencia-voltado-aos-povos-indigenas/whatsapp-image-2026-05-29-at-15-56-12/" data-orig-file="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12.jpeg" data-orig-size="1280,872" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="WhatsApp Image 2026-05-29 at 15.56.12" data-image-description="" data-image-caption="" data-large-file="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12-1024x698.jpeg" class="wp-image-951016 size-large" src="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12-1024x698.jpeg" alt="" width="800" height="545" srcset="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12-1024x698.jpeg 1024w, https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12-300x204.jpeg 300w, https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12-768x523.jpeg 768w, https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.56.12.jpeg 1280w" sizes="(max-width: 800px) 100vw, 800px" /></a><figcaption id="caption-attachment-951016" class="wp-caption-text">Instituições alinham estratégias para enfrentar eventos climáticos extremos em territórios indígenas. Foto: Danna Anute/Sepi</figcaption></figure>
+<p>Diante dos alertas para um novo período de eventos climáticos extremos, as instituições intensificaram o planejamento conjunto, com atenção especial aos territórios indígenas. A titular da Sepi, Francisca Arara, destacou que o Estado tem se preparado de forma antecipada para enfrentar cenários recorrentes. “Já vínhamos nos preparando para situações como a seca, as enchentes e os problemas respiratórios provocados pela fumaça, que têm se repetido nos últimos anos. Por isso, a pedido da governadora Mailza, cada instituição iniciou a elaboração de ações dentro do eixo de eventos climáticos, coordenado pelo Gabinete de Crise, que reúne diversos órgãos, para antecipar respostas e fortalecer a capacidade de atuação do Estado”, afirmou.</p>
+<figure id="attachment_951034" aria-describedby="caption-attachment-951034" style="width: 800px" class="wp-caption aligncenter"><a href="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35.jpeg"><img decoding="async" data-attachment-id="951034" data-permalink="https://agencia.ac.gov.br/sepi-reune-instituicoes-para-fortalecer-plano-de-contingencia-voltado-aos-povos-indigenas/whatsapp-image-2026-05-29-at-15-57-35/" data-orig-file="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35.jpeg" data-orig-size="1280,737" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="WhatsApp Image 2026-05-29 at 15.57.35" data-image-description="" data-image-caption="" data-large-file="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35-1024x590.jpeg" class="wp-image-951034 size-large" src="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35-1024x590.jpeg" alt="" width="800" height="461" srcset="https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35-1024x590.jpeg 1024w, https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35-300x173.jpeg 300w, https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35-768x442.jpeg 768w, https://agencia.ac.gov.br/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-29-at-15.57.35.jpeg 1280w" sizes="(max-width: 800px) 100vw, 800px" /></a><figcaption id="caption-attachment-951034" class="wp-caption-text">Plano de contingência incorpora análises sobre os impactos do El Niño e os riscos climáticos no Acre. Foto: Danna Anute/Sepi</figcaption></figure>
+<p>“Nesse processo, a Sema apresentou um panorama sobre a chegada do El Niño e os impactos que o fenômeno pode causar, enquanto a Defesa Civil detalhou a situação local, considerada delicada. No caso da Sepi, elaboramos um plano específico, voltado à nossa atuação nos territórios indígenas e à coordenação do Grupo de Trabalho de Eventos Extremos”, concluiu.</p>
+<p>A seca tem provocado reflexos na produção de alimentos e na manutenção de práticas culturais dos povos indígenas, ampliando a necessidade de ações voltadas aos territórios.</p>
+<p>Para Dinah Borges, consultora de Agricultura Familiar do Programa REM Acre, da Secretaria de Estado de Planejamento (Seplan), a estiagem compromete a produção de alimentos, dificulta o acesso a programas como o PNAE e o PAA e afeta o modo de vida das comunidades. Por isso, ações como a construção de poços artesianos no Purus e de cacimbas no Alto Acre são fundamentais para garantir o acesso à água e fortalecer a produção nas aldeias.</p>
+<h4>Cooperação institucional</h4>
+<p>A cooperação institucional prevista neste Plano está alinhada ao Decreto nº 11.504, de 25 de junho de 2024, que instituiu o Gabinete de Crise para monitorar e coordenar ações diante da redução das chuvas, da diminuição dos cursos hídricos e do risco de incêndios florestais. Nesse contexto, as medidas serão executadas de forma integrada por órgãos do governo estadual e instituições parceiras.</p>
+<p>Participam da iniciativa a Coordenadoria Estadual de Proteção e Defesa Civil (CEPD), as secretarias de Estado de Governo (Segov), Casa Civil (Secc), Meio Ambiente (Sema), Comunicação (Secom), Planejamento (Seplan), Justiça e Segurança Pública (Sejusp), Indústria, Ciência e Tecnologia (Seict), Obras Públicas (Seop), Assistência Social e Direitos Humanos (SEASDH), Educação, Cultura e Esportes (SEE), Instituto de Mudanças Climáticas e Regulação de Serviços Ambientais (IMC), além de Imac, Iteracre, Idaf, Funtac, Deracre, Saneacre, Sesacre, Seagri, PGE, CGE, Corpo de Bombeiros Militar e Polícia Militar.</p>
+<p>Também colaboram a Fundação Nacional dos Povos Indígenas (Funai), a Secretaria Especial de Saúde Indígena (Sesai), a Comissão Pró-Indígenas do Acre (CPI/AC), a Associação do Movimento dos Agentes Agroflorestais Indígenas do Acre (AMAAIAC) e o Programa REM Acre.</p>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1c27744b elementor-widget__width-auto elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="1c27744b" data-element_type="widget" data-e-type="widget" data-settings="{&quot;ekit_we_effect_on&quot;:&quot;none&quot;}" data-widget_type="heading.default">
+				                    Fonte Agência de Notícias                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="links">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-lg-3">
+                <h1>Ajuda</h1>
+                <ul>
+                    <li data-toggle="modal" data-target=".bs-example-modal-lg-2"><a class="link" href="#">Fale Conosco</a></li>
+                    <li data-toggle="modal" data-target=".bs-example-modal-lg"><a class="link" href="#">Reportar Erro</a></li>
+                    <li><a class="link" href="https://casacivil.ac.gov.br/portal/mapa/estrutura/index">Mapa do Site</a></li>
+                    <li style='display: none'><a class="link" href="https://casacivil.ac.gov.br/modulos">Central de Serviços</a></li>
+                    <li><a class="link" href="https://casacivil.ac.gov.br/setores">Setores</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-lg-3">
+                <h1>Mais acessadas</h1>
+                <ul>
+                    <li><a class="link" href="http://acre.gov.br/" target="_blank">Acre.gov.br</a></li>
+                    <li><a class="link" href="http://transparencia.ac.gov.br/acessoainformacao/index.php" target="_blank">Portal da Transparência</a></li>
+                    <li><a class="link" href="http://www.diario.ac.gov.br/" target="_blank">Diário Oficial</a></li>
+                    <li><a class="link" href="https://www.agencia.ac.gov.br/" target="_blank">Agência de Notícias</a></li>
+                    <li><a class="link" href="http://webmail.ac.gov.br/" target="_blank">Webmail</a></li>
+                    <li><a href="https://contracheque.ac.gov.br/login" target="_blank" class="link">Contra-Cheque On-line</a></li>
+                    <li><a href="http://acre.gov.br/cidadao/" target="_blank" class="link">Cidadão</a></li>
+                </ul>
+            </div>
+			<div class="col-xs-12 col-sm-4 col-lg-3">
+                <h1>Demais Poderes</h1>
+                <ul>
+					<li><a href="http://www.al.ac.leg.br/" target="_blank" class="link">Assembleia Legislativa</a></li>
+					<li><a href="http://mpc.tce.ac.gov.br/" target="_blank" class="link">Tribunal de Contas</a></li>
+					<li><a href="https://www.tjac.jus.br/" target="_blank" class="link">Tribunal de Justiça</a></li>
+					<li><a href="http://www.pge.ac.gov.br/" target="_blank" class="link">Procuradoria Geral</a></li>
+					<li><a href="https://www.mpac.mp.br/" target="_blank" class="link">Ministério Público</a></li>
+                 </ul>
+            </div>
+			<div class="col-xs-12 col-sm-4 col-lg-3">
+                <h1>Sistemas</h1>
+                <ul>
+					<li><a href="http://grp.ac.gov.br/asi/apresentacao/IndexASI.html" target="_blank" class="link">Compras/GRP</a></li>
+					<li><a href="http://siag.ac.gov.br/sigo/login.asp?redirectPage=/sigo/index.asp&rqMsg=" target="_blank" class="link">SIAG/SPR/ADA</a></li>
+					<li><a href="http://app.sei.ac.gov.br" target="_blank" class="link">SEI!</a></li>
+					<li><a href="http://sefaznet.ac.gov.br/transparencia/servlet/portaltransparencia" target="_blank" class="link">Despesa/Receita</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="info">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-2 col-lg-2">
+                <span class="logo"></span>
+            </div>
+
+            <div class="col-xs-12 col-md-5 col-lg-5">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <small class="sefaz">Secretaria de Estado da Casa Civil | CASA CIVIL</small>
+                        <small>Av. Brasil, 307-447 - Centro, Rio Branco - AC</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="contato col-xs-12 col-md-5 col-lg-5">
+                <div class="departamento">
+                    <small>Departamento de Tecnologia da Informação</small>
+                </div>
+                <div class="fone">
+                    <a href="tel:55-68-3215-4120" class="link"><span class="ico"></span>(68) 3211-2823</a>
+                </div>
+                <div class="email">
+                    <a href="mailto:transparencia@ac.gov.br" class="link"><span class="ico"></span>transparencia@ac.gov.br</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <small>2019 ~ 2026 Governo do Estado do Acre</small>
+                <small>Copyright Todos os direitos reservados</small>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-right">
+                <small>Secretaria de Estado da Casa Civil</small>
+                <small>Departamento de Tecnologia da Informação</small>
+            </div>
+        </div>
+    </div>
+    <div class="bar gradient-gov"></div>
+</footer>
+
+<script src="https://casacivil.ac.gov.br/assets/js/jquery.min.js"></script>
+
+<script src="https://casacivil.ac.gov.br/assets/js/popper.min.js"></script>
+<script src="https://casacivil.ac.gov.br/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://casacivil.ac.gov.br/assets/js/swipper.min.js"></script>
+<script src="https://casacivil.ac.gov.br/assets/js/menu-floating.js"></script>
+<script src="https://casacivil.ac.gov.br/assets/js/pushy.min.js"></script>
+<script src="https://casacivil.ac.gov.br/assets/plugins/owl-carousel/owl.carousel.js"></script>
+
+<!-- Datatables Responsive -->
+<script type="text/javascript" src="https://casacivil.ac.gov.br/assets/plugins/gull-html/js/datatables.script.js"></script>
+<script type="text/javascript" src="https://casacivil.ac.gov.br/assets/plugins/gull-html/js/vendor/datatables.min.js"></script>
+
+<!-- Sweet-Alert  -->
+<script src="https://casacivil.ac.gov.br/assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
+
+<!-- JAVASCRIPT PARA PESQUISA DINÂMICA -->
+<script type="text/javascript" src="https://casacivil.ac.gov.br/assets/js/pesquisa_dinamica.js"></script>
+
+<!-- Livequery -->
+<script type="text/javascript" src="https://casacivil.ac.gov.br/assets/js/livequery.js"></script>
+
+<!-- JS UTIL -->
+<script src="https://casacivil.ac.gov.br/utils/utils.js" type="text/javascript"></script>
+<script src="https://casacivil.ac.gov.br/utils/projeto.utils.js" type="text/javascript"></script>
+
+<!-- Audio Player Scripts -->
+<script src="https://casacivil.ac.gov.br/assets/plugins/audioplayer/js/mediaelement-and-player.min.js"></script>
+
+<!-- Scripts do Footer -->
+<script src="https://casacivil.ac.gov.br/js/template/footer.js"></script>
+</body>
+</html>
+<script type="text/javascript" src="https://casacivil.ac.gov.br/js/portal/noticias/categoria/noticias.js"></script>

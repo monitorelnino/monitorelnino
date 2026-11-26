@@ -1,0 +1,838 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179623043-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-179623043-1');
+        </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="application-name" content="&nbsp;"/>
+        <meta name="theme-color" content="#000000">
+        <title>LEGIS :: Portal da Legislação do Estado do Acre</title>
+
+        <!-- App Icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://legis.ac.gov.br/assets/img/icon/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="https://legis.ac.gov.br/assets/img/icon/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="https://legis.ac.gov.br/assets/img/icon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="https://legis.ac.gov.br/assets/img/icon/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="https://legis.ac.gov.br/assets/img/icon/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="https://legis.ac.gov.br/assets/img/icon/favicon-128.png" sizes="128x128" />
+
+        <!-- Plugins -->
+        <link rel="stylesheet" href="https://legis.ac.gov.br/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+        <!-- Font Face -->
+        <link rel="stylesheet" href="https://legis.ac.gov.br/assets/fonts/fonts.css">
+
+        <!-- Font Icons -->
+        <link rel="stylesheet" href="https://legis.ac.gov.br/assets/fontawesome/css/all.css">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="https://legis.ac.gov.br/assets/css/style.css">
+
+        <!-- Sweet Alert -->
+        <link href="https://legis.ac.gov.br/assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Select 2 -->
+        <link href="https://legis.ac.gov.br/assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Datepicker -->
+        <link href="https://legis.ac.gov.br/assets/plugins/datepicker/datepicker.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body id="body" onscroll="myFunction()" class="padrao">
+        <div class="top">
+            <div class="container">
+                <ul>
+                    <li data-toggle="modal" data-target=".bs-example-modal-lg"><a href="#" data-toggle="tooltip" data-placement="bottom" title="reportar erro"><i class="fal fa-exclamation-triangle"></i></a></li>
+                    <li data-toggle="modal" data-target=".bs-example-modal-lg-2"><a href="#" data-toggle="tooltip" data-placement="bottom" title="entrar em contato"><i class="fal fa-phone-square"></i></a></li>
+<!--                    <li><a href="https://legis.ac.gov.br/portal/mapa/estrutura/index" data-toggle="tooltip" data-placement="bottom" title="mapa do site"><i class="fal fa-sitemap"></i></a></li>-->
+                    <li><a id="anterior_fonte" style="cursor: pointer" data-toggle="tooltip" data-placement="bottom" title="texto normal"><i class="fal fa-search"></i></a></li>
+                    <li><a id="aumentar_fonte" style="cursor: pointer" data-toggle="tooltip" data-placement="bottom" title="aumentar texto"><i class="fal fa-search-plus"></i></a></li>
+                    <li><a id="diminuir_fonte" style="cursor: pointer" data-toggle="tooltip" data-placement="bottom" title="diminuir texto"><i class="fal fa-search-minus"></i></a></li>
+                    <li><a href="http://www.webmail.ac.gov.br/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="webmail"><i class="fal fa-envelope"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MODAL -->
+<form id="modal_erro" name="modal_erro" method="POST" action="#">
+    <div class="modal modal-evaluation fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fal fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="gradient-gov header-modal"></div>
+                    <h1 class="text-center">Reportar Erro</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="div_nome" class="form-group">
+                                <label>Nome</label>
+                                <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" value="">
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="div_email" class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="">
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="div_descricao" class="form-group">
+                                <label>Descrição</label>
+                                <textarea id="descricao" name="descricao" class="form-control" maxlength="225" rows="3" placeholder="Por favor, informe a descrição do erro encontrado aqui"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Enviar</button> 
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</form>
+
+<!-- MODAL 2 -->
+<form id="modal_contato" name="modal_contato" method="POST" action="#">
+    <div class="modal modal-evaluation fade bs-example-modal-lg-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fal fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="gradient-gov header-modal"></div>
+                        <h1 class="text-center">Informações de Contato</h1>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="div_nome_2" class="form-group">
+                                    <label>Nome</label>
+                                    <input type="text" id="nome_2" name="nome_2" class="form-control" placeholder="Nome" value="">
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="div_email_2" class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="email_2" name="email_2" class="form-control" placeholder="Email" value="">
+                                </div>  
+                            </div>
+                            <div class="col-md-12">
+                                <div id="div_assunto_2" class="form-group">
+                                    <label>Assunto</label>
+                                    <input type="text" id="assunto_2" name="assunto_2" class="form-control" placeholder="Assunto" value="">
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="div_descricao_2" class="form-group">
+                                    <label>Descrição</label>
+                                    <textarea id="descricao_2" name="descricao_2" class="form-control" maxlength="225" rows="3" placeholder="Por favor, informe a descrição aqui"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Enviar</button> 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+</form>
+        <header id="header_no_fixed" class="header-fixed" style="position: fixed; top: 25px; z-index: 50;">
+            <div class="bar gradient-gov"></div>
+            <div class="container">
+                <div class="box-menu">
+                    <a href="https://legis.ac.gov.br/" class="logo">
+                        <img src="https://legis.ac.gov.br/assets/img/logo.svg" alt="">
+                    </a>
+                    <nav class="mini-menu">
+                        <ul>
+                            <!--<li><a href="#">Perguntas Frequentes</a></li>
+                                <li><a href="#">Glossário</a></li>-->
+                            <li><a target="_blank" href="http://ac.gov.br/" href="#">ac.gov.br</a></li>
+                            <li><a target="_blank" href="http://diario.ac.gov.br/" href="#">Diário Oficial</a></li>
+                            <li><a target="_blank" href="https://agencia.ac.gov.br/" href="#">Notícias</a></li>
+                            <li><a href="https://legis.ac.gov.br/sobre" href="#">Sobre</a></li>
+							<li><a href="https://legis.ac.gov.br/covid19" style="color: gold;">Normas Covid-19</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="navbar navbar-expand-lg menu">
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown" style="position:static;">
+                                    <a onclick="ordinarias()" href="#" class="nav-link nav-ordinarias citizen" id="sistemas" >LEIS ORDINÁRIAS <i class="fal fa-file-contract"></i></a>
+                                </li>
+
+                                <li class="nav-item dropdown" style="position:static;">
+                                    <a onclick="complementar()" href="#" class="nav-link nav-complementar" id="sistemas">LEIS COMPLEMENTARES <i class="fal fa-file-invoice"></i></a>
+                                </li>
+
+                                <li class="nav-item dropdown" style="position:static;">
+                                    <a href="https://legis.ac.gov.br/detalhar_constituicao" class="nav-link nav-responsabilidade" id="sistemas">CONSTITUIÇÃO ESTADUAL <i class="fal fa-file-alt"></i></a>
+                                </li>
+
+                                <li class="nav-item dropdown" style="position:static;">
+                                    <a onclick="decreto()" href="#" class="nav-link nav-decretos">DECRETOS <i class="fal fa-file-signature"></i></a>
+                                </li> 
+                            </ul>
+                        </div>
+                    </nav>
+                    <a onclick="mostrar_search()" class="pull-right btn-search" style="font-size: 20px; cursor: pointer"><i class="fal fa-search"></i></a>
+                    <a class="toggle mobile menu-btn"><i class="fal fa-bars"></i></a>
+                </div>
+            </div>
+        </header>
+
+        
+        <div id="busca_serach" class="search">
+            <div class="container">
+                <form id="form_pesquisar" name="form_pesquisar" action="https://legis.ac.gov.br/detalhar_constituicao" method="POST">
+
+                    <input type="hidden" id="ano_selecionado" name="ano_selecionado" value=""/>
+                    <input type="hidden" id="pagina_menu" name="pagina_menu" value="ordinaria"/>
+
+                    <div class="row">
+                        <div id="div_tipo" class="col-md-3">
+                            <div class="input-group">
+                                <select required="true" id="tipo_lei" name="tipo_lei" class="form-control">
+                                                                            <option  value='10'>Todos</option>  
+                                        
+                                                                                <option value='3'>Decretos</option>
+                                                                                        <option value='2'>Lei Complementar</option>
+                                                                                        <option value='1'>Lei Ordinária</option>
+                                                                                    <option  value='4'>Constituição Estadual</option>  
+                                                                                <option  value='9'>Emendas Constitucionais</option>  
+                                        
+                                </select>
+                            </div>
+                        </div>
+                        <div id="div_autoria" style="display: none" class="col-md-3">
+                            <div class="input-group">
+                                <select id="autoria" name="autoria" class="form-control">
+                                    <option value="">Escolha a autoria</option>
+                                                                            <option value='1'>Assembleia Legislativa do Estado do Acre</option>
+                                                                                <option value='3'>Defensoria Pública do Estado do Acre</option>
+                                                                                <option value='4'>Ministério Público do Estado do Acre</option>
+                                                                                <option value='6'>Poder Executivo do Estado do Acre</option>
+                                                                                <option value='5'>Tribunal de Contas do Estado do Acre</option>
+                                                                                <option value='2'>Tribunal de Justiça do Estado do Acre</option>
+                                                                        </select>
+                            </div>
+                        </div>
+
+                        <div id="div_data" style="display: none" class="col-md-3">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fal fa-calendar-alt"></i></span>
+                                </div>
+                                <input type="text" class="form-control" data-mask="99/99/9999" id="data_doe" name="data_doe" placeholder="Data DOE" maxlength="10" value=""/>
+                            </div>
+                        </div>
+                        <div id="div_numero" style="display: none" class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div id="buscar_leis_2"  class="row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <textarea name="descricao" id="descricao" placeholder="Descricao" class="form-control" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div id="buscar_constituicao" style="display: none" class="row">
+
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="busca_constituicao" name="busca_constituicao" placeholder="Digita sua pesquisa aqui..." value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button id="pesquisar_lei" type="submit" class="btn btn-primary"><strong>PESQUISAR</strong></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Pushy Menu -->
+        <nav class="pushy pushy-left" data-focus="#first-link">
+            <div class="pushy-content">
+                <div class="box-logo">
+                    <img src="https://legis.ac.gov.br/assets/img/logo2.svg" alt="" class="logo" />
+                </div>
+                <ul>
+                    <li class="pushy-link"><a href="https://legis.ac.gov.br/"><i class="fal fa-desktop-alt"></i> INÍCIO</a></li>
+                    <li class="pushy-link receita">
+                        <a onclick="ordinarias()" href="#" role="button" aria-expanded="false">
+                            <i class="fal fa-file-contract"></i> LEIS ORDINÁRIAS
+                        </a>
+                    </li>
+                    <li class="pushy-link despesas">
+                        <a onclick="complementar()" href="#" role="button" aria-expanded="false">
+                            <i class="fal fa-file-invoice"></i> LEIS COMPLEMENTARES
+                        </a>
+                    </li>
+                    <li class="pushy-link responsabilidade">
+                        <a href="https://legis.ac.gov.br/detalhar_constituicao" role="button" aria-expanded="false" class="pushy-link">
+                            <i class="fal fa-file-alt"></i> CONSTITUIÇÃO ESTADUAL
+                        </a>
+                    </li>
+                    <li class="pushy-link despesas">
+                        <a onclick="decreto()" href="#" role="button" aria-expanded="false">
+                            <i class="fal fa-file-signature"></i> DECRETOS
+                        </a>
+                    </li>
+				    <li class="pushy-link despesas">
+                        <a href="https://legis.ac.gov.br/covid19" role="button" aria-expanded="false" class="pushy-link">
+                            <i class="fal fa-file-plus"></i> NORMAS COVID-19
+                        </a>
+                    </li>
+                    <!-- <li class="pushy-link"><a href="http://www.webmail.ac.gov.br/" target="_blank">WEBMAIL</a></li> -->
+                </ul>
+            </div>
+        </nav>
+        <!-- Site Overlay -->
+        <div class="site-overlay"></div><div id="modal_impressao" class="fab show">
+    <button class="main"></button>
+    <ul>
+        <li>
+            <label for="opcao1">PDF</label>
+            <button id="opcao1" class="pdf">
+                <i class="fad fa-file-pdf"></i>
+            </button>
+        </li>
+        <!--        <li>
+                    <label for="opcao2">WORD</label>
+                    <button id="opcao2" class="word">
+                        <i class="fad fa-file-word"></i>
+                    </button>
+                </li>
+                <li>
+                    <label for="opcao3">TXT</label>
+                    <button id="opcao3" class="txt">
+                        <i class="fad fa-file-alt"></i>
+                    </button>
+                </li>
+                <li>
+                    <label for="opcao4">IMPRESSÃO</label>
+                    <button id="opcao4" class="impressao">
+                        <i class="fal fa-print"></i>
+                    </button>
+                </li>-->
+        <li id='li_informacao'>
+            <label for="opcao5">INFORMAÇÃO</label>
+            <div id="mais_informacoes">
+                <button data-toggle='modal' data-target='#modal_informacao' class="word">
+                    <i class="fal fa-info-circle"></i>
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!--<div id="mais_informacoes" class="mais-info">
+    <button data-toggle='modal' data-target='#modal_informacao'><i class="fal fa-info-circle"></i></button>
+</div>-->
+
+<div id="button_top" class="scroll-top">
+    <button><i class="fal fa-arrow-up"></i></button>
+</div>
+<input type="hidden" id="codigo" name="codigo" value="5756" />
+<input type="hidden" id="resultado_busca" name="resultado_busca" value=""/>
+<input type="hidden" id="nome_arquivo" name="nome_arquivo" value="Decreto nº 11.338"/>
+<input type="hidden" id="leis_revogadas_guard" name="leis_revogadas_guard" value="0"/>
+<input type="hidden" id="opcao_compilacao" name="opcao_compilacao" value="1"/>
+<div id="exportacaotxt" style="display: none">
+                                    O GOVERNADOR DO ESTADO DO ACRE, no uso das atribuições que lhe confere o art. 78, incisos IV, VI e XXI, da Constituição do Estado do Acre, tendo em vista o disposto na Portaria nº 260, de 2 de fevereiro de 2022, do Ministério do Desenvolvimento Regional, e, especialmente, oteor da Nota Técnica nº 2/2023/SEMA - SISMA, apresentada no processo SEI nº 0820.009800.00379/2023-58,CONSIDERANDOque o regime de chuvas no Estado do Acre no primeiro semestre de 2023 foi inferior à média;CONSIDERANDOque, no Estado do Acre, o período compreendido entre os meses de maio a novembro normalmente apresenta características de baixos índices de precipitação, temperaturas elevadas, baixo percentual de umidade relativa do ar e ventos fortes;CONSIDERANDOque a diminuição abrupta das precipitações acarreta considerável redução no nível dos Rios Acre, Purus, Juruá, Tarauacá, Envira, Iaco e Moa, atingindo substancialmente o abastecimento hídrico da população, agricultura e pecuária dos municípios localizados em suas respectivas bacias;CONSIDERANDOque municípios e aldeias indígenas correm o risco de ficar totalmente isolados devido à falta de navegabilidade dos rios, ocasionando diversos problemas de abastecimento de alimentos e outros insumos a essas comunidades;CONSIDERANDOo risco de desabastecimento de medicamentos e itens de saúde nos hospitais e postos médicos dos municípios afetados;CONSIDERANDOque a diminuição das chuvas acarreta o aumento da temperatura e a queda do percentual de Umidade Relativa do Ar - URA, dentre outras variáveis ambientais que potencializam a ocorrência de queimadas descontroladas e incêndios florestais em todo o território estadual;CONSIDERANDOque, com a seca, existe um aumento das ocorrências de queimadas descontroladas e dos incêndios florestais, das concentrações de monóxido de carbono e material particulado na atmosfera, que podem acarretar agravos à saúde da população, principalmente nos grupos etários mais vulneráveis;CONSIDERANDOos efeitos do fenômeno “El Niño” nos índices pluviométricos e nas temperaturas, prolongando o período de seca nesta região;CONSIDERANDOque, de acordo com as previsões meteorológicas do Centro Gestor e Operacional do Sistema de Proteção da Amazônia - CENSIPAM e dos modelos climáticos, a situação de escassez de chuvas vai perdurar pelos próximos noventa dias;CONSIDERANDOa tendência para o agravamento da diminuição do nível dos rios e para o aumento dos focos de calor;CONSIDERANDOos prejuízos econômicos e sociais à população afetada e a imperiosidade de se resguardar a dignidade da pessoa humana, com o atendimento de suas necessidades básicas;CONSIDERANDOo risco de prejuízo pedagógico e de insegurança alimentar e nutricional aos alunos da rede pública estadual de ensino dos municípios mais afetados pela seca, ocasionado por eventual suspensão das atividades escolares, ante a impossibilidade de acesso ao estabelecimento de ensino;CONSIDERANDO, por fim, a necessidade de se adotar medidas de prevenção e preparação para hipótese de ocorrência de desastres na modalidade de incêndio e estiagem severa,DECRETA:Art. 1°Fica declarada a existência de situação anormal caracterizada como situação de emergência em decorrência do cenário de extrema seca vivenciado e da iminente possibilidade de desastre decorrente da incidência de desabastecimento do sistema de água no Estado do Acre, fenômeno classificado e codificado como desastre natural - climatológico - Seca - Estiagem - COBRADE 1.4.1.1.0.Parágrafo único.Fica a Coordenadoria Estadual de Proteção e Defesa Civil - CEPDEC constituída como unidade gestora orçamentária, podendo ordenar despesas atinentes a créditos abertos para atender atividades de apoio aos municípios que estão sofrendo os efeitos da estiagem severa.Art. 2°Fica criada Sala de Situação, sob coordenação geral da Secretaria de Estado de Governo - SEGOV e da Coordenadoria Estadual de Proteção e Defesa Civil - CEPDEC, com apoio técnico das demais instituições do Estado do Acre.Parágrafo único.A atuação de que trata o caput deverá ocorrer de forma integrada e colaborativa, dispensada a elaboração de termos específicos.Art. 3ºFica determinada a mobilização intensiva da Coordenadoria Estadual de Proteção e Defesa Civil - CEPDEC, com vista a atuar junto às autoridades estaduais na execução de atividades e ações de socorro às comunidades isoladas, bem como assistência aos municípios que sofrem os efeitos da seca.Art. 4ºFica determinada a mobilização intensiva da Secretaria de Estado do Meio Ambiente - SEMA no monitoramento e alerta de dados para subsidiar as tomadas de decisão de mitigação e adaptação aos eventos extremos.Art. 5ºFica autorizada, observada a legislação em vigor, a realização de campanhas de difusão do tema na mídia, com o objetivo de informar e sensibilizar a população sobre os riscos da atual situação ambiental.Art. 6ºEste Decreto entra em vigor na data de sua publicação, com prazo de vigência de noventa dias.Rio Branco - Acre, 5 de outubro de 2023, 135º da República, 121º do Tratado de Petrópolis e 62º do Estado do Acre.Gladson de Lima CameliGovernador do Estado do Acre                                </div>
+
+
+<section>
+    <div class="container">
+        <div class="card card-decreto box_shadow">
+            <div class="card-body">
+                <a href="https://legis.ac.gov.br/principal/1" class="btn btn-back"><i class="fad fa-chevron-circle-left"></i> Voltar</a>
+                <nav class="menu-constituicao">
+                    <div style="float: right;" class="text-warning"></div>
+                    <a style="float: right; display: none;" href="https://legis.ac.gov.br/detalhar/5756-1">Padrão</a>
+                    <a style="float: right; " href="https://legis.ac.gov.br/detalhar/5756-0">Compilado</a>
+                </nav>
+
+                <div class="exportacao" id="exportacao">
+                    <div class="topo-lei">
+                        <div class="brasao"><img src="https://legis.ac.gov.br/assets/img/brasao_acre.svg" alt=""></div>
+                        <div class="text-top">
+                            <h2>ESTADO DO ACRE</h2>
+                            <h2>SECRETARIA DE ESTADO DA CASA CIVIL</h2>
+                            <h2>Subchefia para Assuntos Jurídicos</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <p style="text-decoration: none !important; color: #007bff !important; text-align: justify; text-justify: inter-word; font-size: 12px; display: none; color: #212529; font-family: HurmeGeometricSans4, sans-serif !important;"></p>
+                            <p style="color: #007bff !important; font-size: 12px; display: none; color: #212529; font-family: HurmeGeometricSans4, sans-serif !important;"></p>
+                        </div>
+                    </div>
+
+                    <div id="body-law">
+
+                        <blockquote style="clear: both; margin-top: 10px;">
+                            <p style="margin-top: 13px; margin-bottom: 13px;" align="center"><span style="font-family: HurmeGeometricSans4, sans-serif !important; color: #000000; font-size: 16px;"><strong><span style="color: #000000;">DECRETO Nº 11.338, DE 05 DE OUTUBRO DE 2023</span></strong></span></p>
+                        </blockquote>
+
+                        <table style="width: 100% !important;" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="52%">&nbsp;</td>
+                                    <td width="48%">
+                                        <p align="justify" style="line-height: normal !important;"><span style="font-family: HurmeGeometricSans4, sans-serif !important; color: #000000;"><span style="font-family: HurmeGeometricSans4, sans-serif !important;"><span style="color: #000000; font-size: 12px; ">Dispõe sobre a situação anormal caracterizada como situação de emergência em decorrência do cenário de extrema seca vivenciado e da iminente possibilidade de desastre decorrente da incidência de desabastecimento do sistema de água no Estado do Acre.</span></span></span></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        
+                                    <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><strong><span style="font-size: 12px;">O GOVERNADOR DO ESTADO DO ACRE</span></strong><span style="font-size: 12px;"><span>, no uso das atribuições que lhe confere o art. 78, incisos IV, VI e XXI, da Constituição do Estado do Acre, tendo em vista o disposto na Portaria nº 260, de 2 de fevereiro de 2022, do Ministério do Desenvolvimento Regional, e, especialmente, o&nbsp;</span></span><span style="font-size: 12px;"><span>teor da Nota Técnica nº 2/2023/SEMA - SISMA, apresentada no processo SEI nº 0820.009800.00379/2023-58,</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;que o regime de chuvas no Estado do Acre no primeiro semestre de 2023 foi inferior à média;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;que, no Estado do Acre, o período compreendido entre os meses de maio a novembro normalmente apresenta características de baixos índices de precipitação, temperaturas elevadas, baixo percentual de umidade relativa do ar e ventos fortes;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;que a diminuição abrupta das precipitações acarreta considerável redução no nível dos Rios Acre, Purus, Juruá, Tarauacá, Envira, Iaco e Moa, atingindo substancialmente o abastecimento hídrico da população, agricultura e pecuária dos municípios localizados em suas respectivas bacias;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;que municípios e aldeias indígenas correm o risco de ficar totalmente isolados devido à falta de navegabilidade dos rios, ocasionando diversos problemas de abastecimento de alimentos e outros insumos a essas comunidades;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;o risco de desabastecimento de medicamentos e itens de saúde nos hospitais e postos médicos dos municípios afetados;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;que a diminuição das chuvas acarreta o aumento da temperatura e a queda do percentual de Umidade Relativa do Ar - URA, dentre outras variáveis ambientais que potencializam a ocorrência de queimadas descontroladas e incêndios florestais em todo o território estadual;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;que, com a seca, existe um aumento das ocorrências de queimadas descontroladas e dos incêndios florestais, das concentrações de monóxido de carbono e material particulado na atmosfera, que podem acarretar agravos à saúde da população, principalmente nos grupos etários mais vulneráveis;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;os efeitos do fenômeno “<strong>El Niño</strong>” nos índices pluviométricos e nas temperaturas, prolongando o período de seca nesta região;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;que, de acordo com as previsões meteorológicas do Centro Gestor e Operacional do Sistema de Proteção da Amazônia - CENSIPAM e dos modelos climáticos, a situação de escassez de chuvas vai perdurar pelos próximos noventa dias;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;a tendência para o agravamento da diminuição do nível dos rios e para o aumento dos focos de calor;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;os prejuízos econômicos e sociais à população afetada e a imperiosidade de se resguardar a dignidade da pessoa humana, com o atendimento de suas necessidades básicas;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>&nbsp;o risco de prejuízo pedagógico e de insegurança alimentar e nutricional aos alunos da rede pública estadual de ensino dos municípios mais afetados pela seca, ocasionado por eventual suspensão das atividades escolares, ante a impossibilidade de acesso ao estabelecimento de ensino;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>CONSIDERANDO</span></strong><span>, por fim, a necessidade de se adotar medidas de prevenção e preparação para hipótese de ocorrência de desastres na modalidade de incêndio e estiagem severa,</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>DECRETA:</span></strong></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Art. 1°</span></strong><span>&nbsp;Fica declarada a existência de situação anormal caracterizada como situação de emergência em decorrência do cenário de extrema seca vivenciado e da iminente possibilidade de desastre decorrente da incidência de desabastecimento do sistema de água no Estado do Acre, fenômeno classificado e codificado como desastre natural - climatológico - Seca - Estiagem - COBRADE 1.4.1.1.0.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Parágrafo único.</span></strong><span>&nbsp;Fica a Coordenadoria Estadual de Proteção e Defesa Civil - CEPDEC constituída como unidade gestora orçamentária, podendo ordenar despesas atinentes a créditos abertos para atender atividades de apoio aos municípios que estão sofrendo os efeitos da estiagem severa.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Art. 2°</span></strong><span>&nbsp;Fica criada Sala de Situação, sob coordenação geral da Secretaria de Estado de Governo - SEGOV e da Coordenadoria Estadual de Proteção e Defesa Civil - CEPDEC, com apoio técnico das demais instituições do Estado do Acre.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Parágrafo único.</span></strong><span>&nbsp;A atuação de que trata o <strong>caput</strong> deverá ocorrer de forma integrada e colaborativa, dispensada a elaboração de termos específicos.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Art. 3º</span></strong><span>&nbsp;Fica determinada a mobilização intensiva da Coordenadoria Estadual de Proteção e Defesa Civil - CEPDEC, com vista a atuar junto às autoridades estaduais na execução de atividades e ações de socorro às comunidades isoladas, bem como assistência aos municípios que sofrem os efeitos da seca.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Art. 4º</span></strong><span>&nbsp;Fica determinada a mobilização intensiva da Secretaria de Estado do Meio Ambiente - SEMA no monitoramento e alerta de dados para subsidiar as tomadas de decisão de mitigação e adaptação aos eventos extremos.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Art. 5º</span></strong><span>&nbsp;Fica autorizada, observada a legislação em vigor, a realização de campanhas de difusão do tema na mídia, com o objetivo de informar e sensibilizar a população sobre os riscos da atual situação ambiental.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><strong><span>Art. 6º</span></strong><span>&nbsp;Este Decreto entra em vigor na data de sua publicação, com prazo de vigência de noventa dias.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>Rio Branco - Acre, 5 de outubro de 2023, 135º da República, 121º do Tratado de Petrópolis e 62º do Estado do Acre.</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:justify;"><span style="font-size: 12px;"><span>&nbsp;</span></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:center;"><span style="font-size: 12px;"><strong><span>Gladson de Lima Cameli</span></strong></span></p><p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;text-align:center;"><span style="font-size: 12px;">Governador do Estado do Acre</span></p>                                
+                        <p>&nbsp;</p>
+
+                        <span style="font-size: 12px; color: #FF0000;" id="texto_publicado_doe">Este texto n&atilde;o substitui o publicado no DOE de 06/10/2023, republicado em 11/10/2023.</span>
+                        <!--<p style="margin-top: 20px;" mce_style="margin-top: 20px;"><span style="color: #ff0000;" mce_style="color: #ff0000;"> * </span></p>-->
+                        <p>&nbsp;</p>
+                        <div style='display: none;' class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>NOME DO ARQUIVO</th>
+                                                <th class="text-center">LINK PARA DOWNLOAD</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modal_informacao" tabindex="-1" role="dialog" aria-labelledby="visita" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fal fa-times"></i>
+                </button>
+            </div>
+            <div id="modal_body" class="modal-body">
+                <div class="profile-modal">
+                    <h4><i class="fal fa-info-circle"></i> Informações sobre a legislação</h4>
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-2">
+                            <br/>
+                            <div class="table-responsive">
+                                                                <table id="scroll_horizontal_table" class="table dataTable-collapse dataTable no-footer" role="grid" aria-describedby="user_table_info" style="width: 100%">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Decretos nº  11.338, de 05/10/2023</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr >
+                                            <td>Publicação</td>
+                                            <td>06/10/2023, republicada em 11/10/2023</td>
+                                        </tr>
+                                        <tr >
+                                            <td>Ementa</td>
+                                            <td>Dispõe sobre a situação anormal caracterizada como situação de emergência em decorrência do cenário de extrema seca vivenciado e da iminente possibilidade de desastre decorrente da incidência de desabastecimento do sistema de água no Estado do Acre.</td>
+                                        </tr>
+                                        <tr style='display: none'>
+                                            <td>Alterações</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr style='display: none'>
+                                            <td>Autoria</td>
+                                            <td> </td>
+                                        </tr>
+                                        <tr style='display: none'>
+                                            <td>Origem</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <nav class="menu-lateral">
+	<a href="">ART. 01</a>
+	<a href="">ART. 02</a>
+	<a href="">ART. 03</a>
+	<a href="">ART. 04</a>
+	<a href="">ART. 05</a>
+	<a href="">ART. 06</a>
+	<a href="">ART. 07</a>
+</nav> -->
+<section class="links">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-lg-4">
+                <h1>Relacionados</h1>
+                <ul>
+                    <li><a class="link" href="https://www.ac.gov.br/" target="_blank">Governo do Estado do Acre</a></li>
+                    <li><a class="link" href="https://www.casacivil.ac.gov.br/" target="_blank">Secretaria de Estado da Casa Civil</a></li>
+                    <li><a href="diario.ac.gov.br/" target="_blank" class="link">Diário Oficial do Estado do Acre</a></li>
+                    <li><a class="link" href="http://www.al.ac.leg.br/" target="_blank">Assembleia Legislativa do Estado do Acre</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-lg-4">
+                <h1>Serviços</h1>
+                <ul>
+                    <li><a class="link" href="https://legis.ac.gov.br/perguntas_frequentes">Perguntas Frequentes</a></li>
+                    <li><a class="link" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Reporte um erro</a></li>
+                    <li><a class="link" href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2">Fale Conosco</a></li>
+                    <li><a class="link" href="https://legis.ac.gov.br/mapa_site">Mapa do Site</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-lg-4">
+                <h1>Links Externos</h1>
+                <ul>
+                    <li><a target="_blank" href="http://www.pge.ac.gov.br/">Procuradoria Geral do Estado do Acre</a></li>
+                    <li><a target="_blank" href="https://www.mpac.mp.br/">Ministério Público do Estado do Acre</a></li>
+                    <li><a target="_blank" href="http://defensoria.ac.gov.br/">Defensoria Pública do Estado do Acre</a></li>
+                    <li><a target="_blank" href="http://mpc.tce.ac.gov.br/">Ministério Público de Contas do Acre</a></li>
+                    <li><a target="_blank" href="http://www.tce.ac.gov.br/">Tribunal de Contas do Estado do Acre</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="info">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-2 col-lg-2">
+                <span class="logo"></span>
+            </div>
+
+            <div class="col-xs-12 col-md-5 col-lg-5">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <small class="sefaz">Secretaria de Estado da Casa Civil | CASA CIVIL</small>
+                        <small>Av. Brasil, 307-447 - Centro, Rio Branco - AC</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <small>2026 Governo do Estado do Acre</small>
+                <small>Copyright Todos os direitos reservados</small>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-right">
+                <small>Secretaria de Estado da Casa Civil</small>
+                <small>Diretoria de Modernização</small>
+            </div>
+        </div>
+    </div>
+    <div class="bar gradient-gov"></div>
+</footer>
+<script src="https://legis.ac.gov.br/assets/plugins/gull-html/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="https://legis.ac.gov.br/assets/plugins/gull-html/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="https://legis.ac.gov.br/assets/plugins/gull-html/js/vendor/perfect-scrollbar.min.js"></script>
+<script src="https://legis.ac.gov.br/assets/plugins/gull-html/js/vendor/echarts.min.js"></script>
+
+<!-- Pushy -->
+<script src="https://legis.ac.gov.br/assets/js/pushy.min.js"></script>
+
+<script src="https://legis.ac.gov.br/assets/plugins/gull-html/js/es5/echart.options.min.js"></script>
+<script src="https://legis.ac.gov.br/assets/plugins/gull-html/js/es5/dashboard.v1.script.min.js"></script>
+<script src="https://legis.ac.gov.br/assets/plugins/gull-html/js/es5/script.min.js"></script>
+
+<!-- Livequery -->
+<script type="text/javascript" src="https://legis.ac.gov.br/assets/js/livequery.js"></script>
+
+<!-- JAVASCRIPT PARA PESQUISA DINÂMICA -->
+<script type="text/javascript" src="https://legis.ac.gov.br/assets/js/pesquisa_dinamica_ano.js"></script>
+
+<!-- Máscaras dos Inputs! -->
+<script src="https://legis.ac.gov.br/assets/js/jquery.maskedinput.js"></script>
+<script src="https://legis.ac.gov.br/assets/plugins/input-mask/input-mask.min.js"></script>
+
+<!-- Sweet-Alert  -->
+<script src="https://legis.ac.gov.br/assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
+
+<!-- JS UTIL -->
+<script src="https://legis.ac.gov.br/utils/utils.js" type="text/javascript"></script>
+<script src="https://legis.ac.gov.br/utils/projeto.utils.js" type="text/javascript"></script>
+
+<!-- Plugins js -->
+<script src="https://legis.ac.gov.br/assets/plugins/select2/js/select2.min.js"></script>
+
+<!-- Datepicker -->
+<script src="https://legis.ac.gov.br/assets/plugins/datepicker/datepicker.js"></script>
+
+<script type="text/javascript">
+//------------------------------------------------------------------------------
+    $('form#modal_erro').submit(function () {
+        if (formulario_validator()) {
+            window.onbeforeunload = null;
+            projetouniversal.util.getjson({
+                url: PORTAL_URL + "modal.php",
+                type: "POST",
+                data: $('form#modal_erro').serialize(),
+                enctype: 'multipart/form-data',
+                success: onSuccessSend,
+                error: onError
+            });
+            return false;
+        } else {
+            return false;
+        }
+    });
+//------------------------------------------------------------------------------
+    $('form#modal_contato').submit(function () {
+        if (formulario_validator_2()) {
+            window.onbeforeunload = null;
+            projetouniversal.util.getjson({
+                url: PORTAL_URL + "contato.php",
+                type: "POST",
+                data: $('form#modal_contato').serialize(),
+                enctype: 'multipart/form-data',
+                success: onSuccessSend,
+                error: onError
+            });
+            return false;
+        } else {
+            return false;
+        }
+    });
+
+//------------------------------------------------------------------------------
+    function onSuccessSend(obj) {
+        if (obj.msg == 'success') {
+            swal({
+                title: "Sucesso!",
+                text: "" + obj.retorno + "",
+                type: "success",
+                confirmButtonClass: "btn btn-success",
+                confirmButtonText: "Ok"
+            }).then(function () {
+                postToURL('#');
+            });
+        } else if (obj.msg == 'error') {
+            swal({
+                title: "Error!",
+                text: "" + obj.retorno + "",
+                type: "error",
+                confirmButtonClass: "btn btn-success",
+                confirmButtonText: "Ok"
+            });
+        }
+        return false;
+    }
+//------------------------------------------------------------------------------
+/* ERRO AO ENVIAR AJAX */
+    function onError(obj) {
+        swal({
+            title: "Error!",
+            text: "" + obj.retorno + "",
+            type: "error",
+            confirmButtonClass: "btn btn-success",
+            confirmButtonText: "Ok"
+        });
+        return false;
+    }
+//------------------------------------------------------------------------------ 
+function formulario_validator() {
+    var valido = true;
+    var nome = $("#nome").val();
+    var email = $("#email").val();
+    var descricao = $("#descricao").val();
+
+    var element = null;
+
+    //LIMPA MENSAGENS DE ERRO
+    $('label.error').each(function () {
+        $(this).remove();
+    });
+
+    //VERIFICANDO SE O CAMPO DESCRIÇÃO FOI INFORMADO
+    if (descricao == "") {
+        $('textarea#descricao').after('<label id="erro_descricao" class="error">Descrição é obrigatório.</label>');
+        valido = false;
+        element = $('textarea#descricao');
+    }
+
+    //VERIFICANDO SE O CAMPO EMAIL FOI INFORMADO
+    if (email == "") {
+        $('input#email').after('<label id="erro_email" class="error">Email é obrigatório.</label>');
+        valido = false;
+        element = $('input#email');
+    }
+
+    //VERIFICANDO SE O CAMPO NOME FOI INFORMADO
+    if (nome == "") {
+        $('input#nome').after('<label id="erro_nome" class="error">Nome é obrigatório.</label>');
+        valido = false;
+        element = $('input#nome');
+    }
+
+    return valido;
+}
+//------------------------------------------------------------------------------ 
+function formulario_validator_2() {
+    var valido = true;
+    var nome = $("#nome_2").val();
+    var assunto_2 = $("#assunto_2").val();
+    var email = $("#email_2").val();
+    var descricao = $("#descricao_2").val();
+
+    var element = null;
+
+    //LIMPA MENSAGENS DE ERRO
+    $('label.error').each(function () {
+        $(this).remove();
+    });
+
+    //VERIFICANDO SE O CAMPO DESCRIÇÃO FOI INFORMADO
+    if (descricao == "") {
+        $('textarea#descricao_2').after('<label id="erro_descricao_2" class="error">Descrição é obrigatório.</label>');
+        valido = false;
+        element = $('textarea#descricao_2');
+    }
+
+    //VERIFICANDO SE O CAMPO EMAIL FOI INFORMADO
+    if (email == "") {
+        $('input#email_2').after('<label id="erro_email_2" class="error">Email é obrigatório.</label>');
+        valido = false;
+        element = $('input#email_2');
+    }
+
+    //VERIFICANDO SE O CAMPO CONTATO FOI INFORMADO
+    if (assunto_2 == "") {
+        $('input#assunto_2').after('<label id="erro_assunto_2" class="error">Assunto é obrigatório.</label>');
+        valido = false;
+        element = $('input#assunto_2');
+    }
+
+    //VERIFICANDO SE O CAMPO NOME FOI INFORMADO
+    if (nome == "") {
+        $('input#nome_2').after('<label id="erro_nome_2" class="error">Nome é obrigatório.</label>');
+        valido = false;
+        element = $('input#nome_2');
+    }
+
+    return valido;
+}
+//------------------------------------------------------------------------------ 
+    var $btnAumentar = $("a#aumentar_fonte");
+    var $btnDiminuir = $("a#diminuir_fonte");
+    var $btnAnterior = $("a#anterior_fonte");
+    var $elemento = $("body#body");
+    var original = parseFloat($elemento.css('font-size'));
+
+    function obterTamnhoFonte() {
+        return parseFloat($elemento.css('font-size'));
+    }
+
+    $btnAnterior.on('click', function () {
+        $elemento.css('font-size', original);
+    });
+
+    $btnAumentar.on('click', function () {
+        if ((obterTamnhoFonte() + 1) <= (original + 3)) {
+            $elemento.css('font-size', obterTamnhoFonte() + 1);
+        }
+    });
+
+    $btnDiminuir.on('click', function () {
+        if ((obterTamnhoFonte() - 1) >= (original - 3)) {
+            $elemento.css('font-size', obterTamnhoFonte() - 1);
+        }
+    });
+//------------------------------------------------------------------------------    
+</script>
+</body>
+</html>
+
+<!--ADD PERFECT SCROLLBAR TO CONTAINER-->
+<script>
+    new PerfectScrollbar('#menu_sumario');
+</script>
+
+<!-- JS -->
+<script type="text/javascript" src="https://legis.ac.gov.br/detalhar.js"></script>
