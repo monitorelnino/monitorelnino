@@ -45,7 +45,7 @@ import urllib.error
 import urllib.parse
 import xml.etree.ElementTree as ET
 
-from coletores_base import (buscar_uma_vez, ler, gravar, hoje_editorial, referencia_ibge,
+from coletores_base import (buscar_uma_vez, ler, gravar, hoje_editorial, referencia_ibge, pela_ponte,
                             rodar_autoteste, registrar_lacuna, MuroDeRobo)
 from descobrir_planos import dominios_do_municipio, identifica_prefeitura, RECUSAS_DE_FONTE
 from consultar_querido_diario import STATUS_DA_PISTA, APIS as APIS_QD
@@ -381,7 +381,13 @@ def resolver_dominio(nome: str, uf: str, ibge: str, buscar, tentativas: list = N
     `tentativas` recebe (endereço, situação, motivo) de cada um que não serviu."""
     for d in CANDIDATOS_EXTRA.get(ibge, []) + dominios_do_municipio(nome, uf):
         try:
-            if identifica_prefeitura(buscar(f"https://{d}/", 15).decode("utf-8", "replace"), nome):
+            try:
+                corpo = buscar(f"https://{d}/", 15)
+            except Exception as e:  # noqa: BLE001 — 403 ou silêncio para o robô de fora: a cópia da ponte no Brasil (26/11/2026)
+                corpo = pela_ponte(f"https://{d}/", e, "buscar_planos_fontes_abertas")
+                if corpo is None:
+                    raise
+            if identifica_prefeitura(corpo.decode("utf-8", "replace"), nome):
                 return d
             r = ("nao_identifica", "responde, mas não se diz a prefeitura")
         except Exception as e:  # noqa: BLE001 — DNS, TLS, timeout, recusa: o endereço não serve; tenta o próximo
@@ -557,6 +563,17 @@ def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int
 
 # ---- autoteste (offline; não escreve em data/) ---------------------------------------------------
 def autoteste() -> int:
+    # A ponte é rede e escrita em `data/ponte_pedidos.json`: no autoteste, sem pedido; a cópia vem de `copias`.
+    global pela_ponte
+    da_producao, copias = pela_ponte, {}
+    pela_ponte = lambda url, e, origem=None, pedir=True: copias.get(url)
+    try:
+        return _autoteste(copias)
+    finally:
+        pela_ponte = da_producao
+
+
+def _autoteste(copias) -> int:
     import pathlib
     wb = json.dumps([["original", "timestamp", "mimetype"],
                      ["http://x.gov.br/docs/PLANCON-2025.pdf", "20250101000000", "application/pdf"],
@@ -631,6 +648,10 @@ def autoteste() -> int:
             and um(["S13"], {**base, "lexml": TimeoutError("t")})["S13"]["situacao"] == "erro"),
         "resposta sem achado registra a consulta (sem_resultado)": lambda: (lambda r: r["situacao"] == "sem_resultado" and r["consulta"].startswith("https://dados.gov.br"))(um(["S29"], {**base, "dados.gov.br": json.dumps({"success": True, "result": {"results": []}}).encode()})["S29"]),
         "domínio que não se identifica como prefeitura: busca não feita": lambda: um(["S16"], {**base, "alfa.xx.gov.br": b"<html>outra coisa</html>"})["S16"]["situacao"] == "dominio_nao_verificado",
+        "403 ao robô de fora com cópia do Brasil: o domínio se confirma e o arquivo da web é lido": lambda: (
+            copias.update({"https://alfa.xx.gov.br/": home}),
+            um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"],
+            copias.clear())[1] == "lido",
         "domínio que recusa (403) sem ninguém responder é recusa nomeada, não 'não verificado'": lambda: (
             um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "recusa_de_fonte"
             and um(["S16"], {"//www.alfa.xx.gov.br": b"<html>outra</html>", **{k: v for k, v in base.items() if k != "alfa.xx.gov.br"}, "//alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "dominio_nao_verificado"
