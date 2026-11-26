@@ -1,0 +1,13 @@
+{
+ "_governanca": "Portais de prefeitura feitos em plataforma que guarda os arquivos no domínio do fornecedor. O arquivo é do município quando o código de cliente no endereço é o mesmo que o portal oficial do município usa em todas as suas páginas; a prova é a página oficial que o publica. Lido por scripts/municipio_do_dominio.py (arquivo_de_portal). Central, 26/11/2026.",
+ "plataformas": {
+  "ecrie.com.br": {
+   "padrao": "^/sistema/conteudos/(?:arquivo|imagem)/[a-z]_(\\d+)_",
+   "clientes": {
+    "270": {"ibge": "3513603", "municipio": "Cunha", "uf": "SP", "prova": "https://cunha.sp.gov.br/noticias/geral/plancon-plano-de-contingencia-de-protecao-e-defesa-civil-", "visto_em": "2026-11-26"},
+    "253": {"ibge": "3536000", "municipio": "Parapuã", "uf": "SP", "prova": "https://parapua.sp.gov.br/acesso-rapido/pcpdc-plano-de-contingencia-de-protecao-e-defesa-civil", "visto_em": "2026-11-26"},
+    "57": {"ibge": "3507605", "municipio": "Bragança Paulista", "uf": "SP", "prova": "https://www.braganca.sp.gov.br/secretarias-municipais/seguranca-e-defesa-civil/plano-de-contingencia-do-municipio", "visto_em": "2026-11-26"}
+   }
+  }
+ }
+}

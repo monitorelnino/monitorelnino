@@ -131,6 +131,31 @@ PLATAFORMAS_MUNICIPAIS = ("atende.net", "portaltp.com.br", "equiplano.com.br", "
                           "basemunicipal.com")
 
 
+_ARQUIVOS_DE_PORTAL = None
+
+
+def arquivo_de_portal(url: str, referencia=None, registro=None):
+    """O município dono de um arquivo guardado no domínio do fornecedor do portal (e-Crie: `ecrie.com.br/sistema/
+    conteudos/arquivo/a_<cliente>_…`), ou None. O cliente é o do portal oficial que publica o arquivo, conferido na
+    página oficial (`config/arquivos_de_portal.json`). 26/11/2026: os planos de Cunha, Parapuã e Bragança Paulista
+    estão nesse domínio, linkados pelas páginas oficiais, e a porta os recusava como "domínio não oficial"."""
+    global _ARQUIVOS_DE_PORTAL
+    if registro is None:
+        if _ARQUIVOS_DE_PORTAL is None:
+            arq = RAIZ / "config" / "arquivos_de_portal.json"
+            _ARQUIVOS_DE_PORTAL = json.loads(arq.read_text(encoding="utf-8")).get("plataformas", {}) if arq.exists() else {}
+        registro = _ARQUIVOS_DE_PORTAL
+    partes = urllib.parse.urlsplit(str(url or ""))
+    host = partes.netloc.lower().split(":")[0]
+    host = host[4:] if host.startswith("www.") else host
+    plat = registro.get(host)
+    m = plat and re.match(plat["padrao"], partes.path)
+    cliente = m and plat["clientes"].get(m.group(1))
+    if not cliente:
+        return None
+    return next((v for v in _indice(referencia).values() if v["ibge"] == cliente["ibge"]), None)
+
+
 def municipio_fora_do_gov_br(host: str, referencia=None):
     """O município do sítio oficial fora de `.gov.br`, ou None. Função pura dada a referência. O nome tem de
     casar inteiro; sem UF no host, só vale se um único município do país tem esse nome."""
@@ -233,6 +258,9 @@ def municipio_de(url: str, referencia=None, camara: bool = False):
 
     O único resolvedor de domínio do repositório (10/11/2026: o `buscador2.py` tinha o seu, e os dois
     davam respostas diferentes para `codesal.salvador.ba.gov.br`)."""
+    dono = arquivo_de_portal(url, referencia)
+    if dono:
+        return dono
     host = urllib.parse.urlparse(str(url or "")).netloc or str(url or "")
     host = host.split("@")[-1].split(":")[0].lower()
     indice = _indice(referencia)
@@ -283,6 +311,13 @@ def _autoteste() -> int:
         {"nome": "Leme", "uf": "SP", "codigo_ibge": 3526704},
         {"nome": "Encantado", "uf": "RS", "codigo_ibge": 4306809},
     ]
+    REG = {"ecrie.com.br": {"padrao": "^/sistema/conteudos/(?:arquivo|imagem)/[a-z]_(\\d+)_",
+                            "clientes": {"270": {"ibge": "4217808"}}}}
+    ok("arquivo do portal no domínio do fornecedor é do município do cliente; outro cliente e outro caminho, de ninguém",
+       (arquivo_de_portal("https://ecrie.com.br/sistema/conteudos/arquivo/a_270_0_1_18112026163022.pdf", REF, REG) or {}).get("nome") == "Taió"
+       and arquivo_de_portal("https://ecrie.com.br/sistema/conteudos/arquivo/a_999_0_1_1.pdf", REF, REG) is None
+       and arquivo_de_portal("https://ecrie.com.br/outro/a_270_0_1_1.pdf", REF, REG) is None
+       and arquivo_de_portal("https://www.ecrie.com.br/sistema/conteudos/imagem/i_270_0_1_1.jpg", REF, REG) is not None)
 
     ok("host municipal simples",
        (municipio_de("https://celsoramos.sc.gov.br/uploads/x.pdf", REF) or {}).get("nome") == "Celso Ramos")
