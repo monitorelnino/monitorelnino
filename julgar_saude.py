@@ -56,6 +56,7 @@ from coletar_saude_estadual import UFS, oficial
 from coletores_base import MuroDeRobo, buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
 from julgar_e_aplicar_descobertas import com_ocr, obter_documento
 from julgar_filas import julgar_lista
+from preservar_evidencias import tesseract_disponivel
 
 FILA = "pistas_imprensa_saude.json"
 ALVO = "saude_uf.json"
@@ -774,7 +775,9 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
 
 
 # Falha de rede é PENDENTE: não grava veredito e volta na rodada seguinte; o host mudo sai da rodada em `coletores_base.buscar`.
-PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError)")
+# 26/11/2026: falha de leitura não é veredito. O 5xx é serviço fora do ar, e o PDF escaneado lido por executor
+# sem OCR não foi lido; os dois voltam. O veredito antigo sem o código do HTTP volta uma vez e passa a tê-lo.
+PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError [1-4]\d\d$)|^documento sem texto extraível \(PDF sem OCR\?\)")
 
 
 def copia_preservada(su: dict):
@@ -796,8 +799,10 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     try:   # 18/11/2026: o leitor do juiz municipal (fonte, ponte, pasta do RS e cópia pública)
         corpo = obter_documento(url or "", 150, "julgar_saude", buscar_fn=buscar_fn)
     except Exception as e:  # noqa: BLE001
-        recusa = isinstance(e, (urllib.error.HTTPError, MuroDeRobo))
-        falha = {"promove": False, "pendente": not recusa, "uf": uf, "motivo": f"documento não baixado: {type(e).__name__}"}
+        codigo = getattr(e, "code", None) if isinstance(e, urllib.error.HTTPError) else None
+        recusa = isinstance(e, MuroDeRobo) or (codigo is not None and codigo < 500)
+        falha = {"promove": False, "pendente": not recusa, "uf": uf,
+                 "motivo": f"documento não baixado: {type(e).__name__}" + (f" {codigo}" if codigo else "")}
     if falha:
         # Fonte que não abre para o runner não impede reler a cópia preservada do mesmo endereço.
         copia = copia_de and copia_de(url)
@@ -807,7 +812,9 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     else:
         texto = com_ocr(corpo, texto_do_documento(corpo, url))
     if not texto.strip():
-        return {"promove": False, "motivo": "documento sem texto extraível (PDF sem OCR?)", "uf": uf}
+        sem_ocr = (corpo or b"")[:5] == b"%PDF-" and not tesseract_disponivel()
+        return {"promove": False, "pendente": sem_ocr, "uf": uf,
+                "motivo": "documento sem texto extraível" + (" (PDF sem OCR?)" if sem_ocr else "")}
     institui = o_que_institui(texto)
     # O plano de contingência estadual de saúde é, na maioria dos estados, um DOCUMENTO TÉCNICO:
     # ele traz título, ano e órgão, e o ato que o aprova é outro papel. O juiz tem exceção
@@ -1496,9 +1503,19 @@ def autoteste() -> int:
     casos["PI: fonte que não abre relê a cópia preservada do mesmo endereço; sem cópia segue pendente"] = (
         lambda: _vc.get("pendente") is None and _vc.get("hash_evidencia") in ("h0", None) and _vn["pendente"])
     casos["F68: HTTP 404 é recusa, não pendente"] = lambda: v3["pendente"] is False
-    casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP não"] = (
+    casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP 4xx não"] = (
         lambda: PAD_FALHA_DE_REDE.match("documento não baixado: URLError")
-        and not PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError"))
+        and not PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError 404"))
+
+    def fora_do_ar(u, **k):
+        raise urllib.error.HTTPError(u, 503, "x", {}, None)
+    _v5 = julgar_pista({"url": "https://www.saude.ba.gov.br/p.pdf", "uf": "BA"}, buscar_fn=fora_do_ar)
+    casos["HTTP 503 é serviço fora do ar: pendente, com o código no motivo, e volta à fila"] = (
+        lambda: _v5["pendente"] and _v5["motivo"].endswith("HTTPError 503") and PAD_FALHA_DE_REDE.match(_v5["motivo"]))
+    casos["veredito antigo de HTTP sem código e de PDF sem OCR voltam uma vez; sem texto com OCR é recusa"] = (
+        lambda: PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError")
+        and PAD_FALHA_DE_REDE.match("documento sem texto extraível (PDF sem OCR?)")
+        and not PAD_FALHA_DE_REDE.match("documento sem texto extraível"))
     return rodar_autoteste(casos)
 
 

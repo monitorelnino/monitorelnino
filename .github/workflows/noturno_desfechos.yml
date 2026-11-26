@@ -29,6 +29,7 @@ jobs:
     with:
       nome: desfechos
       timeout_minutos: 100
+      precisa_tesseract: true
       comandos: |
         coletar_datasus_dbc.py --desfecho leptospirose
         coletar_datasus_dbc.py --desfecho malaria
@@ -41,6 +42,8 @@ jobs:
         coletar_sih.py --orcamento 2400
         coletar_planos_arboviroses.py --orcamento 1500
         ler_planos_arboviroses.py
+        # 26/11/2026: o juiz municipal de saúde rodava só à mão (16/11); pista nova do coletor ficava sem veredito.
+        julgar_saude_municipal.py
         reconferir_instrumentos_federais.py --aplicar
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

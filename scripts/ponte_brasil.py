@@ -5,7 +5,7 @@ Editoria, 15/11/2026: o domínio to.gov.br inteiro (Semarh, Naturatins, CBMTO, D
 saude.ap.gov.br e saude.rn.gov.br esgotam o tempo ou dão rede inalcançável para os servidores do GitHub,
 e abrem normalmente de um computador no Brasil. A cópia é trazida de lá, com o cliente identificado,
 e guardada endereçada pelo sha256 em `ponte/`; `coletores_base.buscar` a usa quando a conexão nem
-vira conversa HTTP (timeout, DNS, rede). Recusa (401, 403, 429, 451, captcha, login, muro) nunca
+vira conversa HTTP (timeout, DNS, rede) ou responde 403 ao robô de fora. Recusa (401, 429, 451, captcha, login, muro, 403 no Brasil) nunca
 chega aqui: a fonte respondeu "não", e isso se respeita.
 
 Página (não PDF) passa pela mesma redação da evidência preservada antes de ser guardada: credencial e
@@ -324,8 +324,10 @@ def autoteste() -> int:
         "timeout e rede inalcançável caem na cópia da ponte": lambda: com_ponte(TimeoutError()) == pdf
             and com_ponte(urllib.error.URLError("[Errno 101] Network is unreachable")) == pdf
             and com_ponte(http.client.IncompleteRead(b"")) == pdf,
-        "recusa da fonte (403, 451) nunca cai na cópia": lambda: com_ponte(
-            urllib.error.HTTPError("u", 403, "x", {}, None)) == "HTTPError"
+        "403 visto de fora lê a cópia que o Brasil trouxe; sem cópia sobe; 401 e 451 nunca caem na cópia": lambda: com_ponte(
+            urllib.error.HTTPError("u", 403, "x", {}, None)) == pdf
+            and com_ponte(urllib.error.HTTPError("u", 403, "x", {}, None), copia=False) == "HTTPError"
+            and com_ponte(urllib.error.HTTPError("u", 401, "x", {}, None)) == "HTTPError"
             and com_ponte(urllib.error.HTTPError("u", 451, "x", {}, None)) == "HTTPError",
         "sem cópia registrada, o erro sobe": lambda: com_ponte(TimeoutError(), copia=False) == "TimeoutError",
         "autoteste com falha de rede não vira pedido": lambda: (com_ponte(TimeoutError(), copia=False),
