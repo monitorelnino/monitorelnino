@@ -54,7 +54,7 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed, wait as _esperar
 
 import funil
-from coletores_base import (RAIZ, buscar, buscar_uma_vez, copia_da_ponte, pedir_a_ponte, sem_conversa_http,
+from coletores_base import (RAIZ, buscar, buscar_uma_vez, pela_ponte,
                             preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo,
@@ -258,6 +258,16 @@ def fatia_da_noite(alvos: list, limite: int, dia: int) -> list:
 
 
 def autoteste() -> int:
+    # A ponte é rede e escrita em `data/ponte_pedidos.json`: no autoteste, sem cópia e sem pedido (o caso da cópia troca-a).
+    global pela_ponte
+    da_producao, pela_ponte = pela_ponte, (lambda url, e, origem=None, pedir=True: None)
+    try:
+        return _autoteste()
+    finally:
+        pela_ponte = da_producao
+
+
+def _autoteste() -> int:
     def t_dominio_conhecido():
         return dominio_para("BA", "saude") == "saude.ba.gov.br"
 
@@ -399,6 +409,16 @@ def autoteste() -> int:
         return (pl["origem"] == "descoberta" and pl["ibge"] == "5002209"
                 and pl["documento_oficial_confirmado"] is None and pl["promovivel"] is False
                 and motivo_de_recusa(normalizar(pl)) == "")
+
+    def t_403_de_fora_le_a_copia_do_brasil():
+        import unittest.mock as mock
+        import urllib.error
+        e403 = urllib.error.HTTPError("https://x", 403, "Forbidden", {}, None)
+        pagina = "<html><title>Prefeitura Municipal de Bonito</title><body>Prefeitura de Bonito</body></html>".encode()
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=e403), mock.patch(f"{__name__}.registrar_lacuna"), \
+             mock.patch(f"{__name__}.pela_ponte", side_effect=lambda url, e, origem=None, pedir=True: pagina):
+            r = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
+        return r["situacao"] != "recusa_de_fonte" and r["dominio"]
 
     def t_portal_recusa_e_ausencia_nao_viram_plano():
         import unittest.mock as mock
@@ -549,6 +569,42 @@ def autoteste() -> int:
         # e não foi gravado, o 1 foi gravado, e a gravação aconteceu uma vez.
         return "1" in feitos and "3" not in feitos and set(feitos) <= {"1", "2", "4"} and len(lotes) == 1
 
+    def t_prazo_nao_espera_o_portal_lento():
+        """26/11/2026: o portal em curso no prazo não segura a gravação além de ESPERA_NO_PRAZO."""
+        import unittest.mock as mock
+        import tempfile
+        import threading
+        import time as _t
+        gravados, solta = {}, threading.Event()
+
+        def lido(nome, uf, cod, hoje, oficial=None, busca=None):
+            if cod == "2":
+                _t.sleep(0.05)
+                raise KeyboardInterrupt()
+            if cod == "3":
+                solta.wait(5)   # o portal lento
+            return {"dominio": "x", "situacao": "lido", "pistas": []}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
+            json.dump({"fila": ["1", "2", "3"]}, f)
+        ref = {c: {"nome": f"M{c}", "uf": "XX"} for c in "123"}
+        inicio = _t.monotonic()
+        with mock.patch(f"{__name__}.referencia_ibge", return_value=(ref, None)), \
+             mock.patch(f"{__name__}.hoje_editorial", return_value=__import__("datetime").date(2026, 10, 22)), \
+             mock.patch(f"{__name__}.ler", return_value={"municipios": {}}), \
+             mock.patch(f"{__name__}.gravar", side_effect=lambda n, o, compacto=False: gravados.update({n: o})), \
+             mock.patch(f"{__name__}.log_busca"), \
+             mock.patch(f"{__name__}.ESPERA_NO_PRAZO", 0.2), \
+             mock.patch(f"{__name__}.enderecos_oficiais", return_value={}), \
+             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lido), \
+             mock.patch("scripts.pistas.gravar_lote", side_effect=lambda p, origem="": {"gravadas": 0, "recusadas": 0}):
+            rodar_municipios(f.name)
+        gastou = _t.monotonic() - inicio
+        solta.set()
+        import os
+        os.unlink(f.name)
+        feitos = gravados.get(RESULTADO_DA_RODADA, {}).get("municipios", {})
+        return gastou < 3 and "3" not in feitos and RESULTADO_DA_RODADA in gravados
+
     def t_rota_1b_busca_no_dominio():
         """Sem portal pelo endereço padrão, a busca aponta o `.gov.br`; só vale se a home se identifica. Busca fora
         do ar é tentativa (`portal_nao_verificado`), nunca ausência; link só do próprio domínio."""
@@ -696,8 +752,10 @@ def autoteste() -> int:
         "portal da prefeitura: a pista passa pela porta única": t_pista_do_portal_passa_pela_porta,
         "portal da prefeitura: recusa e endereço mudo não viram plano nem ausência de plano": t_portal_recusa_e_ausencia_nao_viram_plano,
         "portal da prefeitura: wp-json e links, sem escrever em data/": t_portal_le_wp_json_e_links_sem_escrever,
+        "403 visto de fora: com a cópia que a ponte trouxe do Brasil, o portal é lido e não vira recusa": t_403_de_fora_le_a_copia_do_brasil,
         "pausa por host em paralelo: nunca dois pedidos ao mesmo host sem a pausa": t_pausa_por_host_em_paralelo,
         "rodada de municípios: retoma no dia e grava o lido no prazo": t_rodada_de_municipios_retoma_e_grava_no_prazo,
+        "prazo: o portal lento não segura a gravação além da espera curta": t_prazo_nao_espera_o_portal_lento,
         "bateria: fora de municipal_completo primeiro, capital e depois população": t_ordem_da_bateria,
     })
 
@@ -1041,6 +1099,9 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                         corpo = buscar_uma_vez(f"{esquema}://{d}/", timeout=15)
                     break
                 except urllib.error.HTTPError as e:
+                    corpo = pela_ponte(f"{esquema}://{d}/", e, "descobrir_planos")   # 403 visto de fora: a sonda decide
+                    if corpo is not None:
+                        break
                     if e.code in RECUSAS_DE_FONTE:
                         recusa = f"HTTP {e.code}"
                     else:
@@ -1052,11 +1113,9 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                 except Exception as e:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve neste esquema
                     # 18/11/2026: o portal que não conversa com o robô de fora do país se lê pela cópia da ponte no
                     # Brasil; sem cópia, vira pedido a ela (nome que não resolve, recusa e muro nunca).
-                    if sem_conversa_http(e):
-                        corpo = copia_da_ponte(f"{esquema}://{d}/")[0]
-                        if corpo is not None:
-                            break
-                        pedir_a_ponte(f"{esquema}://{d}/", "descobrir_planos")
+                    corpo = pela_ponte(f"{esquema}://{d}/", e, "descobrir_planos")
+                    if corpo is not None:
+                        break
                     falhas.append(f"{esquema}://{d}: {nome_da_falha(e)}")
             if recusa:
                 registrar_lacuna(f"portal de {nome}/{uf}", f"recusa {recusa} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
@@ -1181,6 +1240,9 @@ def ordem_da_bateria(codigos: list, por_cod: dict, niveis: dict, pop: dict) -> l
     return sorted(codigos, key=lambda c: (niveis.get(c) == "municipal_completo", rank.get(c, len(rank))))
 
 
+ESPERA_NO_PRAZO = 20   # segundos; abaixo dos 60 s de cortesia do invólucro (`saude_pipeline`), com folga para gravar
+
+
 def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parados: bool = False,
                      fatia_k_n: tuple = (1, 1)) -> int:
     """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
@@ -1226,21 +1288,24 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parad
             return {"dominio": None, "situacao": "nao_verificado", "pistas": [],
                     "motivo": f"defeito do coletor: {type(e).__name__}: {str(e)[:120]}"}
 
-    with ThreadPoolExecutor(max_workers=WORKERS_MUNICIPAIS) as pool:
-        futuros = {pool.submit(_um, c): c for c in todo}
-        try:
-            for f in as_completed(futuros):
-                _registrar(futuros[f], f.result())
-        except KeyboardInterrupt:
-            # Prazo: os que ainda não começaram ficam para depois; os em curso terminam (pedidos com
-            # timeout) e entram no que foi lido, em vez de serem refeitos no próximo dia.
-            print("[prazo] interrompido; gravando o que foi lido.")
-            for f in futuros:
-                f.cancel()
-            _esperar(futuros)
-            for f, cod in futuros.items():
-                if not f.cancelled() and cod not in gravados and f.exception() is None:
-                    _registrar(cod, f.result())
+    pool = ThreadPoolExecutor(max_workers=WORKERS_MUNICIPAIS)
+    futuros = {pool.submit(_um, c): c for c in todo}
+    try:
+        for f in as_completed(futuros):
+            _registrar(futuros[f], f.result())
+    except KeyboardInterrupt:
+        # Prazo: o invólucro dá 60 s entre o SIGINT e o SIGKILL. Os que não começaram ficam para depois; os em
+        # curso têm ESPERA_NO_PRAZO s e o resto é refeito no dia seguinte. 26/11/2026: esperar todos os em curso
+        # (portal com render) passou dos 60 s, o SIGKILL chegou antes da gravação e 157 min de leitura se perderam.
+        print("[prazo] interrompido; gravando o que foi lido.", flush=True)
+        for f in futuros:
+            f.cancel()
+        _esperar(futuros, timeout=ESPERA_NO_PRAZO)
+        for f, cod in futuros.items():
+            if f.done() and not f.cancelled() and cod not in gravados and f.exception() is None:
+                _registrar(cod, f.result())
+    finally:
+        pool.shutdown(wait=False, cancel_futures=True)
     balanco = gravar_lote(pistas, origem="descoberta")
     feitos["gerado_em"] = hoje
     gravar(RESULTADO_DA_RODADA, feitos)

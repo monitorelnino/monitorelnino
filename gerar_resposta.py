@@ -16,7 +16,7 @@ Fatia "evento observado" (C16): até existir o adaptador municipal (Cemaden por 
 Frase C18 obrigatória em toda superfície: FRASE_C18.
   python gerar_resposta.py --autoteste
 """
-import json, statistics, sys
+import json, re, statistics, sys
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -68,6 +68,39 @@ def fora_do_ciclo_(ev: dict) -> bool:
     return (d is None or d < INICIO_CICLO) and (d_rec is None or d_rec < INICIO_CICLO)
 
 
+# 26/11/2026 (editoria): o tipo de declaração e o nível de intensidade que a regra permite afirmar
+# (Portaria MDR nº 260/2022, art. 5º). Calamidade pública é nível III. Situação de emergência é nível I ou II,
+# e o nível I não pede reconhecimento federal (§1º): emergência reconhecida pela União é nível II. Emergência
+# sem reconhecimento fica sem nível — o decreto não o informa aqui, e o nível não se presume.
+_CALAMIDADE = re.compile(r"estado\s+de\s+calamidade\s+p[úu]blica", re.I)
+_EMERGENCIA = re.compile(r"situa[çc][ãa]o\s+de\s+emerg[êe]ncia", re.I)
+DECLARACOES = ("situacao_de_emergencia", "estado_de_calamidade_publica")
+
+
+def declaracao_do_evento(ev: dict):
+    """Tipo de declaração que o ato diz, ou None. O reconhecimento federal só tem tipo quando o coletor o leu
+    no próprio ato (`declaracao`); o decreto, quando o seu texto registrado o nomeia. Função pura."""
+    if ev.get("declaracao") in DECLARACOES:
+        return ev["declaracao"]
+    if tipo_do_evento(ev) == "reconhecimento_federal":
+        return None
+    texto = " ".join(str(ev.get(k) or "") for k in ("decreto", "causa", "decreto_municipal"))
+    if _CALAMIDADE.search(texto):
+        return "estado_de_calamidade_publica"
+    if _EMERGENCIA.search(texto):
+        return "situacao_de_emergencia"
+    return None
+
+
+def nivel_de_intensidade(declaracoes: set, emergencia_reconhecida: bool):
+    """'III' | 'II' | None pela regra da Portaria MDR nº 260/2022, art. 5º. Função pura."""
+    if "estado_de_calamidade_publica" in declaracoes:
+        return "III"
+    if emergencia_reconhecida:
+        return "II"
+    return None
+
+
 def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     """{ibge: {decreto, primeiro_decreto, tipos, reconhecido, decretado, evento_observado, evento_declarado,
     dias_ate_reconhecimento, fontes}} para os 5.571. Reconhecido = DOU/SEDEC ou decreto_reconhecido em
@@ -78,7 +111,8 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         out[str(r["ibge"]).zfill(7)] = {"ibge": str(r["ibge"]).zfill(7), "nome": r.get("nome"), "uf": r.get("uf"), "decreto": False,
                                        "primeiro_decreto": None, "primeiro_reconhecimento": None, "tipos": [], "reconhecido": False, "decretado": False, "decreto_anterior_ao_ciclo": False,
                                        "evento_observado": "em_classificacao", "evento_declarado": [], "dias_ate_reconhecimento": None,
-                                       "fontes": [], "n_eventos": 0}
+                                       "fontes": [], "n_eventos": 0, "declaracao": None, "nivel_intensidade": None,
+                                       "_declaracoes": set(), "_emergencia_reconhecida": False}
     # 08/10/2026 (A3-01): evento sem `ibge` era descartado em SILÊNCIO pelo `continue`. Oito
     # eventos de canal `orgao_estadual` não traziam o código, e três deles — Itaúba, Colniza e
     # Várzea Grande, todos MT — não tinham nenhum outro evento: sumiam do contador. MT publicava
@@ -129,6 +163,11 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         if t == "reconhecimento_federal": m["reconhecido"] = True
         else: m["decretado"] = True
         if t not in m["tipos"]: m["tipos"].append(t)
+        dec = declaracao_do_evento(ev)
+        if dec:
+            m["_declaracoes"].add(dec)
+            if t == "reconhecimento_federal" and dec == "situacao_de_emergencia":
+                m["_emergencia_reconhecida"] = True
         fam = tipo_ou_sem_informacao(ev)
         if fam not in m["evento_declarado"]: m["evento_declarado"].append(fam)
         if d and (m["primeiro_decreto"] is None or d < data_br(m["primeiro_decreto"])): m["primeiro_decreto"] = d.strftime("%d/%m/%Y")
@@ -147,7 +186,11 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     if fora_do_ciclo:
         print(f"  · {fora_do_ciclo} ato(s) anteriores a {INICIO_CICLO.strftime('%d/%m/%Y')}, fora do contador do ciclo")
     for m in out.values():
+        decl, rec = m.pop("_declaracoes"), m.pop("_emergencia_reconhecida")
         if not m["decreto"]: continue
+        m["declaracao"] = ("estado_de_calamidade_publica" if "estado_de_calamidade_publica" in decl
+                           else "situacao_de_emergencia" if decl else None)
+        m["nivel_intensidade"] = nivel_de_intensidade(decl, rec)
         # 17/10/2026 (HANDOVER_DEFESA_CIVIL §8): o tipo vem do ato; família real antes de
         # "sem tipo", que só fica quando nenhum ato casado declara o evento.
         fams = sorted(f for f in m["evento_declarado"] if f != "sem_tipo_informado")
@@ -338,7 +381,27 @@ def autoteste() -> int:
         return (m["0000001"]["primeiro_decreto"] == "10/07/2026"
                 and m["0000001"]["primeiro_reconhecimento"] == "20/07/2026")
 
-    return rodar_autoteste({"A3-07: data do decreto, nao da portaria": t9,
+    def t15():
+        """Nível pela Portaria MDR 260/2022, art. 5º: calamidade é III; emergência reconhecida é II; emergência sem
+        reconhecimento e reconhecimento sem tipo lido ficam sem nível; texto sem a palavra não dá tipo."""
+        V4 = [{"ibge": str(i), "nome": n, "uf": "PA", "decreto_reconhecido": None} for i, n in ((11, "K"), (12, "L"), (13, "M"), (14, "N"))]
+        E4 = [{"ibge": "11", "uf": "PA", "data": "01/10/2026", "causa": "reconhecimento federal", "canal": "DOU",
+               "declaracao": "situacao_de_emergencia"},
+              {"ibge": "12", "uf": "PA", "data": "01/10/2026", "causa": "reconhecimento federal", "canal": "DOU",
+               "declaracao": "situacao_de_emergencia"},
+              {"ibge": "12", "uf": "PA", "data": "05/10/2026", "causa": "reconhecimento federal", "canal": "DOU",
+               "declaracao": "estado_de_calamidade_publica"},
+              {"ibge": "13", "uf": "PA", "data": "01/10/2026", "causa": "situação de emergência", "canal": "DOM"},
+              {"ibge": "14", "uf": "PA", "data": "01/10/2026", "causa": "reconhecimento federal", "canal": "DOU"}]
+        m4 = consolidar_municipios(E4, V4)
+        par = lambda k: (m4[k]["declaracao"], m4[k]["nivel_intensidade"])
+        return (par("0000011") == ("situacao_de_emergencia", "II") and par("0000012") == ("estado_de_calamidade_publica", "III")
+                and par("0000013") == ("situacao_de_emergencia", None) and par("0000014") == (None, None)
+                and declaracao_do_evento({"causa": "chuva", "decreto": "Decreto nº 1"}) is None
+                and "_declaracoes" not in m4["0000011"] and m["0000002"]["nivel_intensidade"] is None)
+
+    return rodar_autoteste({"nível de intensidade pela Portaria MDR 260/2022, art. 5º": t15,
+                            "A3-07: data do decreto, nao da portaria": t9,
                             "A3-07: sem data de decreto, a do evento serve": t10,
                             "município: decretado + reconhecido, primeiro decreto": t1, "reconhecido só pelo S2iD conta; ibge fora do universo ignorado": t2,
                             "UF: fração de municípios e de população": t3, "fatias em_classificacao e tons": t4, "série desde 29/06 com defeso": t5,

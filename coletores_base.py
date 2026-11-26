@@ -667,9 +667,11 @@ def _dominio_publico(url: str) -> bool:
     if h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h:
         return True
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "scripts"))
-    from municipio_do_dominio import _host, diarios_estaduais, municipio_fora_do_gov_br
-    # imprensa oficial fora de .gov.br (IOERJ); e o sítio oficial do município fora de .gov.br (17/11/2026)
-    return _host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
+    from municipio_do_dominio import _host, arquivo_de_portal, diarios_estaduais, municipio_fora_do_gov_br
+    # imprensa oficial fora de .gov.br (IOERJ); o sítio oficial do município fora de .gov.br (17/11/2026); e o arquivo
+    # que o portal oficial guarda no domínio do fornecedor (26/11/2026)
+    return (_host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
+            or arquivo_de_portal(url) is not None)
 
 
 def setor_da_url(url: str) -> str:
@@ -1656,15 +1658,11 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
         sem_resposta = _SEM_RESPOSTA if buscar_fn is None else {}
     try:
         return _na_rodada(url, uma_vez, sem_resposta, dormir)
-    except urllib.error.HTTPError:
-        raise   # a fonte respondeu "não": recusa, que nenhuma cópia substitui
-    except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead):
+    except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead) as e:
         # 15/11/2026 (editoria): o servidor público que não responde ao robô de fora do Brasil
         # (to.gov.br, saude.ap.gov.br, saude.rn.gov.br) é lido pela ponte no Brasil, cliente identificado.
-        copia, _ = copia_da_ponte(url)
+        copia = pela_ponte(url, e, origem, pedir=buscar_fn is None)   # o autoteste não pede
         if copia is None:
-            if buscar_fn is None:   # rede de verdade: o endereço vira pedido à ponte (o autoteste não pede)
-                pedir_a_ponte(url, origem)
             raise
         return copia
 
@@ -1678,6 +1676,23 @@ def sem_conversa_http(e) -> bool:
     r = getattr(e, "reason", None)
     return isinstance(e, (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead)) \
         and not isinstance(r, socket.gaierror)
+
+
+def so_de_fora(e) -> bool:
+    """A falha que o robô de fora do país não sabe nomear: conexão sem conversa HTTP, ou 403 sem muro (26/11/2026,
+    editoria: de 100 sites de prefeitura de SP com 403, 88 abriram do Brasil com o cliente identificado). Quem
+    decide é a sonda da ponte, que para na recusa; 401, 429, 451 e muro são recusa aqui mesmo. Função pura."""
+    return sem_conversa_http(e) or (isinstance(e, urllib.error.HTTPError) and e.code == 403)
+
+
+def pela_ponte(url: str, e, origem: str = None, pedir: bool = True):
+    """A cópia que a ponte no Brasil trouxe deste endereço, ou None; sem cópia, o endereço vira pedido a ela."""
+    if not so_de_fora(e):
+        return None
+    copia = copia_da_ponte(url)[0]
+    if copia is None and pedir:
+        pedir_a_ponte(url, origem)
+    return copia
 
 
 def pedir_a_ponte(url: str, origem: str = None) -> None:

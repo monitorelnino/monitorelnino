@@ -13,6 +13,60 @@ não pontuados permanecem na versão corrente.
 
 O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
 
+## 2026-11-26 · #2149 · Ceará: emergências estaduais no mapa
+
+Entram os Decretos estaduais nº 37.608 (13/11/2026, situação de emergência em 65 municípios por estiagem e seca ligadas ao El Niño, 180 dias) e nº 37.624 (19/11/2026, emergência ambiental em todo o estado por risco de incêndios, até fevereiro de 2027), conferidos no texto publicado pelo portal do Diário Oficial do Estado do Ceará, com cópia preservada.
+
+## 2026-11-26 · #2145 · Buscador 2: união aceita o primeiro fechamento de pista
+
+O seguidor grava `fechada_em` quando fecha uma pista, e o resolvedor de união não tinha regra para esse campo. Quando a válvula do Buscador 2 e a noite fechavam a mesma pista em dias diferentes, o lote inteiro era recusado (1.100 pistas no lote de 26/11). Agora vence o primeiro fechamento, como em `rejeitada_em`. Autoteste F101.
+
+## 2026-11-26 · #2143 · Emergência ou calamidade, e o nível que a regra permite afirmar
+
+Cada município sob decreto passa a ter o tipo de declaração e o nível de intensidade da Portaria MDR nº 260/2022, art. 5º: calamidade pública é nível III; emergência reconhecida pela União é nível II, porque o nível I não pede reconhecimento; emergência sem reconhecimento fica sem nível. O coletor federal passa a buscar também os reconhecimentos de calamidade, que não entravam.
+
+## 2026-11-26 · #2142 · Data do plano: a lista de referências não data o plano
+
+Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes). A data do plano agora se lê no corpo, até a seção de referências; o registro de revisões passa a datar (2022). Fecho com local e data, assinatura digital e a obra do próprio município seguem valendo no texto todo. Medido em 470 planos preservados: cinco datas mudam, nenhuma de faixa de idade.
+
+## 2026-11-26 · #2136 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão
+
+O lote trazido do Brasil registra o endereço final de cada documento. Arquivo de prefeitura guardado em nuvem (S3 pré-assinado) traz na consulta a chave de acesso do órgão, e o registro é publicado pela raiz: o portão de segredos reprovou o PR de dado. O endereço passa agora pela mesma redação de segredos das evidências, na porta da ponte; autoteste novo.
+## 2026-11-26 · #2140 · Portão de imprensa reconhece o arquivo do portal da prefeitura
+
+O portão que confere a fonte dos registros pontuáveis julgava só o domínio e reprovava os planos de Cunha, Parapuã e Bragança Paulista, guardados pelo portal oficial no domínio do fornecedor (e-Crie), que o juiz já aceita desde o #2131. Agora ele recebe o endereço inteiro e aplica a mesma regra única do juiz; caso novo no autoteste.
+
+## 2026-11-26 · #2131 · Planos guardados pelo portal da prefeitura em domínio do fornecedor
+
+Prefeituras cujo portal é feito na plataforma e-Crie guardam os arquivos no domínio do fornecedor, e o plano publicado pela própria prefeitura era recusado como fonte não oficial. Agora o arquivo é atribuído ao município cujo portal oficial o publica, com a página oficial como prova. Primeiros casos: Cunha, Parapuã e Bragança Paulista.
+
+## 2026-11-26 · #2128 · Leitura dos sites de prefeitura gravada no prazo
+
+Quando a rodada nos sites de prefeitura chegava ao prazo, o coletor esperava os sites ainda em leitura e era encerrado antes de gravar: em 26/11, duas horas e meia de leitura se perderam. Agora ele grava o que já leu em até 20 segundos e deixa o restante para a rodada seguinte.
+
+## 2026-11-26 · #2125 · Arquivo da web nos sites que recusam o robô de fora
+
+A busca no arquivo da web (Wayback Machine e Common Crawl) deixava de ser feita quando o site da prefeitura recusava o robô de fora do país, porque o endereço não se confirmava. Agora o endereço se confirma pela cópia que a ponte traz do Brasil.
+## 2026-11-26 · #2123 · lote J18 grava periodicamente e isola falha por documento
+O lote da rodada paralela J18 gravava só no fim: a produção da válvula de 26/11 bateu no prazo de 150 min e não salvou nada. Agora grava a cada 2 minutos. Um PDF quebrado não derruba mais o lote: a falha vai para sem_leitura com a causa. Duas travas novas no autoteste do juiz. Produção e índice não mudam.
+
+## 2026-11-26 · #2121 · Pedidos à ponte para sites de prefeitura de SP
+
+Entram na fila da ponte no Brasil as páginas de defesa civil e as buscas por plano de contingência de 88 sites de prefeitura de São Paulo que recusavam o robô de fora do país e abrem a partir do Brasil.
+
+## 2026-11-26 · #2119 · 403 visto de fora do país vai à sonda da ponte
+
+O robô roda fora do país, e o 403 recebido de lá era gravado como recusa da fonte. Em 100 sites de prefeitura de São Paulo nessa situação, 88 abriram a partir do Brasil com o cliente identificado. O 403 passa a ser conferido pela ponte: o site que responde no Brasil é lido por ela, e o que recusa de novo fica registrado como recusa e não é mais pedido.
+
+## 2026-11-26 · #2116 · Saúde: falha de leitura não é recusa
+
+Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.
+## 2026-11-26 · #2112 · Juiz: reabrir pista nomeada e redatar pelo documento relido
+
+`julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.
+## 2026-11-26 · #2108 · Data do plano: capa com espaços e legenda de figura
+
+Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda "Porto Velho, 2019" de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.
 ## 2026-11-26 · #2114 · O POST entra na conta dos sites fora da rodada
 
 A listagem do diário do Piauí é pedida por POST, e o POST não tinha a conta que tira do resto da rodada o site que não responde. Cada data esgotava o tempo, o Piauí consumia todo o prazo da leitura dos diários e Mato Grosso do Sul e Rondônia ficavam sem edição lida desde 12/11. GET e POST passam a usar a mesma conta.

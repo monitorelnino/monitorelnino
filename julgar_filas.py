@@ -267,15 +267,19 @@ def pendente(p: dict, hoje=None) -> bool:
     return status.startswith("pista") or status.startswith("rebaixado") or status.startswith("revertida")
 
 
-def na_vez(p: dict, nomeada: bool = False, hoje=None, rejulgar: bool = False) -> bool:
+def na_vez(p: dict, nomeada: bool = False, hoje=None, rejulgar: bool = False, reabrir: bool = False) -> bool:
     """A pista entra nesta rodada? Função pura. Pista NOMEADA pela rodada (`--urls`, `--ids`) entra mesmo
     dentro do back-off: quem a nomeia sabe que a causa técnica mudou (11/11/2026: 203 pistas do Prepara RS
     esperavam até 15 e 17/11 por uma falha do leitor antigo já corrigida no #1680). O resto de `pendente` vale.
     Com `rejulgar`, a pista nomeada e RECUSADA volta mesmo julgada pela versão em vigor: o leitor mudou, não o
     critério (11/11/2026: OCR de quatro páginas não alcançava as seções que provam o plano, J1). Promovida e
-    `inacessivel_persistente` não voltam."""
+    `inacessivel_persistente` não voltam. Com `reabrir`, a pista nomeada entra seja qual for o estado — fechada pela
+    triagem sem leitura, ou promovida, para o juiz reler o documento (26/11/2026: 697 endereços oficiais fechados sem
+    que o juiz os lesse, e a data dos planos já promovidos, lida pelo leitor antigo); só a inacessível persistente fica."""
     import datetime as _d
     juiz = p.get("juiz") or {}
+    if nomeada and reabrir:
+        return "inacessivel_persistente" not in str(p.get("status") or "")
     if nomeada and rejulgar and juiz and not juiz.get("promove") \
             and "inacessivel_persistente" not in str(p.get("status") or ""):
         return True
@@ -604,6 +608,11 @@ def autoteste() -> int:
     casos.append(("fechada por prazo sem leitura não volta pelo codebook",
                   not pendente({"status": fechada_lida["status"],
                                 "juiz": {"codebook": "1.3 (03/10/2026)", "leu_documento": False}})))
+    casos.append(("reabrir: a pista nomeada entra fechada sem leitura ou promovida; a inacessível persistente e a não nomeada, não",
+                  na_vez({"status": "fechada — notícia genérica"}, nomeada=True, reabrir=True)
+                  and na_vez({"status": "promovida — x", "juiz": {"promove": True, "codebook": CODEBOOK_VERSAO}}, nomeada=True, reabrir=True)
+                  and not na_vez({"status": "pista — inacessivel_persistente: 5 tentativas"}, nomeada=True, reabrir=True)
+                  and not na_vez({"status": "fechada — notícia genérica"}, nomeada=False, reabrir=True)))
     casos.append(("fechada por outro motivo não volta",
                   not pendente({"status": "fechada — notícia genérica",
                                 "juiz": {"codebook": "1.3", "leu_documento": True}})))
@@ -922,6 +931,7 @@ def main() -> int:
     urls = (sys.argv[sys.argv.index("--urls") + 1].split(",") if "--urls" in sys.argv else None)
     so_oficial = "--dominio-oficial" in sys.argv
     rejulgar = "--rejulgar" in sys.argv
+    reabrir = "--reabrir" in sys.argv and bool(ids or urls or "--urls-de" in sys.argv)   # só para pista nomeada
     if "--urls-de" in sys.argv:
         alvo = pathlib.Path(sys.argv[sys.argv.index("--urls-de") + 1])
         urls = [l.strip() for l in alvo.read_text(encoding="utf-8").splitlines() if l.strip()]
@@ -964,7 +974,7 @@ def main() -> int:
         if not doc:
             continue
         lista = pistas_da_fila(doc)
-        alvo = selecionar([p for p in lista if na_vez(p, nomeada=bool(ids or urls), rejulgar=rejulgar)], ids=ids,
+        alvo = selecionar([p for p in lista if na_vez(p, nomeada=bool(ids or urls), rejulgar=rejulgar, reabrir=reabrir)], ids=ids,
                           so_oficial=so_oficial, urls=urls)
         if limite is not None:
             alvo = alvo[:max(0, limite - len(vereditos))]
@@ -982,6 +992,9 @@ def main() -> int:
             e = v.get("estrutura_estadual")
             if e and aplicar_estrutura_estadual(e["uf"], e, e["url"], v.get("hash_evidencia"), hoje_editorial().isoformat()):
                 print(f"estrutura estadual criada no ciclo: {e['uf']} · {e['doc'][:120]}")
+    if reabrir:   # a decisão diz que veio de releitura pedida: é o que deixa a aplicação corrigir o registro do mesmo documento
+        for v in vereditos:
+            v["reabertura"] = hoje_editorial().isoformat()
     c = contar(vereditos)
     por_categoria = {}
     for v in vereditos:

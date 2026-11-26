@@ -58,8 +58,8 @@ RE_ANO_ROTULADO = re.compile(r"(?<![(a-z])ano\s?[-:/]?\s?" + _A + r"(?!\d)")    
 # Onde o documento diz quando foi feito ou atualizado. A palavra começa ali ("previsão" não é "revisão").
 RE_MARCA = re.compile(
     r"(?<![a-z])(?:ultima\s+atualizacao|atualizac(?:ao|oes)|atualizad[oa]|revisao|revisad[oa]|versao(?:\s+de\s+revisao)?|edicao|"
-    r"elaborad[oa]|aprovad[oa]\s+em|registro\s+de\s+alteracoes|data\s+de\s+(?:criacao|elaboracao|emissao|aprovacao))(?![a-z])")
-JANELA_DA_MARCA, JANELA_DO_REGISTRO, JANELA_DO_TITULO = 60, 300, 110
+    r"elaborad[oa]|aprovad[oa]\s+em|registro\s+de\s+(?:alteracoes|revisoes)|data\s+de\s+(?:criacao|elaboracao|emissao|aprovacao))(?![a-z])")
+JANELA_DA_MARCA, JANELA_DO_REGISTRO, JANELA_DO_TITULO = 60, 500, 110   # o registro é tabela: a 6ª linha fica a ~450
 RE_ASSINATURA = re.compile(
     r"(?:assinado\s+(?:digital|eletronica)mente|assinado\s+de\s+forma\s+digital|digitally\s+signed)[^|]{0,200}?"
     r"(?:dat[ae]|dados)\s?:\s?(?:(\d{1,2})/(\d{1,2})/" + _A + r"|" + _A + r"[.-](\d{2})[.-](\d{2}))")
@@ -140,14 +140,21 @@ def formatar(d):
 
 RE_VERSAO_COM_ANO = re.compile(r"(?<![\d/.])(?:v\.?\s?)?\d{1,2}\s?/\s?" + _A + r"(?!\d)")    # "versão 01/2026", "v.5/2026"
 RE_ASSINATURA_ADOBE = re.compile(r"\bdat[ae]\s?:\s?" + _A + r"\.(\d{2})\.(\d{2})\s+\d{2}:\d{2}:\d{2}\s?[-+]\d{2}'\d{2}'")
+# Legenda de figura, tabela ou fonte ("FIGURA 02: … SEMUSA, Porto Velho, 2019."): o local e o ano são do dado, não do plano.
+RE_LEGENDA = re.compile(r"\b(?:figura|grafico|tabela|quadro|mapa|foto|fonte)\s?\d*\s?[:.–-][^.]{0,140}$")
 RE_REFERENCIA = re.compile(r"^.{0,30}(?:disponivel\s+em|acesso\s+em)")
+# A seção de referências, depois da frente: dali em diante é obra citada ("MORRETES. Plano de Contingência. Versão 01. 2013").
+RE_SECAO_REFERENCIAS = re.compile(r"(?<![A-Za-zÀ-ÿ])(?:REFER[ÊE]NCIAS|BIBLIOGRAFIA)(?![a-zà-ÿ])(?![\sA-ZÁÉ]*[.…]{3})")   # a linha do sumário ("REFERÊNCIAS ....... 70") não
 
 
 def candidatas(texto, municipio=None, ano_corrente=None):
     """[(data, origem, trecho)] de tudo o que data o plano no documento."""
-    bruto = re.sub(r"(?<!\d)([12])\s(\d)\s(\d)\s(\d)(?!\d)", r"\1\2\3\4", str(texto or ""))    # OCR: "2 0 2 5"
+    bruto = re.sub(r"\s+", " ", str(texto or ""))   # a extração deixa quebras e espaços duplos na capa ("São  José  (SC),  2025")
+    bruto = re.sub(r"(?<!\d)([12])\s(\d)\s(\d)\s(\d)(?!\d)", r"\1\2\3\4", bruto)    # OCR: "2 0 2 5"
     bruto = re.sub(r"(?<!\d)((?:19|20)\d)\s(\d)(?!\d)(?!\s?[/.]\d)", r"\1\2", bruto)             # OCR: "201 8"
-    t = sem_acento(bruto)
+    ref = next((m.start() for m in RE_SECAO_REFERENCIAS.finditer(bruto) if m.start() > FRENTE), len(bruto))
+    todo = sem_acento(bruto)
+    t = todo[:ref]   # o corpo; fecho, assinatura e a obra do próprio município (lista de referências) leem `todo`
     if not ano_corrente:
         from coletores_base import hoje_editorial
         ano_corrente = hoje_editorial().year
@@ -178,6 +185,17 @@ def candidatas(texto, municipio=None, ano_corrente=None):
             p, d, s = max(finas, key=lambda x: (_precisao(x[1]), _teto(x[1]))) if finas else (p, d, s)
             junta(d, "atualizacao", base + m.start(), base + m.end() + p + len(s))
 
+    def titulo(base, bloco, m):
+        """O título e, logo depois, a data, sem outro número nem citação no meio."""
+        janela = bloco[m.end(): m.end() + JANELA_DO_TITULO]
+        for p, d, s in datas_em(janela, teto, mes_numerico=True, prosa=False):
+            entre = janela[:p]
+            if (not re.search(r"\d|[\u201c\u201d\"]", entre) and not re.search(r"\b(?:que|foi|sera|sao|como|quando|onde|pois)\b", entre)
+                    and not (d[1] and not d[2] and "/" in s and re.search(r"versao|edicao", entre))   # "versão: 01/2025"
+                    and not RE_REFERENCIA.search(janela[p + len(s):])):
+                junta(d, "capa", base + m.start(), base + m.end() + p + len(s))
+            break
+
     for base, bloco in blocos:
         # 1. Marca de atualização, versão, edição, elaboração.
         for m in RE_MARCA.finditer(bloco):
@@ -195,17 +213,12 @@ def candidatas(texto, municipio=None, ano_corrente=None):
             rotulos.append(re.compile(nome + r"\s?(?:[-/,(]\s?[a-z]{2}\s?\)?)?\s?[,.-]?\s?" + _A + r"(?:\s?[/-]\s?(?:(?:19|20)\d{2}|\d{2}))?(?![/.-]?\d)"))
         for rx in rotulos:
             for m in rx.finditer(bloco):
-                if not RE_ANTES_NAO_DATA.search(bloco[max(0, m.start() - 40):m.start()]):
+                antes = bloco[max(0, m.start() - 40):m.start()]
+                if not (RE_ANTES_NAO_DATA.search(antes) or RE_LEGENDA.search(bloco[max(0, m.start() - 160):m.start()])
+                        or (rx is RE_ANO_ROTULADO and re.search(r"\b(?:o|no|do|ao|um|pelo|desse|deste|neste|nesse)\s$", antes))):   # "desde o ano 2000"
                     junta((int(m.group(1)), None, None), "capa", base + m.start(), base + m.end())
-        for m in RE_TITULO.finditer(bloco):   # o título e, logo depois, a data, sem outro número nem citação no meio
-            janela = bloco[m.end(): m.end() + JANELA_DO_TITULO]
-            for p, d, s in datas_em(janela, teto, mes_numerico=True, prosa=False):
-                entre = janela[:p]
-                if (not re.search(r"\d|[\u201c\u201d\"]", entre) and not re.search(r"\b(?:que|foi|sera|sao|como|quando|onde|pois)\b", entre)
-                        and not (d[1] and not d[2] and "/" in s and re.search(r"versao|edicao", entre))   # "versão: 01/2025"
-                        and not RE_REFERENCIA.search(janela[p + len(s):])):
-                    junta(d, "capa", base + m.start(), base + m.end() + p + len(s))
-                break
+        for m in RE_TITULO.finditer(bloco):
+            titulo(base, bloco, m)
     for m in RE_MARCA.finditer(t):   # o registro de alterações e a "última atualização" podem vir depois do sumário
         if m.group(0).startswith(("registro", "ultima")) and not (m.start() < FRENTE and not m.group(0).startswith("registro")):
             marca(0, t, m)
@@ -215,7 +228,12 @@ def candidatas(texto, municipio=None, ano_corrente=None):
     m = re.match(r"\W{0,3}" + _A + r"(?!\d)", t)
     if m:
         junta((int(m.group(1)), None, None), "capa", m.start(1), m.end(1))
+    # 2c. Nas referências, só a obra do próprio município ("UNIÃO DA VITÓRIA. Plano de Contingência … 2026").
+    for m in RE_TITULO.finditer(todo, ref):
+        if nome and re.search(nome + r"[^a-z]{0,4}$", todo[max(ref, m.start() - 60):m.start()]):
+            titulo(0, todo, m)
     # 3. Fecho: "Município, 24 de outubro de 2025"; "Data: 17/03/2025" no fim.
+    t = todo
     if nome:
         cola = r"\s?(?:[-/,(]\s?[a-z]{2}\s?\)?|\s[a-z]{2})?\s?[,.-]?\s?(?:em\s+)?"
         for rx in (re.compile(nome + cola + r"(\d{1,2})[ºo°]?\s+(?:de\s+|e\s+)?" + _M + r"\s+(?:de\s+)?" + _A),
@@ -296,6 +314,24 @@ def autoteste() -> int:
             and data_do_plano("PLANO DE CONTINGÊNCIA Versão 2034 Telefone 51 92002-2077", "Chuvisca", 2026)[0] is None,
         "a atualização de um quadro de dados não é a do plano (Balneário Pinhal)":
             data_do_plano("PLANO DE CONTINGÊNCIA " + "x " * 4000 + "Dados Municipais — Última atualização Nov/2023 Quantidade de casas " + "x " * 1000, "Balneário Pinhal", 2026)[0] is None,
+        "capa com espaços duplos e quebras é lida; local e ano em legenda de figura não datam (São José/SC, Porto Velho/RO)":
+            data_do_plano("PLANO DE CONTINGÊNCIA DA POLÍTICA  DE  ASSISTÊNCIA SOCIAL          São  José  (SC),  2025\n\nSUMÁRIO "
+                          "Plamcon da Assistência Social. 2022", "São José", 2026)[0] == "2025"
+            and data_do_plano("Plano de Contingência por Seca e Estiagem SECRETARIA MUNICIPAL DE SAÚDE \n \nPORTO VELHO (RO) \n 2024 \n LISTA DE FIGURAS "
+                              "FIGURA 02: Distribuição da rede assistencial de saúde na área urbana, SEMUSA, Porto \nVelho, 2019. FIGURA 03",
+                              "Porto Velho", 2026)[0] == "2024",
+        "a seção de referências não data o plano; o registro de revisões, sim (Francisco Morato/SP)":
+            data_do_plano("PLANO DE CONTINGÊNCIA " + "x " * 4000 + "REFERÊNCIAS BIBLIOGRÁFICAS ........ 70 REGISTRO DE REVISÕES DO PLANO DE CONTINGÊNCIA Desde a criação, em 2017, "
+                          "revisões anuais. Tabela 5 DATA ALTERAÇÃO OBSERVAÇÕES 2017 Versão inicial – V 1.0 Criação do PLANCON "
+                          + " ".join(f"{a} Versão Revisada – V {a - 2016}.0 {a - 2017}a Atualização" for a in range(2018, 2023))
+                          + " GLOSSÁRIO " + "x " * 400 + "REFERÊNCIAS BIBLIOGRÁFICAS MORRETES. Plano de Contingência Municipal. "
+                          "Versão 01. Paraná. 2024.", "Francisco Morato", 2026)[:2] == ("2022", "atualizacao"),
+        "fecho depois das referências e a obra do próprio município nelas datam; 'desde o ano 2000' não (Taiaçu, União da Vitória, Cambará)":
+            data_do_plano("PLANO DE CONTINGÊNCIA " + "x " * 4000 + "REFERÊNCIAS BIBLIOGRÁFICAS SEDEC. Roteiro. Brasília, sem data. "
+                          "Taiaçu, 14 de maio de 2026. Prefeita", "Taiaçu", 2026)[:2] == ("14/05/2026", "fecho")
+            and data_do_plano("PLANO DE CONTINGÊNCIA " + "x " * 4000 + "REFERÊNCIAS BIBLIOGRÁFICAS UNIÃO DA VITÓRIA. Plano de Contingência "
+                              "Municipal de Proteção e Defesa Civil. União da Vitória: Prefeitura Municipal, 2026.", "União da Vitória", 2026)[0] == "2026"
+            and data_do_plano("Plano de Contingência Sarampo " + "x " * 100 + "O estado não possui casos desde o ano 2000.", "Cambará", 2026)[0] is None,
         "assinatura digital data o documento":
             data_do_plano("PLANO DE CONTINGÊNCIA " + "x " * 4000 + "Assinado digitalmente por FULANO Data: 2025.05.29 10:11:12-03'00'", "X", 2026)[:2] == ("29/05/2025", "assinatura_digital"),
     }

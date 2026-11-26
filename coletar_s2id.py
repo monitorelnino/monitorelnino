@@ -103,6 +103,23 @@ def parse_tabela_portaria_dou(html_txt: str) -> list:
     return saida
 
 
+# 26/11/2026 (editoria): o tipo de declaração reconhecida vem do próprio ato — "Reconhecer ... a situação de
+# emergência" ou "o estado de calamidade pública". É ele que diz o nível que a regra permite afirmar
+# (Portaria MDR nº 260/2022, art. 5º): calamidade é nível III; emergência é nível I ou II, e o nível I não pede
+# reconhecimento federal (§1º). O nível é derivado em `gerar_resposta.py`; aqui só se lê o que o ato diz.
+PADRAO_DECLARACAO = re.compile(r"reconhec\w*\b.{0,400}?(situa[çc][ãa]o\s+de\s+emerg[êe]ncia|estado\s+de\s+calamidade\s+p[úu]blica)",
+                               re.I | re.S)
+
+
+def declaracao_do_ato(texto: str):
+    """'situacao_de_emergencia' | 'estado_de_calamidade_publica' | None, pela primeira declaração que o ato
+    reconhece. Sem a frase de reconhecimento, None: o tipo não se presume. Função pura."""
+    m = PADRAO_DECLARACAO.search(re.sub(r"<[^>]+>", " ", _html.unescape(texto or "")))
+    if not m:
+        return None
+    return "estado_de_calamidade_publica" if "calamidade" in m.group(1).lower() else "situacao_de_emergencia"
+
+
 def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list:
     """De cada portaria, extrai (número, data, município, UF). Só entra o que tem
     número E data E município — citação completa como condição de entrada (§3.3).
@@ -126,6 +143,7 @@ def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list
         # `conteudo` é o nome deste coletor; `trecho`, o do leitor compartilhado. A função aceita
         # os dois porque é chamada dos dois lados — do parser local e da varredura por janela.
         excerto = r.get("conteudo") or r.get("trecho") or ""
+        declaracao = declaracao_do_ato(excerto) or declaracao_do_ato(r.get("titulo") or "")
         achados = [{"municipio": n.strip(), "uf": uf.upper()} for n, uf in PADRAO_MUN.findall(excerto)]
         # 24/09/2026: o excerto da busca (≈235 caracteres) nunca chega ao município — o ato é
         # que diz quem foi reconhecido, e desde este ciclo ele diz numa tabela. Sem `ler_ato`
@@ -138,6 +156,7 @@ def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list
                     falhas.append({"url": r["url"], "titulo": (r.get("titulo") or "")[:120],
                                    "erro": type(e).__name__})
                 continue
+            declaracao = declaracao_do_ato(pagina) or declaracao
             for linha in parse_tabela_portaria_dou(pagina):
                 achados.append({"municipio": linha.get("municipio", "").strip(), "uf": linha.get("uf", "").upper(),
                                 "decreto_municipal": linha.get("decreto") or None,
@@ -150,7 +169,7 @@ def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list
             if not a["municipio"] or not re.fullmatch(r"[A-Z]{2}", a["uf"] or ""):
                 continue
             saida.append({"portaria": f"Portaria SEDEC/MIDR nº {numero}", "data": data_iso,
-                          "url": r["url"], **a})
+                          "url": r["url"], **({"declaracao": declaracao} if declaracao else {}), **a})
     return saida
 
 
@@ -246,7 +265,7 @@ def encaixar_reconhecimento(eventos: list, novo: dict) -> str:
     return "acrescentado"
 
 
-CAMPOS_DO_ATO_DOU = ("decreto_municipal", "data_decreto_municipal", "desastre")
+CAMPOS_DO_ATO_DOU = ("decreto_municipal", "data_decreto_municipal", "desastre", "declaracao")
 
 
 def incorporar_ato_dou(eventos: list, ev: dict) -> str:
@@ -449,7 +468,19 @@ def _coletar(desde: str, ate: str) -> int:
     # não pagina (`start` é ignorado, medido); ler os 50 mais recentes de 132 e não dizer nada
     # seria apresentar recorte como varredura. `varrer_busca_dou` estreita a janela até caber e
     # devolve, à parte, as janelas que não couberam — que entram como lacuna declarada.
-    consulta = '"reconhece a situação de emergência"'
+    # 26/11/2026: a busca era só por emergência, e o reconhecimento de calamidade (nível III) nunca entrava.
+    # As duas consultas varrem a mesma janela; o resultado é um só.
+    for consulta in CONSULTAS_DOU:
+        codigo = _coletar_consulta(consulta, desde, ate, por_cod, por_nome, atos)
+        if codigo:
+            return codigo
+    return 0
+
+
+CONSULTAS_DOU = ('"reconhece a situação de emergência"', '"reconhece o estado de calamidade pública"')
+
+
+def _coletar_consulta(consulta: str, desde: str, ate: str, por_cod, por_nome, atos) -> int:
     url = FONTES["dou"]["url"].format(q=urllib.parse.quote(consulta),
                                       de=date.fromisoformat(desde).strftime("%d-%m-%Y"),
                                       ate=date.fromisoformat(ate).strftime("%d-%m-%Y"))
@@ -729,7 +760,25 @@ def autoteste() -> int:
         r = parse_listagem_midr(FIX_LIST); return len(r) == 1 and r[0]["link"].endswith("desastres-1") and r[0]["data"] == "13/08/2026"
     def t11():  # negativo: página de login/HTML não é RSS
         return (not eh_xml_rss("<!DOCTYPE html><html><body>Conteúdo Restrito</body></html>")) and eh_xml_rss(FIX_RSS)
+    def t29():  # o tipo de declaração vem do ato; sem a frase de reconhecimento, não se presume
+        ecp = ("<p>Art. 1º Reconhecer, com base no Parecer, o <b>estado de calamidade pública</b> nas áreas "
+               "descritas no Formulário</p>")
+        e = extrair_reconhecimentos(parse_dou_html(FIXTURE_SCRIPT), ler_ato=lambda u: ecp + FIXTURE_ATO_TABELA)
+        return (declaracao_do_ato(FIX_PORTARIA) == "situacao_de_emergencia"
+                and declaracao_do_ato(ecp) == "estado_de_calamidade_publica"
+                and declaracao_do_ato("Decreto municipal de emergência") is None
+                and {x.get("declaracao") for x in e} == {"estado_de_calamidade_publica"}
+                and {x.get("declaracao") for x in extrair_reconhecimentos(parse_dou_html(FIXTURE_SCRIPT),
+                     ler_ato=lambda u: FIXTURE_ATO_TABELA)} == {"situacao_de_emergencia"})
+
+    def t30():  # a declaração lida enriquece o evento que já estava no banco, sem sobrescrever
+        ev = [dict(EXATO)]
+        r = incorporar_ato_dou(ev, {**EXATO, "declaracao": "situacao_de_emergencia"})
+        return r == "enriquecido" and ev[0]["declaracao"] == "situacao_de_emergencia"
+
     return rodar_autoteste({"parser do DOU lê o JSON embutido": t1, "extrai portaria+data+município": t2,
+                            "tipo de declaração lido do ato (emergência ou calamidade); sem a frase, nada": t29,
+                            "a declaração lida enriquece o evento já gravado": t30,
                             "negativo: sem número não entra": t3,
                             "negativo: página sem a estrutura de resultados levanta, não devolve zero": t4,
                             "lê a forma de hoje (<script>), sem a marcação de destaque": t12,
