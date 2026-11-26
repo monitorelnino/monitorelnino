@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2131 · Planos guardados pelo portal da prefeitura em domínio do fornecedor
+
+Prefeituras cujo portal é feito na plataforma e-Crie guardam os arquivos no domínio do fornecedor, e o plano publicado pela própria prefeitura era recusado como fonte não oficial. Agora o arquivo é atribuído ao município cujo portal oficial o publica, com a página oficial como prova. Primeiros casos: Cunha, Parapuã e Bragança Paulista.
+
+## 2026-11-26 · #2128 · Leitura dos sites de prefeitura gravada no prazo
+
+Quando a rodada nos sites de prefeitura chegava ao prazo, o coletor esperava os sites ainda em leitura e era encerrado antes de gravar: em 26/11, duas horas e meia de leitura se perderam. Agora ele grava o que já leu em até 20 segundos e deixa o restante para a rodada seguinte.
+
+## 2026-11-26 · #2125 · Arquivo da web nos sites que recusam o robô de fora
+
+A busca no arquivo da web (Wayback Machine e Common Crawl) deixava de ser feita quando o site da prefeitura recusava o robô de fora do país, porque o endereço não se confirmava. Agora o endereço se confirma pela cópia que a ponte traz do Brasil.
+## 2026-11-26 · #2123 · lote J18 grava periodicamente e isola falha por documento
+O lote da rodada paralela J18 gravava só no fim: a produção da válvula de 26/11 bateu no prazo de 150 min e não salvou nada. Agora grava a cada 2 minutos. Um PDF quebrado não derruba mais o lote: a falha vai para sem_leitura com a causa. Duas travas novas no autoteste do juiz. Produção e índice não mudam.
+
 ## 2026-11-26 · #2121 · Pedidos à ponte para sites de prefeitura de SP
 
 Entram na fila da ponte no Brasil as páginas de defesa civil e as buscas por plano de contingência de 88 sites de prefeitura de São Paulo que recusavam o robô de fora do país e abrem a partir do Brasil.
