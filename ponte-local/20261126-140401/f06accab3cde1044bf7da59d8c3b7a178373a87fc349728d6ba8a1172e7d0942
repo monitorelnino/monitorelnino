@@ -1,0 +1,1922 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portal da Prefeitura Municipal de Sete Barras/SP">
+<meta property="og:title" content="Prefeitura de Sete Barras/SP">
+<meta property="og:description" content="Portal da Prefeitura Municipal de Sete Barras/SP">
+<meta property="og:image" content="https://setebarras.sp.gov.br/imagens/banner-1.webp">
+<meta property="og:url" content="https://setebarras.sp.gov.br/">
+<meta property="og:type" content="website">
+<meta name="facebook-domain-verification" content="o4fulfkxs1zt2vlv9vh524s89jgztm" />
+<title>Prefeitura de Sete Barras/SP</title>
+<link rel="icon" href="https://setebarras.sp.gov.br/imagens/icon-setebarras-oficial.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://setebarras.sp.gov.br/css/template.css?v=11">
+<link rel="stylesheet" href="https://setebarras.sp.gov.br/css/menu.css?v=11">
+<link rel="stylesheet" href="https://setebarras.sp.gov.br/css/home.css?v=24">
+<link rel="stylesheet" href="https://setebarras.sp.gov.br/css/destaques.css?v=15">
+<link rel="stylesheet" href="https://setebarras.sp.gov.br/css/internas.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+/* =========================================================
+   HEADER PRINCIPAL - SETE BARRAS
+   ========================================================= */
+
+.site-header {
+    position: relative;
+    z-index: 1000;
+    background: #ffffff !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.header-accent {
+    height: 4px !important;
+    background: linear-gradient(90deg, #064b73 0%, #087b9c 50%, #078b72 100%) !important;
+}
+
+.header-main {
+    background: #ffffff !important;
+    background-image: none !important;
+}
+
+.header-main-inner {
+    min-height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none !important;
+}
+
+.brand img {
+    display: block;
+    width: 285px !important;
+    height: auto;
+}
+
+/* Linha dos três acessos */
+.main-nav {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    flex: 1;
+}
+
+.main-dropdown {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+/* Botões Cidadão / Empresa / Servidor */
+.main-dropdown-toggle {
+    width: 170px;
+    height: 64px;
+
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 15px !important;
+
+    border: 0 !important;
+    border-radius: 14px !important;
+
+    color: #ffffff !important;
+
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(5, 65, 95, 0.14);
+
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+/* Cores diferentes */
+.main-dropdown:nth-child(1) .main-dropdown-toggle {
+    background: linear-gradient(135deg, #07527d 0%, #087da1 100%) !important;
+}
+
+.main-dropdown:nth-child(2) .main-dropdown-toggle {
+    background: linear-gradient(135deg, #07527d 0%, #006f91 100%) !important;
+}
+
+.main-dropdown:nth-child(3) .main-dropdown-toggle {
+    background: linear-gradient(135deg, #07566f 0%, #078b78 100%) !important;
+}
+
+.main-dropdown-toggle:hover,
+.main-dropdown.open .main-dropdown-toggle {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+    box-shadow: 0 12px 26px rgba(5, 65, 95, 0.22);
+}
+
+.dropdown-main-icon {
+    width: 34px;
+    flex: 0 0 34px;
+    font-size: 28px !important;
+    color: #ffffff !important;
+    text-align: center;
+}
+
+.main-dropdown-toggle strong {
+    flex: 1;
+    text-align: left;
+    color: #ffffff !important;
+}
+
+.dropdown-arrow {
+    font-size: 12px !important;
+    color: #ffffff !important;
+    transition: transform .2s ease;
+}
+
+.main-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown */
+.main-dropdown-menu {
+    position: absolute !important;
+    top: calc(100% + 9px) !important;
+    left: 0 !important;
+    right: auto !important;
+
+    width: 270px !important;
+
+    display: block !important;
+
+    padding: 8px !important;
+
+    background: #ffffff !important;
+    border: 1px solid #dce8ec !important;
+    border-radius: 13px !important;
+
+    box-shadow: 0 18px 40px rgba(4, 52, 75, .20) !important;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(8px);
+
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+
+.main-dropdown.open .main-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.main-dropdown-menu .dropdown-title {
+    display: block;
+    padding: 10px 11px !important;
+    margin-bottom: 4px !important;
+
+    color: #064b73 !important;
+
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+
+    border-bottom: 1px solid #e8f0f2;
+}
+
+.main-dropdown-menu a {
+    display: block !important;
+
+    padding: 9px 11px !important;
+    margin: 1px 0;
+
+    border-radius: 8px;
+
+    color: #365d70 !important;
+
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+
+    text-decoration: none !important;
+
+    transition: all .18s ease;
+}
+
+.main-dropdown-menu a:hover {
+    background: #edf7f8 !important;
+    color: #05766f !important;
+    padding-left: 15px !important;
+}
+
+/* =========================================================
+   MENU SECUNDÁRIO - ESTILO REFERÊNCIA
+   ========================================================= */
+
+.quick-nav {
+    position: relative;
+    z-index: 900;
+    background: #ffffff !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 0 12px;
+}
+
+.quick-nav .container-xl {
+    position: relative;
+}
+
+.quick-nav-inner {
+    min-height: 46px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    padding: 0 14px;
+
+    background: #ffffff;
+    border: 1px solid #e2edf1;
+    border-radius: 13px;
+
+    box-shadow: 0 5px 18px rgba(4, 50, 72, .08);
+}
+
+.quick-nav-inner > a,
+.quick-dropdown > button {
+    position: relative;
+
+    min-height: 44px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 7px 9px !important;
+
+    border: 0 !important;
+    border-radius: 8px !important;
+
+    background: transparent !important;
+
+    color: #153e59 !important;
+
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+
+    text-decoration: none !important;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: all .18s ease;
+}
+
+.quick-nav-inner > a:hover,
+.quick-dropdown > button:hover,
+.quick-dropdown.open > button {
+    color: #087b78 !important;
+    background: #eef8f7 !important;
+}
+
+.quick-dropdown {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.quick-dropdown > button i:first-child {
+    color: #087b78 !important;
+    font-size: 12px;
+}
+
+.quick-dropdown > button .bi-chevron-down {
+    font-size: 8px !important;
+    color: #527384 !important;
+    transition: transform .18s ease;
+}
+
+.quick-dropdown.open > button .bi-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Dropdowns da barra */
+.quick-dropdown-menu {
+    position: absolute !important;
+    top: calc(100% + 7px) !important;
+    left: 0 !important;
+
+    min-width: 205px;
+    max-width: 330px;
+
+    display: block !important;
+
+    padding: 7px !important;
+
+    background: #ffffff !important;
+    border: 1px solid #dfecef !important;
+    border-radius: 11px !important;
+
+    box-shadow: 0 15px 35px rgba(4, 50, 72, .17) !important;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(7px);
+
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+
+.quick-dropdown.open .quick-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.quick-dropdown-menu > a,
+.quick-dropdown-menu > div > a {
+    display: block !important;
+
+    padding: 8px 10px !important;
+    margin: 1px 0;
+
+    border-radius: 7px;
+
+    color: #31576c !important;
+
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+
+    text-decoration: none !important;
+
+    transition: all .16s ease;
+}
+
+.quick-dropdown-menu > a:hover,
+.quick-dropdown-menu > div > a:hover {
+    background: #eef8f7 !important;
+    color: #087b78 !important;
+    padding-left: 14px !important;
+}
+
+.quick-dropdown-menu strong {
+    display: block;
+    padding: 7px 10px 5px;
+
+    color: #064b73 !important;
+
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+
+    text-transform: uppercase;
+    letter-spacing: .25px;
+}
+
+.quick-wide {
+    min-width: 510px !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+}
+
+.quick-wide > div {
+    min-width: 0;
+}
+
+.secretarias-menu {
+    min-width: 300px !important;
+    max-height: 390px;
+    overflow-y: auto;
+}
+
+/* Pesquisa */
+.header-search {
+    margin-left: auto;
+    width: 155px;
+    display: flex;
+    align-items: center;
+}
+
+.header-search input {
+    height: 34px;
+    width: 100%;
+    border: 1px solid #dce8ec !important;
+    border-right: 0 !important;
+    border-radius: 8px 0 0 8px !important;
+    background: #f8fbfc !important;
+    padding: 6px 10px;
+    color: #35596d;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 10px;
+    outline: none;
+}
+
+.header-search input:focus {
+    background: #ffffff !important;
+    border-color: #b9d9df !important;
+}
+
+.header-search button {
+    width: 36px;
+    height: 34px;
+    border: 0 !important;
+    border-radius: 0 8px 8px 0 !important;
+    background: #064b73 !important;
+    color: #ffffff !important;
+}
+
+.header-search button:hover {
+    background: #087b78 !important;
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 1199px) {
+    .header-main-inner {
+        gap: 18px;
+    }
+
+    .brand img {
+        width: 220px !important;
+    }
+
+    .main-nav {
+        gap: 8px;
+    }
+
+    .main-dropdown-toggle {
+        width: 145px;
+        height: 58px;
+        padding: 0 11px !important;
+        font-size: 13px !important;
+    }
+
+    .dropdown-main-icon {
+        width: 28px;
+        flex-basis: 28px;
+        font-size: 23px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .header-main-inner {
+        min-height: 90px;
+    }
+
+    .brand img {
+        width: 205px !important;
+    }
+
+    .main-nav {
+        display: none !important;
+    }
+
+    .quick-nav {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   AJUSTE DO MENU SECUNDÁRIO
+   ========================================================= */
+
+/* Menu mais próximo da referência: tipografia maior e sem ícones */
+.quick-nav-inner > a,
+.quick-dropdown > button {
+    min-height: 46px !important;
+    padding: 7px 11px !important;
+    color: #153e59 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+/* Remover qualquer ícone de início que ainda exista */
+.quick-dropdown > button > i:first-child {
+    display: none !important;
+}
+
+/* Manter somente a seta */
+.quick-dropdown > button .bi-chevron-down {
+    display: inline-block !important;
+    margin-left: 3px;
+    font-size: 9px !important;
+}
+
+/* O dropdown precisa ficar acima da própria barra e do conteúdo */
+.quick-nav {
+    position: relative !important;
+    z-index: 5000 !important;
+}
+
+.quick-nav .container-xl,
+.quick-nav-inner,
+.quick-dropdown {
+    position: relative;
+}
+
+.quick-dropdown-menu {
+    z-index: 99999 !important;
+}
+
+/* Secretarias: sem barra de rolagem.
+   Distribui os itens em colunas, como o dropdown de Serviços. */
+.quick-dropdown-menu.secretarias-menu {
+    width: 620px !important;
+    min-width: 620px !important;
+    max-width: 620px !important;
+
+    max-height: none !important;
+    height: auto !important;
+
+    overflow: visible !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 8px;
+
+    padding: 10px !important;
+}
+
+.quick-dropdown-menu.secretarias-menu a {
+    min-width: 0;
+    margin: 0 !important;
+    padding: 9px 10px !important;
+
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+
+    white-space: normal;
+}
+
+.quick-dropdown-menu.secretarias-menu a:hover {
+    padding-left: 13px !important;
+}
+
+/* Impede a barra de menu de cortar o dropdown */
+.site-header {
+    overflow: visible !important;
+}
+
+.quick-nav,
+.quick-nav .container-xl,
+.quick-nav-inner {
+    overflow: visible !important;
+}
+
+/* Deixa o dropdown respirar entre a barra e o slider */
+.quick-dropdown-menu {
+    margin-top: 2px;
+}
+
+/* Desktop menor */
+@media (max-width: 1199px) {
+    .quick-nav-inner > a,
+    .quick-dropdown > button {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        font-size: 11px !important;
+    }
+
+    .quick-dropdown-menu.secretarias-menu {
+        width: 560px !important;
+        min-width: 560px !important;
+        max-width: 560px !important;
+    }
+}
+
+
+/* =========================================================
+   MENU SECUNDÁRIO - AJUSTE FINAL
+   ========================================================= */
+.quick-nav {
+    position: relative !important;
+    z-index: 99990 !important;
+    overflow: visible !important;
+    padding: 0 0 12px !important;
+}
+
+.quick-nav .container-xl,
+.quick-nav-inner,
+.quick-dropdown {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.quick-nav-inner {
+    z-index: 99991 !important;
+    min-height: 48px !important;
+    padding: 0 12px !important;
+    gap: 1px !important;
+}
+
+.quick-nav-inner > a,
+.quick-dropdown > button {
+    min-height: 46px !important;
+    padding: 7px 10px !important;
+    gap: 5px !important;
+    color: #153e59 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.05px;
+}
+
+/* Apenas a seta dos itens com submenu */
+.quick-dropdown > button > i {
+    display: inline-block !important;
+    margin-left: 2px !important;
+    color: #4e7183 !important;
+    font-size: 9px !important;
+    transition: transform .18s ease;
+}
+
+.quick-dropdown.open > button > i,
+.quick-dropdown:hover > button > i {
+    transform: rotate(180deg);
+}
+
+/* Dropdown sempre acima da barra, slider e demais conteúdos */
+.quick-dropdown-menu {
+    z-index: 100000 !important;
+    top: calc(100% + 1px) !important;
+    left: 0 !important;
+    right: auto !important;
+    overflow: visible !important;
+}
+
+/* Abrir automaticamente com o mouse no desktop */
+@media (min-width: 992px) {
+    .quick-dropdown:hover > .quick-dropdown-menu {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+    }
+}
+
+/* Também mantém abertura por clique */
+.quick-dropdown.open > .quick-dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+}
+
+/* Secretarias sem rolagem e em 3 colunas */
+.quick-dropdown-menu.secretarias-menu {
+    width: 650px !important;
+    min-width: 650px !important;
+    max-width: 650px !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 3px 8px !important;
+    padding: 10px !important;
+}
+
+.quick-dropdown-menu.secretarias-menu a {
+    min-width: 0 !important;
+    padding: 8px 10px !important;
+    margin: 0 !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+}
+
+/* Serviços em três colunas */
+.quick-dropdown-menu.quick-wide {
+    width: 520px !important;
+    min-width: 520px !important;
+    max-width: 520px !important;
+    overflow: visible !important;
+}
+
+/* Pesquisa fica alinhada à direita */
+.header-search {
+    margin-left: auto !important;
+    flex: 0 0 175px !important;
+    width: 175px !important;
+}
+
+/* Em telas menores, compactar a barra */
+@media (max-width: 1399px) and (min-width: 992px) {
+    .quick-nav-inner > a,
+    .quick-dropdown > button {
+        padding-left: 7px !important;
+        padding-right: 7px !important;
+        font-size: 11px !important;
+    }
+
+    .header-search {
+        flex-basis: 145px !important;
+        width: 145px !important;
+    }
+
+    .quick-dropdown-menu.secretarias-menu {
+        width: 600px !important;
+        min-width: 600px !important;
+    }
+}
+
+
+/* =========================================================
+   AJUSTE FINAL - TOPO COM FUNDO CLARO
+   ========================================================= */
+.site-header {
+    position: relative !important;
+    z-index: 20000 !important;
+    overflow: visible !important;
+}
+
+.header-main {
+    position: relative !important;
+    z-index: 20010 !important;
+    overflow: visible !important;
+    background:
+        radial-gradient(circle at 8% 75%, rgba(39, 172, 151, .16) 0 90px, transparent 91px),
+        radial-gradient(circle at 30% 15%, rgba(95, 205, 174, .15) 0 120px, transparent 121px),
+        radial-gradient(circle at 94% 65%, rgba(32, 151, 175, .10) 0 130px, transparent 131px),
+        linear-gradient(110deg, #f7fffc 0%, #ffffff 45%, #f2fbfa 100%) !important;
+    border-bottom: 0 !important;
+}
+
+.header-main::after {
+    content: none !important;
+    display: none !important;
+}
+
+.header-main-inner {
+    position: relative !important;
+    z-index: 20020 !important;
+    min-height: 126px !important;
+}
+
+.brand {
+    position: relative;
+    z-index: 20030;
+}
+
+.brand img {
+    width: 285px !important;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+/* Os dropdowns do topo precisam ficar acima da barra secundária */
+.main-nav,
+.main-dropdown {
+    position: relative !important;
+    z-index: 20050 !important;
+}
+
+.main-dropdown-menu {
+    z-index: 300000 !important;
+}
+
+.quick-nav {
+    position: relative !important;
+    z-index: 10000 !important;
+    overflow: visible !important;
+}
+
+.quick-nav-inner {
+    position: relative !important;
+    z-index: 10001 !important;
+}
+
+/* Tipografia maior */
+.quick-nav-inner > a,
+.quick-dropdown > button {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+}
+
+.quick-dropdown-menu > a,
+.quick-dropdown-menu > div > a {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1.45 !important;
+}
+
+.quick-dropdown-menu strong {
+    font-size: 10px !important;
+}
+
+/* Serviços com todos os grupos em três colunas */
+.quick-dropdown-menu.quick-wide {
+    width: 690px !important;
+    min-width: 690px !important;
+    max-width: 690px !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    padding: 13px !important;
+}
+
+.quick-dropdown-menu.quick-wide > div {
+    padding: 4px 7px;
+    border-right: 1px solid #edf2f4;
+}
+
+.quick-dropdown-menu.quick-wide > div:last-child {
+    border-right: 0;
+}
+
+.quick-dropdown-menu.quick-wide strong {
+    display: block;
+    padding: 5px 8px 9px !important;
+    margin-bottom: 3px;
+    color: #075a7c !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    border-bottom: 2px solid #dff0ed;
+}
+
+.quick-dropdown-menu.quick-wide a {
+    padding: 9px 8px !important;
+    font-size: 12px !important;
+}
+
+/* Secretarias sem rolagem */
+.quick-dropdown-menu.secretarias-menu {
+    width: 690px !important;
+    min-width: 690px !important;
+    max-width: 690px !important;
+    max-height: none !important;
+    overflow: visible !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 4px 10px !important;
+}
+
+.quick-dropdown-menu.secretarias-menu a {
+    font-size: 12px !important;
+}
+
+@media (max-width: 1399px) and (min-width: 992px) {
+    .brand img { width: 245px !important; }
+    .header-main-inner { gap: 18px !important; }
+    .main-dropdown-toggle { width: 145px !important; }
+    .quick-nav-inner > a,
+    .quick-dropdown > button { font-size: 11px !important; padding-left: 7px !important; padding-right: 7px !important; }
+    .quick-dropdown-menu.quick-wide,
+    .quick-dropdown-menu.secretarias-menu { width: 620px !important; min-width: 620px !important; }
+}
+
+
+/* =========================================================
+   ACESSO RÁPIDO - OVERRIDE FINAL
+   ========================================================= */
+.planning-section,
+.planning-section .container-xl,
+.planning-section a {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.quick-access-section {
+    margin-top: 0 !important;
+    padding-top: 40px !important;
+    background: #eef5f7 !important;
+}
+
+.servicos-carousel .slick-slide {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.servicos-carousel .slick-slide > div,
+.servicos-carousel .service-card {
+    width: 100% !important;
+}
+
+
+/* =========================================================
+   MENU MOBILE - VERSÃO FINAL
+   ========================================================= */
+.mobile-menu-button {
+    display: none;
+    width: 48px !important;
+    height: 48px !important;
+    flex: 0 0 48px;
+    align-items: center;
+    justify-content: center;
+    border: 0 !important;
+    border-radius: 13px !important;
+    background: #087b78 !important;
+    color: #ffffff !important;
+    box-shadow: 0 7px 18px rgba(4, 80, 88, .18);
+    cursor: pointer;
+}
+.mobile-menu-button i {
+    color: #ffffff !important;
+    font-size: 25px !important;
+    line-height: 1;
+}
+.mobile-menu-panel {
+    display: none;
+}
+@media (max-width: 991px) {
+    .topbar-grid {
+        grid-template-columns: 1fr auto !important;
+    }
+    .top-accessibility {
+        display: none !important;
+    }
+    .top-contact {
+        font-size: 11px !important;
+    }
+    .header-main-inner {
+        min-height: 88px !important;
+        gap: 12px !important;
+    }
+    .brand img {
+        width: 235px !important;
+        max-height: 82px !important;
+    }
+    .main-nav,
+    .quick-nav {
+        display: none !important;
+    }
+    .mobile-menu-button {
+        display: flex !important;
+    }
+    .mobile-menu-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(100%, 430px);
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        z-index: 999999;
+        box-shadow: -12px 0 35px rgba(4, 50, 72, .18);
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform .25s ease, visibility .25s ease;
+        overflow: hidden;
+    }
+    .mobile-menu-panel.is-open {
+        transform: translateX(0);
+        visibility: visible;
+    }
+    .mobile-menu-head {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px 0 22px;
+        background: linear-gradient(135deg, #064b73, #078b78);
+        color: #fff;
+        flex: 0 0 auto;
+    }
+    .mobile-menu-head strong {
+        font: 700 19px/1 'Poppins', sans-serif;
+        letter-spacing: .2px;
+    }
+    .mobile-menu-close {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 11px;
+        background: rgba(255,255,255,.14);
+        color: #fff;
+        font-size: 20px;
+    }
+    .mobile-menu-nav {
+        overflow-y: auto;
+        padding: 8px 18px 28px;
+        background: #fff;
+    }
+    .mobile-menu-nav > a,
+    .mobile-menu-nav > details > summary {
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        width: 100%;
+        padding: 0 8px;
+        border-bottom: 1px solid #e5eef1;
+        color: #173f59;
+        font: 600 15px/1.2 'Poppins', sans-serif;
+        text-decoration: none;
+        list-style: none;
+        cursor: pointer;
+    }
+    .mobile-menu-nav > details > summary::-webkit-details-marker {
+        display: none;
+    }
+    .mobile-menu-nav > a > i,
+    .mobile-menu-nav > details > summary > i:first-child {
+        width: 25px;
+        color: #078b78;
+        font-size: 21px;
+        text-align: center;
+    }
+    .mobile-menu-nav > details > summary > i:last-child {
+        margin-left: auto;
+        color: #6b8794;
+        font-size: 12px;
+        transition: transform .2s ease;
+    }
+    .mobile-menu-nav > details[open] > summary > i:last-child {
+        transform: rotate(180deg);
+    }
+    .mobile-submenu {
+        padding: 5px 0 9px 46px;
+        border-bottom: 1px solid #e5eef1;
+    }
+    .mobile-submenu a {
+        display: block;
+        padding: 9px 8px;
+        color: #4c6877;
+        font: 500 13px/1.35 'Poppins', sans-serif;
+        text-decoration: none;
+    }
+    .mobile-submenu a:hover {
+        color: #087b78;
+        background: #eef8f7;
+        border-radius: 7px;
+    }
+    .mobile-submenu strong {
+        display: block;
+        padding: 9px 8px 5px;
+        color: #075a7c;
+        font: 700 11px/1.2 'Poppins', sans-serif;
+    }
+    .mobile-secretarias {
+        max-height: 260px;
+        overflow-y: auto;
+    }
+    .mobile-section-title {
+        margin: 28px 8px 12px;
+        color: #173f59;
+        font: 800 12px/1 'Poppins', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: .6px;
+    }
+    .mobile-accessibility {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 8px;
+    }
+    .mobile-accessibility button {
+        min-width: 50px;
+        height: 46px;
+        border: 0;
+        border-radius: 10px;
+        background: #eef5f7;
+        color: #173f59;
+        font: 600 14px 'Poppins', sans-serif;
+    }
+}
+@media (max-width: 575px) {
+    .header-main-inner {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .brand img {
+        width: 210px !important;
+    }
+    .mobile-menu-panel {
+        width: 100%;
+    }
+}
+
+
+
+/* =========================================================
+   ACESSIBILIDADE - TAMANHO DE TEXTO E DESTAQUE DE LINKS
+   ========================================================= */
+body.links-highlighted a,
+body.links-highlighted .mobile-menu-nav a,
+body.links-highlighted .quick-nav a,
+body.links-highlighted .main-dropdown-menu a {
+    background: #fff4a8 !important;
+    color: #064b73 !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+    outline: 2px solid #d7a900 !important;
+    outline-offset: -2px !important;
+    box-shadow: inset 0 0 0 1px rgba(215,169,0,.18) !important;
+}
+
+body.links-highlighted .mobile-menu-nav a:hover,
+body.links-highlighted .quick-nav a:hover,
+body.links-highlighted .main-dropdown-menu a:hover {
+    background: #ffe66d !important;
+    color: #043b5c !important;
+}
+
+/* Indicação visual nos botões de acessibilidade */
+.mobile-accessibility button,
+.top-accessibility button {
+    cursor: pointer;
+}
+
+.mobile-accessibility button.accessibility-active,
+.top-accessibility button.accessibility-active {
+    background: #087b78 !important;
+    color: #ffffff !important;
+}
+
+
+html.accessibility-grayscale {
+    filter: grayscale(1) !important;
+}
+
+html.accessibility-invert {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+</style>
+
+</head>
+<body><a href="https://setebarras.sp.gov.br/cdn-cgi/content?id=ipLMhNxLwGy5p7EYZHGNtafgwN4zDNB7vi1DwP3gvms-1795701981.265253-1.2.1.1-cf9Sic_2_KHI0EggxzCYP9_dro.EBDioh_Vm9z5R2NN5llK4KDWe21nAzy.ntCev" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="site-topbar">
+  <div class="container-xl">
+    <div class="topbar-grid">
+      <div class="top-social">
+        <span class="topbar-label">Acompanhe a Prefeitura</span>
+        <a href="https://www.facebook.com/prefeituradesetebarras" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/prefsetebarras" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@PrefeituraSeteBarras" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@prefeituradesetebarras" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.flickr.com/photos/204042597@N07/" target="_blank" aria-label="Flickr"><i class="fa-brands fa-flickr"></i></a>
+        <a href="https://setebarras.sp.gov.br/rss" target="_blank" aria-label="RSS"><i class="fa-solid fa-square-rss"></i></a>
+      </div>
+      <div class="top-accessibility">
+        <span>Acessibilidade</span>
+        <button onclick="changeFontSize(1)" title="Aumentar texto"><i class="fa-solid fa-plus"></i></button>
+        <button onclick="changeFontSize(-1)" title="Reduzir texto"><i class="fa-solid fa-minus"></i></button>
+        <button onclick="resetSettings()" title="Redefinir"><i class="fa-solid fa-rotate"></i></button>
+        <button onclick="toggleGrayscale()" title="Tons de cinza"><i class="bi bi-shadows"></i></button>
+        <button onclick="toggleInvert()" title="Inverter cores"><i class="bi bi-circle-half"></i></button>
+        <button onclick="toggleLinkHighlight()" title="Destacar links"><i class="fa-solid fa-underline"></i></button>
+      </div>
+      <div class="top-contact"><i class="bi bi-telephone-fill"></i> Ouvidoria <strong>(13) 3872-5500</strong></div>
+    </div>
+  </div>
+</div>
+<header class="site-header">
+  <div class="header-accent"></div>
+  <div class="header-main">
+    <div class="container-xl">
+      <div class="header-main-inner">
+        <a class="brand" href="https://setebarras.sp.gov.br/" aria-label="Prefeitura de Sete Barras">
+          <img src="https://setebarras.sp.gov.br/imagens/logo-pref-sete-barras.png" alt="Prefeitura de Sete Barras">
+        </a>
+        <nav class="main-nav" aria-label="Menu principal">
+          <div class="main-dropdown">
+            <button type="button" class="main-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              <i class="bi bi-people-fill dropdown-main-icon"></i>
+              <strong>Cidadão</strong>
+              <i class="bi bi-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="main-dropdown-menu">
+              <div class="dropdown-title"><i class="bi bi-person-vcard"></i> Serviços ao cidadão</div>
+              <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolexercicioiptu.aspx" target="_blank">2º Via de Boletos IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/BOLDVATiptu.aspx" target="_blank">2º Via Dívida Ativa IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolDVATParcelamento.aspx?Sistema=IPTU" target="_blank">Parcelamento Dívida IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliptuvenal.aspx" target="_blank">Emissão de Certidão de Valor Venal </a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliptu.aspx" target="_blank">Emissão de Certidão Negativa - IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/CertidaoPrincipalIPTUanoarea.aspx" target="_blank">Emissão de Certidão de Ano e Área</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoPrincipalIptuLancTrib.aspx" target="_blank">Certidão de Lançamento Tributário</a>
+              <a href="https://setebarras.sp.gov.br/atos-oficiais">Atos Oficiais</a>
+              <a href="https://setebarras.sp.gov.br/concursos/">Concursos e Processos Seletivos</a>
+              <a href="https://setebarras.sp.gov.br/contaspublicas/">Contas Públicas</a>
+              <a href="https://setebarras.sp.gov.br/faq">FAQ</a>
+              <a href="https://setebarras.sp.gov.br/links-uteis">Links Úteis</a>
+              <a href="https://setebarras.sp.gov.br/ouvidoria">Ouvidoria/e-Sic</a>
+              <a href="http://179.0.124.129:8080/PORTAL_TRANSPARENCIA" target="_blank">Portal da Transparência</a>
+            </div>
+          </div>
+          <div class="main-dropdown">
+            <button type="button" class="main-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              <i class="bi bi-building dropdown-main-icon"></i>
+              <strong>Empresa</strong>
+              <i class="bi bi-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="main-dropdown-menu">
+              <div class="dropdown-title"><i class="bi bi-building"></i> Serviços para empresas</div>
+              <a href="http://179.0.124.129:8080/ALVARAWEB/Asp/Login/wfAcesso.aspx" target="_blank">Alvará Web</a>
+              <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolexercicioiss.aspx" target="_blank">2º Via de Boletos ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/BOLDVATiss.aspx" target="_blank">2º Via Dívida Ativa ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolDVATParcelamento.aspx?Sistema=ISS" target="_blank">Parcelamento Dívida ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliss.aspx" target="_blank">Emissão de Cadastro Mobiliário - ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaodeencerramento.aspx" target="_blank">Cancelamento de Inscrição Municipal</a>
+              <a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional%2f" target="_blank">E-Nota Municipal</a>
+              <a href="http://179.0.124.129:8080/ISSWEB/login/login.aspx" target="_blank">NF Eletrônica</a>
+              <a href="https://setebarras.sp.gov.br/licitacoes">Licitações</a>
+            </div>
+          </div>
+          <div class="main-dropdown">
+            <button type="button" class="main-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              <i class="bi bi-person-badge dropdown-main-icon"></i>
+              <strong>Servidor</strong>
+              <i class="bi bi-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="main-dropdown-menu">
+              <div class="dropdown-title"><i class="bi bi-person-badge"></i> Área do servidor</div>
+              <a href="https://webmail-seguro.com.br/setebarras.sp.gov.br" target="_blank">Webmail (novo)</a>
+              <a href="https://mail.google.com/a/setebarras.sp.gov.br" target="_blank">Webmail (antigo)</a>
+              <a href="http://179.0.124.129:8080/RHWEB/(X(1)S(t0oduvczlqormfcecxij30av))/Home" target="_blank">RH Web</a>
+            </div>
+          </div>
+        </nav>
+        <button class="mobile-menu-button" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuMobile"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="quick-nav">
+    <div class="container-xl">
+      <div class="quick-nav-inner">
+        <div class="quick-dropdown">
+          <button type="button" class="quick-dropdown-toggle">Cidade <i class="bi bi-chevron-down"></i></button>
+          <div class="quick-dropdown-menu">
+            <a href="https://setebarras.sp.gov.br/arquivos/conheca/Atrativos-Sete-Barras.pdf" target="_blank">Atrativos Turísticos</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSefBfh2rM39Rwl0YXTkQncpWcfmtc0-Ty_iAHXHAssU1zk1aQ/viewform" target="_blank">Pesquisa de Demanda Turística</a>
+          </div>
+        </div>
+
+        <div class="quick-dropdown">
+            <button type="button" class="quick-dropdown-toggle">Serviços <i class="bi bi-chevron-down"></i></button>
+            <div class="quick-dropdown-menu quick-wide">
+              <div>
+                <strong>Para o Cidadão</strong>
+                <a href="https://setebarras.sp.gov.br/atos-oficiais">Atos Oficiais</a>
+                <a href="https://setebarras.sp.gov.br/concursos/">Concursos e Processos Seletivos</a>
+                <a href="https://setebarras.sp.gov.br/contaspublicas/" target="_blank">Contas Públicas</a>
+                <a href="https://setebarras.sp.gov.br/faq">FAQ</a>
+                <a href="https://setebarras.sp.gov.br/links-uteis">Links Úteis</a>
+                <a href="https://setebarras.sp.gov.br/ouvidoria">Ouvidoria/e-Sic</a>
+                <a href="http://179.0.124.129:8080/PORTAL_TRANSPARENCIA" target="_blank">Portal da Transparência</a>
+              </div>
+              <div>
+                <strong>Para a Empresa</strong>
+                <a href="http://179.0.124.129:8080/ALVARAWEB/Asp/Login/wfAcesso.aspx" target="_blank">Alvará Web</a>
+                <a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional%2f" target="_blank">NF Eletrônica</a>
+                <a href="https://setebarras.sp.gov.br/licitacoes">Licitações</a>
+              </div>
+              <div>
+                <strong>Para o Servidor</strong>
+                <a href="https://webmail-seguro.com.br/setebarras.sp.gov.br" target="_blank">Webmail (novo)</a>
+                <a href="https://mail.google.com/a/setebarras.sp.gov.br" target="_blank">Webmail (antigo)</a>
+                <a href="http://179.0.124.129:8080/RHWEB/(X(1)S(t0oduvczlqormfcecxij30av))/Home" target="_blank">RH Web</a>
+              </div>
+              <div>
+                <strong>ISS</strong>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolexercicioiss.aspx" target="_blank">2º Via de Boletos ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/BOLDVATiss.aspx" target="_blank">2º Via Dívida Ativa ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolDVATParcelamento.aspx?Sistema=ISS" target="_blank">Parcelamento Dívida ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliss.aspx" target="_blank">Emissão de Cadastro Mobiliário - ISS</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaodeencerramento.aspx" target="_blank">Cancelamento de Inscrição Municipal</a>
+              </div>
+              <div>
+                <strong>IPTU</strong>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolexercicioiptu.aspx" target="_blank">2º Via de Boletos IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/BOLDVATiptu.aspx" target="_blank">2º Via Dívida Ativa IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolDVATParcelamento.aspx?Sistema=IPTU" target="_blank">Parcelamento Dívida IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliptuvenal.aspx" target="_blank">Emissão de Certidão de Valor Venal </a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliptu.aspx" target="_blank">Emissão de Certidão Negativa - IPTU</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/CertidaoPrincipalIPTUanoarea.aspx" target="_blank">Emissão de Certidão de Ano e Área</a>
+                <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoPrincipalIptuLancTrib.aspx" target="_blank">Certidão de Lançamento Tributário</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-dropdown">
+            <button type="button" class="quick-dropdown-toggle">Secretarias <i class="bi bi-chevron-down"></i></button>
+          <div class="quick-dropdown-menu secretarias-menu">
+            <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-administracao">Administração</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-agricultura-e-meio-ambiente">Agricultura e Meio Ambiente</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-assist-ncia-e-desenvolvimento-social">Assistência Social</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-assuntos-juridicos-e-seguranca-publica">Assuntos Jurídicos e Segurança Pública</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-cultura-esporte-e-lazer">Cultura, Esporte e Lazer</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-educacao">Educação</a><a href="https://setebarras.sp.gov.br/secretaria/financas">Finanças</a><a href="https://setebarras.sp.gov.br/secretaria/fundo-social-de-solidariedade">Fundo Social de Solidariedade</a><a href="https://setebarras.sp.gov.br/secretaria/gabinete">Gabinete</a><a href="https://setebarras.sp.gov.br/secretaria/governo">Governo</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-planejamento-urbano-e-obras">Planejamento e Obras</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-saude">Saúde</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-transportes-e-servi-os-p-blicos">Transportes  e Serviços Públicos</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-turismo-e-desenvolvimento-economico">Turismo e Desenvolvimento Econômico</a>          </div>
+        </div>
+
+        <a href="http://179.0.124.129:8080/PORTAL_TRANSPARENCIA" target="_blank">Transparência</a>
+        <a href="http://imprensaoficialmunicipal.com.br/sete_barras" target="_blank">Diário Oficial</a>
+        <a href="https://setebarras.sp.gov.br/licitacoes">Licitações</a>
+        <a href="https://setebarras.sp.gov.br/noticias">Notícias</a>
+        <a href="https://setebarras.sp.gov.br/faq">FAQ</a>
+        <a href="https://setebarras.sp.gov.br/ouvidoria">Ouvidoria</a>
+        <a href="https://setebarras.sp.gov.br/e-sic">e-Sic</a>
+        <a href="https://setebarras.sp.gov.br/conecta">Conecta Sete Barras</a>
+        <a href="https://setebarras.sp.gov.br/lgpd">LGPD</a>
+        <form class="header-search" method="get" action="https://setebarras.sp.gov.br/pesquisa">
+          <input type="search" name="q" placeholder="Pesquisar..." value="" required>
+          <button type="submit" aria-label="Pesquisar"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu-panel" id="menuMobile" aria-hidden="true">
+  <div class="mobile-menu-head">
+    <strong>Menu</strong>
+    <button type="button" class="mobile-menu-close" aria-label="Fechar menu"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <nav class="mobile-menu-nav" aria-label="Menu mobile">
+    <a href="https://setebarras.sp.gov.br/"><i class="bi bi-house-door"></i><span>Início</span></a>
+    <details>
+      <summary><i class="bi bi-geo-alt"></i><span>Cidade</span><i class="bi bi-chevron-down"></i></summary>
+      <div class="mobile-submenu">
+        <a href="https://setebarras.sp.gov.br/arquivos/conheca/Atrativos-Sete-Barras.pdf" target="_blank">Atrativos Turísticos</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSefBfh2rM39Rwl0YXTkQncpWcfmtc0-Ty_iAHXHAssU1zk1aQ/viewform" target="_blank">Pesquisa de Demanda Turística</a>
+      </div>
+    </details>
+    <details>
+      <summary><i class="bi bi-grid"></i><span>Serviços</span><i class="bi bi-chevron-down"></i></summary>
+      <div class="mobile-submenu">
+        <strong>Para o Cidadão</strong>
+        <a href="https://setebarras.sp.gov.br/atos-oficiais">Atos Oficiais</a>
+        <a href="https://setebarras.sp.gov.br/concursos/">Concursos e Processos Seletivos</a>
+        <a href="https://setebarras.sp.gov.br/contaspublicas/">Contas Públicas</a>
+        <a href="https://setebarras.sp.gov.br/faq">FAQ</a>
+        <a href="https://setebarras.sp.gov.br/links-uteis">Links Úteis</a>
+        <a href="https://setebarras.sp.gov.br/ouvidoria">Ouvidoria/e-Sic</a>
+        <a href="http://179.0.124.129:8080/PORTAL_TRANSPARENCIA" target="_blank">Portal da Transparência</a>
+        <strong>Para a Empresa</strong>
+        <a href="http://179.0.124.129:8080/ALVARAWEB/Asp/Login/wfAcesso.aspx" target="_blank">Alvará Web</a>
+        <a href="http://179.0.124.129:8080/ISSWEB/login/login.aspx" target="_blank">E-Nota Municipal</a>
+        <a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional%2f" target="_blank">NF Eletrônica</a>
+        <a href="https://setebarras.sp.gov.br/licitacoes">Licitações</a>
+        <strong>Para o Servidor</strong>
+        <a href="https://webmail-seguro.com.br/setebarras.sp.gov.br" target="_blank">Webmail (novo)</a>
+        <a href="https://mail.google.com/a/setebarras.sp.gov.br" target="_blank">Webmail (antigo)</a>
+        <a href="http://179.0.124.129:8080/RHWEB/(X(1)S(t0oduvczlqormfcecxij30av))/Home" target="_blank">RH Web</a>
+        <strong>ISS</strong>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolexercicioiss.aspx" target="_blank">2º Via de Boletos ISS</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/BOLDVATiss.aspx" target="_blank">2º Via Dívida Ativa ISS</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolDVATParcelamento.aspx?Sistema=ISS" target="_blank">Parcelamento Dívida ISS</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliss.aspx" target="_blank">Emissão de Cadastro Mobiliário - ISS</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaodeencerramento.aspx" target="_blank">Cancelamento de Inscrição Municipal</a>
+        <strong>IPTU</strong>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolexercicioiptu.aspx" target="_blank">2º Via de Boletos IPTU</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/BOLDVATiptu.aspx" target="_blank">2º Via Dívida Ativa IPTU</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/bolDVATParcelamento.aspx?Sistema=IPTU" target="_blank">Parcelamento Dívida IPTU</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliptuvenal.aspx" target="_blank">Emissão de Certidão de Valor Venal </a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoprincipaliptu.aspx" target="_blank">Emissão de Certidão Negativa - IPTU</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/CertidaoPrincipalIPTUanoarea.aspx" target="_blank">Emissão de Certidão de Ano e Área</a>
+        <a href="http://179.0.124.129:8080/TributosWeb/EMISSOES/certidaoPrincipalIptuLancTrib.aspx" target="_blank">Certidão de Lançamento Tributário</a>
+      </div>
+    </details>
+    <details>
+      <summary><i class="bi bi-building"></i><span>Secretarias</span><i class="bi bi-chevron-down"></i></summary>
+      <div class="mobile-submenu mobile-secretarias">
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-administracao">Administração</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-agricultura-e-meio-ambiente">Agricultura e Meio Ambiente</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-assist-ncia-e-desenvolvimento-social">Assistência Social</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-assuntos-juridicos-e-seguranca-publica">Assuntos Jurídicos e Segurança Pública</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-cultura-esporte-e-lazer">Cultura, Esporte e Lazer</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-educacao">Educação</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/financas">Finanças</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/fundo-social-de-solidariedade">Fundo Social de Solidariedade</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/gabinete">Gabinete</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/governo">Governo</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-planejamento-urbano-e-obras">Planejamento e Obras</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-saude">Saúde</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-transportes-e-servi-os-p-blicos">Transportes  e Serviços Públicos</a>
+                  <a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-turismo-e-desenvolvimento-economico">Turismo e Desenvolvimento Econômico</a>
+              </div>
+    </details>
+    <a href="http://179.0.124.129:8080/PORTAL_TRANSPARENCIA" target="_blank"><i class="bi bi-bar-chart"></i><span>Transparência</span></a>
+    <a href="http://imprensaoficialmunicipal.com.br/sete_barras" target="_blank"><i class="bi bi-journal-text"></i><span>Diário Oficial</span></a>
+    <a href="https://setebarras.sp.gov.br/licitacoes"><i class="bi bi-file-earmark-check"></i><span>Licitações</span></a>
+    <a href="https://setebarras.sp.gov.br/noticias"><i class="bi bi-newspaper"></i><span>Notícias</span></a>
+    <a href="https://setebarras.sp.gov.br/faq"><i class="bi bi-question-circle"></i><span>FAQ</span></a>
+    <a href="https://setebarras.sp.gov.br/ouvidoria"><i class="bi bi-chat-left-text"></i><span>Ouvidoria</span></a>
+    <a href="https://setebarras.sp.gov.br/e-sic"><i class="bi bi-envelope"></i><span>e-Sic</span></a>
+    <a href="https://setebarras.sp.gov.br/conecta"><i class="bi bi-phone"></i><span>Conecta Sete Barras</span></a>
+    <a href="https://setebarras.sp.gov.br/lgpd"><i class="bi bi-shield-check"></i><span>LGPD</span></a>
+    <div class="mobile-section-title">Acessibilidade</div>
+    <div class="mobile-accessibility">
+      <button onclick="changeFontSize(1)">A+</button>
+      <button onclick="changeFontSize(-1)">A-</button>
+      <button onclick="resetSettings()"><i class="fa-solid fa-rotate"></i></button>
+      <button onclick="toggleGrayscale()"><i class="bi bi-shadows"></i></button>
+      <button onclick="toggleInvert()"><i class="bi bi-circle-half"></i></button>
+      <button onclick="toggleLinkHighlight()"><i class="fa-solid fa-underline"></i></button>
+    </div>
+  </nav>
+</div>
+
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* Dropdowns do menu principal */
+    const mainDropdowns = document.querySelectorAll('.main-dropdown');
+
+    mainDropdowns.forEach(function (dropdown) {
+        const button = dropdown.querySelector('.main-dropdown-toggle');
+        if (!button) return;
+
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            mainDropdowns.forEach(function (other) {
+                if (other !== dropdown) {
+                    other.classList.remove('open');
+                    const b = other.querySelector('.main-dropdown-toggle');
+                    if (b) b.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            const open = dropdown.classList.toggle('open');
+            button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    });
+
+    /* Dropdowns da barra secundária: hover no desktop + clique */
+    const quickDropdowns = document.querySelectorAll('.quick-dropdown');
+
+    quickDropdowns.forEach(function (dropdown) {
+        const button = dropdown.querySelector(':scope > button');
+        if (!button) return;
+
+        button.setAttribute('aria-haspopup', 'true');
+        button.setAttribute('aria-expanded', 'false');
+
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            quickDropdowns.forEach(function (other) {
+                if (other !== dropdown) {
+                    other.classList.remove('open');
+                    const b = other.querySelector(':scope > button');
+                    if (b) b.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            const open = dropdown.classList.toggle('open');
+            button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    });
+
+    /* Menu mobile */
+    const mobileButton = document.querySelector('.mobile-menu-button');
+    const mobilePanel = document.getElementById('menuMobile');
+    const mobileClose = document.querySelector('.mobile-menu-close');
+
+    function closeMobileMenu() {
+        if (!mobilePanel) return;
+        mobilePanel.classList.remove('is-open');
+        mobilePanel.setAttribute('aria-hidden', 'true');
+        if (mobileButton) mobileButton.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('mobile-menu-open');
+    }
+
+    if (mobileButton && mobilePanel) {
+        mobileButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const open = mobilePanel.classList.toggle('is-open');
+            mobilePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+            mobileButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.classList.toggle('mobile-menu-open', open);
+        });
+    }
+
+    if (mobileClose) {
+        mobileClose.addEventListener('click', closeMobileMenu);
+    }
+
+    mobilePanel && mobilePanel.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            if (link.getAttribute('target') !== '_blank') closeMobileMenu();
+        });
+    });
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 991) closeMobileMenu();
+    });
+
+    /* Clique fora fecha qualquer dropdown */
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.main-dropdown') && !event.target.closest('.quick-dropdown')) {
+            mainDropdowns.forEach(function (dropdown) {
+                dropdown.classList.remove('open');
+                const button = dropdown.querySelector('.main-dropdown-toggle');
+                if (button) button.setAttribute('aria-expanded', 'false');
+            });
+
+            quickDropdowns.forEach(function (dropdown) {
+                dropdown.classList.remove('open');
+                const button = dropdown.querySelector(':scope > button');
+                if (button) button.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+
+});
+</script>
+
+
+
+
+
+<script>
+/* =========================================================
+   ACESSIBILIDADE - CONTROLES FUNCIONAIS
+   ========================================================= */
+(function () {
+    const STORAGE_KEY = 'setebarras_acessibilidade';
+    const minScale = 0.80;
+    const maxScale = 1.40;
+    const step = 0.10;
+
+    function getSettings() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { scale: 1, links: false, grayscale: false, invert: false };
+        } catch (e) {
+            return { scale: 1, links: false, grayscale: false, invert: false };
+        }
+    }
+
+    function saveSettings(settings) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(settings)); } catch (e) {}
+    }
+
+    function getTextElements() {
+        const selector = 'h1,h2,h3,h4,h5,h6,p,a,button,li,label,summary,span,strong,small,td,th,figcaption,input,textarea,select';
+        return Array.from(document.querySelectorAll(selector)).filter(function (el) {
+            if (el.matches('i,svg,img')) return false;
+            if (!el.textContent || !el.textContent.trim()) return false;
+            const children = Array.from(el.children);
+            return children.length === 0 || children.every(function (child) {
+                return child.matches('i,svg,img');
+            });
+        });
+    }
+
+    function prepareTextElements() {
+        getTextElements().forEach(function (el) {
+            if (!el.dataset.accessibilityBaseSize) {
+                const size = parseFloat(window.getComputedStyle(el).fontSize);
+                if (!isNaN(size)) el.dataset.accessibilityBaseSize = size;
+            }
+        });
+    }
+
+    function applyFontScale(scale) {
+        prepareTextElements();
+        getTextElements().forEach(function (el) {
+            const base = parseFloat(el.dataset.accessibilityBaseSize);
+            if (!isNaN(base)) {
+                el.style.fontSize = (base * scale).toFixed(2) + 'px';
+            }
+        });
+        document.documentElement.style.setProperty('--accessibility-scale', scale);
+    }
+
+    function updateButtons(settings) {
+        document.querySelectorAll('[onclick*="toggleLinkHighlight"]').forEach(function (button) {
+            button.classList.toggle('accessibility-active', !!settings.links);
+        });
+        document.querySelectorAll('[onclick*="changeFontSize(1)"]').forEach(function (button) {
+            button.classList.toggle('accessibility-active', settings.scale > 1);
+        });
+        document.querySelectorAll('[onclick*="changeFontSize(-1)"]').forEach(function (button) {
+            button.classList.toggle('accessibility-active', settings.scale < 1);
+        });
+    }
+
+    window.changeFontSize = function (direction) {
+        const settings = getSettings();
+        let scale = Number(settings.scale) || 1;
+        scale += direction > 0 ? step : -step;
+        scale = Math.max(minScale, Math.min(maxScale, Number(scale.toFixed(2))));
+        settings.scale = scale;
+        saveSettings(settings);
+        applyFontScale(scale);
+        updateButtons(settings);
+    };
+
+    window.toggleLinkHighlight = function () {
+        const settings = getSettings();
+        settings.links = !settings.links;
+        saveSettings(settings);
+        document.body.classList.toggle('links-highlighted', settings.links);
+        updateButtons(settings);
+    };
+
+    window.toggleGrayscale = function () {
+        const settings = getSettings();
+        settings.grayscale = !settings.grayscale;
+        saveSettings(settings);
+        document.documentElement.classList.toggle('accessibility-grayscale', settings.grayscale);
+        updateButtons(settings);
+    };
+
+    window.toggleInvert = function () {
+        const settings = getSettings();
+        settings.invert = !settings.invert;
+        saveSettings(settings);
+        document.documentElement.classList.toggle('accessibility-invert', settings.invert);
+        updateButtons(settings);
+    };
+
+    window.resetSettings = function () {
+        const settings = { scale: 1, links: false, grayscale: false, invert: false };
+        saveSettings(settings);
+        applyFontScale(1);
+        document.body.classList.remove('links-highlighted');
+        document.documentElement.classList.remove('accessibility-grayscale', 'accessibility-invert');
+        updateButtons(settings);
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const settings = getSettings();
+        applyFontScale(Number(settings.scale) || 1);
+        document.body.classList.toggle('links-highlighted', !!settings.links);
+        document.documentElement.classList.toggle('accessibility-grayscale', !!settings.grayscale);
+        document.documentElement.classList.toggle('accessibility-invert', !!settings.invert);
+        updateButtons(settings);
+    });
+})();
+</script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script><script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+<main>
+<section class="home-slider-section">
+  <div class="carousel-home">
+    <div><img src="https://setebarras.sp.gov.br/imagens/banner-1.webp" alt="Banner 1"></div><div><img src="https://setebarras.sp.gov.br/imagens/banner-2.webp" alt="Banner 2"></div><div><img src="https://setebarras.sp.gov.br/imagens/banner-3.webp" alt="Banner 3"></div><div><img src="https://setebarras.sp.gov.br/imagens/banner-4.webp" alt="Banner 4"></div><div><img src="https://setebarras.sp.gov.br/imagens/banner-5.webp" alt="Banner 5"></div><div><img src="https://setebarras.sp.gov.br/imagens/banner-6.webp" alt="Banner 6"></div><div><img src="https://setebarras.sp.gov.br/imagens/banner-7.webp" alt="Banner 7"></div>
+  </div>
+</section>
+<section class="featured-news-section">
+  <div class="container-xl">
+    <div class="section-heading featured-heading">
+      <div>
+        <span class="section-kicker">Informação oficial</span>
+        <h2>Notícias em destaque</h2>
+      </div>
+      <a class="section-more" href="https://setebarras.sp.gov.br/noticias">Ver todas as notícias <i class="bi bi-arrow-up-right"></i></a>
+    </div>
+
+    <div class="featured-news-slider">
+      <article class="featured-slide">
+        <div class="featured-slide-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3129_4f8d73c65a477540754e7a85e27b8d22.jpg');"></div>
+        <div class="featured-slide-content">
+          <span class="featured-date"><i class="bi bi-calendar3"></i> 23/11/2026</span>
+          <h3>Prefeitura de Sete Barras abre Concurso Público com 42 vagas e salários de até R$ 6,4 mil</h3>
+          <p>A Prefeitura de Sete Barras publicou o Edital nº 01/2026 de Concurso Público, que oferece 42 vagas imediatas, além de formação de cadastro reserva, para diferentes áreas da administração municipal. As oportunidades...</p>
+          <a class="featured-button" href="https://setebarras.sp.gov.br/noticia/3129">Ver mais <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="featured-slide">
+        <div class="featured-slide-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3128_3e334d3048e769ee69614af6565aff93.jpg');"></div>
+        <div class="featured-slide-content">
+          <span class="featured-date"><i class="bi bi-calendar3"></i> 19/11/2026</span>
+          <h3>Sete Barras passa a integrar Rotas do Mototurismo de São Paulo e fortalece potencial turístico</h3>
+          <p>Sete Barras passa a fazer parte do projeto Rotas do Mototurismo de São Paulo, que busca estimular o turismo sobre duas rodas e ampliar a circulação de motociclistas pela Rodovia SP-139. A...</p>
+          <a class="featured-button" href="https://setebarras.sp.gov.br/noticia/3128">Ver mais <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="featured-slide">
+        <div class="featured-slide-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3127_85bbfd726ec9f8360ac2b0d07a851459.jpg');"></div>
+        <div class="featured-slide-content">
+          <span class="featured-date"><i class="bi bi-calendar3"></i> 19/11/2026</span>
+          <h3>Prefeitura disponibiliza vacinação contra a COVID-19 para grupos prioritários em Sete Barras</h3>
+          <p>A Prefeitura de Sete Barras, por meio da Secretaria Municipal de Saúde, informa que estão disponíveis vacinas contra a COVID-19 para os públicos contemplados pelo Calendário Nacional de Vacinação. A imunização é...</p>
+          <a class="featured-button" href="https://setebarras.sp.gov.br/noticia/3127">Ver mais <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </article>
+      <article class="featured-slide">
+        <div class="featured-slide-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3126_645eedae898753be1f1d30471c1d628e.jpg');"></div>
+        <div class="featured-slide-content">
+          <span class="featured-date"><i class="bi bi-calendar3"></i> 18/11/2026</span>
+          <h3>Resposta rápida e trabalho integrado da Prefeitura marcam a recuperação de Sete Barras após temporal</h3>
+          <p>Mesmo diante dos grandes estragos provocados pelo temporal de 12 de novembro, a gestão do Prefeito Ítalo Costa demonstrou capacidade de resposta, resiliência e agilidade na solução dos problemas. Com mobilização imediata...</p>
+          <a class="featured-button" href="https://setebarras.sp.gov.br/noticia/3126">Ver mais <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="latest-news-section">
+  <div class="container-xl">
+    <div class="section-heading"><div><span class="section-kicker">Atualizações</span><h2>Últimas notícias</h2></div><a class="section-more" href="https://setebarras.sp.gov.br/noticias">Todas as notícias <i class="bi bi-arrow-up-right"></i></a></div>
+    <div class="row g-4">
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3125"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3125_a4273343be9102c32e0b6caa855fb789.jpg');"><span>13/11/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Temporal com granizo e ventos fortes pode ter afetado mais de 1.000 residências em Sete Barras</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3124"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3124_1ef395abb745fe9f990fda1dd68bdcdf.jpg');"><span>10/11/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Meu Pet Container é inaugurado em Sete Barras  e já oferece atendimento veterinário gratuito</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3123"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3123_bd4afe67c7c7cddce77f567bd868f9e6.png');"><span>09/11/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Festival De Margem à Margem leva música, dança e cultura afro-brasileira à Feira da Lua de Sete Barras nesta quarta-feira (11/11)</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3122"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3122_3aded936033ab8d12d1d26693977c79e.jpg');"><span>06/11/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Prefeitura inaugura Meu Pet Container na próxima terça-feira (10)</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3121"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3121_258ffa3bb1e27c471437c0c00c0c50bc.jpg');"><span>06/11/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Novo caminhão coletor e compactador para reforçar serviços de limpeza pública de Sete Barras</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3120"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3120_8be2d7ec58d0c3138464d5c7776d86d8.jpg');"><span>03/11/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Sete Barras conquista 16 medalhas e fica entre as seis melhores equipes na Copa Guaricana de Jiu-Jitsu</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3119"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3119_4d2e4dd41fc9abcc9a7c1819d1e8ba79.jpg');"><span>28/10/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Sete Barras mantém a melhor avaliação da Atenção Primária à Saúde entre os municípios do Vale do Ribeira e Baixada Santista</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+      <div class="col-xl-3 col-lg-4 col-md-6"><article class="news-card"><a href="https://setebarras.sp.gov.br/noticia/3118"><div class="news-card-image" style="background-image:url('https://setebarras.sp.gov.br/arquivos/noticias/3118_8bd887944f343aebb87f3eb3b44dfbe2.jpg');"><span>26/10/2026</span></div><div class="news-card-body"><span class="news-category"></span><h3>Sete Barras avança na Educação Inclusiva com novos recursos pedagógicos para a Rede Municipal de Ensino</h3><span class="news-arrow"><i class="bi bi-arrow-up-right"></i></span></div></a></article></div>
+    </div>
+  </div>
+</section>
+<section class="planning-section"><div class="container-xl"><a href="https://setebarras.sp.gov.br/planejamento2026" target="_blank"><img src="https://setebarras.sp.gov.br/imagens/banners/banner-planejamento-2027.jpg" alt="Planejamento 2026" class="img-fluid"></a></div></section>
+<section class="quick-access-section"><div class="container-xl"><div class="section-heading"><div><span class="section-kicker">Acesso rápido</span><h2>Serviços mais procurados</h2></div></div><div class="servicos-carousel">
+<a href="https://setebarras.sp.gov.br/ouvidoria" ><div class="service-card"><div class="service-icon"><img src="https://registro.sp.gov.br/icons/icon-ouvidoria.png" alt=""></div><h3>Ouvidoria / e-Sic</h3><i class="bi bi-arrow-up-right"></i></div></a><a href="https://setebarras.sp.gov.br/arquivos/decretos/feriados-2026.pdf" target="_blank"><div class="service-card"><div class="service-icon"><img src="https://registro.sp.gov.br/icons/icon-editais-de-licitacoes.webp" alt=""></div><h3>Feriados 2026</h3><i class="bi bi-arrow-up-right"></i></div></a><a href="https://setebarras.sp.gov.br/licitacoes" ><div class="service-card"><div class="service-icon"><img src="https://registro.sp.gov.br/icons/icon-certidao-de-valor-venal.webp" alt=""></div><h3>Licitações</h3><i class="bi bi-arrow-up-right"></i></div></a><a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional%2f" target="_blank"><div class="service-card"><div class="service-icon"><img src="https://registro.sp.gov.br/icons/icon-nfe.png" alt=""></div><h3>Nota Fiscal Eletrônica</h3><i class="bi bi-arrow-up-right"></i></div></a><a href="http://imprensaoficialmunicipal.com.br/sete_barras" target="_blank"><div class="service-card"><div class="service-icon"><img src="https://registro.sp.gov.br/icons/icon-editais-de-licitacoes.webp" alt=""></div><h3>Diário Oficial</h3><i class="bi bi-arrow-up-right"></i></div></a><a href="http://179.0.124.129:8080/PORTAL_TRANSPARENCIA" target="_blank"><div class="service-card"><div class="service-icon"><img src="https://registro.sp.gov.br/icons/icon-editais-de-licitacoes.webp" alt=""></div><h3>Transparência</h3><i class="bi bi-arrow-up-right"></i></div></a><a href="https://setebarras.mitraonline.com.br/empresafacil/" target="_blank"><div class="service-card"><div class="service-icon"><img src="https://registro.sp.gov.br/icons/icon-cadastro-de-autonomos.webp" alt=""></div><h3>Empresa Fácil</h3><i class="bi bi-arrow-up-right"></i></div></a></div></div></section>
+<section class="concursos-home-section">
+  <div class="container-xl">
+    <div class="concursos-home-box">
+      <div class="concursos-icon"><i class="bi bi-mortarboard"></i></div>
+      <div class="concursos-copy">
+        <span>Portal de oportunidades</span>
+        <h2>Concursos e Processos Seletivos</h2>
+        <p>Consulte editais, convocações, resultados, gabaritos e demais publicações oficiais.</p>
+      </div>
+      <a href="https://setebarras.sp.gov.br/concursos/" class="concursos-button">Acessar concursos <i class="bi bi-arrow-up-right"></i></a>
+    </div>
+  </div>
+</section>
+<section class="editais-section">
+  <div class="container-xl">
+    <div class="section-heading">
+      <div>
+        <span class="section-kicker">Publicações</span>
+        <h2>Editais e licitações</h2>
+      </div>
+      <a class="section-more" href="https://setebarras.sp.gov.br/licitacoes">Ver todos <i class="bi bi-arrow-up-right"></i></a>
+    </div>
+
+    <div class="editais-grid">
+    <div class="edital-item">
+      <a class="edital-card" href="https://setebarras.sp.gov.br/licitacao/511" target="_blank">
+        <span class="edital-pdf"><i class="bi bi-file-earmark-pdf"></i></span>
+        <span class="edital-copy">
+          <span class="edital-meta">
+            <span class="edital-type"><i class="bi bi-tag"></i> Concorrência Presencial</span>
+            <span class="edital-sector"><i class="bi bi-building"></i> TURISMO E DESENVOLVIMENTO ECONÔMICO – TERMO DE CONVÊNIO ESTADUAL Nº 104988/2026</span>
+          </span>
+          <strong>EXECUÇÃO DE OBRA DE REVITALIZAÇÃO DA PRAÇA DA COLÔNIA JAPONESA EM ATENDIMENTO À SECRETARIA MUNICIPAL DE TURISMO E DESENVOLVIMENTO ECONÔMICO – TERMO...</strong>
+          <small><i class="bi bi-calendar3"></i> Abertura: 16/10/2026</small>
+        </span>
+        <span class="edital-go"><i class="bi bi-arrow-up-right"></i></span>
+      </a>
+    </div>
+    <div class="edital-item">
+      <a class="edital-card" href="https://setebarras.sp.gov.br/licitacao/508" target="_blank">
+        <span class="edital-pdf"><i class="bi bi-file-earmark-pdf"></i></span>
+        <span class="edital-copy">
+          <span class="edital-meta">
+            <span class="edital-type"><i class="bi bi-tag"></i> Pregão Eletrônico</span>
+            <span class="edital-sector"><i class="bi bi-building"></i> Administração Municipal</span>
+          </span>
+          <strong>CONTRATACAO DE SERVICOS CONTINUADO DE ADMINISTRACAO GERENCIAMENTO E CONTROLE DE AQUISICOES DE COMBUSTIVEIS: (GASOLINA COMUM, ETANOL, DIESEL S-500 E DIESEL S10)</strong>
+          <small><i class="bi bi-calendar3"></i> Abertura: 16/10/2026</small>
+        </span>
+        <span class="edital-go"><i class="bi bi-arrow-up-right"></i></span>
+      </a>
+    </div>
+    <div class="edital-item">
+      <a class="edital-card" href="https://setebarras.sp.gov.br/licitacao/507" target="_blank">
+        <span class="edital-pdf"><i class="bi bi-file-earmark-pdf"></i></span>
+        <span class="edital-copy">
+          <span class="edital-meta">
+            <span class="edital-type"><i class="bi bi-tag"></i> Concorrência Presencial</span>
+            <span class="edital-sector"><i class="bi bi-building"></i> Administração Municipal</span>
+          </span>
+          <strong>CONSTRUÇÃO DE CRECHE MUNICIPAL NO BAIRRO BARRA DO RIBEIRÃO DA SERRA – TERMO DE COMPROMISSO - PROC. Nº 015.006199349/2025-16 – CONVÊNIO ESTADUAL...</strong>
+          <small><i class="bi bi-calendar3"></i> Abertura: 16/10/2026</small>
+        </span>
+        <span class="edital-go"><i class="bi bi-arrow-up-right"></i></span>
+      </a>
+    </div>
+    <div class="edital-item">
+      <a class="edital-card" href="https://setebarras.sp.gov.br/licitacao/499" target="_blank">
+        <span class="edital-pdf"><i class="bi bi-file-earmark-pdf"></i></span>
+        <span class="edital-copy">
+          <span class="edital-meta">
+            <span class="edital-type"><i class="bi bi-tag"></i> Concorrência Presencial</span>
+            <span class="edital-sector"><i class="bi bi-building"></i> Administração Municipal</span>
+          </span>
+          <strong>CONSTRUÇÃO DE PONTE EM CONCRETO ARMADO SOBRE O RIO ETÁ NA ESTRADA DO ASSENTAMENTO – BAIRRO GUAPIRUVU, NO MUNICÍPIO DE SETE BARRAS...</strong>
+          <small><i class="bi bi-calendar3"></i> Abertura: 16/10/2026</small>
+        </span>
+        <span class="edital-go"><i class="bi bi-arrow-up-right"></i></span>
+      </a>
+    </div>
+    <div class="edital-item">
+      <a class="edital-card" href="https://setebarras.sp.gov.br/licitacao/498" target="_blank">
+        <span class="edital-pdf"><i class="bi bi-file-earmark-pdf"></i></span>
+        <span class="edital-copy">
+          <span class="edital-meta">
+            <span class="edital-type"><i class="bi bi-tag"></i> Chamada Pública</span>
+            <span class="edital-sector"><i class="bi bi-building"></i> Administração Municipal</span>
+          </span>
+          <strong>CREDENCIAMENTO DE EMPRESA ESPECIALIZADA PARA FORNECIMENTO DE PROFISSIONAIS PARA PRESTAÇÃO DE SERVIÇOS DE OFICINAS PEDAGÓGICAS, CULTURAIS, ESPORTIVAS, TECNOLÓGICAS E SOCIOEDUCATIVAS</strong>
+          <small><i class="bi bi-calendar3"></i> Abertura: 09/10/2026</small>
+        </span>
+        <span class="edital-go"><i class="bi bi-arrow-up-right"></i></span>
+      </a>
+    </div>
+    <div class="edital-item">
+      <a class="edital-card" href="https://setebarras.sp.gov.br/licitacao/497" target="_blank">
+        <span class="edital-pdf"><i class="bi bi-file-earmark-pdf"></i></span>
+        <span class="edital-copy">
+          <span class="edital-meta">
+            <span class="edital-type"><i class="bi bi-tag"></i> Concorrência Presencial</span>
+            <span class="edital-sector"><i class="bi bi-building"></i> Administração Municipal</span>
+          </span>
+          <strong>CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE DRENAGEM NO CÓRREGO LOCALIZADO À RUA JOÃO PAULO DOS SANTOS – VILA SÃO JOÃO, NO...</strong>
+          <small><i class="bi bi-calendar3"></i> Abertura: 09/10/2026</small>
+        </span>
+        <span class="edital-go"><i class="bi bi-arrow-up-right"></i></span>
+      </a>
+    </div>
+    </div>
+  </div>
+</section>
+<section class="instagram-section">
+  <div class="container-xl">
+    <div class="instagram-header">
+      <span class="section-kicker">Redes sociais</span>
+      <h2><i class="bi bi-instagram"></i> Siga a Prefeitura de Sete Barras</h2>
+      <p class="instagram-subtitle">Acompanhe notícias, serviços, eventos e tudo o que acontece em Sete Barras diretamente pelo nosso Instagram.</p>
+      <a class="instagram-profile-link" href="https://www.instagram.com/prefsetebarras" target="_blank" rel="noopener">
+        <i class="bi bi-instagram"></i>
+        <span>@prefsetebarras</span>
+        <i class="bi bi-arrow-up-right"></i>
+      </a>
+    </div>
+
+    <div class="instagram-feed-wrap">
+      <iframe id="iframeFeed" src="https://setebarras.sp.gov.br/feed-instagram/feed-instagram" width="100%" style="border:0;overflow:hidden;display:block" scrolling="no" title="Publicações da Prefeitura de Sete Barras no Instagram"></iframe>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.iframeHeight) {
+        document.getElementById('iframeFeed').style.height = e.data.iframeHeight + 'px';
+      }
+    });
+  </script>
+</section>
+<section class="conecta-section">
+  <div class="container-xl">
+    <div class="conecta-card">
+      <div class="conecta-card-icon"><i class="bi bi-phone"></i></div>
+      <div class="conecta-card-content">
+        <span class="section-kicker">Conecta Sete Barras</span>
+        <h2>A Prefeitura na palma da sua mão</h2>
+        <p>Serviços, solicitações e atendimento municipal de forma simples, rápida e digital.</p>
+      </div>
+      <a class="conecta-card-button" href="https://setebarras.sp.gov.br/conecta">
+        Baixe agora <i class="bi bi-arrow-up-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer-top-accent"></div>
+  <div class="footer-main"><div class="container-xl"><div class="footer-grid">
+    <div class="footer-brand-col"><img src="https://setebarras.sp.gov.br/imagens/logo-setebarras-vertical-branco.png" class="logo-footer" alt="Prefeitura de Sete Barras"><p>Prefeitura Municipal de Sete Barras/SP</p><div class="footer-socials"><a href="https://www.instagram.com/prefsetebarras" target="_blank"><i class="bi bi-instagram"></i></a><a href="https://www.facebook.com/prefeituradesetebarras" target="_blank"><i class="bi bi-facebook"></i></a><a href="https://www.youtube.com/@PrefeituraSeteBarras" target="_blank"><i class="bi bi-youtube"></i></a><a href="https://www.tiktok.com/@prefeituradesetebarras" target="_blank"><i class="bi bi-tiktok"></i></a><a href="https://www.flickr.com/photos/204042597@N07/" target="_blank"><i class="fa-brands fa-flickr"></i></a><a href="https://setebarras.sp.gov.br/rss" target="_blank"><i class="bi bi-rss"></i></a></div></div>
+    <div class="footer-column"><h3>Prefeitura</h3><a href="https://setebarras.sp.gov.br/">Início</a><a href="https://setebarras.sp.gov.br/noticias">Notícias</a><a href="https://setebarras.sp.gov.br/atos-oficiais">Atos Oficiais</a><a href="https://setebarras.sp.gov.br/concursos/">Concursos e Processos Seletivos</a><a href="https://setebarras.sp.gov.br/licitacoes">Licitações</a><a href="https://setebarras.sp.gov.br/faq">Perguntas frequentes</a><a href="https://setebarras.sp.gov.br/conecta">Conecta Sete Barras</a></div>
+    <div class="footer-column"><h3>Secretarias</h3><div class="footer-links-scroll"><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-administracao">Administração</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-agricultura-e-meio-ambiente">Agricultura e Meio Ambiente</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-assist-ncia-e-desenvolvimento-social">Assistência Social</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-assuntos-juridicos-e-seguranca-publica">Assuntos Jurídicos e Segurança Pública</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-cultura-esporte-e-lazer">Cultura, Esporte e Lazer</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-educacao">Educação</a><a href="https://setebarras.sp.gov.br/secretaria/financas">Finanças</a><a href="https://setebarras.sp.gov.br/secretaria/fundo-social-de-solidariedade">Fundo Social de Solidariedade</a><a href="https://setebarras.sp.gov.br/secretaria/gabinete">Gabinete</a><a href="https://setebarras.sp.gov.br/secretaria/governo">Governo</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-planejamento-urbano-e-obras">Planejamento e Obras</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-saude">Saúde</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-transportes-e-servi-os-p-blicos">Transportes  e Serviços Públicos</a><a href="https://setebarras.sp.gov.br/secretaria/secretaria-municipal-de-turismo-e-desenvolvimento-economico">Turismo e Desenvolvimento Econômico</a></div></div>
+    <div class="footer-column"><h3>Transparência</h3><a href="http://179.0.124.129:8080/PORTAL_TRANSPARENCIA" target="_blank">Portal da Transparência <i class="bi bi-arrow-up-right"></i></a><a href="https://setebarras.sp.gov.br/contaspublicas/" target="_blank">Contas Públicas</a><a href="http://imprensaoficialmunicipal.com.br/sete_barras" target="_blank">Diário Oficial</a><a href="https://setebarras.sp.gov.br/ouvidoria">Ouvidoria / e-Sic</a><a href="https://setebarras.sp.gov.br/e-sic">e-Sic</a><a href="https://setebarras.sp.gov.br/lgpd">LGPD</a></div>
+    <div class="footer-column footer-contact"><h3>Atendimento</h3><div><i class="bi bi-telephone"></i><span><b>Ouvidoria</b><br>(13) 3872-5500</span></div><div><i class="bi bi-envelope"></i><span><b>E-mail</b><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f787e7d76717a6b7a5f6c7a6b7a7d7e6d6d7e6c316c6f31787069317d6d">[email&#160;protected]</a></span></div><div><i class="bi bi-geo-alt"></i><span><b>Endereço</b><br>Rua José Lopes, 35<br>Centro - CEP 111910-000<br>Sete Barras/SP</span></div><div><i class="bi bi-clock"></i><span><b>Atendimento</b><br>Segunda a sexta, 8h30 às 11h30 e 13h às 17h</span></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container-xl"><div class="footer-bottom-inner"><span>© 2026 Prefeitura de Sete Barras/SP</span><span>CNPJ 46.587.275/0001-74</span><a href="https://setebarras.sp.gov.br/">Acessar o site oficial <i class="bi bi-arrow-up-right"></i></a></div></div></div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>$(function(){if($('.carousel-home').length){$('.carousel-home').slick({arrows:true,dots:true,infinite:true,autoplay:true,autoplaySpeed:5000,speed:700,slidesToShow:1,slidesToScroll:1,pauseOnHover:true,adaptiveHeight:false});}if($('.featured-news-slider').length){$('.featured-news-slider').slick({arrows:true,dots:true,infinite:true,autoplay:true,autoplaySpeed:6000,speed:600,slidesToShow:1,slidesToScroll:1,pauseOnHover:true,adaptiveHeight:false,prevArrow:'<button type="button" class="slick-prev" aria-label="Notícia anterior"><i class="bi bi-chevron-left"></i></button>',nextArrow:'<button type="button" class="slick-next" aria-label="Próxima notícia"><i class="bi bi-chevron-right"></i></button>'});}if($('.servicos-carousel').length){$('.servicos-carousel').slick({slidesToShow:5,slidesToScroll:1,autoplay:true,autoplaySpeed:2800,arrows:true,dots:false,infinite:true,prevArrow:'<button type="button" class="slick-prev"><i class="bi bi-arrow-left"></i></button>',nextArrow:'<button type="button" class="slick-next"><i class="bi bi-arrow-right"></i></button>',responsive:[{breakpoint:1200,settings:{slidesToShow:4}},{breakpoint:992,settings:{slidesToShow:3}},{breakpoint:768,settings:{slidesToShow:2}},{breakpoint:576,settings:{slidesToShow:1}}]});}});function changeFontSize(delta){let r=document.documentElement,s=parseFloat(getComputedStyle(r).fontSize);r.style.fontSize=Math.max(14,Math.min(22,s+delta))+'px';}function resetSettings(){document.documentElement.style.fontSize='16px';document.body.classList.remove('grayscale','invert-colors','highlight-links');}function toggleGrayscale(){document.body.classList.toggle('grayscale');}function toggleInvert(){document.body.classList.toggle('invert-colors');}function toggleLinkHighlight(){document.body.classList.toggle('highlight-links');}</script>
+<script>window.__CF$cv$params={r:'a6097406ed1ccaa7',t:'MTc5NTcwMTk4MQ==',u:'01a2182dc1757572ab9e0addbdd738f6',ut:'Mo.RQCcsLodcdbCghJvb4vIRswlat_R8lxc73xm_nXQ-1795701981-1.2.1.1-5EbLaxUC7Wp5NA2RYQsHHJIR8fLLhNl1.hclpA_UKq4AfmRnMhcJr9xwwRPz6U0a3vrcvGFlX8vy8duOtMowUAfIfZRCeSiXhWjaDvl0JB0',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a6097406ed1ccaa7',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script></body></html>
