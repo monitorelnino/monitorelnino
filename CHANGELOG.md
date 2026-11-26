@@ -12,6 +12,8 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-26 · #2125 · Arquivo da web nos sites que recusam o robô de fora
 
 A busca no arquivo da web (Wayback Machine e Common Crawl) deixava de ser feita quando o site da prefeitura recusava o robô de fora do país, porque o endereço não se confirmava. Agora o endereço se confirma pela cópia que a ponte traz do Brasil.
+## 2026-11-26 · #2123 · lote J18 grava periodicamente e isola falha por documento
+O lote da rodada paralela J18 gravava só no fim: a produção da válvula de 26/11 bateu no prazo de 150 min e não salvou nada. Agora grava a cada 2 minutos. Um PDF quebrado não derruba mais o lote: a falha vai para sem_leitura com a causa. Duas travas novas no autoteste do juiz. Produção e índice não mudam.
 
 ## 2026-11-26 · #2121 · Pedidos à ponte para sites de prefeitura de SP
 
