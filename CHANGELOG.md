@@ -13,6 +13,22 @@ não pontuados permanecem na versão corrente.
 
 `julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.
 
+## 2026-11-26 · #2113 · Vigia de boletins lê o índice da ANA e só avisa
+
+`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.
+
+## 2026-11-26 · #2106 · Selo, PR 2: o selo sai do PR
+
+O manifesto, `mudancas.html` e `CODEMAP.md` passam a ser selados só pelo publicador. No PR e na cópia de trabalho, derivado defasado é aviso; na `main` selada e nos elos, reprova. Todo envio a um PR roda os portões, rascunho ou não: execução pulada deixava head mesclável sem portão. Sai o modo `--pode-regenerar`. Fluxo do `CLAUDE.md` e skill `p12` ajustados.
+
+## 2026-11-26 · #2105 · Ponte no Brasil: recebimento na noite e lista gerada
+
+A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.
+
+## 2026-11-26 · #2107 · Prova de mutação dos portões: âncora do SHA por regex
+
+A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com "âncora ausente". A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.
+
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
 A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
@@ -24,9 +40,11 @@ O cartão do município, na página inicial e em Prefeituras, mostra o que ele d
 ## 2026-11-25 · #2098 · Cartão do município: autodeclaração de plano
 
 O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.
+
 ## 2026-11-25 · #2093 · Juiz: a data do plano é a que o documento informa
 
 O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.
+
 ## 2026-11-25 · #2095 · Redução: história do `julgar_saude.py` ao HISTORICO
 
 Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).
