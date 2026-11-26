@@ -9,8 +9,8 @@ SELADA, e o derivado velho (inclusive o de commit de elo, F89) volta a reprovar.
 
 Aguardando selo = há commit de merge de PR (committer `GitHub`) mais novo que o último commit do
 publicador ("Publicação automática…"). Histórico raso sem publicação visível: decide o que se vê.
-A tolerância vale só no push da `main` no Actions; fora dele (PR, cópia de trabalho, publicador)
-o portão segue estrito.
+Onde se tolera (D1, D4, D7): no PR e na cópia de trabalho, sempre (o selo não é do PR); no push da
+`main`, só aguardando selo. Nos outros eventos do Actions (publicador, elos) o portão é estrito.
 
     python3 scripts/selo_da_main.py DERIVADOS    # avisa e sai 0 se o portão deve tolerar; 1 se estrito
     python3 scripts/selo_da_main.py --autoteste
@@ -43,13 +43,15 @@ def historico(n: int = 200, cwd=None) -> list[tuple[str, str]]:
 
 def tolerante(cwd=None, amb=None) -> bool:
     amb = os.environ if amb is None else amb
-    no_push_da_main = (amb.get("GITHUB_EVENT_NAME") == "push"
-                       and amb.get("GITHUB_REF") == "refs/heads/main")
-    return no_push_da_main and aguardando_selo(historico(cwd=cwd))
+    evento = amb.get("GITHUB_EVENT_NAME")
+    if evento in (None, "", "pull_request"):
+        return True
+    return (evento == "push" and amb.get("GITHUB_REF") == "refs/heads/main"
+            and aguardando_selo(historico(cwd=cwd)))
 
 
 def avisar(o_que: str) -> None:
-    print(f"::warning::{o_que}: a `main` aguarda o selo do publicador (D4); passa com aviso.")
+    print(f"::warning::{o_que}: o selo é do publicador (D1/D4); passa com aviso.")
 
 
 def _autoteste() -> int:
@@ -65,9 +67,12 @@ def _autoteste() -> int:
         "histórico vazio": ([], False),
     }
     falhas = [n for n, (c, esperado) in casos.items() if aguardando_selo(c) != esperado]
-    if tolerante(amb={"GITHUB_EVENT_NAME": "pull_request", "GITHUB_REF": "refs/heads/main"}):
-        falhas.append("fora do push da main é estrito")
-    print(f"✗ AUTOTESTE: {falhas}" if falhas else f"✓ AUTOTESTE OK — {len(casos) + 1} casos, sem rede.")
+    eventos = {"PR tolera (D1)": ({"GITHUB_EVENT_NAME": "pull_request"}, True),
+               "cópia de trabalho tolera (D7)": ({}, True),
+               "publicador é estrito": ({"GITHUB_EVENT_NAME": "workflow_run"}, False),
+               "elo agendado é estrito": ({"GITHUB_EVENT_NAME": "schedule"}, False)}
+    falhas += [n for n, (amb, esperado) in eventos.items() if tolerante(amb=amb) != esperado]
+    print(f"✗ AUTOTESTE: {falhas}" if falhas else f"✓ AUTOTESTE OK — {len(casos) + len(eventos)} casos, sem rede.")
     return 1 if falhas else 0
 
 

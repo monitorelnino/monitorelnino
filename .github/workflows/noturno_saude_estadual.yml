@@ -38,6 +38,8 @@ jobs:
       grupo_de_concorrencia: noturno
       timeout_minutos: 90
       precisa_searxng: true
+      # 26/11/2026: o juiz da saúde lê PDF escaneado pelo OCR (`com_ocr`); sem o motor, 28 planos saíam "sem texto".
+      precisa_tesseract: true
       # Os quatro canais da bateria (handover de 01/10/2026). Nenhum "não localizado" se afirma com
       # menos do que isto, e cada canal registra a sua própria decisão: canal que não rodou é erro
       # no log, nunca "consultado sem achado".

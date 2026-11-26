@@ -140,12 +140,15 @@ def formatar(d):
 
 RE_VERSAO_COM_ANO = re.compile(r"(?<![\d/.])(?:v\.?\s?)?\d{1,2}\s?/\s?" + _A + r"(?!\d)")    # "versão 01/2026", "v.5/2026"
 RE_ASSINATURA_ADOBE = re.compile(r"\bdat[ae]\s?:\s?" + _A + r"\.(\d{2})\.(\d{2})\s+\d{2}:\d{2}:\d{2}\s?[-+]\d{2}'\d{2}'")
+# Legenda de figura, tabela ou fonte ("FIGURA 02: … SEMUSA, Porto Velho, 2019."): o local e o ano são do dado, não do plano.
+RE_LEGENDA = re.compile(r"\b(?:figura|grafico|tabela|quadro|mapa|foto|fonte)\s?\d*\s?[:.–-][^.]{0,140}$")
 RE_REFERENCIA = re.compile(r"^.{0,30}(?:disponivel\s+em|acesso\s+em)")
 
 
 def candidatas(texto, municipio=None, ano_corrente=None):
     """[(data, origem, trecho)] de tudo o que data o plano no documento."""
-    bruto = re.sub(r"(?<!\d)([12])\s(\d)\s(\d)\s(\d)(?!\d)", r"\1\2\3\4", str(texto or ""))    # OCR: "2 0 2 5"
+    bruto = re.sub(r"\s+", " ", str(texto or ""))   # a extração deixa quebras e espaços duplos na capa ("São  José  (SC),  2025")
+    bruto = re.sub(r"(?<!\d)([12])\s(\d)\s(\d)\s(\d)(?!\d)", r"\1\2\3\4", bruto)    # OCR: "2 0 2 5"
     bruto = re.sub(r"(?<!\d)((?:19|20)\d)\s(\d)(?!\d)(?!\s?[/.]\d)", r"\1\2", bruto)             # OCR: "201 8"
     t = sem_acento(bruto)
     if not ano_corrente:
@@ -195,7 +198,8 @@ def candidatas(texto, municipio=None, ano_corrente=None):
             rotulos.append(re.compile(nome + r"\s?(?:[-/,(]\s?[a-z]{2}\s?\)?)?\s?[,.-]?\s?" + _A + r"(?:\s?[/-]\s?(?:(?:19|20)\d{2}|\d{2}))?(?![/.-]?\d)"))
         for rx in rotulos:
             for m in rx.finditer(bloco):
-                if not RE_ANTES_NAO_DATA.search(bloco[max(0, m.start() - 40):m.start()]):
+                if not (RE_ANTES_NAO_DATA.search(bloco[max(0, m.start() - 40):m.start()])
+                        or RE_LEGENDA.search(bloco[max(0, m.start() - 160):m.start()])):
                     junta((int(m.group(1)), None, None), "capa", base + m.start(), base + m.end())
         for m in RE_TITULO.finditer(bloco):   # o título e, logo depois, a data, sem outro número nem citação no meio
             janela = bloco[m.end(): m.end() + JANELA_DO_TITULO]
@@ -296,6 +300,12 @@ def autoteste() -> int:
             and data_do_plano("PLANO DE CONTINGÊNCIA Versão 2034 Telefone 51 92002-2077", "Chuvisca", 2026)[0] is None,
         "a atualização de um quadro de dados não é a do plano (Balneário Pinhal)":
             data_do_plano("PLANO DE CONTINGÊNCIA " + "x " * 4000 + "Dados Municipais — Última atualização Nov/2023 Quantidade de casas " + "x " * 1000, "Balneário Pinhal", 2026)[0] is None,
+        "capa com espaços duplos e quebras é lida; local e ano em legenda de figura não datam (São José/SC, Porto Velho/RO)":
+            data_do_plano("PLANO DE CONTINGÊNCIA DA POLÍTICA  DE  ASSISTÊNCIA SOCIAL          São  José  (SC),  2025\n\nSUMÁRIO "
+                          "Plamcon da Assistência Social. 2022", "São José", 2026)[0] == "2025"
+            and data_do_plano("Plano de Contingência por Seca e Estiagem SECRETARIA MUNICIPAL DE SAÚDE \n \nPORTO VELHO (RO) \n 2024 \n LISTA DE FIGURAS "
+                              "FIGURA 02: Distribuição da rede assistencial de saúde na área urbana, SEMUSA, Porto \nVelho, 2019. FIGURA 03",
+                              "Porto Velho", 2026)[0] == "2024",
         "assinatura digital data o documento":
             data_do_plano("PLANO DE CONTINGÊNCIA " + "x " * 4000 + "Assinado digitalmente por FULANO Data: 2025.05.29 10:11:12-03'00'", "X", 2026)[:2] == ("29/05/2025", "assinatura_digital"),
     }
