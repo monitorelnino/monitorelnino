@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-26 · #PR · Ceará: emergências estaduais no mapa
+## 2026-11-26 · #2149 · Ceará: emergências estaduais no mapa
 
 Entram os Decretos estaduais nº 37.608 (13/11/2026, situação de emergência em 65 municípios por estiagem e seca ligadas ao El Niño, 180 dias) e nº 37.624 (19/11/2026, emergência ambiental em todo o estado por risco de incêndios, até fevereiro de 2027), conferidos no texto publicado pelo portal do Diário Oficial do Estado do Ceará, com cópia preservada.
 
