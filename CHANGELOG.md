@@ -12,6 +12,12 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-26 · #2116 · Saúde: falha de leitura não é recusa
 
 Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.
+## 2026-11-26 · #2112 · Juiz: reabrir pista nomeada e redatar pelo documento relido
+
+`julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.
+## 2026-11-26 · #2108 · Data do plano: capa com espaços e legenda de figura
+
+Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda "Porto Velho, 2019" de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.
 ## 2026-11-26 · #2114 · O POST entra na conta dos sites fora da rodada
 
 A listagem do diário do Piauí é pedida por POST, e o POST não tinha a conta que tira do resto da rodada o site que não responde. Cada data esgotava o tempo, o Piauí consumia todo o prazo da leitura dos diários e Mato Grosso do Sul e Rondônia ficavam sem edição lida desde 12/11. GET e POST passam a usar a mesma conta.
