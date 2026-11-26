@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2116 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura
+
+O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
+
 ## 2026-11-26 · #2114 · O POST entra na conta dos sites fora da rodada
 
 A listagem do diário do Piauí é pedida por POST, e o POST não tinha a conta que tira do resto da rodada o site que não responde. Cada data esgotava o tempo, o Piauí consumia todo o prazo da leitura dos diários e Mato Grosso do Sul e Rondônia ficavam sem edição lida desde 12/11. GET e POST passam a usar a mesma conta.
