@@ -8,15 +8,9 @@ cd "$(dirname "$0")/.."
 # Modo --idempotencia (usado DENTRO da rotina, onde a árvore está suja com dados novos
 # ainda não comitados): não compara com o git; regenera a cadeia e exige que uma
 # SEGUNDA regeneração não mude nada (derivados são função pura dos dados desta rodada).
-# Modo --pode-regenerar (30/09/2026, §314, item 2 do handover de otimização): usado NO PR. Ele
-# regenera a cadeia inteira e falha só se um GERADOR quebrar — não compara com o git.
-#
-# Por quê: o manifesto sela o hash de todo arquivo versionado, então qualquer mudança o deixa
-# obsoleto. Cobrar isso dentro do PR forçava "regenerar + commitar + esperar a CI de novo" em quase
-# toda entrega, e o manifesto commitado no ramo conflitava com o do `main` a cada união.
-#
-# O que NÃO se afrouxa: a checagem estrita (`git`) continua rodando onde o dado é selado — no push
-# para a `main`. Derivado obsoleto continua sendo bloqueio; mudou ONDE se cobra, não SE se cobra.
+# Sem modo: compara com o git. No PR e na cópia de trabalho derivado defasado é aviso, não reprova:
+# o selo é do publicador (handover do selo, D1/D7, 26/11/2026; quem decide é `scripts/selo_da_main.py`).
+# No push da `main` selada e nos elos, reprova como sempre.
 MODO="${1:-git}"
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(python3 -c "import json,datetime;d=json.load(open('data/meta.json'))['corte'];dd,mm,aa=d.split('/');print(int(datetime.datetime(int(aa),int(mm),int(dd),tzinfo=datetime.timezone.utc).timestamp()))")}"
 python3 recalcular_mare.py --write >/dev/null
@@ -80,29 +74,6 @@ if [ "$MODO" = "--regenerar-para-commit" ]; then
   echo "  git é da suíte, que roda depois do commit."
   exit 0
 fi
-if [ "$MODO" = "--pode-regenerar" ]; then
-  # 04/10/2026: o modo do PR deixa de ser cego para o MANIFESTO.
-  #
-  # O §314 afrouxou a comparação no PR para não cobrar derivado de dado que a noite ainda vai
-  # mudar — e isso continua certo. Mas o manifesto é outra coisa: ele é função dos ARQUIVOS DO
-  # PR, não do dado da noite. PR que toca arquivo selado e não resela deixa a `main` vermelha no
-  # push, e foi o que aconteceu quatro vezes entre 03 e 04/10 (#538, #541 e duas no publicador).
-  # Cada uma custou um ciclo de CI e um PR de uma linha só para carimbar.
-  #
-  # Então aqui o manifesto é cobrado, e só ele: se estiver obsoleto, reprova no PR, onde o
-  # conserto é `git add docs/MANIFEST_SHA256.txt` no mesmo commit.
-  if ! git diff --quiet --exit-code -- docs/MANIFEST_SHA256.txt; then
-    echo "✗ DERIVADOS: o manifesto está obsoleto. A cadeia regenerou e ele mudou, o que significa"
-    echo "  que este PR toca arquivo selado e não reselou. Rode:"
-    echo "      bash scripts/verificar_derivados.sh && git add docs/MANIFEST_SHA256.txt"
-    echo "  e inclua no commit. Sem isso a \`main\` fica vermelha no push (§314 afrouxa o derivado"
-    echo "  de DADO no PR, não o manifesto, que é função dos arquivos do próprio PR)."
-    exit 1
-  fi
-  echo "✓ DERIVADOS OK — a cadeia canônica inteira regenerou sem erro e o manifesto está em dia."
-  echo "  A comparação do resto com o git é do push para a \`main\` (§314)."
-  exit 0
-fi
 # 03/10/2026: `data/saude_pipeline.json` e `docs/SAUDE_PIPELINE.md` saem da COMPARAÇÃO, não só da
 # cadeia. O §273 tirou o gerador daqui, mas o painel continua mudando quando a cadeia roda — porque
 # `recalcular_mare.py --write`, que é um passo da cadeia, grava a própria linha de execução no
@@ -114,7 +85,7 @@ SEM_PAINEL=(':!data/snapshot_feed.json' ':!capturas-ci' ':!data/saude_pipeline.j
             ':!docs/SAUDE_PIPELINE.md' ':!data/painel_da_noite.json')
 if git diff --quiet --exit-code -- . "${SEM_PAINEL[@]}"; then
   echo "✓ DERIVADOS OK — cadeia canônica regenerada em árvore limpa sem diferença (índice, selos, feeds, dados abertos, PDFs, manifesto)."
-elif python3 scripts/selo_da_main.py DERIVADOS; then   # D4 (25/11/2026): merge sem selo; o publicador sela
+elif python3 scripts/selo_da_main.py DERIVADOS; then   # D1/D4/D7: PR, cópia de trabalho ou merge sem selo
   git diff --stat -- . "${SEM_PAINEL[@]}" | tail -8
 else
   echo "✗ DERIVADOS: a regeneração alterou arquivos versionados — havia derivado obsoleto:"; git diff --stat -- . "${SEM_PAINEL[@]}" | tail -8; exit 1
