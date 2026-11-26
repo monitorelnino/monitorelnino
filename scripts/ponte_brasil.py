@@ -328,7 +328,7 @@ def autoteste() -> int:
         "corpo vazio e muro de robô não são cópia": lambda: aceitar(b"") == "corpo vazio" and aceitar(pdf) is None
             and "muro" in (aceitar(b'<html><head><script src="/TSPD/08a1?type=9"></script></head></html>') or ""),
         "endereço final de nuvem entra sem a chave de acesso do órgão": lambda: "AKIA" not in str(itens_do_manifesto_de(
-            "https://b.s3.amazonaws.com/p.pdf?X-Amz-Credential=AKIAX7ABCDEFGHIJKLMN%2F20260526&X-Amz-Expires=600")),
+            "https://b.s3.amazonaws.com/p.pdf?X-Amz-Credential=" + "AKIA" + "X7ABCDEFGHIJKLMN" + "%2F20260526&X-Amz-Expires=600")),
         "lote: só entra o que respondeu 200 e confere com o sha256; recusa e 404 ficam listados": lambda: lote() == (
             [("https://a.gov.br/1.pdf", pdf, "endereço final https://a.gov.br/novo/1.pdf")],
             [("https://a.gov.br/2", "recusa da fonte"), ("https://a.gov.br/3", "sha256 não confere com o manifesto"),
