@@ -83,23 +83,22 @@ governança; o mais restritivo prevalece) · `.github/workflows/portoes.yml` (li
 ## Fluxo de mudança (PROTOCOLO §3.1)
 
 1. Partir da `main` atualizada; ramo `edicao/AAAA-MM-DD-tema`; um ramo e um PR por entrega.
-2. Consultar o `CODEMAP.md` (gerado por `scripts/gerar_codemap.py`, nunca à mão; portão reprova se
-   envelhece) e ler só o que ele lista.
+2. Consultar o `CODEMAP.md` (gerado por `scripts/gerar_codemap.py` e selado pelo publicador, nunca à
+   mão) e ler só o que ele lista.
 3. Editar com verificação de âncora antes de cada substituição.
 4. Rodar os portões que `python3 scripts/quais_portoes.py` indicar (`--comando` dá a linha); na dúvida,
    `python3 scripts/portoes_locais.py tudo` (ou `paginas` | `dados`; `--listar` mostra sem rodar).
    Nada sobe com portão vermelho.
-5. Push e PR **em rascunho** (`-F draft=true`): dá o número e não roda os portões.
+5. Commit, push e PR; todo envio roda os portões, rascunho ou não.
 6. `CHANGELOG.md`: entrada `## AAAA-MM-DD · #número · título`, até 80 palavras (portão `changelog`);
-   fundamentação longa vai no PR ou nas notas. Depois `python3 scripts/gerar_codemap.py` e
-   `bash scripts/verificar_derivados.sh`; derivado não se edita à mão (hook bloqueia).
-7. Um commit, push, conferir que chegou (`git merge-base --is-ancestor HEAD origin/<ramo>`), tirar do
-   rascunho (`POST .../pulls/<n>/ccr/ready_for_review`), Action "Portões" verde, merge. Nenhum PR fica
-   pronto sem CHANGELOG e sem selo (editoria, 24/11/2026).
+   fundamentação longa vai no PR ou nas notas.
+7. Push, conferir que chegou (`git merge-base --is-ancestor HEAD origin/<ramo>`), Action "Portões" verde
+   no head, merge. O selo (manifesto, `mudancas.html`, `CODEMAP.md`) é do publicador, não do PR; nenhum PR
+   fica pronto sem CHANGELOG (editoria, 25/11/2026).
 - Não abrir PR para uma frase: pedido pequeno de texto entra no próximo PR de página ou num "ajustes de
   texto de dd/mm" — salvo "publica isso agora".
-- Portão 12 vermelho: `verificar_derivados.sh` → `git add -A` → commit → rodar de novo; antes de assumir
-  culpa, `/e-da-main`.
+- Portão 12 vermelho só reprova na `main` selada ou num elo: um gerador quebrou ou um elo deixou derivado
+  velho; antes de assumir culpa, `/e-da-main`.
 - Atalhos: `/portoes`, `/p12`, `/e-da-main`, `/merge-main`, `/lote`; subagente `portoes-runner` para a suíte inteira.
 
 ## Arquivos que nunca entram em contexto
@@ -224,7 +223,8 @@ acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/`. Tamanhos envelhecem:
 - `robots.txt` é pedido, não tranca (RFC 9309 §1.3): respeitar `Crawl-delay`, cliente sempre
   identificado, rastro em `data/robots_registro.json`; nunca disfarçar o cliente
   (portão `verificar_cliente_identificado.py`).
-- Bloqueio real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre.
+- Bloqueio real (`401`, `403`, `429`, `451`, captcha, login) se respeita, sempre; o `403` visto de fora do país
+  só é recusa depois da sonda da ponte, que para na recusa (editoria, 26/11/2026; `coletores_base.so_de_fora`).
 - Recusa servida com `200` (muro de robô, geobloqueio de WAF) é recusa:
   `coletores_base.detectar_muro_de_robo` levanta antes de preservar; nomear a recusa certo.
 - Site que não responde ao robô de fora do país e responde no Brasil lê-se pela ponte no computador da

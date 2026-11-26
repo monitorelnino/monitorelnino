@@ -1,46 +1,31 @@
 #!/usr/bin/env python3
-"""Vigia de boletins do Painel El Niño 2026-2027.
-Consulta as páginas oficiais (CEMADEN e INPE), detecta o número de boletim mais
-recente mencionado e compara com data/boletins.json. Falha de rede não interrompe
-o pipeline (aviso e saída 0); um boletim novo atualiza o registro e sinaliza no log.
+"""Vigia de boletins do Painel El Niño 2026-2027: só avisa, nunca grava.
+
+Lê o índice mensal dos boletins na ANA com o mesmo leitor do coletor de sinais
+(`coletar_sinais_risco.parse_indice_boletins`) e compara com `data/boletins.json`.
+Quem grava o boletim e o aviso de leitura pendente é o coletor de sinais; aqui, um
+número novo só aparece no log. Falha de rede é aviso e saída 0.
 """
-import json, re, sys, urllib.request
-from coletores_base import ua_de, gravar  # noqa: E402  (§228: um cliente só, com propósito)
+import json, sys
+from coletar_sinais_risco import BOLETINS, FONTES, _buscar, parse_indice_boletins
 
-PAGINAS = [
-    "https://www.gov.br/cemaden/pt-br",
-    "https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias",
-]
-REGISTRO = "data/boletins.json"
-
-def maior_boletim(html: str) -> int:
-    """Extrai do HTML o maior número de boletim mencionado, testando dois padrões de menção (texto 'Boletim nº N' e slug 'PainelElNinoN')."""
-    numeros = [int(n) for n in re.findall(r"[Bb]oletim\s*(?:n[ºo°.]?\s*)?(\d{1,2})\b", html)]
-    extra = [int(n) for n in re.findall(r"PainelElNino(\d{1,2})", html)]
-    return max(numeros + extra, default=0)
 
 def main() -> int:
-    """Consulta as páginas oficiais, compara com o último boletim registrado e atualiza data/boletins.json se houver boletim mais recente."""
+    """Consulta o índice da ANA e diz no log se há boletim mais novo que o registrado."""
+    registrado = json.loads(BOLETINS.read_text(encoding="utf-8")).get("ultimo_boletim") or 0
+    url = FONTES["painel_el_nino"]["endpoint"]
     try:
-        atual = json.load(open(REGISTRO, encoding="utf-8"))
-    except FileNotFoundError:
-        atual = {"ultimo_boletim": 2}
-    detectado = 0
-    for url in PAGINAS:
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": ua_de("boletins Cemaden e INPE")})
-            html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
-            detectado = max(detectado, maior_boletim(html))
-        except Exception as e:
-            print(f"[aviso] não foi possível consultar {url}: {e}")
-    if detectado > atual.get("ultimo_boletim", 0):
-        print(f"[NOVO BOLETIM] nº {detectado} detectado (registro anterior: nº {atual['ultimo_boletim']}).")
-        print("  → Revisar o painel 'Risco projetado × instrumento estadual' e a timeline contra o novo boletim.")
-        atual["ultimo_boletim"] = detectado
-        gravar("boletins.json", atual)   # §229
+        indice = parse_indice_boletins(_buscar(url), url)
+    except Exception as e:  # noqa: BLE001 — a vigia nunca derruba a rotina
+        print(f"[aviso] não foi possível consultar {url}: {e}")
+        return 0
+    if indice.get("numero", 0) > registrado:
+        print(f"[NOVO BOLETIM] nº {indice['numero']} publicado ({indice['url']}); "
+              f"o risco por UF registrado é o do nº {registrado}.")
     else:
-        print(f"Nenhum boletim novo (último conhecido: nº {atual.get('ultimo_boletim')}).")
+        print(f"Nenhum boletim novo (último conhecido: nº {registrado}).")
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

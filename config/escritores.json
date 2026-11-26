@@ -158,6 +158,10 @@
    "escritor": "noturno_desfechos.yml",
    "por_que": "Planos municipais de arboviroses (E1, 22/10/2026): escrito só por `coletar_planos_arboviroses.py` no elo dos desfechos; `bases` é leitura registrada à mão no PR."
   },
+  "data/planos_arboviroses_juiz.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Vereditos do juiz municipal de saúde sobre a fila de arboviroses (26/11/2026): escrito só por `julgar_saude_municipal.py`, depois do coletor e da leitura no mesmo elo; peso zero."
+  },
   "data/planos_arboviroses_leitura.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Leitura automática do texto integral preservado dos diários com menção a plano de arboviroses (E1, 23/10/2026): escrito só por `ler_planos_arboviroses.py`, depois de `coletar_planos_arboviroses.py` no mesmo elo; peso zero."
@@ -288,8 +292,7 @@
   },
   "data/ponte_brasil.json": {
    "escritor": "qualquer_elo",
-   "por_que": "Índice da ponte no Brasil (15/11/2026): url → cópia em ponte/ pelo sha256 ou, para documento de lote, no ramo ponte-local/* (18/11/2026). Só scripts/ponte_brasil.py escreve; uma chave por URL.",
-   "pendente": "classe de união por chave no resolvedor quando a ponte rodar como elo; até lá, só entra por PR"
+   "por_que": "Índice da ponte no Brasil (15/11/2026): url → cópia em ponte/ pelo sha256 ou, para item de lote, no ramo ponte-local/* (18/11/2026). Só scripts/ponte_brasil.py escreve; uma chave por URL. 26/11/2026: o elo do juiz recebe os lotes (`--receber-ramos`); `copias` une por chave no resolvedor, e `lotes` perdido num conflito só faz o lote ser recebido de novo, sem sobrescrever cópia."
   },
   "ponte/": {
    "escritor": "qualquer_elo",

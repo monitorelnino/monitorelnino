@@ -167,11 +167,17 @@ def sem_plano_promovido(coleta: dict, municipios: dict) -> dict:
             if ibge not in municipios and m.get("estatuto") in classe}
 
 
+def ja_julgada(v) -> bool:
+    """Veredito desta versão do juiz; o de serviço fora do ar (5xx) gravado como recusa volta. Pura."""
+    v = v or {}
+    return v.get("codebook") == juiz.CODEBOOK_VERSAO and not re.match(r"documento não baixado: HTTP 5", str(v.get("motivo") or ""))
+
+
 def rodar(limite=None, buscar_fn=None, ler_fn=ler, gravar_fn=gravar) -> dict:
     doc = ler_fn(ARQUIVO, {}) or {}
     vereditos = dict(doc.get("vereditos") or {})
     pistas = [p for p in pistas_da_fila(ler_fn(FILA, [])) if (p.get("url_final") or p.get("url"))
-              and not (vereditos.get(p.get("url_final") or p.get("url")) or {}).get("codebook") == juiz.CODEBOOK_VERSAO]
+              and not ja_julgada(vereditos.get(p.get("url_final") or p.get("url")))]
     pistas = pistas[:limite] if limite else pistas
     print(f"{len(pistas)} pista(s) municipal(is) de arboviroses a julgar")
     feitos = {"promovida": 0, "recusada": 0, "pendente": 0}
@@ -181,6 +187,9 @@ def rodar(limite=None, buscar_fn=None, ler_fn=ler, gravar_fn=gravar) -> dict:
             try:
                 corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude_municipal")
             except urllib.error.HTTPError as e:
+                if e.code >= 500:   # serviço fora do ar não é veredito (26/11/2026)
+                    feitos["pendente"] += 1
+                    continue
                 vereditos[url] = {"promove": False, "motivo": f"documento não baixado: HTTP {e.code}",
                                   "codebook": juiz.CODEBOOK_VERSAO, "ibge": p.get("ibge") or p.get("alvo")}
                 feitos["recusada"] += 1
@@ -188,7 +197,7 @@ def rodar(limite=None, buscar_fn=None, ler_fn=ler, gravar_fn=gravar) -> dict:
             except Exception:  # noqa: BLE001 — rede: não é veredito, volta na rodada seguinte
                 feitos["pendente"] += 1
                 continue
-            v = julgar_municipal(js.texto_do_documento(corpo, url), p)
+            v = julgar_municipal(js.com_ocr(corpo, js.texto_do_documento(corpo, url)), p)
             v["criterios"] = {k: c for k, c in v["criterios"].items() if not c.get("ok")}
             v["julgado_em"] = hoje_editorial().isoformat()
             vereditos[url] = v
@@ -238,6 +247,10 @@ def autoteste() -> int:
             {"promove": True, "status": "VIG", "titulo_do_documento": "Plano Estadual de Contingência das Arboviroses"})["motivo"] == "plano_de_outro_ente",
         "plano de 2024 não é feito para este ciclo": lambda: no_municipio(
             {"promove": True, "status": "NOVO", "data": "2024", "titulo_do_documento": "Plano de Contingência"})["status"] == "VIG",
+        "veredito de serviço fora do ar (5xx) volta; o desta versão do juiz e o de recusa 4xx ficam": lambda:
+            not ja_julgada({"codebook": juiz.CODEBOOK_VERSAO, "motivo": "documento não baixado: HTTP 500"})
+            and ja_julgada({"codebook": juiz.CODEBOOK_VERSAO, "motivo": "documento não baixado: HTTP 403"})
+            and not ja_julgada({"codebook": "antigo"}),
         "escreve só o próprio arquivo": lambda: list(escrito) == [ARQUIVO] and not proibidos,
     })
 
