@@ -1,0 +1,2816 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transparencia-GEA</title>
+    <!--Lbras-->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+    <!-- Google Analitics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HEPRG9MJ35"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HEPRG9MJ35');
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="https://www.transparencia.ap.gov.br/ favicon.ico type="image/x-icon">
+    <link rel='shortcut icon' href='http://www.prodap.ap.gov.br/padrao/favicon/favicon.ico'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://www.transparencia.ap.gov.br/dist/fontawesome/css/all.min.css"  />    <style>
+        #rodape a:link, #rodape-azul a:visited { color: #333; text-decoration: none}
+        #rodape a:hover {color: #ccc}
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <link rel="alternate stylesheet" href="/dist/css/style_2.css" title="2">
+    <link rel="alternate stylesheet" href="/dist/css/style_1.css" title="1">
+    <script>
+        $(document).ready(function() {
+
+            if($.cookie("contrast-bar")) {setActiveStyleSheet($.cookie("contrast-bar"));}
+
+            $('#click').click(function(e) {
+                e.preventDefault();
+                if ( getActiveStyleSheet() == '1') {
+                    setActiveStyleSheet('2');
+                } else {
+                    setActiveStyleSheet('1');
+                }
+            });
+        });
+
+        function setActiveStyleSheet(title) {
+            var i, a, main;
+            for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+
+                if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) {
+                    a.disabled = true;
+                    if(a.getAttribute("title") == title) a.disabled = false;
+                }
+            }
+            $.cookie("contrast-bar",title, {expires: 365, path: '/'});
+        }
+
+        function getActiveStyleSheet() {
+            var i, a;
+            for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+                if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title") && !a.disabled) return a.getAttribute("title");
+            }
+            return null;
+        }
+
+        function getPreferredStyleSheet() {
+            var i, a;
+            for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+                if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("rel").indexOf("alt") == -1 && a.getAttribute("title")) return a.getAttribute("title");
+            }
+            return null;
+        }
+
+        jQuery.cookie = function(name, value, options) {
+            if (typeof value != 'undefined') { // name and value given, set cookie
+                options = options || {};
+                if (value === null) {
+                    value = '';
+                    options.expires = -1;
+                }
+                var expires = '';
+                if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+                    var date;
+                    if (typeof options.expires == 'number') {
+                        date = new Date();
+                        date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+                    } else {
+                        date = options.expires;
+                    }
+                    expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
+                }
+                // CAUTION: Needed to parenthesize options.path and options.domain
+                // in the following expressions, otherwise they evaluate to undefined
+                // in the packed version for some reason...
+                var path = options.path ? '; path=' + (options.path) : '';
+                var domain = options.domain ? '; domain=' + (options.domain) : '';
+                var secure = options.secure ? '; secure' : '';
+                document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+            } else { // only name given, get cookie
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        };// JavaScript Document
+    </script>
+</head>
+
+<body>
+<div class="container-fluid" id="topo" style="background-color: #f3f3f3; padding: 5px 0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                 <a href="#conteudo" 
+                   class="btn btn-default btn-sm float-left" 
+                   accesskey="1" 
+                   title="Ir Para Conteúdo [1]">
+                    Ir Para Conteúdo [1]
+                </a>
+                <a href="#menu" 
+                   class="btn btn-default btn-sm float-left" 
+                   accesskey="2" 
+                   title="Ir Para Menu [2]">
+                    Ir Para Menu [2]
+                </a>
+                <a href="#rodape-fim" 
+                   class="btn btn-default btn-sm float-left" 
+                   accesskey="3" 
+                   title="Ir Para Rodapé [3]">
+                    Ir Para Rodapé [3]
+                </a>
+                <!-- FIM dos links de Ir Para -->
+
+                <button type="button" id="click" class="btn btn-default btn-sm float-right">
+                    <i class="fa fa-adjust" aria-hidden="true"></i>
+                </button>
+
+
+                <button type="button" id="click" class="btn btn-default btn-sm float-right"><i class="fa fa-adjust" aria-hidden="true"></i></button>
+                <a href="/informacoes/mapa" class="btn btn-default btn-sm float-right"><i class="fas fa-sitemap"></i></a>
+                <button type="button" id="click" class="btn btn-default btn-sm float-right" onclick="reduzirFonte()" ><strong>A-</strong></button>
+                <button type="button" id="click" class="btn btn-default btn-sm float-right" onclick="resetarFonte()" ><strong>A()</strong></button>
+                <button type="button" id="click" class="btn btn-default btn-sm float-right" onclick="aumentarFonte()" ><strong>A+</strong></button>
+                <a href="/informacoes/acessibilidade" class="btn btn-default btn-sm float-right"><strong>Acessibilidade:  </strong><i class="fas fa-universal-access"></i></a>
+            </div>
+        </div>
+    </div>
+</div><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K4WQFLYGJ7"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-K4WQFLYGJ7');
+    function aumentarFonte() {
+      var fontSize = parseInt(getComputedStyle(document.body).fontSize); // Obtém o tamanho atual da fonte
+      fontSize += 2; // Aumenta o tamanho em 2 pixels (pode ajustar para o valor desejado)
+      document.body.style.fontSize = fontSize + 'px'; // Aplica o novo tamanho da fonte
+    }
+    function reduzirFonte() {
+      var fontSize = parseFloat(getComputedStyle(document.body).fontSize); // Obtém o tamanho atual da fonte
+      fontSize -= 2; // Reduz o tamanho em 2 pixels (pode ajustar para o valor desejado)
+      document.body.style.fontSize = fontSize + 'px'; // Aplica o novo tamanho da fonte
+    }
+    function resetarFonte() {
+      document.body.style.fontSize = '16px'; // Redefine o tamanho da fonte para o valor padrão
+    }
+
+</script>
+<style>
+    .gsc-search-button .gsc-search-button-v2 { height: 37px; border: green}
+    body {
+      font-size: 1em; /* Tamanho de fonte padrão */
+    }
+    /* Estilos para tamanhos diferenciados */
+    .selo-grande {
+        max-width: 200px;
+        width: 100%;
+        height: auto;
+    }
+    
+    .selo-pequeno {
+        max-width: 150px;
+        width: 100%;
+        height: auto;
+    }
+    
+    .brasao {
+        max-height: 140px;
+        width: auto;
+    }
+    
+    .titulo-principal {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #333;
+    }
+    
+    .subtitulo {
+        font-size: 1.2rem;
+        color: #6c757d;
+        font-weight: 400;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .selo-grande {
+            max-width: 160px;
+        }
+        
+        .selo-pequeno {
+            max-width: 120px;
+        }
+        
+        .brasao {
+            max-height: 120px;
+        }
+        
+        .titulo-principal {
+            font-size: 1.5rem;
+        }
+        
+        .subtitulo {
+            font-size: 1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .selo-grande {
+            max-width: 140px;
+        }
+        
+        .selo-pequeno {
+            max-width: 100px;
+        }
+        
+        .brasao {
+            max-height: 100px;
+        }
+    }
+</style>
+
+
+<div class="container-fluid" id="banner" style="background-color: #fff; padding: 20px 0; border-bottom: 5px solid green;">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <!-- Selo 2025 (Esquerda - Grande) -->
+            <div class="col-lg-3 col-md-4 col-12 order-1 order-md-1">
+                <div class="text-center">
+                    <img src="https://www.transparencia.ap.gov.br//dist/img/selo_2025.png" 
+                         class="img-fluid selo-grande" 
+                         alt="Selo 2025"
+                         loading="lazy">
+                </div>
+            </div>
+            
+            <!-- Centro -->
+            <div class="col-lg-6 col-md-8 col-12 order-3 order-md-2 text-center mt-4 mt-md-0">
+                <img src="https://www.transparencia.ap.gov.br//dist/img/brasao-do-amapa.png" 
+                     class="img-fluid brasao" 
+                     alt="Brasão do Amapá"
+                     loading="lazy">
+                <h1 class="mt-3 mb-2 titulo-principal">Portal da Transparência</h1>
+                <h2 class="subtitulo">Governo do Estado do Amapá</h2>
+            </div>
+            
+            <!-- Selos 2023 e 2024 (Direita - Pequenos) -->
+            <div class="col-lg-3 col-md-12 col-12 order-2 order-md-3 mt-3 mt-lg-0">
+                <div class="row justify-content-center">
+                    <div class="col-6 col-md-4 col-lg-12 text-center mb-3 mb-lg-4">
+                        <img src="https://www.transparencia.ap.gov.br//dist/img/selo_2023.png" 
+                             class="img-fluid selo-pequeno" 
+                             alt="Selo 2023"
+                             loading="lazy">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-12 text-center">
+                        <img src="https://www.transparencia.ap.gov.br//dist/img/selo_2024.png" 
+                             class="img-fluid selo-pequeno" 
+                             alt="Selo 2024"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-12 flex m-0 p-0">
+            <nav class="navbar navbar-expand-lg navbar-light p-3 p-md-0">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ml-auto" style="color: #333 !important;">
+                        <a class="nav-link" href="https://www.transparencia.ap.gov.br/">Início <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/informacoes/sobre-o-portal-GEA">O Portal</a>
+                        <a class="nav-link" href="https://diofe.portal.ap.gov.br/" target="_blank">Diário Oficial</a>
+                        <a class="nav-link" href="https://www.portal.ap.gov.br/#conheca" target="_blank">Conheça o Amapá</a>
+                        <a class="nav-link" href="https://ouvamapa.portal.ap.gov.br" target="_blank">Ouvidoria</a>
+                        <a class="nav-link" href="/informacoes/lgpd">LGPD</a>
+                       <!-- <a class="nav-link" href="/informacoes/atos_estaduais">Atos Normativos Estaduais</a>--> 
+                        <a class="nav-link" href="/informacoes/prf">Perguntas frequentes(FAQ)</a>
+                        <a class="nav-link" href="/informacoes/glossario">Glossário</a>
+
+                    </div>
+                    
+                </div>
+            </nav>
+            <div class="card-body text-center"> 
+                <a href="https://radardatransparencia.atricon.org.br/" target="_blank"><img src="https://www.transparencia.ap.gov.br//dist/img/botao_Radar.png"><img src="https://www.transparencia.ap.gov.br//dist/img/radar.png" class="img-fluid mx-auto"></a>
+                <a href="https://transparenciainternacional.org.br/" target="_blank"><img src="https://www.transparencia.ap.gov.br/dist/img/transp_brasil.png" class="img-fluid mx-auto"></a><br/>      
+           </div> 
+
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header"><strong>O que você procura?</strong></div>
+                    <div class="card-body p-0 m-0">
+                        <script async src="https://cse.google.com/cse.js?cx=41e476eb9026a429c"></script>
+                        <gcse:search enablehistory="false"></gcse:search>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div><!--  --><!--  --><div class="container mb-3">
+    <div class="row">
+        <div class="col-lg-12">
+                        <style>
+  .tabela_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .busca{
+    padding:10px;
+  }
+  .contentButton{
+    padding-left:10px;
+  }
+  /* .titulo{} */
+</style>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../">Início</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Atos Normativos Estaduais - COVID</li>
+    </ol>
+    Atualização : 10/10/2023 
+</nav>
+<div class="row justify-content-center">
+
+  <div class="card card-primary">
+    <div class="busca" >
+      <form class="form-group column" action="atos_normativos" method="get">
+        <div class="contentFiltros">
+          <div class="form-group column busca">
+            <label for="tipo_de_norma" class="col-form-label text-md-right">Tipo de norma</label>
+            <div>
+              <select class="form-control" name="tipo_de_norma" id="tipo_de_norma">
+                  <option value="null">::TODOS::</option>
+                  <option value="Decreto">Decreto</option>
+                  <option value="Lei">Lei</option>
+                  <option value="Lei Complementar">Lei Complementar</option>
+                  <option value="Portaria">Portaria</option>
+                  <option value="Nota Técnica">Nota Técnica</option>
+                  <option value="Mensagem">Mensagem</option>
+                  <option value="Edital">Edital</option>
+                  <option value="Resolução AD REFERENDUM">Resolução AD REFERENDUM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group column busca">
+            <label for="orgao" class="col-form-label text-md-right">Orgao</label>
+            <div>
+              <select class="form-control" name="orgao" id="orgao">
+                  <option value="null">::TODOS::</option>
+                  <option value="Gabinete do Governador">Gabinete do Governador</option>
+                  <option value="DGPC">DGPC</option>
+                  <option value="SIMS">SIMS</option>
+                  <option value="SESA">SESA</option>
+                  <option value="SEFAZ">SEFAZ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="contentButton">
+          <button class="btn btn-primary" type="submit">
+            <b class="fa fa-search"> Filtrar</b>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card-header with-border">
+      <div style="
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        width:100%"
+        class="card-tools pull-right">
+        <h3>ATOS NORMATIVOS ESTADUAIS</h3>
+        <!-- <button type="button" class="btn btn-card-tool" data-widget="collapse"><i class="fa fa-plus"></i></button> -->
+      </div>
+    </div>
+
+    <div class="card-body table-responsive">
+        <!-- Decretos -->
+        <div style="padding-top: 30px;" class="col-12">
+          <div class="card-header table-bordered">
+            <h4>
+              Decretos
+            </h4>
+          </div>
+
+          <div class="double-scroll table-responsive tabela_info">
+            <table class="table w-auto table-sm table-hover table-bordered table-striped table-condensed">
+    <thead class="text-center">
+        <th>Assunto</th>
+        <th>Tipos de normas</th>
+        <th>Numero/data</th>
+        <th>Orgao</th>
+        <th>Ementa</th>
+        <th>Download</th>
+    </thead>
+
+    <tbody class="text-left">
+                        <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0072 de 06 de janeiro de 2023</td>
+            <td>Gabinete do Governador</td>
+            <td>Recomenda a utilização de máscaras de proteção facial e práticas de higienização contra os riscos de transmissão do Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0072_DE_06_DE_JANEIRO_DE_2023.pdf"
+                        target='_blank' title='DECRETO_N_0072_DE_06_DE_JANEIRO_DE_2023'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.975 de 22 de novembro de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Recomenda a utilização de máscaras de proteção facial e práticas de higienização contra os riscos de transmissão do Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4975_DE_22_DE_NOVEMBRO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_4975_DE_22_DE_NOVEMBRO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Estabelece critérios para retomada das atividades econômicas</td>
+            <td>Decreto</td>
+            <td>3.184 de 05 de julho de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Prorrogar, até o dia 25 de julho de 2022, os termos do Decreto nº 2637, de 31 de maio de 2022, publicado no Diário Oficial do Estado do Amapá nº 7679, de 31 de maio de 2022, que estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3184_DE_05_DE_JULHO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_3184_DE_05_DE_JULHO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Estabelece critérios para retomada das atividades econômicas</td>
+            <td>Decreto</td>
+            <td>2.637 de 31 de maio de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_2637_DE_31_DE_MAIO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_2637_DE_31_DE_MAIO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Estabelece critérios para retomada das atividades econômicas</td>
+            <td>Decreto</td>
+            <td>2.277 de 06 de maio de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>RESOLVE: Prorrogar, até o dia 30 de maio de 2022, os termos do Decreto nº 1645, de 04 de abril de 2022, publicado no Diário Oficial do Estado do Amapá nº 7641, de 04 de Diário Oficial do Estado do Amapá nº 7641, de 04 de abril de 2022, que estabelece critérios para retomada responsável e gradual das atividades econômicas e responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, tendo como foco a redução dos riscos de transmissão tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_2277_DE_6_DE_MAIO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_2277_DE_6_DE_MAIO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.645 de 04 de abril de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1645_DE_04_DE_ABRIL_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_1645_DE_04_DE_ABRIL_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.113 de 07 de março de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1113_DE_07_DE_MARCO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_1113_DE_07_DE_MARCO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0790 de 14 de fevereiro de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0790_DE_14_DE_FEVEREIRO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_0790_DE_14_DE_FEVEREIRO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0531 de 01 de fevereiro de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus  (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0531_DE_01_DE_FEVEREIRO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_0531_DE_01_DE_FEVEREIRO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0203 de 17 de janeiro de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0203_DE_17_DE_JANEIRO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_0203_DE_17_DE_JANEIRO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0004 de 03 de janeiro de 2022</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0004_DE_03_DE_JANEIRO_DE_2022.pdf"
+                        target='_blank' title='DECRETO_N_0004_DE_03_DE_JANEIRO_DE_2022'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.761 de 20 de dezembro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4761_DE_20_DE_DEZEMBRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_4761_DE_20_DE_DEZEMBRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.559 de 6 de dezembro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4559_DE_06_DEZEMBRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_4559_DE_06_DEZEMBRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.343 de 22 de novembro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4343_DE_22_DE_NOVEMBRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_4343_DE_22_DE_NOVEMBRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.933 de 25 de outubro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3933_DE_25_DE_OUTUBRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_3933_DE_25_DE_OUTUBRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.520 de 28 de setembro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3520_DE_28_DE_SETEMBRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_3520_DE_28_DE_SETEMBRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.152 de 30 de agosto de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus  (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3152_DE_30_DE_AGOSTO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_3152_DE_30_DE_AGOSTO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2878 de 16 de agosto de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus  (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2878_DE_16_DE_AGOSTO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_2878_DE_16_DE_AGOSTO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2710 de 02 de agosto de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2710_DE_02_DE_AGOSTO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_2710_DE_02_DE_AGOSTO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2500 de 20 de julho de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Retificar o Decreto nº 2498, de 19 de julho de 2021, publicado no Diário Oficial do Estado do Amapá nº 7463, de 19 de julho de 2021, que passa a vigorar com a seguinte alteração:</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2500_DE_20_DE_JULHO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_2500_DE_20_DE_JULHO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2498 de 19 de julho de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2498_DE_19_DE_JULHO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_2498_DE_19_DE_JULHO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2261 de 05 de julho de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2261_DE_05_DE_JULHO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_2261_DE_05_DE_JULHO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2120 de 21 de junho de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2120_DE_21_DE_JUNHO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_2120_DE_21_DE_JUNHO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1932 de 07 de junho de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1932_DE_07_DE_JUNHO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1932_DE_07_DE_JUNHO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1803 de 24 de maio de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando a realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1803_DE_24_DE_MAIO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1803_DE_24_DE_MAIO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1629 de 10 de maio de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1629_DE_10_DE_MAIO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1629_DE_10_DE_MAIO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1392 de 26 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1392_DE_26_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1392_DE_26_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1313 de 19 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1313_DE_19_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1313_DE_19_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medidas socioeconômicas</td>
+            <td>Decreto</td>
+            <td>1308 de 16 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre parcelamento de débitos do ICMS e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1308_DE_16_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1308_DE_16_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medidas socioeconômicas</td>
+            <td>Decreto</td>
+            <td>1307 de 16 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Institui o Programa de Parcelamento do Imposto sobre a Propriedade de Veículos Automotores – IPVA e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1307_DE_16_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1307_DE_16_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medidas socioeconômicas</td>
+            <td>Decreto</td>
+            <td>1259 de 13 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre medidas tributárias emergenciais relativas à atenuação dos efeitos econômicos decorrentes da nova onda de contaminação do Coronavírus (COVID-19).</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1259_DE_13_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1259_DE_13_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medidas socioeconômicas</td>
+            <td>Decreto</td>
+            <td>1258 de 13 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto n° 4.319, de 04 de outubro de 2012, que dispõe sobre a redução de base de cálculo do ICMS no fornecimento de refeição promovida por bares, restaurantes e estabelecimentos similares.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1258_DE_13_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1258_DE_13_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medidas socioeconômicas</td>
+            <td>Decreto</td>
+            <td>1257 de 13 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre a redução da base de cálculo do ICMS nas operações com óleo diesel e lubrificantes.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1257_DE_13_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1257_DE_13_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1133 de 10 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Estabelece critérios para retomada responsável e gradual das atividades econômicas e sociais, considerando à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade ao enfrentamento da pandemia, tendo como foco a redução dos riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1133_DE_10_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1133_DE_10_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1112 de 07 de abril de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida (LOCKDOWN), com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1112_DE_07_DE_ABRIL_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1112_DE_07_DE_ABRIL_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1070 de 31 de março de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida (LOCKDOWN), com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1070_DE_31_DE_MARCO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_1070_DE_31_DE_MARCO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0990 de 25 de março de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida (LOCKDOWN), com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DOEn7382_3_36.pdf"
+                        target='_blank' title='DOEn7382_3_36'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0907 de 16 de março de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida (LOCKDOWN), com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N0_07_DE_16_DE_MARCO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N0_07_DE_16_DE_MARCO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0775 de 09 de março de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0775_DE_09_DE_MARCO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0775_DE_09_DE_MARCO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0662 de 01 de março de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0662_DE_01_DE_MARCO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0662_DE_01_DE_MARCO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0563 de 22 de fevereiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0563_DE_22_DE_FEVEREIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0563_DE_22_DE_FEVEREIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0469 de 15 de fevereiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0469.pdf"
+                        target='_blank' title='DECRETO_N_0469'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0415 de 09 de fevereiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas  restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0415_DE_09_DE_FEVEREIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0415_DE_09_DE_FEVEREIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0328 de 02 de fevereiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0328_DE_02_DE_FEVEREIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0328_DE_02_DE_FEVEREIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0313 de 01 de fevereiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre as medidas sanitárias a serem adotadas no período do carnaval voltadas para o enfrentamento da Covid-19.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0313_DE_01_DE_FEVEREIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0313_DE_01_DE_FEVEREIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0217 de 25 de janeiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0217_DE_25_DE_JANEIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0217_DE_25_DE_JANEIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0154 de 19 de janeiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0154_DE_19_DE_JANEIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0154_DE_19_DE_JANEIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0133 de 19 de janeiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Fica decretado Luto Oficial, no Estado do Amapá, pelo período de 03 (três) dias, em virtude do Estado ter atingido, no dia 18 de janeiro de 2021, mais de mil vítimas fatais da COVID-19 (novo Coronavírus).</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0133_DE_19_DE_JANEIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0133_DE_19_DE_JANEIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>0132 de 15 de janeiro de 2021</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_0132_DE_15_DE_JANEIRO_DE_2021.pdf"
+                        target='_blank' title='DECRETO_N_0132_DE_15_DE_JANEIRO_DE_2021'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.391 de 31 de dezembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências. * Republicado por haver saído com incorreções no DOE nº 7324, de 31/12/20.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4391_DE_31_DE_DEZEMBRO_DE_2020_2.pdf"
+                        target='_blank' title='DECRETO_N_4391_DE_31_DE_DEZEMBRO_DE_2020_2'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.391 de 31 de dezembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4391_DE_31_DE_DEZEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_4391_DE_31_DE_DEZEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.330 de 21 de dezembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4330_DE_21_DE_DEZEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_4330_DE_21_DE_DEZEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>4.091 de 03 de dezembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_4091_DE_03_DE_DEZEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_4091_DE_03_DE_DEZEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.971 de 24 de novembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Decretação da situação anormal caracterizada como Estado de Calamidade Pública em todo território do Estado do Amapá, ocasionada pelo Desastre Natural – Biológico - Epidemia – Doença infecciosa viral causada pelo SARSCoV2 (Covid-19), com Codificação COBRADE nº 1.5.1.1.0, visando a continuidade das ações de enfrentamento e para os fins do art. 65, da Lei Complementar nº 101, de 4 de maio de 2000, e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3971_DE_24_DE_NOVEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3971_DE_24_DE_NOVEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.950 de 19 de novembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre o plano de retomada gradual das aulas presenciais nas escolas públicas e privadas no âmbito do Estado do Amapá para o ano letivo de 2021, visando reduzir os riscos de contaminação pelo novo Coronavírus (Covid-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3950_DE_19_DE_NOVEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3950_DE_19_DE_NOVEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.915 de 17 de novembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas  restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3915_DE_17_DE_NOVEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3915_DE_17_DE_NOVEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.885 de 10 de novembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3885_DE_10_DE_NOVEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3885_DE_10_DE_NOVEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.850 de 04 de novembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3850_DE_4_DE_NOVEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3850_DE_4_DE_NOVEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.819 de 27 de outubro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas restrições de aglomerações de pessoas de forma mais rígida temporariamente, com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3819_DE_27_DE_OUTUBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3819_DE_27_DE_OUTUBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.633 de 16 de outubro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020; 1.809, de 02 de junho de 2020; 1.878, de 12 de junho de 2020; 2.027, de 30 de junho de 2020; 2.164, de 14 de julho de 2020; 2.417, de 31 de julho de 2020; 2.720 de 14 de agosto de 2020; Decreto 2885, de 29 de agosto de 2020, Decreto 3131, de 17 de setembro de 2020, e Decreto 3282 de 28 de setembro de 2020, para estabelecer critérios de retomada responsável e gradual das atividades econômicas, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo Coronavírus-COVID-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DOEn7278_4_47.pdf"
+                        target='_blank' title='DOEn7278_4_47'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.408 de 01 de outubro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto n° 1.377, de 17 março de 2020, alterado pelos Decretos nºs 1.495, de 02 de abril de 2020; 1.534, de 17 de abril de 2020; 1.614, de 01 de maio de 2020; 1.790, de 30 de maio de 2020, 2.026, de 30 de junho de 2020, 2.163 de 14 de julho de 2020, 2.418 de 01 agosto de 2020 e 2908, de 31 de agosto de 2020, promovendo retorno gradual das atividades da administração pública do Poder Executivo, mantendo a continuidade à prevenção do novo Coronavírus, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DOEn7268-14-59.pdf"
+                        target='_blank' title='DOEn7268-14-59'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3.282  de 28 de setembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020; 1.809, de 02 de junho de 2020; 1.878, de 12 de junho de 2020; 2.027, de 30 de junho de 2020; 2.164, de 14 de julho de 2020; 2.417, de 31 de julho de 2020; 2.720 de 14 de agosto de 2020; Decreto 2885, de 29 de agosto de 2020 e Decreto 3131, de 17 de setembro de 2020, para manter a quarentena e estabelecer critérios de retomada responsável e gradual das atividades econômicas, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo Coronavírus-COVID-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3282_DE_28_DE_SETEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3282_DE_28_DE_SETEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>3131 de 17 de Setembro de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020; 1.809, de 02 de junho de 2020; 1.878, de 12 de junho de 2020, 2.027, de 30 de junho de 2020; 2.164, de 14 de julho de 2020, 2.417, de 31 de julho de 2020, 2.720 de 14 de agosto de 2020, e Decreto 2885, de 29 de agosto de 2020, para manter a quarentena e estabelecer critérios de retomada responsável e gradual das atividades econômicas, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo Coronavírus-COVID-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_3131_DE_17_DE_SETEMBRO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_3131_DE_17_DE_SETEMBRO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2908 de 31 de agosto de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto n° 1.377, de 17 março de 2020, alterado pelos Decretos nºs 1.495, de 02 de abril de 2020; 1.534, de 17 de abril de 2020; 1.614, de 01 de maio de 2020; 1.790, de 30 de maio de 2020, 2.026, de 30 de junho de 2020, 2.163 de 14 de julho de 2020 e 2.418 de 01 agosto de 2020, promovendo retorno gradual das atividades da administração pública do Poder Executivo, mantendo a continuidade à prevenção do novo Coronavírus, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2908_DE_31_DE_AGOSTO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2908_DE_31_DE_AGOSTO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2.885 de 29 de agosto de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Decreto nº 2885 de 29 de agosto de 2020 - Prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020; 1.809, de 02 de junho de 2020; 1.878, de 12 de junho de 2020, 2.027, de 30 de junho de 2020; 2.164, de 14 de julho de 2020, 2.417, de 31 de julho de 2020 e 2.720 de 14 de agosto de 2020, para manter a quarentena e estabelecer critérios de retomada responsável e gradual das atividades econômicas, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/Decreto_n_2885_de_29_de_agosto_de_2020.pdf"
+                        target='_blank' title='Decreto_n_2885_de_29_de_agosto_de_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2720 de 14 de agosto de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Decreto nº 2720 de 14 de agosto de 2020 - Prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de 
+abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020; 1.809, de 02 de junho de 2020; 1.878, de 12 de junho de 2020, 2.027, de 30 de junho de 2020; 2.164, de 14 de julho de 2020 e 2417, de 31 de julho de 2020, para manter a quarentena e estabelecer critérios de retomada responsável e gradual das atividades econômicas, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo Coronavírus-COVID-19, e adota outras providências</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2720_DE_14_DE_AGOSTO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2720_DE_14_DE_AGOSTO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2.418 de 01 de agosto de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera e insere os artigos 5º-A e 5º-B do Decreto n° 1.377, de 17 março de 2020, alterado pelos Decretos nºs 1.495, de 02 de abril de 2020; 1.534, de 17 de abril de 2020; 1.614, de 01 de maio de 2020; 1.790, de 30 de maio de 2020; 2.026, de 30 de junho de 2020 e 2.163, de 14 de julho de 2020, promovendo retorno responsável e gradual das atividades da administração pública do Poder
+Executivo, mantendo a continuidade à prevenção do novo Coronavírus, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2418_DE_01_DE_AGOSTO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2418_DE_01_DE_AGOSTO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2.417 de 31 de julho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020; 1.809, de 02 de junho de 2020; 1.878, de 12 de junho de 2020, 2.027, de 30 de junho de 2020 e 2.164, de 14 de julho de 2020, para manter a quarentena e estabelecer critérios de retomada responsável e gradual das atividades econômicas, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo
+Coronavírus-COVID-19, e adota outras providências. </td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2417_DE_31_DE_JULHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2417_DE_31_DE_JULHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td> 2.164 de 14 de julho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Decreto nº 2164 de 14 de julho de 2020 Prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020; 1.809,
+de 02 de junho de 2020; 1.878, de 12 de junho de 2020 e 2.027, de 30 de junho de 2020, para manter a quarentena e estabelecer critérios de retomada responsável e gradual das atividades econômicas e, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo Coronavírus-COVID-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2164_DE_14_DE_JULHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2164_DE_14_DE_JULHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2.163 de 14 de julho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto n° 1.377, de 17 março de 2020, alterado pelos Decretos nºs 1.495, de 02 de abril de 2020; 1.534, de 17 de abril de 2020; 1.614, de 01 de maio de 2020; 1.790, de 30 de maio de 2020 e 2.026, de 30 de junho de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.
+</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2163_DE_14_DE_JULHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2163_DE_14_DE_JULHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>2.027 de 30 de junho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Em razão do Parecer Técnico-Científico nº 13/20, de 30 de junho de 2020, do Centro de Operações de Emergência em Saúde Pública – COESP, prorroga e altera o Decreto 1.497, de 03 de abril de 2020 e seus anexos, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020, 1.809, de 02 de junho de 2020 e 1.878, de 12 de junho de 2020, para manter a quarentena e estabelecer critérios de retomada responsável e gradual das atividades econômicas e, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo
+Coronavírus-COVID-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2027_de_30_DE_JUNHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2027_de_30_DE_JUNHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td></td>
+            <td>2.026 de 30 junho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto n° 1.377, de 17 de março de 2020, alterado pelos Decretos nº 1.495, de 02 de abril de 2020; 1.534, de 17 de abril de 2020, 1.614, de 01 de maio de 2020 e 1.790 de 30 de maio de 2020, em razão da continuidade ao combate do Covid-19, em todo o território
+do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_2026_DE_30_DE_JUNHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_2026_DE_30_DE_JUNHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medidas de estímulo econômico</td>
+            <td>Decreto</td>
+            <td>1.897 de 15 de junho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre prorrogação de prazos previstos no Decreto n° 1.496, de 03 de abril de 2020, que dispõe sobre medidas tributárias emergenciais relativas à atenuação dos efeitos econômicos decorrentes da pandemia do novo Coronavírus (COVID-19).</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1897_DE_15_DE_JUNHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1897_DE_15_DE_JUNHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.878 de 18 de junho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Prorroga e altera o Decreto 1.497, de 03 de abril de 2020, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020; 1.782, de 28 de maio de 2020 e 1809, de 02 de junho de 2020, para manter a quarentena e
+estabelecer critérios de retomada responsável e gradual das atividades econômicas e sociais constante do Anexo deste Decreto, obedecendo à realidade epidemiológica e a rede assistencial dos Municípios e do Estado do Amapá, reforçando a continuidade do enfrentamento ao novo Coronavírus-COVID-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1878_DE_12_DE_JUNHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1878_DE_12_DE_JUNHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Estrutura administrativa</td>
+            <td>Decreto</td>
+            <td>1.831 de 04 de junho de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td> Criar a “Gerência Administrativa do Centro de
+Enfrentamento à COVID-19” da Secretaria de Estado da Saúde que funcionará no Hospital Universitário, vinculada diretamente à Secretaria Adjunta de Enfrentamento à COVID-19.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1831_DE_04_DE_JUNHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1831_DE_04_DE_JUNHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento Social</td>
+            <td>Decreto</td>
+            <td>1.809 de 02 de junho 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto nº 1.497, de 03 de abril de 2020, alterado pelos Decretos nºs 1.539, de 18 de abril de 2020; 1.616, de 03 de maio de 2020; 1.726, de 15 de maio de 2020 e 1.782, de 28 de maio de 2020, prorrogando os seus efeitos e dando continuidade ao combate à disseminação do novo Coronavírus-Covid-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1809_DE_02_DE_JUNHO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1809_DE_02_DE_JUNHO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento Social</td>
+            <td>Decreto</td>
+            <td>1.790 de 30 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto n° 1.377, de 17 março de 2020, alterado pelos Decretos nº 1.495, de 02 de abril de 2020; 1.534, de 17 de abril de 2020 e 1614, de 01 de maio de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1790_DE_30_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1790_DE_30_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.782 de 28 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto n° 1.497 de 03 de abril de 2020, alterado pelos Decretos nºs 1.539 de 18 de abril de 2020, 1.616 de 03 de maio de 2020 e 1.726 de 15 de maio de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1782_DE_28_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1782_DE_28_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Contratações emergenciais</td>
+            <td>Decreto</td>
+            <td>1.728 de 16 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Tornar sem efeito o Decreto nº 1725, de 15 de maio de 2020, publicado no Diário Oficial do Estado do Amapá nº 7168, de 15 de maio de 2020.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1728_DE_16_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1728_DE_16_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.726 de 15 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre a intensificação das medidas de restrição à locomoção ou circulação de pessoas, com adoção de normas de isolamento social rígido (lockdown) em todo o território do Estado do Amapá, visando à contenção do avanço da pandemia do novo Coronavírus - COVID-19, e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1726_DE_15_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1726_DE_15_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Contratações emergenciais</td>
+            <td>Decreto</td>
+            <td>1725 de 15 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Determina a requisição administrativa de bens, em razão da necessidade de enfrentamento da emergência de saúde pública de importância internacional decorrente do Coronavírus.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1725_DE_15_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1725_DE_15_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Contratações emergenciais</td>
+            <td>Decreto</td>
+            <td>1.715 de 12 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre os mecanismos de auxílio e de controle nos processos de aquisição de bens e de contratação de serviços responsabilidade da Secretaria de Estado da Saúde e da Superintendência de Vigilância em Saúde, destinados ao combate do novo Coronavírus (Covid-19), e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1715_DE_12_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1715_DE_12_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medida de Estímulo Econômico</td>
+            <td>Decreto</td>
+            <td>1.615 de 02 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Regulamenta a Lei Estadual nº 2.501, de 30 abril de 2020, que instituiu o pagamento do auxílio emergencial em favor dos agentes públicos que atuam diretamente no combate ao novo Coronavírus (Covid 19) no território do Estado do Amapá, e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1615_DE_02_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1615_DE_02_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.616 de 03 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto Estadual n° 1.497, de 03 de abril de 2020, alterado pelo Decreto Estadual nº 1.539, de 18 de abril de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica – * Republicado por haver saído com incorreções no DOE nº 7158, de 03/05/20.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1616_DE_03_DE_MAIO_DE_2020_REPUBLICAÇÃO.pdf"
+                        target='_blank' title='DECRETO_N_1616_DE_03_DE_MAIO_DE_2020_REPUBLICAÇÃO'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.616 de 03 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto Estadual n° 1.497, de 03 de abril de 2020, alterado pelo Decreto Estadual nº 1.539, de 18 de abril de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.
+</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1616_DE_03_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1616_DE_03_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medidas de estímulo aos profissionais de saúde</td>
+            <td>Decreto</td>
+            <td>1.615 de 02 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Regulamenta a Lei Estadual nº 2.501, de 30 abril de 2020, que instituiu o pagamento do auxílio emergencial em favor dos agentes públicos que atuam diretamente no combate
+ao novo Coronavírus (Covid 19) no ) no território do Estado do Amapá, e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1615_DE_02_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1615_DE_02_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.614 de 01 de maio de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto Estadual n° 1.377, de 17 março de 2020, alterado pelos Decretos nº 1.495, de 02 de abril de 2020 e 1.534, de 17 de abril de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1614_DE_01_DE_MAIO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1614_DE_01_DE_MAIO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Políticas sociais</td>
+            <td>Decreto</td>
+            <td>1.556 de 22 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre a distribuição de “kit merenda em casa” para as famílias dos alunos regularmente matriculados nas unidades escolares da rede estadual de ensino, em substituição ao fornecimento da merenda escolar pelo período de suspensão das aulas em razão de situação de emergência e calamidade pública decorrentes da pandemia do novo coronavírus (COVID-19).</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1556_DE_22_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1556_DE_22_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.539 de 18 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto Estadual n° 1.497, de 03 de abril de 2020, em razão do aumento de casos de contaminação e a necessária continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.
+</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1539_DE_18_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1539_DE_18_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.538 de 18 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Decreta estado de calamidade pública em todo o território do Estado do Amapá afetado pelo Desastre Natural - Biológico – Epidemia – Doença infecciosa viral, causada pelo novo Coronavírus Covid-19, e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1538_DE_18_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1538_DE_18_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.534 de 16 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto Estadual n° 1.377 de 17 de março de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1534_DE_16_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1534_DE_16_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medida de Proteção Social</td>
+            <td>Decreto</td>
+            <td>1.519 de 09 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Institui o benefício eventual de caráter emergencial “Água: conta paga” destinado ao custeio da Tarifa Social de água e saneamento em favor das famílias vulneráveis
+em estado de pobreza ou extrema pobreza pertencentes ao CadÚnico e já cadastradas junto a empresa pública estadual de água e saneamento no âmbito do Estado do Amapá, altera o Decreto Estadual nº 5.522 de 2011 e dá outras providências</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1519_DE_09_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1519_DE_09_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.497 de 03 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre novas medidas de restrição de aglomeração de pessoas com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19), institui o Comitê de Decisões Estratégicas e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1497_DE_03_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1497_DE_03_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Medida de estímulo econômico</td>
+            <td>Decreto</td>
+            <td>1.496 de 03 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre medidas tributárias emergenciais relativas à atenuação dos efeitos econômicos decorrentes da pandemia do novo Coronavírus (COVID-19) e dá outras
+providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1496_DE_03_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1496_DE_03_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.495 de 02 de abril de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto Estadual n° 1.377, de 17 março de 2020, em razão da continuidade ao combate do Covid-19, em todo o território do Estado do Amapá, na forma como especifica.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1495_DE_02_DE_ABRIL_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1495_DE_02_DE_ABRIL_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Órgão coletivo</td>
+            <td>Decreto</td>
+            <td>1.488 de 28 de março de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Institui o Comitê Médico de enfrentamento ao Covid-19, vinculado ao Centro de Operações de Emergências em Saúde Pública - COESP e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1488_DE_28_DE_MARÇO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1488_DE_28_DE_MARÇO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.415 de 22 de março de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Altera o Decreto Estadual n° 1.414 de 19 março de 2020, que dispõe sobre restrições de funcionamento para o fim de combater a disseminação do novo Coronavírus (Covid
+19) no território do Estado do Amapá.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1415_DE_22_DE_MARÇO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1415_DE_22_DE_MARÇO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Estado de Calamidade Pública</td>
+            <td>Decreto</td>
+            <td>0967 de 21 de março de 2020</td>
+            <td>Assembléia Legistaltiva</td>
+            <td>Reconhece, para fins do disposto no art. 65 da Lei Complementar nº 101 de 04 de maio de 2020, a ocorrência de estado de calamidade pública nos termos da solicitação do Governador do Estado encaminhada por meio da mensagem nº 006, de 19 de março de 2020.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_LEGIS_N_0967_DE_23_DE_MARCO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_LEGIS_N_0967_DE_23_DE_MARCO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.414 de 19 de Março de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre medidas de restrição de aglomeração de pessoas com a finalidade de reduzir os riscos de transmissão do novo Coronavírus (COVID-19) e adota outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1414_DE_19_DE_MARÇO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1414_DE_19_DE_MARÇO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.413 de 19 de março de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Declara estado de calamidade pública, para os fins do art.65 da Lei Complementar nº 101, de 4 de maio de  2000,em razão da grave crise de saúde pública decorrente da pandemia da COVID-19 (novo Coronavírus), e suas repercussões nas finanças públicas do Estado do Amapá, e dá outras providências.
+</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1413_DE_19_DE_MARÇO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1413_DE_19_DE_MARÇO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Isolamento social/flexibilização com retorno gradual</td>
+            <td>Decreto</td>
+            <td>1.377 de 17 de março de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Dispõe sobre medidas temporárias de prevenção ao contágio pelo novo coronavírus (COVID-19) no âmbito do Poder Executivo do Estado do Amapá.
+</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1377_DE_17_DE_MARÇO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1377_DE_17_DE_MARÇO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Órgão coletivo</td>
+            <td>Decreto</td>
+            <td>1.376 de 17 de março de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Institui no âmbito do Estado do Amapá o Centro de Operações de Emergências em Saúde Pública (COESP) em virtude do risco de epidemia causado pelo Coronavírus (Covid-19), para o fim que específica e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1376_DE_17_DE_MARÇO_DE_2020.pdf"
+                        target='_blank' title='DECRETO_N_1376_DE_17_DE_MARÇO_DE_2020'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                                <tr class="row-hover clickable">
+            <td>Contratações emergenciais</td>
+            <td>Decreto</td>
+            <td>1.375 de 17 de março de 2020</td>
+            <td>Gabinete do Governador</td>
+            <td>Decretação da situação anormal caracterizada como Situação de Emergência em todo território do Estado do Amapá, visando à prevenção, mitigação, preparação e resposta ao risco de Desastre Natural – Biológico - Epidemia – Doença infecciosa viral causada pelo novo Coronavírus - COVID-19, com Codificação COBRADE nº 1.5.1.1.0 e dá outras providências.</td>
+            <td>
+                <li class="list-group-item">
+                    <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/decretos/DECRETO_N_1375_DE_17_DE_MARÇO_DE_2020 (2).pdf"
+                        target='_blank' title='DECRETO_N_1375_DE_17_DE_MARÇO_DE_2020 (2)'>
+                        baixar
+                    </a>
+                </li>
+            </td>
+        </tr>
+                    </tbody>
+</table>            <!-- Remover esse html em baixo -->
+              <!-- <table class="table w-auto table-sm table-hover table-bordered table-striped table-condensed">
+                <thead class="text-center">
+                  <th>Assunto</th>
+                  <th>Tipos de normas</th>
+                  <th>Numero/data</th>
+                  <th>Orgao</th>
+                  <th>Ementa</th>
+                </thead>
+
+                <tbody class="text-left">
+                                      <tr data-toggle="collapse" data-target="#accordion-{{$loop->index}}" class="row-hover clickable">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                                  </tbody>
+              </table> -->
+          </div>
+
+        </div>
+
+        <!-- Leis -->
+        <div style="padding-top: 80px;" class="col-12">
+          <div class="card-header table-bordered">
+            <h4>
+              Leis
+            </h4>
+          </div>
+
+          <div class="double-scroll table-responsive tabela_info">
+            
+<table class="table w-auto table-sm table-hover table-bordered table-striped table-condensed">
+  <thead class="text-center">
+    <th>Assunto</th>
+    <th>Tipos de normas</th>
+    <th>Numero/data</th>
+    <th>Orgao</th>
+    <th>Ementa</th>
+    <th>Download</th>
+  </thead>
+
+  <tbody class="text-left">
+                  <tr class="row-hover clickable">
+          <td>Vacinação</td>
+          <td>Lei</td>
+          <td>2.600 de 22 de outubro de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Torna pública a lista de vacinação contra a Covid-19, no âmbito do Estado do Amapá.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2_600_DE_22_DE_OUTUBRO_DE_2021.pdf" target='_blank' title='LEI_N_2_600_DE_22_DE_OUTUBRO_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Vacinação</td>
+          <td>Lei</td>
+          <td>2.579 de 12 de julho de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Dispõe sobre a instituição do sistema de transparência para o rastreamento das doses e para a identificação da população vacinada no Estado do Amapá.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2_579_DE_12_DE_JULHO_DE_2021.pdf" target='_blank' title='LEI_N_2_579_DE_12_DE_JULHO_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Penalidades Vacinação</td>
+          <td>Lei</td>
+          <td>2.577 de 12 de julho de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td> Dispõe sobre penalidades a serem aplicadas pelo não cumprimento da ordem de vacinação dos grupos prioritários, de acordo com a fase cronológica definida no plano nacional e/ou estadual de imunização contra a Covid-19 no Estado do Amapá.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2577_DE_12_DE_JULHO_DE_2021.pdf" target='_blank' title='LEI_N_2577_DE_12_DE_JULHO_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Protocolo sanitário</td>
+          <td>Lei</td>
+          <td>2.561 de 07 de junho de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Dispõe sobre a obrigatoriedade de afixação de dispensores de álcool em gel nos transportes intermunicipais no âmbito do Estado do Amapá.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2561_DE_07_DE_JUNHO_DE_2021.pdf" target='_blank' title='LEI_N_2561_DE_07_DE_JUNHO_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Protocolo sanitário</td>
+          <td>Lei</td>
+          <td>2.560 de 10 de maio de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Dispõe sobre práticas de higiene a serem observadas por fornecedores para proteção da saúde do consumidor e dá outras providências.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2_560_DE_10_DE_MAIO_DE_2021.pdf" target='_blank' title='LEI_N_2_560_DE_10_DE_MAIO_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de Estímulo Econômico</td>
+          <td>Lei</td>
+          <td>2.553 de 30 de abril de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Altera a Lei nº 2.540, de 03 de abril de 2021, incluindo agências de turismo e empresas do segmento de eventos no auxílio emergencial a bares, restaurantes e transportadores escolares (art. 7º) e dá outras providências.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2_553_DE_30_DE_ABRIL_DE_2021.pdf" target='_blank' title='LEI_N_2_553_DE_30_DE_ABRIL_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de Proteção Social</td>
+          <td>Lei</td>
+          <td>2.550 de 28 de abril de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Dispõe sobre a instalação obrigatória por parte das agências bancárias, de dispensador de álcool gel 70 no setor de caixas eletrônicos, em todas as agências do Estado do Amapá e dá outras providências.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2_550_DE_28_DE_ABRIL_DE_2021.pdf" target='_blank' title='LEI_N_2_550_DE_28_DE_ABRIL_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de Proteção Social</td>
+          <td>Lei</td>
+          <td>2.540 de 03 de abril de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Institui benefício de prestação eventual consecutivo de que trata a Lei nº 2.499/2020 (PROGRAMA RENDA CIDADÃ EMERGENCIAL), dispõe sobre a antecipação eventual do Pagamento do “Benefício Natalino do PROGRAMA RENDA PARA VIVER MELHOR”, referente à 13ª parcela paga anualmente, institui auxílio emergencial a bares, restaurantes, lanchonetes e transportadores escolares, e autoriza realização de aportes para as companhias estaduais de Água e Esgoto (“água: conta paga”) e de Eletricidade (pagamento da conta de energia), altera o Fundo de Aval (Lei nº 0918/2005), e dá outras providências.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2_540_DE_03_DE_ABRIL_DE_2021.pdf" target='_blank' title='LEI_N_2_540_DE_03_DE_ABRIL_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de Proteção Social</td>
+          <td>Lei</td>
+          <td>2.545 de 07 de abril de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Dispõe sobre a política de higienização sanitária dos logradouros no âmbito do Estado do Amapá em consequência da Pandemia da COVID-19.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2_545_DE_07_DE_ABRIL_DE_2021.pdf" target='_blank' title='LEI_N_2_545_DE_07_DE_ABRIL_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Poder de polícia</td>
+          <td>Lei</td>
+          <td>2.533 de 06 de janeiro de 2021</td>
+          <td>Gabinete do Governador</td>
+          <td>Dispõe sobre a suspensão dos prazos de validade dos concursos públicos homologados antes da decretação do Estado de Calamidade Pública decorrente da pandemia pelo COVID-19 e dá outras providências.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2533_DE_06_DE_JANEIRO_DE_2021.pdf" target='_blank' title='LEI_N_2533_DE_06_DE_JANEIRO_DE_2021'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Poder de polícia</td>
+          <td>Lei</td>
+          <td>2.503 de 25 de junho de_2020</td>
+          <td>Gabinete do Governador</td>
+          <td>Estabelece multa para quem divulgar por meio eletrônico ou similar, notícias falsas fake news sobre epidemias, endemias e pandemias no Estado do Amapá. </td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2503_DE_25_DE_JUNHO_DE_2020.pdf" target='_blank' title='LEI_N_2503_DE_25_DE_JUNHO_DE_2020'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de Proteção Social</td>
+          <td>Lei </td>
+          <td>2.502 de 01 de maio de 2020</td>
+          <td>Gabinete do Governador</td>
+          <td>Altera a Lei nº 2.499, de 01 de abril de 2020, que instituiu o auxílio financeiro emergencial para atender famílias em vulnerabilidade social, e dá outras providências.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2502_DE_01_DE_MAIO_DE_2020.pdf" target='_blank' title='LEI_N_2502_DE_01_DE_MAIO_DE_2020'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medidas de estímulo aos profissionais de saúde</td>
+          <td>Lei</td>
+          <td>  2.501 de 30 de Abril de 2020</td>
+          <td>Gabinete do Governador</td>
+          <td>Autoriza a regulamentação pelo Chefe do Poder Executivo de auxílio financeiro emergencial em favor dos profissionais em atendimento de saúde que atuarem diretamente no combate à pandemia do COVID-19, enquanto perdurar a situação de calamidade pública e dá outras providências. </td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2501_DE_30_DE_ABRIL_DE_2020.pdf" target='_blank' title='LEI_N_2501_DE_30_DE_ABRIL_DE_2020'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de Proteção Social</td>
+          <td>Lei  </td>
+          <td>2.499 de 01 de abril de 2020</td>
+          <td>Gabinete do Governador</td>
+          <td>Institui auxílio financeiro emergencial para atender famílias em vulnerabilidade social, agravado pela calamidade pública e econômica advindas da pandemia COVID-19 e dá outras providências. </td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_N_2499_DE_01_DE_ABRIL_DE_2020.pdf" target='_blank' title='LEI_N_2499_DE_01_DE_ABRIL_DE_2020'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Gestão fiscal</td>
+          <td>Lei Complementar</td>
+          <td>125 de 30 de abril de 2020</td>
+          <td>Gabinete do Governador</td>
+          <td>Prorroga os prazos de encaminhamento da Lei de Diretrizes Orçamentárias – LDO e Lei Orçamentária Anual – LOA, para o exercício de 2020, por conta da pandemia do novo Coronavírus – Covid-19, nos termos do §3, do artigo 24 e §9º, do artigo 165, da Constituição Federal, e dá outras providências.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/leis/LEI_COMPLEMENTAR_N_125_DE_30_DE_ABRIL_DE_2020.pdf" target='_blank' title='LEI_COMPLEMENTAR_N_125_DE_30_DE_ABRIL_DE_2020'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+            </tbody>
+</table>              <!-- <table class="table w-auto table-sm table-hover table-bordered table-striped table-condensed">
+                <thead class="text-center">
+                  <th>Assunto</th>
+                  <th>Tipos de normas</th>
+                  <th>Numero/data</th>
+                  <th>Orgao</th>
+                  <th>Ementa</th>
+                  <th>download</th>
+                </thead>
+
+                <tbody class="text-left">
+                                  </tbody>
+              </table> -->
+          </div>
+        </div>
+
+        <!-- Outros atos -->
+        <div style="padding-top: 80px;" class="col-12">
+
+          <div class="card-header table-bordered">
+            <h4>
+              Outros atos
+            </h4>
+          </div>
+
+          <div class="double-scroll table-responsive tabela_info">
+            
+<table class="table w-auto table-sm table-hover table-bordered table-striped table-condensed">
+  <thead class="text-center">
+    <th>Assunto</th>
+    <th>Tipos de normas</th>
+    <th>Numero/data</th>
+    <th>Orgao</th>
+    <th>Ementa</th>
+    <th>Download</th>
+  </thead>
+
+  <tbody class="text-left">
+                  <tr class="row-hover clickable">
+          <td>PORTARIA Nº 26/2022 – CGE-AP</td>
+          <td>Portaria</td>
+          <td>26/2022</td>
+          <td>CGE</td>
+          <td>Isolamento social/flexibilização com retorno gradual</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/PORTARIA_N_26_2022_CGE_AP.pdf" target='_blank' title='PORTARIA_N_26_2022_CGE_AP'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Mensagem nº 037/21 - GEA</td>
+          <td>Mensagem</td>
+          <td>037/21</td>
+          <td>GEA</td>
+          <td>Veto parcial ao projeto Lei Nº 0096/2021 - AL</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/MENSAGEM_037-2021-GEA.pdf" target='_blank' title='MENSAGEM_037-2021-GEA'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Protocolo sanitário</td>
+          <td>Portaria</td>
+          <td>190/2020</td>
+          <td>DGPC</td>
+          <td>Fica instituído no âmbito da Polícia Civil do Estado do Amapá, procedimentos provisórios profiláticos ao contágio pelo Novo Coronavírus (COVID-19), tendo em vista a classificação realizada pela Organização Mundial de Saúde (OMS) como pandemia e avanços de casos de contaminação em nosso estado, pelo prazo de 10 (dez dias), de acordo com inúmeros Decretos estaduais que tratam do assunto, em especial, o derradeiro Decreto nº 1809/2020, da lavra do Exmo. Governador do Estado do Amapá.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/PORTARIA_N_190_2020_POLÍCIA_CIVIL_DO_AMAPÁ.pdf" target='_blank' title='PORTARIA_N_190_2020_POLÍCIA_CIVIL_DO_AMAPÁ'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medidas de proteção social</td>
+          <td>Nota Técnica</td>
+          <td>002/2020</td>
+          <td>SIMS</td>
+          <td>Orientações gerais sobre a aplicação do Princípio da Isonomia para a extensão do novo Benefício Assistencial “Renda Cidadã Emergencial”, face Situação de Vulnerabilidade Socioeconômica da População do Estado Do Amapá acerca da regulamentação, gestão e oferta de benefícios eventuais no atendimento às demandas emergenciais de enfrentamento ao Coronavírus (COVID-19) no âmbito do Sistema Único de Assistência Social no Estado do Amapá, conforme demostrados pelos parâmetros socieconômicos apresentados em relatório técnico através da Pesquisa Nacional por Amostra de Domicílios Contínua -PNAD Contínua, exarada pelo IBGE, que é o sistema pelo qual visa acompanhar as flutuações trimestrais e a evolução, no curto, médio e longo prazos, da força de trabalho, e outras informações necessárias para o estudo do desenvolvimento socioeconômico do País. Para atender a tais objetivos, a pesquisa é planejada para produzir indicadores trimestrais sobre a força de trabalho e indicadores anuais sobre temas suplementares permanentes (como trabalho e outras formas de trabalho, cuidados de pessoas e afazeres domésticos, tecnologia da informação e da comunicação etc.), investigados em um trimestre específico ou aplicados em uma parte da amostra a cada trimestre e acumulados para gerar resultados anuais, sendo produzidos, também, com periodicidade variável, indicadores sobre outros temas suplementares. Tem como unidade de investigação o domicílio que tomamos como base teórica para tratativas relacionadas as politicas públicas assistenciais no trato da realidade vivenciada pela população Amapaense face a Pandemia de COVID-19.
+</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/NOTA_TÉCNICA_N_002_2020_SIMS.pdf" target='_blank' title='NOTA_TÉCNICA_N_002_2020_SIMS'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de proteção social</td>
+          <td>Resolução AD REFERENDUM</td>
+          <td>012/2020</td>
+          <td>SIMS</td>
+          <td>Dispõe sobre a Aprovação da implementação do Programa Renda Cidadã Emergencial, com abertura de crédito extraordinário em decorrência do estado de calamidade pública e econômica, ocasionado pela pandemia – COVID19.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/RESOLUÇÃO_AD_REFERENDUM_N_012_2020_CEAS.pdf" target='_blank' title='RESOLUÇÃO_AD_REFERENDUM_N_012_2020_CEAS'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Contratações emergenciais</td>
+          <td>Edital</td>
+          <td>002/2020</td>
+          <td>SESA</td>
+          <td>Resultado Final de Chamada Pública - O SECRETÁRIO DE ESTADO DA SAÚDE - SESA/AP, tendo em vista o EDITAL Nº 001/2020/SESA/GEA de 27 de abril de 2020 - Abertura de Chamada Pública, Publicado no Diário Oficial do Estado do Amapá nº 7.152 em 27 de abril de 2020.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/EDITAL_N_002_2020_SESA_GEA_DE_02_DE_MAIO_DE_2020.pdf" target='_blank' title='EDITAL_N_002_2020_SESA_GEA_DE_02_DE_MAIO_DE_2020'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Contratações emergenciais</td>
+          <td>Edital</td>
+          <td>001/2020</td>
+          <td>SESA</td>
+          <td>Dispõe sobre a realização de chamada pública emergencial visando à contratação de pessoal para atender necessidade temporária de excepcional interesse público para a função dos cargos de Médico, Enfermeiro, Fisioterapeuta, Biomédico, Psicólogo, Assistente Social, Técnico em radiologia Tecnólogo em radiologia, Técnico de Enfermagem, Técnico em laboratório, Condutores de veículos de emergência.
+</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/EDITAL_N_001_2020_SESA_GEA_DE_27_DE_ABRIL_DE_2020.pdf" target='_blank' title='EDITAL_N_001_2020_SESA_GEA_DE_27_DE_ABRIL_DE_2020'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+                        <tr class="row-hover clickable">
+          <td>Medida de estímulo econômico</td>
+          <td>Portaria</td>
+          <td>006/2020</td>
+          <td>SEFAZ</td>
+          <td>Prorroga o prazo de pagamento da Cota Única e cotas a vencer do IPVA, do exercício de 2020, constante na Portaria (T) nº 021/2019 – GAB/SEFAZ.</td>
+          <td>
+            <li class="list-group-item">
+              <a href="https://www.transparencia.ap.gov.br/relatorios/covid/legislacoes/outros_atos/PORTARIA_N_006_2020_GA_SEFAZ.pdf" target='_blank' title='PORTARIA_N_006_2020_GA_SEFAZ'>
+              baixar
+              </a>
+            </li>
+          </td>
+        </tr>
+            </tbody>
+</table>              <!-- <table class="table w-auto table-sm table-hover table-bordered table-striped table-condensed">
+                <thead class="text-center">
+                  <th>Assunto</th>
+                  <th>Tipos de normas</th>
+                  <th>Numero/data</th>
+                  <th>Orgao</th>
+                  <th>Ementa</th>
+                  <th>download</th>
+                </thead>
+
+                <tbody class="text-left">
+                                  </tbody>
+              </table> -->
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+<script>
+                      console.log("teste: ");
+</script>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="rodape" style="background-color: #00a97a; margin-top: 40px; padding: 40px 0;">
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-md-12 text-white">
+                <h3>ACESSO RÁPIDO </h3>
+                <hr style="height: 2px; background-color: #fff"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card" style="min-height: 330px">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://www.transparencia.ap.gov.br//dist/img/new/people.png" class="img-fluid mx-auto d-block mb-3" alt="Cidadão">
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="mb-0 pb-0 text-secondary"><strong>CIDADÃO</strong></h5>
+                                <hr/>
+                                <a href="https://datastudio.google.com/reporting/d49060bf-5921-45e0-ad11-9db5230c230e/page/tBcQE" target="_blank">- SUS - Regulação</a><br/>
+                                <a href="https://saude.portal.ap.gov.br/conteudo/cidadao/medicamentos" target="_blank">- SUS - Medicamentos</a><br/>
+                                <a href="https://apdigital.portal.ap.gov.br/inicio" target="_blank">- Portal de Serviços do Governo do Amapá</a><br/>
+                                <a href="https://delegaciavirtual.sinesp.gov.br/portal" target="_blank">- Delegacia Virtual</a><br/>
+                                <a href="https://www.detran.ap.gov.br/detranap/menu-servicos/habilitacao/" target="_blank">- Consultar Habilitação</a><br/>
+                                <a href="https://www.detran.ap.gov.br/detranap/menu-servicos/veiculos-renavam/" target="_blank">- Consulta de Veículos</a><br/>
+                                <a href="https://escolapublica.ap.gov.br" target="_blank">- Chamada Escolar Unificada 2026</a></br>
+                                <a href="https://habitar.portal.ap.gov.br/index.php" target="_blank">- Morar bem Amapá</a></br>
+                                <a href="https://empregaamapa.portal.ap.gov.br/" target="_blank">- Emprega Amapá</a></br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card" style="min-height: 330px">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://www.transparencia.ap.gov.br//dist/img/new/company.png" class="img-fluid  mx-auto d-block mb-3" alt="Empresa">
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="mb-0 pb-0 text-secondary"><strong>EMPRESAS</strong></h5>
+                                <hr/>
+                                <a href="https://siga.ap.gov.br/sgc/faces/pub/comum/PrincipalAreaPublica.jsp" target="_blank">- Editais de Licitações do Estado</a><br/>
+                                <a href="https://compras.portal.ap.gov.br/" target="_blank">- Portal da Central de Licitações</a><br/>
+                                <a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=DIA_060" target="_blank">- Emitir Certidão Negativa</a><br/>
+                                <a href="http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=ARR_305" target="_blank">- Emitir DAR Avulso</a><br/>
+                                <a href="https://sigdoc.ap.gov.br/public/verArquivo.jsf?token=5a66c9c86e85982f7fa67135711cff65" target="_blank">- DIAP-ICMS Eletrônica</a><br/>
+                                <a href="https://sistemas.cbm.ap.gov.br/portal/portal_menu/" target="_blank">- Alvarás do Corpo de Bombeiros Militar do Amapá </a></br>
+                                <a href="https://jucap.portal.ap.gov.br/" target="_blank">- Portal da Junta Comercial do Amapá </a></br>
+                                <a href="https://empregaamapa.portal.ap.gov.br/" target="_blank">- Emprega Amapá</a></br>
+                                <a href="https://seloamapa.portal.ap.gov.br/" target="_blank">- Selo Amapá</a></br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card" style="min-height: 330px">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://www.transparencia.ap.gov.br//dist/img/new/public-work.png" class="img-fluid  mx-auto d-block mb-3" alt="Servidores">
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="mb-0 pb-0 text-secondary"><strong>SERVIDORES</strong></h5>
+                                <hr/>
+                                <a href="https://sead.portal.ap.gov.br/concursos" target="_blank">- Concursos</a><br/>
+                                <a href="https://sougov.sigepe.gov.br/sougov/" target="_blank">- Serviços do Servidor Federal</a><br/>
+                                <a href="https://portaldoservidor.ap.gov.br/login" target="_blank">- Contracheque</a><br/>
+                                <a href="http://servidor.apconsig.ap.gov.br/login" target="_blank">- Consignatária Online</a><br/>
+                                <a href="https://apdigital.portal.ap.gov.br/todos-os-servicos?specific_public=servidor&page=1" target="_blank">- Portal de Serviço ao Servidor</a><br/>
+                                <a href="http://www.ecorregedoria.ap.gov.br/" target="_blank">- Certidão Funcional</a><br/>
+                                <a href="https://apdigital.portal.ap.gov.br/carta-de-servico/licenca-para-tratamento-de-saude161" target="_blank">- Agendar Perícia Médica</a><br/>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>   
+                        <br/>  
+                        <br/>        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card" style="min-height: 330px">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://www.transparencia.ap.gov.br//dist/img/new/networking.png" class="img-fluid  mx-auto d-block mb-3" alt="Redes Sociais">
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="mb-0 pb-0 text-secondary"><strong>REDES SOCIAIS / LINKS</strong></h5>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a class="btn btn-primary text-white w-100 mb-2" href="http://www.facebook.com/governoamapa" target="_blank"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a><br/>
+                                        <a class="btn btn-danger text-white w-100 mb-2" href="http://www.youtube.com/channel/UC_t5kDI7Esbg9ftn2Y8CP6A" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i> Youtube</a><br/>
+                                        <a class="btn btn-secondary text-white w-100 mb-2"  href="https://www.tiktok.com/@governoamapa" target="_blank"><i class="fab fa-tiktok" aria-hidden="true"></i> Tiktok</a><br/>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="btn btn-secondary text-white w-100 mb-2" href="https://x.com/governodoamapa" target="_blank"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i> X </a><br/>
+                                        <a class="btn btn-warning text-white w-100 mb-2" href="http://www.instagram.com/governoamapa/" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a><br/>
+                                        <a class="btn btn-success text-white w-100 mb-2" href="http://webmail.amapa.gov.br/" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Webmail</a><br/>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <a href="https://script.google.com/macros/s/AKfycbxeNGDz08iB-PS_iIDHOffTnHjnmW2_Zn--_eK9fqqUzSKYam8tt9dqt592Br5Nab8D/exec" class="btn btn-info d-block text-white mb-2" target="_blank"><i class="fas fa-hands-helping"></i> Pesquisa de Satisfação</a>
+                                       <!-- <a href="https://docs.google.com/forms/d/1oe8-UIq3ZJS64VuXWWzQNa7dPzCQpLy0wAcDLugvwQY/viewanalytics?pli=1&pli=1" class="btn btn-success d-block text-white mb-2" target="_blank"><i class="fas fa-chart-pie"></i> Relatório de Avaliações</a>-->
+                                        <a href="https://www.transparencia.ap.gov.br/relatorios/junho_2026_Relatorio.pdf" class="btn btn-success d-block text-white mb-2" target="_blank"><i class="fas fa-chart-pie"></i> Relatório de Avaliações</a>
+                                        <a href="https://www.transparencia.ap.gov.br/relatorios/CGE - Pesquisa de Satisfação-2023.xlsx" class="btn btn-danger d-block text-white" target="_blank"><i class="fas fa-chart-pie"></i> Relatório 2023</a>
+                                      
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+               
+            --> 
+        </div>
+    </div>
+</div>
+<!-- FOOTER -->
+
+<!-- BOTÃO FLUTUANTE: Voltar ao Topo -->
+<a href="#topo" id="btn-voltar-topo" title="Voltar ao Topo" aria-label="Voltar ao Topo">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</a>
+
+<style>
+    /* === BOTÃO VOLTAR AO TOPO === */
+    #btn-voltar-topo {
+        position: fixed !important;
+        bottom: 30px !important;
+        right: 30px !important;
+        z-index: 9999 !important;
+        width: 45px !important;
+        height: 45px !important;
+        background-color: #ffffff !important;
+        color: #003580 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 18px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        text-decoration: none !important;
+        transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+    }
+    #btn-voltar-topo.visivel {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    #btn-voltar-topo:hover {
+        background-color: #003580 !important;
+        color: #ffffff !important;
+        padding-left: 0 !important;
+    }
+
+    /* === RODAPÉ === */
+    #rodape {
+        background-color: #005675;
+        color: #ffffff;
+        padding: 30px 0 0 0;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    #rodape .rodape-titulo {
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255,255,255,0.55);
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+    }
+    #rodape .rodape-col a {
+        color: #7dd4f0;
+        display: block;
+        margin-bottom: 6px;
+        text-decoration: none;
+        padding-left: 0;
+        transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+    #rodape .rodape-col a:hover {
+        color: #ffffff;
+        padding-left: 4px;
+    }
+    #rodape .rodape-institucional {
+        font-size: 13px;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.9;
+    }
+    #rodape .rodape-institucional a {
+        color: #7dd4f0;
+        display: inline !important;
+        text-decoration: none;
+    }
+    #rodape .rodape-institucional a:hover {
+        color: #ffffff;
+        padding-left: 0 !important;
+    }
+    #rodape .col-divisor {
+        border-left: 1px solid rgba(255,255,255,0.15);
+    }
+    #rodape .rodape-bottom {
+        margin-top: 20px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        font-size: 12px;
+        color: rgba(255,255,255,0.55);
+        text-align: center;
+    }
+    #rodape .rodape-bottom a {
+        display: inline !important;
+        color: #7dd4f0;
+        text-decoration: none;
+        padding-left: 0 !important;
+    }
+    #rodape .rodape-bottom a:hover {
+        color: #ffffff;
+        padding-left: 0 !important;
+    }
+
+    /* === SENTINELA: ponto final do rodapé === */
+    #rodape-fim {
+        display: block !important;
+        clear: both !important;
+        width: 100% !important;
+        height: 18px !important;       /* espaço inferior visível após o copyright */
+        background-color: #005675 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        float: none !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+
+    @media (max-width: 767px) {
+        #rodape .col-divisor {
+            border-left: none;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+    }
+</style>
+
+<script>
+    window.addEventListener('scroll', function () {
+        var btn = document.getElementById('btn-voltar-topo');
+        if (window.scrollY > 300) {
+            btn.classList.add('visivel');
+        } else {
+            btn.classList.remove('visivel');
+        }
+    });
+</script>
+
+<!-- RODAPÉ -->
+<div class="container-fluid text-white" id="rodape">
+    <div class="container">
+        <div class="row">
+
+            <!-- COLUNA 1: Institucional -->
+            <div class="col-lg-4 col-md-4 col-sm-12 rodape-col">
+                                <img src="https://www.transparencia.ap.gov.br//dist/img/brasao.png" alt="Brasão do Governo do Estado"
+                     class="img-responsive"
+                     style="width:55px; margin-bottom:12px;">
+                <div class="rodape-institucional">
+                    Governo do Estado do Amapá<br>
+                    <i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp; Palácio do Setentrião - Rua General Rondon, 259 - Centro -
+                    CEP: 68900-130 - Macapá/AP<br>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; Email: gabinetegovernador@amapa.gov.br<br>
+                    <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp;  Contato: (96) 2101-8404<br>
+                    <i class="fa fa-clock" aria-hidden="true"></i>&nbsp; Atendimento: Seg-Sex: 7h30 às 12h / 14h30 às 18h<br>
+                </div>
+            </div>
+
+            <!-- COLUNA 2: Navegação -->
+            <div class="col-lg-4 col-md-4 col-sm-12 col-divisor rodape-col">
+                <div class="rodape-titulo">Navegação</div>
+                <a href="/informacoes/ouvidoria">
+                    <i class="fa fa-comment" aria-hidden="true"></i>&nbsp; Ouvidoria
+                </a>
+                <a href="/informacoes/lgpd">
+                    <i class="fa fa-shield" aria-hidden="true"></i>&nbsp; LGPD
+                </a>
+                <a href="/informacoes/faq">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp; Perguntas Frequentes (FAQ)
+                </a>
+                <a href="/informacoes/glossario">
+                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp; Glossário
+                </a>
+                <a href="/informacoes/acessibilidade">
+                    <i class="fas fa-universal-access" aria-hidden="true"></i>&nbsp; Acessibilidade
+                </a>
+            </div>
+
+            <!-- COLUNA 3: Links Úteis -->
+            <div class="col-lg-4 col-md-4 col-sm-12 col-divisor rodape-col">
+                <div class="rodape-titulo">Links Úteis</div>
+                <a href="/informacoes/mapa">
+                    <i class="fas fa-sitemap" aria-hidden="true"></i>&nbsp; Mapa do Site
+                </a>
+                <a href="https://ouvamapa.portal.ap.gov.br/">
+                    <i class="fa fa-comment" aria-hidden="true"></i>&nbsp; OuvAmapá
+                </a>
+                <a href="https://amapa.gov.br/">
+                    <i class="fa fa-globe" aria-hidden="true"></i>&nbsp; Portal do Governo do Amapá
+                </a>
+                <a href="https://apdigital.portal.ap.gov.br/">
+                    <i class="fa fa-globe" aria-hidden="true"></i>&nbsp; Portal de Serviços do Governo do Amapá
+                </a>
+                <a href="https://www.diariooficial.ap.gov.br/" target="_blank">
+                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp; Diário Oficial
+                </a>
+                <a href="https://amapa.gov.br/municipios" target="_blank">
+                    <i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp; Conheça o Amapá
+                </a>
+            </div>
+
+        </div><!-- /.row -->
+
+        <!-- Linha inferior: copyright -->
+        <div class="rodape-bottom">
+            2013 - 2026 &mdash; Portal desenvolvido e hospedado pelo Centro de Gestão de Tecnologia da Informação
+            <a href="http://www.prodap.ap.gov.br/" target="_blank">PRODAP</a>
+            &mdash; Todos os direitos reservados. &mdash; </br>
+            Licença Creative Commons 3.0 International 
+        </div>
+
+    </div><!-- /.container -->
+
+    <!-- *** SENTINELA: marca o ponto final do rodapé *** -->
+    <div id="rodape-fim"></div>
+
+</div>
+<!-- FIM DO RODAPÉ --><!--  <script>var purecookieTitle="Cookies.",purecookieDesc="Ao usar este site, você automaticamente aceita que usemos cookies.",purecookieLink='<a href="https://www.gov.br/pt-br/termos-de-uso" target="_blank">Saiba mais</a>',purecookieButton="Entendi";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02)<0?o.style.display="none":requestAnimationFrame(e)}()}function setCookie(e,o,i){var t="";if(i){var n=new Date;n.setTime(n.getTime()+24*i*60*60*1e3),t="; expires="+n.toUTCString()}document.cookie=e+"="+(o||"")+t+"; path=/"}function getCookie(e){for(var o=e+"=",i=document.cookie.split(";"),t=0;t<i.length;t++){for(var n=i[t];" "==n.charAt(0);)n=n.substring(1,n.length);if(0==n.indexOf(o))return n.substring(o.length,n.length)}return null}function eraseCookie(e){document.cookie=e+"=; Max-Age=-99999999;"}function cookieConsent(){getCookie("purecookieDismiss")||(document.body.innerHTML+='<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>'+purecookieTitle+'</a></div><div class="cookieDesc"><p>'+purecookieDesc+" "+purecookieLink+'</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">'+purecookieButton+"</a></div></div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",7),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};</script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover({
+            container: 'body'
+        })
+    })
+</script>
+<script type="text/javascript" src="https://www.transparencia.ap.gov.br/dist/js/open-sans-condensed.js" ></script>
+<script type="text/javascript" src="https://www.transparencia.ap.gov.br/dist/js/main.js" ></script>
+</body>
+</html>
