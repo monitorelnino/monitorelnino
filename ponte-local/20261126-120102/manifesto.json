@@ -1,0 +1,901 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-26T12:15:32+00:00",
+ "itens": [
+  {
+   "url": "https://www2.sed.sc.gov.br/secretaria/imprensa/noticias/31536-luiz-fernando-vampiro-deixa-a-secretaria-de-estado-da-educacao-nesta-quinta-feira",
+   "em": "2026-11-26T12:01:02+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://sistemas.sefaz.am.gov.br/sgc-am/contratos.do?method=Consultar&counidadegestora=011304",
+   "em": "2026-11-26T12:01:02+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=ISO-8859-1",
+   "final": "https://sistemas.sefaz.am.gov.br/sgc-am/contratos.do?method=Consultar&counidadegestora=011304",
+   "bytes": 2607021,
+   "sha256": "0979691f71693139e6350107cb7949b67af4e44fad4b9242b7c5d066aa68d863",
+   "sha256_de_origem": "cae99826ee189b310d55e210bf04b66aace017c73e3dfbde2af26dea6c29b2b9",
+   "segredos_redigidos": 0,
+   "cpfs_redigidos": 816
+  },
+  {
+   "url": "https://sistemas.sefaz.am.gov.br/sgc-am/contratos.do?idClassificacaoContrato=3&method=Consultar",
+   "em": "2026-11-26T12:01:50+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=ISO-8859-1",
+   "final": "https://sistemas.sefaz.am.gov.br/sgc-am/contratos.do?idClassificacaoContrato=3&method=Consultar",
+   "bytes": 2727556,
+   "sha256": "4400ef6091ce96001ddb1696520e445e79521a1bda3030c9fc2d91ddca595a19",
+   "sha256_de_origem": "7f7de1e8213bbadc3f6b0865b9de5ad8cf9d7c4688d2efe19120332225acad5b",
+   "segredos_redigidos": 0,
+   "cpfs_redigidos": 226
+  },
+  {
+   "url": "http://sistemas.sefaz.am.gov.br/sgc-am/contratos.do?method=Consultar&idClassificacaoContrato=1&idSubclassificacaoContrato=2",
+   "em": "2026-11-26T12:02:42+00:00",
+   "erro": "TimeoutError: timed out"
+  },
+  {
+   "url": "https://cachoeirinha.rs.gov.br/cidadao/pagina/plano-municipal-de-educacao",
+   "em": "2026-11-26T12:03:45+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cachoeirinha.rs.gov.br/cidadao/pagina/plano-municipal-de-saude",
+   "em": "2026-11-26T12:03:45+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cachoeirinha.rs.gov.br/cidadao/pagina/plano-municipal-de-saneamento-basico",
+   "em": "2026-11-26T12:03:49+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://concordia.sc.gov.br/cidadao/pagina/plano-municipal-de-turismo",
+   "em": "2026-11-26T12:03:52+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://guaraciaba.sc.gov.br/cidadao/pagina/plano-municipal-de-gestao-integrada-de-residu",
+   "em": "2026-11-26T12:03:52+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://guaraciaba.sc.gov.br/cidadao/pagina/plano-municipal-de-saneamento-basico",
+   "em": "2026-11-26T12:03:53+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://jeceaba.mg.gov.br/arq_publications/3298360bc132160b8093bad3a783d272.pdf",
+   "em": "2026-11-26T12:03:56+00:00",
+   "erro": "URLError: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>"
+  },
+  {
+   "url": "https://jeceaba.mg.gov.br/jeceaba/index.php/principal/noticia/2829/Administração-Municipal-de-Jeceaba-dá-início-à-construção-do-Plano-Municipal-de-Educação-para-o-período-de-2027-a-2037",
+   "em": "2026-11-26T12:04:01+00:00",
+   "erro": "UnicodeEncodeError: 'ascii' codec can't encode characters in position 56-57: ordinal not in range(128)"
+  },
+  {
+   "url": "https://jeceaba.mg.gov.br/jeceaba/index.php/pmsb",
+   "em": "2026-11-26T12:04:04+00:00",
+   "erro": "URLError: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>"
+  },
+  {
+   "url": "https://camponovo.rs.gov.br/cidadao/pagina/plano-municipal-de-educacao",
+   "em": "2026-11-26T12:04:10+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://novaesperancadosudoeste.pr.gov.br/doc/men/422/",
+   "em": "2026-11-26T12:04:11+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://itapiranga.sc.gov.br/cidadao/pagina/plano-de-contingencia",
+   "em": "2026-11-26T12:04:11+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www2.sed.sc.gov.br/secretaria/imprensa/noticias/30777-governo-do-estado-conclui-reforma-da-eeb-prof-zulma-becker-em-santo-amaro-da-imperatriz",
+   "em": "2026-11-26T12:04:12+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://bonito.ms.gov.br/",
+   "em": "2026-11-26T12:04:12+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.bonito.ms.gov.br/",
+   "bytes": 103938,
+   "sha256": "b240bd5e689263b9a7250779503f49f41c8d1f560ebdf69481e0e92ed2f09a0d"
+  },
+  {
+   "url": "https://prefeituradebonito.ms.gov.br/",
+   "em": "2026-11-26T12:04:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://prefeiturabonito.ms.gov.br/",
+   "em": "2026-11-26T12:04:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://pmbonito.ms.gov.br/",
+   "em": "2026-11-26T12:04:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.ibge.gov.br/",
+   "em": "2026-11-26T12:04:13+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://ibge.gov.br.ms.gov.br/",
+   "em": "2026-11-26T12:04:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "http://homologa.ba.gov.br/inema/monitoramento/el-nino-e-la-nina",
+   "em": "2026-11-26T12:04:14+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "http://cides.se.gov.br/wp-content/uploads/2026/01/PES-SE-2024-2027-VERSAO-COM-ALTERACOES-A-PARTIR-DA-PAS-2024.pdf",
+   "em": "2026-11-26T12:04:51+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "http://cides.se.gov.br/wp-content/uploads/2026/01/Plano-Nacional-de-Saude-2024-2027-1.pdf",
+   "em": "2026-11-26T12:05:27+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://www.spdo.ms.gov.br/diariodoe/",
+   "em": "2026-11-26T12:05:51+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://imbituva.pr.gov.br/index.php?sessao=b054603368vfb0&id=1469219",
+   "em": "2026-11-26T12:05:51+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get issuer certificate (_ssl.c:1010"
+  },
+  {
+   "url": "http://www.inhacora.rs.gov.br/covid-19/plano-de-acao-municipal/",
+   "em": "2026-11-26T12:05:52+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://rbsp.sesab.ba.gov.br/index.php/rbsp/article/download/3484/2832",
+   "em": "2026-11-26T12:05:52+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://transparencia.governodeguajeru.ba.gov.br/index.php/buscar/45",
+   "em": "2026-11-26T12:05:53+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://transparencia.governodeguajeru.ba.gov.br/index.php/transparencia/pesquisapublicacoes?txt_busca=plano+municipal+de+EDUCA%C3%87%C3%83O",
+   "em": "2026-11-26T12:05:53+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.paineldoclima.am.gov.br/categoria/acoes-do-governo/",
+   "em": "2026-11-26T12:05:56+00:00",
+   "status": 500,
+   "erro": "HTTP 500"
+  },
+  {
+   "url": "https://www.paineldoclima.am.gov.br/en/goverment-actions-2024/",
+   "em": "2026-11-26T12:05:57+00:00",
+   "status": 500,
+   "erro": "HTTP 500"
+  },
+  {
+   "url": "https://www.paineldoclima.am.gov.br/estiagem-ajuda-humanitaria/",
+   "em": "2026-11-26T12:06:00+00:00",
+   "status": 500,
+   "erro": "HTTP 500"
+  },
+  {
+   "url": "https://gitlab.procc.fiocruz.br/mave/repo/-/raw/master/Dados/InfoGripe/serie_temporal_com_estimativas_recentes.csv",
+   "em": "2026-11-26T12:06:03+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=1506500&size=1",
+   "em": "2026-11-26T12:06:39+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=1507508&size=1",
+   "em": "2026-11-26T12:06:40+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=1508407&size=1",
+   "em": "2026-11-26T12:06:43+00:00",
+   "status": 520,
+   "erro": "HTTP 520"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=1508407&size=1",
+   "em": "2026-11-26T12:07:14+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2101731&size=1",
+   "em": "2026-11-26T12:07:14+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2101806&size=1",
+   "em": "2026-11-26T12:07:17+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2102408&size=1",
+   "em": "2026-11-26T12:07:20+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2104107&size=1",
+   "em": "2026-11-26T12:07:23+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2104552&size=1",
+   "em": "2026-11-26T12:07:26+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2104628&size=1",
+   "em": "2026-11-26T12:07:29+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2104651&size=1",
+   "em": "2026-11-26T12:07:32+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2107456&size=1",
+   "em": "2026-11-26T12:07:35+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2200301&size=1",
+   "em": "2026-11-26T12:07:38+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205102&size=1",
+   "em": "2026-11-26T12:07:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205359&size=1",
+   "em": "2026-11-26T12:07:45+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205409&size=1",
+   "em": "2026-11-26T12:07:48+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205458&size=1",
+   "em": "2026-11-26T12:07:51+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205508&size=1",
+   "em": "2026-11-26T12:07:54+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205516&size=1",
+   "em": "2026-11-26T12:07:57+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205540&size=1",
+   "em": "2026-11-26T12:08:00+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205557&size=1",
+   "em": "2026-11-26T12:08:03+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205565&size=1",
+   "em": "2026-11-26T12:08:06+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205573&size=1",
+   "em": "2026-11-26T12:08:09+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205581&size=1",
+   "em": "2026-11-26T12:08:12+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205599&size=1",
+   "em": "2026-11-26T12:08:15+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205607&size=1",
+   "em": "2026-11-26T12:08:18+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2805406&size=1",
+   "em": "2026-11-26T12:08:21+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=2805406&size=1",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2921807&size=1",
+   "em": "2026-11-26T12:09:21+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=2921807&size=1",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2922904&size=1",
+   "em": "2026-11-26T12:10:11+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://queridodiario.ok.org.br/api/gazettes?territory_ids=2923001&size=1",
+   "em": "2026-11-26T12:11:14+00:00",
+   "status": 200,
+   "tipo": "application/json",
+   "final": "https://api.queridodiario.org.br/gazettes?territory_ids=2923001&size=1",
+   "bytes": 34,
+   "sha256": "793fe89fb92de1ade9bb48c394cc304d35c610e14197faf9fea47ba909ac1f09"
+  },
+  {
+   "url": "https://auniao.pb.gov.br/servicos/doe/2026/maio/diario-oficial-09-05-2026-portal.pdf",
+   "em": "2026-11-26T12:11:22+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://auniao.pb.gov.br/servicos/doe/2026/maio/diario-oficial-09-05-2026-portal.pdf",
+   "bytes": 2131775,
+   "sha256": "b83fa47f41c35a705a96ea4801b7e87f277ccda51962598c7ba18ecb47024f1a"
+  },
+  {
+   "url": "https://www2.bauru.sp.gov.br/",
+   "em": "2026-11-26T12:11:22+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www2.bauru.sp.gov.br/",
+   "bytes": 55137,
+   "sha256": "803e783507049ce210b8df143d7a8ed95c3516aa06119fb4c420aafe16270ae7"
+  },
+  {
+   "url": "https://www.gov.br/fazenda/pt-br",
+   "em": "2026-11-26T12:11:23+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=utf-8",
+   "final": "https://www.gov.br/fazenda/pt-br",
+   "bytes": 185551,
+   "sha256": "bf64f1d8731f2fb690fa700a6c8721c0eaef752ae1051528026257ae38e16ba0"
+  },
+  {
+   "url": "https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf",
+   "em": "2026-11-26T12:11:24+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/inpe/pt-br/assuntos/ultimas-noticias/painel-el-nino-2026-2027-segundo-boletim-sobre-o-monitoramento-do-fenomeno-no-brasil-e-publicado/PainelElNino2EdioFinal.pdf",
+   "bytes": 1441792,
+   "sha256": "282ae46c55f80728d7d8c1f14d9e90704983127163933686aeebca736242f628"
+  },
+  {
+   "url": "https://saude.curitiba.pr.gov.br/images/Decreto%20n%C2%BA%20700.2022.pdf",
+   "em": "2026-11-26T12:11:28+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://saude.curitiba.pr.gov.br/images/Decreto%20n%C2%BA%20700.2022.pdf",
+   "bytes": 323547,
+   "sha256": "8bd19587007155f59b466ad15139ae4813a9789e37e1ccbddbc12a1a3c7fdab5"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+   "em": "2026-11-26T12:11:29+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+   "bytes": 5750937,
+   "sha256": "1c054f61bcba0f09bc02b4004023b35c39cf60a07c26814fd13a2936015a610a"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/painel-el-nino-3-edicao.pdf",
+   "em": "2026-11-26T12:11:33+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/painel-el-nino-3-edicao.pdf",
+   "bytes": 7863344,
+   "sha256": "b66dde903599c942104deab99cf2437ea2bff10380a6b4dc358e8497d49da561"
+  },
+  {
+   "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-para-emergencias-em-saude-publica-por-chuvas-intensas-e-desastres-associados.pdf/@@download/file",
+   "em": "2026-11-26T12:11:39+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-para-emergencias-em-saude-publica-por-chuvas-intensas-e-desastres-associados.pdf/@@download/file",
+   "bytes": 6303506,
+   "sha256": "c56295888501c167042b1d1e138f5171aa6a973e949682b2b391404d5162892a"
+  },
+  {
+   "url": "https://www.gov.br/casacivil/pt-br/.arquivos/101116%20-%20PPCerrado_Vfinal.pdf",
+   "em": "2026-11-26T12:11:45+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/casacivil/pt-br/.arquivos/101116%20-%20PPCerrado_Vfinal.pdf",
+   "bytes": 5694289,
+   "sha256": "7204c5367f31e6d3665ae127b5b1a82c42c652c4e4a3e07d20c93aa25fe8ce14"
+  },
+  {
+   "url": "https://www.gov.br/turismo/pt-br/acesso-a-informacao/acoes-e-programas/mobilidade-e-conectividade-turistica/iniciativas/plano-de-acao-voltado-a-melhoria-da-mobilidade-e-conectividade-turistica-no-brasil/MTurProduto8_VF.1.pdf",
+   "em": "2026-11-26T12:11:50+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www.gov.br/turismo/pt-br/acesso-a-informacao/acoes-e-programas/mobilidade-e-conectividade-turistica/iniciativas/plano-de-acao-voltado-a-melhoria-da-mobilidade-e-conectividade-turistica-no-brasil/MTurProduto8_VF.1.pdf",
+   "bytes": 346127,
+   "sha256": "7c9d51ec88f267994adb552c4887cc41896bfeceb693a856ff7df178fb9467b7"
+  },
+  {
+   "url": "https://www.gov.br/mme/pt-br/arquivos/do-23-12-2010-s1.pdf",
+   "em": "2026-11-26T12:11:54+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mme/pt-br/arquivos/do-23-12-2010-s1.pdf",
+   "bytes": 3448924,
+   "sha256": "78d8bea02315ef456069970a739f78c4f85d50c7d5119f2e00c6e4e8f0f84eaf"
+  },
+  {
+   "url": "https://www.gov.br/antt/pt-br/assuntos/rodovias/relatorios/acompanhamento-ambiental-das-concessoes-rodoviarias-1/por-concessao/acompanhamento-ambiental-autopista-planalto-sul-1/arquivos/33_relatorio-de-acompanhamento-ambiental_raa_rev-1-jan2024-a-jul2024-1.pdf",
+   "em": "2026-11-26T12:11:59+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/antt/pt-br/assuntos/rodovias/relatorios/acompanhamento-ambiental-das-concessoes-rodoviarias-1/por-concessao/acompanhamento-ambiental-autopista-planalto-sul-1/arquivos/33_relatorio-de-acompanhamento-ambiental_raa_rev-1-jan2024-a-jul2024-1.pdf",
+   "bytes": 6897227,
+   "sha256": "40e1171f2849913d9f74ee9600bf967dcc2fcf61467bebacd7d456d4f90fed08"
+  },
+  {
+   "url": "https://www.gov.br/mme/pt-br/arquivos/do-12-07-2012-s1.pdf",
+   "em": "2026-11-26T12:12:04+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mme/pt-br/arquivos/do-12-07-2012-s1.pdf",
+   "bytes": 4376651,
+   "sha256": "0cc1d37bc838a1c84dee687247e7834235c5154b441b07821e50042346417883"
+  },
+  {
+   "url": "https://www.gov.br/mme/pt-br/arquivos/do-30-08-2013-s1.pdf",
+   "em": "2026-11-26T12:12:09+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mme/pt-br/arquivos/do-30-08-2013-s1.pdf",
+   "bytes": 3128669,
+   "sha256": "df83a7436954dbda69384346502f4ccdbd4a51572635b3a6a4c2c47cf330d93e"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/PlanodeContingnciaparaEnfrentamentodeRiscoseDesastres.pdf",
+   "em": "2026-11-26T12:12:14+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/PlanodeContingnciaparaEnfrentamentodeRiscoseDesastres.pdf",
+   "bytes": 5439303,
+   "sha256": "380d29d2f69f16002ba7769f557c792c515907f5246651964efc7b6eef7b9b5a"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf",
+   "em": "2026-11-26T12:12:19+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/boas-praticas/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf",
+   "bytes": 5612707,
+   "sha256": "1369e7cceb931a49ff0bfe2ee55d4a21c24144817d46a80400bea94fb2840d1e"
+  },
+  {
+   "url": "https://www.gov.br/agricultura/pt-br/arquivos/abc_final.pdf",
+   "em": "2026-11-26T12:12:24+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/agricultura/pt-br/arquivos/abc_final.pdf",
+   "bytes": 2750495,
+   "sha256": "022df1464cbdcd3053375bf3ff9e18188758851877ea317a79a47eea05bc4f82"
+  },
+  {
+   "url": "https://do.dourados.ms.gov.br/index.php/edicao-5-393-16-04-2021/",
+   "em": "2026-11-26T12:12:28+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://do.dourados.ms.gov.br/index.php/edicao-5-393-16-04-2021/",
+   "bytes": 653451,
+   "sha256": "84e5980077659e4cfdbe9d068ce6c3964c04c10ed251e8a9bc92ba5a7571c124",
+   "sha256_de_origem": "c03c0a51043ef3aaad02cb9efad2ac1593d022a8eac001fda8ffae8b7e6efeb8",
+   "segredos_redigidos": 0,
+   "cpfs_redigidos": 4
+  },
+  {
+   "url": "https://transparencia.arapiraca.al.gov.br/relatorio_geral/147/arquivo/157/download",
+   "em": "2026-11-26T12:12:30+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://transparencia-arapiraca.s3.sa-east-1.amazonaws.com/relatorio_geral/147/1748290733_plano_de_contingencia_6834ccad8f336.pdf?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAX75G7YCC4X4A2LW6%2F20261126%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261126T121231Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Signature=51bdeaa89128e21e24ebb505f7f66ed5adbe1be4c4e90ed61aeda22fc25b1adc",
+   "bytes": 690356,
+   "sha256": "a237305fe3d4d5867446ef9674f6b16088b07a2140fcb4cef18bf51ead7114f0"
+  },
+  {
+   "url": "https://www.santamaria.rs.gov.br/smrcrc/1626-plano-de-contingencia",
+   "em": "2026-11-26T12:12:31+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.santamaria.rs.gov.br/smrcrc/1626-plano-de-contingencia",
+   "bytes": 341944,
+   "sha256": "f1a6a423a31a3bd56309823001d7514272a19f00c320c27b44e29d042f6c8b45"
+  },
+  {
+   "url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/convenios-e-transferencias/repasses-e-transferencias-de-recursos-financeiros/acordos/acordos-de-adesao-municipios-pmrr/manaus-am/RELATRIO01PMRRMANAUSV4.pdf",
+   "em": "2026-11-26T12:12:33+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/convenios-e-transferencias/repasses-e-transferencias-de-recursos-financeiros/acordos/acordos-de-adesao-municipios-pmrr/manaus-am/RELATRIO01PMRRMANAUSV4.pdf",
+   "bytes": 2345795,
+   "sha256": "7a99550b8c71642eba96ec60667880f03e22397361ad43ea2532462fe79271e9"
+  },
+  {
+   "url": "https://www.gov.br/agricultura/pt-br/assuntos/defesa-agropecuaria/gestao-das-emergencias-agropecuarias/centro-de-operacoes-de-emergencia-agropecuaria/planos-de-contingencias",
+   "em": "2026-11-26T12:12:34+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=utf-8",
+   "final": "https://www.gov.br/agricultura/pt-br/assuntos/defesa-agropecuaria/gestao-das-emergencias-agropecuarias/centro-de-operacoes-de-emergencia-agropecuaria/planos-de-contingencias",
+   "bytes": 292758,
+   "sha256": "471dd88e62ac2719c4ddba3cf6686353bce0b10c6d2b14cc0081b7b660416003"
+  },
+  {
+   "url": "https://www.gov.br/cgu/pt-br/governo-aberto/time-brasil-antiga/planos-de-acao/planos/mato-grosso-do-sul/sao-gabriel-do-oeste",
+   "em": "2026-11-26T12:12:39+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=utf-8",
+   "final": "https://www.gov.br/cgu/pt-br/governo-aberto/time-brasil-antiga/planos-de-acao/planos/mato-grosso-do-sul/sao-gabriel-do-oeste",
+   "bytes": 92715,
+   "sha256": "4e70a19ed8a8db89f8dd82f540eb4bc82ecc1bc39f4c0b22115e0c7fb0a984a3"
+  },
+  {
+   "url": "https://www.gov.br/mec/pt-br/cne/pdf/pareceres-do-cne/ces/2023/pces382_23.pdf",
+   "em": "2026-11-26T12:12:42+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mec/pt-br/cne/pdf/pareceres-do-cne/ces/2023/pces382_23.pdf",
+   "bytes": 313252,
+   "sha256": "6d9dbe5176b12323024f681a40726a8f2c3e0c976debf2550fefe845fd3243ac"
+  },
+  {
+   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/f/febre-amarela/notas-tecnicas-e-informativas/nota-informativa-no-16-2025-cgarb-dedt-svsa-ms",
+   "em": "2026-11-26T12:12:47+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/estudos-e-notas-informativas/2025/nota-informativa-no-16-2025-cgarb-dedt-svsa-ms.pdf",
+   "bytes": 976012,
+   "sha256": "591f2fe204f4225a3d6f6d384de14cc9b151f5b786f8002ec47e2786a714ea92"
+  },
+  {
+   "url": "https://mid.curitiba.pr.gov.br/2026/00463452.pdf",
+   "em": "2026-11-26T12:12:51+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://mid.curitiba.pr.gov.br/2026/00463452.pdf",
+   "bytes": 854314,
+   "sha256": "2c4ba1389240c45c38440a177c3914758464837660c29d33901df2c7ae31ae2f"
+  },
+  {
+   "url": "https://www.santamaria.rs.gov.br/smrcrc",
+   "em": "2026-11-26T12:12:52+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.santamaria.rs.gov.br/smrcrc",
+   "bytes": 142288,
+   "sha256": "82968aea469f57b44a3b729e513bcdb4a701018f0f72df27a50d1913fccadee3"
+  },
+  {
+   "url": "https://www.gov.br/antt/pt-br/assuntos/rodovias/concessionarias/lista-de-concessoes/rota-do-oeste/documentos-de-gestao/contrato-e-anexos/anexos-do-contrato/per-atualizado",
+   "em": "2026-11-26T12:12:53+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/antt/pt-br/assuntos/rodovias/concessionarias/lista-de-concessoes/rota-do-oeste/documentos-de-gestao/contrato-e-anexos/anexos-do-contrato/per-atualizado",
+   "bytes": 1790458,
+   "sha256": "b9b7f1f02946da48abad25325895ebeee34fa241e9a7145d5c1abbed6c03d43f"
+  },
+  {
+   "url": "https://www.gov.br/antt/pt-br/assuntos/rodovias/relatorios/acompanhamento-ambiental-das-concessoes-rodoviarias-1/por-concessao/acompanhamento-ambiental-rota-do-oeste-1/arquivos/pae-cro_final.pdf",
+   "em": "2026-11-26T12:12:55+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/antt/pt-br/assuntos/rodovias/relatorios/acompanhamento-ambiental-das-concessoes-rodoviarias-1/por-concessao/acompanhamento-ambiental-rota-do-oeste-1/arquivos/pae-cro_final.pdf",
+   "bytes": 6244091,
+   "sha256": "02e55499a462778cbe67ad5ba3129a4254caf4bf495e232d97dcacca26e04324"
+  },
+  {
+   "url": "https://www.gov.br/infraestrutura/pt-br/centrais-de-conteudo/pdz10-pdf/@@download/file/pdz10.pdf",
+   "em": "2026-11-26T12:13:00+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/transportes/pt-br/pt-br/centrais-de-conteudo/pdz10-pdf/@@download/file/pdz10.pdf",
+   "bytes": 30261054,
+   "sha256": "234045eb22a007372838eac53ebae5389aa285d05501a246f33f6766352f67be"
+  },
+  {
+   "url": "http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=3&url=L3NjcHJvMTkyMy5uc2YvMGM1YmY1Y2RlOTU2MDFmOTAzMjU2Y2FhMDAyMzEzMWIvYWM3N2Y2NDNjNTcwNThiNzAzMjU4ODA3MDA1NGI4NzU%2FT3BlbkRvY3VtZW50",
+   "em": "2026-11-26T12:13:22+00:00",
+   "status": 200,
+   "tipo": "text/html; Charset=utf-8",
+   "final": "http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=3&url=L3NjcHJvMTkyMy5uc2YvMGM1YmY1Y2RlOTU2MDFmOTAzMjU2Y2FhMDAyMzEzMWIvYWM3N2Y2NDNjNTcwNThiNzAzMjU4ODA3MDA1NGI4NzU%2FT3BlbkRvY3VtZW50",
+   "bytes": 142253,
+   "sha256": "919893c69e10fd627fa5ecba2eb15428d4ba9cc4a1615fe6fbf5d6bdf4b3f920"
+  },
+  {
+   "url": "https://www.habitacao.rs.gov.br/upload/arquivos/202508/18155139-caderno-dos-delegados-concidades.pdf",
+   "em": "2026-11-26T12:13:23+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.habitacao.rs.gov.br/upload/arquivos/202508/18155139-caderno-dos-delegados-concidades.pdf",
+   "bytes": 28609872,
+   "sha256": "3bfb1c6a5b4bc793cc95c610a0e794df6095205d28474fd4ddd90d26d4f7a57a"
+  },
+  {
+   "url": "https://www.gov.br/saude/pt-br/",
+   "em": "2026-11-26T12:13:35+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=utf-8",
+   "final": "https://www.gov.br/saude/pt-br/",
+   "bytes": 232542,
+   "sha256": "04e37f658b8070e5782373efd3e1efbd72cdbab0377230b9fa0cb41d9919efd3"
+  },
+  {
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/capacitacoes/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf",
+   "em": "2026-11-26T12:13:36+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/capacitacoes/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf",
+   "bytes": 5612707,
+   "sha256": "1369e7cceb931a49ff0bfe2ee55d4a21c24144817d46a80400bea94fb2840d1e"
+  },
+  {
+   "url": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/agrotoxicos/agrotoxicos_otica_sistema_unico_saude_v1_t-1.pdf",
+   "em": "2026-11-26T12:13:41+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/agrotoxicos/agrotoxicos_otica_sistema_unico_saude_v1_t-1.pdf",
+   "bytes": 3910986,
+   "sha256": "e6dc163284a977a3dea7d38a611f55aec4c44206321657b367426d08876e0fb6"
+  },
+  {
+   "url": "https://www.meon.com.br/noticias/meon/meonjovem/alunos/poema-agua-que-ja-existiu",
+   "em": "2026-11-26T12:13:46+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www.meon.com.br/noticias/meon/meonjovem/alunos/poema-agua-que-ja-existiu",
+   "bytes": 124771,
+   "sha256": "1b7ddf965d56cb3782fdeefadc4d8b341248e170aab26455a2e784ae2cee3af1"
+  },
+  {
+   "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-06_2026.pdf",
+   "em": "2026-11-26T12:13:48+00:00",
+   "status": 200,
+   "tipo": "text/html",
+   "final": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-06_2026.pdf",
+   "bytes": 45368,
+   "sha256": "48696c7ee00e2b8638da03be830db2449189048d29b3c19e95984f306d024713"
+  },
+  {
+   "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-05_2026.pdf",
+   "em": "2026-11-26T12:13:48+00:00",
+   "status": 200,
+   "tipo": "text/html",
+   "final": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-05_2026.pdf",
+   "bytes": 50108,
+   "sha256": "59eb5504d22f9d99b7c8004c9908c0393528d7e01d55b804f3974af95134bad4"
+  },
+  {
+   "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-04_2026.pdf",
+   "em": "2026-11-26T12:13:52+00:00",
+   "status": 200,
+   "tipo": "text/html",
+   "final": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-04_2026.pdf",
+   "bytes": 52300,
+   "sha256": "fec64a67cb7ab3affeadc6f47b5d4c97431830c0b60f77b4290d027f283d7885"
+  },
+  {
+   "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-03_2026.pdf",
+   "em": "2026-11-26T12:13:55+00:00",
+   "status": 200,
+   "tipo": "text/html",
+   "final": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-03_2026.pdf",
+   "bytes": 56212,
+   "sha256": "d46d7f065d58987cd3eb285a22e7995c969d6e5016d09abc6800e02385e3539d"
+  },
+  {
+   "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-02_2026.pdf",
+   "em": "2026-11-26T12:13:58+00:00",
+   "status": 200,
+   "tipo": "text/html",
+   "final": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-02_2026.pdf",
+   "bytes": 51952,
+   "sha256": "7d4c77d0f5b3af6ffa6105c9c5cad97c9d9bd5192f0b3bd62ec83556aa15acc7"
+  },
+  {
+   "url": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-01_2026.pdf",
+   "em": "2026-11-26T12:14:01+00:00",
+   "status": 200,
+   "tipo": "text/html",
+   "final": "https://paraiba.pb.gov.br/diretas/saude/arquivos-1/vigilancia-em-saude/boletim-epidemiologico-arboviroses-urbanas-no-01_2026.pdf",
+   "bytes": 47160,
+   "sha256": "29bf624f9d36879cf2ce7e217372d24dc40960b88a54926aaa04caf71d6c009d"
+  },
+  {
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/l8080.htm",
+   "em": "2026-11-26T12:14:05+00:00",
+   "erro": "RemoteDisconnected: Remote end closed connection without response"
+  },
+  {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/decreto/d10692.htm",
+   "em": "2026-11-26T12:14:05+00:00",
+   "erro": "RemoteDisconnected: Remote end closed connection without response"
+  },
+  {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340.htm",
+   "em": "2026-11-26T12:14:08+00:00",
+   "erro": "RemoteDisconnected: Remote end closed connection without response"
+  },
+  {
+   "url": "https://www.srh.ce.gov.br/comite-integrado-de-seguranca-hidrica-lista-demandas-de-abastecimento-do-ceara-ao-midr/",
+   "em": "2026-11-26T12:14:12+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl."
+  },
+  {
+   "url": "https://www.saomanoeldoparana.pr.gov.br/uploads/pagina/arquivos/PLANO-DE-CONTINGENCIA-26-27.pdf",
+   "em": "2026-11-26T12:14:18+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.saomanoeldoparana.pr.gov.br/uploads/pagina/arquivos/PLANO-DE-CONTINGENCIA-26-27.pdf",
+   "bytes": 3235627,
+   "sha256": "26ea3deebe6b96423d44112b75fef91da66716218ae2d098e18bf95c9c11dfc3"
+  },
+  {
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/orientacoes/estado-de-emergencia/",
+   "em": "2026-11-26T12:14:20+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.saude.ce.gov.br/",
+   "em": "2026-11-26T12:14:21+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl."
+  },
+  {
+   "url": "https://saude.df.gov.br/",
+   "em": "2026-11-26T12:14:23+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://saude.df.gov.br/",
+   "bytes": 417193,
+   "sha256": "ae7318d6c052e17f0d1421cc9e0fe4939d5aa66f0fa38d03457662d4f4fa8991",
+   "sha256_de_origem": "920acdc5cb08a10214b97261899818ea3c42f9f1e6a99b70de08f4500f9b086d",
+   "segredos_redigidos": 1,
+   "cpfs_redigidos": 0
+  },
+  {
+   "url": "https://diariooficial.to.gov.br/busca?por=texto&texto=emerg%C3%AAncia+em+sa%C3%BAde+p%C3%BAblica&data-inicial=2026-06-29&data-final=2026-11-24",
+   "em": "2026-11-26T12:14:24+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://diariooficial.to.gov.br/busca?por=texto&texto=emerg%C3%AAncia+em+sa%C3%BAde+p%C3%BAblica&data-inicial=2026-06-29&data-final=2026-11-24",
+   "bytes": 14141,
+   "sha256": "e9a5b35bcaca977152748bef6fa0c673fbb0be85dc4b49573eb3ebc0b7d455f4"
+  },
+  {
+   "url": "https://diariooficial.to.gov.br/busca?por=texto&texto=declara+situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-24",
+   "em": "2026-11-26T12:14:26+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://diariooficial.to.gov.br/busca?por=texto&texto=declara+situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-24",
+   "bytes": 15471,
+   "sha256": "859d41d5cd918274dddc64b591f8d16aaa5311fe7bfbbd25ad18fa1cdf4c5257"
+  },
+  {
+   "url": "https://web.archive.org/save/https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261123.pdf",
+   "em": "2026-11-26T12:14:31+00:00",
+   "erro": "endereço fora da regra (só site público .br)"
+  },
+  {
+   "url": "https://diariooficial.to.gov.br/busca?por=texto&texto=situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-24",
+   "em": "2026-11-26T12:14:31+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://diariooficial.to.gov.br/busca?por=texto&texto=situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-24",
+   "bytes": 16906,
+   "sha256": "584411c39aba61cadc7b46496c28475ceb0cbd417efa3f5d3eee82454c13b364"
+  },
+  {
+   "url": "https://diariooficial.to.gov.br/busca?por=texto&texto=declara+situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-22",
+   "em": "2026-11-26T12:14:37+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://diariooficial.to.gov.br/busca?por=texto&texto=declara+situa%C3%A7%C3%A3o+de+emerg%C3%AAncia&data-inicial=2026-06-29&data-final=2026-11-22",
+   "bytes": 15471,
+   "sha256": "1cbb400c4cd6e41313010dcad59c737844deb228c7847b3ee4d2aa6018011256"
+  },
+  {
+   "url": "https://auniao.pb.gov.br/servicos/doe/2026/novembro/diario-oficial-20-11-2026-portal.pdf",
+   "em": "2026-11-26T12:14:42+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://auniao.pb.gov.br/servicos/doe/2026/novembro/diario-oficial-20-11-2026-portal.pdf",
+   "bytes": 2780742,
+   "sha256": "e7ae1194d82f346b069a56a12970c5062d78efc7b30ae40e9d2c9658c9593d2c"
+  },
+  {
+   "url": "https://auniao.pb.gov.br/servicos/doe/2026/novembro/diario-oficial-16-11-2026-portal.pdf",
+   "em": "2026-11-26T12:14:42+00:00",
+   "status": 404
+  },
+  {
+   "url": "https://auniao.pb.gov.br/servicos/doe/2026/novembro/diario-oficial-12-11-2026-portal.pdf",
+   "em": "2026-11-26T12:14:45+00:00",
+   "status": 404
+  },
+  {
+   "url": "https://auniao.pb.gov.br/servicos/doe/2026/novembro/diario-oficial-23-11-2026-portal.pdf",
+   "em": "2026-11-26T12:14:48+00:00",
+   "status": 404
+  },
+  {
+   "url": "https://www.brusque.sc.gov.br/cidadao/noticia/operacao-el-nino-organiza-acoes-de-prevencao-e-monitoramento-em-brusque",
+   "em": "2026-11-26T12:14:52+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=iso-8859-1",
+   "final": "https://www.brusque.sc.gov.br/cidadao/noticia/operacao-el-nino-organiza-acoes-de-prevencao-e-monitoramento-em-brusque",
+   "bytes": 218807,
+   "sha256": "186bcc7af234f8540d9b4130ca218ec150b6efffee41b7f224d943c407cedb15"
+  },
+  {
+   "url": "https://www.saoborja.rs.gov.br/images/DOESB/2023/Novembro/doesb30_11_2023.pdf",
+   "em": "2026-11-26T12:14:53+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.saoborja.rs.gov.br/images/DOESB/2023/Novembro/doesb30_11_2023.pdf",
+   "bytes": 159073,
+   "sha256": "bbacb452c75bd0ed4fdf6ad153a30b3c6d15a3895843eaf96d610b4f9cbd2050"
+  },
+  {
+   "url": "https://www.pge.pa.gov.br/sites/default/files/consulta-publica/blocoa-anexos/anexo-V-caderno-encargos.pdf",
+   "em": "2026-11-26T12:14:54+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.pge.pa.gov.br/sites/default/files/consulta-publica/blocoa-anexos/anexo-V-caderno-encargos.pdf",
+   "bytes": 710631,
+   "sha256": "129553990d5d1be6594b8952c71fd460189d418601b24f6ea5abb44f106b2743"
+  },
+  {
+   "url": "https://www.pm.pa.gov.br/images/PM1/catagola%C3%A7%C3%A3o_06_12_2023.pdf",
+   "em": "2026-11-26T12:14:55+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  }
+ ]
+}
