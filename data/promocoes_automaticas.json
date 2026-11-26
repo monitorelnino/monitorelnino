@@ -1208884,7 +1208884,11 @@
    "hash_evidencia": "6501a57730d30cb901e21e8738671fd05e24e22d527fa2ec53a8e01f5d6745f9",
    "data_da_edicao": "2021-12-31",
    "indicado_ao_cadastro_art3A": false,
-   "atualizacao_anual_localizada": false
+   "atualizacao_anual_localizada": false,
+   "nao_aplicado": {
+    "em": "2026-11-26",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
   },
   {
    "promove": false,
@@ -1258966,6 +1258970,859 @@
    "leu_documento": true,
    "hash_evidencia": "80d4fa666178ee552af78a370f9a08e7534b417408328c30342882d9de8de629",
    "reabertura": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27444 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura do Município de Matão Coordenadoria Municipal de Proteção e Defesa Civil PLANO DE CONTINGÊNCIA APARECIDO FERRARI Prefeito do Município de Matão LUCIA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "eitura do Município de Matão Coordenadoria Municipal de Proteção e Defesa Civil PLANO DE CONTINGÊNCIA APARECIDO FERRARI Prefeito do Município de Matão LUCIANO G",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "19/12/2023",
+      "data_origem": "fecho",
+      "data_trecho": "Matão, 19 de dezembro de 2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura do",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "eitura do Município de Matão Coordenadoria Municipal de Proteção e Defesa Civil PLANO DE CONTINGÊNCIA APARECIDO FERRARI Prefeito do Município de Matão LUCIANO G",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura do Município de Matão Coordenadoria Municipal de Proteção e Defesa Civil PLANO DE CONTINGÊNCIA APARECIDO FERRARI Prefeito do Município de Matão LUCIA"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "FEITURA DE MATÃO Ambulâncias 12 sendo 2 em São Lourenço do Turvo Caminhão Carga Seca 13 Caminhão Baú 1 Caminhão Tanque/Canhão d’agua 2 Maquinário 4 Retroescavad"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2023, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "19/12/2023",
+   "natureza": "EX_ANTE",
+   "ibge": "3529302",
+   "municipio": "Matão",
+   "uf": "SP",
+   "url": "https://www.matao.sp.gov.br/wp-content/uploads/2023/12/PLANO-CONTINGENCIA-MATAO-2023-APRESENTACAO.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "fecho",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "32deab8ced",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "2fa42d290ee861a7d76311643442a3400621da7776e0a7eb203894a61947db72",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2023-12-19",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": false,
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3510005",
+   "municipio": "Cândido Mota",
+   "uf": "SP",
+   "url": "https://candidomota.sp.gov.br/DownloadServlet?id=yfmxcckaxlrea84nemawodxs06ecwdey",
+   "regras_18": [],
+   "pista_id": "2b936e6108",
+   "origem": "descoberta",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "84109 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "/2024, 12:46 Plancon Plano de Contingência Municipal de Proteção e Defesa Civil CÂNDIDO MOTA - SP O presente Plano de Contingência Municipal estabelece diretriz"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "26/06/2024, 12:46 Plancon Plano de Contingência Municipal de Proteção e Defesa Civil CÂNDIDO MOTA - SP O presente Plano de Contingência Municipal estabelece dir",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "14/06/2024",
+      "data_origem": "atualizacao",
+      "data_trecho": "Versão 2, atualizada em 14/06/2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "Plancon",
+      "trecho": "26/06/2024, 12:46 Plancon Plano de Contingência Municipal de Proteção e Defesa Civil CÂNDIDO MOTA - SP O presente Plano de Contingência Municipal estabelece dir",
+      "prova_de_que_e_o_plano": "página com estrutura de plano e sem marca de notícia"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "LANCON para alagamentos, barragens, incendio florestal, frente fria / zona d no município de CÂNDIDO MOTA - SP estabelece os procedimentos a serem adotados pelo"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "Plancon Plano de Contingência Municipal de Proteção e Defesa Civil CÂNDIDO MOTA - SP O presente Plano de Contingência Municipal estabelece diretrizes para ações"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (14/06/2024) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "14/06/2024",
+   "natureza": "EX_ANTE",
+   "ibge": "3510005",
+   "municipio": "Cândido Mota",
+   "uf": "SP",
+   "url": "https://candidomota.sp.gov.br/DownloadServlet?id=b1qzw1s0hj0oszl622xpl3ksq0ofdydh",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "3ffd0094bb",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "ab298104d46c3781031f387c2f1fc307d5379c0c067c4a34f94b6bda1c719d72",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2024-06-14",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": false,
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3543105",
+   "municipio": "Ribeirão Corrente",
+   "uf": "SP",
+   "url": "https://ribeiraocorrente.sp.gov.br/DownloadServlet?id=8fntzq1xcop53iqg1l71ue9mlluhbx72",
+   "regras_18": [],
+   "pista_id": "3b72269cae",
+   "origem": "descoberta",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "95047 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura do Município de Francisco Morato Estado de São Paulo Brasil Expediente Renata Torres de Sene Prefeita Ildo da Silva Gusmão Vice-Prefeito Júlio César"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Revisor Thiago Gabriel de Oliveira Gerente Municipal SUMÁRIO 1 APRESENTAÇÃO DO PLANO DE CONTINGÊNCIA (PLANCON).................................8 1.1 Introdução",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2013",
+      "data_origem": "atualizacao",
+      "data_trecho": "Versão 01. Paraná. 2013",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura do",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "Revisor Thiago Gabriel de Oliveira Gerente Municipal SUMÁRIO 1 APRESENTAÇÃO DO PLANO DE CONTINGÊNCIA (PLANCON).................................8 1.1 Introdução",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Prefeitura do Município de Francisco Morato Estado de São Paulo Brasil Expediente Renata Torres de Sene Prefeita Ildo da Silva Gusmão Vice-Prefeito Júlio César"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "desastres causados por ações climáticas por meio das operações como Corta Fogo, Estiagem e Operação Verão. Atua também na Prevenção de Desastres por meio do mon"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2013, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2013",
+   "natureza": "EX_ANTE",
+   "ibge": "3516309",
+   "municipio": "Francisco Morato",
+   "uf": "SP",
+   "url": "https://franciscomorato.sp.gov.br/arquivos/plancon_versao_2022-2023.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "935177958d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "bf413a9538bf43a21851be07820da155086c606a05ce61df21097eab6dff3bdd",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2013-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "93169 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "NGÊNCIA SECRETARIA MUNICIPAL DE ASSISTÊNCIA E DESENVOLVIMENTO SOCIAL – SMADS DE FRANCISCO MORATO-SP COVID -19 ANO 2020 EXPEDIENTE Prefeita do Município de Franc"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA SECRETARIA MUNICIPAL DE ASSISTÊNCIA E DESENVOLVIMENTO SOCIAL – SMADS DE FRANCISCO MORATO-SP COVID -19 ANO 2020 EXPEDIENTE Prefeita do Muni",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "data_origem": "capa",
+      "data_trecho": "ANO 2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "SECRETARIA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA SECRETARIA MUNICIPAL DE ASSISTÊNCIA E DESENVOLVIMENTO SOCIAL – SMADS DE FRANCISCO MORATO-SP COVID -19 ANO 2020 EXPEDIENTE Prefeita do Muni",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA SECRETARIA MUNICIPAL DE ASSISTÊNCIA E DESENVOLVIMENTO SOCIAL – SMADS DE FRANCISCO MORATO-SP COVID -19 ANO 2020 EXPEDIENTE Prefeita do Muni"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sem gatilho (previsão, limiar ou referência ao ciclo)"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "DUVIDA",
+   "ibge": "3516309",
+   "municipio": "Francisco Morato",
+   "uf": "SP",
+   "url": "https://franciscomorato.sp.gov.br/arquivos/pcsc19.pdf",
+   "regras_18": [],
+   "data_origem": "capa",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "f058b7af4e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "e893fa0d4a8139260efee0a4a96110f422a235e9e0b4076dd28a5d6268817111",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "34371 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE CUNHA/SP EXPEDIENTE Função / órgão Responsável Prefeito Municipal Rodrigo Sérgio"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE CUNHA/SP EXPEDIENTE Função / órgão Responsável Prefeito Municipal Rodrigo Sérg",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "09/2026",
+      "data_origem": "atualizacao",
+      "data_trecho": "atualização administrativa, operacional, técnica e Setembro/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "MUNICÍPIO DE",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE CUNHA/SP EXPEDIENTE Função / órgão Responsável Prefeito Municipal Rodrigo Sérg",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE CUNHA/SP EXPEDIENTE Função / órgão Responsável Prefeito Municipal Rodrigo Sérg"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "gamentos Inundação é o extravasamento de um curso d'água para áreas normalmente secas; enxurrada corresponde a escoamento superficial rápido e concentrado, de e"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (09/2026) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "09/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3513603",
+   "municipio": "Cunha",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_270_0_1_14102026135101.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "e74a9aecaa",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b432a7b8ae8bd0ff67e686ae20ec593942b6deb344a144bdf9588cd61657e431",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-09-30",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "39409 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CUNHA SECRETARIA DE GOVERNO DIRETORIA DE DEFESA CIVIL PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CUNHA SECRETARIA DE GOVERNO DIRETORIA DE DEFESA CIVIL PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "26/10/2026",
+      "data_origem": "fecho",
+      "data_trecho": "Cunha/SP, 26 de outubro de 2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PREFEITURA MUNICIPAL DE CUNHA SECRETARIA DE GOVERNO DIRETORIA DE DEFESA CIVIL PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CUNHA SECRETARIA DE GOVERNO DIRETORIA DE DEFESA CIVIL PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON 2026/2027 — MUNICÍPIO DE"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "gamentos Inundação é o extravasamento de um curso d'água para áreas normalmente secas; enxurrada corresponde a escoamento superficial rápido e concentrado, de e"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (26/10/2026) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "26/10/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3513603",
+   "municipio": "Cunha",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_270_0_1_18112026163022.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "fecho",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "0c55cfe1c7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9ef4e4d7432289a28a8a0864e925e414a3173bee7065cb207f10106380ffa5ba",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-10-26",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "documento posterior (09/2026 → 26/10/2026)",
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "589 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Parapuã\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3536000",
+   "municipio": "Parapuã",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_253_0_1_23062025114037.pdf",
+   "regras_18": [],
+   "pista_id": "e88e512162",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "fcf567e1724225d478fc5246f2d452f9b5008cd3a48f1ed45e4c62d8dc75f894",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62345 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DE PROTEÇÃO E DEFESA CIVIL 2024 Gilmar Martin Martins Prefeito do Município de Parapuã PARAPUÃ -SP LISTA DE SIGLAS E ABREVIATURAS CEDEC Coordenadoria Estadual"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PCPDC - PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL 2024 Gilmar Martin Martins Prefeito do Município de Parapuã PARAPUÃ -SP LISTA DE SIGLAS E ABREVIATURAS",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "03/2024",
+      "data_origem": "fecho",
+      "data_trecho": "Parapuã, março de 2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PCPDC - PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL 2024 Gilmar Martin Martins Prefeito do Município de Parapuã PARAPUÃ -SP LISTA DE SIGLAS E ABREVIATURAS",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL 2024 Gilmar Martin Martins Prefeito do Município de Parapuã PARAPUÃ -SP LISTA DE SIGLAS E ABREVIATURAS CEDEC Coordenado"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "as de granizo e outros. 1.3.2.2. Desastres de evolução crônica ou gradual, como seca, erosão ou perda de solo, poluição ambiental e outros. 9 1.3.3. Dentro dest"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2024, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "03/2024",
+   "natureza": "EX_ANTE",
+   "ibge": "3536000",
+   "municipio": "Parapuã",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_253_0_1_28042025190505.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "fecho",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "c584b03da7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "81ec569198057fd785fb3416e16958b414b61d91a47207844979a0d5eae3ce72",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2024-03-31",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": false,
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13976 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "REFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "CIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULISTA Bragança Paulista — SP. PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Deslizamentos de grand",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "12/08/2026",
+      "data_origem": "atualizacao",
+      "data_trecho": "Versão: 4 Última Atualização: 12/08/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "SECRETARIA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "CIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULISTA Bragança Paulista — SP. PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Deslizamentos de grand",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "REFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULI"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Deslizamentos de grande impacto, inundações bruscas e /ou processos geológicos ou hidrológicos correlat"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "12/08/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3507605",
+   "municipio": "Bragança Paulista",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_57_0_4_19082026103424.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "020a30db52",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5b90cfe0c84d8cb504e4761dd0b35b96ee37bf85773ab8c1b03044b6b7ee1f6f",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-08-12",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "35734 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL Bragança Paulista"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL Bragança Paulista – SP PLANCON PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Diretrizes para procedi",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "13/08/2026",
+      "data_origem": "atualizacao",
+      "data_trecho": "Data de Criação: 11/12/2024 Data Atualização:13/08/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANCON",
+      "trecho": "CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL Bragança Paulista – SP PLANCON PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Diretrizes para procedi",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL Bragança Paulista"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "nenhum padrão claro bateu — não classificar sozinho",
+     "objeto": "o: 1.2 Data de Criação: 11/12/2024 Data Atualização:13/08/2026. Este exemplar pertencente Coordenadoria Municipal de Proteção e Defesa Civil 1.3 – REGISTRO DE ALTERAÇÕES Data Versão Observação 13/08/2026 Versão 1.2 Alterações dos nomes dos responsáveis por algumas Secretarias municipais e por alguns órgãos envolvidos nesse Plano de Contingencia Proteção e Defesa Civil (11) 4035-6037 Av. Francisco Samuel Lucchesi Filho, n° 42 - CEP 12.910-610 - Bragança Paulista – SP E-mail: defesa",
+     "gatilho": "ANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Diretrizes para procedimentos no período de Estiagem, Queimadas e Umidade Relativa do Ar Proteção e Defesa Civil",
+     "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "PLANCON PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL Diretrizes para procedimentos no período de Estiagem, Queimadas e Umidade Relativa do Ar Proteção e Def"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (13/08/2026) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "13/08/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3507605",
+   "municipio": "Bragança Paulista",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_57_1_3_19082026103424.pdf",
+   "regras_18": [
+    "J10"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "cce498f1d7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9c7a74f620e082c8c6f211be16614f5b7fd3bb06907ec3dc93b65674a37005dd",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-08-13",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "documento posterior (12/08/2026 → 13/08/2026)",
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "53929 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL 7 PLANO DE CONTING"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "E SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL 7 PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Processos Geológicos Ve",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "12/08/2026",
+      "data_origem": "atualizacao",
+      "data_trecho": "Versão: 2 Última Atualização: 12/08/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "E SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL 7 PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Processos Geológicos Ve",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL 7 PLANO DE CONTING"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "raplanagem há algum tempo atrás e está em fase de finalização. Quando há fortes chuvas, a água da avenida desce por este local, causando fortes enxurradas com p"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "12/08/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3507605",
+   "municipio": "Bragança Paulista",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_57_2_2_19082026103424.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "800317c5e9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "55ca50b77ca6a778864cd15f9851a7d9e1d784994b1611c467d5b784fc04108f",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-08-12",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-26",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "45783 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULIS"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "A CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULISTA PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Processos Hidrológicos",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "12/08/2026",
+      "data_origem": "atualizacao",
+      "data_trecho": "Versão: 2 Última Atualização: 12/08/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "A CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULISTA PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Processos Hidrológicos",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA SECRETARIA MUNICIPAL DE SEGURANÇA E DEFESA CIVIL COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL DE BRAGANÇA PAULIS"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "u interrompidos dependendo da vulnerabilidade de cada via. A partir de 10 mm de chuvas intensas, as áreas consideradas vulneráveis já entram em estado de monito"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "12/08/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "3507605",
+   "municipio": "Bragança Paulista",
+   "uf": "SP",
+   "url": "https://ecrie.com.br/sistema/conteudos/arquivo/a_57_3_1_19082026103424.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "7f8a3c57ce",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "4b918c67b1b55ca8faaf76f00db725749e7e587989283c838a6b47d81a6c2e55",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-08-12",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-26",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
   }
  ]
 }
