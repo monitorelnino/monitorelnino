@@ -13839,19 +13839,32 @@
    "ibge": "4103040",
    "nome": "Boa Ventura de São Roque",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "24/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17493",
+     "data": "24/11/2026",
+     "decreto": "Decreto municipal nº 325",
+     "hash": "c3edb27481c8cb5cdc2f224ed55b5f9ee6be43f388e861bfcdfca24fd282fe0a"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2302404": {
    "ibge": "2302404",
@@ -63315,9 +63328,17 @@
      "data": "10/11/2026",
      "decreto": "Decreto municipal nº 198",
      "hash": "91afe9348d4cad56c072ba6d8eb6bf739c9b684479b0f56b62857fd83aa95ed9"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17493",
+     "data": "24/11/2026",
+     "decreto": "Decreto municipal nº 213",
+     "hash": "c3edb27481c8cb5cdc2f224ed55b5f9ee6be43f388e861bfcdfca24fd282fe0a"
     }
    ],
-   "n_eventos": 5,
+   "n_eventos": 6,
    "dias_sem_reconhecimento": null
   },
   "1200344": {

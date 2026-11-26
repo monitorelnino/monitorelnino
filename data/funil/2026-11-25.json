@@ -17,9 +17,9 @@
   "diario_consorciado": {
    "bloqueadas": 0,
    "decretos_novos": 5,
-   "fontes": 16,
+   "fontes": 32,
    "fora_do_ar": 0,
-   "pistas": 74
+   "pistas": 148
   },
   "diario_municipal": {
    "consultados": 0,
@@ -28,13 +28,13 @@
    "pistas": 0
   },
   "doe": {
-   "ufs_com_resultado": 27,
-   "ufs_consultadas": 27
+   "ufs_com_resultado": 54,
+   "ufs_consultadas": 54
   },
   "funil_recursos_resposta": {
-   "com_resultado_bruto": 2,
-   "consultas": 3,
-   "pistas": 690
+   "com_resultado_bruto": 3,
+   "consultas": 5,
+   "pistas": 709
   },
   "funil_saude_estadual": {
    "com_resultado_bruto": 13,
@@ -42,16 +42,19 @@
    "pistas": 344
   },
   "juiz": {
-   "com_documento": 179,
-   "pistas_recebidas": 190,
-   "promovidas": 6,
+   "com_documento": 253,
+   "pistas_recebidas": 270,
+   "promovidas": 16,
    "recusa_autoridade_nao_confirmada": 6,
-   "recusa_citacao_incompleta": 145,
-   "recusa_documento_inacessivel": 11,
-   "recusa_ente_nao_confirmado": 4,
-   "recusa_natureza_duvidosa": 10,
-   "recusa_noticia_institucional_nao_e_o_plano": 1,
-   "recusa_resposta": 2
+   "recusa_citacao_incompleta": 154,
+   "recusa_documento_inacessivel": 16,
+   "recusa_ente_nao_confirmado": 7,
+   "recusa_fora_do_objeto": 3,
+   "recusa_natureza_duvidosa": 11,
+   "recusa_noticia_institucional_nao_e_o_plano": 7,
+   "recusa_plano_sem_identificacao": 6,
+   "recusa_resposta": 5,
+   "recusa_texto_nao_extraivel": 1
   },
   "transferencias_municipais": {
    "com_resultado_bruto": 10,
@@ -59,5 +62,5 @@
    "municipios": 55668
   }
  },
- "atualizado_em": "2026-11-26T01:18:25"
+ "atualizado_em": "2026-11-26T02:36:20"
 }
