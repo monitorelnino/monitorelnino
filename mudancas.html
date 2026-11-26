@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Planos guardados pelo portal da prefeitura em domínio do fornecedor</dt>
+      <dd>Prefeituras cujo portal é feito na plataforma e-Crie guardam os arquivos no domínio do fornecedor, e o plano publicado pela própria prefeitura era recusado como fonte não oficial. Agora o arquivo é atribuído ao município cujo portal oficial o publica, com a página oficial como prova. Primeiros casos: Cunha, Parapuã e Bragança Paulista.</dd>
       <dt>26/11/2026 · Leitura dos sites de prefeitura gravada no prazo</dt>
       <dd>Quando a rodada nos sites de prefeitura chegava ao prazo, o coletor esperava os sites ainda em leitura e era encerrado antes de gravar: em 26/11, duas horas e meia de leitura se perderam. Agora ele grava o que já leu em até 20 segundos e deixa o restante para a rodada seguinte.</dd>
       <dt>26/11/2026 · Arquivo da web nos sites que recusam o robô de fora</dt>
@@ -162,8 +164,6 @@
       <dd>O coletor do cadastro federal de municípios suscetíveis caía sem registro quando o gov.br não entregava a nota técnica, e o portão de frescor avermelhava a main. Agora a falha fica no painel de tentativas, e a idade exibida continua sendo a do dado (F95).</dd>
       <dt>23/11/2026 · Elo do juiz não cai mais na trava do apt</dt>
       <dd>O passo do Tesseract em `_coletor.yml` passa a esperar a trava do apt deixada pelo passo do navegador e a repetir `update` e conexão parada; teto de 8 min. Pacote que não instala segue derrubando o elo com o nome do passo, e a reserva refaz. Catálogo: F92. Linhas líquidas: +19 (código +6, catálogo +13).</dd>
-      <dt>23/11/2026 · História do coletor de sinais de risco ao histórico</dt>
-      <dd>Consolidação: comentários de história do `coletar_sinais_risco.py` (catálogo de fontes, focos, RONI, avisos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento (AST idêntica). Código: −55 linhas líquidas.</dd>
     </dl>
   </section>
 </main>
