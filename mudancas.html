@@ -44,8 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>26/11/2026 · Vigia de boletins lê o índice da ANA e só avisa</dt>
-      <dd>`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.</dd>
+      <dt>26/11/2026 · Ponte no Brasil: recebimento na noite e lista gerada</dt>
+      <dd>A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.</dd>
       <dt>25/11/2026 · S22 (PNCP): teto de 20 min por município</dt>
       <dd>A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.</dd>
       <dt>25/11/2026 · Cartão do município: linhas de autodeclaração</dt>
