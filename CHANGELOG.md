@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2112 · Juiz: reabrir pista nomeada e redatar pelo documento relido
+
+`julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.
 ## 2026-11-26 · #2108 · Data do plano: capa com espaços e legenda de figura
 
 Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda "Porto Velho, 2019" de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.
