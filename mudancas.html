@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Saúde: falha de leitura não é recusa</dt>
+      <dd>Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.</dd>
       <dt>26/11/2026 · Juiz: reabrir pista nomeada e redatar pelo documento relido</dt>
       <dd>`julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.</dd>
       <dt>26/11/2026 · Data do plano: capa com espaços e legenda de figura</dt>
@@ -162,8 +164,6 @@
       <dd>O cartão dizia &quot;Ato oficial localizado&quot; para plano publicado sem ato de aprovação localizado. A frase passa a ser o rótulo do plano, em 372 registros de 21 estados.</dd>
       <dt>23/11/2026 · OCR por página</dt>
       <dd>PDF escaneado com cabeçalho digitado em cada página passava da régua de letras e não ia ao OCR (São Valentim do Sul/RS). A régua passa a ser por página.</dd>
-      <dt>23/11/2026 · Plano localizado que não conta não é &quot;não localizado&quot;</dt>
-      <dd>O cartão do município dizia &quot;não localizamos&quot; quando o plano tinha sido lido sem data ou indicado no repositório estadual e não aberto. Agora diz o que foi achado e por que não entra no índice, em todos os municípios.</dd>
     </dl>
   </section>
 </main>
