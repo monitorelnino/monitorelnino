@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-26 · #2116 · Saúde: falha de leitura não é recusa
 
 Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.
+## 2026-11-26 · #2114 · O POST entra na conta dos sites fora da rodada
+
+A listagem do diário do Piauí é pedida por POST, e o POST não tinha a conta que tira do resto da rodada o site que não responde. Cada data esgotava o tempo, o Piauí consumia todo o prazo da leitura dos diários e Mato Grosso do Sul e Rondônia ficavam sem edição lida desde 12/11. GET e POST passam a usar a mesma conta.
 
 ## 2026-11-26 · #2113 · Vigia de boletins lê o índice da ANA e só avisa
 
