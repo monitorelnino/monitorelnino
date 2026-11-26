@@ -1,0 +1,882 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-26T15:45:23+00:00",
+ "itens": [
+  {
+   "url": "https://ilhasolteira.sp.gov.br/wp-content/uploads/2025/04/2a-Fase-Analise-Tematica-Integrada.pdf",
+   "em": "2026-11-26T15:34:02+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://ilhasolteira.sp.gov.br/wp-content/uploads/2025/04/2a-Fase-Analise-Tematica-Integrada.pdf",
+   "bytes": 25248506,
+   "sha256": "761074ab89304389f7457b6dcee661d6ef131a61682bcbb7dd9beaf9f8275f26"
+  },
+  {
+   "url": "https://www.franciscomorato.sp.gov.br/arquivos/plancon_versao_2023-2024.pdf",
+   "em": "2026-11-26T15:34:24+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.franciscomorato.sp.gov.br/arquivos/plancon_versao_2023-2024.pdf",
+   "bytes": 4223958,
+   "sha256": "91c6fc796014a25b8468f76bc58f463c2c016c0e01ee54b060414f447aa38996"
+  },
+  {
+   "url": "http://www.rubiacea.sp.gov.br/arquivos_cliente/Plano Municipal de Imunização.pdf",
+   "em": "2026-11-26T15:34:24+00:00",
+   "erro": "InvalidURL: URL can't contain control characters. '/arquivos_cliente/Plano Municipal de Imunização.pdf' (found at least ' ')"
+  },
+  {
+   "url": "https://web.archive.org/save/https://data.queridodiario.ok.org.br/3548500/2026-11-17/f2e474310bbfb76f396f4e39e8e6ac20b403e9ba.pdf",
+   "em": "2026-11-26T15:34:25+00:00",
+   "erro": "endereço fora da regra (só site público .br)"
+  },
+  {
+   "url": "https://juquitiba.sp.gov.br/wp-content/uploads/2021/03/Plano-Municipal-de-Educação-2014-2023.pdf",
+   "em": "2026-11-26T15:34:25+00:00",
+   "erro": "UnicodeEncodeError: 'ascii' codec can't encode characters in position 56-57: ordinal not in range(128)"
+  },
+  {
+   "url": "https://juquitiba.sp.gov.br/wp-content/uploads/2021/05/PLANO-DE-AÇÃO-DURANTE-A-PANDEMIA-COVID-2021.pdf",
+   "em": "2026-11-26T15:34:27+00:00",
+   "erro": "UnicodeEncodeError: 'ascii' codec can't encode characters in position 42-43: ordinal not in range(128)"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205706&size=1",
+   "em": "2026-11-26T15:34:30+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205805&size=1",
+   "em": "2026-11-26T15:34:30+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2205854&size=1",
+   "em": "2026-11-26T15:34:33+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206001&size=1",
+   "em": "2026-11-26T15:34:36+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206050&size=1",
+   "em": "2026-11-26T15:34:39+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206100&size=1",
+   "em": "2026-11-26T15:34:42+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206209&size=1",
+   "em": "2026-11-26T15:34:45+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206308&size=1",
+   "em": "2026-11-26T15:34:48+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206357&size=1",
+   "em": "2026-11-26T15:34:51+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206407&size=1",
+   "em": "2026-11-26T15:34:54+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206605&size=1",
+   "em": "2026-11-26T15:34:58+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206654&size=1",
+   "em": "2026-11-26T15:35:01+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206670&size=1",
+   "em": "2026-11-26T15:35:04+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206696&size=1",
+   "em": "2026-11-26T15:35:07+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206704&size=1",
+   "em": "2026-11-26T15:35:10+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206720&size=1",
+   "em": "2026-11-26T15:35:13+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206753&size=1",
+   "em": "2026-11-26T15:35:16+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206803&size=1",
+   "em": "2026-11-26T15:35:19+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206902&size=1",
+   "em": "2026-11-26T15:35:22+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2206951&size=1",
+   "em": "2026-11-26T15:35:25+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207009&size=1",
+   "em": "2026-11-26T15:35:28+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207108&size=1",
+   "em": "2026-11-26T15:35:31+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207207&size=1",
+   "em": "2026-11-26T15:35:34+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207306&size=1",
+   "em": "2026-11-26T15:35:37+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://api.queridodiario.ok.org.br/gazettes?territory_ids=2207355&size=1",
+   "em": "2026-11-26T15:35:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/17462239586815435641c60.pdf",
+   "em": "2026-11-26T15:35:44+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174316614967e69ac59353d.pdf",
+   "em": "2026-11-26T15:35:44+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/1748984704683f63808d409.pdf",
+   "em": "2026-11-26T15:35:47+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/1751026137685e89d95d674.pdf",
+   "em": "2026-11-26T15:35:51+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/1747743873682c74814cfa6.pdf",
+   "em": "2026-11-26T15:35:54+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174700111568211f1bdcddb.pdf",
+   "em": "2026-11-26T15:35:57+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/170035667865596246150ba.pdf",
+   "em": "2026-11-26T15:36:01+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174283913567e19d5f53b68.pdf",
+   "em": "2026-11-26T15:36:04+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174699996468211a9c5988a.pdf",
+   "em": "2026-11-26T15:36:07+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174292268067e2e3b81d909.pdf",
+   "em": "2026-11-26T15:36:11+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174231891867d9ad46d4161.pdf",
+   "em": "2026-11-26T15:36:14+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174440002467f96e989b8b4.pdf",
+   "em": "2026-11-26T15:36:17+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/17506077176858276566abf.pdf",
+   "em": "2026-11-26T15:36:20+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174490324168011c4982e7a.pdf",
+   "em": "2026-11-26T15:36:24+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/174403542267f3de5e3c565.pdf",
+   "em": "2026-11-26T15:36:27+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/17492129136842def1c9079.pdf",
+   "em": "2026-11-26T15:36:30+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/1702591372657b7b8c44509.pdf",
+   "em": "2026-11-26T15:36:34+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://casamilitar-rs.com.br/pdfs/9.pdf",
+   "em": "2026-11-26T15:36:37+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cbm.df.gov.br/",
+   "em": "2026-11-26T15:36:40+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.df.gov.br/",
+   "em": "2026-11-26T15:36:40+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.bombeiros.df.gov.br/",
+   "em": "2026-11-26T15:36:40+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cedec.df.gov.br/",
+   "em": "2026-11-26T15:36:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://sedec.df.gov.br/",
+   "em": "2026-11-26T15:36:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://defesacivil.df.def.br/",
+   "em": "2026-11-26T15:36:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.df.gov.br/",
+   "em": "2026-11-26T15:36:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.df.gov.br/",
+   "em": "2026-11-26T15:36:41+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://df.gov.br/",
+   "em": "2026-11-26T15:36:41+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://portal.saude.df.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.df.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://sesa.df.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://sesau.df.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://sus.df.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://portal.saude.es.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.es.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.es.gov.br/",
+   "em": "2026-11-26T15:36:42+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.es.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.es.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://es.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://defesacivil.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.defesacivil.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://go.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.defesacivil.to.gov.br/",
+   "em": "2026-11-26T15:36:43+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cbm.to.gov.br/",
+   "em": "2026-11-26T15:36:44+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.bombeiros.to.gov.br/",
+   "em": "2026-11-26T15:36:44+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cedec.to.gov.br/",
+   "em": "2026-11-26T15:36:44+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.to.gov.br/",
+   "em": "2026-11-26T15:36:44+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.to.def.br/",
+   "em": "2026-11-26T15:36:44+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.to.gov.br/",
+   "em": "2026-11-26T15:36:44+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://to.gov.br/",
+   "em": "2026-11-26T15:36:44+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://portal.saude.mt.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.mt.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.mt.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.mt.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.mt.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://mt.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://defesacivil.ms.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://saude.ms.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://saude.pa.gov.br/",
+   "em": "2026-11-26T15:36:45+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.pb.gov.br/",
+   "em": "2026-11-26T15:36:46+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://www.defesacivil.pb.gov.br/",
+   "em": "2026-11-26T15:36:46+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://cbm.pb.gov.br/",
+   "em": "2026-11-26T15:36:46+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.saude.pb.gov.br/",
+   "em": "2026-11-26T15:36:46+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://portal.saude.pb.gov.br/",
+   "em": "2026-11-26T15:37:22+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://ses.pb.gov.br/",
+   "em": "2026-11-26T15:37:58+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.pb.gov.br/",
+   "em": "2026-11-26T15:37:58+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.pb.gov.br/",
+   "em": "2026-11-26T15:37:58+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.pb.gov.br/",
+   "em": "2026-11-26T15:37:58+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.pb.gov.br/",
+   "em": "2026-11-26T15:37:58+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.pb.gov.br/",
+   "em": "2026-11-26T15:37:59+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://pb.gov.br/",
+   "em": "2026-11-26T15:37:59+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.defesacivil.ac.gov.br/",
+   "em": "2026-11-26T15:37:59+00:00",
+   "erro": "URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://cbm.ac.gov.br/",
+   "em": "2026-11-26T15:37:59+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.ac.gov.br/",
+   "em": "2026-11-26T15:37:59+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.ac.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cedec.ac.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.ac.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.ac.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.ac.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ac.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://defesacivil.pe.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.pe.gov.br/",
+   "em": "2026-11-26T15:38:00+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.pe.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://saude.pe.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://defesacivil.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cedec.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://defesacivil.pi.def.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.pi.gov.br/",
+   "em": "2026-11-26T15:38:01+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://ses.pi.gov.br/",
+   "em": "2026-11-26T15:38:37+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.pi.gov.br/",
+   "em": "2026-11-26T15:38:37+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.pi.gov.br/",
+   "em": "2026-11-26T15:38:37+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.pi.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.rj.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.rj.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.rj.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.rj.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.rj.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.rj.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://rj.gov.br/",
+   "em": "2026-11-26T15:38:38+00:00",
+   "status": 503,
+   "erro": "HTTP 503"
+  },
+  {
+   "url": "https://defesacivil.rn.gov.br/",
+   "em": "2026-11-26T15:38:39+00:00",
+   "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>"
+  },
+  {
+   "url": "https://www.defesacivil.rn.gov.br/",
+   "em": "2026-11-26T15:39:15+00:00",
+   "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>"
+  },
+  {
+   "url": "https://bombeiros.rn.gov.br/",
+   "em": "2026-11-26T15:39:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.rn.gov.br/",
+   "em": "2026-11-26T15:39:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cedec.rn.gov.br/",
+   "em": "2026-11-26T15:39:54+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sedec.rn.gov.br/",
+   "em": "2026-11-26T15:39:54+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.sedec.rn.gov.br/",
+   "bytes": 163716,
+   "sha256": "76de9a64c30fe8a9d81207fda6a52df873f8b9b5845d56cfc902591ad370c282"
+  },
+  {
+   "url": "https://defesacivil.rn.def.br/",
+   "em": "2026-11-26T15:41:08+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.defesacivil.rn.gov.br/",
+   "em": "2026-11-26T15:41:08+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.rn.gov.br/",
+   "em": "2026-11-26T15:41:08+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.rn.gov.br/",
+   "em": "2026-11-26T15:41:08+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.rn.gov.br/",
+   "bytes": 135098,
+   "sha256": "a25ec461c8cfcb4359c74b0a9dd8928ba3858f88b62d055b849303cbfab59ec7"
+  },
+  {
+   "url": "https://rn.gov.br/",
+   "em": "2026-11-26T15:41:45+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://saude.rn.gov.br/",
+   "em": "2026-11-26T15:42:21+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.saude.rn.gov.br/",
+   "bytes": 232234,
+   "sha256": "0e77d63c4e747c3023dbe478f53d4340ca2a1fd5b56f8583f8186222613d512d"
+  },
+  {
+   "url": "https://www.saude.rn.gov.br/",
+   "em": "2026-11-26T15:43:35+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.saude.rn.gov.br/",
+   "bytes": 232234,
+   "sha256": "0e77d63c4e747c3023dbe478f53d4340ca2a1fd5b56f8583f8186222613d512d"
+  },
+  {
+   "url": "https://portal.saude.rn.gov.br/",
+   "em": "2026-11-26T15:44:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.rn.gov.br/",
+   "em": "2026-11-26T15:44:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesa.rn.gov.br/",
+   "em": "2026-11-26T15:44:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.rn.gov.br/",
+   "em": "2026-11-26T15:44:12+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.rn.gov.br/",
+   "em": "2026-11-26T15:44:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.saude.rs.gov.br/",
+   "em": "2026-11-26T15:44:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://ses.rs.gov.br/",
+   "em": "2026-11-26T15:44:13+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://sesa.rs.gov.br/",
+   "em": "2026-11-26T15:44:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sesau.rs.gov.br/",
+   "em": "2026-11-26T15:44:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://sus.rs.gov.br/",
+   "em": "2026-11-26T15:44:13+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.rs.gov.br/",
+   "em": "2026-11-26T15:44:13+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "https://defesacivil.ro.gov.br/",
+   "em": "2026-11-26T15:44:17+00:00",
+   "erro": "URLError: <urlopen error [Errno 11002] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.defesacivil.ro.gov.br/",
+   "em": "2026-11-26T15:44:50+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://cbm.ro.gov.br/",
+   "em": "2026-11-26T15:45:23+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://bombeiros.ro.gov.br/",
+   "em": "2026-11-26T15:45:23+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://www.bombeiros.ro.gov.br/",
+   "em": "2026-11-26T15:45:23+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  }
+ ]
+}
