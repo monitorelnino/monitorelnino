@@ -44,6 +44,16 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Buscador 2: união aceita o primeiro fechamento de pista</dt>
+      <dd>O seguidor grava `fechada_em` quando fecha uma pista, e o resolvedor de união não tinha regra para esse campo. Quando a válvula do Buscador 2 e a noite fechavam a mesma pista em dias diferentes, o lote inteiro era recusado (1.100 pistas no lote de 26/11). Agora vence o primeiro fechamento, como em `rejeitada_em`. Autoteste F101.</dd>
+      <dt>26/11/2026 · Emergência ou calamidade, e o nível que a regra permite afirmar</dt>
+      <dd>Cada município sob decreto passa a ter o tipo de declaração e o nível de intensidade da Portaria MDR nº 260/2022, art. 5º: calamidade pública é nível III; emergência reconhecida pela União é nível II, porque o nível I não pede reconhecimento; emergência sem reconhecimento fica sem nível. O coletor federal passa a buscar também os reconhecimentos de calamidade, que não entravam.</dd>
+      <dt>26/11/2026 · Data do plano: a lista de referências não data o plano</dt>
+      <dd>Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes). A data do plano agora se lê no corpo, até a seção de referências; o registro de revisões passa a datar (2022). Fecho com local e data, assinatura digital e a obra do próprio município seguem valendo no texto todo. Medido em 470 planos preservados: cinco datas mudam, nenhuma de faixa de idade.</dd>
+      <dt>26/11/2026 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão</dt>
+      <dd>O lote trazido do Brasil registra o endereço final de cada documento. Arquivo de prefeitura guardado em nuvem (S3 pré-assinado) traz na consulta a chave de acesso do órgão, e o registro é publicado pela raiz: o portão de segredos reprovou o PR de dado. O endereço passa agora pela mesma redação de segredos das evidências, na porta da ponte; autoteste novo.</dd>
+      <dt>26/11/2026 · Portão de imprensa reconhece o arquivo do portal da prefeitura</dt>
+      <dd>O portão que confere a fonte dos registros pontuáveis julgava só o domínio e reprovava os planos de Cunha, Parapuã e Bragança Paulista, guardados pelo portal oficial no domínio do fornecedor (e-Crie), que o juiz já aceita desde o #2131. Agora ele recebe o endereço inteiro e aplica a mesma regra única do juiz; caso novo no autoteste.</dd>
       <dt>26/11/2026 · Planos guardados pelo portal da prefeitura em domínio do fornecedor</dt>
       <dd>Prefeituras cujo portal é feito na plataforma e-Crie guardam os arquivos no domínio do fornecedor, e o plano publicado pela própria prefeitura era recusado como fonte não oficial. Agora o arquivo é atribuído ao município cujo portal oficial o publica, com a página oficial como prova. Primeiros casos: Cunha, Parapuã e Bragança Paulista.</dd>
       <dt>26/11/2026 · Leitura dos sites de prefeitura gravada no prazo</dt>
@@ -154,16 +164,6 @@
       <dd>O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.</dd>
       <dt>24/11/2026 · Um envio conferido por PR</dt>
       <dd>O PR nascia sem CHANGELOG e sem selo dos derivados, porque a entrada exige o número do PR, e os portões reprovavam o primeiro envio (76 execuções vermelhas de 15 a 23/11). PR em rascunho não roda mais os portões: nasce em rascunho, recebe CHANGELOG, mapa do código e selo num commit e só então fica pronto. O que os portões conferem não mudou.</dd>
-      <dt>24/11/2026 · Reaplicação vê os artefatos da noite inteira</dt>
-      <dd>A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.</dd>
-      <dt>24/11/2026 · Reaplicação não recusa arquivo novo dos dois lados</dt>
-      <dd>`reaplicar_noite.py` separa &quot;commit-base fora do histórico&quot; de &quot;arquivo ausente na base&quot;. O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.</dd>
-      <dt>24/11/2026 · Rodada de domingo não perde o commit por `julgamento_automatico`</dt>
-      <dd>Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).</dd>
-      <dt>24/11/2026 · Cadastro federal: coleta que falha deixa tentativa</dt>
-      <dd>O coletor do cadastro federal de municípios suscetíveis caía sem registro quando o gov.br não entregava a nota técnica, e o portão de frescor avermelhava a main. Agora a falha fica no painel de tentativas, e a idade exibida continua sendo a do dado (F95).</dd>
-      <dt>23/11/2026 · Elo do juiz não cai mais na trava do apt</dt>
-      <dd>O passo do Tesseract em `_coletor.yml` passa a esperar a trava do apt deixada pelo passo do navegador e a repetir `update` e conexão parada; teto de 8 min. Pacote que não instala segue derrubando o elo com o nome do passo, e a reserva refaz. Catálogo: F92. Linhas líquidas: +19 (código +6, catálogo +13).</dd>
     </dl>
   </section>
 </main>
