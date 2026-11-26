@@ -18,8 +18,11 @@ USO
   python3 scripts/ponte_brasil.py --guardar URL ARQUIVO --via "como a cópia foi obtida"
   python3 scripts/ponte_brasil.py --receber PASTA --via "…" [--ramo ponte-local/<carimbo>]   # lote: manifesto.json + corpos pelo sha256
   python3 scripts/ponte_brasil.py --pedidos        # até 40 endereços a trazer, o mais recente primeiro
+  python3 scripts/ponte_brasil.py --receber-ramos  # elo do juiz: todo lote `ponte-local/*` ainda não recebido
+  python3 scripts/ponte_brasil.py --ordem ARQ      # `ponte_ordem.json` do ramo `ponte-ordem` (workflow ponte_ordem.yml)
 """
 import json
+import os
 import pathlib
 import sys
 
@@ -57,10 +60,11 @@ def redigido(corpo: bytes) -> tuple:
 
 def registro(doc: dict, url: str, corpo: bytes, via: str, hoje: str, ramo: str = None) -> tuple:
     """(doc, caminho relativo ou None, corpo guardado) com a cópia registrada para `url`; a página entra redigida,
-    com o sha256 de origem ao lado. Documento de lote (`ramo`) fica no ramo: sem caminho na `main`. Função pura."""
+    com o sha256 de origem ao lado. Item de lote (`ramo`) fica no ramo, sem caminho na `main` (26/11/2026: a página
+    também, quando não há o que redigir; a que precisa de redação não pode ser lida do ramo). Função pura."""
     corpo, redacao = redigido(corpo)
     h = cb.sha256(corpo)
-    onde = {"ramo": ramo} if ramo and documento(corpo) else {"arquivo": f"{PASTA}/{h}.{'pdf' if corpo[:5] == b'%PDF-' else 'html'}"}
+    onde = {"ramo": ramo} if ramo and (documento(corpo) or not redacao) else {"arquivo": f"{PASTA}/{h}.{'pdf' if corpo[:5] == b'%PDF-' else 'html'}"}
     doc = dict(doc or {})
     doc.setdefault("_governanca", __doc__.split("\n\n")[1].replace("\n", " "))
     doc["copias"] = dict(doc.get("copias") or {}, **{url: dict(onde, sha256=h, tamanho=len(corpo), obtido_em=hoje,
@@ -68,14 +72,17 @@ def registro(doc: dict, url: str, corpo: bytes, via: str, hoje: str, ramo: str =
     return doc, onde.get("arquivo"), corpo
 
 
-def guardar_lote(itens: list, via: str, ramo: str = None) -> tuple:
+def guardar_lote(itens: list, via: str, ramo: str = None, fora: list = (), so_no_ramo: bool = False) -> tuple:
     """Guarda [(url, corpo, via própria ou None)] numa leitura e numa escrita do índice. Devolve
-    ([caminho guardado na `main` ou no ramo], [(url, motivo da recusa)])."""
+    ([caminho guardado na `main` ou no ramo], [(url, motivo da recusa)]). Com `ramo`, o lote fica registrado em
+    `lotes` (recebido, e os sites que recusaram, de `fora`); `so_no_ramo` recusa o que teria de ir à `main`
+    (o elo da noite não commita `ponte/`)."""
     from verificar_tamanho_dos_dados import TETO_MB   # o que entra na `main` respeita o teto por arquivo do repositório
     doc, hoje, guardados, recusados = cb.ler(cb.PONTE, {}), cb.hoje_editorial().isoformat(), [], []
     for url, corpo, via_do_item in itens:
         motivo = aceitar(corpo) or (f"acima do teto de {TETO_MB:.0f} MB por arquivo do repositório"
-                                    if len(corpo) > TETO_MB * 1048576 and not (ramo and documento(corpo)) else None)
+                                    if len(corpo) > TETO_MB * 1048576 and not (ramo and documento(corpo)) else None) or (
+            "página com dado a redigir: não se lê do ramo" if so_no_ramo and redigido(corpo)[1] else None)
         if motivo:
             recusados.append((url, motivo))
             continue
@@ -85,9 +92,69 @@ def guardar_lote(itens: list, via: str, ramo: str = None) -> tuple:
             destino.parent.mkdir(exist_ok=True)
             destino.write_bytes(corpo)
         guardados.append(caminho or f"{ramo}/{cb.sha256(corpo)}")
-    if guardados:
+    if ramo:
+        doc = dict(doc or {})
+        doc["lotes"] = dict(doc.get("lotes") or {}, **{ramo: {
+            "recebido_em": hoje, "guardados": len(guardados),
+            "recusas": sorted({_host(u) for u, motivo in fora if motivo == "recusa da fonte"} - {""})}})
+    if guardados or ramo:
         cb.gravar(cb.PONTE, doc)
     return guardados, recusados
+
+
+def _host(url: str) -> str:
+    import urllib.parse
+    return (urllib.parse.urlparse(url or "").hostname or "").lower()
+
+
+REMOTO_PUBLICO = f"https://github.com/{os.environ.get('GITHUB_REPOSITORY') or 'monitorelnino/monitorelnino'}.git"
+
+
+def lotes_a_receber(ramos: list, doc: dict) -> list:
+    """Ramos `ponte-local/*` ainda não registrados em `lotes`, o mais antigo primeiro. Função pura."""
+    feitos = set((doc or {}).get("lotes") or {})
+    return sorted(r for r in ramos if r.startswith("ponte-local/") and r not in feitos)
+
+
+def receber_ramos(remoto: str = REMOTO_PUBLICO, via: str = "programa local da ponte no Brasil") -> int:
+    """Peça 3 da ponte (HANDOVER_PONTE_ALCANCE, 18/11; ligada em 26/11/2026): todo lote que o programa local
+    empurrou e ninguém recebeu entra no índice, por referência ao ramo, numa noite. Endereço que já tem cópia
+    não é sobrescrito; lote recebido não se recebe de novo. Ramo não se apaga: o índice lê dele."""
+    import subprocess
+    import tarfile
+    import tempfile
+
+    def git(*a, **k):
+        return subprocess.run(["git", *a], check=True, capture_output=True, **k).stdout
+    ramos = [ln.split("refs/heads/", 1)[1] for ln in git("ls-remote", remoto, "refs/heads/ponte-local/*", text=True).splitlines()
+             if "refs/heads/" in ln]
+    novos, total = lotes_a_receber(ramos, cb.ler(cb.PONTE, {})), 0
+    for ramo in novos:
+        with tempfile.TemporaryDirectory() as tmp:
+            git("fetch", "-q", "--depth", "1", remoto, f"refs/heads/{ramo}")
+            tarfile.open(fileobj=__import__("io").BytesIO(git("archive", "FETCH_HEAD"))).extractall(tmp, filter="data")
+            pasta = pathlib.Path(tmp) / ramo
+            itens, fora = itens_do_manifesto(pasta) if (pasta / "manifesto.json").exists() else ([], [])
+            copias = (cb.ler(cb.PONTE, {}) or {}).get("copias") or {}
+            guardados, recusados = guardar_lote([(u, c, f"{via}; {v}" if v else None) for u, c, v in itens if u not in copias],
+                                                via, ramo, fora, so_no_ramo=True)
+        total += len(guardados)
+        print(f"{ramo}: {len(guardados)} cópia(s); {len(fora) + len(recusados)} fora")
+    print(f"{len(novos)} lote(s) recebido(s), {total} cópia(s) nova(s)")
+    return 0
+
+
+def ordem(fila: dict, doc: dict, anterior: dict, agora: str) -> dict:
+    """A lista que o programa local lê no ramo `ponte-ordem`: os pedidos sem cópia (`pedidos`, sem teto), menos os
+    sites que recusaram (lotes recebidos e a lista anterior). Só dado. Função pura."""
+    nao = sorted(set((anterior or {}).get("nao_pedir") or [])
+                 | {h for lote in ((doc or {}).get("lotes") or {}).values() for h in lote.get("recusas") or []})
+    return {"versao": 1, "gerado_em": agora,
+            "nota": "Lista de endereços para a ponte no Brasil (programa local no computador da editoria). Só dado: "
+                    "o programa lê e busca; nada aqui é executado. Gerada por scripts/ponte_brasil.py --ordem.",
+            "nao_pedir": nao,
+            "buscar": [{"url": u} for u in pedidos(fila, (doc or {}).get("copias"), agora[:10], limite=None)
+                       if _host(u) not in nao]}
 
 
 def itens_do_manifesto(pasta: pathlib.Path) -> tuple:
@@ -121,9 +188,9 @@ DIAS_DO_PEDIDO = 30
 LIMITE_DE_PEDIDOS = 40
 
 
-def pedidos(fila: dict, copias: dict, hoje: str) -> list:
+def pedidos(fila: dict, copias: dict, hoje: str, limite: int = LIMITE_DE_PEDIDOS) -> list:
     """Endereços a trazer: pedidos dos últimos DIAS_DO_PEDIDO dias ainda sem cópia, sem repetição, o
-    mais recente primeiro, até LIMITE_DE_PEDIDOS. Função pura."""
+    mais recente primeiro, até `limite` (None: todos). Função pura."""
     import datetime as dt
     corte = (dt.date.fromisoformat(hoje) - dt.timedelta(days=DIAS_DO_PEDIDO)).isoformat()
     vistos, saida = set(), []
@@ -133,7 +200,7 @@ def pedidos(fila: dict, copias: dict, hoje: str) -> list:
             continue
         vistos.add(u)
         saida.append(u)
-    return saida[:LIMITE_DE_PEDIDOS]
+    return saida[:limite]
 
 
 def autoteste() -> int:
@@ -202,7 +269,34 @@ def autoteste() -> int:
             finally:
                 cb.RAIZ, cb.ler, cb.gravar = orig
 
+    limpa = b"<html>plano municipal</html>"
+
+    def lote_no_ramo():
+        orig, gravado = (cb.ler, cb.gravar), {}
+        cb.ler, cb.gravar = (lambda nome, padrao=None: {"copias": {}}), (lambda nome, obj, **k: gravado.update(obj))
+        try:
+            r = guardar_lote([("https://a.gov.br/p", limpa, None), ("https://a.gov.br/s", pagina, None)], "t",
+                             "ponte-local/y", [("https://b.gov.br/1", "recusa da fonte"), ("https://c.gov.br/2", "sem cópia: 503")],
+                             so_no_ramo=True)
+            return r, gravado
+        finally:
+            cb.ler, cb.gravar = orig
+
     return cb.rodar_autoteste({
+        "elo: página limpa fica no ramo; a que pede redação fica fora; lote e recusa registrados": lambda: (
+            lambda r, g: r == (["ponte-local/y/" + cb.sha256(limpa)], [("https://a.gov.br/s", "página com dado a redigir: não se lê do ramo")])
+            and g["copias"]["https://a.gov.br/p"]["ramo"] == "ponte-local/y"
+            and g["lotes"]["ponte-local/y"]["recusas"] == ["b.gov.br"] and g["lotes"]["ponte-local/y"]["guardados"] == 1)(*lote_no_ramo()),
+        "lotes a receber: só ponte-local/* não registrados, o mais antigo primeiro": lambda: lotes_a_receber(
+            ["ponte-local/2", "ponte-ordem", "ponte-local/1", "ponte-local/0"], {"lotes": {"ponte-local/0": {}}})
+            == ["ponte-local/1", "ponte-local/2"],
+        "ordem: pedidos sem cópia, sem teto, menos os sites que recusaram": lambda: ordem(
+            {"pedidos": [{"url": f"https://x.gov.br/{i}", "em": "2026-11-25"} for i in range(50)]
+             + [{"url": "https://b.gov.br/1", "em": "2026-11-25"}, {"url": "https://m.gov.br/1", "em": "2026-11-25"}]},
+            {"copias": {"https://x.gov.br/0": {}}, "lotes": {"r": {"recusas": ["b.gov.br"]}}}, {"nao_pedir": ["m.gov.br"]},
+            "2026-11-26T01:00:00+00:00") == {**ordem({}, {}, {}, "2026-11-26T01:00:00+00:00"),
+                                             "nao_pedir": ["b.gov.br", "m.gov.br"],
+                                             "buscar": [{"url": f"https://x.gov.br/{i}"} for i in range(1, 50)]},
         "documento de lote fica no ramo: na main entra só o índice; página segue entrando redigida": lambda: caminho3 is None
             and c3 == {"ramo": "ponte-local/20261118-140100", "sha256": cb.sha256(pdf), "tamanho": len(pdf),
                        "obtido_em": "2026-11-18", "via": "teste"}
@@ -251,6 +345,17 @@ def main() -> int:
                          cb.hoje_editorial().isoformat()):
             print(u)
         return 0
+    if "--receber-ramos" in sys.argv:
+        return receber_ramos()
+    if "--ordem" in sys.argv:
+        arq = pathlib.Path(sys.argv[sys.argv.index("--ordem") + 1])
+        anterior = json.loads(arq.read_text(encoding="utf-8")) if arq.exists() else {}
+        novo = ordem(cb.ler(cb.PEDIDOS_DA_PONTE, {}), cb.ler(cb.PONTE, {}), anterior,
+                     cb.datetime.now(cb.timezone.utc).replace(microsecond=0).isoformat())
+        if {k: v for k, v in novo.items() if k != "gerado_em"} != {k: v for k, v in anterior.items() if k != "gerado_em"}:
+            cb.gravar_em(arq, novo)
+        print(f"{len(novo['buscar'])} endereço(s) na lista; {len(novo['nao_pedir'])} site(s) sem pedido")
+        return 0
     via = sys.argv[sys.argv.index("--via") + 1] if "--via" in sys.argv else "ponte no Brasil"
     if "--guardar" in sys.argv:
         i = sys.argv.index("--guardar")
@@ -259,7 +364,7 @@ def main() -> int:
     if "--receber" in sys.argv:
         itens, fora = itens_do_manifesto(pathlib.Path(sys.argv[sys.argv.index("--receber") + 1]))
         ramo = sys.argv[sys.argv.index("--ramo") + 1] if "--ramo" in sys.argv else None
-        guardados, recusados = guardar_lote([(u, c, f"{via}; {v}" if v else None) for u, c, v in itens], via, ramo)
+        guardados, recusados = guardar_lote([(u, c, f"{via}; {v}" if v else None) for u, c, v in itens], via, ramo, fora)
         no_ramo = sum(1 for g in guardados if not g.startswith(PASTA + "/"))
         print(f"{len(guardados)} cópia(s) guardada(s), {no_ramo} por referência ao ramo do lote; {len(fora) + len(recusados)} fora")
         for u, motivo in fora + recusados:
