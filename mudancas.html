@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura</dt>
+      <dd>O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.</dd>
       <dt>26/11/2026 · Ceará: emergências estaduais no mapa</dt>
       <dd>Entram os Decretos estaduais nº 37.608 (13/11/2026, situação de emergência em 65 municípios por estiagem e seca ligadas ao El Niño, 180 dias) e nº 37.624 (19/11/2026, emergência ambiental em todo o estado por risco de incêndios, até fevereiro de 2027), conferidos no texto publicado pelo portal do Diário Oficial do Estado do Ceará, com cópia preservada.</dd>
       <dt>26/11/2026 · Buscador 2: união aceita o primeiro fechamento de pista</dt>
@@ -162,8 +164,6 @@
       <dd>A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou toque nos pontos do mapa, porque essa interação não está implementada. Fica a frase sobre os quatro riscos que o boletim prevê para este El Niño. Catálogo, texto de reserva da página e índice de conteúdo ajustados.</dd>
       <dt>24/11/2026 · Mesclagem recusada fecha quando o arquivo volta a se unir</dt>
       <dd>A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.</dd>
-      <dt>24/11/2026 · Aviso: outro run com a mesma causa não comenta a Issue</dt>
-      <dd>O aviso comparava o texto inteiro, com o link do run e a duração de cada portão; a mesma causa parecia nova a cada publicação (30 comentários iguais numa Issue em 24/11). A comparação passa a ignorar link e duração. Caso novo no autoteste.</dd>
     </dl>
   </section>
 </main>
