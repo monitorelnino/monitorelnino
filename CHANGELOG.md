@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2132 · Juiz 1.8 (lote paralelo J18): grava no prazo
+
+Rodada paralela J18 (só `data/paralelo_*`; nada do índice). O lote gravava só no fim: o prazo da válvula cortava o processo e 150 min de julgamento se perdiam. Agora grava a cada 10 documentos e na interrupção. Erro de leitura de PDF vira lacuna do documento, sem derrubar o lote. Teste novo no autoteste. Sem efeito no índice publicado.
+
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
 A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
