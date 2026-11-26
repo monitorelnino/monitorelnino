@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2113 · Vigia de boletins lê o índice da ANA e só avisa
+
+`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.
+
 ## 2026-11-26 · #2106 · Selo, PR 2: o selo sai do PR
 
 O manifesto, `mudancas.html` e `CODEMAP.md` passam a ser selados só pelo publicador. No PR e na cópia de trabalho, derivado defasado é aviso; na `main` selada e nos elos, reprova. Todo envio a um PR roda os portões, rascunho ou não: execução pulada deixava head mesclável sem portão. Sai o modo `--pode-regenerar`. Fluxo do `CLAUDE.md` e skill `p12` ajustados.
