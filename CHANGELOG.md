@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2107 · Prova de mutação dos portões: âncora do SHA por regex
+
+A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com "âncora ausente". A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.
+
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
 A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
