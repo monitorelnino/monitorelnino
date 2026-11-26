@@ -1,0 +1,1284 @@
+<!-- Desenvolvimento: Agencia UWEBS
+    Cliente: Prefeitura de Cajobi-SP
+    Ano: 2025-->
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+<base href="https://www.cajobi.sp.gov.br">
+  <link href="css/contrast.css" rel="stylesheet" />
+  
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div><meta charset="utf-8">
+<title>Prefeitura Municipal de Cajobi-SP</title>
+<META NAME="TITLE" CONTENT="Prefeitura Municipal de Cajobi-SP">
+<META NAME="DESCRIPTION" CONTENT="Site Oficial da Prefeitura Municipal de Cajobi, município brasileiro localizado no estado de São Paulo">
+<META NAME="KEYWORDS" CONTENT="cajobi, prefeitura, Cajobi-SP, contas, licitações, pregões, pregão, guia, cidade, interior são Paulo">
+<META HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="Portuguese">
+<META NAME="RATING" CONTENT="General">
+<META NAME="ROBOTS" CONTENT="index,follow">
+
+<meta name="geo.placename" content="Olímpia-SP">
+<meta name="geo.region" content="SP-BR">
+<meta name="author" content="UWEBS Criação de Sites">
+<META HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="Portuguese">
+<META NAME="RATING" CONTENT="General">
+<meta name="revisit-after" content="2 days"/>
+<META NAME="ROBOTS" CONTENT="index,follow">
+<link rel="canonical" href="https://www.cajobi.sp.gov.br/">
+<meta property="og:region" content="Brasil">
+<meta property="og:title" content="Prefeitura de Cajobi-SP">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.cajobi.sp.gov.br/">
+<meta property="og:description" content="Site Oficial da Prefeitura Municipal de Cajobi, município brasileiro localizado no estado de São Paulo">
+<meta property="og:image" content="https://cajobi.sp.gov.br/capa.jpg">
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="520">
+<meta property="og:image:height" content="520">
+<meta property="og:image:secure_url" content="https://www.cajobi.sp.gov.br/capa.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="https://www.cajobi.sp.gov.br/">
+<meta name="twitter:title" content="Prefeitura de Cajobi-SP">
+<meta name="twitter:description" content="Site Oficial da Prefeitura Municipal de Cajobi, município brasileiro localizado no estado de São Paulo">
+<meta name="twitter:image" content="https://www.cajobi.sp.gov.br/capa.jpg">
+
+<meta property="og:description" content="Prefeitura de Cajobi-SP">
+<meta property="og:image" content="https://www.cajobi.sp.gov.br/apple-touch-icon.png">
+<meta property="og:site_name" content="Prefeitura de Cajobi-SP">
+<meta property="og:title" content="Prefeitura de Cajobi-SP">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cajobi.sp.gov.br">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="manifest.json">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="plugins/revolution/css/settings.css" rel="stylesheet" type="text/css">
+<link href="plugins/revolution/css/layers.css" rel="stylesheet" type="text/css">
+<link href="plugins/revolution/css/navigation.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<link href="css/contrast.css" rel="stylesheet">
+
+<!--Color Switcher Mockup-->
+<link href="css/color-switcher-design.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!--Cores-->
+<link id="theme-color-file" href="css/color-themes/default-theme.css" rel="stylesheet">
+
+<!-- Responsivo -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+
+<body>
+
+      <!--inicio do pop-up-->
+<script type="text/javascript" src="popupnovo/jquery.js" ></script>
+<script type="text/javascript" src="popupnovo/jquery_cycle.js" ></script>
+<script type="text/javascript">
+$(function(){
+      $("#image-slide ul").cycle({
+         fx:"fade",
+         speed: 800,
+         timeout:4000,
+          prev : "#prev",
+            next : "#next"
+      })
+    })
+</script>
+<link rel="stylesheet" type="text/css" href="popupnovo/css/popup.css">
+<style type="text/css">
+iframe {
+    border: none !important;
+    max-width: 100% !important;
+}
+</style>
+<script type="text/javascript" src="popupnovo/js/popup.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+    skipSetup: true
+});
+window.onload = function() {
+
+    // open a welcome message as soon as the window loads
+    Shadowbox.open({
+        content:    '<div align="center"><a><iframe allowtransparency="true" width="600" height="750" frameborder="0" src="popupnovo/popup.html" scrolling="no" marginheight="0" marginwidth="0"></iframe></a></div>',
+        player:     "html",
+        title:      "",
+        height:     750,
+        width:      600
+    });
+
+};
+</script> 
+<!--fim do pop-up (acima)-->
+
+<div class="page-wrapper">
+ 	
+    <!-- Cabeçalho -->
+    <header class="main-header">
+        <!--Cabeçalho Top 2-->
+    	<div class="header-top">
+            <div class="auto-container">
+                <div class="clearfix">
+                                        <div class="top-left col-md-8 col-sm-12 col-xs-12">
+                    	<ul class="clearfix">
+                            <li><a href="https://www.cajobi.sp.gov.br/#conteudo" class="conteudo" accesskey="1">[1] Ir para o conteúdo</a>
+                                                        <a href="https://www.cajobi.sp.gov.br/#footer" class="scroll" accesskey="2">[2] Ir para o rodapé</a>
+                            <a href="mapa-do-site" accesskey="3">[3] Mapa do site</a> 
+                            <a href="acessibilidade" accesskey="4">[4] Acessibilidade</a> 
+                            <a href="void(0);" id="#altocontraste" accesskey="5">[5] Alto Contraste</a></li>
+                        </ul>
+                    </div>
+                    <div class="top-right pull-right col-md-4 col-sm-12 col-xs-12">
+                        <ul class="english-nav">
+                            <li><a href="/"><i class="fa fa-home"></i> Inicial</a></li>
+                            <li><a href="https://webmail-seguro.com.br/cajobi.sp.gov.br/" target="_blank"><i class="fa fa-envelope-o"></i> Webmail</a></li>
+                        </ul>
+                        <ul class="social-nav">
+                        	<li><a href="https://www.facebook.com/Prefcajobi/" target="_blank"><span class="fa fa-facebook-f"></span></a></li>
+                            <li><a href="https://www.instagram.com/prefeituracajobi/" target="_blank"><span class="fa fa-instagram"></span></a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Cabeçalho Top Fim-->
+
+        <!--Cabeçalho-->
+        <div class="header-upper">
+            <div class="auto-container">
+                <div class="inner-container clearfix">
+                    <div class="pull-left logo-outer">
+                        <div class="logo"><a href="/"><img src="imagens/logo2025.png" alt="Prefeitura Municipal de Cajobi-SP" title="Prefeitura Municipal de Cajobi-SP"></a></div>
+                        <div class="nav-toggler">
+                            <button class="hidden-bar-opener"><span class="icon qb-menu1"></span></button>
+                        </div>
+                        <div class="buscaMobile visible-xs">
+                            <a href="#"><span class="fa fa-search branco"></span></a>
+                        </div>
+                    </div>
+                    <div class="pull-right upper-right clearfix">
+                        <div class="upper-column info-box">
+                            <div class="icon-box"><span class="fa fa-phone icon_t"></span></div>
+                            <ul>
+                                <li><strong>Telefone</strong>(17) 3563-9000</li>
+                            </ul>
+                        </div>
+
+                        <div class="upper-column info-box">
+                            <div class="icon-box"><span class="fa fa-map-marker icon_t"></span></div>
+                            <ul>
+                                <li><strong>Endereço</strong>Praça Msr. José Maria S. Bezerra, 300<br>Cajobi-SP</li>
+                            </ul>
+                        </div>
+                        <div class="upper-column info-box">
+                            <div class="icon-box"><span class="fa fa-clock-o icon_t"></span></div>
+                            <ul>
+                                <li><strong>Horário de Atendimento</strong><b>Atendimento<br>08:00 às 11:30 e 13:00 às 17:00</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fim Cabeçalho-->
+
+        <style>#links-rapidos ul li a { font-size: 13px !important; }</style>
+        <section id="links-rapidos" class="mvp-side-widget widget_nav_menu">
+            <div class="container">
+                <ul class="three-item-carousel owl-carousel altura_banners_servicos owl-theme margemServicos">
+                                        <li class="item-blue" data-raofz="16"><a href="http://transparencia.cajobi.sp.gov.br:35002/comprasedital/" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20251128112736.png" data-src="imagens/banners/20251128112736.png" style="margin-bottom: 5px;display: block; margin: auto;"> Compras</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2femissornacional" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20210409083145.jpg" data-src="imagens/banners/20210409083145.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> NF-e</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="http://notafiscaleletronica.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20210409080922.jpg" data-src="imagens/banners/20210409080922.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> IPTU</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="http://notafiscaleletronica.cajobi.sp.gov.br:35000/servicosweb/paginas/loginItbi.jsf" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20251114141607.jpg" data-src="imagens/banners/20251114141607.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> ITBI</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="https://www.cajobi.sp.gov.br/licitacoes/" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20251114115720.jpg" data-src="imagens/banners/20251114115720.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> Licitações</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20210409081213.jpg" data-src="imagens/banners/20210409081213.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> Transparência</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/3" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20210409081313.jpg" data-src="imagens/banners/20210409081313.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> e-SIC</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/4" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20210409081620.jpg" data-src="imagens/banners/20210409081620.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> Protocolo</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="http://issweb.cajobi.sp.gov.br:8088/issweb/paginas/login" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20210422161512.jpg" data-src="imagens/banners/20210422161512.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> ISS web</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="http://201.131.68.73:9000/#/pec" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20251118142812.png" data-src="imagens/banners/20251118142812.png" style="margin-bottom: 5px;display: block; margin: auto;"> e-SUS</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/5" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20251114141106.jpg" data-src="imagens/banners/20251114141106.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> Ouvidoria</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="/sebrae-aqui"  data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20251118142848.png" data-src="imagens/banners/20251118142848.png" style="margin-bottom: 5px;display: block; margin: auto;"> Sebrae aqui</a></li>
+                                        <li class="item-blue" data-raofz="16"><a href="https://imprensaoficialmunicipal.com.br/cajobi" target="_blank" data-raofz="16" role="link"><img class="lazyloaded" src="imagens/banners/20251114141817.jpg" data-src="imagens/banners/20251114141817.jpg" style="margin-bottom: 5px;display: block; margin: auto;"> Diário Oficial</a></li>
+                                    </ul>
+            </div>
+        </section>
+
+        <div style="clear: both;"><br></div>
+        
+        <!--Cabeçalho Lower-->
+        <div class="header-lower">
+            <div class="auto-container">
+                <div class="nav-outer clearfix">
+                    <nav class="main-menu side-menu">
+                        <div class="navbar-header">
+                            <!-- Menu Botao celular -->     
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        
+                                                <div class="navbar-collapse collapse clearfix" id="bs-example-navbar-collapse-1">
+                            <ul class="navigation clearfix">
+                                <li class="dropdown"><a href="#">Governo<b class="caret"></b></a>
+                                    <ul class="espacoMenu">
+                                        <div class="col-lg-6 main_menu2"> 
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/agricultura/4">Agricultura</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/assistencia-social/5">Assistência Social</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/educacao-e-cultura/2">Educação e Cultura</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/engenharia/9">Engenharia</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/fundo-social/14">Fundo Social</a></li>
+                                                                                    </div> 
+                                       
+                                        <div class="col-lg-6 main_menu2">
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/gabinete-do-prefeito/1">Gabinete do Prefeito</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/juridico/11">Jurídico</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/lancadoria/12">Lançadoria</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/meio-ambiente/13">Meio Ambiente</a></li>
+                                                  
+                                            <li class="main-menu0 row"><a href="departamentos/saude/3">Saúde</a></li>
+                                                                                    </div>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown"><a href="#">Cidadão<b class="caret"></b></a>
+                                    <ul class="espacoMenu0">
+                                        <div class="col-lg-6 main_menu2">
+                                            <li class="main-menu0 row"><a href="ganha-tempo-cajobi">Ganha tempo municipal de Cajobi</a></li>
+                                            <li class="main-menu0 row"><a href="http://notafiscaleletronica.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Serviços on-line</a></li>
+                                            <li class="main-menu0 row"><a href="http://201.131.68.73:9000/#/pec" target="_blank">Saúde - E-SUS</a></li>
+                                            <li class="main-menu0 row"><a href="http://notafiscaleletronica.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Sistema de arrecadação</a></li>
+                                            <li class="main-menu0 row"><a href="http://notafiscaleletronica.cajobi.sp.gov.br:8088/servicosweb/home.jsf">IPTU</a></li>
+                                            <li class="main-menu0 row"><a href="http://notafiscaleletronica.cajobi.sp.gov.br:8088/servicosweb/paginas/loginItbi.jsf" target="_blank">ITBI</a></li>
+                                        </div>
+
+                                        <div class="col-lg-6 main_menu2">
+                                            <li class="main-menu0 row"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/5" target="_blank">Ouvidoria</a></li>
+                                            <li class="main-menu0 row"><a href="https://imprensaoficialmunicipal.com.br/cajobi" target="_blank">Diário Oficial On-line</a></li>
+                                            <li class="main-menu0 row"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/4" target="_blank">Protocolo Digital</a></li>
+                                            <li class="main-menu0 row"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/3" target="_blank">e-SIC</a></li>
+                                            <li class="main-menu0 row"><a href="documentos/carta-de-servicos.pdf" target="_blank">Carta de Serviços</a></li>
+                                        </div>
+                                    </ul>
+                                </li>
+                                
+                                <li class="dropdown"><a href="#">Empresa<b class="caret"></b></a>
+                                    <ul class="espacoMenu">
+                                        <li><a href="sebrae-aqui">Sebrae aqui Cajobi</a></li>
+                                        <li><a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2femissornacional" target="_blank">Nota Fiscal Eletrônica</a></li>
+                                        <li><a href="http://issweb.cajobi.sp.gov.br:8088/issweb/paginas/login" target="_blank">ISS Web</a></li>
+                                        <li><a href="http://notafiscaleletronica.cajobi.sp.gov.br:35000/servicosweb/home.xhtml" target="_blank">Credenciamento</a></li>
+                                        <li><a href="http://protocolos.cajobi.sp.gov.br:8050/servicosweb/home.jsf" target="_blank">Consultar protocolos</a></li>
+                                        <li><a href="https://vreredesim.sp.gov.br/home" target="_blank">Via Rápida Empresa</a></li>
+                                        <li><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Todos os serviços</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown"><a href="#">Município<b class="caret"></b></a>
+                                    <ul class="espacoMenu2">
+                                        <li><a href="conheca-cajobi">Conheça Cajobi</a></li>
+                                        <li><a href="historia">História da Cidade</a></li>
+                                        <li><a href="localizacao">Localização</a></li>
+                                        <li><a href="simbolo-e-brasao">Símbolo & Brasão</a></li>
+                                        <li><a href="hino">Hino</a></li>
+                                        <li><a href="ex-prefeitos">Ex-Prefeitos</a></li>
+                                                                                <li><a href="mapas-da-cidade">Mapas da cidade</a></li>
+                                        <li><a href="telefones-uteis">Telefones Úteis </a></li>
+                                        <li><a href="meio-ambiente">Meio Ambiente </a></li>
+                                        <li><a href="junta-de-servico-militar">Junta de Serviço Militar </a></li>
+
+                                                                            </ul>
+                                </li>
+
+                                <li class="dropdown"><a href="#">Servidor<b class="caret"></b></a>
+                                    <ul class="espacoMenu">
+                                        <li><a href="http://holerit.cajobi.sp.gov.br:35001/sipweb/" target="_blank">Holerite web</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="noticias">Notícias</a></li>
+
+                                <li class="dropdown"><a href="#">Licitações<b class="caret"></b></a>
+                                    <ul>
+                                        <li><a href="http://transparencia.cajobi.sp.gov.br:35002/comprasedital/" target="_blank">Portal de Compras</a></li>
+                                        <li><a href="https://www.cajobi.sp.gov.br/licitacoes" target="_blank">Licitações</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank">Transparência</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="outer-box">
+
+                        <div class="search-box-outer">
+                            <div class="dropdown">
+                                <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span> Buscar</button>
+                                <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu1">
+                                    <li class="panel-outer">
+                                        <div class="form-container">
+                                            <form action="busca-resultado" method="get" accept-charset="utf-8" id="cse-search-box">
+                                                <div class="form-group">
+                                                <input type="search" name="palavra" placeholder="Digite o que você procura" required>
+                                                <button type="submit" value="ok" name="filtrar" class="search-btn"><span class="fa fa-search"></span></button>                             
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Esconder Nav Toggler -->
+                                    </div>
+            </div>
+        </div>
+        <!--Fim Cabeçalho Lower-->
+    
+        <div class="sticky-header">
+            <div class="auto-container clearfix">
+                <div class="logo pull-left">
+                    <a href="/" title=""><img src="imagens/logo2025.png" alt="Prefeitura de Cajobi-SP" title="Prefeitura de Cajobi-SP"></a>
+                </div>
+                <div class="right-col pull-right">
+                    <nav class="main-menu">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li class="dropdown"><a href="#">Governo<b class="caret"></b></a>
+                                    <ul class="espacoMenu">
+                                        <div class="col-lg-6 main_menu2"> 
+                                                
+                                            <li class="main-menu0 row"><a href="departamentos/agricultura/4">Agricultura</a></li>
+                                                
+                                            <li class="main-menu0 row"><a href="departamentos/assistencia-social/5">Assistência Social</a></li>
+                                                
+                                            <li class="main-menu0 row"><a href="departamentos/educacao-e-cultura/2">Educação e Cultura</a></li>
+                                                
+                                            <li class="main-menu0 row"><a href="departamentos/engenharia/9">Engenharia</a></li>
+                                                
+                                            <li class="main-menu0 row"><a href="departamentos/fundo-social/14">Fundo Social</a></li>
+                                                                                    </div> 
+                                        <div class="col-lg-6 main_menu2">
+                                               
+                                                <li class="main-menu0 row"><a href="departamentos/gabinete-do-prefeito/1">Gabinete do Prefeito</a></li>
+                                               
+                                                <li class="main-menu0 row"><a href="departamentos/juridico/11">Jurídico</a></li>
+                                               
+                                                <li class="main-menu0 row"><a href="departamentos/lancadoria/12">Lançadoria</a></li>
+                                               
+                                                <li class="main-menu0 row"><a href="departamentos/meio-ambiente/13">Meio Ambiente</a></li>
+                                               
+                                                <li class="main-menu0 row"><a href="departamentos/saude/3">Saúde</a></li>
+                                                                                    </div>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown"><a href="#">Cidadão<b class="caret"></b></a>
+                                    <ul class="espacoMenu0">
+                                    <div class="col-lg-6 main_menu2">
+                                        <li class="main-menu0 row"><a href="ganha-tempo-cajobi">Ganha tempo municipal de Cajobi</a></li>
+                                        <li class="main-menu0 row"><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Serviços on-line</a></li>
+                                        <li class="main-menu0 row"><a href="http://201.131.68.73:9000/#/pec" target="_blank">Saúde - E-SUS</a></li>
+                                        <li class="main-menu0 row"><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Sistema de arrecadação</a></li>
+                                        <li class="main-menu0 row"><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf">IPTU</a></li>
+                                        <li class="main-menu0 row"><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">ITBI</a></li>
+                                    </div>
+
+                                    <div class="col-lg-6 main_menu2">
+                                        <li class="main-menu0 row"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/5" target="_blank">Ouvidoria</a></li>
+                                        <li class="main-menu0 row"><a href="https://imprensaoficialmunicipal.com.br/cajobi" target="_blank">Diário Oficial On-line</a></li>
+                                        <li class="main-menu0 row"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/4" target="_blank">Protocolo Digital</a></li>
+                                        <li class="main-menu0 row"><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/3" target="_blank">e-SIC</a></li>
+                                        <li class="main-menu0 row"><a href="documentos/carta-de-servicos.pdf" target="_blank">Carta de Serviços</a></li>
+                                    </div>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown"><a href="#">Empresa<b class="caret"></b></a>
+                                <ul class="espacoMenu">
+                                    <li><a href="sebrae-aqui">Sebrae aqui Cajobi</a></li>
+                                    <li><a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2femissornacional" target="_blank">Nota Fiscal Eletrônica</a></li>
+                                    <li><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">ISS Web</a></li>
+                                    <li><a href="http://notafiscaleletronica.cajobi.sp.gov.br:8088/servicosweb/home.xhtml" target="_blank">Credenciamento</a></li>
+                                    <li><a href="http://protocolos.cajobi.sp.gov.br:8050/servicosweb/home.jsf" target="_blank">Consultar protocolos</a></li>
+                                    <li><a href="https://vreredesim.sp.gov.br/home" target="_blank">Via Rápida Empresa</a></li>
+                                    <li><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Todos os serviços</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown"><a href="#">Municípios<b class="caret"></b></a>
+                                <ul class="espacoMenu">
+                                    <li><a href="conheca-cajobi">Conheça Cajobi</a></li>
+                                    <li><a href="historia">História da Cidade</a></li>
+                                    <li><a href="localizacao">Localização</a></li>
+                                    <li><a href="simbolo-e-brasao">Símbolo & Brasão</a></li>
+                                    <li><a href="hino">Hino</a></li>
+                                    <li><a href="ex-prefeitos">Ex-Prefeitos</a></li>
+                                                                        <li><a href="mapas-da-cidade">Mapas da cidade</a></li>
+                                    <li><a href="telefones-uteis">Telefones Úteis </a></li>
+                                    <li><a href="meio-ambiente">Meio Ambiente </a></li>
+                                    <li><a href="junta-de-servico-militar">Junta de Serviço Militar </a></li>
+
+                                                                    </ul>
+                            </li>
+
+                            <li class="dropdown"><a href="#">Servidor<b class="caret"></b></a>
+                                <ul class="espacoMenu">
+                                    <li><a href="http://holerit.cajobi.sp.gov.br:35001/sipweb/" target="_blank">Holerite web</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="noticias">Notícias</a></li>
+
+                            <li class="dropdown"><a href="#">Licitações<b class="caret"></b></a>
+                                <ul>
+                                    <li><a href="http://transparencia.cajobi.sp.gov.br:35002/comprasedital/" target="_blank">Portal de Compras</a></li>
+                                    <li><a href="https://www.cajobi.sp.gov.br/licitacoes" target="_blank">Licitações</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank">Transparência</a></li>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>    
+    </header>
+    
+    <!-- Esconder Navegacao Bar -->
+    <section class="hidden-bar left-align">
+        <div class="hidden-bar-closer">
+            <button><span class="qb-close-button"></span></button>
+        </div>
+
+        <div class="hidden-bar-wrapper">
+            <div class="logo">
+            	<a href="/"><img src="imagens/logo2025.png" alt="Prefeitura de Cajobi-SP" title="Prefeitura de Cajobi-SP"></a>
+            </div>
+            <div class="side-menu">
+                <ul class="navigation clearfix">
+                    <li class="dropdown"><a href="#">Governo</a>
+                        <ul>
+                                  
+                            <li><a href="departamentos/agricultura/4">Agricultura</a></li>
+                                  
+                            <li><a href="departamentos/assistencia-social/5">Assistência Social</a></li>
+                                  
+                            <li><a href="departamentos/educacao-e-cultura/2">Educação e Cultura</a></li>
+                                  
+                            <li><a href="departamentos/engenharia/9">Engenharia</a></li>
+                                  
+                            <li><a href="departamentos/fundo-social/14">Fundo Social</a></li>
+                            
+                                  
+                            <li><a href="departamentos/gabinete-do-prefeito/1">Gabinete do Prefeito</a></li>
+                                  
+                            <li><a href="departamentos/juridico/11">Jurídico</a></li>
+                                  
+                            <li><a href="departamentos/lancadoria/12">Lançadoria</a></li>
+                                  
+                            <li><a href="departamentos/meio-ambiente/13">Meio Ambiente</a></li>
+                                  
+                            <li><a href="departamentos/saude/3">Saúde</a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown"><a href="#">Cidadão</a>
+                        <ul>
+                            <li><a href="ganha-tempo-cajobi">Ganha tempo municipal de Cajobi</a></li>
+                            <li><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Serviços On-line</a></li>
+                            <li><a href="http://201.131.68.73:9000/#/pec" target="_blank">Saúde - E-SUS</a></li>
+                            <li><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">Sistema de arrecadação</a></li>
+                            <li><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">IPTU</a></li>
+                            <li><a href="http://issweb.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">ITBI</a></li>
+                            <li><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/5" target="_blank">Ouvidoria</a></li>
+                            <li><a href="https://imprensaoficialmunicipal.com.br/cajobi" target="_blank">Diário Oficial On-line</a></li>
+                            <li><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/4" target="_blank">Protocolo Digital</a></li>
+                            <li><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/3" target="_blank">e-SIC</a></li>
+                            <li><a href="documentos/carta-de-servicos.pdf" target="_blank">Carta de Serviços</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown"><a href="#">Empresa</a>
+                        <ul>
+                            <li><a href="sebrae-aqui">Sebrae aqui Cajobi</a></li>
+                            <li><a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2femissornacional" target="_blank">Nota Fiscal Eletrônica</a></li>
+                            <li><a href="http://issweb.cajobi.sp.gov.br:8088/issweb/paginas/login" target="_blank">ISS Web</a></li>
+                            <li><a href="http://notafiscaleletronica.cajobi.sp.gov.br:35000/servicosweb/home.xhtml" target="_blank">Credenciamento</a></li>
+                            <li><a href="http://protocolos.cajobi.sp.gov.br:8050/servicosweb/home.jsf" target="_blank">Consultar protocolos</a></li>
+                            <li><a href="https://vreredesim.sp.gov.br/home" target="_blank">Via Rápida Empresa</a></li>
+                            <li><a href="http://issweb.cajobi.sp.gov.br:8050/servicosweb/home.jsf" target="_blank">Todos os serviços</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown"><a href="#">Município</a>
+                        <ul>
+                            <li><a href="conheca-cajobi">Conheça Cajobi</a></li>
+                            <li><a href="historia">História da Cidade</a></li>
+                            <li><a href="localizacao">Localização</a></li>
+                            <li><a href="simbolo-e-brasao">Símbolo & Brasão</a></li>
+                            <li><a href="hino">Hino</a></li>
+                            <li><a href="ex-prefeitos">Ex-Prefeitos</a></li>
+                                                        <li><a href="mapas-da-cidade">Mapas da cidade</a></li>
+                            <li><a href="telefones-uteis">Telefones Úteis </a></li>
+                            <li><a href="meio-ambiente">Meio Ambiente </a></li>
+                            <li><a href="junta-de-servico-militar">Junta de Serviço Militar </a></li>
+
+                                                    </ul>
+                    </li>
+
+                    <li class="dropdown"><a href="#">Servidor</a>
+                        <ul>
+                            <li><a href="http://holerit.cajobi.sp.gov.br:35001/sipweb/" target="_blank">Holerite web</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="noticias">Notícias</a></li>
+                    
+                    <li class="dropdown"><a href="#">Licitações<b class="caret"></b></a>
+                        <ul>
+                            <li><a href="http://transparencia.cajobi.sp.gov.br:35002/comprasedital/" target="_blank">Portal de Compras</a></li>
+                            <li><a href="https://www.cajobi.sp.gov.br/licitacoes" target="_blank">Licitações</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank">Transparência</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="options-box">
+
+                <div class="sidebar-search">
+                    <form action="busca-resultado" method="get" accept-charset="utf-8">                   
+                        <div class="form-group">                            
+                            <input type="search" name="palavra" placeholder="Digite o que você procura" required>    
+                            <button type="submit" value="ok" name="filtrar" class="theme-btn"><span class="fa fa-search"></span></button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="mobile-cart">
+                	<a href="http://webmail.cajobi.sp.gov.br" target="_blank" class="clearfix">
+                    	<div class="pull-left"><div class="text">Webmail</div></div>
+                        <div class="pull-right"><span class="icon fa fa-envelope-o"></span></div>
+                    </a>
+                </div>
+                
+                <div class="mobile-cart">
+                	<a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank" class="clearfix">
+                    	<div class="pull-left"><div class="text">Transparência</div></div>
+                        <div class="pull-right"><span class="icon fa fa-search"></span></div>
+                    </a>
+                </div>
+                
+                <ul class="social-links clearfix">
+                    <li><a href="https://www.facebook.com/Prefcajobi/" target="_blank"><span class="fa fa-facebook-f"></span></a></li>
+                    <li><a href="https://www.instagram.com/prefeituracajobi" target="_blank"><span class="fa fa-instagram"></span></a></li>
+                    <li><a href="#"><span class="fa fa-youtube"></span></a></li>                    
+                </ul>
+                
+            </div>            
+        </div>        
+    </section>
+    <!-- Fim / Hidden Bar -->
+    <script type="text/javascript">
+jQuery(document).ready(function($) { 
+    $(".scroll").click(function(event){        
+        event.preventDefault();
+    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 800);
+   });
+});
+jQuery(document).ready(function($) { 
+    $(".conteudo").click(function(event){        
+        event.preventDefault();
+    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 100);
+   });
+});
+</script>
+
+<div id="conteudo"></div> 
+    <section class="main-slider">
+                <div class="rev_slider_wrapper fullwidthbanner-container"  id="rev_slider_one_wrapper55" data-source="gallery">
+            <div class="rev_slider fullwidthabanner" id="rev_slider_one" data-version="5.4.1">
+                <ul>
+                
+                                        <li data-fstransition="fade" data-hideafterloop="0">  
+                        <img src="imagens/slide/20251119085720.jpg">
+                        <a href="https://cajobi.flowdocs.com.br:2096/public/home/group/5">
+                            <div class="link-slide"></div>
+                        </a>
+                    </li>
+                                       <li data-fstransition="fade" data-hideafterloop="0">  
+                        <img src="imagens/slide/20251119085253.jpg">
+                        <a href="https://imprensaoficialmunicipal.com.br/cajobi">
+                            <div class="link-slide"></div>
+                        </a>
+                    </li>
+                                       <li data-fstransition="fade" data-hideafterloop="0">  
+                        <img src="imagens/slide/20251118113858.jpg">
+                        <a href="https://cajobi.flowdocs.com.br:2096/public/home/group/3">
+                            <div class="link-slide"></div>
+                        </a>
+                    </li>
+                                       
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div style="clear: both;"><br></div>
+
+    <!--destaque -->
+    <section class="main-slider-two noticias_abaixo_slider">
+        <div class="single-item-carousel owl-carousel owl-theme">  
+            <div class="slide">
+                <div class="clearfix">
+                    
+                                        <div class="slide-column col-md-6 col-sm-12 col-xs-12">                      
+                        <div class="news-block-three style-two">
+                            <div class="inner-box">
+                                <div class="image">
+                                        
+                                                           
+                                <img src="thumb_capa.php?img=imagens/17700397296980a9b1df8fb714194523.jpg" alt="Cajobi se prepara para o tradicional Carnaval Família 2026" />
+                                                                    <div class="overlay-box">
+                                        <div class="content">
+                                            <div class="tag"><a>Destaque</a></div>
+                                            <h3><a href="noticia/cajobi-se-prepara-para-o-tradicional-carnaval-familia-2026/55136">Cajobi se prepara para o tradicional Carnaval Família 2026</a></h3>
+                                            <ul class="post-meta">
+                                                <li><span class="icon qb-clock"></span>02/02/2026</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-column col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix"> 
+
+                                                        <div class="inner-slide col-md-6 col-sm-6 col-xs-12">                            
+                                <div class="news-block-three style-four">
+                                    <div class="inner-box">
+                                        <div class="image">
+                                                                       
+                                                <img src="thumb_capa-mini.php?img=imagens/1766494873694a9299b3161772699072.jpg" alt="Mesmo durante as festividades de final de ano, as obras em Monte Verde seguem em andamento" />
+                                                                                        <div class="overlay-box">
+                                                <div class="content">
+                                                    <h3 class="laranja"><a class="laranja" href="noticia/mesmo-durante-as-festividades-de-final-de-ano-as-obras-em-monte-verde-seguem-em-andamento/55135">Mesmo durante as festividades de final de ano, as obras em Monte Verde seguem em andamento</a></h3>
+                                                    <ul class="post-meta">
+                                                        <li><span class="icon qb-clock"></span>23/12/2025</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                        <div class="inner-slide col-md-6 col-sm-6 col-xs-12">                            
+                                <div class="news-block-three style-four">
+                                    <div class="inner-box">
+                                        <div class="image">
+                                                                       
+                                                <img src="thumb_capa-mini.php?img=imagens/17664334796949a2c7c8153914500836.jpg" alt="Semana Cultural e a Magia do Natal de Cajobi!" />
+                                                                                        <div class="overlay-box">
+                                                <div class="content">
+                                                    <h3 class="laranja"><a class="laranja" href="noticia/semana-cultural-e-a-magia-do-natal-de-cajobi-/55134">Semana Cultural e a Magia do Natal de Cajobi!</a></h3>
+                                                    <ul class="post-meta">
+                                                        <li><span class="icon qb-clock"></span>22/12/2025</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                        <div class="inner-slide col-md-6 col-sm-6 col-xs-12">                            
+                                <div class="news-block-three style-four">
+                                    <div class="inner-box">
+                                        <div class="image">
+                                                                       
+                                                <img src="thumb_capa-mini.php?img=imagens/176640783969493e9f2c271874349612.jpg" alt="Semana Cultural e a Magia do Natal" />
+                                                                                        <div class="overlay-box">
+                                                <div class="content">
+                                                    <h3 class="laranja"><a class="laranja" href="noticia/semana-cultural-e-a-magia-do-natal/55132">Semana Cultural e a Magia do Natal</a></h3>
+                                                    <ul class="post-meta">
+                                                        <li><span class="icon qb-clock"></span>21/12/2025</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                        <div class="inner-slide col-md-6 col-sm-6 col-xs-12">                            
+                                <div class="news-block-three style-four">
+                                    <div class="inner-box">
+                                        <div class="image">
+                                                                       
+                                                <img src="thumb_capa-mini.php?img=imagens/176640805369493f759c386369944319.jpg" alt="A primeira noite da Semana Cultural e a Magia do Natal" />
+                                                                                        <div class="overlay-box">
+                                                <div class="content">
+                                                    <h3 class="laranja"><a class="laranja" href="noticia/a-primeira-noite-da-semana-cultural-e-a-magia-do-natal/55133">A primeira noite da Semana Cultural e a Magia do Natal</a></h3>
+                                                    <ul class="post-meta">
+                                                        <li><span class="icon qb-clock"></span>20/12/2025</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </section>
+    <!--Fim destaque-->
+    
+    <!--Conteudo -->
+    <div class="sidebar-page-container diminuirpaddingbottom">
+    	<div class="auto-container hidden-xs">
+        	<div class="row clearfix">
+            	
+                <!--Coluna Esquerda -->
+                <div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="category-tabs-box">
+                        <div class="prod-tabs tabs-box">
+                            <div class="tab-btns tab-buttons clearfix">
+                            	<div class="pull-left">
+                                	<div class="category">Outras Notícias</div>
+                                </div>
+                                <div class="pull-right hidden-xs">
+                                	<div>
+                                        <div class="dropdown dropdown-category">
+                                            <button class="category-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Veja Também <span class="fa fa-angle-down"></span></button>
+                                            <div class="dropdown-menu pull-right down-panel" aria-labelledby="dropdownMenu3">
+                                                <ul class="more-category">
+                                                    <li><a href="/noticias">Todas as Notícias</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tabs-content">
+                                <div class="tab active-tab" id="prod-alls">
+                                    <div class="content">
+                                        <div class="row clearfix">
+
+                                            
+                                                                                                                                                                            	<div class="column col-md-6 col-sm-6 col-xs-12">
+                                            <div class="single-item-carousel owl-carousel owl-theme">
+                                            <div class="news-block-two">
+                                            <div class="inner-box">
+                                            <div class="image">
+                                            <a href="noticia/semana-cultural-a-magia-do-natal-em-cajobi/55131">
+                                                                       
+                                            <img src="thumb_capa.php?img=imagens/17661710556945a1afc2a79902304362.jpg" alt="Semana Cultural, A Magia do Natal em Cajobi">
+                                                                                        </a>
+                                            <div class="category"><a href="noticia/semana-cultural-a-magia-do-natal-em-cajobi/55131">Notícia </a></div>
+                                            </div>
+                                            <div class="lower-box">
+                                            <h3><a href="noticia/semana-cultural-a-magia-do-natal-em-cajobi/55131">Semana Cultural, A Magia do Natal em Cajobi </a></h3>
+                                            <ul class="post-meta">
+                                            <li><span class="icon fa fa-clock-o"></span>19/12/2025</li>
+                                            </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                                                        <article class="widget-post">
+                                            <figure class="post-thumb">
+                                            <a href="noticia/concurso-publico-da-prefeitura-municipal-de-cajobi/55130">
+                                                                       
+                                            <img src="thumb_capa-mini.php?img=imagens/176581765969403d3bb77bf532450385.jpg" alt="Concurso Público da Prefeitura Municipal de Cajobi">
+                                                                                        </a>
+                                            <div class="overlay"></div>
+                                            </figure>
+                                            <div class="text">
+                                            <a href="noticia/concurso-publico-da-prefeitura-municipal-de-cajobi/55130">Concurso Público da Prefeitura Municipal de Cajobi</a>
+                                            </div>
+                                            <div class="post-info">15/12/2025</div>
+                                            </article>
+                                                                                        <article class="widget-post">
+                                            <figure class="post-thumb">
+                                            <a href="noticia/a-magia-do-natal-ja-esta-no-ar-/55129">
+                                                                       
+                                            <img src="thumb_capa-mini.php?img=imagens/1765539886693c002e595a8005895655.jpg" alt="A magia do Natal já está no ar!">
+                                                                                        </a>
+                                            <div class="overlay"></div>
+                                            </figure>
+                                            <div class="text">
+                                            <a href="noticia/a-magia-do-natal-ja-esta-no-ar-/55129">A magia do Natal já está no ar!</a>
+                                            </div>
+                                            <div class="post-info">12/12/2025</div>
+                                            </article>
+                                                                                        <article class="widget-post">
+                                            <figure class="post-thumb">
+                                            <a href="noticia/treinamento-guarda-municipal/55128">
+                                                                       
+                                            <img src="thumb_capa-mini.php?img=imagens/17643375826929a7ae9c139747713250.jpg" alt="Treinamento Guarda Municipal">
+                                                                                        </a>
+                                            <div class="overlay"></div>
+                                            </figure>
+                                            <div class="text">
+                                            <a href="noticia/treinamento-guarda-municipal/55128">Treinamento Guarda Municipal</a>
+                                            </div>
+                                            <div class="post-info">21/11/2025</div>
+                                            </article>
+                                                                                        <article class="widget-post">
+                                            <figure class="post-thumb">
+                                            <a href="noticia/celebrando-o-dia-da-consciencia-negra-com-respeito/55127">
+                                                                       
+                                            <img src="thumb_capa-mini.php?img=imagens/17643372186929a6426e257413202792.jpg" alt="Celebrando o Dia da Consciência Negra com respeito">
+                                                                                        </a>
+                                            <div class="overlay"></div>
+                                            </figure>
+                                            <div class="text">
+                                            <a href="noticia/celebrando-o-dia-da-consciencia-negra-com-respeito/55127">Celebrando o Dia da Consciência Negra com respeito</a>
+                                            </div>
+                                            <div class="post-info">20/11/2025</div>
+                                            </article>
+                                             
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="fundo_servicos">
+    <div class="auto-container">
+        <div class="row clearfix">              
+            <div class="fullwidth-add text-center">
+                <div class="col-lg-12">
+                    <div class="category-tabs-box">
+                        <div class="prod-tabs tabs-box">
+                            <h4 class="mvp-widget-home-title" data-raofz="16"><span class="mvp-widget-home-title" data-raofz="17">Serviços</span></h4>
+                            <div class="tabs-content">
+                                <div class="tab active-tab" id="economy-all">
+                                    <div class="content">
+                                        <div class="row clearfix">
+
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="http://transparencia.cajobi.sp.gov.br:35002/comprasedital/" target="_blank">
+                                                        <img src="imagens/banners/20251128112815.png" alt="Portal de<br>Compras" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Portal de<br>Compras</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="http://notafiscaleletronica.cajobi.sp.gov.br:8088/servicosweb/home.jsf" target="_blank">
+                                                        <img src="imagens/banners/20210329084221.jpg" alt="IPTU<br>2026" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">IPTU<br>2026</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="https://imprensaoficialmunicipal.com.br/cajobi" target="_blank">
+                                                        <img src="imagens/banners/20210329084836.jpg" alt="Diário Oficial<br>Eletrônico" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Diário Oficial<br>Eletrônico</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2femissornacional" target="_blank">
+                                                        <img src="imagens/banners/20210329084942.jpg" alt="Nota Fiscal<br>Eletrônica" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Nota Fiscal<br>Eletrônica</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="http://issweb.cajobi.sp.gov.br:8088/issweb/paginas/login" target="_blank">
+                                                        <img src="imagens/banners/20210329085013.jpg" alt="I.S.S<br>web" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">I.S.S<br>web</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="licitacoes" target="_blank">
+                                                        <img src="imagens/banners/20251114165923.png" alt="Portal de<br>Licitações" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Portal de<br>Licitações</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank">
+                                                        <img src="imagens/banners/20210329085237.jpg" alt="Portal da<br>Transparência" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Portal da<br>Transparência</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="pagina-departamento/politica-nacional-aldir-blanc-pnab/115" >
+                                                        <img src="imagens/banners/20260414111509.png" alt="Política Nacional <br>Aldir Blanc" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Política Nacional <br>Aldir Blanc</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="https://webmail-seguro.com.br/cajobi.sp.gov.br/" target="_blank">
+                                                        <img src="imagens/banners/20251114164449.png" alt="Acessar<br>Webmail" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Acessar<br>Webmail</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="http://201.131.68.73:9000/#/pec" target="_blank">
+                                                        <img src="imagens/banners/20251114164856.png" alt="Saúde<br>e-SUS" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Saúde<br>e-SUS</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="https://cajobi.flowdocs.com.br:2096/public/home/group/5" target="_blank">
+                                                        <img src="imagens/banners/20251114164934.png" alt="Fale com a<br>Ouvidoria" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Fale com a<br>Ouvidoria</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                                                                        <div class="col-xs-6 col-md-2">
+                                                <li class="iconesaolado">
+                                                    <a href="/sebrae-aqui" >
+                                                        <img src="imagens/banners/20251114170048.png" alt="Sebrae<br>aqui" style="padding-bottom: 10px;" width="50"><br>
+                                                        <div class="social-tile__inner flexbox">
+                                                            <div class="social-tile__left flexbox__item">
+                                                                <h5 class="social-tile__title meta-font branco">Sebrae<br>aqui</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </div>
+                                            
+                                            <div class="botaovereador text-center"><a href="/servicos" class="theme-btn add-to-cart"> Ver Todos </a></div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>            
+    </div>
+  
+    <div style="clear: both;"><br></div>
+    
+    <div class="sidebar-page-container fundobanners">
+    	<div class="auto-container">
+            <div class="row clearfix">
+                <div class="fullwidth-add text-center">
+                                        <div class="sidebar-adds-widget col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="inner-box">
+                            <a href="procon" >
+                                <img class="iconebanner" src="imagens/banners/20251117093839.jpg" alt="Procon"> 
+                            </a>                   
+                        </div>
+                    </div>
+                                        <div class="sidebar-adds-widget col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="inner-box">
+                            <a href="banco-do-povo" >
+                                <img class="iconebanner" src="imagens/banners/20251117092600.jpg" alt="Banco do Povo"> 
+                            </a>                   
+                        </div>
+                    </div>
+                                        <div class="sidebar-adds-widget col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="inner-box">
+                            <a href="http://www.semaecajobi.com.br/" target="_blank">
+                                <img class="iconebanner" src="imagens/banners/20251117093903.jpg" alt="SEMAE"> 
+                            </a>                   
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="content">
+                        <div class="sec-title">
+                            <h2>Sobre Cajobi</h2>
+                        </div>
+                        
+                        <div class="row clearfix">                            
+                           
+                            <div class="news-block-one col-md-3 col-sm-3 col-xs-6">
+                                <div class="inner-box">
+                                    <div class="image">
+                                        <a href="conheca-cajobi"><img src="img/cidade.jpg" alt="Conheça Cajobi-SP"></a>
+                                    </div>
+                                    <div class="lower-box">
+                                        <h3><a href="conheca-cajobi">Conheça Cajobi-SP</a></h3>
+                                        <div class="text">O clima da região é subtropical - quente e úmido na estação das chuvas e ameno no inverno...</div>
+                                        <a href="conheca-cajobi" class="read-more" style="color: #3235d2;">Ver Mais <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="news-block-one col-md-3 col-sm-3 col-xs-6">
+                                <div class="inner-box">
+                                    <div class="image">
+                                        <a href="historia"><img src="img/historia-inicial.jpg" alt="História da Cidade"></a>
+                                    </div>
+                                    <div class="lower-box">
+                                        <h3><a href="historia">História da Cidade</a></h3>
+                                        <div class="text">Nos tempos que vamos descrever, as propriedades agrícolas eram imensas...</div>
+                                        <a href="historia" class="read-more" style="color: #3235d2;">Conhecer a História <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="news-block-one col-md-3 col-sm-3 col-xs-6">
+                                <div class="inner-box">
+                                    <div class="image">
+                                        <a href="localizacao"><img src="img/localizacao.jpg" alt="Localização"></a>
+                                    </div>
+                                    <div class="lower-box">
+                                        <h3><a href="localizacao">Localização</a></h3>
+                                        <div class="text">Clique Aqui e confira como chegar na cidade de Cajobi, localizada no estado de SP...</div>
+                                        <a href="localizacao" class="read-more" style="color: #3235d2;">Ver como chegar <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="news-block-one col-md-3 col-sm-3 col-xs-6">
+                                <div class="inner-box">
+                                    <div class="image">
+                                        <a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank"><img src="imagens/leis.jpg" alt="Leis Municipais"></a>
+                                    </div>
+                                    <div class="lower-box">
+                                        <h3><a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank">Transparência</a></h3>
+                                        <div class="text">Clique Aqui e confira tudo que está disponivel no Portal da Transparência de Cajobi...</div>
+                                        <a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank" class="read-more" style="color: #3235d2;">Ver Leis <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>                            
+                            
+                        </div>                        
+                    </div>
+                </div>                
+            </div>            
+        </div>
+    </div>
+    <!--Fim Conteudo-->
+    </div>
+    
+    <div id="footer"></div>
+    
+    <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+  
+    <!--Rodape-->
+    <footer class="main-footer">
+        <div class="widgets-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="widget-column col-md-4 col-sm-6 col-xs-12">
+                        <div class="footer-widget isntagram-widget">
+                            <div class="logo logorodape">
+                                <a href="/"><img src="imagens/logo2025.png" alt="Prefeitura de Cajobi-SP" title="Prefeitura de Cajobi-SP" /></a>
+                            </div>
+                            <div class="footer-widget tweets-widget"><br>
+                                <div class="footer-widget tweets-widget">
+                                    <h2>REDES SOCIAIS</h2>
+                                    <dl class="social-media margem30positiva">
+                                        <a href="https://www.facebook.com/Prefcajobi/" target="_blank" title="Facebok"><i class="fa fa-facebook redesSociais" aria-hidden="true"></i></a>
+                                        <a href="https://www.instagram.com/prefeituracajobi" target="_blank" title="Instagram"><i class="fa fa-instagram redesSociais" aria-hidden="true"></i></a>
+                                                                            </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--Contatos-->
+                    <div class="widget-column col-md-4 col-sm-6 col-xs-12">
+                        <div class="footer-widget tweets-widget">
+                            <h2>Contatos</h2>
+                            <div class="tweet">
+                                <div class="icon"><span class="fa fa-phone icon_t"></span></div>
+                                <div class="text"><a href="#">Telefone: (17) 3563-9000 </a></div>
+                            </div>
+                            <div class="tweet">
+                                <div class="icon"><span class="fa fa-envelope-o icon_t"></span></div>
+                                <div class="text"><a href="/cdn-cgi/l/email-protection#e98084999b8c879a88a98a8883868b80c79a99c78e869fc78b9b" target="_blank">E-mail:  <span class="__cf_email__" data-cfemail="7b12160b091e15081a3b181a1114191255080b551c140d551909">[email&#160;protected]</span></a></div>
+                                <div class="botaovereador"><a href="/cdn-cgi/l/email-protection#5a33372a283f34293b1a393b3035383374292a743d352c743828" target="_blank" class="theme-btn add-to-cart"><i class="fa fa-envelope"></i> Enviar E-mail </a></div>
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <!--Contatos-->
+                    <div class="widget-column col-md-4 col-sm-6 col-xs-12">
+                        <div class="footer-widget tweets-widget">
+                            <h2>Localização</h2>
+                            <div class="tweet">
+                                <div class="icon"><span class="fa fa-map-marker icon_t"></span></div>
+                                <div class="text"><a>Praça Msr. José Maria S. Bezerra, 300 <br> Centro - Cajobi-SP</a></div>
+                                <div class="botaovereador"><a href="https://goo.gl/maps/PZCUjTfZ114xYyUW7" target="_blank" class="theme-btn add-to-cart"><i class="fa fa-map-marker"></i> Ver no Mapa </a></div>
+                            </div>
+                            <div class="tweet">
+                                <div class="icon"><span class="fa fa-clock-o icon_t"></span></div>
+                                <div class="text"><a>Atendimento: 08:00 às 11:30 e 13:00 às 17:00</a></div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="footer-bottom">
+            <div class="copyright-section">
+                <div class="auto-container">
+                    <div class="row clearfix">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ul class="footer-nav">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="noticias">Notícias</a></li>
+                                <li><a href="https://cajobi.flowdocs.com.br:2096/public/home/group/3" target="_blank">e-Sic</a></li>
+                                <li><a href="http://transparencia.cajobi.sp.gov.br:35002/transparencia/" target="_blank">Transparência</a></li>
+                                <li><a href="contatos">Contatos</a></li>
+                                <li><a href="departamentos">Departamentos</a></li>
+                                <li><a href="telefones-uteis">Telefones Úteis</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Fim Rodape-->
+
+<!--Voltar ao Topo-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+<!--Credito UWEBS Inicio--><!--<style> .creditouwebs {color: #808080 !important; padding-top: 15px !important; padding-bottom: 15px !important; text-align: center !important; font-family: Open Sans, Tahoma, Arial !important; font-size: 9px !important; } .creditouwebsespaco {padding-bottom !important: 2px; line-height: 10px !important;} .creditouwebs img { max-width: 83px !important;} </style><div class="creditouwebs"><div class="creditouwebsespaco">Site Desenvolvido por</div><div class=""><a href="https://www.uwebs.com.br" target="_blank" title="UWEBS Criação de Sites"><img src="uwebs.png" alt="Agência UWEBS Criação de Sites" title="Agência UWEBS Criação de Sites"></a></div></div>--><!--FIM Credito UWEBS-->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.js"></script> 
+<!--Revolution Slider-->
+<script src="plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="js/main-slider-script.js"></script>
+<!--End Revolution Slider-->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/color-settings.js"></script>
+ 
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a60864f18a4964cf',t:'MTc5NTY5MDg3Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a60864f18a4964cf',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

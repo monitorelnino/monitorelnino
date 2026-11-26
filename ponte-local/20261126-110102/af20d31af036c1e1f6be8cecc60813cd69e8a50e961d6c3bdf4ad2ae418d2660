@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br"><head id="j_idt2">
+            
+            
+            
+            
+            
+            
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="description" content="Portal da Prefeitura Municipal de Icém" />
+            <meta name="keywords" content="prefeitura icém, portal icém, prefeitura municipal de icém, prefeita icém" />
+            <meta name="author" content="ZC Sistemas" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+            <meta name="google-site-verification" />
+            <title>Prefeitura Municipal de Icém</title>
+            <link rel="shortcut icon" type="image/x-icon" href="/imagens_temp/faviconMTExNzQ=.webp" /><link type="text/css" rel="stylesheet" href="/javax.faces.resource/theme.css?ln=primefaces-nova-light" /><link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" /><style type="text/css">
+        @media (min-width: 768px) {
+            .modal-dialog {
+                width: 800px;
+            }
+        }
+    </style><link type="text/css" rel="stylesheet" href="/javax.faces.resource/eNqNjUsOwyAMBU8E7qLqopeJCDgKqfkIQ9n08CWpSKSolbqxbM2854rjohIDR7IGFx6GzwZXeZE3MJYzaO5cOutlO1_1z1ie0WHXhMFJFcp7yxO9CQmm4LNQFTk43FKKaHdiGcnqo-wnEEht-szfDH5Yz9D_n6AunIM7Ysm6Jmrkuw4uBr-VngjrGU0hhL6swhsP7H-p.css?ln=omnifaces.combined&amp;v=1791981489287" />
+
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://yt3.ggpht.com" />
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://yt3.ggpht.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin="anonymous" />
+
+    
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7COpen+Sans:400,700,800&amp;display=swap" />
+
+    
+    <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7COpen+Sans:400,700,800&amp;display=swap" />
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous" />
+
+
+    
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7COpen+Sans:400,700,800&amp;display=swap" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" crossorigin="anonymous" />
+    </noscript>
+
+    
+    
+    
+    </head><body>
+        
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        
+        <div class="body" id="content">
+            <header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 120, 'stickyHeaderContainerHeight': 70}">
+                <div class="header-body border-color-dark header-body-bottom-border">
+                    <div class="header-top header-top-default border-bottom-0 bg-color-primary">
+    <div class="container-fluid p-0">
+        <div class="container header-row py-2">
+            <div class="header-column justify-content-start">
+                <div class="header-row">
+                    <nav class="header-nav-top">
+                        <ul class="nav nav-pills text-uppercase text-2">
+                            <li class="nav-item">
+                                <span class="nav-link ps-0 text-light">
+                                    Icém,  quinta-feira, 26 de novembro de 2026
+                                </span>
+                            </li>
+                                <li class="nav-item d-none d-md-block">
+                                    <span class="nav-link text-light text-6 pe-05 d-md-block font-weight-bold">
+                                        <i class="fa fa-phone"></i>
+                                        (17) 3282-9090
+                                    </span>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon d-none d-lg-block">
+                                    <a class="nav-link text-light pe-05" href="/cdn-cgi/l/email-protection#3e1e5d51504a5f4a517e575d5b53104d4e10595148105c4c">
+                                        <i class="fas fa-envelope"></i>
+                                        <span class="__cf_email__" data-cfemail="23404c4d5742574c634a40464e0d50530d444c550d4151">[email&#160;protected]</span>
+                                    </a>
+                                </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="header-column justify-content-end d-none d-lg-flex">
+                <div class="header-row">
+                    <nav class="header-nav-top">
+                        <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean social-icons-icon-light">
+                        </ul>
+                        <div class="header-nav-features d-none d-sm-block header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
+                            <div class="header-nav-feature header-nav-features-search d-inline-flex">
+                                <a href="#" class="header-nav-features-toggle" data-focus="headerSearch" aria-label="Pesquisar no portal...">
+                                    <i class="fas fa-search header-nav-top-icon" style="color: white"></i>
+                                </a>
+                                <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
+<form id="formBuscaPortal" name="formBuscaPortal" method="post" action="/index" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formBuscaPortal" value="formBuscaPortal" />
+<input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-4469442950175496795:-773052440965914838" autocomplete="off" />
+
+                                        <div class="simple-search input-group" id="inputBusca"><input id="formBuscaPortal:itFiltro" type="text" name="formBuscaPortal:itFiltro" class="form-control" maxlength="35" onkeydown="if (event.keyCode === 13) {window.location.href = '/paginas/portal/buscaPortal.jsf?f=' + document.getElementById('formBuscaPortal:itFiltro').value; return false;}" placeholder="Buscar..." aria-label="Buscar..." />
+                                            <button class="btn" type="button" name="Buscar" aria-label="Buscar" onclick="window.location.href = '/paginas/portal/buscaPortal.jsf?f=' + document.getElementById('formBuscaPortal:itFiltro').value;">
+                                                <i class="fa fa-search header-nav-top-icon"></i>
+                                            </button>
+                                        </div>
+</form>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+                    </div>
+                    <div class="header-container container">
+                        <div class="header-row">
+                            <div class="header-column">
+                                <div class="header-row">
+                                    <div class="header-logo"><a href="/index.xhtml" class="ui-link ui-widget">
+                                            <img height="80" data-sticky-height="40" src="/imagens_temp/logo_MTExNzIxNTk3ODM2NTMwMzI4.webp" alt="logo" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header-column justify-content-end">
+                                <div class="header-row">
+                                    <div class="header-nav header-nav-links order-2 order-lg-1">
+                                        <div class="header-nav-main header-nav-main-arrows header-nav-main-effect-1 header-nav-main-sub-effect-1" id="gotoMenuPrincipal">
+
+   <nav class="navbar-collapse collapse">
+      <ul class="nav nav-pills" id="mainNav">
+            <li class="dropdown"><a href="/index" class="dropdown-item px-25 styleTipoTopo1 active" style="font-size: px">
+                  Início
+               </a>
+            </li>
+               <li class="dropdown">
+                  <a href="#" title="Informações sobre o município" target="_self" class="dropdown-item dropdown-toggle px-25 styleTipoTopo1" style="font-size: px">
+                     Município
+                  </a>
+                  <ul class="dropdown-menu">
+                              <li><a href="/paginas/portal/conteudo?conteudo=113" class="dropdown-item px-25" target="_self" style="font-size: px" title="Simbolos: Brasão e Bandeira" rel="">
+                                    Brasão/Bandeira
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=114" class="dropdown-item px-25" target="_self" style="font-size: px" title="Hino - letra e música" rel="">
+                                    Hino
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=81" class="dropdown-item px-25" target="_self" style="font-size: px" title="História do Município" rel="">
+                                    História
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=87" class="dropdown-item px-25" target="_self" style="font-size: px" title="Aspectos Sociais" rel="">
+                                    Demografia
+                                    </a>
+                              </li>
+                              <li><a href="/galerias/" class="dropdown-item px-25" target="_self" style="font-size: px" title="Galeria de Fotos " rel="">
+                                    Galeria de Fotos
+                                    </a>
+                              </li>
+                  </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" title="Informações gerais da prefeitura" target="_self" class="dropdown-item dropdown-toggle px-25 styleTipoTopo1" style="font-size: px">
+                     Prefeitura
+                  </a>
+                  <ul class="dropdown-menu">
+                              <li>
+                                 <a href="#" title="Setores Internos" class="dropdown-item px-25" style="font-size: px" target="_self">
+                                    Estrutura Organizacional
+                                 </a>
+                              </li>
+                              <li><a href="/entidades/" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Departamentos e responsáveis" rel="noopener">
+                                    Departamentos
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/localizacao" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Localização da Prefeitura " rel="noopener">
+                                    Como chegar lá
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=1338" class="dropdown-item px-25" target="_self" style="font-size: px" title="Galeria dos Ex Prefeitos" rel="">
+                                    Ex Prefeitos
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/mapaportal" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Mapa do Portal" rel="noopener">
+                                    Mapa do Portal
+                                    </a>
+                              </li>
+                  </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" title="NFS-e, Serviços Online, Transparência" target="_self" class="dropdown-item dropdown-toggle px-25 styleTipoTopo1" style="font-size: px">
+                     Serviços
+                  </a>
+                  <ul class="dropdown-menu">
+                              <li>
+                                 <a href="https://nfse.icem.sp.gov.br/issweb/home.jsf" title="NFS-e, Declarações serviços tomados" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Nota Fiscal
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://servicos.icem.sp.gov.br/servicosweb/home.jsf" title="Certidões, IPTU, ISS, ITBI" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Serviços Online
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://transparencia.icem.sp.gov.br" title="Despesas, Receitas, Repasses ..." class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Transparência Municipal
+                                 </a>
+                              </li>
+                  </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" title="Prestação contas, Licitações ..." target="_self" class="dropdown-item dropdown-toggle px-25 styleTipoTopo1" style="font-size: px">
+                     TRANSPARÊNCIA
+                  </a>
+                  <ul class="dropdown-menu">
+                              <li><a href="/paginas/portal/licitacoes/exercicios" class="dropdown-item px-25" target="_blank" style="font-size: px" title="ACOMPANHE AQUI TODAS NOSSAS LICITAÇÕES" rel="noopener">
+                                    Licitações
+                                    </a>
+                              </li>
+                              <li>
+                                 <a href="https://pregao.icem.sp.gov.br/comprasedital/" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Pregão Eletrônico
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://transparencia.icem.sp.gov.br" title="Receitas, Despesas, Repasses ..." class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Transparência Municipal
+                                 </a>
+                              </li>
+                              <li><a href="/paginas/portal/legislacao/consulta" class="dropdown-item px-25" target="_blank" style="font-size: px" title="LEGISLAÇÃO MUNICIPAL" rel="noopener">
+                                    Legislação
+                                    </a>
+                              </li>
+                              <li><a href="/noticias/" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Todas as noticias divulgadas pela prefeitura" rel="noopener">
+                                    Notícias
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/concursos/situacao" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Concurso Público" rel="noopener">
+                                    Concurso Público
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/contas-publicas/tipos" class="dropdown-item px-25" target="_self" style="font-size: px" title="Repassos ao 3º Setor" rel="">
+                                    Repasses ao 3º Setor
+                                    </a>
+                              </li>
+                              <li>
+                                 <a href="https://imprensaoficialmunicipal.com.br/icem" title="Diário Oficial" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Diário Oficial
+                                 </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=325" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Valor da Terra Nua - I.T.R." rel="noopener">
+                                    Valor Terra Nua (I.T.R.)
+                                    </a>
+                              </li>
+                  </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" title="Ouvidoria, e-SIC, Atendimento SUS" target="_self" class="dropdown-item dropdown-toggle px-25 styleTipoTopo1" style="font-size: px">
+                     Atendimentos
+                  </a>
+                  <ul class="dropdown-menu">
+                              <li><a href="/paginas/portal/ouvidoria/inicio" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Fale Conosco" rel="noopener">
+                                    Ouvidoria
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=83" class="dropdown-item px-25" target="_self" style="font-size: px" title="Atendimento de Médicos e dentista " rel="">
+                                    Horário de Médico
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/localizacao" class="dropdown-item px-25" target="_blank" style="font-size: px" title="COMO CHEGAR NA PREFEITURA" rel="noopener">
+                                    Localização
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/sic/inicio" class="dropdown-item px-25" target="_self" style="font-size: px" title="" rel="">
+                                    SIC - Serviço de Informação ao Cidadão
+                                    </a>
+                              </li>
+                  </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" title="Todas as nossas diretorias e secretarias" target="_self" class="dropdown-item dropdown-toggle px-25 styleTipoTopo1" style="font-size: px">
+                     Diretorias
+                  </a>
+                  <ul class="dropdown-menu">
+                              <li>
+                                 <a href="http://educacao.icem.sp.gov.br/" title="EDUCAÇÃO" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Educação
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=7" title="Saúde" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Saúde
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=6" title="Assistência Social" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Assistência Social
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=10" title="Meio Ambiente" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Meio Ambiente
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=8" title="Esporte" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Esporte
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=9" title="Obras e Urbanismo" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Obras e Urbanismo
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=4" title="Oficial de Gabinete" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Gabinete
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=2" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Departamento de Imprensa
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=5" title="Cultura, Turismo, Eventos e Meio Ambiente" class="dropdown-item px-25" style="font-size: px" target="_blank" rel="noopener">
+                                    Cultura, Turismo, Eventos e Meio Ambiente
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://icem.sp.gov.br/paginas/portal/entidade.jsf?id=14" class="dropdown-item px-25" style="font-size: px" target="_self">
+                                    Diretoria Municipal de Urbanismo e Estradas Rurais
+                                 </a>
+                              </li>
+                  </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" title="Turismo" target="_self" class="dropdown-item dropdown-toggle px-25 styleTipoTopo1" style="font-size: px">
+                     Turismo
+                  </a>
+                  <ul class="dropdown-menu">
+                              <li><a href="/paginas/portal/conteudo?conteudo=167" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Centro de Informações Turísticas" rel="noopener">
+                                    Centro de Informações Turísticas
+                                    </a>
+                              </li>
+                              <li><a href="/galerias/" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Galeria de Imagens" rel="noopener">
+                                    Galeria de Imagens
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=166" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Restaurantes" rel="noopener">
+                                    Restaurantes
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=163" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Praia Mariana" rel="noopener">
+                                    Praia Mariana
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=164" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Hotéis" rel="noopener">
+                                    Hotéis
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=165" class="dropdown-item px-25" target="_blank" style="font-size: px" title="Comitiva Água Doce" rel="noopener">
+                                    Comitiva Água Doce
+                                    </a>
+                              </li>
+                              <li><a href="/paginas/portal/conteudo?conteudo=168" class="dropdown-item px-25" target="_blank" style="font-size: px" title="" rel="noopener">
+                                    Patrimônios Históricos não tombados
+                                    </a>
+                              </li>
+                  </ul>
+               </li>
+      </ul>
+   </nav>
+                                        </div>
+                                        <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
+                                            <i class="fas fa-bars"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div role="main" class="main">
+        <div class="container">
+            <div class="justify-content-start mb-2 ">
+                <div class="col-12">
+                        <div id="splideDestaques" class="splide">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                        <li class="splide__slide">
+        <article class="thumb-info thumb-info-hide-wrapper-bg thumb-info-no-borders border-radius-0 border-0 thumb-info-no-borders-rounded thumb-info-lighten thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom">
+            <div class="img-thumbnail thumb-info-wrapper border-radius-0 border-0 p-0 d-block"><a href="/paginas/portal/conteudo?id=376&amp;conteudo=11721" class="border-radius-0 border-0" target="_self" title="">
+                        <img class="img-fluid border-radius-0" alt="ATR ARENA TOPA TUDO RODEIO É CAMPEÃO DA TAÇA RENILTON NOGUEIRA – EDIÇÃO 2026" data-splide-lazy="/imagens_temp/destaque_MjI2MzA=.webp" />
+                            <div class="thumb-info-title alt-title">
+                                <h5 class="title-destaque-padrao03">
+                                    ATR ARENA TOPA TUDO RODEIO É CAMPEÃO DA TAÇA RENILTON NOGUEIRA – EDIÇÃO 2026
+                                </h5>
+                                <span class="thumb-info-type subtitle-destaque-p descricao-destaque-padrao01">
+                                    ATR ARENA TOPA TUDO RODEIO É CAMPEÃO DA TAÇA RENILTON NOGUEIRA – EDIÇÃO 2026
+                                </span>
+                            </div></a>
+            </div>
+        </article>
+                                        </li>
+                                        <li class="splide__slide">
+        <article class="thumb-info thumb-info-hide-wrapper-bg thumb-info-no-borders border-radius-0 border-0 thumb-info-no-borders-rounded thumb-info-lighten thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom">
+            <div class="img-thumbnail thumb-info-wrapper border-radius-0 border-0 p-0 d-block"><a href="/paginas/portal/conteudo?id=375&amp;conteudo=11686" class="border-radius-0 border-0" target="_self" title="">
+                        <img class="img-fluid border-radius-0" alt="ICÉM CONQUISTA SELO PRATA DO PROGRAMA FACILITA SP MUNICÍPIOS 2026 E REFORÇA COMPROMISSO COM A MODERNIZAÇÃO DA GESTÃO PÚBLICA" data-splide-lazy="/imagens_temp/destaque_MjI1ODk=.webp" />
+                            <div class="thumb-info-title alt-title">
+                                <h5 class="title-destaque-padrao03">
+                                    ICÉM CONQUISTA SELO PRATA DO PROGRAMA FACILITA SP MUNICÍPIOS 2026 E REFORÇA COMPROMISSO COM A MODERNIZAÇÃO DA GESTÃO PÚBLICA
+                                </h5>
+                                <span class="thumb-info-type subtitle-destaque-p descricao-destaque-padrao01">
+                                    ICÉM CONQUISTA SELO PRATA DO PROGRAMA FACILITA SP MUNICÍPIOS 2026 E REFORÇA COMPROMISSO COM A MODERNIZAÇÃO DA GESTÃO PÚBLICA
+                                </span>
+                            </div></a>
+            </div>
+        </article>
+                                        </li>
+                                        <li class="splide__slide">
+        <article class="thumb-info thumb-info-hide-wrapper-bg thumb-info-no-borders border-radius-0 border-0 thumb-info-no-borders-rounded thumb-info-lighten thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom">
+            <div class="img-thumbnail thumb-info-wrapper border-radius-0 border-0 p-0 d-block"><a href="/paginas/portal/conteudo?id=374&amp;conteudo=11682" class="border-radius-0 border-0" target="_self" title="">
+                        <img class="img-fluid border-radius-0" alt="VEÍCULO RECUPERADO PASSA A INTEGRAR A FROTA DA ESTRATÉGIA DE SAÚDE DA FAMÍLIA E FORTALECE OS ATENDIMENTOS EM ICÉM" data-splide-lazy="/imagens_temp/destaque_MjI1ODM=.webp" />
+                            <div class="thumb-info-title alt-title">
+                                <h5 class="title-destaque-padrao03">
+                                    VEÍCULO RECUPERADO PASSA A INTEGRAR A FROTA DA ESTRATÉGIA DE SAÚDE DA FAMÍLIA E FORTALECE OS ATENDIMENTOS EM ICÉM
+                                </h5>
+                                <span class="thumb-info-type subtitle-destaque-p descricao-destaque-padrao01">
+                                    VEÍCULO RECUPERADO PASSA A INTEGRAR A FROTA DA ESTRATÉGIA DE SAÚDE DA FAMÍLIA E FORTALECE OS ATENDIMENTOS EM ICÉM
+                                </span>
+                            </div></a>
+            </div>
+        </article>
+                                        </li>
+                                        <li class="splide__slide">
+        <article class="thumb-info thumb-info-hide-wrapper-bg thumb-info-no-borders border-radius-0 border-0 thumb-info-no-borders-rounded thumb-info-lighten thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom">
+            <div class="img-thumbnail thumb-info-wrapper border-radius-0 border-0 p-0 d-block"><a href="/paginas/portal/conteudo?id=373&amp;conteudo=11681" class="border-radius-0 border-0" target="_self" title="">
+                        <img class="img-fluid border-radius-0" alt="MAIS UM IMPORTANTE REFORÇO PARA A SAÚDE DE ICÉM" data-splide-lazy="/imagens_temp/destaque_MjI1Nzc=.webp" />
+                            <div class="thumb-info-title alt-title">
+                                <h5 class="title-destaque-padrao03">
+                                    MAIS UM IMPORTANTE REFORÇO PARA A SAÚDE DE ICÉM
+                                </h5>
+                                <span class="thumb-info-type subtitle-destaque-p descricao-destaque-padrao01">
+                                    MAIS UM IMPORTANTE REFORÇO PARA A SAÚDE DE ICÉM
+                                </span>
+                            </div></a>
+            </div>
+        </article>
+                                        </li>
+                                        <li class="splide__slide">
+        <article class="thumb-info thumb-info-hide-wrapper-bg thumb-info-no-borders border-radius-0 border-0 thumb-info-no-borders-rounded thumb-info-lighten thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom">
+            <div class="img-thumbnail thumb-info-wrapper border-radius-0 border-0 p-0 d-block"><a href="/paginas/portal/conteudo?id=372&amp;conteudo=11659" class="border-radius-0 border-0" target="_self" title="">
+                        <img class="img-fluid border-radius-0" alt="PREFEITURA DE ICÉM REALIZA CAPACITAÇÃO PARA SERVIDORES SOBRE PROCEDIMENTOS DE COMPRAS, LICITAÇÕES E CONTRATOS" data-splide-lazy="/imagens_temp/destaque_MjI1NzA=.webp" />
+                            <div class="thumb-info-title alt-title">
+                                <h5 class="title-destaque-padrao03">
+                                    PREFEITURA DE ICÉM REALIZA CAPACITAÇÃO PARA SERVIDORES SOBRE PROCEDIMENTOS DE COMPRAS, LICITAÇÕES E CONTRATOS
+                                </h5>
+                                <span class="thumb-info-type subtitle-destaque-p descricao-destaque-padrao01">
+                                    PREFEITURA DE ICÉM REALIZA CAPACITAÇÃO PARA SERVIDORES SOBRE PROCEDIMENTOS DE COMPRAS, LICITAÇÕES E CONTRATOS
+                                </span>
+                            </div></a>
+            </div>
+        </article>
+                                        </li>
+                                </ul>
+                            </div>
+                                <div class="splide__progress">
+                                    <div class="splide__progress__bar"></div>
+                                </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+            <section class="section section-parallax mt-0 mb-2" data-plugin-parallax="" data-plugin-options="{&quot;speed&quot;: 2.5}" data-image-src="/resources/imagens/parallax.jpg">
+                <div class="container" id="gotoConteudo">
+                    <div class="row">
+                        <div class="col-md-12">
+
+    <div class="heading heading-border heading-middle-border heading-middle-border-start heading-border-xl mb-1">
+        <h5 class="text-color-primary m-0 font-weight-bold mb-2" style="font-size: 26px">
+            Acesso Rápido
+            
+        </h5>
+    </div>
+        <div class="row mb-0">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow">
+                                <a href="https://nfse.icem.sp.gov.br/issweb/home.jsf" title="Nota Fiscal de Serviços Eletrônica" rel="noopener" target="_blank">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-globe-americas"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-globe-americas"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            NFS-e
+                                        </span>
+                                    </span>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow">
+                                <a href="https://servicos.icem.sp.gov.br/servicosweb/home.jsf" title="Certidões, Carnes, Alvarás, Valor Adicionado, etc." rel="noopener" target="_blank">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="far fa-hand-point-up"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="far fa-hand-point-up"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Serviços Online
+                                        </span>
+                                    </span>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow">
+                                <a href="https://transparencia.icem.sp.gov.br" title="Portal da Transparência" rel="noopener" target="_blank">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Portal da Transparência
+                                        </span>
+                                    </span>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow"><a href="/paginas/portal/licitacoes/exercicios" title="Licitações">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-gavel"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-gavel"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Licitações
+                                        </span>
+                                    </span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow">
+                                <a href="https://pregao.icem.sp.gov.br/comprasedital/" title="Pregão Eletrônico" rel="noopener" target="_blank">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-coins"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-coins"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Pregão Eletrônico
+                                        </span>
+                                    </span>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow"><a href="/paginas/portal/legislacao/consulta" title="Legislação Municipal">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-balance-scale"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-balance-scale"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Legislação Municipal
+                                        </span>
+                                    </span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow"><a href="/paginas/portal/sic/inicio" title="Sistema de Informação ao Cidadão">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-info-circle"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-info-circle"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            SIC
+                                        </span>
+                                    </span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow"><a href="/paginas/portal/conteudo?conteudo=83" title="Quadro de Horários de Atendimento">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-briefcase-medical"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-briefcase-medical"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            SUS
+                                        </span>
+                                    </span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow">
+                                <a href="https://server2.zcsistemas.com.br:2096" title="Webmail para Funcionários" rel="noopener" target="_blank">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-at"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-at"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Webmail
+                                        </span>
+                                    </span>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow">
+                                <a href="https://holerite.icem.sp.gov.br/sipweb/trabalhador/login/login.xhtml" title="Holerite Online" rel="noopener" target="_blank">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-file-invoice-dollar"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-file-invoice-dollar"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Holerite Online
+                                        </span>
+                                    </span>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow">
+                                <a href="https://imprensaoficialmunicipal.com.br/icem" title="Diário Oficial" rel="noopener" target="_blank">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fas fa-newspaper"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fas fa-newspaper"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Diário Oficial
+                                        </span>
+                                    </span>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-2">
+                        <div class="featured-box featured-box-no-borders featured-box-box-shadow"><a href="/paginas/portal/ouvidoria/inicio" title="Ouvidoria">
+                                    <span class="box-content px-1 py-4 text-center d-block">
+                                        <span class="text-primary text-8 position-relative top-3 mt-3">
+                                            <i class="fa fa-comments"></i>
+                                        </span>
+                                        <span class="elements-list-shadow-icon text-default">
+                                            <i class="fa fa-comments"></i>
+                                        </span>
+                                        <span class="font-weight-bold text-uppercase text-2 negative-ls-1 d-block text-dark pt-2">
+                                            Ouvidoria
+                                        </span>
+                                    </span></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section-default d-block pt-0 pb-0 mt-0 mb-0"><div class="container">
+
+    <div class="featured-boxes featured-boxes-style-3 featured-boxes-flat">
+        <div class="row"><div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="featured-box featured-box-primary featured-box-effect-3" style="height: 75%;">
+                        <div class="box-content">
+                            <i class="icon-featured fas fa-users"></i>
+                            <h4>
+                                Moradores
+                            </h4>
+                            <p>
+                                Serviços para os munícipes
+                            </p>
+                            <p><a href="/paginas/portal/servicos?tipoAssunto=1" class="lnk-primary learn-more" title="Serviços para o cidadão">
+                                    Acessar <i class="fa fa-angle-right"></i></a>
+                            </p>
+                        </div>
+                    </div></div><div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="featured-box featured-box-primary featured-box-effect-3" style="height: 75%;">
+                        <div class="box-content">
+                            <i class="icon-featured fas fa-camera"></i>
+                            <h4>
+                                Visitantes
+                            </h4>
+                            <p>
+                                Serviços para os turistas
+                            </p>
+                            <p><a href="/paginas/portal/servicos?tipoAssunto=2" class="lnk-primary learn-more" title="Serviços da prefeitura para turistas">
+                                    Acessar <i class="fa fa-angle-right"></i></a>
+                            </p>
+                        </div>
+                    </div></div><div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="featured-box featured-box-primary featured-box-effect-3" style="height: 75%;">
+                        <div class="box-content">
+                            <i class="icon-featured fas fa-building"></i>
+                            <h4>
+                                Empresas
+                            </h4>
+                            <p>
+                                Serviços para as empresas
+                            </p>
+                            <p><a href="/paginas/portal/servicos?tipoAssunto=3" class="lnk-primary learn-more" title="Serviços da Prefeitura para sua empresa">
+                                    Acessar <i class="fa fa-angle-right"></i></a>
+                            </p>
+                        </div>
+                    </div></div>
+        </div>
+    </div></div>
+            </section>
+
+        <div class="container bloco_lateral">
+            <div class="row">
+                <div class="col-md-12">
+
+    <div class="heading heading-border heading-middle-border heading-middle-border-start heading-border-xl mb-1">
+        <h5 class="text-color-primary m-0 font-weight-bold mb-2" style="font-size: 26px">
+            Notícias
+            <a href="/noticias/" class="font-weight-bold btn btn-primary ms-1" title="Veja Mais">
+                <i class="fas fa-plus"></i></a>
+        </h5>
+    </div>
+    <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/486/atr-arena-topa-tudo-rodeio-e-campeao-da-taca-renilton-nogueira--edicao-2026" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI2MzA=.webp" alt="ATR ARENA TOPA TUDO RODEIO É CAMPEÃO DA TAÇA RENILTON NOGUEIRA – EDIÇÃO 2026" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>28 de julho de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            ATR ARENA TOPA TUDO RODEIO É CAMPEÃO DA TAÇA RENILTON NOGUEIRA – EDIÇÃO 2026
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/485/icem-conquista-selo-prata-do-programa-facilita-sp-municipios-2026-e-reforca-compromisso-com-a-modernizacao-da-gestao-publica" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI1ODk=.webp" alt="ICÉM CONQUISTA SELO PRATA DO PROGRAMA FACILITA SP MUNICÍPIOS 2026 E REFORÇA COMPROMISSO COM A MODERNIZAÇÃO DA GESTÃO PÚBLICA" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>15 de julho de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            ICÉM CONQUISTA SELO PRATA DO PROGRAMA FACILITA SP MUNICÍPIOS 2026 E REFORÇA COMPROMISSO COM A MODERNIZAÇÃO DA GESTÃO PÚBLICA
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/484/veiculo-recuperado-passa-a-integrar-a-frota-da-estrategia-de-saude-da-familia-e-fortalece-os-atendimentos-em-icem" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI1ODM=.webp" alt="VEÍCULO RECUPERADO PASSA A INTEGRAR A FROTA DA ESTRATÉGIA DE SAÚDE DA FAMÍLIA E FORTALECE OS ATENDIMENTOS EM ICÉM" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>13 de julho de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            VEÍCULO RECUPERADO PASSA A INTEGRAR A FROTA DA ESTRATÉGIA DE SAÚDE DA FAMÍLIA E FORTALECE OS ATENDIMENTOS EM ICÉM
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/483/mais-um-importante-reforco-para-a-saude-de-icem" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI1Nzc=.webp" alt="MAIS UM IMPORTANTE REFORÇO PARA A SAÚDE DE ICÉM" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>03 de julho de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            MAIS UM IMPORTANTE REFORÇO PARA A SAÚDE DE ICÉM
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/482/prefeitura-de-icem-realiza-capacitacao-para-servidores-sobre-procedimentos-de-compras-licitacoes-e-contratos" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI1NzA=.webp" alt="PREFEITURA DE ICÉM REALIZA CAPACITAÇÃO PARA SERVIDORES SOBRE PROCEDIMENTOS DE COMPRAS, LICITAÇÕES E CONTRATOS" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>01 de julho de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            PREFEITURA DE ICÉM REALIZA CAPACITAÇÃO PARA SERVIDORES SOBRE PROCEDIMENTOS DE COMPRAS, LICITAÇÕES E CONTRATOS
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/481/mais-uma-conquista-para-a-saude-de-icem" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI1NDU=.webp" alt="MAIS UMA CONQUISTA PARA A SAÚDE DE ICÉM" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>24 de junho de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            MAIS UMA CONQUISTA PARA A SAÚDE DE ICÉM
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/480/nova-ambulancia-reforca-a-frota-da-saude-de-icem" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI1MjY=.webp" alt="NOVA AMBULÂNCIA REFORÇA A FROTA DA SAÚDE DE ICÉM" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>16 de junho de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            NOVA AMBULÂNCIA REFORÇA A FROTA DA SAÚDE DE ICÉM
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/479/servidores-municipais-participaram-do-treinamento-de-capacitacao-sobre-a-nova-lei-de-licitacoes-promovido-pelo-sebrae-barretos-atraves-do-programa-cidade-empreendedora" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjI1MDk=.webp" alt="SERVIDORES MUNICIPAIS PARTICIPARAM DO TREINAMENTO DE CAPACITAÇÃO SOBRE A NOVA LEI DE LICITAÇÕES, PROMOVIDO PELO SEBRAE BARRETOS ATRAVÉS DO PROGRAMA CIDADE EMPREENDEDORA" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>22 de maio de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            SERVIDORES MUNICIPAIS PARTICIPARAM DO TREINAMENTO DE CAPACITAÇÃO SOBRE A NOVA LEI DE LICITAÇÕES, PROMOVIDO PELO SEBRAE BARRETOS ATRAVÉS DO PROGRAMA CIDADE EMPREENDEDORA
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card img-thumbnail">
+                    <span class="thumb-info thumb-info-no-zoom thumb-info-centered-info"><a href="/noticias/478/icem-recebe-selo-ouro-do-sebrae-e-se-destaca-no-atendimento-aos-empreendedores" title="">
+                        <span class="thumb-info-wrapper">
+                            <img class="card-img-top img-fluid thumb-info-wrapper lazyload" src="img/lazy-image.png" data-plugin-options="{'effect' : 'fadeIn'}" data-src="/imagens_temp/thumbs_noticia_MjIzODI=.webp" alt="ICÉM RECEBE SELO OURO DO SEBRAE E SE DESTACA NO ATENDIMENTO AOS EMPREENDEDORES" height="200" width="350" />
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-type">
+                                    Detalhes
+                                </span>
+                            </span>
+                        </span></a>
+                    </span>
+                    <div class="card-body card-noticias">
+                        <div class="post-meta text-color-dark text-1">
+                            <span>
+                                <i class="far fa-calendar me-1" title="Data"></i>12 de março de 2026
+                            </span>
+                        </div>
+                        <p class="card-text text-justify text-color-dark" id="tituloPgInicial">
+                            ICÉM RECEBE SELO OURO DO SEBRAE E SE DESTACA NO ATENDIMENTO AOS EMPREENDEDORES
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                </div>
+            </div>
+        </div>
+            <div class="container">
+                <div class="row align-center mt-3">
+                    <div class="col-md-12 ">
+        <div id="splideBannersRodape" class="splide">
+            <div class="splide__track" style="transition: height .2s !important;">
+                <ul class="splide__list" style="align-items: flex-start !important;">
+                        <li class="splide__slide">
+                                <a href="http://www.icem.sp.gov.br/paginas/portal/paginaInterna?id=42" title="Banner" class="w_hover" target="_self">
+                                    <img data-splide-lazy="/imagens_temp/banner_MTQ4ODY=.webp" src="img/lazy-image.png" alt="Banner" title="Banner" class="img-fluid w-100" />
+                                </a>
+                        </li>
+                        <li class="splide__slide">
+                                <img data-splide-lazy="/imagens_temp/banner_MTQ4ODU=.webp" src="img/lazy-image.png" alt="Centro de Informação Turística" title="Centro de Informação Turística" class="img-fluid w-100" />
+                        </li>
+                </ul>
+            </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <footer class="color bg-color-quaternary" id="footer">
+                <div class="container" id="gotoRodape">
+                    <div class="row">
+                        <div class="col-md-12">
+    <div class="row py-3 my-2">
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
+            <img src="/img/lazy-image.png" data-src="/imagens_temp/logo_MTExNzM=.webp" alt="logo" class="lazyload" style="max-width: 80px; max-height: 80px; border-width: 0px; border-style: solid; margin: 5px;" />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 mb-4 mb-lg-0 ps-md-4">
+            <h5 class="text-6 text-transform-0 font-weight-semibold text-color-light mb-4" style="line-height: 1.2!important;">
+                Prefeitura Municipal de Icém
+            </h5>
+                <p class="text-8 text-color-light font-weight-bold">
+                    (17) 3282-9090
+                </p>
+            <ul class="list list-icons list-icons-lg text-color-light">
+                    <li class="mb-1 text-color-light">
+                        <i class="far fa-dot-circle text-color-light"></i>
+                        Rua Prefeito João Ribeiro da Silveira
+                        
+                            , 550
+                        
+                            - Centro
+                        
+                            - CEP: 15460-013
+                        
+                    </li>
+                    <li class="mb-1 text-color-light">
+                        <i class="far fa-clock text-color-light"></i>
+                        Atendimento ao Público: Segunda à Sexta-Feira das 09:00 às 11:00 e 13:00 às 16:00 hrs.
+                    </li>
+                    <li class="mb-1 text-color-light">
+                        <i class="far fa-envelope text-color-light"></i>
+                        <a class="text-color-light" href="/cdn-cgi/l/email-protection#ef8c80819b8e9b80af868c8a82c19c9fc1888099c18d9d">
+                            <span class="__cf_email__" data-cfemail="0b6864657f6a7f644b62686e6625787b256c647d256979">[email&#160;protected]</span>
+                        </a>
+                    </li>
+            </ul>
+            <ul class="footer-social-icons social-icons mt-4">
+            </ul>
+        </div>
+    </div>
+                        </div>
+                    </div>
+                    <hr class="light" />
+                    <div class="row">
+                        <div class="col-md-12">
+
+    <div class="row">
+        <div class="col-md-3">
+                <h5 class="text-3 mb-3">Links Úteis</h5>
+                <ul class="list list-icons list-icons-sm mb-0">
+                        <li>
+                            <i class="fas fa-angle-right top-8"></i>
+                                <a href="http://www.camaraicem.sp.gov.br/" title="Site Câmara" target="_self">
+                                    Site Câmara
+                                </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-angle-right top-8"></i><a href="/paginas/portal/conteudo?conteudo=82" title="Telefones mais procurados">Telefones Úteis</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-angle-right top-8"></i>
+                                <a href="https://server2.zcsistemas.com.br:2096/webmaillogout.cgi" title="WebMail" target="_self">
+                                    WebMail
+                                </a>
+                        </li>
+                </ul>
+        </div>
+        <div class="col-md-3">
+                <h5 class="text-3 mb-3">Serviços</h5>
+                <div class="block_tags">
+                    <ul class="list list-icons list-icons-sm mb-0">
+                            <li>
+                                <i class="fas fa-angle-right top-8"></i>
+                                    <a href="http://nfse.icem.sp.gov.br:5661/servicosweb" title="Emissão de Nota Fiscal Eletrônica de Serviços" target="_self">
+                                        Nota Fiscal Eletrônica
+                                    </a>
+                            </li>
+                            <li>
+                                <i class="fas fa-angle-right top-8"></i><a href="/paginas/portal/conteudo?conteudo=83" title="Horários de atendimentos, especidades, médicos">SUS</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-angle-right top-8"></i><a href="/entidades/" title="Secretarias">Secretarias</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-angle-right top-8"></i>
+                                    <a href="http://servicos.icem.sp.gov.br:5661/servicosweb" title="Serviços Onlines" target="_self">
+                                        Serviços Online
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+        <div class="container py-2 mt-3">
+            <div class="row py-3">
+                <div class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0"><img src="/javax.faces.resource/logo-zc.png?ln=imagens" alt="ZC Sistemas" height="24" title="ZC Sistemas" />
+                </div>
+                <div class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
+                    <p class="text-color-light"><span class="copyright">Copyright © ZC Sistemas 2013-2026. Todos os Direitos Reservados.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+                </div>
+            </footer>
+        </div>
+
+    <div class="gdpr-bar" data-plugin-gdpr="">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                    <div class="gdpr-bar-description">
+                        <p class="text-color-light opacity-7 mb-0">
+                            Nosso site faz o uso de cookies para melhorar sua experiência de navegação. Leia sobre como utilizamos cookies e como você pode controlá-los clicando em "Preferências de Privacidade" à direita.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="gdpr-bar-actions">
+                        <a href="#" class="gdpr-preferences-trigger text-decoration-none btn btn-tertiary btn-modern btn-px-4 py-3 font-weight-bold">Preferências de Privacidade</a>
+                        <a href="#" class="gdpr-agree-trigger text-decoration-none btn btn-primary btn-modern btn-px-4 py-3 font-weight-bold">Eu Aceito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gdpr-preferences-popup">
+        <div class="gdpr-preferences-popup-content position-relative">
+            <a href="#" class="gdpr-close-popup text-color-grey text-color-hover-dark">
+                <i class="fas fa-times"></i>
+            </a>
+            <form class="gdpr-preferences-form">
+                <div class="gdpr-preferences-popup-content-body">
+                    <h4 class="text-color-dark font-weight-bold mb-3">Preferências de Privacidade</h4>
+                    <p>Quando você visita qualquer site, ele pode armazenar e recuperar informações através do seu navegador, geralmente na forma de cookies. Como nós respeitamos sua privacidade, você pode escolher não permitir coletar dados de alguns tipos de serviços. Entretanto, ao não permitir esses serviços sua experiência pode ser impactada.</p>
+                    <hr />
+
+                    <div class="gdpr-cookie-item">
+                        <div class="gdpr-cookie-item-title">
+                            <strong class="text-color-dark">Política de Privacidade</strong>
+                        </div>
+                        <div class="gdpr-cookie-item-description">
+                            <p class="mb-0">Você leu e concordou com nossa <a href="/paginas/portal/lgpdCookies.xhtml">Política de Privacidade</a></p>
+                        </div>
+                        <div class="gdpr-cookie-item-action">
+                            <strong class="text-color-dark text-2">OBRIGATÓRIO</strong>
+                            <input type="hidden" name="cookies_consent[]" class="gdpr-input" value="privacy-policy" />
+                        </div>
+                    </div>
+                    <div class="gdpr-cookie-item">
+                        <div class="gdpr-cookie-item-title">
+                            <strong class="text-color-dark">CDN</strong>
+                        </div>
+                        <div class="gdpr-cookie-item-description">
+                            <p class="mb-0">Por questões de performance e segurança, nós usamos o Cloudflare e suas redes CDN.</p>
+                        </div>
+                        <div class="gdpr-cookie-item-action">
+                            <strong class="text-color-dark text-2">OBRIGATÓRIO</strong>
+                            <input type="hidden" name="cookies_consent[]" class="gdpr-input" value="cdn" />
+                        </div>
+                    </div>
+                    <div class="gdpr-cookie-item">
+                        <div class="gdpr-cookie-item-title">
+                            <strong class="text-color-dark">YouTube</strong>
+                        </div>
+                        <div class="gdpr-cookie-item-description">
+                            <p class="mb-0">Nós usamos o serviço do YouTube para habilitar streaming de vídeos neste site.</p>
+                        </div>
+                        <div class="gdpr-cookie-item-action">
+                            <input type="checkbox" name="cookies_consent[]" class="gdpr-input custom-checkbox-switch" value="youtube" checked="" />
+                        </div>
+                    </div>
+                    <div class="gdpr-cookie-item">
+                        <div class="gdpr-cookie-item-title">
+                            <strong class="text-color-dark">Facebook</strong>
+                        </div>
+                        <div class="gdpr-cookie-item-description">
+                            <p class="mb-0">Nós usamos o Facebook para habilitar conteúdo de redes sociais neste site.</p>
+                        </div>
+                        <div class="gdpr-cookie-item-action">
+                            <input type="checkbox" name="cookies_consent[]" class="gdpr-input custom-checkbox-switch" value="facebookinstagram" />
+                        </div>
+                    </div>
+                    <div class="gdpr-cookie-item">
+                        <div class="gdpr-cookie-item-title">
+                            <strong class="text-color-dark">Google Maps</strong>
+                        </div>
+                        <div class="gdpr-cookie-item-description">
+                            <p class="mb-0">Nós usamos o Google Maps para habilitar conteúdos de mapas neste site.</p>
+                        </div>
+                        <div class="gdpr-cookie-item-action">
+                            <input type="checkbox" name="cookies_consent[]" class="gdpr-input custom-checkbox-switch" value="googlemaps" />
+                        </div>
+                    </div>
+                </div>
+                <div class="gdpr-preferences-popup-content-footer">
+                    <button type="submit" class="btn btn-primary btn-modern btn-px-4 py-3 font-weight-bold">Salvar Preferências</button>
+                    <a href="/paginas/portal/lgpdCookies.xhtml" class="btn btn-tertiary btn-modern btn-px-4 text-color-light text-color-hover-primary">Política de Privacidade</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    
+
+    <div id="j_idt1469"></div><div id="dStatus" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-content ui-widget-content" id="dStatus_content">
+        <img alt="Carregando..." src="/imagens/ajax_loader-old.gif" />
+        <span class="font-weight-bold text-color-primary">Por Favor, aguarde...</span></div></div>
+
+    <div id="accessibilityContainer">
+        <div class="m-0 d-none d-md-block">
+            <h5 class="header header mt-2 text-primary text-center">ACESSIBILIDADE</h5>
+            <p>
+                Para navegação via teclado, utilize a combinação de teclas:
+                <span class="badge badge-primary p-1">
+                    <strong class="uppercase"> Alt</strong>
+                    +
+                    [<strong>Nº</strong> de atalho]
+                </span>
+            </p>
+            <p class="text-primary font-weight-semibold p-0 m-0">Atalhos de navegação:</p>
+            <div class="m-0">
+                <ol class="list list-ordened list-ordened-style-3" start="0" type="1">
+                    
+                    <li>
+                        <a accesskey="1" title="Ir para conteúdo  [Alt+1]" href="#gotoConteudo">
+                            <small>Ir para o</small>
+                            <strong>conteúdo</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a accesskey="2" title="Ir para o menu  [Alt+2]" href="#gotoMenuPrincipal">
+                            <small>Ir para o</small>
+                            <strong>menu</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a accesskey="3" title="Ir para a busca  [Alt+3]" href="#gotoBusca" onclick="gotoBusca();">
+                            <small>Ir para a</small>
+                            <strong>busca</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a accesskey="4" title="Ir para o rodapé  [Alt+4]" href="#gotoRodape">
+                            <small>Ir para o</small>
+                            <strong>rodapé</strong>
+                        </a>
+                    </li>
+                    <li><a href="/paginas/portal/acessibilidade" accesskey="5" title="Página de Acessibilidade  [Alt+5]">
+                            Acessibilidade
+                        </a>
+                    </li>
+                    <li><a href="/paginas/portal/mapaportal" accesskey="6" title="Mapa do Site [Alt+6]">
+                            Mapa do site
+                        </a>
+                    </li>
+                </ol>
+            </div>
+            <div id="font-setting-buttons" class="row p-2">
+                <div class="col-md-12 text-center ">
+                    <div class="divFiltros">
+                        <h6 class="font-weight-semibold text-center mb-xs pb-xs">Tamanho da Fonte/Contraste</h6>
+                        <button accesskey="-" type="button" class="mb-xs mt-xs me-xs btn btn-sm btn-default decrease-me" id="btnDiminuiFonte" title="Diminuir tamanho da fonte [Alt+&quot;-&quot;]">
+                            <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+                        </button>
+                        <button accesskey="R" type="button" class="mb-xs mt-xs me-xs btn btn-sm btn-default reset-me" id="btnRestauraFonte" title="Restaurar tamanho original da fonte [Alt+R]">
+                            <i class="fa fa-font"></i><i class="fa fa-sync-alt"></i>
+                        </button>
+                        <button accesskey="+" type="button" class="mb-xs mt-xs me-xs btn btn-sm btn-default increase-me" id="btnAumentaFonte" title="Aumentar tamanho da fonte [Alt+&quot;+&quot;]">
+                            <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+                        </button>
+                        <button accesskey="7" type="button" class="mb-xs mt-xs me-xs btn btn-sm btn-default change-me" id="siteaction-contraste" title="Alto Contraste [Alt+7]">
+                            <i class="fa fa-toggle-on"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <a href="#" title="fechar" id="hideAccessibilityContainer">
+                <i class="fa fa-window-close"></i>
+                <span class="d-none">fechar</span>
+            </a>
+        </div>
+    </div>
+
+    <a accesskey="0" href="#" id="showAccessibilityContainer" class="d-none d-lg-block" title="Acessibilidade">
+        <div class="text-center"><i class="fa fa-wheelchair"></i>
+            <div class="sup-text-small d-none d-md-block">
+                <span class="text-primary">ACESSIBILIDADE</span><br />
+            </div>
+        </div>
+    </a>
+        <div class="enabled" vw="">
+            <div vw-access-button="" class="active">
+            </div>
+            <div vw-plugin-wrapper="">
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id="></script><script type="text/javascript" src="/javax.faces.resource/eNpljUsOgCAMRE8k7L0NwaIQCkjFaOLhheAn4mom72XaEDWCEhKoN3OCuPMazNARXid9hB_C4B24hRqBHjPlNRr3-dEFm0bt2j3JCYZkgd-leCNWsbHrCKmCPDpdwdMyPgFlJVNS.js?ln=omnifaces.combined&amp;v=1791981489323"></script><script type="text/javascript" src="/webjars/splidejs__splide/4.0.6/dist/js/splide.min.js"></script><script type="text/javascript" src="/vendor/modernizr/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="/vendor/modernizr/modernizr-3.6.0.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script><script type="text/javascript" src="/javax.faces.resource/js/locales_primefaces.js"></script><script type="text/javascript">var pf=window.PrimeFaces;if('' !== ''){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','')};
+
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '');
+            ;
+if(pf){pf.settings.locale='pt_BR';};
+
+    new Splide('#splideDestaques', {
+        type: 'loop',
+        lazyLoad: 'sequential',
+        autoplay: true,
+        resetProgress: false,
+        heightRatio: 0.4,
+        interval: '6000',
+        arrows: true,
+        pagination: false,
+        paginationDirection: 'ltr',
+        direction: 'ltr'
+    }).mount();
+;
+
+    let updateHeightBannersRodape = newIndex => {
+        let slide = sliderBannersRodape.Components.Slides.getAt( typeof( newIndex ) == 'number' ? newIndex : sliderBannersRodape.index ).slide;
+        slide.parentElement.parentElement.style.height = slide.offsetHeight + 'px';
+    };
+    let sliderBannersRodape = new Splide('#splideBannersRodape', {
+        type: 'loop',
+        lazyLoad: 'sequential',
+        autoplay: true,
+        interval: 5000,
+        arrows: false,
+        pagination: false
+    }).mount().on('move resize', updateHeightBannersRodape);
+    updateHeightBannersRodape();
+;
+pf.cw("AjaxStatus","widget_j_idt1469",{id:"j_idt1469",start:function(){PF('statusDialog').show();},success:function(){PF('statusDialog').hide();}});
+pf.cw("Dialog","statusDialog",{id:"dStatus",draggable:false,resizable:false,modal:true,width:"230",appendTo:"@(body)"});
+
+            (function () {
+                const script = document.createElement('script');
+                script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+                script.async = true;
+
+                script.onload = function () {
+                    if (window.VLibras) {
+                        new window.VLibras.Widget('https://vlibras.gov.br/app');
+                    }
+                };
+
+                script.onerror = function () {
+                    console.warn('VLibras indisponível no momento.');
+                };
+
+                document.body.appendChild(script);
+            })();
+        ;
+OmniFaces.DeferredScript.add('/javax.faces.resource/eNorKE3KyUzWzyrWr0rWK8lIzU3Vy83M08sqrimAyySXFpfk52KKw3Vk5mWWQKUB0nkeVw.js?ln=omnifaces.combined&v=1791981489291');</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a60865537e899e06',t:'MTc5NTY5MDg5Mw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a60865537e899e06',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
