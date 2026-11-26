@@ -8,6 +8,7 @@ correspondente no workflow é cobertura perdida (reprova antes de rodar). O arqu
 restaurado byte a byte. Uso: provar_mutacoes_dos_portoes.py [--id ID] [--so-casar].
 """
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -25,6 +26,11 @@ def comandos_que_casam(pegam, comandos):
 def aplicar(m, texto):
     if "anexar" in m:
         return texto + m["anexar"]
+    if "regex" in m:  # âncora que não envelhece (SHA de action muda a cada atualização)
+        novo_texto, n = re.subn(m["regex"][0], m["regex"][1], texto, count=1)
+        if not n:
+            raise ValueError(f"âncora ausente em {m['arquivo']}")
+        return novo_texto
     antigo, novo = m["trocar"]
     if antigo not in texto:
         raise ValueError(f"âncora ausente em {m['arquivo']}")
