@@ -667,9 +667,11 @@ def _dominio_publico(url: str) -> bool:
     if h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h:
         return True
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "scripts"))
-    from municipio_do_dominio import _host, diarios_estaduais, municipio_fora_do_gov_br
-    # imprensa oficial fora de .gov.br (IOERJ); e o sítio oficial do município fora de .gov.br (17/11/2026)
-    return _host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
+    from municipio_do_dominio import _host, arquivo_de_portal, diarios_estaduais, municipio_fora_do_gov_br
+    # imprensa oficial fora de .gov.br (IOERJ); o sítio oficial do município fora de .gov.br (17/11/2026); e o arquivo
+    # que o portal oficial guarda no domínio do fornecedor (26/11/2026)
+    return (_host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
+            or arquivo_de_portal(url) is not None)
 
 
 def setor_da_url(url: str) -> str:
