@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2125 · Arquivo da web nos sites que recusam o robô de fora
+
+A busca no arquivo da web (Wayback Machine e Common Crawl) deixava de ser feita quando o site da prefeitura recusava o robô de fora do país, porque o endereço não se confirmava. Agora o endereço se confirma pela cópia que a ponte traz do Brasil.
+
 ## 2026-11-26 · #2121 · Pedidos à ponte para sites de prefeitura de SP
 
 Entram na fila da ponte no Brasil as páginas de defesa civil e as buscas por plano de contingência de 88 sites de prefeitura de São Paulo que recusavam o robô de fora do país e abrem a partir do Brasil.
