@@ -219,7 +219,7 @@ def autoteste() -> int:
         with tempfile.TemporaryDirectory() as d:
             d = pathlib.Path(d); (d / cb.sha256(pdf)).write_bytes(pdf)
             (d / "manifesto.json").write_text(json.dumps({"itens": [{"url": "https://b.gov.br/p", "status": 200,
-                "sha256": cb.sha256(pdf), "final": final}]}), encoding="utf-8")
+                "sha256": cb.sha256(pdf), "final": final}]}), encoding="utf-8", newline="\n")
             return itens_do_manifesto(d)
 
     def lote():
