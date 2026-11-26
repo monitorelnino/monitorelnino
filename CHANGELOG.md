@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2123 · lote J18 grava periodicamente e isola falha por documento
+O lote da rodada paralela J18 gravava só no fim: a produção da válvula de 26/11 bateu no prazo de 150 min e não salvou nada. Agora grava a cada 2 minutos. Um PDF quebrado não derruba mais o lote: a falha vai para sem_leitura com a causa. Duas travas novas no autoteste do juiz. Produção e índice não mudam.
+
 ## 2026-11-26 · #2119 · 403 visto de fora do país vai à sonda da ponte
 
 O robô roda fora do país, e o 403 recebido de lá era gravado como recusa da fonte. Em 100 sites de prefeitura de São Paulo nessa situação, 88 abriram a partir do Brasil com o cliente identificado. O 403 passa a ser conferido pela ponte: o site que responde no Brasil é lido por ela, e o que recusa de novo fica registrado como recusa e não é mais pedido.
