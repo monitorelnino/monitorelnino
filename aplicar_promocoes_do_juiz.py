@@ -306,6 +306,10 @@ def atualiza(existente: dict, v: dict) -> str:
     """Por que o veredito substitui o registro, ou '' quando não substitui. Função pura."""
     from processar_contribuicoes import FORCA
     atual, nova = existente.get("categoria"), v.get("categoria")
+    if (existente.get("url") == v.get("url") and v.get("reabertura") and v.get("data") and nova in CATEGORIAS_DE_PLANO
+            and atual in CATEGORIAS_DE_PLANO and (str(existente.get("data") or ""), atual) != (str(v["data"]), nova)):
+        # 26/11/2026: o mesmo documento, relido a pedido, corrige a data (e a categoria que dela decorre) do registro.
+        return f"data relida no documento ({existente.get('data')} → {v.get('data')})"
     if existente.get("url") == v.get("url") or nova not in FORCA or atual not in {**FORCA, "nao_verificado": 0}:
         return ""
     if FORCA[nova] > FORCA.get(atual, 0):
@@ -327,6 +331,19 @@ def atualiza(existente: dict, v: dict) -> str:
     if atual == nova and nova in CATEGORIAS_DE_PLANO and ate and n[:ate] > a[:ate]:
         return f"documento posterior ({existente.get('data')} → {v.get('data')})"
     return ""
+
+
+def a_retirar(decisoes: list, municipios: list, versao: str) -> list:
+    """[(decisão, registro)] dos planos sem ato que saem do banco: o mesmo documento, relido a pedido (`reabertura`)
+    pelo codebook em vigor, não informa a data (`data_nao_confirmada`). O plano continua no cartão como localizado
+    e sem data (`gerar_card_municipios.planos_sem_contar`); o que sai é o registro que pontuava com um ano que o
+    documento não diz (26/11/2026: 35 na medição nacional, 30 no RS). Função pura."""
+    por_url = {m.get("url"): m for m in municipios
+               if m.get("categoria") in CATEGORIAS_DE_PLANO and m.get("sem_ato_de_aprovacao") and m.get("url")}
+    return [(v, por_url[v["url"]]) for v in decisoes
+            if v.get("reabertura") and not v.get("promove") and v.get("motivo") == "data_nao_confirmada"
+            and v.get("leu_documento") and v.get("codebook") == versao and not v.get("retirou")
+            and v.get("url") in por_url and (por_url[v["url"]].get("nome"), por_url[v["url"]].get("uf")) == (v.get("municipio"), v.get("uf"))]
 
 
 def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
@@ -566,6 +583,23 @@ def autoteste() -> int:
                   documento_do_veredito({"categoria": "plano_elaboracao", "criterios": {}})[:1]
                   == "A"))
     sem_dono = lambda _u: None            # noqa: E731 — resolvedor nulo, para as travas puras
+    _plano = {"nome": "Serra", "uf": "ES", "categoria": "plano_antigo", "data": "2017", "url": "https://x.gov.br/a.pdf",
+              "sem_ato_de_aprovacao": True}
+    _rel = dict(base, reabertura="2026-11-26", sem_ato_de_aprovacao=True)
+    casos.append(("o mesmo documento, relido a pedido, corrige a data do registro; sem o pedido, ou com a mesma data, não",
+                  atualiza(_plano, dict(_rel, data="23/10/2025")) == "data relida no documento (2017 → 23/10/2025)"
+                  and atualiza(_plano, dict(base, data="23/10/2025")) == ""
+                  and atualiza(_plano, dict(_rel, data="2017")) == ""
+                  and atualiza(_plano, dict(_rel, data=None)) == ""))
+    _sem = {"reabertura": "2026-11-26", "promove": False, "motivo": "data_nao_confirmada", "leu_documento": True,
+            "codebook": V, "url": "https://x.gov.br/a.pdf", "municipio": "Serra", "uf": "ES"}
+    casos.append(("plano relido a pedido que não informa a data sai do banco; recusa antiga, outro motivo, outro município ou já retirado, não",
+                  [r for _, r in a_retirar([_sem], [_plano], V)] == [_plano]
+                  and a_retirar([{k: x for k, x in _sem.items() if k != "reabertura"}], [_plano], V) == []
+                  and a_retirar([dict(_sem, motivo="fora_do_objeto")], [_plano], V) == []
+                  and a_retirar([dict(_sem, municipio="Vitória")], [_plano], V) == []
+                  and a_retirar([dict(_sem, retirou={"em": "x"})], [_plano], V) == []
+                  and a_retirar([_sem], [dict(_plano, sem_ato_de_aprovacao=False)], V) == []))
     casos.append(("veredito da versão em vigor é aplicável",
                   len(aplicaveis([base], V, resolver=sem_dono)) == 1))
     # 09/10/2026 (A1-01): domínio de outro município derruba a aplicação.
@@ -867,13 +901,14 @@ def main() -> int:
     doc = json.loads(REGISTRO.read_text(encoding="utf-8"))
     decisoes = doc.get("decisoes") or []
     alvo = aplicaveis(decisoes, CODEBOOK_VERSAO)
+    saem = a_retirar(decisoes, json.loads(MUNICIPIOS.read_text(encoding="utf-8")), CODEBOOK_VERSAO)
     print(f"{len(alvo)} promoção(ões) na versão em vigor do codebook ({CODEBOOK_VERSAO}), "
-          f"de {len(decisoes)} decisão(ões) no registro")
+          f"de {len(decisoes)} decisão(ões) no registro; {len(saem)} registro(s) a retirar por releitura sem data")
     for v in alvo:
         print(f"  {v['municipio']}/{v['uf']} · {v['categoria']} · {v.get('data')} · {v.get('url')}")
     if "--aplicar" in sys.argv:
         marcar_o_banco()
-    if not alvo:
+    if not alvo and not saem:
         print("nada a aplicar")
         if "--aplicar" in sys.argv and any("indicado_ao_cadastro_art3A" in v for v in decisoes):  # e o rótulo
             gravar_em(REGISTRO, doc)   # os campos descritivos ficam registrados no veredito
@@ -888,6 +923,13 @@ def main() -> int:
     municipios = json.loads(MUNICIPIOS.read_text(encoding="utf-8"))
     pontos = json.loads(PONTOS.read_text(encoding="utf-8"))
     aplicados, recusados = [], []
+
+    for v, registro in a_retirar(decisoes, municipios, CODEBOOK_VERSAO):
+        municipios.remove(registro)
+        pontos[:] = [x for x in pontos if (x.get("nome"), x.get("uf")) != (registro.get("nome"), registro.get("uf"))]
+        v["retirou"] = {"em": hoje.isoformat(), **{k: registro.get(k) for k in ("categoria", "documento", "data", "hash_evidencia")}}
+        aplicados.append(v)
+        print(f"  retirado: {v['municipio']}/{v['uf']} — o documento relido não informa a data (constava {registro.get('data')})")
 
     for v in alvo:
         if not v.get("ibge") and not v.get("municipio"):
@@ -963,6 +1005,7 @@ def main() -> int:
         restaurar_dados(backup)
         ultima = [l for l in (saida_portoes or "").splitlines() if l.strip()][-6:]
         for v in aplicados:
+            v.pop("retirou", None)
             v["revertido_por_portao"] = {"em": hoje.isoformat(),
                                          "motivo": "portão vermelho depois da aplicação",
                                          "saida": chr(10).join(ultima)}
@@ -973,7 +1016,8 @@ def main() -> int:
         return 1
 
     for v in aplicados:
-        v["aplicado_em"] = hoje.isoformat()
+        if v.get("promove"):
+            v["aplicado_em"] = hoje.isoformat()
     gravar_em(REGISTRO, doc)
     print(f"OK {len(aplicados)} promoção(ões) aplicada(s) e confirmada(s) pelos portões")
     return 0
