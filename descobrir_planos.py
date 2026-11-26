@@ -54,7 +54,7 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed, wait as _esperar
 
 import funil
-from coletores_base import (RAIZ, buscar, buscar_uma_vez, copia_da_ponte, pedir_a_ponte, sem_conversa_http,
+from coletores_base import (RAIZ, buscar, buscar_uma_vez, pela_ponte,
                             preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo,
@@ -258,6 +258,16 @@ def fatia_da_noite(alvos: list, limite: int, dia: int) -> list:
 
 
 def autoteste() -> int:
+    # A ponte é rede e escrita em `data/ponte_pedidos.json`: no autoteste, sem cópia e sem pedido (o caso da cópia troca-a).
+    global pela_ponte
+    da_producao, pela_ponte = pela_ponte, (lambda url, e, origem=None, pedir=True: None)
+    try:
+        return _autoteste()
+    finally:
+        pela_ponte = da_producao
+
+
+def _autoteste() -> int:
     def t_dominio_conhecido():
         return dominio_para("BA", "saude") == "saude.ba.gov.br"
 
@@ -399,6 +409,16 @@ def autoteste() -> int:
         return (pl["origem"] == "descoberta" and pl["ibge"] == "5002209"
                 and pl["documento_oficial_confirmado"] is None and pl["promovivel"] is False
                 and motivo_de_recusa(normalizar(pl)) == "")
+
+    def t_403_de_fora_le_a_copia_do_brasil():
+        import unittest.mock as mock
+        import urllib.error
+        e403 = urllib.error.HTTPError("https://x", 403, "Forbidden", {}, None)
+        pagina = "<html><title>Prefeitura Municipal de Bonito</title><body>Prefeitura de Bonito</body></html>".encode()
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=e403), mock.patch(f"{__name__}.registrar_lacuna"), \
+             mock.patch(f"{__name__}.pela_ponte", side_effect=lambda url, e, origem=None, pedir=True: pagina):
+            r = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
+        return r["situacao"] != "recusa_de_fonte" and r["dominio"]
 
     def t_portal_recusa_e_ausencia_nao_viram_plano():
         import unittest.mock as mock
@@ -696,6 +716,7 @@ def autoteste() -> int:
         "portal da prefeitura: a pista passa pela porta única": t_pista_do_portal_passa_pela_porta,
         "portal da prefeitura: recusa e endereço mudo não viram plano nem ausência de plano": t_portal_recusa_e_ausencia_nao_viram_plano,
         "portal da prefeitura: wp-json e links, sem escrever em data/": t_portal_le_wp_json_e_links_sem_escrever,
+        "403 visto de fora: com a cópia que a ponte trouxe do Brasil, o portal é lido e não vira recusa": t_403_de_fora_le_a_copia_do_brasil,
         "pausa por host em paralelo: nunca dois pedidos ao mesmo host sem a pausa": t_pausa_por_host_em_paralelo,
         "rodada de municípios: retoma no dia e grava o lido no prazo": t_rodada_de_municipios_retoma_e_grava_no_prazo,
         "bateria: fora de municipal_completo primeiro, capital e depois população": t_ordem_da_bateria,
@@ -1041,6 +1062,9 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                         corpo = buscar_uma_vez(f"{esquema}://{d}/", timeout=15)
                     break
                 except urllib.error.HTTPError as e:
+                    corpo = pela_ponte(f"{esquema}://{d}/", e, "descobrir_planos")   # 403 visto de fora: a sonda decide
+                    if corpo is not None:
+                        break
                     if e.code in RECUSAS_DE_FONTE:
                         recusa = f"HTTP {e.code}"
                     else:
@@ -1052,11 +1076,9 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                 except Exception as e:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve neste esquema
                     # 18/11/2026: o portal que não conversa com o robô de fora do país se lê pela cópia da ponte no
                     # Brasil; sem cópia, vira pedido a ela (nome que não resolve, recusa e muro nunca).
-                    if sem_conversa_http(e):
-                        corpo = copia_da_ponte(f"{esquema}://{d}/")[0]
-                        if corpo is not None:
-                            break
-                        pedir_a_ponte(f"{esquema}://{d}/", "descobrir_planos")
+                    corpo = pela_ponte(f"{esquema}://{d}/", e, "descobrir_planos")
+                    if corpo is not None:
+                        break
                     falhas.append(f"{esquema}://{d}: {nome_da_falha(e)}")
             if recusa:
                 registrar_lacuna(f"portal de {nome}/{uf}", f"recusa {recusa} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
