@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2117 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura
+
+O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
+
 ## 2026-11-26 · #2149 · Ceará: emergências estaduais no mapa
 
 Entram os Decretos estaduais nº 37.608 (13/11/2026, situação de emergência em 65 municípios por estiagem e seca ligadas ao El Niño, 180 dias) e nº 37.624 (19/11/2026, emergência ambiental em todo o estado por risco de incêndios, até fevereiro de 2027), conferidos no texto publicado pelo portal do Diário Oficial do Estado do Ceará, com cópia preservada.
