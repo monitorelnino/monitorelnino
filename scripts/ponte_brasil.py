@@ -172,7 +172,9 @@ def itens_do_manifesto(pasta: pathlib.Path) -> tuple:
         if cb.sha256(corpo) != it["sha256"]:
             fora.append((url, "sha256 não confere com o manifesto"))
             continue
-        final = (it.get("final") or "").split("#")[0]
+        # 26/11/2026: o endereço final de arquivo em nuvem (S3 pré-assinado) traz a chave de acesso do órgão na
+        # consulta; o registro é publicado pela raiz, então a credencial de terceiro sai redigida aqui, na porta.
+        final = cb.redigir_segredos((it.get("final") or "").split("#")[0])[0]
         itens.append((url, corpo, None if not final or final == url.split("#")[0] else f"endereço final {final}"))
     return itens, fora
 
@@ -211,6 +213,14 @@ def autoteste() -> int:
     pagina = '<html><script>var f={"access_token":"IGQVJVabcdefghij0123456789"};</script>CPF 123.456.789-09</html>'.encode()
     doc2, _, guardada = registro({}, "https://x.gov.br/p", pagina, "teste", "2026-11-18")
     c2 = doc2["copias"]["https://x.gov.br/p"]
+
+    def itens_do_manifesto_de(final):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d); (d / cb.sha256(pdf)).write_bytes(pdf)
+            (d / "manifesto.json").write_text(json.dumps({"itens": [{"url": "https://b.gov.br/p", "status": 200,
+                "sha256": cb.sha256(pdf), "final": final}]}), encoding="utf-8")
+            return itens_do_manifesto(d)
 
     def lote():
         import tempfile
@@ -317,6 +327,8 @@ def autoteste() -> int:
             and redigido(pdf) == (pdf, {}),
         "corpo vazio e muro de robô não são cópia": lambda: aceitar(b"") == "corpo vazio" and aceitar(pdf) is None
             and "muro" in (aceitar(b'<html><head><script src="/TSPD/08a1?type=9"></script></head></html>') or ""),
+        "endereço final de nuvem entra sem a chave de acesso do órgão": lambda: "AKIA" not in str(itens_do_manifesto_de(
+            "https://b.s3.amazonaws.com/p.pdf?X-Amz-Credential=AKIAX7ABCDEFGHIJKLMN%2F20260526&X-Amz-Expires=600")),
         "lote: só entra o que respondeu 200 e confere com o sha256; recusa e 404 ficam listados": lambda: lote() == (
             [("https://a.gov.br/1.pdf", pdf, "endereço final https://a.gov.br/novo/1.pdf")],
             [("https://a.gov.br/2", "recusa da fonte"), ("https://a.gov.br/3", "sha256 não confere com o manifesto"),
