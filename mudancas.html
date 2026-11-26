@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Data do plano: a lista de referências não data o plano</dt>
+      <dd>Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes). A data do plano agora se lê no corpo, até a seção de referências; o registro de revisões passa a datar (2022). Fecho com local e data, assinatura digital e a obra do próprio município seguem valendo no texto todo. Medido em 470 planos preservados: cinco datas mudam, nenhuma de faixa de idade.</dd>
       <dt>26/11/2026 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão</dt>
       <dd>O lote trazido do Brasil registra o endereço final de cada documento. Arquivo de prefeitura guardado em nuvem (S3 pré-assinado) traz na consulta a chave de acesso do órgão, e o registro é publicado pela raiz: o portão de segredos reprovou o PR de dado. O endereço passa agora pela mesma redação de segredos das evidências, na porta da ponte; autoteste novo.</dd>
       <dt>26/11/2026 · Portão de imprensa reconhece o arquivo do portal da prefeitura</dt>
@@ -162,8 +164,6 @@
       <dd>A reaplicação lia só os 100 artefatos mais novos e perdia os da noite anterior em dia movimentado; agora lê página a página. `--caminho`, com `--artefato`, refaz só o caminho que a união recusou, sem dobrar os logs já reaplicados.</dd>
       <dt>24/11/2026 · Reaplicação não recusa arquivo novo dos dois lados</dt>
       <dd>`reaplicar_noite.py` separa &quot;commit-base fora do histórico&quot; de &quot;arquivo ausente na base&quot;. O funil do dia criado depois da base (22/11, `data/funil/2026-11-22.json`) era recusado com a mensagem da base perdida; agora une pela base vazia, como no conflito de rebase. Caso no autoteste.</dd>
-      <dt>24/11/2026 · Rodada de domingo não perde o commit por `julgamento_automatico`</dt>
-      <dd>Resolvedor de conflito (D2 da central): na mesma pista, `APLICADA` vence `ABSTENCAO`; duas `ABSTENCAO`, vale a data mais nova e, no mesmo dia, a da `main`; duas `APLICADA` diferentes ou caso não coberto deixam a pista como na `main`, com aviso no log, e o resto da fila une. Cinco casos no autoteste; ensaio simulado com juiz e rodada julgando a mesma pista (F81, F94).</dd>
     </dl>
   </section>
 </main>
