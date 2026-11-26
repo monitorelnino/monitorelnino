@@ -408,7 +408,11 @@ def t_site_sem_resposta_sai_do_resto_da_rodada():
         cb.buscar("https://morto.gov.br/3.pdf", buscar_fn=esgota, dormir=lambda s: None)
     except urllib.error.URLError:
         pass
-    return a == (2, 2) and b == (4, 6, 6) and vivo == b"ok" and cb._SEM_RESPOSTA == antes
+    try:   # 26/11/2026: o POST (listagem do DOE-PI) entra na mesma conta; antes esgotava o tempo data a data
+        cb.enviar("https://morto.gov.br/Api", {}, enviar_fn=lambda u, d, timeout=None: esgota(u), sem_resposta=conta)
+    except urllib.error.URLError:
+        pass
+    return a == (2, 2) and b == (4, 6, 6) and len(tentativas) == 8 and vivo == b"ok" and cb._SEM_RESPOSTA == antes
 
 
 def t_resposta_zera_a_conta_e_leitura_cortada_nao_conta():
