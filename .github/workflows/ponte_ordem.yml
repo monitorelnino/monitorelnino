@@ -1,0 +1,59 @@
+# ponte_ordem.yml — a lista que o programa local da ponte no Brasil lê
+# ====================================================================
+# Peça 3 da ponte (robo-registro/notas/HANDOVER_PONTE_ALCANCE_18-11-2026.md), ligada em 26/11/2026.
+# O programa local (computador da editoria) lê `ponte_ordem.json` no ramo `ponte-ordem`; a lista era
+# escrita à mão e parou em 18/11 com 256 endereços, enquanto `data/ponte_pedidos.json` chegou a 1.990
+# pedidos: a ponte buscava de hora em hora os mesmos endereços que dão 503 também no Brasil.
+# Aqui a lista nasce dos pedidos sem cópia sempre que eles (ou o índice das cópias) mudam na `main`.
+#
+# O que este workflow NAO faz: coletar, commitar na `main` ou executar o que a lista contém. Escreve
+# só dado, e só no ramo `ponte-ordem` (fora da `main`, então fora da janela da noite).
+name: Ponte — lista de endereços
+
+on:
+  push:
+    branches: [main]
+    paths: [data/ponte_pedidos.json, data/ponte_brasil.json]
+  workflow_dispatch:
+
+permissions:
+  contents: write     # empurra o ramo `ponte-ordem`
+
+concurrency:
+  group: ponte-ordem
+  cancel-in-progress: false
+
+jobs:
+  ordem:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 10
+    steps:
+      # Esparso: a árvore inteira (evidências) não cabe no tempo do job.
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          ref: main
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /coletores_base.py
+            /scripts/ponte_brasil.py
+            /data/ponte_pedidos.json
+            /data/ponte_brasil.json
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          ref: ponte-ordem
+          path: ordem
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        with: { python-version: "3.12" }
+      - name: Gerar e empurrar a lista
+        run: |
+          python3 scripts/ponte_brasil.py --ordem ordem/ponte_ordem.json | tee -a "$GITHUB_STEP_SUMMARY"
+          cd ordem
+          git diff --quiet && { echo "lista sem mudança" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
+          git config user.name "monitor-el-nino-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git commit -qam "Lista da ponte: pedidos sem cópia ($(date -u +%d/%m\ %H:%M) UTC)"
+          git push -q origin HEAD:ponte-ordem

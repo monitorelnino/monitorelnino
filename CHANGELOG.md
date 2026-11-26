@@ -12,6 +12,21 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-26 · #2108 · Data do plano: capa com espaços e legenda de figura
 
 Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda "Porto Velho, 2019" de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.
+## 2026-11-26 · #2113 · Vigia de boletins lê o índice da ANA e só avisa
+
+`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.
+
+## 2026-11-26 · #2106 · Selo, PR 2: o selo sai do PR
+
+O manifesto, `mudancas.html` e `CODEMAP.md` passam a ser selados só pelo publicador. No PR e na cópia de trabalho, derivado defasado é aviso; na `main` selada e nos elos, reprova. Todo envio a um PR roda os portões, rascunho ou não: execução pulada deixava head mesclável sem portão. Sai o modo `--pode-regenerar`. Fluxo do `CLAUDE.md` e skill `p12` ajustados.
+
+## 2026-11-26 · #2105 · Ponte no Brasil: recebimento na noite e lista gerada
+
+A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.
+
+## 2026-11-26 · #2107 · Prova de mutação dos portões: âncora do SHA por regex
+
+A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com "âncora ausente". A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.
 
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 

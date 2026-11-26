@@ -46,6 +46,14 @@
     <dl class="mudancas-lista">
       <dt>26/11/2026 · Data do plano: capa com espaços e legenda de figura</dt>
       <dd>Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda &quot;Porto Velho, 2019&quot; de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.</dd>
+      <dt>26/11/2026 · Vigia de boletins lê o índice da ANA e só avisa</dt>
+      <dd>`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.</dd>
+      <dt>26/11/2026 · Selo, PR 2: o selo sai do PR</dt>
+      <dd>O manifesto, `mudancas.html` e `CODEMAP.md` passam a ser selados só pelo publicador. No PR e na cópia de trabalho, derivado defasado é aviso; na `main` selada e nos elos, reprova. Todo envio a um PR roda os portões, rascunho ou não: execução pulada deixava head mesclável sem portão. Sai o modo `--pode-regenerar`. Fluxo do `CLAUDE.md` e skill `p12` ajustados.</dd>
+      <dt>26/11/2026 · Ponte no Brasil: recebimento na noite e lista gerada</dt>
+      <dd>A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.</dd>
+      <dt>26/11/2026 · Prova de mutação dos portões: âncora do SHA por regex</dt>
+      <dd>A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com &quot;âncora ausente&quot;. A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.</dd>
       <dt>25/11/2026 · S22 (PNCP): teto de 20 min por município</dt>
       <dd>A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.</dd>
       <dt>25/11/2026 · Cartão do município: linhas de autodeclaração</dt>
@@ -156,14 +164,6 @@
       <dd>A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.</dd>
       <dt>23/11/2026 · União pela base soma `repeticoes` de pista</dt>
       <dd>O resolvedor de conflito recusava a pista cujo contador `repeticoes` subiu nos dois lados. Agora soma os acréscimos sobre a base, como os contadores do funil; decremento segue recusado.</dd>
-      <dt>23/11/2026 · Juiz: ano fora da faixa não é data</dt>
-      <dd>Plano sem ato de aprovação passava com ano impossível quando o texto citava período chuvoso: em Chuvisca/RS, o fim de um telefone virou 2077. A recusa por data suspeita passa a valer com ou sem ato.</dd>
-      <dt>23/11/2026 · Leitor de .doc: só as correntes da raiz</dt>
-      <dd>O .doc com objeto do Word embutido (Chuvisca/RS) saía sem texto: o leitor misturava o texto do documento com a tabela do objeto. Agora lê só as correntes da raiz do arquivo.</dd>
-      <dt>23/11/2026 · Rodada J18: rejulgamento paralelo pelo codebook 1.8</dt>
-      <dd>Rejulgamento de `promocoes_automaticas.json` e da fila de `pistas_imprensa.json` pelo codebook 1.8, gravado só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json` (nada do índice lê). Com documento local, 564 decisões e 227 pistas julgadas; nenhum veredito muda. 6.052 pistas da fila e cerca de 9.700 decisões seguem sem cópia local, e não são rejulgadas. Código sem mudança: o modo 1.8 já estava na `main` e passa nas 109 travas do `juiz.py --autoteste`.</dd>
-      <dt>23/11/2026 · O juiz lê o .doc do Word 97–2003</dt>
-      <dd>Seis planos do Prepara RS em .doc antigo saíam sem texto: o leitor não tinha extrator para o formato. `texto_de_doc_binario` lê o contêiner e a tabela de peças, sem dependência nova. A recusa por texto não extraível em documento de escritório volta uma vez.</dd>
     </dl>
   </section>
 </main>
