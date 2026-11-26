@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2112 · Juiz: reabrir pista nomeada e redatar pelo documento relido
+
+`julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.
+
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
 A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
