@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2113 · Vigia de boletins lê o índice da ANA e só avisa
+
+`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.
+
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
 A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
