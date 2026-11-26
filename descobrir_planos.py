@@ -258,6 +258,16 @@ def fatia_da_noite(alvos: list, limite: int, dia: int) -> list:
 
 
 def autoteste() -> int:
+    # A ponte é rede e escrita em `data/ponte_pedidos.json`: no autoteste, sem cópia e sem pedido (o caso da cópia troca-a).
+    global pela_ponte
+    da_producao, pela_ponte = pela_ponte, (lambda url, e, origem=None, pedir=True: None)
+    try:
+        return _autoteste()
+    finally:
+        pela_ponte = da_producao
+
+
+def _autoteste() -> int:
     def t_dominio_conhecido():
         return dominio_para("BA", "saude") == "saude.ba.gov.br"
 
@@ -399,6 +409,16 @@ def autoteste() -> int:
         return (pl["origem"] == "descoberta" and pl["ibge"] == "5002209"
                 and pl["documento_oficial_confirmado"] is None and pl["promovivel"] is False
                 and motivo_de_recusa(normalizar(pl)) == "")
+
+    def t_403_de_fora_le_a_copia_do_brasil():
+        import unittest.mock as mock
+        import urllib.error
+        e403 = urllib.error.HTTPError("https://x", 403, "Forbidden", {}, None)
+        pagina = "<html><title>Prefeitura Municipal de Bonito</title><body>Prefeitura de Bonito</body></html>".encode()
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=e403), mock.patch(f"{__name__}.registrar_lacuna"), \
+             mock.patch(f"{__name__}.pela_ponte", side_effect=lambda url, e, origem=None, pedir=True: pagina):
+            r = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
+        return r["situacao"] != "recusa_de_fonte" and r["dominio"]
 
     def t_portal_recusa_e_ausencia_nao_viram_plano():
         import unittest.mock as mock
@@ -696,6 +716,7 @@ def autoteste() -> int:
         "portal da prefeitura: a pista passa pela porta única": t_pista_do_portal_passa_pela_porta,
         "portal da prefeitura: recusa e endereço mudo não viram plano nem ausência de plano": t_portal_recusa_e_ausencia_nao_viram_plano,
         "portal da prefeitura: wp-json e links, sem escrever em data/": t_portal_le_wp_json_e_links_sem_escrever,
+        "403 visto de fora: com a cópia que a ponte trouxe do Brasil, o portal é lido e não vira recusa": t_403_de_fora_le_a_copia_do_brasil,
         "pausa por host em paralelo: nunca dois pedidos ao mesmo host sem a pausa": t_pausa_por_host_em_paralelo,
         "rodada de municípios: retoma no dia e grava o lido no prazo": t_rodada_de_municipios_retoma_e_grava_no_prazo,
         "bateria: fora de municipal_completo primeiro, capital e depois população": t_ordem_da_bateria,
