@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Data do plano: capa com espaços e legenda de figura</dt>
+      <dd>Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda &quot;Porto Velho, 2019&quot; de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.</dd>
       <dt>25/11/2026 · S22 (PNCP): teto de 20 min por município</dt>
       <dd>A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.</dd>
       <dt>25/11/2026 · Cartão do município: linhas de autodeclaração</dt>
@@ -162,8 +164,6 @@
       <dd>Rejulgamento de `promocoes_automaticas.json` e da fila de `pistas_imprensa.json` pelo codebook 1.8, gravado só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json` (nada do índice lê). Com documento local, 564 decisões e 227 pistas julgadas; nenhum veredito muda. 6.052 pistas da fila e cerca de 9.700 decisões seguem sem cópia local, e não são rejulgadas. Código sem mudança: o modo 1.8 já estava na `main` e passa nas 109 travas do `juiz.py --autoteste`.</dd>
       <dt>23/11/2026 · O juiz lê o .doc do Word 97–2003</dt>
       <dd>Seis planos do Prepara RS em .doc antigo saíam sem texto: o leitor não tinha extrator para o formato. `texto_de_doc_binario` lê o contêiner e a tabela de peças, sem dependência nova. A recusa por texto não extraível em documento de escritório volta uma vez.</dd>
-      <dt>23/11/2026 · Prepara RS: atalhos e planos sem data</dt>
-      <dd>Os 30 planos da CREPDEC 07, publicados como atalhos para um endereço com certificado de outro nome, passam a ser lidos pela cópia pública do Internet Archive. As 59 recusas por falta de data, lidas antes do leitor com OCR, voltam uma vez ao juiz.</dd>
     </dl>
   </section>
 </main>

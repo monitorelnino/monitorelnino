@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2108 · Data do plano: capa com espaços e legenda de figura
+
+Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda "Porto Velho, 2019" de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.
+
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
 A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
