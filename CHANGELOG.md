@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A listagem do diário do Piauí é pedida por POST, e o POST não tinha a conta que tira do resto da rodada o site que não responde. Cada data esgotava o tempo, o Piauí consumia todo o prazo da leitura dos diários e Mato Grosso do Sul e Rondônia ficavam sem edição lida desde 12/11. GET e POST passam a usar a mesma conta.
 
+## 2026-11-26 · #2113 · Vigia de boletins lê o índice da ANA e só avisa
+
+`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.
+
 ## 2026-11-26 · #2106 · Selo, PR 2: o selo sai do PR
 
 O manifesto, `mudancas.html` e `CODEMAP.md` passam a ser selados só pelo publicador. No PR e na cópia de trabalho, derivado defasado é aviso; na `main` selada e nos elos, reprova. Todo envio a um PR roda os portões, rascunho ou não: execução pulada deixava head mesclável sem portão. Sai o modo `--pode-regenerar`. Fluxo do `CLAUDE.md` e skill `p12` ajustados.
@@ -20,6 +24,10 @@ O manifesto, `mudancas.html` e `CODEMAP.md` passam a ser selados só pelo public
 ## 2026-11-26 · #2105 · Ponte no Brasil: recebimento na noite e lista gerada
 
 A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.
+
+## 2026-11-26 · #2107 · Prova de mutação dos portões: âncora do SHA por regex
+
+A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com "âncora ausente". A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.
 
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
