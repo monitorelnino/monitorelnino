@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-22",
+ "gerado_em": "2026-11-26",
  "municipios": {
   "5208707": {
    "S16": {
@@ -131,10 +131,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-26",
     "situacao": "erro",
     "consulta": null,
-    "motivo": "HTTP 503",
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 1557 contratação(ões) lida(s); não vale como ausência",
     "dominio": null
    },
    "S27": {
@@ -217,10 +217,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-26",
     "situacao": "erro",
     "consulta": null,
-    "motivo": "HTTP 503",
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 1451 contratação(ões) lida(s); não vale como ausência",
     "dominio": null
    },
    "S27": {
@@ -303,10 +303,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-26",
     "situacao": "erro",
     "consulta": null,
-    "motivo": "HTTP 503",
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 1444 contratação(ões) lida(s); não vale como ausência",
     "dominio": null
    },
    "S27": {
@@ -389,10 +389,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5205109&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    },
    "S27": {
@@ -475,10 +475,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5205497&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    },
    "S27": {
@@ -533,11 +533,11 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-28",
+    "consultado_em": "2026-11-26",
     "situacao": "sem_resultado",
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5206206&pagina=1&tamanhoPagina=500",
-    "motivo": "747 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
-    "dominio": "cristalina.go.gov.br"
+    "motivo": "767 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
+    "dominio": null
    },
    "S27": {
     "consultado_em": "2026-11-22",
