@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel='stylesheet' href='https://controlemunicipal.com.br/site/geral/css/lightbox.css'>
+    <title>Prefeitura Municipal de Wenceslau Braz</title>
+
+    <!-- Meta Tags Open Graph para Facebook -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="https://wenceslaubraz.pr.gov.brhttps://wenceslaubraz.pr.gov.br//images/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://wenceslaubraz.pr.gov.br//index?sessao=b054603368ixb0&id=3920" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Portal do ParanÃ¡" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Meta Tags padrÃ£o para outros serviÃ§os -->
+    <meta name="description" content="" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="https://wenceslaubraz.pr.gov.brhttps://wenceslaubraz.pr.gov.br//images/logo.png" />
+
+
+    <!-- CONFIG META DO SITE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="Content-Language" content="PT-BR" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="Prefeitura, Prefeitura municipal de WENCESLAU BRAZ, WENCESLAU BRAZ" />
+    <meta name="author" content="Ing&aacute; Digital Ltda. - www.ingadigital.com.br" />
+    <meta name="URL" content="https://www.wenceslaubraz.pr.gov.br/" />
+    <meta name="language" content="portuguese" />
+    <meta name="revisit-after" content="2 days" />
+    <meta name="document-state" content="Dynamic" />
+    <meta name="document-distribution" content="Global" />
+
+    <!-- ICONE DA ABA DO NAVEGADOR -->
+    <link rel="icon" href="https://wenceslaubraz.pr.gov.br//assets/images/icone-brasao.png" type="image/x-icon" />
+
+    <!-- CSS DE CONFIG CDNS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://wenceslaubraz.pr.gov.br//assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-dropdownhover.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/default.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- CSS PADRAO -->
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/lightbox.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/bootstrap-dropdownhover.min.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/inga_css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- FONTES DO SITE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;400;800&family=Poppins:wght@200;400;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?%20family=%20Open+Sans:wght@300%20&%20family=%20Poppins%20&%20family=%20Quicksand:wght@300%20&%20display=swap"
+        rel="stylesheet">
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.12.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.12.2/dist/js/uikit-icons.min.js"></script>
+
+    <!-- FONTES DO SITE -->
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/css/conteudo-interno.css" />
+
+    <!-- css lightbox -->
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/flash/css/style-light.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/flash/css/effect.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//assets/flash/css/flashy.min.css">
+    <link rel="stylesheet" type="text/css" href="https://wenceslaubraz.pr.gov.br//cookie/style.css">
+
+    <!-- ACESSIBILIDADE -->
+    <link rel="alternate stylesheet" href="https://wenceslaubraz.pr.gov.br//assets/css/escuro.css" title="2">
+    <link rel="alternate stylesheet" href="https://wenceslaubraz.pr.gov.br//assets/css/claro.css" title="1">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1B9V9PMYE"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-M1B9V9PMYE');
+    </script>
+
+</head>
+
+<body>
+    <header>
+    <div class="fundo-topo">
+    <div class="lateral-topo" id="lateral-esquerda"></div>
+    <div class="container no-padding">
+        <div class="controle-topo">
+            <div class="vazia"></div>
+            <div class="icones-acessibilidade">
+                <a href="https://wenceslaubraz.pr.gov.br//index.php?sessao=115499dbbbma11" class="mapa-dite" style="text-decoration:none;">
+                    <img src="./assets/images/topo/mapa-site.svg" alt="Mapa do site" class="img-mapa">
+                    <span class="txt-mapa">Mapa do site</span>
+                </a>
+
+                <div class="divisoria-topo"></div>
+
+                <span class="dropVlibras">
+                    <a href="https://www.gov.br/governodigital/pt-br/vlibras/" target="__blank" style="color: #ffffffab;">
+                        <img class="img-libras" src="./assets/images/topo/libras.svg" alt="Icone Libras">
+                    </a>
+                    <div class="dropVlibras-content">
+                        <a href="https://www.gov.br/governodigital/pt-br/vlibras/">
+                            <img src="http://www.ingadigital.com.br/transparencia/images/vlibras.gif">
+                            <p class="infoVlibras">O conte&uacute;do desse site pode ser acess&iacute;vel em Libras usando o VLibras</p>
+                        </a>
+                    </div>
+                </span>
+
+                <div class="divisoria-topo"></div>
+
+                <div class="item-fonte">
+                    <button class="txt-btn btn-a acessibilidade" onClick="fonte('a');">A +</button>
+                    <button class="txt-btn btn-a acessibilidade" onClick="fonte('d');">A -</button>
+                </div>
+
+                <div class="divisoria-topo"></div>
+
+                <button class="btn-contrste" id="contrast">
+                    <img src="./assets/images/topo/contraste.svg" alt="Icone Contraste" class="item-contraste">
+                </button>
+
+                <div class="divisoria-topo"></div>
+
+                <a href="https://www.ingadigital.com.br/transparencia/index.php?id_cliente=122&sessao=2143842509ax21" class="icone-acessibilidade" target="_blank">
+                    <span class="txt-acessibilidade">Acessibilidade</span>
+                    <img src="./assets/images/topo/acessibilidade.svg" alt="Icone Acessibilidade" class="icone-acess">
+                </a>
+
+                <div class="divisoria-topo"></div>
+                
+                <a href="https://www.ingadigital.com.br/transparencia/?id_cliente=122&sessao=b054603368uvb0" class="acesso-info" target="_blank">
+                    <img src="./assets/images/topo/info.svg" alt="Icone Informacao" class="icone-info">
+                </a>
+
+            </div>
+            <div class="icones-redessociais">
+                <a href="https://www.facebook.com/PrefWB" class="icone-face" target="_blank">
+                    <img src="./assets/images/topo/facebook.svg" alt="Facebook" class="img-facebook">
+                </a>
+
+                <a href="https://www.instagram.com/prefwb" class="iconte-instagram" target="_blank">
+                    <img src="./assets/images/topo/instagram.svg" alt="Instagram" class="img-instagram">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="lateral-topo" id="lateral-direita"></div>
+</div><div class="fundo-brasao-lupa">
+    <div class="container no-padding container-bl">
+        <div class="controle-brasao-lupa">
+            <a href="https://wenceslaubraz.pr.gov.br/" class="brasao-topo">
+                <img src="./assets/images/brasao-lupa/logoTopo2x.png" alt="Bras&atilde;o PM Wenceslau Braz" class="img-brasao">
+            </a>
+
+            <form class="form-pesquisa" name="buscanews" action="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368bxb0" method="POST" id="form-pesquisa" onSubmit="return validaBusca();">
+                <input type="text" class="acessibilidade texto-interno-busca form-control placeholder1" id="ipt-pesquisa" placeholder="Busca" name="busca" value="" title="Campo pesquisar">
+                <button class="btn-lupa"><img class="img-lupa" src="./assets/images/brasao-lupa/lupa.png" alt="Lupa"></button>
+            </form>
+        </div>
+    </div>
+</div><div class="fundo-menu">
+    <div class="container container-menu">
+        <nav class="navbar navbar-default controle-menu">
+            <div class="responsivo navbar-header hidden-lg hidden-sm hidden-md menuResponsivo">
+                <button type="button" class="navbar-toggle collapsed bnt-responsivo-menu" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-menu" aria-expanded="false">
+                    <i class="fa fa-bars img-btn-responsivo" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="navbar-toggle collapsed bnt-responsivo-lupa" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-lupa" aria-expanded="false">
+                    <img src="./assets/images/brasao-lupa/lupa.png" alt="&Iacute;cone da Lupa responsivo" class="img-lupa-responsivo">
+                </button>
+            </div>
+
+            <div class="dropdown collapse navbar-collapse no-padding acessibilidade" id="bs-example-navbar-collapse-menu">
+                <ul class="nav navbar-nav menu-topo-nav-2 controle-menu-2">
+                    <li class="dropdown home hidden-xs">
+                        <a href="https://wenceslaubraz.pr.gov.br/" style="padding-left:0px;">
+                            <img src="./assets/images/menu/home.png" alt="Home" class="icone-home">
+                        </a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle acessibilidade titulo-menu" data-toggle="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false" data-hover="dropdown"
+                            data-animations="zoomIn">
+                            <span class="txt-titulo-menu">Munic&iacute;pio</span>
+                            <img src="./assets/images/menu/seta.png" alt="Seta menu" class="seta-menu">
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li>
+                                <a class="acessibilidade"
+                                    href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ncb0&id=1931">
+                                    BANDEIRA                                </a>
+                            <li role="separator" class="divider"></li>
+                    </li>
+                                                <li>
+                                <a class="acessibilidade"
+                                    href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ncb0&id=1932">
+                                    BRAS&Atilde;O                                </a>
+                            <li role="separator" class="divider"></li>
+                    </li>
+                                                <li>
+                                <a class="acessibilidade"
+                                    href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ncb0&id=1933">
+                                    HINO                                </a>
+                            <li role="separator" class="divider"></li>
+                    </li>
+                                                <li>
+                                <a class="acessibilidade"
+                                    href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ncb0&id=1953">
+                                    HIST&Oacute;RIA                                </a>
+                            <li role="separator" class="divider"></li>
+                    </li>
+                                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle acessibilidade titulo-menu" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false" data-hover="dropdown" data-animations="zoomIn">
+                        <span class="txt-titulo-menu">Gest&atilde;o Atual</span>
+                        <img src="./assets/images/menu/seta.png" alt="Seta menu" class="seta-menu">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="acessibilidade" href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368gpb0">Galeria de
+                                Prefeitos</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="acessibilidade" href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368vpb0">Conhe&ccedil;a
+                                o Prefeito</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368vvb0">Composi&ccedil;&atilde;o da
+                                C&acirc;mara</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle acessibilidade titulo-menu" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false" data-hover="dropdown" data-animations="zoomIn">
+                        <span class="txt-titulo-menu">Secretarias</span>
+                        <img src="./assets/images/menu/seta.png" alt="Seta menu" class="seta-menu">
+                    </a>
+
+                    <ul class="dropdown-menu">
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3782">
+                                ADMINISTRA&Ccedil;&Atilde;O                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3783">
+                                AGRICULTURA E PECU&Aacute;RIA                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3784">
+                                ASSIST&Ecirc;NCIA SOCIAL                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3821">
+                                CHEFIA DE GABINETE                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3822">
+                                CONTROLE INTERNO MUNICIPAL                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3785">
+                                CULTURA                             </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=4069">
+                                DEFESA CIVIL                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3786">
+                                EDUCA&Ccedil;&Atilde;O                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3787">
+                                ESPORTES                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3788">
+                                FAZENDA                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3789">
+                                HABITA&Ccedil;&Atilde;O                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3790">
+                                IND&Uacute;STRIA E COM&Eacute;RCIO                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=4217">
+                                MEIO AMBIENTE                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3807">
+                                OBRAS                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3831">
+                                OUVIDORIA MUNICIPAL                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3791">
+                                PLANEJAMENTO                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=3792">
+                                SA&Uacute;DE                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                                <li>
+                            <a class="acessibilidade"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368svb0&id=4243">
+                                TURISMO                            </a>
+                        </li>
+
+                        <li role="separator" class="divider"></li>
+                                            </ul>
+                </li>
+
+                <li class="acessbilidade dropdown">
+                    <a href="#" class="dropdown-toggle acessibilidade titulo-menu" type="button" data-toggle="dropdown"
+                        data-hover="dropdown" data-animations="zoomIn">
+                        <span class="txt-titulo-menu">Servi&ccedil;os</span>
+                        <img src="./assets/images/menu/seta.png" alt="Seta menu" class="seta-menu">
+                    </a>
+                    <ul class="dropdown-menu">
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ncb0">
+                                Nossa Cidade</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368csb0">
+                                Concursos</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368obb0">
+                                Galeria de Obras</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368elb0">
+                                Instituições de Ensino</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368hlb0">
+                                Hospitais e Postos</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368a1b0">
+                                Empreendedor</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368csb0">
+                                Concursos/PSS</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368pdb0">
+                                Plano Diretor</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368b4b0">
+                                Formulários</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368owb0">
+                                Galeria de Aquisições</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368l0b0">
+                                Galeria de Vídeos</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368mpb0">
+                                Mapas</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368xab0">
+                                Telefones Úteis</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368h7b0">
+                                Avisos Públicos</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368cmb0">
+                                Conselhos Municipais</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu" href="http://coronavirus.wenceslaubraz.pr.gov.br/"
+                                target="_blank">Covid-19 - Transpar&ecirc;ncia</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu" href="https://wenceslaubraz.pr.gov.br/index.php?sessao=p0"
+                                target="_blank">LGPD </a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu" href="https://www.wenceslaubraz.pr.gov.br/index.php?sessao=b054603368sib0"
+                                target="_blank">Carta de Servi&ccedil;os</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu" href="https://wenceslaubraz.pr.gov.br/index.php?sessao=b054603368ixb0&id=3354"
+                                target="_blank">SERVI&Ccedil;O DE INSPE&Ccedil;&Atilde;O MUNICIPAL</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu" href="http://www.ingadigital.com.br/transparencia/index.php?id_cliente=122&sessao=b9b450df64d1b9"
+                                target="_blank">Di&aacute;rio Oficial</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu" href="https://www.ingadigital.com.br/transparencia/index.php?id_cliente=122&sessao=1781e36d91sc17"
+                                target="_blank">SIC</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                                <li class="menu-padding">
+                            <a class="acessibilidade text-menu" href="https://wenceslaubraz.pr.gov.br/index?sessao=b054603368ipb0&id=4107"
+                                target="_blank">Informativos</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                                            </ul>
+                </li>
+
+                <li class="acessbilidade dropdown">
+                    <a href="#" class="dropdown-toggle acessibilidade titulo-menu" type="button" data-toggle="dropdown"
+                        data-hover="dropdown" data-animations="zoomIn">
+                        <span class="txt-titulo-menu">Imprensa</span>
+                        <img src="./assets/images/menu/seta.png" alt="Seta menu" class="seta-menu">
+                    </a>
+                    <ul class="dropdown-menu acessibilidade">
+                        <li class="menu-padding"><a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368n5b0">Not&iacute;cias</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b454603368z5b0">Eventos</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=bt54603368l0b0">Galeria de V&iacute;deos</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="acessbilidade dropdown">
+                    <a href="#" class="dropdown-toggle acessibilidade titulo-menu" type="button" data-toggle="dropdown"
+                        data-hover="dropdown" data-animations="zoomIn">
+                        <span class="txt-titulo-menu">Contato</span>
+                        <img src="./assets/images/menu/seta.png" alt="Seta menu" class="seta-menu">
+                    </a>
+                    <ul class="dropdown-menu acessibilidade">
+                        <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="http://www.ingadigital.com.br/transparencia/index.php?id_cliente=122&sessao=8e38b4427bei8e"
+                                target="_blank">E-SIC</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="https://wenceslaubraz.pr.gov.br//index.php?sessao=33784c7fd4ct33">Fale Conosco</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li class="menu-padding">
+                            <a class="acessibilidade text-menu"
+                                href="http://www.ingadigital.com.br/transparencia/?id_cliente=122&sessao=b054603368uvb0"
+                                target="_blank">Ouvidoria</a>
+                        </li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+
+            <div class="dropdown collapse navbar-collapse no-padding acessibilidade" id="bs-example-navbar-collapse-lupa">
+                <div class="controle-lupa-responsivo">
+                    <form class="form-pesquisa-responsivo" name="buscanews" action="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368bxb0" method="POST" id="form-pesquisa" onSubmit="return validaBusca();">
+                        <input type="text" class="acessibilidade texto-interno-busca form-control placeholder1" id="ipt-pesquisa" placeholder="Busca" name="busca" value="" title="Campo pesquisar">
+                        <button class="btn-lupa"><img class="img-lupa" src="./assets/images/brasao-lupa/lupa.png" alt="Lupa"></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>    </header>
+
+    <div class="conteudo-interno">
+                <div class="container no-padding-left-right padding-mobile" style="margin-top: 2em; min-height: 500px;">
+            <div id='corpo-responsivo'><style>
+	/* NAVEGAÃ§ÃƒO */
+
+.sw_area_navegacao .sw_area_links_navegacao .sw_navegacao_inativo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 35px 14px;
+  border-color: transparent transparent #e9eaec transparent;
+  transition: 0.2s;
+}
+
+.sw_area_navegacao .sw_area_links_navegacao .sw_navegacao_inativo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 35px 14px 0 0;
+  border-color: #e9eaec transparent transparent transparent;
+  transition: 0.2s;
+}
+
+.sw_area_navegacao .sw_area_links_navegacao .sw_navegacao {
+  height: 35px;
+  line-height: 35px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1px 0;
+  margin-right: 2px;
+  margin-right: calc(17px);
+  font-size: 12px !important;
+  color: #444;
+  padding: 0 15px;
+  background: #e9eaec;
+  transition: 0.2s;
+}
+
+.sw_area_navegacao .sw_area_links_navegacao .sw_navegacao_inativo {
+  height: 35px;
+  line-height: 35px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1px 0;
+  margin-right: 2px;
+  margin-right: calc(17px);
+  font-size: 12px !important;
+  color: #444;
+  padding: 0 15px;
+  background: #e9eaec;
+  transition: 0.2s;
+}
+
+.sw_area_navegacao .sw_area_links_navegacao .sw_navegacao::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 35px 14px;
+  border-color: transparent transparent #c9cbd0 transparent;
+  transition: 0.2s;
+}
+
+.sw_area_navegacao .sw_area_links_navegacao .sw_navegacao::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 35px 14px 0 0;
+  border-color: #c9cbd0 transparent transparent transparent;
+  transition: 0.2s;
+}
+
+.sw_area_navegacao {
+  text-align: initial;
+}
+</style>
+
+
+<div class="acessibilidade row">
+
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+		
+			<ol class="breadcrumb">
+				<li><a href="https://wenceslaubraz.pr.gov.br/">In&iacute;cio</a></li>
+				<li class="active"><a href="https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ipb0&id=3920">Informativos</a></li>
+
+									<li class="active">PLANO MUNICIPAL DE ARBORIZA&Ccedil;&Atilde;O URBANA</li>
+				
+			</ol>
+
+		
+		<!-- <h4>Quinta-feira, 13 de mar&ccedil;o de 2025</h4> -->
+
+		
+
+
+
+					<h3 class="acessibilidade">PLANO MUNICIPAL DE ARBORIZA&Ccedil;&Atilde;O URBANA</h3>
+		
+							
+	</div>
+</div>
+
+<p class="acessibilidade clearfix">&nbsp;</p>
+
+
+	<div class="acessibilidade panel panel-default">
+		<div class="panel-heading">
+			<div class="acessibilidade panel-title">Galeria de Anexos.</div>
+		</div>
+		<div class="acessibilidade panel-body">
+
+			<script>console.log(122)</script>
+				<a class="acessibilidade col-lg-12 col-md-12 col-sm-12 col-xs-12" href="https://www.controlemunicipal.com.br/inga/sistema/arquivos/122/130325144922_plano_municipal_de_arborizacao_urbana_wb2023_pdf.pdf" target="_blank" title="ANO DE 2023" class="img-thumbnail" style="margin: 3px; width:  100%; height: auto; overflow: hidden;">
+					<img src="https://www.controlemunicipal.com.br/site/geral/images/ico_pdf.png" style="max-height: 50px; margin:5px;" alt="PLANO MUNICIPAL DE ARBORIZA&Ccedil;&Atilde;O URBANA" />
+																<b> ANO DE 2023 </b>
+					
+				</a>
+			
+		</div>
+	</div>
+	</div>        </div>
+            </div>
+
+    <footer>
+        <div class="fundo-info-rodape">
+    <div class="container no-padding">
+        <div class="controle-info-rodape">
+            <div class="controle-brasao">
+                <a href="https://wenceslaubraz.pr.gov.br/" class="icone-brasao-rodape">
+                    <img src="./assets/images/rodape/logoTopo2x.png" alt="Bras&atilde;o" class="img-brasao-rodape">
+                </a>
+            </div>
+
+            <div class="controle-itens">
+                <div class="item-rodape">
+                    <img src="./assets/images/rodape/horario-att.svg" alt="" class="img-item-rodape">
+                    <span class="txt-item-rodape">Hor&aacute;rio de atendimento: de segunda a sexta, das 8h &agrave;s 12h e das 13h 17h.</span>
+                </div>
+
+                <a href="https://maps.app.goo.gl/iXnnZErCdPgx35vD8" class="item-rodape" target="_blank">
+                    <img src="./assets/images/rodape/endereco.svg" alt="" class="img-item-rodape">
+                    <span class="txt-item-rodape">Rua Expedicion&aacute;rios, 200, 84950-000, Centro, WENCESLAU BRAZ</span>
+                </a>
+
+                <a href="tel:0800-400-3033 / 3141-9500" class="item-rodape">
+                    <img src="./assets/images/rodape/telefone.svg" alt="" class="img-item-rodape">
+                    <span class="txt-item-rodape">Contatos: 0800-400-3033 / 3141-9500</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fundo-ultima-att">
+    <div class="container no-padding">
+        <div class="controle-ultmia-att">
+            <div class="ultima-att">
+                <span class="txt-ultima-att">&Uacute;ltima atualiza&ccedil;&atilde;o do site: 25/11/2026 20:52:19</span>
+            </div>
+
+            <div class="controle-itens-responsivo">
+                <div class="visitas-reg" id="bg">
+                    <span class="txt-visitas-reg">Visitas registradas</span> 
+                    <a>
+                        <img src='https://megacontador.com.br/img-MgOhmdTBQw7KEd62-26.gif' class="contador-rodape" alt='Contador de visitas'>
+                    </a>
+                </div>
+                
+                <a href="https://ingadigital.com.br/" class="logo-inga" target="_blank">
+                    <img src="./assets/images/rodape/logo-inga-rodape.png" alt="Logo Ing&aacute;" class="img-logo-inga">
+                </a>
+            </div>
+
+            <div class="ultima-att-responsivo">
+                <span class="txt-ultima-att">&Uacute;ltima atualiza&ccedil;&atilde;o do site: 25/11/2026 20:52:19</span>
+            </div>
+        </div>
+    </div>
+</div>    </footer>
+
+    <!-- JAVASCRIPT DO SITE -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://wenceslaubraz.pr.gov.br/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.controlemunicipal.com.br/site/geral/js/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://wenceslaubraz.pr.gov.br//assets/js/main.js"></script>
+
+    <!-- JS DE CONFIG CDNS -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/alertifyjs/1.10.0/alertify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.iframetracker/1.1.0/jquery.iframetracker.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.js">
+    </script>
+    <script type="text/javascript" src="https://wenceslaubraz.pr.gov.br//assets/flash/js/jquery.flashy.min.js"></script>
+    <script type="text/javascript" src="https://wenceslaubraz.pr.gov.br//assets/flash/js/jquery.flashy.js"></script>
+    <script type="text/javascript" src="https://wenceslaubraz.pr.gov.br//assets/flash/js/main.js"></script>
+    <script src="https://wenceslaubraz.pr.gov.br//cookie/caixa.js"></script>
+    <script src="https://wenceslaubraz.pr.gov.br//assets/js/animacao.js"></script>
+    <script src="https://wenceslaubraz.pr.gov.br//assets/js/bootstrap-dropdownhover.min.js"></script>
+
+    <!-- SCRIPT DO MODAL -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#popup-modal_3').modal('show');
+        $('#popup-modal_2').modal('show');
+        $('#popup-modal_1').modal('show');
+    });
+    </script>
+
+    <!-- SCRIPT DE BARRA DE PESQUISA -->
+    <script>
+    function openNav() {
+        document.getElementById("pesquisa").style.height = "100%";
+    }
+
+    function closeNav() {
+        document.getElementById("pesquisa").style.height = "0%";
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNYBGSD5ZN"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-BNYBGSD5ZN');
+    </script>
+
+    <script>
+    $(function() {
+        $('.smoothScroll').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location
+                .hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000); // The number here represents the speed of the scroll in milliseconds
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+
+    <!-- ACESSIBILIDADE -->
+    <script type="text/javascript" src="https://wenceslaubraz.pr.gov.br//assets/js/alterar-contraste.js"></script>
+    <script src="https://wenceslaubraz.pr.gov.br//assets/js/fonte.js"></script>
+</body>
+
+</html>

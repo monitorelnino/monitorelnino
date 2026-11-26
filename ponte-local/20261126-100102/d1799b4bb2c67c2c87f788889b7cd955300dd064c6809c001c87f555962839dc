@@ -1,0 +1,1157 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link href="/site/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Munic&#237;pio de Dezesseis de Novembro - RS</title>
+		<meta name="description" content="Munic&#237;pio de Dezesseis de Novembro - RS" />
+		<meta name="keywords" content="Munic&#237;pio de Dezesseis de Novembro - RS, Prefeitura, rs.gov.br, abase, camara">
+    <meta name="robots" content="index,follow">
+
+    <link rel="shortcut icon" href="../../../Arquivos/370/brasao.png" type="image/png" />
+
+    <!-- Custom CSS -->
+    <link href="/site/Layout/css/custom.css" rel="stylesheet">
+    <!-- Color CSS -->
+    <link href="../../../Arquivos/370/custom.css" rel="stylesheet">
+    <!-- Mega Menu -->
+    <link href="/site/Layout/css/mega-menu.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="/site/Layout/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="/site/Layout/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link href="/site/Layout/css/materialize.css" rel="stylesheet">
+    
+    <!-- Font Awesome 7.1.0 -->
+	<link rel="stylesheet" href="/site/Layout/2025/fontawesome/css/all.min.css" />
+	<link rel="stylesheet" href="/site/Layout/2025/fontawesome/css/v4-shims.min.css" />
+		
+	<!-- CSS do Slick -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Owl Slider -->
+    <link href="/site/Layout/css/owl.slider.css" rel="stylesheet">
+    <!-- Abase -->
+    <link href="/site/Layout/css/abase.css" rel="stylesheet">
+    <!-- Pretty Photo -->
+    <link href="/site/Layout/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="/site/Layout/css/vendors.css" type="text/css" rel="stylesheet">
+    <!-- Map Open Street View-->
+    <link href="/site/Layout/mapsOpen/leaflet.css" rel="stylesheet">
+
+    <script src="/site/Layout/js/jquery-1.11.2.min.js"></script>
+    <script src="/site/Layout/js/jquery.prettyPhoto.js"></script>
+    <script src="/site/Layout/mapsOpen/leaflet.js"></script>
+    <script src="/site/Scripts/mascaras.js"></script>
+    <script src="/site/Scripts/mask.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+
+  ga("create", "UA-98880668-26", "auto");
+  ga("send", "pageview");
+
+</script>    <style>
+        #salvaContraste {
+            color: black;
+            height: 40px !important;
+            margin-left: 20px !important;
+        }
+
+        .searchBox {
+            padding: 0.05cm;
+        }
+    </style>
+</head>
+<body>
+
+    <!--  .searchBox { width: 50%; } -->
+    <!-- Main Wrapper Start -->
+    <div id="wrapper" class="wrapper">
+
+        <!-- Header Start -->
+        <div id="cp-header" class="cp-header">
+            <!-- BARRA DE ACESSIBILIDADE -->
+            <div class="cp-topbar" id="topo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-5" style="padding-right:0px !important; padding-left: 0px !important">
+                            <ul class="toplinks">
+                                <li st class="waves-button" onclick="rolar('conteudo');"><a href="javascript:void(0);"><i class="fa fa-folder-o"></i> Ir para conteúdo</a></li>
+                                <li class="waves-button" onclick="rolar('menu');"><a href="javascript:void(0);"><i class="fa fa-bars "></i> Ir para menu</a></li>
+                                <li class="waves-button" onclick="rolar('footer');"><a href="javascript:void(0);"><i class="fa fa-angle-double-down"></i> Ir para rodapé</a></li>
+                                <li class="waves-button"><a href="http://www.vlibras.gov.br/" target="_blank"><i class="fa fa-hand-paper-o"></i> Libras</a></li>
+								<li class="waves-button" id="botaoAlternar"><a><i class="fa fa-eye"></i> Leitor</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-xs-3 col-sm-2 col-md-1" style="padding-right:0px !important; padding-left: 20px !important">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <ul class="toplinks">
+                                    <li class="waves-button" id="aumenta_fonte" style="font-size:10px;"><a href="javascript:void(0);"> A <i class="fa fa-plus"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <ul class="toplinks">
+                                    <li class="waves-button" id="reduz_fonte" style="font-size:10px;"><a href="javascript:void(0);"> A <i class="fa fa-minus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--    <div class="col-xs-6 col-sm-6 col-md-5" style="padding-right:0px !important; padding-left: 0px !important">-->
+                        <div class="col-xs-9 col-sm-7 col-md-4" style="padding-right:0px !important; padding-left: 20px !important">
+                            <ul class="toplinks">
+                                <li class="waves-button" id="altocontraste"><a href="javascript:void(0);">ALTO CONTRASTE</a></li>
+                                    <li class="waves-button"><a href="/painel" target="_blank">ACESSO RESTRITO</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-1 col-lg-2 right" style="padding-right:0px !important; padding-left: 0px !important">
+                            <div class="searchBox">
+                                <form action="/site/Busca/Index" id="cse-search-box2">
+                                    <input type="hidden" name="cx" value="002068025997486153223:stxh9zdnasi">
+                                    <input type="hidden" name="ie" value="UTF-8">
+
+                                    <!-- Pesquisa Google -->
+                                    <table>
+                                        <tr>
+                                            <td style="color: #000;">
+                                                <input class="input_pesquisa_google" type="text" placeholder="Buscar com Google" name="q" size="15" style="border-style: double;font-family: sans-serif;border-radius: 2px;border-width: 1px;border-color: #E8E8E8;padding: 0px;">
+                                            </td>
+                                            <td>
+                                                <input type="submit" name="sa" value="Ir" style="border: 1px double; padding-top: 2px; padding-bottom: 2px; padding-left: 15px; padding-right: 15px; margin-left: 5px; border-radius: 2px;">
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </form>
+                            </div>
+                        </div>
+                        <!--   </div>-->
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- FIM BARRA DE ACESSIBILIDADE -->
+            <!-- CABEÇALHO PREFITURA -->
+            <div class="cp-logo-row" style="padding:15px 0;">
+                <div class="container">
+                    <div class="row">
+                                <div class="col-md-2">
+                        <div class="logo">
+                            <a href="http://www.dezesseisdenovembro.rs.gov.br/site">
+                                <img class="brasao" src="/site/Brasoes/370/cabecalho.png" alt="Munic&#237;pio de Dezesseis de Novembro - RS">
+                            </a>
+                        </div>
+                    </div>					
+                            <div class="col-md-10">
+                    <div class="col-md-12 no-padding">
+                        <h1 class="pull-right">Munic&#237;pio de Dezesseis de Novembro - RS</h1>
+                    </div>
+
+                    <div class="col-xs-12 cp-topsocial no-padding">
+                        <h4 class="pull-right" style="font-size: 14px; font-weight: normal;">
+                                 Endereço: Rua Santo Ant&#244;nio, 1243
+                        </h4>
+
+                    </div>
+                    <div class="col-xs-12 cp-topsocial no-padding">
+                        <h4 class="pull-right" style="font-size: 14px; font-weight: normal;">
+
+
+
+
+                                 Horário de Atendimento: 8:00 at&#233; 11:30 e 13:30 at&#233; 16:30
+
+                                 Telefone: (55) 3362-1005 (55)3362-1100
+                        </h4>
+							
+
+                    </div>
+
+				
+                    <div class="col-xs-12 cp-topsocial no-padding">
+                        <ul class="pull-right margin-off no-padding">
+							
+							<!-- covid mauricio 
+-->
+							                                                                                        <li class="">
+                                    <a href="https://www.dezesseisdenovembro.rs.gov.br/site/cartasservico" target="_blank"><img id="salvaContraste" src="/site/Layout/images/CartasDeServico.jpg" style="height:40px !important; margin-left:20px !important" /></a>
+                                </li>
+                                                                                                                                                                                                                                    <!-- <li class="">
+                                    <a href="https://www.devolveicms.rs.gov.br/inicial" target="_blank"><img id="DevolveIcms" src="~/Layout/images/DEVOVEICMS.png" style="height:40px !important; margin-left:20px !important" /></a>
+                                </li> -->
+                                    <li class="">
+                                        <a href="/site/sic" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/acesso a informação.png" style="height:40px !important; margin-left:20px !important;" /></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/site/faleconosco" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/faleConosco.png" style="height:40px !important; margin-left:20px !important;" /></a>
+                                    </li>
+
+                                                            <li class="">
+                                    <a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/Licitacon.png" style="height:40px !important; margin-left:20px !important;" /></a>
+                                </li>
+														                                                                <li class="">
+                                        <a href="/site/ouvidoria" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/Ouvidoria75.png" style="height:40px !important; margin-left:5px !important;" /></a>
+                                    </li>
+
+                                <li class=""><a href="https://www.facebook.com/prefeituradezesseisdenovembro/" target="_blank"><i id="salvaContraste" class="fa fa-facebook" style="height:40px !important; margin-left:5px !important;"></i></a></li>
+                                                                                                                                        </ul>
+
+                    </div>
+                </div>
+                <!-- FIM col-md-10 -->
+            </div>
+        </div>
+    </div>
+    <!-- FIM CABEÇALHO PREFITURA -->
+    <!-- Mega Menu Start -->
+    <div class="cp-megamenu" id="menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cp-mega-menu">
+                        <label for="mobile-button"><i class="fa fa-bars"></i></label>
+                        <!-- mobile click button to show menu -->
+                        <input id="mobile-button" type="checkbox">
+                        <ul class="collapse main-menu">
+                            <!-- Brasão menor quando rola a pag
+                            <li class="slogo">
+                                <a href="javascript:void(0);" onclick="rolar('topo');">
+                                    <img src="~/Brasoes/370/menu.png" alt="">
+                                </a>
+                            </li>
+                                -->
+
+                            <li>
+                                <a href="http://www.dezesseisdenovembro.rs.gov.br/site">
+                                    Início
+                                </a>
+                            </li>
+
+							
+                                <li>
+                                    <a href="javascript:void(0);">Publica&#231;&#245;es oficiais</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/leis?pagina=1&amp;tipo=3&amp;ano=Todos&amp;busca=&amp;vigente=&amp;filtro=" target="_blank">
+                                                            Decretos
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/editais" target="_blank">
+                                                            Editais
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/leis" target="_blank">
+                                                            Leis
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/leis?pagina=1&amp;tipo=4&amp;ano=Todos&amp;busca=&amp;vigente=&amp;filtro=" target="_blank">
+                                                            Portarias 
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Munic&#237;pio</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://sitearquivosbr.s3-sa-east-1.amazonaws.com/370/Conteudos/1995272/gijxth0seo65glv5g5dp_png2pdf.pdf" target="_self">
+                                                            ESTRUTURA ORGANIZACIONAL
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/472-pgabinete-do-prefeitop" target="_self">
+                                                            Gabinete do Prefeito
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/473-pgabinete-do-vice-prefeitop" target="_self">
+                                                            Gabinete do Vice-Prefeito
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/482-hino-municipal">
+                                                            Hino Municipal
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/484-phistoacuteriap" target="_self">
+                                                            História
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/483-plocalizaccedilatildeop" target="_self">
+                                                            Localização
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/6504-perguntas-frequentes">
+                                                            Perguntas Frequentes
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Secretarias</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/478-psecretaria-da-fazendap" target="_self">
+                                                            Secretaria da Fazenda
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/474-psecretaria-de-administraccedilatildeop" target="_self">
+                                                            Secretaria de Administração
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/476-psecretaria-de-agricultura-e-meio-ambientep" target="_self">
+                                                            Secretaria de Agricultura e Meio Ambiente
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/475-psecretaria-de-assistecircncia-socialp" target="_self">
+                                                            Secretaria de Assistência Social
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/480-psecretaria-de-desenvolvimento-e-captaccedilatildeo-de-recursosp" target="_self">
+                                                            Secretaria de Desenvolvimento e Captação de Recursos
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/477-psecretaria-de-educaccedilatildeo-e-culturap" target="_blank">
+                                                            Secretaria de Educação e Cultura
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/479-psecretaria-de-obras-e-viaccedilatildeop" target="_self">
+                                                            Secretaria de Obras e Viação
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/481-psecretaria-de-sauacutedep" target="_self">
+                                                            Secretaria de Saúde
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Comunica&#231;&#227;o</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">GALERIA DE PREFEITOS</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/prefeitos" target="_self">
+                                                            GALERIA DE PREFEITOS
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">COVID-19</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudosdiversos" target="_blank">
+                                                            COVID-19
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                            <li class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <ul class="" style="margin-top: 20px;">
+                                    <li>
+                                        <form method="get" action="/site/Pesquisa/Index">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" name="q" placeholder="Faça sua pesquisa aqui" required="required">
+                                                    </td>
+                                                    <td>
+                                                        <input type="submit" value="Pesquisar">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mega Menu End -->
+</div>
+<!-- Header End -->
+<!-- Main Featured Slider -->
+
+<!-- Main Featured End -->
+<!-- Main Content Start -->
+<div class="main-content" id="conteudo">
+
+    
+    <section>
+        
+
+
+
+<header class="header-1"></header>
+<div class="page-header conteudo-img">
+    <div class="container">
+        <h1>Planos Municipais </h1>
+        <div class="breadcrumb-2">
+            <ul class="breadcrumb">
+                <li><a href="/site/">Home</a></li>
+                <li class="active">Planos Municipais </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+
+				
+    <div class="col-xs-12 m30">
+        <div class="cp-news-grid-style-1">
+            <div class="col-xs-12 no-padding">
+                <div class="section-title-center blue-border">
+                </div>
+
+                                
+            <form action="/site/ConteudosDiversos?pagina=1" method="get" style="float:right;">
+
+                                                				
+                                                                                                       <div class="dropdown right" style="float:left;margin-right: 15px;">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Planos Municipais 
+                            <span class="caret"></span>
+                        </button>
+
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="/site/ConteudosDiversos?pagina=1&tipo=98&busca=">Aviso</a></li>
+                                <li><a href="/site/ConteudosDiversos?pagina=1&tipo=96&busca=">Covid-19</a></li>
+                                <li><a href="/site/ConteudosDiversos?pagina=1&tipo=23701&busca=">ESTRUTURA ORGANIZACIONAL</a></li>
+                                <li><a href="/site/ConteudosDiversos?pagina=1&tipo=101&busca=">Planos Municipais </a></li>
+                                <li><a href="/site/ConteudosDiversos?pagina=1&tipo=23830&busca=">PNAB</a></li>
+                        </ul>
+                    </div>
+                                                                
+				
+					<input type="hidden" name="tipo" value="101" />
+                Tipo/Datas/Descrição:
+                <input type="text" class="form-control-abase" name="busca" value="" placeholder="Faça sua pesquisa aqui">
+                <button type="submit" class="btn btn-submit">Buscar <i class="fa fa-angle-right"></i></button>
+
+            </form>
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+    <div class="col-sm-12 col-md-6">
+        <p class="bg-danger">
+            <b class="text-danger"></b>
+            
+        </p>
+    </div>
+
+
+        <div class="widget popular-post">
+            <div class="cp-sidebar-content">
+                <ul class="grid no-padding" id="grid">
+
+
+
+
+
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/5782-plano-de-saude-2026-2029">Plano de sa&#250;de 2026-2029</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 14/08/2026</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/5782-plano-de-saude-2026-2029" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/5780-plano-muncipal-de-saude-20262029">PLANO MUNCIPAL DE SA&#218;DE 2026/2029</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 13/08/2026</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/5780-plano-muncipal-de-saude-20262029" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/5699-programacao-anual-de-saude-–-pas">PROGRAMA&#199;&#195;O ANUAL DE SA&#218;DE – PAS </a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 16/06/2026</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/5699-programacao-anual-de-saude-–-pas" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/5339-plano-de-contingencia-para-falta-de-energia-eletrica">Plano de Conting&#234;ncia para falta de Energia El&#233;trica</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 18/02/2026</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/5339-plano-de-contingencia-para-falta-de-energia-eletrica" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/5037-plano-anual-de-contratacoes---2025">PLANO ANUAL DE CONTRATA&#199;&#213;ES - 2025</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 13/10/2025</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/5037-plano-anual-de-contratacoes---2025" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/4673-programacao-anual-de-saude--2025">Programa&#231;&#227;o Anual de Sa&#250;de- 2025</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 09/05/2025</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/4673-programacao-anual-de-saude--2025" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/4602-relatorio-anual-2024">RELATORIO ANUAL 2024</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 28/03/2025</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/4602-relatorio-anual-2024" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/3927-relatorio-anual-de-gestao---2023">Relat&#243;rio Anual de Gest&#227;o - 2023</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 16/05/2024</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/3927-relatorio-anual-de-gestao---2023" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/3926-programacao-anual-de-saude---2024">Programa&#231;&#227;o Anual de Sa&#250;de - 2024</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 16/05/2024</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/3926-programacao-anual-de-saude---2024" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/2384-plano-municipal-de-educacao-2015-2025">Plano Municipal de Educa&#231;&#227;o 2015-2025</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 20/07/2023</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/2384-plano-municipal-de-educacao-2015-2025" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/2382-plano-municipal-de-saneamento-basico">Plano Municipal de Saneamento B&#225;sico</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 19/07/2023</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/2382-plano-municipal-de-saneamento-basico" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/2381-plano-municipal-de-saude-2022-2025">Plano Municipal de Sa&#250;de 2022-2025</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 19/07/2023</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/2381-plano-municipal-de-saude-2022-2025" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/1336-plano-nacional-de-vacinacao-covid-19---eficacia-riscos-e-beneficios">PLANO NACIONAL DE VACINA&#199;&#195;O COVID-19 - Ef&#237;c&#225;cia, Riscos e Benef&#237;cios</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 02/07/2021</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/1336-plano-nacional-de-vacinacao-covid-19---eficacia-riscos-e-beneficios" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="small-post">
+            <div class="cp-post-content-eventos nome-evento">
+                        <span><a href="/site/ConteudosDiversos/1323-plano-de-contingencia-e-acao-municipal-para-infeccao-humana-covid-19">PLANO DE CONTING&#202;NCIA E A&#199;&#195;O MUNICIPAL PARA INFEC&#199;&#195;O HUMANA COVID-19</a></span>
+            <ul class="cp-post-tools">
+									<li>Tipo: Planos Municipais </li>
+					<br />
+								
+										<li><i class="fa fa-calendar"></i> Data: 29/06/2021</li>
+										<br />
+                
+
+                        <li><a href="/site/ConteudosDiversos/1323-plano-de-contingencia-e-acao-municipal-para-infeccao-humana-covid-19" style="font-size:14px;"><i class="fa fa-pie-chart" style="margin-right:10px;"></i>Clique para mais informações</a></li>
+
+            </ul>
+            </div>
+        </div>
+    </li>
+
+                </ul>
+
+                    <div class="row">
+                        <div class="pagination-holder" style="margin-top:20px !important;">
+                            <nav>
+                                <ul class="pagination">
+
+
+
+                            <li class="active"><a href="javascript:void(0);">1<span class="sr-only">(current)</span></a></li>
+
+                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+</div>
+    </div>
+
+    </section>
+
+</div>
+<!-- Main Content End -->
+<!-- Footer Start -->
+<footer id="footer" class="footer">
+        <div class="footer-three">
+            <div class="container">
+                <div class="row">
+                    <form>
+                        <button formaction="../site/mapasite" allign="left">Mapa Do Site</button>
+                    </form>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 no-padding">
+                                <div class="titulo-rodape">
+                                    <span>Secretarias</span>
+                                </div>
+                            </div>
+                            <ul class="cp-post-content">
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/478-psecretaria-da-fazendap" target="_blank">
+                                                Secretaria da Fazenda
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/474-psecretaria-de-administraccedilatildeop" target="_blank">
+                                                Secretaria de Administração
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/476-psecretaria-de-agricultura-e-meio-ambientep" target="_blank">
+                                                Secretaria de Agricultura e Meio Ambiente
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/475-psecretaria-de-assistecircncia-socialp" target="_blank">
+                                                Secretaria de Assistência Social
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/480-psecretaria-de-desenvolvimento-e-captaccedilatildeo-de-recursosp" target="_blank">
+                                                Secretaria de Desenvolvimento e Captação de Recursos
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/477-psecretaria-de-educaccedilatildeo-e-culturap" target="_blank">
+                                                Secretaria de Educação e Cultura
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/479-psecretaria-de-obras-e-viaccedilatildeop" target="_blank">
+                                                Secretaria de Obras e Viação
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/481-psecretaria-de-sauacutedep" target="_blank">
+                                                Secretaria de Saúde
+                                            </a>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 no-padding">
+                                <div class="titulo-rodape">
+                                    <span>Munic&#237;pio</span>
+                                </div>
+                            </div>
+                            <ul class="cp-post-content">
+                                    <li>
+                                            <a href="https://sitearquivosbr.s3-sa-east-1.amazonaws.com/370/Conteudos/1995272/gijxth0seo65glv5g5dp_png2pdf.pdf" target="_blank">
+                                                ESTRUTURA ORGANIZACIONAL
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/472-pgabinete-do-prefeitop" target="_blank">
+                                                Gabinete do Prefeito
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/473-pgabinete-do-vice-prefeitop" target="_blank">
+                                                Gabinete do Vice-Prefeito
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/482-hino-municipal">
+                                                Hino Municipal
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/484-phistoacuteriap" target="_blank">
+                                                História
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/conteudos/483-plocalizaccedilatildeop" target="_blank">
+                                                Localização
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/6504-perguntas-frequentes">
+                                                Perguntas Frequentes
+                                            </a>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 no-padding">
+                                <div class="titulo-rodape">
+                                    <span>Publica&#231;&#245;es oficiais</span>
+                                </div>
+                            </div>
+                            <ul class="cp-post-content">
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/leis?pagina=1&amp;tipo=3&amp;ano=Todos&amp;busca=&amp;vigente=&amp;filtro=" target="_blank">
+                                                Decretos
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/editais" target="_blank">
+                                                Editais
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/leis" target="_blank">
+                                                Leis
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.dezesseisdenovembro.rs.gov.br/site/leis?pagina=1&amp;tipo=4&amp;ano=Todos&amp;busca=&amp;vigente=&amp;filtro=" target="_blank">
+                                                Portarias 
+                                            </a>
+                                    </li>
+                            </ul>
+                        </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-2">
+                        <div class="col-xs-12 no-padding">
+                            <div class="titulo-rodape">
+                                <span>Link Úteis</span>
+                            </div>
+                        </div>
+                        <ul class="cp-post-content">
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="footer-one footer-widgets">
+    <div class="box-cookies hide">
+        <p class="msg-cookies">Este site usa cookies para garantir que você obtenha a melhor experiência.</p>
+        <button class="btn-cookies">Aceitar!</button>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <a href="javascript:void(0);" onclick="rolar('topo');">
+                    <img src="/site/Brasoes/370/rodape.png" class="brasao-rp" alt="LOGO PREFEITURA">
+                </a>
+            </div>
+            <div class="col-md-8 marTB-Rodape texto-info-rodape">
+                <span>
+                    Munic&#237;pio de Dezesseis de Novembro - RS
+                    <br />
+Rua Santo Ant&#244;nio, 1243                    <br />
+(55) 3362-1005 (55)3362-1100                                             / secadministracao@pm16nov.com.br
+                    <br /><a href="javascript:void(0)" data-toggle="modal" data-target="#modal-feed">Inscreva-se para receber atualizações</a>				
+                    <div id="modal-feed" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="/site/Home/Feed" method="post">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Informe seu endereço de e-mail</h4>
+                                    </div>
+                                    <div class="modal-body" style="padding-left: 25px; padding-right: 25px;">
+                                        <input name="email" required="required" type="email" class="form-control" placeholder="E-Mail"><span class="material-bar"></span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                                                                                    </div>
+    </div>
+</div>
+    <div class="footer-four">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="http://www.abase.com.br" target="_blank">
+						<img src="/site/Layout/images/logo-abase512.png" alt="Abase Sistemas" style="height: 80px;">
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        Todos direitos reservados 2026 © Abase Sistemas e Soluções LTDA
+                        <br />
+                        Desenvolvido por <a href="http://www.abase.com.br" target="_blank">Abase Sistemas e Soluções Ltda</a>                        
+						<br />
+                        Nossa <a href="https://sitearquivos.s3-us-west-2.amazonaws.com/1260/Conteudos/4753/lyblp430cwsm1xo6ch4u_ABASE-PoliticadePrivacidadeeCookieseTermodeUso2022(1).pdf" target="_blank">Política de Privacidade</a>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                        <a href="/painel" style="float:right;">
+                            <img src="/site/Layout/images/cadeado.png" style="height: 32px; " alt="Acesso Administrativo" />
+                        </a>
+                                                        </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer End -->
+
+</div>
+<!-- Main Wrapper End -->
+<!-- Js Files-->
+<script src="/site/Layout/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/site/Layout/js/bootstrap.min.js"></script>
+<script src="/site/Layout/js/materialize.min.js"></script>
+<script src="/site/Layout/js/owl.carousel.min.js"></script>
+<script src="/site/Layout/js/custom.js"></script>
+<script src="/site/Layout/js/acessibilidade.js"></script>
+<script src="/site/Scripts/jquery.jqprint-0.3.js"></script>
+
+
+<script>
+    (() => {
+        if (!localStorage.pureJavaScriptCookies) {
+            document.querySelector(".box-cookies").classList.remove('hide');
+        }
+
+        const acceptCookies = () => {
+            document.querySelector(".box-cookies").classList.add('hide');
+            localStorage.setItem("pureJavaScriptCookies", "accept");
+        };
+
+        const btnCookies = document.querySelector(".btn-cookies");
+
+        btnCookies.addEventListener('click', acceptCookies);
+    })();
+
+    /* AJUSTE DE IMAGENS */
+    resize();
+    window.onresize = resize;
+    window.setTimeout('resize()', 2000);
+    function resize() {
+
+        $('.cp-thumb img').replaceWith(function (i, v) {
+            if (this.src.indexOf('plus.png') == -1) {
+                return $('<div />', {
+                    style: 'background-image: url(' + this.src + ');' +
+                        'width:' + this.width + 'px;' +
+                        'height:' + (this.width / 1.63) + 'px;' +
+                        'background-repeat: no-repeat;' +
+                        'background-position: center;' +
+                        'background-size: cover;' +
+                        'display: inline-block;'
+                })
+            }
+        })
+    }
+</script>
+
+
+<script>
+        function rolar(id) {
+            $('html, body').animate({
+                scrollTop: $("#" + id).offset().top
+            }, 500);
+        };
+
+        function imprimir(idElemento) {
+            $("#" + idElemento).jqprint();
+            return (false);
+        }
+
+            
+        if ($(".full-news-slider").length) {
+            $(".full-news-slider").owlCarousel({
+                autoplayHoverPause: true,
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                pagination: false,
+                singleItem: true
+            });
+        }
+        
+</script>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+
+  <script>
+      let leituraAtivada = localStorage.getItem('leituraAtivada') === 'true';
+      let lendoMensagemDeAtivacao = false;
+
+      const botaoAlternar = document.getElementById('botaoAlternar');
+      const icone = botaoAlternar.querySelector('i');
+
+      botaoAlternar.addEventListener('click', (evento) => {
+          evento.preventDefault();
+
+          leituraAtivada = !leituraAtivada;
+          localStorage.setItem('leituraAtivada', leituraAtivada);
+
+          if (leituraAtivada) {
+              icone.className = "fa fa-eye-slash";
+              lerMensagemDeAtivacao("Leitor de texto ativado");
+
+          } else {
+              icone.className = "fa fa-eye";
+              lerMensagemDeAtivacao("Leitor de texto desativado");
+          }
+      });
+
+      function lerTexto(texto) {
+          const fala = new SpeechSynthesisUtterance(texto);
+          speechSynthesis.speak(fala);
+      }
+
+      function lerMensagemDeAtivacao(mensagem) {
+          lendoMensagemDeAtivacao = true; 
+          const fala = new SpeechSynthesisUtterance(mensagem);
+          fala.onend = () => {
+              lendoMensagemDeAtivacao = false; 
+          };
+          speechSynthesis.cancel();
+          speechSynthesis.speak(fala);
+      }
+
+      document.addEventListener('mouseover', (evento) => {
+          if (leituraAtivada && !lendoMensagemDeAtivacao) { 
+              const texto = evento.target.textContent || evento.target.alt || "";
+              if (texto.trim()) {
+                  speechSynthesis.cancel(); 
+                  lerTexto(texto);
+              }
+          }
+      });
+
+      document.addEventListener('mouseout', () => {
+          if (leituraAtivada && !lendoMensagemDeAtivacao) { 
+              speechSynthesis.cancel();
+          }
+      });
+	  
+	  $('.search-bar > i').on('click', function (e) {
+		e.stopPropagation();
+	
+		let menu = $(this).siblings('ul');
+	
+		$('.search-bar ul').not(menu).hide();
+	
+		menu.stop(true, true).slideToggle(150);
+	});
+	
+	$(document).on('click', function () {
+		$('.search-bar ul').hide();
+	});
+	
+	$('.search-bar ul').on('click', function (e) {
+		e.stopPropagation();
+	});
+  </script>
+  
+</body>
+
+</html>

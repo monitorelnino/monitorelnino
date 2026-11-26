@@ -1,0 +1,2723 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link href="/site/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS</title>
+		<meta name="description" content="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS" />
+		<meta name="keywords" content="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS, Prefeitura, rs.gov.br, abase, camara">
+    <meta name="robots" content="index,follow">
+
+    <link rel="shortcut icon" href="../../../Arquivos/650/brasao.png" type="image/png" />
+
+    <!-- Custom CSS -->
+    <link href="/site/Layout/css/custom.css" rel="stylesheet">
+    <!-- Color CSS -->
+    <link href="../../../Arquivos/650/custom.css" rel="stylesheet">
+    <!-- Mega Menu -->
+    <link href="/site/Layout/css/mega-menu.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="/site/Layout/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="/site/Layout/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link href="/site/Layout/css/materialize.css" rel="stylesheet">
+    
+    <!-- Font Awesome 7.1.0 -->
+	<link rel="stylesheet" href="/site/Layout/2025/fontawesome/css/all.min.css" />
+	<link rel="stylesheet" href="/site/Layout/2025/fontawesome/css/v4-shims.min.css" />
+		
+	<!-- CSS do Slick -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Owl Slider -->
+    <link href="/site/Layout/css/owl.slider.css" rel="stylesheet">
+    <!-- Abase -->
+    <link href="/site/Layout/css/abase.css" rel="stylesheet">
+    <!-- Pretty Photo -->
+    <link href="/site/Layout/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="/site/Layout/css/vendors.css" type="text/css" rel="stylesheet">
+    <!-- Map Open Street View-->
+    <link href="/site/Layout/mapsOpen/leaflet.css" rel="stylesheet">
+
+    <script src="/site/Layout/js/jquery-1.11.2.min.js"></script>
+    <script src="/site/Layout/js/jquery.prettyPhoto.js"></script>
+    <script src="/site/Layout/mapsOpen/leaflet.js"></script>
+    <script src="/site/Scripts/mascaras.js"></script>
+    <script src="/site/Scripts/mask.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+
+  ga("create", "UA-100068197-7", "auto");
+  ga("send", "pageview");
+
+</script>    <style>
+        #salvaContraste {
+            color: black;
+            height: 40px !important;
+            margin-left: 20px !important;
+        }
+
+        .searchBox {
+            padding: 0.05cm;
+        }
+    </style>
+</head>
+<body>
+
+    <!--  .searchBox { width: 50%; } -->
+    <!-- Main Wrapper Start -->
+    <div id="wrapper" class="wrapper">
+
+        <!-- Header Start -->
+        <div id="cp-header" class="cp-header">
+            <!-- BARRA DE ACESSIBILIDADE -->
+            <div class="cp-topbar" id="topo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-5" style="padding-right:0px !important; padding-left: 0px !important">
+                            <ul class="toplinks">
+                                <li st class="waves-button" onclick="rolar('conteudo');"><a href="javascript:void(0);"><i class="fa fa-folder-o"></i> Ir para conteúdo</a></li>
+                                <li class="waves-button" onclick="rolar('menu');"><a href="javascript:void(0);"><i class="fa fa-bars "></i> Ir para menu</a></li>
+                                <li class="waves-button" onclick="rolar('footer');"><a href="javascript:void(0);"><i class="fa fa-angle-double-down"></i> Ir para rodapé</a></li>
+                                <li class="waves-button"><a href="http://www.vlibras.gov.br/" target="_blank"><i class="fa fa-hand-paper-o"></i> Libras</a></li>
+								<li class="waves-button" id="botaoAlternar"><a><i class="fa fa-eye"></i> Leitor</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-xs-3 col-sm-2 col-md-1" style="padding-right:0px !important; padding-left: 20px !important">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <ul class="toplinks">
+                                    <li class="waves-button" id="aumenta_fonte" style="font-size:10px;"><a href="javascript:void(0);"> A <i class="fa fa-plus"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <ul class="toplinks">
+                                    <li class="waves-button" id="reduz_fonte" style="font-size:10px;"><a href="javascript:void(0);"> A <i class="fa fa-minus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--    <div class="col-xs-6 col-sm-6 col-md-5" style="padding-right:0px !important; padding-left: 0px !important">-->
+                        <div class="col-xs-9 col-sm-7 col-md-4" style="padding-right:0px !important; padding-left: 20px !important">
+                            <ul class="toplinks">
+                                <li class="waves-button" id="altocontraste"><a href="javascript:void(0);">ALTO CONTRASTE</a></li>
+                                    <li class="waves-button"><a href="/painel" target="_blank">ACESSO RESTRITO</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-1 col-lg-2 right" style="padding-right:0px !important; padding-left: 0px !important">
+                            <div class="searchBox">
+                                <form action="/site/Busca/Index" id="cse-search-box2">
+                                    <input type="hidden" name="cx" value="002068025997486153223:orchti9fpoa">
+                                    <input type="hidden" name="ie" value="UTF-8">
+
+                                    <!-- Pesquisa Google -->
+                                    <table>
+                                        <tr>
+                                            <td style="color: #000;">
+                                                <input class="input_pesquisa_google" type="text" placeholder="Buscar com Google" name="q" size="15" style="border-style: double;font-family: sans-serif;border-radius: 2px;border-width: 1px;border-color: #E8E8E8;padding: 0px;">
+                                            </td>
+                                            <td>
+                                                <input type="submit" name="sa" value="Ir" style="border: 1px double; padding-top: 2px; padding-bottom: 2px; padding-left: 15px; padding-right: 15px; margin-left: 5px; border-radius: 2px;">
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </form>
+                            </div>
+                        </div>
+                        <!--   </div>-->
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- FIM BARRA DE ACESSIBILIDADE -->
+            <!-- CABEÇALHO PREFITURA -->
+            <div class="cp-logo-row" style="padding:15px 0;">
+                <div class="container">
+                    <div class="row">
+                                <div class="col-md-2">
+                        <div class="logo">
+                            <a href="http://www.saojosedoinhacora.rs.gov.br/site">
+                                <img class="brasao" src="/site/Brasoes/650/cabecalho.png" alt="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS">
+                            </a>
+                        </div>
+                    </div>					
+                            <div class="col-md-10">
+                    <div class="col-md-12 no-padding">
+                        <h1 class="pull-right">Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS</h1>
+                    </div>
+
+                    <div class="col-xs-12 cp-topsocial no-padding">
+                        <h4 class="pull-right" style="font-size: 14px; font-weight: normal;">
+                                 Endereço: Rua Frei Leonardo Braun, 50 - centro - CEP: 98958-000
+                        </h4>
+
+                    </div>
+                    <div class="col-xs-12 cp-topsocial no-padding">
+                        <h4 class="pull-right" style="font-size: 14px; font-weight: normal;">
+
+
+
+
+                                 Horário de Atendimento: 08 &#224;s 11h45 e 13h15 &#224;s 17h30
+
+                                 Telefone: (55) 98454-7642
+                        </h4>
+							
+
+                    </div>
+
+				
+                    <div class="col-xs-12 cp-topsocial no-padding">
+                        <ul class="pull-right margin-off no-padding">
+							
+							<!-- covid mauricio 
+-->
+							                                                                                                                                                                                                                                                                                            <!-- <li class="">
+                                    <a href="https://www.devolveicms.rs.gov.br/inicial" target="_blank"><img id="DevolveIcms" src="~/Layout/images/DEVOVEICMS.png" style="height:40px !important; margin-left:20px !important" /></a>
+                                </li> -->
+                                    <li class="">
+                                        <a href="/site/sic" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/acesso a informação.png" style="height:40px !important; margin-left:20px !important;" /></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/site/faleconosco" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/faleConosco.png" style="height:40px !important; margin-left:20px !important;" /></a>
+                                    </li>
+
+                                                            <li class="">
+                                    <a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/Licitacon.png" style="height:40px !important; margin-left:20px !important;" /></a>
+                                </li>
+														                                                                <li class="">
+                                        <a href="/site/ouvidoria" target="_blank"><img id="salvaContraste" src="/site/Layout/images/gallery/Ouvidoria75.png" style="height:40px !important; margin-left:5px !important;" /></a>
+                                    </li>
+
+                                <li class=""><a href="https://www.facebook.com/prefeituradesji" target="_blank"><i id="salvaContraste" class="fa fa-facebook" style="height:40px !important; margin-left:5px !important;"></i></a></li>
+                                                            <li class=""><a href="https://twitter.com/prefeituradesji" target="_blank"><i id="salvaContraste" class="fa fa-twitter" style="height:40px !important; margin-left:5px !important;"></i></a></li>
+                                                                                        <li class=""><a href="https://www.instagram.com/prefeiturasji/" target="_blank"><i id="salvaContraste" class="fa fa-instagram" style="height:40px !important; margin-left:5px !important;"></i></a></li>
+                                                    </ul>
+
+                    </div>
+                </div>
+                <!-- FIM col-md-10 -->
+            </div>
+        </div>
+    </div>
+    <!-- FIM CABEÇALHO PREFITURA -->
+    <!-- Mega Menu Start -->
+    <div class="cp-megamenu" id="menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cp-mega-menu">
+                        <label for="mobile-button"><i class="fa fa-bars"></i></label>
+                        <!-- mobile click button to show menu -->
+                        <input id="mobile-button" type="checkbox">
+                        <ul class="collapse main-menu">
+                            <!-- Brasão menor quando rola a pag
+                            <li class="slogo">
+                                <a href="javascript:void(0);" onclick="rolar('topo');">
+                                    <img src="~/Brasoes/650/menu.png" alt="">
+                                </a>
+                            </li>
+                                -->
+
+                            <li>
+                                <a href="http://www.saojosedoinhacora.rs.gov.br/site">
+                                    Início
+                                </a>
+                            </li>
+
+							
+                                <li>
+                                    <a href="javascript:void(0);">PLANOS MUNICIPAIS</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                   <a href="" target="_blank">
+														COVID-19
+													</a>
+                                                    <i class="fa fa-angle-right"></i>
+                                                    <ul class="drop-down one-column hover-expand">
+                                                                <a href="/site/conteudos/4526-plano-de-contingencia-e-acao-covid-19">
+                                                                    Plano de Contingencia e Ação Covid-19
+                                                                </a>
+                                                    </ul>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/7523-plano-de-accedilatildeo-de-emendas-impositivas">
+                                                            Plano de A&ccedil;&atilde;o de Emendas Impositivas
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6126-pplano-de-" target="_self">
+                                                            Plano de Contingência de Proteção e Defesa Civil
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                   <a href="" target="_blank">
+														Plano de Contingencia e Ação Dengue 
+													</a>
+                                                    <i class="fa fa-angle-right"></i>
+                                                    <ul class="drop-down one-column hover-expand">
+                                                                <a href="/site/conteudos/6371-plano-municipal-de-contingecircncia-da-dengue-2026">
+                                                                    Plano Municipal de Conting&ecirc;ncia da Dengue 2026
+                                                                </a>
+                                                    </ul>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/7267-pnbspplanoestrateacutegicoinstitucionalp" target="_blank">
+                                                            PLANO DE GOVERNO 2025-2028
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/7268-plano-municipal-de-assistecircncia-social-2026-2029">
+                                                            Plano Municipal de Assist&ecirc;ncia Social 2026-2029
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/6703-plano-municipal-decenal-de-cultura---20252035">
+                                                            Plano Municipal Decenal de Cultura - 2025/2035
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6659-pplano-mun" target="_blank">
+                                                            Plano Municipal de Contingência de Chuvas intensas - 2025
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/5220-plano-municipal-de-educacao-2015-2025">
+                                                            Plano Municipal de Educação 2015-2025
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/5219-plano-municipal-de-sauacutede-2026-2029">
+                                                            Plano Municipal de Sa&uacute;de 2026-2029
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/7625-pplano-mun" target="_blank">
+                                                            Plano Municipal pela Primeira Infância Melhor | 2026–2036
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href=" https://sitearquivos.s3-us-west-2.amazonaws.com/650/PlanosMetas/44/kdd3px1g6mw5nagdkn9z_PMSBSAOJOSEDOINHACORA(2).pdf" target="_self">
+                                                            Plano Mun. Saneamento
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6397-plano-regional-de-aacutegua-e-esgoto---prae---corsanaegea" target="_self">
+                                                            Plano Regional de Água e Esgoto - PRAE - CORSAN/AEGEA
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">V&#237;deo Institucional</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://www.youtube.com/embed/6jkMxUzSGTk?si=5tRsPbZfQmkkb6-M" target="_blank">
+                                                            Vídeo Institucional de São José do Inhacorá/RS - 2025
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Munic&#237;pio</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://sp1-object.adentro.com.br/sites/650/Conteudos/2117534/ojhhqn76njre834cdcxz_CALENDARIODEEVENTOS2026.pdf" target="_blank">
+                                                            Calendário de Eventos
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1467-pcaracteri" target="_self">
+                                                            Caracterização
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1485-pcontatosp" target="_self">
+                                                            Contatos
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1468-pdados-demograacuteficosp" target="_blank">
+                                                            Dados demográficos
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1665-feriados">
+                                                            Feriados
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1820-hino-municipal" target="_blank">
+                                                            Hino Municipal 
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1466-phistoacuterico-do-municiacutepiop" target="_blank">
+                                                            Histórico do Município
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/2679-licenciamento-ambiental">
+                                                            Licenciamento Ambiental
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1477-psistema-municipal-de-saneamentop" target="_self">
+                                                            Sistema Municipal de Saneamento
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Secretarias</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="/site/conteudos/1476-a-secretaria-municipal-do-trabalho-assistecircncia-social-e-habitaccedilatildeo">
+                                                            A Secretaria Municipal do Trabalho, Assist&ecirc;ncia Social e Habita&ccedil;&atilde;o.
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1478-pgabinete-do-prefeitop" target="_blank">
+                                                            Gabinete do Prefeito
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1471-secretaria-municipal-da-fazenda">
+                                                            Secretaria Municipal da Fazenda
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1470-psecretaria-municipal-de-administraccedilatildeop" target="_self">
+                                                            Secretaria Municipal de Administração
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1473-psecretaria-municipal-de-educaccedilatildeo-cultura-desportos-e-turismop" target="_blank">
+                                                            Secretaria Municipal de Educação, Cultura, Desportos e Turismo
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1486-secretaria-municipal-de-obras-viacao-e-transito">
+                                                            Secretaria Municipal de Obras, Viação e Trânsito 
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                   <a href="" target="_blank">
+														Secretaria Municipal de Planejamento
+													</a>
+                                                    <i class="fa fa-angle-right"></i>
+                                                    <ul class="drop-down one-column hover-expand">
+                                                                <a href="/site/conteudos/6294-secretaria-municipal-de-planejamento">
+                                                                    Secretaria Municipal de Planejamento
+                                                                </a>
+                                                    </ul>
+                                            </li>
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1474-psecretaria-municipal-de-sauacutedep" target="_self">
+                                                            Secretaria Municipal de Saúde
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1475-secretaria-municipal-do-agronegocio-e-meio-ambiente">
+                                                            Secretaria Municipal do Agronegócio e Meio Ambiente
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Transpar&#234;ncia</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="http://transparencia.abase.com.br/home/O&#199;4&#199;GfFZ1Yg=" target="_blank">
+                                                            Portal da Transpârencia
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Turismo</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/4216-a-novemberfest" target="_blank">
+                                                            A Novemberfest 
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1482-antiga-usina-hidreletrica">
+                                                            Antiga Usina Hidrelétrica
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1488-conheca-a-historia-da-gruta-nossa-senhora-de-lurdes">
+                                                            Conheça a história da Gruta Nossa Senhora de Lurdes
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1487-histoacuterico-do-santuaacuterio-parque-satildeo-francisco-de-assis---calvaacuterio">
+                                                            Hist&oacute;rico do Santu&aacute;rio Parque S&atilde;o Francisco de Assis - Calv&aacute;rio
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1490-historico-do-ctg-recanto-datradicao">
+                                                            Histórico do CTG Recanto daTradição
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1483-pigreja-matriz-catoacutelica-e-paroquial-de-satildeo-joseacute-do-inhacoraacutep" target="_blank">
+                                                            Igreja Matriz Católica e Paroquial de São José do Inhacorá
+                                                        </a>
+                                            </li>
+                                            <li>
+                                                        <a href="/site/conteudos/1481-ppraccedila-municipal-alceu-inaacutecio-fernandes---histoacutericop" target="_blank">
+                                                            Praça Municipal Alceu Inácio Fernandes - Histórico
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Contatos</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="/site/conteudos/2421-pcontatosp">
+                                                            <p>Contatos</p>
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">Cidad&#227;o</a>
+                                    <ul class="drop-down one-column hover-fade">
+
+                                            <li>
+                                                        <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6593-pservicced" target="_self">
+                                                            JUNTA DE SERVIÇO MILITAR
+                                                        </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                            <li class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <ul class="" style="margin-top: 20px;">
+                                    <li>
+                                        <form method="get" action="/site/Pesquisa/Index">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" name="q" placeholder="Faça sua pesquisa aqui" required="required">
+                                                    </td>
+                                                    <td>
+                                                        <input type="submit" value="Pesquisar">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mega Menu End -->
+</div>
+<!-- Header End -->
+<!-- Main Featured Slider -->
+    <div class="cp-banner-container">
+        <div class="owl-carousel owl-theme full-news-slider">
+
+                        <div class="item">
+                            <a href="#"><img class="banner" src="https://sp1-object.adentro.com.br/sites/650/Cabecalhos/181863/rq5kmy14qwzdbooollvt_2_208R..png" alt="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#"><img class="banner" src="https://sp1-object.adentro.com.br/sites/650/Cabecalhos/181865/460z68h9pn24l1n841pj_4_294E..png" alt="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#"><img class="banner" src="https://sp1-object.adentro.com.br/sites/650/Cabecalhos/181868/7q4h117d0uh58msltbru_8_242A..png" alt="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#"><img class="banner" src="https://sp1-object.adentro.com.br/sites/650/Cabecalhos/181858/1c5m16333ye3rssrlp3p_0_3226..png" alt="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#"><img class="banner" src="https://sp1-object.adentro.com.br/sites/650/Cabecalhos/181867/kuhp290axukzn82tj32o_6_2622..png" alt="Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS"></a>
+                        </div>
+
+        </div>
+    </div>
+
+<!-- Main Featured End -->
+<!-- Main Content Start -->
+<div class="main-content" id="conteudo">
+
+    
+    <section>
+        
+
+
+
+
+
+
+
+
+
+    <div class="rowabase r-0">
+        <div class="container">
+
+
+
+<!-- _NoticiasOK -->
+
+        <div class="col-sm-12 col-md-8 m30">
+        <div class="cp-news-grid-style-1">
+            <div class="col-xs-12 no-padding">
+                <div class="section-title-center blue-border">
+                    <h2>Notícias</h2>
+                </div>
+                <div class="loadmore-holder-right section-title-center"> <a class="loadmore-right waves-effect waves-button" href="/site/Noticias">+ Notícias </a> </div>
+            </div>
+            <ul class="grid">
+
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/agricultura/915552-pderivados-do-leite-e-novas-oportunidadesp');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2196254/0ah72du84l79i87felrt_914202752_3733646010106412_457868922330600900_n.jfif" alt="&lt;p&gt;DERIVADOS DO LEITE E NOVAS OPORTUNIDADES&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/agricultura">Agricultura</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/agricultura/915552-pderivados-do-leite-e-novas-oportunidadesp">
+                                                      <p>DERIVADOS DO LEITE E NOVAS OPORTUNIDADES</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 23/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/obras/915550-pcuidado-e-manutenccedilatildeo-dos-espaccedilos-puacuteblicosp');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2196238/n3o7izlm2ua3kpbl4eoy_914422931_2176052289951204_6673562013618689942_n.jfif" alt="&lt;p&gt;Cuidado e manuten&amp;ccedil;&amp;atilde;o dos espa&amp;ccedil;os p&amp;uacute;blicos!&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-orange4 waves-effect waves-button" href="/site/noticias/obras">Obras</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/obras/915550-pcuidado-e-manutenccedilatildeo-dos-espaccedilos-puacuteblicosp">
+                                                      <p>Cuidado e manuten&ccedil;&atilde;o dos espa&ccedil;os p&uacute;blicos!</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 23/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/fazenda/915549-preurb---inscriccedilotildees-prorrogadas-para-a-reurb-ndash-regularizaccedilatildeo-fundiaacuteria-urbanap');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2196235/lvqwg3d7v3s54pp70xkf_914368203_1803069830914276_1405776230939091608_n.jfif" alt="&lt;p&gt;REURB - Inscri&amp;ccedil;&amp;otilde;es PRORROGADAS para a REURB &amp;ndash; Regulariza&amp;ccedil;&amp;atilde;o Fundi&amp;aacute;ria Urbana&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-forest green waves-effect waves-button" href="/site/noticias/fazenda">Fazenda</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/fazenda/915549-preurb---inscriccedilotildees-prorrogadas-para-a-reurb-ndash-regularizaccedilatildeo-fundiaacuteria-urbanap">
+                                                      <p>REURB - Inscri&ccedil;&otilde;es PRORROGADAS para a REURB &ndash; Regulariza&ccedil;&atilde;o Fundi&aacute;ria Urbana</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 23/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/cultura/915551-p20-de-novembro-ndash-dia-da-consciecircncia-negrabr-nbspp');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2196241/5qw9pemwu61b2z4m4a1u_914342483_1610830221074940_80096377304538713_n.jfif" alt="&lt;p&gt;20 de Novembro &amp;ndash; Dia da Consci&amp;ecirc;ncia Negra&lt;br /&gt;&amp;nbsp;&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/cultura">Cultura</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/cultura/915551-p20-de-novembro-ndash-dia-da-consciecircncia-negrabr-nbspp">
+                                                      <p>20 de Novembro &ndash; Dia da Consci&ecirc;ncia Negra<br />&nbsp;</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 20/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/saude/915472-pnovembro-azul-promoveu-conscientizaccedilatildeo-sobre-a-sauacutede-masculinabr-nbspp');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2195450/tgm4uh5k77jdhlquzanq_WhatsApp_Image_2026-11-18_at_08.48.44.jpeg" alt="&lt;p&gt;Novembro Azul promoveu conscientiza&amp;ccedil;&amp;atilde;o sobre a sa&amp;uacute;de masculina&lt;br /&gt;&amp;nbsp;&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/saude">Sa&#250;de</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/saude/915472-pnovembro-azul-promoveu-conscientizaccedilatildeo-sobre-a-sauacutede-masculinabr-nbspp">
+                                                      <p>Novembro Azul promoveu conscientiza&ccedil;&atilde;o sobre a sa&uacute;de masculina<br />&nbsp;</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 18/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/vigilancia-sanitaria/915470-pinstalaccedilatildeo-de-abrigos-para-sistemas-de-desinfecccedilatildeo-de-poccedilos-no-interior-do-municiacutepiop');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2196232/chzdcgxxvmik8y0movda_912820926_2400142124057328_2534562873642021621_n.jfif" alt="&lt;p&gt;Instala&amp;ccedil;&amp;atilde;o de abrigos para sistemas de desinfec&amp;ccedil;&amp;atilde;o de po&amp;ccedil;os no interior do munic&amp;iacute;pio&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/vigilancia-sanitaria">Vigil&#226;ncia Sanit&#225;ria</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/vigilancia-sanitaria/915470-pinstalaccedilatildeo-de-abrigos-para-sistemas-de-desinfecccedilatildeo-de-poccedilos-no-interior-do-municiacutepiop">
+                                                      <p>Instala&ccedil;&atilde;o de abrigos para sistemas de desinfec&ccedil;&atilde;o de po&ccedil;os no interior do munic&iacute;pio</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 18/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/obras/915326-prevestimento-asfaacuteltico-na-estrada-municipal-da-linha-centralp');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2194122/jxakbof6qutcn7itznd5_WhatsApp_Image_2026-11-13_at_15.23.56_1.jpeg" alt="&lt;p&gt;REVESTIMENTO ASF&amp;Aacute;LTICO NA ESTRADA MUNICIPAL DA LINHA CENTRAL&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-orange4 waves-effect waves-button" href="/site/noticias/obras">Obras</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/obras/915326-prevestimento-asfaacuteltico-na-estrada-municipal-da-linha-centralp">
+                                                      <p>REVESTIMENTO ASF&Aacute;LTICO NA ESTRADA MUNICIPAL DA LINHA CENTRAL</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 13/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/diversos/915290-psicredi-confianccedila-realiza-doaccedilatildeo-de-equipamentos-de-mobilidade-agrave-secretaria-municipal-de-sauacutedep');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2192344/q46u5pt5qc3fbng1cns4_WhatsApp_Image_2026-11-11_at_16.12.35.jpeg" alt="&lt;p&gt;Sicredi Confian&amp;ccedil;a realiza doa&amp;ccedil;&amp;atilde;o de equipamentos de mobilidade &amp;agrave; Secretaria Municipal de Sa&amp;uacute;de&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-purple waves-effect waves-button" href="/site/noticias/diversos">Diversos</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/diversos/915290-psicredi-confianccedila-realiza-doaccedilatildeo-de-equipamentos-de-mobilidade-agrave-secretaria-municipal-de-sauacutedep">
+                                                      <p>Sicredi Confian&ccedil;a realiza doa&ccedil;&atilde;o de equipamentos de mobilidade &agrave; Secretaria Municipal de Sa&uacute;de</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 12/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/administracao/915231-porganizaccedilatildeo-do-calendaacuterio-municipal-de-eventos-2027p');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2191245/eez1m0lqdtkwidrvwuzq_891844516_1646526410202611_7758269701970806690_n.jfif" alt="&lt;p&gt;Organiza&amp;ccedil;&amp;atilde;o do calend&amp;aacute;rio municipal de eventos 2027&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-dark-cyan waves-effect waves-button" href="/site/noticias/administracao">Administra&#231;&#227;o</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/administracao/915231-porganizaccedilatildeo-do-calendaacuterio-municipal-de-eventos-2027p">
+                                                      <p>Organiza&ccedil;&atilde;o do calend&aacute;rio municipal de eventos 2027</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 10/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/fazenda/915230-pganhadores-na-extraccedilatildeo-municipal-da-nota-fiscal-gauacutechap');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2191244/ftz6xeudqla2f02zxsgl_900174496_1875987786895736_8622841747268506354_n.jfif" alt="&lt;p&gt;Ganhadores na extra&amp;ccedil;&amp;atilde;o municipal da Nota Fiscal Ga&amp;uacute;cha&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-forest green waves-effect waves-button" href="/site/noticias/fazenda">Fazenda</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/fazenda/915230-pganhadores-na-extraccedilatildeo-municipal-da-nota-fiscal-gauacutechap">
+                                                      <p>Ganhadores na extra&ccedil;&atilde;o municipal da Nota Fiscal Ga&uacute;cha</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 10/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/saude/915229-pnovembro-azul-ndash-cuidar-da-sauacutede-tambeacutem-eacute-coisa-de-homemp');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2191243/qy4mpgihcbtndb0pcpbd_893400314_1518084353463674_7849070637565018354_n.jfif" alt="&lt;p&gt;NOVEMBRO AZUL &amp;ndash; CUIDAR DA SA&amp;Uacute;DE TAMB&amp;Eacute;M &amp;Eacute; COISA DE HOMEM!&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/saude">Sa&#250;de</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/saude/915229-pnovembro-azul-ndash-cuidar-da-sauacutede-tambeacutem-eacute-coisa-de-homemp">
+                                                      <p>NOVEMBRO AZUL &ndash; CUIDAR DA SA&Uacute;DE TAMB&Eacute;M &Eacute; COISA DE HOMEM!</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 10/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/saude/915228-pubs-de-satildeo-joseacute-do-inhacoraacute-registra-1830-atendimentos-em-outubrop');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2191226/ubnqjci2uq9k8vk28lzm_898736262_3516332788538748_8649292141932422643_n.jfif" alt="&lt;p&gt;UBS de S&amp;atilde;o Jos&amp;eacute; do Inhacor&amp;aacute; registra 1.830 atendimentos em outubro&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/saude">Sa&#250;de</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/saude/915228-pubs-de-satildeo-joseacute-do-inhacoraacute-registra-1830-atendimentos-em-outubrop">
+                                                      <p>UBS de S&atilde;o Jos&eacute; do Inhacor&aacute; registra 1.830 atendimentos em outubro</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 10/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/administracao/915015-paudiecircncia-puacuteblica--nbspdiscussatildeo-loa-2027p');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2188761/dzk5rqlazh7i906xwq38_858188033_1864494838336049_5883315125921502418_n.jfif" alt="&lt;p&gt;AUDI&amp;Ecirc;NCIA P&amp;Uacute;BLICA -&amp;nbsp;DISCUSS&amp;Atilde;O LOA 2027&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-dark-cyan waves-effect waves-button" href="/site/noticias/administracao">Administra&#231;&#227;o</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/administracao/915015-paudiecircncia-puacuteblica--nbspdiscussatildeo-loa-2027p">
+                                                      <p>AUDI&Ecirc;NCIA P&Uacute;BLICA -&nbsp;DISCUSS&Atilde;O LOA 2027</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 04/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/saude/915014-poutubro-rosa-reuacutene-mulheres-em-momento-de-cuidado-informaccedilatildeo-e-bem-estarp');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2188759/mv455ap07uf5njt8nl4f_853872936_2303529390489384_4097297391185206487_n.jfif" alt="&lt;p&gt;Outubro Rosa re&amp;uacute;ne mulheres em momento de cuidado, informa&amp;ccedil;&amp;atilde;o e bem-estar&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/saude">Sa&#250;de</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/saude/915014-poutubro-rosa-reuacutene-mulheres-em-momento-de-cuidado-informaccedilatildeo-e-bem-estarp">
+                                                      <p>Outubro Rosa re&uacute;ne mulheres em momento de cuidado, informa&ccedil;&atilde;o e bem-estar</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 04/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/administracao/915013-psatildeo-joseacute-do-inhacoraacute-abre-inscriccedilotildees-para-concurso-puacuteblico-e-processo-seletivop');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2188734/o8q2e44wypl3fxv2me89_conc.jfif" alt="&lt;p&gt;S&amp;atilde;o Jos&amp;eacute; do Inhacor&amp;aacute; abre inscri&amp;ccedil;&amp;otilde;es para Concurso P&amp;uacute;blico e Processo Seletivo&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-dark-cyan waves-effect waves-button" href="/site/noticias/administracao">Administra&#231;&#227;o</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/administracao/915013-psatildeo-joseacute-do-inhacoraacute-abre-inscriccedilotildees-para-concurso-puacuteblico-e-processo-seletivop">
+                                                      <p>S&atilde;o Jos&eacute; do Inhacor&aacute; abre inscri&ccedil;&otilde;es para Concurso P&uacute;blico e Processo Seletivo</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 04/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/educacao/915232-ppreacute-matriacuteculas-para-as-turmas-de-educaccedilatildeo-infantil-2027p');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2191246/78ubk4ys9gxpb9aa4mkn_887813562_2181682399890443_2720113500415720399_n.jfif" alt="&lt;p&gt;Pr&amp;eacute;-matr&amp;iacute;culas para as turmas de Educa&amp;ccedil;&amp;atilde;o Infantil 2027&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-green waves-effect waves-button" href="/site/noticias/educacao">Educa&#231;&#227;o</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/educacao/915232-ppreacute-matriacuteculas-para-as-turmas-de-educaccedilatildeo-infantil-2027p">
+                                                      <p>Pr&eacute;-matr&iacute;culas para as turmas de Educa&ccedil;&atilde;o Infantil 2027</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 03/11/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/assistencia-social/914703-curso-de-docinhos-e-tortas');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2185023/kdzai45tdyl890s84s66_WhatsApp_Image_2026-10-20_at_18.26.34.jpeg" alt="Curso de Docinhos e Tortas"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-purple waves-effect waves-button" href="/site/noticias/assistencia-social">Assist&#234;ncia Social</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/assistencia-social/914703-curso-de-docinhos-e-tortas">
+                                                      Curso de Docinhos e Tortas
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 21/10/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+                        <li class="col-xs-12 col-sm-4">
+                              <div class="cp-news-post-excerpt" style="cursor: pointer;" onclick="window.location.replace('/site/noticias/administracao/914670-pcelebraccedilatildeo-antecipada-do-dia-donbsp-servidor-puacuteblico-com-palestra-homenagens-e-confraternizaccedilatildeop');">
+                                  
+
+                                        <div class="cp-thumb"><img src="https://sp1-object.adentro.com.br/sites/650/Noticias/2184587/l6g3in1bygcv7gujn7be_854188359_1419131140380849_5658397081515403987_n.jfif" alt="&lt;p&gt;Celebra&amp;ccedil;&amp;atilde;o antecipada do dia do&amp;nbsp; Servidor P&amp;uacute;blico com palestra, homenagens e confraterniza&amp;ccedil;&amp;atilde;o&lt;/p&gt;"></div>
+
+
+                                  <div class="cp-post-content">
+                                      <div class="catname"><a class="catname-btn btn-dark-cyan waves-effect waves-button" href="/site/noticias/administracao">Administra&#231;&#227;o</a></div>
+                                      <div style="overflow: hidden;height:50px;">
+                                          <h3>
+                                              <a href="/site/noticias/administracao/914670-pcelebraccedilatildeo-antecipada-do-dia-donbsp-servidor-puacuteblico-com-palestra-homenagens-e-confraternizaccedilatildeop">
+                                                      <p>Celebra&ccedil;&atilde;o antecipada do dia do&nbsp; Servidor P&uacute;blico com palestra, homenagens e confraterniza&ccedil;&atilde;o</p>
+                                              </a>
+                                          </h3>
+                                      </div>
+                                      <ul class="cp-post-tools">
+                                          <li><i class="icon-1"></i> 20/10/2026</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </li>
+
+            </ul>
+        </div>
+
+
+
+                                            <div style="margin: 10px 0;" class="col-xs-12 inner-title">
+                                                <div class="col-xs-12 no-padding">
+                                                        <a href="" target="_blank" class="col-xs-6 col-sm-12 m10" style="display:inline-table !important">
+<img class="img-link-uteis cp-thumb" src="https://sp1-object.adentro.com.br/sites/650/LinksDestaque/2185493/lyls7d6fbnrxmjse1gob_Municipio_de_Sao_Jose_do_Inhacora_Reconhecimento_2025.png" alt="Destaque">                                                         </a>
+                                        </div>
+                                    </div>
+    </div>
+
+
+<div id="acesso-rapido-custom-btn">
+
+    <center>
+            <style>
+            .margin-acesso-rapido {
+                margin-left: 3px !important;
+                margin-right: 3px !important;
+            }
+            </style>
+                <div class="col-sm-12 col-md-4  m30">
+                    <div class="cp-news-grid-style-1">
+                        <div class="col-xs-12 no-padding">
+                                            <div class="abase2 no-padding col-xs-12">
+                                                <div class="abase2 section-title-center blue-border">
+                                                    <h2>Acesso Rápido</h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 no-padding AlturaIgual">
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://portalcidadaosji.gespamweb.com.br/" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-user"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Portal do Cidad&#227;o
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/alvaras" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-book"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Alvar&#225;s
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://saojosedoinhacora.rs.gov.br/site/precos" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-legal"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Ata de Registro de Pre&#231;os
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/atas" target="_self">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-book"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Atas
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/4584-conselho-municipal-de-acompanhamento-e-controle-social-do-fundo-de-manutencao-e-desenvolvimento-da-e" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-graduation-cap"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    CACS-FUNDEB
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://sp1-object.adentro.com.br/sites/650/Conteudos/2039993/bhz1wythnyixkkebcvcm_Cartadeservicosaousuario20251.pdf" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-pencil-square-o"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Carta de servi&#231;os 
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/certidoes" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-file-text-o"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Certid&#245;es
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="/site/conteudos/6104-pcoleta-seletiva-de-lixop" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-globe"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Coleta Seletiva de Lixo
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/concursos?pagina=1&amp;tipo=&amp;busca=Concurso+P%C3%BAblico" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fas fa-book"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Concursos
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/selecoes" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fas fa-edit"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Processos Seletivos
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/ConteudosDiversos?pagina=1&amp;tipo=46&amp;busca=" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-book"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Conselho Municipal de educa&#231;&#227;o
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/publicacoesdiversas?pagina=1&amp;tipo=38&amp;busca=" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-user"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Conselho Tutelar
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/sic/consultasic" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-search"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Consulta e-Sic
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/contaspublicas" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-book"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Contas P&#250;blicas
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/contratos" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-file-text-o"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Contratos
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/convenios" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-list"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Conv&#234;nios
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/editais" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-file-text-o"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Editais
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/4927-educacao" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-book"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Educa&#231;&#227;o
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/sic" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-info-circle"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    e-SIC
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/eventos" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-list"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Eventos
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://sji.gespamweb.com.br:8443/gestores" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-user"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Gestores
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://sji.gespamweb.com.br" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-globe"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    GespamWeb
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/informativosmunicipais" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-commenting-o"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Informativos Municipais
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/4877-lei-paulo-gustavo" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-legal"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Lei Paulo Gustavo
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://saojosedoinhacora.cespro.com.br/" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-pagelines"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Legisla&#231;&#227;o
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/4934-lgpd" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-balance-scale"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    LGPD
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/licitacoes" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-legal"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Licita&#231;&#245;es
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://iss.abase.com.br/Login?path=%2F" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-file-text-o"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    NFS-e / ISS Online
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/ouvidoria" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-comments"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Ouvidoria
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/parcerias" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-users"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Parcerias
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/4920-perguntas-frequentes" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-commenting-o"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Perguntas Frequentes
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://sitearquivos.s3-us-west-2.amazonaws.com/650/Conteudos/5694/9cyrco86zg4oeit1z4yj_PESQUISA-ADMSAOJOSEDOINHACORA2024.pdf" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-user"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Pesquisa de Satisfa&#231;&#227;o 
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href=" https://fornecedor.gespamweb.com.br" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fas fa-users"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Portal do Fornecedor 
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://portaldoservidor.gespamweb.com.br/sji" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-users"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Portal do Servidor
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/leis?pagina=1&amp;tipo=4&amp;ano=Todos&amp;busca=&amp;vigente=&amp;filtro=" target="_self">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-book"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Portarias 
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.saojosedoinhacora.rs.gov.br/site/projetos" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-classic fa-solid fa-chart-pie"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Projetos
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/contaspublicas?pagina=1&amp;tipo=545" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-users"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    RPPS
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/4921-saude" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-heartbeat"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Sa&#250;de
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.tce.rs.gov.br/" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-balance-scale"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    TCE
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://www.tesouro.fazenda.gov.br/" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-money"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Tesouro Nacional
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="http://transparencia.abase.com.br/home/O&#199;4&#199;GfFZ1Yg=" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-search"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Transpar&#234;ncia
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6595-plei-de-in" target="_self">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-legal"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Lei de incentivo a cultura
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/site/ConteudosDiversos?pagina=1&amp;tipo=23736&amp;busca=" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-users"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Assist&#234;ncia Social - CMAS
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://transparencia.abase.com.br/emendas-por-parlamentar/O%C3%874%C3%87GfFZ1Yg=" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-classic fa-solid fa-handshake"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Emendas Parlamentares
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://saojosedoinhacora.rs.gov.br/painel/publico/inscricoes-online/inscricoes/173" target="_self">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa fa-classic fa-regular fa-newspaper"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Consulta Online
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-12 inner-title abase2">
+                                                            <a class="abase2 loadmore-rapido " href="https://www.saojosedoinhacora.rs.gov.br/painel/publico/inscricoes-online/inscricoes/175" target="_blank">
+                                                                <div class="abase2 col-xs-3 inner-title">
+                                                                    <i class="loadmore-rapido-icone fa "></i>
+                                                                </div>
+                                                                <div class="col-xs-9 no-padding inner-title" style="overflow:hidden;height:44px;">
+                                                                    Pesquisa de Satisfa&#231;&#227;o em SA&#218;DE - 2026
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                            </div>
+                                            </div>
+                                    </div>
+                                </div>
+
+    </center>
+</div>
+        </div>
+    </div>
+    <div class="rowabase r-1">
+        <div class="container">
+
+
+
+        <div style="margin: 10px 0;" class="col-xs-12 inner-title">
+            <div class="col-xs-12 no-padding lnkDesq1">
+            <a href="https://pncp.gov.br/app/pca?pagina=1&amp;q=SAO%20JOSE%20DO%20INHACORA&amp;status=vigente" target="_blank" class="col-sm-6 col-md-3 m10" style="display:inline-table !important">
+            
+ <img class="img-link-uteis cp-thumb" src="https://sp1-object.adentro.com.br/sites/650/LinksDestaque/1965450/zjldykqashwh8a3bji5t_contaspublicas.png" alt="Destaque">         </a>
+            <a href="http://idg.receita.fazenda.gov.br/" target="_blank" class="col-sm-6 col-md-3 m10" style="display:inline-table !important">
+            
+ <img class="img-link-uteis cp-thumb" src="https://sp1-object.adentro.com.br/sites/650/LinksDestaque/886/ygrlbf4alqhk6h0sgi1g_ReceitaFederal_291Z..png" alt="Destaque">         </a>
+            <a href="http://www.tce.rs.gov.br/" target="_blank" class="col-sm-6 col-md-3 m10" style="display:inline-table !important">
+            
+ <img class="img-link-uteis cp-thumb" src="https://sp1-object.adentro.com.br/sites/650/LinksDestaque/884/0djknuad8tjsus79nx0i_tce_303S..png" alt="Destaque">         </a>
+            <a href="https://saojosedoinhacora.rs.gov.br/site/subportais/126" target="_self" class="col-sm-6 col-md-3 m10" style="display:inline-table !important">
+            
+ <img class="img-link-uteis cp-thumb" src="https://sp1-object.adentro.com.br/sites/650/LinksDestaque/2001003/uz36i24bo3w79b8jhmip_Salaempreendedor.png" alt="Destaque">         </a>
+    </div>
+    </div>
+<br />
+        </div>
+    </div>
+    <div class="rowabase r-2">
+        <div class="container">
+
+
+
+<!-- _Albuns -->
+
+        <div class="col-sm-12 col-md-6 m30">
+        <div class="cp-news-grid-style-1">
+            <div class="col-xs-12 no-padding">
+                <div class="section-title-center blue-border">
+                        <h2>Álbuns</h2>
+                </div>
+                <div class="loadmore-holder-right section-title-center"> <a class="loadmore-right waves-effect waves-button" href="/site/Albuns">+ Álbuns </a> </div>
+            </div>
+            <ul class="grid">
+
+                        <li class="col-xs-6 col-sm-6">
+                        <div class="cp-news-post-excerpt" style="cursor: pointer;">
+                            <ul class="cp-gallery-grid gallery">
+
+
+
+                                        <li>
+                                            <div class="cp-thumb">
+
+
+                                                        <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/2081/5bcswuoti3ys98n28gfm_area_3079..jpg" alt="A&#233;reas">
+                                                        <div class="gallery-hover">
+                                                            <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/2081/5bcswuoti3ys98n28gfm_area_3079..jpg" data-rel="prettyPhoto" title="" rel="album[349]">
+                                                                <a id="abrirAlbum-349" href="javascript:void();" onclick="carregarImagens('349', 'https://sp1-object.adentro.com.br/sites/650/Albuns/2081/5bcswuoti3ys98n28gfm_area_3079..jpgarea_3079.jpg')">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </a>
+                                                        </div>
+
+
+                                            </div>
+                                        </li>
+                                        <noscript class="alb-349">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/2081/5bcswuoti3ys98n28gfm_area_3079..jpg" alt="A&#233;reas">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/2081/5bcswuoti3ys98n28gfm_area_3079..jpg" data-rel="prettyPhoto" title="" rel="album[349]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-349">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/2082/y44wizotoenfm2nogqex_foto_area_sji_2015_1_-_Copia_287I..jpg" alt="A&#233;reas">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/2082/y44wizotoenfm2nogqex_foto_area_sji_2015_1_-_Copia_287I..jpg" data-rel="prettyPhoto" title="" rel="album[349]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-349">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/2083/o1qe7akef5oyhum6auux_foto_area_sji_2015_2_2639..jpg" alt="A&#233;reas">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/2083/o1qe7akef5oyhum6auux_foto_area_sji_2015_2_2639..jpg" data-rel="prettyPhoto" title="" rel="album[349]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+
+                            </ul>
+                            <div class="cp-post-content">
+                                <div class="catname"></div>
+                                <div style="overflow: hidden;height:50px;">
+                                    <h3>
+                                        <a href="javascript:void(0);" onclick="$('#abrirAlbum-349').click()">
+                                                    A&#233;reas
+                                        </a>
+                                    </h3>
+                                </div>
+                                    <ul class="cp-post-tools">
+                                        <li><i class="icon-1"></i> 12/09/2016</li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </li>
+                        <li class="col-xs-6 col-sm-6">
+                        <div class="cp-news-post-excerpt" style="cursor: pointer;">
+                            <ul class="cp-gallery-grid gallery">
+
+
+
+                                        <li>
+                                            <div class="cp-thumb">
+
+
+                                                        <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1540/1bmpl6ipl7fx0h4b7v8u_entrada_2851..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                        <div class="gallery-hover">
+                                                            <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1540/1bmpl6ipl7fx0h4b7v8u_entrada_2851..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                <a id="abrirAlbum-305" href="javascript:void();" onclick="carregarImagens('305', 'https://sp1-object.adentro.com.br/sites/650/Albuns/1540/1bmpl6ipl7fx0h4b7v8u_entrada_2851..JPGentrada_2851.JPG')">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </a>
+                                                        </div>
+
+
+                                            </div>
+                                        </li>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1526/stg0busp53ylxr2uzgdc_1_missa_crioula_de_SJI_2012_2770..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1526/stg0busp53ylxr2uzgdc_1_missa_crioula_de_SJI_2012_2770..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1527/pv0nojswd0hcm1he827b_6_cavalgada_ecologica_2_301E..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1527/pv0nojswd0hcm1he827b_6_cavalgada_ecologica_2_301E..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1528/ptpuk6e7wky6qlmqkbe9_6_cavalgada_ecologica_3_2949..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1528/ptpuk6e7wky6qlmqkbe9_6_cavalgada_ecologica_3_2949..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1529/ss8pvq5dztb3ww6u420p_CTG_RECANTO_DA_TRADICAO_2012_1_253L..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1529/ss8pvq5dztb3ww6u420p_CTG_RECANTO_DA_TRADICAO_2012_1_253L..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1530/961u8ek1detjhoy5bxy5_CTG_RECANTO_DA_TRADICAO_2012_2_2773..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1530/961u8ek1detjhoy5bxy5_CTG_RECANTO_DA_TRADICAO_2012_2_2773..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1531/2skahn80iavsvuh9g3q2_CTG_RECANTO_DA_TRADICAO_2012_3_233K..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1531/2skahn80iavsvuh9g3q2_CTG_RECANTO_DA_TRADICAO_2012_3_233K..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1532/38x32zw3a4q6u7mq3xtr_entrda_CTG_2866..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1532/38x32zw3a4q6u7mq3xtr_entrda_CTG_2866..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1533/rrz9s3a1h0gna7lkgfpk_invernada_artistica_288Q..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1533/rrz9s3a1h0gna7lkgfpk_invernada_artistica_288Q..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1534/211lt21d3tetnqbonitx_sexta_cavalgada_ecol_1_313P..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1534/211lt21d3tetnqbonitx_sexta_cavalgada_ecol_1_313P..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1535/23j7o2rcvi56y1xmm2u9_sexta_cavalgada_ecol_2_2676..jpg" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1535/23j7o2rcvi56y1xmm2u9_sexta_cavalgada_ecol_2_2676..jpg" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1536/i8yk69v14e2xepmbtjvt_ctg_262M..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1536/i8yk69v14e2xepmbtjvt_ctg_262M..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1537/jtoteaq1knuomdya2m22_DSC00002_241I..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1537/jtoteaq1knuomdya2m22_DSC00002_241I..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1538/ztkdgxgonixa691nq1lx_DSC00005_318K..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1538/ztkdgxgonixa691nq1lx_DSC00005_318K..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1539/ix44weig84t1iyrvq34q_DSC00006_322C..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1539/ix44weig84t1iyrvq34q_DSC00006_322C..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1540/1bmpl6ipl7fx0h4b7v8u_entrada_2851..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1540/1bmpl6ipl7fx0h4b7v8u_entrada_2851..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1541/150haw1i0g4hhic4yzm4_DSC00015_316K..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1541/150haw1i0g4hhic4yzm4_DSC00015_316K..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+                                        <noscript class="alb-305">
+                                            <li style="display:none;">
+                                                <div class="cp-thumb">
+
+                                                            <img src="https://sp1-object.adentro.com.br/sites/650/Albuns/1542/pmzrwyfqx3wwytn4tatc_jardim_de_fronte_ao_CTG_2912..JPG" alt="CTG Recanto da Tradi&#231;&#227;o ">
+                                                            <div class="gallery-hover">
+                                                                <a href="https://sp1-object.adentro.com.br/sites/650/Albuns/1542/pmzrwyfqx3wwytn4tatc_jardim_de_fronte_ao_CTG_2912..JPG" data-rel="prettyPhoto" title="" rel="album[305]">
+                                                                    <img src="/site/Layout/images/plus.png">
+                                                                </a>
+                                                            </div>
+
+                                                </div>
+                                            </li>
+                                        </noscript>
+
+                            </ul>
+                            <div class="cp-post-content">
+                                <div class="catname"></div>
+                                <div style="overflow: hidden;height:50px;">
+                                    <h3>
+                                        <a href="javascript:void(0);" onclick="$('#abrirAlbum-305').click()">
+                                                    CTG Recanto da Tradi&#231;&#227;o 
+                                        </a>
+                                    </h3>
+                                </div>
+                                    <ul class="cp-post-tools">
+                                        <li><i class="icon-1"></i> 28/04/2016</li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+<script>
+    function carregarImagens(codigo, arquivo) {
+        $('.alb-' + codigo).each(function (index) {
+            $(this).replaceWith(function () {
+                return this.textContent || this.innerText;
+            });
+        });
+        $("a[rel^='album[" + codigo + "']").prettyPhoto({
+            inline_markup: '<div class="pp_inline">{content}</div></br><a href="../../' + arquivo + '">Download</a>',
+        });
+        $("a[rel^='album[" + codigo + "']")[0].click();
+    }
+</script>
+
+
+    <div class="col-sm-12 col-md-6 m30">
+<div class="sidebar side-bar right-sidebar">
+            <div class="col-xs-12 no-padding">
+                <div class="section-title-center blue-border">
+                        <h2>V&#237;deo Institucional 2025</h2>
+
+                </div>
+                <div class="loadmore-holder-right section-title-center"> <a style="position: relative; left: 20px;" class="loadmore-right waves-effect waves-button" href="/site/Videos">+ Vídeos </a> </div>
+            </div>
+            <div class="col-md-12 col-md-12">
+                <div class="cp-sidebar-content">
+                    <!-- YOUTUBE -->
+                    <iframe style="width: 100%; height: 350px; position: relative; top: 10px; border-width: 2px; border-color: black;" src="https://www.youtube.com/embed/6jkMxUzSGTk?si=5tRsPbZfQmkkb6-M"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="rowabase r-3">
+        <div class="container">
+
+
+
+    <div class="col-sm-12 col-md-6 m30">
+        <div class="cp-news-grid-style-1">
+            <div class="col-xs-12 no-padding">
+                <div class="section-title-center blue-border">
+                        <h2>Últimas Atualizações</h2>
+                </div>
+            </div>
+        </div>
+        <div class="widget popular-post">
+            <div class="cp-sidebar-content">
+                <ul class="no-padding">
+
+                            <li>
+                                <div class="small-post">
+                                    <div class="cp-post-content-eventos nome-evento">
+                                        <span><a href="../../../../../site/licitacoes/54213-decl" style="font-size: 15px"> DECLARA&#199;&#195;O DE INEXIGIBILIDADE DE LICITA&#199;&#195;O</a></span>
+                                        <ul class="cp-post-tools">
+                                            <li><i class="fa fa-calendar"></i> 25/11/2026 11h34min</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="small-post">
+                                    <div class="cp-post-content-eventos nome-evento">
+                                        <span><a href="../../../../../site/licitacoes/54212-decl" style="font-size: 15px">Declara&#231;&#227;o de Dispensa de Licita&#231;&#227;o</a></span>
+                                        <ul class="cp-post-tools">
+                                            <li><i class="fa fa-calendar"></i> 25/11/2026 11h33min</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="small-post">
+                                    <div class="cp-post-content-eventos nome-evento">
+                                        <span><a href="../../../../../site/licitacoes/54211-concorrencia-eletronica" style="font-size: 15px">Concorr&#234;ncia Eletr&#244;nica</a></span>
+                                        <ul class="cp-post-tools">
+                                            <li><i class="fa fa-calendar"></i> 25/11/2026 11h31min</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="small-post">
+                                    <div class="cp-post-content-eventos nome-evento">
+                                        <span><a href="../../../../../site/contratos/32198-convenio-0022026---repasse-de-recursos-financeiros" style="font-size: 15px">Conv&#234;nio 002/2026 - Repasse de recursos financeiros ao PADU S&#227;o Francisco de Assis, oriundos de emendas impositivas do Poder Legislativo Municipal.</a></span>
+                                        <ul class="cp-post-tools">
+                                            <li><i class="fa fa-calendar"></i> 24/11/2026 10h41min</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="small-post">
+                                    <div class="cp-post-content-eventos nome-evento">
+                                        <span><a href="../../../../../site/contratos/32196-convenio-0012026---casa-abrigo---manutencao-de-aco" style="font-size: 15px">Conv&#234;nio 001/2026 - Casa abrigo - Manuten&#231;&#227;o de a&#231;&#245;es socioassistenciais b&#225;sicas &#224;s fam&#237;lias - </a></span>
+                                        <ul class="cp-post-tools">
+                                            <li><i class="fa fa-calendar"></i> 24/11/2026 10h15min</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+
+        
+    </div>
+<div class="col-sm-12 col-md-6 m30">
+    <div class="cp-news-grid-style-1">
+        <div class="col-xs-12 no-padding">
+            <div class="section-title-center blue-border">
+                <h2>Previsão do Tempo</h2>
+            </div>
+        </div>
+        <div class="widget popular-post">
+            <div class="">
+                <ul class="grid no-padding abase-flex-row" id="tempo"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $.ajax({
+        dataType: "json",
+        url: '/site/Home/PrevisaoTempo',
+        success: function (data) {
+			
+			if (!data ||
+				data.length == 0 ||
+				!data[0].previsao ||
+				data[0].previsao.dia == "null" ||
+				data[0].previsao.tempo == "null") {
+		
+				$("#tempo").html(
+					"<li style='width:100%;text-align:center;padding:30px 15px;'>" +
+						"<div class='social-box PrevColor'>" +
+							"<h4>Previsão do tempo indisponível no momento.</h4>" +
+							"<p>Tente novamente mais tarde.</p>" +
+						"</div>" +
+					"</li>"
+				);
+		
+				return;
+			}
+		
+            var html = "";
+            var semana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
+            for (var i = 0; i < 3; i++) {
+                var dia = new Date(data[i].previsao.dia.split('-')[0], data[i].previsao.dia.split('-')[1] - 1, data[i].previsao.dia.split('-')[2]);
+                var diaDaSemana = semana[dia.getDay()];
+                dia = dataFormatada(dia);
+                var imagem = "<img src=\"/site/Layout/images/tempo/" + data[i].previsao.tempo + ".png\">";
+                var tempo = data[i].previsao.tempo;
+                var maxima = data[i].previsao.maxima + "ºC";
+                var minima = data[i].previsao.minima + "ºC";
+                switch (tempo) {
+                    case "ec":
+                        tempo = "Encoberto com Chuvas Isoladas";
+                        break;
+                    case "ci":
+                        tempo = "Chuvas Isoladas";
+                        break;
+                    case "c":
+                        tempo = "Chuva";
+                        break;
+                    case "in":
+                        tempo = "Instável";
+                        break;
+                    case "pp":
+                        tempo = "Poss. de Pancadas de Chuva";
+                        break;
+                    case "cm":
+                        tempo = "Chuva pela Manhã";
+                        break;
+                    case "cn":
+                        tempo = "Chuva a Noite";
+                        break;
+                    case "pt":
+                        tempo = "Pancadas de Chuva a Tarde";
+                        break;
+                    case "pm":
+                        tempo = "Pancadas de Chuva pela Manhã";
+                        break;
+                    case "np":
+                        tempo = "Nublado e Pancadas de Chuva";
+                        break;
+                    case "pc":
+                        tempo = "Pancadas de Chuva";
+                        break;
+                    case "pn":
+                        tempo = "Parcialmente Nublado";
+                        break;
+                    case "cv":
+                        tempo = "Chuvisco";
+                        break;
+                    case "ch":
+                        tempo = "Chuvoso";
+                        break;
+                    case "t":
+                        tempo = "Tempestade";
+                        break;
+                    case "ps":
+                        tempo = "Predomínio de Sol";
+                        break;
+                    case "e":
+                        tempo = "Encoberto";
+                        break;
+                    case "n":
+                        tempo = "Nublado";
+                        break;
+                    case "cl":
+                        tempo = "Céu Claro";
+                        break;
+                    case "n":
+                        tempo = "Nevoeiro";
+                        break;
+                    case "g":
+                        tempo = "Geada";
+                        break;
+                    case "ne":
+                        tempo = "neve";
+                        break;
+                    case "nd":
+                        tempo = "Não Definido";
+                        break;
+                    case "pnt":
+                        tempo = "Pancadas de Chuva a Noite";
+                        break;
+                    case "psc":
+                        tempo = "Possibilidade de Chuva";
+                        break;
+                    case "pcm":
+                        tempo = "Possibilidade de Chuva pela Manhã";
+                        break;
+                    case "pct":
+                        tempo = "Possibilidade de Chuva a Tarde";
+                        break;
+                    case "pcn":
+                        tempo = "Possibilidade de Chuva a Noite";
+                        break;
+                    case "npt":
+                        tempo = "Nublado com Pancadas a Tarde";
+                        break;
+                    case "npn":
+                        tempo = "Nublado com Pancadas a Noite";
+                        break;
+                    case "ncn":
+                        tempo = "Nublado com Poss. de Chuva a Noite";
+                        break;
+                    case "nct":
+                        tempo = "Nublado com Poss. de Chuva a Tarde";
+                        break;
+                    case "ncm":
+                        tempo = "Nubl. c/ Poss. de Chuva pela Manhã";
+                        break;
+                    case "npm":
+                        tempo = "Nublado com Pancadas pela Manhã";
+                        break;
+                    case "npp":
+                        tempo = "Nublado com Possibilidade de Chuva";
+                        break;
+                    case "vn":
+                        tempo = "Variação de Nebulosidade";
+                        break;
+                    case "ct":
+                        tempo = "Chuva a Tarde";
+                        break;
+                    case "ppn":
+                        tempo = "Poss. de Panc. de Chuva a Noite";
+                        break;
+                    case "ppt":
+                        tempo = "Poss. de Panc. de Chuva a Tarde";
+                        break;
+                    case "ppm":
+                        tempo = "Poss. de Panc. de Chuva pela Manhã";
+                        break;
+                }
+
+                   html += "<div class=\"col-md-4 col-sm-12 AlturaIgual\">" +
+                    "<div class=\"social-box PrevColor\">" +
+                    "<h5 class=\"heading\">" + diaDaSemana + " - " + dia + "</h5>" +
+                    "<div style=\"font-size: 70px;\">" +
+                    "<div class=\"clearfix bshadow0 pbs\">" +
+                    "<span class=\"icon-ch\">" +
+                  ""+ imagem + "" +
+                    "</span>" +
+                    "</div>" +
+                    "</div>" +
+                    "<span class=\"PrevTempMax\">" + maxima + "</span>" +
+                    "<span class=\"PrevTempMin\">" + minima + "</span>" +
+                    "<h5 class=\"heading\">" + tempo + "</h5>" +
+                    "</div>" +
+                    "</div>";
+            }
+            $("#tempo").html(html);
+        }
+    });
+
+    function dataFormatada(data) {
+        var dia = data.getDate();
+        if (dia.toString().length == 1)
+            dia = "0" + dia;
+        var mes = data.getMonth() + 1;
+        if (mes.toString().length == 1)
+            mes = "0" + mes;
+        var ano = data.getFullYear();
+        return dia + "/" + mes + "/" + ano;
+    }
+
+</script>
+
+        </div>
+    </div>
+    <div class="rowabase r-4">
+        <div class="container">
+
+
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+        <div class="col-xs-12 m30">
+            <div id="map-openstreet"></div>
+        </div>
+    <script>
+        var map = L.map('map-openstreet').setView(['-27.7254','-54.1262'], 15);
+        
+        
+		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; OpenStreetMap contributors',
+			maxZoom: 19,
+			detectRetina: true
+		}).addTo(map);
+
+
+
+    </script>
+        </div>
+    </div>
+
+    </section>
+
+</div>
+<!-- Main Content End -->
+	<div class="container">
+		<div class="col-xs-12 cp-topsocial no-padding">
+			<ul class="margin-off" style="text-align:center;">
+					<li class="" style="height:fit-content">
+						<a href="http://www.educacaofiscal.rs.gov.br/media/yfvjptly/informativo-35.pdf" style="height:fit-content" target="_blank"><img id="salvaContrast" src="/site/Layout/2019/images/InformativoPitSA.png" style="height:89px; width:250px !important;" /></a>
+					</li>
+					<li class="" style="height:fit-content">
+						<a href="https://nfg.sefaz.rs.gov.br/ReceitaCerta/SaibaMais.aspx" style="height:fit-content" target="_blank"><img id="salvaContrast" src="/site/Layout/2019/images/imgReceitaFed.png" style="height:89px; width:250px !important; margin-left: 20px !important;" /></a>
+					</li>
+					<li class="" style="height:fit-content">
+						<a href="https://www.devolveicms.rs.gov.br/inicial" style="height:fit-content" target="_blank"><img id="salvaContrast" src="/site/Layout/2019/images/DEVOVEICMS.png" style="height:89px; width:250px !important; margin-left: 20px !important;" /></a>
+					</li>
+					<li class="" style="height:fit-content">
+						<a href="https://radardatransparencia.atricon.org.br/index.html" style="height:fit-content" target="_blank"><img id="salvaContrast" src="/site/Layout/2019/images/TP.png" style="height:89px; width:250px !important; margin-left: 20px !important;" /></a>
+					</li>
+					<li class="" style="height:fit-content">
+						<a href="https://receita.fazenda.rs.gov.br/conteudo/16753/informativo-pit-n%C2%BA-9---fevereiro-2022" style="height:fit-content" target="_blank"><img id="salvaContrast" src="/site/Layout/2019/images/receita-estadual.png" style="height:89px; width:250px !important; margin-left: 20px !important;" /></a>
+					</li>
+									<li class="" style="height:fit-content">
+						<a href="https://atendimento.receita.rs.gov.br/lista-de-debitos-inscritos-em-divida-ativa" style="height:fit-content" target="_blank"><img id="salvaContraste" src="/site/Layout/images/DividaIcone.png" style="height:89px !important; width:250px !important; margin-left: 20px !important;" /></a>
+					</li>
+																							</ul>
+		</div>
+	</div>
+<!-- Footer Start -->
+<footer id="footer" class="footer">
+        <div class="footer-three">
+            <div class="container">
+                <div class="row">
+                    <form>
+                        <button formaction="../site/mapasite" allign="left">Mapa Do Site</button>
+                    </form>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 no-padding">
+                                <div class="titulo-rodape">
+                                    <span>PLANOS MUNICIPAIS</span>
+                                </div>
+                            </div>
+                            <ul class="cp-post-content">
+                                    <li>
+                                            <a href="" target="_blank">
+                                                COVID-19
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/7523-plano-de-accedilatildeo-de-emendas-impositivas">
+                                                Plano de A&ccedil;&atilde;o de Emendas Impositivas
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6126-pplano-de-" target="_blank">
+                                                Plano de Contingência de Proteção e Defesa Civil
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="" target="_blank">
+                                                Plano de Contingencia e Ação Dengue 
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/7267-pnbspplanoestrateacutegicoinstitucionalp" target="_blank">
+                                                PLANO DE GOVERNO 2025-2028
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/7268-plano-municipal-de-assistecircncia-social-2026-2029">
+                                                Plano Municipal de Assist&ecirc;ncia Social 2026-2029
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/6703-plano-municipal-decenal-de-cultura---20252035">
+                                                Plano Municipal Decenal de Cultura - 2025/2035
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6659-pplano-mun" target="_blank">
+                                                Plano Municipal de Contingência de Chuvas intensas - 2025
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/5220-plano-municipal-de-educacao-2015-2025">
+                                                Plano Municipal de Educação 2015-2025
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/5219-plano-municipal-de-sauacutede-2026-2029">
+                                                Plano Municipal de Sa&uacute;de 2026-2029
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/7625-pplano-mun" target="_blank">
+                                                Plano Municipal pela Primeira Infância Melhor | 2026–2036
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href=" https://sitearquivos.s3-us-west-2.amazonaws.com/650/PlanosMetas/44/kdd3px1g6mw5nagdkn9z_PMSBSAOJOSEDOINHACORA(2).pdf" target="_blank">
+                                                Plano Mun. Saneamento
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/6397-plano-regional-de-aacutegua-e-esgoto---prae---corsanaegea" target="_blank">
+                                                Plano Regional de Água e Esgoto - PRAE - CORSAN/AEGEA
+                                            </a>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 no-padding">
+                                <div class="titulo-rodape">
+                                    <span>Secretarias</span>
+                                </div>
+                            </div>
+                            <ul class="cp-post-content">
+                                    <li>
+                                            <a href="/site/conteudos/1476-a-secretaria-municipal-do-trabalho-assistecircncia-social-e-habitaccedilatildeo">
+                                                A Secretaria Municipal do Trabalho, Assist&ecirc;ncia Social e Habita&ccedil;&atilde;o.
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1478-pgabinete-do-prefeitop" target="_blank">
+                                                Gabinete do Prefeito
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1471-secretaria-municipal-da-fazenda">
+                                                Secretaria Municipal da Fazenda
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1470-psecretaria-municipal-de-administraccedilatildeop" target="_blank">
+                                                Secretaria Municipal de Administração
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1473-psecretaria-municipal-de-educaccedilatildeo-cultura-desportos-e-turismop" target="_blank">
+                                                Secretaria Municipal de Educação, Cultura, Desportos e Turismo
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1486-secretaria-municipal-de-obras-viacao-e-transito">
+                                                Secretaria Municipal de Obras, Viação e Trânsito 
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="" target="_blank">
+                                                Secretaria Municipal de Planejamento
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1474-psecretaria-municipal-de-sauacutedep" target="_blank">
+                                                Secretaria Municipal de Saúde
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1475-secretaria-municipal-do-agronegocio-e-meio-ambiente">
+                                                Secretaria Municipal do Agronegócio e Meio Ambiente
+                                            </a>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 no-padding">
+                                <div class="titulo-rodape">
+                                    <span>Munic&#237;pio</span>
+                                </div>
+                            </div>
+                            <ul class="cp-post-content">
+                                    <li>
+                                            <a href="https://sp1-object.adentro.com.br/sites/650/Conteudos/2117534/ojhhqn76njre834cdcxz_CALENDARIODEEVENTOS2026.pdf" target="_blank">
+                                                Calendário de Eventos
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1467-pcaracteri" target="_blank">
+                                                Caracterização
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1485-pcontatosp" target="_blank">
+                                                Contatos
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1468-pdados-demograacuteficosp" target="_blank">
+                                                Dados demográficos
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1665-feriados">
+                                                Feriados
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1820-hino-municipal" target="_blank">
+                                                Hino Municipal 
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/1466-phistoacuterico-do-municiacutepiop" target="_blank">
+                                                Histórico do Município
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="/site/conteudos/2679-licenciamento-ambiental">
+                                                Licenciamento Ambiental
+                                            </a>
+                                    </li>
+                                    <li>
+                                            <a href="https://www.saojosedoinhacora.rs.gov.br/site/conteudos/1477-psistema-municipal-de-saneamentop" target="_blank">
+                                                Sistema Municipal de Saneamento
+                                            </a>
+                                    </li>
+                            </ul>
+                        </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-2">
+                        <div class="col-xs-12 no-padding">
+                            <div class="titulo-rodape">
+                                <span>Link Úteis</span>
+                            </div>
+                        </div>
+                        <ul class="cp-post-content">
+
+                                <li>
+                                    <a href="https://nfg.sefaz.rs.gov.br/site/sorteios.aspx" target="_blank">
+                                            <img class="img-link-uteis cp-thumb" src="https://sp1-object.adentro.com.br/sites/650/LinksDestaque/1090/ng5okv8ui2rs2x3mkrou_A008F6EB7B17C2E11A47295EFAF5DDD760A755FFDF661428ECpimgpsh_fullsize_distr_301M..png" alt="">
+                                    </a>
+                                </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="footer-one footer-widgets">
+    <div class="box-cookies hide">
+        <p class="msg-cookies">Este site usa cookies para garantir que você obtenha a melhor experiência.</p>
+        <button class="btn-cookies">Aceitar!</button>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <a href="javascript:void(0);" onclick="rolar('topo');">
+                    <img src="/site/Brasoes/650/rodape.png" class="brasao-rp" alt="LOGO PREFEITURA">
+                </a>
+            </div>
+            <div class="col-md-8 marTB-Rodape texto-info-rodape">
+                <span>
+                    Munic&#237;pio de S&#227;o Jos&#233; do Inhacor&#225; - RS
+                    <br />
+Rua Frei Leonardo Braun, 50 - centro - CEP: 98958-000                    <br />
+(55) 98454-7642                                             / prefeito@saojosedoinhacora.rs.gov.br
+                    <br /><a href="javascript:void(0)" data-toggle="modal" data-target="#modal-feed">Inscreva-se para receber atualizações</a>				
+                    <div id="modal-feed" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="/site/Home/Feed" method="post">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Informe seu endereço de e-mail</h4>
+                                    </div>
+                                    <div class="modal-body" style="padding-left: 25px; padding-right: 25px;">
+                                        <input name="email" required="required" type="email" class="form-control" placeholder="E-Mail"><span class="material-bar"></span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                                                                                    </div>
+    </div>
+</div>
+    <div class="footer-four">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="http://www.abase.com.br" target="_blank">
+						<img src="/site/Layout/images/logo-abase512.png" alt="Abase Sistemas" style="height: 80px;">
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        Todos direitos reservados 2026 © Abase Sistemas e Soluções LTDA
+                        <br />
+                        Desenvolvido por <a href="http://www.abase.com.br" target="_blank">Abase Sistemas e Soluções Ltda</a>                        
+						<br />
+                        Nossa <a href="https://sitearquivos.s3-us-west-2.amazonaws.com/1260/Conteudos/4753/lyblp430cwsm1xo6ch4u_ABASE-PoliticadePrivacidadeeCookieseTermodeUso2022(1).pdf" target="_blank">Política de Privacidade</a>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                        <a href="/painel" style="float:right;">
+                            <img src="/site/Layout/images/cadeado.png" style="height: 32px; " alt="Acesso Administrativo" />
+                        </a>
+                                                        </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer End -->
+
+</div>
+<!-- Main Wrapper End -->
+<!-- Js Files-->
+<script src="/site/Layout/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/site/Layout/js/bootstrap.min.js"></script>
+<script src="/site/Layout/js/materialize.min.js"></script>
+<script src="/site/Layout/js/owl.carousel.min.js"></script>
+<script src="/site/Layout/js/custom.js"></script>
+<script src="/site/Layout/js/acessibilidade.js"></script>
+<script src="/site/Scripts/jquery.jqprint-0.3.js"></script>
+
+
+<script>
+    (() => {
+        if (!localStorage.pureJavaScriptCookies) {
+            document.querySelector(".box-cookies").classList.remove('hide');
+        }
+
+        const acceptCookies = () => {
+            document.querySelector(".box-cookies").classList.add('hide');
+            localStorage.setItem("pureJavaScriptCookies", "accept");
+        };
+
+        const btnCookies = document.querySelector(".btn-cookies");
+
+        btnCookies.addEventListener('click', acceptCookies);
+    })();
+
+    /* AJUSTE DE IMAGENS */
+    resize();
+    window.onresize = resize;
+    window.setTimeout('resize()', 2000);
+    function resize() {
+
+        $('.cp-thumb img').replaceWith(function (i, v) {
+            if (this.src.indexOf('plus.png') == -1) {
+                return $('<div />', {
+                    style: 'background-image: url(' + this.src + ');' +
+                        'width:' + this.width + 'px;' +
+                        'height:' + (this.width / 1.63) + 'px;' +
+                        'background-repeat: no-repeat;' +
+                        'background-position: center;' +
+                        'background-size: cover;' +
+                        'display: inline-block;'
+                })
+            }
+        })
+    }
+</script>
+
+
+<script>
+        function rolar(id) {
+            $('html, body').animate({
+                scrollTop: $("#" + id).offset().top
+            }, 500);
+        };
+
+        function imprimir(idElemento) {
+            $("#" + idElemento).jqprint();
+            return (false);
+        }
+
+            
+        if ($(".full-news-slider").length) {
+            $(".full-news-slider").owlCarousel({
+                autoPlay: 10000,
+                autoplayHoverPause: true,
+                navigation: true,
+                slideSpeed: 2000,
+                paginationSpeed: 2000,
+                pagination: false,
+                singleItem: true
+            });
+        }
+        
+</script>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+
+  <script>
+      let leituraAtivada = localStorage.getItem('leituraAtivada') === 'true';
+      let lendoMensagemDeAtivacao = false;
+
+      const botaoAlternar = document.getElementById('botaoAlternar');
+      const icone = botaoAlternar.querySelector('i');
+
+      botaoAlternar.addEventListener('click', (evento) => {
+          evento.preventDefault();
+
+          leituraAtivada = !leituraAtivada;
+          localStorage.setItem('leituraAtivada', leituraAtivada);
+
+          if (leituraAtivada) {
+              icone.className = "fa fa-eye-slash";
+              lerMensagemDeAtivacao("Leitor de texto ativado");
+
+          } else {
+              icone.className = "fa fa-eye";
+              lerMensagemDeAtivacao("Leitor de texto desativado");
+          }
+      });
+
+      function lerTexto(texto) {
+          const fala = new SpeechSynthesisUtterance(texto);
+          speechSynthesis.speak(fala);
+      }
+
+      function lerMensagemDeAtivacao(mensagem) {
+          lendoMensagemDeAtivacao = true; 
+          const fala = new SpeechSynthesisUtterance(mensagem);
+          fala.onend = () => {
+              lendoMensagemDeAtivacao = false; 
+          };
+          speechSynthesis.cancel();
+          speechSynthesis.speak(fala);
+      }
+
+      document.addEventListener('mouseover', (evento) => {
+          if (leituraAtivada && !lendoMensagemDeAtivacao) { 
+              const texto = evento.target.textContent || evento.target.alt || "";
+              if (texto.trim()) {
+                  speechSynthesis.cancel(); 
+                  lerTexto(texto);
+              }
+          }
+      });
+
+      document.addEventListener('mouseout', () => {
+          if (leituraAtivada && !lendoMensagemDeAtivacao) { 
+              speechSynthesis.cancel();
+          }
+      });
+	  
+	  $('.search-bar > i').on('click', function (e) {
+		e.stopPropagation();
+	
+		let menu = $(this).siblings('ul');
+	
+		$('.search-bar ul').not(menu).hide();
+	
+		menu.stop(true, true).slideToggle(150);
+	});
+	
+	$(document).on('click', function () {
+		$('.search-bar ul').hide();
+	});
+	
+	$('.search-bar ul').on('click', function (e) {
+		e.stopPropagation();
+	});
+  </script>
+  
+</body>
+
+</html>
