@@ -1601,14 +1601,37 @@ def enviar_uma_vez(url: str, dados: dict, timeout: int = 40, origem: str = None)
 
 
 def enviar(url: str, dados: dict, timeout: int = 40, origem: str = None, enviar_fn=None,
-           dormir=None) -> bytes:
-    """`enviar_uma_vez` com a espera do §226 — a mesma do `buscar`, pela mesma função."""
+           dormir=None, sem_resposta: dict = None) -> bytes:
+    """`enviar_uma_vez` com a espera do §226 e a conta da rodada — as mesmas do `buscar`, pela mesma função.
+    26/11/2026: sem a conta, o POST da listagem do DOE-PI esgotava o tempo data a data e comia os 80 min do
+    canal 2 (run 45523709725), e MS e RO, atrás dele na fila, ficaram sem edição lida desde 12/11."""
     def uma_vez():
         if enviar_fn is not None:
             return enviar_fn(url, dados, timeout=timeout)
         return enviar_uma_vez(url, dados, timeout=timeout, origem=origem)
 
-    return com_espera(uma_vez, dormir=dormir)
+    if sem_resposta is None:
+        sem_resposta = _SEM_RESPOSTA if enviar_fn is None else {}
+    return _na_rodada(url, uma_vez, sem_resposta, dormir)
+
+
+def _na_rodada(url: str, uma_vez, sem_resposta: dict, dormir=None) -> bytes:
+    """A espera do §226 com a conta dos sites fora da rodada (18/11/2026): tempo esgotado ao conectar, já com a
+    repetição, tira o site do resto da rodada; falha imediata, na segunda seguida; resposta HTTP zera a conta."""
+    host = (urllib.parse.urlparse(url).netloc or "").lower()
+    try:
+        if sem_resposta.get(host, 0) >= 2:
+            raise urllib.error.URLError(f"{host} sem resposta nesta rodada")
+        corpo = com_espera(uma_vez, dormir=dormir)
+    except urllib.error.HTTPError:
+        sem_resposta.pop(host, None)
+        raise
+    except urllib.error.URLError as e:
+        if host and type(e) is urllib.error.URLError:   # a conexão nem começou; corpo cortado e 200 vazio são resposta
+            sem_resposta[host] = sem_resposta.get(host, 0) + (2 if isinstance(e.reason, TimeoutError) else 1)
+        raise
+    sem_resposta.pop(host, None)
+    return corpo
 
 
 def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None,
@@ -1629,21 +1652,13 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
             return buscar_fn(url, timeout=timeout)
         return buscar_uma_vez(url, timeout=timeout, origem=origem)
 
-    host = (urllib.parse.urlparse(url).netloc or "").lower()
     if sem_resposta is None:
         sem_resposta = _SEM_RESPOSTA if buscar_fn is None else {}
     try:
-        if sem_resposta.get(host, 0) >= 2:
-            raise urllib.error.URLError(f"{host} sem resposta nesta rodada")
-        corpo = com_espera(uma_vez, dormir=dormir)
-        sem_resposta.pop(host, None)
-        return corpo
+        return _na_rodada(url, uma_vez, sem_resposta, dormir)
     except urllib.error.HTTPError:
-        sem_resposta.pop(host, None)
         raise   # a fonte respondeu "não": recusa, que nenhuma cópia substitui
-    except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead) as e:
-        if host and type(e) is urllib.error.URLError:   # a conexão nem começou; corpo cortado e 200 vazio são resposta
-            sem_resposta[host] = sem_resposta.get(host, 0) + (2 if isinstance(e.reason, TimeoutError) else 1)
+    except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead):
         # 15/11/2026 (editoria): o servidor público que não responde ao robô de fora do Brasil
         # (to.gov.br, saude.ap.gov.br, saude.rn.gov.br) é lido pela ponte no Brasil, cliente identificado.
         copia, _ = copia_da_ponte(url)
