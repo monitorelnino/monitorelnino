@@ -25139,8 +25139,16 @@
    "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21)",
    "id": "01750e6cef",
    "nivel_confianca": "C",
-   "proxima_tentativa_em": "2026-10-21",
-   "reaplicada_em": "reaplicacao da noite"
+   "proxima_tentativa_em": "2026-11-27",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Maracajá",
@@ -25258,14 +25266,22 @@
    "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila",
    "id": "cb4ea7e881",
    "nivel_confianca": "C",
-   "proxima_tentativa_em": "2026-10-04",
+   "proxima_tentativa_em": "2026-11-27",
    "status_anterior": "pista — promover a registro exige documento primário lido por humano",
    "limpeza": {
     "em": "2026-10-03",
     "motivo": "teto",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Maracajá",
@@ -33245,17 +33261,34 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "id": "bf4828b2e1",
    "nivel_confianca": "C",
-   "proxima_tentativa_em": "2026-10-04",
    "status_anterior": "pista — promover a registro exige documento primário lido por humano",
    "limpeza": {
     "em": "2026-10-03",
     "motivo": "teto",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "80af60811b0dce52076bf1bda572cbc42fc0b775744305572f4ef751f1219d78"
+   }
   },
   {
    "municipio": "Bombinhas",
@@ -35960,7 +35993,16 @@
     "motivo": "teto",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-27"
   },
   {
    "municipio": "Criciúma",
@@ -36155,7 +36197,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "id": "877c7eb3c9",
    "nivel_confianca": "C",
    "status_anterior": "pista — promover a registro exige documento primário lido por humano",
@@ -36164,7 +36206,25 @@
     "motivo": "generica",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "753d28e12ea248a4e1f688504761b1a2205e15c6791c405fc7b37540486b131d"
+   }
   },
   {
    "municipio": "Agrolândia",
@@ -37393,14 +37453,22 @@
    "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila",
    "id": "f760d3e486",
    "nivel_confianca": "C",
-   "proxima_tentativa_em": "2026-10-04",
+   "proxima_tentativa_em": "2026-11-27",
    "status_anterior": "pista — promover a registro exige documento primário lido por humano",
    "limpeza": {
     "em": "2026-10-03",
     "motivo": "teto",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Timbó Grande",
@@ -37678,8 +37746,16 @@
    "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21)",
    "id": "f822b5cffa",
    "nivel_confianca": "C",
-   "proxima_tentativa_em": "2026-10-21",
-   "reaplicada_em": "reaplicacao da noite"
+   "proxima_tentativa_em": "2026-11-27",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Timbó Grande",
@@ -37889,14 +37965,22 @@
    "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila",
    "id": "9bfa3f5960",
    "nivel_confianca": "C",
-   "proxima_tentativa_em": "2026-10-04",
+   "proxima_tentativa_em": "2026-11-27",
    "status_anterior": "pista — promover a registro exige documento primário lido por humano",
    "limpeza": {
     "em": "2026-10-03",
     "motivo": "teto",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Timbó Grande",
@@ -38060,17 +38144,34 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "id": "6eedc3be45",
    "nivel_confianca": "C",
-   "proxima_tentativa_em": "2026-10-04",
    "status_anterior": "pista — promover a registro exige documento primário lido por humano",
    "limpeza": {
     "em": "2026-10-03",
     "motivo": "teto",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "2730646de6620984e7ec0d0ba55b65755176d3a04ba38dd46b47e1c4ae57bb69"
+   }
   },
   {
    "municipio": "Timbó Grande",
@@ -38983,7 +39084,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "id": "5ce6b00004",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
@@ -38992,7 +39093,25 @@
     "motivo": "generica",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "a3239f9312dbbdda727ad1bcfa48f4d9c8521f8fb9b6063a0ee077f7a9a5b58c"
+   }
   },
   {
    "municipio": "JAGUAPITÃ",
@@ -39008,7 +39127,7 @@
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "fechada — notícia genérica: o mesmo artigo foi atribuído a vários municípios pela busca, e não trata de nenhum deles em particular",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "id": "11beeb21e9",
    "nivel_confianca": "C",
    "status_anterior": "pista — atribuição de município por proximidade no PDF consorciado; promover a registro exige documento primário lido por humano",
@@ -39017,7 +39136,25 @@
     "motivo": "generica",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "c14cfa90feb388f9e476b74cc6ffc71574350c6011ca529edf5358c0bc2e9ca7"
+   }
   },
   {
    "alvo": "B-capital/RJ",
@@ -40251,7 +40388,7 @@
    "url": "https://laurentino.sc.gov.br/uploads/sites/163/2021/12/2222691_Plancon_EEB_Tereza_Cristina_3_versao.pdf",
    "data": "29/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "fechada — sem documento oficial localizado: 51 dias na fila (prazo de 21)",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "pista_origem": "092f7415f2",
    "id": "2abca0e51b",
    "nivel_confianca": "B",
@@ -40271,11 +40408,28 @@
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
    "retentar_buscador2_em": "documento não lido até 2026-11-02",
-   "proxima_tentativa_em": "2026-11-16",
    "triagem": {
     "em": "2026-11-19",
     "desfecho": "sem documento oficial localizado",
     "motivo": "51 dias na fila (prazo de 21)"
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "08/2021",
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "7bab836c7ff3792efc4054e51dea7aee8a4d0f9a20596988eddde9987ba03172"
    }
   },
   {
@@ -42216,12 +42370,20 @@
    "id": "241806438f",
    "nivel_confianca": "C",
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-16",
+   "proxima_tentativa_em": "2026-11-27",
    "triagem": {
     "em": "2026-11-17",
     "desfecho": "sem documento oficial localizado",
     "motivo": "48 dias na fila (prazo de 21)"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Barão de Cocais",
@@ -42938,7 +43100,7 @@
    "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/Caderno_GIRD10__.pdf",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "pista_origem": "2e1bdf83ef",
    "id": "1ccaaee543",
    "nivel_confianca": "C",
@@ -42949,7 +43111,25 @@
     "regra": "C.1 do handover de 03/10/2026"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 5
+   "repeticoes": 5,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "783e94ffb78ac29087d3a5a994971ba11f0cd5556f92b45b8effdd554696da5f"
+   }
   },
   {
    "municipio": "Assis",
@@ -43228,7 +43408,7 @@
    "url": "https://saude.curitiba.pr.gov.br/images/Plano%20de%20Conting%C3%AAncia%20Dengue.pdf",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "fechada — acima do teto de pistas abertas para o município e o assunto; as de nível mais alto e mais recentes seguem na fila",
+   "status": "pista — recusada pelo juiz: fora_do_objeto",
    "pista_origem": "6a630cc284",
    "id": "0d2a82fd93",
    "nivel_confianca": "B",
@@ -43238,7 +43418,25 @@
     "motivo": "teto",
     "regra": "C.1 do handover de 03/10/2026"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "fora_do_objeto",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "2025",
+    "julgado_em": "2026-11-26",
+    "hash_evidencia": "73fb3a5575a120686b5337257b9f70d007de3dfe57f6b74b62321f52a55a8b0a"
+   }
   },
   {
    "municipio": "Curitiba",
@@ -452451,10 +452649,18 @@
     "motivo": null,
     "leu_documento": true,
     "categoria": "plano",
-    "data": "2026",
-    "julgado_em": "2026-11-18",
+    "data": "03/2026",
+    "julgado_em": "2026-11-26",
     "hash_evidencia": "35226cdfe7007500e2946f086e370130cc4f2f3f0a20954a2ca47da61f1479a1"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -458355,6 +458561,12 @@
      "classe": "promocao",
      "motivo": null,
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-26",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -460095,11 +460307,19 @@
     "motivo": null,
     "leu_documento": true,
     "categoria": "plano_antigo",
-    "data": "2011",
-    "julgado_em": "2026-11-18",
+    "data": "02/05/2025",
+    "julgado_em": "2026-11-26",
     "hash_evidencia": "698ea61171a2e3ff7c015efb6316e0c3e207d2b1c49907031955a218a13a1035"
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -461049,19 +461269,27 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/AJURICABA_PLANCON.pdf",
    "alvo": "4300208",
-   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "d0427e8744",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": true,
-    "motivo": null,
+    "promove": false,
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
-    "categoria": "plano_antigo",
-    "data": "2017",
-    "julgado_em": "2026-11-05",
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
     "hash_evidencia": "5db5d173d191720d01e94d0a7ee49d6d9d8063c008c4dd425e8c703a3765888f"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -462159,24 +462387,32 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/Plancom_Palmeira%20das%20Miss%C3%B5es.pdf",
    "alvo": "4313706",
-   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "d4e4b93090",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": true,
-    "motivo": null,
+    "promove": false,
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
-    "categoria": "plano_antigo",
-    "data": "2004",
-    "julgado_em": "2026-11-05",
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-26",
     "hash_evidencia": "19144545f27fb503f5ae912991050f36df058c5c8251c8ecf52a4cf86fac1f99"
    },
    "triagem": {
     "em": "2026-11-16",
     "desfecho": "sem documento oficial localizado",
     "motivo": "24 dias na fila (prazo de 21)"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -685869,18 +686105,26 @@
    "tipo": "plano",
    "entrada": "municipio",
    "registrado_em": "2026-11-06",
-   "status": "promovida — o juiz leu o documento e promoveu (plano_antigo)",
+   "status": "promovida — o juiz leu o documento e promoveu (plano)",
    "nivel_confianca": "B",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": true,
     "motivo": null,
     "leu_documento": true,
-    "categoria": "plano_antigo",
-    "data": "2025",
-    "julgado_em": "2026-11-06",
+    "categoria": "plano",
+    "data": "06/08/2026",
+    "julgado_em": "2026-11-26",
     "hash_evidencia": "822eabc4a2352fd1e801d6c3d7c0a41648ea3a04c7a3878652c46420018f24e5"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-26",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio das Ostras",

@@ -1208881,10 +1208881,12 @@
    "pista_id": "0fadda818d",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "6501a57730d30cb901e21e8738671fd05e24e22d527fa2ec53a8e01f5d6745f9",
+   "hash_evidencia": "89d2a5db23a798f3ac711dcb9959cd150ec3e49f6978b5a507e14aaf6e0db73a",
    "data_da_edicao": "2021-12-31",
    "indicado_ao_cadastro_art3A": false,
-   "atualizacao_anual_localizada": false
+   "atualizacao_anual_localizada": false,
+   "substituiu": "categoria mais forte (plano_nomeado → plano)",
+   "aplicado_em": "2026-11-26"
   },
   {
    "promove": false,
@@ -1235086,6 +1235088,892 @@
    "origem": "descoberta",
    "leu_documento": true,
    "hash_evidencia": "a976e4432b519f35eb9617fbf536a2db5af3b5d1b0f99deab64d89f97564758a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218400",
+   "municipio": "Treze de Maio",
+   "uf": "SC",
+   "url": "http://www.ioepa.com.br/arquivos/2026/2026.04.13.DOE.pdf",
+   "regras_18": [],
+   "pista_id": "13ecf70787",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Treze de Maio\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218400",
+   "municipio": "Treze de Maio",
+   "uf": "SC",
+   "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118184_2026-09-15_73e5003f6ec967b8a272135117a4ec83.pdf",
+   "regras_18": [],
+   "pista_id": "877c7eb3c9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "753d28e12ea248a4e1f688504761b1a2205e15c6791c405fc7b37540486b131d",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"QUITANDINHA\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4121208",
+   "municipio": "QUITANDINHA",
+   "uf": "PR",
+   "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118189_2026-09-22_110f0ffad8cdcc74d4429f5ac27c5b39.pdf",
+   "regras_18": [],
+   "pista_id": "5ce6b00004",
+   "origem": "diario_consorciado",
+   "leu_documento": true,
+   "hash_evidencia": "a3239f9312dbbdda727ad1bcfa48f4d9c8521f8fb9b6063a0ee077f7a9a5b58c",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"JAGUAPITÃ\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4111902",
+   "municipio": "JAGUAPITÃ",
+   "uf": "PR",
+   "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118193_2026-09-28_67d5192f3e8629f7f55eeeeed511823d.pdf",
+   "regras_18": [],
+   "pista_id": "11beeb21e9",
+   "origem": "diario_consorciado",
+   "leu_documento": true,
+   "hash_evidencia": "c14cfa90feb388f9e476b74cc6ffc71574350c6011ca529edf5358c0bc2e9ca7",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "443989 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Cubatão\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3513504",
+   "municipio": "Cubatão",
+   "uf": "SP",
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/Caderno_GIRD10__.pdf",
+   "regras_18": [],
+   "pista_id": "1ccaaee543",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "783e94ffb78ac29087d3a5a994971ba11f0cd5556f92b45b8effdd554696da5f",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "60945 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CURITIBA SECRETARIA MUNICIPAL DA SAÚDE PLANO DE CONTINGÊNCIA DA SAÚDE PARA O ENFRENTAMENTO DA DENGUE E OUTRAS ARBOVIROSES CURITIBA 2025"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CURITIBA SECRETARIA MUNICIPAL DA SAÚDE PLANO DE CONTINGÊNCIA DA SAÚDE PARA O ENFRENTAMENTO DA DENGUE E OUTRAS ARBOVIROSES CURITIBA 2025",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "data_origem": "capa",
+      "data_trecho": "CURITIBA 2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PREFEITURA MUNICIPAL DE CURITIBA SECRETARIA MUNICIPAL DA SAÚDE PLANO DE CONTINGÊNCIA DA SAÚDE PARA O ENFRENTAMENTO DA DENGUE E OUTRAS ARBOVIROSES CURITIBA 2025",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CURITIBA SECRETARIA MUNICIPAL DA SAÚDE PLANO DE CONTINGÊNCIA DA SAÚDE PARA O ENFRENTAMENTO DA DENGUE E OUTRAS ARBOVIROSES CURITIBA 2025"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "PREFEITURA MUNICIPAL DE CURITIBA SECRETARIA MUNICIPAL DA SAÚDE PLANO DE CONTINGÊNCIA DA SAÚDE PARA O ENFRENTAMENTO DA DENGUE E OUTRAS ARBOVIROSES CURITIBA 2025"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://saude.curitiba.pr.gov.br/images/Plano%20de%20Conting%C3%AAncia%20Dengue.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "capa",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "0d2a82fd93",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "73fb3a5575a120686b5337257b9f70d007de3dfe57f6b74b62321f52a55a8b0a",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210407",
+   "municipio": "Maracajá",
+   "uf": "SC",
+   "url": "https://www.gov.br/agricultura/pt-br/assuntos/sanidade-animal-e-vegetal/saude-animal/programas-de-saude-animal/pnsa/Relatorio_do_plano_de_vigilancia_de_influenza_aviaria_e_doenca_de_Newcastle___2__ciclo.pdf",
+   "regras_18": [],
+   "pista_id": "cb4ea7e881",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "105778 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Salete\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215307",
+   "municipio": "Salete",
+   "uf": "SC",
+   "url": "https://aris.sc.gov.br/uploads/pagina/2706/3e7yzhyw3OwnbUSEVBd9kgrDBkRcxppU.pdf",
+   "regras_18": [],
+   "pista_id": "bf4828b2e1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "80af60811b0dce52076bf1bda572cbc42fc0b775744305572f4ef751f1219d78",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218251",
+   "municipio": "Timbó Grande",
+   "uf": "SC",
+   "url": "https://consulta.tce.sc.gov.br/Diario/dotc-e2024-05-22.pdf",
+   "regras_18": [],
+   "pista_id": "f760d3e486",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218251",
+   "municipio": "Timbó Grande",
+   "uf": "SC",
+   "url": "https://consulta.tce.sc.gov.br/Diario/dotc-e2025-12-15.pdf",
+   "regras_18": [],
+   "pista_id": "9bfa3f5960",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "89358 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Timbó Grande\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218251",
+   "municipio": "Timbó Grande",
+   "uf": "SC",
+   "url": "https://aris.sc.gov.br/uploads/pagina/2641/Kv_JCIzvuc0rfTuWi6E61IYKGcHcUB7f.pdf",
+   "regras_18": [],
+   "pista_id": "6eedc3be45",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2730646de6620984e7ec0d0ba55b65755176d3a04ba38dd46b47e1c4ae57bb69",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210407",
+   "municipio": "Maracajá",
+   "uf": "SC",
+   "url": "https://consulta.tce.sc.gov.br/RelatoriosDecisao/ConsultaDecisao/2380020552_151707.pdf",
+   "regras_18": [],
+   "pista_id": "01750e6cef",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218251",
+   "municipio": "Timbó Grande",
+   "uf": "SC",
+   "url": "https://consulta.tce.sc.gov.br/Diario/dotc-e2025-07-29.pdf",
+   "regras_18": [],
+   "pista_id": "f822b5cffa",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4468 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PREFEITURA MUNICIPAL DE ACEGUÁ Coordenadoria Municipal de Proteção e Defesa Civil de Aceguá PLANO DE CONTINGÊNCIA Municipio de Ace"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "NICIPAL DE ACEGUÁ Coordenadoria Municipal de Proteção e Defesa Civil de Aceguá PLANO DE CONTINGÊNCIA Municipio de Aceguá/ RS Março/2026. ESTADO DO RIO GRANDE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "03/2026",
+      "data_origem": "capa",
+      "data_trecho": "Março/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO RIO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "NICIPAL DE ACEGUÁ Coordenadoria Municipal de Proteção e Defesa Civil de Aceguá PLANO DE CONTINGÊNCIA Municipio de Aceguá/ RS Março/2026. ESTADO DO RIO GRANDE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PREFEITURA MUNICIPAL DE ACEGUÁ Coordenadoria Municipal de Proteção e Defesa Civil de Aceguá PLANO DE CONTINGÊNCIA Municipio de Ace"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "m? RCL: 63.024.736,92 Eventos Adversos Mais Comuns: I. Vento H. Granizo HI. Estiagem 1. DADOS CADASTRAIS MUNICÍPIO Telefone U.F. CNPJ DDD Telefone 0800 08"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "03/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "4300034",
+   "municipio": "Aceguá",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2006/PLANCON_ACEGU%C3%81_12_03_26.pdf",
+   "regras_18": [
+    "J22",
+    "J1"
+   ],
+   "data_origem": "capa",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "937ab46cf9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "368c1d412c6c46409daf20c5571d6eadaf530785ee64b44a74185e21f1c698cf",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-03-31",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "data relida no documento (2026 → 03/2026)",
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12178 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado do Rio Grande do Sul Município de Sério Rua 17 de Novembro, 1075 – Centro – CEP: 95.918-000 CNPJ 94.706.033/0001-03 Prefeitura de Sério/RS PLANO DE CONTI"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "1075 – Centro – CEP: 95.918-000 CNPJ 94.706.033/0001-03 Prefeitura de Sério/RS PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Estado do Rio Grande do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "23/10/2025",
+      "data_origem": "fecho",
+      "data_trecho": "Sério/RS, 23 outubro de 2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado do Rio",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "1075 – Centro – CEP: 95.918-000 CNPJ 94.706.033/0001-03 Prefeitura de Sério/RS PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL PLANCON Estado do Rio Grande do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Estado do Rio Grande do Sul Município de Sério Rua 17 de Novembro, 1075 – Centro – CEP: 95.918-000 CNPJ 94.706.033/0001-03 Prefeitura de Sério/RS PLANO DE CONTI"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "dos de risco Ocupação predominante Residencial Identificação dos riscos 14110 - Estiagem, 12200 - Enxurradas Estado do Rio Grande do Sul Município de Sério Rua"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "23/10/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4320453",
+   "municipio": "Sério",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2008/S%C3%A9rio%20-%20PLANCON.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "fecho",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "067e45f2d7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "878072b367c04964cff411cd860dca27ca87eaddde93687cacd40e74ea03c7dd",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2025-10-23",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "data relida no documento (2012 → 23/10/2025)",
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8435 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE CRISSIUMAL DADOS DO MUNCÍPIO Nome do Município: Crissiumal População: 14084 Área: 362,1"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE CRISSIUMAL DADOS DO MUNCÍPIO Nome do Município: Crissiumal População: 14084 Área: 362,1",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "02/05/2025",
+      "data_origem": "atualizacao",
+      "data_trecho": "Data de criação do documento: 02/05/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO RIO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE CRISSIUMAL DADOS DO MUNCÍPIO Nome do Município: Crissiumal População: 14084 Área: 362,1",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE CRISSIUMAL DADOS DO MUNCÍPIO Nome do Município: Crissiumal População: 14084 Área: 362,1"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "antos Telefone: (55) 99674-1728 CLASSIFICAÇÃO DO RISCO - 1 Tipo de Risco: Seca, Estiagem Histórico da recorrência: O evento ocorreu nos anos de 2011 a 2025 conf"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "02/05/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4306007",
+   "municipio": "Crissiumal",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/CRISSIUMAL_PLANCON.pdf",
+   "regras_18": [
+    "J22",
+    "J1"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "f45087b2f6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "7911bbf78874193c00bbcf3d8b3cc1d8bc1745d39cc9969b564e327c0af9a335",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2025-05-02",
+   "indicado_ao_cadastro_art3A": false,
+   "atualizacao_anual_localizada": false,
+   "substituiu": "data relida no documento (2011 → 02/05/2025)",
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15191 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DADOS DO MUNCÍPIO Nome do Município: Ajuricaba População: 7255 Área: 536,1141 Receita Líquida: 21297834,5400 PIB (Produto Interno Bruto): 255857866,0000 IDHM: 0"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "que recentemente há incentivo ao turismo nas propriedades rurais. QUEM ACIONA O PLANO DE CONTINGÊNCIA Acionista: Coordenador Municipal de Defesa Civil Outro: No",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "data_origem": null,
+      "data_trecho": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Secretaria Municipal",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "que recentemente há incentivo ao turismo nas propriedades rurais. QUEM ACIONA O PLANO DE CONTINGÊNCIA Acionista: Coordenador Municipal de Defesa Civil Outro: No",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "itude: -53.770425436998515 Longitude: -28.23933676470914 LOCAL DE DOAÇÕES Nome: Secretaria Municipal de Assistência Social, Trabalho e Habitação Latitude: -53.7"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO DE CONTINGÊNCIA Acionista: Coordenador Municipal de Defesa Civil Outro: Nome: Eduardo Butzen Telefone: (55) 99644-4609 DOCUMENTOS Nome Ação Portaria n° 16"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "4300208",
+   "municipio": "Ajuricaba",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/AJURICABA_PLANCON.pdf",
+   "regras_18": [
+    "J1",
+    "J10",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "d0427e8744",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5db5d173d191720d01e94d0a7ee49d6d9d8063c008c4dd425e8c703a3765888f",
+   "reabertura": "2026-11-26",
+   "retirou": {
+    "em": "2026-11-26",
+    "categoria": "plano_antigo",
+    "documento": "Plano de contingência municipal — Prefeitura de Ajuricaba, 2017",
+    "data": "2017",
+    "hash_evidencia": "daba4141bcf70f8794e1613a3b5283dcb7ac03553200dea4291c9f44570ee9c4"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "data_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13353 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE PALMEIRA DAS MISSÕES Caracterização do Cenário DADOS DO MUNCÍPIO Nome do Município: Pal"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE PALMEIRA DAS MISSÕES Caracterização do Cenário DADOS DO MUNCÍPIO Nome do Município: Pal",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "data_origem": null,
+      "data_trecho": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DO RIO",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE PALMEIRA DAS MISSÕES Caracterização do Cenário DADOS DO MUNCÍPIO Nome do Município: Pal",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DO RIO GRANDE DO SUL PLANO DE CONTINGÊNCIA MUNICIPAL MUNICÍPIO DE PALMEIRA DAS MISSÕES Caracterização do Cenário DADOS DO MUNCÍPIO Nome do Município: Pal"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "o Nenhum documento foi anexado. CLASSIFICAÇÃO DO RISCO - 2 Tipo de Risco: Seca, Estiagem Histórico da recorrência: Junho a Outubro Área de Risco - 2.1 + − Leafl"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": "EX_ANTE",
+   "ibge": "4313706",
+   "municipio": "Palmeira das Missões",
+   "uf": "RS",
+   "url": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2007/Plancom_Palmeira%20das%20Miss%C3%B5es.pdf",
+   "regras_18": [
+    "J1",
+    "J7"
+   ],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "d4e4b93090",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "19144545f27fb503f5ae912991050f36df058c5c8251c8ecf52a4cf86fac1f99",
+   "reabertura": "2026-11-26",
+   "retirou": {
+    "em": "2026-11-26",
+    "categoria": "plano_antigo",
+    "documento": "Plano de contingência municipal — Prefeitura de Palmeira das Missões, 2004",
+    "data": "2004",
+    "hash_evidencia": "97e6f44d2120a0812ec81816b85bbc49b88b6abbb97d8b1b0f52e1055842fc04"
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "34210 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "COMPDEC FELIZ RS Plano de Contingência para Eventos Meteorológicos, Hidrológicos, Tecnológicos e Geológicos (PLANCON) PLANO DE CONTINGÊNCIA PARA EVENTOS METEORO"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "COMPDEC FELIZ RS Plano de Contingência para Eventos Meteorológicos, Hidrológicos, Tecnológicos e Geológicos (PLANCON) PLANO DE CONTINGÊNCIA PARA EVENTOS METEORO",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "06/08/2026",
+      "data_origem": "atualizacao",
+      "data_trecho": "Atualizado 06/08/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COMPDEC",
+      "titulo": "Plano de Contingência",
+      "trecho": "COMPDEC FELIZ RS Plano de Contingência para Eventos Meteorológicos, Hidrológicos, Tecnológicos e Geológicos (PLANCON) PLANO DE CONTINGÊNCIA PARA EVENTOS METEORO",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "COMPDEC FELIZ RS Plano de Contingência para Eventos Meteorológicos, Hidrológicos, Tecnológicos e Geológicos (PLANCON) PLANO DE CONTINGÊNCIA PARA EVENTOS METEORO"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "ntes com produtos perigosos (químicos, biológicos, radiológi- cos e nucleares), incêndios industriais, explosões, rompimento de barragens, acidentes de transpor"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "06/08/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "4308102",
+   "municipio": "Feliz",
+   "uf": "RS",
+   "url": "https://www.feliz.rs.gov.br/web/imgs/arquivos/plano-de-contingencia-felizrs1786621806.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "793a824723",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "14062e4492329f7617942ce5417a32cf3ffb06878f47023a2dc6e97e061ca803",
+   "reabertura": "2026-11-26",
+   "data_da_edicao": "2026-08-06",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "substituiu": "data relida no documento (2025 → 06/08/2026)",
+   "aplicado_em": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "19636 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "UL/SC ESCOLA DE EDUCAÇÃO BÁSICA TEREZA CRISTINA RUA PAULO POSSAMAI, 98 — CENTRO/LAURENTINO PLANO DE CONTINGENCIA para a COVID-19 Estabelecimento de Educação/E"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DE EDUCAÇÃO BÁSICA TEREZA CRISTINA RUA PAULO POSSAMAI, 98 — CENTRO/LAURENTINO PLANO DE CONTINGENCIA para a COVID-19 Estabelecimento de Educação/Ensino Fundam",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "08/2021",
+      "data_origem": "capa",
+      "data_trecho": "Agosto /2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE SANTA",
+      "titulo": "PLANO DE\nCONTINGENCIA",
+      "trecho": "DE EDUCAÇÃO BÁSICA TEREZA CRISTINA RUA PAULO POSSAMAI, 98 — CENTRO/LAURENTINO PLANO DE CONTINGENCIA para a COVID-19 Estabelecimento de Educação/Ensino Fundam",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a Padre Doutor Itamar Luis da Costa - Imbituba/SC Profa. Rute Maria Fernandes - Secretaria Municipal de Educação, Cultura e Esportes (SEDUCE) - Imbituba/SC. Ms"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ão Mundial de Saúde, bem como Secretarias de Estado de Saúde e de Educação). O Plano de Contingência Escolar para a COVID-19, a partir de cenários de risco id"
+    }
+   },
+   "categoria": null,
+   "data": "08/2021",
+   "natureza": "EX_ANTE",
+   "ibge": "4209508",
+   "municipio": "Laurentino",
+   "uf": "SC",
+   "url": "https://laurentino.sc.gov.br/uploads/sites/163/2021/12/2222691_Plancon_EEB_Tereza_Cristina_3_versao.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "capa",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "2abca0e51b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7bab836c7ff3792efc4054e51dea7aee8a4d0f9a20596988eddde9987ba03172",
+   "reabertura": "2026-11-26"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3105400",
+   "municipio": "Barão de Cocais",
+   "uf": "MG",
+   "url": "https://www.baraodecocais.mg.gov.br/abrir_arquivo.aspx/Portaria_301_2019?cdLocal=5&arquivo=%7B61025BCB-7CD6-3D28-CD53-EA0BE6E71C3D%7D.pdf",
+   "regras_18": [],
+   "pista_id": "241806438f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false,
+   "reabertura": "2026-11-26"
   }
  ]
 }
