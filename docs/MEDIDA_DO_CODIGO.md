@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **107.365 linhas** em **306 arquivos** .py/.js; **41 workflows**.
+- **107.470 linhas** em **306 arquivos** .py/.js; **42 workflows**.
 - **66 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 45.
 - **163 nomes de função** definidos em mais de um arquivo.
 
@@ -11,7 +11,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | pasta | linhas |
 |---|---:|
 | `(raiz)` | 62447 |
-| `scripts` | 37930 |
+| `scripts` | 38035 |
 | `assets` | 6720 |
 | `.claude` | 268 |
 
@@ -65,6 +65,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `_plano` | 6 | `classificar_saude_no_plano.py`, `coletar_dda.py`, `coletar_srag_gripe.py`, `coletar_transferegov.py` … |
 | `carregar` | 6 | `aplicar_revisao.py`, `scripts/testar_ordem_prioridade_ufs.py`, `scripts/validar_dicionario.py`, `verificar_financiamento.py` … |
 | `decidir` | 6 | `buscar_financiamento_preventivo.py`, `coletar_saude_estadual.py`, `coletar_sg_esus.py`, `monitorar_busca_web.py` … |
+| `_host` | 5 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `scripts/municipio_do_dominio.py`, `scripts/ponte_brasil.py` … |
 | `agregar` | 5 | `coletar_datasus_dbc.py`, `coletar_execucao_mps.py`, `coletar_sih.py`, `coletar_sim.py` … |
 | `avisar` | 5 | `conferir_emergencias_estaduais.py`, `scripts/avisos.py`, `scripts/checagem_pre_noite.py`, `scripts/selo_da_main.py` … |
 | `carregar_fila` | 5 | `descobrir_planos.py`, `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` … |
@@ -74,7 +75,6 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `relatorio` | 5 | `coletar_cobertura_qd.py`, `scripts/busca_dirigida_do_ato.py`, `scripts/fechar_saude.py`, `scripts/medir_codigo.py` … |
 | `__init` | 4 | `assets/js/defesa-civil.js`, `assets/js/financiamento.js`, `assets/js/index.js`, `assets/js/monitor-de-riscos.js` |
 | `_git` | 4 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_repositorio.py`, `scripts/verificar_tamanho_dos_dados.py` |
-| `_host` | 4 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `scripts/municipio_do_dominio.py`, `triar_confianca_pistas.py` |
 | `_levanta` | 4 | `buscar_planos_fontes_abertas.py`, `coletar_pab_brasil.py`, `coletar_transferencias_municipais.py`, `scripts/testar_busca_dou.py` |
 | `_sem_acento` | 4 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py`, `scripts/vocabulario.py` |
 | `conferir` | 4 | `reconferir_instrumentos_federais.py`, `scripts/gerar_saude_pipeline.py`, `scripts/verificar_funil.py`, `scripts/verificar_texto_blog.py` |

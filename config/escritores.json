@@ -288,8 +288,7 @@
   },
   "data/ponte_brasil.json": {
    "escritor": "qualquer_elo",
-   "por_que": "Índice da ponte no Brasil (15/11/2026): url → cópia em ponte/ pelo sha256 ou, para documento de lote, no ramo ponte-local/* (18/11/2026). Só scripts/ponte_brasil.py escreve; uma chave por URL.",
-   "pendente": "classe de união por chave no resolvedor quando a ponte rodar como elo; até lá, só entra por PR"
+   "por_que": "Índice da ponte no Brasil (15/11/2026): url → cópia em ponte/ pelo sha256 ou, para item de lote, no ramo ponte-local/* (18/11/2026). Só scripts/ponte_brasil.py escreve; uma chave por URL. 26/11/2026: o elo do juiz recebe os lotes (`--receber-ramos`); `copias` une por chave no resolvedor, e `lotes` perdido num conflito só faz o lote ser recebido de novo, sem sobrescrever cópia."
   },
   "ponte/": {
    "escritor": "qualquer_elo",

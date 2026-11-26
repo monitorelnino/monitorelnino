@@ -41,6 +41,8 @@ jobs:
       comandos: |
         # 15/11/2026 (editoria): a indicação do leitor entra toda noite, antes do juiz, e é julgada na
         # mesma noite. Era semanal, e a rodada de 15/11 perdeu o commit com a indicação de Taió/SC.
+        # 26/11/2026: o lote que a ponte no Brasil trouxe entra no índice antes do juiz, que o lê na mesma noite.
+        scripts/ponte_brasil.py --receber-ramos
         processar_contribuicoes.py
         scripts/corrigir_atribuicao_por_dominio.py --aplicar
         revisar_pistas.py --preparar

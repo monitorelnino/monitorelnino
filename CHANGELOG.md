@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2105 · Ponte no Brasil: recebimento na noite e lista gerada
+
+A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.
+
 ## 2026-11-26 · #2107 · Prova de mutação dos portões: âncora do SHA por regex
 
 A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com "âncora ausente". A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.

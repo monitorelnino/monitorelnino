@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Ponte no Brasil: recebimento na noite e lista gerada</dt>
+      <dd>A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.</dd>
       <dt>26/11/2026 · Prova de mutação dos portões: âncora do SHA por regex</dt>
       <dd>A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com &quot;âncora ausente&quot;. A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.</dd>
       <dt>25/11/2026 · S22 (PNCP): teto de 20 min por município</dt>
@@ -162,8 +164,6 @@
       <dd>O .doc com objeto do Word embutido (Chuvisca/RS) saía sem texto: o leitor misturava o texto do documento com a tabela do objeto. Agora lê só as correntes da raiz do arquivo.</dd>
       <dt>23/11/2026 · Rodada J18: rejulgamento paralelo pelo codebook 1.8</dt>
       <dd>Rejulgamento de `promocoes_automaticas.json` e da fila de `pistas_imprensa.json` pelo codebook 1.8, gravado só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json` (nada do índice lê). Com documento local, 564 decisões e 227 pistas julgadas; nenhum veredito muda. 6.052 pistas da fila e cerca de 9.700 decisões seguem sem cópia local, e não são rejulgadas. Código sem mudança: o modo 1.8 já estava na `main` e passa nas 109 travas do `juiz.py --autoteste`.</dd>
-      <dt>23/11/2026 · O juiz lê o .doc do Word 97–2003</dt>
-      <dd>Seis planos do Prepara RS em .doc antigo saíam sem texto: o leitor não tinha extrator para o formato. `texto_de_doc_binario` lê o contêiner e a tabela de peças, sem dependência nova. A recusa por texto não extraível em documento de escritório volta uma vez.</dd>
     </dl>
   </section>
 </main>
