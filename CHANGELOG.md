@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2145 · Buscador 2: união aceita o primeiro fechamento de pista
+
+O seguidor grava `fechada_em` quando fecha uma pista, e o resolvedor de união não tinha regra para esse campo. Quando a válvula do Buscador 2 e a noite fechavam a mesma pista em dias diferentes, o lote inteiro era recusado (1.100 pistas no lote de 26/11). Agora vence o primeiro fechamento, como em `rejeitada_em`. Autoteste F101.
+
 ## 2026-11-26 · #2143 · Emergência ou calamidade, e o nível que a regra permite afirmar
 
 Cada município sob decreto passa a ter o tipo de declaração e o nível de intensidade da Portaria MDR nº 260/2022, art. 5º: calamidade pública é nível III; emergência reconhecida pela União é nível II, porque o nível I não pede reconhecimento; emergência sem reconhecimento fica sem nível. O coletor federal passa a buscar também os reconhecimentos de calamidade, que não entravam.
