@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2105 · Ponte no Brasil: recebimento na noite e lista gerada
+
+A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.
+
 ## 2026-11-25 · #2103 · S22 (PNCP): teto de 20 min por município
 
 A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.
