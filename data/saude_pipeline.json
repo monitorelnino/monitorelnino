@@ -6842,7 +6842,13 @@
   {"data": "2026-11-25", "script": "gerar_saude_municipio.py", "inicio": "2026-11-26T01:37:25", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-25", "script": "sondar_repositorios_estaduais.py", "inicio": "2026-11-26T02:10:38", "duracao_s": 0.5, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-25", "script": "coletar_srag_sivep.py", "inicio": "2026-11-26T02:10:39", "duracao_s": 41.1, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-25", "script": "coletar_sg_esus.py", "inicio": "2026-11-26T02:11:20", "duracao_s": 11.5, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-25", "script": "coletar_sg_esus.py", "inicio": "2026-11-26T02:11:20", "duracao_s": 11.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-25", "script": "consultar_querido_diario.py", "inicio": "2026-11-26T01:13:30", "duracao_s": 1.9, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable | queridodiario.ok.org.br: HTTPError HTTP Error 503: Service Unavailable | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-25", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-26T01:13:31", "duracao_s": 2.2, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-25", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-26T01:13:33", "duracao_s": 2279.8, "itens": 74, "status": "ok", "erro": ""},
+  {"data": "2026-11-25", "script": "coletar_doe.py", "inicio": "2026-11-26T01:51:32", "duracao_s": 1572.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-25", "script": "coletar_s2id.py", "inicio": "2026-11-26T02:17:44", "duracao_s": 249.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-25", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-26T02:21:53", "duracao_s": 219.9, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-26T02:11:20"
+ "atualizado_em": "2026-11-26T02:21:53"
 }
