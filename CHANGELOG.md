@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-26 · #2116 · Saúde: falha de leitura não é recusa
+
+Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.
+
 ## 2026-11-26 · #2113 · Vigia de boletins lê o índice da ANA e só avisa
 
 `atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.

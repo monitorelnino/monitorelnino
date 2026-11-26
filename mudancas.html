@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/11/2026 · Saúde: falha de leitura não é recusa</dt>
+      <dd>Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.</dd>
       <dt>26/11/2026 · Vigia de boletins lê o índice da ANA e só avisa</dt>
       <dd>`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.</dd>
       <dt>26/11/2026 · Selo, PR 2: o selo sai do PR</dt>
@@ -162,8 +164,6 @@
       <dd>A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.</dd>
       <dt>23/11/2026 · União pela base soma `repeticoes` de pista</dt>
       <dd>O resolvedor de conflito recusava a pista cujo contador `repeticoes` subiu nos dois lados. Agora soma os acréscimos sobre a base, como os contadores do funil; decremento segue recusado.</dd>
-      <dt>23/11/2026 · Juiz: ano fora da faixa não é data</dt>
-      <dd>Plano sem ato de aprovação passava com ano impossível quando o texto citava período chuvoso: em Chuvisca/RS, o fim de um telefone virou 2077. A recusa por data suspeita passa a valer com ou sem ato.</dd>
     </dl>
   </section>
 </main>
