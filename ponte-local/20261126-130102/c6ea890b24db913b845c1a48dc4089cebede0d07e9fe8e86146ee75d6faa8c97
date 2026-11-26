@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://defesacivil.franciscomorato.sp.gov.br/ -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Defesa Civil Municipal | Prefeitura de Francisco Morato</title>
+    <meta name="description" content="Portal oficial da Defesa Civil de Francisco Morato com informações de prevenção, contatos e atendimento emergencial.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root{
+            --azul:#0b3d6e;
+            --azul-claro:#1e6bb8;
+            --bg:#f1f4f8;
+            --texto:#333;
+        }
+
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            background:var(--bg);
+            color:var(--texto);
+            line-height:1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* BARRA ACESSIBILIDADE FIXA (SEM LOGO) */
+        #acessibilidade{
+            background:var(--azul);
+            padding:10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .acess-container{
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: center; /* Centraliza os botões agora que não há logo */
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-acess{
+            background:#fff;
+            color:var(--azul);
+            border:2px solid #fff;
+            padding:8px 15px;
+            border-radius:4px;
+            cursor:pointer;
+            font-weight:bold;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+
+        .btn-acess:hover, .btn-acess:focus{
+            background: var(--azul);
+            color: #fff;
+            outline: 3px solid #ffcc00;
+        }
+
+        /* ALTO CONTRASTE */
+        .alto-contraste, .alto-contraste main, .alto-contraste .container {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        .alto-contraste h1, .alto-contraste h2, .alto-contraste strong {
+            color: #ffff00 !important;
+        }
+
+        /* CONTEÚDO CENTRALIZADO */
+        .container{
+            max-width:1000px;
+            margin:20px auto;
+            background:#fff;
+            padding:40px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .banner img{
+            width:100%;
+            max-height:300px;
+            object-fit:cover;
+        }
+
+        .card{ margin-bottom: 40px; }
+
+        ul {
+            display: inline-block;
+            text-align: left;
+            list-style-position: inside;
+        }
+
+        /* MAPA E LOGO NO FINAL */
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        .logo-rodape {
+            max-width: 200px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+<style>[vw] [vw-access-button]{display:none;flex-direction:row-reverse;width:40px;height:40px;cursor:pointer;overflow:hidden;position:absolute;border-radius:8px;transition:all 0.5s ease;right:0;left:auto}[vw] [vw-access-button] img{max-height:40px;transition:all 0.5s ease;border-radius:8px;opacity:1 !important;visibility:visible !important}[vw] [vw-access-button] .vp-access-button{width:40px;height:40px;z-index:1}[vw] [vw-access-button] .vp-pop-up{position:absolute;height:40px;min-width:150px;z-index:0;left:0;right:auto}[vw] [vw-access-button]:hover{width:200px}[vw] [vw-access-button].isLeft{flex-direction:row;left:0;right:auto}[vw] [vw-access-button].isLeft .vp-pop-up{left:auto;right:0}[vw] [vw-access-button].isTopOrBottom:hover{bottom:-20px;top:0;margin-right:-80px}[vw] [vw-access-button].active{display:flex}
+</style><style>[vw].left [vw-plugin-wrapper]{float:left}[vw] [vw-plugin-wrapper]{position:relative;display:none;width:300px;height:100%;float:right;background:white;-webkit-box-shadow:0px 0px 15px rgba(0,0,0,0.2);-moz-box-shadow:0px 0px 15px rgba(0,0,0,0.2);box-shadow:0px 0px 15px rgba(0,0,0,0.2);border-radius:12px;-moz-border-radius:12px;-webkit-border-radius:12px}[vw] [vw-plugin-wrapper].active{display:-webkit-flex;display:flex;flex-direction:column;-webkit-flex-direction:column;height:450px;max-width:100%;min-height:100%}
+</style><style>div[vw]{position:fixed;max-width:95vw;min-height:40px;min-width:40px;z-index:2147483645 !important;display:none;margin:10px !important}div[vw].enabled{display:block}div[vw].active{margin-top:-285px}div[vw].left{left:0;right:initial}
+</style></head>
+
+<body>
+
+<div id="acessibilidade" role="navigation" aria-label="Ferramentas de Acessibilidade">
+  <div class="acess-container">
+    <div class="botoes-acess">
+        <button class="btn-acess" onclick="alterarFonte(1)" onmouseenter="falarTexto(&#39;Aumentar fonte&#39;)" aria-label="Aumentar texto">A+</button>
+        <button class="btn-acess" onclick="alterarFonte(-1)" onmouseenter="falarTexto(&#39;Diminuir fonte&#39;)" aria-label="Diminuir texto">A-</button>
+        <button class="btn-acess" onclick="alternarContraste()" onmouseenter="falarTexto(&#39;Alternar contraste&#39;)" aria-label="Alternar Alto Contraste">🌓 Contraste</button>
+        <button class="btn-acess" id="btn-voz" onclick="toggleLeitura()" onmouseenter="falarNomeBotao()" aria-label="Ouvir texto da página">🔊 Ouvir Página</button>
+    </div>
+  </div>
+</div>
+
+<header class="banner">
+    <img src="./banner-defesa-civil.png" alt="Banner da Defesa Civil de Francisco Morato">
+</header>
+
+<main id="conteudo" class="container">
+    <h1>Defesa Civil de Francisco Morato</h1>
+
+    <section class="card">
+        <h2>Contatos de Emergência</h2>
+        <p><strong>Email:</strong> defesacivil@franciscomorato.sp.gov.br</p>
+        <p><strong>Telefone:</strong> 199 / (11) 4488-2011</p>
+        <p><strong>GCM:</strong> 153 / (11) 4881-0637</p>
+        <p><strong>Atendimento:</strong> 24 horas</p>
+    </section>
+
+    <section class="card">
+        <h2>Principais Serviços</h2>
+        <ul>
+            <li>Monitoramento de áreas de risco</li>
+            <li>Atendimento emergencial</li>
+            <li>Educação preventiva</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>Localização</h2>
+        <p>Avenida Ulisses Guimarães, nº 888, Francisco Morato/SP</p>
+        <iframe title="Mapa de localização da Defesa Civil" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.0547634851743!2d-46.76897!3d-23.21671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf5b7b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sAv.%20Ul%C3%ADsses%20Guimar%C3%A3es%2C%20888%20-%20Francisco%20Morato%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1691234567890" allowfullscreen="" loading="lazy">
+        </iframe>
+    </section>
+
+    <img src="./logo-prefeitura.png" alt="Logo Prefeitura de Francisco Morato" class="logo-rodape">
+</main>
+
+<footer>
+    Prefeitura de Francisco Morato – 2026
+</footer>
+
+<script>
+    let nivelFonte = 100;
+    function alterarFonte(delta) {
+        nivelFonte += (delta * 10);
+        if (nivelFonte < 80) nivelFonte = 80;
+        if (nivelFonte > 150) nivelFonte = 150;
+        document.documentElement.style.fontSize = nivelFonte + "%";
+    }
+
+    function alternarContraste() {
+        document.body.classList.toggle('alto-contraste');
+    }
+
+    let sintetizador = window.speechSynthesis;
+    
+    function falarTexto(texto) {
+        if (!sintetizador.speaking) {
+            const anuncio = new SpeechSynthesisUtterance(texto);
+            anuncio.lang = 'pt-BR';
+            anuncio.rate = 1.2;
+            sintetizador.speak(anuncio);
+        }
+    }
+
+    function falarNomeBotao() {
+        const textoBotao = document.getElementById('btn-voz').innerText;
+        falarTexto(textoBotao);
+    }
+
+    function toggleLeitura() {
+        const btn = document.getElementById('btn-voz');
+        if (sintetizador.speaking) {
+            sintetizador.cancel();
+            btn.innerHTML = "🔊 Ouvir Página";
+            return;
+        }
+        const texto = document.getElementById('conteudo').innerText;
+        const locucao = new SpeechSynthesisUtterance(texto);
+        locucao.lang = 'pt-BR';
+        locucao.onstart = () => btn.innerHTML = "⏹ Parar Leitura";
+        locucao.onend = () => btn.innerHTML = "🔊 Ouvir Página";
+        sintetizador.speak(locucao);
+    }
+</script>
+
+<div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+    <div vw-access-button="" class="active" style=""><img class="vp-access-button" data-src="./access_icon.svg?v=20260510" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="./Defesa Civil Municipal _ Prefeitura de Francisco Morato_files/access_icon.svg">
+<img class="vp-pop-up" data-src="./access_popup.jpg?v=20260510" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="./access_popup.jpg">
+</div>
+    <div vw-plugin-wrapper=""><div vp="">
+  <div vp-box=""></div>
+  <div vp-message-box=""></div>
+  <div vp-settings=""></div>
+  <div vp-dictionary=""></div>
+  <div vp-settings-btn=""></div>
+  <div vp-info-screen=""></div>
+  <div vp-suggestion-screen=""></div>
+  <div vp-translator-screen=""></div>
+  <div vp-more-options-screen=""></div>
+  <div vp-emotions-tooltip=""></div>
+  <div vp-main-guide-screen=""></div>
+  <div vp-suggestion-button=""></div>
+  <div vp-rate-box=""></div>
+  <div vp-change-avatar=""></div>
+  <div vp-aux-controls=""></div>
+  <div vp-controls=""></div>
+  <span vp-click-blocker=""></span>
+</div>
+</div>
+</div>
+<!-- <script src="./Defesa Civil Municipal _ Prefeitura de Francisco Morato_files/vlibras-plugin.js.download"></script> -->
+<!-- <script src="./Defesa Civil Municipal _ Prefeitura de Francisco Morato_files/vlibras-plugin.js"></script> -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+
+</body></html>
+

@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+
+<head>
+    <title>Prefeitura do Município de Francisco Morato</title>    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Prefeitura do Município de Francisco Morato">    
+        
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>   
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/plugins/flexslider/flexslider.css">
+    <link rel="stylesheet" href="/assets/plugins/pretty-photo/css/prettyPhoto.css"> 
+    <!-- Tema GMC CSS -->  
+    
+    <!-- Font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    <link id="theme-style" rel="stylesheet" href="/assets/css/styles.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://kit.fontawesome.com/a7ef3621cc.js" crossorigin="anonymous"></script>
+	
+	
+	<!-- Google tag (gtag.js) GMC -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CYNZETQLSF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CYNZETQLSF');
+</script>
+	
+	
+<!-- Google tag (gtag.js) Prefeitura --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JZH4CKX3Z9"></script> 
+<script> 
+  window.dataLayer = window.dataLayer || []; 
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date()); 
+  
+  gtag('config', 'G-JZH4CKX3Z9'); 
+</script>
+	
+	
+</head> 
+
+<body class="home-page">
+    <div class="wrapper">
+        <!-- ******CABEÇALHO****** --> 
+        <header class="header"> <!-- style="background: #fffce0"-->  
+            <div class="top-bar">
+                <div class="container">              
+                    <ul class="social-icons col-md-6 col-sm-6 col-xs-12 hidden-xs">
+                        <li><a href="https://www.facebook.com/prefeituradefranciscomorato/?fref=ts" target="_blank"><i class="fab fa-facebook" style="color: #ffffff"></i></a></li>
+                        <li><a href="https://www.flickr.com/photos/152999349@N03/" target="_blank"><i class="fab fa-flickr" style="color: #ffffff"></i></a></li>
+                    </ul><!--//MIDIA-SOCIAL-->
+                    
+                    <form class="pull-right search-form" role="search" method="post" action="/site/index/pesquisa">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Pesquisa" name="q">
+                        </div>
+                        <button type="submit" class="btn btn-theme"><i class="fa fa-search"></i></button>
+                    </form> 
+                </div>      
+            </div><!--//to-bar-->
+            <div class="header-main container">
+                <h1 class="logo col-md-4 col-sm-4">
+                    <a href="/"><img id="logo" class="img-responsive" src="/assets/images/logo_morato.png" alt="Logo" style="margin: auto;margin-top: -6px;"></a>
+                </h1><!--//logo-->           
+                <div class="info col-md-8 col-sm-8">
+                    <ul class="menu-top navbar-right hidden-xs">
+                        <li class="divider"><a href="/">Principal</a></li>
+                        <!-- <li><a href="http://franciscomorato.eouve.com.br">Ouvidoria</a></li> -->
+                        <li><a href="https://falabr.cgu.gov.br/v2/?uf=SP&municipio=FRANCISCO+MORATO">Ouvidoria</a></li> 
+                        
+                    </ul><!--//menu-superior-->
+                    <br />
+                    <div class="contact pull-right">
+                        <p class="phone" style="width: 250px; text-align: right; margin-right: 0px;" ><i class="fa fa-phone"></i>(11) 4489-8900</p>
+                        <!--<p class="email"><i class="fa fa-envelope"></i><a href="mailto:prefeitura@franciscomorato.sp.gov.br">prefeitura@franciscomorato.sp.gov.br</a></p>-->
+                    </div><!--//contato-->
+
+<!--                    
+                    <div class="contact pull-right hidden-xs">
+			            <a class="btn btn-ctb" style="font-size: 13px; background: #326eaa;border-color: #326eaa;border-radius: 18px 18px 0px 0px;margin-right:5px;" href="//ppa.franciscomorato.sp.gov.br" target="_blank"><img id="logo" src="/arquivos/imagens/botoes/logoPlanoMetas.png" style="
+                            width: 36px;
+                            height: 18px;
+                            margin-bottom: 4px;
+                            margin-right: 5px;"><b>Plano de Metas</b>
+                        </a> 
+                        
+    
+                        <a class="btn btn-ctb" style="background: #e67817; border-color: #e67817; border-radius: 18px 18px 0px 0px" href="https://defesacivil.franciscomorato.sp.gov.br" target="_blank"><img id="logo" src="/img/defesacivil.jpg"><b> Defesa Civil</b></a>
+                        <a class="btn btn-ctb" style="background: #fdcf5f; border-color: #fdcf5f; border-radius: 18px 18px 0px 0px; color:#008733;" href="/site/index/sic"><b>SIC </b><img id="logo" src="/img/esic_logo.png"></a>
+                        <a class="btn btn-ctb" style="background: #006a91; border-color: #006a91; border-radius: 18px 18px 0px 0px" href="http://saude.franciscomorato.sp.gov.br" target="_blank"><b>SAME</b></a>
+                        <a class="btn btn-ctb" style="background: #00b8b1; border-color: #00b8b1; border-radius: 18px 18px 0px 0px" href="https://ouvidoria.etransparencia.com.br/franciscomorato.sp/wpstartpagenew.aspx" target="_blank"><i class="fa fa-envelope" style="color:#fff" aria-hidden="true"></i><b>Ouvidoria</b></a> 
+                        -->
+
+                        <div class="contact pull-right hidden-xs" style="width: 1080px">
+
+<!--
+			            <a class="btn btn-ctb" style="font-size: 13px; background: #326eaa;border-color: #326eaa;border-radius: 18px 18px 0px 0px;" href="#" target="_blank"><b>PPA</b></a> 
+-->
+
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #fdcf5f; border-color: #fdcf5f; border-radius: 18px 18px 0px 0px; color:#3e576c;" href="https://cadinmorato.franciscomorato.sp.gov.br/" target="_blank"><b>CADIN municipal</b></a>
+
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #00b8b1; border-color: #00b8b1; border-radius: 18px 18px 0px 0px" href="https://falabr.cgu.gov.br/web/login?ouvidoriaInterna=false&assunto=1051&tipo=1&redirect=/v-app/manifestacao/criar?ouvidoriaInterna=false%26assunto=1051%26tipo=1" target="_blank"><b>Denúncia Ambiental</b></a>
+
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #7ca4dd;border-color: #7ca4dd;border-radius: 18px 18px 0px 0px;" href="/site/index/planosmunicipais"><b>Planos municipais</b></a> 
+
+
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #e67817; border-color: #e67817; border-radius: 18px 18px 0px 0px" href="https://defesacivil.franciscomorato.sp.gov.br" target="_blank"><b> Defesa Civil</b></a>
+
+
+
+                        <!-- <a class="btn btn-ctb" style="font-size: 10px; background: #fdcf5f; border-color: #fdcf5f; border-radius: 18px 18px 0px 0px; color:#008733;" href="/site/index/sic"><b>SIC </b></a> -->
+						<a class="btn btn-ctb" style="
+							  font-size: 10px;
+							  background: #fdcf5f;
+							  border-color: #fdcf5f;
+							  border-radius: 18px 18px 0 0;
+							  color: #008733;
+							  display: inline-flex;
+							  align-items: center;
+							  justify-content: center;
+							  gap: 4px;
+						   " 
+						     href="/site/index/sic">
+
+							<b>E-SIC</b>
+
+							<img src="/img/esic_logo.png" alt="" style="height: 16px; width: auto;">
+						</a>
+
+
+
+
+
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #006a91; border-color: #006a91; border-radius: 18px 18px 0px 0px" href="http://saude.franciscomorato.sp.gov.br" target="_blank"><b>SAME</b></a>
+                        
+                        <!--
+                        <a class="btn btn-ctb" style="font-size: 13px; background: #00b8b1; border-color: #00b8b1; border-radius: 18px 18px 0px 0px" href="http://franciscomorato.eouve.com.br" target="_blank"><b>Ouvidoria</b></a>
+                        -->
+                        
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #00b8b1; border-color: #00b8b1; border-radius: 18px 18px 0px 0px" href="/site/index/ouvidoria" ><b>Ouvidoria Municipal</b></a>
+                        
+                        <!--
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #13427c; border-color: #13427c; border-radius: 18px 18px 0px 0px" href="https://falabr.cgu.gov.br/v2/?uf=SP&municipio=FRANCISCO+MORATO" target="_blank"><b>Ouvidoria GCM</b></a>
+
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #7ea4d9; border-color: #7ea4d9; border-radius: 18px 18px 0px 0px" href="https://falabr.cgu.gov.br/v2/?uf=SP&municipio=FRANCISCO+MORATO" target="_blank"><b>Ouvidoria SAME</b></a>
+-->
+<!--                                                
+                        <a class="btn btn-ctb" style="font-size: 10px; background: #0D9695; border-color: #0D9695; border-radius: 18px 18px 0px 0px" href="http://franciscomorato.educaon.com.br/" target="_blank"><b>Educação</b></a>
+-->
+                        
+
+                    </div><!--//contato-->                    
+
+
+                </div><!--//info-->
+            </div><!--//FIM-CABEÇALHO-->
+        </header><!--//header-->
+        
+        <!-- ******NAVEGAÇÃO****** -->
+        <nav class="main-nav" role="navigation" style="margin-bottom: 0px;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->            
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a href="/"><b><i class="fa fa-home fa-lg" aria-hidden="true"></i></b></a></li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#"><b>A Prefeitura</b> <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="/arquivos/calendario.pdf" target="_blank">Calendário Oficial</a></li>     
+                                <li><a tabindex="-1" href="/site/index/contato">De Portas Abertas</a></li>     
+                                <li><a tabindex="-1" href="/site/governo">Estrutura Organizacional</a></li>
+                                <li><a tabindex="-1" href="/site/index/institucional">Conheça a História</a></li> 
+                                <li><a tabindex="-1" href="/site/index/fundosocial">Fundo Social</a></li>                                 
+                                <li><a tabindex="-1" href="/site/index/nossagente/">História da Nossa Gente</a></li>
+                                
+                                <li><a tabindex="-1" href="https://imprensaoficial.franciscomorato.sp.gov.br" target="_blank">Imprensa Oficial</a></li> 
+                                <!-- <li><a tabindex="-1" href="/site/artigo/diariooficialx" >Imprensa Oficial</a></li>-->
+                                
+                                <!-- <li><a tabindex="-1" href="/arquivos/documentos/publicacao_29_03_22.pdf" target="_blank">Imprensa Oficial - publicação 29/03/2022</a></li>    -->
+                                
+                                
+                                
+                                
+                                
+
+                                <li><a tabindex="-1" href="/site/index/faq">Perguntas frequentes</a></li> 
+                                
+                                <li><a tabindex="-1" href="https://www.legislacaodigital.com.br/FranciscoMorato-SP/" target="_blank">Banco de Leis</a></li>  
+                                <li><a tabindex="-1" href="/site/governo">Secretarias e Orgãos Municipais</a></li> 
+                            </ul>
+                        </li>                         
+			
+			<li class="nav-item dropdown">
+			
+				<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#"><b>Editais</b> <i class="fa fa-angle-down"></i></a>
+				<ul class="dropdown-menu">
+					<li><a href="/site/artigo/pesquisaconc" target="_blank">Concursos e Processos Seletivos</a></li>  
+
+					<li><a href="/site/artigo/pesquisachamamento" target="_blank">Chamamentos</a></li>
+					<li><a href="/site/artigo/pesquisalistadeespera" target="_blank">Listas de espera</a></li>
+					
+
+					<li><a href="https://drive.google.com/drive/folders/1ZilKSbsfZhqNqFeMDYcO0Jry_vwYwKvD" target="_blank">Editais de Licitação</a></li>
+					<li><a href="//licitacoes.franciscomorato.sp.gov.br" target="_blank">Editais de Licitação anteriores</a></li>
+
+                    
+                    <li class="dropdown-submenu">
+                        <a class="trigger" tabindex="-1" href="#">Concorrência 004/2022 <i class="fa fa-angle-right"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="/arquivos/concorrencia_0042022/concorrencia_004-2022_viaduto.pdf" target="_blank">Edital concorrência 004/2022</a></li>
+                            <li><a tabindex="-1" href="/arquivos/concorrencia_0042022/concorrencia_004-2022_viaduto_comunicado.pdf" target="_blank">Comunicado</a></li>
+                            <li><a tabindex="-1" href="/arquivos/concorrencia_0042022/concorrencia_004-2022_anexos.zip" target="_blank">Anexos</a></li>
+                        </ul>
+                    </li>
+                    
+
+                    <li class="dropdown-submenu">
+                        <a class="trigger" tabindex="-1" href="#">Concorrência 002/2023 <i class="fa fa-angle-right"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="/arquivos/concorrencia_0022023/edital-3247.2022_CP 02.pdf" target="_blank">Edital concorrência 002/2023</a></li>
+                            <li><a tabindex="-1" href="/arquivos/concorrencia_0022023/anexos-concorrencia022023.zip" target="_blank">Anexos</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="trigger" tabindex="-1" href="#">Concorrência 003/2023 <i class="fa fa-angle-right"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="/arquivos/concorrencia_0032023/concorrencia003-2023_creche_sao_luiz.pdf" target="_blank">Edital concorrência 003/2023</a></li>
+                            <li><a tabindex="-1" href="/arquivos/concorrencia_0032023/concorrencia_003_2023.zip" target="_blank">Anexos</a></li>
+                        </ul>
+                    </li>
+
+
+                    
+                    <li class="dropdown-submenu">
+                        <a class="trigger" tabindex="-1" href="#">Credenciamento <i class="fa fa-angle-right"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="/arquivos/chamamentos/edital_chamamento_02_24.pdf" target="_blank">Chamamento 002/2024 - edital</a></li>
+                            <li><a tabindex="-1" href="/arquivos/chamamentos/chamamento_002_2024.zip" target="_blank">Chamamento 002/2024 - anexos</a></li>
+
+                        </ul>
+                    </li>
+
+
+				</ul>
+			</li>
+
+             
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#"><b>Serviços</b> <i class="fa fa-angle-down"></i></a>
+
+
+
+
+                            <ul class="dropdown-menu">
+
+
+                                <li class="dropdown-submenu">
+                                    <a class="trigger" tabindex="-1" href="#">Assinatura GOV.BR <i class="fa fa-angle-right"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="https://assinador.iti.br/assinatura/index.xhtml" target="_blank">Assinar documento</a></li>
+					                    <li><a tabindex="-1" href="https://validar.iti.gov.br/" target="_blank">Validar documento</a></li>
+                                     </ul>
+                	    	</li>
+
+
+
+                                <li><a href="https://cadastrohabitacional.franciscomorato.sp.gov.br" target="_blank">Cadastro Habitacional</a></li>
+                                
+                                
+
+                                
+                                <li><a href="https://cia.franciscomorato.sp.gov.br" target="_blank">Carteira de identificação do autista</a></li>
+                                <li><a href="https://cipf.franciscomorato.sp.gov.br" target="_blank">Carteira de Identificação da Pessoa com Fibromialgia</a></li>
+                                
+                                
+                                
+                                
+                                <li><a href="arquivos/codigo-tributario.pdf" target="_blank">Código Tributário</a></li>  
+	                        <li><a href="/arquivos/coleta/roteiro_coleta2026.pdf" target="_blank">Coleta de lixo</a></li>
+	                        <li><a href="/site/index/iluminacao/">Iluminação Pública</a></li>
+                                
+
+                                <li class="dropdown-submenu">
+                                    
+                                    <a class="trigger" tabindex="-1" href="#">ISS On-line <i class="fa fa-angle-right"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1900:70" target="_blank">Nota Fiscal Eletrônica</a></li>
+                                	</li>
+                                    </ul>
+                                    
+                                </li>                                
+
+<!--<li><a href="#">ISS On-line (em manutenção)</a></li>-->
+
+                                <li><a href="/site/index/os/">Qualificação de OS</a></li>
+                                
+                                <li><a href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1921:1" target="_blank">Serviços tributários</a></li>
+                                
+                                <!--<li><a href="#"">Serviços tributários (em manutenção)</a></li>-->
+                                
+                                
+
+
+                                <li class="dropdown-submenu">
+                                    <a class="trigger" tabindex="-1" href="#">Trânsito<i class="fa fa-angle-right"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="https://www.transitomultas.com.br:8444/consulta/?USUARIO=pesqmorato" target="_blank">Multas</a></li>
+					                    <li><a tabindex="-1" href="https://protocolotransito.com.br:8443/?orgaoid=264270" target="_blank">Protocolo online</a></li>
+                                     </ul>
+	                	</li>
+                           </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#"><b>Servidores</b> <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                            
+                            <!--
+                                <li><a tabindex="-1" href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1823" target="_blank">Prefeitura</a></li>
+                                <li><a tabindex="-1" href="http://rhsame.franciscomorato.sp.gov.br/rhweb/" target="_blank">SAME</a></li>
+                                <li><a tabindex="-1" href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1823" target="_blank">FUSBEMO</a></li>                                
+                            -->
+							
+							<li><a tabindex="-1" href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=2608" target="_blank">Prefeitura/SAME/FUSBEMO</a></li>
+
+
+                            <li class="dropdown-submenu">
+                                    <a class="trigger" tabindex="-1" href="#">Sistemas internos<i class="fa fa-angle-right"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="https://gpmodfranciscomorato.intertecsolucoes.com.br/GPMODFMT/f?p=200:101:::" target="_blank">
+                                            Central de aplicativos
+                                        </a></li>
+                                        <li><a tabindex="-1" href="http://franciscomorato.educaon.com.br/" target="_blank">
+                                            Portal Educação
+                                        </a></li>
+                                        <li><a tabindex="-1" href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1801:LOGIN::::::" target="_blank">
+                                            Receitas
+                                        </a></li>
+                                        <li><a tabindex="-1" href="https://www.zeladoriagestaofranciscomorato.intertecsolucoes.com.br/" target="_blank">
+                                            Zeladoria - gestão
+                                        </a></li>
+                                        <li><a tabindex="-1" href="https://www.zeladoriaatendfranciscomorato.intertecsolucoes.com.br" target="_blank">
+                                            Zeladoria - auto atendimento
+                                        </a></li>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+
+
+
+                        </li>    
+                        <li class="nav-item"><a href="/site/artigo/fiquepordentrox/0"><b>Notícias</b></a></li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#"><b>Transparência Pública</b> <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <!-- <li><a tabindex="-1" href="https://transparencia.franciscomorato.sp.gov.br" target="_blank">Portal da Transparência - Prefeitura</a></li> -->
+                                <li><a tabindex="-1" href="https://www.franciscomorato.sp.gov.br/portaltransparencia/" target="_blank">Portal da Transparência - Prefeitura</a></li>
+                                <li><a tabindex="-1" href="https://saude.franciscomorato.sp.gov.br/portaldatransparencia" target="_blank">Portal da Transparência - SAME</a></li>
+                                
+                                <li><a tabindex="-1" href="https://www.camarafranciscomorato.sp.gov.br/transparencia" target="_blank">Portal da Transparência - Câmara Municipal</a></li>
+
+
+
+                                <!-- <li><a tabindex="-1" href="http://leideacesso.etransparencia.com.br/consorcio.cimbaju.sp/Portal/desktop.html?410.  
+" target="_blank">Portal da Transparência - CIMBAJU</a></li> -->
+
+                                <li><a tabindex="-1" href="https://drive.google.com/drive/folders/1LIX1ju3SsIUo9jPElGcdHO8TkLTLXRlP" target="_blank">Portal da Transparência - CIMBAJU</a></li>
+                                
+                                <!-- <li><a tabindex="-1" href="http://www.franciscomorato.sp.gov.br/site/artigo/edital/37" target="_blank">Trânsito Transparente</a></li> -->
+                                
+                                <!--    <li><a tabindex="-1" href="http://179.228.165.175/consulta/?USUARIO=pesqmorato" target="_blank">Pesquisa de Autuações</a></li> 
+                                <li><a tabindex="-1" href="/arquivos/Plano%20de%20Assistencia%20Social.pdf" target="_blank">Plano Municipal de Assistência Social</a></li>
+                                <li><a tabindex="-1" href="/arquivos/Plano%20Educacao%20Permanente.pdf" target="_blank">Plano Municipal de Educação Permanente do SUAS</a></li>
+                                <li><a tabindex="-1" href="/arquivos/pmia.pdf" target="_blank">Plano Municipal Decenal para a Infância e Adolescência</a></li>
+                                <li><a tabindex="-1" href="/arquivos/pmsa.pdf" target="_blank">Plano Municipal de Segurança Alimentar e Nutricional</a></li>
+                                -->
+
+                                <li><a tabindex="-1" href="/arquivos/Resolucao18.pdf" target="_blank">Resolução N.° 18, de 21 de maio de 2020 - Benefícios Eventuais</a></li>
+                                
+                                <!-- 
+                                <li><a tabindex="-1" href="/arquivos/plancon_versao_2022-2023.pdf" target="_blank">Plano Municipal de Contingência 2022-2023</a></li>
+                                <li><a tabindex="-1" href="/arquivos/plano-municipal-de-assistencia-social-2022-2025.pdf" target="_blank">Plano Municipal da Assistência Social 2022-2025</a></li>               
+                                <li><a tabindex="-1" href="/arquivos/portarias/portaria_09-2017.pdf" target="_blank">Portaria de nomeação 009/2017- Secretária Municipal de Educação</a></li> 
+                                -->
+                    </ul>
+                </li>
+<!--
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#"><b>Transparência COVID-19</b> <i class="fa fa-angle-down"></i></a>
+                    
+                    <ul class="dropdown-menu">
+                        <li><a tabindex="-1" href="https://gpmodfranciscomorato.intertecsolucoes.com.br/GPMODFMT/f?p=109:1:1433295874807::::id_entidade:1" target="_blank">Portal da Transparência</a></li>
+                        <li><a tabindex="-1" href="arquivos/pcsc19.pdf" target="_blank">Plano de Contingenciamento sobre o COVID-19</a></li>
+                    </ul>
+                </li>
+    -->
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#"><b>Inscrições escolares</b> <i class="fa fa-angle-down"></i></a>
+                    
+                    <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="https://docs.google.com/forms/d/e/1FAIpQLSfTUoAxgDFJFBam__x_3ej3J6UPTpqQHdRNuFDmIeSEeN6UPA/viewform?pli=1" target="_Blank"><b>Inscrições em creche</b></a></li>
+                    <li><a tabindex="-1" href="https://forms.gle/a1L2URGXegqaVNgL8" target="_Blank"><b>Inscrições em escola de tempo integral</b></a></li>
+                    <li><a tabindex="-1" href="https://docs.google.com/forms/d/e/1FAIpQLSfudKrtQ3hlDwG6jaa79wOhBidyJfBJDak9xyoCYUpWn9K5xA/viewform" target="_Blank"><b>Inscrições em pré-escola</b></a></li>
+                    </ul>
+                </li>
+
+                
+                                               
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </div><!--//container-->
+        </nav><!--//main-nav-->
+        
+        <!-- ******CONTEÚDO****** --> 
+        
+        
+        
+
+<div class="banner" style="margin-bottom: 30px; background-image: url(/img/f_banner2.jpg)">
+<div class="banner" style="margin-bottom: 30px; background-image: url('');">
+    <div class="content container">
+        <div id="promo-slider" class="slider flexslider">
+        
+        
+                
+            <ul class="slides">
+
+                                <li>
+                    <a href="/site/artigo/noticia/4081"">
+                    <img src="/arquivos/imagens/banner/imagem_6afb4adfe0b77.jpg"  alt="" />
+                    </a>
+                    <a href="/site/artigo/noticia/4081"">
+                    <p class="flex-caption">
+                        <span class="main" ></span>
+                        <br />
+                        <span class="secondary clearfix" ></span>
+                    </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="/site/artigo/noticia/4079"">
+                    <img src="/arquivos/imagens/banner/imagem_6af6095b20e78.jpg"  alt="MAIS OBRAS, MAIS RUAS ENTREGUES!" />
+                    </a>
+                    <a href="/site/artigo/noticia/4079"">
+                    <p class="flex-caption">
+                        <span class="main" >Insfraestrutura</span>
+                        <br />
+                        <span class="secondary clearfix" >MAIS OBRAS, MAIS RUAS ENTREGUES!</span>
+                    </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="/site/artigo/noticia/4077"">
+                    <img src="/arquivos/imagens/banner/imagem_6af5cf251f735.jpg"  alt="Novembro Azul" />
+                    </a>
+                    <a href="/site/artigo/noticia/4077"">
+                    <p class="flex-caption">
+                        <span class="main" >Saúde</span>
+                        <br />
+                        <span class="secondary clearfix" >Novembro Azul</span>
+                    </p>
+                    </a>
+                </li>
+                                <li>
+                    <a href="/site/artigo/noticia/4076"">
+                    <img src="/arquivos/imagens/banner/imagem_6af366a9d4bb6.jpg"  alt="" />
+                    </a>
+                    <a href="/site/artigo/noticia/4076"">
+                    <p class="flex-caption">
+                        <span class="main" >10ª Mostra Cultural</span>
+                        <br />
+                        <span class="secondary clearfix" ></span>
+                    </p>
+                    </a>
+                </li>
+                 
+            </ul><!--//slides-->
+                        
+            
+            
+            
+            
+        </div><!--//flexslider-->
+    </div>            
+</div>
+</div>
+
+<div class="content container">
+
+	<section class="news"  style="background: #fff; border:1px solid #562037;">
+                <h1 class="section-heading text-highlight"  style="background: #fff; border-top: none"><span class="line">Serviços</span></h1>     
+                <div class="carousel-controls"  style="background: #fff">
+                    <a class="prev" href="#news-carousel1" data-slide="prev"><i class="fa fa-caret-left"></i></a>
+                    <a class="next" href="#news-carousel1" data-slide="next"><i class="fa fa-caret-right"></i></a>
+                </div><!--//carousel-controls--> 
+                <div class="section-content clearfix" style="background: #fff">
+                    <div id="news-carousel1" class="news-carousel carousel slide">
+                        <div class="carousel-inner">
+                      <!--  <div class="item active"> -->
+	                      <div class="row">
+                                <div class="col-md-3 news-item">
+                                        <!-- <a href="https://transparencia.franciscomorato.sp.gov.br/" target="_blank"> -->
+                                        <a href="https://www.franciscomorato.sp.gov.br/portaltransparencia/" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/202501transparencia.jpg"  alt="" />
+                                        </a>
+
+                                </div><!--//news-item-->
+                                
+                                <div class="col-md-3 news-item">
+                                        <a href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1900:70" target="_blanck">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/202501notafiscal.jpg"  alt="" />
+                                        </a>
+                                </div>
+                                
+                                <!--//news-item-->
+                                
+                                <div class="col-md-3 news-item">
+                                        <a href="https://cadastrohabitacional.franciscomorato.sp.gov.br/" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/cadastrohabitacional.jpg"  alt="" />
+                                        </a>
+                                </div>
+                                
+                                
+                                <div class="col-md-3 news-item">
+                                        <a href="https://www.franciscomorato.sp.gov.br/site/index/sic" >
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/202501esic.jpg"  alt="" />
+                                        </a>
+                                </div><!--//news-item-->
+
+                                <div class="col-md-3 news-item">
+                                
+                                
+                                        <!-- <a  href="https://licitacoes.franciscomorato.sp.gov.br/" target="_blank"> -->
+                                        <a  href="https://drive.google.com/drive/folders/1ZilKSbsfZhqNqFeMDYcO0Jry_vwYwKvD" target="_blank"> 
+                                        
+                                        
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/202501editais.jpg"  alt="" />
+                                        </a>
+                        
+                                </div><!--//news-item-->
+                                <div class="col-md-3 news-item">
+                                        <a href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=2608" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/202501portaldoservidor.jpg"  alt="" />
+                                        </a>        
+                                </div><!--//news-item-->
+                                <div class="col-md-3 news-item">
+                                
+	                                <a href="https://gpmodfranciscomorato.intertecsolucoes.com.br/GPMODFMT/f?p=207:1::::::ID_ENTIDADE:1" target="_blank">
+                        	                <img class="img-responsive" src="/arquivos/imagens/botoes/consultaProtocolo.jpg"  alt="" />
+                                        </a>
+
+                                
+                                </div><!--//news-item-->  
+
+                                <!--//news-item-->
+                                <div class="col-md-3 news-item">
+                                        <a href="https://www.franciscomorato.sp.gov.br/arquivos/codigo-tributario.pdf" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/202501codtributario.jpg"  alt="" />
+                                        </a>        
+                                </div><!--//news-item-->
+
+
+
+
+				</div>
+				<div class="row">
+
+                                <div class="col-md-3 news-item">
+                                        <a href="https://www.franciscomorato.sp.gov.br/site/index/ouvidoria" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/202501ouvidoria.jpg"  alt="" />
+                                        </a>
+                                </div><!--//news-item-->
+
+                                <div class="col-md-3 news-item">
+                                        <a href="https://castracaofranciscomorato.my.canva.site/" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/moratoamigodopet.jpg"  alt="" />
+                                        </a>
+                                </div><!--//news-item-->
+
+                                <div class="col-md-3 news-item">
+                                        <a href="https://cia.franciscomorato.sp.gov.br/" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/20260828cia.jpg"  alt="" />
+                                        </a>
+                                </div><!--//news-item-->
+
+                                <div class="col-md-3 news-item">
+                                        <a href="https://cipf.franciscomorato.sp.gov.br/" target="_blank">
+                                                <img class="img-responsive" src="/arquivos/imagens/botoes/20260828cipf.jpg"  alt="" />
+                                        </a>
+                                </div><!--//news-item-->
+                                </div>
+                                
+
+                        </div><!--//carousel-inner-->
+                    </div><!--//news-carousel-->  
+                </div><!--//section-content-->     
+            </section><!--//news --> 
+
+
+
+<!-- CARTA SERVICOS -->
+
+<section class="news"  style="background: #fff; border:1px solid #562037;">
+   <h1 class="section-heading text-highlight"  style="background: #fff; border-top: none"><span class="line">Carta de Serviços</span></h1>
+   <div class="carousel-controls"  style="background: #fff">
+      <a class="prev" href="#news-carousel1" data-slide="prev"><i class="fa fa-caret-left"></i></a>
+      <a class="next" href="#news-carousel1" data-slide="next"><i class="fa fa-caret-right"></i></a>
+   </div>
+   <!--//carousel-controls--> 
+   <div class="section-content clearfix" style="background: #fff">
+      <div id="news-carousel10" class="news-carousel carousel slide">
+         <div class="carousel-inner">
+            <!--  <div class="item active"> -->
+
+	               <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/1" title="Secretaria de Assistência e Desenvolvimento Social">
+               <img class="img-responsive" src="/img/cartaservicos/logos/202501assistencia.jpg"  alt="" />
+               </a>
+
+            </div>
+
+            
+                    <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/2" title="Secretaria de Cultura e Turismo">
+               <img class="img-responsive" src="/img/cartaservicos/logos/202501cultura.jpg"  alt="" />
+               </a>
+
+            </div>
+
+            
+                    <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/3" title="Secretaria de Educação">
+               <img class="img-responsive" src="/img/cartaservicos/logos/202501educacao.jpg"  alt="" />
+               </a>
+
+            </div>
+
+            
+                    <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/4" title="Secretaria de Esportes e Lazer">
+               <img class="img-responsive" src="/img/cartaservicos/logos/202501esporte.jpg"  alt="" />
+               </a>
+
+            </div>
+
+                            </div>
+                <div class="carousel-inner">
+            
+                    <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/5" title="Secretaria de Infraestrutura e Obras">
+               <img class="img-responsive" src="/img/cartaservicos/logos/202501infra.jpg"  alt="" />
+               </a>
+
+            </div>
+
+            
+                    <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/6" title="Secretaria de Receitas e Desenvolvimento Econômico">
+               <img class="img-responsive" src="/img/cartaservicos/logos/202501receitas.jpg"  alt="" />
+               </a>
+
+            </div>
+
+            
+                    <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/7" title="Secretaria de Habitação, meio ambiente, clima e energia">
+               <img class="img-responsive" src="/img/cartaservicos/logos/202501shamce.jpg"  alt="" />
+               </a>
+
+            </div>
+
+            
+                    <div class="col-md-3 news-item">
+               
+            <!--
+               <a href="/site/artigo/cartaservicos/" target="_blank" title="">
+               <img class="img-responsive" src=""  alt="" />
+               </a>
+            -->
+                <a href="/site/governo/cartaservicos/8" title="Secretaria de Segurança Cidadã">
+               <img class="img-responsive" src="/img/cartaservicos/logos/seguranca.jpg"  alt="" />
+               </a>
+
+            </div>
+
+                            </div>
+                <div class="carousel-inner">
+            
+        
+            <!--//news-item-->                                     
+            <!--   </div><!--//item-->
+         </div>
+         <!--//carousel-inner-->
+      </div>
+      <!--//news-carousel-->  
+   </div>
+   <!--//section-content-->     
+</section>
+<!--//news -->
+
+<!-- FIM CARTA SERVICOS -->
+
+
+<div class="content container">
+    <!--   <section style="background:none;">
+          <a href="//planoseguranca.franciscomorato.sp.gov.br" target="_blank">
+            <img src="/arquivos/imagens/botoes/planoSeguranca.jpg" style="max-width: 100%;">
+          </a>
+        </section>
+        <section style="background:none;">
+          <a href="//mapa.franciscomorato.sp.gov.br" target="_blank">
+            <img src="/arquivos/imagens/botoes/botaoMapaCidade.jpg" style="max-width: 100%;">
+          </a>
+        </section>  -->
+	<section style="background:none;">
+          <a href="/wifilivre" target="_blank">
+            <img src="/arquivos/imagens/botoes/botaoMapaWifi.jpg" style="max-width: 100%;">
+          </a>
+        </section>
+      <!--  <section style="background:none;">
+          <a href="//docs.google.com/forms/d/e/1FAIpQLScoLfo0rrMIonQJvcoxYbHVf_3o9Pn-fyQ2EQNtlBKcJue22A/viewform" target="_blank">
+            <img src="/arquivos/imagens/botoes/botaoPlanoReducao.png" style="max-width: 100%;">
+          </a>
+        </section>
+            <section class="promo box box-dark">        
+                <div class="col-md-9">
+                    <h1 class="section-heading">Secretaria Municipal de Educação - Processo Seletivo 003/2017</h1>
+                    <h4>Processo Seletivo simplificado para elaboração de escalas rotativas.</h4>   
+                </div>  
+                <div class="col-md-3">
+                    <a class="btn btn-cta" href="http://concurso.franciscomorato.sp.gov.br" target="_blank"><i class="fa fa-download"></i>Acessar</a>  
+                </div>
+            </section> -->
+</div>
+
+
+        <section class="news">
+                <h1 class="section-heading text-highlight"><span class="line">Últimas Notícias</span></h1>     
+                <div class="carousel-controls">
+                    <a class="prev" href="#news-carousel" data-slide="prev"><i class="fa fa-caret-left"></i></a>
+                    <a class="next" href="#news-carousel" data-slide="next"><i class="fa fa-caret-right"></i></a>
+                </div>
+                <div class="section-content clearfix">
+                    <div id="news-carousel" class="news-carousel carousel slide">
+                        <div class="carousel-inner">
+                            <div class="item active"> 
+                                
+                                                                <div class="col-md-3 news-item">
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                        
+                                                                                    Prefeitura Municipal
+                                                                                
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6af366a9d4bb6.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 10/11/2026 15h44</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4076">10ª Mostra Cultural</a></h2>
+                                    <p></p>
+                                    <a class="read-more" href="/site/artigo/noticia/4076">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                <div class="col-md-3 news-item">
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                        
+                                                                                    Prefeitura Municipal
+                                                                                
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6ae37dfe5085a.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 29/10/2026 14h01</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4071">10ª Mostra Cultural</a></h2>
+                                    <p>10ª Mostra Cultural de Francisco Morato celebra uma década de arte e transformação</p>
+                                    <a class="read-more" href="/site/artigo/noticia/4071">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                <div class="col-md-3 news-item">
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                        
+                                                                                    Prefeitura Municipal
+                                                                                
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6ace38e5d7741.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 13/10/2026 10h55</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4064">Apadrinhamento Afetivo</a></h2>
+                                    <p>Francisco Morato incentiva a construção de vínculos que podem transformar histórias</p>
+                                    <a class="read-more" href="/site/artigo/noticia/4064">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                <div class="col-md-3 news-item">
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                        
+                                                                                    Prefeitura Municipal
+                                                                                
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6abe930adfe87.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 01/10/2026 14h04</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4059"></a></h2>
+                                    <p>Francisco Morato avança no atendimento de urgência e emergência com SAMU e futura chegada do Corpo de Bombeiros</p>
+                                    <a class="read-more" href="/site/artigo/noticia/4059">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                
+                            </div>
+                            <div class="item"> 
+                                
+                                                                <div class="col-md-3 news-item">
+
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+      
+                                                                                    Prefeitura Municipal
+                                        
+                                        
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d; width: 100%; height: 165px;" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6ab2997a7c9c2.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 16/09/2026 12h26</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4053">Como atualizar os dados?</a></h2>
+                                    <p>Atualização Cadastral Imobiliária</p>
+                                    <a class="read-more" href="/site/artigo/noticia/4053">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                <div class="col-md-3 news-item">
+
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+      
+                                                                                    Prefeitura Municipal
+                                        
+                                        
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d; width: 100%; height: 165px;" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6aaab2f162262.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 16/09/2026 12h11</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4052">Doe alegria</a></h2>
+                                    <p>Dia das Crianças</p>
+                                    <a class="read-more" href="/site/artigo/noticia/4052">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                <div class="col-md-3 news-item">
+
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+      
+                                                                                    Prefeitura Municipal
+                                        
+                                        
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d; width: 100%; height: 165px;" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6aaa84e232672.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 16/09/2026 08h44</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4050">Saúde</a></h2>
+                                    <p>Participe da Consulta Pública</p>
+                                    <a class="read-more" href="/site/artigo/noticia/4050">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                <div class="col-md-3 news-item">
+
+                                    <p><i style="color: #50162c" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+      
+                                                                                    Prefeitura Municipal
+                                        
+                                        
+                                    </p> 
+
+
+                                    <img style="border: 1px solid #02506d; width: 100%; height: 165px;" class="img-responsive" src="/arquivos/imagens/redimensionada/imagem_6a7c81b64ad2f.jpg"  alt="" />
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 10/08/2026 10h52</p>    
+                                    <h2 class="title"><a href="/site/artigo/noticia/4034">Educação</a></h2>
+                                    <p>Matrícula escolar</p>
+                                    <a class="read-more" href="/site/artigo/noticia/4034">Leia mais<i class="fa fa-chevron-right"></i></a>                
+                                </div>
+                                                                
+                               
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </section> 
+
+            
+            
+           <!--     
+           <section class="news">
+                <h1 class="section-heading text-highlight"><span class="line">Serviços</span></h1>     
+                <div class="carousel-controls">
+                    <a class="prev" href="#news-carousel1" data-slide="prev"><i class="fa fa-caret-left"></i></a>
+                    <a class="next" href="#news-carousel1" data-slide="next"><i class="fa fa-caret-right"></i></a>
+                </div>
+                <div class="section-content clearfix">
+                    <div id="news-carousel1" class="news-carousel carousel slide">
+                        <div class="carousel-inner">
+                            <div class="item active"> 
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="verde" href="http://financas.franciscomorato.sp.gov.br:8080/PortaldaTransparencia/Shared/wfDashBoard.aspx" target="_blank">
+                                                <span style="font-size: 17px;" class="percentage">Portal da Transparência</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="azul" href="http://servicos.franciscomorato.sp.gov.br/ISSWEB/Login/login.aspx" target="_blanck">
+                                                <span style="font-size: 21px;" class="percentage">Nota Fiscal</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="areia" href="http://servicos.franciscomorato.sp.gov.br/ISSWEB/Login/login.aspx" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">ISS</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="laranja" href="http://servicos.franciscomorato.sp.gov.br/iptu/consultadeb.html" target="_blank">
+                                                <span style="font-size: 20px;" class="percentage">IPTU Consulta Débitos</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="roxo" href="http://esic.franciscomorato.sp.gov.br/" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">E-SIC</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="verdeescuro" href="http://www.franciscomorato.sp.gov.br/site/index/editais" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">Editais</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                            </div>
+                            <div class="item"> 
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="azulmar" href="http://financas.franciscomorato.sp.gov.br/rhweb/" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">Portal do Servidor</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="areiaescuro" href="http://servicos.franciscomorato.sp.gov.br/alvara/alvara2via.html" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">Alvará On-line</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="laranjaescuro" href="http://servicos.franciscomorato.sp.gov.br/itbiweb/Asp/wfLogin.aspx" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">ITBI On-line</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="roxoescuro" href="http://servicos.franciscomorato.sp.gov.br/tributosweb/EMISSOES/bolexercicioiptu.aspx" target="_blank">
+                                                <span style="font-size: 20px;" class="percentage">IPTU Segunda Via</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="azulescuro" href="http://www.franciscomorato.sp.gov.br/arquivos/codigo-tributario.pdf" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">Código Tributário</span>                    
+                                            </a>
+                                        </p>
+                                </div>
+                                <div class="col-md-2 news-item">
+                                        <p class="promo-badge">
+                                            <a class="roxo" href="http://www.franciscomorato.sp.gov.br/site/index/contato" target="_blank">
+                                                <span style="font-size: 21px;" class="percentage">Fale com a Prefeitura</span>                    
+                                            </a>
+                                        </p>
+                                </div>                                                                                                                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!--//anterior-->
+        </div>  
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="    text-align: center;    font-size: 18px;    font-weight: 600;">Atenção! </h5>
+      </div>
+      <div class="modal-body">
+        <a href="//ppa.franciscomorato.sp.gov.br" target="_blank"><img class="img-responsive" src="/arquivos/imagens/ppa.jpg"  alt="" /></a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<!--<button type="button" class="btn btn-info btn-lg" id="btn_modal" data-toggle="modal" style="display: none" data-target="#myModal"></button>
+	<div class="modal fade" style="margin-top: 75px" id="myModal" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" style="text-align:center">Atenção!</h4></div><div class="modal-body col-sm-12"> <a href="http://servicos.franciscomorato.sp.gov.br/TributosWeb/EMISSOES/bolexercicioiptu.aspx"><img src="/arquivos/imagens/modal/iptuSegundaVia.jpeg" alt="IPTU" style="max-width: 100%"/></a>  </div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Sair</button></div></div></div></div>         -->
+
+    </div><!--//wrapper-->
+    
+    <!-- ******Rodapé Mapa****** --> 
+    <footer class="footer" style="background: #12427f">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                <!--
+                <div class="footer-col col-md-1">
+                </div>
+                -->
+                <div class="footer-col col-md-4">
+                    <div class="footer-col-inner">
+                        <h3>CANAL DO MORATENSE</h3>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>História da Nossa Gente</a></li>
+                            <li><a href="/site/index/contato"><i class="fa fa-caret-right"></i>De Portas Abertas</a></li>
+                            <li><a href="/site/index/institucional"><i class="fa fa-caret-right"></i>Conheça a História</a></li> 
+                            <!--<li><a href="#"><i class="fa fa-caret-right"></i>Consulta Pública</a></li>-->
+                            <li><a href="arquivos/calendario.pdf" target="_blank"><i class="fa fa-caret-right"></i>Calendário Oficial</a></li>
+                        </ul><br />
+                        <h3>SERVIÇOS</h3>
+                        <ul>
+                            <!--
+                            <li><a href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1921:1::::" target="_blank"><i class="fa fa-caret-right"></i>IPTU</a></li>
+                            <li><a href="http://servicos.franciscomorato.sp.gov.br/issweb/Login/login.aspx" target="_blank"><i class="fa fa-caret-right"></i>ISS</a></li>
+                            <li><a href="http://servicos.franciscomorato.sp.gov.br/ITBIWEB/ASP/wfLogin.aspx?ReturnUrl=%2fITBIWEB" target="_blank"><i class="fa fa-caret-right"></i>ITBI</a></li>
+                            -->
+                            <li><a href="/site/index/iluminacao"><i class="fa fa-caret-right"></i>Iluminação Pública</a></li>
+                            <li><a href="/arquivos/coleta/roteiro_coleta2026.pdf" target="_blank"><i class="fa fa-caret-right"></i>Coleta de lixo</i></a></li>
+
+                        </ul>                        
+                    </div><!--//footer-col-inner-->
+                </div><!--//foooter-col-->
+                <div class="footer-col col-md-4">
+                    <div class="footer-col-inner">                
+                        <h3>EMPRESAS</h3>
+                        <ul>
+                        
+                            <!-- <li><a href="http://servicos.franciscomorato.sp.gov.br/TributosWeb/EMISSOES/bolexercicioiss.aspx" target="_blank"><i class="fa fa-caret-right"></i>Alvará</a></li> -->
+                            
+                            <li><a href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1900:70" target="_blank"><i class="fa fa-caret-right"></i>Nota Fiscal Eletrônica</a></li>
+                            <!--<li><a href="#"><i class="fa fa-caret-right"></i>Nota Fiscal Eletrônica (em manutenção)</a></li>  -->
+                            
+                            
+                        </ul><br />
+                        <h3>PREFEITURA</h3>
+                        <ul>
+                            <li><a href="/site/governo"><i class="fa fa-caret-right"></i>Secretarias e Orgãos Municipais</a></li>
+                            <li><a href="https://www.legislacaodigital.com.br/FranciscoMorato-SP/" target="_blank"><i class="fa fa-caret-right"></i>Legislação Municipal - Decretos</a></li>                            
+                            <!-- <li><a href="https://transparencia.franciscomorato.sp.gov.br" target="_blank"><i class="fa fa-caret-right"></i>Portal da Transparência</a></li> -->
+                            <li><a href="https://www.franciscomorato.sp.gov.br/portaltransparencia/" target="_blank"><i class="fa fa-caret-right"></i>Portal da Transparência</a></li>
+                            
+                            
+                            <!-- <li><a href="https://falabr.cgu.gov.br/web/home" target="_blank"><i class="fa fa-caret-right"></i>SIC Serviço de Informação ao Cidadão</a></li> -->
+                            <li><a href="https://www.franciscomorato.sp.gov.br/site/index/sic" ><i class="fa fa-caret-right"></i>SIC Serviço de Informação ao Cidadão</a></li>
+                            
+                            
+                            <!--<li><a href="#"><i class="fa fa-caret-right"></i>Manual de Identidade Visual</a></li>-->
+                        </ul>                     
+                    </div><!--//footer-col-inner-->
+                </div><!--//foooter-col-->
+                <div class="footer-col col-md-3">
+                    <div class="footer-col-inner">  
+                        <h3>PUBLICAÇÕES</h3>
+                        <ul>
+                            <li><a href="/site/artigo/pesquisaconc"><i class="fa fa-caret-right"></i>Editais</a></li>
+                            <li><a href="https://franciscomorato.intertecsolucoes.com.br/ords/pfm/f?p=1823:LOGIN:7679450754876:::" target="_blank"><i class="fa fa-caret-right"></i>Servidores</a></li>
+
+                        
+                            <li><a href="/site/artigo/fiquepordentro/0"><i class="fa fa-caret-right"></i>Notícias</a></li>
+                            
+                            
+                        </ul><br />
+                        <h3>ACESSE TAMBÉM</h3>
+                        <ul>
+                            <li><a href="https://www.camarafranciscomorato.sp.gov.br" target="_blank"><i class="fa fa-caret-right"></i>Câmara Municipal</a></li>
+                            <li><a href="http://saude.franciscomorato.sp.gov.br" target="_blank"><i class="fa fa-caret-right"></i>SAME Francisco Morato</a></li>                            
+                            <li><a href="http://coronavirus.franciscomorato.sp.gov.br" target="_blank"><i class="fa fa-caret-right"></i>Comitê de enfrentamento Coronavírus</a></li>
+                            <li><a href="/site/index/faq"><i class="fa fa-caret-right"></i>FAQ - Perguntas frequentes</a></li>
+                            
+                        </ul>                        
+                    </div><!--//footer-col-inner-->
+                </div><!--//foooter-col-->
+            </div>        
+        </div><!--//footer-content-->
+    </footer><!--//footer-->
+
+    <!-- ******Rodapé****** --> 
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-7 about">
+                      <div class="footer-col-inner">
+                          <h3>PAÇO MUNICIPAL RICARDO SUFFREDINI DA COSTA</h3>
+                          <ul>
+                            <li><i class="fa fa-phone" style="color: #fff"></i>(11) 4489-8900</li>
+                            <li><i class="fa fa-home" style="color: #fff"></i>Praça da Liberdade, 10, Jd. Sinobe</li>
+                            <li><i class="fa fa-map-marker" style="color: #fff"></i>Cep: 07908-165</li>                                                            
+                              <!--<li style="width: 150%"><i class="fa fa-file" style="color: #fff"></i>CNPJ 046.523.072/0001-14</a></li>-->
+                          </ul>
+                      </div>
+                </div>
+                <!--
+                <div class="footer-col col-md-3 col-sm-3 col-md-o about">
+                      <div class="footer-col-inner">
+                          <h3>ANEXO II</h3>
+                          <ul>
+                            <li><i class="fa fa-phone" style="color: #fff"></i>(11) 4489-8900</li>
+                            <li style="width: 105%"><i class="fa fa-home" style="color: #fff"></i>Rua Progresso, 161, Centro</li>
+                            <li><i class="fa fa-map-marker" style="color: #fff"></i>Cep: 07901-170</li>                              
+                          </ul>
+                      </div>
+                </div>
+                -->
+                <div class="footer-col col-md-5 newsletter">
+                    <div class="footer-col-inner">
+                       <!--     <img class="img-responsive" style="display: block;margin-left: auto; margin-right: auto; margin-top:11px;" src="/assets/images/logo_rodape.png" />--> 
+<img class="img-responsive" style="display: block;margin-left: auto;margin-right: auto;margin-top: 0px;max-width: 74%;;" src="/assets/images/logo_light.png" />
+                    </div><!--//footer-col-inner-->
+                </div><!--//foooter-col--> 
+                </div>   
+            </div>        
+        </div><!--//footer-content-->
+        <div class="bottom-bar">
+            <div class="container">
+                <div class="row">
+                    <small class="copyright col-md-6 col-sm-12 col-xs-12">Prefeitura do Município de Francisco Morato @ 2020</small>
+                    <ul class="social pull-right col-md-6 col-sm-12 col-xs-12">
+                        <li><a href="https://www.facebook.com/prefeituradefranciscomorato/?fref=ts" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="https://www.flickr.com/photos/152999349@N03/" target="_blank"><i class="fab fa-flickr"></i></a></li>
+                    </ul><!--//social-->
+                </div><!--//row-->
+            </div><!--//container-->
+        </div><!--//bottom-bar-->
+    </footer><!--//footer-->  
+    
+ 
+    <!-- Javascript -->          
+    <script type="text/javascript" src="/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="/assets/plugins/bootstrap-hover-dropdown.min.js"></script> 
+    <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="/assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="/assets/plugins/pretty-photo/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/jflickrfeed/jflickrfeed.min.js"></script> 
+        <script type="text/javascript" src="/assets/js/main.js"></script>
+   <script>            
+    $(document).ready(function ()
+    {
+	//$('#exampleModal').modal();
+      // mostra o popup caso exista
+        if (typeof configPopup != 'undefined') {
+            $('#popupModal').modal('show')
+        }
+    
+    });
+    </script>
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+</body>
+</html> 
