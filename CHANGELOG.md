@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-26 · #PR · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão
+## 2026-11-26 · #2136 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão
 
 O lote trazido do Brasil registra o endereço final de cada documento. Arquivo de prefeitura guardado em nuvem (S3 pré-assinado) traz na consulta a chave de acesso do órgão, e o registro é publicado pela raiz: o portão de segredos reprovou o PR de dado. O endereço passa agora pela mesma redação de segredos das evidências, na porta da ponte; autoteste novo.
 
