@@ -2414,12 +2414,17 @@ def casos_lote_18() -> list:
         gravar_paralelo_18([], destino, "teste")
         d = _ler_paralelo_18(destino)
         motivos = {f["hash_evidencia"]: f["motivo"] for f in a["sem_leitura"]}
+        dup = {"hash_evidencia": "8" * 64, "uf": "SC", "municipio": "Taió", "promove": True, "lote": True}
+        _escrever_paralelo_18(destino, "teste", [dup, dict(dup)], [], {})
+        e = _ler_paralelo_18(destino)
         return [
             ("lote: documento lido é julgado pelo 1.8 e leva o hash do texto lido",
              len(a["decisoes"]) == 1 and a["decisoes"][0].get("lote") is True
              and len(a["decisoes"][0]["hash_lido"]) == 64 and a["decisoes"][0]["codebook"] == CODEBOOK_VERSAO),
             ("lote: falha de transporte vai para sem_leitura com a causa, nunca para julgado",
              motivos.get("2" * 64, "").startswith("fonte: URLError")),
+            ("J12: repetição do mesmo documento e município colapsa numa decisão só",
+             sum(1 for r in e["decisoes"] if r["hash_evidencia"] == "8" * 64) == 1),
             ("lote: texto curto não é julgado e fica como texto_nao_extraivel",
              motivos.get("3" * 64) == "texto_nao_extraivel"),
             ("lote: segunda passada não relê o que já foi julgado",
@@ -2450,6 +2455,15 @@ def _ler_paralelo_18(destino: pathlib.Path) -> dict:
 
 
 def _escrever_paralelo_18(destino: pathlib.Path, fonte: str, registros: list, sem_leitura: list, resumo: dict) -> dict:
+    # J12: um documento, um município, uma decisão. Repetição (mesmo hash, UF e município) colapsa na mais antiga;
+    # a 26/11 duas decisões de Taió e de Trindade do Sul entraram duplicadas no arquivo paralelo.
+    visto, unicos = set(), []
+    for r in registros:
+        chave_r = (r.get("hash_evidencia"), r.get("uf"), r.get("municipio"))
+        if chave_r not in visto:
+            visto.add(chave_r)
+            unicos.append(r)
+    registros = unicos
     saida = {"_governanca": (f"PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18) de {fonte}. Nada do "
                              f"índice lê este arquivo. Escritores: juiz.py --rejulgar-paralelo, --rejulgar-fila-paralela "
                              f"e --lote-paralelo-18 (registros com \"lote\": true, lidos pela porta de rede)."),

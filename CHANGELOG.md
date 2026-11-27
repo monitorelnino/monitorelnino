@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #2153 · Juiz 1.8: repetição do mesmo documento colapsa numa decisão
+
+Rodada paralela J18 (J12): o arquivo `data/paralelo_juiz18.json` trouxe Taió/SC e Trindade do Sul/RS duas vezes cada, com a mesma pista. O gravador único do arquivo paralelo passa a colapsar repetições do mesmo hash, UF e município na mais antiga, e o autoteste ganha a trava. Só código do modo paralelo; nada do índice publicado muda. Linhas líquidas: +14/−0 (um defeito, a trava que o corrige e o teste dela).
+
 ## 2026-11-26 · #2117 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura
 
 O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
