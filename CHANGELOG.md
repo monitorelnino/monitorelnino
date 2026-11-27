@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-27 · #2178 · Buscador 2 reabre as pistas que a busca de 24/11 fechou sem resultado
 
-Um bug de 24/11 fez a busca no veículo do Buscador 2 devolver zero resultado, e 1.684 links do Google News foram fechados como "redirecionamento não resolvido" sem terem sido lidos. Agora essas pistas voltam à fila uma vez, com o título do arquivo. A busca tentada passa a ficar marcada, para a fila não reabri-la a cada rodada. Nada é apagado e nenhum dado publicado muda.
+Um bug de 24/11 fez a busca no veículo do Buscador 2 devolver zero resultado, e 1.684 links do Google News foram fechados como "redirecionamento não resolvido" sem terem sido lidos. Agora essas pistas voltam à fila uma vez, com o título do arquivo. A busca tentada passa a ficar marcada, para não ser reaberta a cada rodada. Nada é apagado; o dado publicado não muda.
 
 ## 2026-11-27 · #2173 · Válvula recusa ramo que parte de main velha
 
