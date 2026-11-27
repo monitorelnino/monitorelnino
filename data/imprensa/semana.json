@@ -29,18 +29,18 @@
   },
   {
    "id": "dias_alerta_laranja_vermelho",
-   "valor": 51,
+   "valor": 52,
    "unidade": "dias",
    "periodo_inicio": "2026-09-15",
-   "periodo_fim": "2026-11-26",
-   "n": 69,
+   "periodo_fim": "2026-11-27",
+   "n": 70,
    "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.dias_observados",
    "periodo_vars": {
     "data": "15/09/2026",
-    "n": 69
+    "n": 70
    }
   },
   {
@@ -544,12 +544,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 28964,
+   "valor": 33287,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "26/11/2026",
+   "consultado_em": "27/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -558,67 +558,67 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 15540
+     "valor": 17637
     },
     {
      "uf": "MA",
-     "valor": 5305
+     "valor": 6651
     },
     {
      "uf": "AP",
-     "valor": 2283
+     "valor": 2461
     },
     {
      "uf": "PI",
-     "valor": 1527
+     "valor": 1723
     },
     {
      "uf": "CE",
-     "valor": 1193
+     "valor": 1321
     },
     {
      "uf": "BA",
-     "valor": 816
-    },
-    {
-     "uf": "AM",
-     "valor": 540
+     "valor": 942
     },
     {
      "uf": "TO",
-     "valor": 476
+     "valor": 608
+    },
+    {
+     "uf": "AM",
+     "valor": 571
     },
     {
      "uf": "RR",
-     "valor": 322
+     "valor": 344
     },
     {
      "uf": "PE",
-     "valor": 300
+     "valor": 322
     },
     {
      "uf": "PB",
-     "valor": 216
+     "valor": 233
     },
     {
      "uf": "AL",
-     "valor": 80
+     "valor": 91
+    },
+    {
+     "uf": "MG",
+     "valor": 82
     },
     {
      "uf": "RN",
      "valor": 77
     },
     {
-     "uf": "MG",
-     "valor": 71
+     "uf": "GO",
+     "valor": 51
     },
     {
      "uf": "SE",
-     "valor": 49
-    },
-    {
-     "uf": "GO",
-     "valor": 46
+     "valor": 50
     },
     {
      "uf": "RS",
