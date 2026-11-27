@@ -1,0 +1,18 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T02:04:02+00:00",
+ "itens": [
+  {
+   "url": "https://notifica-prd-es.saude.gov.br/desc-esus-notifica-estado-*/_count",
+   "em": "2026-11-27T02:04:02+00:00",
+   "status": 401,
+   "recusa": true
+  },
+  {
+   "url": "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SGL/2024/uf=AC/lote=1/part-00000-d6ff2750-bce1-41eb-a79e-6663000ae993.c000.csv",
+   "em": "2026-11-27T02:04:02+00:00",
+   "erro": "endereço fora da regra (só site público .br)"
+  }
+ ]
+}
