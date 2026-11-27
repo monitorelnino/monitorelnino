@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <!-- Basic Page Needs -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Prefeitura Municipal de Ewbank da Câmara - MG. Site oficial da Prefeitura Municipal de Ewbank da Câmara, com informações sobre a cidade, serviços, notícias e contato.">
+<meta name="author" content="EF4 Agência de TI">
+
+<!-- Page Title -->
+<title> Prefeitura Municipal de Ewbank da Câmara </title>
+
+<!-- Favicon 
+<link rel="icon" type="image/png" href="images/favicon1.png">-->
+
+<!-- Mobile Specific Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+
+<!-- Flex Slider -->
+<link rel="stylesheet" href="css/flexslider.css">
+
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.min.css">
+
+<!-- Custom styles for this template -->
+<link href="css/style.css" rel="stylesheet">
+
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+        <!-- og tags -->
+        <meta property="og:locale" content="pt_br">
+        <meta property="og:site_name" content="Prefeitura Municipal de São Geraldo - MG"/>
+        <meta property="og:title" content="Programa Municipal de Gestão Integrada de Resíduos Sólidos - Prefeitura Municipal de São Geraldo - MG"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://www.saogeraldo.mg.gov.br/images/logo.png"/>
+        <meta property="og:image:width" content="800"> 
+        <meta property="og:image:height" content="600">
+        <meta property="og:url" content="https://www.saogeraldo.mg.gov.br/pmgrs.php?getLink=1"/>
+
+    </head>
+
+    <body class="blog">
+
+        <!-- Preloader --
+        <div class="loader-wrapper">
+            <div class="sk-cube-grid">
+                <div class="sk-cube sk-cube1"></div>
+                <div class="sk-cube sk-cube2"></div>
+                <div class="sk-cube sk-cube3"></div>
+                <div class="sk-cube sk-cube4"></div>
+                <div class="sk-cube sk-cube5"></div>
+                <div class="sk-cube sk-cube6"></div>
+                <div class="sk-cube sk-cube7"></div>
+                <div class="sk-cube sk-cube8"></div>
+                <div class="sk-cube sk-cube9"></div>
+            </div>
+        </div>
+        -->
+
+        <!-- Page Wrapper
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="wrapper">
+            <!-- Header Section -->
+            <header>
+                <div class="header-area">
+
+    <div class="row" style="background-color: #3265A2">
+        <div class="container">
+            <div class="acessibilidade row py-3 col-12">
+                <div class="col-sm-12">
+                    <span class="font-con" style="color: #ffffff">
+                        <ul>
+                            <li>
+                                <a href="mapa.php" style="font-family: Tahoma; font-size: 13px; color: #ffffff"">| Mapa do Site</a>
+                                <a href=" acessibilidade.php" style="font-family: Tahoma; font-size: 13px; color: #ffffff"">| Acessibilidade</a>
+                                <a href=" #imGoToCont" style="font-family: Tahoma; font-size: 13px; color: #ffffff">| Ir para o conteúdo</a>
+                                <a href="#imGoToMenu" style="font-family: Tahoma; font-size: 13px; color: #ffffff"">| Ir para o menu</a>&nbsp
+                                <!--<a href=" #imHeader_imObjectSearch_01_field" classe="active" style="font-family: Tahoma; font-size: 13px">| Ir para a busca</a>-->
+                                <a href="#imFooter" style="font-family: Tahoma; font-size: 13px; color: #ffffff"">| Ir para o rodapé</a> &nbsp
+                                <a href=" #altocontraste" id="altocontraste" accesskey="3" onclick="window.toggleContrast()" onkeydown="window.toggleContrast()" style="font-family: Tahoma; font-size: 13px; color: #ffffff"">| Alto contraste</a> &nbsp
+                                <!--<a href=" imsitemap.html" style="font-family: Tahoma; font-size: 13px" style="color: #fff"> | Mapa do site</a>&nbsp--->
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+                <!--<div class="col-sm-4">
+                    <span class="font-con">
+                        Fonte: <button Onclick="mudaFonte('menos'); return false;" class="btn btn-secondary btn-sm">A-</button>
+                        <button Onclick="mudaFonte('padrao'); return false;" class="btn btn-secondary btn-sm">A</button>
+                        <button Onclick="mudaFonte('mais'); return false;" class="btn btn-secondary btn-sm">A+</button>
+                    </span>
+                </div>
+                <div class="col-sm-4">
+                    <span class="font-con">
+                        Contraste: 
+                        <button id="mudaEstilo" onclick="window.toggleContrast()" onkeydown="window.toggleContrast()" class="btn btn-secondary btn-sm">CONTRASTE</button>
+                    </span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Top Contact Info -->
+    <div class="row logo-top-info">
+        <div class="container">
+            <div class="col-md-2 logo">
+                <!-- Main Logo -->
+                <a href="./"><img src="images/logo2.png" alt="Prefeitura Municipal de Ewbank da Câmara" /></a>
+                <!-- Responsive Toggle Menu -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only"> Menu </span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="col-md-10 top-info-social">
+                <div class="pull-right">
+                    <div class="top-info">
+                        <div class="call">
+                            <h3> TELEFONE </h3>
+                            <p> (32) 3255-1271 </p>
+                        </div>
+                        <div class="email">
+                            <h3> EMAIL </h3>
+                            <p>atendimento@ewbankdacamara.mg.gov.br </p>
+                        </div>
+                        <div class="market">
+                            <h3> E-SIC FÍSICO </h3>
+                            <p> AV Santo Antônio, 441<span class="forex"> <i class="fa fa-caret-up" aria-hidden="true"></i> 08H às 17H </span> </p>
+                        </div>
+                    </div>
+                    <div class="social">
+                        <ul class="social-icons">
+                            <li><a href="https://www.facebook.com/prefeituradeewbankdacamara/" target="_blank" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/prefeitura_ewbank/" target="_blank" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Section -->
+    <nav id="navbar" class="collapse navbar-collapse main-menu">
+        <div class="container">
+            <ul class="main-menu">
+                <li class="dropdown"> <a href="#" data-toggle="dropdown"> EWBANK DA CÂMARA
+                        <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                    <ul>
+                        <!--
+                        <li> <a href="#"> História </a> </li>
+                        <li> <a href="#"> Cidade </a> </li>-->
+                        <li> <a href="noticias.php" title="Notícias"> Notícias </a> </li>
+                        <li> <a href="pmgrs.php" title="Plano Municipal de Gestão de Resíduos Sólidos"> PMGRS </a> </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a href="#" data-toggle="dropdown"> ESTRUTURA ADMINISTRATIVA
+                        <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                    <ul>
+                        <li> <a href="#"> Conselhos </a> </li>
+                        <li> <a href="secretarias.php"> Secretarias </a> </li>
+
+                    </ul>
+                </li>
+                <!--<li><a href="diario.php"> DIÁRIO OFICIAL </a> </li>-->
+
+                <li class="dropdown"><a href="#" data-toggle="dropdown"> LICITAÇÃO
+                        <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                    <ul>
+                        <li> <a href="licitacoes.php"> Processos Licitatórios </a> </li>
+                        <li> <a href="#"> Legislação Municipal </a> </li>
+                    </ul>
+                </li>
+                <li class="dropdown"> <a href="#" data-toggle="dropdown"> EDITAIS
+                        <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                    <ul>
+                        <li> <a href="chamamentos-publicos.php"> Chamamento Público </a> </li>
+                        <li> <a href="pnab.php"> PNAB </a> </li>
+                        <li> <a href="processos.php"> Processo Seletivo </a> </li>
+                        <!--
+                        <li> <a href="#"> Emergencial </a> </li>
+                        <li> <a href="#"> Notificação REURB </a> </li>
+                        <li> <a href="#"> Concurso Público</a> </li>
+                         <li> <a href="#"> Convocação </a> </li><li> <a href="pcss.php">  </a> </li>
+                        <li> <a href="portarias.php"> Portarias </a> </li>-->
+                    </ul>
+                </li>
+                <li class="dropdown"> <a href="#" data-toggle="dropdown"> LEGISLAÇÃO
+                        <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                    <ul>
+                        <li> <a href="atas.php"> Atas </a> </li>
+                        <li> <a href="decretos.php"> Decretos </a> </li>
+                        <li> <a href="leis.php"> Leis </a> </li>
+                        <li> <a href="portarias.php"> Portarias </a> </li>
+                    </ul>
+                </li>
+                <!--<li class="dropdown"> <a href="#" data-toggle="dropdown"> SERVIÇOS
+                        <i class="fa fa-chevron-down dropdown-toggle"> </i>  </a>
+                    <ul>
+                        <li><a href="http://servicos.saogeraldo.mg.gov.br" target="_blank"> IPTU </a> </li>
+                        <li><a href="http://servicos.saogeraldo.mg.gov.br" target="_blank"> CND </a> </li>
+                    </ul>
+                </li>-->
+
+                <li><a href="https://pm-ewbanck.publicacao.siplanweb.com.br/" target="_blank"> TRANSPARÊNCIA </a> </li>
+                <!--<li><a href="http://www.transparenciafacil.com.br/0165702" target="_blank"> TRANSPARÊNCIA </a> </li>
+                
+                <li class="dropdown"> <a href="#" data-toggle="dropdown"> PUBLICAÇÕES
+                        <i class="fa fa-chevron-down dropdown-toggle"> </i>  </a>
+                    <ul>
+                        <li> <a href="">  </a> </li>
+                        <li> <a href="">  </a> </li>
+                        <li> <a href="">  </a> </li>
+                        <li> <a href="">  </a> </li>
+                    </ul>
+                </li>
+                <li><a href=""> NFe </a> </li>-->
+                <li style="color: darkgreen;"><a href="https://webmail.ewbankdacamara.mg.gov.br/" target="_blank"> WEBMAIL </a> </li>
+            </ul>
+        </div>
+    </nav>
+</div>            </header>
+            <!-- Header Section -->
+
+            <!-- Main Content Section -->
+            <main class="main">
+                <!-- Page Title -->
+                <div class="page-title text-center">
+                    <h2 class="title"> &nbsp;</h2>
+                    <p class="description light"> &nbsp;
+                        <br> &nbsp;</p>
+                </div>
+                <!-- Page Title -->
+                <!-- Breadcrumbs -->
+                <div class="breadcrumbs">
+                    <div class="container">
+                    <!--<span class="parent"> <i class="fa fa-home"></i> <a href="index.html"> Home </a> </span>
+                    <i class="fa fa-chevron-right"></i>
+                    <span class="child"> <a href="blog.html"> NEWS AND MEDIA </a> </span>
+                    <i class="fa fa-chevron-right"></i>
+                    <span class="child"> Blog </span>-->
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-3 sidebar nav-wrapper">
+
+                            <nav class="collapse navbar-collapse main-menu">
+    <!--<div class="sidebar-search-form">
+        <input type="text" class=" text-center search-query form-control" placeholder="Pesquisar" />
+        <button class="btn search-btn" type="button">
+            <span class="fa fa-search"></span>
+        </button>
+    </div>-->
+    <div class="sidebar-fact">
+
+        <h3 class="about-quick-fact text-center">EWBANK DA CÂMARA</h3>
+        <div class="sidebar-download">
+
+            
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> História</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> Cidade</a>
+            </div>
+            
+
+            <div class="download-file color-bg">
+                <a href="noticias.php" style="font-size: 14px"> Notícias</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="pmgrs.php" style="font-size: 14px"> PMGRS</a>
+            </div>
+
+        </div>
+        <hr>
+        <h3 class="about-quick-fact text-center">ADMINISTRAÇÃO</h3>
+        <div class="sidebar-download">
+
+            <div class="download-file color-bg">
+                <a href="secretarias.php" style="font-size: 14px"> Secretarias</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> Organograma</a>
+            </div>
+
+
+        </div>
+        <hr>
+        <h3 class="about-quick-fact text-center">CANAL ABERTO</h3>
+        <div class="sidebar-download">
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> Ouvidoria</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> e-Sic</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="acessibilidade.php" style="font-size: 14px"> Acessibilidade</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="perguntas-frequentes.php" style="font-size: 14px"> Perguntas Frequentes</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> Iluminação Pública</a>
+            </div>
+
+        </div>
+        <!--<hr>
+        <h3 class="about-quick-fact text-center">SERVIÇOS</h3>
+        <div class="sidebar-download">
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> Nota Fiscal</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> IPTU</a>
+            </div>
+
+        </div>-->
+        <hr>
+        <h3 class="about-quick-fact text-center">LEGISLAÇÃO</h3>
+        <div class="sidebar-download">
+
+            <div class="download-file color-bg">
+                <a href="decretos.php" style="font-size: 14px"> Decretos</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="leis.php" style="font-size: 14px"> Leis</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="portarias.php" style="font-size: 14px"> Portarias</a>
+            </div>
+
+        </div>
+        <hr>
+        <h3 class="about-quick-fact text-center">TRANSPARÊNCIA</h3>
+        <div class="sidebar-download">
+
+            <!--<div class="download-file color-bg">
+                <a href="http://www.transparenciafacil.com.br/0165702" target="_blank" style="font-size: 14px"> Portal da Transparência</a>
+            </div>-->
+            <div class="download-file color-bg">
+                <a href="https://pm-ewbanck.publicacao.siplanweb.com.br/" target="_blank" style="font-size: 14px"> Portal da Transparência</a>
+            </div>
+            <!--
+            <div class="download-file color-bg">
+                <a href="transparencia.php?tipo=Audiência" style="font-size: 14px"> Audiência Pública</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="https://saogeraldo.mg.gov.br/noticia.php?getLink=26" style="font-size: 14px"> Recomendação MP</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="transparencia.php?tipo=LDO" style="font-size: 14px"> LDO</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="transparencia.php?tipo=LOA" style="font-size: 14px"> LOA</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="transparencia.php?tipo=PPA" style="font-size: 14px"> PPA</a>
+            </div>-->
+
+        </div>
+
+        <hr>
+        <h3 class="about-quick-fact text-center">SERVIDORES</h3>
+        <div class="sidebar-download">
+
+            <!--<div class="download-file color-bg">
+                <a href="http://www.transparenciafacil.com.br/0165702" target="_blank" style="font-size: 14px"> Portal da Transparência</a>
+            </div>-->
+            <div class="download-file color-bg">
+                <a href="https://pm-ewbanck.contracheque.siplanweb.com.br/login" target="_blank" style="font-size: 14px"> Contra Cheque</a>
+            </div>
+
+        </div>
+        <!--<hr>
+        <h3 class="about-quick-fact text-center">COMUNICAÇÃO</h3>
+        <div class="sidebar-download">
+
+            <div class="download-file color-bg">
+                <a href="#" style="font-size: 14px"> Notícias</a>
+            </div>
+
+            <div class="download-file color-bg">
+                <a href="https://www.facebook.com/pref.guaraciaba/" target="_blank" title="Facebook" style="font-size: 14px"> Facebook</a>
+            </div>
+            
+            <div class="download-file color-bg">
+                <a href="https://instagram.com/prefeituradeguaraciabamg" target="_blank" title="Instagram" style="font-size: 14px"> Instagram</a>
+            </div>
+
+        </div>-->
+    </div>
+
+
+
+
+
+</nav>
+                        </div>
+
+                        <div class="col-md-9 blog-grid">
+                            <section class="blog-services">
+
+                                <div class="single-post" >
+                                    <h3 style="color:#3f5c9d;"> Programa Municipal de Gestão Integrada de Resíduos Sólidos</h3>
+                                   <!-- <p>Para solicitação, por meio eletrônico, da integra dos documentos relativos a este Processo após conclusão e homologação <a href="https://viscondedoriobranco.1doc.com.br/b.php?pg=wp/detalhes&itd=6" target="_blank">CLIQUE AQUI</a></p> -->
+                                </div>
+
+
+                                <div class="blog-slide text-justify">
+
+                                    <div class="single-post">
+
+                                        <h3></h3>
+
+                                        <table class="table table-striped table-advance table-hover">
+                                            
+                                            <tr>
+                                                <td><p>No dia 02 de agosto de 2010 a&nbsp; Lei Federal n&ordm; 12.305&nbsp; instituiu a Pol&iacute;tica Nacional de Res&iacute;duos S&oacute;lidos (PNRS), um marco para a gest&atilde;o e o gerenciamento dos res&iacute;duos s&oacute;lidos no pa&iacute;s. A PNRS tem como prioridade a redu&ccedil;&atilde;o do volume de res&iacute;duos gerados e a amplia&ccedil;&atilde;o da reciclagem, aliadas a mecanismos de coleta seletiva com inclus&atilde;o social de catadores e a extin&ccedil;&atilde;o dos vazadouros &agrave; c&eacute;u aberto.</p>
+
+<p>Um dos princ&iacute;pios da referida lei &eacute; a responsabilidade compartilhada, em que o poder p&uacute;blico, o setor empresarial e a coletividade s&atilde;o respons&aacute;veis pela efetividade das a&ccedil;&otilde;es voltadas para assegurar a observ&acirc;ncia da PNRS.</p>
+
+<p>Apesar de toda responsabilidade n&atilde;o ser exclusiva de um ente espec&iacute;fico, no que refere &agrave; coleta de lixo, &agrave; limpeza urbana e &agrave; destina&ccedil;&atilde;o final dos res&iacute;duos urbanos, &eacute; de responsabilidade do poder p&uacute;blico municipal a sua realiza&ccedil;&atilde;o.</p>
+
+<p>Todavia, os res&iacute;duos oriundos de atividades industriais, comerciais, estabelecimentos de sa&uacute;de, e servi&ccedil;os privados passam a ser do pr&oacute;prio gerador. Um dos instrumentos institu&iacute;do pela PNRS para a efetiva&ccedil;&atilde;o de seus objetivos, &eacute; o Plano Municipal de Gest&atilde;o Integrada de Res&iacute;duos S&oacute;lidos (PMGIRS), o qual &eacute; elaborado considerando um horizonte de 20 anos, com atualiza&ccedil;&otilde;es previstas a cada 4 anos.</p>
+
+<p>De acordo com o Termo de Refer&ecirc;ncia para elabora&ccedil;&atilde;o dos Planos Municipais de Gest&atilde;o Integrada de Res&iacute;duos S&oacute;lidos (PMGIRS) apresentado, os servi&ccedil;os foram divididos em etapas e produtos, conforme descrito a seguir:</p>
+
+<p>ETAPA 1 &ndash; Estrutura&ccedil;&atilde;o e Participa&ccedil;&atilde;o Social: Plano de trabalho Projeto de Mobiliza&ccedil;&atilde;o Social e Relat&oacute;rio T&eacute;cnico de Reuni&atilde;o de Legisla&ccedil;&atilde;o (Produtos 1 ao 3).</p>
+
+<p>ETAPA 2 &ndash; Diagn&oacute;stico Municipal dos Res&iacute;duos S&oacute;lidos: Relat&oacute;rios T&eacute;cnicos de Valida&ccedil;&atilde;o do Diagn&oacute;stico e Levantamento de Sugest&otilde;es (Produtos 4 e 5).</p>
+
+<p>ETAPA 3 - An&aacute;lise de Possibilidades de Gest&atilde;o Associada: Relat&oacute;rio t&eacute;cnico de Valida&ccedil;&atilde;o da An&aacute;lise das Possibilidades de Gest&atilde;o Associada (Produto 6).</p>
+
+<p>&nbsp;ETAPA 4 - Planejamento das A&ccedil;&otilde;es de cada PMGIRS: Relat&oacute;rio T&eacute;cnico de Valida&ccedil;&atilde;o dos PMGIRS (Produto 7).</p>
+
+<p>ETAPA 5 - Agendas Setoriais de Implementa&ccedil;&atilde;o dos PMGIRS: Relat&oacute;rio T&eacute;cnico da Oficina: agendas de implementa&ccedil;&atilde;o e divulga&ccedil;&atilde;o dos PMGIRS (Produto 8).</p>
+</td>
+                                            </tr>
+
+                                        </table>    
+                                    </div>
+
+                                    <div class="single-post">                                        
+                                        <hr>
+                                        <h3>Publicações</h3>
+                                                                                <div class="row">
+                                            <div class="col-md-8">
+                                                <p><a href="../uploads-pdf/PRODUTO6-VERSÃOPRELIMINAR-174301101967e43ccb2d268a.pdf" target="_blank">
+                                                    PRODUTO 6 - VERSÃO PRELIMINAR                                                    </a></p>
+                                            </div>                                            
+                                            <div class="col-md-4">
+                                                <p style="font-size: 12px"> Publicado em: <b>26/03/2025</b></p>
+                                            </div>
+                                        </div>
+                                                                                    <div class="row">
+                                            <div class="col-md-8">
+                                                <p><a href="../uploads-pdf/PRODUTO1-APROVADOPELAAUDITORIADAGERÊNCIAEXECUTIVODEGOVERNODACAIXAECONÔMICAFEDERAL–GIGOV–JUIZDEFORA.-15453307025c1be00e4b666.pdf" target="_blank">
+                                                    PRODUTO 1 - APROVADO PELA AUDITORIA  DA  GERÊNCIA EXECUTIVO DE  GOVERNO DA CAIXA ECONÔMICA FEDERAL – GIGOV – JUIZ DE FORA.                                                     </a></p>
+                                            </div>                                            
+                                            <div class="col-md-4">
+                                                <p style="font-size: 12px"> Publicado em: <b>20/12/2018</b></p>
+                                            </div>
+                                        </div>
+                                                                                </div>
+                                </div>
+                            </section>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </main>
+            <!-- Main Content Section -->
+
+            <!-- Footer Section -->
+            <footer>
+                <div class="footer">
+                    <div class="container">
+                        <!-- Prefooter Section -->
+                        <div class="row pre-footer">
+                            <div class="col-md-4">
+                                <div class="contact-box">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <div class="contact-details">
+                                        <h4 class="pre-footer-title">ATENDIMENTO</h4>
+                                        <p>Avenida Santo Antônio, 441
+                                            <br> Ewbank da Câmara, MG</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="contact-box">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <div class="contact-details">
+                                        <h4 class="pre-footer-title">TELEFONE</h4>
+                                        <p>(32) 3255-1271
+                                            <br>  &nbsp;</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="contact-box">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <div class="contact-details">
+                                        <h4 class="pre-footer-title">EMAIL </h4>
+                                        <p>atendimento@ewbankdacamara.mg.gov.br
+                                            <br>  &nbsp; </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Prefooter Section -->
+
+                        <!-- Footer widgets --
+                        <div class="row widgets">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="about-txt widget">
+                                    <img src="images/logoG.png" alt="Guaraciaba" />
+
+                                    <p>Prefeitura Municipal de Guaraciaba </p>
+
+                                    <div class="widgets-social">
+                                        <a href="https://www.facebook.com/pref.guaraciaba/"> <i class="fa fa-facebook" aria-hidden="true"></i> </a>
+                                        <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        <!--<a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                        <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>--
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <div class="quick-links widget">
+                                    <h2 class="widget-title">QUICK LINKS</h2>
+                                    <ul>
+                                        <li> <a href="#"> Careers </a> </li>
+                                        <li> <a href="#"> Contact </a> </li>
+                                        <li> <a href="#"> Market Info </a> </li>
+                                        <li> <a href="#"> Technology </a> </li>
+                                        <li> <a href="#"> Latest News </a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="spacer-50 visible-sm"></div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="our-services widget">
+                                    <h2 class="widget-title">OUR SERVICES</h2>
+                                    <ul>
+                                        <li> <a href="#"> Chemicals &amp; Commercial Fuels </a> </li>
+                                        <li> <a href="#"> Aviation Fuels &amp; Marine Fuels </a> </li>
+                                        <li> <a href="#"> Lubricants Services </a> </li>
+                                        <li> <a href="#"> Liquified Petrolium Gas </a> </li>
+                                        <li> <a href="#"> Shell Sulphur, Trading &amp; Supply </a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="newsletter widget">
+                                    <h2 class="widget-title">Newsletter</h2>
+                                    <p>Subscribe to our newsletters to receive latest news and updates.</p>
+                        <!-- ============= Mailchimp Subscribe Form ============= --
+
+                                    <form action="php/subscribe.php" id="subscribeform" method="post">
+                                        <div class="form-group">
+                                            <input type="email" id="email" name="email" placeholder="Enter your email" class="form-control" title="Please enter your email" data-msg-email="Please enter a valid email">
+                                        </div>
+                                        <button type="submit" class="btn btn-block" id="js-subscribe-btn"> Subscribe Now! </button>
+
+                                        <div id="js-subscribe-result" data-success-msg="Done. Subscribed" data-error-msg="Oops. Error!"></div>
+                                    </form>-->
+                    </div>
+                </div>
+        </div>
+        <!-- Footer widgets -->
+    </div>
+</div>
+<!-- Copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row copyright-bar">
+
+            <div class="col-md-12">
+                <p>Copyright © 2026 Prefeitura Municipal de Ewbank da Câmara.</p>
+            </div>
+            <!--<div class="col-md-6 text-right">
+                <p>
+                    <a href="#"> Terms of use</a> <a href="#">Privacy Policy</a> <span> | </span> Made with <i class="fa fa-heart" aria-hidden="true"></i> by Surjith S M </p>
+
+            </div>-->
+        </div>
+
+    </div>
+</div>            </footer>
+            <!-- Footer Section -->
+
+            <!-- back-to-top link -->
+            <a href="#0" class="cd-top"> Topo </a>
+
+        </div>
+
+        <!-- Page Wrapper
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+        <!-- Javascripts
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+        <!-- Jquery Library -->
+        <script src="js/jquery.min.js"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Back to top -->
+        <script src="js/back-to-top.js"></script>
+
+        <!-- Form Validation -->
+        <script src="js/validate.js"></script>
+
+        <!-- Subscribe Form JS -->
+        <script src="js/subscribe.js"></script>
+
+        <!-- Main JS -->
+        <script src="js/main.js"></script>
+
+    </body>
+
+</html>
