@@ -58,7 +58,7 @@ from coletores_base import (RAIZ, buscar, buscar_uma_vez, pela_ponte,
                             preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo,
-                             decodificar_pagina, copia_arquivada)
+                             decodificar_pagina, copia_arquivada, PONTE)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 FILA = RAIZ / "data" / "pistas_descobertas.json"
@@ -383,6 +383,14 @@ def _autoteste() -> int:
                 and sorted(x for k in (1, 2, 3) for x in fatia(list("abcdefg"), k, 3)) == list("abcdefg")
                 and not _lista_de_endereco_mudou({"situacao": "lido"}) and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V}, True)
                 and _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V - 1})
+                and _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V, "motivo": "HTTP 403",
+                                              "dominio": "www.x.mg.gov.br"}, hosts_da_ponte={"x.mg.gov.br"})
+                and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V, "motivo": "HTTP 403",
+                                                  "dominio": "x.mg.gov.br", "ponte_vista": True}, hosts_da_ponte={"x.mg.gov.br"})
+                and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V, "motivo": "HTTP 403",
+                                                  "dominio": "y.mg.gov.br"}, hosts_da_ponte={"x.mg.gov.br"})
+                and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V, "motivo": "muro de robô",
+                                                  "dominio": "x.mg.gov.br"}, hosts_da_ponte={"x.mg.gov.br"})
                 and identifica_prefeitura(pref, "Santana do Ipanema")
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
                 and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema")
@@ -1217,12 +1225,25 @@ def registrar_consulta_do_sitio(nome: str, uf: str, ibge: str, r: dict) -> None:
 PARADOS = ("portal_nao_verificado", "nao_verificado")   # tentativa sem leitura: nunca ausência, nunca recusa
 
 
-def _lista_de_endereco_mudou(v: dict, refazer_parados: bool = False) -> bool:
+def _lista_de_endereco_mudou(v: dict, refazer_parados: bool = False, hosts_da_ponte=frozenset()) -> bool:
     """O município sem portal achado ou sem página lida hoje, com a lista de antes de `CANDIDATOS_V`: refaz-se
     no mesmo dia (só esse caso; o que foi lido ou recusado não se repete). Com `refazer_parados`, todo parado
-    de hoje se refaz (07/11/2026: a válvula que mede o canal renderizado depois do #1599). Função pura."""
+    de hoje se refaz (07/11/2026: a válvula que mede o canal renderizado depois do #1599). Função pura.
+
+    27/11/2026: o 403 visto de fora só é recusa depois da sonda da ponte. Se a ponte trouxe do Brasil a página
+    do domínio depois da leitura que o registrou (`ponte_vista` falso), a leitura se refaz uma vez, pela cópia;
+    a próxima já nasce com `ponte_vista` e não se repete. Recusa confirmada do Brasil nunca vira cópia."""
     mudou = v.get("candidatos") != CANDIDATOS_V   # 12/11/2026: a recusa também se refaz quando há alternativa nova
-    return (v.get("situacao") in PARADOS and (refazer_parados or mudou)) or (v.get("situacao") == "recusa_de_fonte" and mudou)
+    recusa = v.get("situacao") == "recusa_de_fonte"
+    de_fora = (recusa and str(v.get("motivo") or "").startswith("HTTP 403") and not v.get("ponte_vista")
+               and (v.get("dominio") or "").removeprefix("www.") in hosts_da_ponte)
+    return (v.get("situacao") in PARADOS and (refazer_parados or mudou)) or (recusa and mudou) or de_fora
+
+
+def hosts_com_copia_da_ponte() -> frozenset:
+    """Os hosts (sem `www.`) com cópia trazida pela ponte no Brasil (`data/ponte_brasil.json`)."""
+    copias = (ler(PONTE, {}) or {}).get("copias") or {}
+    return frozenset((urllib.parse.urlsplit(u).hostname or "").removeprefix("www.") for u in copias)
 
 
 def fatia(fila: list, k: int, n: int) -> list:
@@ -1258,11 +1279,12 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parad
     cadastro = doc if isinstance(doc, list) else doc.get("municipios", [])
     niveis = ler("verificacao_municipal.json", [])
     niveis = {str(v["ibge"]).zfill(7): v["nivel_verificacao"] for v in niveis} if isinstance(niveis, list) else {}
+    ponte = hosts_com_copia_da_ponte()
     fila = [c for c in fatia(ordem_da_bateria(doc.get("fila") if isinstance(doc, dict) and doc.get("fila")
                                               else [str(m["codigo_ibge"]).zfill(7) for m in cadastro],
                                               por_cod, niveis, ler("populacao_censo2022.json", {}) or {}), *fatia_k_n)
             if c in por_cod and (feitos["municipios"].get(c, {}).get("consultado_em") != hoje
-                                 or _lista_de_endereco_mudou(feitos["municipios"][c], refazer_parados))]
+                                 or _lista_de_endereco_mudou(feitos["municipios"][c], refazer_parados, ponte))]
     pistas, lidos, gravados = [], 0, set()
     todo = fila[:limite] if limite else fila
     oficiais = enderecos_oficiais() if todo else {}
@@ -1276,7 +1298,8 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parad
         else:
             feitos["municipios"][cod] = {"consultado_em": hoje, "dominio": r["dominio"], "situacao": r["situacao"],
                                          "motivo": r.get("motivo"), "pistas": len(r["pistas"]),
-                                         "candidatos": CANDIDATOS_V}
+                                         "candidatos": CANDIDATOS_V,
+                                         "ponte_vista": (r["dominio"] or "").removeprefix("www.") in ponte}
         gravados.add(cod)
         lidos += 1
         registrar_consulta_do_sitio(por_cod[cod]["nome"], por_cod[cod]["uf"], cod, r)
