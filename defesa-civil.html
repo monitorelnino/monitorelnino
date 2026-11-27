@@ -106,6 +106,7 @@
     <h2 id="tituloEmergencias" data-conteudo="defesa-civil.emergencias.titulo_da_secao">Decretos de emergência registrados</h2>
     <p class="hint" data-conteudo="defesa-civil.emergencias.abertura">Um município pode ter mais de um decreto: o gráfico, que conta decretos, soma mais do que o mapa, que conta municípios.</p>
     <p class="hint" data-conteudo="defesa-civil.emergencias.mapa.apoio">Passe o cursor sobre um ponto para ver o município, o evento, a data do decreto e o reconhecimento federal.</p>
+    <p class="hint" data-conteudo="defesa-civil.emergencias.tabela.nota">Nível de intensidade pela Portaria MDR nº 260/2022. Nível I: a normalidade se restabelece com recursos do próprio município (situação de emergência). Nível II: o município precisa de recursos complementares do estado, da União ou de ambos (situação de emergência). Nível III: as instituições locais ficam comprometidas e é preciso ação coordenada das três esferas (estado de calamidade pública). O nível I não pede reconhecimento federal; a emergência reconhecida pela União aparece como nível II. Sem reconhecimento, o nível não é informado aqui.</p>
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--mapa figura--dupla cartao-mapa r-chuva" id="boxEmergencias" data-chave="resposta/municipios_decretados.json#municipios">
         <h3 class="figura-titulo" data-conteudo="defesa-civil.emergencias.mapa.titulo">Municípios com decreto de emergência desde 29/06/2026, por evento declarado e etapa</h3>
@@ -119,7 +120,7 @@
           </div>
         </div>
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="defesa-civil.emergencias.tabela.resumo">Ver em tabela</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblEmergencias"><thead><tr><th>Município</th><th>UF</th><th>Evento declarado</th><th>Decreto</th><th>Reconhecimento federal</th></tr></thead><tbody></tbody></table></div>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblEmergencias"><thead><tr><th>Município</th><th>UF</th><th>Evento declarado</th><th>Decreto</th><th>Reconhecimento federal</th><th>Nível</th></tr></thead><tbody></tbody></table></div>
         </details>
       </figure>
     </div>
@@ -143,7 +144,7 @@
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
 <script src="assets/js/consulta-municipio.js?v=129d28aa" defer></script>
-<script src="assets/js/defesa-civil.js?v=c0f1519c" defer></script>
+<script src="assets/js/defesa-civil.js?v=f8224bd6" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
