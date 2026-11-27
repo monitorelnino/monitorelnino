@@ -56,15 +56,12 @@ from coletar_saude_estadual import UFS, oficial
 from coletores_base import MuroDeRobo, buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
 from julgar_e_aplicar_descobertas import com_ocr, obter_documento
 from julgar_filas import julgar_lista
+from preservar_evidencias import tesseract_disponivel
 
 FILA = "pistas_imprensa_saude.json"
 ALVO = "saude_uf.json"
 
 # A classificação do que o ato INSTITUI. Literal, lida no texto do próprio ato.
-# 02/10/2026: "grupo condutor" FALTAVA aqui, e e o primeiro termo que a editoria lista — foi o
-# que fez a Portaria 764/2026 da Paraiba, que cria o GC El Nino/PB no ambito da SES-PB, passar
-# pelo juiz sem ser reconhecida como estrutura de coordenacao. O defeito apareceu ao registrar o
-# documento que a central ja havia lido: o degrau saia vazio com o ato na mao.
 RE_COORDENACAO = re.compile(
     r"(sala\s+de\s+situa[çc][ãa]o|centro\s+de\s+opera[çc][õo]es\s+de\s+emerg[êe]ncia|\bCOES?\b"
     r"|grupo\s+condutor|\bGC\s+El\s*Ni[ñn]o"
@@ -83,10 +80,7 @@ RE_F2_ESTRUTURA_INTERSETORIAL = re.compile(
     r"(comit[êe]\s+(?:intersetorial|interinstitucional|estadual|gestor)"
     r"|sala\s+de\s+governo|gabinete\s+(?:de\s+crise|integrado)"
     r"|grupo\s+de\s+trabalho\s+intersetorial|c[âa]mara\s+t[ée]cnica)", re.I)
-# A5-02 (08/10/2026): esta regex era UMA só, com `re.I` e sem borda inicial na sigla — e por
-# isso `SES\b` casava o FIM de qualquer palavra terminada em "ses": "meses", "fases", "doses",
-# "interesses", "bases". Medido: um comitê que não nomeia a saúde pontuava F2 = 100 porque o ato
-# dizia "a cada dois meses". A sigla é sigla: só casa em CAIXA ALTA, e por isso são duas regex.
+# A sigla só casa em CAIXA ALTA (senão `SES` casa "meses", "fases"): por isso são duas regex.
 RE_F2_SAUDE_POR_EXTENSO = re.compile(
     r"(secretaria\s+(?:de\s+estado\s+)?(?:estadual\s+)?d[ae]\s+sa[úu]de"
     r"|setor\s+sa[úu]de|pasta\s+d[ae]\s+sa[úu]de)", re.I)
@@ -104,9 +98,7 @@ RE_F2_ATRIBUICAO = re.compile(
     r"|respons[áa]vel\s+por|incumbe|exercer[áa]\s+a\s+coordena)", re.I)
 
 
-# Onde termina o preâmbulo do ato. O "considerando" cita normas, sistemas e órgãos que o ato NÃO
-# integra: medido no MT, onde a única menção à Defesa Civil estava num considerando sobre o S2iD
-# nacional, e isso dava F2 = 100 a uma sala de situação composta só por áreas da própria secretaria.
+# Onde termina o preâmbulo do ato. O "considerando" cita normas, sistemas e órgãos que o ato NÃO integra.
 RE_DISPOSITIVO = re.compile(r"\b(RESOLVE|DECRETA|RESOLVEM|DETERMINA)\b\s*:?", re.I)
 # A composição é onde a integração formal acontece.
 RE_COMPOSICAO = re.compile(
@@ -215,34 +207,17 @@ def atribuicao_citada(texto: str) -> str:
     return (art.group(1) + " — " if art else "") + pedaco[:240]
 
 
-# =============================================================================================
-# A exceção de autoridade da camada de saúde — DECISÃO DA EDITORIA, 01/10/2026, 16h UTC
-# =============================================================================================
-# A pergunta que a execução de hoje levantou: o plano de contingência de saúde publicado no portal
-# oficial da secretaria estadual, SEM ato de aprovação no texto, vale como documento primário? A
-# editoria decidiu que sim — e pôs três condições, que são o que esta seção implementa:
-#
+# ── A exceção de autoridade da camada de saúde (editoria, 01/10/2026) ────────────────────────
+# Plano de saúde no portal oficial da secretaria estadual, SEM ato de aprovação, vale como
+# documento primário, com três condições:
 #   (1) domínio oficial da SES ou do governo do estado;
 #   (2) o documento identifica ÓRGÃO, TÍTULO e ANO ou ciclo;
 #   (3) o registro traz a observação "sem ato de aprovação localizado", substituída pelo ato
 #       quando ele aparecer.
-#
-# A exceção vale **só para a camada de saúde** (MARÉ Saúde, peso zero). `juiz.etapa3_autoridade`
-# continua intocada: ela é a régua do MARÉ Legal, e foi justamente por ser dela que recusou 14 dos
-# 27 planos estaduais de saúde. O que muda é que a camada de saúde passa a ter a sua, declarada.
+# Vale só para a camada de saúde (peso zero); `juiz.etapa3_autoridade` segue a régua do MARÉ Legal.
 RE_ORGAO_SAUDE = re.compile(
     r"(secretaria\s+(?:de\s+estado\s+)?(?:estadual\s+)?d[ae]\s+sa[úu]de"
     r"|secretaria\s+d[ae]\s+sa[úu]de\s+d[eo]\s+estado"
-    # 05/10/2026: esta linha trazia DOIS caracteres de backspace (0x08) no lugar das bordas de palavra —
-    # escape de shell que virou byte quando o arquivo foi escrito por heredoc, em 01/10. O
-    # padrão não dava erro: ele simplesmente nunca casava, e a alternativa "SES-XX" ficou morta
-    # por quatro dias dentro do juiz da saúde. Achado pelo portão de escrita portável, que
-    # passou a varrer caractere de controle no fonte.
-    # 05/10/2026: esta linha trazia DOIS caracteres de backspace (0x08) no lugar dos `\b` —
-    # escape de shell que virou byte quando o arquivo foi escrito por heredoc, em 01/10. O
-    # padrão não dava erro: ele simplesmente nunca casava, e a alternativa "SES-XX" ficou
-    # morta por quatro dias dentro do juiz da saúde. Achado pelo portão de escrita portável,
-    # que passou a varrer caractere de controle no fonte.
     r"|\bSES[-/\s]?[A-Z]{2}\b"
     r"|funda[çc][ãa]o\s+de\s+vigil[âa]ncia\s+em\s+sa[úu]de"
     r"|superintend[êe]ncia\s+de\s+vigil[âa]ncia\s+em\s+sa[úu]de)", re.I)
@@ -259,10 +234,7 @@ def dominio_de_saude_estadual(url: str, texto: str) -> bool:
     if not oficial(url):
         return False
     host = urllib.parse.urlparse(url or "").netloc.lower()
-    # A5-01, causa (e): isto contava PARTES do host, e por isso recusava o domínio do instrumento
-    # vigente do ES — `mosquito.saude.es.gov.br` tem cinco. Recusava também `cvs.saude.sp.gov.br`
-    # e `antigo.saude.sc.gov.br`, que são estaduais. O que distingue estado de município não é o
-    # número de pontos: é o sufixo `.<uf>.gov.br` e a ausência de nome de município daquela UF.
+    # Estado x município: o sufixo `.<uf>.gov.br` e a ausência de nome de município, não o número de partes do host.
     estadual = bool(re.search(r"\.[a-z]{2}\.gov\.br$", host)) and not host_de_municipio(host)
     return estadual and bool(RE_ORGAO_SAUDE.search(texto or "") or RE_ORGAO_SAUDE.search(host))
 
@@ -290,10 +262,7 @@ def nomes_de_municipio() -> set:
     return _MUNICIPIOS_CACHE
 
 
-# Palavras que nomeiam a FUNÇÃO do subdomínio, e que por acaso também são nome de município.
-# Medido em 08/10/2026: existe o município de **Saúde**, na Bahia, e sem esta lista o cache do
-# IBGE fazia `saude.es.gov.br` — o subdomínio da secretaria de saúde de QUALQUER estado — ser
-# lido como domínio municipal. A regra seria recusar exatamente o que ela existe para aceitar.
+# Palavras que nomeiam a FUNÇÃO do subdomínio e por acaso são nome de município (Saúde/BA).
 SERVICO_NAO_E_MUNICIPIO = {"saude", "portal", "transparencia", "servicos", "cidadao", "legisla",
                            "imprensa", "diario", "sistemas", "central", "progresso", "capital"}
 
@@ -363,12 +332,7 @@ def o_que_institui(texto: str) -> set:
     índice, e o mesmo documento sustenta os dois. A Portaria 0195/2026 de MT é exatamente esse
     caso — institui o processo de elaboração do plano E a sala de situação permanente."""
     achados = set()
-    # A5-03 (08/10/2026): "coordenacao" era marcada por "comitê gestor|de crise|de enfrentamento",
-    # "gabinete de crise" e "sala de situação" em QUALQUER texto — e F1 é, pelo §91, estrutura da
-    # SECRETARIA DE SAÚDE. Com isso o decreto de MG (Sala de Situação da Defesa Civil) saía
-    # F1 = CRIADO_CICLO (100), e o despacho de SP (comitê de mudanças climáticas) saía
-    # F1 = PERMANENTE (45). Um terço do componente creditado a estrutura que não é da saúde.
-    # Comitê de governo é F2; F1 exige que o ato seja da saúde.
+    # F1 é estrutura da secretaria de saúde (§91): comitê de governo é F2; F1 exige ato da saúde.
     if RE_COORDENACAO.search(texto or "") and estrutura_e_da_saude(texto or ""):
         achados.add("coordenacao")
     if RE_PLANO.search(texto or ""):
@@ -376,10 +340,8 @@ def o_que_institui(texto: str) -> set:
     return achados
 
 
-# A AUTORIA do ato, que é mais larga que o nome do órgão: um ato assinado por "O SECRETÁRIO DE
-# ESTADO DE SAÚDE" é da saúde, e `RE_ORGAO_SAUDE` só conhecia a forma feminina ("secretaria").
-# Medido ao escrever a trava do A5-03: ela recusava a Portaria 0666/2024, que é da própria SES e
-# está assinada assim. Entram também as siglas de gabinete que os atos usam (GS/SES, GBSES).
+# A AUTORIA do ato, mais larga que o nome do órgão: "O SECRETÁRIO DE ESTADO DE SAÚDE" e as siglas
+# de gabinete (GS/SES, GBSES) também são da saúde.
 RE_AUTORIA_SAUDE = re.compile(
     r"(secret[áa]ri[oa]\s+(?:de\s+estado\s+)?(?:d[aeo]\s+)?sa[úu]de"
     r"|\bGB?S?/?SES\b|\bGBSES\b|\bGS/SES\b)", re.I)
@@ -498,30 +460,14 @@ def status_instrumento(categoria: str, encerrada: str = "", data: str = "") -> s
         return "VENC"
     ano = re.search(r"(20\d{2})", str(data or ""))
     if categoria == "plano" and ano and int(ano.group(1)) < ANO_DO_CICLO:
-        # 16/11/2026 (MS, plano de seca de 06/2025): plano anterior ao ano do ciclo não é "feito para
-        # este El Niño", ainda que cite o fenômeno; é recorrente. Na dúvida, o degrau mais baixo.
+        # Plano anterior ao ano do ciclo é recorrente, ainda que cite o fenômeno: o degrau mais baixo.
         return "VIG"
     return {"plano_elaboracao": "ELAB", "plano": "NOVO", "plano_antigo": "VIG"}.get(categoria)
 
 
-# ── O risco do CICLO, no TÍTULO, e só risco explícito (01/10/2026) ───────────────────────────
-# Isto nasceu de uma promoção falsa, e de duas tentativas de consertá-la.
-#
-# O caso: um **plano de contingência do SARAMPO de 2019**, do portal da SES-MG, foi promovido como
-# instrumento de saúde de MG para este ciclo — e como a sua coordenação, porque o plano menciona
-# níveis de ativação por dentro. Sarampo não é risco deste ciclo.
-#
-# Primeira tentativa: exigir um risco do ciclo em qualquer lugar do texto. **Não funcionou, e a
-# medição mostrou por quê**: em 77 mil caracteres, o documento casou "dengue" numa frase de
-# diagnóstico diferencial ("suspeita de dengue, mas com clínica compatível com sarampo") e
-# "emergências em saúde pública" no próprio título, porque esse é o arcabouço genérico que o plano
-# de qualquer doença usa. Palavra solta em documento longo não é assunto do documento.
-#
-# Regra em vigor: o risco do ciclo tem de estar no **título** do documento, e tem de ser **risco
-# explícito**. O arcabouço genérico de emergências em saúde pública NÃO conta sozinho: ele cabe em
-# sarampo, em cólera e em acidente radiológico com a mesma naturalidade. Um instrumento genérico
-# existe e pode valer — o PPResp/MT é um —, mas então ele vai para verificação humana, com o ato
-# lido, que foi exatamente como MT entrou. Na dúvida, o classificador não classifica.
+# ── O risco do CICLO, no TÍTULO, e só risco explícito ───────────────────────────────────────
+# Palavra solta em documento longo não é assunto do documento; o arcabouço genérico de emergências
+# em saúde pública não conta sozinho. Na dúvida, o classificador não classifica.
 RE_RISCO_DO_CICLO = re.compile(
     r"(el\s*ni[ñn]o"
     r"|arbovirose|dengue|chikungunya|zika"
@@ -558,9 +504,7 @@ def risco_do_documento(titulo: str, texto: str) -> tuple:
 
 
 
-# A5-37: `etapa2`/`extrair_data` tomavam a PRIMEIRA data do texto, e o preâmbulo de um ato cita
-# as normas em que ele se apoia. A Resolução SESA 680/2008 do PR saiu com data 03/06/1987 — a da
-# lei citada no "considerando". A data do ato está no cabeçalho dele, junto do número.
+# A data do ato está no cabeçalho dele, junto do número, não na primeira data do texto (o preâmbulo cita leis).
 RE_CABECALHO_DE_ATO = re.compile(
     r"((?:portaria|decreto|resolu[çc][ãa]o|delibera[çc][ãa]o|instru[çc][ãa]o\s+normativa)"
     r"[^\n]{0,120}?\bn?[ºo°]?\s*[\d.]+[^\n]{0,60}?"
@@ -646,7 +590,7 @@ def titulo_do_documento(texto: str, titulo_da_pista: str, url: str) -> str:
     return limpo.strip() or (titulo_da_pista or "")
 
 
-# ── A trilha da ESTRUTURA (central, 25/10/2026, por delegação da editoria) ───────────────────
+# ── A trilha da ESTRUTURA ──────────────────────────────────────────────────────────────────
 # Decreto que cria comitê ou COE permanente é ato institucional, e não resposta; o que não pontua é o
 # decreto de situação de emergência. A trilha só roda DEPOIS da recusa da trilha do plano
 # (resposta, natureza_duvidosa, risco_fora_do_ciclo) e credita só a função que o texto prova;
@@ -718,9 +662,7 @@ def ou_estrutura(v: dict, texto: str, uf: str, riscos=None) -> dict:
     return v
 
 
-# Documento de MUNICÍPIO não entra na camada estadual, e o diário do estado publica atos dos dois: em
-# 25/10/2026, ao rejulgar a fila, o plano de arboviroses "do município de Itapemirim" (ioes.dio.es.gov.br)
-# virou instrumento da SES-ES e o guia do CIEVS de Manaus (semsa.manaus.am.gov.br) virou F2 do AM.
+# Documento de MUNICÍPIO não entra na camada estadual, e o diário do estado publica atos dos dois.
 RE_ENTE_MUNICIPAL = re.compile(
     r"((?-i:[Mm]unic[íi]pio\s+de\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ])|prefeitura\s+municipal|secretaria\s+municipal\s+de\s+sa[úu]de"
     r"|plano\s+municipal)", re.I)
@@ -759,22 +701,15 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if not ok:
         v["motivo"] = motivo; return v
 
-    # 01/11/2026 (PI, SESAPI): o documento que a pista apresenta como PLANO, publicado pelo órgão de saúde do
-    # estado, é o plano mesmo com a capa de equipe antes do título (o cabeçalho de 2.000 caracteres não o vê).
-    # Sem `url` e `como_plano`, a etapa 2 tomava a primeira lei da base legal por "o ato" (Lei 9.071 → sem
-    # data; Decreto 18.142/2019 → data de 2019) e recusava por `citacao_incompleta`. A régua é a do Legal.
+    # O que a pista apresenta como PLANO do órgão de saúde é o plano, mesmo com capa antes do título. Régua do Legal.
     como_plano = juiz.e_plano_pelo_cabecalho(texto) or titulo_diz_plano(titulo_da_pista)
     if como_plano:
-        # 15/11/2026 (MA): a notícia de uma capacitação de 2024 (egma.ma.gov.br/noticias/…) citava o
-        # plano no título e entrava como o plano. O julgado tem de SER o plano (codebook 1.3).
+        # O julgado tem de SER o plano, não notícia que o cita (codebook 1.3).
         ok, motivo, _ = juiz.e_o_proprio_plano(texto, url)
         if not ok:
             v["motivo"] = motivo; return v
     ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico, url=url, como_plano=como_plano)
-    # A5-37 (12/10/2026): `data_do_cabecalho` existia e só o autoteste a chamava — o juiz seguia
-    # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
-    # (Res. SESA 680/2008 do PR saía com 03/06/1987). Quando o cabeçalho do ato traz a data por
-    # extenso, é ela que vale.
+    # Quando o cabeçalho do ato traz a data por extenso, é ela que vale.
     dados = data_do_plano(dados, url) if como_plano else com_data_do_cabecalho(texto, dados)
     v["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     v["data"] = dados.get("data")
@@ -796,8 +731,7 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if municipal:
         v["motivo"] = "ente_nao_confirmado"; return v
 
-    # 01/11/2026 (J1): o plano não institui o plano; o teste do objeto é para decreto e ato avulso. Sem isto, o
-    # PDF de 200 mil caracteres do PI (ações de resposta descritas no corpo) saía `resposta` depois da etapa 2.
+    # J1: o plano não institui o plano; o teste do objeto é para decreto e ato avulso.
     if como_plano:
         natureza, motivo_nat, provas = "EX_ANTE", "o documento é plano publicado pelo órgão de saúde (J1)", {}
     else:
@@ -812,17 +746,14 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     ok, familia, trecho = juiz.etapa5_familia_de_risco(texto)
     risco = risco_do_documento(titulo, texto)
     if not ok and familia == "fora_do_objeto" and risco[0]:
-        # 15/11/2026 (MA, SE): a régua do Legal põe plano de saúde e arbovirose fora do objeto do
-        # município; na camada de saúde eles SÃO o objeto, e o risco do ciclo é o do título (5b).
+        # Fora do objeto no Legal, plano de saúde e arbovirose SÃO o objeto aqui; o risco é o do título (5b).
         ok, familia, trecho = True, "saude_do_ciclo", risco[1]
     v["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None, "trecho": trecho}
     if not ok:
         v["motivo"] = familia; return v
     v["familia_de_risco"] = familia
 
-    # Condição da CAMADA: o documento trata de risco deste ciclo. Um plano de sarampo de 2019 passou
-    # por todas as etapas anteriores em 01/10/2026 e foi promovido como instrumento E coordenação de
-    # MG — foi o que fez esta etapa existir.
+    # Condição da CAMADA: o documento trata de risco deste ciclo.
     v["titulo_do_documento"] = titulo
     ok, casou = risco
     v["criterios"]["5b_risco_do_ciclo"] = {"ok": ok, "titulo": titulo,
@@ -843,10 +774,10 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     return v
 
 
-# 16/10/2026 (F68): falha de rede é PENDENTE: não grava veredito e volta na rodada seguinte. 18/11/2026: o host
-# que não respondeu sai do resto da rodada na porta de rede (`coletores_base.buscar`), para todo coletor; o atalho
-# local que fazia isso aqui (e tratava muro como rede) saiu.
-PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError)")
+# Falha de rede é PENDENTE: não grava veredito e volta na rodada seguinte; o host mudo sai da rodada em `coletores_base.buscar`.
+# 26/11/2026: falha de leitura não é veredito. O 5xx é serviço fora do ar, e o PDF escaneado lido por executor
+# sem OCR não foi lido; os dois voltam. O veredito antigo sem o código do HTTP volta uma vez e passa a tê-lo.
+PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError [1-4]\d\d$)|^documento sem texto extraível \(PDF sem OCR\?\)")
 
 
 def copia_preservada(su: dict):
@@ -868,11 +799,12 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     try:   # 18/11/2026: o leitor do juiz municipal (fonte, ponte, pasta do RS e cópia pública)
         corpo = obter_documento(url or "", 150, "julgar_saude", buscar_fn=buscar_fn)
     except Exception as e:  # noqa: BLE001
-        recusa = isinstance(e, (urllib.error.HTTPError, MuroDeRobo))
-        falha = {"promove": False, "pendente": not recusa, "uf": uf, "motivo": f"documento não baixado: {type(e).__name__}"}
+        codigo = getattr(e, "code", None) if isinstance(e, urllib.error.HTTPError) else None
+        recusa = isinstance(e, MuroDeRobo) or (codigo is not None and codigo < 500)
+        falha = {"promove": False, "pendente": not recusa, "uf": uf,
+                 "motivo": f"documento não baixado: {type(e).__name__}" + (f" {codigo}" if codigo else "")}
     if falha:
-        # Fonte que não abre para o runner (03/11/2026: portal.pi.gov.br, TCP 443 sem resposta) não impede
-        # reler o que já foi lido: a cópia preservada do mesmo endereço, com o hash do instrumento.
+        # Fonte que não abre para o runner não impede reler a cópia preservada do mesmo endereço.
         copia = copia_de and copia_de(url)
         if not (falha["pendente"] and copia):
             return falha
@@ -880,7 +812,9 @@ def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     else:
         texto = com_ocr(corpo, texto_do_documento(corpo, url))
     if not texto.strip():
-        return {"promove": False, "motivo": "documento sem texto extraível (PDF sem OCR?)", "uf": uf}
+        sem_ocr = (corpo or b"")[:5] == b"%PDF-" and not tesseract_disponivel()
+        return {"promove": False, "pendente": sem_ocr, "uf": uf,
+                "motivo": "documento sem texto extraível" + (" (PDF sem OCR?)" if sem_ocr else "")}
     institui = o_que_institui(texto)
     # O plano de contingência estadual de saúde é, na maioria dos estados, um DOCUMENTO TÉCNICO:
     # ele traz título, ano e órgão, e o ato que o aprova é outro papel. O juiz tem exceção
@@ -1569,9 +1503,19 @@ def autoteste() -> int:
     casos["PI: fonte que não abre relê a cópia preservada do mesmo endereço; sem cópia segue pendente"] = (
         lambda: _vc.get("pendente") is None and _vc.get("hash_evidencia") in ("h0", None) and _vn["pendente"])
     casos["F68: HTTP 404 é recusa, não pendente"] = lambda: v3["pendente"] is False
-    casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP não"] = (
+    casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP 4xx não"] = (
         lambda: PAD_FALHA_DE_REDE.match("documento não baixado: URLError")
-        and not PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError"))
+        and not PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError 404"))
+
+    def fora_do_ar(u, **k):
+        raise urllib.error.HTTPError(u, 503, "x", {}, None)
+    _v5 = julgar_pista({"url": "https://www.saude.ba.gov.br/p.pdf", "uf": "BA"}, buscar_fn=fora_do_ar)
+    casos["HTTP 503 é serviço fora do ar: pendente, com o código no motivo, e volta à fila"] = (
+        lambda: _v5["pendente"] and _v5["motivo"].endswith("HTTPError 503") and PAD_FALHA_DE_REDE.match(_v5["motivo"]))
+    casos["veredito antigo de HTTP sem código e de PDF sem OCR voltam uma vez; sem texto com OCR é recusa"] = (
+        lambda: PAD_FALHA_DE_REDE.match("documento não baixado: HTTPError")
+        and PAD_FALHA_DE_REDE.match("documento sem texto extraível (PDF sem OCR?)")
+        and not PAD_FALHA_DE_REDE.match("documento sem texto extraível"))
     return rodar_autoteste(casos)
 
 

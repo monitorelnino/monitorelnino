@@ -95,7 +95,7 @@ jobs:
     # o job `portoes_de_codigo`, e o teto sobe para caber a mediana medida.
     timeout-minutes: 45   # meta é < 15 min; o teto existe para que um travamento não fique pendurado
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with: { persist-credentials: false }
 
       - name: Partir do main atual
@@ -106,7 +106,7 @@ jobs:
           git reset --hard FETCH_HEAD
           echo "main atual: $(git rev-parse --short HEAD)"
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
         with:
           python-version: "3.12"
           cache: pip
@@ -125,7 +125,7 @@ jobs:
             --so-ler-e-despachar || true
 
       - run: pip install -r requirements.txt
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with: { node-version: "22", cache: npm }
       - run: npm ci
 
@@ -246,6 +246,12 @@ jobs:
         timeout-minutes: 3
         run: python3 preencher_fallback_estatico.py
 
+      # 25/11/2026 (handover do selo, D3): a `main` se sela sozinha. O PR não carrega mais o mapa;
+      # quem o regenera é a publicação que segue cada merge, antes do manifesto que o sela.
+      - name: Regenerar o mapa do código
+        timeout-minutes: 3
+        run: python3 scripts/gerar_codemap.py
+
       - name: Regenerar a cadeia canônica de derivados
         timeout-minutes: 8
         # 04/10/2026: era `--idempotencia`, que mede determinismo e não comparação
@@ -307,7 +313,7 @@ jobs:
           # Agora cada caminho é adicionado por conta própria, e o que não existe é DITO — a lista
           # envelhece sozinha quando uma pasta sai do site, e envelhecer em silêncio foi o defeito.
           falhou=0
-          for alvo in data/ dados-abertos/ feeds/ selos/ docs/ assets/ CITATION.cff *.html *.pdf; do
+          for alvo in data/ dados-abertos/ feeds/ selos/ docs/ assets/ CITATION.cff CODEMAP.md *.html *.pdf; do
             # `-e` e não `compgen`: o `for` já expandiu `*.html` e `*.pdf`, então cada `$alvo`
             # é um caminho concreto — e `compgen -G "blog/"` responde "casou" mesmo sem a pasta,
             # porque trata a barra como padrão. Medido antes de confiar.
@@ -365,6 +371,7 @@ jobs:
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
           SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
           EMPURROU=0
+          BASE=$(git rev-parse HEAD^)
           for TENTATIVA in 1 2 3 4 5; do
             GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
             if ! git rebase FETCH_HEAD; then
@@ -378,19 +385,21 @@ jobs:
                 echo "::error::a união RECUSOU um caminho — ver o nome no log acima"
                 break
               fi
-              # A2-09: depois de unir, os derivados são função do dado unido — regenerar ANTES de
-              # continuar, senão o manifesto chega obsoleto à `main`.
-              python3 recalcular_mare.py --write || true
-              bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              python3 scripts/commit_do_elo.py publicar --somente-indice 2>/dev/null \
-                || git add -A data/ dados-abertos/ feeds/ selos/ docs/ assets/ CITATION.cff *.html *.pdf 2>/dev/null \
-                || true
+              git add -u   # derivado em conflito: o resolvedor fica com o de cima; regenera-se abaixo
               if ! GIT_EDITOR=true git rebase --continue; then
                 git rebase --abort || true
                 echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
                 sleep $((TENTATIVA * 10)); continue
               fi
+            fi
+            # A2-09 + F-selo (27/11/2026): `main` andou (rebase limpo OU unido) → regenera e sela de novo.
+            # Só o conflito regenerava; o rebase limpo selou derivado velho (e7655e17, c8827d0, 31ffb54).
+            if [ "$(git rev-parse HEAD^)" != "$BASE" ]; then
+              python3 scripts/gerar_codemap.py || true
+              bash scripts/verificar_derivados.sh --regenerar-para-commit || true   # já recalcula o índice
+              git add -u   # F101 (25/11/2026): tudo o que a cadeia escreve, não só o de escritor declarado
               git diff --cached --quiet || git commit --amend --no-edit
+              BASE=$(git rev-parse HEAD^)
             fi
             if GIT_SSH_COMMAND="$SSH" python3 scripts/empurrar.py "main" "$TENTATIVA"; then
               EMPURROU=1; break
@@ -449,14 +458,14 @@ jobs:
         shell: bash
     timeout-minutes: 35
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with: { persist-credentials: false, ref: main }
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
         with:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: "22"   # package.json: engines node >=22.14 (Issue robo-registro#181)
           cache: npm

@@ -5,7 +5,7 @@
    "adaptador": "busca_ac",
    "url": "https://diario.ac.gov.br/",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -41,7 +41,7 @@
    "adaptador": "edicao_apifront",
    "url": "https://diario.imprensaoficial.am.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -60,8 +60,10 @@
    "medido_em": "15/10/2026",
    "caminho": "plataforma comum sem busca: edição do dia pela rota (a) e PDF pela rota (c) com o id (12,8 MB, 58 p. em 09/10, texto extraível)",
    "lidas": {
-    "2026-11-16": 1,
-    "2026-11-17": 1
+    "2026-11-18": 1,
+    "2026-11-19": 1,
+    "2026-11-23": 1,
+    "2026-11-24": 1
    },
    "reconferencia": {
     "em": "05/11/2026",
@@ -80,7 +82,7 @@
    "adaptador": "apifront",
    "url": "https://diofe.portal.ap.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-26",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -98,7 +100,7 @@
    "adaptador": null,
    "url": "https://www.ioepa.com.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -125,7 +127,7 @@
    "adaptador": null,
    "url": "https://diof.ro.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -178,7 +180,7 @@
    "adaptador": null,
    "url": "https://www.imprensaoficial.rr.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-22",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -204,8 +206,8 @@
   "TO": {
    "adaptador": "busca_to",
    "url": "https://diariooficial.to.gov.br",
-   "status": "ok",
-   "ultima_tentativa": "2026-11-22",
+   "status": "erro: URLError",
+   "ultima_tentativa": "2026-11-26",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -223,7 +225,7 @@
    "adaptador": "edicao_apinova",
    "url": "https://diario.imprensaoficial.al.gov.br/apinova/api",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -234,11 +236,13 @@
    "medido_em": "17/10/2026",
    "caminho": "API JSON do próprio sítio (aplicativo 'apinova'): editions/published/<ano>/<mês> lista as edições do mês, com suplemento; editions/downloadPdf/<id> serve o PDF (100 p. com texto em 15/10; runs 39022687465 e 39023131710)",
    "lidas": {
-    "2026-11-16": 2,
-    "2026-11-17": 2,
     "2026-11-18": 2,
     "2026-11-19": 2,
-    "2026-11-20": 1
+    "2026-11-20": 1,
+    "2026-11-23": 1,
+    "2026-11-24": 2,
+    "2026-11-25": 1,
+    "2026-11-26": 2
    },
    "reconferencia": {
     "em": "05/11/2026",
@@ -257,7 +261,7 @@
    "adaptador": null,
    "url": "https://www.egba.ba.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -301,7 +305,7 @@
    "adaptador": "edicao_ce",
    "url": "https://imagens.seplag.ce.gov.br/PDF/",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": "wordpress",
     "formularios_de_busca": [],
@@ -312,10 +316,12 @@
    "medido_em": "15/10/2026",
    "caminho": "edição por data em cadernos (doAAAAMMDDpNN.pdf), 4 cadernos de 64 p. em 14/10, texto extraível; a busca (pesquisa.doe.seplag) não responde ao runner",
    "lidas": {
-    "2026-11-16": 3,
-    "2026-11-17": 2,
     "2026-11-18": 3,
-    "2026-11-19": 3
+    "2026-11-19": 3,
+    "2026-11-23": 3,
+    "2026-11-24": 2,
+    "2026-11-25": 3,
+    "2026-11-26": 2
    },
    "reconferencia": {
     "em": "05/11/2026",
@@ -334,7 +340,7 @@
    "adaptador": null,
    "url": "https://diariooficial.ma.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "veredito": "erro",
     "motivo": "HTTPError: HTTP Error 500: Internal Server Error",
@@ -359,7 +365,7 @@
    "adaptador": "edicao_pb",
    "url": "https://auniao.pb.gov.br/servicos/doe",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": "plone",
     "formularios_de_busca": [
@@ -388,7 +394,6 @@
    "medido_em": "15/10/2026",
    "caminho": "edição por data (padrão do canal 2), 40 p. em 14/10, texto extraível; a busca Plone (@@busca) devolve a página inicial",
    "lidas": {
-    "2026-11-17": 1,
     "2026-11-18": 1,
     "2026-11-19": 1,
     "2026-11-20": 1
@@ -410,7 +415,7 @@
    "adaptador": null,
    "url": "https://diariooficial.cepe.com.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -444,7 +449,7 @@
    "adaptador": "edicao_pi",
    "url": "https://www.diario.pi.gov.br/doe/",
    "status": "erro: URLError",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "veredito": "nao_respondeu",
     "motivo": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
@@ -478,7 +483,7 @@
    "adaptador": null,
    "url": "https://www.diariooficial.rn.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -504,8 +509,8 @@
   "SE": {
    "adaptador": "apifront",
    "url": "https://iose.se.gov.br",
-   "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "status": "erro: HTTPError",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": "apifront",
     "formularios_de_busca": [
@@ -547,14 +552,16 @@
    "adaptador": "edicao_df",
    "url": "https://www.sinj.df.gov.br/sinj",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "medido_em": "19/10/2026",
    "caminho": "o dodf.df.gov.br estoura tempo no runner; o SINJ-DF lista os diários (ashx/Datatable/ResultadoDePesquisaDiarioDatatable.ashx, ordem de data decrescente, o filtro de data do servidor não age; varredura de até 60 páginas de 100, e se não alcançar a data vira erro de tentativa, nunca dia sem edição) e serve o PDF em BaixarArquivoDiario.aspx?id_file= (DODF 194 de 19/10 = 2,7 MB; run 39272209875 e seguintes)",
    "lidas": {
-    "2026-11-16": 1,
-    "2026-11-17": 1,
     "2026-11-18": 1,
-    "2026-11-19": 1
+    "2026-11-19": 1,
+    "2026-11-23": 1,
+    "2026-11-24": 1,
+    "2026-11-25": 1,
+    "2026-11-26": 1
    },
    "reconferencia": {
     "em": "05/11/2026",
@@ -573,7 +580,7 @@
    "adaptador": "apifront",
    "url": "https://diariooficial.abc.go.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -591,7 +598,7 @@
    "adaptador": "edicao_ms",
    "url": "https://www.spdo.ms.gov.br/diariodoe/",
    "status": "erro: URLError",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -624,7 +631,7 @@
    "adaptador": "apifront",
    "url": "https://www.iomat.mt.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -642,7 +649,7 @@
    "adaptador": "apifront",
    "url": "https://ioes.dio.es.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -660,7 +667,7 @@
    "adaptador": "edicao_mg",
    "url": "https://www.jornalminasgerais.mg.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": "angular",
     "formularios_de_busca": [],
@@ -671,10 +678,12 @@
    "medido_em": "17/10/2026",
    "caminho": "API pública que o sítio do Jornal Minas Gerais chama, sem token: api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=AAAA-MM-DD devolve o Diário do Executivo em dados.arquivoCadernoPrincipal.arquivo (envelope CMS/PKCS#7 em base64 com o PDF dentro; 15/09 a 17/10/2026 lidos, 41 a 83 p. com texto; domingo e feriado = dados null). Parte das datas responde HTTP 401 sem padrão de janela (16, 18 e 22/09 e as de 10/09 para trás, mas 15 e 17/09 abrem): recusa respeitada, o canal para nela (runs 39029434439, 39030190359, 39034277638 e 39035891128)",
    "lidas": {
-    "2026-11-17": 1,
     "2026-11-18": 1,
     "2026-11-19": 1,
-    "2026-11-20": 1
+    "2026-11-20": 1,
+    "2026-11-24": 1,
+    "2026-11-25": 1,
+    "2026-11-26": 1
    },
    "reconferencia": {
     "em": "05/11/2026",
@@ -693,7 +702,7 @@
    "adaptador": "edicao_rj",
    "url": "https://www.ioerj.com.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": "wordpress",
     "formularios_de_busca": [],
@@ -704,10 +713,12 @@
    "medido_em": "19/10/2026",
    "caminho": "conteudoonline/do_seleciona_edicao.php?data=<AAAAMMDD em base64> lista os cadernos da data; mostra_edicao.php?session=<caderno> traz var pd (GUID); o PDF sai em mostra_edicao.php?k=<12 primeiros caracteres do GUID>P<resto> (viewer-min.js); sem cookie; Parte I do Executivo de 16/10 = 4,7 MB (run 39268518381)",
    "lidas": {
-    "2026-11-16": 1,
-    "2026-11-17": 1,
     "2026-11-18": 1,
-    "2026-11-19": 1
+    "2026-11-19": 1,
+    "2026-11-23": 1,
+    "2026-11-24": 1,
+    "2026-11-25": 1,
+    "2026-11-26": 1
    },
    "reconferencia": {
     "em": "05/11/2026",
@@ -726,7 +737,7 @@
    "adaptador": "busca_sp",
    "url": "https://doe.sp.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -753,7 +764,7 @@
    "adaptador": "apifront",
    "url": "https://www.dioe.pr.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
@@ -771,7 +782,7 @@
    "adaptador": "edicao_rs",
    "url": "https://doe-backend.pro.rs.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": "angular",
     "formularios_de_busca": [],
@@ -782,11 +793,13 @@
    "medido_em": "19/10/2026",
    "caminho": "API que o portal do DOE-RS chama (main.js): public/diarios/lista?data=<dia> lista os diários da data (Executivo e o outro caderno) e public/diarios/download/<id>/pdf serve o PDF (252 p. em 16/10; runs 39253212830 a 39255284211)",
    "lidas": {
-    "2026-11-16": 1,
-    "2026-11-17": 2,
     "2026-11-18": 1,
     "2026-11-19": 2,
-    "2026-11-20": 1
+    "2026-11-20": 1,
+    "2026-11-23": 1,
+    "2026-11-24": 2,
+    "2026-11-25": 2,
+    "2026-11-26": 2
    },
    "reconferencia": {
     "em": "05/11/2026",
@@ -812,7 +825,7 @@
    "adaptador": "edicao_sc",
    "url": "https://portal.doe.sea.sc.gov.br/apis",
    "status": "ok",
-   "ultima_tentativa": "2026-11-23",
+   "ultima_tentativa": "2026-11-26",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -823,10 +836,12 @@
    "medido_em": "17/10/2026",
    "caminho": "API pública que o portal chama: apis/jornal/?dtStart=<dia> 00:00:00&dtEnd=<dia> 23:59:59 lista as edições do dia (ordinária e extra) com dsArquivo; o PDF está em portal.doe.sea.sc.gov.br/repositorio<dsArquivo> (58 p. com texto em 16/10; runs 39023721853 e 39024168986)",
    "lidas": {
-    "2026-11-16": 2,
-    "2026-11-17": 1,
     "2026-11-18": 2,
-    "2026-11-19": 1
+    "2026-11-19": 1,
+    "2026-11-23": 1,
+    "2026-11-24": 2,
+    "2026-11-25": 1,
+    "2026-11-26": 2
    },
    "reconferencia": {
     "em": "05/11/2026",

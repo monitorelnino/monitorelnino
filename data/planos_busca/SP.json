@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-11-26",
  "municipios": {
   "3550308": {
    "S16": {
@@ -2371,6 +2371,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513009&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513009&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cotia\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cotia\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3513405": {
@@ -2393,6 +2414,27 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513405&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513405&pagina=1&tamanhoPagina=500",
+    "motivo": "1403 contratação(ões) lida(s) em 54 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cruzeiro\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cruzeiro\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
     "dominio": null
    }
   },
@@ -2417,6 +2459,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513504&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513504&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cubatão\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Cubatão\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3513801": {
@@ -2439,6 +2502,27 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3513801&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3513801&pagina=1&tamanhoPagina=500",
+    "motivo": "1034 contratação(ões) lida(s) em 47 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Diadema\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Diadema\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
     "dominio": null
    }
   },
@@ -2463,6 +2547,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3514403&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3514403&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Dracena\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Dracena\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3515004": {
@@ -2485,6 +2590,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3515004&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3515004&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2509,6 +2621,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3515103&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3515103&pagina=1&tamanhoPagina=500",
+    "motivo": "405 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3515186": {
@@ -2531,6 +2650,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3515186&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3515186&pagina=1&tamanhoPagina=500",
+    "motivo": "4516 contratação(ões) lida(s) em 116 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -6610,6 +6736,69 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3500303&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "aguai.sp.gov.br HTTP 403; www.aguai.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "aguai.sp.gov.br HTTP 403; www.aguai.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3500303&pagina=1&tamanhoPagina=500",
+    "motivo": "527 contratação(ões) lida(s) em 38 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Aguaí\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: nenhum recusou",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Aguaí\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aguaí\" SP (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Aguaí\" SP (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: nenhum recusou",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Aguaí\" SP (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aguaí\" SP (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3550209": {
@@ -6825,6 +7014,69 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3501301&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "alvaresmachado.sp.gov.br HTTP 403; www.alvaresmachado.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "alvaresmachado.sp.gov.br HTTP 403; www.alvaresmachado.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3501301&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Álvares Machado\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'too many requests']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Álvares Machado\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Álvares Machado\" SP (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Álvares Machado\" SP (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Álvares Machado\" SP (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Álvares Machado\" SP (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
    }
   },
@@ -7491,6 +7743,69 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3501004&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "altinopolis.sp.gov.br HTTP 403; www.altinopolis.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "altinopolis.sp.gov.br HTTP 403; www.altinopolis.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3501004&pagina=1&tamanhoPagina=500",
+    "motivo": "466 contratação(ões) lida(s) em 36 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Altinópolis\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'too many requests']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Altinópolis\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Altinópolis\" SP (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Altinópolis\" SP (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Altinópolis\" SP (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Altinópolis\" SP (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
    }
   },
@@ -9103,6 +9418,69 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3500758&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "alambari.sp.gov.br HTTP 403; www.alambari.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "alambari.sp.gov.br HTTP 403; www.alambari.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3500758&pagina=1&tamanhoPagina=500",
+    "motivo": "0 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Alambari\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: nenhum recusou",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Alambari\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Alambari\" SP (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Alambari\" SP (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: nenhum recusou",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Alambari\" SP (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Alambari\" SP (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3519204": {
@@ -9553,6 +9931,69 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3500808&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "alfredomarcondes.sp.gov.br HTTP 403; www.alfredomarcondes.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "alfredomarcondes.sp.gov.br HTTP 403; www.alfredomarcondes.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3500808&pagina=1&tamanhoPagina=500",
+    "motivo": "16 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Alfredo Marcondes\" SP \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: nenhum recusou",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Alfredo Marcondes\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Alfredo Marcondes\" SP (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Alfredo Marcondes\" SP (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: nenhum recusou",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Alfredo Marcondes\" SP (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Alfredo Marcondes\" SP (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3533254": {
@@ -9742,6 +10183,55 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3502606&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "pmaparecidadoeste.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "pmaparecidadoeste.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3502606&pagina=1&tamanhoPagina=500",
+    "motivo": "8 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Aparecida d'Oeste\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Aparecida d'Oeste\" SP (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: nenhum recusou",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Aparecida d'Oeste\" SP (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'too many requests']]",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Aparecida d'Oeste\" SP (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
    }
   },
   "3543600": {
@@ -9795,6 +10285,55 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3502408&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "anhumas.sp.gov.br HTTP 403; www.anhumas.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-11-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": null,
+    "motivo": "anhumas.sp.gov.br HTTP 403; www.anhumas.sp.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3502408&pagina=1&tamanhoPagina=500",
+    "motivo": "0 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-26",
+    "situacao": "lido",
+    "consulta": "\"Anhumas\" SP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-11-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anhumas\" SP (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Anhumas\" SP (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'too many requests']]",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-11-26",
+    "situacao": "erro",
+    "consulta": "\"Anhumas\" SP (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
    }
   },

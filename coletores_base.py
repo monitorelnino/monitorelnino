@@ -667,9 +667,11 @@ def _dominio_publico(url: str) -> bool:
     if h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h:
         return True
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "scripts"))
-    from municipio_do_dominio import _host, diarios_estaduais, municipio_fora_do_gov_br
-    # imprensa oficial fora de .gov.br (IOERJ); e o sítio oficial do município fora de .gov.br (17/11/2026)
-    return _host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
+    from municipio_do_dominio import _host, arquivo_de_portal, diarios_estaduais, municipio_fora_do_gov_br
+    # imprensa oficial fora de .gov.br (IOERJ); o sítio oficial do município fora de .gov.br (17/11/2026); e o arquivo
+    # que o portal oficial guarda no domínio do fornecedor (26/11/2026)
+    return (_host(url) in diarios_estaduais() or municipio_fora_do_gov_br(_host(url)) is not None
+            or arquivo_de_portal(url) is not None)
 
 
 def setor_da_url(url: str) -> str:
@@ -1601,14 +1603,37 @@ def enviar_uma_vez(url: str, dados: dict, timeout: int = 40, origem: str = None)
 
 
 def enviar(url: str, dados: dict, timeout: int = 40, origem: str = None, enviar_fn=None,
-           dormir=None) -> bytes:
-    """`enviar_uma_vez` com a espera do §226 — a mesma do `buscar`, pela mesma função."""
+           dormir=None, sem_resposta: dict = None) -> bytes:
+    """`enviar_uma_vez` com a espera do §226 e a conta da rodada — as mesmas do `buscar`, pela mesma função.
+    26/11/2026: sem a conta, o POST da listagem do DOE-PI esgotava o tempo data a data e comia os 80 min do
+    canal 2 (run 45523709725), e MS e RO, atrás dele na fila, ficaram sem edição lida desde 12/11."""
     def uma_vez():
         if enviar_fn is not None:
             return enviar_fn(url, dados, timeout=timeout)
         return enviar_uma_vez(url, dados, timeout=timeout, origem=origem)
 
-    return com_espera(uma_vez, dormir=dormir)
+    if sem_resposta is None:
+        sem_resposta = _SEM_RESPOSTA if enviar_fn is None else {}
+    return _na_rodada(url, uma_vez, sem_resposta, dormir)
+
+
+def _na_rodada(url: str, uma_vez, sem_resposta: dict, dormir=None) -> bytes:
+    """A espera do §226 com a conta dos sites fora da rodada (18/11/2026): tempo esgotado ao conectar, já com a
+    repetição, tira o site do resto da rodada; falha imediata, na segunda seguida; resposta HTTP zera a conta."""
+    host = (urllib.parse.urlparse(url).netloc or "").lower()
+    try:
+        if sem_resposta.get(host, 0) >= 2:
+            raise urllib.error.URLError(f"{host} sem resposta nesta rodada")
+        corpo = com_espera(uma_vez, dormir=dormir)
+    except urllib.error.HTTPError:
+        sem_resposta.pop(host, None)
+        raise
+    except urllib.error.URLError as e:
+        if host and type(e) is urllib.error.URLError:   # a conexão nem começou; corpo cortado e 200 vazio são resposta
+            sem_resposta[host] = sem_resposta.get(host, 0) + (2 if isinstance(e.reason, TimeoutError) else 1)
+        raise
+    sem_resposta.pop(host, None)
+    return corpo
 
 
 def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dormir=None,
@@ -1629,27 +1654,15 @@ def buscar(url: str, timeout: int = 40, origem: str = None, buscar_fn=None, dorm
             return buscar_fn(url, timeout=timeout)
         return buscar_uma_vez(url, timeout=timeout, origem=origem)
 
-    host = (urllib.parse.urlparse(url).netloc or "").lower()
     if sem_resposta is None:
         sem_resposta = _SEM_RESPOSTA if buscar_fn is None else {}
     try:
-        if sem_resposta.get(host, 0) >= 2:
-            raise urllib.error.URLError(f"{host} sem resposta nesta rodada")
-        corpo = com_espera(uma_vez, dormir=dormir)
-        sem_resposta.pop(host, None)
-        return corpo
-    except urllib.error.HTTPError:
-        sem_resposta.pop(host, None)
-        raise   # a fonte respondeu "não": recusa, que nenhuma cópia substitui
+        return _na_rodada(url, uma_vez, sem_resposta, dormir)
     except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead) as e:
-        if host and type(e) is urllib.error.URLError:   # a conexão nem começou; corpo cortado e 200 vazio são resposta
-            sem_resposta[host] = sem_resposta.get(host, 0) + (2 if isinstance(e.reason, TimeoutError) else 1)
         # 15/11/2026 (editoria): o servidor público que não responde ao robô de fora do Brasil
         # (to.gov.br, saude.ap.gov.br, saude.rn.gov.br) é lido pela ponte no Brasil, cliente identificado.
-        copia, _ = copia_da_ponte(url)
+        copia = pela_ponte(url, e, origem, pedir=buscar_fn is None)   # o autoteste não pede
         if copia is None:
-            if buscar_fn is None:   # rede de verdade: o endereço vira pedido à ponte (o autoteste não pede)
-                pedir_a_ponte(url, origem)
             raise
         return copia
 
@@ -1663,6 +1676,24 @@ def sem_conversa_http(e) -> bool:
     r = getattr(e, "reason", None)
     return isinstance(e, (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead)) \
         and not isinstance(r, socket.gaierror)
+
+
+def so_de_fora(e) -> bool:
+    """A falha que o robô de fora do país não sabe nomear: conexão sem conversa HTTP, ou 403 sem muro (26/11/2026,
+    editoria: de 100 sites de prefeitura de SP com 403, 88 abriram do Brasil com o cliente identificado). Quem
+    decide é a sonda da ponte, que para na recusa; 401, 429, 451 e muro são recusa aqui mesmo. Função pura."""
+    # 27/11/2026: 502 e 504 de portão (o DOU respondeu 502 ao runner por dias) não são recusa; a ponte tenta do Brasil.
+    return sem_conversa_http(e) or (isinstance(e, urllib.error.HTTPError) and e.code in (403, 502, 504))
+
+
+def pela_ponte(url: str, e, origem: str = None, pedir: bool = True):
+    """A cópia que a ponte no Brasil trouxe deste endereço, ou None; sem cópia, o endereço vira pedido a ela."""
+    if not so_de_fora(e):
+        return None
+    copia = copia_da_ponte(url)[0]
+    if copia is None and pedir:
+        pedir_a_ponte(url, origem)
+    return copia
 
 
 def pedir_a_ponte(url: str, origem: str = None) -> None:

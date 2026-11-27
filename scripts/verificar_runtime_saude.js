@@ -181,8 +181,10 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
     teste("detalhe do desfecho: título e subtítulo do catálogo, sem rótulo de família",
       !/Desfecho escolhido/.test(txt("boxDesfecho")) && /municípios e estados desde 29 de junho$/.test(txt("tituloDesfecho")));
   }
-  teste("dlDesfechoUF: lista por estado com a taxa por 100 mil",
-    q("dlDesfechoUF").querySelectorAll("dt").length >= 26 && /por 100 mil habitantes/.test(txt("dlDesfechoUF")));
+  teste("tblDesfechoUF: tabela por estado com a taxa por 100 mil no cabeçalho",
+    q("tblDesfechoUF").querySelectorAll("tbody tr").length >= 26 && /por 100 mil habitantes/.test(txt("tblDesfechoUF")));
+  teste("legLinhasDesfecho: legenda das linhas com a faixa, a linha, o período escolhido e o ponto acima",
+    q("legLinhasDesfecho").querySelectorAll("span").length === 4);
   teste("os quadros por agravo saíram, e o desfecho escolhido é mapa e linhas, sem gráfico à parte",
     !q("cDesfAcum") && !q("cDengueSemana") && !q("cSRAG") && !q("mapaCalor") && !q("cDesfecho"));
 

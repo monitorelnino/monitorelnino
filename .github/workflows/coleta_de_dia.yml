@@ -50,7 +50,21 @@ permissions:
   actions: read        # o job `vez` do coletor lê a fila de runs
 
 jobs:
+  # 24/11/2026 (handover de erros do GitHub, item 6): em 17/11 a entrada trouxe linhas de Python soltas
+  # e o executor rodou cada uma como programa. A entrada se confere antes de subir o executor: só a
+  # lista de arquivos do repositório, sem o conteúdo (nada de `evidencias/`).
+  conferir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: { persist-credentials: false, filter: "blob:none", sparse-checkout: "scripts/saude_pipeline.py\ncoletores_base.py", sparse-checkout-cone-mode: false }
+      - name: Uma linha, um comando com script do repositório
+        env:
+          COMANDOS: ${{ inputs.comandos }}
+        run: printf '%s\n' "$COMANDOS" | python3 scripts/saude_pipeline.py --conferir-comandos
   coletar:
+    needs: conferir
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: ${{ inputs.nome }}
@@ -58,7 +72,9 @@ jobs:
       # `fromJSON`: o GitHub entrega o número do disparo como texto à entrada `number` do workflow
       # chamado (mesma razão de `busca_planos.yml`).
       timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
-      precisa_searxng: ${{ inputs.precisa_searxng }}
+      # 24/11/2026: as válvulas de planos de MG e RJ pediram S24/S27 sem a chave e gravaram `Connection refused`
+      # em todo município. Quem roda o metabuscador já o pede, como o Node e o OCR abaixo.
+      precisa_searxng: ${{ inputs.precisa_searxng || contains(inputs.comandos, 'S24') || contains(inputs.comandos, 'S27') || contains(inputs.comandos, 'seguir_pistas') || contains(inputs.comandos, 'monitorar_busca_web') }}
       # 17/11/2026: o aplicador roda portão em Node e o juiz lê PDF escaneado; esquecer a chave no disparo
       # reverteu a aplicação de Mesquita/RJ (portão sem módulos). Quem roda o juiz ou o aplicador já os pede.
       precisa_node: ${{ inputs.precisa_node || contains(inputs.comandos, 'aplicar_promocoes_do_juiz') }}

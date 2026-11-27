@@ -223,11 +223,6 @@ def main(argv: list) -> int:
         if r.returncode != 0:
             print("✗ git add falhou: " + (r.stderr or "").strip()[:300])
             return 1
-    # `--somente-indice` serve ao laço de rebase: ali o commit já existe e o que falta é marcar os
-    # caminhos como resolvidos, para `git rebase --continue` seguir.
-    if "--somente-indice" in argv:
-        print("houve=1")
-        return 0
     if _git("diff", "--cached", "--quiet").returncode == 0:
         print(f"Sem alterações de `{elo}`.")
         print("houve=0")

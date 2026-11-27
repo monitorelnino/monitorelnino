@@ -5,7 +5,10 @@
 # num ramo `coleta-dia/*`. Aqui os comandos são entrada do disparo e `scripts/expandir_busca_planos.py`
 # (dono da lista dos seis grupos) diz o que cada grupo roda: `{UF}` repete a linha por UF, `{UFS}` passa a
 # lista, linha sem marcador roda uma vez. Cada job é um `_coletor.yml`: rebase-e-push no próprio ramo,
-# marcador e prazo de sempre, e o PR de dado abre sozinho (um só, o passo confere se já existe).
+# marcador e prazo de sempre, e o PR de dado abre sozinho.
+# 25/11/2026: um ramo por grupo (`<ramo do disparo>-<grupo>`), um PR de dado por grupo. Os seis grupos
+# empurravam no MESMO ramo; cada tentativa (rebase, união, derivados) leva ~35 s, e o grupo que
+# terminava junto com os irmãos perdia as cinco (run 45146508583, CO, 23/11: coleta perdida).
 #
 # Disparo: `gh workflow run busca_planos.yml --ref coleta-dia/AAAA-MM-DD-tema -f comandos=...`, num
 # ramo `coleta-dia/*` criado da `main` (o ramo nunca é mesclado, só o PR de dado). Na `main` o
@@ -45,10 +48,12 @@ jobs:
   partir:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: write  # cria os ramos `<ramo>-<grupo>` no commit do disparo
     outputs:
       matriz: ${{ steps.matriz.outputs.matriz }}
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with: { persist-credentials: false, sparse-checkout: scripts }
       - id: matriz
         env:
@@ -57,6 +62,16 @@ jobs:
         run: |
           matriz=$(printf '%s\n' "$COMANDOS" | python3 scripts/expandir_busca_planos.py --grupos "$GRUPOS")
           echo "matriz=$matriz" >> "$GITHUB_OUTPUT"
+      - name: Um ramo por grupo
+        if: startsWith(github.ref_name, 'coleta-dia/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MATRIZ: ${{ steps.matriz.outputs.matriz }}
+        run: |
+          for g in $(python3 -c "import json,os; print(' '.join(i['grupo'] for i in json.loads(os.environ['MATRIZ'])['include']))"); do
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/git/refs" -f ref="refs/heads/${GITHUB_REF_NAME}-${g}" -f sha="${GITHUB_SHA}" >/dev/null \
+              && echo "criado ${GITHUB_REF_NAME}-${g}" || echo "${GITHUB_REF_NAME}-${g} não criado (já existe?)"
+          done
 
   buscar:
     needs: partir
@@ -66,6 +81,7 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: busca-planos-${{ matrix.grupo }}
+      ramo: ${{ startsWith(github.ref_name, 'coleta-dia/') && format('{0}-{1}', github.ref_name, matrix.grupo) || '' }}
       grupo_de_concorrencia: busca-planos-${{ matrix.grupo }}
       # `fromJSON`: o GitHub entrega o número do disparo como texto à entrada `number` do workflow
       # chamado e recusa o job `buscar` sem criá-lo (23/10/2026, runs 39899121167 e 39899864972).

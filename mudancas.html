@@ -25,9 +25,9 @@
 <title>Mudanças no MARÉ: os textos da editoria sobre o El Niño</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/mapas.js?v=6d303be4"></script>
+<script src="assets/mapas.js?v=960ba3f3"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=99e0b770">
+<link rel="stylesheet" href="assets/base.css?v=4fa1997d">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -44,126 +44,126 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>23/11/2026 · Elo do juiz não cai mais na trava do apt</dt>
-      <dd>O passo do Tesseract em `_coletor.yml` passa a esperar a trava do apt deixada pelo passo do navegador e a repetir `update` e conexão parada; teto de 8 min. Pacote que não instala segue derrubando o elo com o nome do passo, e a reserva refaz. Catálogo: F92. Linhas líquidas: +19 (código +6, catálogo +13).</dd>
-      <dt>23/11/2026 · História do coletor de sinais de risco ao histórico</dt>
-      <dd>Consolidação: comentários de história do `coletar_sinais_risco.py` (catálogo de fontes, focos, RONI, avisos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento (AST idêntica). Código: −55 linhas líquidas.</dd>
-      <dt>23/11/2026 · Plano da saúde no cartão do município</dt>
-      <dd>Quando o plano que a fonte disponibiliza como plano do município é da saúde (a secretaria de saúde assina antes do título, sem a coordenadoria municipal de defesa civil no texto), o cartão diz: &quot;O plano disponibilizado em {fonte} é um plano de contingência da saúde, não da defesa civil.&quot; Categoria e índice não mudam. Quatro registros hoje: São Martinho da Serra/RS, Fortaleza/CE, Porto Velho/RO e Angra dos Reis/RJ.</dd>
-      <dt>23/11/2026 · OCR gira a página de cabeça para baixo</dt>
-      <dd>Página digitalizada de cabeça para baixo ou de lado saía como letras sem sentido, e o juiz recusava o plano como ilegível (Humaitá e União da Serra/RS). Quando o texto lido tem menos de 5% das palavras mais frequentes do português, a detecção de orientação do Tesseract diz o giro e a página é lida de novo; o texto girado só entra quando lê melhor.</dd>
-      <dt>23/11/2026 · Destino fora do ar</dt>
-      <dd>Quando a fonte oficial indica um endereço que não existe mais (30 planos da 7ª regional do RS), a falha passa a ter nome próprio e data, e o cartão do município diz isso.</dd>
-      <dt>23/11/2026 · Plano sem ato não é &quot;ato oficial&quot;</dt>
-      <dd>O cartão dizia &quot;Ato oficial localizado&quot; para plano publicado sem ato de aprovação localizado. A frase passa a ser o rótulo do plano, em 372 registros de 21 estados.</dd>
-      <dt>23/11/2026 · OCR por página</dt>
-      <dd>PDF escaneado com cabeçalho digitado em cada página passava da régua de letras e não ia ao OCR (São Valentim do Sul/RS). A régua passa a ser por página.</dd>
-      <dt>23/11/2026 · Plano localizado que não conta não é &quot;não localizado&quot;</dt>
-      <dd>O cartão do município dizia &quot;não localizamos&quot; quando o plano tinha sido lido sem data ou indicado no repositório estadual e não aberto. Agora diz o que foi achado e por que não entra no índice, em todos os municípios.</dd>
-      <dt>23/11/2026 · Defeso: aviso antigo na evidência vai à fonte</dt>
-      <dd>A reavaliação diária do defeso mantinha suspensas fontes cujo aviso eleitoral constava só na evidência de setembro e outubro (13 endereços de MG, MA e PA). Com nova busca, a página de hoje decide; sem resposta, o estado se mantém e o endereço segue para a ponte.</dd>
-      <dt>23/11/2026 · União pela base soma `repeticoes` de pista</dt>
-      <dd>O resolvedor de conflito recusava a pista cujo contador `repeticoes` subiu nos dois lados. Agora soma os acréscimos sobre a base, como os contadores do funil; decremento segue recusado.</dd>
-      <dt>23/11/2026 · Juiz: ano fora da faixa não é data</dt>
-      <dd>Plano sem ato de aprovação passava com ano impossível quando o texto citava período chuvoso: em Chuvisca/RS, o fim de um telefone virou 2077. A recusa por data suspeita passa a valer com ou sem ato.</dd>
-      <dt>23/11/2026 · Leitor de .doc: só as correntes da raiz</dt>
-      <dd>O .doc com objeto do Word embutido (Chuvisca/RS) saía sem texto: o leitor misturava o texto do documento com a tabela do objeto. Agora lê só as correntes da raiz do arquivo.</dd>
-      <dt>23/11/2026 · Rodada J18: rejulgamento paralelo pelo codebook 1.8</dt>
-      <dd>Rejulgamento de `promocoes_automaticas.json` e da fila de `pistas_imprensa.json` pelo codebook 1.8, gravado só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json` (nada do índice lê). Com documento local, 564 decisões e 227 pistas julgadas; nenhum veredito muda. 6.052 pistas da fila e cerca de 9.700 decisões seguem sem cópia local, e não são rejulgadas. Código sem mudança: o modo 1.8 já estava na `main` e passa nas 109 travas do `juiz.py --autoteste`.</dd>
-      <dt>23/11/2026 · O juiz lê o .doc do Word 97–2003</dt>
-      <dd>Seis planos do Prepara RS em .doc antigo saíam sem texto: o leitor não tinha extrator para o formato. `texto_de_doc_binario` lê o contêiner e a tabela de peças, sem dependência nova. A recusa por texto não extraível em documento de escritório volta uma vez.</dd>
-      <dt>23/11/2026 · Prepara RS: atalhos e planos sem data</dt>
-      <dd>Os 30 planos da CREPDEC 07, publicados como atalhos para um endereço com certificado de outro nome, passam a ser lidos pela cópia pública do Internet Archive. As 59 recusas por falta de data, lidas antes do leitor com OCR, voltam uma vez ao juiz.</dd>
-      <dt>23/11/2026 · Fila com prazo: quem espera há mais tempo vai primeiro</dt>
-      <dd>O juiz e a leitura dos diários estaduais eram cortados pelo prazo e liam em ordem fixa: o rabo nunca chegava (257 documentos oficiais além de 14 dias; MS, RO e RR sem edição lida desde 11–12/11). Agora o juiz começa pela pista que espera há mais tempo e o canal 2 pela UF de leitura mais velha.</dd>
-      <dt>23/11/2026 · Juiz: plano publicado não é ato de resposta</dt>
-      <dd>O plano de contingência publicado que explica como pedir reconhecimento federal deixa de ser recusado como ato de resposta: o teste da rota federal vale para o ato, não para o plano. Eram 61 planos, entre eles Rio Branco/AC, Campo Grande/MS e planos do repositório do RS. Decreto que depende de reconhecimento federal segue fora. As recusas voltam uma vez ao juiz.</dd>
-      <dt>23/11/2026 · Buscador 2: B2 busca no veículo com o título guardado</dt>
-      <dd>O redirecionamento do Google News não resolvia (0 de 5.802). A compactação de 19/10 tirava o título, e sem ele a busca no veículo não tinha o que procurar. Agora o título fica na fila, o B2 recebe veículo e título, a busca tem teto de 300 por rodada, e o reprocessamento reabre uma vez as pistas com título. Catálogo F91.</dd>
-      <dt>22/11/2026 · Redução: história do julgar_e_aplicar_descobertas.py ao HISTORICO</dt>
-      <dd>Comentários de história do aplicador (datas, lotes, contagens de incidente) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Comportamento igual (AST idêntica fora de uma docstring; `--self-test` verde). Código +27/−79 (−52).</dd>
-      <dt>22/11/2026 · União de fila: regra para o seguimento</dt>
-      <dd>Dois lotes que seguem a mesma página no mesmo dia deixavam de travar a união da fila: vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu a página; duas falhas somam. Destrava os PRs de lote do Buscador 2.</dd>
-      <dt>22/11/2026 · Rodada J18: rejulgamento paralelo 1.8 atualizado</dt>
-      <dd>Só `data/paralelo_juiz18.json`; nada do índice lê o arquivo. Produção com 34.272 decisões; 564 julgadas com documento local; 9.684 seguem sem cópia local (ponte sem envio desde 21/11). Efeito das 564: 38 decisões mudam (33 perdem a promoção, 5 ganham), concentradas no RS. Efeito no índice por UF fica para o rejulgamento completo.</dd>
-      <dt>22/11/2026 · Buscador 2: sem via vira recusa, queda ou página sem candidato</dt>
-      <dd>O resumo da rodada chamava &quot;falha&quot; a pista sem via: recusa da fonte (403, muro de robô), queda de rede e página lida sem candidato. Uma função pura separa as três, com autoteste. Só rótulo; nenhum dado muda.</dd>
-      <dt>22/11/2026 · Triagem conta o prazo pela data da noite</dt>
-      <dd>A triagem roda às 22h de Brasília e contava os 21 dias pela data de Brasília: a pista que fazia 22 dias naquela madrugada só vencia na noite seguinte, e o portão da fila não humana reprovou a `main` em 22/11. O prazo passa a contar pela data da noite (F90); a folga de um dia que o #1966 deu ao portão sai. 40 pistas vencidas fechadas por prazo.</dd>
-      <dt>22/11/2026 · Fila não humana: uma noite de folga para a triagem fechar a vencida</dt>
-      <dd>O portão reprovava a pista no dia em que ela passava de 21 dias, antes da triagem da noite seguinte, que é quem a fecha; o ramo principal ficou vermelho desde 03:03 UTC (três pistas de 31/10). Agora reprova a que a triagem já devia ter fechado (22 dias). Prazo e triagem inalterados; caso novo no autoteste.</dd>
-      <dt>21/11/2026 · Redução: história do resolvedor de conflitos ao HISTORICO (−84)</dt>
-      <dd>`scripts/unir_conflito_de_rodada.py`: os relatos datados de cada classe de união (noites perdidas, contagens de incidente) viram uma linha cada; o relato completo vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica, autoteste verde, nenhum comportamento muda. Código +24/−108.</dd>
-      <dt>21/11/2026 · Rodada J18: leitura local do juiz 1.8 segue até o PDF</dt>
-      <dd>A leitura local de `evidencias/` parava na primeira cópia txt, mesmo falha (só marcadores de página). 144 documentos com PDF ao lado ficavam sem texto. Agora a leitura percorre txt, ocr.txt, html e pdf, com OCR quando o PDF não tem camada de texto. Rodada paralela: 420 para 564 documentos julgados. Produção não muda.</dd>
-      <dt>20/11/2026 · Um só gravador dos relatórios internos de verificação</dt>
-      <dd>Quatro rotinas de verificação e publicação gravavam seus relatórios internos com o mesmo trecho copiado, e só uma tentava de novo quando outra gravava ao mesmo tempo; o diagnóstico de uma verificação falhou por isso. Um único gravador passa a servir às quatro, com nova tentativa. Linhas líquidas: −14.</dd>
-      <dt>20/11/2026 · Redução: história do coletor de diários estaduais ao histórico</dt>
-      <dd>`coletar_doe.py` perde 49 linhas de comentário de história (incidentes datados, tentativas antigas); o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Árvore sintática idêntica: nenhum comportamento muda.</dd>
-      <dt>20/11/2026 · Vigência encerrada no MARÉ Legal e plano setorial fora do crédito</dt>
-      <dd>Plano municipal cujo título declara período encerrado antes do ciclo vale zero e aparece como &quot;último plano localizado com vigência encerrada&quot; (decisão de 15/11; dez planos). Plano de contingência da assistência social e capítulo de contingência do plano de saneamento não são o plano do município: Florianópolis e Rodeio (SC) saem do crédito. Efeito: SC 80,8 → 78,4; RJ 47,0 → 46,7; ES 58,3 → 58,2. Metodologia §129.</dd>
-      <dt>20/11/2026 · Plano com mais de dois anos não conta inteiro</dt>
-      <dd>Decisão da editoria (20/11/2026). Fora do cadastro federal do art. 3º-A, o plano municipal com edição de mais de dois anos, contados do Boletim nº 1 (anterior a 29/06/2024), passa de 1,0 a 0,65 na cobertura. No cadastro, segue a regra de 17/11: mais de um ano sem atualização vale zero. São 67 planos. Efeito: RS 66,7 → 66,2; SE 72,1 → 71,8; MG 18,2 → 18,1; SP 35,9 → 35,8; média nacional 42,6. Metodologia §129.</dd>
-      <dt>20/11/2026 · Leitura parada: pista em back-off do juiz não conta como parada</dt>
-      <dd>O alarme contava como &quot;sem veredito&quot; pistas oficiais que o juiz já tentou e marcou para voltar (`proxima_tentativa_em` futura). Eram 595 em 20/11, todas tentadas nos últimos dez dias; fora do back-off restam 79, abaixo do teto de 150. A pista vencida e não tentada segue contando.</dd>
-      <dt>20/11/2026 · Elo commita o PDF-índice junto do dado que o gera</dt>
-      <dd>O elo da noite regenerava `MARE_Indice_Documentacao.pdf` e selava o hash novo no manifesto, mas não o commitava: a `main` ficava vermelha no portão 12 até o publicador seguinte (triagem de 18/11 e 20/11). O PDF entra no `git add` do `_coletor.yml`; conflito nele já se resolve por regeneração. Falha F89 no catálogo.</dd>
-      <dt>19/11/2026 · Redução: história das fontes ao histórico; parser RSS único</dt>
-      <dd>Os comentários de história do catálogo de fontes de `coletar_sinais_risco.py` passam a `docs/HISTORICO_DE_REGIMES.md` (código idêntico); `detectar_marcos_federais.py` usa o leitor de RSS de `monitorar_imprensa_regional.py` em vez da cópia. Sem mudança de comportamento; −55 linhas de código.</dd>
-      <dt>19/11/2026 · Juiz: o ato que aprova é o que aprova o plano</dt>
-      <dd>O ato citado no plano só conta como ato dele quando aprova, institui, homologa ou atualiza o próprio plano (`RE_APROVA_O_PLANO`). &quot;Fica instituída a COMPDEC&quot; deixa de contar: no plano de 2026 de Muqui/ES, a lei de 2003 virava a data do plano.</dd>
-      <dt>19/11/2026 · Juiz: ato próprio e plano que se declara plano</dt>
-      <dd>A lei citada na base legal de um plano deixa de ser tomada como o ato dele (`juiz.ato_proprio`), também nos juízes da Saúde; o plano que diz &quot;este plano de contingência&quot; conta como título (J15). As reaberturas de recusas viram uma tabela (`CORRECOES_DO_JUIZ`), e 3.345 recusas por ato, citação, natureza ou título voltam uma vez. Origem: PLANCON 2025 de Rio Branco/AC.</dd>
-      <dt>19/11/2026 · J13, J12 e J18 no juiz, medidos à parte</dt>
-      <dd>O juiz ganha três regras da rodada paralela J18, todas fora da produção: J13 lê a data do ato colada ao número (nº 1341/2021 de 31 de março de 2021) e marca a origem da data; J12 colapsa repetições do mesmo documento no mesmo município; J18 recusa plano setorial de saúde, saneamento ou escolar, quando a proposta está ligada. O codebook 1.8 não muda, e nenhuma decisão de produção muda.</dd>
-      <dt>19/11/2026 · Data com ano no futuro não é data do documento</dt>
-      <dd>A leitura da data aceitava qualquer ano: o plano de Tobias Barreto/SE, digitalizado, entrou datado de 2067 e trocou o decreto do município. Ano no futuro deixa de ser data do documento; o registro voltou ao de ontem e a pista volta ao juiz.</dd>
-      <dt>19/11/2026 · Quarentena confere pista por pista; imprensa regional grava pela porta</dt>
-      <dd>A quarentena da fila recortava a identidade do texto do problema, e a pista sem `id` (identidade = URL) nunca casava: 29 pistas ficaram na fila ativa e a publicação reprovou desde 03:23 UTC. Agora cada pista se confere sozinha. A origem delas, `monitorar_imprensa_regional.py`, deixa de gravar a fila por fora e passa por `pistas.gravar_lote`.</dd>
-      <dt>18/11/2026 · Plano de edição anterior não substitui o mais novo</dt>
-      <dd>A atualização de registro deixava um documento de força igual trocar o registro sem julgamento do juiz, mesmo sendo mais antigo: Cachoeiro de Itapemirim e Pancas/ES perderam o plano de 2025 para o de 2023, e o índice do ES caiu. Edição anterior não substitui mais; os dois registros voltaram.</dd>
-      <dt>18/11/2026 · Um leitor só para o documento, também na saúde e na descoberta</dt>
-      <dd>O juiz da saúde passa a ler como o juiz municipal: fonte, cópia da ponte no Brasil e cópia pública quando a fonte cai, com OCR do PDF escaneado. Muro de robô volta a ser recusa, não falha de rede. A guarda da prova usa o mesmo leitor. A busca de planos pede à ponte o portal da prefeitura que não abre de fora do país.</dd>
-      <dt>18/11/2026 · A prova do plano lido pela cópia pública é a cópia pública</dt>
-      <dd>O juiz lê a cópia pública quando o endereço original caiu ou recusou; a guarda da prova só tentava o endereço original, e a promoção nunca entrava no banco (8 promoções de 6 municípios, medidas em 18/11). A leitura que falha passa a cair na mesma cópia pública; sem ela, segue sem registro.</dd>
-      <dt>18/11/2026 · Anotação de confiança só na pista aberta</dt>
-      <dd>A descoberta anotava `sinais`, `alertas` e `pontos_confianca` nas 22.825 pistas encerradas e a triagem os apagava na mesma noite: ~150 mil linhas de diff por noite em `data/pistas_imprensa.json`. `triar_confianca_pistas.py` pula a encerrada (`limpar_fila_de_pistas.encerrada`), com caso no autoteste. Catálogo da noite: F87 (pista sem data de entrada, #1856) e F88.</dd>
-      <dt>18/11/2026 · Site sem resposta sai da rodada; cadeia de certificado completa; prova do plano escaneado</dt>
-      <dd>Site que não responde ao robô deixa de gastar a rodada: sai dela, e o endereço vai à cópia da ponte ou vira pedido. Certificado sem o intermediário é completado pelo emissor que a folha declara, com verificação plena. Plano escaneado acima de 5 MB chega ao OCR e à prova (13 do RS estavam fora do banco). Documento trazido pela ponte fica no ramo do lote; a `main` guarda o índice.</dd>
-      <dt>18/11/2026 · Credencial de terceiro em JSON é redigida; a ponte guarda página já redigida</dt>
-      <dd>A redação de credencial não via a forma do JSON (`&quot;access_token&quot;:&quot;…&quot;`), a aspa escapada nem a maiúscula: a página inicial de uma secretaria trouxe a ficha do Instagram dela, e só o portão do PR a barrou. A porta de redação passa a cobrir essas formas, e o portão usa o padrão dela. A cópia de página da ponte entra redigida, com o sha256 de origem; corpo vazio e muro de robô não entram; `--receber` guarda lote com manifesto.</dd>
-      <dt>18/11/2026 · Pré-noite sem fila fantasma</dt>
-      <dd>A checagem das 23h deixa de contar como fila presa o run aberto há mais de 24 h: o de 05/11 tinha o job concluído e o run preso em queued há 13 dias, e reprovava a noite. Autoteste novo.</dd>
-      <dt>18/11/2026 · Plano de saúde com equipe na capa</dt>
-      <dd>O juiz da saúde lia a capa só nos primeiros 1.500 caracteres e não reconhecia &quot;Plano de Adaptação&quot; como título de plano. O plano de RO para o El Niño 2026–2027, recebido por pedido de acesso à informação, tem a lista da equipe antes do título e foi recusado como fora do ciclo. A capa passa a ser o mesmo cabeçalho do juiz, e &quot;plano de adaptação&quot; é título de plano.</dd>
-      <dt>18/11/2026 · O blog sai da metodologia</dt>
-      <dd>Com o blog fora do site, a metodologia deixa de descrevê-lo: saem a seção sobre os textos do blog e a seção sobre como eles eram produzidos, e as menções ao blog nas seções de contratos e do boletim semanal. Pedido da editoria, que autorizou mexer na metodologia congelada para isso.</dd>
-      <dt>18/11/2026 · Pista de imprensa nasce com a data de entrada</dt>
-      <dd>Os monitores de imprensa regional e de saúde gravavam a pista sem `registrado_em`; a idade na fila contava da data da notícia e a matéria antiga nascia vencida (&gt;21 dias). O portão da fila não humana reprovou a `main` das 03:53 UTC até aqui. Os dois monitores carimbam a entrada na criação (+9/−1 em código); as 4 vencidas na fila foram fechadas por prazo.</dd>
-      <dt>17/11/2026 · O blog sai do site</dt>
-      <dd>Por decisão da editoria, a página do blog, os textos publicados e o feed saem do site, do menu, do mapa do site e da página de Imprensa; os endereços antigos levam à inicial. Ficam guardados para uso interno os textos, o pacote semanal de dados e o verificador de texto.</dd>
-      <dt>17/11/2026 · Minuta só na capa</dt>
-      <dd>O juiz recusava como minuta qualquer plano com &quot;consulta pública&quot; ou &quot;minuta&quot; no corpo, como o plano de contingência 2025/2026 do Rio de Janeiro (&quot;permitindo sua consulta pública&quot;). A declaração passa a ser lida só no cabeçalho do documento, e &quot;consulta pública&quot; só como &quot;em&quot; ou &quot;para consulta pública&quot;. As 29 pistas recusadas assim voltam ao juiz.</dd>
-      <dt>17/11/2026 · Diarreias por município, mês a mês</dt>
-      <dd>O relatório público do SISAB passa a ser lido também com a linha Município: atendimentos de diarreia por mês nos municípios de 100 mil habitantes ou mais, na mesma faixa habitual dos outros desfechos municipais. Anos fechados são lidos uma vez; célula vazia é lacuna, nunca zero.</dd>
-      <dt>15/11/2026 · MapBiomas por estado pelo Earth Engine</dt>
-      <dd>Área queimada (Monitor do Fogo e coleção anual) e superfície de água por estado, somadas dos mapas do MapBiomas, com a identidade do repositório no Google e sem chave. Toda terça o coletor consulta só o metadado da fonte e soma apenas o que mudou. Só dado; figuras virão em protótipo.</dd>
-      <dt>17/11/2026 · Saúde: legenda do mapa do detalhe centralizada</dt>
-      <dd>A legenda do mapa do detalhe da Saúde (acima, dentro e abaixo da faixa habitual) passa a ficar centralizada sob o mapa, por uma variante do componente de legenda, sem ajuste manual de pixel.</dd>
-      <dt>17/11/2026 · Plano desatualizado segundo a lei, em todo o país</dt>
-      <dd>Plano de município indicado ao cadastro do art. 3º-A da Lei 12.340 com edição anterior a 29/06/2025, sem atualização anual localizada, passa a aparecer na ficha como &quot;plano desatualizado segundo a lei&quot; e vale zero no índice, em todos os estados e por qualquer canal. Até hoje a regra valia só para a pasta do Prepara RS, e o plano ficava fora da base. São 61 planos marcados.</dd>
-      <dt>17/11/2026 · Uma regra só para &quot;é fonte oficial?&quot;</dt>
-      <dd>O juiz, o portão de dados e a classe da pista passam a reconhecer o sítio oficial de prefeitura fora de .gov.br pela mesma regra da porta e do formulário; o plano do Rio de Janeiro era recusado sem ser baixado. A rodada de dia que aplica promoções passa a preparar sozinha o que o portão e a leitura escaneada pedem.</dd>
-      <dt>17/11/2026 · Saúde: cartões desde o marco zero do ciclo</dt>
-      <dd>A linha de cada cartão de desfecho da Saúde passa a começar na semana de 29/06/2026, ou em julho nas séries mensais, como o mapa e as linhas por estado. Antes mostrava as últimas 52 semanas ou 24 meses.</dd>
-      <dt>17/11/2026 · Endereço de PDF que responde página</dt>
-      <dd>O endereço de um documento que responde com uma página, e não com o arquivo, passa a contar como falha de leitura: o juiz lê a cópia pública arquivada em vez de julgar outra coisa. O plano municipal do Rio de Janeiro, indicado por leitor, volta ao juiz por esse caminho.</dd>
-      <dt>17/11/2026 · Plano de saúde não é plano de defesa civil; Mesquita de novo ao juiz</dt>
-      <dd>Plano cujo título é de saúde (arboviroses, dengue, emergências em saúde pública) fica fora da conta do MARÉ Legal: Angra dos Reis/RJ não entra e Água Branca/PB sai. O juiz passa a reconhecer o título do plano repetido no alto das páginas também no PDF lido como linha única; Mesquita/RJ e 111 recusas por título voltam ao juiz. Documento escaneado acima de 5 MB tem o OCR guardado como prova.</dd>
-      <dt>17/11/2026 · Canais oficiais fora do sítio da prefeitura</dt>
-      <dd>Documento da pasta de planos recebidos pela Defesa Civil do RS (Prepara RS) passa a valer como plano pela origem; data e município seguem conferidos. Portais oficiais de prefeitura fora de .gov.br (atende.net, portaltp, equiplano, prefeitura.rio e outros) passam a ser reconhecidos, e encurtadores de link são resolvidos antes do julgamento. Mesquita/RJ e o plano municipal do Rio voltam ao juiz. Pista promovida deixa a fila e não é mais fechada pelo prazo como &quot;sem documento&quot;.</dd>
-      <dt>17/11/2026 · Contribuições e Prepara RS chegam ao juiz e ao banco</dt>
-      <dd>A pista que chegava no formato novo recebia o mesmo id de outras 50, e a contribuição de Mesquita/RJ se perdeu entre elas. O formulário passa a aceitar o domínio da Prefeitura do Rio e o link de compartilhamento do Google,; sete envios voltam a ser lidos. Acima de 5 MB, a camada de texto do documento é guardada como prova; 40 promoções do juiz voltam a ser aplicadas. Trinta atalhos do Prepara RS fechados sem leitura voltam à fila.</dd>
+      <dt>27/11/2026 · Reconhecimentos federais lidos pela edição do DOU quando a consulta cai</dt>
+      <dd>A consulta do Diário Oficial da União respondeu 502 ao coletor por dias, e reconhecimentos de 20 a 26/11 (entre eles a calamidade de Tupanciretã) ficaram fora. Agora, quando a consulta cai, o coletor lê a edição de cada dia dos últimos 14, que tem endereço fixo; 502 e 504 passam a acionar a ponte no Brasil, como o 403.</dd>
+      <dt>27/11/2026 · Publicador: sela de novo depois de rebase limpo</dt>
+      <dd>O laço de push da publicação só regenerava os derivados quando o rebase conflitava; com um merge entre a regeneração e o push, a `main` recebia o próprio selo já velho e os Portões reprovavam a publicação (três vezes em 26–27/11). Agora regenera sempre que a base mudou. Ensaio 31 cobre os dois caminhos; falha F104.</dd>
+      <dt>27/11/2026 · União: fonte suspensa vale a observação mais recente</dt>
+      <dd>A união pela base comum recusava `fontes_suspensas.json` quando dois elos visitavam a mesma fonte em dias diferentes (o `hash` muda a cada visita). Agora o registro cuja observação é mais recente em `ultima_deteccao` e `reavaliada_em` vence inteiro; sem lado dominante, continua recusando.</dd>
+      <dt>27/11/2026 · Coluna &quot;Nível&quot; na tabela de emergências da Defesa civil</dt>
+      <dd>A tabela &quot;Ver em tabela&quot; do mapa de emergências ganha a coluna &quot;Nível&quot; (III · calamidade pública, II · situação de emergência ou &quot;não informado&quot;), lida de `municipios_decretados.json`, e um parágrafo da seção traz os níveis da Portaria MDR nº 260/2022. Mapa e cartões não mudam.</dd>
+      <dt>27/11/2026 · Nível II para as emergências reconhecidas lidas no DOU</dt>
+      <dd>Os 709 reconhecimentos federais achados pela consulta do DOU &quot;reconhece a situação de emergência&quot; passam a registrar o tipo de declaração, que é o da própria consulta. Com isso, 630 municípios mostram nível II (Portaria MDR nº 260/2022, art. 5º). Os reconhecimentos vindos de notícia do MIDR e de resposta a pedido de acesso ficam sem nível até a leitura do ato.</dd>
+      <dt>27/11/2026 · Juiz 1.8: repetição do mesmo documento colapsa numa decisão</dt>
+      <dd>Rodada paralela J18 (J12): o arquivo `data/paralelo_juiz18.json` trouxe Taió/SC e Trindade do Sul/RS duas vezes cada, com a mesma pista. O gravador único do arquivo paralelo passa a colapsar repetições do mesmo hash, UF e município na mais antiga, e o autoteste ganha a trava. Só código do modo paralelo; nada do índice publicado muda. Linhas líquidas: +14/−0 (um defeito, a trava que o corrige e o teste dela).</dd>
+      <dt>26/11/2026 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura</dt>
+      <dd>O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.</dd>
+      <dt>26/11/2026 · Ceará: emergências estaduais no mapa</dt>
+      <dd>Entram os Decretos estaduais nº 37.608 (13/11/2026, situação de emergência em 65 municípios por estiagem e seca ligadas ao El Niño, 180 dias) e nº 37.624 (19/11/2026, emergência ambiental em todo o estado por risco de incêndios, até fevereiro de 2027), conferidos no texto publicado pelo portal do Diário Oficial do Estado do Ceará, com cópia preservada.</dd>
+      <dt>26/11/2026 · Buscador 2: união aceita o primeiro fechamento de pista</dt>
+      <dd>O seguidor grava `fechada_em` quando fecha uma pista, e o resolvedor de união não tinha regra para esse campo. Quando a válvula do Buscador 2 e a noite fechavam a mesma pista em dias diferentes, o lote inteiro era recusado (1.100 pistas no lote de 26/11). Agora vence o primeiro fechamento, como em `rejeitada_em`. Autoteste F101.</dd>
+      <dt>26/11/2026 · Emergência ou calamidade, e o nível que a regra permite afirmar</dt>
+      <dd>Cada município sob decreto passa a ter o tipo de declaração e o nível de intensidade da Portaria MDR nº 260/2022, art. 5º: calamidade pública é nível III; emergência reconhecida pela União é nível II, porque o nível I não pede reconhecimento; emergência sem reconhecimento fica sem nível. O coletor federal passa a buscar também os reconhecimentos de calamidade, que não entravam.</dd>
+      <dt>26/11/2026 · Data do plano: a lista de referências não data o plano</dt>
+      <dd>Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes). A data do plano agora se lê no corpo, até a seção de referências; o registro de revisões passa a datar (2022). Fecho com local e data, assinatura digital e a obra do próprio município seguem valendo no texto todo. Medido em 470 planos preservados: cinco datas mudam, nenhuma de faixa de idade.</dd>
+      <dt>26/11/2026 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão</dt>
+      <dd>O lote trazido do Brasil registra o endereço final de cada documento. Arquivo de prefeitura guardado em nuvem (S3 pré-assinado) traz na consulta a chave de acesso do órgão, e o registro é publicado pela raiz: o portão de segredos reprovou o PR de dado. O endereço passa agora pela mesma redação de segredos das evidências, na porta da ponte; autoteste novo.</dd>
+      <dt>26/11/2026 · Portão de imprensa reconhece o arquivo do portal da prefeitura</dt>
+      <dd>O portão que confere a fonte dos registros pontuáveis julgava só o domínio e reprovava os planos de Cunha, Parapuã e Bragança Paulista, guardados pelo portal oficial no domínio do fornecedor (e-Crie), que o juiz já aceita desde o #2131. Agora ele recebe o endereço inteiro e aplica a mesma regra única do juiz; caso novo no autoteste.</dd>
+      <dt>26/11/2026 · Planos guardados pelo portal da prefeitura em domínio do fornecedor</dt>
+      <dd>Prefeituras cujo portal é feito na plataforma e-Crie guardam os arquivos no domínio do fornecedor, e o plano publicado pela própria prefeitura era recusado como fonte não oficial. Agora o arquivo é atribuído ao município cujo portal oficial o publica, com a página oficial como prova. Primeiros casos: Cunha, Parapuã e Bragança Paulista.</dd>
+      <dt>26/11/2026 · Leitura dos sites de prefeitura gravada no prazo</dt>
+      <dd>Quando a rodada nos sites de prefeitura chegava ao prazo, o coletor esperava os sites ainda em leitura e era encerrado antes de gravar: em 26/11, duas horas e meia de leitura se perderam. Agora ele grava o que já leu em até 20 segundos e deixa o restante para a rodada seguinte.</dd>
+      <dt>26/11/2026 · Arquivo da web nos sites que recusam o robô de fora</dt>
+      <dd>A busca no arquivo da web (Wayback Machine e Common Crawl) deixava de ser feita quando o site da prefeitura recusava o robô de fora do país, porque o endereço não se confirmava. Agora o endereço se confirma pela cópia que a ponte traz do Brasil.</dd>
+      <dt>26/11/2026 · lote J18 grava periodicamente e isola falha por documento</dt>
+      <dd>O lote da rodada paralela J18 gravava só no fim: a produção da válvula de 26/11 bateu no prazo de 150 min e não salvou nada. Agora grava a cada 2 minutos. Um PDF quebrado não derruba mais o lote: a falha vai para sem_leitura com a causa. Duas travas novas no autoteste do juiz. Produção e índice não mudam.</dd>
+      <dt>26/11/2026 · Pedidos à ponte para sites de prefeitura de SP</dt>
+      <dd>Entram na fila da ponte no Brasil as páginas de defesa civil e as buscas por plano de contingência de 88 sites de prefeitura de São Paulo que recusavam o robô de fora do país e abrem a partir do Brasil.</dd>
+      <dt>26/11/2026 · 403 visto de fora do país vai à sonda da ponte</dt>
+      <dd>O robô roda fora do país, e o 403 recebido de lá era gravado como recusa da fonte. Em 100 sites de prefeitura de São Paulo nessa situação, 88 abriram a partir do Brasil com o cliente identificado. O 403 passa a ser conferido pela ponte: o site que responde no Brasil é lido por ela, e o que recusa de novo fica registrado como recusa e não é mais pedido.</dd>
+      <dt>26/11/2026 · Saúde: falha de leitura não é recusa</dt>
+      <dd>Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.</dd>
+      <dt>26/11/2026 · Juiz: reabrir pista nomeada e redatar pelo documento relido</dt>
+      <dd>`julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.</dd>
+      <dt>26/11/2026 · Data do plano: capa com espaços e legenda de figura</dt>
+      <dd>Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda &quot;Porto Velho, 2019&quot; de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.</dd>
+      <dt>26/11/2026 · O POST entra na conta dos sites fora da rodada</dt>
+      <dd>A listagem do diário do Piauí é pedida por POST, e o POST não tinha a conta que tira do resto da rodada o site que não responde. Cada data esgotava o tempo, o Piauí consumia todo o prazo da leitura dos diários e Mato Grosso do Sul e Rondônia ficavam sem edição lida desde 12/11. GET e POST passam a usar a mesma conta.</dd>
+      <dt>26/11/2026 · Vigia de boletins lê o índice da ANA e só avisa</dt>
+      <dd>`atualizar_boletins.py` procurava o número do boletim nas páginas do CEMADEN/INPE e, se achasse, gravaria `ultimo_boletim` sem trocar documento nem risco, apagando o aviso de leitura pendente do coletor de sinais. Passa a usar o endereço e o leitor do índice da ANA que o coletor já tem e só escreve no log. Linhas líquidas: −15.</dd>
+      <dt>26/11/2026 · Selo, PR 2: o selo sai do PR</dt>
+      <dd>O manifesto, `mudancas.html` e `CODEMAP.md` passam a ser selados só pelo publicador. No PR e na cópia de trabalho, derivado defasado é aviso; na `main` selada e nos elos, reprova. Todo envio a um PR roda os portões, rascunho ou não: execução pulada deixava head mesclável sem portão. Sai o modo `--pode-regenerar`. Fluxo do `CLAUDE.md` e skill `p12` ajustados.</dd>
+      <dt>26/11/2026 · Ponte no Brasil: recebimento na noite e lista gerada</dt>
+      <dd>A lista lida pelo programa da ponte estava parada desde 18/11 (256 endereços, contra 1.990 pedidos) e nenhum lote era recebido sozinho. Agora o elo do juiz recebe todo ramo `ponte-local/*` novo, por referência, sem sobrescrever cópia; e `ponte_ordem.yml` gera a lista dos pedidos sem cópia, menos os sites que recusaram, no ramo `ponte-ordem`.</dd>
+      <dt>26/11/2026 · Prova de mutação dos portões: âncora do SHA por regex</dt>
+      <dd>A mutação `action_sem_sha` ancorava num SHA fixo de `actions/checkout`; ao atualizar as actions, a prova quebrava com &quot;âncora ausente&quot;. A mutação agora aceita `regex`. Prova inteira: 10/10 mutações pegas. Sem mudança em página, dado ou texto público.</dd>
+      <dt>25/11/2026 · S22 (PNCP): teto de 20 min por município</dt>
+      <dd>A busca de contratações no PNCP passa a ter teto de 20 minutos por município. Na válvula de Pernambuco, Recife consumiu os 120 minutos e nenhum município foi lido. Passado o teto, sem achado é erro (não ausência) e o município vai ao fim da fila; com achado, vale o que foi lido.</dd>
+      <dt>25/11/2026 · Cartão do município: linhas de autodeclaração</dt>
+      <dd>O cartão do município, na página inicial e em Prefeituras, mostra o que ele declarou ao Indicador de Capacidade Municipal da Defesa Civil Nacional (2026), à pesquisa MUNIC do IBGE (2020) e ao S2iD, com a fonte do indicador em link. Quando o município declarou ter plano e o documento não foi localizado, a linha diz isso até o corte. Uma função só monta as linhas; os moldes vivem no catálogo.</dd>
+      <dt>25/11/2026 · Cartão do município: autodeclaração de plano</dt>
+      <dd>O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.</dd>
+      <dt>25/11/2026 · Juiz: a data do plano é a que o documento informa</dt>
+      <dd>O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.</dd>
+      <dt>25/11/2026 · Redução: história do `julgar_saude.py` ao HISTORICO</dt>
+      <dd>Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).</dd>
+      <dt>25/11/2026 · Rodada J18: rejulgamento paralelo guarda o que já julgou</dt>
+      <dd>O juiz 1.8 paralelo não apaga mais os registros já julgados quando uma rodada não tem o documento local: a correção está em `gravar_paralelo_18`, com trava. A rodada grava só em arquivos paralelos (`data/paralelo_*`); índice, produção e páginas não mudam.</dd>
+      <dt>25/11/2026 · Buscador 2: queda de rede não conta como vista</dt>
+      <dd>O reprocessamento do Buscador 2 tratava como vista a pista cuja busca caiu na rede, porque a marca do dia era gravada antes do resultado. Agora só a busca que termina (achado, nada ou recusa da fonte) conta como vista; a queda volta ao reprocessamento. Autoteste com caso novo.</dd>
+      <dt>25/11/2026 · Portarias de recursos: resposta, art. 1º e retificação</dt>
+      <dd>O coletor só consultava &quot;Autoriza a transferência de recursos&quot; e perdia as portarias de resposta (&quot;Autoriza o empenho e a transferência&quot;): 745 atos contra 624 de 26/04 a 23/11. Passa a ler as duas redações, o município e o valor do art. 1º, a retificação como correção do ato citado e um ato por número e processo. Não casado deixa de acumular; Segredo/RS deixa de contar duas vezes. Janela ou ato que falha é relido na rodada seguinte.</dd>
+      <dt>25/11/2026 · A `main` se sela sozinha</dt>
+      <dd>O publicador passa a regenerar e commitar o mapa do código junto com o manifesto e a página de mudanças. No push da `main`, entre o merge de um PR e a publicação seguinte, derivado velho passa com aviso; depois da publicação volta a reprovar. Ensaio 33 e falha F103.</dd>
+      <dt>25/11/2026 · Prévia: o relatório lê o código de saída do deploy</dt>
+      <dd>Em `publicar_previa.yml` o redirecionamento estava no `rm` depois do deploy: `codigo_saida` era o do `rm` (sempre 0) e o filtro lia arquivo vazio. A saída do deploy volta ao arquivo e o código é o dele. O veredito (&quot;Deploy is live&quot;) não muda. Item 6 do handover de erros do GitHub: o &quot;Site not found&quot; de 18/11 foi 1 em 4.073 prévias, sem corrida com a renomeação.</dd>
+      <dt>25/11/2026 · Válvula não comita o log da corrente</dt>
+      <dd>O PR de dado da válvula levava as próprias linhas de `data/saude_pipeline.json`; de dia a publicação anexa ao mesmo log a cada run e o #2078 conflitou três vezes no GitHub. No commit do `_coletor.yml`, o ramo `coleta-dia/*` devolve o log à base; as linhas da válvula ficam no resumo do job. F102 no catálogo; ensaio 32.</dd>
+      <dt>25/11/2026 · Checagem pré-noite tolera Portões e prévia do push na main</dt>
+      <dd>A checagem das 22:46 de 24/11 reprovou a noite por dois runs com um minuto de vida: os Portões e a prévia que todo push na `main` dispara. Os dois passam a ter a mesma tolerância por idade da publicação de dados (45 minutos); aberto há mais que isso segue reprovando.</dd>
+      <dt>25/11/2026 · Despachante reconfere o plano antes de cada disparo</dt>
+      <dd>Na abertura de 25/11 o relógio e o tique oportunista da válvula montaram o plano antes de qualquer disparo e dispararam a noite inteira duas vezes; a segunda cópia do DOE incremental perdeu o commit em `saude_sinais.json`. Agora cada item é reconferido contra as execuções do seu workflow logo antes do disparo, e o que outro observador já disparou é pulado.</dd>
+      <dt>25/11/2026 · Juiz 1.8 (rodada J18): ano partido pelo OCR lê-se inteiro</dt>
+      <dd>A leitura da versão do plano junta dígitos separados pelo OCR (&quot;Versão 201 8&quot; lê-se 2018). Antes, a versão sumia e o ano vinha de outro trecho do documento (2067, Tobias Barreto/SE). Trava nova no autoteste do juiz: 117 travas. Produção (codebook 1.7) não muda; a rodada paralela rejulga depois do merge.</dd>
+      <dt>25/11/2026 · Publicador segue o rebase depois de unir e regenerar</dt>
+      <dd>Na noite 24→25 o publicador perdeu o commit nas cinco tentativas: depois de unir o conflito e regenerar os derivados, punha no índice só os caminhos com escritor declarado, e o cartão, as páginas e os PDFs regenerados travavam o rebase. O laço passa a pôr no índice todo arquivo rastreado que a regeneração mudou. Falha F101; ensaio 31.</dd>
+      <dt>25/11/2026 · Busca de planos: um ramo e um PR de dado por grupo de UF</dt>
+      <dd>Os seis grupos da matriz empurravam no mesmo ramo e o grupo que terminava junto com os irmãos perdia as cinco tentativas de push (CO, 23/11). Agora cada grupo coleta e empurra no próprio ramo `&lt;ramo&gt;-&lt;grupo&gt;` e abre o próprio PR de dado.</dd>
+      <dt>25/11/2026 · Reaplicação lê a base de noite antiga no clone raso</dt>
+      <dd>A reaplicação recusava o artefato de uma noite antiga porque a base dele não estava no clone raso do runner. Agora busca a base pelo sha antes de desistir.</dd>
+      <dt>24/11/2026 · Válvula: SearXNG sobe sozinho quando o comando usa o metabuscador</dt>
+      <dd>As válvulas de planos de MG e RJ pediram S24 e S27 sem a chave do metabuscador e gravaram recusa de conexão em todo município. `coleta_de_dia.yml` passa a inferir a chave do comando (S24, S27, seguidor e busca web), como já fazia com o Node e o OCR.</dd>
+      <dt>24/11/2026 · MapBiomas: o job da soma baixa o que a gravação usa</dt>
+      <dd>A coleta do MapBiomas caiu ao gravar a data da consulta porque o job que soma os mapas baixava só parte do repositório e não tinha o módulo da data. O módulo entra na lista, e o autoteste passa a reprovar quando o coletor usa um módulo que o job não baixa.</dd>
+      <dt>24/11/2026 · Legendas do MapBiomas: a amostra reproduz o traço</dt>
+      <dd>Monitor de riscos, três figuras do MapBiomas. A amostra tracejada da legenda aparecia contínua (o fundo inline da amostra anulava o desenho) e a mediana mudava de traço entre fogo e água. Agora a amostra reproduz o traço da série e a codificação é uma só: mediana contínua escura, 2024 cinza pontilhado (barra cinza na água) e ano em destaque laranja. Nenhum texto novo; capturas a 375 e 1280 px conferidas.</dd>
+      <dt>24/11/2026 · MapBiomas: a data da consulta avança a cada consulta</dt>
+      <dd>As figuras do MapBiomas diziam &quot;consultado em 15/11&quot; depois de a fonte ter sido consultada de novo em 24/11, porque sem número novo o arquivo guardava a data antiga. Agora cada consulta completa grava a data do dia nos três arquivos; os números só mudam quando a fonte muda.</dd>
+      <dt>24/11/2026 · União de fila: marca do Buscador 2 pela data mais nova</dt>
+      <dd>O seguidor regrava `buscador2_em` e `busca_veiculo_em` a cada passada; quando a válvula e a noite passavam pela mesma pista, a união recusava a fila inteira (F100: lote de 24/11 perdido). Os dois campos passam a unir pela data mais nova, a última passada. Caso no autoteste da união.</dd>
+      <dt>24/11/2026 · Reposição manual registra o relatório pela função compartilhada</dt>
+      <dd>A reposição manual do domínio publicou o site e depois terminou vermelha ao arquivar o relatório, por uma cópia própria do registro que clonava o repositório de notas inteiro e escondia o erro. Ela passa a usar o mesmo registro dos outros workflows; se o relatório falhar, o job avisa sem reprovar.</dd>
+      <dt>24/11/2026 · Válvula: conferir enxerga o módulo base</dt>
+      <dd>A etapa `conferir` da válvula de dia baixava só `scripts/saude_pipeline.py`, e o script importa `coletores_base.py` da raiz; os lotes J18 caíram antes de conferir a entrada. O checkout esparso passa a incluir `coletores_base.py`. Sem mudança de coleta, dado ou página.</dd>
+      <dt>24/11/2026 · Válvula traz a main antes do PR de dado</dt>
+      <dd>O ramo `coleta-dia/*` nasce da `main` do disparo e a coleta leva horas; o PR de dado nascia em conflito e, em conflito, os Portões não rodavam (#2038, #2045). Antes do push, a válvula une a `main` ao ramo pela base comum, com o mesmo resolvedor do rebase. Falha F99; ensaio 30 roda o trecho do próprio workflow.</dd>
+      <dt>24/11/2026 · Juiz 1.8: lote de leitura da rodada paralela J18</dt>
+      <dd>Rejulgamento paralelo passa a ler documento fora de `evidencias/` pela porta de rede, sem preservar nada, e grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`. Índice e produção não mudam. Seis travas novas no autoteste.</dd>
+      <dt>24/11/2026 · Ações do GitHub em Node 24</dt>
+      <dd>Todo registro de execução avisava que as ações de checkout, Node, Python, cache e artefato rodavam em Node 20, que o GitHub descontinuou. Cada uma passa à primeira versão que já roda em Node 24, com o endereço fixo conferido na própria versão: a menor mudança que encerra o aviso.</dd>
+      <dt>24/11/2026 · Válvula confere a entrada antes de subir o executor</dt>
+      <dd>Em 17/11 a coleta de dia recebeu linhas de Python soltas no lugar de comandos e rodou cada uma como programa. Agora um passo curto, antes do executor, recusa a entrada se alguma linha não começar por um script do repositório (com prazo e intérprete opcionais). A noite não muda.</dd>
+      <dt>24/11/2026 · Monitor de riscos: fogo e água do MapBiomas</dt>
+      <dd>Três figuras entram no bloco de seca e fogo, com um seletor de território (Brasil e os 27 estados): área queimada por mês no ano em curso, em 2015 e 2024, e superfície de água por ano. A faixa de 2019 a 2025, sem 2024, e a mediana saem das próprias séries. A fonte de cada figura é o produto do MapBiomas e a data da consulta.</dd>
+      <dt>24/11/2026 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista</dt>
+      <dd>O botão do mapa passa a dizer &quot;Animar desde 29 de junho&quot; e &quot;Pausar&quot;. As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. &quot;Ver em lista&quot; usa a tabela do componente padrão, no lugar do `&lt;dl&gt;` sem estilo. Portão novo: a alternativa de dados só contém tabela.</dd>
+      <dt>24/11/2026 · Log de busca das válvulas de 15/11 recuperado</dt>
+      <dd>Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.</dd>
+      <dt>24/11/2026 · Catálogo de falhas: três noites sem linha e o horário do F90</dt>
+      <dd>Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.</dd>
+      <dt>24/11/2026 · Portões leem o repositório, não a cópia local</dt>
+      <dd>O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.</dd>
     </dl>
   </section>
 </main>
@@ -177,7 +177,7 @@
       <a href="https://institutoar.org.br/" target="_blank" rel="noopener" title="Instituto Ar" class="mast-logo"><img class="logo-parceiro" src="assets/parceiros/instituto-ar-positivo.svg?v=da374906" alt="Instituto Ar" width="124" height="26"></a></div>
     </div>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">24/11/2026</span> · Corte <span id="corteDados">24/11/2026</span> · Coleta <span id="metaColeta">24/11/2026</span> · Publicação <span id="metaPublicacao">24/11/2026</span></span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">27/11/2026</span> · Corte <span id="corteDados">27/11/2026</span> · Coleta <span id="metaColeta">27/11/2026</span> · Publicação <span id="metaPublicacao">27/11/2026</span></span>
     <span class="rodape-legal" data-conteudo-html="rodape.legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>

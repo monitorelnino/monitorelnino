@@ -109,6 +109,7 @@ REGENERAVEIS = (
     "data/verificacao_municipal.json", "data/verificacao_resumo.json",
     "MARE_Indice_Documentacao.pdf", "METODOLOGIA.pdf",   # 07/11/2026: binários da cadeia (gerar_pdf_*.py)
     "indice-de-conteudo.html",   # 09/11/2026: gerado do catálogo (gerar_indice_de_conteudo.py); dois PRs de texto conflitavam nele
+    "CODEMAP.md",                # 25/11/2026: o publicador o regenera depois de cada merge (selo, D3)
     "mudancas.html",             # 10/11/2026: gerado do CHANGELOG (gerar_mudancas.py, na cadeia); todo PR com entrada conflitava nele
 )
 
@@ -119,6 +120,18 @@ REFEITOS_PELO_ELO = ("data/emergencias_estaduais.json",)
 # acima (seção de um lado entra; dos dois, desce um nível; valor diferente recusa; carimbo: o mais recente).
 RETRATOS = ("data/alertas/vigentes.json", "data/sinais_risco.json", "data/sinais_risco_consultas.json")
 POR_SECAO = ("data/saude_sinais.json", "data/calendario/fontes_suspensas.json")
+# Registro de observação (fonte suspensa): o detector o refaz inteiro a cada visita; vence o lado
+# cuja observação é a mais recente em todos os carimbos, com o `hash` da página que ele viu.
+OBSERVACAO = ("ultima_deteccao", "reavaliada_em")
+
+
+def _mais_recente(n, d):
+    """Lado cuja observação domina em todos os carimbos de OBSERVACAO; None se nenhum domina."""
+    if not all(isinstance(x, dict) and "ultima_deteccao" in x for x in (n, d)):
+        return None
+    c = lambda x: [str(x.get(k) or "") for k in OBSERVACAO]
+    ganha = [x for x, y in ((n, d), (d, n)) if all(a >= b for a, b in zip(c(x), c(y)))]
+    return ganha[0] if len(ganha) == 1 else None
 
 
 def unir_secoes(base, nosso, deles, _nivel: int = 0):
@@ -132,6 +145,8 @@ def unir_secoes(base, nosso, deles, _nivel: int = 0):
             v = d
         elif k in CARIMBOS:
             v = max(str(n), str(d))
+        elif _mais_recente(n, d) is not None:
+            v = _mais_recente(n, d)
         elif isinstance(n, dict) and isinstance(d, dict) and _nivel < 2:
             v = unir_secoes(b if isinstance(b, dict) else {}, n, d, _nivel + 1)
         else:
@@ -168,8 +183,12 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 #   juiz            vence o veredito de `julgado_em` mais recente; o outro vai para `juiz_historico`.
 #   juiz_historico  união dos dois lados (nada se perde).
 #   rejeitada_em    vence a data mais antiga (a primeira rejeição).
+#   buscador2_em, busca_veiculo_em  vence a data mais nova: o seguidor regrava a data a cada passada,
+#                   então o campo é a ÚLTIMA passada, e `restantes` só a reconhece se for a de hoje (A1, 24/11).
 #   seguimento      vence a recusa da fonte; senão a data mais nova; no mesmo dia, a leitura que abriu (A1, 22/11).
 #   repeticoes      contador (`pistas.gravar_lote` soma 1): base + (nosso − base) + (deles − base) (A1, 23/11).
+#   julgamento_automatico  APLICADA vence ABSTENCAO; duas ABSTENCAO: a `data` mais nova, no mesmo dia a da
+#                   `main`; o resto deixa a pista como na `main` e a união segue (D2, central, 23/11/2026).
 #   busca_web_espera e cursor*  vence o lado da `main` (estado de fila, não registro).
 # Campos derivados do arquivo (`caracteres`, `sha256`) são recalculados do arquivo, nunca escolhidos:
 # nesta função não há o arquivo, então recusam e o resolvedor deixa o caso para a recalculagem.
@@ -200,6 +219,10 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
         return _unir_listas(nosso_v, deles_v)
     if campo == "rejeitada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
         return min(nosso_v, deles_v)     # ISO: a menor data é a primeira rejeição
+    if campo in ("buscador2_em", "busca_veiculo_em") and isinstance(nosso_v, str) and isinstance(deles_v, str):
+        return max(nosso_v, deles_v)     # ISO: a maior data é a última passada (F100)
+    if campo == "fechada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
+        return min(nosso_v, deles_v)     # ISO: o primeiro fechamento (seguir_pistas.fechar); 26/11, lote 45840832005
     if campo == "busca_web_espera" or campo.startswith("cursor"):
         return nosso_v                   # lado da `main`: estado de fila
     if campo == "wayback":               # 07/11/2026: dois lotes preservaram o mesmo documento no mesmo dia;
@@ -209,10 +232,28 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
         return nosso_v                   # duas falhas: o nome da exceção não é dado
     if campo == "seguimento" and isinstance(nosso_v, dict) and isinstance(deles_v, dict):
         return _seguimento_que_vence(nosso_v, deles_v)
+    if campo == "julgamento_automatico":
+        return _julgamento_que_vence(nosso_v, deles_v)
     if campo in _CAMPOS_DO_ARQUIVO:
         raise Recusa(f"campo derivado do arquivo {campo!r} muda nos dois lados: recalcular do arquivo")
     raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
                  f"diferentes — qual vence é política, e este script não adivinha")
+
+
+def _dia(s: dict) -> str:
+    """`data` dd/mm/aaaa de um registro como aaaammdd, para comparar."""
+    return "".join(reversed(str((s if isinstance(s, dict) else {}).get("data") or "").split("/")))
+
+
+def _julgamento_que_vence(main, outro) -> dict:
+    """D2 (central, 23/11/2026): `main` é o lado de cima (`nosso`)."""
+    dec = lambda j: j.get("decisao") if isinstance(j, dict) else None
+    par = {dec(main), dec(outro)}
+    if par == {"APLICADA", "ABSTENCAO"}:
+        return main if dec(main) == "APLICADA" else outro
+    if par == {"ABSTENCAO"}:
+        return outro if _dia(outro) > _dia(main) else main
+    raise FicaComoNaMain(f"julgamento_automatico {dec(main)} na main e {dec(outro)} do outro lado")
 
 
 def _seguimento_que_vence(a: dict, b: dict) -> dict:
@@ -222,9 +263,8 @@ def _seguimento_que_vence(a: dict, b: dict) -> dict:
     recusou = [s for s in (a, b) if any(r in str(f) for f in s.get("falhas") or [] for r in RECUSAS_DA_PAGINA)]
     if len(recusou) == 1:
         return recusou[0]
-    dia = lambda s: "".join(reversed(str(s.get("data") or "").split("/")))
-    if dia(a) != dia(b):
-        return max(a, b, key=dia)
+    if _dia(a) != _dia(b):
+        return max(a, b, key=_dia)
     if bool(a.get("falhas")) != bool(b.get("falhas")):
         return b if a.get("falhas") else a
     if a.get("falhas"):
@@ -261,7 +301,7 @@ def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
         eles_mudou = deles_v != na_base
         if nos_mudou and eles_mudou and nosso_v != deles_v:
             if _AUSENTE in (nosso_v, deles_v):
-                raise Recusa(f"o campo {campo!r} foi removido de um lado e mudado no outro")
+                raise (FicaComoNaMain if campo == "julgamento_automatico" else Recusa)(f"o campo {campo!r} foi removido de um lado e mudado no outro")
             escolhido = _politica_do_campo(campo, nosso_v, deles_v, perdidos,
                                            None if na_base is _AUSENTE else na_base)
         else:
@@ -325,7 +365,11 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
         nossa = por_chave_nosso.get(k)
         delas = por_chave_deles.get(k)
         if na_base is not None and nossa is not None and delas is not None:
-            uniao.append(_mesclar_pista(na_base, nossa, delas))
+            try:
+                uniao.append(_mesclar_pista(na_base, nossa, delas))
+            except FicaComoNaMain as e:
+                uniao.append(nossa)
+                print(f"::warning::{caminho}: pista {k} fica como na main ({e})")
             if nossa != delas:
                 mescladas += 1
         else:
@@ -450,6 +494,10 @@ CARIMBOS = ("atualizado_em", "gerado_em", "atualizado", "gravado_em", "corte", "
 
 class Recusa(Exception):
     """O script não sabe resolver este caminho, e adivinhar apagaria dado."""
+
+
+class FicaComoNaMain(Recusa):
+    """D2 (central, 23/11/2026): o caso que a regra não decide deixa a PISTA como está na `main`; a fila une."""
 
 
 def git(*args, repo=None, binario=False):
@@ -1325,6 +1373,13 @@ def autoteste() -> int:
     checar("regra 7: o veredito que perdeu vai para juiz_historico (nada se perde)",
            m.get("juiz_historico") == [{"promove": False, "julgado_em": "2026-10-20"}])
     checar("regra 7: rejeitada_em vence a data mais antiga", m["rejeitada_em"] == "2026-10-11")
+    checar("F100: buscador2_em e busca_veiculo_em vencem a data mais nova (última passada)",
+           _mesclar_pista({"id": 1}, {"id": 1, "buscador2_em": "2026-11-24", "busca_veiculo_em": "2026-11-20"},
+                          {"id": 1, "buscador2_em": "2026-11-23", "busca_veiculo_em": "2026-11-24"})
+           == {"id": 1, "buscador2_em": "2026-11-24", "busca_veiculo_em": "2026-11-24"})
+    checar("F101: fechada_em (fechamento pelo seguidor) vence o primeiro fechamento",
+           _mesclar_pista({"id": 1}, {"id": 1, "fechada_em": "2026-11-26"}, {"id": 1, "fechada_em": "2026-11-25"})
+           == {"id": 1, "fechada_em": "2026-11-25"})
     checar("regra 7: busca_web_espera (estado de fila) vence o lado da main", m["busca_web_espera"] == "a2")
     try:
         _mesclar_pista(base, dict(base, juiz={"x": 1, "julgado_em": "2026-10-24"}),
@@ -1333,6 +1388,26 @@ def autoteste() -> int:
     except Recusa:
         recusou = True
     checar("regra 7: juiz com mesma data nos dois lados é recusado, não adivinhado", recusou)
+
+    # D2 (central, 23/11/2026): `julgamento_automatico`, uma checagem por linha da regra.
+    _j = lambda d, dt: {"decisao": d, "data": dt, "motivo": d}
+    _jm = lambda n, d: _mesclar_pista({"id": 1}, dict(id=1, julgamento_automatico=n),
+                                      dict(id=1, julgamento_automatico=d))["julgamento_automatico"]
+    checar("D2: APLICADA vence ABSTENCAO, dos dois lados",
+           _jm(_j("ABSTENCAO", "22/11/2026"), _j("APLICADA", "01/11/2026"))["decisao"] == "APLICADA"
+           and _jm(_j("APLICADA", "01/11/2026"), _j("ABSTENCAO", "22/11/2026"))["decisao"] == "APLICADA")
+    checar("D2: duas ABSTENCAO, vence a data mais nova (dd/mm/aaaa, não texto)",
+           _jm(_j("ABSTENCAO", "09/12/2026"), _j("ABSTENCAO", "10/11/2026"))["data"] == "09/12/2026")
+    checar("D2: duas ABSTENCAO no mesmo dia, vale a da main",
+           _jm(dict(_j("ABSTENCAO", "22/11/2026"), motivo="m"), _j("ABSTENCAO", "22/11/2026"))["motivo"] == "m")
+    _fj = lambda *js: json.dumps({"pistas": [dict(url=f"https://x.gov.br/{i}", alvo="PA", **j) for i, j in enumerate(js)]})
+    _a, _b2 = {"julgamento_automatico": _j("APLICADA", "20/11/2026")}, {"julgamento_automatico": _j("APLICADA", "22/11/2026")}
+    _u = unir_fila_de_pistas("data/pistas_imprensa.json", _fj({}, {}), _fj(dict(_a, x="main"), {}),
+                             _fj(dict(_b2, x="elo"), {"y": 1}, {"z": 2}))[0]["pistas"]
+    checar("D2: duas APLICADA diferentes deixam a pista como na main, e o resto da fila une",
+           _u[0] == dict(url="https://x.gov.br/0", alvo="PA", x="main", **_a) and _u[1].get("y") == 1 and len(_u) == 3)
+    _u = unir_fila_de_pistas("data/pistas_imprensa.json", _fj(_a), _fj({}), _fj(_b2))[0]["pistas"]
+    checar("D2: caso que a regra não cobre (removido de um lado) deixa a pista como na main", "julgamento_automatico" not in _u[0])
 
     b = {"gerado_em": "2026-11-14", "fontes": {"a": {"status": "coletado", "em": "13"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}
     n = {"gerado_em": "2026-11-15", "fontes": {"a": {"status": "coletado", "em": "15"}, "b": {"status": "lacuna"}}, "espin": {"n": 1}}
@@ -1348,6 +1423,16 @@ def autoteste() -> int:
     except Recusa:
         recusou = True
     checar("por seção: o mesmo campo com valores diferentes dos dois lados é recusado", recusou)
+    _o = lambda u, r, h: {"ultima_deteccao": u, "reavaliada_em": r, "hash": h}
+    checar("fonte suspensa: vence a observação mais recente, com o hash que ela viu",
+           unir_secoes({"f": {"x": _o("24", "26", "a")}}, {"f": {"x": _o("26", "26", "b")}},
+                       {"f": {"x": _o("27", "27", "c")}}) == {"f": {"x": _o("27", "27", "c")}})
+    try:
+        unir_secoes({"x": _o("24", "24", "a")}, {"x": _o("27", "25", "b")}, {"x": _o("25", "27", "c")})
+        recusou = False
+    except Recusa:
+        recusou = True
+    checar("fonte suspensa: observação que não domina nos dois carimbos é recusada", recusou)
     with tempfile.TemporaryDirectory() as _t:
         _d = pathlib.Path(_t) / "r.json"
         _r = lambda g, x: json.dumps({"gerado_em": g, "x": x})
@@ -1368,6 +1453,10 @@ def autoteste() -> int:
     checar("recusa vira Issue por arquivo, uma só enquanto estiver aberta",
            avisar_recusa(["data/a.json: caminho sem resolução conhecida", "data/b.json: caminho sem resolução conhecida"],
                          gh=_falso) == ["Mesclagem recusada: data/b.json"])
+    _chamadas.clear()
+    avisar_recusa([], ["data/a.json: unido pela base", "data/c.json: unido pela base"], gh=_falso)
+    checar("arquivo que volta a se unir fecha a sua Issue, e só a sua",
+           [c[2] for c in _chamadas if c[:2] == ["issue", "close"]] == ["7"])
 
     if falhas:
         print(f"\n✗ UNIÃO DE CONFLITO: {len(falhas)} falha(s).")
@@ -1376,9 +1465,10 @@ def autoteste() -> int:
     return 0
 
 
-def avisar_recusa(recusados: list, gh=None) -> list:
+def avisar_recusa(recusados: list, resolvidos: list = (), gh=None) -> list:
     """Uma Issue por arquivo recusado (`scripts/avisos.py`): a recusa deixa de viver só no log de um run
-    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). Devolve os títulos abertos."""
+    vermelho (15/11/2026: três recusas derrubaram a rodada semanal sem aviso). O arquivo que volta a se unir
+    fecha a sua (24/11/2026: nada fechava). Devolve os títulos abertos."""
     from scripts import avisos
     gh = gh or avisos._gh
     abertas, feitas = avisos.issues_abertas(gh), []
@@ -1389,6 +1479,9 @@ def avisar_recusa(recusados: list, gh=None) -> list:
                          f"mesclagem ({motivo}). O trabalho foi para o artefato do run. Declarar a política em "
                          f"`scripts/unir_conflito_de_rodada.py`.", gh=gh, abertas=abertas) == "aberta":
             feitas.append(titulo)
+    for linha in resolvidos if abertas is not None else []:
+        avisos.avisar(f"Mesclagem recusada: {str(linha).partition(': ')[0]}", gh=gh, abertas=abertas,
+                      ao_fechar="O arquivo voltou a se unir numa rodada. Fechada.")
     return feitas
 
 
@@ -1406,13 +1499,13 @@ def main() -> int:
         print(f"  RECUSADO   {r}")
     if regenerar:
         print("REGENERAR=" + " ".join(regenerar))
+    try:
+        avisar_recusa(recusados, resolvidos)
+    except Exception as e:  # noqa: BLE001 — o aviso é do GitHub; a recusa já está no log
+        print(f"::warning::aviso de recusa não enviado: {type(e).__name__}")
     if recusados:
         print(f"::error::{len(recusados)} caminho(s) sem resolução conhecida; a rodada não "
               f"comita. Adivinhar a mesclagem apagaria dado sem aviso.")
-        try:
-            avisar_recusa(recusados)
-        except Exception as e:  # noqa: BLE001 — o aviso é do GitHub; a recusa já está no log
-            print(f"::warning::aviso de recusa não enviado: {type(e).__name__}")
         return 2
     print(f"{len(resolvidos)} caminho(s) resolvido(s).")
     return 0

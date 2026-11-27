@@ -39,6 +39,7 @@ from __future__ import annotations
 import json
 import os
 import pathlib
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -80,7 +81,8 @@ def _repo(tmp: pathlib.Path):
 # ───────────────────────────────── 1. dois elos em paralelo ─────────────────────────────────
 
 def ensaio_dois_elos_em_paralelo(diz) -> bool:
-    """O conflito de rebase entre dois elos NÃO perde pista. É o que custou 114 minutos."""
+    """O conflito de rebase entre dois elos NÃO perde pista. É o que custou 114 minutos.
+    F81/D2 (23/11): o juiz e a rodada de domingo julgam a MESMA pista na mesma noite e o commit fica."""
     import unir_conflito_de_rodada as u
     with tempfile.TemporaryDirectory() as t:
         tmp = pathlib.Path(t)
@@ -104,14 +106,15 @@ def ensaio_dois_elos_em_paralelo(diz) -> bool:
         # O elo B (diários) grava e empurra primeiro.
         g("checkout", "-qb", "elo_b")
         do_b = _pista("diarios1", "5002704")
-        caminho.write_text(_fila(base, do_b), encoding="utf-8", newline="\n")
+        julgada = lambda d, dt: dict(base, julgamento_automatico={"data": dt, "decisao": d, "motivo": d})
+        caminho.write_text(_fila(julgada("APLICADA", "22/11/2026"), do_b), encoding="utf-8", newline="\n")
         livro.write_text(marca("DOU", "QD"), encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "diarios")
 
         # O elo A (busca web) estava correndo em paralelo e grava a SUA pista.
         g("checkout", "-q", "main")
         do_a = _pista("buscaweb1", "5003207")
-        caminho.write_text(_fila(base, do_a), encoding="utf-8", newline="\n")
+        caminho.write_text(_fila(julgada("ABSTENCAO", "22/11/2026"), do_a), encoding="utf-8", newline="\n")
         livro.write_text(marca("DOU", "Busca web"), encoding="utf-8", newline="\n")
         g("add", "-A"); g("commit", "-qm", "busca web")
 
@@ -129,6 +132,9 @@ def ensaio_dois_elos_em_paralelo(diz) -> bool:
         ids = sorted(p["id"] for p in doc["pistas"])
         if ids != ["base1", "buscaweb1", "diarios1"]:
             diz(f"  ✗ perda de pista na união: ficaram {ids}")
+            return False
+        if doc["pistas"][0]["julgamento_automatico"]["decisao"] != "APLICADA":
+            diz("  ✗ D2: ABSTENCAO venceu APLICADA na mesma pista")
             return False
         fontes = sorted(f["fonte"] for f in json.loads(livro.read_text(encoding="utf-8"))
                         ["municipios"]["5002704"]["fontes"])
@@ -1197,6 +1203,172 @@ def ensaio_regime_de_prioridade_suspende_so_o_listado(diz) -> bool:
     return ok
 
 
+def ensaio_valvula_traz_a_main(diz) -> bool:
+    """30. A válvula traz a `main` ao ramo antes de empurrar (F99).
+
+    24/11/2026: o ramo `coleta-dia/*` nasce da `main` do disparo; a coleta leva horas e a `main` muda
+    o log nesse meio. O PR de dado nascia em conflito (#2038, #2045) e PR em conflito não ganha run de
+    `pull_request`. Roda o trecho do próprio `_coletor.yml` num repositório temporário: os dois lados
+    acrescentam ao log, o ramo tem de terminar descendente da `main`, com o log unido pela base comum.
+    """
+    import json, os, re, shutil, subprocess, tempfile, pathlib
+    from coletores_base import gravar_em
+
+    fonte = (RAIZ / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    m = re.search(r'\n( *)if \[\[ "\$\{RAMO\}" == coleta-dia/\* \]\]; then\n.*?\n\1fi\n', fonte, re.S)
+    if not m or "git merge" not in m.group(0):
+        diz("   ✗ o `_coletor.yml` não traz a `main` ao ramo `coleta-dia/*` antes de empurrar")
+        return False
+    with tempfile.TemporaryDirectory() as t:
+        origem, rep = pathlib.Path(t, "origem.git"), pathlib.Path(t, "rep")
+        env = {**os.environ, "GIT_AUTHOR_NAME": "e", "GIT_AUTHOR_EMAIL": "e@e", "GIT_COMMITTER_NAME": "e",
+               "GIT_COMMITTER_EMAIL": "e@e", "RAMO": "coleta-dia/x", "SSH": "ssh", "GITHUB_REPOSITORY": "o/r"}
+        g = lambda *a: subprocess.run(["git", *a], cwd=rep, env=env, check=True, capture_output=True, text=True)
+        subprocess.run(["git", "init", "-q", "--bare", "-b", "main", str(origem)], check=True)
+        subprocess.run(["git", "init", "-q", "-b", "main", str(rep)], check=True)
+        g("config", f"url.{origem}.insteadOf", "git@github.com:o/r.git")
+        (rep / "scripts").mkdir()  # cópia, não link: o resolvedor acha o repositório pelo próprio caminho
+        shutil.copy(RAIZ / "scripts" / "unir_conflito_de_rodada.py", rep / "scripts")
+        env["PYTHONPATH"] = f"{RAIZ}{os.pathsep}{RAIZ / 'scripts'}"
+        (rep / "data").mkdir()
+        log = rep / "data" / "historico_mudancas.json"
+        def escreve(itens):
+            gravar_em(log, {"versao": 1, "eventos": itens})
+        escreve([{"n": 0}])
+        g("add", "data"); g("commit", "-qm", "base"); g("remote", "add", "o", str(origem)); g("push", "-q", "o", "main")
+        g("checkout", "-qb", "coleta-dia/x"); escreve([{"n": 0}, {"n": "valvula"}]); g("commit", "-qam", "elo")
+        g("checkout", "-q", "main"); escreve([{"n": 0}, {"n": "main"}]); g("commit", "-qam", "main andou")
+        g("push", "-q", "o", "main"); g("checkout", "-q", "coleta-dia/x")
+        subprocess.run(["bash", "-c", m.group(0)], cwd=rep, env=env, capture_output=True, text=True)
+        desc = subprocess.run(["git", "merge-base", "--is-ancestor", "FETCH_HEAD", "HEAD"],
+                              cwd=rep, env=env).returncode == 0
+        itens = json.loads(log.read_text()).get("eventos", []) if log.exists() else []
+        ok = desc and [i.get("n") for i in itens] in ([0, "main", "valvula"], [0, "valvula", "main"])
+    if not ok:
+        diz(f"   ✗ a válvula não trouxe a `main` pela base comum (descende: {desc}; log: {itens})")
+        return False
+    diz("   ✓ a válvula traz a `main` ao ramo antes do PR, com o log unido pela base comum")
+    return True
+
+
+def ensaio_publicador_segue_o_rebase(diz) -> bool:
+    """31. O publicador segue o rebase e sela de novo sobre a `main` que andou (F101, F104).
+
+    F101 (25/11, run 45526087142): depois da união, o derivado regenerado ficava fora do índice e
+    `rebase --continue` recusava. F104 (27/11, e7655e17): rebase LIMPO sobre um merge alheio não
+    regenerava, e a `main` selada ficava com derivado velho. Roda os trechos do próprio
+    `publicar_dados.yml` num repositório temporário, nos dois caminhos.
+    """
+    fonte = (RAIZ / ".github/workflows/publicar_dados.yml").read_text(encoding="utf-8")
+    uniu = fonte.split("if ! GIT_EDITOR=true git rebase --continue", 1)[0].rstrip().splitlines()[-1]
+    sela = 'if [ "$(git rev-parse HEAD^)" != "$BASE" ]; then' + fonte.split(
+        'if [ "$(git rev-parse HEAD^)" != "$BASE" ]; then', 1)[-1].split("\n            fi\n", 1)[0] + "\nfi"
+    amb = {**os.environ, "GIT_AUTHOR_NAME": "e", "GIT_AUTHOR_EMAIL": "e@e", "GIT_COMMITTER_NAME": "e",
+           "GIT_COMMITTER_EMAIL": "e@e"}
+    resultado = []
+    for conflito in (True, False):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = pathlib.Path(t)
+            g = _repo(tmp)
+            (tmp / "scripts").mkdir(); (tmp / "data").mkdir()
+            (tmp / "scripts" / "gerar_codemap.py").write_text("", newline="\n")
+            (tmp / "scripts" / "verificar_derivados.sh").write_text("cat data/dado.json > data/derivado.json\n", newline="\n")
+            dado, deriv = tmp / "data" / "dado.json", tmp / "data" / "derivado.json"
+            dado.write_text("base\n", newline="\n"); deriv.write_text("base\n", newline="\n"); g("add", "-A"); g("commit", "-qm", "base")
+            g("checkout", "-qb", "publicador")
+            (deriv if conflito else tmp / "data" / "outro.json").write_text("nosso\n", newline="\n"); g("add", "-A")
+            g("commit", "-qm", "publicação")
+            base = subprocess.run(["git", "rev-parse", "HEAD^"], cwd=tmp, capture_output=True, text=True).stdout.strip()
+            g("checkout", "-q", "main"); dado.write_text("deles\n", newline="\n")
+            if conflito:
+                deriv.write_text("deles\n", newline="\n")
+            g("add", "-A"); g("commit", "-qm", "merge alheio, sem selo")
+            g("checkout", "-q", "publicador")
+            if (g("rebase", "main", pode_falhar=True) == 0) == conflito:
+                diz("  ✗ o ensaio não produziu o caminho que diz medir")
+                return False
+            if conflito:
+                g("checkout", "--ours", "--", "data/derivado.json")   # a união: versão de cima (no rebase, "ours")
+                subprocess.run(["bash", "-c", uniu], cwd=tmp, capture_output=True)
+                if subprocess.run(["git", "-c", "core.editor=true", "rebase", "--continue"], cwd=tmp,
+                                  capture_output=True, env=amb).returncode != 0:
+                    resultado.append("rebase recusou")
+                    continue
+            subprocess.run(["bash", "-c", sela], cwd=tmp, capture_output=True, env={**amb, "BASE": base})
+            limpo = subprocess.run(["git", "status", "--porcelain"], cwd=tmp, capture_output=True, text=True).stdout
+            resultado.append(subprocess.run(["git", "show", "HEAD:data/derivado.json"], cwd=tmp,
+                                            capture_output=True, text=True).stdout.strip() + ("" if not limpo else "+sujo"))
+    if resultado != ["deles", "deles"]:
+        diz(f"  ✗ o publicador não sela sobre a `main` que andou (F101/F104): união, limpo = {resultado}")
+        return False
+    diz("  ✓ depois de unir ou de rebase limpo, o publicador regenera e sela sobre a `main` nova")
+    return True
+
+
+def ensaio_valvula_nao_comita_o_log(diz) -> bool:
+    """32. A válvula não comita o log da corrente (F102).
+
+    25/11/2026, #2078: a publicação anexa `data/saude_pipeline.json` a cada run de dia; o PR de dado
+    da válvula levava as próprias linhas e conflitava no GitHub três vezes. Roda o trecho do commit
+    do próprio `_coletor.yml` num repositório temporário: o log volta à base, o dado da válvula fica.
+    """
+    fonte = (RAIZ / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    trecho = next((l for l in fonte.splitlines() if "coleta-dia/*)" in l and "saude_pipeline" in l), "")
+    resultado = {}
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        g = _repo(tmp)
+        (tmp / "data").mkdir()
+        log, dado = tmp / "data" / "saude_pipeline.json", tmp / "data" / "x.json"
+        log.write_text("base\n", newline="\n"); dado.write_text("base\n", newline="\n"); g("add", "data"); g("commit", "-qm", "base")
+        for ramo in ("coleta-dia/x", "main"):
+            log.write_text("base\nlinha\n", newline="\n"); dado.write_text("novo\n", newline="\n")
+            subprocess.run(["bash", "-c", trecho], cwd=tmp, env={**os.environ, "RAMO": ramo}, check=False)
+            resultado[ramo] = (log.read_text(), dado.read_text())
+    if not trecho or resultado != {"coleta-dia/x": ("base\n", "novo\n"), "main": ("base\nlinha\n", "novo\n")}:
+        diz(f"  ✗ a válvula comita o log da corrente (F102): {resultado}")
+        return False
+    diz("  ✓ a válvula devolve o log da corrente à base e comita só o seu dado")
+    return True
+
+
+def ensaio_main_se_sela(diz) -> bool:
+    """33. A `main` se sela sozinha (F103; handover do selo, D1–D4, 25–26/11/2026).
+
+    Merge sem selo: o push da `main` passa com aviso e dispara o publicador, que regenera e commita
+    `mudancas.html`, `CODEMAP.md` e o manifesto; depois disso a `main` está selada e o elo que deixa
+    derivado velho reprova. Roda o `selo_da_main.py` de verdade sobre um histórico de verdade.
+    """
+    pub = (RAIZ / ".github/workflows/publicar_dados.yml").read_text(encoding="utf-8")
+    mapa, cadeia = pub.find("scripts/gerar_codemap.py\n"), pub.find("- name: Regenerar a cadeia canônica")
+    sela = 0 <= mapa < cadeia and "CITATION.cff CODEMAP.md" in pub
+    portoes = all("selo_da_main" in (RAIZ / f).read_text(encoding="utf-8") for f in
+                  ("scripts/verificar_derivados.sh", "scripts/gerar_mudancas.py", "scripts/gerar_codemap.py"))
+    # D2 (26/11): todo envio a um PR roda os portões; job pulado por rascunho contava como aprovado.
+    wf = (RAIZ / ".github/workflows/portoes.yml").read_text(encoding="utf-8")
+    portoes = portoes and "pull_request.draft" not in wf and "ready_for_review" not in wf
+    visto = []
+    with tempfile.TemporaryDirectory() as t:
+        tmp = pathlib.Path(t)
+        _repo(tmp)
+        amb = {**os.environ, "GITHUB_EVENT_NAME": "push", "GITHUB_REF": "refs/heads/main"}
+        for quem, assunto in (("monitor-el-nino-bot", "Publicação automática (base)"),
+                              ("GitHub", "PR sem selo (#1)"),
+                              ("monitor-el-nino-bot", "Publicação automática (selo)"),
+                              ("monitor-el-nino-bot", "Noturno — elo com derivado velho")):
+            subprocess.run(["git", "commit", "-q", "--allow-empty", "-m", assunto], cwd=tmp, check=True,
+                           env={**amb, "GIT_AUTHOR_NAME": quem, "GIT_AUTHOR_EMAIL": "e@e",
+                                "GIT_COMMITTER_NAME": quem, "GIT_COMMITTER_EMAIL": "e@e"})
+            visto.append(subprocess.run([sys.executable, str(RAIZ / "scripts" / "selo_da_main.py"), "DERIVADOS"],
+                                        cwd=tmp, env=amb, capture_output=True).returncode == 0)
+    if not (sela and portoes and visto == [False, True, False, False]):
+        diz(f"  ✗ a `main` não se sela (F103): publicador sela={sela}, portões leem o selo={portoes}, "
+            f"tolerância por commit={visto} (esperado [False, True, False, False]); PR sem rascunho pulado (D2)")
+        return False
+    diz("  ✓ merge sem selo passa com aviso; o publicador sela; a `main` selada volta a ser estrita")
+    return True
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1236,6 +1408,10 @@ ENSAIOS = (
     ("28. fila maior que o prazo: três rodadas, um `.feito`", ensaio_fila_maior_que_o_prazo),
     ("29. o regime de prioridade suspende só o listado",
      ensaio_regime_de_prioridade_suspende_so_o_listado),
+    ("30. a válvula traz a `main` antes do PR de dado", ensaio_valvula_traz_a_main),
+    ("31. o publicador segue o rebase e sela de novo sobre a main que andou", ensaio_publicador_segue_o_rebase),
+    ("32. a válvula não comita o log da corrente", ensaio_valvula_nao_comita_o_log),
+    ("33. a `main` se sela sozinha; selada, volta a ser estrita", ensaio_main_se_sela),
 )
 
 

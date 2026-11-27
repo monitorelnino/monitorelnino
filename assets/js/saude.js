@@ -471,15 +471,15 @@ function serieEmSvg(valores, faixas, rotulo, estado, corFaixa, marcas) {
     + '<polyline points="' + linha + '" fill="none" stroke="' + MonitorMapas.cor('vazio') + '" stroke-width="1.5"></polyline>'
     /* O último período fechado é marcado por um traço vertical, não por um ponto: a caixa é
        esticada (`preserveAspectRatio="none"`) e um círculo sairia deformado. */
-    + (ultimo == null ? '' : '<line x1="' + (L - 1) + '" x2="' + (L - 1) + '" y1="' + (y(ultimo) - 4)
+    + (ultimo == null || marcas ? '' : '<line x1="' + (L - 1) + '" x2="' + (L - 1) + '" y1="' + (y(ultimo) - 4)
        + '" y2="' + (y(ultimo) + 4) + '" stroke="' + (estado === 'acima' ? FAIXA_COR.acima : FAIXA_COR.dentro)
        + '" stroke-width="2"></line>')
     /* 17/11/2026 (mapa que anda no tempo): o período escolhido é um traço pontilhado e cada período
-       acima da faixa, um traço curto em argila — traço, não ponto, pela mesma razão do último. */
+       acima da faixa, um ponto em argila: linha de comprimento zero com ponta redonda e traço sem escala, para a caixa esticada não deformar o ponto. */
     + (marcas && marcas.cursor != null ? '<line x1="' + x(marcas.cursor) + '" x2="' + x(marcas.cursor) + '" y1="0" y2="' + A
        + '" stroke="' + MonitorMapas.cor('vazio') + '" stroke-width="1" stroke-dasharray="2 2"></line>' : '')
-    + (marcas && marcas.acima ? marcas.acima.map((a, i) => !a ? '' : '<line x1="' + x(i) + '" x2="' + x(i) + '" y1="' + (y(valores[i]) - 4)
-       + '" y2="' + (y(valores[i]) + 4) + '" stroke="' + FAIXA_COR.acima + '" stroke-width="2"></line>').join('') : '')
+    + (marcas && marcas.acima ? marcas.acima.map((a, i) => !a ? '' : '<line x1="' + x(i) + '" x2="' + x(i) + '" y1="' + y(valores[i])
+       + '" y2="' + y(valores[i]) + '" stroke="' + FAIXA_COR.acima + '" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"></line>').join('') : '')
     + '</svg>';
 }
 
@@ -611,7 +611,8 @@ function pintarTempo() {
     document.getElementById('reguaDesfecho').hidden = true;
     document.getElementById('rotuloPeriodoDesfecho').textContent = '';
     document.getElementById('linhasDesfecho').innerHTML = '';
-    document.getElementById('dlDesfechoUF').innerHTML = '';
+    document.querySelector('#tblDesfechoUF tbody').innerHTML = '';
+    MonitorMapas.legenda('legLinhasDesfecho', []);
     mostrarFrase(document.getElementById('leituraDesfecho'), textoSaude('saude.observado.registram.detalhe.sem_ciclo',
       {periodo: ult.periodo ? periodoEmPalavras(ult.periodo, d.periodo) : textoSaude('saude.observado.registram.detalhe.sem_periodo')}));
     return;
@@ -674,22 +675,29 @@ function pintarTempo() {
         T('linha_aria', {territorio: nome, quando: quando}), p && p.posicao, corDaFaixa(d),
         {cursor: TEMPO.idx, acima: pers.map(x => (posicaoNoPeriodo(d, u, x) || {}).posicao === 'acima')}) + '</div>';
   }).join('');
-  const lista = document.getElementById('dlDesfechoUF');
-  if (lista) lista.innerHTML = ['acima', 'dentro', 'abaixo', 'sem'].map(c => pos[c].map(u => {
+  MonitorMapas.legenda('legLinhasDesfecho', [{cor: corDaFaixa(d), opacidade: 0.22, rotulo: T('leg_faixa')},
+    {cor: MonitorMapas.cor('vazio'), classe: 'linha', rotulo: T('leg_linha')},
+    {cor: MonitorMapas.cor('vazio'), classe: 'pontilhada', rotulo: T('leg_cursor')},
+    {cor: FAIXA_COR.acima, classe: 'ponto', rotulo: T('leg_acima')}]);
+  /* Alternativa em lista: o componente da tabela, como nas outras páginas; o JS só preenche o corpo. */
+  document.querySelector('#tblDesfechoUF th:nth-child(2)').textContent = T('col_valor', {unidade: d.unidade});
+  document.querySelector('#tblDesfechoUF tbody').innerHTML = ['acima', 'dentro', 'abaixo', 'sem'].map(c => pos[c].map(u => {
     const v = ((d.por_100mil || {})[u] || {})[per];
-    return '<dt>' + esc(NOME_UF[u] || u) + '</dt><dd>' + (v != null ? esc(decBR(v)) + ' ' + esc(d.unidade) + ' por 100 mil habitantes'
-      + (c === 'sem' ? '' : ' · <span class="posicao posicao--' + c + '">' + esc(textoSaude('saude.posicao.' + c)) + '</span>')
-      : esc(T('sem_periodo'))) + '</dd>';
+    return '<tr><td>' + esc(NOME_UF[u] || u) + '</td>' + (v != null ? '<td>' + esc(decBR(v)) + '</td><td>'
+      + (c === 'sem' ? '' : '<span class="posicao posicao--' + c + '">' + esc(textoSaude('saude.posicao.' + c)) + '</span>') + '</td>'
+      : '<td colspan="2">' + esc(T('sem_periodo')) + '</td>') + '</tr>';
   }).join('')).join('');
 }
 
 function tocarTempo() {
   const b = document.getElementById('tocarDesfecho'), pers = TEMPO.d ? periodosDoCiclo(TEMPO.d) : [];
   clearInterval(TEMPO.relogio);
-  if (b.getAttribute('aria-pressed') === 'true') { b.setAttribute('aria-pressed', 'false'); return; }
-  b.setAttribute('aria-pressed', 'true'); TEMPO.idx = 0; pintarTempo();
+  const rotular = ligado => { b.setAttribute('aria-pressed', String(ligado));
+    b.textContent = textoSaude('saude.observado.registram.detalhe.' + (ligado ? 'tocar_pausa' : 'tocar')); };
+  if (b.getAttribute('aria-pressed') === 'true') { rotular(false); return; }
+  rotular(true); TEMPO.idx = 0; pintarTempo();
   TEMPO.relogio = setInterval(() => {
-    if (TEMPO.idx >= pers.length - 1) { clearInterval(TEMPO.relogio); b.setAttribute('aria-pressed', 'false'); return; }
+    if (TEMPO.idx >= pers.length - 1) { clearInterval(TEMPO.relogio); rotular(false); return; }
     TEMPO.idx++; pintarTempo();
   }, 900);
 }
@@ -723,6 +731,7 @@ async function pintarDetalhe(d) {
   const M = await municipiosNoTempo(d);
   if (mudou) {
     clearInterval(TEMPO.relogio); document.getElementById('tocarDesfecho').setAttribute('aria-pressed', 'false');
+    document.getElementById('tocarDesfecho').textContent = textoSaude('saude.observado.registram.detalhe.tocar');
     TEMPO.idx = periodosDoCiclo(d).length - 1; TEMPO.regua = 'faixa';
   }
   document.getElementById('tituloDesfecho').textContent = T(M ? 'titulo_municipios' : 'titulo', {desfecho: d.rotulo});

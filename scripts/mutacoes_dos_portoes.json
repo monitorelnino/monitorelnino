@@ -54,8 +54,8 @@
   {
    "id": "action_sem_sha",
    "arquivo": ".github/workflows/portoes.yml",
-   "trocar": [
-    "actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4",
+   "regex": [
+    "actions/checkout@[0-9a-f]{40}[^\\n]*",
     "actions/checkout@v4"
    ],
    "pegam": [
@@ -107,6 +107,41 @@
    ],
    "pegam": [
     "verificar_texto_publico.js"
+   ]
+  },
+  {
+   "id": "seo_descricao_curta",
+   "arquivo": "index.html",
+   "trocar": [
+    "<meta name=\"description\" content=\"MARÉ · Monitor de Antecipação e Resposta ao El Niño 2026/2027: o que estados e municípios publicaram, alertas, emergências, saúde e financiamento, em fontes oficiais.\"",
+    "<meta name=\"description\" content=\"curta\">"
+   ],
+   "pegam": [
+    "verificar_seo.js"
+   ]
+  },
+  {
+   "id": "acessibilidade_img_sem_alt",
+   "arquivo": "index.html",
+   "anexar": "\n<img src=\"assets/x.png\">\n",
+   "pegam": [
+    "verificar_acessibilidade.js"
+   ]
+  },
+  {
+   "id": "handler_inline",
+   "arquivo": "index.html",
+   "anexar": "\n<p onclick=\"x()\">x</p>\n",
+   "pegam": [
+    "verificar_seguranca.js"
+   ]
+  },
+  {
+   "id": "tag_desbalanceada",
+   "arquivo": "index.html",
+   "anexar": "\n<div>\n",
+   "pegam": [
+    "verificar_estrutura.js"
    ]
   }
  ]

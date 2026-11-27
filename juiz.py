@@ -258,26 +258,8 @@ def e_o_proprio_plano(texto: str, url: str = None) -> tuple:
                       "estrutura": sorted(estrutura)[:4]}
 
 
-JANELA_DA_DATA_DO_PLANO = 600
-
-
-def data_junto_ao_titulo(texto: str, titulo, ano: str):
-    """Data completa (dd/mm/aaaa) logo depois do título do plano, do mesmo ano; senão None.
-
-    12/10/2026 (A1-21 → A1-28 do relatório D): o plano sem ato gravava só o ano, mesmo quando a
-    capa trazia a data. A data vem da JANELA do título, nunca da primeira do documento — num plano
-    de sessenta páginas a primeira data pode ser de uma referência bibliográfica — e só vale se for
-    do mesmo ano que o documento declara. Função pura."""
-    if not titulo or not texto:
-        return None
-    janela = texto[titulo.start(): titulo.end() + JANELA_DA_DATA_DO_PLANO]
-    d = extrair_data(janela)
-    if d and re.fullmatch(r"\d{1,2}[/-]\d{1,2}[/-]\d{4}", d) and str(ano or "") and d.endswith(str(ano)):
-        return d
-    return None
-
-
-def plano_sem_ato(texto: str, url: str = None) -> tuple:
+def plano_sem_ato(texto: str, url: str = None, documento: str = None, municipio: str = None,
+                  ano_corrente: int = None) -> tuple:
     """(ok, motivo, dados) do caminho "plano publicado sem ato de aprovação localizado". PURA.
 
     Decisão da editoria de 03/10/2026. O índice mede **preparação publicada e verificável**: a
@@ -289,6 +271,11 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
       1. domínio oficial do ente — já exigido na etapa 0, pela URL;
       2. órgão, título e ano (ou o ciclo) identificados NO documento;
       3. não ser minuta, rascunho, versão para consulta ou apresentação.
+
+    A data é a que o plano informa de si (`data_do_plano`, METODOLOGIA §129), lida no `documento` inteiro quando o
+    chamador o tem (o `texto` julgado vem cortado em `TETO_DO_JULGAMENTO`, e o fecho e a assinatura ficam no fim).
+    Sem data própria e com carimbo de impressão do formulário estadual, fica o ANO do carimbo, com a origem dita:
+    é o que o juiz já gravava, e se o carimbo conta é decisão da editoria.
     """
     ok_doc, motivo_doc, provas_doc = e_o_proprio_plano(texto, url)
     if not ok_doc:
@@ -307,11 +294,15 @@ def plano_sem_ato(texto: str, url: str = None) -> tuple:
     if faltam:
         return False, "plano_sem_identificacao", {
             "detalhe": "o documento não identifica: " + ", ".join(faltam)}
-    ano_txt = (ano.group(1) if ano.lastindex else None) or ano.group(0)
+    from data_do_plano import carimbo_de_impressao, data_do_plano
+    data, origem, onde = data_do_plano(documento or texto, municipio, ano_corrente)
+    if not data:
+        carimbo = carimbo_de_impressao(documento or texto, ano_corrente)
+        data, origem, onde = (carimbo[-4:], "impressao", carimbo) if carimbo else (None, None, None)
     return True, "", {
         "tipo": "plano publicado sem ato de aprovação localizado",
         "numero": None,
-        "data": data_junto_ao_titulo(texto, titulo, ano_txt) or ano_txt,
+        "data": data, "data_origem": origem, "data_trecho": onde,
         "sem_ato_de_aprovacao": True,
         "orgao": orgao.group(0),
         "titulo": titulo.group(0),
@@ -378,6 +369,7 @@ def objeto_ex_ante(texto: str) -> tuple:
 RE_GATILHO_CICLO = re.compile(
     r"per[íi]odo\s+(?:chuvoso|de\s+chuvas|seco|de\s+estiagem)|esta[çc][ãa]o\s+(?:chuvosa|seca)|"
     r"2026\s*[/-]\s*2027|2026/2027|ciclo\s+2026", re.I)
+RE_NOMEIA_O_CICLO = re.compile(r"2026\s*[/-]\s*2027|ciclo\s+2026|\bel\s*ni[ñn]o\b", re.I)
 RE_GATILHO_OBSERVACIONAL = re.compile(
     r"previs|progn[óo]stic|boletim|painel\s+el\s+ni|cemaden|inmet|noaa|monitor\s+de\s+secas|"
     r"alerta\s+clim|aviso\s+meteorol[óo]gic|iminente|imin[êe]ncia", re.I)
@@ -764,7 +756,8 @@ def ato_proprio(texto: str):
 
 
 def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
-                   como_plano: bool = False) -> tuple:
+                   como_plano: bool = False, documento: str = None, municipio: str = None,
+                   ano_corrente: int = None) -> tuple:
     """(ok, motivo, dados). Tipo de ato + número + data extraídos do PRÓPRIO texto.
 
     Exceção declarada no handover: plano publicado como documento técnico sem número recebe a
@@ -791,7 +784,7 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None,
         # — órgão, título e ano —, e o ano solto basta. Este caminho vem ANTES da exigência de data
         # completa, de propósito: data completa é como se situa um ATO, e aqui não há ato.
         apresenta_se_como_ato = not no_repositorio and RE_ATO_SEM_NUMERO.search(texto or "")
-        ok_plano, motivo_plano, dados_plano = plano_sem_ato(texto, url)
+        ok_plano, motivo_plano, dados_plano = plano_sem_ato(texto, url, documento, municipio, ano_corrente)
         if ok_plano and not apresenta_se_como_ato:
             return True, "", dados_plano
         if no_repositorio:
@@ -998,7 +991,7 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
         # Nenhuma categoria nova, nenhum peso novo: são os degraus que já existem, atribuídos pela
         # mesma pergunta que o resto do codebook faz — o documento cobre este ciclo?
         if RE_GATILHO_CICLO.search(texto or ""):
-            return "plano", f"plano publicado ({data}) que cita o ciclo; ato de aprovação não localizado"
+            return "plano", f"plano publicado ({data or 'sem data no documento'}) que cita o ciclo; ato de aprovação não localizado"
         ano = None
         m_ano = re.search(r"(20\d{2})", str(data or ""))
         if m_ano:
@@ -1185,43 +1178,9 @@ def e_plano_pelo_cabecalho(texto) -> bool:
     return len({normalizar(m.group(1))[:6] for m in RE_SECAO_DE_PLANO.finditer(texto)}) >= 2
 
 
-# J7. Data do plano: a do cabeçalho, da versão ou da última atualização; nunca a de lei citada, de
-# fundação ou de população. Fora de 1990..ano corrente é suspeita.
+# J7. Data do plano: a que ele informa de si (`data_do_plano.py`); nunca a de lei citada, de fundação, de população
+# ou de evento do histórico. Fora de 1990..ano corrente é suspeita.
 ANO_MINIMO_18 = 1990
-RE_ANO_DE_VERSAO = re.compile(
-    r"(?:vers[ãa]o|atualiza[çc](?:[ãa]o|[õo]es)|atualizad[oa]\s+em|revis[ãa]o|revisad[oa]\s+em|elaborad[oa]\s+em)"
-    r"[^\n]{0,40}?\b((?:19|20)\d{2})\b", re.I)
-# A citação de ato ("Lei nº 12.608, de 10 de abril de 2012", "Leis 12.608, de abril de 2012, e 12.983, de junho de
-# 2014", "Lei Municipal nº 0967/2006 de 19 de abril de 2006"): todo ano dentro dela é do ato citado, não do plano
-# (lote 7 da J18 e diagnóstico de 28/10: PLANCONs do RS de 2025 saíam datados de 2012).
-RE_DATA_DE_ATO_CITADO = re.compile(
-    r"\b(?:leis?|decretos?|portarias?|resolu[çc][ãa]o|resolu[çc][õo]es)\b(?:[\s\d.,/º°ª()–-]|\bn[º°o.]*|\bde\b|\be\b|"
-    r"\bfedera(?:l|is)\b|\bmunicipa(?:l|is)\b|\bestadua(?:l|is)\b|\bcomplementar(?:es)?\b|\b(?:janeiro|fevereiro|"
-    r"mar[çc]o|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)\b)*", re.I)
-RE_ANO_CITADO = re.compile(r"(?:\blei|decreto|portaria|censo|ibge|fundad[oa]|funda[çc][ãa]o|criad[oa]|cria[çc][ãa]o|"
-                           r"popula[çc][ãa]o|emancipad[oa]|emancipa[çc][ãa]o|instalad[oa]|\bn[º°o.])"
-                           r"(?:\s+(?:em|de|do|da|no|na))?[^a-zà-ÿ\n]{0,12}$", re.I)
-
-
-def ano_do_plano(texto, ano_corrente: int = None):
-    """(ano, suspeito). ano None quando não há ano confiável; suspeito quando só havia ano fora da faixa."""
-    teto = ano_corrente or _ano_de_hoje()
-    fora = False
-    versoes = [int(m.group(1)) for m in RE_ANO_DE_VERSAO.finditer(str(texto or "")[:5000])]
-    if any(ANO_MINIMO_18 <= a <= teto for a in versoes):   # a última atualização vence a primeira versão (Tubarão)
-        return max(a for a in versoes if ANO_MINIMO_18 <= a <= teto), False
-    fora = bool(versoes)
-    cabeca = str(texto or "")[:1500]
-    citados = [m.span() for m in RE_DATA_DE_ATO_CITADO.finditer(cabeca)]
-    for m in re.finditer(r"\b((?:19|20)\d{2})\b", cabeca):
-        if (any(i <= m.start() < f for i, f in citados)
-                or RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()])):
-            continue
-        a = int(m.group(1))
-        if ANO_MINIMO_18 <= a <= teto:
-            return a, False
-        fora = True
-    return None, fora
 
 
 def _ano_de_hoje() -> int:
@@ -1495,7 +1454,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
             veredito["criterios"]["2_citacao"] = {"ok": False, "trecho": "", "dados": {
                 "detalhe": "ato do excerto não localizado na edição com vários atos"}}
             return recusa("citacao_incompleta")
-    texto = texto[:TETO_DO_JULGAMENTO]
+    documento, texto = texto, texto[:TETO_DO_JULGAMENTO]
 
     if not eh_estadual and uf_do_dominio(url) and uf_do_dominio(url) != str(uf or "").upper():
         return recusa("uf_do_dominio_diverge", "J3")
@@ -1514,16 +1473,12 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     como_plano = e_plano_pelo_cabecalho(texto) or documento_do_repositorio(url or "")
     if como_plano and not e_plano_pelo_cabecalho(texto):
         regras.append("J22")
-    ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano)
-    if ok and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
-        ano, _ = ano_do_plano(texto, ano_corrente)
-        if str(ano or "") != str(dados.get("data") or "")[-4:]:
-            dados["data"] = str(ano) if ano else None
-            regras.append("J7")
+    ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano,
+                                       documento=documento, municipio=nome, ano_corrente=ano_corrente)
     veredito["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     veredito["data"] = dados.get("data")
-    veredito["data_origem"] = None
-    if "J13" in propostas and ok:
+    veredito["data_origem"] = dados.get("data_origem")
+    if "J13" in propostas and ok and not dados.get("sem_ato_de_aprovacao"):   # J13 data o ATO; o plano sem ato já vem datado por si
         d13, origem = data_do_ato_18(texto)
         if d13 and d13 != veredito["data"]:
             veredito["data"] = d13
@@ -1585,7 +1540,9 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
 
     if data_suspeita(veredito["data"], ano_corrente):   # com ou sem ato: ano fora da faixa não é data (Chuvisca/RS, telefone "…-2077")
         return recusa("data_nao_confirmada", "J7")
-    if sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
+    # §101, condição 2: o plano sem ato identifica o ano ou o CICLO. Sem data própria, só o que nomeia o ciclo
+    # segue; "período chuvoso" é estação de todo ano e não situa o documento (Chuvisca/RS, Catuípe/RS).
+    if sem_ato and not veredito["data"] and not RE_NOMEIA_O_CICLO.search(texto):
         return recusa("data_nao_confirmada", "J7")
     categoria, motivo_cat = etapa6_categoria(texto, veredito["data"], eh_estadual,
                                              sem_ato_de_aprovacao=sem_ato, como_plano=como_plano)
@@ -1875,6 +1832,11 @@ def casos_18_medidos() -> list:
 
 
 def casos_18() -> list:
+    from data_do_plano import data_do_plano
+
+    def ano_do_plano(t, _ano=2026, municipio=None):   # o ano da data que o plano informa de si; "" quando não informa
+        return (data_do_plano(t, municipio, _ano)[0] or "")[-4:]
+
     sao_borja = _v(PLANO_RS_18, "São Borja", "RS", URL_RS_18)
     goiania = CANARIOS["plano_novo"]["texto"].replace("14 DE JULHO DE 2026", "21 DE AGOSTO DE 1959")
     plano_2015 = PLANO_PUBLICADO_SEM_ATO.replace("Versao 01/2026", "Versao 01/2015").replace(
@@ -1905,22 +1867,22 @@ def casos_18() -> list:
          ente_18("", "", "", None, "https://parauapebas.pa.gov.br/wp-content/uploads/PLANCON.pdf")[0] == "Parauapebas"
          and (ente_do_cabecalho("DIÁRIO OFICIAL Prefeitura Municipal de Osasco - SP Edição 1") or ("",))[0] == "Osasco"),
         ("J7 data da versão, não de lei citada nem futura (Rio das Ostras 2024; 'Lei nº 2004'; 2034 suspeito)",
-         ano_do_plano(PLANO_MARES_18, 2026) == (2024, False)
-         and ano_do_plano("PLANO DE CONTINGÊNCIA criado pela Lei nº 2004 em 2019", 2026) == (2019, False)
-         and ano_do_plano("PLANO DE CONTINGÊNCIA Versão 2034", 2026) == (None, True)),
+         ano_do_plano(PLANO_MARES_18, 2026) == "2024"
+         and ano_do_plano("PLANO DE CONTINGÊNCIA criado pela Lei nº 2004 do município. Versão 2019", 2026) == "2019"
+         and ano_do_plano("PLANO DE CONTINGÊNCIA Versão 2034", 2026) == ""),
         ("J7 ano de lei citada não é o do plano ('Lei nº 12.608, de 10 de abril de 2012'; 'Lei 12.608/2012')",
-         ano_do_plano("PLANO DE CONTINGÊNCIA conforme a Lei nº 12.608, de 10 de abril de 2012. Mormaço 2025", 2026)
-         == (2025, False)
-         and ano_do_plano("PLANCON - base legal Lei 12.608/2012 - Município de X 2024", 2026) == (2024, False)),
+         ano_do_plano("PLANO DE CONTINGÊNCIA conforme a Lei nº 12.608, de 10 de abril de 2012. Mormaço 2025", 2026, "Mormaço")
+         == "2025"
+         and ano_do_plano("PLANCON - base legal Lei 12.608/2012 - Município de Xis/RS 2024", 2026) == "2024"),
         ("J7 todo ano dentro da citação de lei é do ato; a última atualização vence a primeira versão (RS, Tubarão/SC)",
          all(ano_do_plano(t, 2026) == esperado for t, esperado in (
-             ("PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua 2025", (2025, False)),
-             ("PLANCON Lei Federal nº 12.608 - 10 de abril de 2012. Município 2025", (2025, False)),
+             ("PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua/RS 2025", "2025"),
+             ("PLANCON Lei Federal nº 12.608 - 10 de abril de 2012. PLANCON 2025", "2025"),
              ("COMPDEC Lei Municipal nº 0967/2006 de 19 de abril de 2006 PLANO DE CONTINGÊNCIA PICADA CAFÉ/RS "
-              "AGOSTO/2025", (2025, False)),
+              "AGOSTO/2025", "2025"),
              ("PLANO DE CONTINGÊNCIA VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO Foram seguidas as diretrizes das "
-              "Leis 12.608, de abril de 2012, e 12.983, de Junho de 2014. 1.2 PÁGINA DE ASSINATURAS", (None, False)),
-             ("Data da Primeira Versão: 2014 Atualizações: 03/2024 Município de Tubarão/SC", (2024, False))))),
+              "Leis 12.608, de abril de 2012, e 12.983, de Junho de 2014. 1.2 PÁGINA DE ASSINATURAS", ""),
+             ("Data da Primeira Versão: 2014 Atualizações: 03/2024 Município de Tubarão/SC", "2024")))),
         ("J2 página de 'informes' que 'inicia elaboração do plano' é notícia (Sobral/CE)",
          e_noticia_18("https://www.sobral.ce.gov.br/informes/principais/prefeitura-inicia-elaboracao-do-plano", "")
          and e_noticia_18("https://x.ce.gov.br/p", "Prefeitura inicia elaboração do Plano de Contingência")),
@@ -1973,6 +1935,16 @@ def casos_18() -> list:
                           como_plano=True)[0] == "plano_antigo"
          and etapa6_categoria("equipe de elaboração do plano de contingência", "2025",
                               sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
+        ("J7 versão com ano partido pelo OCR ('Versão 201 8') lê 2018, não o 2067 de outro trecho (Tobias Barreto/SE)",
+         ano_do_plano("PLANO DE CONTINGÊNCIA DESLIZAMENTO MUNICIPAL - Versão 201 8 Tobias Barreto - SE", 2026) == "2018"
+         and ano_do_plano("PLANO DE CONTINGÊNCIA Protocolo SEIDH 2067 Versão 2 0 1 8", 2026) == "2018"
+         and (lambda v: v["promove"] and v["data"] == "2018")(_v(
+             ("PLANO DE CONTINGÊNCIA DESLIZAMENTO MUNICIPAL - Versão 201 8. Município de Tobias Barreto - SE. A COMPDEC "
+              "realizará exercícios simulados conjuntos uma vez ao ano, sob a coordenação da COMPDEC, emitindo relatório "
+              "ao final. Protocolo SEIDH 2067. Fenômeno El Niño e chuvas intensas. 1.2.5.1.0 Deslizamento. Prefeitura "
+              "Municipal de Tobias Barreto, Defesa Civil. Seção 1 objetivo do plano de contingência, cenários, "
+              "acionamento, responsabilidades. ") * 3, "Tobias Barreto", "SE",
+             "https://defesacivil.se.gov.br/wp-content/uploads/2019/03/Plano-de-Contingencia-do-Municipio-de-Tobias-Barreto-2.pdf"))),
         ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia)",
          _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"),
         ("J7 plano sem ato: ano fora da faixa (fim de telefone, '…-2077') não é data, nem com período chuvoso no texto",
@@ -2034,6 +2006,10 @@ def casos_18() -> list:
          and e_estrutura_18("DECRETO N°020 DE 08 DE MARÇO DE 2021 Regulamenta a Lei n° 1.075 de 12 de dezembro de 2006 "
                             "que cria a Coordenadoria Municipal de Defesa Civil - COMDEC")
          and not e_estrutura_18("Institui o Plano de Contingência e a COMPDEC participa do acionamento")),
+        ("J13 não troca a data do plano sem ato pela da lei que ele cita, e a origem da data viaja no veredito",
+         (lambda v: (v["data"], v["data_origem"]) == ("2026", "atualizacao"))(
+             _v(PLANO_PUBLICADO_SEM_ATO + " Base legal: Lei nº 12.608, de 10 de abril de 2012.",
+                "Taió", "SC", URL_PDF_DE_PLANO, propostas=("J13",)))),
         ("o veredito traz o codebook em vigor e as regras que agiram",
          julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["codebook"] == CODEBOOK_VERSAO
          and "J1" in julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["regras_18"]),
@@ -2052,14 +2028,13 @@ def autoteste() -> int:
         marca = "OK  " if all(v.get(k) == x for k, x in esperado.items()) else "FALHA"
         print(f"  {marca} {nome_canario}: promove={v['promove']} categoria={v['categoria']} motivo={v['motivo']}")
 
-    # A1-28 (12/10/2026): plano sem ato leva a data da capa, nunca a de uma referência
+    # A1-28 (12/10/2026): plano sem ato leva a data que informa de si, nunca a de uma referência
+    from data_do_plano import data_do_plano
     _t = ("PREFEITURA MUNICIPAL DE X\nPLANO MUNICIPAL DE CONTINGÊNCIA El Niño 2026\n"
           "Aprovado em 14/08/2026\n" + "x " * 400 + "Referência: Lei de 12/03/2012")
-    _tit = RE_TITULO_DE_PLANO.search(_t)
-    if data_junto_ao_titulo(_t, _tit, "2026") != "14/08/2026":
+    if plano_sem_ato(_t, URL_PDF_DE_PLANO, ano_corrente=2026)[2].get("data") != "14/08/2026":
         falhas.append("A1-28: data da capa do plano sem ato não foi lida")
-    if data_junto_ao_titulo("PLANO DE CONTINGÊNCIA 2026\n" + "x " * 400 + "de 12/03/2012",
-                            RE_TITULO_DE_PLANO.search("PLANO DE CONTINGÊNCIA 2026"), "2026") is not None:
+    if data_do_plano("PLANO DE CONTINGÊNCIA 2026\n" + "x " * 400 + "de 12/03/2012", None, 2026)[0] != "2026":
         falhas.append("A1-28: data longe do título ou de outro ano virou data do plano")
 
     # travas que não são canário de documento
@@ -2310,7 +2285,8 @@ def autoteste() -> int:
          etapa0_documento_primario("https://x.gov.br/a.pdf",
                                    "PLANO DE CONTINGENCIA " * 60)[0] is True),
     ]
-    checagens += casos_18() + casos_18_medidos() + casos_leitura_local_18()
+    checagens += (casos_18() + casos_18_medidos() + casos_leitura_local_18() + casos_lote_18()
+                  + casos_lote_18_persistencia())
     _fila = [{"id": "a", "hash_evidencia": "h" * 64, "juiz": {"promove": True, "motivo": None, "codebook": "1.8"}},
              {"id": "b", "hash": "h" * 64, "juiz": {"promove": True}},
              {"id": "c", "url": "https://x.gov.br/a.pdf"}]
@@ -2410,6 +2386,56 @@ def rejulgar_paralelo_18(decisoes: list, ler_texto=texto_local_18) -> tuple:
     return registros, resumo
 
 
+def casos_lote_18() -> list:
+    """Travas do lote de leitura: transporte falho vira `sem_leitura`, texto curto não é julgado, a segunda
+    passada não relê o que já foi julgado, e o rejulgamento local não apaga o que o lote leu."""
+    import tempfile
+    plano = ("<html><body>" + "PLANO DE CONTINGENCIA MUNICIPAL DE DEFESA CIVIL do município de Teste. " * 12
+             + "</body></html>").encode("utf-8")
+    alvos = [{"hash": "1" * 64, "url": "https://x.gov.br/plano.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+             {"hash": "2" * 64, "url": "https://y.gov.br/caiu.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+             {"hash": "3" * 64, "url": "https://z.gov.br/curto.html", "municipio": "Teste", "uf": "RS", "ibge": None}]
+
+    def transporte(url, timeout=40):
+        if "caiu" in url:
+            raise urllib.error.URLError("sem resposta de teste")
+        return plano if "plano" in url else b"<html>curto</html>"
+
+    with tempfile.TemporaryDirectory() as tmp:
+        destino = pathlib.Path(tmp) / "paralelo_teste.json"
+        lote_paralelo_18(alvos, destino, "teste", limite=10, buscar_fn=transporte)
+        a = _ler_paralelo_18(destino)
+        lote_paralelo_18(alvos, destino, "teste", limite=10, buscar_fn=transporte)
+        b = _ler_paralelo_18(destino)
+        gravar_paralelo_18([], destino, "teste")
+        c = _ler_paralelo_18(destino)
+        sem_lote = {"hash_evidencia": "9" * 64, "uf": "RS", "municipio": "Outro", "promove": True, "lote": False}
+        _escrever_paralelo_18(destino, "teste", [sem_lote], [], {})
+        gravar_paralelo_18([], destino, "teste")
+        d = _ler_paralelo_18(destino)
+        motivos = {f["hash_evidencia"]: f["motivo"] for f in a["sem_leitura"]}
+        dup = {"hash_evidencia": "8" * 64, "uf": "SC", "municipio": "Taió", "promove": True, "lote": True}
+        _escrever_paralelo_18(destino, "teste", [dup, dict(dup)], [], {})
+        e = _ler_paralelo_18(destino)
+        return [
+            ("lote: documento lido é julgado pelo 1.8 e leva o hash do texto lido",
+             len(a["decisoes"]) == 1 and a["decisoes"][0].get("lote") is True
+             and len(a["decisoes"][0]["hash_lido"]) == 64 and a["decisoes"][0]["codebook"] == CODEBOOK_VERSAO),
+            ("lote: falha de transporte vai para sem_leitura com a causa, nunca para julgado",
+             motivos.get("2" * 64, "").startswith("fonte: URLError")),
+            ("J12: repetição do mesmo documento e município colapsa numa decisão só",
+             sum(1 for r in e["decisoes"] if r["hash_evidencia"] == "8" * 64) == 1),
+            ("lote: texto curto não é julgado e fica como texto_nao_extraivel",
+             motivos.get("3" * 64) == "texto_nao_extraivel"),
+            ("lote: segunda passada não relê o que já foi julgado",
+             len(b["decisoes"]) == 1 and b["resumo"]["lido_neste_lote"] == 0),
+            ("lote: rejulgamento local não apaga os registros do lote",
+             any(r.get("lote") for r in c["decisoes"]) and c["resumo"].get("lote_julgadas") == 1),
+            ("rejulgamento local não apaga registros de rodadas anteriores sem lote (25/11: 564 perdidos)",
+             len(d["decisoes"]) == 1 and d["decisoes"][0]["hash_evidencia"] == "9" * 64),
+        ]
+
+
 PARALELO_FILA18 = RAIZ / "data" / "paralelo_fila18.json"
 
 
@@ -2424,19 +2450,193 @@ def decisoes_da_fila_18(pistas: list) -> list:
             for p in pistas if p.get("hash_evidencia")]
 
 
-def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
-    """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo."""
-    registros, resumo = rejulgar_paralelo_18(decisoes)
+def _ler_paralelo_18(destino: pathlib.Path) -> dict:
+    return json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {"decisoes": [], "sem_leitura": []}
+
+
+def _escrever_paralelo_18(destino: pathlib.Path, fonte: str, registros: list, sem_leitura: list, resumo: dict) -> dict:
+    # J12: um documento, um município, uma decisão. Repetição (mesmo hash, UF e município) colapsa na mais antiga;
+    # a 26/11 duas decisões de Taió e de Trindade do Sul entraram duplicadas no arquivo paralelo.
+    visto, unicos = set(), []
+    for r in registros:
+        chave_r = (r.get("hash_evidencia"), r.get("uf"), r.get("municipio"))
+        if chave_r not in visto:
+            visto.add(chave_r)
+            unicos.append(r)
+    registros = unicos
     saida = {"_governanca": (f"PARALELO: rejulgamento pelo codebook 1.8 (rodada paralela J18) de {fonte}. Nada do "
-                             f"índice lê este arquivo. Escritor: juiz.py --rejulgar-paralelo ou --rejulgar-fila-paralela."),
+                             f"índice lê este arquivo. Escritores: juiz.py --rejulgar-paralelo, --rejulgar-fila-paralela "
+                             f"e --lote-paralelo-18 (registros com \"lote\": true, lidos pela porta de rede)."),
              "codebook": CODEBOOK_VERSAO, "propostas_medidas": list(PROPOSTAS_MEDIDAS_18),
-             "resumo": resumo, "decisoes": registros}
+             "resumo": resumo, "decisoes": registros, "sem_leitura": sem_leitura}
     from coletores_base import gravar_em   # §229: escrita de data/ só pela porta atômica
     # Compacto: o arquivo paralelo cresce 34% em registros únicos; indentado, +38% em bytes e o portão de
     # tamanho (novidade_real) barrava o PR. Sem indentação, +17%: o mesmo conteúdo, sem linhas de enfeite.
     gravar_em(destino, saida, compacto=True)
     print(json.dumps(resumo, ensure_ascii=False))
     return resumo
+
+
+def gravar_paralelo_18(decisoes: list, destino: pathlib.Path, fonte: str) -> dict:
+    """Rejulga `decisoes` pelo 1.8 e grava SÓ em `destino` (nunca a produção). Devolve o resumo.
+    Log que só cresce (26/10 e 25/11): todo registro já gravado sobrevive, salvo quando este rejulgamento
+    julga de novo o mesmo documento e município. Antes só o lote (`"lote": true`) sobrevivia; o rejulgamento
+    local sem cópia do documento gravava `decisoes` vazio e apagava os 564 registros da produção."""
+    registros, resumo = rejulgar_paralelo_18(decisoes)
+    anteriores = _ler_paralelo_18(destino)
+    chave = lambda r: (r.get("hash_evidencia"), r.get("uf"), r.get("municipio"))
+    novas = {chave(r) for r in registros}
+    mantidos = [r for r in anteriores["decisoes"] if chave(r) not in novas]
+    resumo["mantidas_de_rodadas_anteriores"] = len(mantidos)
+    resumo["lote_julgadas"] = sum(1 for r in mantidos if r.get("lote"))
+    return _escrever_paralelo_18(destino, fonte, registros + mantidos, anteriores.get("sem_leitura", []), resumo)
+
+
+# Lote de leitura da rodada paralela J18: documento que não está em `evidencias/` é lido pela porta de rede
+# (`obter_documento`, a mesma dos juízes; NADA é preservado em evidencias/ nem em evidencias.json), julgado pelo
+# 1.8 e gravado SÓ nos arquivos paralelo. O registro leva o hash da decisão de produção (`hash_evidencia`) e o do
+# texto lido (`hash_lido`). Falha de leitura vai para `sem_leitura` com o motivo; nunca vira "mantida".
+LOTE_FORA_18 = ("news.google.com",)   # resolvido pelo B2 (rodada própria); a pasta do RS tem sessão própria
+
+
+def tem_copia_local_18(hash_: str) -> bool:
+    return any((RAIZ / "evidencias" / f"{hash_}{s}").is_file() for s in (".txt", ".ocr.txt", ".html", ".pdf"))
+
+
+def alvos_do_lote_18(fonte: str) -> list:
+    """Decisões de `producao` (fora de 1.8) ou pistas de `fila` com hash e URL, sem cópia local e fora de
+    LOTE_FORA_18, uma por hash. Ordem estável: as que nunca foram lidas vêm antes do que falhou."""
+    if fonte == "producao":
+        base = json.loads((RAIZ / "data" / "promocoes_automaticas.json").read_text(encoding="utf-8"))["decisoes"]
+        base = [d for d in base if (d.get("codebook") or "")[:3] != "1.8"]
+    else:
+        base = decisoes_da_fila_18(json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))["pistas"])
+    alvos, vistos = [], set()
+    for d in base:
+        h, url = d.get("hash_evidencia"), d.get("url")
+        if not h or not url or h in vistos or tem_copia_local_18(h):
+            continue
+        if any(f in url for f in LOTE_FORA_18):
+            continue
+        vistos.add(h)
+        alvos.append({**d, "hash": h})
+    return alvos
+
+
+def lote_paralelo_18(alvos: list, destino: pathlib.Path, fonte: str, limite: int = 300, buscar_fn=None,
+                     intervalo_s: float = 120) -> dict:
+    """Lê até `limite` documentos de `alvos` (que ainda não estão julgados em `destino`), julga pelo 1.8 e grava.
+    Grava a cada `intervalo_s` segundos e no fim: quando o prazo do job interrompe o lote, perde-se no máximo esse
+    intervalo, nunca o lote inteiro (26/11: 150 min de produção acabaram sem nenhum registro gravado). Falha de
+    leitura, de extração ou do juiz num documento vai para `sem_leitura` com a causa e o lote segue."""
+    import hashlib
+    import time
+    from julgar_e_aplicar_descobertas import com_ocr, obter_documento, texto_do_documento
+    atual = _ler_paralelo_18(destino)
+    julgados = {r["hash_evidencia"] for r in atual["decisoes"]}
+    falhados = {r["hash_evidencia"] for r in atual.get("sem_leitura", [])}
+    pendentes = [a for a in alvos if a["hash"] not in julgados]
+    pendentes.sort(key=lambda a: a["hash"] in falhados)   # nunca lidos primeiro; falhas de rodadas anteriores depois
+    novos, falhas = [], []
+
+    def consolidar() -> dict:
+        ids_refeitos = {x["hash_evidencia"] for x in falhas} | {r["hash_evidencia"] for r in novos}
+        sem_leitura = [f for f in atual.get("sem_leitura", []) if f["hash_evidencia"] not in ids_refeitos] + falhas
+        registros = atual["decisoes"] + novos
+        regras = {}
+        for r in registros:
+            for x in r.get("regras_18") or []:
+                regras[x] = regras.get(x, 0) + 1
+        resumo = {"julgadas": len(registros), "lote_julgadas": sum(1 for r in registros if r.get("lote")),
+                  "sem_leitura": len(sem_leitura), "lido_neste_lote": len(novos), "falhas_neste_lote": len(falhas),
+                  "a_ler": len(pendentes) - len(novos) - len(falhas), "regras_acionadas": dict(sorted(regras.items()))}
+        return _escrever_paralelo_18(destino, fonte, registros, sem_leitura, resumo)
+
+    ultimo = time.monotonic()
+    for a in pendentes[:limite]:
+        try:
+            raw = obter_documento(a["url"], timeout=40, origem="rodada paralela J18", buscar_fn=buscar_fn)
+        except Exception as e:  # noqa: BLE001 — a causa vai para o registro, nunca para "mantida"
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": f"fonte: {type(e).__name__}"})
+            continue
+        try:
+            texto = com_ocr(raw, texto_do_documento(raw, a["url"]))
+        except Exception as e:  # noqa: BLE001 — PDF quebrado não derruba o lote (26/11: pdfplumber parou a produção)
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": f"extracao: {type(e).__name__}"})
+            continue
+        if sum(c.isalpha() for c in re.sub(r"=== página \d+ ===", " ", texto or "")) < 300:
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": "texto_nao_extraivel"})
+            continue
+        try:
+            v = julgar(texto, nome=a.get("municipio") or "", uf=a.get("uf") or "", ibge=a.get("ibge"),
+                       url=a["url"], propostas=PROPOSTAS_MEDIDAS_18)
+        except Exception as e:  # noqa: BLE001
+            falhas.append({"hash_evidencia": a["hash"], "url": a["url"], "motivo": f"juiz: {type(e).__name__}"})
+            continue
+        novos.append({**v, "pista_id": a.get("pista_id"), "origem": a.get("origem"), "hash_evidencia": a["hash"],
+                      "hash_lido": hashlib.sha256(raw).hexdigest(), "leu_documento": True, "lote": True,
+                      "prod": {"promove": a.get("promove"), "motivo": a.get("motivo"),
+                               "codebook": a.get("codebook"), "categoria": a.get("categoria"), "data": a.get("data")}})
+        if time.monotonic() - ultimo >= intervalo_s:
+            consolidar()
+            ultimo = time.monotonic()
+    return consolidar()
+
+
+class _Interrompido(BaseException):
+    """Imita o prazo do job: derruba o processo sem passar pelos `except Exception` do lote."""
+
+
+def casos_lote_18_persistencia() -> list:
+    """Travas do lote tolerante: um PDF quebrado não derruba o lote; interrupção no meio preserva o já julgado."""
+    import tempfile
+    plano = ("<html><body>" + "PLANO DE CONTINGENCIA MUNICIPAL DE DEFESA CIVIL do município de Teste. " * 12
+             + "</body></html>").encode("utf-8")
+
+    def transporte_quebrado(url, timeout=40):
+        if "quebrado" in url:
+            return b"%PDF-1.4 quebrado \x00\xff"
+        return plano
+
+    def transporte_interrompe(url, timeout=40):
+        if "interrompe" in url:
+            raise _Interrompido()
+        return plano
+
+    base = [{"hash": "1" * 64, "url": "https://x.gov.br/plano1.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+            {"hash": "2" * 64, "url": "https://x.gov.br/plano2.html", "municipio": "Teste", "uf": "RS", "ibge": None},
+            {"hash": "3" * 64, "url": "https://x.gov.br/quebrado.pdf", "municipio": "Teste", "uf": "RS", "ibge": None},
+            {"hash": "4" * 64, "url": "https://x.gov.br/plano4.html", "municipio": "Teste", "uf": "RS", "ibge": None}]
+    with tempfile.TemporaryDirectory() as tmp:
+        destino = pathlib.Path(tmp) / "paralelo_quebrado.json"
+        lote_paralelo_18(base, destino, "teste", limite=10, buscar_fn=transporte_quebrado)
+        a = _ler_paralelo_18(destino)
+        julgados = {r["hash_evidencia"] for r in a["decisoes"]}
+        motivos = {f["hash_evidencia"]: f["motivo"] for f in a["sem_leitura"]}
+        alvos_i = [base[0], base[1], {**base[3], "hash": "5" * 64, "url": "https://x.gov.br/interrompe_plano5.html"}]
+        destino2 = pathlib.Path(tmp) / "paralelo_interrompido.json"
+        try:
+            lote_paralelo_18(alvos_i, destino2, "teste", limite=10, buscar_fn=transporte_interrompe, intervalo_s=0)
+            interrompido = False
+        except _Interrompido:
+            interrompido = True
+        b = _ler_paralelo_18(destino2)
+        return [
+            ("lote: PDF quebrado vai para sem_leitura com a causa e o lote segue até o fim",
+             "3" * 64 not in julgados and (motivos.get("3" * 64) == "texto_nao_extraivel" or motivos.get("3" * 64, "").startswith("extracao:"))
+             and {"1" * 64, "2" * 64, "4" * 64} <= julgados),
+            ("lote: interrupção no meio (prazo do job) não perde o que já foi julgado",
+             interrompido and {r["hash_evidencia"] for r in b["decisoes"]} == {"1" * 64, "2" * 64}),
+        ]
+
+
+def lote_paralelo_18_cli(args: list) -> int:
+    """`juiz.py --lote-paralelo-18 producao|fila [limite]`: um lote da rodada paralela J18."""
+    fonte = args[0] if args else "producao"
+    limite = int(args[1]) if len(args) > 1 else 300
+    destino = PARALELO_JUIZ18 if fonte == "producao" else PARALELO_FILA18
+    lote_paralelo_18(alvos_do_lote_18(fonte), destino, fonte, limite=limite)
+    return 0
 
 
 def rejulgar_paralelo_cli() -> int:
@@ -2461,4 +2661,6 @@ if __name__ == "__main__":
         sys.exit(rejulgar_paralelo_cli())
     if "--rejulgar-fila-paralela" in sys.argv:
         sys.exit(rejulgar_fila_paralela_cli())
+    if "--lote-paralelo-18" in sys.argv:
+        sys.exit(lote_paralelo_18_cli(sys.argv[sys.argv.index("--lote-paralelo-18") + 1:]))
     sys.exit(0)

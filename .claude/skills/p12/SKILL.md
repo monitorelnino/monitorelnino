@@ -1,19 +1,19 @@
 ---
 name: p12
-description: Resolve o portão 12 (derivados obsoletos) — regenera a cadeia canônica, comita os derivados e o manifesto, e reconfere. Use quando verificar_derivados.sh reprovar.
+description: Resolve o portão 12 (derivados obsoletos) — diz onde ele tolera (PR, cópia de trabalho) e onde reprova (main selada, elo), e o que consertar. Use quando verificar_derivados.sh reprovar.
 disable-model-invocation: false
 ---
 
 # Portão 12 — derivado obsoleto
 
-Sequência fixa. Ela reprovou **cinco vezes numa só sessão** (23/09/2026) e é sempre a mesma;
-está aqui para não ser redescoberta toda vez.
+Desde o handover do selo (25–26/11/2026) o selo (manifesto, `mudancas.html`, `CODEMAP.md`) é do
+publicador. No PR e na cópia de trabalho o portão 12 regenera a cadeia e só reprova se um gerador
+quebrar: derivado defasado sai como aviso, e não se commita selo no PR. Ele reprova de verdade em
+dois lugares: no push da `main` já selada e nos elos da noite, onde derivado velho é defeito do elo.
 
 ```bash
-bash scripts/verificar_derivados.sh          # 1. ver o que está obsoleto
-git add -A                                   # 2. os derivados regenerados + o manifesto
-git commit -m "..."                          # 3. mensagem no padrão do projeto
-bash scripts/verificar_derivados.sh          # 4. tem de fechar verde
+bash scripts/verificar_derivados.sh          # regenera; erro = gerador quebrado, conserte-o
+python3 scripts/selo_da_main.py --autoteste  # onde se tolera e onde se reprova
 ```
 
 ## O que NÃO fazer

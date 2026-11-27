@@ -116,7 +116,7 @@ jobs:
       contents: read
       actions: read
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         if: inputs.grupo_de_concorrencia == 'noturno'
         with: { persist-credentials: false, sparse-checkout: scripts }
       - name: Esperar a vez na noite
@@ -148,7 +148,7 @@ jobs:
       - name: Marcar o início do job
         run: echo "JOB_INICIO_EPOCH=$(date -u +%s)" >> "$GITHUB_ENV"
 
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with: { persist-credentials: false }
 
       # Partir do main REAL, não do SHA fixado no disparo (§148): com vários jobs noturnos e a
@@ -161,13 +161,13 @@ jobs:
           git reset --hard FETCH_HEAD
           echo "${RAMO} atual: $(git rev-parse --short HEAD)"
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
         with:
           python-version: "3.12"
           cache: pip                       # item 5: instalação abaixo de 1 min por job
       - run: pip install -r requirements.txt
 
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         if: inputs.precisa_node
         with: { node-version: "22", cache: npm }
       - run: npm ci
@@ -177,7 +177,7 @@ jobs:
       # saiu do `atualizar.yml` (último achado dele: setembro). Cache por versão, como no `portoes.yml`.
       - name: Cache do navegador (Playwright)
         if: inputs.precisa_node
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
+        uses: actions/cache@a7833574556fa59680c1b7cb190c1735db73ebf0 # v5.0.0
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json', 'package.json') }}
@@ -412,7 +412,7 @@ jobs:
       # as duas provas e `scripts/marcador_de_elo.py`, que e o dono da pergunta.
       - name: Guardar o marcador fora do commit
         if: steps.feito.outputs.feito == '1'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: feito-${{ inputs.nome }}-${{ env.NOITE }}
           path: data/noite/${{ env.NOITE }}/${{ inputs.nome }}.feito
@@ -485,6 +485,10 @@ jobs:
           # descartava o binário, aqui o `git add` nunca o incluiu. O §275 consertou o
           # primeiro e não viu o segundo, porque o portão só reprova quando o índice chega
           # à `main` — e ele chegava junto, no mesmo commit.
+          # 25/11/2026 (F102): a válvula não comita o log da corrente. De dia a publicação anexa a ele a
+          # cada run, e o PR de dado conflitava no GitHub, que não usa o resolvedor (#2078, três vezes).
+          # As linhas da válvula ficam no resumo do job (`--listar`).
+          case "${RAMO}" in coleta-dia/*) git checkout HEAD -- data/saude_pipeline.json 2>/dev/null || true ;; esac
           git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt MARE_Indice_Documentacao.pdf 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Sem alterações."; echo "houve=0" >> "$GITHUB_OUTPUT"; exit 0
@@ -545,6 +549,25 @@ jobs:
               fi
             fi
 
+            # 24/11/2026 (F99): a válvula traz a `main` antes de empurrar. O ramo `coleta-dia/*` nasce
+            # da `main` do disparo e a coleta leva horas; nesse meio a `main` muda log, filas e
+            # manifesto, e o PR de dado nascia em conflito (#2038, #2045: `dirty`). PR em conflito
+            # não ganha run de `pull_request`: os Portões nunca rodavam. A união é a mesma do rebase.
+            if [[ "${RAMO}" == coleta-dia/* ]]; then
+              ANTES_DA_MAIN=$(git rev-parse HEAD)
+              GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
+              if ! git merge --no-edit FETCH_HEAD; then
+                # o resolvedor só dá 0 com tudo resolvido e já adicionado; o commit fecha o merge
+                if git rev-parse -q --verify MERGE_HEAD >/dev/null && python3 scripts/unir_conflito_de_rodada.py \
+                   && GIT_EDITOR=true git commit --no-edit; then
+                  echo "main trazida ao ramo pela base comum"
+                else
+                  git merge --abort 2>/dev/null || true
+                  echo "::warning::a main não se uniu ao ramo; o PR de dado pode nascer em conflito (/merge-main)"
+                fi
+              fi
+            fi
+
             # 08/10/2026 (A2-09): REBASE SEM CONFLITO TAMBEM MOVE O DADO. Os derivados e o
             # manifesto sao funcao do dado; se a `main` andou e o rebase passou limpo, o que este
             # elo traz foi recalculado sobre outra base — e o manifesto chega obsoleto, que e o
@@ -560,6 +583,8 @@ jobs:
             if GIT_SSH_COMMAND="$SSH" python3 scripts/empurrar.py "${RAMO}" "$TENTATIVA"; then
               EMPURROU=1; break
             fi
+            # o rebase da próxima tentativa achataria o merge da main: volta ao commit do elo
+            [[ "${RAMO}" == coleta-dia/* ]] && git reset -q --hard "$ANTES_DA_MAIN"
           done
           rm -f ~/.ssh/robo
           if [ "$EMPURROU" != "1" ]; then
@@ -579,7 +604,7 @@ jobs:
           python3 -c "import json,os,pathlib; t=os.environ['RUNNER_TEMP']; b=pathlib.Path(t,'base_do_elo.txt'); a=pathlib.Path(t,'alterados_do_elo.txt'); pathlib.Path('data/coleta_perdida.json').write_text(json.dumps({'base': b.read_text().strip() if b.exists() else '', 'alterados': a.read_text().split() if a.exists() else []}, ensure_ascii=False) + chr(10), encoding='utf-8', newline=chr(10))" || true
       - name: Guardar as saídas quando o commit se perde
         if: failure() && steps.commit.outputs.houve == '1'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: coleta-perdida-${{ inputs.nome }}-${{ github.run_id }}
           path: |

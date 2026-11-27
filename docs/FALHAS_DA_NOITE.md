@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-23. 92 falhas; 84 com caso de teste que as reproduz; 8 sem, com o que falta dito.
+Atualizado em 2026-11-27. 104 falhas; 96 com caso de teste que as reproduz; 8 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -810,7 +810,7 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 ## F90 · Pista que completava 22 dias na madrugada só vencia na noite seguinte e deixava a `main` vermelha o dia inteiro
 
 - **Noite:** 2026-11-21→2026-11-22
-- **Sintoma:** Portões no push da `main` vermelhos desde ~08:22 UTC de 22/11: 'FILA NÃO HUMANA: 3 item(ns)… pendente há mais de 21 dias (2026-10-31)'.
+- **Sintoma:** Portões no push da `main` vermelhos desde 03:03 UTC de 22/11 (`23d989b`; a Issue #467 abriu às 03:00): 'FILA NÃO HUMANA: 3 item(ns)… pendente há mais de 21 dias (2026-10-31)'.
 - **Causa:** `triar_fila.py` contava o prazo por `hoje_editorial()` (Brasília). A triagem roda ~01:15 UTC, 22h em Brasília do dia anterior: a pista com 21 dias não vencia; à meia-noite de Brasília passava a 22 e o portão (mesmo relógio, horas depois) reprovava até a triagem da noite seguinte.
 - **Prova:** run 45005339883 (job `portoes · estrutura`): 3 pistas de 2026-10-31; run 44970676196 (triagem 22/11 01:16 UTC): triar_fila rodou com hoje=2026-11-21; o run de 08:37 pulou (triagem.feito); desfecho_por_prazo nas pendentes: 0 vencidas com 2026-11-21, 3 com 2026-11-22
 - **Correção:** O prazo da triagem conta pela data da noite (`janela_da_noite.noite_corrente`), que é o dia que vem; vencidas fechadas no próprio PR.
@@ -833,3 +833,111 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** job 137617766269: passo do navegador 2 min 22 s, passo do Tesseract 5 min até o teto; teste local (apt 2.8, Ubuntu 24.04): com a trava de `lists/` segura, `apt-get update` sai em 1 s com ou sem DPkg::Lock::Timeout; `install` espera a trava do dpkg com a opção
 - **Correção:** `_coletor.yml`: `install` com DPkg::Lock::Timeout=240; `update` repetido até 12 vezes a cada 10 s; Acquire::Retries=3 e Acquire::http::Timeout=30 contra espelho parado; teto do passo 8 min. Pacote que não instala derruba o elo com o nome do passo e a reserva refaz (D1).
 - **Caso de teste:** nenhum — falta: caso no ensaio simulado (ele não instala pacote do sistema); o ensaio real roda o passo no elo do juiz, e a reprodução local da trava está no PR
+
+## F93 · O teto de 300 buscas no veículo valia por bloco, não por rodada: o lote fez cerca de 1.500 buscas
+
+- **Noite:** 2026-11-23→2026-11-24 (reprocesso manual, run 45305563320)
+- **Sintoma:** Run 45305563320: blocos de 193–200 buscas, em sete blocos; 0 links do Google News resolvidos, e o commit da rodada foi recusado pela união.
+- **Causa:** `seguir()` criava o contador de buscas por chamada, e a rodada chama `seguir()` a cada bloco de BLOCO URLs. O teto valia por bloco.
+- **Prova:** log do run 45305563320: sete blocos com 'busca(s) no veículo' de 193 a 200 cada
+- **Correção:** `contador_buscas` é da rodada e passa a cada bloco; teste que roda dois blocos e conta 300.
+- **Caso de teste:** `seguir_pistas.py --autoteste ('B2: o teto vale para a rodada inteira, somado entre blocos')`
+
+## F94 · Rodada de domingo perde o commit quando ela e o juiz julgam a mesma pista na mesma noite
+
+- **Noite:** 2026-11-15 e 2026-11-22 (atualizar, domingo)
+- **Sintoma:** `atualizar / coletar` (run 44980777132, 22/11, 4h09 de coleta) perdeu o commit: `pistas_imprensa.json` recusado por `julgamento_automatico` e `pistas_imprensa_saude.json` por `repeticoes`; a reaplicação (job 137144544975) recusou de novo as duas filas.
+- **Causa:** `atualizar.py` roda `julgar_e_aplicar_descobertas.py`, que grava `julgamento_automatico` na pista; o elo do juiz grava o mesmo campo na mesma noite. O resolvedor não tinha regra para o campo e recusava o arquivo inteiro.
+- **Prova:** logs do run 44980777132 e do job 137144544975 (handover de erros do GitHub, item 2); `julgar_e_aplicar_descobertas.py` grava `pista['julgamento_automatico'] = {'data': hoje, **r}`
+- **Correção:** D2 no resolvedor: APLICADA vence ABSTENCAO; duas ABSTENCAO, a data mais nova e, no mesmo dia, a da `main`; duas APLICADA diferentes ou caso não coberto: a pista fica como na `main`, a fila une e o caso sai como aviso no log. `repeticoes` já soma pela base (A1, 23/11). Cinco casos D2 em `unir_conflito_de_rodada.py --autoteste`.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_dois_elos_em_paralelo`
+
+## F95 · Coletor do cadastro federal caiu sem deixar tentativa e o frescor avermelhou a main
+
+- **Noite:** 2026-11-21→22 (semanal sinais e links); main vermelha de 24/11 03:32 em diante
+- **Sintoma:** Portões no push da `main` vermelhos desde 24/11 03:32: `FRESCOR — DEFESA CIVIL: cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14 (limite 9)`.
+- **Causa:** No run 44970135352 (22/11 01:09) `coletar_cadastro_prioritarios.py` recebeu `Connection reset by peer` do gov.br ao baixar a nota técnica e terminou em exceção, sem gravar nem registrar tentativa; o run das 15:33 foi adiado pela guarda (fora da janela). Sem tentativa no painel, a regra de 01/11 (fonte que recusa) não se aplicava.
+- **Prova:** run 44970135352, passo `coletar_cadastro_prioritarios.py`: `URLError ... [Errno 104] Connection reset by peer`, status erro; run 45327223052 (Portões na main): `cadastro_prioritarios_federal.json: 10 dias desde 2026-11-14`
+- **Correção:** Falha ao baixar nota técnica ou validação reprovada registra a tentativa (`registrar_tentativa_coletor`, resultado `falhou`, motivo, arquivo) e sai com erro; o frescor passa a medir a idade do dado sem reprovar quem tentou. Coleta refeita por dispatch na janela (run 45332094178).
+- **Caso de teste:** `coletar_cadastro_prioritarios.py --autoteste: nota técnica que não abre deixa tentativa que o frescor aceita`
+
+## F96 · O prazo do estoque de pendentes venceu com a fila cheia e a `main` ficou vermelha
+
+- **Noite:** 2026-11-15→2026-11-16
+- **Sintoma:** Portões no push da `main` vermelhos por 6h41 em 16/11: `FILA NÃO HUMANA` com 914 pistas pendentes de documento há mais de 21 dias.
+- **Causa:** O portão dava prazo declarado ao estoque antigo (`PRAZO_DO_ESTOQUE = 2026-11-15`): até a data o passivo só era contado; depois dela virou falha. Nenhuma rotina fechava o estoque antes da data, e a triagem aplicava o prazo só às pistas da rodada do juiz.
+- **Prova:** handover de erros do GitHub de 23/11, item 3: 914 pistas, 6h41 de `main` vermelha; #1800: recusas fechadas com motivo, servidores inalcançáveis como `inacessivel_persistente`, 11 registros fora do esquema fechados
+- **Correção:** #1800 fechou o estoque, cada pista com o motivo; desde #1824 a triagem aplica o prazo à fila inteira, toda noite.
+- **Caso de teste:** `scripts/verificar_fila_nao_humana.py --autoteste: pendente de 30 dias depois do prazo do estoque: reprova`
+
+## F97 · Três contas de prazo com datas diferentes: a pista sem `registrado_em` nunca vencia na triagem e reprovava no portão
+
+- **Noite:** 2026-11-16→2026-11-17
+- **Sintoma:** Portões no push da `main` vermelhos por 5h52 em 17/11: `FILA NÃO HUMANA` com duas pistas pendentes há mais de 21 dias (Curitiba/TCE-PR de 26/10 e um decreto de MS de 03/06).
+- **Causa:** O portão lia `registrado_em` e, sem ele, a data de publicação; a triagem e a limpeza liam só `registrado_em`. A pista sem o campo nunca vencia para quem fecha e vencia para quem reprova.
+- **Prova:** #1824: as duas pistas citadas pelo portão, sem `registrado_em`; 9 pistas fechadas por prazo no próprio PR, com a mesma data para os três
+- **Correção:** `scripts/pistas.py` tem `DIAS_DE_VIDA`, `data_da_pista` e `dias_na_fila`, e o portão, a triagem e a limpeza passam a usá-las; pista sem data legível fecha com o motivo dito (#1824).
+- **Caso de teste:** `scripts/triar_fila.py --autoteste: data de publicação conta quando falta o registro (a mesma data do portão)`
+
+## F98 · A quarentena não movia pista sem `id` e a publicação ficou parada por 3h40
+
+- **Noite:** 2026-11-18→2026-11-19
+- **Sintoma:** Desde 03:23 UTC de 19/11 a `main` vermelha e o publicador reprovando: `verificar_esquema_de_pista.py` dizia que a quarentena NÃO limpou a fila ativa (7, depois 29 pistas de `data/pistas_imprensa.json`); nenhuma publicação automática de 02:48 a 06:52.
+- **Causa:** `quarentenar()` recortava a identidade do texto do problema (`split(":")`): pista sem `id` tinha a URL como identidade, e `https` nunca casava. As 29 pistas vinham de `monitorar_imprensa_regional.py`, que gravava a fila por fora de `scripts/pistas.py`.
+- **Prova:** reprodução na `main` `f21077be` (#1921); run do publicador de 19/11: 'a quarentena NÃO limpou a fila ativa'
+- **Correção:** A quarentena confere cada pista sozinha; o coletor grava pela porta (`pistas.gravar_lote`) e sai de `escritores_legados.json` (#1921). Caso da pista sem `id` e sem endereço acrescentado em 24/11 (#2049).
+- **Caso de teste:** `scripts/verificar_esquema_de_pista.py --autoteste: pista sem `id` (identidade = URL, com dois-pontos) também sai da fila ativa`
+
+## F99 · PR de dado da válvula nascia em conflito e os Portões não rodavam nele
+
+- **Noite:** 2026-11-23→2026-11-24
+- **Sintoma:** #2038 e #2045 abertos pela válvula `dirty` e sem run de `pull_request`; a A3 disparou `portoes.yml` à mão, numa base sem o #2037, e leu vermelho de frescor que a `main` já não tinha.
+- **Causa:** O ramo `coleta-dia/*` nasce da `main` do disparo e o `_coletor.yml` só fazia rebase sobre o próprio ramo; em duas horas de coleta a `main` mudou log, filas e manifesto. PR em conflito não ganha run de `pull_request`.
+- **Prova:** #2045: mergeable_state dirty, só run de workflow_dispatch (45384876602); #2038: só run de workflow_dispatch
+- **Correção:** Na válvula, antes do push, `git merge` da `main` com a união pela base comum (`unir_conflito_de_rodada.py`); se a união recusar, o PR sai como antes e o aviso nomeia /merge-main.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_valvula_traz_a_main`
+
+## F100 · Lote do Buscador 2 perdido: a união recusou `buscador2_em` com datas diferentes
+
+- **Noite:** 2026-11-23→2026-11-24
+- **Sintoma:** Válvula `buscador2-reab-2026-11-24` (run 45305563320, 01:33→04:11) falhou no commit; 2h38 de trabalho só no artefato `coleta-perdida-…`.
+- **Causa:** O seguidor regrava `buscador2_em` (e `busca_veiculo_em`) com a data de cada passada; o lote e a noite passaram pela mesma pista em dias diferentes e `_politica_do_campo` não tinha regra para o campo, então recusava a fila inteira.
+- **Prova:** LOTES 24/11 04:12: conflito de rebase em `data/pistas_imprensa.json`, campo `buscador2_em` dos dois lados; seguir_pistas.py: `p["buscador2_em"] = hoje_iso` a cada pista seguida; `restantes` compara com a data de hoje
+- **Correção:** Os dois campos unem pela data mais nova (a última passada), como `rejeitada_em` une pela mais antiga.
+- **Caso de teste:** `scripts/unir_conflito_de_rodada.py --autoteste ('F100: buscador2_em e busca_veiculo_em vencem a data mais nova (última passada)')`
+
+## F101 · Publicador perde o commit: derivado regenerado depois da união fica fora do índice
+
+- **Noite:** 2026-11-24→2026-11-25
+- **Sintoma:** Run 45526087142 (01:29): job `publicar` morreu em "Empurrar com rebase (item 1a)" com "commit perdido para main em movimento"; recuperado pelo run das 01:51.
+- **Causa:** No laço de rebase, depois da união e da cadeia canônica, o índice recebia só os caminhos com escritor declarado (`commit_do_elo.py publicar --somente-indice`); o cartão, as páginas e os PDFs regenerados ficavam sujos e `rebase --continue` recusava nas cinco tentativas.
+- **Prova:** log do job `publicar` do run 45526087142: "4 caminho(s) resolvido(s)", "caminho sem escritor declarado, fora do commit: data/municipios_card.json", "You must edit all merge conflicts" ×5
+- **Correção:** O laço põe no índice todo arquivo rastreado que a regeneração mudou (`git add -u`), o mesmo conjunto que o commit local já leva; `--somente-indice` sai do `commit_do_elo.py`.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_publicador_segue_o_rebase`
+
+## F102 · PR de dado da válvula conflita com a publicação em `data/saude_pipeline.json`
+
+- **Noite:** 2026-11-24→2026-11-25
+- **Sintoma:** #2078 (D3, válvula `a1-d3b`) nasceu limpo e conflitou três vezes enquanto os Portões rodavam; merge só depois de tirar à mão a linha da válvula do log.
+- **Causa:** A válvula comitava as próprias linhas de `data/saude_pipeline.json`; de dia a publicação automática anexa ao mesmo log a cada run, e o merge do GitHub não usa o resolvedor da base comum.
+- **Prova:** LOTES 25/11 10:5x e 11:0x: três realinhamentos do #2078, conflito só em `data/saude_pipeline.json`
+- **Correção:** No commit do `_coletor.yml`, ramo `coleta-dia/*` devolve o log da corrente à base antes do `git add`; as linhas da válvula ficam no resumo do job.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_valvula_nao_comita_o_log`
+
+## F103 · Portões de PR rodam no commit anterior ao selo; execução pulada conta como aprovada
+
+- **Noite:** 2026-11-24→2026-11-25
+- **Sintoma:** De 24/11 10:35 a 25/11 09:30 UTC, 11 de 12 execuções vermelhas de "Portões" em PR (`✗ DERIVADOS: o manifesto está obsoleto`) rodaram no commit sem selo; o commit selado teve os quatro jobs pulados (#2059, run 45447763800).
+- **Causa:** O PR carregava derivados que são função do repositório inteiro (manifesto, `mudancas.html`, `CODEMAP.md`); o `ready_for_review` do #2040 corria com o push do selo.
+- **Prova:** robo-registro notas/HANDOVER_SELO_NA_MAIN_25-11-2026.md §1: tabela por execução (head testado × commit do selo × hora do "pronto")
+- **Correção:** PR 1 (D3/D4): o publicador regenera e commita `CODEMAP.md` com o resto; no push da `main`, derivado velho passa com aviso enquanto a `main` aguarda selo (`scripts/selo_da_main.py`) e reprova quando selada. PR 2 (D1/D2): o selo sai do PR.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_main_se_sela`
+
+## F104 · Rebase limpo do publicador sela a `main` com derivado velho
+
+- **Noite:** 2026-11-26→2026-11-27
+- **Sintoma:** Portões vermelhos na própria publicação: c8827d0 (26/11 18:10, run 45873921293) e 31ffb54 (20:45, run 45893576823) com `mudancas.html` e manifesto obsoletos; e7655e17 (27/11 11:46, run 45993494777) com `data/cobertura_declarada_uf.json` e manifesto.
+- **Causa:** O laço de push só regenerava os derivados no caminho com conflito; quando a `main` recebia um merge entre a regeneração e o push (#2143, #2161), o rebase limpo assentava o selo, calculado sobre a base antiga, em cima do dado novo.
+- **Prova:** run 45992794523 (Publicar dados, head 6afebaa9): `Successfully rebased`, `88ca0839..e7655e17 HEAD -> main`, sem regeneração; 88ca0839 é o #2161
+- **Correção:** publicar_dados.yml: regenerar e emendar o commit sempre que a base do rebase mudou, limpo ou unido; a união só fica com a versão de cima do derivado.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_publicador_segue_o_rebase`

@@ -22,7 +22,7 @@ USO
   python coletar_s2id.py --desde 2026-06-29        # coleta (precisa de rede)
 """
 import html as _html, json, re, sys, time, urllib.parse
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from coletores_base import (NUM_ATO, carimbar_atos, buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, sha256,
@@ -103,6 +103,23 @@ def parse_tabela_portaria_dou(html_txt: str) -> list:
     return saida
 
 
+# 26/11/2026 (editoria): o tipo de declaração reconhecida vem do próprio ato — "Reconhecer ... a situação de
+# emergência" ou "o estado de calamidade pública". É ele que diz o nível que a regra permite afirmar
+# (Portaria MDR nº 260/2022, art. 5º): calamidade é nível III; emergência é nível I ou II, e o nível I não pede
+# reconhecimento federal (§1º). O nível é derivado em `gerar_resposta.py`; aqui só se lê o que o ato diz.
+PADRAO_DECLARACAO = re.compile(r"reconhec\w*\b.{0,400}?(situa[çc][ãa]o\s+de\s+emerg[êe]ncia|estado\s+de\s+calamidade\s+p[úu]blica)",
+                               re.I | re.S)
+
+
+def declaracao_do_ato(texto: str):
+    """'situacao_de_emergencia' | 'estado_de_calamidade_publica' | None, pela primeira declaração que o ato
+    reconhece. Sem a frase de reconhecimento, None: o tipo não se presume. Função pura."""
+    m = PADRAO_DECLARACAO.search(re.sub(r"<[^>]+>", " ", _html.unescape(texto or "")))
+    if not m:
+        return None
+    return "estado_de_calamidade_publica" if "calamidade" in m.group(1).lower() else "situacao_de_emergencia"
+
+
 def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list:
     """De cada portaria, extrai (número, data, município, UF). Só entra o que tem
     número E data E município — citação completa como condição de entrada (§3.3).
@@ -126,6 +143,7 @@ def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list
         # `conteudo` é o nome deste coletor; `trecho`, o do leitor compartilhado. A função aceita
         # os dois porque é chamada dos dois lados — do parser local e da varredura por janela.
         excerto = r.get("conteudo") or r.get("trecho") or ""
+        declaracao = declaracao_do_ato(excerto) or declaracao_do_ato(r.get("titulo") or "")
         achados = [{"municipio": n.strip(), "uf": uf.upper()} for n, uf in PADRAO_MUN.findall(excerto)]
         # 24/09/2026: o excerto da busca (≈235 caracteres) nunca chega ao município — o ato é
         # que diz quem foi reconhecido, e desde este ciclo ele diz numa tabela. Sem `ler_ato`
@@ -138,6 +156,7 @@ def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list
                     falhas.append({"url": r["url"], "titulo": (r.get("titulo") or "")[:120],
                                    "erro": type(e).__name__})
                 continue
+            declaracao = declaracao_do_ato(pagina) or declaracao
             for linha in parse_tabela_portaria_dou(pagina):
                 achados.append({"municipio": linha.get("municipio", "").strip(), "uf": linha.get("uf", "").upper(),
                                 "decreto_municipal": linha.get("decreto") or None,
@@ -150,7 +169,7 @@ def extrair_reconhecimentos(resultados: list, ler_ato=None, falhas=None) -> list
             if not a["municipio"] or not re.fullmatch(r"[A-Z]{2}", a["uf"] or ""):
                 continue
             saida.append({"portaria": f"Portaria SEDEC/MIDR nº {numero}", "data": data_iso,
-                          "url": r["url"], **a})
+                          "url": r["url"], **({"declaracao": declaracao} if declaracao else {}), **a})
     return saida
 
 
@@ -246,7 +265,7 @@ def encaixar_reconhecimento(eventos: list, novo: dict) -> str:
     return "acrescentado"
 
 
-CAMPOS_DO_ATO_DOU = ("decreto_municipal", "data_decreto_municipal", "desastre")
+CAMPOS_DO_ATO_DOU = ("decreto_municipal", "data_decreto_municipal", "desastre", "declaracao")
 
 
 def incorporar_ato_dou(eventos: list, ev: dict) -> str:
@@ -449,7 +468,59 @@ def _coletar(desde: str, ate: str) -> int:
     # não pagina (`start` é ignorado, medido); ler os 50 mais recentes de 132 e não dizer nada
     # seria apresentar recorte como varredura. `varrer_busca_dou` estreita a janela até caber e
     # devolve, à parte, as janelas que não couberam — que entram como lacuna declarada.
-    consulta = '"reconhece a situação de emergência"'
+    # 26/11/2026: a busca era só por emergência, e o reconhecimento de calamidade (nível III) nunca entrava.
+    # As duas consultas varrem a mesma janela; o resultado é um só.
+    for consulta in CONSULTAS_DOU:
+        codigo = _coletar_consulta(consulta, desde, ate, por_cod, por_nome, atos)
+        if codigo:
+            return codigo
+    return 0
+
+
+LEITURA_DOU = "https://www.in.gov.br/leiturajornal?data={dia}&secao={secao}"
+EDICOES_DIAS = 14          # janela das edições quando a consulta cai; `--edicoes-desde` alarga (recoleta do ciclo)
+_EDICOES_LIDAS = {}        # uma leitura por edição na rodada, para as duas consultas
+
+
+def casa_com_a_consulta(item: dict, consulta: str) -> bool:
+    """O ato da edição é o que a consulta acharia: a frase dela no título ou no trecho. Função pura."""
+    alvo = re.sub(r"\s+", " ", (consulta or "").strip('"').lower())
+    texto = re.sub(r"\s+", " ", f"{item.get('titulo') or ''} {item.get('trecho') or ''}".lower())
+    return alvo in texto or bool(re.search(r"reconhec\w*\b.{0,200}" + re.escape(alvo.split(" ", 1)[-1]), texto))
+
+
+def resultados_das_edicoes(consulta: str, desde: str, ate: str, buscar_fn=None, lacuna_fn=None) -> list:
+    """Atos da seção 1 (e da extra) de cada dia da janela que casam com a consulta. A janela é a dos últimos
+    EDICOES_DIAS dias, ou a de `--edicoes-desde`. Edição que não abre vira lacuna declarada com o dia, nunca
+    zero; `buscar` pede à ponte no Brasil o que o runner não alcança."""
+    from coletores_base import parse_busca_dou
+    buscar_fn, lacuna_fn = buscar_fn or buscar, lacuna_fn or registrar_lacuna
+    fim = date.fromisoformat(ate)
+    if "--edicoes-desde" in sys.argv:
+        ini = date.fromisoformat(sys.argv[sys.argv.index("--edicoes-desde") + 1])
+    else:
+        ini = max(date.fromisoformat(desde), fim - timedelta(days=EDICOES_DIAS))
+    saida, d = [], ini
+    while d <= fim:
+        for secao in ("do1", "do1e"):
+            u = LEITURA_DOU.format(dia=d.strftime("%d-%m-%Y"), secao=secao)
+            if u not in _EDICOES_LIDAS:
+                try:
+                    _EDICOES_LIDAS[u] = parse_busca_dou(buscar_fn(u).decode("utf-8", "replace"))
+                except Exception as e:  # noqa: BLE001 — edição que não abre é lacuna do dia
+                    _EDICOES_LIDAS[u] = None
+                    if secao == "do1":
+                        lacuna_fn(FONTES["dou"]["nome"], f"edição de {d.strftime('%d/%m/%Y')} não lida: {type(e).__name__}",
+                                         canal="DOU", camada=1, strings=[u])
+            saida += [x for x in (_EDICOES_LIDAS[u] or []) if casa_com_a_consulta(x, consulta)]
+        d += timedelta(days=1)
+    return saida
+
+
+CONSULTAS_DOU = ('"reconhece a situação de emergência"', '"reconhece o estado de calamidade pública"')
+
+
+def _coletar_consulta(consulta: str, desde: str, ate: str, por_cod, por_nome, atos) -> int:
     url = FONTES["dou"]["url"].format(q=urllib.parse.quote(consulta),
                                       de=date.fromisoformat(desde).strftime("%d-%m-%Y"),
                                       ate=date.fromisoformat(ate).strftime("%d-%m-%Y"))
@@ -472,7 +543,12 @@ def _coletar(desde: str, ate: str) -> int:
         return 0
     except Exception as e:  # noqa: BLE001
         registrar_lacuna(FONTES["dou"]["nome"], f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[url])
-        return 0
+        # 27/11/2026: a CONSULTA do DOU respondeu 502 ao runner por dias seguidos (reconhecimentos de 20 a 26/11,
+        # entre eles a calamidade de Tupanciretã, ficaram fora). A EDIÇÃO do dia é a mesma fonte, com endereço
+        # fixo — o que a ponte no Brasil sabe trazer — e traz a lista de atos no mesmo formato da consulta.
+        resultados, incompletas, paginas = resultados_das_edicoes(consulta, desde, ate), [], []
+        if not resultados:
+            return 0
     for bruto, u in paginas:
         hp = preservar_evidencia(bruto, u, "html", "coletar_s2id"); h = h or hp
         if eh_suspensao_defeso(bruto.decode("utf-8", "replace")):
@@ -729,7 +805,45 @@ def autoteste() -> int:
         r = parse_listagem_midr(FIX_LIST); return len(r) == 1 and r[0]["link"].endswith("desastres-1") and r[0]["data"] == "13/08/2026"
     def t11():  # negativo: página de login/HTML não é RSS
         return (not eh_xml_rss("<!DOCTYPE html><html><body>Conteúdo Restrito</body></html>")) and eh_xml_rss(FIX_RSS)
+    def t29():  # o tipo de declaração vem do ato; sem a frase de reconhecimento, não se presume
+        ecp = ("<p>Art. 1º Reconhecer, com base no Parecer, o <b>estado de calamidade pública</b> nas áreas "
+               "descritas no Formulário</p>")
+        e = extrair_reconhecimentos(parse_dou_html(FIXTURE_SCRIPT), ler_ato=lambda u: ecp + FIXTURE_ATO_TABELA)
+        return (declaracao_do_ato(FIX_PORTARIA) == "situacao_de_emergencia"
+                and declaracao_do_ato(ecp) == "estado_de_calamidade_publica"
+                and declaracao_do_ato("Decreto municipal de emergência") is None
+                and {x.get("declaracao") for x in e} == {"estado_de_calamidade_publica"}
+                and {x.get("declaracao") for x in extrair_reconhecimentos(parse_dou_html(FIXTURE_SCRIPT),
+                     ler_ato=lambda u: FIXTURE_ATO_TABELA)} == {"situacao_de_emergencia"})
+
+    def t30():  # a declaração lida enriquece o evento que já estava no banco, sem sobrescrever
+        ev = [dict(EXATO)]
+        r = incorporar_ato_dou(ev, {**EXATO, "declaracao": "situacao_de_emergencia"})
+        return r == "enriquecido" and ev[0]["declaracao"] == "situacao_de_emergencia"
+
+    def t31():  # consulta caída: a edição do dia traz os atos, e só os que a consulta acharia entram
+        _EDICOES_LIDAS.clear()
+        pagina = FIXTURE_SCRIPT.encode()
+        idas = []
+        def falso(u):
+            idas.append(u)
+            if "26-09-2026" in u:
+                raise TimeoutError("sem resposta")
+            return pagina
+        lacunas = []
+        anota = lambda *a, **k: lacunas.append(a[1])
+        r = resultados_das_edicoes('"reconhece a situação de emergência"', "2026-09-24", "2026-09-26", buscar_fn=falso, lacuna_fn=anota)
+        r2 = resultados_das_edicoes('"reconhece o estado de calamidade pública"', "2026-09-24", "2026-09-26", buscar_fn=falso, lacuna_fn=anota)
+        _EDICOES_LIDAS.clear()
+        return (len(r) == 4 and r2 == [] and len(idas) == 6 and lacunas == ["edição de 26/09/2026 não lida: TimeoutError"]
+                and casa_com_a_consulta({"titulo": "PORTARIA Nº 1", "trecho": "Reconhece o estado de calamidade pública no Município"},
+                                        '"reconhece o estado de calamidade pública"')
+                and not casa_com_a_consulta({"titulo": "AVISO", "trecho": "nada"}, '"reconhece a situação de emergência"'))
+
     return rodar_autoteste({"parser do DOU lê o JSON embutido": t1, "extrai portaria+data+município": t2,
+                            "consulta caída: a edição do dia traz os atos; edição que não abre é lacuna": t31,
+                            "tipo de declaração lido do ato (emergência ou calamidade); sem a frase, nada": t29,
+                            "a declaração lida enriquece o evento já gravado": t30,
                             "negativo: sem número não entra": t3,
                             "negativo: página sem a estrutura de resultados levanta, não devolve zero": t4,
                             "lê a forma de hoje (<script>), sem a marcação de destaque": t12,

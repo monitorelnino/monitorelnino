@@ -11,6 +11,7 @@ um título estável; com corpo, a Issue abre se não houver uma aberta; sem corp
 Falha do GitHub é aviso no log, nunca erro: alarme não derruba coleta nem publicação.
 """
 import json
+import re
 import subprocess
 import sys
 
@@ -29,15 +30,21 @@ def issues_abertas(gh=_gh):
     return {i["title"]: i["number"] for i in json.loads(p.stdout or "[]")}
 
 
+def _causa(texto: str) -> str:
+    """O texto sem o que muda a cada run (link do run, duração): 30 comentários iguais em #469, 24/11/2026."""
+    texto = re.sub(r"https?://\S+/actions/runs/\d+\S*", "", texto or "")
+    return re.sub(r"[ \t]+", " ", re.sub(r"(?<![\w.])\d+(?:\.\d+)?s\b", "", texto)).strip()
+
+
 def _mudou(gh, n, corpo) -> bool:
-    """O que a Issue aberta diz (corpo ou último comentário) já não é o que a causa diz hoje."""
+    """O que a Issue aberta diz (corpo ou último comentário) já não é a causa de hoje; run e duração não contam."""
     p = gh(["issue", "view", str(n), "--repo", REPO_DOS_AVISOS, "--json", "body,comments"])
     try:
         d = json.loads(p.stdout or "{}")
         ultimo = ((d.get("comments") or [{}])[-1].get("body") or d.get("body") or "").strip()
     except (ValueError, AttributeError, IndexError):
         return False
-    return p.returncode == 0 and not ultimo.startswith(corpo.strip())
+    return p.returncode == 0 and not _causa(ultimo).startswith(_causa(corpo))
 
 
 def avisar(titulo: str, corpo: str = "", ao_fechar: str = "A causa sumiu. Fechada.", gh=_gh, abertas=None) -> str:
@@ -72,6 +79,8 @@ def autoteste() -> int:
             {"body": "velho", "comments": []} if a[:2] == ["issue", "view"] else aberta)})()) == "atualizada",
         "causa igual não comenta": avisar("T", "x", gh=lambda a, e=None: type("R", (), {"returncode": 0, "stdout": json.dumps(
             {"body": "x\n\nFecha sozinha", "comments": []} if a[:2] == ["issue", "view"] else aberta)})()) == "sem mudança",
+        "outro run, mesma causa, não comenta": avisar("T", "Run: https://g/a/actions/runs/2\nx ✗ 0.4s", gh=lambda a, e=None: type("R", (), {"returncode": 0, "stdout": json.dumps(
+            {"body": "Run: https://g/a/actions/runs/1\nx ✗ 0.3s\n\nFecha", "comments": []} if a[:2] == ["issue", "view"] else aberta)})()) == "sem mudança",
         "sem causa e sem Issue, nada": avisar("T", gh=gh_com([])) == "sem mudança",
         "GitHub fora do ar não é erro": avisar("T", "x", gh=gh_com([], rc=1)) == "sem acesso às Issues",
     }

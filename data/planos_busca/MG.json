@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-11-24",
  "municipios": {
   "3106200": {
    "S16": {
@@ -1587,6 +1587,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3105905&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3105905&pagina=1&tamanhoPagina=500",
+    "motivo": "583 contratação(ões) lida(s) em 38 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Barroso\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Barroso\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3105400": {
@@ -1623,6 +1644,27 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3105400&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3105400&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Barão de Cocais\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Barão de Cocais\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
     "dominio": null
    }
   },
@@ -1661,6 +1703,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3106309&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3106309&pagina=1&tamanhoPagina=500",
+    "motivo": "420 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Belo Oriente\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Belo Oriente\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3106705": {
@@ -1697,6 +1760,27 @@
     "situacao": "lido",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3106705&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3106705&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Betim\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Betim\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
     "dominio": null
    }
   },
@@ -1735,6 +1819,27 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3106903&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3106903&pagina=1&tamanhoPagina=500",
+    "motivo": "323 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Bicas\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-24",
+    "situacao": "erro",
+    "consulta": "\"Bicas\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
+    "dominio": null
    }
   },
   "3107109": {
@@ -1771,6 +1876,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3107109&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3107109&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1809,6 +1921,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3107307&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3107307&pagina=1&tamanhoPagina=500",
+    "motivo": "1397 contratação(ões) lida(s) em 53 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3107406": {
@@ -1845,6 +1964,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3107406&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3107406&pagina=1&tamanhoPagina=500",
+    "motivo": "572 contratação(ões) lida(s) em 37 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -1883,6 +2009,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3107802&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3107802&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3107901": {
@@ -1919,6 +2052,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3107901&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3107901&pagina=1&tamanhoPagina=500",
+    "motivo": "70 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -1957,6 +2097,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3108008&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3108008&pagina=1&tamanhoPagina=500",
+    "motivo": "349 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3108305": {
@@ -1993,6 +2140,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3108305&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3108305&pagina=1&tamanhoPagina=500",
+    "motivo": "806 contratação(ões) lida(s) em 41 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -2031,6 +2185,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3108404&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3108404&pagina=1&tamanhoPagina=500",
+    "motivo": "717 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3108552": {
@@ -2067,6 +2228,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3108552&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3108552&pagina=1&tamanhoPagina=500",
+    "motivo": "19 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },

@@ -2,53 +2,53 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 105576,
+   "valor": 111745,
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-11-22",
-   "n": 145,
+   "periodo_fim": "2026-11-26",
+   "n": 149,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.desde_dias",
    "periodo_vars": {
     "data": "29/06/2026",
-    "n": 145
+    "n": 149
    }
   },
   {
    "id": "municipios_plano_localizado",
-   "valor": 180,
+   "valor": 197,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-24",
-   "n": 180,
+   "periodo_fim": "2026-11-27",
+   "n": 197,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "dias_alerta_laranja_vermelho",
-   "valor": 47,
+   "valor": 52,
    "unidade": "dias",
    "periodo_inicio": "2026-09-15",
-   "periodo_fim": "2026-11-23",
-   "n": 66,
+   "periodo_fim": "2026-11-27",
+   "n": 70,
    "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.dias_observados",
    "periodo_vars": {
     "data": "15/09/2026",
-    "n": 66
+    "n": 70
    }
   },
   {
    "id": "estados_plano_saude",
-   "valor": 9,
+   "valor": 11,
    "unidade": "estados",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-24",
+   "periodo_fim": "2026-11-27",
    "n": 27,
    "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
    "sem_coleta": false,
@@ -60,7 +60,7 @@
    "valor": 0,
    "unidade": "cidades",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-22",
+   "periodo_fim": "2026-11-26",
    "n": 1,
    "fonte": "OpenAQ (monitores de referência das capitais), limite de 24 h da OMS",
    "sem_coleta": false,
@@ -68,67 +68,67 @@
    "denominador": 1,
    "periodo_molde": "imprensa.numeros.periodo.capitais_medidas",
    "periodo_vars": {
-    "data": "22/11/2026",
+    "data": "26/11/2026",
     "n": 1
    }
   },
   {
    "id": "municipios_decretaram",
-   "valor": 1286,
+   "valor": 1320,
    "unidade": "municípios",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1286,
+   "n": 1320,
    "fonte": "Defesa Civil nacional (decretos no Diário Oficial da União)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "municipios_reconhecidos",
-   "valor": 1138,
+   "valor": 1164,
    "unidade": "municípios",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1138,
+   "n": 1164,
    "fonte": "Defesa Civil nacional (portarias de reconhecimento, DOU)",
    "sem_coleta": false,
    "motivo": null,
    "prazo_reconhecimento": {
-    "n": 1138,
+    "n": 1164,
     "mediana": 15.0,
     "p25": 8.0,
-    "p75": 22.0,
-    "p90": 30.0
+    "p75": 23.0,
+    "p90": 30.7
    }
   },
   {
    "id": "pessoas_municipios_decretados",
-   "valor": 42792630,
+   "valor": 45675563,
    "unidade": "pessoas",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1286,
+   "n": 1320,
    "fonte": "IBGE, Censo 2022 (população dos municípios que decretaram)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "atos_por_evento",
-   "valor": 1818,
+   "valor": 1870,
    "unidade": "atos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1818,
+   "n": 1870,
    "fonte": "Defesa Civil nacional (atos de emergência)",
    "sem_coleta": false,
    "motivo": null,
    "por_evento": {
-    "sem_tipo_informado": 594,
-    "seca": 485,
-    "chuva": 361,
-    "fogo": 107,
-    "outro_declarado": 7,
-    "vendaval": 264
+    "sem_tipo_informado": 615,
+    "seca": 503,
+    "chuva": 366,
+    "fogo": 112,
+    "outro_declarado": 8,
+    "vendaval": 266
    }
   },
   {
@@ -168,7 +168,7 @@
   },
   {
    "id": "autorizado_defesa_civil",
-   "valor": 251608544.37,
+   "valor": 507619815.58,
    "unidade": "reais",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
@@ -214,18 +214,18 @@
   },
   {
    "id": "srag",
-   "valor": 90199,
+   "valor": 94033,
    "unidade": "internações",
    "periodo_inicio": "2026-06-28",
-   "periodo_fim": "2026-10-31",
-   "n": 18,
+   "periodo_fim": "2026-11-07",
+   "n": 19,
    "fonte": "Ministério da Saúde (SIVEP-Gripe), semanas fechadas",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "diarreia",
-   "valor": 429706,
+   "valor": 429806,
    "unidade": "atendimentos",
    "periodo_inicio": "2026-07-01",
    "periodo_fim": "2026-08-31",
@@ -264,15 +264,15 @@
   },
   {
    "id": "estados_acima_da_faixa_srag",
-   "valor": 3,
+   "valor": 0,
    "unidade": "estados",
-   "periodo_inicio": "2026-10-25",
-   "periodo_fim": "2026-10-31",
+   "periodo_inicio": "2026-11-01",
+   "periodo_fim": "2026-11-07",
    "n": 27,
    "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
    "sem_coleta": false,
    "motivo": null,
-   "periodo": "2026-43"
+   "periodo": "2026-44"
   },
   {
    "id": "estados_acima_da_faixa_chikungunya",
@@ -312,14 +312,14 @@
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-11-24",
+ "gerado_em": "2026-11-27",
  "janela_dias": 7,
  "indices": {
-  "edicao": "24/11/2026",
-  "mare_legal": 42.5,
-  "mare_saude": 60.3,
+  "edicao": "27/11/2026",
+  "mare_legal": 42.6,
+  "mare_saude": 65.2,
   "saude_verificadas": 27,
-  "decretaram_no_ciclo": 1286
+  "decretaram_no_ciclo": 1320
  },
  "cartoes": [
   {
@@ -329,8 +329,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-11-17",
-    "fim": "2026-11-24"
+    "ini": "2026-11-20",
+    "fim": "2026-11-27"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -358,7 +358,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-11-22 e 2026-11-23, nos dois índices",
+   "nota": "entre as edições de 2026-11-26 e 2026-11-27, nos dois índices",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": null,
@@ -444,7 +444,7 @@
    "id": "decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que decretaram emergência ou calamidade na semana",
-   "valor": 12,
+   "valor": 9,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -464,7 +464,7 @@
    "id": "populacao_decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
-   "valor": 518911,
+   "valor": 430332,
    "unidade": "pessoas",
    "sem_coleta": false,
    "periodo": null,
@@ -484,7 +484,7 @@
    "id": "reconhecimentos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que tiveram a emergência reconhecida pelo governo federal na semana",
-   "valor": 20,
+   "valor": 15,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -504,14 +504,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 19,
+   "valor": 73,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "23/11/2026 05:49",
+   "referencia": "27/11/2026 05:50",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "23/11/2026 05:49",
+   "consultado_em": "27/11/2026 05:50",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -524,14 +524,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3648,
+   "valor": 2743,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "23/11/2026 05:49",
+   "referencia": "27/11/2026 05:50",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "23/11/2026 05:49",
+   "consultado_em": "27/11/2026 05:50",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -544,96 +544,104 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 21803,
+   "valor": 33287,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "23/11/2026",
+   "consultado_em": "27/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261122.csv",
+   "nota": "Focos do dia — focos_diario_br_20261126.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 12856
+     "valor": 17637
     },
     {
      "uf": "MA",
-     "valor": 4273
+     "valor": 6651
     },
     {
      "uf": "AP",
-     "valor": 2349
+     "valor": 2461
     },
     {
      "uf": "PI",
-     "valor": 384
+     "valor": 1723
     },
     {
      "uf": "CE",
-     "valor": 365
-    },
-    {
-     "uf": "RR",
-     "valor": 347
-    },
-    {
-     "uf": "AM",
-     "valor": 282
-    },
-    {
-     "uf": "RO",
-     "valor": 255
-    },
-    {
-     "uf": "PE",
-     "valor": 170
-    },
-    {
-     "uf": "AC",
-     "valor": 125
-    },
-    {
-     "uf": "PB",
-     "valor": 90
+     "valor": 1321
     },
     {
      "uf": "BA",
-     "valor": 87
-    },
-    {
-     "uf": "AL",
-     "valor": 75
-    },
-    {
-     "uf": "MT",
-     "valor": 61
-    },
-    {
-     "uf": "RN",
-     "valor": 42
+     "valor": 942
     },
     {
      "uf": "TO",
-     "valor": 15
+     "valor": 608
     },
     {
-     "uf": "SE",
-     "valor": 14
+     "uf": "AM",
+     "valor": 571
+    },
+    {
+     "uf": "RR",
+     "valor": 344
+    },
+    {
+     "uf": "PE",
+     "valor": 322
+    },
+    {
+     "uf": "PB",
+     "valor": 233
+    },
+    {
+     "uf": "AL",
+     "valor": 91
     },
     {
      "uf": "MG",
-     "valor": 9
+     "valor": 82
     },
     {
-     "uf": "RJ",
-     "valor": 2
+     "uf": "RN",
+     "valor": 77
     },
     {
-     "uf": "SP",
+     "uf": "GO",
+     "valor": 51
+    },
+    {
+     "uf": "SE",
+     "valor": 50
+    },
+    {
+     "uf": "RS",
+     "valor": 43
+    },
+    {
+     "uf": "RO",
+     "valor": 35
+    },
+    {
+     "uf": "MT",
+     "valor": 32
+    },
+    {
+     "uf": "ES",
+     "valor": 8
+    },
+    {
+     "uf": "AC",
+     "valor": 3
+    },
+    {
+     "uf": "SC",
      "valor": 2
     }
    ],
@@ -645,18 +653,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 7.3,
+   "valor": 3.6,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "23/11/2026",
+   "referencia": "27/11/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "23/11/2026",
+   "consultado_em": "27/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 36.0 °C contra a média de 28.7 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 40.0 °C contra a média de 36.4 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -685,7 +693,7 @@
    "id": "resposta_autorizado_semana",
    "grupo": "dinheiro",
    "rotulo": "Autorizados pela defesa civil federal nos últimos 7 dias",
-   "valor": 0,
+   "valor": 3933692.08,
    "unidade": "reais",
    "sem_coleta": false,
    "periodo": null,
@@ -696,7 +704,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "desde 29 de junho, 104 município(s) com ato de portaria",
+   "nota": "desde 29 de junho, 431 município(s) com ato de portaria",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "financiamento.html"
@@ -744,15 +752,15 @@
   {
    "id": "srag_internacoes_se",
    "grupo": "saude",
-   "rotulo": "Internações por síndrome respiratória grave na semana de 25 a 31 de outubro de 2026",
-   "valor": 3635,
+   "rotulo": "Internações por síndrome respiratória grave na semana de 1 a 7 de novembro de 2026",
+   "valor": 3373,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "2026-43",
+   "referencia": "2026-44",
    "fonte": "Ministério da Saúde (SIVEP-Gripe)",
    "url_fonte": null,
-   "consultado_em": "2026-43",
+   "consultado_em": "2026-44",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -765,7 +773,7 @@
    "id": "ufs_dengue_alerta",
    "grupo": "saude",
    "rotulo": "Estados com dengue em nível de alerta",
-   "valor": 4,
+   "valor": 1,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -779,10 +787,7 @@
    "nota": "nível calculado pelo InfoDengue; o estado entra quando ao menos um município acompanhado está em nível 3 ou 4",
    "secundaria": null,
    "lista": [
-    "ES",
-    "PB",
-    "PR",
-    "SP"
+    "ES"
    ],
    "pagina_de_origem": "saude.html"
   }
@@ -812,5 +817,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 24/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 42,5 de 100; o MARÉ Saúde, em 60,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 12 municípios decretaram situação de emergência ou calamidade; 518.911 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 9 de 27 capitais têm plano localizado e 1286 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 27/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 42,6 de 100; o MARÉ Saúde, em 65,2 de 100. Na semana, nenhum município publicou plano para o El Niño e 9 municípios decretaram situação de emergência ou calamidade; 430.332 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 9 de 27 capitais têm plano localizado e 1320 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }

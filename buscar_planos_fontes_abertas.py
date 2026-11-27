@@ -45,7 +45,7 @@ import urllib.error
 import urllib.parse
 import xml.etree.ElementTree as ET
 
-from coletores_base import (buscar_uma_vez, ler, gravar, hoje_editorial, referencia_ibge,
+from coletores_base import (buscar_uma_vez, ler, gravar, hoje_editorial, referencia_ibge, pela_ponte,
                             rodar_autoteste, registrar_lacuna, MuroDeRobo)
 from descobrir_planos import dominios_do_municipio, identifica_prefeitura, RECUSAS_DE_FONTE
 from consultar_querido_diario import STATUS_DA_PISTA, APIS as APIS_QD
@@ -264,6 +264,7 @@ MODALIDADES_PNCP = (8, 9, 6, 4, 5, 7, 12, 10)   # dispensa, inexigibilidade, pre
 ANO_PNCP_DESDE = 2023
 TAMANHO_PNCP = 500                              # páginas grandes: 10 capitais em 200 min a 50 por página; o servidor que recusa (400) volta a 50
 PAGINAS_PNCP = 40                               # teto por consulta; estourar sem achado é erro, não ausência
+TETO_PNCP_S = 20 * 60                           # teto por município (25/11: Recife comeu os 120 min da válvula de PE, 0 lidos)
 PADRAO_OBJETO = re.compile(PADRAO_PLANO.pattern + r"|redu[cç][aã]o de risco|pmrr|defesa civil", re.I)
 
 
@@ -294,12 +295,17 @@ def ler_pncp(corpo: bytes) -> tuple:
     return saida, len(d["data"]), int(d.get("totalPaginas") or 1)
 
 
-def consultar_pncp(buscar, ibge: str, hoje: str, paginas: int = PAGINAS_PNCP) -> tuple:
-    """(consulta, achados, motivo): todas as modalidades e anos; só diz `sem_resultado` se leu tudo."""
-    achados, lidas, consultas, truncada, tam = [], 0, 0, False, TAMANHO_PNCP
+def consultar_pncp(buscar, ibge: str, hoje: str, paginas: int = PAGINAS_PNCP, relogio=time.monotonic) -> tuple:
+    """(consulta, achados, motivo): todas as modalidades e anos; só diz `sem_resultado` se leu tudo. Passado o
+    teto do município, o que falta não se lê: com achado é `lido`, sem achado é erro (volta no fim da fila)."""
+    achados, lidas, consultas, truncada, tam, fim = [], 0, 0, False, TAMANHO_PNCP, relogio() + TETO_PNCP_S
     for ano in range(ANO_PNCP_DESDE, int(hoje[:4]) + 1):
         for mod in MODALIDADES_PNCP:
             for pag in range(1, paginas + 1):
+                if relogio() > fim:
+                    if achados:
+                        return url_qd(PNCP, parametros_pncp(ibge, MODALIDADES_PNCP[0], ANO_PNCP_DESDE, hoje, 1)), achados, None
+                    raise ValueError(f"leitura incompleta: teto de {TETO_PNCP_S // 60} min no município, {lidas} contratação(ões) lida(s); não vale como ausência")
                 try:
                     corpo = buscar(url_qd(PNCP, parametros_pncp(ibge, mod, ano, hoje, pag, tam)), 60)
                 except urllib.error.HTTPError as e:
@@ -375,7 +381,13 @@ def resolver_dominio(nome: str, uf: str, ibge: str, buscar, tentativas: list = N
     `tentativas` recebe (endereço, situação, motivo) de cada um que não serviu."""
     for d in CANDIDATOS_EXTRA.get(ibge, []) + dominios_do_municipio(nome, uf):
         try:
-            if identifica_prefeitura(buscar(f"https://{d}/", 15).decode("utf-8", "replace"), nome):
+            try:
+                corpo = buscar(f"https://{d}/", 15)
+            except Exception as e:  # noqa: BLE001 — 403 ou silêncio para o robô de fora: a cópia da ponte no Brasil (26/11/2026)
+                corpo = pela_ponte(f"https://{d}/", e, "buscar_planos_fontes_abertas")
+                if corpo is None:
+                    raise
+            if identifica_prefeitura(corpo.decode("utf-8", "replace"), nome):
                 return d
             r = ("nao_identifica", "responde, mas não se diz a prefeitura")
         except Exception as e:  # noqa: BLE001 — DNS, TLS, timeout, recusa: o endereço não serve; tenta o próximo
@@ -551,6 +563,17 @@ def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int
 
 # ---- autoteste (offline; não escreve em data/) ---------------------------------------------------
 def autoteste() -> int:
+    # A ponte é rede e escrita em `data/ponte_pedidos.json`: no autoteste, sem pedido; a cópia vem de `copias`.
+    global pela_ponte
+    da_producao, copias = pela_ponte, {}
+    pela_ponte = lambda url, e, origem=None, pedir=True: copias.get(url)
+    try:
+        return _autoteste(copias)
+    finally:
+        pela_ponte = da_producao
+
+
+def _autoteste(copias) -> int:
     import pathlib
     wb = json.dumps([["original", "timestamp", "mimetype"],
                      ["http://x.gov.br/docs/PLANCON-2025.pdf", "20250101000000", "application/pdf"],
@@ -625,6 +648,10 @@ def autoteste() -> int:
             and um(["S13"], {**base, "lexml": TimeoutError("t")})["S13"]["situacao"] == "erro"),
         "resposta sem achado registra a consulta (sem_resultado)": lambda: (lambda r: r["situacao"] == "sem_resultado" and r["consulta"].startswith("https://dados.gov.br"))(um(["S29"], {**base, "dados.gov.br": json.dumps({"success": True, "result": {"results": []}}).encode()})["S29"]),
         "domínio que não se identifica como prefeitura: busca não feita": lambda: um(["S16"], {**base, "alfa.xx.gov.br": b"<html>outra coisa</html>"})["S16"]["situacao"] == "dominio_nao_verificado",
+        "403 ao robô de fora com cópia do Brasil: o domínio se confirma e o arquivo da web é lido": lambda: (
+            copias.update({"https://alfa.xx.gov.br/": home}),
+            um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"],
+            copias.clear())[1] == "lido",
         "domínio que recusa (403) sem ninguém responder é recusa nomeada, não 'não verificado'": lambda: (
             um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "recusa_de_fonte"
             and um(["S16"], {"//www.alfa.xx.gov.br": b"<html>outra</html>", **{k: v for k, v in base.items() if k != "alfa.xx.gov.br"}, "//alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "dominio_nao_verificado"
@@ -679,6 +706,9 @@ def autoteste() -> int:
         "S22: páginas de 500; 400 na primeira chamada volta a 50 para o resto, sem repetir o 500": lambda: (
             lambda v: consultar_pncp(lambda u, t: (v.append(u), (_ for _ in ()).throw(urllib.error.HTTPError(u, 400, "x", {}, None)) if "tamanhoPagina=500" in u else pn(1, [pc("Plano de Contingência", 7)]))[1], "1", "2026-10-22")[1] != []
             and "tamanhoPagina=500" in v[0] and sum("tamanhoPagina=500" in u for u in v) == 1 and "tamanhoPagina=50&" in v[1] + "&")([]),
+        "S22: teto do município: sem achado é erro (não ausência), com achado é o que leu": lambda: (
+            _levanta(lambda: consultar_pncp(lambda u, t: pn(1, [pc("Compra de papel", 8)]), "1", "2026-10-22", relogio=iter(range(0, 10**6, 600)).__next__))
+            and consultar_pncp(lambda u, t: pn(1, [pc("Plano de Contingência", 7)]), "1", "2026-10-22", relogio=iter(range(0, 10**6, 600)).__next__)[1] != []),
         "S22: 403 é recusa; falha de conexão é erro": lambda: (
             um(["S22"], {**base, "pncp.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S22"]["situacao"] == "recusa_de_fonte"
             and um(["S22"], {**base, "pncp.gov.br": OSError("tls")})["S22"]["situacao"] == "erro"),
