@@ -3041,14 +3041,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 11521,
+   "total_acessos": 11522,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.639-de-20-de-outubro-de-2026-739936191",
-     "quando": "2026-11-25T18:49:42Z",
-     "origem": "coletar_recursos_resposta",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.685-de-23-de-outubro-de-2026-740391348",
      "quando": "2026-11-25T18:49:42Z",
@@ -4242,9 +4236,15 @@
      "quando": "2026-11-26T02:25:32Z",
      "origem": "coletar_recursos_resposta",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/leiturajornal?data=24-11-2026&secao=do1",
+     "quando": "2026-11-27T12:29:57Z",
+     "origem": "coletar_s2id",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-25"
+   "ultimo_acesso": "2026-11-27"
   },
   "www.saopaulo.sp.gov.br": {
    "status_robots": "proibe",
