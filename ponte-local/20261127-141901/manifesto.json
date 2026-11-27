@@ -1,0 +1,48 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T14:21:37+00:00",
+ "itens": [
+  {
+   "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=27-11-2026&delta=50",
+   "em": "2026-11-27T14:19:01+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1e",
+   "em": "2026-11-27T14:20:02+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1e",
+   "bytes": 247,
+   "sha256": "90ab5cbd6db2a0a79769618567f36ddecf1a435dcc8da3e84ba4bf01a8a8ae89"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=27-11-2026&secao=do1",
+   "em": "2026-11-27T14:20:13+00:00",
+   "status": 502,
+   "erro": "HTTP 502"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=27-11-2026&secao=do1e",
+   "em": "2026-11-27T14:20:22+00:00",
+   "status": 502,
+   "erro": "HTTP 502"
+  },
+  {
+   "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20o%20estado%20de%20calamidade%20p%C3%BAblica%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=27-11-2026&delta=50",
+   "em": "2026-11-27T14:20:31+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://antigo.saude.sc.gov.br/coronavirus/arquivos/Portaria_179_Criacao_COE.pdf",
+   "em": "2026-11-27T14:21:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/wp-content/uploads/2013/09/PLANO-DE-CONTING%C3%8ANCIA-INUNDA%C3%87%C3%83O-GRADUAL-PMRB-2025.pdf",
+   "em": "2026-11-27T14:21:34+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  }
+ ]
+}
