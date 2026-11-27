@@ -1290316,7 +1290316,14 @@
    "pista_id": "372a313803",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "1b59f925c60d154ac4396e3bd1e1db7ef6e76f82d05190d9a54377d02240829b"
+   "hash_evidencia": "1b59f925c60d154ac4396e3bd1e1db7ef6e76f82d05190d9a54377d02240829b",
+   "data_da_edicao": "2026-02-19",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": true,
+   "nao_aplicado": {
+    "em": "2026-11-27",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
   },
   {
    "promove": false,
@@ -1290461,7 +1290468,15 @@
    "pista_id": "cea8eca136",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "11495de16f746bd6f8feb984d133fa438cff61e4487883e3429ed8ac605ea1a9"
+   "hash_evidencia": "11495de16f746bd6f8feb984d133fa438cff61e4487883e3429ed8ac605ea1a9",
+   "data_da_edicao": "2023-10-16",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "nao_aplicado": {
+    "em": "2026-11-27",
+    "motivo": "já consta no banco — mesmo documento, ou registro igual ou mais forte"
+   }
   },
   {
    "promove": false,
@@ -1292894,7 +1292909,13 @@
    "pista_id": "5962b83b86",
    "origem": "descoberta",
    "leu_documento": true,
-   "hash_evidencia": "d318845cf651b78ffa8969ec33bf053d95b2838b3afd1dae5acdf8cbafe5a35f"
+   "hash_evidencia": "fc342ce2f6b208a4e92b94a86b784a072a619d31f6cb9f0289d7d5dc3542634f",
+   "data_da_edicao": "2018-12-31",
+   "indicado_ao_cadastro_art3A": true,
+   "atualizacao_anual_localizada": false,
+   "rotulo_contagem": "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)",
+   "substituiu": "categoria mais forte (decreto → plano)",
+   "aplicado_em": "2026-11-27"
   },
   {
    "promove": false,
@@ -1293688,6 +1293709,942 @@
     ],
     "encontrou": null
    }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3952 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Mostardas/RS | Plano Municipal de vacinação COVID-19 Free cookie consent management tool by TermsFeed Policy Generator usuário usuário deslogar Prefeitura Munic"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "13/12/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "13/12/2021",
+   "natureza": null,
+   "ibge": "4312500",
+   "municipio": "Mostardas",
+   "uf": "RS",
+   "url": "https://mostardas.rs.gov.br/pagina/view/47",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "9ef896503c",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "994ab73ec84d907d0aa73105a871dd8c75589dc959c236f190ac785189647b5a",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4721 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "carregada da elaboração do Plano Municipal de Saneamento Básico do Município de Andrelândia. Arquivos para download PORTARIA DE NOMEAÇÃO RELATÓRIO FOTOGRÁFICO D"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/08/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/08/2021",
+   "natureza": null,
+   "ibge": "3102803",
+   "municipio": "Andrelândia",
+   "uf": "MG",
+   "url": "https://andrelandia.mg.gov.br/institucional/pmsb",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d328f905d6",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "27f1cfc3a3fa77f08b5e2aee8c1179d2bd0a5e9591576b64cc20962f4b6151ec",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5052 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Capela de Santana/RS - Plano de Ação Municipal - Covid Free cookie consent management tool by TermsFeed &nbsp;&nbsp;Menu &nbsp;&nbsp;Conteúdo &nbsp;&nbsp;Busca"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "01/04/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/04/2021",
+   "natureza": null,
+   "ibge": "4304689",
+   "municipio": "Capela de Santana",
+   "uf": "RS",
+   "url": "https://capeladesantana.rs.gov.br/pagina/view/147/plano-de-acao-municipal-covid",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "919cf8c6ad",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d383ecfb05455d1c47e2b622f686259a57d6e69d4460f6829bb139e4aa26bba9",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4109401",
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "url": "https://guarapuava.pr.gov.br/wp-content/uploads/2025/12/Plano-Municipal-de-Saude-2026-2029.pdf",
+   "regras_18": [],
+   "pista_id": "e8111187e2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html",
+   "regras_18": [],
+   "pista_id": "751d0bbd32",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3118 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Carteiras de Identidade Nacional (CIN) - Prefeitura de Autazes Acessibilidade Email Serviço Cidadão Ouvidoria Portal da Transparência e-SIC Home Portal da Trans"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "31/05/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "31/05/2026",
+   "natureza": null,
+   "ibge": "1300300",
+   "municipio": "Autazes",
+   "uf": "AM",
+   "url": "https://autazes.am.gov.br/downloads/9/carteiras-de-identidade-nacional-cin",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "4446cce4c3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "adf4371c1b70b2c3c6203aab9ebf88f858f25881642d8f621e9ac08c5ff88d8c",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2311231",
+   "municipio": "Potiretama",
+   "uf": "CE",
+   "url": "https://www.potiretama.ce.gov.br/relatorio.php?id=21&rel=IEFORCBBLk5UaXBvQXJxIElOICgxNDIsNTYsNTcsMTI4LDEyOSwxMzAsMTMxLDEzNiwxMzIsMTMzLDEzNCwxMzUsMTM3LDExOCwzOSw1Miw1MywzMywxMDIsMTAzLDE0MCw1OCw1MCw0NiwxMjEsMzgsMTI3LDEwLDE0NSwxNDYsMTQzLDEwMCw0OSw0NSw5Nyw0OCw0NywyLDEwMSwxMjUsMTA3LDEwOSwxMTAsNDAsNDEsMzYsNDQsMzIsMTQsNTEsOTksMzUsMzQsMywxMjYsNDMsMzcsNDIsMTEyLDU5LDExMyw1NCwxNDEsMTE1LDEzOSwxMzgsNTUp&sig=bf0ffea3ea26ecc91e0176ac594cfc33492513c1de9f47d06ae07442b5816a6c&exp=pdf",
+   "regras_18": [],
+   "pista_id": "2eeb3273e2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27883 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SECRETARIA DE SAÚDE ITARANTIM-BA Julho - 2021 SECRETARIA DE SAÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "SECRETARIA DE SAÚDE ITARANTIM-BA Julho - 2021 SECRETARIA DE SAÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "07/2021",
+      "data_origem": "capa",
+      "data_trecho": "Julho - 2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "SECRETARIA DE SAÚDE ITARANTIM-BA Julho - 2021 SECRETARIA DE SAÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "eparar a resposta rápida e coordenada para enfrentamento do Novo Coronavírus no Município de Itarantim-BA. Objetivos Específicos o Coordenar as ações de vigilân"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "AÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA DE SAÚDE Colaboradores: Prefeito FÁBIO PEREIRA GUSMÃO Secret"
+    }
+   },
+   "categoria": null,
+   "data": "07/2021",
+   "natureza": "EX_ANTE",
+   "ibge": "2916807",
+   "municipio": "Itarantim",
+   "uf": "BA",
+   "url": "https://itarantim.ba.gov.br/wp-content/uploads/2024/11/Plano_de_Contingencia_de_Itarantim.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "capa",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "1ff868afea",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ff84327f1b3f00c9c1a86e22ffb475377bc527c773a6d3fa8fc3da52dd6b2a25"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "5d72f5caf6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "76ee1fc5da",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "c7abea0622",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "b88fa650bf",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "7477cb024a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "0430281557",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "0b9f429f3a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "370 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202454",
+   "municipio": "Ibatiba",
+   "uf": "ES",
+   "url": "https://ibatiba.es.gov.br/galeria",
+   "regras_18": [],
+   "pista_id": "eab5f9f5d1",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html",
+   "regras_18": [],
+   "pista_id": "f39b741525",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4301636",
+   "municipio": "Balneário Pinhal",
+   "uf": "RS",
+   "url": "https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2107/?defesa-civil-de-balneario-pinhal-fortalece-protecao-municipal-em-reuniao-estrategica.html",
+   "regras_18": [],
+   "pista_id": "687c78a63c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4301636",
+   "municipio": "Balneário Pinhal",
+   "uf": "RS",
+   "url": "https://balneariopinhal.rs.gov.br/uploads/paginadinamica/26596/PMS_2026_2029.pdf",
+   "regras_18": [],
+   "pista_id": "c24e89e4ac",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html",
+   "regras_18": [],
+   "pista_id": "4c1d4463f6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13611 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ACONP Versão 2023 PLACONP - DEFESA CIVIL RISCO METEOROLÓGICO: E pena RR E=Z RESENDE - RJ VERSÃO: 00/2023 nuas PLANO DE CONTINGÊNCIA E PROTEÇÃO PLACONP RIS"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA E PROTEÇÃO RISCO METEOROLÓGICO TEMPESTADES DE RAIOS PLACONP Versão 2023 PLACONP - DEFESA CIVIL RISCO METEOROLÓGICO: E pena RR E=Z RES",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "01/10/2023",
+      "data_origem": "capa",
+      "data_trecho": "01/10/2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA E PROTEÇÃO RISCO METEOROLÓGICO TEMPESTADES DE RAIOS PLACONP Versão 2023 PLACONP - DEFESA CIVIL RISCO METEOROLÓGICO: E pena RR E=Z RES",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "grande impacto ou processos meteorológicos - COBRADE: 1.3.2.1.2, correlatos do município de RESENDE estabelece os procedimentos a serem adotados pelos órgãos e"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "COBRADE 1.3.2.1.2 fora das famílias do ciclo"
+    }
+   },
+   "categoria": null,
+   "data": "01/10/2023",
+   "natureza": "EX_ANTE",
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/downloads/defesa-civil/gestaos-de-riscos/planos-de-contigencia/PLANCON%20-%20TEMPESTADE%20DE%20RAIOS.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": "capa",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "06da3cdd6b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "6465ab09f23b847548a9a1230d0889940b48c8792766fa7741853e0c372debee"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/noticia/visualizar/id/6891/?plano-de-contingencia-de-encantado.html",
+   "regras_18": [],
+   "pista_id": "cb362f41a5",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/pagina/id/1026/?mapas-sgb.html",
+   "regras_18": [],
+   "pista_id": "4cc2e8600e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306809",
+   "municipio": "Encantado",
+   "uf": "RS",
+   "url": "https://encantado.rs.gov.br/uploads/paginadinamica/45046/Plano_de_contingencia___Encantado___ed_1.pdf",
+   "regras_18": [],
+   "pista_id": "d588b03eef",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1300300",
+   "municipio": "Autazes",
+   "uf": "AM",
+   "url": "https://autazes.am.gov.br/downloads/8/estrutura-organizacional-prefeitura-de-autazes-2025",
+   "regras_18": [],
+   "pista_id": "69cb1aa5a8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/boletim_oficial/2026/Boletim_6ab6f3b7d8c7c.pdf",
+   "regras_18": [],
+   "pista_id": "92180b807e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/downloads/defesa-civil/gestaos-de-riscos/planos-de-contigencia/PLANCON%20-%20CHUVAS%20INTENSAS.pdf",
+   "regras_18": [],
+   "pista_id": "05cb6b0382",
+   "origem": "imprensa",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100338",
+   "municipio": "Nova Mamoré",
+   "uf": "RO",
+   "url": "https://novamamore.ro.gov.br/wp-content/uploads/2024/03/Plano-de-Contingencia-de-Protecao-e-Defesa-Civil-Nova-Mamore.pdf",
+   "regras_18": [],
+   "pista_id": "44456cec8b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/downloads/defesa-civil/gestaos-de-riscos/planos-de-contigencia/PLANCON%20-%20FRIAGEM.pdf",
+   "regras_18": [],
+   "pista_id": "5cfc2448da",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304201",
+   "municipio": "Resende",
+   "uf": "RJ",
+   "url": "https://resende.rj.gov.br/conteudo/downloads/defesa-civil/gestaos-de-riscos/planos-de-contigencia/PLANCON%20-%20CHUVAS%20INTENSAS.pdf",
+   "regras_18": [],
+   "pista_id": "3f25b12a03",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3306008",
+   "municipio": "Três Rios",
+   "uf": "RJ",
+   "url": "https://tresrios.rj.gov.br/estracoes-de-tratamento/",
+   "regras_18": [],
+   "pista_id": "f39b4cfd9e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27883 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SECRETARIA DE SAÚDE ITARANTIM-BA Julho - 2021 SECRETARIA DE SAÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "SECRETARIA DE SAÚDE ITARANTIM-BA Julho - 2021 SECRETARIA DE SAÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "07/2021",
+      "data_origem": "capa",
+      "data_trecho": "Julho - 2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "estado da Bahia",
+      "titulo": "Plano de Contingência",
+      "trecho": "SECRETARIA DE SAÚDE ITARANTIM-BA Julho - 2021 SECRETARIA DE SAÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "eparar a resposta rápida e coordenada para enfrentamento do Novo Coronavírus no Município de Itarantim-BA. Objetivos Específicos o Coordenar as ações de vigilân"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "AÚDE Plano de Contingência Municipal para Infecção Humana pelo novo Coronavírus COVID-19 SECRETARIA DE SAÚDE Colaboradores: Prefeito FÁBIO PEREIRA GUSMÃO Secret"
+    }
+   },
+   "categoria": null,
+   "data": "07/2021",
+   "natureza": "EX_ANTE",
+   "ibge": "2916807",
+   "municipio": "Itarantim",
+   "uf": "BA",
+   "url": "https://itarantim.ba.gov.br/wp-content/uploads/2024/11/Plano_de_Contingencia_de_Itarantim.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "data_origem": "capa",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "pista_id": "2b0fbd522d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ff84327f1b3f00c9c1a86e22ffb475377bc527c773a6d3fa8fc3da52dd6b2a25"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600600",
+   "municipio": "Santana",
+   "uf": "AP",
+   "url": "https://santana.ap.gov.br/unidades_administrativas/camara-municipal-de-santana/",
+   "regras_18": [],
+   "pista_id": "0b2d3e4326",
+   "origem": "busca_web",
+   "leu_documento": true
   }
  ]
 }
