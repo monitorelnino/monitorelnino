@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #2166 · Reconhecimentos federais lidos pela edição do DOU quando a consulta cai
+
+A consulta do Diário Oficial da União respondeu 502 ao coletor por dias, e reconhecimentos de 20 a 26/11 (entre eles a calamidade de Tupanciretã) ficaram fora. Agora, quando a consulta cai, o coletor lê a edição de cada dia dos últimos 14, que tem endereço fixo; 502 e 504 passam a acionar a ponte no Brasil, como o 403.
 ## 2026-11-27 · #2167 · Publicador: sela de novo depois de rebase limpo
 
 O laço de push da publicação só regenerava os derivados quando o rebase conflitava; com um merge entre a regeneração e o push, a `main` recebia o próprio selo já velho e os Portões reprovavam a publicação (três vezes em 26–27/11). Agora regenera sempre que a base mudou. Ensaio 31 cobre os dois caminhos; falha F104.
