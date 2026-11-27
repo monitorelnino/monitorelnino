@@ -22,7 +22,7 @@ USO
   python coletar_s2id.py --desde 2026-06-29        # coleta (precisa de rede)
 """
 import html as _html, json, re, sys, time, urllib.parse
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from coletores_base import (NUM_ATO, carimbar_atos, buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, sha256,
@@ -477,6 +477,46 @@ def _coletar(desde: str, ate: str) -> int:
     return 0
 
 
+LEITURA_DOU = "https://www.in.gov.br/leiturajornal?data={dia}&secao={secao}"
+EDICOES_DIAS = 14          # janela das edições quando a consulta cai; `--edicoes-desde` alarga (recoleta do ciclo)
+_EDICOES_LIDAS = {}        # uma leitura por edição na rodada, para as duas consultas
+
+
+def casa_com_a_consulta(item: dict, consulta: str) -> bool:
+    """O ato da edição é o que a consulta acharia: a frase dela no título ou no trecho. Função pura."""
+    alvo = re.sub(r"\s+", " ", (consulta or "").strip('"').lower())
+    texto = re.sub(r"\s+", " ", f"{item.get('titulo') or ''} {item.get('trecho') or ''}".lower())
+    return alvo in texto or bool(re.search(r"reconhec\w*\b.{0,200}" + re.escape(alvo.split(" ", 1)[-1]), texto))
+
+
+def resultados_das_edicoes(consulta: str, desde: str, ate: str, buscar_fn=None, lacuna_fn=None) -> list:
+    """Atos da seção 1 (e da extra) de cada dia da janela que casam com a consulta. A janela é a dos últimos
+    EDICOES_DIAS dias, ou a de `--edicoes-desde`. Edição que não abre vira lacuna declarada com o dia, nunca
+    zero; `buscar` pede à ponte no Brasil o que o runner não alcança."""
+    from coletores_base import parse_busca_dou
+    buscar_fn, lacuna_fn = buscar_fn or buscar, lacuna_fn or registrar_lacuna
+    fim = date.fromisoformat(ate)
+    if "--edicoes-desde" in sys.argv:
+        ini = date.fromisoformat(sys.argv[sys.argv.index("--edicoes-desde") + 1])
+    else:
+        ini = max(date.fromisoformat(desde), fim - timedelta(days=EDICOES_DIAS))
+    saida, d = [], ini
+    while d <= fim:
+        for secao in ("do1", "do1e"):
+            u = LEITURA_DOU.format(dia=d.strftime("%d-%m-%Y"), secao=secao)
+            if u not in _EDICOES_LIDAS:
+                try:
+                    _EDICOES_LIDAS[u] = parse_busca_dou(buscar_fn(u).decode("utf-8", "replace"))
+                except Exception as e:  # noqa: BLE001 — edição que não abre é lacuna do dia
+                    _EDICOES_LIDAS[u] = None
+                    if secao == "do1":
+                        lacuna_fn(FONTES["dou"]["nome"], f"edição de {d.strftime('%d/%m/%Y')} não lida: {type(e).__name__}",
+                                         canal="DOU", camada=1, strings=[u])
+            saida += [x for x in (_EDICOES_LIDAS[u] or []) if casa_com_a_consulta(x, consulta)]
+        d += timedelta(days=1)
+    return saida
+
+
 CONSULTAS_DOU = ('"reconhece a situação de emergência"', '"reconhece o estado de calamidade pública"')
 
 
@@ -503,7 +543,12 @@ def _coletar_consulta(consulta: str, desde: str, ate: str, por_cod, por_nome, at
         return 0
     except Exception as e:  # noqa: BLE001
         registrar_lacuna(FONTES["dou"]["nome"], f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[url])
-        return 0
+        # 27/11/2026: a CONSULTA do DOU respondeu 502 ao runner por dias seguidos (reconhecimentos de 20 a 26/11,
+        # entre eles a calamidade de Tupanciretã, ficaram fora). A EDIÇÃO do dia é a mesma fonte, com endereço
+        # fixo — o que a ponte no Brasil sabe trazer — e traz a lista de atos no mesmo formato da consulta.
+        resultados, incompletas, paginas = resultados_das_edicoes(consulta, desde, ate), [], []
+        if not resultados:
+            return 0
     for bruto, u in paginas:
         hp = preservar_evidencia(bruto, u, "html", "coletar_s2id"); h = h or hp
         if eh_suspensao_defeso(bruto.decode("utf-8", "replace")):
@@ -776,7 +821,27 @@ def autoteste() -> int:
         r = incorporar_ato_dou(ev, {**EXATO, "declaracao": "situacao_de_emergencia"})
         return r == "enriquecido" and ev[0]["declaracao"] == "situacao_de_emergencia"
 
+    def t31():  # consulta caída: a edição do dia traz os atos, e só os que a consulta acharia entram
+        _EDICOES_LIDAS.clear()
+        pagina = FIXTURE_SCRIPT.encode()
+        idas = []
+        def falso(u):
+            idas.append(u)
+            if "26-09-2026" in u:
+                raise TimeoutError("sem resposta")
+            return pagina
+        lacunas = []
+        anota = lambda *a, **k: lacunas.append(a[1])
+        r = resultados_das_edicoes('"reconhece a situação de emergência"', "2026-09-24", "2026-09-26", buscar_fn=falso, lacuna_fn=anota)
+        r2 = resultados_das_edicoes('"reconhece o estado de calamidade pública"', "2026-09-24", "2026-09-26", buscar_fn=falso, lacuna_fn=anota)
+        _EDICOES_LIDAS.clear()
+        return (len(r) == 4 and r2 == [] and len(idas) == 6 and lacunas == ["edição de 26/09/2026 não lida: TimeoutError"]
+                and casa_com_a_consulta({"titulo": "PORTARIA Nº 1", "trecho": "Reconhece o estado de calamidade pública no Município"},
+                                        '"reconhece o estado de calamidade pública"')
+                and not casa_com_a_consulta({"titulo": "AVISO", "trecho": "nada"}, '"reconhece a situação de emergência"'))
+
     return rodar_autoteste({"parser do DOU lê o JSON embutido": t1, "extrai portaria+data+município": t2,
+                            "consulta caída: a edição do dia traz os atos; edição que não abre é lacuna": t31,
                             "tipo de declaração lido do ato (emergência ou calamidade); sem a frase, nada": t29,
                             "a declaração lida enriquece o evento já gravado": t30,
                             "negativo: sem número não entra": t3,
