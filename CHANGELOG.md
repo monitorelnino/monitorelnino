@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #2178 · Buscador 2 reabre as pistas que a busca de 24/11 fechou sem resultado
+
+Um bug de 24/11 fez a busca no veículo do Buscador 2 devolver zero resultado, e 1.684 links do Google News foram fechados como "redirecionamento não resolvido" sem terem sido lidos. Agora essas pistas voltam à fila uma vez, com o título do arquivo. A busca tentada passa a ficar marcada, para não ser reaberta a cada rodada. Nada é apagado; o dado publicado não muda.
+
 ## 2026-11-27 · #2173 · Válvula recusa ramo que parte de main velha
 
 Dois lotes do Buscador 2 (26 e 27/11) nasceram de um `origin/main` local parado em 24/11 e rodaram código antigo, sem SearXNG: 2.711 pistas fechadas, nenhuma resolvida. A válvula agora recusa o ramo quando a `main` tem commit que ele não tem há mais de 6 h.
