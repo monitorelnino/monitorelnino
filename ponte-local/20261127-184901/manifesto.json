@@ -1,0 +1,77 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T18:50:49+00:00",
+ "itens": [
+  {
+   "url": "https://pontagrossa.pr.gov.br/",
+   "em": "2026-11-27T18:49:01+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://pontagrossa.pr.gov.br/",
+   "bytes": 159893,
+   "sha256": "a1fedd393efcd6b8324a025ae3566476c23157113a9ae6028b5628ce6a87dd47"
+  },
+  {
+   "url": "https://www.cristopolis.ba.io.org.br/",
+   "em": "2026-11-27T18:49:02+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://bauru.sp.gov.br/",
+   "em": "2026-11-27T18:49:38+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+   "url": "http://pontagrossa.pr.gov.br/",
+   "em": "2026-11-27T18:49:38+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "http://www.cristopolis.ba.io.org.br/",
+   "em": "2026-11-27T18:50:00+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "http://bauru.sp.gov.br/",
+   "em": "2026-11-27T18:50:21+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www2.bauru.sp.gov.br/",
+   "bytes": 55085,
+   "sha256": "f3cce6c04d153c3745a662a2541d8698c5ce4c071355426e0c1df64524cc90d6"
+  },
+  {
+   "url": "https://www.pontagrossa.pr.gov.br/",
+   "em": "2026-11-27T18:50:22+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.pontagrossa.pr.gov.br/",
+   "bytes": 160662,
+   "sha256": "64e5e1f86f6321a0ea0371d74db91fb323cf72973beeef89244e0b286fd33c01"
+  },
+  {
+   "url": "https://www.bauru.sp.gov.br/",
+   "em": "2026-11-27T18:50:22+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www2.bauru.sp.gov.br/",
+   "bytes": 55085,
+   "sha256": "f3cce6c04d153c3745a662a2541d8698c5ce4c071355426e0c1df64524cc90d6"
+  },
+  {
+   "url": "http://www.pontagrossa.pr.gov.br/",
+   "em": "2026-11-27T18:50:23+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "http://www.bauru.sp.gov.br/",
+   "em": "2026-11-27T18:50:48+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=utf-8",
+   "final": "https://www2.bauru.sp.gov.br/",
+   "bytes": 55085,
+   "sha256": "f3cce6c04d153c3745a662a2541d8698c5ce4c071355426e0c1df64524cc90d6"
+  }
+ ]
+}

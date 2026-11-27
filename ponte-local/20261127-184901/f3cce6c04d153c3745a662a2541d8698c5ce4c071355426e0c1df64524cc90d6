@@ -1,0 +1,955 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><title>
+	Prefeitura Municipal de Bauru
+</title><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="TI PMB" /><meta name="generator" content="TI - PMB" /><meta name="description" content="Site Oficial da Prefeitura Municipal de Bauru" /><meta name="keywords" content="prefeitura de bauru" /><meta name="theme-color" content="#009952" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-status-bar-style" content="#009952" />
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+
+    </style>
+
+    <link rel="shortcut icon" href="/arquivos/scripts_web/site2/img/favicon.ico" type="image/x-icon" />
+
+    <!-- Adicione os links para o Bootstrap CSS -->
+    <link rel="stylesheet" href="/arquivos/scripts_web/site2/css/bootstrap.min.css" /><link href="/arquivos/scripts_web/site2/css/bootstrap-icons.min.css" rel="stylesheet" /><link rel="stylesheet" href="/arquivos/scripts_web/site2/css/bootstrap-select.min.css" />
+
+    <!-- Opcional: Adicione o CSS personalizado do seu projeto -->
+    <link rel="stylesheet" href="/arquivos/scripts_web/site2/css/style.css" /><link rel="stylesheet" href="/arquivos/scripts_web/site2/css/animate.css" />
+    
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.1.0/css/all.css">
+    <script type="text/javascript">
+        function setCookie(name, value) {
+            document.cookie = name + "=" + value + ";path=/";
+        }
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        var currentDate = new Date();
+        var dataLimiteIptu = new Date('2024-07-02');
+
+        function exibirIptu() {
+            if (getCookie('modalIptuExibido') !== 'true') {
+                setCookie('modalIptuExibido', 'true');
+            } else {
+                function abrirModal() {
+                    homeCarousel = document.getElementById("homeCarousel");
+                    homeCarousel.setAttribute('data-bs-ride', 'false');
+                    $('#modal_iptu').modal('show');
+                    sessionStorage.setItem('modalIPTUExibido', 'true');
+                }
+                setTimeout(abrirModal, 200);
+            }
+        }
+
+        if (currentDate < dataLimiteIptu) {
+            exibirIptu();
+        }
+
+    </script>
+
+    <!-- CSS custom -->
+    <style>
+        .nome-botao {
+            hyphens: auto;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        a.link-item2 {
+            color: #777;
+            display: contents;
+            text-decoration: none;
+            width: 120px;
+            height: 120px;
+            background-color: #E6E6E6;
+            border: 1px solid #E6E6E6;
+        }
+
+        .link-item2 > div > p {
+            font-size: .85em;
+            margin-bottom: 0px;
+            font-weight: bold;
+        }
+
+        .link-item2 > div > h2 > i {
+            color: #009952;
+        }
+
+        .link-item2:hover {
+            border: 1px solid #009952 !important;
+            -webkit-transition: .3s ease-out;
+            -moz-transition: .3s ease-out;
+            -o-transition: .3s ease-out;
+            transition: all .3s ease;
+        }
+
+            .link-item2:hover > div > p {
+                color: #222;
+            }
+
+        .box-list2 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            display: block;
+        }
+
+            .box-list2:after {
+                content: "";
+                box-shadow: 105px 0px 37px 54px #ffffffa3;
+                bottom: 0;
+                display: block;
+                height: 70px;
+                position: absolute;
+                right: 78px;
+                top: 337px;
+            }
+
+        /* Extra Small Devices, Phones */
+        @media only screen and (min-width : 480px) {
+        }
+
+        /* Small Devices, Tablets */
+        @media only screen and (min-width : 768px) {
+        }
+
+        /* Medium Devices, Desktops */
+        @media only screen and (min-width : 992px) {
+        }
+
+        /* Large Devices, Wide Screens */
+        @media only screen and (min-width : 1200px) {
+        }
+
+        .link-oficial {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            color: #216c3e;
+            font-size: 1.1em;
+            font-weight: 600;
+            line-height: 1.5;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .link-oficial svg { flex-shrink: 0; }
+
+        .link-oficial:focus-visible {
+            outline: 3px solid #247443;
+            outline-offset: 3px;
+        }
+    </style>
+
+<link href="/WebResource.axd?d=ziyI3xMdLifEQtVdP3SF3CHavAH6q490JWakAiYpLlcb9FOMi2NCrw2MInZmIrY9GzOwncRRiLULNW7UBCIR1-rmRO9iHXskqyE1anw2vItk24pj226763jglpwynLI3Bc0oYMh5OY5VtLtEnPZ4saFhC2nuzNHYO1Nt90fxRTo1&t=639228216820000000" type="text/css" rel="stylesheet" /></head>
+<body>
+    <form method="post" action="./" id="form1" autocomplete="off">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTg0ODc3MzM3NQ9kFgJmD2QWAmYPZBYCAgMPZBYCAgIPZBYCAgMPZBYOAgMPDxYCHgdWaXNpYmxlaGRkAgQPDxYGHgRNb2RlCyolU3lzdGVtLldlYi5VSS5XZWJDb250cm9scy5UZXh0Qm94TW9kZQAeCU1heExlbmd0aAJkHg9WYWxpZGF0aW9uR3JvdXAFDHZnTmV3c2xldHRlchYCHgVzdHlsZQUZdGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlO2QCBQ8PFggeEUNvbnRyb2xUb1ZhbGlkYXRlBQd0eHROb21lHgdEaXNwbGF5CyoqU3lzdGVtLldlYi5VSS5XZWJDb250cm9scy5WYWxpZGF0b3JEaXNwbGF5Ah4MRXJyb3JNZXNzYWdlBRNDYW1wbyBPYnJpZ2F0w7NyaW8hHwMFDHZnTmV3c2xldHRlcmRkAgYPDxYGHwELKwQAHwICyAEfAwUMdmdOZXdzbGV0dGVyFgQeC3BsYWNlaG9sZGVyBRZleGVtcGxvQGRvbWluaW8uY29tLmJyHwQFGXRleHQtdHJhbnNmb3JtOmxvd2VyY2FzZTtkAgcPDxYIHwUFCHR4dEVtYWlsHwYLKwUCHwcFE0NhbXBvIE9icmlnYXTDs3JpbyEfAwUMdmdOZXdzbGV0dGVyZGQCCA8PFggfBQUIdHh0RW1haWwfBgsrBQIfBwURRS1tYWlsIGludsOhbGlkbyEeFFZhbGlkYXRpb25FeHByZXNzaW9uBSxcdysoWy0rLiddXHcrKSpAXHcrKFstLl1cdyspKlwuXHcrKFstLl1cdyspKmRkAgkPDxYGHgRUZXh0BQZHcmF2YXIeEENhdXNlc1ZhbGlkYXRpb25nHwMFDHZnTmV3c2xldHRlcmRkZBmc+Z/PeuNCB4wqUqrS7i1HCpg/paagxwN10h6B0/LC" />
+
+
+<script src="/ScriptResource.axd?d=uEPSvLtNPY1Bck9EiorLT-VumeaK_veOAmB4VEhoOPe19uht04ubUR-y7ZPhGQk1KNvXm8ZAWiKIHcODQ-E9NY6wLPtpnT_3FT7bWq_4Z3WCSwuZVClOal-Knbwku4y4SInnZ5PbUZT77eFTqQiwNA2&amp;t=34395119" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=OkvjDR3ocZpPtDtgzkVl5k0_EBxkb9Lc_XjOoGUMPf33trYtXRpygD2wZbtRtfHSowXWWws2Lg7-jUOv_73Y43sm0bJgWI61Y7PGDk9BUD5t7lReNfBRvHHIorrrqQPKSwLbF1HFPaQ57IIYk3BaoQ2&amp;t=34395119" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=i6W8ZXWTN4VKfQFbxudVBKeOUMinCH-POchv4xMkH2EUGue6nhk8c01FvcuVeFNLFjFiCHhpvXnKWJabrN-YpnCeP1NuulxTBLeC3aaG_eqxZz_rjnBilxuazFvbIP5E0dT8L-Eq6sCYrpZrmLLedw2&amp;t=34395119" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=rAJvHFk0aczgmEG5f3s9JG2pNXDrts6JyYrhOuRNMGlQb8loE21e_t1-ftDNDec0kQYoN35D4lkyZA9y2vwJQ55B4qP5XJTvqpCMUuFlYJt-nojb0KXcw7_ROygdY837dxn8yhT8NJhtrI86DMCFkHlmUgI6EtrOf14AcCUR9d81&amp;t=13798092" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAYwn6jjkit5GlByWdKtQvVoZs0J0AXgJV00ncVthgdr5THrtGbsJTHwFJQ1Im4TNFRC9sKfxbFi6JTvZJkBO9MiRjcXW4/puQuMKmnR1Rn6o4HX9db9gFToIyNaMv6HjIdmDpcbDz+rOg7abewI2K5Q77AZ24PVUd31WeNP9SjERA==" />
+
+        
+
+<!-- <div style="background-color:#000; color: #fff">
+	<div class="text-center">
+		Este site está em pocesso de transição para uma nova versão.
+	</div>
+</div> -->
+
+<!-- Header -->
+<header>
+    <div class="header py-2 d-none d-xl-block" style="background-color: #00A859;">
+        <div class="container menu_topo">
+            <div class="content-topo row">
+                <div class="col-2 acessibilidade ">
+                    <h5><a href="/acessibilidade.aspx">Acessibilidade</a></h5>
+                    <!--<h5>Acessibilidade</h5>
+					<div class="diminuir-fonte">
+						<a href="#">-A</a>
+					</div>
+
+					<div class="aumentar-fonte">
+						<a href="#">+A</a>
+					</div>-->
+                </div>
+                <div class="col-10 logos">
+                    <div class="logos-servicos">
+                        <a href="/juridico/diariooficial.aspx">
+                            <img class="logo-diariooficial" src="/arquivos/scripts_web/site2/img/diario_oficial.png"></a>
+                        <a href="/ouvidoria/">
+                            <img class="logo-diariooficial" src="/arquivos/scripts_web/site2/img/ouvidoria.png"></a>
+                        <a href="/denuncias.aspx">
+                            <img class="logo-diariooficial" src="/arquivos/scripts_web/site2/img/denuncie_calcadas_comercio_obras_novo.png"></a>
+                        
+                        <!--<a href="/financas/transparencia.aspx?cv=1"><img class="logo-diariooficial" src="/arquivos/scripts_web/site2/img/transparencia_covid.png"></a>!-->
+                        <a href="/acessoainformacao/">
+                            <img class="logo-informacao" src="/arquivos/scripts_web/site2/img/acesso_informacao.png"></a>
+                    </div>
+                    <div class="logos-social-media">
+                        <a href="https://www.instagram.com/prefeituradebauru">
+                            <img src="/arquivos/scripts_web/site2/img/icons/instagram.png" /></a>
+                        <a href="https://www.facebook.com/prefeituradebauruoficial/">
+                            <img src="/arquivos/scripts_web/site2/img/icons/facebook.png" /></a>
+                        <a href="https://www.youtube.com/channel/UCjws_lcF6pruApDae3is-lQ/videos">
+                            <img src="/arquivos/scripts_web/site2/img/icons/youtube.png" /></a>
+                        <!--<a href="https://www.twitter.com/bauruspgov"><img src="/arquivos/scripts_web/site2/img/icons/twitter.png" /></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-xl navbar-light py-3 bg-color-nav-bar-site">
+        <div class="container">
+            <!-- Logo à Esquerda -->
+            <a class="navbar-brand" href="/">
+                
+                        <img src="/arquivos/scripts_web/site2/img/LogoBauru2021_branco_slogan.png" class="img-fluid logo">
+                
+            </a>
+
+            <!-- Botão Toggler à Direita -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas à Esquerda -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+                <style>
+                    nav-link:hover{
+                        color: #009952!important;
+                        text-decoration: underline;
+                    }
+                </style>
+
+                <!-- mobile -->
+                <div class="offcanvas-body d-sm-flex d-xl-none flex-column justify-content-center align-items-center">
+                    <ul class="navbar-nav mx-auto mb-2 mb-md-0 px-1" style="max-width: 290px;">
+                        <li class="nav-item active d-flex align-items-center fs-5">
+                            <i class="bi bi-building me-4"></i>
+                            <a class="nav-link" aria-current="page" href="/bauru.aspx">A Prefeitura</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center fs-5">
+                            <i class="bi bi-person-fill me-4"></i>
+                            <a class="nav-link" href="/servicos.aspx?m=1">Cidadão</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center fs-5">
+                            <i class="bi bi-briefcase-fill me-4"></i>
+                            <a class="nav-link" href="/servicos.aspx?m=2">Empresa</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center fs-5">
+                            <i class="bi bi-person-badge me-4"></i>
+                            <a class="nav-link" href="/servicos.aspx?m=4">Servidor</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center fs-5">
+                            <i class="bi bi-archive-fill me-4"></i>
+                            <a class="nav-link" href="/servicos.aspx?m=5">Secretarias</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center fs-5">
+                            <i class="bi bi-list me-4"></i>
+                            <a class="nav-link" href="/servicos.aspx?m=5">Todos os Serviços</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center fs-5">
+                            <i class="bi bi-search me-4"></i>
+                            <a class="nav-link" href="/busca.aspx">Pesquisar</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Desktop -->
+                <div class="offcanvas-body navbar-collapse offcanvas-collapse d-none d-xl-block">
+                    <ul class="navbar-nav mx-auto mb-2 mb-md-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" aria-current="page" href="/bauru.aspx">A Prefeitura</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/servicos.aspx?m=1">Cidadão</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/servicos.aspx?m=2">Empresa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/servicos.aspx?m=4">Servidor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/servicos.aspx?m=5">Secretarias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/servicos.aspx?m=5">Todos os Serviços</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="/busca.aspx"><i class="bi bi-search" style="color: #fff;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+</header>
+
+
+        
+        <div id="pnLoading" class="loadingPanel" style="display: none;">
+            <div class="loading-center">
+                <img alt="" src="/arquivos/imagens/icones/loading.gif" />
+            </div>
+        </div>
+
+        <main>
+            <div class="container">
+                <a name="conteudo" id="conteudo" accesskey="1"></a>
+                
+
+    <div id="ExternoBody_divFigurinha" class="hidden-print"></div>
+
+    <div class="container">
+        <!-- conteúdo das páginas baseadas na masterpage -->
+        
+    
+
+    <div>
+        
+        <div class="modal" id="modal_iptu" tabindex="-1" role="dialog" aria-labelledby="modal_iptuLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_iptuLabel">IPTU Digital 2024</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Imagem no centro do modal -->
+                        <img src="https://www2.bauru.sp.gov.br/arquivos/imagens/2015/banners/IPTU%20Digital%202024.jpg" class="img-fluid mx-auto d-block" alt="Imagem">
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Dois botões abaixo da imagem -->
+                        <a href="https://www2.bauru.sp.gov.br" class="btn btn-danger">Fechar</a>
+                        <a href="https://www2.bauru.sp.gov.br/financas/iptu/" class="btn btn-primary">IPTU</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 title-item">
+                            <h1>O QUE VOCÊ
+                                <br>
+                                <span class="word">PRECISA?</span></h1>
+                        </div>
+                        <div class="col-6 img-background">
+                            <img src="/arquivos/scripts_web/site2/img/desenho_bauru.png">
+                        </div>
+                    </div>
+
+                    
+                    <div class="row justify-content-center mt-2">
+                        <div class="row justify-content-center">
+
+                            <div class="col-12 col-md-8 col-lg-8">
+                                <div class="card card-sm">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="bi bi-search h4 text-body"></i>
+                                        </div>
+                                        <div class="col">
+                                            <input name="ctl00$ctl01$ExternoBody$content$txtBusca" type="text" id="ExternoBody_content_txtBusca" class="form-control form-control-lg form-control-borderless" placeholder="Pesquise aqui" />
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="submit" name="ctl00$ctl01$ExternoBody$content$btnBuscar" value="Buscar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl01$ExternoBody$content$btnBuscar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ExternoBody_content_btnBuscar" class="btn btn-lg btn-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4 col-lg-4 pt-1" 
+                                style="display: none" >
+                                <span id="ExternoBody_content_RecaptchaApiScript"><script src="https://www.google.com/recaptcha/api.js" async defer></script></span>
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Service Buttons -->
+                    <div class="container box-list2 mt-2">
+                        <div class="row col-sm-12 d-flex justify-content-center justify-content-sm-center justify-content-xl-start flex-wrap mx-auto">
+                            <a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/ouvidoria"><div class="col"><h2><i class="bi bi-chat-dots-fill"></i></h2><p class="nome-botao">Ouvidoria</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/denuncias.aspx"><div class="col"><h2><i class="bi bi-cone-striped"></i></h2><p class="nome-botao">Denuncie Aqui</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/acessoainformacao"><div class="col"><h2><i class="bi bi-info-circle-fill"></i></h2><p class="nome-botao">Acesso à Informação</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="financas/iptu/"><div class="col"><h2><i class="bi bi-cash-stack"></i></h2><p class="nome-botao">IPTU</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="financas/reforma_tributaria.aspx"><div class="col"><h2><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#009952" class="bi bi-balance-scale" viewBox="0 0 16 16"> <path d="M8 1a.5.5 0 0 1 .5.5v1.05l4.2 1.4a.5.5 0 0 1 .3.24l2.5 5a.5.5 0 0 1-.45.72h-4.5a.5.5 0 0 1-.45-.72l2.28-4.56L8.5 3.34V13h2a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h2V3.34L3.62 4.63 5.9 9.19a.5.5 0 0 1-.45.72H.95a.5.5 0 0 1-.45-.72l2.5-5a.5.5 0 0 1 .3-.24l4.2-1.4V1.5A.5.5 0 0 1 8 1"/></svg></h2><p class="nome-botao">Reforma Tributária</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://legislacaodigital.com.br/bauru-sp"><div class="col"><h2><i class="bi bi-journal-text"></i></h2><p class="nome-botao">Legislações</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="administracao/concursos/"><div class="col"><h2><i class="bi bi-clipboard-check"></i></h2><p class="nome-botao">Concursos</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="sist_documentos/"><div class="col"><h2><i class="bi bi-file-earmark-text"></i></h2><p class="nome-botao">Documentos Eletrônicos</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="administracao/licitacoes/"><div class="col"><h2><i class="bi bi-clipboard-plus"></i></h2><p class="nome-botao">Licitações</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://www2.bauru.sp.gov.br/financas/assunto.aspx?id=10"><div class="col"><h2><i class="bi bi-check-square"></i></h2><p class="nome-botao">Certidões</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/sist_destinacoes/"><div class="col"><h2><i class="fa-solid fa-hand-holding-dollar"></i></h2><p class="nome-botao">Doações aos Fundos Municipais</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="gabinete/defesacivil.aspx"><div class="col"><h2><i class="bi bi-brightness-high"></i></h2><p class="nome-botao">Operações da Defesa Civil</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="financas/nfe"><div class="col"><h2><i class="bi bi-receipt-cutoff"></i></h2><p class="nome-botao">NF Bauruense</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/sist_documentos/cadastrar.aspx?a=67"><div class="col"><h2><i class="bi bi-receipt"></i></h2><p class="nome-botao">ITBI</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://transparencia-bauru.smarapd.com.br/"><div class="col"><h2><i class="bi bi-bar-chart"></i></h2><p class="nome-botao">Transparência Pública</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="financas/tfe.aspx"><div class="col"><h2><i class="bi bi-upc-scan"></i></h2><p class="nome-botao">TFE</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/seplan/aprovacao_projetos.aspx"><div class="col"><h2><i class="bi bi-journal-check"></i></h2><p class="nome-botao">Aprovação de Projetos</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://bauru.prefeituras.net/login"><div class="col"><h2><i class="bi bi-badge-ad"></i></h2><p class="nome-botao">Aprova Digital</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="seplan/ocupacao_solo.aspx?m=1"><div class="col"><h2><i class="bi bi-bounding-box"></i></h2><p class="nome-botao">Ocupação do Solo</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/habitacao"><div class="col"><h2><i class="bi bi-house"></i></h2><p class="nome-botao">Habitação</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="seplan/cartilhas.aspx"><div class="col"><h2><i class="bi bi-journals"></i></h2><p class="nome-botao">Cartilhas Planejamento</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://sites.bauru.sp.gov.br/conselhotutelar/"><div class="col"><h2><i class="bi bi-emoji-smile"></i></h2><p class="nome-botao">Conselho Tutelar</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="juridico/cobranca.aspx"><div class="col"><h2><i class="bi bi-cash"></i></h2><p class="nome-botao">Dívidas do Cidadão</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="app.aspx"><div class="col"><h2><i class="bi bi-phone"></i></h2><p class="nome-botao">App PMB</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="diariooficial/"><div class="col"><h2><i class="bi bi-newspaper"></i></h2><p class="nome-botao">Diário Oficial</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="servico_militar.aspx"><div class="col"><h2><i class="bi bi-shield-check"></i></h2><p class="nome-botao">Alistamento Militar</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="/sist_agendacau"><div class="col"><h2><i class="bi bi-calendar3"></i></h2><p class="nome-botao">Agendamento Cadastro Único</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://tributario.bauru.sp.gov.br/loginCNPJContribuinte.jsp?execobj=ContribuintesWebRelacionados"><div class="col"><h2><i class="bi bi-receipt"></i></h2><p class="nome-botao">Sistema Tributário PMB</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://bauru.geopixel.com.br/geopixelcidades3/"><div class="col"><h2><i class="bi bi-globe-americas"></i></h2><p class="nome-botao">Geoprocessamento</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="https://sites.bauru.sp.gov.br/protecaoamulher/"><div class="col"><h2><i class="bi bi-gender-female"></i></h2><p class="nome-botao">Proteção à Mulher</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="obras/iluminacao_publica.aspx"><div class="col"><h2><i class="bi bi-lamp"></i></h2><p class="nome-botao">Iluminação Pública</p></div></a><a class="link-item2 btn rounded my-2 mx-2 border d-flex align-items-center" href="servicos.aspx"><div class="col"><h2><i class="bi bi-three-dots"></i></h2><p class="nome-botao">Todos os Serviços</p></div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-grid gap-2">
+                    <a href="/contato.aspx?i=1" class="btn btn-outline-secondary btn-lg">Contato e Telefones da Prefeitura</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-4">
+            <div class="row">
+                <div class="col-12">
+                    <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators" > <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active"></button><button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" class=""></button><button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" class=""></button> </div><div class="carousel-inner" > <div class="carousel-item active data-bs-interval="2000" "><a href="https://www2.bauru.sp.gov.br/obras/iluminacao_publica.aspx"><img src="/arquivos/imagens/2015/banners/Iluminação Pública banner.png" alt="Iluminação Pública canais" class="d-block w-100"  /></a></div><div class="carousel-item  data-bs-interval="2000" "><a href="https://www2.bauru.sp.gov.br/financas/reforma_tributaria.aspx"><img src="/arquivos/imagens/2015/banners/Banner Site - PMB.png" alt="Reforma Tributária do Consumo" class="d-block w-100"  /></a></div><div class="carousel-item  data-bs-interval="2000" "><a href="https://www2.bauru.sp.gov.br/cultura/editais.aspx"><img src="/arquivos/imagens/2015/banners/Banner - Editais Cultura.png" alt="Editais Secretaria de Cultura" class="d-block w-100"  /></a></div> </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="container mt-4 noticias">
+            <div class="row">
+                <div class="col-12 title-item">
+                    <a href="noticias.aspx">
+                        <h1><span class="word">NOTÍCIAS</span></h1>
+                    </a>
+                </div>
+            </div>
+
+            <style>
+                .card-title-custom {
+                    background: -moz-linear-gradient(90deg, rgba(0,0,0,.8) 20%, rgba(0,0,0,0.6) 60%, rgba(255,255,255,0) 100%);
+                    background: -webkit-linear-gradient(90deg, rgba(0,0,0,.8) 20%, rgba(0,0,0,0.6) 60%, rgba(255,255,255,0) 100%);
+                }
+
+                .link-success-custom {
+                    color: white;
+                }
+
+                    .link-success-custom:hover {
+                        color: #0dc06d;
+                    }
+
+                .card-item-news img {
+                    transition: transform .4s;
+                    transition-timing-function: linear;
+                }
+
+                .card-item-news:hover img {
+                    transform: scale(1.1);
+                }
+
+                .custom-ul {
+                    position: relative;
+                }
+
+                    .custom-ul > li {
+                        margin-top: 0 !important;
+                        background-color: transparent !important;
+                    }
+
+                        .custom-ul > li a {
+                            transition: all .2s;
+                            transition-timing-function: linear;
+                            padding: 4px 4px;
+                        }
+
+                            .custom-ul > li a::before {
+                                transition: all .2s;
+                                transition-timing-function: linear;
+                                content: "\203A";
+                                opacity: 0;
+                            }
+
+                            .custom-ul > li a:hover::before {
+                                opacity: 100;
+                            }
+
+                            .custom-ul > li a:hover {
+                                color: #0dc06d;
+                                padding-left: 8px;
+                            }
+
+                                /* a:hover~li.list-group-item */
+                                .custom-ul > li a:hover + li {
+                                    background-color: #ff0000 !important;
+                                }
+
+                .destaque-news {
+                    /* max-height: 500px; */
+                    transition: all .3s;
+                    transition-timing-function: linear;
+                    display: flex;
+                    /* overflow: hidden; */
+                    max-height: 500px;
+                }
+
+                .gap-md-3 {
+                    gap: 1rem;
+                }
+
+                @media screen and (max-width: 1215px) {
+                    .destaque-news {
+                        /* display:unset; */
+                        /* max-height: unset!important; */
+                    }
+                }
+
+                @media screen and (width < 1008px) {
+                    .gap-md-3 {
+                        gap: unset;
+                    }
+
+                    .destaque-news {
+                        display: unset;
+                        max-height: unset !important;
+                    }
+
+                        .destaque-news > div {
+                            margin-bottom: 20px;
+                        }
+                }
+
+                @media screen and (width <= 1007px) and (width >= 784px) {
+                    /* .destaque-news>div:first-child{
+                        height: 300px;
+                    } */
+
+                    .card-item-news {
+                        height: 300px !important;
+                    }
+
+                    .destaque-news > div > .card-item-news {
+                        flex: 0 0 auto;
+                        width: 100%;
+                    }
+                }
+
+
+                @media screen and (width < 784px) {
+                    .card-item-news {
+                        height: 200px !important;
+                        border-radius: 8px !important;
+                    }
+                }
+            </style>
+
+            <div class="row my-3 gap-md-3">
+                <!-- noticia principal -->
+                <div class="destaque-news col-12 gap-3 justify-content-between">
+                    <div class="card-item-news col-12 col-md-12 col-lg overflow-hidden p-0 position-relative rounded rounded-4">
+                        <img class="object-fit-cover w-100 h-100" style="object-fit: cover;" src="/arquivos/sist_noticias/48755/img_48755_9.jpeg" alt="">
+                        <div class="w-100 position-absolute bottom-0 card-title-custom text-white p-4 d-flex justify-content-center align-items-center">
+                            <a href="materia.aspx?n=48755" class="p-0 m-0 fw-medium fs-5 link-success-custom link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                'Natal EmCantos' terá shows gratuitos, programação cultural, trenzinho e Papai Noel em Bauru
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md d-flex flex-column gap-3">
+                        <div class="card-item-news col-lg overflow-hidden position-relative rounded rounded-4">
+                            <img class="object-fit-cover w-100 h-100" style="object-fit: cover;" src="/arquivos/sist_noticias/48779/img_48779_1.jpeg" alt="">
+                            <div class="w-100 position-absolute bottom-0 card-title-custom text-white p-4 d-flex justify-content-center align-items-center">
+                                <a href="materia.aspx?n=48779" class="p-0 m-0 fw-medium fs-5 link-success-custom link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                    Bauru realiza ações gratuitas de testagem rápida para HIV e sífilis durante a campanha ‘Fique Sabendo’
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-item-news col-lg overflow-hidden position-relative rounded rounded-4">
+                            <img class="object-fit-cover w-100 h-100" style="object-fit: cover;" src="/arquivos/sist_noticias/48778/img_48778_1.jpeg" alt="">
+                            <div class="w-100 position-absolute bottom-0 card-title-custom text-white p-4 d-flex justify-content-center align-items-center">
+                                <a href="materia.aspx?n=48778" class="p-0 m-0 fw-medium fs-5 link-success-custom link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                    Secretaria de Cultura apresenta o espetáculo de Circo Sinfônico inspirado em desenhos animados
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- grupo de 3 notícias -->
+                <div class="col-12 gap-3 w-100">
+                    <div class="destaque-news col-12 col-md gap-3">
+                        <div class="card-item-news bg-secondary col overflow-hidden position-relative rounded rounded-4">
+                            <img class="object-fit-cover w-100 h-100" src="/arquivos/sist_noticias/48776/img_48776_1.jpeg" alt="">
+                            <div class="w-100 position-absolute bottom-0 card-title-custom text-white p-4 d-flex justify-content-center align-items-center">
+                                <a href=" materia.aspx?n=48776" class="p-0 m-0 fw-medium fs-5 link-success-custom link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                    Bauru realiza neste sábado o ‘Dia D’ de Combate à Dengue com atividades educativas e recreativas
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-item-news bg-secondary col overflow-hidden position-relative rounded rounded-4">
+                            <img class="object-fit-cover w-100 h-100" src="/arquivos/sist_noticias/48781/img_48781_1.jpeg" alt="">
+                            <div class="w-100 position-absolute bottom-0 card-title-custom text-white p-4 d-flex justify-content-center align-items-center">
+                                <a href="materia.aspx?n=48781" class="p-0 m-0 fw-medium fs-5 link-success-custom link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                    Copa Semel de Futebol Amador realiza partidas das semifinais neste domingo
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-item-news bg-secondary col overflow-hidden position-relative rounded rounded-4">
+                            <img class="object-fit-cover w-100 h-100" src="/arquivos/sist_noticias/48780/img_48780_1.jpeg" alt="">
+                            <div class="w-100 position-absolute bottom-0 card-title-custom text-white p-4 d-flex justify-content-center align-items-center">
+                                <a href="materia.aspx?n=48780" class="p-0 m-0 fw-medium fs-5 link-success-custom link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                    Semel realiza as finais de mais duas categorias da Copa Big Boys de Futebol neste sábado
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- outras notícias -->
+                <div class="col-12 w-100">
+                    <div class="col-12 col-lg gap-3 border-bottom">
+                        <p class="fs-5 fw-medium ms-2 mt-4 text-secondary">Outras Notícias</p>
+                        <ul class="custom-ul list-group pb-2 mb-4">
+                            <li class="list-group-item list-group-flash">
+                                <a href="materia.aspx?n=48769" class="link-success-custom-extra">
+                                    Bauru encerra o período de recadastramento para vagas da Educação Infantil nesta segunda-feira
+                                </a>
+                            </li>
+                            <li class="list-group-item list-group-flash">
+                                <a href="materia.aspx?n=48772" class="link-success-custom-extra">
+                                    Secretaria de Cultura abre edital para Exposição Individual de Artes Visuais
+                                </a>
+                            </li>
+                            <li class="list-group-item list-group-flash">
+                                <a href="materia.aspx?n=48766" class="link-success-custom-extra">
+                                    Bauru avança na regularização de moradias e garante segurança para mais de 180 famílias
+                                </a>
+                            </li>
+                            <li class="list-group-item list-group-flash">
+                                <a href="materia.aspx?n=48770" class="link-success-custom-extra">
+                                    Secretaria de Saúde retoma aplicação da vacina da Covid-19 em Bauru
+                                </a>
+                            </li>
+                        </ul>
+
+                        <a href="https://www2.bauru.sp.gov.br/saude/vagas_internacao.aspx?m=2"
+                           class="link-oficial"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="18" height="18"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 aria-hidden="true">
+                                <path d="M15 3h6v6"/>
+                                <path d="M10 14 21 3"/>
+                                <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"/>
+                            </svg>
+                            <span>Acessar Lista Oficial: Lei Municipal nº 8.067</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container mt-4">
+            <div class="row">
+                <div class="col-12 title-item">
+                    <h1>ÓRGÃOS
+						<br />
+                        <span class="word">MUNICIPAIS</span></h1>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6 col-md d-flex align-items-center justify-content-center">
+                    <a href="https://www.bauru.sp.leg.br/">
+                        <img width="100px" src="/arquivos/imagens/logo/camara_municipal_2.png" class="img-fluid mx-auto d-block" style="max-height: 120px;" alt="Câmara Municipal de Bauru" title="Câmara Municipal de Bauru" />
+                    </a>
+                </div>
+                <div class="col-6 col-md d-flex align-items-center justify-content-center">
+                    <a href="http://www.daebauru.sp.gov.br/">
+                        <img width="100px" src="/arquivos/imagens/logo/dae.png" class="img-fluid mx-auto d-block" alt="Departamento de Água e Esgoto" title="Departamento de Água e Esgoto" />
+                    </a>
+                </div>
+                <div class="col-6 col-md d-flex align-items-center justify-content-center">
+                    <a href="https://www.emdurb.com.br/">
+                        <img width="100px" src="/arquivos/imagens/logo/emdurb.jpg" class="img-fluid mx-auto d-block" alt="Companhia de Habitação Popular de Bauru" title="Companhia de Habitação Popular de Bauru" />
+                    </a>
+                </div>
+                <div class="col-6 col-md d-flex align-items-center justify-content-center">
+                    <a href="http://www.funprevbauru.sp.gov.br/">
+                        <img width="100px" src="/arquivos/imagens/logo/funprev.png" class="img-fluid mx-auto d-block" alt="Fundação de Previdência dos Servidores Públicos Municipais Efetivos de Bauru" title="Fundação de Previdência dos Servidores Públicos Municipais Efetivos de Bauru" />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mt-5 contato">
+            <div class="row">
+                <div class="col-12 title-item">
+                    <a href="contato.aspx?i=1">
+                        <h1>FALE COM A
+                            <br />
+                            <span class="word">PREFEITURA</span></h1>
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-4">
+
+                <div class="col-12 col-lg-8">
+                    <!-- social media -->
+                    <div class="col-md-12 d-md-flex gap-md-4">
+                        <div class="col-12 col-md box-social">
+                            <a href="https://www.instagram.com/prefeituradebauru">
+                                <h4 class="d-flex g gap-2"><i class="bi bi-instagram"></i>INSTAGRAM</h4>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md box-social">
+                            <a href="https://www.facebook.com/prefeituradebauruoficial/">
+                                <h4 class="d-flex g gap-2"><i class="bi bi-facebook"></i>FACEBOOK</h4>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md box-social">
+                            <a href="https://www.youtube.com/channel/UCjws_lcF6pruApDae3is-lQ/videosbh">
+                                <h4 class="d-flex g gap-2"><i class="bi bi-youtube"></i>YOUTUBE</h4>
+                            </a>
+                        </div>
+
+                        <hr class="mt-4 d-flex d-md-none">
+                    </div>
+                    <!-- contato -->
+                    <div class="d-md-flex gap-4 my-4">
+                        <div class="col-12 col-md mb-4">
+                            <h4 class="py-0">CENTRAL</h4>
+                            <a href="tel:32351000">(14) 3235-1000</a>
+                        </div>
+
+                        <div class="col-12 col-md mb-4">
+                            <h4>OUVIDORIA</h4>
+                            <b>Geral</b> - <a href="tel:1432351156">(14) 3235-1156</a><br />
+                            <b>Saúde</b> - <a href="tel:1431041452">(14) 3104-1452</a>
+                        </div>
+
+                        <div class="col-12 col-md mb-4">
+                            <h4>EMAIL</h4>
+                            <a href="contato.aspx?i=1">Clique aqui para entrar em contato</a>
+                        </div>
+                        <hr class="col-12 my-4 d-flex d-md-none">
+                    </div>
+                </div>
+
+                <!-- newsletter -->
+                <div class="col-12 col-lg-4 my-4">
+                    <h4><i class="bi bi-envelope-fill"></i>NEWSLETTER</h4>
+                    <div>
+                        <div class="mb-3">
+                            <input name="ctl00$ctl01$ExternoBody$content$txtNome" type="text" maxlength="100" id="ExternoBody_content_txtNome" class="form-control" placeholder="Digite seu Nome" style="text-transform:uppercase;" />
+                            
+                        </div>
+                        <div class="mb-3">
+                            <input name="ctl00$ctl01$ExternoBody$content$txtEmail" type="text" maxlength="200" id="ExternoBody_content_txtEmail" class="form-control" aria-describedby="descricao" placeholder="exemplo@dominio.com.br" style="text-transform:lowercase;" />
+                            
+                            
+                        </div>
+                        <input type="submit" name="ctl00$ctl01$ExternoBody$content$btnNewsletter" value="Gravar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl01$ExternoBody$content$btnNewsletter&quot;, &quot;&quot;, true, &quot;vgNewsletter&quot;, &quot;&quot;, false, false))" id="ExternoBody_content_btnNewsletter" class="btn btn-success" />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    </div>
+
+            </div>
+        </main>
+
+        
+
+
+<section class="pre-footer mt-5 py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                / <a href="/equipe_governo.aspx">EQUIPE DE GOVERNO</a> /
+            </div>
+            <div class="col">
+                / <a href="/identidade_visual.aspx">IDENTIDADE VISUAL</a> /
+            </div>
+            <div class="col">
+                / <a href="/contato.aspx?i=1">CONTATO</a> /
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer py-3">
+    <div class="container">
+        <a class="text-white " href="/ti/default.aspx">&copy; 2010-2026 - TI PMB</a>
+        <p>Prefeitura Municipal de Bauru - Praça das Cerejeiras, 1-59 - Vila Noemy - CEP: 17014-900</p>
+        <p class="text-center ip-usuario">Seu IP é: <b>179.105.129.146</b></p>
+    </div>
+</footer>
+
+<script src="/arquivos/scripts_web/site2/js/jquery.min.js"></script>
+<script src="/arquivos/scripts_web/site2/js/bootstrap.bundle.min.js"></script>
+
+<script src="/arquivos/scripts_web/site2/js/bootstrap-select.min.js"></script>
+<script src="/arquivos/scripts_web/site2/js/index.bundle.min.js"></script>
+<script src="/arquivos/scripts_web/site2/js/Metodos_Funcoes.js"></script>
+<!-- Google tag (gtag.js) sap-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VB0W296JXP"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VB0W296JXP');
+</script>
+
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-64289856-1', 'auto');
+    ga('send', 'pageview');
+
+    jqueryScripts = function () {
+        (function ($) {
+            $.fn.jFunctions = function () {
+                agentStr = navigator.userAgent;
+                console.log(agentStr);
+                //auto-rezising textarea
+                this.find("textarea").css({
+                    'height': 'auto',
+                    'overflow': 'hidden'
+                }).bind('focus change cut paste drop keydown keyup keypress', function () {
+                    var el = $(this);
+                    var text = $(this)[0];
+                    function resize() {
+                        text.style.height = 'auto';
+                        text.style.height = text.scrollHeight + 'px';
+                    }
+                    setTimeout(resize, 0);
+                });
+            }                    
+        }(jQuery));
+        $(document).ready(function () { $(this).jFunctions(); });
+    }
+    itvInicializarJquery = setInterval(function () {
+        if ($()) {
+            jqueryScripts();
+            clearInterval(itvInicializarJquery);
+        }
+    }, 500);
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+
+        // delegate calls to data-toggle="lightbox"
+        $(document).delegate('*[data-toggle="lightbox"]', 'click', function (event) { 
+            event.preventDefault();
+            return $(this).ekkoLightbox({ 
+                alwaysShowClose: true,
+                onShown: function () { 
+
+                    $('button.close').click(function() { console.log('entrou'); $('.modal').modal('toggle'); });
+                    if (window.console) {
+                        return console.log('Checking our the events huh?');
+                    }
+                },
+                onNavigate: function (direction, itemIndex) {
+                    if (window.console) {
+                        return console.log('Navigating ' + direction + '. Current item: ' + itemIndex);
+                    }
+                }
+            });
+        });
+
+        //Programatically call
+        $('#open-image').click(function (e) {
+            e.preventDefault();
+            $(this).ekkoLightbox();
+        });
+        $('#open-youtube').click(function (e) {
+            e.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    });
+</script>
+<style>
+    /* custom css VLibras */
+    .back-to-top,
+    .custom-vlibras-button {
+        position: fixed;
+        right: .5rem;
+        transform: translateY(calc(-50px));
+        z-index: 9999;
+    }
+    .custom-vlibras-button{
+        bottom: 2rem;
+    }
+    .custom-vlibras-wrapper{
+        position: fixed;
+        bottom: 10rem;
+        right: 0;
+    }
+</style>
+<div class="custom-vlibras-button">
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper class="custom-vlibras-wrapper">
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+</div>
+
+<!-- <nav class="back-to-top" aria-label="Voltar ao topo da página">
+    <a href="#wrapper">
+        <span class="fa fa-chevron-up"></span>
+        <span class="sr-only">Voltar ao topo da página</span>
+    </a>
+</nav> -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+
+    </form>
+
+
+</body>
+
+
+
+
+</html>
