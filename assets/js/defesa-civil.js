@@ -120,7 +120,7 @@ function __init(){
         return {cod: m.ibge, nome: m.nome, uf: m.uf, eventos: eventos, classificado: Array.isArray(ev),
                 familia: familiaDe(eventos[0]), decreto: m.primeiro_decreto || null, reconhecimento: m.primeiro_reconhecimento || null,
                 reconhecida: !!m.reconhecido, tipos: m.tipos || [], anterior: !!m.decreto_anterior_ao_ciclo,
-                atoLocalizado: !!m.decretado,
+                atoLocalizado: !!m.decretado, nivel: m.nivel_intensidade || null, declaracao: m.declaracao || null,
                 atoMunicipal: fontes.find(f => f.canal !== 'DOU') || null, portaria: fontes.find(f => f.canal === 'DOU') || null};
       })
     : [];
@@ -273,9 +273,10 @@ function __init(){
     .attr('stroke', f => est(f).contorno).attr('stroke-opacity', f => est(f).opacidade_contorno).attr('stroke-width', 1.2);
   const decretoTexto = m => m.decreto || 'data não localizada';
   const reconhecimentoTexto = m => m.reconhecida ? (m.reconhecimento || '') + (m.portaria ? ' · ' + (m.portaria.decreto || '') : '') : 'não localizado até o corte';
+  const nivelTexto = m => m.nivel ? m.nivel + ' · ' + (m.nivel === 'III' || m.declaracao === 'estado_de_calamidade_publica' ? 'calamidade pública' : 'situação de emergência') : 'não informado';
   const corpoTabela = document.querySelector('#tblEmergencias tbody');
   if (corpoTabela) corpoTabela.innerHTML = decretados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR') || a.uf.localeCompare(b.uf))
-    .map(m => '<tr>' + [m.nome, m.uf, eventoTexto(m), decretoTexto(m), reconhecimentoTexto(m)].map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('');
+    .map(m => '<tr>' + [m.nome, m.uf, eventoTexto(m), decretoTexto(m), reconhecimentoTexto(m), nivelTexto(m)].map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('');
   const pontosMapa = decretados.filter(m => LATLON_POR_CODIGO[m.cod]).map(m =>
     Object.assign({lon: LATLON_POR_CODIGO[m.cod][0], lat: LATLON_POR_CODIGO[m.cod][1]}, m));
   const corFam = m => cor(m.classificado ? m.familia.cor : 'cinza-quente');

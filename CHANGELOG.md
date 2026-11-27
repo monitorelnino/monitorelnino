@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A união pela base comum recusava `fontes_suspensas.json` quando dois elos visitavam a mesma fonte em dias diferentes (o `hash` muda a cada visita). Agora o registro cuja observação é mais recente em `ultima_deteccao` e `reavaliada_em` vence inteiro; sem lado dominante, continua recusando.
 
+## 2026-11-27 · #2157 · Coluna "Nível" na tabela de emergências da Defesa civil
+
+A tabela "Ver em tabela" do mapa de emergências ganha a coluna "Nível" (III · calamidade pública, II · situação de emergência ou "não informado"), lida de `municipios_decretados.json`, e um parágrafo da seção traz os níveis da Portaria MDR nº 260/2022. Mapa e cartões não mudam.
+
 ## 2026-11-27 · #2156 · Nível II para as emergências reconhecidas lidas no DOU
 
 Os 709 reconhecimentos federais achados pela consulta do DOU "reconhece a situação de emergência" passam a registrar o tipo de declaração, que é o da própria consulta. Com isso, 630 municípios mostram nível II (Portaria MDR nº 260/2022, art. 5º). Os reconhecimentos vindos de notícia do MIDR e de resposta a pedido de acesso ficam sem nível até a leitura do ato.
