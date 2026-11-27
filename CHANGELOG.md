@@ -13,6 +13,14 @@ não pontuados permanecem na versão corrente.
 
 A união pela base comum recusava `fontes_suspensas.json` quando dois elos visitavam a mesma fonte em dias diferentes (o `hash` muda a cada visita). Agora o registro cuja observação é mais recente em `ultima_deteccao` e `reavaliada_em` vence inteiro; sem lado dominante, continua recusando.
 
+## 2026-11-27 · #2156 · Nível II para as emergências reconhecidas lidas no DOU
+
+Os 709 reconhecimentos federais achados pela consulta do DOU "reconhece a situação de emergência" passam a registrar o tipo de declaração, que é o da própria consulta. Com isso, 630 municípios mostram nível II (Portaria MDR nº 260/2022, art. 5º). Os reconhecimentos vindos de notícia do MIDR e de resposta a pedido de acesso ficam sem nível até a leitura do ato.
+
+## 2026-11-27 · #2153 · Juiz 1.8: repetição do mesmo documento colapsa numa decisão
+
+Rodada paralela J18 (J12): o arquivo `data/paralelo_juiz18.json` trouxe Taió/SC e Trindade do Sul/RS duas vezes cada, com a mesma pista. O gravador único do arquivo paralelo passa a colapsar repetições do mesmo hash, UF e município na mais antiga, e o autoteste ganha a trava. Só código do modo paralelo; nada do índice publicado muda. Linhas líquidas: +14/−0 (um defeito, a trava que o corrige e o teste dela).
+
 ## 2026-11-26 · #2117 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura
 
 O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
@@ -36,6 +44,7 @@ Francisco Morato/SP saía datado de 2013 pelo ano de uma obra citada (Morretes).
 ## 2026-11-26 · #2136 · Ponte: endereço final de nuvem entra sem a chave de acesso do órgão
 
 O lote trazido do Brasil registra o endereço final de cada documento. Arquivo de prefeitura guardado em nuvem (S3 pré-assinado) traz na consulta a chave de acesso do órgão, e o registro é publicado pela raiz: o portão de segredos reprovou o PR de dado. O endereço passa agora pela mesma redação de segredos das evidências, na porta da ponte; autoteste novo.
+
 ## 2026-11-26 · #2140 · Portão de imprensa reconhece o arquivo do portal da prefeitura
 
 O portão que confere a fonte dos registros pontuáveis julgava só o domínio e reprovava os planos de Cunha, Parapuã e Bragança Paulista, guardados pelo portal oficial no domínio do fornecedor (e-Crie), que o juiz já aceita desde o #2131. Agora ele recebe o endereço inteiro e aplica a mesma regra única do juiz; caso novo no autoteste.
@@ -51,6 +60,7 @@ Quando a rodada nos sites de prefeitura chegava ao prazo, o coletor esperava os 
 ## 2026-11-26 · #2125 · Arquivo da web nos sites que recusam o robô de fora
 
 A busca no arquivo da web (Wayback Machine e Common Crawl) deixava de ser feita quando o site da prefeitura recusava o robô de fora do país, porque o endereço não se confirmava. Agora o endereço se confirma pela cópia que a ponte traz do Brasil.
+
 ## 2026-11-26 · #2123 · lote J18 grava periodicamente e isola falha por documento
 O lote da rodada paralela J18 gravava só no fim: a produção da válvula de 26/11 bateu no prazo de 150 min e não salvou nada. Agora grava a cada 2 minutos. Um PDF quebrado não derruba mais o lote: a falha vai para sem_leitura com a causa. Duas travas novas no autoteste do juiz. Produção e índice não mudam.
 
@@ -65,12 +75,15 @@ O robô roda fora do país, e o 403 recebido de lá era gravado como recusa da f
 ## 2026-11-26 · #2116 · Saúde: falha de leitura não é recusa
 
 Na fila de saúde, o serviço fora do ar (HTTP 5xx) e o PDF escaneado lido por executor sem OCR eram gravados como recusa do juiz e não voltavam. Passam a ficar pendentes, com o código no motivo; o veredito antigo sem código volta uma vez. Os elos da saúde estadual e dos desfechos instalam o OCR, e o juiz municipal de saúde, que rodava só à mão, entra no elo dos desfechos.
+
 ## 2026-11-26 · #2112 · Juiz: reabrir pista nomeada e redatar pelo documento relido
 
 `julgar_filas.py --reabrir` manda o juiz ler pista nomeada que a triagem fechou sem leitura (697 endereços oficiais) ou que já foi promovida. A releitura do mesmo documento corrige a data do registro; se o documento não informa data, o registro sai do banco e o plano segue no cartão como localizado e sem data. Sem a marca de reabertura, a noite comum não muda.
+
 ## 2026-11-26 · #2108 · Data do plano: capa com espaços e legenda de figura
 
 Na medição nacional, o leitor de data errou dois planos: São José/SC (capa com espaços duplos, lida como 2022 em vez de 2025) e Porto Velho/RO (a legenda "Porto Velho, 2019" de uma figura, em vez do 2024 da capa). O leitor passa a normalizar os espaços e a não tomar por data do plano o local e o ano de legenda de figura, tabela ou fonte.
+
 ## 2026-11-26 · #2114 · O POST entra na conta dos sites fora da rodada
 
 A listagem do diário do Piauí é pedida por POST, e o POST não tinha a conta que tira do resto da rodada o site que não responde. Cada data esgotava o tempo, o Piauí consumia todo o prazo da leitura dos diários e Mato Grosso do Sul e Rondônia ficavam sem edição lida desde 12/11. GET e POST passam a usar a mesma conta.
@@ -102,9 +115,11 @@ O cartão do município, na página inicial e em Prefeituras, mostra o que ele d
 ## 2026-11-25 · #2098 · Cartão do município: autodeclaração de plano
 
 O arquivo do cartão passa a trazer o que cada município declarou sobre ter plano de contingência: ICM/Sedec de 2026 (sim ou não), MUNIC/IBGE de 2020 (quando sim) e a data do plano registrado no S2iD, com nome e edição das fontes. São 2.573 os que declaram ter; em 2.060 deles o plano não foi localizado até o corte. Declarar não muda a categoria do município. A frase na página entra em seguida.
+
 ## 2026-11-25 · #2093 · Juiz: a data do plano é a que o documento informa
 
 O juiz dava ao plano sem ato o primeiro ano do texto: nos 452 planos do RS, 198 ficavam só com o ano e 22 ganhavam ano de evento, de censo ou de lei citada. `data_do_plano.py` lê a data onde o documento se data (atualização, versão, capa, fecho, assinatura), para o MARÉ Legal e o Saúde. Registro já publicado não é redatado: o efeito é medido à parte, para decisão da editoria. METODOLOGIA §129.
+
 ## 2026-11-25 · #2095 · Redução: história do `julgar_saude.py` ao HISTORICO
 
 Comentários de história do juiz da saúde (datas, casos medidos, pedidos) viram uma linha de regra cada; o relato vai para `docs/HISTORICO_DE_REGIMES.md`. Sai um bloco de comentário duplicado. AST idêntica, sem mudança de comportamento. Código −73 linhas líquidas (106.785 → 106.712).

@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>27/11/2026 · Juiz 1.8: repetição do mesmo documento colapsa numa decisão</dt>
+      <dd>Rodada paralela J18 (J12): o arquivo `data/paralelo_juiz18.json` trouxe Taió/SC e Trindade do Sul/RS duas vezes cada, com a mesma pista. O gravador único do arquivo paralelo passa a colapsar repetições do mesmo hash, UF e município na mais antiga, e o autoteste ganha a trava. Só código do modo paralelo; nada do índice publicado muda. Linhas líquidas: +14/−0 (um defeito, a trava que o corrige e o teste dela).</dd>
       <dt>26/11/2026 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura</dt>
       <dd>O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.</dd>
       <dt>26/11/2026 · Ceará: emergências estaduais no mapa</dt>
@@ -162,8 +164,6 @@
       <dd>Em 18/11 o arquivo de alertas em vigor cresceu 34% porque os alertas foram de 4.024 para 5.690, e o portão de tamanho reprovou a `main` como se fosse duplicação. A regra que absolve leitura nova só enxergava listas no topo do arquivo; passa a contar também os itens das listas de cada chave. Registro repetido continua barrado.</dd>
       <dt>24/11/2026 · Monitor de riscos: abertura sem instrução de interação</dt>
       <dd>A abertura do Monitor de riscos deixa de pedir que o leitor passe o cursor ou toque nos pontos do mapa, porque essa interação não está implementada. Fica a frase sobre os quatro riscos que o boletim prevê para este El Niño. Catálogo, texto de reserva da página e índice de conteúdo ajustados.</dd>
-      <dt>24/11/2026 · Mesclagem recusada fecha quando o arquivo volta a se unir</dt>
-      <dd>A Issue aberta quando a união recusava um arquivo prometia fechar sozinha, mas nada a fechava. Agora fecha na rodada em que o mesmo arquivo volta a se unir. Caso novo no autoteste.</dd>
     </dl>
   </section>
 </main>
