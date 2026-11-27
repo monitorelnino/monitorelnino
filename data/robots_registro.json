@@ -17498,7 +17498,7 @@
    "status_robots": "permite",
    "crawl_delay": null,
    "primeiro_acesso": "2026-11-16",
-   "total_acessos": 5,
+   "total_acessos": 6,
    "acessos": [
     {
      "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fc%20%3Fu%20WHERE%20%7B%20%3Fm%20wdt%3AP1585%20%3Fc%20%3B%20wdt%3AP856%20%3Fu%20.%20%7D",
@@ -17527,6 +17527,12 @@
     {
      "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fc%20%3Fu%20WHERE%20%7B%20%3Fm%20wdt%3AP1585%20%3Fc%20%3B%20wdt%3AP856%20%3Fu%20.%20%7D",
      "quando": "2026-11-27T18:12:35Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fc%20%3Fu%20WHERE%20%7B%20%3Fm%20wdt%3AP1585%20%3Fc%20%3B%20wdt%3AP856%20%3Fu%20.%20%7D",
+     "quando": "2026-11-27T18:40:52Z",
      "origem": "robo",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
