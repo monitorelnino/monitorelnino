@@ -5,7 +5,10 @@ from coletores_base import buscar
 t = buscar("https://www.in.gov.br/leiturajornal?data=24-11-2026&secao=do1", timeout=90, origem="coletar_s2id").decode("utf-8", "replace")
 for m in re.finditer(r'<script([^>]*)>', t):
     if 'json' in m.group(1) or 'params' in m.group(1): print("SCRIPT", m.group(1)[:200])
-m = re.search(r'<script[^>]*id="params"[^>]*>(.*?)</script>', t, re.S)
+i = t.find("jsonArray"); print("POS", i, repr(t[max(0,i-400):i+600]))
+for k in ("Defesa Civil", "Reconhecer"):
+    j = t.find(k); print(k, j, repr(t[max(0,j-500):j+300]) if j>=0 else "")
+m = re.search(r'<script[^>]*id="params"[^>]*>(.*?)</script>', t, re.S) or re.search(r'id="params"[^>]*value="([^"]*)"', t)
 d = json.loads(html.unescape(m.group(1)))
 print("chaves", list(d.keys())[:20]); arr = d.get("jsonArray") or []
 print("itens", len(arr)); print("item0", json.dumps(arr[0], ensure_ascii=False)[:800])
