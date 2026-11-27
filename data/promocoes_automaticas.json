@@ -1280357,6 +1280357,3579 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "5c4948ab1d486436fc574b9dfd74aef363e5655d9cddfd40975124d5d38db754"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4290 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "qaunicipa, Ri, És l % sai $ Município de Vitória do Xingu UE ma &s Pp a g VB [1 ê Sistema Unico de Saúde SUSAN Pinna Conselho Municipal de Saúde RESOLUÇÃO Nº 0"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "s Pp a g VB [1 ê Sistema Unico de Saúde SUSAN Pinna Conselho Municipal de Saúde RESOLUÇÃO Nº 002/2020 Vitória do Xingu-Pará, 29 de Junho de 2020. Dispõe sobre",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "002/2020",
+      "data": "29/06/2020",
+      "trecho": "s Pp a g VB [1 ê Sistema Unico de Saúde SUSAN Pinna Conselho Municipal de Saúde RESOLUÇÃO Nº 002/2020 Vitória do Xingu-Pará, 29 de Junho de 2020. Dispõe sobre"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "elo Covid-19 e sistematizar as ações e os procedimentos sob responsabilidade da Secretaria Municipal de Saúde de Vitória do Xingu, estabelecendo as respostas ad"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "29/06/2020",
+   "natureza": "DUVIDA",
+   "ibge": "1508357",
+   "municipio": "Vitória do Xingu",
+   "uf": "PA",
+   "url": "https://vitoriadoxingu.pa.gov.br/wp-content/uploads/2023/09/Res.-no-002-2020-CMSVX-aprova-PAS-2020-Plano-de-contingencia-.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "0272c9f44d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "cd3af502459c02c447f362189cfb23ffd2e16f5eb273ee7b8d4a6cae1c8d38b8"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4121 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Rodapé [Alt + 3] A+ A- --> Ouvidoria Mapa do site Alto contraste Prefeitura de Guajeru - Bahia MENU 77 3417-2252 --> A Lei nº 12.527/2011 regulamenta o direito"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.527/2011",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2911659",
+   "municipio": "Guajeru",
+   "uf": "BA",
+   "url": "https://transparencia.governodeguajeru.ba.gov.br/index.php/buscar/45",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "12c27d0caa",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d127e3e7693cfc5e71d11eec69eced98487326753e2a6b692320c3ba1ca83c65",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "17335 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "no Mu Aa aviao de P Consoants Art. bq Só, sado Jg PREFEITURA MUNICIPAL DE SÃO MIGUEL DO ANTA/MINAS GERAIS Rua São José, nº 730, Centro, São Miguel do Anta"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "23/06/2015",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "23/06/2015",
+   "natureza": null,
+   "ibge": "3163805",
+   "municipio": "São Miguel do Anta",
+   "uf": "MG",
+   "url": "https://saomigueldoanta.mg.gov.br/wp-content/uploads/2024/09/Plano_Municipal_de_Educa%C3%A7%C3%A3o.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "6a25e9d1b2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d9489055b561bee3617ad4fbd59cf32378b1cb27225800464b929bb6af816435",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "48354 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "A Inundações e Deslizamentos Rua Benjamim Gerlach, 836 – Fazenda Santo Antônio– São José/SC – CEP 88111-500 – Fone: 3381-0003 Emergência: 199 - Email: defesa.ci"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Inundações e Deslizamentos Rua Benjamim Gerlach, 836 – Fazenda Santo Antônio– São José/SC – CEP 88111-500 – Fone: 3381-0003 Emer",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "19/02/2026",
+      "data_origem": "atualizacao",
+      "data_trecho": "VERSÃO: 4.2 ÚLTIMA ATUALIZAÇÃO: 19/02/2026",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "SECRETARIA MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Inundações e Deslizamentos Rua Benjamim Gerlach, 836 – Fazenda Santo Antônio– São José/SC – CEP 88111-500 – Fone: 3381-0003 Emer",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ÇÃO ................................................................. 31 6.2.8. SECRETARIA MUNICIPAL DE ESPORTE E LAZER ........................................"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA Inundações e Deslizamentos Rua Benjamim Gerlach, 836 – Fazenda Santo Antônio– São José/SC – CEP 88111-500 – Fone: 3381-0003 Emer"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2026; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "19/02/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "4216602",
+   "municipio": "São José",
+   "uf": "SC",
+   "url": "https://saojose.sc.gov.br/wp-content/uploads/2026/02/Plano-Contigencia-Sao-Jose-Versao-4.2-19.02.2026.docx.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "372a313803",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1b59f925c60d154ac4396e3bd1e1db7ef6e76f82d05190d9a54377d02240829b"
+  },
+  {
+   "promove": false,
+   "motivo": "municipio_nao_identificado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "42297 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200409",
+   "municipio": "Anchieta",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/media/risco%20geologico/Apresentacao_RiscoGeologico.pdf",
+   "regras_18": [
+    "J19"
+   ],
+   "pista_id": "25b0113f17",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f35d28c425485c90b27f74c51e9a32cc96ed6e20a78cbd650e86881ee6382be7"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "77770 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200409",
+   "municipio": "Anchieta",
+   "uf": "ES",
+   "url": "https://seg.es.gov.br/Media/programa_integridade/Plano%20de%20Integridade%20SEG%20-%201%C2%AA%20vers%C3%A3o.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "b689912b93",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5a65a40237987d68c7d603e1c29e439c149e785647a421b9370904abed4325b0"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18738 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202306",
+   "municipio": "Guaçuí",
+   "uf": "ES",
+   "url": "https://guacui.es.gov.br/noticia/2020/05/guacui-passa-de-risco-baixo-para-risco-moderado-em-casos-de-covid-19.html",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "60bd9a6b1d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fb42fdd06950f2135e739fdd8365a270963c770e7dd0c40f16f8d69e359b46b5"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "10495 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PAL Rua Antônio Barbosa de Oliveira, S/N — Bairro Santa Cruz - CEP: 29590-000 Divino de São Lourenço - ES Tel:(28) 3551-1177 ou (28)-3551-1166 PLANO MUNICIPA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "P: 29590-000 Divino de São Lourenço - ES Tel:(28) 3551-1177 ou (28)-3551-1166 PLANO MUNICIPAL DE CONTINGÊNCIA INUNDAÇÕES E DESLIZAMENOS Divino de São Lourenç",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "16/10/2023",
+      "data_origem": "atualizacao",
+      "data_trecho": "Versão Última Atualização — 16 de outubro de 2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "DEFESA CIVIL MUNICIPAL",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "P: 29590-000 Divino de São Lourenço - ES Tel:(28) 3551-1177 ou (28)-3551-1166 PLANO MUNICIPAL DE CONTINGÊNCIA INUNDAÇÕES E DESLIZAMENOS Divino de São Lourenç",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": ") DD) DD) ) ) DID ))I)D)IIDDO) ) ) ) DEFESA CIVIL MUNICIPAL Rua Antônio Barbosa de Oliveira, S/N — Bairro Santa Cruz - CEP: 29590-000 Divino de São Lo"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA INUNDAÇÕES E DESLIZAMENOS Divino de São Lourenço/ES 3º, Versão Última Atualização — 16 de outubro de 2023 Exemplar pertencente à"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2023, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "16/10/2023",
+   "natureza": "EX_ANTE",
+   "ibge": "3201803",
+   "municipio": "Divino de São Lourenço",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/DefesaCivil/Legislacao/DIVINO%20DE%20S%C3%83O%20LOUREN%C3%87O%20-%20PLANO%20DE%20CONTING%C3%8ANCIA.pdf",
+   "regras_18": [
+    "J19",
+    "J1",
+    "J10"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "cea8eca136",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "11495de16f746bd6f8feb984d133fa438cff61e4487883e3429ed8ac605ea1a9"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "17690 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202306",
+   "municipio": "Guaçuí",
+   "uf": "ES",
+   "url": "https://guacui.es.gov.br/noticia/2020/03/recomendacoes-cornavirus.html",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "0ea12aa145",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9a7a91c608b30b002f9bccb61b9f2dd12561d1687af2483b5324e7ed2af326ed"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "15144 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Resoluções 2022 &#8211; Prefeitura Municipal de Alegre Cidade Jardim Mapa do Site DADOS ABERTOS Facebook Instagram YouTube WhatsApp Telefones Diário Oficial Dec"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Início Resoluções Resoluções 2022 RESOLUÇÕES 2022 COMUS-011-2022 - Dispõe sobre Plano de Contingência de Alegre para controle e prevenção da infecção causada pe",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "data_origem": null,
+      "data_trecho": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "Plano de Contingência",
+      "trecho": "Início Resoluções Resoluções 2022 RESOLUÇÕES 2022 COMUS-011-2022 - Dispõe sobre Plano de Contingência de Alegre para controle e prevenção da infecção causada pe",
+      "prova_de_que_e_o_plano": "página com estrutura de plano e sem marca de notícia"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200201",
+   "municipio": "Alegre",
+   "uf": "ES",
+   "url": "https://www.alegre.es.gov.br/diariooficial/resolucoes-2022/",
+   "regras_18": [
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "6976c34568",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "332a3f4eb24c1b46333ffce4ab4c603acb99d196dfe2ca6b9b7f219c98aa7f4f"
+  },
+  {
+   "promove": false,
+   "motivo": "municipio_nao_identificado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "113921 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3200201",
+   "municipio": "Alegre",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/Media/Material%20Did%C3%A1tico/M%C3%B3dulos%20SEDEC/M%C3%B3dulo%20II%20-%20Plano%20de%20Conting%C3%AAncia%20-%20Livro%20Base.pdf",
+   "regras_18": [
+    "J19"
+   ],
+   "pista_id": "36756cfdfe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8a8714222f10d1739af7ad1424ab71f23341ad49d0334a8133dbaf5d27e9162b"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "4470 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "﻿ PREFEITURA MUNICIPAL DE JAGUARÉ - ES Ir para o conteúdo Link externo para Portal Brasil Link externo para Portal do Governo do Estado do Espírito Santo Portal"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203056",
+   "municipio": "Jaguaré",
+   "uf": "ES",
+   "url": "https://www.jaguare.es.gov.br/transparencia/pagina/ler/1096/plano-municipal-",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "de3a928ae7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fb23f57192758673ad4d356f337d0865248127a900694d9b697d0449bd4f3fd4"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8618 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "﻿ PREFEITURA MUNICIPAL DE JAGUARÉ - ES Ir para o conteúdo Link externo para Portal Brasil Link externo para Portal do Governo do Estado do Espírito Santo Portal"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203056",
+   "municipio": "Jaguaré",
+   "uf": "ES",
+   "url": "https://www.jaguare.es.gov.br/transparencia/licitacao",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "c018647ca7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "06de48ee803a0df6369bb8182dbbacd91c155271ff8e2fc83f0a45ad16c34259"
+  },
+  {
+   "promove": false,
+   "motivo": "titulo_nao_e_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "413004 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o, da Empresa Petróleo Brasileiro S.A - PETROBRAS, localizado nos municípios de Jaguaré e São Mateus, litoral norte do Estado do Espírito Santo. O Estudo, elabo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Terceiro apresenta uma Análise Preliminar dos Riscos envolvidos, enquanto que o Plano de Contingência e Emergência está sendo proposto no capitulo relativo a me",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": null,
+      "data_origem": null,
+      "data_trecho": null,
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado do Espírito",
+      "titulo": "Plano de Contingência",
+      "trecho": "Terceiro apresenta uma Análise Preliminar dos Riscos envolvidos, enquanto que o Plano de Contingência e Emergência está sendo proposto no capitulo relativo a me",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203056",
+   "municipio": "Jaguaré",
+   "uf": "ES",
+   "url": "https://iema.es.gov.br/media/CQAI/EIA/2002/Terminal%20norte%20capixaba/EIAATP-NC_11_03_02.pdf",
+   "regras_18": [
+    "J15"
+   ],
+   "data_origem": null,
+   "pista_id": "9198e6bd55",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "69aa1574d50c49ac30132f7a4bb8687f917ec0bcbb9dd71a9f567ea0af6134eb"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "30404 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203007",
+   "municipio": "Iúna",
+   "uf": "ES",
+   "url": "https://iuna.es.gov.br/noticia/984",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "ffa7b360b1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d01d318a21247afb4eee0864c2a303eceb5b140e9ec8227d586be665accf5986"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18486 caracteres de fonte oficial",
+     "recorte_do_ato": "6361 de 18486 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ciais) Dispensas e Inexigibilidades Comunicação: Audiências Publicas Brand Book Iúna Facebook (Oficial) Identidade Visual Instagram (Oficial) Notícias Plano de"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "064/2026",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203007",
+   "municipio": "Iúna",
+   "uf": "ES",
+   "url": "https://iuna.es.gov.br/plano-contingencia-municipal",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d613109799",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "07e8baffd16b79bb8a564005c41f7d54a6773382d2fb85a73def06bbdb2ac5d4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://iuna.es.gov.br/plano-contingencia-municipal",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18486 caracteres de fonte oficial",
+     "recorte_do_ato": "6361 de 18486 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ciais) Dispensas e Inexigibilidades Comunicação: Audiências Publicas Brand Book Iúna Facebook (Oficial) Identidade Visual Instagram (Oficial) Notícias Plano de"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "064/2026",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203007",
+   "municipio": "Iúna",
+   "uf": "ES",
+   "url": "https://iuna.es.gov.br/plano-contingencia-municipal",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "dafde3e804",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "07e8baffd16b79bb8a564005c41f7d54a6773382d2fb85a73def06bbdb2ac5d4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://iuna.es.gov.br/plano-contingencia-municipal",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "municipio_nao_identificado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7957 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3201605",
+   "municipio": "Conceição da Barra",
+   "uf": "ES",
+   "url": "https://defesacivil.es.gov.br/",
+   "regras_18": [
+    "J19"
+   ],
+   "pista_id": "b967c53ae0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c654043995d5d79366aaa5811027cc9385e6ad138f6d0a680b6cfa6af3bf2855"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205010",
+   "municipio": "Sooretama",
+   "uf": "ES",
+   "url": "https://www.sooretama.es.gov.br/uploads/files/Plano-Municipal-de-Saneamento-Basico-de-Sooretama.%5B1%5D.pdf",
+   "regras_18": [],
+   "pista_id": "eadb935766",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205010",
+   "municipio": "Sooretama",
+   "uf": "ES",
+   "url": "https://sejus.es.gov.br/media/Moderniza/edital-03-2026-contratacao-de-empresa-para-elaboracao-de-projetos-de-arquitetura-e-complementares-de-engenharia.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "f02142b04e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "10f68c8046fe64d3b2b024b28b31193acc5c65a74d720aa86a2ab3e3fa34cbd9"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "472457 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3205010",
+   "municipio": "Sooretama",
+   "uf": "ES",
+   "url": "https://sejus.es.gov.br/Media/Sejus/Arquivos%20PDF/Edital%20de%20Preg%C3%A3o%20Eletr%C3%B4nico%20N%C2%BA%20031.2025%20-%20Republicado.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "349ed81b13",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec0cf09137ef4e27b976a1edf27800cd5ad3f080409dfa963f37f65d236db20"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "370 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202454",
+   "municipio": "Ibatiba",
+   "uf": "ES",
+   "url": "https://ibatiba.es.gov.br/galeria",
+   "regras_18": [],
+   "pista_id": "eab5f9f5d1",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202454",
+   "municipio": "Ibatiba",
+   "uf": "ES",
+   "url": "https://www.ibatiba.es.gov.br/noticia/ler/3223/defesa-civil-de-ibatiba-divulga-numero-de-contato-para-situacoes-de-emergencia",
+   "regras_18": [],
+   "pista_id": "27e64e176b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202454",
+   "municipio": "Ibatiba",
+   "uf": "ES",
+   "url": "https://www.ibatiba.es.gov.br/galeria/index/90",
+   "regras_18": [],
+   "pista_id": "2a28fbbb9f",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "22807 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "a Download Resolução CIB nº 047-2021- Emenda Parlamentar Incremento do PAB para Tartarugalzinho Download Resolução CIB nº 048-2021- Emenda Parlamentar reforma d"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600709",
+   "municipio": "Tartarugalzinho",
+   "uf": "AP",
+   "url": "https://saude.portal.ap.gov.br/resolucoes",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "f19fdd9c30",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "af83ed03b225d948d488f4247c753105874e36881a0198456af0cb6de186cf4c"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "22807 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Download Resolução CIB nº 049-2021-Emenda Parlamentar ampliação Posto de Saúde Itaubal do Município de Tartarugalzinho Download Resolução CIB nº 050-2021- Emen"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600253",
+   "municipio": "Itaubal",
+   "uf": "AP",
+   "url": "https://saude.portal.ap.gov.br/resolucoes",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "0fc71e8a48",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "af83ed03b225d948d488f4247c753105874e36881a0198456af0cb6de186cf4c"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "49118 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Manual do Plano de Contingência Agosto/2024 Brasília - DF Expediente Governador do Distrito Federal Ibaneis Rocha Vice-Governador do Distrito Federal Celina Leã"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 1 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": [
+       "sumário"
+      ]
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5300108",
+   "municipio": "Brasília",
+   "uf": "DF",
+   "url": "https://www.iprev.df.gov.br/documents/d/guest/manual_do_plano_de_contingencia-pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "14d0838deb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "044710dfadaf59e9ab523f8b51347f87f9e94b296195be539859a415bfbe580b"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4216602",
+   "municipio": "São José",
+   "uf": "SC",
+   "url": "https://saojose.sc.gov.br/el-nino-defesa-civil-de-sao-jose-leva-orientacao-sobre-prevencao-e-seguranca-a-idosos/105260/",
+   "regras_18": [],
+   "pista_id": "2bcb599e20",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4208450",
+   "municipio": "Itapoá",
+   "uf": "SC",
+   "url": "https://licitacoes.itapoa.sc.gov.br/uploads/sites/322/2022/06/1769291_Contrato_Adm_n_37_20Dispensa_n_06_20___Cestas_Basicas.pdf",
+   "regras_18": [],
+   "pista_id": "7f1f2db01d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217402",
+   "municipio": "Schroeder",
+   "uf": "SC",
+   "url": "https://schroeder.sc.gov.br/uploads/sites/353/2021/12/2005315_EEB_Miguel_Couto.pdf",
+   "regras_18": [],
+   "pista_id": "315149b075",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217402",
+   "municipio": "Schroeder",
+   "uf": "SC",
+   "url": "https://schroeder.sc.gov.br/licitacao/dispensa-42-2026-pms/",
+   "regras_18": [],
+   "pista_id": "aac2d0660d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5757 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "​Três Barras aprova Plano de Contingência de Proteção e Defesa Civil em audiência pública - Ir para o conteúdo Prefeitura A Prefeita Controle Interno Conselhos"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "01/06/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "01/06/2026",
+   "natureza": null,
+   "ibge": "4218301",
+   "municipio": "Três Barras",
+   "uf": "SC",
+   "url": "https://www.tresbarras.sc.gov.br/gestao-governo-municipal/tres-barras-aprova-plano-de-contingencia-de-protecao-e-defesa-civil-em-audiencia-publica/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "5d973d3ef8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ae5f2a4bf0c3f462d9bc56dade856fcd737cac37e274e2196155c36c95ec504b",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205803",
+   "municipio": "Garuva",
+   "uf": "SC",
+   "url": "https://servicos.garuva.sc.gov.br/uploads/sites/614/2023/08/661346_PRODUTO_DEFGHIJ.pdf",
+   "regras_18": [],
+   "pista_id": "df1aa924a1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203303",
+   "municipio": "Campo Alegre",
+   "uf": "SC",
+   "url": "https://campoalegre.sc.gov.br/noticia-516866/",
+   "regras_18": [],
+   "pista_id": "181d3fdac1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205308",
+   "municipio": "Faxinal dos Guedes",
+   "uf": "SC",
+   "url": "https://faxinal.sc.gov.br/noticia-554279/",
+   "regras_18": [],
+   "pista_id": "ad3a6bccc8",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4205308",
+   "municipio": "Faxinal dos Guedes",
+   "uf": "SC",
+   "url": "https://consulta.tce.sc.gov.br/Diario/dotc-e2025-12-02.pdf",
+   "regras_18": [],
+   "pista_id": "6eb00eacd7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218608",
+   "municipio": "Trombudo Central",
+   "uf": "SC",
+   "url": "https://www.cmtc.sc.gov.br/proposicoes/Projetos-de-Leis-Complementares/0/1/0/11867",
+   "regras_18": [],
+   "pista_id": "0afdad3a07",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "26862 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217253",
+   "municipio": "São Pedro de Alcântara",
+   "uf": "SC",
+   "url": "https://pmspa.sc.gov.br/noticia-712681/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "da8f1dca94",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ba8e30c73c24be433fd92cbc432ce3c3276db678c98de343f40127b7ae6003fc"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "77 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204103",
+   "municipio": "Caxambu do Sul",
+   "uf": "SC",
+   "url": "https://www.caxambudosul.sc.gov.br/",
+   "regras_18": [],
+   "pista_id": "b481295e67",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207601",
+   "municipio": "Ipira",
+   "uf": "SC",
+   "url": "https://ipira.sc.gov.br/prefeitura-de-ipira-realiza-audiencia-publica-para-aprovacao-do-plano-municipal-de-contingencia-de-protecao-e-defesa-civil/",
+   "regras_18": [],
+   "pista_id": "358e7f8297",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207601",
+   "municipio": "Ipira",
+   "uf": "SC",
+   "url": "https://ipira.sc.gov.br/uploads/sites/425/2024/11/Projeto-de-Lei-Ordinaria-N.-27-de-2024-Estudo-Socioambiental.pdf",
+   "regras_18": [],
+   "pista_id": "62ee63b74a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "50 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211454",
+   "municipio": "Nova Itaberaba",
+   "uf": "SC",
+   "url": "https://www.novaitaberaba.sc.gov.br/",
+   "regras_18": [],
+   "pista_id": "7eadfd954d",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2905800",
+   "municipio": "Camamu",
+   "uf": "BA",
+   "url": "https://www.camamu.ba.gov.br/site/PlanoMunicipal",
+   "regras_18": [],
+   "pista_id": "6479d055fe",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2918001",
+   "municipio": "Jequié",
+   "uf": "BA",
+   "url": "https://transparencia.jequie.ba.gov.br/plano-municipal-educacao",
+   "regras_18": [],
+   "pista_id": "c892281c17",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3202801",
+   "municipio": "Itapemirim",
+   "uf": "ES",
+   "url": "https://www.itapemirim.es.gov.br/downloads/categoria/plano-municipal-de-saude/10017",
+   "regras_18": [],
+   "pista_id": "da4136afa6",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3105608",
+   "municipio": "Barbacena",
+   "uf": "MG",
+   "url": "https://barbacena.mg.gov.br/saneamento_basico/?pmb=2",
+   "regras_18": [],
+   "pista_id": "eb521a6fa7",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/GnxAL/",
+   "regras_18": [],
+   "pista_id": "aa593ca105",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/qCxAL/",
+   "regras_18": [],
+   "pista_id": "e0b133d0dd",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "143 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1706258",
+   "municipio": "Crixás do Tocantins",
+   "uf": "TO",
+   "url": "https://crixas.to.gov.br/noticias/participe-da-revisao-do-plano-municipal-de-saneamento-basico-decrixas-do-tocantins",
+   "regras_18": [],
+   "pista_id": "bf213b5375",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "172 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1706258",
+   "municipio": "Crixás do Tocantins",
+   "uf": "TO",
+   "url": "https://crixas.to.gov.br/noticias/crixas-do-tocantins-inicia-a-revisao-do-plano-municipal-de-saneamento-basico-e-convida-a-populacao-a-participar",
+   "regras_18": [],
+   "pista_id": "11fc974364",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3168101",
+   "municipio": "Tapira",
+   "uf": "MG",
+   "url": "https://www.tapira.mg.gov.br/portal/download/arquivos/KqoLA/",
+   "regras_18": [],
+   "pista_id": "0d220eeecf",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/prefeitura-de-queluzito-convoca-comunidade-para-participar-da-elaboracao-do-novo-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "b2f4717c93",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/oficina-de-instalacao-do-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "7f9aa36234",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://riodasflores.rj.gov.br/ws/media-library/9c59f9d7c84545c989bc8ef33c554367/item-1-p6_riodasflores.pdf.crdownload",
+   "regras_18": [],
+   "pista_id": "94b37f3d1e",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "89 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4114609",
+   "municipio": "Marechal Cândido Rondon",
+   "uf": "PR",
+   "url": "https://www.mcr.pr.gov.br/cidadao/pagina/plano-municipal-de-educacao",
+   "regras_18": [],
+   "pista_id": "a95746ac29",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "91 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4114609",
+   "municipio": "Marechal Cândido Rondon",
+   "uf": "PR",
+   "url": "https://www.mcr.pr.gov.br/cidadao/pagina/plano-municipal-de-mobilidade",
+   "regras_18": [],
+   "pista_id": "7ada1496ea",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "85 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4118402",
+   "municipio": "Paranavaí",
+   "uf": "PR",
+   "url": "https://www.paranavai.pr.gov.br/cidadao/pagina/plano-municipal-de-saneamento-basico",
+   "regras_18": [],
+   "pista_id": "ea48de178b",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "97 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304705",
+   "municipio": "Carazinho",
+   "uf": "RS",
+   "url": "https://www.carazinho.rs.gov.br/cidadao/pagina/plano-municipal-de-saneamento-basico-de-carazinho",
+   "regras_18": [],
+   "pista_id": "630a30bbf0",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213203",
+   "municipio": "Pomerode",
+   "uf": "SC",
+   "url": "https://www.pomerode.sc.gov.br/cidadao/pagina/plano-municipal-de-educacao-pme",
+   "regras_18": [],
+   "pista_id": "9843c4ccab",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4101309",
+   "municipio": "Antônio Olinto",
+   "uf": "PR",
+   "url": "https://antonioolinto.pr.gov.br/portal/download/arquivos/sKo--/",
+   "regras_18": [],
+   "pista_id": "6f290e6a38",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "370 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100080",
+   "municipio": "Costa Marques",
+   "uf": "RO",
+   "url": "https://transparencia.costamarques.ro.gov.br/PESQUISA/satisfacao-e-resultados/",
+   "regras_18": [],
+   "pista_id": "977d89781e",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "15 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3132008",
+   "municipio": "Itacambira",
+   "uf": "MG",
+   "url": "https://itacambira.mg.gov.br/noticias/plano-de-acao-da-politica-de-educacao-em-tempo-integral",
+   "regras_18": [],
+   "pista_id": "9046be318c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "87 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3134103",
+   "municipio": "Itueta",
+   "uf": "MG",
+   "url": "https://itueta.mg.gov.br/extra/abrir-arquivo/downloads/%7BF8AD4F4D-1910-4E98-9E05-E73515450F83%7D/",
+   "regras_18": [],
+   "pista_id": "c7becad973",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "29 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5007307",
+   "municipio": "Rio Negro",
+   "uf": "MS",
+   "url": "https://www.rionegro.ms.gov.br/publicacoes?tipo=29",
+   "regras_18": [],
+   "pista_id": "4c310e197c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "29 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5007307",
+   "municipio": "Rio Negro",
+   "uf": "MS",
+   "url": "https://www.rionegro.ms.gov.br/publicacoes?tipo=34",
+   "regras_18": [],
+   "pista_id": "9c0ad99d2d",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5221452",
+   "municipio": "Trombas",
+   "uf": "GO",
+   "url": "https://trombas.go.gov.br/transparencia/planos",
+   "regras_18": [],
+   "pista_id": "df222bce81",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21195 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "to da Instituição de Ensino: E.M.E.F. Marcílio Dias CNPJ:89107411000194 Cidade: Victor Graeff/RS Telefone: 54 999262215 E-mail: marciliodias.edu.prefeituravg@gm"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Portaria Conjunta SES/SEDUC/RS Nº 01/2021. Plano de Contingência para Prevenção, Monitoramento e Controle da COVID-19 CARACTERIZAÇÃO DA INSTITUIÇÃO DE ENSINO Da",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "01/2021",
+      "data": "15/05/2021",
+      "trecho": "Portaria Conjunta SES/SEDUC/RS Nº 01/2021. Plano de Contingência para Prevenção, Monitoramento e Controle da COVID-19 CARACTERIZAÇÃO DA INSTITUIÇÃO DE ENSINO Da"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "15/05/2021",
+   "natureza": null,
+   "ibge": "4323200",
+   "municipio": "Victor Graeff",
+   "uf": "RS",
+   "url": "https://victorgraeff.rs.gov.br/wp-content/uploads/sites/23/2021/05/Plano-de-contingencia-EMEF-MARCILIO-DIAS.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "e4c5c0772d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0362e8096551a990eafb3b6b78fa340944e0ebc9f2710e3b759133343da6136d"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "54 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203353",
+   "municipio": "Marilândia",
+   "uf": "ES",
+   "url": "https://www.marilandia.es.gov.br/secretaria/ler/21/defesa-civil",
+   "regras_18": [],
+   "pista_id": "b198e270d0",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "132 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3301702",
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "url": "https://portal.duquedecaxias.rj.gov.br/noticia/dia-nacional-do-voluntariado-uma-celebracao-para-quem-doa-seu-tempo-para-ajudar-o-proximo-7233",
+   "regras_18": [],
+   "pista_id": "a321b66232",
+   "origem": null,
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/noticia/38228/38228?titulo=Segundo+Workshop+para+Atualiza%C3%A7%C3%A3o+do+Plano+Municipal+de+Turismo+re%C3%BAne+agentes+p%C3%BAblicos+e+sociedade+civil",
+   "regras_18": [],
+   "pista_id": "b310714b11",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "6 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318705",
+   "municipio": "São Leopoldo",
+   "uf": "RS",
+   "url": "http://www.saoleopoldo.rs.gov.br/evento/8077?titulo=Workshop+para+atualiza%C3%A7%C3%A3o+do+Plano+Municipal+de+Turismo",
+   "regras_18": [],
+   "pista_id": "f457bd91f9",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "155 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4104303",
+   "municipio": "Campo Mourão",
+   "uf": "PR",
+   "url": "https://www.campomourao.pr.gov.br/cidadao/noticia/plano-de-contingencia-reune-secretarias-e-forcas-de-seguranca-para-fortalecer-preparacao-de-campo-mourao",
+   "regras_18": [],
+   "pista_id": "cefe5c1344",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4116208",
+   "municipio": "Morretes",
+   "uf": "PR",
+   "url": "https://morretes.pr.gov.br/noticiasView/?id=2171",
+   "regras_18": [],
+   "pista_id": "73d02776e9",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3153806",
+   "municipio": "Queluzito",
+   "uf": "MG",
+   "url": "https://queluzito.mg.gov.br/noticias/convocacao-da-populacao-para-participacao-da-2-oficina-do-plano-municipal-de-educacao-20272037",
+   "regras_18": [],
+   "pista_id": "e3d2758b80",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "67 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "url": "https://transparencia.foz.pr.gov.br/portaltransparencia/1/publicacoes/54",
+   "regras_18": [],
+   "pista_id": "43f54dc1b2",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "67 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "url": "https://transparencia.foz.pr.gov.br/portaltransparencia/1/publicacoes/69",
+   "regras_18": [],
+   "pista_id": "a41752e23c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/qnxAL/",
+   "regras_18": [],
+   "pista_id": "b6c07a3a20",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4101309",
+   "municipio": "Antônio Olinto",
+   "uf": "PR",
+   "url": "https://antonioolinto.pr.gov.br/portal/download/arquivos/qKo--/",
+   "regras_18": [],
+   "pista_id": "e6e09cd150",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "67 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1100049",
+   "municipio": "Cacoal",
+   "uf": "RO",
+   "url": "https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/publicacoes/1224/442",
+   "regras_18": [],
+   "pista_id": "63e6df2711",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "256 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4317202",
+   "municipio": "Santa Rosa",
+   "uf": "RS",
+   "url": "https://prefeitura.santarosa.rs.gov.br/?page_id=10237",
+   "regras_18": [],
+   "pista_id": "a5a56d5bb8",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3168101",
+   "municipio": "Tapira",
+   "uf": "MG",
+   "url": "https://www.tapira.mg.gov.br/portal/download/arquivos/KBoLA/",
+   "regras_18": [],
+   "pista_id": "7c6e365412",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5002100",
+   "municipio": "Bela Vista",
+   "uf": "MS",
+   "url": "https://www.belavista.ms.gov.br/portal/download/arquivos/dBxAL/",
+   "regras_18": [],
+   "pista_id": "cca3f3cf14",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2904902",
+   "municipio": "Cachoeira",
+   "uf": "BA",
+   "url": "https://transparencia.cachoeira.ba.gov.br/plano-municipal-saude",
+   "regras_18": [],
+   "pista_id": "444536785a",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2904902",
+   "municipio": "Cachoeira",
+   "uf": "BA",
+   "url": "https://transparencia.cachoeira.ba.gov.br/plano-municipal-educacao",
+   "regras_18": [],
+   "pista_id": "e8f693378c",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4101309",
+   "municipio": "Antônio Olinto",
+   "uf": "PR",
+   "url": "https://antonioolinto.pr.gov.br/portal/download/arquivos/hdo--/",
+   "regras_18": [],
+   "pista_id": "e9be84bd2a",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3125002",
+   "municipio": "Ewbank da Câmara",
+   "uf": "MG",
+   "url": "https://ewbankdacamara.mg.gov.br/pmgrs.php",
+   "regras_18": [],
+   "pista_id": "7d5dc0d41e",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3146305",
+   "municipio": "Padre Paraíso",
+   "uf": "MG",
+   "url": "https://www.padreparaiso.mg.gov.br/downloads/categoria/plano-municipal-de-educacao/10055",
+   "regras_18": [],
+   "pista_id": "b0e3c7a9fb",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2732 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL - Prefeitura de Cerejeiras Pular para o conteúdo Carregando agora 5 de agosto de 2025 Inicio Sala do"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "05/08/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "05/08/2025",
+   "natureza": null,
+   "ibge": "1100056",
+   "municipio": "Cerejeiras",
+   "uf": "RO",
+   "url": "https://cerejeiras.ro.gov.br/plano-em-elaboracao-final-2/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "cd542f670d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "f493a5ab03464106dfb28d8e703178f9f4b52635f4f5e9a4253ff3404e7e8e63",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5650 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saúde - Prefeitura de Rio dos Cedros Skip to content 13 de junho de 2024 Últimas Notícias ATENÇÃO, PARA SE INSCREVER EM UM WEBINAR CLIQUE NA"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "31/05/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "31/05/2024",
+   "natureza": null,
+   "ibge": "4214706",
+   "municipio": "Rio dos Cedros",
+   "uf": "SC",
+   "url": "https://riodoscedros.sc.gov.br/plano-municipal-de-saude/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "6c7019784f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9b5a3dd22f02ac20c3b6e63b7577f3400cb39855a0694c5792beee0efa5033a6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5349 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano de Ação Municipal de Vacinação &#8211; Prefeitura Municipal de Tunas, RS 25 &deg;c Tunas 22 &deg; sex 22 &deg; sáb 24 &deg; dom 26 &deg; seg sexta-feira,"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "12/06/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "12/06/2026",
+   "natureza": null,
+   "ibge": "4322152",
+   "municipio": "Tunas",
+   "uf": "RS",
+   "url": "https://www.tunas.rs.gov.br/categoria/covid-19/plano-de-acao-municipal-de-vacinacao/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "da7db5943e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "0a7fb222368f634a2cca4ce576d7178e5787a5e0d600f7b301660ac68944bdc2",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3830 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Audiência Pública sobre o Monitoramento do Plano Municipal de Educação - 2024 - Tigrinhos SC Skip to content 29 de outubro de 2025 Últimas Notícias Tigrinhos re"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "29/10/2025",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "29/10/2025",
+   "natureza": null,
+   "ibge": "4217956",
+   "municipio": "Tigrinhos",
+   "uf": "SC",
+   "url": "https://tigrinhos.sc.gov.br/audiencia-publica-sobre-o-monitoramento-do-plano-municipal-de-educacao-2024/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "8ebf8ccf02",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "8a36d737698cf8632488dce97ce5f71e15bad2e11abf9b4ca1ddec1c94bc5433",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3170 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "no Municipal de Gestão Integrada de Resíduos e Saneamento Básico | Município de Dom Pedrito BEM-VINDO AO PORTAL DO MUNICÍPIO DE Dom Pedrito ACESSIBILIDADE MAPA"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "10/06/2024",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "10/06/2024",
+   "natureza": null,
+   "ibge": "4306601",
+   "municipio": "Dom Pedrito",
+   "uf": "RS",
+   "url": "https://dompedrito.rs.gov.br/pagina/consulta-popular-plano-municipal-de-gerenciamento-integrado-de-residuos-e-saneamento-basico",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "019aac05b1",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "8950d986bfcd1a5dbf0191151814f20bd43bf253f7c9e258ccabbc50057de87f",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-municipal-de-educacao/20081",
+   "regras_18": [],
+   "pista_id": "e53c389681",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3148608",
+   "municipio": "Peçanha",
+   "uf": "MG",
+   "url": "https://www.pecanha.mg.gov.br/legislacao/assunto/plano-m-de-saneamento-basico/10037",
+   "regras_18": [],
+   "pista_id": "0d26949c74",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "1718 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Wenceslau Braz Mapa do site O conte&uacute;do desse site pode ser acess&iacute;vel em Libras usando o VLibras A + A - Acessibilidade Mun"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "25/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "25/11/2026",
+   "natureza": null,
+   "ibge": "4128500",
+   "municipio": "Wenceslau Braz",
+   "uf": "PR",
+   "url": "https://wenceslaubraz.pr.gov.br//index.php?sessao=b054603368ixb0&id=3920",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "4c7b149998",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "f34b35bc7a5fb7d69afa3a881097331c66147a7ab5648606cf07b4f8e51e48a5",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4215307",
+   "municipio": "Salete",
+   "uf": "SC",
+   "url": "https://salete.sc.gov.br/galeria/pagina-23969/",
+   "regras_18": [],
+   "pista_id": "592a08fd31",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213005",
+   "municipio": "Pinheiro Preto",
+   "uf": "SC",
+   "url": "https://pinheiropreto.sc.gov.br/plano-municipal-de-assistencia-social/",
+   "regras_18": [],
+   "pista_id": "704e9b4fea",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1600600",
+   "municipio": "Santana",
+   "uf": "AP",
+   "url": "https://santana.ap.gov.br/unidades_administrativas/camara-municipal-de-santana/",
+   "regras_18": [],
+   "pista_id": "0b2d3e4326",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "12426 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DESLISAMENTO 1d JNICIPAL - Versão 201 8 Tobias Barreto - SE FIs8 nº E Rubrica PROTOCOLO / SEIDH | INTRODUÇÃO 1.1] DOCUMENTO DE APROVA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA DESLISAMENTO 1d JNICIPAL - Versão 201 8 Tobias Barreto - SE FIs8 nº E Rubrica PROTOCOLO / SEIDH | INTRODUÇÃO 1.1] DOCUMENTO DE APROVA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2018",
+      "data_origem": "atualizacao",
+      "data_trecho": "Versão 2018",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COMPDEC",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA DESLISAMENTO 1d JNICIPAL - Versão 201 8 Tobias Barreto - SE FIs8 nº E Rubrica PROTOCOLO / SEIDH | INTRODUÇÃO 1.1] DOCUMENTO DE APROVA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "verão realizar exercícios simulados conjuntos uma vez ao ano, sob a rdenação da COMPDEC, emitindo relatório ao final, destacando os pontos do NCON que merecem a"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "PLANO DE CONTINGÊNCIA DESLISAMENTO 1d JNICIPAL - Versão 201 8 Tobias Barreto - SE FIs8 nº E Rubrica PROTOCOLO / SEIDH | INTRODUÇÃO 1.1] DOCUMENTO DE APROVAÇÃO O"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2018) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2018",
+   "natureza": "EX_ANTE",
+   "ibge": "2807402",
+   "municipio": "Tobias Barreto",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2019/03/Plano-de-Contingencia-do-Munic%C3%ADpio-de-Tobias-Barreto-2.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "data_origem": "atualizacao",
+   "sem_ato_de_aprovacao": true,
+   "vigencia_declarada_encerrada": null,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "5962b83b86",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d318845cf651b78ffa8969ec33bf053d95b2838b3afd1dae5acdf8cbafe5a35f"
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300605",
+   "municipio": "Bom Jesus do Itabapoana",
+   "uf": "RJ",
+   "url": "https://bomjesus.rj.gov.br/site/noticia/defesa_civil_de_bom_jesus_participa_do_lancamento_do_plancon_estadual_2026_2027/8310",
+   "regras_18": [],
+   "pista_id": "32ed083c13",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "186 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300308",
+   "municipio": "Barra do Piraí",
+   "uf": "RJ",
+   "url": "https://barradopirai.rj.gov.br/todas-as-noticias/5870909b-5c3a-47b1-b1b4-356bca269eac",
+   "regras_18": [],
+   "pista_id": "411d126a0d",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "180 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300308",
+   "municipio": "Barra do Piraí",
+   "uf": "RJ",
+   "url": "https://barradopirai.rj.gov.br/todas-as-noticias/8725ffd6-d0bb-42ce-9925-572503e2307c",
+   "regras_18": [],
+   "pista_id": "356f90f25e",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "82 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303005",
+   "municipio": "Miracema",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/pagina/agenda-do-governador3974",
+   "regras_18": [],
+   "pista_id": "69236e3292",
+   "origem": "busca_web",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "79 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211454",
+   "municipio": "Nova Itaberaba",
+   "uf": "SC",
+   "url": "https://novaitaberaba.atende.net/cidadao/pagina/plano-municipal-de-cultura",
+   "regras_18": [],
+   "pista_id": "791d656719",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "83 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211454",
+   "municipio": "Nova Itaberaba",
+   "uf": "SC",
+   "url": "https://novaitaberaba.atende.net/cidadao/pagina/plano-de-contingencia-educacao",
+   "regras_18": [],
+   "pista_id": "250752cdea",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "141 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203808",
+   "municipio": "Canoinhas",
+   "uf": "SC",
+   "url": "https://canoinhas.atende.net/cidadao/pagina/relatorio-de-monitoramento-e-avaliacao-do-plano-municipal-de-educacao-20152024-ano-base-2019",
+   "regras_18": [],
+   "pista_id": "cd467c85ba",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "69 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203808",
+   "municipio": "Canoinhas",
+   "uf": "SC",
+   "url": "https://canoinhas.atende.net/cidadao/pagina/plano-de-contingencia",
+   "regras_18": [],
+   "pista_id": "ee6be144c0",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "123 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204103",
+   "municipio": "Caxambu do Sul",
+   "uf": "SC",
+   "url": "https://caxambudosul.atende.net/cidadao/pagina/edital-plano-de-contingencia-caxambu-do-sul",
+   "regras_18": [],
+   "pista_id": "1b7e887266",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3548708",
+   "municipio": "São Bernardo do Campo",
+   "uf": "SP",
+   "url": "https://data.queridodiario.ok.org.br/3548708/2026-02-06/f264e513db1b3373bf7f612e7690e8d6401cbf87.txt",
+   "regras_18": [],
+   "pista_id": "9424a27387",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "46cda7da38d6057a95a19d3232b8aaf888547a08b6e13a61f431878c547e59cb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": "https://data.queridodiario.ok.org.br/3548708/2026-02-06/f264e513db1b3373bf7f612e7690e8d6401cbf87.txt",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "23 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5212501",
+   "municipio": "Luziânia",
+   "uf": "GO",
+   "url": "https://transparencia.luziania.go.gov.br/saude/plano_municipal_saude",
+   "regras_18": [],
+   "pista_id": "db5e27635a",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5964 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Pouso Alegre Ir para o conteudo Ir para o fim do conteudo R. dos Carijós, 45 - Centro, Pouso Alegre - MG, 37550-050 Acesso à Informação"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "26/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "26/11/2026",
+   "natureza": null,
+   "ibge": "3152501",
+   "municipio": "Pouso Alegre",
+   "uf": "MG",
+   "url": "https://pousoalegre.mg.gov.br/pagina-site-submenu/122",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "d45ce50192",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "74dbe33e83cff2da2b570042a500747dde9df4f8ea83492d73427c43cafe5af0",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8780 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Pouso Alegre Ir para o conteudo Ir para o fim do conteudo R. dos Carijós, 45 - Centro, Pouso Alegre - MG, 37550-050 Acesso à Informação"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "26/11/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "26/11/2026",
+   "natureza": null,
+   "ibge": "3152501",
+   "municipio": "Pouso Alegre",
+   "uf": "MG",
+   "url": "https://pousoalegre.mg.gov.br/pagina-site-submenu/83",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "6dc7d1e5b2",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9c4c385992d7fdbad9c64984816f8c4d8f254837823917f924b087cf542ae737",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1200203",
+   "municipio": "Cruzeiro do Sul",
+   "uf": "AC",
+   "url": "https://www.cruzeirodosul.ac.gov.br/post/prefeitura-de-cruzeiro-do-sul-avan%C3%A7a-com-a-implementa%C3%A7%C3%A3o-do-plano-municipal-da-primeira-inf%C3%A2ncia",
+   "regras_18": [],
+   "pista_id": "fd42ece25a",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "136 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3171303",
+   "municipio": "Viçosa",
+   "uf": "MG",
+   "url": "https://vicosa.mg.gov.br/detalhe-da-materia/info/parceria-defesa-civil-ufv-e-bombeiros-desenvolve-plano-municipal-de-reducao-de-riscos/167378",
+   "regras_18": [],
+   "pista_id": "81256ed274",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "80 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3550704",
+   "municipio": "São Sebastião",
+   "uf": "SP",
+   "url": "https://conexaoeduca.saosebastiao.sp.gov.br/",
+   "regras_18": [],
+   "pista_id": "9eac1e5d97",
+   "origem": "descoberta",
+   "leu_documento": true
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5398 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Educação &#8211; Prefeitura de Mafra Skip to content 29 de outubro de 2025 Últimas Notícias Prefeito Maas participa de evento sobre cidades i"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "04/02/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "04/02/2021",
+   "natureza": null,
+   "ibge": "4210100",
+   "municipio": "Mafra",
+   "uf": "SC",
+   "url": "https://mafra.sc.gov.br/galeria/pagina-41268/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "dc2984b422",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "711c81b247ca73f69432123cdbaf179a28ed7c6c35aa12f5c70cc037e796acb4",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3497 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212502",
+   "municipio": "Penha",
+   "uf": "SC",
+   "url": "https://penha.sc.gov.br/cms/pagina/ver/codMapaItem/149723",
+   "regras_18": [],
+   "pista_id": "7ddcf03994",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "d01a6a3675eb8ed03ee7c2c12fe51723a6b98db5760fee8d19cba8d022ef4725",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2778 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Cândido Mota - Plano Municipal de Educação (18) 3341-9350 ouvidoria@candidomota.sp.gov.br Segunda a Sexta-feira das 8 às 11 e das 13 às"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3510005",
+   "municipio": "Cândido Mota",
+   "uf": "SP",
+   "url": "https://candidomota.sp.gov.br/index.php/secretarias-2/educacao/plano-municipal-de-educacao",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "85fc1b6047",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "820db1c04ea22dbe143fca0b4d6749e4b1de0e115a3b64d03359509db4b3b7d2"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8375 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Contingência 2025 - Prefeitura Municipal de Taquari Ir paa conte&uacute;do Taquari, 14 de maio de 2025 MIN °C MAX °C Portal da Transparência"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "prova": "o_defesa_civil___finalizado__falta_fluxograma_2.pdf Tipo: pdf | Tamanho: 1,4 MB Compartilhe! Voltar &nbsp;&nbsp;Enviar por e-mail &nbsp;&nbsp;Imprimir Visualiza",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321303",
+   "municipio": "Taquari",
+   "uf": "RS",
+   "url": "https://www.taquari.rs.gov.br/pagina/id/1081/?plano-municipal-de-contingencia-2025.html",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "515cbea371",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "7553f1d2f2a62c8703f0bbbea2b4b0d6c1ae329cc51b8045902e48b73c056475"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "8103 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO DE AÇÃO MUNICIPAL DE VACINAÇÃO - Prefeitura Municipal de Taquari Ir paa conte&uacute;do Taquari, 18 de maio de 2025 MIN °C MAX °C Portal da Transparência"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "prova": "LANO_MUNICIPAL_DE_VACINA_O_COVID_Copia_docx_3.pdf Tipo: pdf | Tamanho: 262,6 kB Compartilhe! Voltar &nbsp;&nbsp;Enviar por e-mail &nbsp;&nbsp;Imprimir Visualiza",
+      "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321303",
+   "municipio": "Taquari",
+   "uf": "RS",
+   "url": "https://www.taquari.rs.gov.br/pagina/id/1045/?plano-de-acao-municipal-de-vacinacao.html",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "3be907cead",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "c93f554a5aa3eac4d4d69457a648b3bfc65f0c1b279e3dadae624f1014f64ad2"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106506",
+   "municipio": "Coronel Vivida",
+   "uf": "PR",
+   "url": "https://coronelvivida.pr.gov.br/categoria/avaliacoes-do-plano-municipal-de-educacao/",
+   "regras_18": [],
+   "pista_id": "4e4ece4388",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106506",
+   "municipio": "Coronel Vivida",
+   "uf": "PR",
+   "url": "https://coronelvivida.pr.gov.br/categoria/plano-municipal-de-educacao/",
+   "regras_18": [],
+   "pista_id": "69052793d7",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4106506",
+   "municipio": "Coronel Vivida",
+   "uf": "PR",
+   "url": "https://coronelvivida.pr.gov.br/categoria/plano-municipal-de-saude/",
+   "regras_18": [],
+   "pista_id": "1f17fc9fa8",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "73475 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "1507151",
+   "municipio": "São Domingos do Araguaia",
+   "uf": "PA",
+   "url": "https://saodomingosdoaraguaia.pa.gov.br/wp-content/uploads/2025/07/PLAMSAN_SDA_2025.pdf",
+   "regras_18": [],
+   "pista_id": "35756c9e0f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "63ee4b3427bcf0d8b6cbd0e7a978d8a70c84edfa4f60fee8d256b9c124dea70e",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "minuta_ou_rascunho",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "514608 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Saneamento Básico Município de Urussanga REVISÃO DO PLANO MUNICIPAL DE SANEAMENTO BÁSICO - PMSB URUSSANGA – SANTA CATARINA Relatório 7 - PMSB"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "PAL DE SANEAMENTO BÁSICO - PMSB URUSSANGA – SANTA CATARINA Relatório 7 - PMSB - Versão Preliminar Janeiro/2023 1 Plano Municipal de Saneamento Básico Sumário Su",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou apresentação",
+      "trecho": "PAL DE SANEAMENTO BÁSICO - PMSB URUSSANGA – SANTA CATARINA Relatório 7 - PMSB - Versão Preliminar Janeiro/2023 1 Plano Municipal de Saneamento Básico Sumário Su"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219002",
+   "municipio": "Urussanga",
+   "uf": "SC",
+   "url": "https://www.urussanga.sc.gov.br/uploads/sites/473/2023/05/R7-PMSB-V.-Prelim-31.01.23-rev00-samae.pdf",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "e0631d1cda",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "5ce3bfc4984bfc337af857ac673929bb82bcdb1a8c835535db26161124eed005"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2885 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Plano Municipal de Assistência Social - Prefeitura de Papanduva Skip to content 8 de outubro de 2024 Últimas Notícias Escolha de Vagas: Oportunidade! Parcelas 4"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "05/05/2021",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "05/05/2021",
+   "natureza": null,
+   "ibge": "4212205",
+   "municipio": "Papanduva",
+   "uf": "SC",
+   "url": "https://papanduva.sc.gov.br/pagina-46517/",
+   "regras_18": [],
+   "data_origem": null,
+   "pista_id": "a83a10aac9",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "3dc9c32f31c021e6eb599e7e61a4394be01506c70f03c92c243e2a65c6dc1aa3",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }
