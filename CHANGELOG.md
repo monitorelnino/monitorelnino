@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #PR · Nível de intensidade lido na portaria e na notícia preservadas
+
+439 reconhecimentos federais sem tipo de declaração recebem "situação de emergência", lido no texto preservado da portaria SEDEC/MIDR (106) ou da notícia do MIDR (333, sem estado de calamidade fora da frase padrão). Municípios com nível: 1.020 (II 1.013, III 7); 300 seguem sem nível, 173 deles sem evidência preservada.
+
 ## 2026-11-27 · #2173 · Válvula recusa ramo que parte de main velha
 
 Dois lotes do Buscador 2 (26 e 27/11) nasceram de um `origin/main` local parado em 24/11 e rodaram código antigo, sem SearXNG: 2.711 pistas fechadas, nenhuma resolvida. A válvula agora recusa o ramo quando a `main` tem commit que ele não tem há mais de 6 h.
