@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **107.470 linhas** em **306 arquivos** .py/.js; **42 workflows**.
-- **66 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 45.
+- **107.942 linhas** em **306 arquivos** .py/.js; **42 workflows**.
+- **65 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 44.
 - **163 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 62447 |
-| `scripts` | 38035 |
-| `assets` | 6720 |
+| `(raiz)` | 62807 |
+| `scripts` | 38146 |
+| `assets` | 6721 |
 | `.claude` | 268 |
 
 ## Os 25 maiores
@@ -20,30 +20,30 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | arquivo | linhas |
 |---|---:|
 | `coletar_sinais_risco.py` | 3252 |
-| `juiz.py` | 2583 |
-| `coletores_base.py` | 2524 |
+| `juiz.py` | 2666 |
+| `coletores_base.py` | 2555 |
 | `verificar_pista_imprensa.py` | 1705 |
 | `coletar_doe.py` | 1661 |
-| `julgar_saude.py` | 1585 |
-| `scripts/unir_conflito_de_rodada.py` | 1486 |
+| `julgar_saude.py` | 1602 |
+| `scripts/unir_conflito_de_rodada.py` | 1515 |
+| `scripts/ensaio_da_noite.py` | 1450 |
 | `assets/js/monitor-de-riscos.js` | 1443 |
-| `scripts/ensaio_da_noite.py` | 1431 |
-| `scripts/verificar_regras_de_dado.py` | 1395 |
+| `descobrir_planos.py` | 1416 |
+| `scripts/verificar_regras_de_dado.py` | 1400 |
 | `coletar_edicoes_doe.py` | 1372 |
 | `julgar_e_aplicar_descobertas.py` | 1354 |
-| `descobrir_planos.py` | 1351 |
 | `assets/js/index.js` | 1250 |
 | `coletar_painel_am.py` | 1154 |
 | `gerar_imprensa_semana.py` | 1116 |
 | `recalcular_mare.py` | 1086 |
 | `coletar_diarios_consorciados.py` | 1040 |
-| `julgar_filas.py` | 1027 |
-| `aplicar_promocoes_do_juiz.py` | 983 |
+| `julgar_filas.py` | 1040 |
+| `aplicar_promocoes_do_juiz.py` | 1027 |
 | `gerar_pacote_blog.py` | 913 |
+| `coletar_s2id.py` | 876 |
 | `scripts/pistas.py` | 867 |
 | `assets/js/saude.js` | 785 |
-| `seguir_pistas.py` | 783 |
-| `buscar_planos_fontes_abertas.py` | 762 |
+| `buscar_planos_fontes_abertas.py` | 783 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 

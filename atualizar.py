@@ -28,81 +28,36 @@ import datetime, hashlib, json, os, pathlib, subprocess, sys
 
 RAIZ = pathlib.Path(__file__).parent
 
-# ---------------------------------------------------------------------------
-# Cadência semanal de publicação — dia único de verdade para toda a rotina.
-#
-# 20/09/2026 (decisão da editoria): a publicação semanal passa de SEGUNDA para
-# DOMINGO, 0h de Brasília (cron `0 3 * * 0` = domingo 03h UTC). A rodada leva
-# 75–105 min e agora cabe inteira dentro do domingo, sem cruzar a meia-noite.
-# Duas armadilhas resolvidas aqui:
-#
-#  1. FUSO. O runner do GitHub roda em UTC, e a meia-noite de Brasília é 03h
-#     em UTC do mesmo dia. Usar datetime.date.today() (UTC) para a data da
-#     edição ou para o dia da semana desalinha o que o site promete do que ele
-#     executa — ver §118, quando a cadência de sábado 22h40 carimbava domingo.
-#     A cadência é, por isso, ancorada em America/Sao_Paulo — o fuso do leitor,
-#     do texto público e da redação —, não no fuso do runner.
-#  2. DUPLICIDADE. Não há guarda aqui: a vez, o `.feito` e o "devido quando" do elo
-#     (config/temporizadores.json) já impedem a segunda rodada. A guarda antiga lia
-#     `data/meta.json`, que o publicador carimba todo dia; no domingo ela já valia hoje
-#     antes da rodada e a encerrava em 90 s (22/10/2026: financiamento parado em 12/10).
-#
-# Ao alterar o dia aqui, altere também: o cron do workflow, o texto público
-# (obrigado.html, pesquisadores.html) e a documentação. O portão
-# scripts/testar_cadencia_publicacao.py bloqueia se algum deles divergir — o dia
-# é compromisso declarado ao leitor, não detalhe interno.
-# ---------------------------------------------------------------------------
-# §227: a definição subiu para coletores_base, onde o `hoje()` de todo coletor passa a usá-la.
-# Aqui fica o nome importado — duas definições do fuso da redação são a cópia que envelhece
-# (§213, §222, §226).
+# Cadência semanal: publicação no domingo, no fuso da redação (America/Sao_Paulo), nunca no UTC
+# do runner. A vez, o `.feito` e o "devido quando" do elo impedem a segunda rodada. Mudou o dia:
+# mudar também o cron, o texto público e a documentação (`scripts/testar_cadencia_publicacao.py`).
+# O fuso vem de coletores_base: uma definição só.
 from coletores_base import FUSO_EDITORIAL, hoje_editorial, gravar_em  # noqa: E402,F401
 DIA_PUBLICACAO = 6            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
 NOME_DIA_PUBLICACAO = "domingo"
 
 
-# TETO DE TEMPO POR ETAPA (23/09/2026). Achado real: a rodada diária de 23/09 ficou 45+ min
-# num passo que, fora do dia de publicação, só executa dois scripts antes de encerrar na
-# trava de cadência — e um deles não toca a rede. O `subprocess.run` não tinha timeout, o
-# passo do workflow não tinha `timeout-minutes`, e o job herda o padrão de 6 HORAS do
-# GitHub. Somado à trava de concorrência (`cancel-in-progress: false`), uma única fonte
-# pendurada segurava a fila de atualização o dia inteiro, sem nada reprovar.
-#
-# O teto por etapa é a correção certa, não o teto do job: uma fonte lenta mata a etapa dela
-# e a rodada segue — que é exatamente a disciplina que o pipeline já declara ("nenhum
-# coletor é bloqueante; fonte fora do ar é lacuna declarada"). Sem isso, a única saída era
-# matar a rodada inteira e perder também o que já tinha coletado.
+# Teto por etapa: fonte lenta mata só a sua etapa (lacuna declarada) e a rodada segue.
 TETO_ETAPA_S = 45 * 60          # etapas pesadas do dia de publicação
 TETO_ETAPA_DIARIA_S = 15 * 60   # coletores que rodam todo dia e nunca pontuam
 
 
 def rodar(cmd, obrigatorio=False, env_extra=None, teto_s=TETO_ETAPA_S):
     """Executa um subprocesso do pipeline; se obrigatorio=True, aborta o processo com o mesmo código de saída em caso de falha."""
-    # 21/09/2026 (§124): flush obrigatório. Fora de um terminal, o stdout do Python é
-    # bufferizado em blocos, mas os subprocessos escrevem direto no descritor. Sem o flush,
-    # os cabeçalhos "=== etapa ===" saíam todos juntos no fim da rodada, enquanto a saída de
-    # cada coletor saía na hora — o relatório ficava com os cabeçalhos separados do que cada
-    # etapa imprimiu, e era impossível atribuir uma falha à etapa que a produziu. Foi assim
-    # que "[aviso] iri_plume: ..." passou despercebido rodada após rodada.
+    # flush: o cabeçalho da etapa sai antes da saída do subprocesso.
     print(f"\n=== {' '.join(cmd)} ===", flush=True)
     env = {**os.environ, **(env_extra or {})}
     _inicio = datetime.datetime.now().replace(microsecond=0)
     try:
         codigo = subprocess.run(cmd, cwd=RAIZ, env=env, timeout=teto_s).returncode
     except subprocess.TimeoutExpired:
-        # O filho é morto; netos que ele tenha deixado podem sobreviver até o fim do job.
-        # Ainda assim a rodada volta a andar, que é o ponto.
+        # O filho é morto (netos podem sobreviver até o fim do job); a rodada segue.
         codigo = 124
         print(f"[aviso] etapa estourou o teto de {teto_s // 60} min e foi encerrada: "
               f"{' '.join(cmd)} — tratada como fonte fora do ar (lacuna declarada), "
               f"a rodada continua", flush=True)
     sys.stdout.flush()
-    # 30/09/2026 (item 7 da rodada 2 — certificação dos coletores): TODA etapa daqui grava a sua
-    # linha de saúde. Antes só o invólucro do `_coletor.yml` registrava, e por isso financiamento,
-    # saúde, painel amostral e os semanais simplesmente não existiam no painel — o que foi lido
-    # como "estão bem" por semanas. Coletor que não aparece no painel não pode ser certificado.
-    #
-    # O registro NUNCA derruba a rodada: se ele falhar, a etapa já aconteceu, e perder a rodada
-    # por causa do relatório dela seria trocar o dado pela contabilidade do dado.
+    # Toda etapa grava a sua linha de saúde; o registro nunca derruba a rodada.
     try:
         from scripts.saude_pipeline import registrar as _registrar_saude
         _nome = next((a for a in cmd if str(a).endswith(".py")), " ".join(map(str, cmd)))
@@ -129,38 +84,20 @@ def hash_arquivo(p):
 
 def main():
     """Executa as oito etapas do pipeline canônico em ordem, na sequência declarada no docstring do módulo."""
-    # Data da EDIÇÃO, fixada aqui no início da rodada e no fuso da redação.
-    # Duas razões, ambas descobertas na primeira rodada de sábado (20/09/2026):
-    #  · Fuso: datetime.date.today() é UTC no runner. A rodada de sábado 22h40 de
-    #    Brasília começa às 01h40 de DOMINGO em UTC, e carimbava `atualizado_em`
-    #    com domingo — o site prometendo sábado e datando domingo toda semana.
-    #  · Meia-noite: a rodada leva 75–105 min e sempre cruza a virada do dia. A data
-    #    é fixada no início, então a edição inteira leva a data do dia em que foi
-    #    publicada, não a do minuto em que a última etapa terminou.
+    # Data da edição: fixada no início da rodada, no fuso da redação.
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     transf = RAIZ / "data" / "transferencias.json"
     antes = hash_arquivo(transf)
 
-    # v2.2.4 (E4/§13): cadência ANTES de qualquer coleta — em dia não publicável nada muda.
+    # Cadência antes de qualquer coleta: em dia não publicável nada muda.
     intensivo = os.environ.get("INTENSIVO_ATE", "")
     intensivo_de = os.environ.get("INTENSIVO_DE", "") or intensivo  # sem início declarado, vale só o fim
     hoje_iso = hoje_editorial().isoformat()
     dia_semana = hoje_editorial().weekday()  # no fuso da redação, nunca no do runner (ver topo)
     em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
 
-    # Sinais oficiais de risco (METODOLOGIA §23): coletados todo dia pelo elo `noturno_sinais.yml`
-    # (dono único dos arquivos, `config/escritores.json`). Esta rodada não os coleta mais: no
-    # domingo ela corria 7 min antes do elo e perdia o commit com 33 caminhos RECUSADO (F81, 08/11/2026).
-
-    # 18/09/2026 (rotina diária, portão 12 vermelho na main): gerar_monitor_saude.py copia
-    # sinais.uf[UF].fogo.focos_24h de data/sinais_risco.json para data/monitor_saude.json
-    # (campo "focos_24h" de cada UF, §31). Como a chamada acima passou a rodar todo dia
-    # (17/09/2026) mas esta continuava só no bloco semanal, abaixo do "return" de cadência,
-    # o derivado ficava um a seis dias atrás do sinal bruto em qualquer dia que não fosse
-    # segunda — mesma classe de bug do carimbo `gerado_em` de 10/09/2026 (derivado não
-    # regravado quando a fonte muda). Regenerar aqui, todo dia, mantém o derivado
-    # sincronizado com o sinal que ele copia; a chamada do bloco semanal (mais abaixo)
-    # continua — é idempotente sobre os mesmos dados quando nada mudou.
+    # Sinais de risco: coletados pelo elo `noturno_sinais.yml` (dono único). O derivado que os copia
+    # (`monitor_saude.json`) é regravado todo dia; idempotente.
     rodar([sys.executable, "gerar_monitor_saude.py"], teto_s=TETO_ETAPA_DIARIA_S)
 
     if not em_intensivo and dia_semana != DIA_PUBLICACAO:
@@ -171,88 +108,52 @@ def main():
 
     rodar([sys.executable, "atualizar_boletins.py"])
 
-    # v2.2.4 (PR-C, doc de redesenho §4): coletores da Pista A. Nenhum é bloqueante e
-    # nenhum toca a nota: escrevem atos de resposta (peso zero), pistas e o livro de
-    # fontes consultadas. Fonte fora do ar ou não confirmada = lacuna declarada no log.
-    # Lotes da semana intensiva (§13) controlados por INTENSIVO_ATE (variável de repositório):
+    # Coletores da Pista A: nenhum bloqueia nem pontua; fonte fora do ar é lacuna declarada.
+    # Lotes da semana intensiva (§13) controlados por INTENSIVO_ATE (variável de repositório).
     rodar([sys.executable, "coletar_s2id.py"])
     rodar([sys.executable, "coletar_declarado_nacional.py"])
     rodar([sys.executable, "coletar_doe.py"])                       # 27 UFs; sem adaptador = lacuna
     lote = os.environ.get("LOTE_DIARIOS") or ""
     if not lote:
-        # lote rotativo: 1 no primeiro dia da semana intensiva, subindo até o último dia (D1..D7);
-        # fora do intensivo (rodada semanal de sábado) usa o lote 1 — os lotes seguintes são pós-defeso (§13)
+        # lote rotativo D1..D7 na semana intensiva (no fuso da redação); fora dela, lote 1.
         if em_intensivo:
-            # no fuso da redação, como hoje_iso e o portão de cadência: em UTC a rodada
-            # noturna cairia no dia seguinte e adiantaria o lote em um.
             decorridos = (hoje_editorial() - datetime.date.fromisoformat(intensivo_de)).days
             lote = str(max(1, min(7, decorridos + 1)))  # D0 = lote 1 … D6+ = lote 7
         else:
             lote = "1"
     if em_intensivo and not os.environ.get("LOTE_DIARIOS"):
-        # 03/09/2026 (decisão editorial): varredura INTEGRAL — todos os 5.571 municípios até INTENSIVO_ATE.
-        # Cada dia consulta os próximos ainda não consultados na janela; o tamanho é recalculado a cada
-        # rodada para caber nos dias que restam (mínimo TAMANHO_LOTE). Consulta não é verificação (§4.1.2).
+        # Semana intensiva: varredura integral, lote recalculado para caber nos dias que restam.
         rodar([sys.executable, "coletar_diarios_municipais.py", "--pendentes-desde", intensivo_de, "--ate", intensivo,
                "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
     else:
         rodar([sys.executable, "coletar_diarios_municipais.py", "--lote", lote, "--tamanho", os.environ.get("TAMANHO_LOTE", "150")])
-    # 21/09/2026: recalcular_mare.py --simular-declarado-nacional foi removido — a camada
-    # declarada nacional (MUNIC/ICM) agora é parte permanente do cálculo padrão (calcular()),
-    # ativada por decisão editorial explícita. O --write mais adiante no pipeline já cobre isso;
-    # nenhuma chamada separada é mais necessária aqui.
-    # 25/09/2026 (§217/§223): o canal dos diários CONSORCIADOS entra na rotina. Ele estava
-    # escrito desde 22/09 e fora do pipeline porque a fonte bloqueava; destravado, é o único
-    # caminho para a maioria dos 5.041 municípios sem diário indexado no Querido Diário.
-    # A janela é CURTA de propósito: a rotina roda todo dia e só precisa do que é novo. Uma
-    # edição consorciada é um PDF de vários MB e leva cerca de dois minutos — varrer o ciclo
-    # inteiro leva horas e é trabalho de rodada dedicada, não de cadência diária.
+    # Diários consorciados: janela curta (8 dias); varrer o ciclo inteiro é rodada dedicada.
     rodar([sys.executable, "coletar_diarios_consorciados.py", "--desde",
            (hoje_editorial() - datetime.timedelta(days=8)).isoformat(),
            "--ate", hoje_editorial().isoformat()])
     rodar([sys.executable, "preservar_evidencias.py"])                 # idempotente; §3.8
     rodar([sys.executable, "preservar_evidencias.py", "--reconferir"])  # §3.8-bis: rebaixa e compara o hash; alteração vira evento
-    # 11/10/2026 (F40): a camada observada de saúde saiu daqui para o elo diário
-    # `.github/workflows/noturno_saude.yml` — mesmos coletores, mesma ordem, um escritor só.
-    rodar([sys.executable, "coletar_srag_gripe.py"])                      # 09/09/2026 (§36): SRAG/SG nacional e por UF, InfoGripe; peso zero
-    # §234 (26/09/2026): dois coletores que existiam, tinham autoteste e NÃO eram invocados por
-    # nada — nem aqui, nem em workflow, nem na lista de autotestes do portão. `coletar_espin`
-    # foi escrito no §209 exatamente para resolver o que o próprio cabeçalho dele descreve:
-    # "uma ESPIN declarada em novembro passaria despercebida até alguém procurar" — e, fora do
-    # pipeline, continuava sendo verdade. Custa duas consultas ao DOU.
-    rodar([sys.executable, "coletar_espin.py"])                       # §234: ESPIN no DOU, vigilância contínua; fila R7
-    # O SICONFI está completo para o exercício 2025 (5.571 municípios). Com `pendentes` vazio a
-    # chamada é barata e não faz nada; quando o exercício virar, ele preenche em lotes sozinho,
-    # que é justamente o que não acontecia com ele fora da rotina.
-    rodar([sys.executable, "coletar_siconfi_182.py", "--lote", "300"])  # §234: DCA/SICONFI, retomável por lote
-    rodar([sys.executable, "preservar_evidencias.py", "--ler", "--limite", "40"])   # 07/09/2026 (§10.1): texto por página dos PDFs de planos
-    rodar([sys.executable, "gerar_resposta.py"])                        # 06/09/2026 (v3.1 §3): contador de resposta; peso zero (verificar_resposta.py)
-    rodar([sys.executable, "gerar_prioritarios.py"])                    # 15/09/2026: municípios prioritários (aproximação populacional), fonte única do mapa e da busca
-    rodar([sys.executable, "gerar_contadores_financiamento.py"])       # 06/09/2026 (v3.1 §11): quatro contadores por UF; peso zero
+    rodar([sys.executable, "coletar_srag_gripe.py"])                      # SRAG/SG nacional e por UF, InfoGripe; peso zero
+    rodar([sys.executable, "coletar_espin.py"])                       # ESPIN no DOU, vigilância contínua; fila R7
+    # SICONFI: com `pendentes` vazio não faz nada; na virada do exercício preenche em lotes.
+    rodar([sys.executable, "coletar_siconfi_182.py", "--lote", "300"])  # DCA/SICONFI, retomável por lote
+    rodar([sys.executable, "preservar_evidencias.py", "--ler", "--limite", "40"])   # §10.1: texto por página dos PDFs de planos
+    rodar([sys.executable, "gerar_resposta.py"])                        # v3.1 §3: contador de resposta; peso zero (verificar_resposta.py)
+    rodar([sys.executable, "gerar_prioritarios.py"])                    # municípios prioritários (aproximação populacional), fonte única do mapa e da busca
+    rodar([sys.executable, "gerar_contadores_financiamento.py"])       # v3.1 §11: quatro contadores por UF; peso zero
     rodar([sys.executable, "coletar_financiamento.py"])                 # §7.8: Portal (chave), rotas; peso zero
-    rodar([sys.executable, "coletar_transferegov.py"])                  # 04/09/2026: transferências sem chave (TransfereGov dados abertos); r5 na série
-    rodar([sys.executable, "coletar_execucao_mps.py"])                  # 05/09/2026: execução das ações das MPs 1.367/1.384 (arquivos mensais abertos)
+    rodar([sys.executable, "coletar_transferegov.py"])                  # transferências sem chave (TransfereGov dados abertos); r5 na série
+    rodar([sys.executable, "coletar_execucao_mps.py"])                  # execução das ações das MPs 1.367/1.384 (arquivos mensais abertos)
 
     rodar([sys.executable, "verificar_contribuicoes.py"])
 
-    # Etapa não-bloqueante por design (um repositório estadual fora do ar não deve
-    # impedir a atualização), mas o retorno != 0 significa VERIFICAÇÃO INCOMPLETA —
-    # nunca 'sem novidades'. O aviso abaixo torna isso visível no log da Action.
-    # 10/11/2026: o que o repositório lista vira pista na porta única e vai ao juiz (§106); antes ia a
-    # `data/instrumentos_revisar.json`, que esta rotina apagava na rodada seguinte sem ninguém ler.
+    # Não bloqueia, mas retorno != 0 é verificação INCOMPLETA, nunca "sem novidades". O que o
+    # repositório lista vira pista na porta única e vai ao juiz (§106).
     if not rodar([sys.executable, "atualizar_instrumentos_estaduais.py", "--pistas"]):
         print("\n[aviso] a varredura de repositórios estaduais ficou INCOMPLETA (ver mensagens acima).")
         print("        Os dados publicados seguem válidos, mas esta rodada não confirma ausência de novidades.")
 
-    # 03/09/2026 (achado do ensaio): coletores legados que rodavam DEPOIS dos portões, no workflow,
-    # passam para cá — antes dos derivados e dos portões (nunca mais dado gravado sem portão).
-    # PR-N0 §1.1 (06/09/2026): o varredor em LOTE (territory_ids com vírgulas) produziu 8.165 zeros uniformes em 03/09;
-    # suspenso até o diagnóstico de resultado conhecido concluir. O coletar_diarios_municipais.py (um território por vez)
-    # é o canal DOM vigente e grava as três decisões do §1.2.
-    # 28/09/2026 (decisão da editoria, item 1): a suspensão de 06/09 CAI. O que a causou — a consulta em
-    # lote, `territory_ids` com vírgulas, que devolveu 8.165 zeros uniformes — foi consertada: hoje é um
-    # território por chamada, como o diagnóstico de resultado conhecido prescreveu. Toda pista daqui vai
-    # para `pistas_querido_diario.json` e passa pelo juiz (etapas 0-7); nenhuma entra direto no banco.
+    # Querido Diário: um território por chamada; toda pista passa pelo juiz.
     rodar([sys.executable, "consultar_querido_diario.py"])
     rodar([sys.executable, "atualizar_recursos.py"]); rodar([sys.executable, "verificar_vigencia.py"]); rodar([sys.executable, "analisar_decretos.py"])
     if os.environ.get("PORTAL_TRANSPARENCIA_API_KEY"):
@@ -261,32 +162,12 @@ def main():
         print("\n[aviso] PORTAL_TRANSPARENCIA_API_KEY ausente — etapa de transferências pulada.")
         print("        Cadastre a chave gratuita em https://portaldatransparencia.gov.br/api-de-dados")
 
-    # 03/09/2026 (achado do ensaio): TODO derivado é regravado DEPOIS de todos os coletores e
-    # ANTES dos portões — índice, percentuais, robustez, selos, verificação municipal e resumo,
-    # fallback do medidor (recalcular --write); depois as fichas do painel (dependem da
-    # verificação), feeds e dados abertos. Relógio fixado no corte (determinismo dos PDFs).
-    # 01/10/2026: o carimbo era gravado DEPOIS da bateria de portões, e isso parou a publicação
-    # duas vezes na noite de 01/10. Os coletores gravam `atualizado_em = hoje` ao longo da rodada;
-    # o `corte` só era escrito no fim. No meio do caminho, portanto, `meta.json` ficava com
-    # `atualizado_em` de hoje e `corte` de ontem — exatamente o que o portão
-    # `verificar_corte_sincronizado.py` existe para barrar. Ele estava certo em parar: quem estava
-    # errado era a ORDEM. O carimbo da rodada é a primeira coisa que se sabe depois da coleta, e
-    # por isso passa a ser escrito aqui, antes dos derivados e dos portões — que então conferem o
-    # carimbo desta rodada, e não o da anterior.
-    #
-    # Efeito colateral desejado: o relógio fixado abaixo (SOURCE_DATE_EPOCH) passa a ser o do corte
-    # de HOJE, que é o que os derivados desta rodada devem carimbar.
+    # Ordem: coletores → carimbo da rodada (`atualizado_em` e `corte`) → derivados → portões, que
+    # conferem o carimbo desta rodada. O relógio dos derivados (SOURCE_DATE_EPOCH) é o do corte de hoje.
     meta_p = RAIZ / "data" / "meta.json"
     meta = json.load(open(meta_p, encoding="utf-8"))
     meta["atualizado_em"] = hoje
-    # 30/09/2026: o corte avançava SÓ quando o arquivo de transferências mudava de hash. Com as
-    # transferências voluntárias bloqueadas pelo período eleitoral, esse arquivo parou em 10/09 — e
-    # o site passou a dizer "dados até 10/09" enquanto o índice recebia planos todo dia, pelo juiz.
-    # O corte nunca esteve ligado aos planos: media outra coisa e era lido como se medisse o índice.
-    #
-    # Regra: o corte é a data da última rodada de coleta que alimentou o índice — e a rodada
-    # acabou de acontecer. Se nada mudou, o corte também é hoje: a coleta rodou e não achou nada
-    # novo, que é o que a editoria quer que o leitor entenda.
+    # O corte é a data da última rodada de coleta que alimentou o índice: hoje, mesmo sem novidade.
     meta["corte"] = hoje
     gravar_em(meta_p, meta)
 
@@ -297,8 +178,7 @@ def main():
         epoch = None
     rodar([sys.executable, "recalcular_mare.py", "--write"], obrigatorio=True, env_extra=({"SOURCE_DATE_EPOCH": epoch} if epoch else None))
     rodar([sys.executable, "gerar_painel.py", "--fichas"], obrigatorio=True)   # §10-bis: reverificação semanal das fichas
-    # Artefatos derivados (31/08/2026): função pura dos dados desta rodada; gerados ANTES dos
-    # portões, que os conferem (selos × índice; feeds válidos; dados abertos × banco).
+    # Derivados: função pura dos dados desta rodada, gerados antes dos portões que os conferem.
     rodar([sys.executable, "gerar_selos.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_feeds.py", "--data", hoje], obrigatorio=True)
     rodar([sys.executable, "gerar_dados_abertos.py"], obrigatorio=True)
@@ -310,7 +190,7 @@ def main():
     rodar([sys.executable, "verificar_saude.py"], obrigatorio=True)        # §9.6: peso zero provado
     rodar([sys.executable, "verificar_financiamento.py"], obrigatorio=True) # §7.8: peso zero, E10, estresse
     rodar([sys.executable, "verificar_painel.py"], obrigatorio=True)         # §10-bis: lista imutável, fichas, paridade
-    rodar([sys.executable, "verificar_evidencias.py"], obrigatorio=True)   # aviso até 09/09, bloqueante depois
+    rodar([sys.executable, "verificar_evidencias.py"], obrigatorio=True)
     rodar([sys.executable, "recalcular_mare.py", "--check"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_mapas.js"], obrigatorio=True)
@@ -318,23 +198,18 @@ def main():
     rodar(["node", "scripts/verificar_runtime_saude.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_runtime_financiamento.js"], obrigatorio=True)
     rodar(["node", "scripts/verificar_acessibilidade.js"], obrigatorio=True)   # v2.3: a11y + responsividade
-    rodar(["node", "scripts/verificar_texto_publico.js"], obrigatorio=True)  # 03/09: sem jargão interno no texto visível
+    rodar(["node", "scripts/verificar_texto_publico.js"], obrigatorio=True)  # sem jargão interno no texto visível
     rodar(["bash", "scripts/verificar_derivados.sh", "--idempotencia"], obrigatorio=True)         # AUD-04: derivados reproduzíveis em árvore limpa
 
     if hash_arquivo(transf) != antes:
         print("\nTransferências alteradas nesta rodada.")
-    # 10/09/2026 (causa-raiz do portão 12 vermelho na main após cada rodada): os três geradores
-    # abaixo carimbam `gerado_em` com o `atualizado_em` de data/meta.json (data determinística),
-    # mas rodaram ANTES deste carimbo e ficavam um dia atrás. Reexecutá-los aqui é idempotente
-    # (função pura dos dados desta rodada, provada por verificar_derivados.sh --idempotencia);
-    # só o carimbo muda. O manifesto é selado depois, no workflow, após os PDFs.
+    # Regravados depois do carimbo (`gerado_em` = `atualizado_em`); idempotentes. O manifesto é
+    # selado no workflow, depois dos PDFs.
     rodar([sys.executable, "gerar_monitor_saude.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_resposta.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_prioritarios.py"], obrigatorio=True)
     rodar([sys.executable, "gerar_contadores_financiamento.py"], obrigatorio=True)
-    # 16/09/2026 (handover urgente): o medidor de resposta e as datas de corte ficavam "—" no HTML
-    # estático (sem JavaScript) de index.html, saude.html e financiamento.html. Roda por último,
-    # depois que meta.json e os quatro geradores acima já têm os dados finais desta rodada.
+    # Fallback estático (sem JavaScript) por último, com os dados finais da rodada.
     rodar([sys.executable, "preencher_fallback_estatico.py"], obrigatorio=True)
     print(f"\n✓ Atualização concluída ({hoje}). Corte vigente: {meta['corte']}.")
 

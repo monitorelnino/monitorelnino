@@ -44,6 +44,14 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>27/11/2026 · Nível de intensidade lido na portaria e na notícia preservadas</dt>
+      <dd>439 reconhecimentos federais sem tipo de declaração recebem &quot;situação de emergência&quot;, lido no texto preservado da portaria SEDEC/MIDR (106) ou da notícia do MIDR (333, sem estado de calamidade fora da frase padrão). Municípios com nível: 1.020 (II 1.013, III 7); 300 seguem sem nível, 173 deles sem evidência preservada.</dd>
+      <dt>27/11/2026 · Portal recusado com 403 de fora se relê pela cópia da ponte</dt>
+      <dd>O leitor do portal da prefeitura guardava como recusa o 403 visto de fora do país e não o refazia no mesmo dia, mesmo depois de a ponte trazer a página do Brasil. Agora a recusa com 403 cujo domínio tem cópia da ponte se refaz uma vez, pela cópia; recusa confirmada do Brasil e muro de robô continuam recusa.</dd>
+      <dt>27/11/2026 · Buscador 2 reabre as pistas que a busca de 24/11 fechou sem resultado</dt>
+      <dd>Um bug de 24/11 fez a busca no veículo do Buscador 2 devolver zero resultado, e 1.684 links do Google News foram fechados como &quot;redirecionamento não resolvido&quot; sem terem sido lidos. Agora essas pistas voltam à fila uma vez, com o título do arquivo. A busca tentada passa a ficar marcada, para não ser reaberta a cada rodada. Nada é apagado; o dado publicado não muda.</dd>
+      <dt>27/11/2026 · História do `atualizar.py` ao HISTORICO</dt>
+      <dd>Consolidação: os comentários de história da rodada semanal (cadência, teto por etapa, ordem carimbo → derivados → portões, corte) viram uma linha de regra cada; datas e incidentes passam a `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento: AST idêntica, ensaio da noite verde. Código −123 linhas líquidas.</dd>
       <dt>27/11/2026 · Válvula recusa ramo que parte de main velha</dt>
       <dd>Dois lotes do Buscador 2 (26 e 27/11) nasceram de um `origin/main` local parado em 24/11 e rodaram código antigo, sem SearXNG: 2.711 pistas fechadas, nenhuma resolvida. A válvula agora recusa o ramo quando a `main` tem commit que ele não tem há mais de 6 h.</dd>
       <dt>27/11/2026 · Reconhecimentos federais lidos pela edição do DOU quando a consulta cai</dt>
@@ -156,14 +164,6 @@
       <dd>Todo registro de execução avisava que as ações de checkout, Node, Python, cache e artefato rodavam em Node 20, que o GitHub descontinuou. Cada uma passa à primeira versão que já roda em Node 24, com o endereço fixo conferido na própria versão: a menor mudança que encerra o aviso.</dd>
       <dt>24/11/2026 · Válvula confere a entrada antes de subir o executor</dt>
       <dd>Em 17/11 a coleta de dia recebeu linhas de Python soltas no lugar de comandos e rodou cada uma como programa. Agora um passo curto, antes do executor, recusa a entrada se alguma linha não começar por um script do repositório (com prazo e intérprete opcionais). A noite não muda.</dd>
-      <dt>24/11/2026 · Monitor de riscos: fogo e água do MapBiomas</dt>
-      <dd>Três figuras entram no bloco de seca e fogo, com um seletor de território (Brasil e os 27 estados): área queimada por mês no ano em curso, em 2015 e 2024, e superfície de água por ano. A faixa de 2019 a 2025, sem 2024, e a mediana saem das próprias séries. A fonte de cada figura é o produto do MapBiomas e a data da consulta.</dd>
-      <dt>24/11/2026 · Saúde: detalhe do desfecho com legenda das linhas e tabela na lista</dt>
-      <dd>O botão do mapa passa a dizer &quot;Animar desde 29 de junho&quot; e &quot;Pausar&quot;. As linhas por estado ganham legenda própria (faixa habitual, valor, período escolhido) e os períodos acima da faixa viram ponto. A dica acima da figura sai. &quot;Ver em lista&quot; usa a tabela do componente padrão, no lugar do `&lt;dl&gt;` sem estilo. Portão novo: a alternativa de dados só contém tabela.</dd>
-      <dt>24/11/2026 · Log de busca das válvulas de 15/11 recuperado</dt>
-      <dd>Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.</dd>
-      <dt>24/11/2026 · Catálogo de falhas: três noites sem linha e o horário do F90</dt>
-      <dd>Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.</dd>
     </dl>
   </section>
 </main>

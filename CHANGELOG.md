@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #2181 · Nível de intensidade lido na portaria e na notícia preservadas
+
+439 reconhecimentos federais sem tipo de declaração recebem "situação de emergência", lido no texto preservado da portaria SEDEC/MIDR (106) ou da notícia do MIDR (333, sem estado de calamidade fora da frase padrão). Municípios com nível: 1.020 (II 1.013, III 7); 300 seguem sem nível, 173 deles sem evidência preservada.
+## 2026-11-27 · #2180 · Portal recusado com 403 de fora se relê pela cópia da ponte
+
+O leitor do portal da prefeitura guardava como recusa o 403 visto de fora do país e não o refazia no mesmo dia, mesmo depois de a ponte trazer a página do Brasil. Agora a recusa com 403 cujo domínio tem cópia da ponte se refaz uma vez, pela cópia; recusa confirmada do Brasil e muro de robô continuam recusa.
+## 2026-11-27 · #2178 · Buscador 2 reabre as pistas que a busca de 24/11 fechou sem resultado
+
+Um bug de 24/11 fez a busca no veículo do Buscador 2 devolver zero resultado, e 1.684 links do Google News foram fechados como "redirecionamento não resolvido" sem terem sido lidos. Agora essas pistas voltam à fila uma vez, com o título do arquivo. A busca tentada passa a ficar marcada, para não ser reaberta a cada rodada. Nada é apagado; o dado publicado não muda.
+
+## 2026-11-27 · #2179 · História do `atualizar.py` ao HISTORICO
+
+Consolidação: os comentários de história da rodada semanal (cadência, teto por etapa, ordem carimbo → derivados → portões, corte) viram uma linha de regra cada; datas e incidentes passam a `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento: AST idêntica, ensaio da noite verde. Código −123 linhas líquidas.
+
 ## 2026-11-27 · #2173 · Válvula recusa ramo que parte de main velha
 
 Dois lotes do Buscador 2 (26 e 27/11) nasceram de um `origin/main` local parado em 24/11 e rodaram código antigo, sem SearXNG: 2.711 pistas fechadas, nenhuma resolvida. A válvula agora recusa o ramo quando a `main` tem commit que ele não tem há mais de 6 h.
