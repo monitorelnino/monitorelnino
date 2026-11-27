@@ -120,6 +120,18 @@ REFEITOS_PELO_ELO = ("data/emergencias_estaduais.json",)
 # acima (seção de um lado entra; dos dois, desce um nível; valor diferente recusa; carimbo: o mais recente).
 RETRATOS = ("data/alertas/vigentes.json", "data/sinais_risco.json", "data/sinais_risco_consultas.json")
 POR_SECAO = ("data/saude_sinais.json", "data/calendario/fontes_suspensas.json")
+# Registro de observação (fonte suspensa): o detector o refaz inteiro a cada visita; vence o lado
+# cuja observação é a mais recente em todos os carimbos, com o `hash` da página que ele viu.
+OBSERVACAO = ("ultima_deteccao", "reavaliada_em")
+
+
+def _mais_recente(n, d):
+    """Lado cuja observação domina em todos os carimbos de OBSERVACAO; None se nenhum domina."""
+    if not all(isinstance(x, dict) and "ultima_deteccao" in x for x in (n, d)):
+        return None
+    c = lambda x: [str(x.get(k) or "") for k in OBSERVACAO]
+    ganha = [x for x, y in ((n, d), (d, n)) if all(a >= b for a, b in zip(c(x), c(y)))]
+    return ganha[0] if len(ganha) == 1 else None
 
 
 def unir_secoes(base, nosso, deles, _nivel: int = 0):
@@ -133,6 +145,8 @@ def unir_secoes(base, nosso, deles, _nivel: int = 0):
             v = d
         elif k in CARIMBOS:
             v = max(str(n), str(d))
+        elif _mais_recente(n, d) is not None:
+            v = _mais_recente(n, d)
         elif isinstance(n, dict) and isinstance(d, dict) and _nivel < 2:
             v = unir_secoes(b if isinstance(b, dict) else {}, n, d, _nivel + 1)
         else:
@@ -1409,6 +1423,16 @@ def autoteste() -> int:
     except Recusa:
         recusou = True
     checar("por seção: o mesmo campo com valores diferentes dos dois lados é recusado", recusou)
+    _o = lambda u, r, h: {"ultima_deteccao": u, "reavaliada_em": r, "hash": h}
+    checar("fonte suspensa: vence a observação mais recente, com o hash que ela viu",
+           unir_secoes({"f": {"x": _o("24", "26", "a")}}, {"f": {"x": _o("26", "26", "b")}},
+                       {"f": {"x": _o("27", "27", "c")}}) == {"f": {"x": _o("27", "27", "c")}})
+    try:
+        unir_secoes({"x": _o("24", "24", "a")}, {"x": _o("27", "25", "b")}, {"x": _o("25", "27", "c")})
+        recusou = False
+    except Recusa:
+        recusou = True
+    checar("fonte suspensa: observação que não domina nos dois carimbos é recusada", recusou)
     with tempfile.TemporaryDirectory() as _t:
         _d = pathlib.Path(_t) / "r.json"
         _r = lambda g, x: json.dumps({"gerado_em": g, "x": x})
