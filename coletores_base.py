@@ -1682,7 +1682,8 @@ def so_de_fora(e) -> bool:
     """A falha que o robô de fora do país não sabe nomear: conexão sem conversa HTTP, ou 403 sem muro (26/11/2026,
     editoria: de 100 sites de prefeitura de SP com 403, 88 abriram do Brasil com o cliente identificado). Quem
     decide é a sonda da ponte, que para na recusa; 401, 429, 451 e muro são recusa aqui mesmo. Função pura."""
-    return sem_conversa_http(e) or (isinstance(e, urllib.error.HTTPError) and e.code == 403)
+    # 27/11/2026: 502 e 504 de portão (o DOU respondeu 502 ao runner por dias) não são recusa; a ponte tenta do Brasil.
+    return sem_conversa_http(e) or (isinstance(e, urllib.error.HTTPError) and e.code in (403, 502, 504))
 
 
 def pela_ponte(url: str, e, origem: str = None, pedir: bool = True):

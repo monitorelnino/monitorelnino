@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-20 a 2026-11-27 (1583 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-20 a 2026-11-27 (1588 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -37,7 +37,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-27 · por canal: we
 | `gerar_resposta.py` | essencial | 2026-11-22 07:29 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-26 01:32 | 1 s | — | ok | — |
 | `gerar_selos.py` | essencial | 2026-11-22 07:27 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-27 10:43 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-27 13:05 | 5 s | — | ok | — |
 | `analisar_decretos.py` | coletor | 2026-11-22 06:54 | 501 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-27 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-22 04:10 | 11930 s | 147 | ok | — |
@@ -87,7 +87,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-27 · por canal: we
 | `coletar_siconfi_182.py` | coletor | 2026-11-22 06:35 | 0 s | — | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-27 07:17 | 6 s | — | sem novidade | — |
 | `coletar_sim.py` | coletor | 2026-11-27 07:17 | 9 s | — | sem novidade | — |
-| `coletar_sinais_risco.py` | coletor | 2026-11-27 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `coletar_sinais_risco.py` | coletor | 2026-11-27 12:12 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_sisab.py` | coletor | 2026-11-27 07:14 | 164 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-24 05:22 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-26 02:01 | 40 s | — | ok | — |
