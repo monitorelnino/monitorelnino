@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-11-27",
  "municipios": {
   "1100205": {
    "S16": {
@@ -77,6 +77,13 @@
     "situacao": "erro",
     "consulta": "\"Porto Velho\" RO (\"Operação Verão\" OR \"Operação Chuvas\" OR \"plano preventivo\" OR adesão) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 2417 contratação(ões) lida(s); não vale como ausência",
     "dominio": null
    }
   },
@@ -559,6 +566,13 @@
     "consulta": "\"Jaru\" RO (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1100114&pagina=1&tamanhoPagina=500",
+    "motivo": "1214 contratação(ões) lida(s) em 48 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1100122": {
@@ -609,6 +623,13 @@
     "situacao": "erro",
     "consulta": "\"Ji-Paraná\" RO (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 1660 contratação(ões) lida(s); não vale como ausência",
     "dominio": null
    }
   },
@@ -661,6 +682,13 @@
     "consulta": "\"Machadinho D'Oeste\" RO (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1100130&pagina=1&tamanhoPagina=500",
+    "motivo": "398 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1100338": {
@@ -711,6 +739,13 @@
     "situacao": "erro",
     "consulta": "\"Nova Mamoré\" RO (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1100338&pagina=1&tamanhoPagina=500",
+    "motivo": "427 contratação(ões) lida(s) em 33 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -763,6 +798,13 @@
     "consulta": "\"Ouro Preto do Oeste\" RO (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1100155&pagina=1&tamanhoPagina=500",
+    "motivo": "612 contratação(ões) lida(s) em 39 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1100189": {
@@ -800,6 +842,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1100189&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1100189&pagina=1&tamanhoPagina=500",
+    "motivo": "805 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1100288": {
@@ -836,6 +885,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1100288&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1100288&pagina=1&tamanhoPagina=500",
+    "motivo": "570 contratação(ões) lida(s) em 38 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
