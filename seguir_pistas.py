@@ -129,6 +129,31 @@ def e_b2_sem_busca(p: dict, titulos_arquivados=None) -> bool:
             and bool(p.get("veiculo_dominio")) and bool(titulo_de(p, titulos_arquivados)))
 
 
+BUSCA_CEGA_ATE = "2026-11-24"   # buscas no veículo gravadas até esta data usaram o dict do SearXNG (bug de 24/11): zero resultado
+
+
+def reabrir_buscas_cegas(fila: dict, hoje_iso: str, titulos_arquivados=None) -> int:
+    """Reabre a B2 fechada por uma busca no veículo que o bug de 24/11 fez vazia. Pura sobre a fila.
+
+    1.684 pistas (run 45305563320, 24/11) foram fechadas como "redirecionamento não resolvido" depois de
+    uma busca que nunca leu resultado. Voltam a pendente, com o título do arquivo, e a marca da busca sai
+    (vazia, para a fila gravar o apagamento). Idempotente: a busca nova grava outra data, que não entra.
+    `sincronizar` mescla campo a campo, por isso o apagamento é "" e não remoção."""
+    n = 0
+    for p in fila.get("pistas") or []:
+        bv = str(p.get("busca_veiculo_em") or "")[:10]
+        if (str(p.get("status") or "").startswith(PREFIXO_B2_SEM_RESOLVER) and bv and bv <= BUSCA_CEGA_ATE
+                and titulo_de(p, titulos_arquivados)):
+            p["status_anterior"] = p.get("status")
+            p["status"] = STATUS_PENDENTE
+            p["busca_veiculo_em"] = ""
+            p["tentativas_busca_veiculo"] = []
+            p["buscador2_em"] = ""
+            p["reaberta_em"] = hoje_iso
+            n += 1
+    return n
+
+
 def a_seguir(p: dict, d_hoje, refazer_dias: int = 7, reprocessar: bool = False, titulos_arquivados=None) -> bool:
     """A pista entra nesta rodada do seguidor? Um critério só para `seguir()` e `restantes()`. Pura.
 
@@ -276,8 +301,8 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
             rede[0] += 1
         est["seguidas"] += 1
         p["buscador2_em"] = hoje_iso
-        if p.get("veiculo_dominio") and titulo_de(p, titulos_arquivados) and e_b2_sem_busca(p, titulos_arquivados):
-            p["busca_veiculo_em"] = hoje_iso   # tentada agora: a fila não a reabre a cada rodada
+        if p.get("veiculo_dominio") and titulo_de(p, titulos_arquivados) and b2.eh_redirecionador(url):
+            p["busca_veiculo_em"] = hoje_iso   # tentada agora: a fila não a reabre a cada rodada (B2, 27/11: antes só fechadas)
         if b2.rotulo_no_lugar_do_municipio(p.get("municipio")):
             fechar(p, f"rótulo de setor no campo município ({p.get('municipio')}) (B1)")
             continue
@@ -395,7 +420,7 @@ def gravar_rodada(fila, est, ler_fn=ler, gravar_fn=gravar, estado=True) -> dict:
     balanco = gravar_lote(est["novas_lista"], origem="buscador2", ler_fn=ler_fn, gravar_fn=gravar_fn)
     novos = {n["id"] for n in est["novas_lista"]}
     tocadas = {"pistas": [p for p in fila["pistas"] if p.get("id") not in novos
-                          and (p.get("buscador2_em") or p.get("retentativas_buscador2"))]}
+                          and (p.get("buscador2_em") or p.get("retentativas_buscador2") or p.get("reaberta_em"))]}
     if estado:
         sincronizar("pistas_imprensa.json", tocadas, origem="buscador2", ler_fn=ler_fn, gravar_fn=gravar_fn)
     rejeitar_lote([(p, "buscador2", m) for p, m in est["fechadas_lista"]], ler_fn=ler_fn, gravar_fn=gravar_fn)
@@ -502,6 +527,30 @@ def autoteste():
                 and a_seguir(g, d, reprocessar=True, titulos_arquivados={"x": "Plano"})
                 and not a_seguir(dict(g, busca_veiculo_em="2026-10-25"), d, reprocessar=True,
                                  titulos_arquivados={"x": "Plano"}))
+
+    def t_reabre_buscas_cegas_uma_vez():
+        g = {"id": "c", "status": PREFIXO_FECHADA + "redirecionamento não resolvido (B2)",
+             "veiculo_dominio": "j.example.com", "url": "https://news.google.com/rss/articles/CBMi2AU",
+             "busca_veiculo_em": "2026-11-24", "registrado_em": "2026-10-25"}
+        nova = {"id": "n", "status": PREFIXO_FECHADA + "redirecionamento não resolvido (B2)",
+                "veiculo_dominio": "j.example.com", "url": "https://news.google.com/rss/articles/CBMi3AU",
+                "busca_veiculo_em": "2026-11-27", "registrado_em": "2026-10-25"}
+        f = {"pistas": [g, nova]}
+        t = {"c": "Plano", "n": "Plano"}
+        n1 = reabrir_buscas_cegas(f, "2026-11-27", t)
+        n2 = reabrir_buscas_cegas(f, "2026-11-27", t)
+        return (n1 == 1 and n2 == 0 and g["status"] == STATUS_PENDENTE and not g["busca_veiculo_em"]
+                and g["reaberta_em"] == "2026-11-27" and nova["status"].startswith(PREFIXO_FECHADA)
+                and a_seguir(g, datetime.date(2026, 11, 27), reprocessar=True, titulos_arquivados=t))
+
+    def t_b2_marca_a_busca_ao_tentar():
+        p = {"id": "m", "municipio": "Taió", "uf": "SC", "ibge": "4217808", "alvo": "4217808",
+             "registrado_em": "2026-10-25", "veiculo_dominio": "j.example.com", "titulo": "Plano de contingência",
+             "url": "https://news.google.com/rss/articles/CBMi4AU", "status": STATUS_PENDENTE, "nivel": "A"}
+        f = {"pistas": [p]}
+        seguir(f, "26/10/2026", abrir=abrir, abrir_final=lambda u: None, buscar_web_=lambda q: {"results": []},
+               limite=5)
+        return p.get("busca_veiculo_em") == "2026-10-26"
 
     def t_redirecionador_resolvido_vira_pista_nova():
         f = base(); e = seguir(f, "26/10/2026", abrir=abrir, abrir_final=lambda u: "https://taio.sc.gov.br/plancon.pdf")
@@ -689,6 +738,9 @@ def autoteste():
             "B2: nova tentativa vencida entra na rodada": t_retentativa_vencida_volta_a_rodada,
             "B2: o teto vale para a rodada inteira, somado entre blocos": t_b2_teto_vale_entre_blocos,
             "B2: o reprocessamento reabre só o que tem título e veículo, uma vez": t_b2_reprocesso_so_reabre_o_que_tem_titulo_e_veiculo_e_nao_repete,
+            "B2: busca de 24/11 (bug do dict) reabre uma vez; o que já foi buscado de novo não reabre":
+                t_reabre_buscas_cegas_uma_vez,
+            "B2: a busca tentada fica marcada, para a fila não a reabrir a cada rodada": t_b2_marca_a_busca_ao_tentar,
             "redirecionador resolvido: a URL final entra como pista nova (B2)": t_redirecionador_resolvido_vira_pista_nova,
             "B6: nível A é o primeiro da rodada": t_b6_ordem_nivel_a_primeiro,
             "B10: documento oficial não lido volta à fila, até três vezes": t_b10_documento_volta_ate_tres_vezes,
@@ -763,6 +815,9 @@ if __name__ == "__main__":
                   f"{len(e['fechadas_lista'])} fechada(s) · SearXNG={'sim' if web else 'não'}", flush=True)
         sys.exit(0)
     titulos = titulos_do_arquivo() if a.reprocessar else None
+    if a.reprocessar:
+        print(f"Buscador 2: {reabrir_buscas_cegas(fila, hoje_editorial().isoformat(), titulos)} pista(s) reaberta(s) "
+              f"(busca de até {BUSCA_CEGA_ATE} feita sem resultado)", flush=True)
     contador_buscas = [0]   # teto de buscas no veículo por rodada, somado entre os blocos
     while True:
         e = seguir(fila, hoje, abrir=_abrir, abrir_final=None, consultar_qd_=qd, buscar_web_=web,
