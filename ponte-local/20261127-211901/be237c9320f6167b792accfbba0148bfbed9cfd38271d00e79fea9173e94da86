@@ -1,0 +1,57 @@
+        <!doctype html>
+        <html lang="pt-br">
+            <head>
+                <meta charset="utf-8" />
+                <title>Portal</title>
+            </head>
+            <script type="text/javascript">
+                	
+		var CLIENTE         = '';
+		var MEDIAS          = [{"MEDIA":"1","NOME":"mobile","TAMANHO":"0"},{"MEDIA":"2","NOME":"desktop","TAMANHO":"992"}];
+		var PORTAL_URL      = 'https://www2.riogrande.rs.gov.br';
+		var JS_LOAD_TIMEOUT = 5000;
+	
+		
+var getMediaQuery = function ()
+{
+
+    var width = parseInt(window.innerWidth);
+    var index;
+
+    for (index = (MEDIAS.length - 1); index > 0 ; index --) {
+
+        if (width >= parseInt(MEDIAS[index].TAMANHO)) {
+            break;
+        }
+
+    }
+
+    return (MEDIAS[index].MEDIA);
+
+};
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+let cMedia = getCookie("media");
+
+document.cookie = "media="+getMediaQuery();
+
+if(cMedia == ""){
+    document.location.reload(true);
+}            </script>
+        </html>
+    

@@ -1,0 +1,1195 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="iso-8859-1">
+        <meta name="description" content="Prefeitura Municipal de Selbach">
+        <meta name="keywords" content="Selbach,prefeitura selbach">
+        <meta name="author" content="http://www.addesign.com.br/ -  - CF">
+        <meta name="robots" content="">
+        <meta name="revisit-after" content="1">
+        <meta property="og:url" content="">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="">
+        <meta property="og:site_name" content="Prefeitura Municipal de Selbach">
+        <meta property="og:description" content="Prefeitura Municipal de Selbach">
+        <meta property="og:image" content="">
+        <meta property="og:image:type" content="">
+        <meta name="google-site-verification" content="a18K9cXCrkhKF_00Xca6nQ8TsMRiY7Khzh2pXUH2uzc">
+        <title>Prefeitura Municipal de Selbach</title>
+        
+        <link rel="apple-touch-icon" sizes="57x57" href="https://selbach.rs.gov.br/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="https://selbach.rs.gov.br/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://selbach.rs.gov.br/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://selbach.rs.gov.br/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://selbach.rs.gov.br/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="https://selbach.rs.gov.br/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://selbach.rs.gov.br/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://selbach.rs.gov.br/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://selbach.rs.gov.br/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="https://selbach.rs.gov.br/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://selbach.rs.gov.br/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="https://selbach.rs.gov.br/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://selbach.rs.gov.br/favicon/favicon-16x16.png">
+        <link rel="manifest" href="https://selbach.rs.gov.br/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#0b0f70">
+        <meta name="msapplication-TileImage" content="https://selbach.rs.gov.br/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#943a35">
+        
+                    <link href="https://selbach.rs.gov.br/web/system/font-awesome/css/font-awesome.min.css?v=1.4.2" rel="stylesheet">
+                        <link href="https://selbach.rs.gov.br/web/system/weather-icons/css/weather-icons.min.css?v=1.4.2" rel="stylesheet">
+                        <link href="https://selbach.rs.gov.br/web/system/bootstrap/css/bootstrap.min.css?v=1.4.2" rel="stylesheet">
+                        <link href="https://selbach.rs.gov.br/web/system/css/custom.css?v=1.4.2" rel="stylesheet">
+                        <link href="https://selbach.rs.gov.br/system/js/jquery/ui/jquery-ui.min.css?v=1.4.2" rel="stylesheet">
+                        <link href="https://selbach.rs.gov.br/system/js/lightGallery/css/lightgallery.min.css?v=1.4.2" rel="stylesheet">
+                        <link href="https://selbach.rs.gov.br/system/js/horizontal-timeline/horizontal-timeline.css?v=1.4.2" rel="stylesheet">
+                    <script type="text/javascript">
+            var CONFIG_URL = 'https://selbach.rs.gov.br/';
+            var PATH_GET = {"url":"pt_BR"};
+            var PATH_GET_S = PATH_GET['url'].split('/');
+            var MSG_CLASS = Array('info', 'warning', 'success', 'danger');
+            var MSG_CLASS_ICO = Array('info-circle', 'exclamation-triangle', 'check-circle', 'times-circle');
+
+            var lang_carregando = 'Carregando...';
+        </script>
+                    <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery-migrate.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.easing.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.alphanumeric.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.cookie.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.form.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.maskedinput.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.maskmoney.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/jquery.placeholder.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/ui/jquery-ui.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/jquery/ui/jquery-ui.pt-BR.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/web/system/bootstrap/js/bootstrap.bundle.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/lightGallery/js/lightgallery-all.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/outdatedbrowser/outdatedbrowser.min.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/system/js/horizontal-timeline/horizontal-timeline.js?v=1.4" type="text/javascript"></script>
+                        <script src="https://selbach.rs.gov.br/web/system/js/funcoes.js?v=1.4" type="text/javascript"></script>
+                </head>
+    <body>
+        <noscript>
+        <p>- Seu browser n&atilde;o suporta scripts!</p>
+        </noscript>
+        <header class=" home">
+            <div class="fixed-top topo w-100">
+                <div class="bg-tertiary barra_top">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-lg-auto my-auto mr-auto py-2 text-center text-lg-left">
+                                <a class="btn btn-sm btn-outline-primary border-0" href="#conteudo" accesskey="1">Ir para conte&uacute;do <span class="badge badge-primary p-2">1</span></a>
+                                <a class="btn btn-sm btn-outline-primary border-0" href="#menu" accesskey="2">Ir para o menu <span class="badge badge-primary p-2">2</span></a>
+                                <a class="btn btn-sm btn-outline-primary border-0" href="#busca" accesskey="3">Ir para a busca <span class="badge badge-primary p-2">3</span></a>
+                                <a class="btn btn-sm btn-outline-primary border-0" href="#rodape" accesskey="4">Ir para o rodap&eacute; <span class="badge badge-primary p-2">4</span></a>
+                            </div>
+                            <div class="col-12 col-lg-auto my-auto ml-auto py-2 text-center text-lg-right">
+                                <a href="https://selbach.rs.gov.br/pt_BR/acessibilidade" class="btn btn-sm btn-outline-primary border-0"><span class="fa fa-wheelchair"></span> Acessibilidade</a>
+                                <a href="#" class="btn btn-sm btn-outline-primary border-0 btn-contrast"><span class="fa fa-adjust"></span> Alto Contraste</a>
+                                <a href="http://vlibras.com.br" target="_blank" class="btn btn-sm btn-outline-primary border-0"><span class="fa fa-deaf"></span> Libras</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid py-2">
+                    <div class="row">                        
+                        <div class="col-auto mr-auto my-auto py-2">
+                            <div id="logo"><a class="align-middle" href="https://selbach.rs.gov.br/" title="Prefeitura Municipal de Selbach">Prefeitura Municipal de Selbach</a></div>
+                        </div>
+                        <div class="col-auto ml-auto my-auto py-2 d-none d-lg-block">
+                            <div class="row">
+                                <div class="col-12 col-lg-auto my-auto ml-auto py-2 text-center">
+                                    <a href="https://selbach.rs.gov.br/pt_BR/turista" class="btn btn-outline-primary border-0"><span class="fa fa-user"></span> Turista</a>
+                                </div>
+                            </div>
+                            <div class="form-busca">
+                                                                <form action="https://selbach.rs.gov.br/pt_BR/busca" method="get" name="form_bus" id="form_bus">
+                                    <div class="input-group input-group-lg">
+                                        <input name="p" id="busca" type="search" class="form-control" placeholder="Faça sua busca pelo site." aria-label="Busca" value="">
+                                                                                    <div class="input-group-append">
+                                                <button class="btn btn-secondary border buscar enviar" type="submit"><span class="fa fa-search"></span></button>
+                                            </div>
+                                                                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-auto ml-auto my-auto py-2 d-block d-lg-none">
+                            <button class="btn btn-lg btn-outline-primary border-primary" type="button" data-toggle="offcanvas">
+                                <span class="fa fa-bars"></span><span class="d-none d-sm-inline-block">&nbsp;MENU</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-primary">
+                    <div class="container-fluid">
+                        <nav class="menu navbar navbar-expand-lg navbar-left p-0 h-100">
+                            <div class="navbar-collapse offcanvas-collapse h-100" id="menu">
+                                <div class="navbar-toggler border-0 py-3 pr-3 text-right">
+                                    <button class="btn btn-lg btn-outline-secondary border-0" type="button" data-toggle="offcanvas">
+                                        <span class="fa fa-times"></span>
+                                    </button>
+                                </div>
+                                                                        <ul class="mx-auto nav">
+                                                                                            <li class="nav-item my-auto  active">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/">HOME</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/cidade">CIDADE</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/hino-de-selbach">HINO DE SELBACH</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/historia">HISTÓRIA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/dados-estatisticos">DADOS ESTATÍSTICOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/infraestrutura-municipal">INFRAESTRUTURA MUNICIPAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/dados-geograficos">DADOS GEOGRÁFICOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/pontos-turisticos">PONTOS TURÍSTICOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/eventos">EVENTOS</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/governo">GOVERNO</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/administracao">ADMINISTRAÇÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/secretarios">SECRETÁRIOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/galeria-ex-prefeitos">GALERIA EX-PREFEITOS</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/secretarias">SECRETARIAS</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/secretarias/1/administrauuo-fazenda-e-planejamento">ADMINISTRAÇÃO, FAZENDA E PLANEJAMENTO</a>
+                                                </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/secretarias/2/assistuncia-social-e-habitauuo">ASSISTÊNCIA SOCIAL E HABITAÇÃO</a>
+                                                </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/secretarias/4/educauuo-cultura-desporto-lazer-e-turismo">EDUCAÇÃO, CULTURA, DESPORTO, LAZER E TURISMO</a>
+                                                </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/secretarias/5/obras-e-serviuos-publicos">OBRAS E SERVIÇOS PÚBLICOS</a>
+                                                </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/secretarias/6/saude">SAÚDE</a>
+                                                </li>
+                                                                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/gestao-administrativa">GESTÃO ADMINISTRATIVA</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/concursos">CONCURSOS PÚBLICOS / PROCESSO SELETIVO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://webapp1-selbach.cidade360.cloud/pronimTB/index.asp?acao=3&item=15" target="_blank">DEMONSTRATIVO DE DIÁRIAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://webapp1-selbach.cidade360.cloud/itbi/" target="_blank">ITBI</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/nfse">NFSE (NOTA FISCAL ELETRÔNICA)</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://webapp1-selbach.cidade360.cloud/portalservidorPM/" target="_blank">PORTAL DO SERVIDOR ATIVO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://webapp1-selbach.cidade360.cloud/portalservidorfapsrpps/" target="_blank">PORTAL DO SERVIDOR INATIVO/PENSIONISTA</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/publicacoes">PUBLICAÇÕES</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://www.cmselbach.com.br/?menu=apreciacao_contas_prefeito" target="_blank">APRECIAÇÃO DE CONTAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/atas-e-relatorios">ATAS E RELATÓRIOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/aviso-de-dispensa-de-licitacoes">AVISO DE DISPENSA DE LICITAÇÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/conselho-municipal-de-assistencia-social-">CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL </a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/conselho-municipal-de-saude">CONSELHO MUNICIPAL DE SAÚDE</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/contratos">CONTRATOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/cronograma-profissionais--saude">CRONOGRAMA PROFISSIONAIS - SAÚDE</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/decisao--julgamento-de-contas--tcers">DECISÃO - JULGAMENTO DE CONTAS - TCE/RS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/decretos">DECRETOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/desoneracoes-tributarias">DESONERAÇÕES TRIBUTÁRIAS, RENUNCIA FISCAL, BENEFÍCIO OU INCENTIVO FISCAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/editais">EDITAIS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/emendas-">EMENDAS PARLAMENTARES ESTADUAIS E MUNICIPAIS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/inscritos-em-divida-ativa">INSCRITOS EM DÍVIDA ATIVA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/licitacoes">LICITAÇÕES</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Selbach,&cs=1he2ZIFyIIEh92DRdfYuPqxIdfhk" target="_blank">ACESSE LICITACON CIDADÃO</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/lista-de-espera--educacao-basica">LISTA DE ESPERA - EDUCAÇÃO BÁSICA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/obras--municipio-de-selbach">OBRAS - MUNICIPIO DE SELBACH</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/ordem-de-servico">ORDEM DE SERVIÇO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/parcerias">PARCERIAS COM OSC</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/plano-de-contratacoes-">PLANO DE CONTRATAÇÕES</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/plano-">PLANO MUNICIPAL DE EDUCAÇÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/politica-de-educacao-em-tempo-integral">POLÍTICA DE EDUCAÇÃO EM TEMPO INTEGRAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/portarias">PORTARIAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/relacao-de-licitantes-sancionados">RELAÇÃO DE LICITANTES SANCIONADOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/remume-lista-de-medicamentos">REMUME- LISTA DE MEDICAMENTOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/resolucoes">RESOLUÇÕES</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/saude--estoque">SAÚDE - ESTOQUE DE MEDICAMENTOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/saude--lista-de-espera">SAÚDE - LISTA DE ESPERA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/saude--programacao-anual-e-relatorio-de-gestao">SAÚDE - PLANO DE AÇÃO, PROGRAMAÇÃO ANUAL E RELATÓRIO DE GESTÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/sistema-municipal-de-cultura">SISTEMA MUNICIPAL DE CULTURA</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/legislacao2">LEGISLAÇÃO</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://leismunicipais.com.br/leis/rs/selbach/?o=tcers" target="_blank">BLM - BASE DE LEGISLAÇÃO MUNICIPAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/codigo-obras">CÓDIGO DE OBRAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/codigo-postura">CÓDIGO DE POSTURA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/codigo-tributario-municipal">CÓDIGO TRIBUTÁRIO MUNICIPAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/legislacao">LEGISLAÇÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/lei-compaq">LEI DA COMPAQ</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/lei-organica">LEI ORGÂNICA MUNICIPAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/plano-de-carreira-do-magisterio">PLANO DE CARREIRA DO MAGISTÉRIO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/estatuto-do-servidor">REGIME JURÍDICO/ESTATUTO DO SERVIDOR</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/tabela-de-diarias">TABELA DE DIÁRIAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/terceiro-setor">TERCEIRO SETOR – LEI FEDERAL Nº 13.019/2014</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/comunicacao">COMUNICAÇÃO</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/contato">FALE CONOSCO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/fotos-videos">GALERIA DE FOTOS E VÍDEOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/noticias">NOTÍCIAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/faq">PERGUNTAS FREQUENTES</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://falabr.cgu.gov.br/web/RS/Selbach" target="_blank">OUVIDORIA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/relatorios-ouvidoria">RELATÓRIOS DA OUVIDORIA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/redes-sociais">REDES SOCIAIS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/carta-de-servicos">CARTA DE SERVIÇOS</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://webapp1-selbach.cidade360.cloud:8443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" target="_blank">PORTAL DO CIDADÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/covid19">COVID-19</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/aquisicao-de-insumos">AQUISIÇÃO DE INSUMOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://vacina.saude.rs.gov.br/" target="_blank">BOLETIM ESTADUAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/boletins">BOLETINS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/bulas">BULAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=1&item=90&visao=0" target="_blank">CONTRATOS COVID-19</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/denuncias">DENÚNCIE (FURA-FILAS)</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=3&item=92&visao=0" target="_blank">DESPESAS COVID-19</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/doses-recebidasadquiridas">DOSES RECEBIDAS/ADQUIRIDAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/grupos-prioritarios">GRUPOS PRIORITÁRIOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=1&item=91&visao=0" target="_blank">LICITAÇÕES COVID-19</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/local-de-vacinacao">LOCAL DE VACINAÇÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/plano-de-acao-municipal-de-vacinacao">PLANO DE AÇÃO MUNICIPAL DE VACINAÇÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/quantitativo-de-insumos">QUANTITATIVO DE INSUMOS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=3&item=94&visao=0" target="_blank">RECEITAS COVID-19</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/seguranca-eficacia-das-vacinas">SEGURANÇA, EFICÁCIA DAS VACINAS</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/sobra-identificada-de-doses">SOBRA IDENTIFICADA DE DOSES</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/vacinometro">VACINAÇÃO COVID-19</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/sim--servico-de-inspecao-municipal">S.I.M - SERVIÇO DE INSPEÇÃO MUNICIPAL</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/lei-municipal-40432026">LEI MUNICIPAL 4.043/2026</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/portal-de-transparencia">PORTAL DE TRANSPARÊNCIA</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/solicitacao-de-acesso-a-informacao">SOLICITAÇÃO DE ACESSO A INFORMAÇÃO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://webapp1-selbach.cidade360.cloud/pronimTB/" target="_blank">PORTAL DE TRANSPARÊNCIA</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/cacs-fundeb">CACS FUNDEB</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/conselho-municipal-de-educacao">CME - CONSELHO MUNICIPAL DE EDUCAÇÃO</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/leis-e-regimento-interno">LEIS, PORTARIAS E REGIMENTO INTERNO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/atas-cme--2025">ATAS CME - 2025</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/atas-cme--2026">ATAS CME - 2026</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/resolucoes-2025">RESOLUÇÕES 2025</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/pareceres-2025">PARECERES 2025</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/resolucoes-2026">RESOLUÇÕES 2026</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/convocacao-reuniao--2025">CONVOCAÇÃO REUNIÃO - 2025</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/pareceres-2026">PARECERES 2026</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/convocacao-reuniao--2026">CONVOCAÇÃO REUNIÃO - 2026</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/plano-municipal-de-saneamento-basico">PLANO MUNICIPAL DE SANEAMENTO BÁSICO</a>
+                                                                                            <ul class="nav">
+                                                                                            <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/plano-de-trabalho">PLANO DE TRABALHO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/plano-de-mobilizacao-social">PLANO DE MOBILIZAÇÃO SOCIAL</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/servico-de-abastecimento-de-agua">SERVIÇO DE ABASTECIMENTO DE ÁGUA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/residuos-solidos-e-limpeza-urbana">RESÍDUOS SÓLIDOS E LIMPEZA URBANA</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/esgotamento-sanitario">ESGOTAMENTO SANITÁRIO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/caracterizacao-do-municipio">CARACTERIZAÇÃO DO MUNICÍPIO</a>
+                                                                                                    </li>
+                                                                                                <li class="nav-item my-auto ">
+                                                    <a class="nav-link m-0 text-left" href="https://selbach.rs.gov.br/pt_BR/drenagem-pluvial">DRENAGEM PLUVIAL</a>
+                                                                                                    </li>
+                                                
+                                        </ul>
+                                                                                        </li>
+                                                
+                                        </ul>
+                                                                        <div class="clearfix"></div>
+                                <div class="d-block d-lg-none p-3">
+                                    <form action="https://selbach.rs.gov.br/pt_BR/busca" method="get" name="form_bus" id="form_bus">
+                                        <div class="input-group input-group-lg">
+                                            <input name="p" id="p" type="search" class="form-control" placeholder="Faça sua busca pelo site." aria-label="Busca" value="">
+                                                                                            <div class="input-group-append">
+                                                    <button class="btn btn-secondary buscar enviar" type="submit"><span class="fa fa-search"></span></button>
+                                                </div>
+                                                                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+                                <div id="banner" class="carousel slide carousel-fade" data-interval="9000" data-pause="false" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                                                            <li data-target="#banner" data-slide-to="0" class="active"></li>
+                                                        </ol>
+                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                                <img class="w-100 d-none d-md-block" src="https://selbach.rs.gov.br/system/filemanager/files/banners_fundo_11_1791980218.jpg">
+                                                                            </div>
+                                                        </div>
+                    </div>
+                            </header>
+        <section id="conteudo">
+            <div class="bg-secondary">
+    <div class="container-fluid">
+        <div class="row py-4">
+
+            
+                                    <div class="col-sm-6 col-lg col-xl my-auto text-center">
+                        <a class="btn border-0" href="https://selbach.rs.gov.br/pt_BR/secretarias/1/administrauuo-fazenda-e-planejamento"><span class="fa fa-angle-double-right"></span> ADMINISTRAçãO, FAZENDA E PLANEJAMENTO</a>
+                    </div>
+                                        <div class="col-sm-6 col-lg col-xl my-auto text-center">
+                        <a class="btn border-0" href="https://selbach.rs.gov.br/pt_BR/secretarias/2/assistuncia-social-e-habitauuo"><span class="fa fa-angle-double-right"></span> ASSISTêNCIA SOCIAL E HABITAçãO</a>
+                    </div>
+                                        <div class="col-sm-6 col-lg col-xl my-auto text-center">
+                        <a class="btn border-0" href="https://selbach.rs.gov.br/pt_BR/secretarias/4/educauuo-cultura-desporto-lazer-e-turismo"><span class="fa fa-angle-double-right"></span> EDUCAçãO, CULTURA, DESPORTO, LAZER E TURISMO</a>
+                    </div>
+                                        <div class="col-sm-6 col-lg col-xl my-auto text-center">
+                        <a class="btn border-0" href="https://selbach.rs.gov.br/pt_BR/secretarias/5/obras-e-serviuos-publicos"><span class="fa fa-angle-double-right"></span> OBRAS E SERVIçOS PúBLICOS</a>
+                    </div>
+                                        <div class="col-sm-6 col-lg col-xl my-auto text-center">
+                        <a class="btn border-0" href="https://selbach.rs.gov.br/pt_BR/secretarias/6/saude"><span class="fa fa-angle-double-right"></span> SAúDE</a>
+                    </div>
+                                </div>
+                </div>
+</div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md py-4">
+            <p class="h2">NOT&Iacute;CIAS</p>
+                            <div class="row pb-4">
+                                            <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1420/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1420_3101_1795083356.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">16/11/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1420/" class="h4 pb-2 card-title"> QUANDO A APRENDIZAGEM GANHA ASAS!</a>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1419/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1419_3094_1795083248.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">13/11/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1419/" class="h4 pb-2 card-title">TEACOLHE promove último encontro do ano em Selbach</a>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1418/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1418_3093_1795083146.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">10/11/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1418/" class="h4 pb-2 card-title">Administração Municipal cumpre agenda em Brasília em busca de recursos para Selbach</a>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1416/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1416_3077_1795082901.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">05/11/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1416/" class="h4 pb-2 card-title">Programa Alimentação Saudável incentiva hábitos e escolhas mais saudáveis</a>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1417/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1417_3085_1795082975.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">05/11/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1417/" class="h4 pb-2 card-title">JANTAR DA FAMÍLIA – EMEI NOSSA SENHORA MARIA AUXILIADORA</a>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1414/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1414_3068_1795082765.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">03/11/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1414/" class="h4 pb-2 card-title">Complexo Esportivo de Selbach recebe novo paisagismo e playground</a>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1415/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1415_3071_1795082819.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">03/11/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1415/" class="h4 pb-2 card-title">Projetos pedagógicos fortalecem o protagonismo dos estudantes em Selbach</a>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1412/"><img src="https://selbach.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/secretarias_noticias_fotos_1412_3065_1792146735.jpg&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                    <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">16/10/2026</p>
+                                    <a href="https://selbach.rs.gov.br/pt_BR/noticias/1412/" class="h4 pb-2 card-title">Selbach é o único município do Alto Jacuí reconhecido pelo TCE/RS em gestão previdenciária</a>
+                                </div>
+                            </div>
+                        </div>
+                                        </div>
+                <p class="pt-2 pb-0">
+                    <a class="btn btn-lg btn-primary btn-block" href="https://selbach.rs.gov.br/pt_BR/noticias"><span class="fa fa-plus"></span> Not&iacute;cias</a>
+                </p>
+                        </div>
+
+    </div>
+</div>
+<div class="bg-light">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-md">
+                <div class="p-4 m-auto">
+                    <p class="h4"><span class="fa fa-envelope-o"></span> Newsletter</p>
+                    <p>Cadastre-se para receber novidades</p>
+                    <div id="form_news">
+                        <form action="" method="post" name="form_new" id="form_new">
+                            <div class="form-row">
+                                <div class="form-group col-12 m-0 py-1 my-auto">
+                                    <label for="new_nome" class="d-none">Seu nome</label>
+                                    <input name="new_nome" id="new_nome" type="text" class="form-control form-control-lg" placeholder="Seu nome">
+                                </div>
+                                <div class="form-group col-12 m-0 py-1 my-auto">
+                                    <label for="new_email" class="d-none">Seu e-mail</label>
+                                    <input name="new_email" id="new_email" type="email" class="form-control form-control-lg" placeholder="Seu e-mail">
+                                </div>
+                                <div class="col-12 py-1 text-center">
+                                    <input name="enviar_new" type="hidden" value="true">
+                                    <button type="submit" class="btn btn-lg btn-primary btn-block enviar"><span class="fa fa-send"></span> Cadastrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md my-auto">
+                <div class="p-4 m-auto">
+                    <p class="h4">Ouvidoria</p>
+                    <p>Este &eacute; um canal privilegiado de comunica&ccedil;&atilde;o entre o cidad&atilde;o e a prefeitura.</p>
+                    
+					<p class="pt-3"><a href="https://falabr.cgu.gov.br/web/RS/Selbach" title="Fala.BR" target="_blank" class="btn btn-lg btn-light btn-block"><img src="https://selbach.rs.gov.br/web/system/images/bg-falabr.png"></a></p>
+                </div>
+            </div>
+            <div class="col-md my-auto">
+                <div class="p-4 m-auto">
+                    <p class="pt-3"><a href="https://radar.tce.mt.gov.br/extensions/atricon2/atricon2.html" title="Radar de Transpar&ecirc;ncia P&uacute;blica" target="_blank" class="btn btn-lg btn-light btn-block"><img src="https://selbach.rs.gov.br/web/modulos/index/bg-radar.png" class="img-fluid"></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </section>
+        <footer id="rodape">
+            <div class="menu-rodape bg-secondary">
+                <div class="container-fluid py-3">
+                    <div class="row">
+                        <div class="col-md my-auto py-3 text-center text-md-left">
+                            <a id="logo_rodape" href="https://selbach.rs.gov.br/" title="Prefeitura Municipal de Selbach">Prefeitura Municipal de Selbach</a>
+                        </div>
+                        <div class="col col-md-auto my-auto py-3 text-center text-md-right">
+                            <p class="m-0">Atendimento ao P&uacute;blico</p>
+                        </div>
+                        <div class="col-auto py-3 px-0 d-none d-md-block">
+                            <div class="border-left border-dark h-100"></div>
+                        </div>
+                        <div class="col col-md-auto my-auto py-3 font-weight-bold text-center text-md-left">
+                            <p class="m-0">Segunda a Sexta-feira</p>
+<p class="m-0"><strong>Manh&atilde; - 7h30 &agrave;s 11h30</strong></p>
+<p class="m-0"><strong>Tarde - 13h15 &agrave;s 17h15</strong></p>
+<p class="m-0">&nbsp;</p>
+<p>&ldquo;&Eacute; garantido &agrave; pessoa surda ou com defici&ecirc;ncia auditiva ser acompanhada por seu interprete ou tradutor de L&iacute;ngua Brasileira de Sinais &ndash; LIBRA <br>durante todos os atendimentos realizados no &acirc;mbito do INSS, nos termos da Portaria MTP n&ordm; 1.375, de 30 de maio de 2022.&rdquo;</p>                        </div>
+                    </div>
+                    <div class="py-4">
+                        <hr class="border-dark">
+                    </div>
+                    <div class="card-columns card-menu-footer">
+                                                                                            <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/cidade">Cidade</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/hino-de-selbach">Hino de Selbach</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/historia">História</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/dados-estatisticos">Dados estatísticos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/infraestrutura-municipal">Infraestrutura Municipal</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/dados-geograficos">Dados Geográficos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/pontos-turisticos">Pontos Turísticos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/eventos">Eventos</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/governo">Governo</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/administracao">Administração</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/secretarios">Secretários</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/galeria-ex-prefeitos">Galeria Ex-Prefeitos</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/secretarias">Secretarias</a>
+                                                                                                            <div class="">
+                                        <a href="https://selbach.rs.gov.br/pt_BR/secretarias/1/administrauuo-fazenda-e-planejamento">Administração, Fazenda e Planejamento</a>
+                                    </div>
+                                                                        <div class="">
+                                        <a href="https://selbach.rs.gov.br/pt_BR/secretarias/2/assistuncia-social-e-habitauuo">Assistência Social e Habitação</a>
+                                    </div>
+                                                                        <div class="">
+                                        <a href="https://selbach.rs.gov.br/pt_BR/secretarias/4/educauuo-cultura-desporto-lazer-e-turismo">Educação, Cultura, Desporto, Lazer e Turismo</a>
+                                    </div>
+                                                                        <div class="">
+                                        <a href="https://selbach.rs.gov.br/pt_BR/secretarias/5/obras-e-serviuos-publicos">Obras e Serviços Públicos</a>
+                                    </div>
+                                                                        <div class="">
+                                        <a href="https://selbach.rs.gov.br/pt_BR/secretarias/6/saude">Saúde</a>
+                                    </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/gestao-administrativa">Gestão Administrativa</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/concursos">Concursos Públicos / Processo Seletivo</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://webapp1-selbach.cidade360.cloud/pronimTB/index.asp?acao=3&item=15" target="_blank">Demonstrativo de diárias</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://webapp1-selbach.cidade360.cloud/itbi/" target="_blank">ITBI</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/nfse">NFSE (Nota fiscal Eletrônica)</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://webapp1-selbach.cidade360.cloud/portalservidorPM/" target="_blank">Portal do Servidor Ativo</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://webapp1-selbach.cidade360.cloud/portalservidorfapsrpps/" target="_blank">Portal do Servidor Inativo/Pensionista</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/publicacoes">Publicações</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://www.cmselbach.com.br/?menu=apreciacao_contas_prefeito" target="_blank">Apreciação de Contas</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/atas-e-relatorios">Atas e relatórios</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/aviso-de-dispensa-de-licitacoes">AVISO DE DISPENSA DE LICITAÇÃO</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/conselho-municipal-de-assistencia-social-">Conselho Municipal de Assistência Social </a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/conselho-municipal-de-saude">Conselho Municipal de Saúde</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/contratos">Contratos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/cronograma-profissionais--saude">Cronograma Profissionais - Saúde</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/decisao--julgamento-de-contas--tcers">Decisão - Julgamento de Contas - TCE/RS</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/decretos">Decretos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/desoneracoes-tributarias">Desonerações Tributárias, Renuncia Fiscal, Benefício ou Incentivo Fiscal</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/editais">Editais</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/emendas-">Emendas Parlamentares Estaduais e Municipais</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/inscritos-em-divida-ativa">Inscritos em Dívida Ativa</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/licitacoes">Licitações</a>
+                                                                                                            <div class="pl-2">
+                                        <a class="" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Selbach,&cs=1he2ZIFyIIEh92DRdfYuPqxIdfhk" target="_blank">Acesse LicitaCon Cidadão</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/lista-de-espera--educacao-basica">Lista de Espera - Educação Básica</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/obras--municipio-de-selbach">Obras - Municipio de Selbach</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/ordem-de-servico">Ordem de Serviço</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/parcerias">Parcerias com OSC</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/plano-de-contratacoes-">Plano de Contratações</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/plano-">Plano Municipal de Educação</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/politica-de-educacao-em-tempo-integral">Política de Educação em Tempo Integral</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/portarias">Portarias</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/relacao-de-licitantes-sancionados">Relação de Licitantes Sancionados</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/remume-lista-de-medicamentos">REMUME- Lista de Medicamentos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/resolucoes">Resoluções</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/saude--estoque">Saúde - Estoque de Medicamentos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/saude--lista-de-espera">Saúde - Lista de Espera</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/saude--programacao-anual-e-relatorio-de-gestao">Saúde - Plano de Ação, Programação Anual e Relatório de Gestão</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/sistema-municipal-de-cultura">Sistema Municipal de Cultura</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/legislacao2">Legislação</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://leismunicipais.com.br/leis/rs/selbach/?o=tcers" target="_blank">BLM - Base de Legislação Municipal</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/codigo-obras">Código de Obras</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/codigo-postura">Código de Postura</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/codigo-tributario-municipal">Código Tributário Municipal</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/legislacao">Legislação</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/lei-compaq">Lei da Compaq</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/lei-organica">Lei Orgânica Municipal</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/plano-de-carreira-do-magisterio">Plano de Carreira do Magistério</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/estatuto-do-servidor">Regime Jurídico/Estatuto do Servidor</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/tabela-de-diarias">Tabela de Diárias</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/terceiro-setor">Terceiro Setor – Lei Federal nº 13.019/2014</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/comunicacao">Comunicação</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/contato">Fale Conosco</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/fotos-videos">Galeria de Fotos e Vídeos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/noticias">Notícias</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/faq">Perguntas Frequentes</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://falabr.cgu.gov.br/web/RS/Selbach" target="_blank">Ouvidoria</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/relatorios-ouvidoria">Relatórios da Ouvidoria</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/redes-sociais">Redes Sociais</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/carta-de-servicos">Carta de Serviços</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://webapp1-selbach.cidade360.cloud:8443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" target="_blank">Portal do Cidadão</a>
+                                                                            </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/covid19">Covid-19</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/aquisicao-de-insumos">Aquisição de Insumos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://vacina.saude.rs.gov.br/" target="_blank">Boletim Estadual</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/boletins">Boletins</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/bulas">Bulas</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=1&item=90&visao=0" target="_blank">Contratos Covid-19</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/denuncias">Denúncie (fura-filas)</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=3&item=92&visao=0" target="_blank">Despesas Covid-19</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/doses-recebidasadquiridas">Doses Recebidas/Adquiridas</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/grupos-prioritarios">Grupos Prioritários</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=1&item=91&visao=0" target="_blank">Licitações Covid-19</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/local-de-vacinacao">Local de Vacinação</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/plano-de-acao-municipal-de-vacinacao">Plano de Ação Municipal de vacinação</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/quantitativo-de-insumos">Quantitativo de Insumos</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="http://selbach-portais.govcloud.com.br/pronimtb/index.asp?acao=3&item=94&visao=0" target="_blank">Receitas Covid-19</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/seguranca-eficacia-das-vacinas">Segurança, eficácia das vacinas</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/sobra-identificada-de-doses">Sobra Identificada de Doses</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/vacinometro">Vacinação COVID-19</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/sim--servico-de-inspecao-municipal">S.I.M - SERVIÇO DE INSPEÇÃO MUNICIPAL</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/lei-municipal-40432026">Lei Municipal 4.043/2026</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/portal-de-transparencia">Portal de Transparência</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/solicitacao-de-acesso-a-informacao">Solicitação de Acesso a Informação</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://webapp1-selbach.cidade360.cloud/pronimTB/" target="_blank">Portal de Transparência</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/cacs-fundeb">CACS FUNDEB</a>
+                                                                            </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/conselho-municipal-de-educacao">CME - Conselho Municipal de Educação</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/leis-e-regimento-interno">Leis, Portarias e Regimento Interno</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/atas-cme--2025">Atas CME - 2025</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/atas-cme--2026">Atas CME - 2026</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/resolucoes-2025">Resoluções 2025</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/pareceres-2025">Pareceres 2025</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/resolucoes-2026">Resoluções 2026</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/convocacao-reuniao--2025">Convocação Reunião - 2025</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/pareceres-2026">Pareceres 2026</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/convocacao-reuniao--2026">Convocação Reunião - 2026</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                        <div class="card bg-transparent border-0 m-0 py-2 px-0">
+                                        <a class="h4" href="https://selbach.rs.gov.br/pt_BR/plano-municipal-de-saneamento-basico">Plano Municipal de Saneamento Básico</a>
+                                                                                                            <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/plano-de-trabalho">Plano de Trabalho</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/plano-de-mobilizacao-social">Plano de Mobilização Social</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/servico-de-abastecimento-de-agua">Serviço de Abastecimento de Água</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/residuos-solidos-e-limpeza-urbana">Resíduos Sólidos e Limpeza Urbana</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/esgotamento-sanitario">Esgotamento Sanitário</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/caracterizacao-do-municipio">Caracterização do Município</a>
+                                                                            </div>
+                                                                        <div class="">
+                                        <a class="" href="https://selbach.rs.gov.br/pt_BR/drenagem-pluvial">Drenagem Pluvial</a>
+                                                                            </div>
+                                                                                                        </div>
+                                                                                            <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="informacoes bg-tertiary">
+                <div class="container-fluid py-3">
+                    <div class="row">
+                        <div class="col-md my-auto py-2">
+                            <p class="font-weight-bold">Selbach/RS</p>
+                            <p><a href="https://goo.gl/maps/qzmNtswZRcf4GBi79" target="_blank" class="btn btn-outline-dark border-0"><span class="fa fa-map-marker"></span> Largo Adolfo Albino Werlang, 14 - CEP 99450-000</a></p>
+                        </div>
+                        <div class="col-md my-auto py-2">
+                            <p class="font-weight-bold">E-mail</p>
+                            <p><a href="/cdn-cgi/l/email-protection#88efe9eae1e6edfcedc8fbede4eae9ebe0a6fafba6efe7fea6eafa" title="gabinete@selbach.rs.gov.br" class="btn btn-outline-dark border-0"><span class="fa fa-envelope"></span> <span class="__cf_email__" data-cfemail="abcccac9c2c5cedfceebd8cec7c9cac8c385d9d885ccc4dd85c9d9">[email&#160;protected]</span></a></p>
+                        </div>
+                        <div class="col col-md-auto my-auto py-2">
+                            <p class="font-weight-bold">Telefone</p>
+                            <p><a href="tel:05433871144" class="btn btn-outline-dark border-0"><span class="fa fa-phone"></span> (54) 3387-1144</a></p>
+                        </div>
+                        <div class="col-md-3 my-auto py-2">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <div class="embed-responsive-item fb-page" data-href="https://www.facebook.com/Prefeitura-Municipal-de-Selbach-314207025347696/" data-small-header="false" data-adapt-container-fluid-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/Prefeitura-Municipal-de-Selbach-314207025347696/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Prefeitura-Municipal-de-Selbach-314207025347696/">Prefeitura Municipal de Selbach</a></blockquote></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="direitos bg-secondary">
+                <div class="container-fluid py-3">
+                    <div class="row">
+                        <div class="col-md my-auto">
+                            <p class="text-center text-md-left">&COPY; 2019 - <a href="https://selbach.rs.gov.br/" title="Prefeitura Municipal de Selbach">Prefeitura Municipal de Selbach</a></p>
+                        </div>
+                        <div class="col col-md-auto my-auto">
+                            <p class="text-center text-md-right"><a href="http://www.addesign.com.br" title="adDesign - Cria&ccedil;&atilde;o de Sites" target="_blank">#adDesign</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="clearfix"></div>
+                    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-29176125-50', 'www.selbach.rs.gov.br');
+            ga('send', 'pageview');
+
+            </script>
+                    <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2&appId=282468742327802&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <script>!function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = p + '://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, 'script', 'twitter-wjs');
+        </script>
+        <script>
+            $(function () {
+                outdatedBrowser({
+                    bgColor: '#f25648',
+                    color: '#fff'
+                });
+            });
+        </script>
+        <div id="outdated">
+             <h6>O seu navegador est&aacute; desatualizado!</h6>
+ <p>Atualize o seu navegador para ter uma melhor experi&ecirc;ncia e visualiza&ccedil;&atilde;o deste site. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/pt-br">Atualize o seu navegador agora</a></p>
+ <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Fechar">&times;</a></p>
+        </div>
+    </body>
+</html>

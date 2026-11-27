@@ -1,0 +1,1719 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="title" content="Prefeitura Municipal de Santa Tereza/RS | Prefeitura de Santa Tereza/RS">
+    <meta name="og:title" content="Prefeitura Municipal de Santa Tereza/RS | Prefeitura de Santa Tereza/RS">
+    <meta name="og:site_name" content="Prefeitura de Santa Tereza/RS">
+    <meta name="image" content>
+    <meta name="og:image" content>
+    <meta name="og:image:url" content>
+    <meta name="og:image:secure_url" content>
+    <meta name="keywords" content="prefeitura, municipal, santa, terezars, portal, voce, pode, consultar, debitos, emitir, guias, pagamento, realizar, parcelamentos, gerar, cnd">
+    <meta name="abstract" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, ...">
+    <meta name="description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+    <meta name="og:description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+    <meta name="og:type" content="website">
+
+        <meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="A4SchN5NND_M4Urxz7wjp81NPgt-kqjRBq-91oEgoL1uzfOzjHtkSpSTOLaV7kb4uwMPbDbhnYBQwYuX-HLZ8A==">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118871719-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118871719-1');
+    </script>
+    <link href="/css/impressao.css?v=1751482034" rel="stylesheet" media="print">
+<link href="/assets/f2691771/dist/assets/owl.carousel.min.css?v=1751545833" rel="stylesheet">
+<link href="/assets/f2691771/dist/assets/owl.theme.default.min.css?v=1751545833" rel="stylesheet">
+<link href="/assets/95373798/css/bootstrap.css?v=1751545806" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap" rel="stylesheet">
+<link href="/css/estilos.css?v=1778864876" rel="stylesheet">
+<link href="/css/responsivo.css?v=1778864876" rel="stylesheet">
+<link href="/assets/3bcec042/cookieconsent.min.css?v=1751545806" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous"></script></head>
+
+<body>
+    
+    
+<div id="acessibilidade" class="dontPrint">
+    <div id="texto">
+        <span class="icone"><i class="fas fa-wheelchair"></i></span>
+        <span class="links">
+            <p class="text-center">Utilize o teclado para navegar, com
+                Ctrl + nº da tecla</p>
+            <a id="linkMenu" accesskey="1" href="javascript:;" title="Menu  [Ctrl+1]"
+                class="text-left">
+                <i class="fas fa-bars"></i>&nbsp;&nbsp;Ctrl + 1 (menu)
+            </a>
+            <a id="linkConteudo" accesskey="2" href="javascript:;" title="Conteúdo  [Ctrl+2]"
+                class="text-left">
+                <i class="fas fa-edit"></i>&nbsp;&nbsp;Ctrl + 2 (conteúdo)
+            </a>
+            <a id="linkBusca" accesskey="3" href="javascript:;" title="Busca  [Ctrl+3]"
+                class="text-left">
+                <i class="fas fa-search"></i>&nbsp;&nbsp;Ctrl+ 3 (busca)
+            </a>
+            <a id="linkMapaSite" accesskey="4" href="/site/mapa-site"
+                title="Mapa  [Ctrl+4]" class="text-left">
+                <i class="fas fa-sitemap"></i>&nbsp;&nbsp;Ctrl + 4 (mapa)
+            </a>
+            <a id="acessibilidade" accesskey="4" href="/pagina/view/21"
+                title="Acessibilidade  [Ctrl+0]" class="text-left">
+                <i class="fas fa-wheelchair"></i>&nbsp;&nbsp;Ctrl + 0 (acessibilidade)
+            </a>
+            <br />
+            <a accesskey="5" id='aumentarFonte' href="javascript:;"
+                title="Aumentar Fonte  [Ctrl+5]">
+                <i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Fonte Maior
+            </a>
+            <a accesskey="6" id='diminuirFonte' href="javascript:;"
+                title="Diminuir Fonte  [Ctrl+6]">
+                <i class="fas fa-minus-circle"></i>&nbsp;&nbsp;Fonte Menor
+            </a>
+            <a accesskey="7" id='fonteOriginal' href="javascript:;"
+                title="Fonte Original  [Ctrl+7]">
+                <i class="fas fa-font"></i>&nbsp;&nbsp;Fonte Padrão
+            </a>
+            <br />
+            <a accesskey="9" id='contraste' href="javascript:;" title="Contraste  [Ctrl+9]">
+                <i class="fas fa-adjust"></i>&nbsp;&nbsp;Contraste
+            </a>
+        </span>
+    </div>
+</div>
+
+    
+<div class="modal fade dontPrint" id="divImpressao" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" >
+    <div class="modal-dialog modal-lg dontPrint" role="document">
+        <div class="modal-content dontPrint">
+            <div class="modal-header dontPrint">
+                <div id="opcoesImpressao" class="col-md-12 col-sm-12 hidden-xs text-left">
+                    <a href="javascript:;" onclick="javascript:window.print();" title="Imprimir" class="btnPadrao btn-sm">Imprimir</a>
+                    <a href="javascript:;" onclick="fecharImpressao()" title="Fechar" class="btnPadrao btn-sm">Fechar</a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="conteudoImpressao"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    <span onclick="openNav()" class="icon-menu-principal"><i><i class="fa fa-bars"></i> </i></span>
+
+    <header class="bg-topo">
+
+        <section id="barra-topo" class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="col-sm-3 col-md-5 text-left midias-sociais">
+                                            <a href="https://www.facebook.com/share/1AbXJgjc14/" title="Facebook">
+                            <img src="/images/facebook.png" width="22px" alt="Facebook">                        </a>
+                                                                                    <a href="https://www.instagram.com/prefeiturasantatereza?igsh=NHUyaGp5cDRjbTI2" title="Instagram">
+                            <img src="/images/instagram.png" width="22px" alt="Instagram">                        </a>
+                                                        </div>
+
+                <div class="col-12 col-sm-9 col-md-7 busca-topo">
+                    <form id="form-busca" class="form-inline" action="/search" method="get">                    <div class="form-group mx-sm-1">
+                        <input id="pesquisa" name="q" type="text" width="100%" placeholder="Busca no site ..."
+                            class="form-control input-busca">
+                    </div>
+                    <button type="submit"><i><i class="fa fa-search"></i> </i></button>
+                    </form>                </div>
+
+            </div>
+        </section>
+
+        <section class="header">
+        <div class="container-fluid" id="box-logo">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-md-12 col-lg-6 col-xl-6 d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
+                    <div class="logo">
+                        <a href="/" title="Santa Tereza/RS">
+                            <img src="/images/logo.png" alt="Santa Tereza">                        </a>
+                    </div>
+
+                    <div class="nome mx-3 text-center text-lg-left">
+                        <p class="mb-0">Prefeitura Municipal de</p>
+                        <h1 class="mb-0">Santa Tereza</h1>
+                    </div>
+
+                    <div class="ml-lg-3 mt-3 mt-lg-0">
+                        <img class="img-fluid rounded-circle shadow" src="/images/selo-transparencia.png" alt="Selo de Transparência" style="max-height: 85px;">                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-12 col-lg-6 col-xl-6 text-center text-lg-right back-tracado">
+                                                                        <a href="https://leismunicipais.com.br/leis/rs/santatereza/?o=tcers" target="target='_blank'" class="btnTopo">
+                                                                    <i><i class="fa fa-book"></i> </i>
+                                                                <strong>Legislação Municipal / Atos Normativos</strong>
+                            </a>
+                                                    <a href="https://sistema.santatereza.rs.gov.br/multi24/sistemas/portal/" target="target='_blank'" class="btnTopo">
+                                                                    <i><i class="fa fa-briefcase"></i> </i>
+                                                                <strong>Portal de Serviços</strong>
+                            </a>
+                                                    <a href="https://sistema.santatereza.rs.gov.br/multi24/sistemas/transparencia/" target="target='_blank'" class="btnTopo">
+                                                                    <i><i class="fa fa-search"></i> </i>
+                                                                <strong>Portal da Transparência</strong>
+                            </a>
+                                                            </div>
+
+            </div>
+        </div>
+    </section>
+
+        <section class="bg-white">
+            
+<section id="menu" class="bg-menu">
+<div class="container-fluid">
+<nav>
+    <ul class="menu">            
+
+
+<!-- MENU ROOT (Institucional) -->
+<li>
+    <a href="#" title="Institucional" target="">Institucional&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Sobre Santa Tereza) -->
+	<span class="menu-coluna">
+            <h3>Sobre Santa Tereza</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/1" title="Histórico" target="">Histórico</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/2" title="Economia Local" target="">Economia Local</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/3" title="Dados Gerais" target="">Dados Gerais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://www.turismosantatereza.com.br" title="Turismo" target="_blank">Turismo</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Turismo e Desporto) -->
+	<span class="menu-coluna">
+            <h3>Turismo e Desporto</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=4" title="Casas" target="">Casas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=5" title="Construções" target="">Construções</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=1" title="Igrejas" target="">Igrejas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=3" title="Vinícolas" target="">Vinícolas</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Governo) -->
+<li>
+    <a href="#" title="Governo" target="">Governo&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Secretarias) -->
+	<span class="menu-coluna">
+            <h3>Secretarias</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/8" title="Gabinete da Prefeita" target="">Gabinete da Prefeita</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/3" title="Secretaria Municipal de Administração e Planejamento Estratégico" target="">Secretaria Municipal de Administração e Planejamento Estratégico</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/5" title="Secretaria Municipal de Agricultura, Indústria, Comércio e Meio Ambiente" target="">Secretaria Municipal de Agricultura, Indústria, Comércio e Meio Ambiente</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/1" title="Secretaria Municipal de Educação e Cultura" target="">Secretaria Municipal de Educação e Cultura</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/6" title="Secretaria Municipal da Fazenda" target="">Secretaria Municipal da Fazenda</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/4" title="Secretaria Municipal de Obras, Urbanismo e Mobilidade Urbana" target="">Secretaria Municipal de Obras, Urbanismo e Mobilidade Urbana</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/2" title="Secretaria Municipal de Saúde, Trabalho e Ação Social" target="">Secretaria Municipal de Saúde, Trabalho e Ação Social</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/7" title="Secretaria Municipal de Turismo e Desporto" target="">Secretaria Municipal de Turismo e Desporto</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Estrutura Administrativa) -->
+	<span class="menu-coluna">
+            <h3>Estrutura Administrativa</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/departamento/index?DepartamentoSearch%5Bid_departamento_categoria%5D=3" title="Conselhos Municipais" target="">Conselhos Municipais</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Publicações) -->
+<li>
+    <a href="#" title="Publicações" target="">Publicações&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Licitações) -->
+	<span class="menu-coluna">
+            <h3>Licitações</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=6" title="Carta Convite" target="">Carta Convite</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=7" title="Chamada Pública " target="">Chamada Pública </a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=8" title="Chamamento Público - Credenciamento" target="">Chamamento Público - Credenciamento</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=11" title="Leilões" target="">Leilões</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=9" title="Pregão Eletrônico" target="">Pregão Eletrônico</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=1" title="Pregão Presencial" target="">Pregão Presencial</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=5" title="Tomada de Preços" target="">Tomada de Preços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=12" title="Concorrência" target="">Concorrência</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Recursos Humanos) -->
+	<span class="menu-coluna">
+            <h3>Recursos Humanos</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=2" title="Concursos Públicos" target="">Concursos Públicos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/departamento/view/4" title="Conselho Tutelar" target="">Conselho Tutelar</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=4" title="Processos Seletivos Simplificados" target="">Processos Seletivos Simplificados</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=16" title="Cursos de Qualificação" target="">Cursos de Qualificação</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Documentos) -->
+	<span class="menu-coluna">
+            <h3>Documentos</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/6" title="Conferências Municipais" target="">Conferências Municipais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/9" title="Leis Orçamentárias" target="">Leis Orçamentárias</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/legislacao" title="Legislação" target="">Legislação</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/4" title="Planos" target="">Planos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=10" title="Programas Habitacionais" target="">Programas Habitacionais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/20/acervo-historico-digital" title="Acervo Histórico Digital" target="_blank">Acervo Histórico Digital</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=14" title="Bolsa Atleta" target="">Bolsa Atleta</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=17" title="Licença de Táxi" target="">Licença de Táxi</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Covid-19) -->
+<li>
+    <a href="#" title="Covid-19" target="">Covid-19&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Números) -->
+	<span class="menu-coluna">
+            <h3>Números</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/index" title="Covid em Números" target="">Covid em Números</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/vacinometro" title="Vacinômetro" target="">Vacinômetro</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/vacinacao" title="Calendário de Vacinação - Fase Vigente" target="">Calendário de Vacinação - Fase Vigente</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/unidade-saude/view/2" title="Postos de Vacinação" target="">Postos de Vacinação</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/vacina-recebida" title="Vacinas Recebidas" target="">Vacinas Recebidas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/insumo-recebido" title="Insumos Recebidos" target="">Insumos Recebidos</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Informações) -->
+	<span class="menu-coluna">
+            <h3>Informações</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/6/plano-de-acao-municipal-covid" title="Plano de Ação Municipal" target="">Plano de Ação Municipal</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/7/seguranca-e-eficiencia-das-vacinas-covid" title="Segurança e Eficiência das Vacinas" target="">Segurança e Eficiência das Vacinas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/ouvidoria" title="Denúncias de “fura-filas” - Ouvidoria" target="">Denúncias de “fura-filas” - Ouvidoria</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://antigo.saude.gov.br/saude-de-a-z/ouvidoria-do-sus" title="Denúncias de “fura-filas” - Ouvidoria do SUS" target="_blank">Denúncias de “fura-filas” - Ouvidoria do SUS</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/12" title="Processos de Aquisição de Insumos" target="">Processos de Aquisição de Insumos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/8/registro-de-sobra-de-doses-covid" title="Registro de Sobra de Doses" target="">Registro de Sobra de Doses</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Transparência) -->
+<li>
+    <a href="#" title="Transparência" target="">Transparência&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Prestação de Contas) -->
+	<span class="menu-coluna">
+            <h3>Prestação de Contas</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/2" title="Balanços" target="">Balanços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/10" title="Demonstrativos Contábeis e Fiscais" target="">Demonstrativos Contábeis e Fiscais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/15" title="Diárias" target="">Diárias</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/5" title="Relatórios de Gestão Fiscal" target="">Relatórios de Gestão Fiscal</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/8" title="Folhas de Pagamento" target="">Folhas de Pagamento</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://sistema.santatereza.rs.gov.br/multi24/sistemas/transparencia/" title="Prestação de Contas a partir de 2021" target="_blank">Prestação de Contas a partir de 2021</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Transparência) -->
+	<span class="menu-coluna">
+            <h3>Transparência</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="http://45.70.95.252/multi24/sistemas/transparencia/?entidade=1#" title="Portal da Transparência" target="_blank">Portal da Transparência</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://www.santatereza.rs.gov.br/pagina/view/11" title="Ouvidoria" target="">Ouvidoria</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/esic" title="Serviço de Informação ao Cidadão" target="">Serviço de Informação ao Cidadão</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/contrato" title="Contratos" target="">Contratos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/contrato/index?ContratoSearch%5Bid_categoria%5D=3" title="Atas de Registro de Preços" target="">Atas de Registro de Preços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/10" title="Carta de Serviços" target="">Carta de Serviços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://sistema.santatereza.rs.gov.br/multi24/sistemas/transparencia/?entidade=1&amp;secao=faq" title="Perguntas Frequentes" target="">Perguntas Frequentes</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Serviços) -->
+<li>
+    <a href="/servico" title="Serviços" target="">Serviços&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Empresas) -->
+	<span class="menu-coluna">
+            <h3>Empresas</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/servico/view/1" title="Nota Fiscal Eletrônica" target="">Nota Fiscal Eletrônica</a></li>
+                
+	</span>
+                    
+                                                            
+	<!-- MENU SUB AUTO AFTER MENU ROOT (Serviços) -->
+	<span class="menu-coluna">
+                    
+		<!-- MENU LINK 1-->
+        <li><a href="#" title="Cidadãos" target="">Cidadãos</a></li>
+                        
+	<!-- AUTO CLOSE -->
+	</span>
+    
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Comunicação) -->
+<li>
+    <a href="#" title="Comunicação" target="">Comunicação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Imprensa) -->
+	<span class="menu-coluna">
+            <h3>Imprensa</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/noticia" title="Notícias" target="">Notícias</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/evento" title="Calendário de Eventos" target="">Calendário de Eventos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/enquete" title="Enquetes" target="">Enquetes</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Multimídia) -->
+	<span class="menu-coluna">
+            <h3>Multimídia</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/midia/fotos" title="Galeria de Fotos" target="">Galeria de Fotos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/midia/videos" title="Galeria de Vídeos" target="">Galeria de Vídeos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/midia/audios" title="Áudios" target="">Áudios</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                </ul>    </nav>
+</div>
+</section>
+
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <nav>
+    <ul class="menu">            
+
+
+<!-- MENU ROOT (Institucional) -->
+<li>
+    <a href="#" title="Institucional" target="">Institucional&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Sobre Santa Tereza) -->
+	<span class="menu-coluna">
+            <h3>Sobre Santa Tereza</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/1" title="Histórico" target="">Histórico</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/2" title="Economia Local" target="">Economia Local</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/3" title="Dados Gerais" target="">Dados Gerais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://www.turismosantatereza.com.br" title="Turismo" target="_blank">Turismo</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Turismo e Desporto) -->
+	<span class="menu-coluna">
+            <h3>Turismo e Desporto</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=4" title="Casas" target="">Casas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=5" title="Construções" target="">Construções</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=1" title="Igrejas" target="">Igrejas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/turismo/index?PontoTuristicoSearch%5Bid_ponto_turistico_area%5D=3" title="Vinícolas" target="">Vinícolas</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Governo) -->
+<li>
+    <a href="#" title="Governo" target="">Governo&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Secretarias) -->
+	<span class="menu-coluna">
+            <h3>Secretarias</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/8" title="Gabinete da Prefeita" target="">Gabinete da Prefeita</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/3" title="Secretaria Municipal de Administração e Planejamento Estratégico" target="">Secretaria Municipal de Administração e Planejamento Estratégico</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/5" title="Secretaria Municipal de Agricultura, Indústria, Comércio e Meio Ambiente" target="">Secretaria Municipal de Agricultura, Indústria, Comércio e Meio Ambiente</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/1" title="Secretaria Municipal de Educação e Cultura" target="">Secretaria Municipal de Educação e Cultura</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/6" title="Secretaria Municipal da Fazenda" target="">Secretaria Municipal da Fazenda</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/4" title="Secretaria Municipal de Obras, Urbanismo e Mobilidade Urbana" target="">Secretaria Municipal de Obras, Urbanismo e Mobilidade Urbana</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/2" title="Secretaria Municipal de Saúde, Trabalho e Ação Social" target="">Secretaria Municipal de Saúde, Trabalho e Ação Social</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/secretaria/view/7" title="Secretaria Municipal de Turismo e Desporto" target="">Secretaria Municipal de Turismo e Desporto</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Estrutura Administrativa) -->
+	<span class="menu-coluna">
+            <h3>Estrutura Administrativa</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/departamento/index?DepartamentoSearch%5Bid_departamento_categoria%5D=3" title="Conselhos Municipais" target="">Conselhos Municipais</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Publicações) -->
+<li>
+    <a href="#" title="Publicações" target="">Publicações&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Licitações) -->
+	<span class="menu-coluna">
+            <h3>Licitações</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=6" title="Carta Convite" target="">Carta Convite</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=7" title="Chamada Pública " target="">Chamada Pública </a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=8" title="Chamamento Público - Credenciamento" target="">Chamamento Público - Credenciamento</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=11" title="Leilões" target="">Leilões</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=9" title="Pregão Eletrônico" target="">Pregão Eletrônico</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=1" title="Pregão Presencial" target="">Pregão Presencial</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=5" title="Tomada de Preços" target="">Tomada de Preços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/licitacao/index?EditalSearch%5Bid_edital_categoria%5D=12" title="Concorrência" target="">Concorrência</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Recursos Humanos) -->
+	<span class="menu-coluna">
+            <h3>Recursos Humanos</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=2" title="Concursos Públicos" target="">Concursos Públicos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/departamento/view/4" title="Conselho Tutelar" target="">Conselho Tutelar</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=4" title="Processos Seletivos Simplificados" target="">Processos Seletivos Simplificados</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=16" title="Cursos de Qualificação" target="">Cursos de Qualificação</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Documentos) -->
+	<span class="menu-coluna">
+            <h3>Documentos</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/6" title="Conferências Municipais" target="">Conferências Municipais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/9" title="Leis Orçamentárias" target="">Leis Orçamentárias</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/legislacao" title="Legislação" target="">Legislação</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/4" title="Planos" target="">Planos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=10" title="Programas Habitacionais" target="">Programas Habitacionais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/20/acervo-historico-digital" title="Acervo Histórico Digital" target="_blank">Acervo Histórico Digital</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=14" title="Bolsa Atleta" target="">Bolsa Atleta</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/index?DocumentoSearch%5Bid_categoria%5D=17" title="Licença de Táxi" target="">Licença de Táxi</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Covid-19) -->
+<li>
+    <a href="#" title="Covid-19" target="">Covid-19&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Números) -->
+	<span class="menu-coluna">
+            <h3>Números</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/index" title="Covid em Números" target="">Covid em Números</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/vacinometro" title="Vacinômetro" target="">Vacinômetro</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/vacinacao" title="Calendário de Vacinação - Fase Vigente" target="">Calendário de Vacinação - Fase Vigente</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/unidade-saude/view/2" title="Postos de Vacinação" target="">Postos de Vacinação</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/vacina-recebida" title="Vacinas Recebidas" target="">Vacinas Recebidas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/covid/insumo-recebido" title="Insumos Recebidos" target="">Insumos Recebidos</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Informações) -->
+	<span class="menu-coluna">
+            <h3>Informações</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/6/plano-de-acao-municipal-covid" title="Plano de Ação Municipal" target="">Plano de Ação Municipal</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/7/seguranca-e-eficiencia-das-vacinas-covid" title="Segurança e Eficiência das Vacinas" target="">Segurança e Eficiência das Vacinas</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/ouvidoria" title="Denúncias de “fura-filas” - Ouvidoria" target="">Denúncias de “fura-filas” - Ouvidoria</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://antigo.saude.gov.br/saude-de-a-z/ouvidoria-do-sus" title="Denúncias de “fura-filas” - Ouvidoria do SUS" target="_blank">Denúncias de “fura-filas” - Ouvidoria do SUS</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/12" title="Processos de Aquisição de Insumos" target="">Processos de Aquisição de Insumos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/8/registro-de-sobra-de-doses-covid" title="Registro de Sobra de Doses" target="">Registro de Sobra de Doses</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Transparência) -->
+<li>
+    <a href="#" title="Transparência" target="">Transparência&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Prestação de Contas) -->
+	<span class="menu-coluna">
+            <h3>Prestação de Contas</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/2" title="Balanços" target="">Balanços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/10" title="Demonstrativos Contábeis e Fiscais" target="">Demonstrativos Contábeis e Fiscais</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/15" title="Diárias" target="">Diárias</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/transparencia/index/cat/5" title="Relatórios de Gestão Fiscal" target="">Relatórios de Gestão Fiscal</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/documento/cat/8" title="Folhas de Pagamento" target="">Folhas de Pagamento</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://sistema.santatereza.rs.gov.br/multi24/sistemas/transparencia/" title="Prestação de Contas a partir de 2021" target="_blank">Prestação de Contas a partir de 2021</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Transparência) -->
+	<span class="menu-coluna">
+            <h3>Transparência</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="http://45.70.95.252/multi24/sistemas/transparencia/?entidade=1#" title="Portal da Transparência" target="_blank">Portal da Transparência</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://www.santatereza.rs.gov.br/pagina/view/11" title="Ouvidoria" target="">Ouvidoria</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/esic" title="Serviço de Informação ao Cidadão" target="">Serviço de Informação ao Cidadão</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/contrato" title="Contratos" target="">Contratos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/contrato/index?ContratoSearch%5Bid_categoria%5D=3" title="Atas de Registro de Preços" target="">Atas de Registro de Preços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/pagina/view/10" title="Carta de Serviços" target="">Carta de Serviços</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="https://sistema.santatereza.rs.gov.br/multi24/sistemas/transparencia/?entidade=1&amp;secao=faq" title="Perguntas Frequentes" target="">Perguntas Frequentes</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Serviços) -->
+<li>
+    <a href="/servico" title="Serviços" target="">Serviços&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Empresas) -->
+	<span class="menu-coluna">
+            <h3>Empresas</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/servico/view/1" title="Nota Fiscal Eletrônica" target="">Nota Fiscal Eletrônica</a></li>
+                
+	</span>
+                    
+                                                            
+	<!-- MENU SUB AUTO AFTER MENU ROOT (Serviços) -->
+	<span class="menu-coluna">
+                    
+		<!-- MENU LINK 1-->
+        <li><a href="#" title="Cidadãos" target="">Cidadãos</a></li>
+                        
+	<!-- AUTO CLOSE -->
+	</span>
+    
+	</ul>
+</li>
+                
+
+
+<!-- MENU ROOT (Comunicação) -->
+<li>
+    <a href="#" title="Comunicação" target="">Comunicação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>    <ul  class="sub-menu-block">
+                    
+
+
+
+
+	<!-- MENU SUB (Imprensa) -->
+	<span class="menu-coluna">
+            <h3>Imprensa</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/noticia" title="Notícias" target="">Notícias</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/evento" title="Calendário de Eventos" target="">Calendário de Eventos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/enquete" title="Enquetes" target="">Enquetes</a></li>
+                
+	</span>
+                    
+
+
+
+
+	<!-- MENU SUB (Multimídia) -->
+	<span class="menu-coluna">
+            <h3>Multimídia</h3>    
+     
+
+            
+            
+		<!-- MENU LINK -->
+        <li><a href="/midia/fotos" title="Galeria de Fotos" target="">Galeria de Fotos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/midia/videos" title="Galeria de Vídeos" target="">Galeria de Vídeos</a></li>
+                        
+            
+		<!-- MENU LINK -->
+        <li><a href="/midia/audios" title="Áudios" target="">Áudios</a></li>
+                
+	</span>
+                
+	</ul>
+</li>
+                </ul>    </nav>
+</div>
+
+
+
+
+            	        </section>
+
+    </header>
+
+    <div id="bread" class="container-fluid text-right">
+            </div>
+
+    <div id="main" class="content">
+                
+
+<!-- Modal -->
+<div id="banner-popup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 class="modal-title">Nota Fiscal Nacional - Migração</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="padding5">A partir de 1º de novembro de 2026, todas as empresas prestadoras de serviços optantes pelo Simples serão obrigadas a emitir a Nota Fiscal de Serviço eletrônica (NFS-e) de padrão nacional.
+
+A regra se aplica a Microempresas (ME) e Empresas de Pequeno Porte (EPP). Logo após o prazo, o sistema municipal será bloqueado para esses contribuintes.
+
+A mudança atende à Resolução CGSN n.º 189/2026, do Comitê Gestor do Simples Nacional. A norma não se aplica a operações sujeitas apenas ao ICMS.
+
+A partir de 1º de dezembro de 2026, a obrigatoriedade parará a valer para todas as demais empresas do município, e o sistema próprio de emissão será desabilitado. Nenhuma empresa da cidade poderá emitir notas fiscais fora do portal nacional após esta data. A geração de guias continuará sendo pelo sistema municipal.</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btnPadrao" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div id="bannerTopo" class="col-12 foto-topo owl-carousel">    <div class="col-12 foto-topo nopadding">
+       <img id="banner-capa" src="/uploads/banner/12658/original_U_d96ePGiDY17r7NmWpRR8eUuAyzxIaW.JPG" width="100%" alt="Santa Tereza/RS">                <div class="legenda-capa">Santa Tereza</div>
+            </div>
+        <div class="col-12 foto-topo nopadding">
+       <img id="banner-capa" src="/uploads/banner/12673/original_Er9p7_N7YNfHZSer7x9zehrrOnY8oabA.png" width="100%" alt="Santa Tereza/RS">                <div class="legenda-capa">Santa Tereza</div>
+            </div>
+        <div class="col-12 foto-topo nopadding">
+       <img id="banner-capa" src="/uploads/banner/12674/original_NtEUO8iNpbHIvKua6vocpOafn6mF52oX.png" width="100%" alt="Santa Tereza/RS">                <div class="legenda-capa">Santa Tereza</div>
+            </div>
+        <div class="col-12 foto-topo nopadding">
+       <img id="banner-capa" src="/uploads/banner/12657/original_4lHNTVjjw0yp-MzZLXYepknKh8zU95T5.png" width="100%" alt="Santa Tereza/RS">                <div class="legenda-capa">Santa Tereza</div>
+            </div>
+    </div></div>
+
+
+<!-- BLOCO 2 ACESSO RÁPIDO -->
+    <div class="box-atalho-capa container-fluid">
+        <div id="box-atalho" class="row justify-content-between">
+                            <div class="atalho">
+                    <i><i class="fa fa-users"></i> </i>
+                    <h3><a href="https://santatereza.rs.gov.br/pagina/view/19/junta-militar" title="Junta Militar" target=""><strong>Junta Militar</strong></a></h3>
+                    <p>Confira as orientações sobre o Alistamento Militar</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-search"></i> </i>
+                    <h3><a href="https://radardatransparencia.atricon.org.br/" title="Portal Radar Transparência Pública" target="target=&#039;_blank&#039;"><strong>Portal Radar Transparência Pública</strong></a></h3>
+                    <p>Espaço digital com dados do município de Santa Tereza.</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-barcode"></i> </i>
+                    <h3><a href="http://santatereza.nfse-tecnos.com.br/" title="Nota Fiscal Eletrônica" target="target=&#039;_blank&#039;"><strong>Nota Fiscal Eletrônica</strong></a></h3>
+                    <p>Para empresas do município, acesse o portal para a geração e controle das notas fiscais eletrônicas.</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-star"></i> </i>
+                    <h3><a href="/pagina/view/17" title="Programa NFG - Santa Tereza" target=""><strong>Programa NFG - Santa Tereza</strong></a></h3>
+                    <p>Prêmios Exclusivos para quem compra em Santa Tereza por intermédio do Programa Nota Fiscal Gaúcha.</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-volume-up"></i> </i>
+                    <h3><a href="https://www.santatereza.rs.gov.br/pagina/view/11" title="Ouvidoria" target=""><strong>Ouvidoria</strong></a></h3>
+                    <p>Espaço para sua manifestação direto com a Prefeitura de Santa Tereza. Você receberá um número de protocolo para acompanhamento.</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-eye"></i> </i>
+                    <h3><a href="/esic" title="Serviço de Informações ao Cidadão" target=""><strong>Serviço de Informações ao Cidadão</strong></a></h3>
+                    <p>Espaço destinado à solicitação de informações sobre contas públicas do município.</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-city"></i> </i>
+                    <h3><a href="https://paineis.tcers.tc.br/extensions/licitacon/lista.html" title="LicitaCon Obras" target=""><strong>LicitaCon Obras</strong></a></h3>
+                    <p>Confira o andamento das obras do Município</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-search-dollar"></i> </i>
+                    <h3><a href="https://sistema.santatereza.rs.gov.br/multi24/sistemas/transparencia/?entidade=1&amp;secao=dinamico&amp;id=2787" title="Lista de Inscritos em Dívida Ativa" target="target=&#039;_blank&#039;"><strong>Lista de Inscritos em Dívida Ativa</strong></a></h3>
+                    <p>Consulte a relação de inscritos em Dívida Ativa no Município de Santa Tereza-RS</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-percentage"></i> </i>
+                    <h3><a href="https://www.devolveicms.rs.gov.br/inicial" title="Devolve ICMS" target="target=&#039;_blank&#039;"><strong>Devolve ICMS</strong></a></h3>
+                    <p>O Devolve ICMS é uma iniciativa do governo do Estado do RS e visa devolver ICMS para famílias de baixa renda.</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-calculator"></i> </i>
+                    <h3><a href="https://atendimento.receita.rs.gov.br/informativos-pit" title="Informativo do PIT (Programa de Integração Tributária)" target="target=&#039;_blank&#039;"><strong>Informativo do PIT (Programa de Integração Tributária)</strong></a></h3>
+                    <p></p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-external-link-alt"></i> </i>
+                    <h3><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Santa%20Tereza,&amp;cs=1PTi6XlmMbTbGt-QmkqvjhPl95G4" title="LicitaCon Cidadão" target="target=&#039;_blank&#039;"><strong>LicitaCon Cidadão</strong></a></h3>
+                    <p>No sistema estadual do Licitacon é possível consultar a relação de contratos e processos licitatórios do município.</p>
+                </div>
+                            <div class="atalho">
+                    <i><i class="fa fa-theater-masks"></i> </i>
+                    <h3><a href="/pagina/view/15" title="Lei Aldir Blanc" target=""><strong>Lei Aldir Blanc</strong></a></h3>
+                    <p>Confira o andamento das ações realizadas com recursos da Lei 14.399/2022 PNAB</p>
+                </div>
+                    </div>
+    </div>
+
+<!-- NOTICIAS -->
+<section class="container-fluid margin60T bg-light padding60T padding60B">
+            <div class="row nomargin">
+            <div class="titulo bg-light"><span>Notícias</span></div>
+            
+            <div class="col-md-4 col-sm-6 col-xs-12 nopadding noticia-destaque-menor">
+                                <img src="/uploads/noticia/12995/maior_SKgW_X48Q7ef6i9-KNxHV5V_wn7HRJ_c.png" width="100%" alt="Notícia">                                <a href="/noticia/view/1064/concurso-de-decoracao-natalina" title="Concurso de Decoração Natalina" class="titulo-noticia-capa">
+                    <h3><strong>Concurso de Decoração Natalina</strong></h3>
+                </a>
+            </div>
+            
+            <div class="col-md-4 col-sm-6 col-xs-12 nopadding noticia-destaque-menor">
+                                <img src="/uploads/noticia/12986/maior_btYwoMeEHXelIrm-c5pT6Itm5EIJBNDI.jpg" width="100%" alt="Notícia">                                <a href="/noticia/view/1063/nota-fiscal-nacional-migracao" title="Nota Fiscal Nacional - Migração" class="titulo-noticia-capa">
+                    <h3><strong>Nota Fiscal Nacional - Migração</strong></h3>
+                </a>
+            </div>
+            
+            <div class="col-md-4 col-sm-6 col-xs-12 nopadding noticia-destaque-menor">
+                                <img src="/uploads/noticia/12912/maior_kjLg4iXU_5ifyNlmE4HCid9vzhfAlJnb.jpeg" width="100%" alt="Notícia">                                <a href="/noticia/view/1062/nota-fiscal-gaucha-14" title="NOTA FISCAL GAÚCHA" class="titulo-noticia-capa">
+                    <h3><strong>NOTA FISCAL GAÚCHA</strong></h3>
+                </a>
+            </div>
+                    </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="/noticia?slug=Not%C3%ADcias" title="Notícias" class="btnPadrao">todas
+                    notícias</a>
+            </div>
+        </div>
+        <div class="row margin20T margin30B">
+
+        <!-- LICITAÇÕES -->
+        <div class="col-12 col-lg-6">
+            <div class="box altura-box-1 relative radius6">
+                <div class="titulo"><span>Licitações</span></div>
+                <div class="row padding20">
+                                        <div class="col-12">
+                        <a href="/licitacao/view/1116" title="EDITAL DE LEILÃO Nº 001/2026">
+                            <h4 class="nomargin padding20V text-uppercase"><strong>EDITAL DE LEILÃO Nº 001/2026</strong></h4>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <p>
+                                                        <strong>Data de Publicação:
+                            </strong>16/11/2026<br />
+                                                                                    <strong>Abertura dos Envelopes:
+                            </strong>16/12/2026<br />
+                                                                                    <strong>Horário: </strong>10:11<br />
+                                                                                    <strong>Local: </strong>www.lunellileiloes.com.br<br />
+                                                                                    <br /><p>MAUR&Iacute;CIO ANDR&Eacute; LUNELLI, leiloeiro oficial, estabelecido na rua Mal. Humberto de Alencar Castelo Branco, n&ordm; 405, Bairro Licorsul, na cidade de Bento Gon&ccedil;alves &ndash; RS, est&aacute; devidamente autorizado pela Prefeita Municipal de Santa Tereza &ndash; RS. FAZ SABER a todos quantos virem o presente edital ou dele tiverem conhecimento, que no DIA 16 DE DEZEMBRO DE 2026, &agrave;s 10h30 horas, na modalidade ON-LINE via web &ndash; site www.lunellileiloes.com.br, ser&atilde;o levados a leil&atilde;o pelo pre&ccedil;o da avalia&ccedil;&atilde;o e a quem mais oferecer para os bens pertencentes a PREFEITURA MUNICIPAL DE SANTA TEREZA.</p>                        </p>
+                                            </div>
+                                        <div class="col-12">
+                        <a href="/licitacao/view/1115" title="EDITAL DE PREGÃO PRESENCIAL Nº 054/2026">
+                            <h4 class="nomargin padding20V text-uppercase"><strong>EDITAL DE PREGÃO PRESENCIAL Nº 054/2026</strong></h4>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <p>
+                                                        <strong>Data de Publicação:
+                            </strong>19/11/2026<br />
+                                                                                    <strong>Abertura dos Envelopes:
+                            </strong>02/12/2026<br />
+                                                                                    <strong>Horário: </strong>08:11<br />
+                                                                                    <strong>Local: </strong>SALA DE LICITAÇÕES<br />
+                                                                                    <br /><p>EDITAL DE PREG&Atilde;O PRESENCIAL PARA REGISTRO DE PRE&Ccedil;OS PARA O FORNECIMENTO DE MATERIAL HIDR&Aacute;ULICO.</p>                        </p>
+                                            </div>
+                                                        </div>
+
+                <a href="/licitacao?slug=Licita%C3%A7%C3%A3o" title="Licitações"
+                    class="btnPadrao btn-fixo">todos</a>
+            </div>
+        </div>
+
+        <!-- TURISMO -->
+        <div class="col-12 col-lg-6">
+            <div class="box altura-box-1 relative radius6">
+                <div class="titulo"><span>Secretarias Municipais</span></div>
+                <div class="row">
+                    <div class="col-12">
+                                                <div class="col-12 text-center img-secretario">
+                                                        <img src="/images/indisponivel.png" alt="Indisponivel"
+                                class="altura-box-3">
+                                                        <h4 class="nomargin padding20 text-center">
+                                <a href="/secretaria/view/6"
+                                    title="Secretaria Municipal da Fazenda">
+                                    <strong>Secretaria Municipal da Fazenda</strong>
+                                </a>
+                                <br />
+                                <small>Secretária Municipal Virginia Furlanetto</small>
+                            </h4>
+                                                        <p class="padding20B">Rua Avenida Itália, 474 - Centro, Santa Tereza/RS<br />
+                                                                                                <strong></strong>(54) 3456-1033<br />
+                                                            </p>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+</section>
+
+
+<!-- MULTIMÍDIA -->
+<section class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-12 col-lg-6">
+            <div class="box altura-box-6">
+                <div class="titulo"><span>Galeria de Fotos</span></div>
+                <div class="row nomargin">
+                    
+                    <div id="galeria-capa" class="col-12 galeria-destaque">
+                                                <img src="/uploads/midia/7833/maior_0_7KSSISCb84wptv_4iUNDW4tN2Zin4t.JPG" width="100%" alt="Fotos">                                                <a href="/noticia/view/16/santa-tereza" title="SANTA TEREZA!" class="titulo-noticia-capa">
+                            <h3><strong>SANTA TEREZA!</strong></h3>
+                        </a>
+                    </div>
+                                    </div>
+                <div class="row margin5T">
+                    <div class="col-12 text-center">
+                        <a href="/midia/fotos?slug=Galeria+de+Fotos" title="Galeria de Fotos"
+                            class="btnPadrao">todas galerias</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="box">
+                <div class="titulo"><span>Turismo</span></div>
+
+                <div class="row relative">
+                    
+                    <div class="col-5 col-md-4 col-lg-5 col-xl-4 margin10T">
+                                                <img class="altura-box-5 rounded" src="/uploads/ponto_turistico/7842/maior_GUDzXcJA_AtqWEWI_1E06CoE7WFDE14N.jpg" width="100%" alt="Turismo">                                            </div>
+                    <div class="col-7 col-md-8 col-lg-7 col-xl-8 margin10T">
+                        <a href="/turismo/view/7/primeira-escola-e-casa-do-professor-montanari" title="Primeira Escola e Casa do Professor Montanari">
+                            <h4 class="nomargin padding5V"><strong>Primeira Escola e Casa do Professor Montanari</strong></h4>
+                        </a>
+                        Construída em 1898 em um terreno de esquina, com alvenaria de tijolos feitos manualmente e porão de pedras coletadas nas imediações.                    </div>
+                    
+                    <div class="col-5 col-md-4 col-lg-5 col-xl-4 margin10T">
+                                                <img class="altura-box-5 rounded" src="/uploads/ponto_turistico/7838/maior_i6E5J2SBnqkw1b62DAxwOZyEyv6ypx1K.jpg" width="100%" alt="Turismo">                                            </div>
+                    <div class="col-7 col-md-8 col-lg-7 col-xl-8 margin10T">
+                        <a href="/turismo/view/12/casa-prezzi" title="Casa Prezzi">
+                            <h4 class="nomargin padding5V"><strong>Casa Prezzi</strong></h4>
+                        </a>
+                        Concluída em 1905 pelos irmãos Giovanni Battista Vigilio Franceschini, nascido em 29.12.1857 e Giovanni Andrea Franceschini, em 29.08.1856, oriundos de Povo, Trento.                    </div>
+                    
+                    <div class="col-5 col-md-4 col-lg-5 col-xl-4 margin10T">
+                                                <img class="altura-box-5 rounded" src="/uploads/ponto_turistico/7837/maior_QIjVpt2TZbZ7usOC3bqEA98-ST9fdVbu.jpg" width="100%" alt="Turismo">                                            </div>
+                    <div class="col-7 col-md-8 col-lg-7 col-xl-8 margin10T">
+                        <a href="/turismo/view/10/biblioteca-publica-municipal" title="Biblioteca Pública Municipal">
+                            <h4 class="nomargin padding5V"><strong>Biblioteca Pública Municipal</strong></h4>
+                        </a>
+                        O prédio foi construído em 1935 durante a gestão do Prefeito Augusto Pasquali e do Subprefeito Amadeo Piccinini, tendo sido Subprefeito nas gestões 1933/39 e 1946/48. Possui um frontão com o desenho das armas da República.                    </div>
+                                                        </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+</section>    </div>
+
+
+    <footer class="container-fluid" id="box-logo">
+        <div class="row border-footer">
+            <div class="col-sm-11 col-10 text-left margin50V">
+                <div class="col-5 brasao-footer"><img src="/images/logo.png" alt="Santa Tereza"></div>
+                <div class="col-12 col-sm-7 dados-footer">
+                    <p><strong>PREFEITURA MUNICIPAL DE SANTA TEREZA</strong></p>
+<p>Av. It&aacute;lia, 474 - CEP 95715-000<br />Bairro Centro - Santa Tereza/RS<br />Telefone: (54) 3456-1033<br />Email: <a href="/cdn-cgi/l/email-protection#0a6b7e6f646e63676f647e654a796b647e6b7e6f786f706b247879246d657c246878"><span class="__cf_email__" data-cfemail="9afbeefff4fef3f7fff4eef5a8dae9fbf4eefbeeffe8ffe0fbb4e8e9b4fdf5ecb4f8e8">[email&#160;protected]</span></a><br />Atendimento: Segunda-feira a Sexta-feira: 07:30 &agrave;s 11:30 (manh&atilde;) e 13:30 &agrave;s 17:30 (tarde)</p>                </div>              
+            </div>
+            <div class="col-sm-1 col-2 midias-sociais text-right">
+                <br /><br />
+                                    <a href="https://www.facebook.com/share/1AbXJgjc14/" title="Facebook">
+                        <img src="/images/facebook.png" width="28px" alt="Facebook">                    </a><br />
+                                                                    <a href="https://www.instagram.com/prefeiturasantatereza?igsh=NHUyaGp5cDRjbTI2" title="Instagram">
+                        <img src="/images/instagram.png" width="28px" alt="Instagram">                    </a><br />
+                                                <br /><br />
+            </div>
+        </div>
+    </footer>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d136434.41676571697!2d-51.81157876982885!3d-29.189384689134155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951c463debb3b859%3A0x6f6d99a471f3cd0!2sSanta%20Tereza%2C%20RS%2C%2095715-000!5e0!3m2!1spt-BR!2sbr!4v1621634978367!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+
+    <div id="barra-footer" class="container-fluid">
+        <div class="row">
+            <div class="col-10 text-left margin10V">
+                <small>
+                    &copy; Copyright 2021 - Direitos reservados à Prefeitura de Santa Tereza/RS
+                </small>
+            </div>
+            <div class="col-2 text-right margin10V">
+                <a href="http://www.dynamika.com.br" target="_blank"
+                    title="Dynamika Soluções Web"><img src="/images/selo-dynamika.png" alt="Dynamika Soluções Web"></a>
+                <button onclick="topFunction()" id="myBtn" class="btn btn-info" title="Topo"><i
+                        class="icon-up-open"></i><br />topo</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="stop" class="scrollTop">
+        <span><a href="" title="Topo"><i class="fa-2x fa fa-angle-up"></i> </a></span>
+    </div>
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/a65dcce1/jquery.js?v=1751545806"></script>
+<script src="/assets/f2691771/dist/owl.carousel.min.js?v=1751545833" defer="defer"></script>
+<script src="/assets/c1b7ed/yii.js?v=1751545806"></script>
+<script src="/assets/95373798/js/bootstrap.bundle.js?v=1751545806"></script>
+<script src="/assets/e63b8992/sweetalert2.all.min.js?v=1751545806"></script>
+<script src="/js/site.js?v=1751482034"></script>
+<script src="/js/responsive-calendar.min.js?v=1751482034"></script>
+<script src="/assets/3bcec042/cookieconsent.min.js?v=1751545806"></script>
+<script src="/js/jquery.hotkeys.js?v=1751482034"></script>
+<script src="/js/cookies.js?v=1751482034"></script>
+<script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#333","text":"#d6d6d6"},"button":{"background":"rgb(10,110,40)"}},"theme":"classic","content":{"message":"Ao continuar utilizando essa ferramenta, você concorda com que armazenemos cookies em seu dispositivo para melhoria contínua da experiência de navegação dos usuários além do possível tratamento de dados. Ao fechar esta mensagem sem modificar as definições do seu navegador, os cookies continuarão ativos. Caso não concorde com a utilização deles","dismiss":"Entendi","deny":"Desativar os cookies","link":"Saiba mais!","href":"/pagina/view/13","target":"_parent"}});</script>
+<script>jQuery(function ($) {
+$(function() {
+    $('#banner-popup').modal('show');
+});
+jQuery("#bannerTopo").owlCarousel(
+{"dots":true,"smartSpeed":700,"autoplay":true,"autoplayTimeout":5000,"items":1,"loop":true}
+);
+
+
+var teclas = 'ctrl+';
+
+$(document).bind('keydown', teclas+'1', function(){
+    $('#linkMenu').trigger('click');
+    return false;
+});
+
+$(document).bind('keydown', teclas+'2', function(){
+    $('#linkConteudo')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'3', function(){
+    $('#linkBusca')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'4', function(){
+    $('#linkMapaSite')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'5', function(){
+    $('#aumentarFonte')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'6', function(){
+    $('#diminuirFonte')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'7', function(){
+    $('#fonteOriginal')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'8', function(){
+    $('#corOriginal')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'9', function(){
+    $('#contraste')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'0', function(){
+    $('#acessibilidade')[0].click();
+    return false;
+});
+
+function scrollToId(id){
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $(id).offset().top
+    }, 600);
+}
+
+//link menu
+$('#linkMenu').click(function(){
+    scrollToId('#menu');
+    openNav();
+    $('#acessibilidade').css('right',0);
+});
+
+//link menu
+$('#linkConteudo').click(function(){
+    scrollToId('#main');
+});
+
+//link busca
+$("#linkBusca").click(function(){
+    scrollToId('#pesquisa');
+    $('#pesquisa').focus();
+    $('#pesquisa').val('');
+    $('#acessibilidade').css('right',0);
+});
+
+function percorrerDom(elem, operator){
+    $(elem).children().each(function(e){
+        var tamanhoFonte = $(this).css('font-size');
+        if(tamanhoFonte){
+            tamanhoFonte = parseInt(tamanhoFonte.substr(0,2));
+            if(operator == 'soma'){
+                tamanhoFonte++;
+            } else if(operator == 'subtr'){
+                tamanhoFonte--;
+            } else {
+                tamanhoFonte = '';
+            }
+            $(this).css('font-size',tamanhoFonte);
+        }
+        percorrerDom(this, operator);
+    });
+}
+
+//aumentar fonte
+$("#aumentarFonte, #aumentarFonte1").click(function(){
+    percorrerDom($('body'), 'soma');
+    return false;
+});
+
+//diminuit fonte
+$("#diminuirFonte, #diminuirFonte1").click(function(){
+    percorrerDom($('body'), 'subtr');
+    return false;
+});
+
+$("#fonteOriginal").click(function(){
+    percorrerDom($('body'), 'initial');
+    return false;
+});
+
+$("#contraste, #contraste1").click(function(){
+    cssFile = $('#contrasteCSS');
+    if(!cssFile.attr('id')){
+        $('head').append('<link id="contrasteCSS" rel="stylesheet" href="/css/contraste.css" type="text/css" />');
+        $.cookie("css",'contraste', {expires: 365, path: '/'});
+    } else {
+        $('#contrasteCSS').remove();
+        $.cookie("css",'corOriginal', {expires: 365, path: '/'});
+    }
+    return false;
+});
+
+//remover contraste
+$("#corOriginal").click(function(){
+    $('#contrasteCSS').remove();
+    $.cookie("css",'corOriginal', {expires: 365, path: '/'});
+    return false;
+});
+
+if($.cookie("css")) {
+    $('#'+$.cookie("css")).trigger('click');
+}
+
+});</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a6142c50cdf2e11a',t:'MTc5NTgxNDM4Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a6142c50cdf2e11a',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

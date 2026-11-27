@@ -1,0 +1,1754 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" style="scroll-behavior:smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Três Forquilhas/RS</title>
+  <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+  <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+  <script type="text/javascript" charset="UTF-8">
+    document.addEventListener('DOMContentLoaded', function() {
+      cookieconsent.run({
+        "notice_banner_type": "simple",
+        "consent_type": "express",
+        "palette": "light",
+        "language": "pt",
+        "page_load_consent_levels": ["strictly-necessary"],
+        "notice_banner_reject_button_hide": false,
+        "preferences_center_close_button_hide": false,
+        "page_refresh_confirmation_buttons": false,
+        "website_name": "Prefeitura de Três Forquilhas/RS"
+      });
+    });
+  </script>
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-40DFW0J5JE"></script>
+  <script type="text/plain" data-cookie-consent="tracking">
+    window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-40DFW0J5JE');
+      </script>
+  <!-- end of Google Analytics-->
+
+  <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+  <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+  <meta name="title" content="Prefeitura de Três Forquilhas | Três Forquilhas/RS">
+<meta name="og:title" content="Prefeitura de Três Forquilhas | Três Forquilhas/RS">
+<meta name="og:site_name" content="Três Forquilhas/RS">
+<meta name="image" content="https://www.tresforquilhas.rs.gov.br/images/brasao.png">
+<meta name="og:image" content="https://www.tresforquilhas.rs.gov.br/images/brasao.png">
+<meta name="og:image:url" content="https://www.tresforquilhas.rs.gov.br/images/brasao.png">
+<meta name="og:image:secure_url" content="https://www.tresforquilhas.rs.gov.br/images/brasao.png">
+<meta name="keywords" content="prefeitura, tres, forquilhas, secretarias, obras, servicos, urbanos, saude, gabinete, prefeito, administracao, planejamento, assistencia, social, compras, licitacoes">
+<meta name="abstract" content="secretarias · Obras e Serviços Urbanos · Saúde · Gabinete do Prefeito · Administração...">
+<meta name="description" content="secretarias · Obras e Serviços Urbanos · Saúde · Gabinete do Prefeito · Administração e Planejamento · Assistência Social · Compras e Licitações.">
+<meta name="og:description" content="secretarias · Obras e Serviços Urbanos · Saúde · Gabinete do Prefeito · Administração e Planejamento · Assistência Social · Compras e Licitações.">
+<meta name="og:type" content="website">
+<meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="Xv2SXy0aOAwplQiueheG_ggOIdit3R68kO-ChpDYt6A0n9obHS5qIQTaStpPQ9WcZlRWlZ2FLO3yjMTJxbn55Q==">
+
+<link href="https://www.tresforquilhas.rs.gov.br/images/brasao.png" rel="image_src">
+<link href="/css/menu-responsivo.css?v=1751551326" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<link href="/assets/e7c79b07/css/cards.css?v=1785952813" rel="stylesheet">
+<link href="/assets/7c81b497/dist/tiny-slider.css?v=1751553561" rel="stylesheet">
+<link href="/assets/4185e78f/css/bootstrap.css?v=1751553561" rel="stylesheet">
+<link href="/css/grid.css?v=1751551326" rel="stylesheet">
+<link href="/css/estilos.css?v=1785953389" rel="stylesheet">
+<link href="/css/responsivo.css?v=1785953389" rel="stylesheet">
+<link href="/css/ouvidoria.css?v=1751551326" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Passion+One&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="/assets/8ce329b9/style.css?v=1751553561" rel="stylesheet">
+<link href="/assets/5ddfe4be/captcha.css?v=1751553561" rel="stylesheet">
+<style>.service-floating-glow {
+    --srv-color: var(--dynamic-accent);
+    --srv-glow: color-mix(in srgb, var(--dynamic-accent), transparent 75%);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background: #fff;
+    border-radius: 16px;
+    padding: 45px 20px 25px;
+    margin-top: 25px; /* Espaço para o ícone flutuante */
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: calc(100% - 25px);
+}
+
+.service-floating-glow:hover {
+    box-shadow: 0 15px 35px var(--srv-glow);
+    transform: translateY(-4px);
+}
+
+.service-floating-glow-box {
+    position: absolute;
+    top: -25px;
+    width: 56px;
+    height: 56px;
+    background: var(--srv-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 28px;
+    box-shadow: 0 8px 16px var(--srv-glow);
+    transition: transform 0.4s ease;
+}
+
+.service-floating-glow:hover .service-floating-glow-box {
+    transform: scale(1.15) rotate(10deg);
+}
+
+.service-floating-glow-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    line-height: 1.3;
+}</style>
+<style>.card-news-modern {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.card-news-modern:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card-news-image-box {
+    height: 220px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-news-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-news-modern:hover .card-news-image-box img {
+    transform: scale(1.08);
+}
+
+.card-news-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--card-accent);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 30px;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.card-news-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-news-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.card-news-modern:hover .card-news-title {
+    color: var(--card-accent);
+}
+
+.card-news-excerpt {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-news-footer {
+    margin-top: auto;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.card-news-readmore {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--card-accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-news-readmore span {
+    transition: transform 0.3s ease;
+}
+
+.card-news-modern:hover .card-news-readmore span {
+    transform: translateX(4px);
+}</style>
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous"></script>
+<script>var inputmask_7260b05d = {"mask":["[CPF REDIGIDO]","99.999.999\/9999-99"]};</script></head>
+
+    <div class="column">
+        <div id="dl-menu" class="dl-menuwrapper">
+            <button class="dl-trigger"><i><i class="fa fa-bars"></i> </i> <span>menu</span></button>
+            
+            <!-- Renderiza todo o menu a partir da raiz -->
+            <ul class="dl-menu">
+<li>
+<a href="#" target="_self" name="Cidade">Cidade</a>
+<ul class="dl-submenu">
+<li>
+<a href="#" target="_self" name="Sobre Três Forquilhas">Sobre Três Forquilhas</a>
+<ul class="dl-submenu">
+<li>
+<a href="/pagina/view/8?slug=historia-do-municipio" target="_self" name="História do Município">História do Município</a>
+</li>
+<li>
+<a href="/servico" target="_self" name="Serviços">Serviços</a>
+</li>
+<li>
+<a href="/parceria" target="_self" name="Parcerias">Parcerias</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Pontos Turísticos">Pontos Turísticos</a>
+<ul class="dl-submenu">
+<li>
+<a href="/turismo?TurismoSearch%5Bid%5D=&amp;TurismoSearch%5Bid_turismo_categoria%5D=1&amp;TurismoSearch%5Bq%5D=" target="_self" name="Naturais">Naturais</a>
+</li>
+<li>
+<a href="/turismo/index?TurismoSearch%5Bid%5D=&amp;TurismoSearch%5Bid_turismo_categoria%5D=2&amp;TurismoSearch%5Bq%5D=" target="_self" name="Hospedagens">Hospedagens</a>
+</li>
+<li>
+<a href="/turismo/index?TurismoSearch%5Bid%5D=&amp;TurismoSearch%5Bid_turismo_categoria%5D=3&amp;TurismoSearch%5Bq%5D=" target="_self" name="Campings">Campings</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Governo">Governo</a>
+<ul class="dl-submenu">
+<li>
+<a href="#" target="_self" name="Secretarias Municipais">Secretarias Municipais</a>
+<ul class="dl-submenu">
+<li>
+<a href="/secretaria/view/2?slug=gabinete-da-prefeita" target="_self" name="Gabinete da Prefeita">Gabinete da Prefeita</a>
+</li>
+<li>
+<a href="/secretaria/view/3?slug=administracao" target="_self" name="Administração">Administração</a>
+</li>
+<li>
+<a href="/secretaria/view/4?slug=fazenda" target="_self" name="Fazenda">Fazenda</a>
+</li>
+<li>
+<a href="/secretaria/view/5?slug=saude" target="_self" name="Saúde">Saúde</a>
+</li>
+<li>
+<a href="/secretaria/view/6?slug=assistencia-social" target="_self" name="Assistência Social">Assistência Social</a>
+</li>
+<li>
+<a href="/secretaria/view/7?slug=educacao" target="_self" name="Educação">Educação</a>
+</li>
+<li>
+<a href="/secretaria/view/8?slug=obras-viacao-e-transportes" target="_self" name="Obras, Viação e Transportes">Obras, Viação e Transportes</a>
+</li>
+<li>
+<a href="/secretaria/view/9?slug=planejamento" target="_self" name="Planejamento">Planejamento</a>
+</li>
+<li>
+<a href="/secretaria/view/10?slug=agricultura-pecuaria-industria-e-comercio" target="_self" name="Agricultura, Pecuária, Indústria e Comércio">Agricultura, Pecuária, Indústria e Comércio</a>
+</li>
+<li>
+<a href="/secretaria/view/11?slug=turismo-cultura-e-desporto" target="_self" name="Turismo, Cultura e Desporto">Turismo, Cultura e Desporto</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Estrutura Administrativa">Estrutura Administrativa</a>
+<ul class="dl-submenu">
+<li>
+<a href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&amp;DepartamentoSearch%5Bid_departamento_categoria%5D=2&amp;DepartamentoSearch%5Bq%5D=" target="_self" name="Departamentos">Departamentos</a>
+</li>
+<li>
+<a href="/departamento/index?DepartamentoSearch%5Bid_secretaria%5D=&amp;DepartamentoSearch%5Bid_departamento_categoria%5D=3&amp;DepartamentoSearch%5Bq%5D=" target="_self" name="Setores">Setores</a>
+</li>
+<li>
+<a href="/departamento/index?DepartamentoSearch%5Bid_secretaria%5D=&amp;DepartamentoSearch%5Bid_departamento_categoria%5D=4&amp;DepartamentoSearch%5Bq%5D=" target="_self" name="Centros">Centros</a>
+</li>
+<li>
+<a href="/departamento/index?DepartamentoSearch%5Bid_secretaria%5D=&amp;DepartamentoSearch%5Bid_departamento_categoria%5D=3&amp;DepartamentoSearch%5Bq%5D=&amp;DepartamentoSearch%5Bid_secretaria%5D=&amp;DepartamentoSearch%5Bid_departamento_categoria%5D=6&amp;DepartamentoSearch%5Bq%5D=" target="_self" name="Conselhos">Conselhos</a>
+</li>
+<li>
+<a href="/escola" target="_self" name="Escolas">Escolas</a>
+</li>
+<li>
+<a href="/unidade-saude" target="_self" name="Unidades de Saúde">Unidades de Saúde</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Publicações">Publicações</a>
+<ul class="dl-submenu">
+<li>
+<a href="#" target="_self" name="Licitações">Licitações</a>
+<ul class="dl-submenu">
+<li>
+<a href="/licitacao?LicitacaoSearch%5Bid_licitacao_categoria%5D=&amp;LicitacaoSearch%5Bstatus%5D=AB&amp;LicitacaoSearch%5Bq%5D=" target="_self" name="Abertas">Abertas</a>
+</li>
+<li>
+<a href="/licitacao/index?LicitacaoSearch%5Bstatus%5D=EA" target="_self" name="Em Andamento">Em Andamento</a>
+</li>
+<li>
+<a href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&amp;LicitacaoSearch%5Bstatus%5D=FI&amp;LicitacaoSearch%5Bq%5D=" target="_self" name="Finalizadas">Finalizadas</a>
+</li>
+<li>
+<a href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&amp;LicitacaoSearch%5Bstatus%5D=FR&amp;LicitacaoSearch%5Bq%5D=" target="_self" name="Fracassadas">Fracassadas</a>
+</li>
+<li>
+<a href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&amp;LicitacaoSearch%5Bstatus%5D=DE&amp;LicitacaoSearch%5Bq%5D=" target="_self" name="Desertas">Desertas</a>
+</li>
+<li>
+<a href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&amp;LicitacaoSearch%5Bstatus%5D=RE&amp;LicitacaoSearch%5Bq%5D=" target="_self" name="Revogadas">Revogadas</a>
+</li>
+<li>
+<a href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&amp;LicitacaoSearch%5Bstatus%5D=SS&amp;LicitacaoSearch%5Bq%5D=" target="_self" name="Suspensas">Suspensas</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Contratações">Contratações</a>
+<ul class="dl-submenu">
+<li>
+<a href="/contratacao/index?ContratacaoSearch%5Bid_contratacao_categoria%5D=3&amp;ContratacaoSearch%5Bano%5D=&amp;ContratacaoSearch%5Bq%5D=" target="_self" name="Concursos Públicos">Concursos Públicos</a>
+</li>
+<li>
+<a href="/contratacao/index?ContratacaoSearch%5Bid_contratacao_categoria%5D=4&amp;ContratacaoSearch%5Bano%5D=&amp;ContratacaoSearch%5Bq%5D=" target="_self" name="Processo Seletivo Público">Processo Seletivo Público</a>
+</li>
+<li>
+<a href="/contratacao/index?ContratacaoSearch%5Bid_contratacao_categoria%5D=5&amp;ContratacaoSearch%5Bano%5D=&amp;ContratacaoSearch%5Bq%5D=" target="_self" name="Processo Seletivo Simplificado">Processo Seletivo Simplificado</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Legislação">Legislação</a>
+<ul class="dl-submenu">
+<li>
+<a href="/legislacao?LegislacaoSearch%5Bid_legislacao_categoria%5D=8&amp;LegislacaoSearch%5Bq%5D=" target="_self" name="Decretos">Decretos</a>
+</li>
+<li>
+<a href="/legislacao/index?LegislacaoSearch%5Bid_legislacao_categoria%5D=5&amp;LegislacaoSearch%5Bq%5D=" target="_self" name="Portarias">Portarias</a>
+</li>
+<li>
+<a href="/legislacao/index?LegislacaoSearch%5Bid_legislacao_categoria%5D=6&amp;LegislacaoSearch%5Bq%5D=" target="_self" name="Leis Municipais">Leis Municipais</a>
+</li>
+<li>
+<a href="/legislacao/index?LegislacaoSearch%5Bid_legislacao_categoria%5D=7&amp;LegislacaoSearch%5Bq%5D=" target="_self" name="Leis Complementares">Leis Complementares</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Transparência">Transparência</a>
+<ul class="dl-submenu">
+<li>
+<a href="#" target="_self" name="Canais da Transparência">Canais da Transparência</a>
+<ul class="dl-submenu">
+<li>
+<a href="https://tresforquilhas.multi24h.com.br/multi24/sistemas/transparencia/" target="_blank" name="Portal da Transparência">Portal da Transparência</a>
+</li>
+<li>
+<a href="https://radardatransparencia.atricon.org.br/radar-da-transparencia-publica.html" target="_blank" name="Radar da Transparência Pública">Radar da Transparência Pública</a>
+</li>
+<li>
+<a href="/contrato" target="_self" name="Contratos">Contratos</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Canais de Atendimento">Canais de Atendimento</a>
+<ul class="dl-submenu">
+<li>
+<a href="/ouvidoria" target="_self" name="Ouvidoria">Ouvidoria</a>
+</li>
+<li>
+<a href="/formulario/view/4" target="_self" name="ESIC - Serviço de Informação ao Cidadão">ESIC - Serviço de Informação ao Cidadão</a>
+</li>
+<li>
+<a href="/faq" target="_self" name="Perguntas Frequentes">Perguntas Frequentes</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Documentos Legais">Documentos Legais</a>
+<ul class="dl-submenu">
+<li>
+<a href="/documento?DocumentoSearch%5Bid_secretaria%5D=&amp;DocumentoSearch%5Bid_documento_categoria%5D=4&amp;DocumentoSearch%5Bq%5D=" target="_self" name="Lei Aldir Blanc">Lei Aldir Blanc</a>
+</li>
+<li>
+<a href="/documento?DocumentoSearch%5Bid_secretaria%5D=&amp;DocumentoSearch%5Bid_documento_categoria%5D=4&amp;DocumentoSearch%5Bq%5D=&amp;DocumentoSearch%5Bid_secretaria%5D=&amp;DocumentoSearch%5Bid_documento_categoria%5D=5&amp;DocumentoSearch%5Bq%5D=" target="_self" name="Lei Paulo Gustavo">Lei Paulo Gustavo</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://tresforquilhas.cespro.com.br/" target="_blank" name="Legislação">Legislação</a>
+</li>
+<li>
+<a href="#" target="_self" name="Comunicação">Comunicação</a>
+<ul class="dl-submenu">
+<li>
+<a href="#" target="_self" name="Imprensa">Imprensa</a>
+<ul class="dl-submenu">
+<li>
+<a href="/noticia" target="_self" name="Notícias">Notícias</a>
+</li>
+<li>
+<a href="/evento" target="_self" name="Calendário de Eventos">Calendário de Eventos</a>
+</li>
+<li>
+<a href="/enquete" target="_self" name="Enquetes">Enquetes</a>
+</li>
+<li>
+<a href="/evento" target="_self" name="Eventos">Eventos</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#" target="_self" name="Multimidia">Multimidia</a>
+<ul class="dl-submenu">
+<li>
+<a href="/midia-foto" target="_self" name="Galeria de Fotos">Galeria de Fotos</a>
+</li>
+<li>
+<a href="/midia-video" target="_self" name="Galeria de Vídeos">Galeria de Vídeos</a>
+</li>
+<li>
+<a href="/midia-audio" target="_self" name="Galeria de Áudios">Galeria de Áudios</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://tresforquilhas.cespro.com.br/visualizarDiarioOficial.php?cdMunicipio=8015" target="_blank" name="Diário Oficial">Diário Oficial</a>
+</li>
+</ul>
+            
+        </div>
+    </div>
+
+
+<body>
+  <script>function dynamikacaptchaw15(){loadCaptcha(hcaptcha, "w15_c", "#loginfrontform-recaptcha", "add061f6-a9be-42be-ae8a-88623218833e")}
+function dynamikacaptchaw17(){loadCaptcha(hcaptcha, "w17_c", "#loginfrontform-recaptcha", "add061f6-a9be-42be-ae8a-88623218833e")}</script>  <header>
+    <section class="header-covid">
+      <div class="container-fluid">
+        <div class="row midias-topo">
+          <div class="col-ce1-10 acessibilidade">
+            
+<a id="acessibilidade" href="/pagina/view/7/acessibilidade" title="Acessibilidade" class="d-inline-block">
+    <i><i class="fa fa-wheelchair"></i> </i>
+</a>
+<a id="aumentarFonte" href="javascript:;" title="Aumentar Fonte" class="d-inline-block">
+    <i><i class="fa fa-plus-circle"></i> </i>
+</a>
+<a id="diminuirFonte" href="javascript:;" title="Diminuir Fonte" class="d-inline-block">
+    <i><i class="fa fa-minus-circle"></i> </i>
+</a>
+<a id="fonteOriginal" href="javascript:;" title="Fonte Original" class="d-inline-block">
+    <i><i class="fa fa-fas fa-font"></i> </i>
+</a>
+<a id="mapaSite" href="/site/mapa-site" title="Mapa do site" class="d-inline-block">
+    <i><i class="fa fa-fa-solid fa-map"></i> </i>
+</a>
+<a id="lgpd" href="/pagina/view/10/lei-geral-de-protecao-de-dados-lgpd" title="Lei Geral de Proteção de Dados" class="d-inline-block">
+    <i><i class="fa fa-fa-solid fa-user-shield"></i> </i>
+</a>
+<a id="contraste" href="javascript:;" title="Contraste" class="d-inline-block">
+    <i id="contraste"><i class="fa fa-adjust"></i> </i>
+</a>
+          </div>
+          <div class="col-ce1-14 btn-usuario-topo">
+            <div class="usuario-icone">
+              <a class="login" href="/" title="Login" data-toggle="modal" data-target="#modal-cadastro"><i class="far fa-user"></i> usuário</a>              <a class="logado" href="/conta" title="Área do usuário"><i class="fa fa-user"></i> usuário</a>              <a class="logado" href="/conta/logout" title="Deslogar" style="margin-left:5px;"><i class="fa fa-sign-out-alt"></i> </a>                          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="logo">
+      <div class="row container-fluid">
+        <div id="brasao" class="col-ce1-24 col-tb1-14 col-tb2-14 col-pc1-12 col-pc3-12 nopadding">
+          <a href="/" title="Três Forquilhas">
+            <h1 class="nopadding nomargin"><img src="/images/brasao.png" alt="Três Forquilhas/RS"></h1>
+            <h2>Prefeitura Municipal</h2>
+            <h3>Três Forquilhas</h3>
+          </a>
+        </div>
+        <div id="posicao-busca" class="col-ce1-24 col-tb1-10 col-tb2-10 col-pc1-12 col-pc3-12">
+          <div id="busca">
+            <input type="text" class="form-control" id="#" placeholder="digite o termo ...">
+            <a href="/busca/index"><i class="fa fa-search"></i> </a>          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fundo-menu">
+      <div class="container-fluid">
+        <!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU BEGIN
+
+author: Rodrigo Dornelles <rodrigo@dynamika.com.br>
+copyright: Dynamika Soluções WEB - 2020
+license: BSD-3
+-->
+<section id="menu" class="dynamika-menu-nav-forest">
+    <ul class="dynamika-menu-ul-forest">
+        <!-- MENU ROOT (cidade) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Cidade" target="_self">
+        Cidade
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (sobre-tres-forquilhas)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Sobre Três Forquilhas</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/8?slug=historia-do-municipio" title="História do Município" target="_self">
+        História do Município
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico" title="Serviços" target="_self">
+        Serviços
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/parceria" title="Parcerias" target="_self">
+        Parcerias
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (pontos-turisticos)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Pontos Turísticos</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo?TurismoSearch%5Bid%5D=&TurismoSearch%5Bid_turismo_categoria%5D=1&TurismoSearch%5Bq%5D=" title="Naturais" target="_self">
+        Naturais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?TurismoSearch%5Bid%5D=&TurismoSearch%5Bid_turismo_categoria%5D=2&TurismoSearch%5Bq%5D=" title="Hospedagens" target="_self">
+        Hospedagens
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?TurismoSearch%5Bid%5D=&TurismoSearch%5Bid_turismo_categoria%5D=3&TurismoSearch%5Bq%5D=" title="Campings" target="_self">
+        Campings
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (governo) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Governo" target="_self">
+        Governo
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (secretarias-municipais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Secretarias Municipais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/2?slug=gabinete-da-prefeita" title="Gabinete da Prefeita" target="_self">
+        Gabinete da Prefeita
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/3?slug=administracao" title="Administração" target="_self">
+        Administração
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/4?slug=fazenda" title="Fazenda" target="_self">
+        Fazenda
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/5?slug=saude" title="Saúde" target="_self">
+        Saúde
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/6?slug=assistencia-social" title="Assistência Social" target="_self">
+        Assistência Social
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/7?slug=educacao" title="Educação" target="_self">
+        Educação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/8?slug=obras-viacao-e-transportes" title="Obras, Viação e Transportes" target="_self">
+        Obras, Viação e Transportes
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/9?slug=planejamento" title="Planejamento" target="_self">
+        Planejamento
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/10?slug=agricultura-pecuaria-industria-e-comercio" title="Agricultura, Pecuária, Indústria e Comércio" target="_self">
+        Agricultura, Pecuária, Indústria e Comércio
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/11?slug=turismo-cultura-e-desporto" title="Turismo, Cultura e Desporto" target="_self">
+        Turismo, Cultura e Desporto
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (estrutura-administrativa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Estrutura Administrativa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=2&DepartamentoSearch%5Bq%5D=" title="Departamentos" target="_self">
+        Departamentos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=3&DepartamentoSearch%5Bq%5D=" title="Setores" target="_self">
+        Setores
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=4&DepartamentoSearch%5Bq%5D=" title="Centros" target="_self">
+        Centros
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=3&DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=6&DepartamentoSearch%5Bq%5D=" title="Conselhos" target="_self">
+        Conselhos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/escola" title="Escolas" target="_self">
+        Escolas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/unidade-saude" title="Unidades de Saúde" target="_self">
+        Unidades de Saúde
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (publicacoes) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Publicações" target="_self">
+        Publicações
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (licitacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Licitações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao?LicitacaoSearch%5Bid_licitacao_categoria%5D=&LicitacaoSearch%5Bstatus%5D=AB&LicitacaoSearch%5Bq%5D=" title="Abertas" target="_self">
+        Abertas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?LicitacaoSearch%5Bstatus%5D=EA" title="Em Andamento" target="_self">
+        Em Andamento
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&LicitacaoSearch%5Bstatus%5D=FI&LicitacaoSearch%5Bq%5D=" title="Finalizadas" target="_self">
+        Finalizadas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&LicitacaoSearch%5Bstatus%5D=FR&LicitacaoSearch%5Bq%5D=" title="Fracassadas" target="_self">
+        Fracassadas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&LicitacaoSearch%5Bstatus%5D=DE&LicitacaoSearch%5Bq%5D=" title="Desertas" target="_self">
+        Desertas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&LicitacaoSearch%5Bstatus%5D=RE&LicitacaoSearch%5Bq%5D=" title="Revogadas" target="_self">
+        Revogadas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?LicitacaoSearch%5Bid_licitacao_categoria%5D=&LicitacaoSearch%5Bstatus%5D=SS&LicitacaoSearch%5Bq%5D=" title="Suspensas" target="_self">
+        Suspensas
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (contratacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Contratações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao/index?ContratacaoSearch%5Bid_contratacao_categoria%5D=3&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Concursos Públicos" target="_self">
+        Concursos Públicos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao/index?ContratacaoSearch%5Bid_contratacao_categoria%5D=4&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Processo Seletivo Público" target="_self">
+        Processo Seletivo Público
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao/index?ContratacaoSearch%5Bid_contratacao_categoria%5D=5&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Processo Seletivo Simplificado" target="_self">
+        Processo Seletivo Simplificado
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (legislacao)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Legislação</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao?LegislacaoSearch%5Bid_legislacao_categoria%5D=8&LegislacaoSearch%5Bq%5D=" title="Decretos" target="_self">
+        Decretos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bid_legislacao_categoria%5D=5&LegislacaoSearch%5Bq%5D=" title="Portarias" target="_self">
+        Portarias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bid_legislacao_categoria%5D=6&LegislacaoSearch%5Bq%5D=" title="Leis Municipais" target="_self">
+        Leis Municipais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bid_legislacao_categoria%5D=7&LegislacaoSearch%5Bq%5D=" title="Leis Complementares" target="_self">
+        Leis Complementares
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (transparencia) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Transparência" target="_self">
+        Transparência
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (canais-da-transparencia)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Canais da Transparência</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://tresforquilhas.multi24h.com.br/multi24/sistemas/transparencia/" title="Portal da Transparência" target="_blank">
+        Portal da Transparência
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://radardatransparencia.atricon.org.br/radar-da-transparencia-publica.html" title="Radar da Transparência Pública" target="_blank">
+        Radar da Transparência Pública
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contrato" title="Contratos" target="_self">
+        Contratos
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (canais-de-atendimento)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Canais de Atendimento</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/ouvidoria" title="Ouvidoria" target="_self">
+        Ouvidoria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/formulario/view/4" title="ESIC - Serviço de Informação ao Cidadão" target="_self">
+        ESIC - Serviço de Informação ao Cidadão
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/faq" title="Perguntas Frequentes" target="_self">
+        Perguntas Frequentes
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (documentos-legais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Documentos Legais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento?DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=4&DocumentoSearch%5Bq%5D=" title="Lei Aldir Blanc" target="_self">
+        Lei Aldir Blanc
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento?DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=4&DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=5&DocumentoSearch%5Bq%5D=" title="Lei Paulo Gustavo" target="_self">
+        Lei Paulo Gustavo
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (legislacao) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="https://tresforquilhas.cespro.com.br/" title="Legislação" target="_blank">
+        Legislação
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+<!-- MENU ROOT (comunicacao) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Comunicação" target="_self">
+        Comunicação
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (imprensa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Imprensa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/noticia" title="Notícias" target="_self">
+        Notícias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/evento" title="Calendário de Eventos" target="_self">
+        Calendário de Eventos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/enquete" title="Enquetes" target="_self">
+        Enquetes
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/evento" title="Eventos" target="_self">
+        Eventos
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (multimidia)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Multimidia</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-foto" title="Galeria de Fotos" target="_self">
+        Galeria de Fotos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-video" title="Galeria de Vídeos" target="_self">
+        Galeria de Vídeos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-audio" title="Galeria de Áudios" target="_self">
+        Galeria de Áudios
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (diario-oficial) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="https://tresforquilhas.cespro.com.br/visualizarDiarioOficial.php?cdMunicipio=8015" title="Diário Oficial" target="_blank">
+        Diário Oficial
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+    </ul>
+</section>
+<!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU END
+-->      </div>
+    </div>
+  </header>
+
+  <div id="main">
+    
+    <!-- INICIO DO CONTEÚDO -->
+        <main>
+
+        <!-- Modal -->
+    <div id="banner-popup0" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header text-center" style="padding: 10px">
+                    <h4 class="modal-title"><strong>Prazo para devolução dos blocos de produtor se encerra no FIM DO ANO!</strong></h4>
+                </div>
+                <div class="modal-body">
+                                            <div class="col-ce1-24">
+                            <a href="#" target="_self">
+                                <img src="/uploads/aviso/1264/media_47tp9xzcoUAp-7AkEWBjDcbQduM_2zoO.png" width="100%" alt="Prazo para devolução dos blocos de produtor se encerra no FIM DO ANO!" title="Prazo para devolução dos blocos de produtor se encerra no FIM DO ANO!">                            </a>
+                        </div>
+                        <br/><br/>
+                                        <div class="col-ce1-24 padding5 text-center d-0">
+                        <p>Prazo para devolu&ccedil;&atilde;o dos blocos de produtor se encerra no FIM DO ANO!</p>                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn-padrao" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+
+
+   <div class="container-fluid py-5" id="video-home">
+      <div class="video-capa">
+         <video muted autoplay loop playsinline>
+            <source src='/uploads/banner/736/P750nfgldV_19h_Cg4yZqokoNit99vLM.mp4' type="video/mp4">
+         </video>
+      </div>
+   </div>
+
+<!-- BLOCO LINKS UTEIS -->
+   <section id="link-capa" class="section-padding-fundo bg-light">
+      <div class="container-fluid">
+         
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-primary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+                    <div class="swiper-button-prev-custom" id="cards-swiper-w0-prev">❮</div>
+        
+        <div class="swiper swiper-grid" id="cards-swiper-w0">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://tresforquilhas.multi24h.com.br/multi24/sistemas/transparencia/" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">search</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Portal da Transparência</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:4:::NO::F50500_CD_ORGAO:82000&cs=1qXoZWSpkKPKoiL7NvnQcDPRunNc" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">content_copy</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Licitacon Cidadão</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://tresforquilhas.multi24h.com.br/multi24/sistemas/portal/" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">manage_accounts</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Serviços Online</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/uploads/servico/1033/KSdOzwBhTk-FyBVBndxXowAJNbebGLDt.pdf" target="_self" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">description</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Carta de Serviços</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/ouvidoria" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">support_agent</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Ouvidoria</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/formulario/view/4" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">info</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">E-SIC</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/vacina" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">coronavirus</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Vacinação Covid e Dengue</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/agendamento" target="_self" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">event</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Agendamento Online</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://tresforquilhas.cespro.com.br" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">gavel</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Legislação Municipal</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://tresforquilhas.cespro.com.br/visualizarDiarioOficial.php?cdMunicipio=8015" target="_blank" class="service-floating-glow" style="--dynamic-accent: var(--color-primary)">
+            <div class="service-floating-glow-box">
+            <span class="material-symbols-outlined">newspaper</span>
+        </div>  
+        
+    <span class="service-floating-glow-title">Diário Oficial</span>
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+                    <div class="swiper-button-next-custom" id="cards-swiper-w0-next">❯</div>
+            </div>
+</div>
+
+      </div>
+   </section>
+
+<!-- BLOCO NOTÍCIAS -->
+<section id="noticia-capa" class="margin-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-ce1-24">
+         <h2 class="titulo">Últimas notícias<span class="square"></span></h2>
+
+         </div>
+      </div>
+
+      
+         
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-primary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+        
+        <div class="swiper " id="cards-swiper-w1">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/88/tres-forquilhas-participa-do-1-seminario-de-educacao-fiscal-em-itati" class="card-news-modern" style="--card-accent: var(--color-primary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/1268/media_UUHdXz2ZWRZT4skGE5Pt8e_YNBeOFh2t.png" alt="Três Forquilhas participa do 1º Seminário de Educação Fiscal em Itati" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">Três Forquilhas participa do 1º Seminário de Educação Fiscal em Itati</h3>
+        <p class="card-news-excerpt">Três Forquilhas participa do 1º Seminário de Educação Fiscal em Itati</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/87/xviii-seminario-nacional-de-pesquisadores-da-historia-das-comunidades-teuto-brasileiras" class="card-news-modern" style="--card-accent: var(--color-primary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/1266/media_0pPRAQpwKqsC7YePfV9AYYaX0T7jk7_R.png" alt="XVIII Seminário Nacional de Pesquisadores da História das Comunidades Teuto-Brasileiras" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">XVIII Seminário Nacional de Pesquisadores da História das Comunidades Teuto-Brasileiras</h3>
+        <p class="card-news-excerpt">XVIII Seminário Nacional de Pesquisadores da História das Comunidades Teuto-B...</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/86/prazo-para-devolucao-dos-blocos-de-produtor-se-encerra-no-fim-do-ano" class="card-news-modern" style="--card-accent: var(--color-primary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/1263/media_USfwGRMhr6ksqpY_CGmYPnO7hXgnbKRd.png" alt="Prazo para devolução dos blocos de produtor se encerra no FIM DO ANO!" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">Prazo para devolução dos blocos de produtor se encerra no FIM DO ANO!</h3>
+        <p class="card-news-excerpt">Prazo para devolução dos blocos de produtor se encerra no FIM DO ANO!</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/85/atencao-eleitor-de-tres-forquilhas" class="card-news-modern" style="--card-accent: var(--color-primary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/1262/media_WvmDJCav7_3HcMYv8GmrimdKD2b25Fdg.png" alt="ATENÇÃO, ELEITOR DE TRÊS FORQUILHAS!" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">ATENÇÃO, ELEITOR DE TRÊS FORQUILHAS!</h3>
+        <p class="card-news-excerpt">ATENÇÃO, ELEITOR DE TRÊS FORQUILHAS!</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+            </div>
+</div>
+
+
+         <div class="row mt-2">
+            <div class="col-ce1-24 text-center">
+               <a class="btn-padrao" href="/noticia/index">Todas as Notícias</a>            </div>
+         </div>
+
+      
+   </div>
+</section>
+<br /><br />
+<!-- LICITAÇÕES/LEGISLAÇÕES/CONTRATAÇÕES -->
+<section class="margin-section bg-light section-padding-fundo">
+   <div class="container-fluid row">
+      <div class="col-ce1-24 col-tb1-12 col-pc1-8">
+         <div class="box-lista height400" id="licitacao-home">
+            <h2 class="titulo">Próxima Licitação<span class="square"></span></h2>
+            <div class="row">
+               <div class="col-ce1-24">
+                                                               <a href="/licitacao/view/781/pregao-eletronico-0152026">
+                           <h5 class="nomargin nopadding text-uppercase"><strong>PREGÃO ELETRÔNICO 015/2026</strong></h5>
+                        </a>
+                        <p>
+                           Abertura: 11/12<br />
+                           Horário: 09:00<br />
+                           Local: BLL Compras<br>
+                        <p>Registro de Preços para aquisição futura de Pneus destinados aos veiculos das Secretarias Municipais.</p>
+                        </p>
+                        <a href="/licitacao/view/781/pregao-eletronico-0152026" class="btn-padrao" style="float: right;">saiba mais</a>
+                        <br><br>
+                        <hr>
+                                             <a href="/licitacao/view/780/pregao-eletronico-0052026">
+                           <h5 class="nomargin nopadding text-uppercase"><strong>PREGÃO ELETRÔNICO 005/2026</strong></h5>
+                        </a>
+                        <p>
+                           Abertura: 10/12<br />
+                           Horário: 09:00<br />
+                           Local: BLL Compras<br>
+                        <p>Pregão Eletrônico nº 005/2026 – Processo Licitatório nº 152/2026</p>
+                        </p>
+                        <a href="/licitacao/view/780/pregao-eletronico-0052026" class="btn-padrao" style="float: right;">saiba mais</a>
+                        <br><br>
+                        <hr>
+                                                      </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-ce1-24 col-tb1-12 col-pc1-8 margin-box">
+         <div class="height400">
+            <h2 class="titulo">Canais de Atendimento<span class="square"></span></h2>
+            <div class="row">
+               <div class="col-ce1-24">
+                                                               <div class="row nomargin">
+                                                         <div class="col-ce1-8 col-ce3-6 col-tb1-5 col-tb2-8 col-pc1-6 text-center">
+                                 <span class="material-symbols-outlined material-maior">support_agent</span>
+                              </div>
+                                                      <div class="col-ce1-16 col-ce3-18 col-tb1-19 col-tb2-16 col-pc1-18 contraste-atendimento">
+                              <h5 class="nomargin padding10V ">
+                                 <a href="/ouvidoria" target="_self">
+                                    <strong>Ouvidoria</strong>
+                                 </a>
+                              </h5>
+                                                               <div>Precisa de comunicar com o município de Três Forquilhas? Envie sua solicitação.</div>
+                                                         </div>
+                        </div>
+                        <hr />
+                                                      </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-ce1-24 col-tb1-24 col-pc1-8 margin-box convoca-capa">
+         <div class="box-lista height400">
+            <h2 class="titulo">Convocações<span class="square"></span></h2>
+            <div class="row">
+               <div class="col-ce1-24">
+                                       <h5 class="empty"><strong>Não há editais de convocação no momento.</strong></h5>
+                                 </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<br /><br />
+<!-- SECRETARIAS  -->
+<section class="margin-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-ce1-24 col-tb1-12 col-pc1-8">
+            <div class="box-lista height450">
+               <h2 class="titulo">Secretarias Municipais<span class="square"></span></h2>
+               <div class="row">
+                                       <div class="col-ce1-24 text-center contraste-atendimento">
+                        <div id="dtns2">                                                                                                               <div id="w3" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/11/turismo-cultura-e-desporto">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Turismo, Cultura e Desporto</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Oli Sparremberger</strong>
+                            <br><small>Secretário Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/11/turismo-cultura-e-desporto" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w4" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/6/assistencia-social">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Assistência Social</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Claudeci Barros de Souza</strong>
+                            <br><small>Secretária Municipal</small>
+            </h6> 
+            <br />
+        Avenida Professor Justino Alberto Tietbohl - Centro        <br /><br />
+    <a href="/secretaria/view/6/assistencia-social" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w5" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/10/agricultura-pecuaria-industria-e-comercio">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Agricultura, Pecuária, Indústria e Comércio</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Gevair Schvarstzhaupt da Silva</strong>
+                            <br><small>Secretário Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/10/agricultura-pecuaria-industria-e-comercio" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w6" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/5/saude">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Saúde</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Rômulo Brehm Hoffmann</strong>
+                            <br><small>Secretário Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/5/saude" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w7" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/4/fazenda">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Fazenda</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Mateus Melo Brehm Justo</strong>
+                            <br><small>Secretário Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/4/fazenda" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w8" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/8/obras-viacao-e-transportes">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Obras, Viação e Transportes</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>José Flávio Nunes Loreno</strong>
+                            <br><small>Secretário Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/8/obras-viacao-e-transportes" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w9" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/9/planejamento">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Planejamento</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Liege Kellermann Hoffmann</strong>
+                            <br><small>Secretária Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/9/planejamento" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w10" class="list-view"><div data-key="0">
+
+            <img class="secretario-home" src="/uploads/pessoa/53/media_-F1ST2ig25fDccUwbVFQyO2SGBdMDIAH.png" alt="Prefeita Municipal - Loraci Klippel Melo Germann - Lola" title="Prefeita Municipal - Loraci Klippel Melo Germann - Lola">        <a href="/secretaria/view/2/gabinete-da-prefeita">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Gabinete da Prefeita</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Loraci Klippel Melo Germann - Lola</strong>
+                            <br><small>Prefeita Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/2/gabinete-da-prefeita" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w11" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/7/educacao">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Educação</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Franciele de Oliveira Cardoso</strong>
+                            <br><small>Secretária Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/7/educacao" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                                                                                          <div id="w12" class="list-view"><div data-key="0">
+
+            <span class="material-symbols-outlined">person</span>
+        <a href="/secretaria/view/3/administracao">
+        <h3 class="nomargin text-primary text-uppercase" style="padding:10px 30px"><strong>Administração</strong></h3>
+    </a>
+    <h6 class="nomargin">
+                    <strong>Marta Klippel Melo</strong>
+                            <br><small>Secretária Municipal</small>
+            </h6> 
+            <br />
+        Avenida dos Imigrantes, n° 4123 - Centro        <br /><br />
+    <a href="/secretaria/view/3/administracao" class="btn-padrao">saiba mais</a>
+    <br /><br />
+</div></div>                                                                           </div>                     </div>
+                                 </div>
+            </div>
+         </div>
+         <div class="col-ce1-24 col-tb1-12 col-pc1-8 margin-box">
+            <h2 class="titulo">Estrutura Administrativa<span class="square"></span></h2>
+            <div class="row">
+                                 <div class="col-ce1-24 height450">
+                                                                        <div class="row lista-departamento-home">
+                              <div class="col-ce1-4 col-tb1-5 col-tb2-4 col-pc1-5 col-pc2-4"><span class="material-symbols-outlined">account_circle</span></div>
+                              <div class="col-ce1-20 col-tb1-19 col-tb2-20 col-pc1-19 col-pc2-20">
+                                 <a href="/departamento/index?DepartamentoSearch%5Bid_departamento_categoria%5D=2">
+                                    <strong>Departamentos</strong><br />
+                                    <small>7 unidades</small>
+                                 </a>
+                              </div>
+                           </div>
+                                                   <div class="row lista-departamento-home">
+                              <div class="col-ce1-4 col-tb1-5 col-tb2-4 col-pc1-5 col-pc2-4"><span class="material-symbols-outlined">account_circle</span></div>
+                              <div class="col-ce1-20 col-tb1-19 col-tb2-20 col-pc1-19 col-pc2-20">
+                                 <a href="/departamento/index?DepartamentoSearch%5Bid_departamento_categoria%5D=3">
+                                    <strong>Setores</strong><br />
+                                    <small>11 unidades</small>
+                                 </a>
+                              </div>
+                           </div>
+                                                   <div class="row lista-departamento-home">
+                              <div class="col-ce1-4 col-tb1-5 col-tb2-4 col-pc1-5 col-pc2-4"><span class="material-symbols-outlined">account_circle</span></div>
+                              <div class="col-ce1-20 col-tb1-19 col-tb2-20 col-pc1-19 col-pc2-20">
+                                 <a href="/departamento/index?DepartamentoSearch%5Bid_departamento_categoria%5D=4">
+                                    <strong>Centros</strong><br />
+                                    <small>1 unidades</small>
+                                 </a>
+                              </div>
+                           </div>
+                                                   <div class="row lista-departamento-home">
+                              <div class="col-ce1-4 col-tb1-5 col-tb2-4 col-pc1-5 col-pc2-4"><span class="material-symbols-outlined">account_circle</span></div>
+                              <div class="col-ce1-20 col-tb1-19 col-tb2-20 col-pc1-19 col-pc2-20">
+                                 <a href="/departamento/index?DepartamentoSearch%5Bid_departamento_categoria%5D=6">
+                                    <strong>Conselhos</strong><br />
+                                    <small>5 unidades</small>
+                                 </a>
+                              </div>
+                           </div>
+                                                                                                               <div class="row lista-departamento-home">
+                           <div class="col-ce1-4 col-tb1-5 col-tb2-4 col-pc1-5 col-pc2-4"><span class="material-symbols-outlined">account_circle</span></div>
+                           <div class="col-ce1-20 col-tb1-19 col-tb2-20 col-pc1-19 col-pc2-20"><a href="/unidade-saude"><strong>Unidades de Saúde</strong><br /><small>1 unidades</small></a></div>
+                        </div>
+                                       </div>
+                           </div>
+         </div>
+         <div class="col-ce1-24 col-pc1-8 convoca-capa margin-box">
+            <h2 class="titulo">Pontos Turísticos<span class="square"></span></h2>
+            <div class="row">
+                                 <div class="col-ce1-24 col-tb2-12 col-pc1-24">
+                     <img src="/uploads/turismo/700/media_2TXS7_TuiqATe2qRXgPDHA2QiXQap6IT.jpg" width="100%" alt="Sitio Lima e Silva" style="max-height: 245px;object-fit: cover">                     <br />
+                  </div>
+                  <div class="col-ce1-24 col-tb2-12 col-pc1-24">
+                     <a href="/turismo/view/5/sitio-lima-e-silva">
+                        <h4 class="nomargin padding15V text-center"><strong>Sitio Lima e Silva</strong></h4>
+                     </a>
+                     <p class="nomargin nopadding text-center">
+                        Venha com sua família passar um agradável final de semana em meio a natureza e ainda aproveitar para tomar um banho de rio, andar de pedalinho ou praticar algum esporte aquátic ...<br /><br />
+                        <a href="/turismo" class="btn-padrao">todos pontos</a>
+                     </p>
+                  </div>
+                           </div>
+         </div>
+      </div>
+   </div>
+</section>
+<br>
+<!-- MIDIAS SOCIAIS -->
+</main>    <!-- FINAL DO CONTEÚDO -->
+  </div>
+
+  <footer>
+    <div class="row container-fluid borda-top">
+      <div class="col-ce1-24 text-center logo-footer">
+        <img src="/images/brasao-rodape.png" alt="Três Forquilhas">        <div id="nome-municipio"><strong>Três Forquilhas</strong></div>
+        <div id="nome-prefeitura">Rio Grande do Sul</div>
+      </div>
+      <hr>
+      <div class="col-ce1-24 texto-rodape text-center">
+        <p>Avenida dos Imigrantes, 4123 - Centro<br />CEP: 95575-000 / Telefone: (51) 3628-5102<br />Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b3834352f3a2f341b2f293e283d34292a2e3237333a28752928753c342d753929">[email&#160;protected]</a><br />Horário de atendimento: 8h às 11h30min e das 13h30min às 17h</p>      </div>
+      <div class="col-ce1-24">
+        <div class="text-right">
+                      <a href="https://www.facebook.com/prefeituradetresforquilhas/?locale=pt_BR" target="_blank" class="midia-footer">
+              <img src="/images/facebook.png" width="24" alt="Facebook"></a>
+                                <a href="https://www.instagram.com/prefeituratresforquilhas/" target="blank" class="midia-footer">
+              <img src="/images/instagram.png" width="24" alt="Instagram"></a>
+                                                          </div>
+      </div>
+    </div>
+  </footer>
+  
+
+<div id="modal-cadastro" class="fade modal" role="dialog" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+
+<h4 class="modal-title"><strong>Área do Usuário</strong></h4>
+<hr />
+
+<div class="row justify-content-center">
+  <div id="aba-conta" class="col-12 col-lg-6 text-center">
+    <h5><strong>Login</strong></h5>
+    <p>Se você já possui cadastro no site, baste inserir os dados de acesso nos campos abaixo.</p>
+    <ul id="w18" class="nav nav-tabs nav-justified" role="tablist"><li class="nav-item"><a class="nav-link active" href="#w18-tab0" data-toggle="tab" role="tab" aria-controls="w18-tab0" aria-selected="true">CPF/CNPJ</a></li>
+<li class="nav-item"><a class="nav-link" href="#w18-tab1" data-toggle="tab" role="tab" aria-controls="w18-tab1" aria-selected="false">E-mail</a></li></ul>
+<div class="tab-content"><div id="w18-tab0" class="tab-pane active"><form id="w14" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="Xv2SXy0aOAwplQiueheG_ggOIdit3R68kO-ChpDYt6A0n9obHS5qIQTaStpPQ9WcZlRWlZ2FLO3yjMTJxbn55Q=="><br /><div class="form-group field-input-username-cpfcnpj required">
+
+<input type="text" id="input-username-cpfcnpj" class="form-control" name="LoginFrontForm[username]" placeholder="CPF/CNPJ" aria-required="true" data-plugin-inputmask="inputmask_7260b05d">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" placeholder="Senha" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha required">
+
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]" aria-required="true"><div id="w15_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="add061f6-a9be-42be-ae8a-88623218833e"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btnPadrao" name="login-button">Acessar</button></form></div>
+<div id="w18-tab1" class="tab-pane"><form id="w16" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="Xv2SXy0aOAwplQiueheG_ggOIdit3R68kO-ChpDYt6A0n9obHS5qIQTaStpPQ9WcZlRWlZ2FLO3yjMTJxbn55Q=="><br /><div class="form-group field-loginfrontform-username required">
+
+<input type="text" id="loginfrontform-username" class="form-control" name="LoginFrontForm[username]" placeholder="Email" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" placeholder="Senha" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha required">
+
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]" aria-required="true"><div id="w17_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="add061f6-a9be-42be-ae8a-88623218833e"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btnPadrao" name="login-button">Acessar</button></form></div></div>
+  </div>
+  <div class="col-12 col-lg-6 text-center">
+    <h5><strong>Cadastro</strong></h5>
+    <p>Não possui cadastro junto à Prefeitura? Então preencha os dados e nos envie. No próximo acesso basta colocar os dados de usuário e senha.</p>
+    <br />
+    <a class="btn-padrao-conta" href="/conta/cadastrar?tipo=pf"><i class="fa fa-user-alt"></i> <br />Pessoa Física</a>    <a class="btn-padrao-conta" href="/conta/cadastrar?tipo=pf"><i class="fa fa-building"></i> <br />Pessoa Jurídica</a>  </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>  <div id="stop" class="scrollTop">
+    <span><a href="" title="Voltar ao Topo"><i class="fa-2x fa fa-angle-up"></i> </a></span>
+  </div>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/menu-responsivo-modernizr.custom.js?v=1751551326"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/jquery-menu-responsivo.dlmenu.js?v=1751551326"></script>
+<script src="/js/acessibilidade.js?v=1751551326"></script>
+<script src="//js.hcaptcha.com/1/api.js?onload=dynamikacaptchaw15&amp;render=explicit"></script>
+<script src="//js.hcaptcha.com/1/api.js?onload=dynamikacaptchaw17&amp;render=explicit"></script>
+<script src="/assets/a65dcce1/jquery.js?v=1751553561"></script>
+<script src="/assets/c1b7ed/yii.js?v=1751553561"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/assets/e7c79b07/js/cards.js?v=1785952813"></script>
+<script src="/assets/7c81b497/dist/min/tiny-slider.js?v=1751553561"></script>
+<script src="/assets/4185e78f/js/bootstrap.bundle.js?v=1751553561"></script>
+<script src="/assets/32895985/sweetalert2.all.min.js?v=1751553561"></script>
+<script src="/js/site.js?v=1751551326"></script>
+<script src="/js/jquery-menu-responsivo.dlmenu.js?v=1751551326"></script>
+<script src="/js/menu-responsivo-modernizr.custom.js?v=1751551326"></script>
+<script src="/assets/8ce329b9/script.js?v=1751553561"></script>
+<script src="/assets/95371a9b/jquery.inputmask.js?v=1792780266"></script>
+<script src="/assets/c1b7ed/yii.validation.js?v=1751553561"></script>
+<script src="/assets/5ddfe4be/captcha.js?v=1751553561"></script>
+<script src="/assets/c1b7ed/yii.activeForm.js?v=1751553561"></script>
+<script>const slider_dtns2 = tns({"autoplayButtonOutput":false,"controls":false,"autoplay":true,"autoplayTimeout":5000,"items":1,"nav":false,"container":"#dtns2"});
+document.addEventListener('DOMContentLoaded', async () => {
+    const scriptElementVlibras = document.createElement('script');
+    scriptElementVlibras.type = 'text/javascript';
+    scriptElementVlibras.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+    scriptElementVlibras.addEventListener('load', async () => {
+        await new window.VLibras.Widget('https://vlibras.gov.br/app');
+    });
+
+    await document.body.insertAdjacentHTML('beforeend', `<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>`);
+    await document.head.appendChild(scriptElementVlibras);
+});
+$(function(){
+    $(document).on('submit', '.login-form', function(e){
+        var form = this;
+        e.preventDefault();
+        var postData = new FormData(form);
+
+        $.ajax({
+            url: $(this).prop('action'),
+            type: 'POST',
+            data:  postData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            dataType: 'json',
+            beforeSend: function(){
+                $.LoadingOverlay("show");
+            },
+            success: function(result) {
+                if (result.success) {
+                    $('#modal-cadastro').modal('hide');
+                    swal("Aviso", result.message, "success");
+                    $(form)[0].reset();
+                    document.querySelectorAll('.login').forEach((el) => { el.style.display = "none"})
+                    document.querySelectorAll('.logado').forEach((el) => { el.style.display = "initial"})
+
+                    if(document.login_rastreio){
+                        const click = new Event("click");
+                        document.login_rastreio.dispatchEvent(click);
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = '/conta';
+                        }, 1500);
+                    }
+                    
+                    return true;
+                }
+                swal("Erro", result.message, "error");
+            },
+            error: function(error) {
+                var msg = 'Não foi possível enviar a requisição. Por favor, tente mais tarde.';
+                swal("Erro", msg , "error");
+                console.log(error.responseText);
+            },
+            complete: function() {
+                $.LoadingOverlay("hide");
+            }
+        });
+    });
+});
+</script>
+<script>jQuery(function ($) {
+$(function() {
+    $('#banner-popup'+0).modal('show');
+});setTimeout(function() { 
+    $('#banner-popup'+0).modal('hide');
+    
+}, 30000);
+initCarouselCards('#cards-swiper-w0', {"breakpoints":{"320":{"slidesPerView":1,"grid":{"rows":2}},"768":{"slidesPerView":3,"spaceBetween":20,"grid":{"rows":2}},"1024":{"slidesPerView":4,"spaceBetween":10,"grid":{"rows":2}},"1679":{"slidesPerView":5,"spaceBetween":10,"grid":{"rows":2}}},"autoplay":false,"showPagination":true,"showNavigation":true,"rows":2});
+initCarouselCards('#cards-swiper-w1', {"breakpoints":{"640":{"slidesPerView":1.2,"spaceBetween":5},"768":{"slidesPerView":2,"spaceBetween":5},"1024":{"slidesPerView":3,"spaceBetween":15},"1400":{"slidesPerView":4,"spaceBetween":15}},"autoplay":false,"showPagination":true,"showNavigation":false,"rows":1});
+$(function() {
+    $( '#dl-menu' ).dlmenu();
+});
+  document.querySelectorAll('.logado').forEach((el) => { el.style.display = "none"})
+jQuery("#input-username-cpfcnpj").inputmask(inputmask_7260b05d);
+jQuery('#w14').yiiActiveForm([{"id":"input-username-cpfcnpj","name":"username","container":".field-input-username-cpfcnpj","input":"#input-username-cpfcnpj","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022CPF ou CNPJ\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-recaptcha","name":"reCaptcha","container":".field-loginfrontform-recaptcha","input":"#loginfrontform-recaptcha","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Verificação\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w16').yiiActiveForm([{"id":"loginfrontform-username","name":"username","container":".field-loginfrontform-username","input":"#loginfrontform-username","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022E-mail\u0022 não pode ficar em branco."});yii.validation.email(value, messages, {"pattern":/^[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,"fullPattern":/^[^@]*<[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/,"allowName":false,"message":"\u0022E-mail\u0022 não é um endereço de e-mail válido.","enableIDN":false,"skipOnEmpty":1});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-recaptcha","name":"reCaptcha","container":".field-loginfrontform-recaptcha","input":"#loginfrontform-recaptcha","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Verificação\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w18').tab();
+jQuery('#modal-cadastro').modal({"show":false});
+});</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a6142ef1d841cb4d',t:'MTc5NTgxNDQ5NQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a6142ef1d841cb4d',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

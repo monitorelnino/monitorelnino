@@ -1,0 +1,1719 @@
+
+<!doctype html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefeitura Municipal de Sacramento - MG</title>
+
+    <link rel="shortcut icon" href="/imagens/logoPequena.png" type="image/x-icon">
+    <link rel="icon" href="/imagens/logoPequena.png" type="image/x-icon">
+
+    <meta name="generator" content="">
+    <meta name="description" content="Prefeitura Municipal de Sacramento - MG">
+    <meta name="abstract" content="Prefeitura Municipal de Sacramento - MG">
+    <meta name="keywords" content="Prefeitura Municipal de Sacramento - MG">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://sacramento.mg.gov.br/" rel="canonical">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/variaveis.css" rel="stylesheet">
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.theme.default.min.css">
+
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+
+    <!-- Css Stylo Geral -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/modules/topo.css" rel="stylesheet">
+    <link href="/css/modules/responsive.css" rel="stylesheet">
+    <link href="/css/modules/home-servicos.css" rel="stylesheet">
+    <link href="/css/modules/footer.css" rel="stylesheet">
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
+
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/modules/barra-titulos-internas.css" type="text/css" rel="stylesheet">
+
+    <link href="/css/front/modulos/noticias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/obras.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/secretarias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/licitacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/gabinete.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/turismo.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/faq.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/contato.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/concursos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/entidades.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/legislacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/parceria.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/termo.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/chamamento.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/atos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/boletins.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.obras.css" type="text/css" rel="stylesheet">
+
+    <link href="/header/assets/header.css" type="text/css" rel="stylesheet">
+    <link href="/footer/assets/footer.css" type="text/css" rel="stylesheet">
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/newsite/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/newsite/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/mdb.min.js"></script>
+
+    <!-- javascript -->
+    <script src="/js/owlcarousel/owl.carousel.js"></script>
+
+    <script src="/js/open-search/open-search.js" type="text/javascript"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/bootstrap/dist/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+
+    <script src="/js/menu.js" type="text/javascript"></script>
+    
+    <link href="/js/slider-pro-master/css/slider-pro.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/slider-pro-master/js/jquery.sliderPro.js" type="text/javascript"></script>
+    <link href="/js/slider-pro-master/css/examples.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Mensagem deslizante de mensagens -->
+    <script type="text/javascript" src="/js/jquery-sliding-message/jquery.slidingmessage.js"></script>
+    <script type="text/javascript" src="/js/jquery-sliding-message/showMsg.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script src="/js/acessibilidade/acessibilidade.jquery.js" type="text/javascript"></script>
+    <!-- Fim Mensagem deslizante de mensagens -->
+    
+    <script type="text/javascript">
+        $(function(){   
+             var nav = $('#menuHeader');   
+             $(window).scroll(function () { 
+                 if ($(this).scrollTop() > 30) { 
+                     nav.addClass("menu-fixo");
+                 } else { 
+                     nav.removeClass("menu-fixo");
+                 } 
+             });  
+         });
+     </script>
+
+    <!-- Script Geral -->
+
+    <script type="text/javascript">
+        var popOverSettings = {
+            container: 'body',
+            html: true,
+            selector: '.checksum-info',
+            trigger: 'focus'
+        };
+        $(document).ready(function ($) {
+            "use strict";
+            /*-------------------------------------------------*/
+            /* =  Search animation
+             /*-------------------------------------------------*/
+            var searchToggle = $('.open-search'),
+                inputAnime = $(".formulario-busca"),
+                body = $('body');
+
+            searchToggle.on('click', function (event) {
+                event.preventDefault();
+
+                if (inputAnime.hasClass('active')) {
+                    inputAnime.addClass('active');
+                } else {
+                    inputAnime.removeClass('active');
+                }
+            });
+
+            body.on('click', function () {
+                inputAnime.removeClass('active');
+            });
+
+            var elemBinds = $('.open-search, .formulario-busca');
+            elemBinds.bind('click', function (e) {
+                e.stopPropagation();
+            });
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        });
+
+        $(document).ready(function () {
+            $('.servicos').owlCarousel({
+                loop: false,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#secretarias-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-noticias-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#noticias-home').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#mais-noticias-home').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1020: {
+                        items: 2
+                    },
+                    2000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-fino-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-licitacoes').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-obras').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#home-turismo').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 13000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-video').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                autoplay: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#galeria-home').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1400: {
+                        items: 3
+                    },
+                    1600: {
+                        items: 6
+                    }
+                }
+            });
+            $('#eventos-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $('#concursos-home').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#vagas-home').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#galeria-imagens-noticiaview').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $('.acessoRapido').owlCarousel({
+                loop: true,
+                margin: 7,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 7
+                    }
+                }
+            });
+            $('#veja-mais').owlCarousel({
+                loop: true,
+                margin: 5,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    },
+                    1200: {
+                        items: 1
+                    }
+                }
+            });
+            $('#noticias').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#licitacoes-principais').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('.pagina-transparencia').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            
+            $('body').popover(popOverSettings);
+            
+            wow = new WOW({
+                boxClass: 'wow', // default
+                animateClass: 'animated', // default
+                offset: 0, // default
+                mobile: true, // default
+                live: true // default
+            });
+            wow.init();
+        });
+    </script>
+    <!-- Script Geral -->
+
+    <!-- Window Locker -->
+    <script type="text/javascript" src="/js/spin/spin.min.js"></script>
+    <script type="text/javascript" src="/js/spin/spin-windowlock/spin-windowlock.js"></script>
+    <!-- /Window Locker -->
+
+    <script type="text/javascript" src="/js/plenus/popup-init.js"></script>
+
+    <style>
+        .wow {
+            visibility: hidden;
+        }
+    </style>
+     
+        <!--<link href="/js/calendario/zabuto_calendar.css" rel="stylesheet" type="text/css"/>
+        <script src="/js/calendario/zabuto_calendar.js"></script>-->
+    </head>
+        
+    <body><a href="https://sacramento.mg.gov.br/cdn-cgi/content?id=12FQNLp0HF1aRG2f4szQ1CqHsAX4tir6JABA0xqriRU-1795814377.61474-1.2.1.1-I2urfJrMrjxppu_DYcuVzykWgA1P8ir0t.Na9SbtnNfkUjG0CahxIhPAhaViglNg" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <div class="container-fluid">
+    <!-- Exibido em resolução mobile (< 1200px) -->
+    <div class="row d-lg-none"><header id="menuMobile" class="col-12">
+    <div class="row">
+        <div class="col-12">
+            <div class="pull-left">
+                <a href="/" alt="Ir para página inicial">
+                    <img src="/imagens/logoPequena.png" class="logo-mobile img-fluid">
+                </a>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn-menu-mobile" data-toggle="collapse" data-target="#collapseMenuMobile" aria-expanded="false" aria-controls="collapseMenuMobile">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+            <div class="pull-right d-none">
+                <button type="button" class="btn-menu-mobile" data-toggle="collapse" data-target="#collapseAcessibilidadeMobile" aria-expanded="false" aria-controls="collapseAcessibilidadeMobile">
+                    <i class="fa fa-fw fa-wheelchair"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse" id="collapseAcessibilidadeMobile">
+        <div class="row caixa-acessibilidade">
+            <h4 class="col-12 text-center">
+                <span class="fa fa-wheelchair" aria-hidden="true"></span>
+                <span>Opções de acessibilidade</span>
+            </h4>
+            <nav class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="fontBigger">
+                            <span class="fa fw-fa fa-search-plus" aria-hidden="true"></span>
+                            <span>Aumentar fonte</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="fontSmaller">
+                            <span class="fa fw-fa fa-search-minus" aria-hidden="true"></span>
+                            <span>Reduzir fonte</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="toggleContrast">
+                            <span class="fa fw-fa fa-adjust" aria-hidden="true"></span>
+                            <span>Alto contraste</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="reset">
+                            <span class="fa fw-fa fa-refresh" aria-hidden="true"></span>
+                            <span>Desfazer opções</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="collapse" id="collapseMenuMobile">
+        <div class="row">
+            <nav class="col-12">
+                <ul><li><a href="/" target="_self" class="link-submenu">Início</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-154" aria-expanded="false" aria-controls="mob-submenu-clps-154">Município<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-154"><ul><li><a href="/pagina/332_Nossa-Historia.html" target="_self" class="link-submenu">Nossa História</a></li><li><a href="https://sacramento.cam.mg.gov.br/" target="_blank" class="link-submenu">Câmara Municipal</a></li><li><a href="https://sacramento.mg.gov.br/turismo/" target="_self" class="link-submenu">Turismo</a></li><li><a href="https://sacramento.digital.esp.br/" target="_self" class="link-submenu">Esporte</a></li><li><a href="/pagina/471_Plano-de-Inventario-Cultural.html" target="_self" class="link-submenu">Plano de Inventário Cultural</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-157" aria-expanded="false" aria-controls="mob-submenu-clps-157">Prefeitura<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-157"><ul><li><a href="/pagina/329_Gabinete-do-Prefeito.html" target="_self" class="link-submenu">Gabinete do Prefeito</a></li><li><a href="/secretarias/" target="_self" class="link-submenu">Secretarias</a></li><li><a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==" target="_self" class="link-submenu">Transparência</a></li><li><a href="/pagina/398_Boletim-Epidemiologico.html" target="_self" class="link-submenu">Boletim Epidemiológico</a></li><li><a href="/pagina/438_Exames-Admissionais-Clinicas.html" target="_self" class="link-submenu">Exames Admissionais - Clínicas</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-268" aria-expanded="false" aria-controls="mob-submenu-clps-268">Empresas e Autarquias<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-268"><ul><li><a href="https://www.saaesac.mg.gov.br/" target="_blank" class="link-submenu">SAAE</a></li></ul></div></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-266" aria-expanded="false" aria-controls="mob-submenu-clps-266">Editais<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-266"><ul><li><a href="/pagina/499_CONCURSO-ESCOLHA-DE-MASCOTE-MEIO-AMBIENTE.html" target="_self" class="link-submenu">CONCURSO - ESCOLHA DE MASCOTE - MEIO AMBIENTE</a></li><li><a href="/pagina/497_Concurso-de-Fotografia-PATRIMONIO-FERROVIARIO-DE-SACRAMENTO-2026.html" target="_self" class="link-submenu">Concurso de Fotografia - PATRIMÔNIO FERROVIÁRIO DE SACRAMENTO - 2026</a></li><li><a href="/pagina/496_Concurso-de-frase-poesia-e-redacao-PATRIMONIO-FERROVIARIO-DE-SACRAMENTO-2026.html" target="_self" class="link-submenu">Concurso de frase, poesia e redação -PATRIMÔNIO FERROVIÁRIO DE SACRAMENTO - 2026</a></li><li><a href="https://sacramento.mg.gov.br/concursos/" target="_self" class="link-submenu">Concursos e Processos Seletivos</a></li><li><a href="https://www.sacramento.mg.gov.br/licitacao/" target="_self" class="link-submenu">Licitações</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-22" aria-expanded="false" aria-controls="mob-submenu-clps-22">Legislação<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-22"><ul><li><a href="/pagina/490_Atas-da-Secretaria-de-Assistencia-Social.html" target="_self" class="link-submenu">Atas da Secretaria de Assistência Social</a></li><li><a href="/pagina/486_Valor-de-terra-nua-VTN.html" target="_self" class="link-submenu">Valor de terra nua - VTN</a></li><li><a href="https://leismunicipais.com.br/prefeitura/mg/sacramento" target="_blank" class="link-submenu">Leis/Atos</a></li><li><a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==" target="_self" class="link-submenu">Decretos/Outras Resoluções</a></li><li><a href="/pagina/424_CIPA-Assedio.html" target="_self" class="link-submenu">CIPA (+ Assédio)</a></li><li><a href="/pagina/422_LGPD.html" target="_self" class="link-submenu">LGPD</a></li><li><a href="/pagina/378_LAB.html" target="_self" class="link-submenu">LAB</a></li><li><a href="/pagina/439_Lei-Paulo-Gustavo.html" target="_self" class="link-submenu">Lei Paulo Gustavo</a></li><li><a href="/pagina/470_Lei-Paulo-Gustavo-Saldo-remanescente.html" target="_self" class="link-submenu">Lei Paulo Gustavo - Saldo remanescente</a></li><li><a href="/pagina/454_Politica-Nacional-Aldir-Blanc.html" target="_self" class="link-submenu">Política Nacional Aldir Blanc</a></li><li><a href="/pagina/498_POLITICA-NACIONAL-ALDIR-BLANC-PNAB-2026.html" target="_self" class="link-submenu">POLÍTICA NACIONAL ALDIR BLANC - PNAB 2026</a></li><li><a href="/pagina/465_Processo-de-Registro-de-Terno-de-Congada.html" target="_self" class="link-submenu">Processo de Registro de Terno de Congada</a></li><li><a href="/pagina/468_Politica-e-Acervo-Carolina-Maria-de-Jesus.html" target="_self" class="link-submenu">Política e Acervo Carolina Maria de Jesus</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-165" aria-expanded="false" aria-controls="mob-submenu-clps-165">Carta de Serviços<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-165"><ul><li><a href="https://e-gov.betha.com.br/e-nota/login.faces" target="_blank" class="link-submenu">Nota Fiscal Eletrônica</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-137" aria-expanded="false" aria-controls="mob-submenu-clps-137">Guia de Tributos<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-137"><ul><li><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_guiaiss.faces" target="_blank" class="link-submenu">ISS</a></li><li><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_guiaiptu.faces" target="_blank" class="link-submenu">IPTU</a></li><li><a href="https://e-gov.betha.com.br/cdweb/03114-344/contribuinte/con_informacoescadastrais.faces" target="_blank" class="link-submenu">VALOR VENAL IMÓVEL</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-224" aria-expanded="false" aria-controls="mob-submenu-clps-224">Certidões Municipais<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-224"><ul><li><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_cndcontribuinte.faces" target="_blank" class="link-submenu">Certidão Negativa de Contribuinte</a></li><li><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_cndimovel.faces" target="_blank" class="link-submenu">Certidão Negativa Imóvel</a></li><li><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_cndeconomico.faces" target="_blank" class="link-submenu">Certidão Negativa de Débitos</a></li></ul></div></li><li><a href="https://sncr.serpro.gov.br/ccir/emissao;jsessionid=lITqR5Kg3M-N48flQ95Bq1VL.ccir4?windowId=e10" target="_blank" class="link-submenu">Cadastro Rural</a></li><li><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_alvaralicenca.faces" target="_blank" class="link-submenu">Alvará Licença de Funcionamento</a></li><li><a href="/pagina/324_Alistamento-Militar.html" target="_self" class="link-submenu">Alistamento Militar</a></li><li><a href="/pagina/330_Licenciamento-Ambiental.html" target="_self" class="link-submenu">Licenciamento Ambiental</a></li><li><a href="/pagina/417_Defesa-Civil.html" target="_self" class="link-submenu">Defesa Civil</a></li></ul></div></li><li><a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==" target="_blank" class="link-submenu">Transparência</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-13" aria-expanded="false" aria-controls="mob-submenu-clps-13">Contato<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-13"><ul><li><a href="/localizacao/" target="_self" class="link-submenu">Localização</a></li><li><a href="/contato/" target="_self" class="link-submenu">Fale Conosco</a></li><li><a href="/faq" target="_self" class="link-submenu">Perguntas Frequentes</a></li></ul></div></li></ul>            </nav>
+        </div>
+    </div>
+</header>
+</div>
+    <!-- Exibido em resolução desktop (> 1200px) -->
+    <div class="row d-none d-lg-block"><div id="topo"></div>
+<div class="barra-acessibilidade" id="barra-acessibilidade">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="nome">
+                    <div class="icone"><span class="fa fa-wheelchair" aria-hidden="true"></span></div>
+                    Acessibilidade
+                </div>
+                <div class="fontes">
+                    <div class="alterar" id="increaseFont">A+</div>
+                    <div class="alterar" id="decreaseFont">A-</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="changeColorAcess">Contraste</div>
+                </div>
+                <div class="contraste">
+					<div class="alterar" id="resetFont" id="changeColorDefault"><i class="fa fa-refresh" aria-hidden="true"></i>
+					Retornar acessibilidade
+                    </div>
+                </div>
+                <div class="texto">
+                    <div class="alterar">
+                        <a href="#conteudo">
+                            Ir para o conteúdo  <span class="link">Alt+1</span>
+                        </a>
+                        <a href="#menu-topo">
+                            Ir para o menu  <span class="link">Alt+2</span>
+                        </a>
+                        <a href="#topo">
+                            Ir para o topo  <span class="link">Alt+3</span>
+                        </a>
+                        <a href="#rodape">
+                            Ir para o rodapé  <span class="link">Alt+4</span>
+                        </a>
+                        Controle de Zoom  <span class="link">Ctrl +/-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra-background-topo-home">
+    <div class="barra barra-topo-info">
+        <div class="container-fluid">
+            <div class="topo-info-box">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                        <ul class="list-menu-topoleft">
+                            <li class="acessoinfo">
+                                <a href="javascript:void(0)" title="Horário de Atendimento">
+                                    <i class="fa fa-clock-o"></i>
+                                    <div class="descricao">
+                                        Segunda a Sexta-Feira das 7h às 16h                                    </div>
+                                </a>
+                            </li>
+                            <li class="portaltransp">
+                                <a href="javascript:void(0)" title="Telefones">
+                                    <i class="fa fa-phone"></i>
+                                    <div class="descricao">
+                                        (34) 3351-8900                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-122">
+                        <ul class="list-menu-topo">
+                            <li class="acessibilidade">
+                                <a href="#" id="acessibilidade" title="Acessibilidade">
+                                    <i class="fa fa-wheelchair"></i>
+                                    <div class="descricao">
+                                        Acessibilidade
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="ouvidoria">
+                                <a href="https://sacramento.mg.gov.br/pagina/407_Sua-voz-tem-valor.html" title="Ouvidoria">
+                                    <i class="fa fa-comments"></i>
+                                    <div class="descricao">
+                                        Ouvidoria
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="acessoinfo">
+                                <a href="https://esic2.portyx.com.br/esic/?codeDB=220" title="Acesso a Informação">
+                                    <i class="fa fa-info-circle"></i>
+                                    <div class="descricao">
+                                        Acesso à Informação
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="portaltransp">
+                                <a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==" title="Portal da Tranparência">
+                                    <i class="fa fa-search"></i>
+                                    <div class="descricao">
+                                        Portal da Transparência
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="menu"></div>
+    <div class="barra barra-topo-logo">
+        <div class="container">
+            <div class="topo-logo-box">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 logo-topo">
+                        <a href="/" title="Prefeitura Municipal de Sacramento">
+                            <img src="/uploads/siteDescricao/logo-pms-branco-05.png" class="img-fluid" />
+                        </a>
+                    </div>
+                    <div class="col-xl-9 col-lg-12 d-none d-xl-block d-lg-block d-md-none d-xl-none">
+                        <div id="placeholderMenuDesktop" class="container-fluid"><!-- Deixe isso aqui, vlw --></div>
+                        <header id="menuDesktopFixo" class="container-fluid">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="caixa-logo">
+                                        <a href="/" title="Prefeitura Municipal de Sacramento">
+                                            <img src="/imagens/logoPequena.png" class="logo-pequena">
+                                        </a>
+                                    </div>
+                                    <div class="caixa-links">
+                                        <nav>
+                                            <ul class="top-level"><li><a href="/" target="_self">Início</a></li><li><a role="button" id="desk-menu-ddown-154" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Município <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-154"><li class=""><a href="/pagina/332_Nossa-Historia.html" target="_self" class="dropdown-item">Nossa História</a></li><li class=""><a href="https://sacramento.cam.mg.gov.br/" target="_blank" class="dropdown-item">Câmara Municipal</a></li><li class=""><a href="https://sacramento.mg.gov.br/turismo/" target="_self" class="dropdown-item">Turismo</a></li><li class=""><a href="https://sacramento.digital.esp.br/" target="_self" class="dropdown-item">Esporte</a></li><li class=""><a href="/pagina/471_Plano-de-Inventario-Cultural.html" target="_self" class="dropdown-item">Plano de Inventário Cultural</a></li></ul></li><li><a role="button" id="desk-menu-ddown-157" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prefeitura <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-157"><li class=""><a href="/pagina/329_Gabinete-do-Prefeito.html" target="_self" class="dropdown-item">Gabinete do Prefeito</a></li><li class=""><a href="/secretarias/" target="_self" class="dropdown-item">Secretarias</a></li><li class=""><a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==" target="_self" class="dropdown-item">Transparência</a></li><li class=""><a href="/pagina/398_Boletim-Epidemiologico.html" target="_self" class="dropdown-item">Boletim Epidemiológico</a></li><li class=""><a href="/pagina/438_Exames-Admissionais-Clinicas.html" target="_self" class="dropdown-item">Exames Admissionais - Clínicas</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-268" class="dropdown-item">Empresas e Autarquias</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-268"><li class=""><a href="https://www.saaesac.mg.gov.br/" target="_blank" class="dropdown-item">SAAE</a></li></ul></li></ul></li><li><a role="button" id="desk-menu-ddown-266" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Editais <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-266"><li class=""><a href="/pagina/499_CONCURSO-ESCOLHA-DE-MASCOTE-MEIO-AMBIENTE.html" target="_self" class="dropdown-item">CONCURSO - ESCOLHA DE MASCOTE - MEIO AMBIENTE</a></li><li class=""><a href="/pagina/497_Concurso-de-Fotografia-PATRIMONIO-FERROVIARIO-DE-SACRAMENTO-2026.html" target="_self" class="dropdown-item">Concurso de Fotografia - PATRIMÔNIO FERROVIÁRIO DE SACRAMENTO - 2026</a></li><li class=""><a href="/pagina/496_Concurso-de-frase-poesia-e-redacao-PATRIMONIO-FERROVIARIO-DE-SACRAMENTO-2026.html" target="_self" class="dropdown-item">Concurso de frase, poesia e redação -PATRIMÔNIO FERROVIÁRIO DE SACRAMENTO - 2026</a></li><li class=""><a href="https://sacramento.mg.gov.br/concursos/" target="_self" class="dropdown-item">Concursos e Processos Seletivos</a></li><li class=""><a href="https://www.sacramento.mg.gov.br/licitacao/" target="_self" class="dropdown-item">Licitações</a></li></ul></li><li><a role="button" id="desk-menu-ddown-22" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Legislação <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-22"><li class=""><a href="/pagina/490_Atas-da-Secretaria-de-Assistencia-Social.html" target="_self" class="dropdown-item">Atas da Secretaria de Assistência Social</a></li><li class=""><a href="/pagina/486_Valor-de-terra-nua-VTN.html" target="_self" class="dropdown-item">Valor de terra nua - VTN</a></li><li class=""><a href="https://leismunicipais.com.br/prefeitura/mg/sacramento" target="_blank" class="dropdown-item">Leis/Atos</a></li><li class=""><a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==" target="_self" class="dropdown-item">Decretos/Outras Resoluções</a></li><li class=""><a href="/pagina/424_CIPA-Assedio.html" target="_self" class="dropdown-item">CIPA (+ Assédio)</a></li><li class=""><a href="/pagina/422_LGPD.html" target="_self" class="dropdown-item">LGPD</a></li><li class=""><a href="/pagina/378_LAB.html" target="_self" class="dropdown-item">LAB</a></li><li class=""><a href="/pagina/439_Lei-Paulo-Gustavo.html" target="_self" class="dropdown-item">Lei Paulo Gustavo</a></li><li class=""><a href="/pagina/470_Lei-Paulo-Gustavo-Saldo-remanescente.html" target="_self" class="dropdown-item">Lei Paulo Gustavo - Saldo remanescente</a></li><li class=""><a href="/pagina/454_Politica-Nacional-Aldir-Blanc.html" target="_self" class="dropdown-item">Política Nacional Aldir Blanc</a></li><li class=""><a href="/pagina/498_POLITICA-NACIONAL-ALDIR-BLANC-PNAB-2026.html" target="_self" class="dropdown-item">POLÍTICA NACIONAL ALDIR BLANC - PNAB 2026</a></li><li class=""><a href="/pagina/465_Processo-de-Registro-de-Terno-de-Congada.html" target="_self" class="dropdown-item">Processo de Registro de Terno de Congada</a></li><li class=""><a href="/pagina/468_Politica-e-Acervo-Carolina-Maria-de-Jesus.html" target="_self" class="dropdown-item">Política e Acervo Carolina Maria de Jesus</a></li></ul></li><li><a role="button" id="desk-menu-ddown-165" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carta de Serviços <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-165"><li class=""><a href="https://e-gov.betha.com.br/e-nota/login.faces" target="_blank" class="dropdown-item">Nota Fiscal Eletrônica</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-137" class="dropdown-item">Guia de Tributos</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-137"><li class=""><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_guiaiss.faces" target="_blank" class="dropdown-item">ISS</a></li><li class=""><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_guiaiptu.faces" target="_blank" class="dropdown-item">IPTU</a></li><li class=""><a href="https://e-gov.betha.com.br/cdweb/03114-344/contribuinte/con_informacoescadastrais.faces" target="_blank" class="dropdown-item">VALOR VENAL IMÓVEL</a></li></ul></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-224" class="dropdown-item">Certidões Municipais</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-224"><li class=""><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_cndcontribuinte.faces" target="_blank" class="dropdown-item">Certidão Negativa de Contribuinte</a></li><li class=""><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_cndimovel.faces" target="_blank" class="dropdown-item">Certidão Negativa Imóvel</a></li><li class=""><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_cndeconomico.faces" target="_blank" class="dropdown-item">Certidão Negativa de Débitos</a></li></ul></li><li class=""><a href="https://sncr.serpro.gov.br/ccir/emissao;jsessionid=lITqR5Kg3M-N48flQ95Bq1VL.ccir4?windowId=e10" target="_blank" class="dropdown-item">Cadastro Rural</a></li><li class=""><a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_alvaralicenca.faces" target="_blank" class="dropdown-item">Alvará Licença de Funcionamento</a></li><li class=""><a href="/pagina/324_Alistamento-Militar.html" target="_self" class="dropdown-item">Alistamento Militar</a></li><li class=""><a href="/pagina/330_Licenciamento-Ambiental.html" target="_self" class="dropdown-item">Licenciamento Ambiental</a></li><li class=""><a href="/pagina/417_Defesa-Civil.html" target="_self" class="dropdown-item">Defesa Civil</a></li></ul></li><li><a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==" target="_blank">Transparência</a></li><li><a role="button" id="desk-menu-ddown-13" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contato <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-13"><li class=""><a href="/localizacao/" target="_self" class="dropdown-item">Localização</a></li><li class=""><a href="/contato/" target="_self" class="dropdown-item">Fale Conosco</a></li><li class=""><a href="/faq" target="_self" class="dropdown-item">Perguntas Frequentes</a></li></ul></li>                                            <ul class="navbar-nav" style="float: right;">
+                                                <li class="nav-item" style="margin-top: 10px;">
+                                                    <a href="#" class="nav-link open-search" style="color: #FFF">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="col-12 atendimento">
+                                        <form  class="formulario-busca" method="GET" id="form_pesquisar_home" action="/busca/">
+                                            <input type="search" placeholder="Pesquisar" name="q"/>
+                                            <button type="submit">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                            <div class="overlay"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--<div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="telefone-topo">
+                                    (34) 3351-8900 
+                                    <div class="icon">
+                                        <i class="fa fa-fw fa-phone"></i> 
+                                        <div class="marcador"></div>
+                                    </div>
+                                </div>
+                                <div class="atendimento-topo">
+                                    Segunda a Sexta-Feira das 7h às 16h                                    <div class="icon">
+                                        <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                        <div class="marcador"></div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+<!--                <div class="row justify-content-md-center">-->
+<!--                    <div class="col-8 barra-pesqisa-home2">-->
+<!--                        <form method="GET" action="/busca/">-->
+<!--                            <input class="input-pesquisar" name="q" placeholder="PESQUISAR"></input>-->
+<!--                            <button><i class="fa fa-search"></i></button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+<div class="menu-lateral-flutuante">
+    <ul>
+                <li>
+            <a href="https://www.facebook.com/prefeiturasacramento" title="Facebook"><i class="fa fa-facebook"></i></a>
+        </li>
+                        <li>
+            <a href="https://www.youtube.com/channel/UCDnZyhrmflgOrihzmSRrBsw/featured" title="Youtube"><i class="fa fa-youtube"></i></a>
+        </li>
+                        <li>
+            <a href="https://www.instagram.com/prefeituradesacramento/" title="Instagram"><i class="fa fa-instagram"></i></a>
+        </li>
+                    </ul>
+</div>
+
+<script type="text/javascript" src="/header/assets/header.js"></script>        <div id="conteudo"></div>
+<div class="barra barra-base barra-noticias-home">
+    <div class="container">
+        <div class="row wow fadeInUp">
+            <!-- Notícias Principais -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 wow fadeInLeft">
+                                    <h2 class="titulo">
+                        <a href="/noticias/" title="Notícias">
+                            <div class="icone">
+                                <i class="fa fa-newspaper-o"></i>
+                                <span></span>
+                            </div>
+                            Notícias
+                        </a>
+                    </h2>
+                    <div class="noticias-principais">
+                        <div id="noticias-home" class="owl-carousel owl-theme noticias">
+                                <div class="item">
+        <a href="/noticiasView/?id=180" title="CONVITE: Audiência Pública para Elaboração da LOA 2027 - Centro Administrativo">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_indisponivel.jpg')" >
+                    <span class="categoria">Secretaria da Fazenda e Administração</span>
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> 23/07/2026
+                        </div>
+                        <div class="titulo">
+                            CONVITE: Audiência Pública para Elaboração da LOA 2027 - Centro Administrativo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/noticiasView/?id=179" title="CONVITE: Audiência Pública para Elaboração da LOA 2027">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_indisponivel.jpg')" >
+                    <span class="categoria">Secretaria da Fazenda e Administração</span>
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> 07/07/2026
+                        </div>
+                        <div class="titulo">
+                            CONVITE: Audiência Pública para Elaboração da LOA 2027
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/noticiasView/?id=177" title="Sacramento inaugura base do SAMU e reforça atendimento de urgência ">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_whatsapp-image-2026-04-28-at-0955101.jpg')" >
+                    <span class="categoria">Secretaria de Saúde</span>
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> 28/04/2026
+                        </div>
+                        <div class="titulo">
+                            Sacramento inaugura base do SAMU e reforça atendimento de urgência 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+                           </div>
+                    </div>
+                            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 wow fadeInLeft">
+                <h2 class="titulo">
+                    <a href="/servicos/" title="Acesso Rápido">
+                        <div class="icone">
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <span></span>
+                        </div>
+                        Carta De Serviços - Acesso Rápido
+                    </a>
+                </h2>
+                <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Geral">
+        <a href="#tb0" class="nav-link active"
+           id="tab0" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Geral</a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Servidor">
+        <a href="#tb1" class="nav-link "
+           id="tab1" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Servidor</a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Nota Nacional">
+        <a href="#tb2" class="nav-link "
+           id="tab2" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Nota Nacional</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tb0" role="tabpanel" aria-labelledby="tab0">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://sacramento.mg.gov.br/pagina/492_ITR.html" target="" title="ITR">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-area-chart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        ITR
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://www.sacramento.mg.gov.br/pagina/377_Boletim-Covid.html" target="" title="COVID-19">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        COVID-19
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_guiaiptu.faces" target="_blank" title="IPTU">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-calculator" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        IPTU
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://sacramento.mg.gov.br/pagina/491_IPTU-Verde.html" target="_blank" title="IPTU Verde">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-envira" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        IPTU Verde
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://e-gov.betha.com.br/e-nota/login.faces" target="_blank" title="Nota Fiscal Eletrônica">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-edge" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Nota Fiscal Eletrônica
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://govsystem.org/portalgov/" target="" title="Portal Gov">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-map" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Portal Gov
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://e-gov.betha.com.br/cdweb/03114-470/contribuinte/main.faces" target="_blank" title="Situação do Contribuinte">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Situação do Contribuinte
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://sacramento.mg.gov.br/concursos/" target="" title="Concursos e Processos Seletivos">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Concursos e Processos Seletivos
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://sncr.serpro.gov.br/ccir/emissao;jsessionid=XMJ6PF4p+79r8MOaNh8HgEmU.ccir3?windowId=c76" target="_blank" title="Emissão do CCIR">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-pagelines" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Emissão do CCIR
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://plenussistemas.dioenet.com.br/list/sacramento" target="_blank" title="Diário Oficial">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Diário Oficial
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/pagina/396_Meio-Ambiente.html" target="" title="Meio Ambiente">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-tree" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Meio Ambiente
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://sacramento.digital.esp.br/" target="" title="Esporte">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Esporte
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://transparencia.betha.cloud/#/WiD_qH0-WCHRwEZvl6oNhA==/consulta/222472" target="_blank" title="Educação">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Educação
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://e-gov.betha.com.br/cdweb/03114-212/contribuinte/rel_cndeconomico.faces" target="_blank" title="Certidão Negativa de Débitos">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Certidão Negativa de Débitos
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade show " id="tb1" role="tabpanel" aria-labelledby="tab1">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://login.betha.cloud/servicelogin/login.faces?app=1c8315b6-1fb9-4a4c-b545-9f585d9fbd10&amp;continue=dUt3pl7deSJcIfYbNgSBvyszrVx7CtLXMQ8SyjaTDIyAxIspOkXzLADGEjv59FmVkDvvSbpRV9h8ufTnTBpXO7RI651ay-4WmGKXeVTIjMkChFiJp09kXAw470h7bbL8oUHjYCAXMXlECtofVqS6JH_AsUaEICqRqBtvHR3H6EaV7xj-zMFKvctuq3OpBd0D2bm7ZGKL5FW87THOHVMFfKa78RGLE1rHG4-C9orarg3P6FWJxPv3ECi_-6l9Bk1p6H2lZLFDkaYqMaknTip-yIqNvEXBB5m_rT9djaI6-xVfpbEl6XvGlmmv0Ys5W3G800KXcdR3de07j3Zd4EffI5RW-_2EfDE5dS7z1UqPjzCG1GR7_U0Qh-_a_IKV5zzIe3RelIaxIAMqGnBWm1QcSGMqD_qvzLN4c0OqZvSoi2TkmEkXaMw5g2AK3hroF5r1lx0Z-q5JR9_pZ5QKRCeLErzjRO7V5iy57tVTQsEmgO7jmOvo4M1PJ03hFP4cj3shMhnfeZnzKu015H9xdnO5nyTcSfXRLopmyOG0csVBWwzRkS6En1W9J67ECfg2Axj4hzfiDwxAwU3fyQQ1Y3YaSt7RGKt5jbLd&amp;mobile=false" target="_blank" title="Consulta de Holerite">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa " aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Consulta de Holerite
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://www.consolidarconvenios.com/WebAutPro/sacracard.jsp" target="_blank" title="Vale Alimentação ">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa " aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Vale Alimentação 
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade show " id="tb2" role="tabpanel" aria-labelledby="tab2">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://iss.ajuda.betha.cloud/e-nota-cloud/ajuda/outros-conteudos/web-service/" target="" title="Layout da Nota Nacional">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Layout da Nota Nacional
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <div class="barra barra-base">
+        <div class="container">
+            <div class="row">
+                <h2 class="titulo titulo-center">
+                    <a href="/noticias/" title="Mais Notícias ">
+                        <div class="icone">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span></span>
+                        </div>
+                        Mais Notícias
+                    </a>
+                </h2>
+                <div class="col-12">
+                    <div class="noticias-principais">
+                        <div id="mais-noticias-home" class="owl-carousel owl-theme noticias">
+                            
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=176" title="Transporte escolar é reforçado com entrega de ônibus à Escola Carolina Maria de Jesus ">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_whatsapp-image-2026-04-28-at-1205371.jpg')" >
+                        <span class="categoria">Secretaria de Educação</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 28/04/2026
+                            </div>
+                            <div class="titulo">
+                                Transporte escolar é reforçado com entrega de ônibus à Escola Carolina Maria de Jesus 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=174" title="Filhos de Minas é realidade em Sacramento e reforça cuidado com gestantes">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_whatsapp-image-2026-04-22-at-083031-11.jpg')" >
+                        <span class="categoria">Secretaria de Saúde</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 28/04/2026
+                            </div>
+                            <div class="titulo">
+                                Filhos de Minas é realidade em Sacramento e reforça cuidado com gestantes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=173" title="CEMBEA recebe doação de ração da SCLAgro para apoio à causa animal">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_ceembeapng1.png')" >
+                        <span class="categoria">Secretaria de Meio Ambiente</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 28/04/2026
+                            </div>
+                            <div class="titulo">
+                                CEMBEA recebe doação de ração da SCLAgro para apoio à causa animal
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=172" title="Prefeito Juninho Trevisan busca reforço no efetivo da PM para Sacramento">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_whatsapp-image-2026-04-22-at-1451451.jpg')" >
+                        <span class="categoria">Gabinete do Prefeito</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 28/04/2026
+                            </div>
+                            <div class="titulo">
+                                Prefeito Juninho Trevisan busca reforço no efetivo da PM para Sacramento
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=171" title="CONVITE: Audiência Pública para Elaboração do LDO 2027">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_indisponivel.jpg')" >
+                        <span class="categoria">Secretaria da Fazenda e Administração</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 12/03/2026
+                            </div>
+                            <div class="titulo">
+                                CONVITE: Audiência Pública para Elaboração do LDO 2027
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=168" title="Secretaria de Educação divulga 4ª chamada da Fila Única para creches e CMEIs em Sacramento">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_whatsapp-image-2026-02-23-at-1111411.jpg')" >
+                        <span class="categoria">Secretaria de Educação</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 23/02/2026
+                            </div>
+                            <div class="titulo">
+                                Secretaria de Educação divulga 4ª chamada da Fila Única para creches e CMEIs em Sacramento
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=167" title="CONVITE: Audiência Pública para Elaboração da LDO 2027 - Centro Administrativo">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_indisponivel.jpg')" >
+                        <span class="categoria">Secretaria da Fazenda e Administração</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 19/02/2026
+                            </div>
+                            <div class="titulo">
+                                CONVITE: Audiência Pública para Elaboração da LDO 2027 - Centro Administrativo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=166" title="Esporte de Sacramento encerra 2025 com ano vitorioso e reconhecimento às equipes esportivas">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_povo.jpg')" >
+                        <span class="categoria">Secretaria de Esportes</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 20/01/2026
+                            </div>
+                            <div class="titulo">
+                                Esporte de Sacramento encerra 2025 com ano vitorioso e reconhecimento às equipes esportivas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=165" title="Sacramento acende “Laços de Luz” e dá início ao Natal 2025">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_img9883.jpg')" >
+                        <span class="categoria">Secretaria de Governo</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 20/01/2026
+                            </div>
+                            <div class="titulo">
+                                Sacramento acende “Laços de Luz” e dá início ao Natal 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="barra barra-cinza-home">
+    <div class="container">
+        <div class="row">
+            <h2 class="titulo titulo-center">
+                <a href="/licitacao/" title="Mais licitacoes">
+                    <div class="icone">
+                        <i class="fa fa-gavel" aria-hidden="true"></i>
+                        <span></span>
+                    </div>
+                    Licitações
+                </a>
+            </h2>
+            <div class="col-12">
+                <div id="licitacoes-principais" class="owl-carousel owl-theme">
+                    
+<div class="item">
+    <a href="/licitacaoView/?id=2248" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Pregão Eletrônico</span>
+                0059/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                03/12/2026 09:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Contratação de empresa para aquisição de 01 (um) veículo, zero quilômetro, destinado a Guarda Civil Municipal de Sacramento/MG, em atendimento à Secretaria Municipal de Segurança Pública.
+
+ 
+
+
+FIM RECEBIMENTO DAS PROPOSTAS: ÀS 8 HORAS DO DIA 03 DE DEZEMBRO DE 2026...
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=2241" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Pregão Eletrônico</span>
+                0058/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                17/11/2026 09:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Autoriza&amp;ccedil;&amp;atilde;o para explora&amp;ccedil;&amp;atilde;o, pela iniciativa privada e em regime de concess&amp;atilde;o, das instala&amp;ccedil;&amp;otilde;es do bar e restaurante do Parque Municipal de Exposi&amp;ccedil;&amp;otilde;es &amp;ldquo;Comendador Hugo Rodrigues da Cunha&amp;rdquo;, nos termos d
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=2245" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Concorrência Pública</span>
+                0009/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                12/01/2027 09:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=2215" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Credenciamento</span>
+                0006/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                03/09/2026 07:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Chamamento Público para o credenciamento de empresas especializadas no fornecimento de materiais de construção em geral, visando atender, de forma contínua, eficiente e regular, às demandas operacionais da Secretaria Municipal de Obras e Serviços Urbanos e da Secretari
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=2205" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Credenciamento</span>
+                0005/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                04/08/2026 09:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Chamamento Público para o credenciamento de instituições financeiras devidamente autorizadas a funcionar pelo Banco Central do Brasil, visando à atuação no Programa “Evoluir Sem Juros”, instituído pela Lei Municipal nº 2.191/2026, com o objetivo de proporcionar a...
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=2139" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Credenciamento</span>
+                0003/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                27/03/2026 09:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Objeto: Chamamento público para o credenciamento de empresas especializadas na prestação de serviços automotivos, compreendendo manutenção preventiva e corretiva, funilaria e serviços elétricos em geral, com fornecimento de peças, mediante aplicação de desconto so...
+            </p>
+        </div>
+    </a>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+<div class="img-footer">
+    
+</div>
+<div id="rodape"></div>
+<footer>
+    <div class="caixa-principal container">
+        <div class="row">
+            <div class="col-12 col-lg-4 col-xl-6">
+                <div class="caixa-logo">
+                    <img src="/imagens/logoRodape.png">
+
+                    <div class="footer-barra02">
+                        <ul>
+                                                            <li>
+                                    <a href="https://www.facebook.com/prefeiturasacramento" title="Facebbok"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                                                                                                    <li>
+                                    <a href="https://www.instagram.com/prefeituradesacramento/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                                                                                        <li>
+                                    <a href="https://www.youtube.com/channel/UCDnZyhrmflgOrihzmSRrBsw/featured" title="Youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+                <div class="caixa-botoes">
+                    <ul class="row">
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/contato" class="link-btn">
+                                <i class="fa fa-fw fa-pencil-square-o" aria-hidden="true"></i>
+                                <span>Contato</span>
+                            </a>
+                        </li>
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/localizacao" class="link-btn">
+                                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i>
+                                <span>Localização</span>
+                            </a>
+                        </li>
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/faq" class="link-btn">
+                                <i class="fa fa-fw fa-question-circle" aria-hidden="true"></i>
+                                <span>Dúvidas</span>
+                            </a>
+                        </li>
+
+                                                <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="https://webmail.sacramento.mg.gov.br/" target="_blank" class="link-btn">
+                                <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+                                <span>Webmail</span>
+                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <div class="caixa-contatos col-12 col-lg-8 col-xl-6">
+                                <div class="info-contato endereco">
+                    <div class="icone"><i class="fa fa-fw fa-map" aria-hidden="true"></i></div>
+                    <div class="texto">
+                        <span>Praça Monsenhor Saul do Amaral</span>
+                        <span>512</span>
+                                                <span> - Centro</span>
+                                                                        <br>
+                        <span>CEP&nbsp;38190-000</span>
+                                                                        <br>
+                        <span>Sacramento - MG</span>
+                                            </div>
+                </div>
+                
+                                <div class="info-contato telefone">
+                    <div class="icone"><i class="fa fa-fw fa-phone" aria-hidden="true"></i></div>
+                    <div class="texto"><span>(34) 3351-8900</span></div>
+                </div>
+                
+                                <div class="info-contato telefone">
+                    <div class="icone"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></div>
+                    <div class="texto"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4127202d24222e2f2e32222e0132202233202c242f352e6f2c266f262e376f2333">[email&#160;protected]</a></span></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row caixa-copyright">
+        <div class="col-12">
+            <span>2026</span>
+            <span> &copy; </span>
+            <span>Prefeitura Municipal de Sacramento</span>
+            <span> &bullet; </span>
+            <a href="https://plenusgestaopublica.com.br/" target="_blank" title="Plenus Gestão Pública">
+                <span>Desenvolvido por: </span>
+                <img src="/imagens/plenus.png" class="img-fluid">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+   <div vw-plugin-wrapper>
+       <div class="vw-plugin-top-wrapper"></div>
+   </div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+ new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>  
+        <script src="/js/calendario/calendario.home.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Selecionar secretaria
+                $('#formSecretaria').on('change', function () {
+                    $(this).submit();
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+                $('#example5').sliderPro({
+                    width: 670,
+                    height: 326,
+                    orientation: 'vertical',
+                    loop: false,
+                    arrows: true,
+                    buttons: false,
+                    thumbnailsPosition: 'right',
+                    thumbnailPointer: true,
+                    thumbnailWidth: 290,
+                    breakpoints: {
+                        800: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 270,
+                            thumbnailHeight: 100
+                        },
+                        500: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 120,
+                            thumbnailHeight: 50
+                        }
+                    }
+                });
+            });
+        </script>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a6142c141b498461',t:'MTc5NTgxNDM3Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a6142c141b498461',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+

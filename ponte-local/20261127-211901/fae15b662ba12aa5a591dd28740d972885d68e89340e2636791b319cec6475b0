@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Município de Travesseiro</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Município de Travesseiro.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Município de Travesseiro' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://travesseiro.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://travesseiro.rs.gov.br/uploads/config/16025/logo_1.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='345'>
+            <meta property='og:image:height' content='345'>
+            <meta property='og:site_name' content='travesseiro.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Município de Travesseiro.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Município de Travesseiro'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Município de Travesseiro.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://travesseiro.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://travesseiro.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://travesseiro.rs.gov.br/site/custom/default/css/color/darkblue.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://travesseiro.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://travesseiro.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://travesseiro.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://travesseiro.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://travesseiro.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://travesseiro.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://travesseiro.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://travesseiro.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-QPJFEHDH1D"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-QPJFEHDH1D');
+    });
+</script>
+        <link rel="shortcut icon" href="https://travesseiro.rs.gov.br/uploads/config/16104/favicon.ico" />    
+	    <style>
+.header10 #topBar .logo .max-height100 {
+  max-height: 175px;
+}
+</style>    </head>
+	    <body class="smoothscroll wide home5_travesseiro" data-background=""><a href="https://travesseiro.rs.gov.br/cdn-cgi/content?id=Ppitg4hBpFf_BQsmcrY_sHPXNCXP5QUv7CxibLD5V_s-1795814493.648847-1.2.1.1-5Pbpg9TQr2sbgbINeln9JG4NBlaazGfTpDClITG20R1evyzsNoqk2wQxov3FfKiz" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <div id="header" class='header10 boxed' role='banner'>
+  <header id="navbar" class="styleBackgroundColor">
+    <div class="container">
+      <div class="col-md-5">
+                  <div class="pull-left fsize13 hide_mobile" style="height: 40px;">
+          <div class="block text-right">
+            <p style="color: #FFF; line-height: 38px;margin: 0 0 0 50px;">Travesseiro, 27 de novembro de 2026.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-md-offset-3 col-offset-sm-0 hidden-xs hidden-sm">
+        <form id="pesquisa" method="get" action="https://travesseiro.rs.gov.br/pesquisa" class="input-group" style="padding: 1px;" role='search'>
+		  <label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+          <input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site" style="border: none;"> <span
+              class="input-group-btn">
+            <button type="submit" class="btn btn-primary" title="Pesquisar" aria-label="Pesquisar">
+              <i class="fa fa-search search-focus"></i>
+            </button>
+          </span>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- Top Bar -->
+  <header id="topBar" class="">
+    <div class="container">
+
+      <div class="col-md-4 col-sm-6 hidden-xs">
+        <div class="row">
+                          <div class="mt15">
+                <div class="owl-carousel radius10 styleBackgroundLight" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+                                              <div class="item">
+                                                          <ul class="nav nav-list linksCabecalho">
+                                                          <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="/sic" target="_self" onclick="">
+                              <i class='fa fa-info-circle'></i>                              <p class="h2 styleColor">Acesso à Informação</p>
+                            </a>
+                          </li>
+                                                    <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="/ouvidoria" target="_self" onclick="">
+                              <i class='fa fa-bullhorn'></i>                              <p class="h2 styleColor">Ouvidoria</p>
+                            </a>
+                          </li>
+                                                      </ul>
+                                                        <ul class="nav nav-list linksCabecalho">
+                                                          <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://multi24h.travesseiro.rs.gov.br:4443/multi24/sistemas/transparencia/" target="_blank" onclick="">
+                              <i class='fa fa-search'></i>                              <p class="h2 styleColor">Portal de Transparência</p>
+                            </a>
+                          </li>
+                                                    <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://multi24h.travesseiro.rs.gov.br:4443/multi24/sistemas/portal/" target="_blank" onclick="">
+                              <i class='fa fa-user-plus'></i>                              <p class="h2 styleColor">Portal de Serviços</p>
+                            </a>
+                          </li>
+                                                      </ul>
+                                                      </div>
+                                          </div>
+              </div>
+                      </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-6 text-center">
+                      <h1 class="client-name nomargin lineh30">
+            <a class="logo" href="https://travesseiro.rs.gov.br">
+    			<img class="max-height100" src="https://travesseiro.rs.gov.br/uploads/config/16827/Orgulho_da_nossa_gente.png" alt="Logo da Prefeitura"/>            </a>
+            </h1>
+                  </div>
+      <!-- / Logo -->
+
+      <!-- Previsão do Tempo e Pesquisa -->
+      <div class="col-md-3 col-md-offset-1 hidden-xs hidden-sm">
+        <div class="box-search-and-weather radius4" style="justify-content: center">
+          <!-- Previsão do tempo-->
+                      <div>
+              <div class="weather previsao-topo hidden">
+                <div class="weather-today">
+                  <i class="m0 fsize32 icone-temp"></i>
+                </div>
+                <div class="weather-week">
+                  <p class="mb0">
+                    <span class="fontw400 minima mr6">
+                      <i class="fa fa-caret-down mr5"></i><span class='min-temp'></span>°C
+                    </span>
+                    <span class="fontw400 maxima">
+                      <i class="fa fa-caret-up mr5"></i><span class='max-temp'></span>°C
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+                      <div>
+            <!-- Data -->
+                        <p class="date styleColor">
+              Travesseiro, 27 de novembro de 2026.
+            </p>
+            <!-- /Data-->
+          </div>
+          <!-- /Previsão do tempo-->
+        </div>
+      </div>
+      <!-- / Previsão do Tempo e Pesquisa -->
+
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://travesseiro.rs.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+        <input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+      </form>
+
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://travesseiro.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/1004/?historico-do-municipio.html'>Histórico do Município</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/1005/?dados-gerais.html'>Dados Gerais</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/servidores/bcid/56/?servidores.html'>Servidores</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/servico/id/3/?servicos-ao-estudante.html'>Serviços ao Estudante</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://travesseiro.rs.gov.br/uploads/config/16025/logo_1.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 3759-1122</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />8:00 as 11:30h e 13:00 as 16:30h</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-3"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/secretaria/id/1001/?administracao-e-financas.html'>Administração e Finanças</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/secretaria/id/1008/?agricultura.html'>Agricultura</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/secretaria/id/1010/?assistencia-social-trabalho-e-habitacao.html'>Assistência Social, Trabalho e Habitação</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/secretaria/id/1002/?educacao-cultura-desporto-e-turismo.html'>Educação, Cultura, Desporto e Turismo</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/secretaria/id/1009/?obras-viacao-e-servicos-urbanos.html'>Obras, Viação e Serviços Urbanos</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/secretaria/id/1015/?planejamento.html'>Planejamento</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/secretaria/id/1011/?saude.html'>Saúde</a></li></ul></div><div class="col-md-3"><p class="menu-category">Subsecretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/subsecretaria/id/1019/?departamento-de-assistencia-social.html'>Departamento de Assistência Social</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/subsecretaria/id/1013/?departamento-de-meio-ambiente.html'>Departamento de Meio Ambiente</a></li></ul></div><div class="col-md-3"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1003/?cacs-fundeb.html'>CACS FUNDEB </a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1017/?conselho-municipal-da-saude.html'>Conselho Municipal da Saúde</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1005/?conselho-municipal-de-alimentacao-escolar.html'>Conselho Municipal de Alimentação Escolar</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1018/?conselho-municipal-de-assistencia-social.html'>Conselho Municipal de Assistência Social </a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1007/?conselho-municipal-de-cultura.html'>Conselho Municipal de Cultura</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1004/?conselho-municipal-de-educacao.html'>Conselho Municipal de Educação</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1006/?conselho-municipal-de-turismo.html'>Conselho Municipal de Turismo</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1021/?conselho-municipal-dos-direitos-da-crianca-e-do-adolescente.html'>Conselho Municipal dos Direitos da Criança e do Adolescente</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/conselho/id/1016/?plano-municipal-de-educacao.html'>Plano Municipal de Educação</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://travesseiro.rs.gov.br/uploads/config/16025/logo_1.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 3759-1122</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />8:00 as 11:30h e 13:00 as 16:30h</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/1005/?concorrencia-eletronica.html'>Concorrência Eletrônica</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/101/?concorrencia-presencial.html'>Concorrência Presencial</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/103/?convite.html'>Convite</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/1006/?procedimento-de-manifestacao-de-interesse-social.html'>Procedimento de manifestação de interesse social</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li><li role="menuitem"><a href='https://portal.tce.rs.gov.br/aplicprod/f?p=50500:14:::NO:14,RIR:F50500_CD_ORGAO:81900&cs=1HwzsdPgE1pK6ID777LxYTQh0hk8' target='_blank'>LicitaCon</a></li></ul></div><div class="col-md-3"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/concurso/id/1004/?editais-sec-da-educacaoculturadesportoturismo.html'>Editais Sec. da Educação,Cultura,Desporto,Turismo</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/concurso/id/1007/?editais-sec-de-assistencia-social-trabalho-e-hab.html'>Editais Sec. de Assistência Social, Trabalho e Hab</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/concurso/id/201/?nomeacao---concurso.html'>Nomeação - Concurso</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/concurso/id/1002/?processo-de-escolha---conselho-tutelar.html'>Processo de Escolha - Conselho Tutelar</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/concurso/id/1001/?processo-seletivo-de-estagiarios.html'>Processo Seletivo de Estagiários</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/concurso/id/202/?processo-seletivo-simplificado.html'>Processo Seletivo Simplificado</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.cespro.com.br/' target='_blank'>Legislação</a></li><li role="menuitem"><a href='javascript:;' onclick='abrePopUp("https://www.diariomunicipal.com.br/famurs/pesquisar?busca_avancada%5B__paper%5D=3&busca_avancada%5BentidadeUsuaria%5D=257732&busca_avancada%5Bnome_orgao%5D=20198&busca_avancada%5Btitulo%5D=&busca_avancada%5Btexto%5D=&busca_avancada%5BdataInicio%5D=01%2F05%2F2023&busca_avancada%5BdataFim%5D=06%2F06%2F2023&g-recaptcha-response=03AL8dmw8aWGgYV4wZVXD6xAXm9nyBN0XLD8JQCN5i-NI8gjqZW63F_b84ICd2kBbJ-J6b0sOrHIMeyMqRjSA8YSXA7_w81jVdZalzz6mWUxkIaT288B0NQYGdq_rn8kH5Z6TCKX3bylyGWQW9r3jpL8bKTHoi22bVlCK6I9w504p7fpyfBOtOX9m6bIXS37SkWuMtol6AmlX1gikVodbuuUPm469KSmIJgm95R7eU9ZtE1qf9-0sv7jbobWCOBsQLxOnDgZPFVox-_cQ1CsgDqL_P1XR_Dz9MTiVAS_pDmUG5bKY4oc7WOj0iwDW6shPiw8JOrBhxV41EVGO0XNWvANwSwCGgvuHpevrGuNlJXT_RfyDG6jIHIp5LsNFtcomam9tv_nnkuhiLyyxnS4RWjIGCGYGiMflUMhNJJbC0TMferKgguWbwWi0j4-AdXjkNyYJD35hhCNhJLDqPV9I7Hn6idckRpBVF8SQ7IYXzoMvhYRNfa6y3BaSdD13Lw3i1bHLNt4TnAxTcvIxbTaZy64tok0K8619HnNK3Stawh6SHSuci4f8yCnFMmNoqdvmoPDdSCQEbL2YO&busca_avancada%5B_token%5D=0TP_Ndir0G3KH86xeklyuiuN3t4wTusYkU2RPAj5QcE","",600,400,0,0);'>Diário Oficial</a></li><li role="menuitem"><a href='https://portal.tce.rs.gov.br/aplicprod/f?p=50500:25:::NO:25,RIR:F50500_CD_ORGAO:81900&cs=1YKaTIqYDoy75MRHUUX5ciYl_zc0' target='_blank'>Contratos</a></li><li role="menuitem"><a href='https://portaldatransparencia.gov.br/convenios/consulta?paginacaoSimples=true&tamanhoPagina=&offset=&direcaoOrdenacao=asc&periodoLiberacaoRecursosAte=30%2F06%2F2023&uf=RS&nomeMunicipio=travesseiro&colunasSelecionadas=linkDetalhamento%2CnumeroConvenio%2CnumeroOriginal%2Cuf%2CmunicipioConvenente%2Csituacao%2CtipoTransferencia%2Cobjetivo%2CorgaoSuperior%2Corgao%2Cconcedente%2Cconvenente%2CdataInicioVigencia%2CdataFimVigencia%2CvalorCelebrado' target='_blank'>Convenios</a></li><li role="menuitem"><a href='https://www.transparencia.rs.gov.br/despesas/transferencias-legais-e-voluntarias/convenios-de-despesa/dados/' target='_blank'>Convenios com o Estado</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocinios</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://travesseiro.rs.gov.br/uploads/config/16025/logo_1.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 3759-1122</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />8:00 as 11:30h e 13:00 as 16:30h</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='http://travesseiroprefeitura.lidera.inf.br:8080/multi24/sistemas/transparencia/?entidade=1&secao=dinamico&id=2225' target='_blank'>Contas Públicas</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/1026/?divida-ativa.html'>Dívida Ativa</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li></ul></div><div class="col-md-4"><p class="menu-category">LGPD</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='/politica-de-privacidade' target='_blank'>Política de Privacidade</a></li><li role="menuitem"><a href='/termo-de-uso' target='_blank'>Termos de Uso</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/ordem-servico/bcid/1014/?lgpd---controle-de-dados.html'>LGPD - Controle de Dados</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/1030/?cartilha-lgpd.html'>Cartilha LGPD</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/1031/?politica-externa.html'>Política Externa</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/1032/?vazamento-de-dados.html'>Vazamento de Dados</a></li></ul></div><div class="col-md-4"><p class="menu-category">Dados Abertos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://travesseiro.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://travesseiro.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+  <!-- /Top Nav -->
+</div>
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a> <!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350">
+                    <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img                         srcset="
+                            https://travesseiro.rs.gov.br/uploads/banner/19862/thumb_041___O_encanto_das_guas___Laudenor_Teloken_1.jpg 360w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19862/mobile_041___O_encanto_das_guas___Laudenor_Teloken_1.jpg 576w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19862/original_041___O_encanto_das_guas___Laudenor_Teloken_1.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Créditos: Laudenor Teloken"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Créditos: Laudenor Teloken</p>
+                                                        <p>V Concurso Fotográfico 2022 | "Descubra Travesseiro!"</p>
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://travesseiro.rs.gov.br/uploads/banner/19866/thumb_14___Travesseiro.jpg 360w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19866/mobile_14___Travesseiro.jpg 576w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19866/original_14___Travesseiro.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Créditos: Amvat | Amturvales"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Créditos: Amvat | Amturvales</p>
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://travesseiro.rs.gov.br/uploads/banner/19867/thumb_08___Travesseiro.jpg 360w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19867/mobile_08___Travesseiro.jpg 576w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19867/original_08___Travesseiro.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Créditos: Amvat | Amturvales"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Créditos: Amvat | Amturvales</p>
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://travesseiro.rs.gov.br/uploads/banner/19869/thumb_rc_3592_1.jpg 360w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19869/mobile_rc_3592_1.jpg 576w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19869/original_rc_3592_1.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Créditos: Renan Costantin"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Créditos: Renan Costantin</p>
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://travesseiro.rs.gov.br/uploads/banner/19868/thumb_rc_3540_1.jpg 360w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19868/mobile_rc_3540_1.jpg 576w,
+                            https://travesseiro.rs.gov.br/uploads/banner/19868/original_rc_3540_1.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Créditos: Renan Costantin"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Créditos: Renan Costantin</p>
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img loading='lazy' src="https://travesseiro.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+        <!-- NOTÍCIAS -->
+        <div class="overflow-hidden col-md-12col-md-12 mobile-nopadding"><section id="box-noticias" class="nopadding">
+    <div class="container">
+        <header class="text-center">
+            <h2>Últimas notícias</h2>
+            <div class="divider half-margins onepage center"><!-- lines divider --></div>
+        </header>
+                <div class="row">
+            <div class="col-md-12">
+                <div class="row mb25 appear-animation" data-animation="bounceIn">
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="
+							display: flex;
+							justify-content: center;
+						">
+                            <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/noticia/21484/media_890492637_1622380836027734_6239069900954578840_n.jpg" alt="Imagem ilustrativa da notícia: O Município decreta luto oficial" style="max-height: 500px;"  role="presentation">
+                        </div>
+                        <div class="col-md-6">
+                                                        <small>04/11/2026</small>
+                            <h3>O Município decreta luto oficial</h3>
+                            <p>Luto</p>
+                            <p><a href="https://travesseiro.rs.gov.br/noticia/visualizar/id/1686/?o-municipio-decreta-luto-oficial.html" class="btn btn-default btn-sm" role="button">Ler mais</a></p>
+                        </div>
+                    </div>
+                </div>
+                                <hr class="clearfix mb15 mt15 visible-xs-block visible-sm-block">
+                <div class="row">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInLeftBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/noticia/21467/media_846378468_1465285872178846_8349792890986174361_n.jpg" alt="Imagem ilustrativa da notícia: 35 alunos concluem cursos do Programa RS Qualificação Recomeçar em Travesseiro" role="presentation">
+                                                <small>13/10/2026</small><br/>
+                        <a href="https://travesseiro.rs.gov.br/noticia/visualizar/id/1685/?35-alunos-concluem-cursos-do-programa-rs-qualificacao-recomecar-em-travesseiro.html" class="h4">35 alunos concluem cursos do Programa RS Qualificação Recomeçar em Travesseiro</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInDownBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/noticia/21444/media_803932436_1657630289318323_6165256344020945555_n.jpg" alt="Imagem ilustrativa da notícia: Secretaria da Educação promove formação sobre a BNCC Computação" role="presentation">
+                                                <small>11/10/2026</small><br/>
+                        <a href="https://travesseiro.rs.gov.br/noticia/visualizar/id/1674/?secretaria-da-educacao-promove-formacao-sobre-a-bncc-computacao.html" class="h4">Secretaria da Educação promove formação sobre a BNCC Computação</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInUpBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/noticia/21466/media_841533084_1420432492783980_2127864068493261480_n.jpg" alt="Imagem ilustrativa da notícia: Município projeta estabilidade na arrecadação do ICMS para 2027 após revisão de critérios estaduais" role="presentation">
+                                                <small>09/10/2026</small><br/>
+                        <a href="https://travesseiro.rs.gov.br/noticia/visualizar/id/1684/?municipio-projeta-estabilidade-na-arrecadacao-do-icms-para-2027-apos-revisao-de-criterios-estaduais.html" class="h4">Município projeta estabilidade na arrecadação do ICMS para 2027 após revisão de critérios estaduais</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInRightBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/noticia/21465/media_NOTA_F_GAUCHA.jpg" alt="Imagem ilustrativa da notícia: Nota Fiscal Gaúcha: confira os ganhadores de setembro de 2026" role="presentation">
+                                                <small>05/10/2026</small><br/>
+                        <a href="https://travesseiro.rs.gov.br/noticia/visualizar/id/1683/?nota-fiscal-gaucha-confira-os-ganhadores-de-setembro-de-2026.html" class="h4">Nota Fiscal Gaúcha: confira os ganhadores de setembro de 2026</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                    </div>
+                                <div class="row text-center ">
+                    <a class="btn btn-primary" href="https://travesseiro.rs.gov.br/noticia">Ver todas as Notícias</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section></div>
+        <!-- /NOTÍCIAS -->
+    </div>
+</div>
+<div class="pb40 pt40 styleBackgroundLight">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS -->
+            <div class="overflow-hidden col-md-12 mobile-nopadding"><div id="acessoRapidoHorizontal" class="row">
+    <div class="col-md-12"><h2 class="similar-h4 title"><strong>Acesso Rápido</strong></h2></div>
+    <div class="owl-carousel banner-servicos" data-plugin-options='{"navigation": true, "pagination": false,"items": 1}'>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="NFS-e Nacional" href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">NFS-e Nacional</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Contas Públicas" href="https://multi24h.travesseiro.rs.gov.br:4443/multi24/sistemas/transparencia/?entidade=1&secao=dinamico&id=2225" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Contas Públicas</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Acesso à informação" href="javascript:;" target="_self" onclick="abrePopTelaInteira('/transparencia','Acesso à informação')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Acesso à informação</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="e-SIC" href="/ordem-servico" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">e-SIC</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Perguntas Frequentes" href="/perguntas-respostas" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Perguntas Frequentes</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Portal de Serviços" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://multi24h.travesseiro.rs.gov.br:4443/multi24/sistemas/portal/','Portal de Serviços')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Portal de Serviços</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Portal da Transparência" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://multi24h.travesseiro.rs.gov.br:4443/multi24/sistemas/transparencia/','Portal da Transparência')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Portal da Transparência</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Contratos no Licitacon" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://portal.tce.rs.gov.br/aplicprod/f?p=50500:25:::NO:25,RIR:F50500_CD_ORGAO:81900&cs=1YKaTIqYDoy75MRHUUX5ciYl_zc0','Contratos no Licitacon')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Contratos no Licitacon</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Licitações no Licitacon" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:14:::NO:14,RIR:F50500_CD_ORGAO:81900&cs=1HwzsdPgE1pK6ID777LxYTQh0hk8" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Licitações no Licitacon</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Diário Oficial" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://www.diariomunicipal.com.br/famurs/pesquisar?busca_avancada%5B__paper%5D=3&busca_avancada%5BentidadeUsuaria%5D=257732&busca_avancada%5Bnome_orgao%5D=20198&busca_avancada%5Btitulo%5D=&busca_avancada%5Btexto%5D=&busca_avancada%5BdataInicio%5D=01%2F05%2F2023&busca_avancada%5BdataFim%5D=06%2F06%2F2023&g-recaptcha-response=03AL8dmw8aWGgYV4wZVXD6xAXm9nyBN0XLD8JQCN5i-NI8gjqZW63F_b84ICd2kBbJ-J6b0sOrHIMeyMqRjSA8YSXA7_w81jVdZalzz6mWUxkIaT288B0NQYGdq_rn8kH5Z6TCKX3bylyGWQW9r3jpL8bKTHoi22bVlCK6I9w504p7fpyfBOtOX9m6bIXS37SkWuMtol6AmlX1gikVodbuuUPm469KSmIJgm95R7eU9ZtE1qf9-0sv7jbobWCOBsQLxOnDgZPFVox-_cQ1CsgDqL_P1XR_Dz9MTiVAS_pDmUG5bKY4oc7WOj0iwDW6shPiw8JOrBhxV41EVGO0XNWvANwSwCGgvuHpevrGuNlJXT_RfyDG6jIHIp5LsNFtcomam9tv_nnkuhiLyyxnS4RWjIGCGYGiMflUMhNJJbC0TMferKgguWbwWi0j4-AdXjkNyYJD35hhCNhJLDqPV9I7Hn6idckRpBVF8SQ7IYXzoMvhYRNfa6y3BaSdD13Lw3i1bHLNt4TnAxTcvIxbTaZy64tok0K8619HnNK3Stawh6SHSuci4f8yCnFMmNoqdvmoPDdSCQEbL2YO&busca_avancada%5B_token%5D=0TP_Ndir0G3KH86xeklyuiuN3t4wTusYkU2RPAj5QcE','Diário Oficial')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Diário Oficial</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Legislação" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://travesseiro.cespro.com.br/','Legislação')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Legislação</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Concursos" href="/concurso" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Concursos</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Serviços" href="/servico" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Serviços</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Ouvidoria</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+            </div>
+        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /NOTÍCIAS -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+
+            <div class="p0 styleContrasteGray">
+                <div class="container">
+                    <hr class="half-margins invisible">
+                    <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://radardatransparencia.atricon.org.br/" target='_blank'>
+                                <img src="https://travesseiro.rs.gov.br/uploads/banner/16839/original_icone_transp_publica_atalho_banner.jpg" class="img-responsive tituloOculto" alt="Atalho radar transparencia publica" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://travesseiro.rs.gov.br/uploads/midia/17300/Cartilha_LGPD_e_SI_Prefeitura_Municipal_de_Travesseiro.pdf" target='_blank'>
+                                <img src="https://travesseiro.rs.gov.br/uploads/banner/17301/original_lgpd.png" class="img-responsive tituloOculto" alt="LGPD" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.facebook.com/TravesseiroRS" target='_blank'>
+                                <p class="similar-h4 mb10">Conta Oficial do Município</p>
+                        <img src="https://travesseiro.rs.gov.br/uploads/banner/16841/original_icone_facebook.jpg" class="img-responsive" alt="Conta Oficial do Município" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank'>
+                                <img src="https://travesseiro.rs.gov.br/uploads/banner/16838/original_nfg_icone_banner_atalhos.jpg" class="img-responsive tituloOculto" alt="Atalho NFG" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.gov.br/cultura/pt-br/assuntos/lei-paulo-gustavo" target='_blank'>
+                                <img src="https://travesseiro.rs.gov.br/uploads/banner/16840/original_icone_lei_paulo_gustavo_no_banner.png" class="img-responsive tituloOculto" alt="Atalho Lei Paulo Gustavo" role="presentation" />
+                </a>
+            </div>
+    </div>                    <hr class="half-margins">
+                </div>
+            </div>
+            
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">1.757/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Dispensa de Licitação - 1.402/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="DISPENSA DE LICITAÇÃO ELETRÔNICA Nº 1.757/2026" href="https://travesseiro.rs.gov.br/licitacao/visualizar/id/1287/?dispensa-de-licitacao-eletronica-no-17572026.html">
+                            <p>DISPENSA DE LICITAÇÃO ELETRÔNICA Nº 1.757/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            01/12/2026 &agrave;s 08h31min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">028</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico - 2026/1347                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 028_2026" href="https://travesseiro.rs.gov.br/licitacao/visualizar/id/1286/?pregao-eletronico-0282026.html">
+                            <p>PREGÃO ELETRÔNICO 028_2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            04/12/2026 &agrave;s 09h01min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">1.744/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Dispensa de Licitação - 1.391/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="DISPENSA DE LICITAÇÃO Nº 1.744/2026" href="https://travesseiro.rs.gov.br/licitacao/visualizar/id/1285/?dispensa-de-licitacao-no-17442026.html">
+                            <p>DISPENSA DE LICITAÇÃO Nº 1.744/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/11/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">027</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico - 1312                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 027/2026" href="https://travesseiro.rs.gov.br/licitacao/visualizar/id/1284/?pregao-eletronico-0272026.html">
+                            <p>PREGÃO ELETRÔNICO 027/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            04/12/2026 &agrave;s 09h01min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                
+        <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://travesseiro.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="1005">Concorrência Eletrônica</option>
+                                                        <option value="101">Concorrência Presencial</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="1006">Procedimento de manifestação de interesse social</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://travesseiro.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="1004">Editais Sec. da Educação,Cultura,Desporto,Turismo</option>
+                                                        <option value="1007">Editais Sec. de Assistência Social, Trabalho e Hab</option>
+                                                        <option value="201">Nomeação - Concurso</option>
+                                                        <option value="1002">Processo de Escolha - Conselho Tutelar</option>
+                                                        <option value="1001">Processo Seletivo de Estagiários</option>
+                                                        <option value="202">Processo Seletivo Simplificado</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://travesseiro.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1">Legislação</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/19998/thumb_Gilmar_Southier.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Gilmar Luiz Southier" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://travesseiro.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Gilmar Luiz Southier</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 98056-7248                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8:00 as 11:30h e 13:00 as 16:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/19997/thumb_Arlei_Stefani.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Vice-prefeito: Arlei Luís Stefani" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice-prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://travesseiro.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Arlei Luís Stefani</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 98056-7248                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8:00 as 11:30h e 13:00 as 16:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/secretaria/id/1010/?assistencia-social-trabalho-e-habitacao.html">
+                       Assistência Social, Trabalho e Habitação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/16301/thumb_Adriana_Southier.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária Municipal: Adriana Pagliarini Southier" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária Municipal</small>
+                        <div class="row">
+                          <a title="Assistência Social, Trabalho e Habitação" href="https://travesseiro.rs.gov.br/secretaria/id/1010/?assistencia-social-trabalho-e-habitacao.html">
+                            <span class="similar-h4"><strong>Adriana Pagliarini Southier</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3759-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta-feira, das 07h30min às 11h30min e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/secretaria/id/1002/?educacao-cultura-desporto-e-turismo.html">
+                       Educação, Cultura, Desporto e Turismo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/16201/thumb_Michele.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária Municipal: Michele Raquel Kunrath Träsel" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária Municipal</small>
+                        <div class="row">
+                          <a title="Educação, Cultura, Desporto e Turismo" href="https://travesseiro.rs.gov.br/secretaria/id/1002/?educacao-cultura-desporto-e-turismo.html">
+                            <span class="similar-h4"><strong>Michele Raquel Kunrath Träsel</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3759-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8:00 às 11:30 e 13:00 às 16:30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/secretaria/id/1011/?saude.html">
+                       Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/16303/thumb_Junior_Weinzenmann___Secretrio_Sade.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Junior Rodrigo Weizenmann" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Saúde" href="https://travesseiro.rs.gov.br/secretaria/id/1011/?saude.html">
+                            <span class="similar-h4"><strong>Junior Rodrigo Weizenmann</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3759-1255                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta-feira, das 7h30min às 12h30min e das 13h30min às 16h30min<br />
+OBS: Terça-feira expediente de manhã até as 11:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/secretaria/id/1015/?planejamento.html">
+                       Planejamento                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário Municipal de Planejamento</small>
+                        <div class="row">
+                          <a title="Planejamento" href="https://travesseiro.rs.gov.br/secretaria/id/1015/?planejamento.html">
+                            <span class="similar-h4"><strong>vago</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3759-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8:00 às 11:30 e 13:30 e 17:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/secretaria/id/1009/?obras-viacao-e-servicos-urbanos.html">
+                       Obras, Viação e Serviços Urbanos                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/19497/thumb_Ildo_Rodrigues_Godoy.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Ildo Rodrigues Godoy" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Obras, Viação e Serviços Urbanos" href="https://travesseiro.rs.gov.br/secretaria/id/1009/?obras-viacao-e-servicos-urbanos.html">
+                            <span class="similar-h4"><strong>Ildo Rodrigues Godoy</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3759-1240                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 7:30 às 11:30 h e 13:15 às 17:15 h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/secretaria/id/1001/?administracao-e-financas.html">
+                       Administração e Finanças                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/16124/thumb_Maicon.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Maicon Wiland Theisen" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Administração e Finanças" href="https://travesseiro.rs.gov.br/secretaria/id/1001/?administracao-e-financas.html">
+                            <span class="similar-h4"><strong>Maicon Wiland Theisen</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3759-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8:00 às 11:30 e 13:00 às 16:30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://travesseiro.rs.gov.br/secretaria/id/1008/?agricultura.html">
+                       Agricultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://travesseiro.rs.gov.br/uploads/departamento/20796/thumb_foto_secretario_Fernando.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Fernando José Kochem" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Agricultura" href="https://travesseiro.rs.gov.br/secretaria/id/1008/?agricultura.html">
+                            <span class="similar-h4"><strong>Fernando José Kochem</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3759-1059                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8:00 às 11:30h e 13:30 às 17:00 h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+      <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+            <div class="col-md-8 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="tabs tab-tur widget featured-box-minimal nomargin-top">
+   <!-- tabs -->
+   <ul class="nav nav-tabs nav-justified">
+           <li class="active">
+         <a href="#tab_0" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Travessias         </a>
+      </li>
+         </ul>
+
+
+   <!-- tabs content -->
+   <div class="tab-content mb15">
+           <div id="tab_0" class="tab-pane active">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/pontoturistico/16175/maior_logomarca_Travessias.jpg" alt="Travessias" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Travessias" href="https://travesseiro.rs.gov.br/turismo/visualizar/id/1003/?travessias.html">
+               Travessias             </a>
+             </h3>
+           <p class="mb0">Uma experiência teuto-italiana!
+</p>
+           <p class="mb0"><a href="https://travesseiro.rs.gov.br/turismo/visualizar/id/1003" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Travessias				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+         </div>
+
+   <a title="Atrações completas" href="https://travesseiro.rs.gov.br/turismo" class="btn btn-default btn-content">
+      <i class="fa fa-map-o"></i> Mais Atrações
+	  <span class="sr-only">
+		Turísticas
+	  </span>
+    </a>
+</div></div>
+            <div class="col-md-4 mt4-xs mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>&Uacute;LTIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://travesseiro.rs.gov.br/evento/visualizar/id/1001/?pecas-teatrais.html">
+			<p class="lead">Peças teatrais</p>
+		</a>
+		<p class="nomargin">Nesta sexta-feira, dia 02 de junho, ocorre as peças teatrais "No meu corpo não" e "Quando o segredo Gritar". As atividades são alusivas ao maio laranja que busca combater o Abuso e Exploração Sexual contra Crianças e Adolescentes.</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    				<strong>In&iacute;cio:</strong> 02/06/2023<br />
+			</div>
+
+	<a href="https://travesseiro.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+      			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+      <div class="col-md-12 mobile-nopadding">
+        <!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Administração Municipal recebe representantes da Zanco Construtora para tratar do andamento da obra da ponte sobre o Rio Forqueta" class="item-hover" href="https://travesseiro.rs.gov.br/video/id/1035/?administracao-municipal-recebe-representantes-da-zanco-construtora-para-tratar-do-andamento-da-obra-da-ponte-sobre-o-rio-forqueta.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-video-camera"></span>
+                            <strong>ASSISTIR</strong> VÍDEO							<span class="sr-only">
+								Administração Municipal recebe representantes da Zanco Construtora para tratar do andamento da obra da ponte sobre o Rio Forqueta							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="//i1.ytimg.com/vi/QsLYUWQoA4A/mqdefault.jpg" width="260" height="260" alt="Administração Municipal recebe representantes da Zanco Construtora para tratar do andamento da obra da ponte sobre o Rio Forqueta" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">08/07/2026 - </small>
+                    <small style="display: inline;">Programas e ações</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Administração Municipal recebe representantes da Zanco Construtora para tratar do andamento da obra da ponte sobre o Rio Forqueta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Natal em Família" class="item-hover" href="https://travesseiro.rs.gov.br/galeria/id/1034/?natal-em-familia.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Natal em Família							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/midia/20755/media_589730551_1296426062519327_5581446977393891075_n.jpg" width="260" height="260" alt="Natal em Família" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">29/11/2025 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Natal em Família</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Desfile Farroupilha de 20 de Setembro!" class="item-hover" href="https://travesseiro.rs.gov.br/galeria/id/1032/?desfile-farroupilha-de-20-de-setembro.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Desfile Farroupilha de 20 de Setembro!							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/midia/20419/media_DSC_1293.jpg" width="260" height="260" alt="Desfile Farroupilha de 20 de Setembro!" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">20/09/2025 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Desfile Farroupilha de 20 de Setembro!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Fandango Farroupilha de 20 de Setembro" class="item-hover" href="https://travesseiro.rs.gov.br/galeria/id/1033/?fandango-farroupilha-de-20-de-setembro.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Fandango Farroupilha de 20 de Setembro							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://travesseiro.rs.gov.br/uploads/midia/20493/media_DSC_1573.jpg" width="260" height="260" alt="Fandango Farroupilha de 20 de Setembro" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">20/09/2025 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Fandango Farroupilha de 20 de Setembro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA -->      </div>
+    </div>
+</div>
+
+<div class="pt60 pb60">
+    <div class="container">
+                <div class="col-md-6 mobile-nopadding mobile-margin-top25"><!-- FACEBOOK -->
+<div class="widget appear-animation" data-animation="bounceIn">
+	<div class="fb-page" data-href="https://www.facebook.com/TravesseiroRS" data-height="380" data-small-header="true" data-adapt-container-width="true" data-width="10000" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"></div>
+</div>
+<!-- /FACEBOOK --></div>
+                <div class="col-md-6 mobile-nopadding mobile-margin-top25"><!-- CONCURSOS -->
+<div class="widget owl-carousel-controls featured-box-minimal overflow-hidden">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>CONCURSOS</strong></h2>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">001/2025</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Nomeação - Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CONCURSO Nº 001/2025" href="https://travesseiro.rs.gov.br/concurso/visualizar/id/1175/?concurso-no-0012025.html">
+                            <p>CONCURSO Nº 001/2025</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            12/06/2025                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            12/06/2027                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            NOMEAÇÕES CONCURSO Nº 001/2025                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /CONCURSOS --></div>
+            </div>
+</div>
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.319787, -52.066545],
+                15
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.319787, -52.066545],
+                        {alt:'Município de Travesseiro'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Município de Travesseiro</strong></p>                <p style="margin: 5px 0px;">Rua Esperança, 575 / Celular: 51 996 592 833&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Travesseiro / RS</p><p style="margin: 5px 0px;">95948-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer01 colorfull border-color-trans-dark" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <div class="logo_footer bg-color-trans-dark col-md-3">
+                                <img alt="Brasão da prefeitura" src="https://travesseiro.rs.gov.br/uploads/config/16025/logo_1.png" height="130" class="pull-left logo appear-animation opaco08" data-animation="bounceIn"/>
+                                <p class="block">
+                    <br />Rua Esperança, 575, Centro<br />
+                    CEP: 95948-000<br /><br />                </p>
+                                <p class="block">
+                                        (51) 3759-1122<br/>
+                                        admin@travesseiro.rs.gov.br<br />                </p>
+                                <p class="block">
+                    <strong>Hor&aacute;rios de Atendimento:</strong><br />
+                    8:00 as 11:30h e 13:00 as 16:30h                </p>
+                               <p class="block">
+                    <a href="https://travesseiro.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/TravesseiroRS" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://travesseiro.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+                </p>
+            </div>
+
+            <div class="spaced col-md-9 col-sm-9 hidden-sm hidden-xs">
+                            <div class="row">
+                                    <div class="col-md-3">
+                        <p class="similar-h4 mb15">Licita&ccedil;&otilde;es</p>
+						<ul class="list-unstyled nobordered">
+												    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/100/?chamada-publica.html">
+						            <i class="fa fa-angle-right"></i>Chamada Pública					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/110/?chamamento-publico.html">
+						            <i class="fa fa-angle-right"></i>Chamamento Público					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/1005/?concorrencia-eletronica.html">
+						            <i class="fa fa-angle-right"></i>Concorrência Eletrônica					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/101/?concorrencia-presencial.html">
+						            <i class="fa fa-angle-right"></i>Concorrência Presencial					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/103/?convite.html">
+						            <i class="fa fa-angle-right"></i>Convite					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html">
+						            <i class="fa fa-angle-right"></i>Dispensa de Licitação					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/106/?leilao.html">
+						            <i class="fa fa-angle-right"></i>Leilão					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/107/?pregao-eletronico.html">
+						            <i class="fa fa-angle-right"></i>Pregão Eletrônico					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/108/?pregao-presencial.html">
+						            <i class="fa fa-angle-right"></i>Pregão Presencial					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/1006/?procedimento-de-manifestacao-de-interesse-social.html">
+						            <i class="fa fa-angle-right"></i>Procedimento de manifestação de interesse social					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/licitacao/id/109/?tomada-de-preco.html">
+						            <i class="fa fa-angle-right"></i>Tomada de Preço					            </a>
+				            </li>
+					    					    </ul>
+				    </div>
+										<div class="col-md-3">
+					    <p class="similar-h4 mb15">Outras &Aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a href="https://travesseiro.rs.gov.br/transparencia/?transparencia.html" class="block">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://travesseiro.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://travesseiro.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://travesseiro.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Notícias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://travesseiro.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://travesseiro.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://travesseiro.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/termo-de-uso">
+									<i class="fa fa-angle-right"></i> Termo de Uso
+								</a>
+							</li>
+													</ul>
+                    </div>
+                                        <div class="col-md-6">
+                        <p class="similar-h4 mb15">Secretarias e &Oacute;rg&atilde;os</p>
+                        <ul class="list-unstyled nobordered">
+                            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/gabinete-do-prefeito/?gabinete-do-prefeito.html">
+						            <i class="fa fa-angle-right"></i> Gabinete do Prefeito					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/secretaria/id/1001/?administracao-e-financas.html">
+						            <i class="fa fa-angle-right"></i> Administração e Finanças					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/secretaria/id/1008/?agricultura.html">
+						            <i class="fa fa-angle-right"></i> Agricultura					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/secretaria/id/1010/?assistencia-social-trabalho-e-habitacao.html">
+						            <i class="fa fa-angle-right"></i> Assistência Social, Trabalho e Habitação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/secretaria/id/1002/?educacao-cultura-desporto-e-turismo.html">
+						            <i class="fa fa-angle-right"></i> Educação, Cultura, Desporto e Turismo					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/secretaria/id/1009/?obras-viacao-e-servicos-urbanos.html">
+						            <i class="fa fa-angle-right"></i> Obras, Viação e Serviços Urbanos					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/secretaria/id/1015/?planejamento.html">
+						            <i class="fa fa-angle-right"></i> Planejamento					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/secretaria/id/1011/?saude.html">
+						            <i class="fa fa-angle-right"></i> Saúde					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1003/?cacs-fundeb.html">
+						            <i class="fa fa-angle-right"></i> CACS FUNDEB 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1017/?conselho-municipal-da-saude.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal da Saúde					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1005/?conselho-municipal-de-alimentacao-escolar.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Alimentação Escolar					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1018/?conselho-municipal-de-assistencia-social.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Assistência Social 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1007/?conselho-municipal-de-cultura.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Cultura					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1004/?conselho-municipal-de-educacao.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Educação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1006/?conselho-municipal-de-turismo.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Turismo					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1021/?conselho-municipal-dos-direitos-da-crianca-e-do-adolescente.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal dos Direitos da Criança e do Adolescente					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/conselho/id/1016/?plano-municipal-de-educacao.html">
+						            <i class="fa fa-angle-right"></i> Plano Municipal de Educação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/subsecretaria/id/1019/?departamento-de-assistencia-social.html">
+						            <i class="fa fa-angle-right"></i> Departamento de Assistência Social					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://travesseiro.rs.gov.br/subsecretaria/id/1013/?departamento-de-meio-ambiente.html">
+						            <i class="fa fa-angle-right"></i> Departamento de Meio Ambiente					            </a>
+				            </li>
+				            			            </ul>
+		            </div>
+		            	            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+        <div class="container text-center fsize12 post-copyright" style="
+            display: flex;
+			flex-direction: column;
+            justify-content: center">
+            <p style="margin:0" id="footer.copyrightTxt">
+				Este site utiliza a ferramenta
+                <a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+					<img src="https://travesseiro.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+					<span class="sr-only">iPrefeituras</span>
+				</a>.
+			</p>
+			<p style="margin:0" id="footer.copyrightTxt3">
+                Um produto
+                <strong>
+					<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+				</strong>.
+            </p>
+        </div>
+    </div>
+</footer>
+<a href="javascript:;" id="toTop" role="button" tabindex="0">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://travesseiro.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://travesseiro.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://travesseiro.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://travesseiro.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://travesseiro.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade e Cookies. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a> e <a href="/termo-de-uso" title="Termo de Uso">Termo de Uso</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a6142ee94faa3709',t:'MTc5NTgxNDQ5Mw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a6142ee94faa3709',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

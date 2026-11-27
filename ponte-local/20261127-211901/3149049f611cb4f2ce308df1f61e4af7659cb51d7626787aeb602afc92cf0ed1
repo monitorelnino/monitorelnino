@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <!--| META TAGS |-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="application-name" content="Site Institucional da Prefeitura de Santa Maria do Salto">
+    <meta name="description" content="Site Institucional da Prefeitura de Santa Maria do Salto">
+    <meta name="keywords" content="Institucional, Transparência, Prefeitura, Prefeitura de Santa Maria do Salto">
+    <meta name="author" content="Digitaliza Tecnologia">
+    <meta name="generator" content="VS Code & PhpStorm">
+    <meta name="csrf-token" content="uJUqNxpMCC7qSd0AoegfaqAmvhPHLshSTNZ9ENcF">
+
+    <!--| OG TAGS |-->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="http://santamariadosalto.mg.gov.br">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/site/brasao.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Prefeitura de Santa Maria do Salto">
+
+    <link rel="alternate" type="application/atom+xml" href="https://santamariadosalto.mg.gov.br/noticias.rss" title="Ultimas Noticias">
+
+    <title> Prefeitura de Santa Maria do Salto </title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    
+    <style>
+        :root {
+            --color__1: #138a14;
+            --color__2: #138a14;
+        }
+    </style>
+
+    
+    <link rel="icon" type="image/x-icon"
+        href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/site/nBf7WlGULuQZLVj1vnVlYiVzKZfWVVtatIRvqAmb.png" />
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet"
+        href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://santamariadosalto.mg.gov.br/css/style.css" />
+    </head>
+
+<body class="context">
+
+    
+        <div class="page_institucional">
+        
+        <nav class="navbar navbar-expand-lg" id="navbar" x-data="navbar">
+    <a href="https://santamariadosalto.mg.gov.br" style="height: 100%;">
+        <img class="navbar-brand img-fluid" style="height: 100%; width: auto; object-fit: cover;"
+            src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/site/brasao.png"
+            alt="Brasão">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="ph-bold ph-list" id="action_icon"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://santamariadosalto.mg.gov.br"> Home </a>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropMunicipio" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Município </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropMunicipio">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Município </h6>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/cidade"> Cidade </a>
+                            
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/orgaos-municipais"> Órgãos Municipais </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/diarios-oficiais"> Diário Oficial </a>
+
+                                                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/secretarias "> Secretarias </a>
+                            
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/noticias/todas"> Todas as Notícias </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/perguntas-frequentes"> Perguntas
+                                Frequentes </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title">
+                                                                    A Prefeitura
+                                                            </h6>
+                                                                                                                                                                                    <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/gestores">
+                                                Prefeito </a>
+                                                                                                                                                        
+                                                                                                                                                                                                    <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/vices">
+                                                Vice-Prefeito </a>
+                                                                                                                                        
+                                <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/historia"> Historia </a>
+                           
+
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/estruturas-organizacional"> Estrutura
+                                Administrativa </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/documentos_oficiais"> Documentos
+                                Oficiais </a>
+
+                            
+                            
+                            
+                                                                                        <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/governanca"> Governança </a>
+                                                                                </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Cultura </h6>
+
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/turismo"> Turismo </a>
+                            
+                                                            
+                                
+                                
+                                                            
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropServicos" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Serviços </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropServicos">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Serviços </h6>
+
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/concursos-publicos"> Concursos </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/editais"> Editais e Processos
+                                Seletivos </a>
+                                                                                                                                        <a class="dropdown-item"
+                                            href="https://pmsantamariadosalto.cidadesmg.com.br/portaltransparencia/" target="_blank"
+                                            rel="noopener"> Portal da Transparência </a>
+                                                                    
+                                                                                                            <a class="dropdown-item"
+                                            href="https://santamariadosalto.sintesetecnologia.com.br/portalServidor/index.xhtml"
+                                            target="_blank" rel="noopener"> Contracheque </a>
+                                                                    
+                                
+                                
+                                                                    <a class="dropdown-item"
+                                        href="https://santamariadosalto.sintesenotafiscal.com.br/NFSEWeb/"
+                                        target="_blank" rel="noopener"> Nota Fiscal de Serviço Eletrônica </a>
+                                
+                                                                    <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/designacoes"> Designações
+                                    </a>
+                                                                                                    <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/todas-secretarias"> Carta de
+                                        Serviços das Secretarias </a>
+                                                                                            
+                            
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/covid/home"> Covid-19 </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/emendas-parlamentares"> Emendas Parlamentares </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                             <h6 class="dropdown_title"> Serviços ao cidadão </h6>
+
+                                                            <a class="dropdown-item" href="https://servicos.cloud.el.com.br/mg-santamariadosalto-pm/services/"
+                                    target=&quot;_blank&quot;> Serviço Tributário </a>
+                                                    </ul>
+
+                                            </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropLegislacao" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Legislação </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropLegislacao">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/todas/Todas%20as%20Leis"> Todas </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/1/Leis%20de%20Diretrizes%20Or%C3%A7ament%C3%A1rias"> Lei
+                                Diretrizes Orçamentárias </a>
+                                                        <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/2/Leis%20Or%C3%A7ament%C3%A1rias%20Anuais"> Lei
+                                Orçamentária Anual </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/3/Planos%20Plurianuais%20"> Plano Plurianual
+                            </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/4/Leis"> Leis </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/5/Leis%20Complementares"> Leis
+                                Complementares </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/15/Leis%20Complementares%20Consolidadas"> Leis
+                                Complementares Consolidadas </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/6/Leis%20Delegadas">
+                                Lei Delegada </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/7/Decretos">
+                                Decretos </a>
+                                    <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/22/Presta%C3%A7%C3%A3o%20de%20Contas">
+                                Prestação de Contas </a>
+                                                                                    <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/8/Portarias%20">
+                                Portarias </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/9/Resolu%C3%A7%C3%B5es%20">
+                                Resoluções </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/10/Proposi%C3%A7%C3%B5es">
+                                Proposição </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/11/Emenda%20da%20Lei%20Org%C3%A2nica"> Emenda da Lei
+                                Orgânica </a>
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/12/Decis%C3%B5es">
+                                Decisão </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            
+
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/convenios"> Convênios </a>
+
+                            
+                            
+                                                            <a class="dropdown-item"
+                                    href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/site/vbBroJR3reol8tJlT3yilrSG6ClOJFq89IQ7pTSl.pdf"
+                                    target="_blank" rel="noopener"> Lei Orgânica </a>
+                            
+                            
+                            
+                            <a class="dropdown-item" href="#"
+                                target="_blank" rel="noopener"> Convenio Estadual </a>
+                            <a class="dropdown-item" href="#"
+                                target="_blank" rel="noopener"> Convenio Federal </a>
+
+                            <a class="dropdown-item"
+                                href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+                                target="_blank" rel="noopener"> Lei nº 12.527/2011 </a>
+                            
+                            <a class="dropdown-item"
+                                href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14129.htm"
+                                target="_blank" rel="noopener"> Lei nº 14.129/2021 </a>
+                                                            <a class="dropdown-item"
+                                    href="https://www.almg.gov.br/consulte/legislacao/completa/completa.html?tipo=DEC&num=45969&ano=2012"
+                                    target="_blank" rel="noopener"> Decreto 45.969/2012 </a>
+                            
+                            <a class="dropdown-item" href="https://santamariadosalto.mg.gov.br/legislacoes/14/Instru%C3%A7%C3%A3o%20Normativa"> Instrução
+                                Normativa </a>
+
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            
+             <li class="nav-item">
+                <a class="nav-link" href="https://santamariadosalto.mg.gov.br/diarios-oficiais"> Diário Oficial </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://santamariadosalto.mg.gov.br/licitacoes/1"> Licitações </a>
+            </li>
+
+            
+            
+            
+            
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="https://santamariadosalto.mg.gov.br/webmail" target="_blank" rel="noopener">
+                                Webmail </a>
+                                            </li>
+                            
+
+            <!-- item no menu -->
+            <li id="searchToggle" class="nav-item">
+                <a class="nav-link" href="#" x-on:click="showSearch = !showSearch">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                    <span hidden> Pesquisa </span>
+                </a>
+                <form method="GET" action="https://santamariadosalto.mg.gov.br/busca" class="drop drop-inline" id="inlineSearchDrop" x-cloak x-show="showSearch & isMobile" x-transition>
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </li>
+
+            <!-- fora da nav (ex: logo abaixo no HTML) -->
+            <div class="drop" x-cloak x-show="showSearch & !isMobile" x-transition>
+                <form method="GET" action="https://santamariadosalto.mg.gov.br/busca">
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </div>
+
+                    </ul>
+    </div>
+</nav>
+
+
+
+        <main id="main_content">
+            
+            <div class="floating-wrapper">
+    <div class="floating-sidebar">
+        <a href="https://santamariadosalto.mg.gov.br/lgpd" class="item" id='lgpd-link'>
+    <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="283.46px" height="283.46px" viewBox="0 0 283.46 283.46" enable-background="new 0 0 283.46 283.46" xml:space="preserve">
+<ellipse fill="#307FE8" cx="143.693" cy="140.938" rx="138.752" ry="138.014"/>
+<path fill="#808080" d="M-341,226.604"/>
+<g>
+	<g>
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M49.042,187.308h180.471c0,0,29.289-1.868,30.159-26.671c0,0,0.751-20.688-24.8-29.787
+					c0,0,2.368-27.544-29.539-24.304c0,0-15.828-40.134-48.355-11.467c0,0-11.469-27.172-46.366-21.811
+					c0,0-29.289,3.739-31.906,39.259c0,0-31.408-1.744-24.18,29.412c0,0-25.05-1.119-26.795,20.193
+					C27.731,162.133,26.235,182.074,49.042,187.308z"/>
+			</defs>
+			<use xlink:href="#SVGID_1_"  overflow="visible" fill="#F2691D"/>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path id="SVGID_3_" fill="#FFFFFF" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+				c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+				c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+				c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+				c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+				c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+				c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+				c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+				c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+				c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+				c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+				c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+				c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+				c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+				l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+				C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+		</g>
+		<g>
+			<defs>
+				<path id="SVGID_4_" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+					c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+					c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+					c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+					c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+					c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+					c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+					c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+					c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+					c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+					c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+					c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+					c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+					c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+					l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+					C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+			</defs>
+			<clipPath id="SVGID_5_">
+				<use xlink:href="#SVGID_4_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_5_)">
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 201.098,67.508 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 86.285,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 86.285,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 86.285,67.508 				"/>
+				<polygon fill="#FFFFFF" points="86.285,128.647 86.285,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="86.285,67.507 86.285,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="258.505,98.078 258.505,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="258.505,159.216 258.505,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 258.505,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 258.505,98.078 				"/>
+				<polygon fill="#FFFFFF" points="28.878,99.369 28.878,160.506 86.285,129.937 				"/>
+				<polygon fill="#FFFFFF" points="28.878,160.506 28.878,221.647 86.285,191.077 				"/>
+				<polygon fill="#FFFFFF" points="86.285,129.937 86.285,191.077 28.878,160.506 				"/>
+				<polygon fill="#FFFFFF" points="86.285,68.8 86.285,129.939 28.878,99.369 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<path fill="#FFFFFF" d="M88.927,153.978h11.721v9.202H76.767V124.4h12.16V153.978z"/>
+		<path fill="#FFFFFF" d="M128.253,137.654c-0.475-0.766-1.15-1.359-2.026-1.778c-0.876-0.42-1.937-0.631-3.177-0.631
+			c-2.337,0-4.145,0.759-5.422,2.274c-1.279,1.516-1.917,3.587-1.917,6.216c0,3.031,0.712,5.295,2.136,6.793
+			c1.424,1.497,3.615,2.244,6.573,2.244c2.811,0,5.075-1.131,6.792-3.396h-9.694v-8.599h19.772v12.159
+			c-1.679,2.884-3.998,5.358-6.956,7.422c-2.958,2.063-6.701,3.094-11.228,3.094c-4.018,0-7.514-0.83-10.49-2.492
+			c-2.977-1.662-5.258-3.988-6.847-6.983c-1.589-2.994-2.383-6.409-2.383-10.242c0-3.835,0.794-7.249,2.383-10.243
+			c1.588-2.994,3.862-5.321,6.819-6.983s6.426-2.494,10.407-2.494c5.074,0,9.211,1.226,12.405,3.671
+			c3.196,2.447,5.084,5.771,5.669,9.969H128.253L128.253,137.654z"/>
+		<path fill="#FFFFFF" d="M175.686,144.365c-1.131,1.991-2.802,3.57-5.011,4.738c-2.211,1.169-4.884,1.752-8.025,1.752h-4.82v12.325
+			H145.67V124.4h16.981c4.745,0,8.389,1.205,10.927,3.614c2.538,2.411,3.806,5.643,3.806,9.695
+			C177.384,140.157,176.819,142.375,175.686,144.365z M165.061,137.709c0-2.372-1.26-3.56-3.78-3.56h-3.451v7.119h3.451
+			C163.801,141.269,165.061,140.084,165.061,137.709z"/>
+		<path fill="#FFFFFF" d="M208.031,126.864c3.049,1.644,5.395,3.927,7.038,6.847c1.644,2.923,2.466,6.245,2.466,9.969
+			c0,3.689-0.822,7.011-2.466,9.969s-3.989,5.285-7.038,6.984c-3.051,1.697-6.6,2.546-10.654,2.546h-16.158v-38.779h16.158
+			C201.429,124.4,204.98,125.221,208.031,126.864z M202.8,150.088c1.605-1.497,2.409-3.634,2.409-6.409
+			c0-2.774-0.804-4.91-2.409-6.408c-1.607-1.497-3.78-2.246-6.519-2.246h-2.903v17.309h2.903
+			C199.02,152.334,201.193,151.586,202.8,150.088z"/>
+	</g>
+</g>
+</svg>
+</a>
+        <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+        <ul class="item sociais">
+                    <a class="item__flutuante" target="_blank" rel="noopener" href="https://www.instagram.com/pref.santamaria?igsh=MTIya3lud2NuaWlhOA%3D%3D&amp;utm_source=qr">
+                <img class="img-fluid" src="https://santamariadosalto.mg.gov.br/storage/redes_sociais/instagram.svg" alt="...">
+            </a>
+                    <a class="item__flutuante" target="_blank" rel="noopener" href="https://www.facebook.com/people/Prefeitura-Municipal-de-Santa-Maria-do-Salto/61574436991490/?mibextid=wwXIfr&amp;rdid=4pk2uu74R4gBLr5o&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18xWzLaBcF%2F%3Fmibextid%3DwwXIfr">
+                <img class="img-fluid" src="https://santamariadosalto.mg.gov.br/storage/redes_sociais/facebook.svg" alt="...">
+            </a>
+            </ul>
+    </div>
+</div>
+
+
+
+                            <div id="cont_SANTA MARIA DO SALTO" class="previsao_tempo none"></div>
+            
+            
+            
+                
+    <section id="home" class="banner" x-data="" x-cloak>
+    <h6 hidden> Home </h6>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                        <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/site/banner.jpeg" alt="Banner" />
+                    </div>
+
+                                                                                            
+                    </div>
+
+            </div>
+</section>
+    
+    
+
+    
+    <section class="sections-menu">
+    <div class="section-holder container">
+
+        <div class="section">
+            <div class="title-card">
+                <h2 class="title">Acesso Rápido</h2>
+            </div>
+
+            <div class="context">
+                                                            <div class="subcard">
+                            <h5 class="section-title">Geral</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="https://smsalto.servicosaocidadao.net.br/services/e-sic"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-text"></i>
+                                            
+                                            
+                                                                                            <span class="label">E-SIC</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    E-SIC
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://smsalto.servicosaocidadao.net.br/services/ombudsman"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-megaphone"></i>
+                                            
+                                            
+                                                                                            <span class="label">Ouvidoria</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Ouvidoria
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://smsalto.servicosaocidadao.net.br/services/street-lighting"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-lightbulb"></i>
+                                            
+                                            
+                                                                                            <span class="label">Iluminação Urbana</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Iluminação Urbana
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="http://smsalto.servicosaocidadao.net.br/services/pruning-tree"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-tree"></i>
+                                            
+                                            
+                                                                                            <span class="label">Poda de Árvores</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Poda de Árvores
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://santamariadosalto.sintesetecnologia.com.br/portalServidor/index.xhtml"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-currency-dollar"></i>
+                                            
+                                            
+                                                                                            <span class="label">Contracheque</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Contracheque
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.santamariadosalto.mg.gov.br/licitacoes/1"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-gavel"></i>
+                                            
+                                            
+                                                                                            <span class="label">Licitações</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Licitações
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://pmsantamariadosalto.cidadesmg.com.br/portaltransparencia/"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-file-search"></i>
+                                            
+                                            
+                                                                                            <span class="label">Transparência</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Transparência
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://radardatransparencia.atricon.org.br/panel.html"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-crosshair"></i>
+                                            
+                                            
+                                                                                            <span class="label">Radar da Transparência</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Radar da Transparência
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://santamariadosalto.sintesenotafiscal.com.br/NFSEWeb/"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-note"></i>
+                                            
+                                            
+                                                                                            <span class="label">Nota Fiscal</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Nota Fiscal
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.santamariadosalto.mg.gov.br/webmail"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-envelope"></i>
+                                            
+                                            
+                                                                                            <span class="label">Webmail</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Webmail
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.santamariadosalto.mg.gov.br/todas-secretarias"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-clipboard-text"></i>
+                                            
+                                            
+                                                                                            <span class="label">Carta de Serviços</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Carta de Serviços
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.santamariadosalto.mg.gov.br/covid/home"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-virus"></i>
+                                            
+                                            
+                                                                                            <span class="label">COVID-19</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    COVID-19
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!--| SOBRE |-->
+<section class="sobre">
+    <h6 hidden> Sobre </h6>
+
+    <div class="container">
+        <div class="sobre_content">
+            <div class="sobre_content">
+                            </div>
+
+                                    <div class="sobre_right">
+                                                                        <div class="div_title">
+                                <span> Gerência </span>
+                                <h3 class="title"> Administração 2025 - 2028 </h3>
+                            </div>
+
+                            <div class="sobre_container">
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://santamariadosalto.mg.gov.br/gestores"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/gestor/Dami%C3%A3o%20Souza%20Ormundo%20-%20PbaCv8kuaL.jpeg" alt="Damião Souza Ormundo">
+
+                                        <div>
+                                            <h2 class="title"> Prefeito </h2><hr>
+                                            <p> Damião Souza Ormundo <br> Nascimento: 28/10/1966 </p>
+                                        </div>
+                                    </div>
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://santamariadosalto.mg.gov.br/vices"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/gestor/Marlon%20Caires%20Souza%20-%20akpOBqezAq.jpeg" alt="Marlon Caires Souza">
+
+                                        <div>
+                                            <h2 class="title"> Vice-Prefeito </h2><hr>
+                                            <p> Marlon Caires Souza <br> Nascimento: 21/02/1972 </p>
+                                        </div>
+                                    </div>
+                                                            </div>
+                                                            </div>
+                            </div>
+    </div>
+</section>
+    
+    
+    
+    <section class="noticias" id="noticias">
+    <h6 hidden> Noticias </h6>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> </span>
+                    <h3 class="title"> Notícias & Eventos </h3>
+                    <hr>
+                    <p> Fique por dentro de tudo que acontece no município, novidades, eventos, notícias e outros. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="min-height: 80vh; gap: 1rem; height: fit-content;">
+                            
+                
+                                                            <a href="https://santamariadosalto.mg.gov.br/noticias/copa-municipal-de-futsal" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>27</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/COPA%20MUNICIPAL%20DE%20FUTSAL%20-%205wPsiEAe0U.jpeg"
+                            alt="Capa da notícia: COPA MUNICIPAL DE FUTSAL" />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.14%20-%20M495gkpbCo.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.15%20%281%29%20-%20VJBJl2aNC5.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.15%20%282%29%20-%20aIluGvfFBZ.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.15%20%283%29%20-%20ZUbhzJTKQ4.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.15%20-%20FayVxnbVR4.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.16%20%281%29%20-%20xN35WK7IzG.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.16%20%282%29%20-%20kc6o9MCpMI.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.16.16%20-%20ACF05t4LKC.jpeg"
+                                alt="Imagem da galeria: COPA MUNICIPAL DE FUTSAL" />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">COPA MUNICIPAL DE FUTSAL</h3>
+
+            <div class="desc">
+                <p>A Prefeitura Municipal de Santa Maria do Salto, por meio da Secretaria Municipal de Esporte, Cultura, Lazer e Turismo, deu in&iacute;cio, no &uacute;ltimo fim de semana, &agrave; Copa Municipal de Futsal, nas categorias masculina e feminina.</p>
+<p>A iniciativa tem como objetivo incentivar a pr&aacute;tica esportiva, valorizar os talentos locais e promover a integra&ccedil;&atilde;o da comunidade, reconhecendo o esporte como importante instrumento de inclus&atilde;o social, lazer, sa&uacute;de e qualidade de vida.</p>
+<p>Governo diferente, cuidando da nossa gente.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://santamariadosalto.mg.gov.br/noticias/programa-percursos-gerais-encerra-etapa-e-deixa-legado-de-transformacao-em-santa-maria-do-salto" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>27</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/PROGRAMA%20PERCURSOS%20GERAIS%20ENCERRA%20ETAPA%20E%20DEIXA%20LEGADO%20DE%20TRANSFORMA%C3%87%C3%83O%20EM%20SANTA%20MARIA%20DO%20SALTO%20-%20wy2ZykKDDb.jpeg"
+                            alt="Capa da notícia: PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.11.54%20%281%29%20-%20pHAYnf8CRX.jpeg"
+                                alt="Imagem da galeria: PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.11.54%20%282%29%20-%20PHY3f8Z38t.jpeg"
+                                alt="Imagem da galeria: PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.11.54%20-%20TFFLUeWgxF.jpeg"
+                                alt="Imagem da galeria: PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.11.55%20%281%29%20-%2020J6oNUI3m.jpeg"
+                                alt="Imagem da galeria: PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.11.55%20%282%29%20-%20hsbS6gKAFp.jpeg"
+                                alt="Imagem da galeria: PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-11-27%20at%2009.11.55%20-%20JoiDdj742t.jpeg"
+                                alt="Imagem da galeria: PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">PROGRAMA PERCURSOS GERAIS ENCERRA ETAPA E DEIXA LEGA...</h3>
+
+            <div class="desc">
+                <p>O Programa Percursos Gerais encerra uma importante etapa em Santa Maria do Salto, deixando um legado de aprendizado, conquistas, oportunidades e transforma&ccedil;&atilde;o social.</p>
+<p>Ao longo de sua trajet&oacute;ria no munic&iacute;pio, o programa contribuiu para o fortalecimento de v&iacute;nculos, o desenvolvimento social e a constru&ccedil;&atilde;o de novas perspectivas, promovendo experi&ecirc;ncias significativas para a popula&ccedil;&atilde;o.</p>
+<p>Mais do que as a&ccedil;&otilde;es realizadas, permanecem os conhecimentos compartilhados, os sonhos fortalecidos e os novos caminhos que se abriram para tantas pessoas.</p>
+<p>A Prefeitura Municipal de Santa Maria do Salto reafirma seu compromisso com as iniciativas que promovem a inclus&atilde;o social, a cidadania e a melhoria da qualidade de vida da popula&ccedil;&atilde;o.</p>
+<p>Uma etapa se encerra, mas seu legado permanece nas vidas transformadas e nas oportunidades que continuar&atilde;o fazendo a diferen&ccedil;a.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://santamariadosalto.mg.gov.br/noticias/oficina-de-agroecologia-na-pratica-na-comunidade-belem-no-sitio-olhos-dagua" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>16</span>
+                <span>Sep</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/OFICINA%20DE%20AGROECOLOGIA%20NA%20PR%C3%81TICA%2C%20NA%20COMUNIDADE%20BEL%C3%89M%2C%20NO%20S%C3%8DTIO%20OLHOS%20D%E2%80%99%C3%81GUA.%20-%20eDuB0sbw1g.jpeg"
+                            alt="Capa da notícia: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.30%20%281%29%20-%2081XK0qTphz.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.30%20%282%29%20-%20o0jwZHrGAX.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.30%20-%20NtIdl0VdTW.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.31%20%281%29%20-%20segnSYZtzR.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.31%20%282%29%20-%20JSBv0aaLKW.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.31%20%283%29%20-%20SKLHwxkg5W.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.31%20%284%29%20-%20zUNfZKE4VV.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.31%20-%20QxwcUdTQPr.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.32%20%281%29%20-%20tB9SEmUwSp.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.32%20%282%29%20-%20rXZnXKl7qr.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-16%20at%2012.22.32%20-%203xGTakzpR0.jpeg"
+                                alt="Imagem da galeria: OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">OFICINA DE AGROECOLOGIA NA PRÁTICA, NA COMUNIDADE BE...</h3>
+
+            <div class="desc">
+                <p style="text-align: justify;">🌱 TROCA DE SABERES QUE GERAM FRUTOS!</p>
+<p style="text-align: justify;">A Prefeitura Municipal de Santa Maria do Salto, por meio da Secretaria Municipal de Assist&ecirc;ncia Social, em parceria com a APJ, realizou a Oficina de Agroecologia na Pr&aacute;tica, na comunidade Bel&eacute;m, no S&iacute;tio Olhos d&rsquo;&Aacute;gua.</p>
+<p style="text-align: justify;">A atividade proporcionou aos benefici&aacute;rios um momento de aprendizado e troca de conhecimentos com a oficineira Jaqueline, que apresentou, de forma pr&aacute;tica, t&eacute;cnicas e orienta&ccedil;&otilde;es voltadas ao cultivo sustent&aacute;vel e &agrave; valoriza&ccedil;&atilde;o da produ&ccedil;&atilde;o no campo.</p>
+<p style="text-align: justify;">Na mesma oportunidade, tamb&eacute;m foi realizada a Oficina de Gest&atilde;o, conduzida pelo oficineiro Erasmo. Durante a din&acirc;mica, os participantes puderam compartilhar seus sonhos, organizar ideias e refletir sobre caminhos para fortalecer suas atividades, incluindo a produ&ccedil;&atilde;o agr&iacute;cola, quitandas, produtos artesanais e outras iniciativas desenvolvidas pelas fam&iacute;lias.</p>
+<p style="text-align: justify;">🌾 A&ccedil;&otilde;es como essas fortalecem conhecimentos, incentivam a autonomia e contribuem para o desenvolvimento das fam&iacute;lias e das comunidades rurais de Santa Maria do Salto.</p>
+<p style="text-align: justify;">Prefeitura Municipal de Santa Maria do SaltoGoverno diferente, cuidando da nossa gente.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://santamariadosalto.mg.gov.br/noticias/inscricoes-abertas-minha-casa-minha-vida" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>09</span>
+                <span>Sep</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/INSCRI%C3%87%C3%95ES%20ABERTAS%20%7C%20MINHA%20CASA%2C%20MINHA%20VIDA%20-%207mQnaTdbcf.jpeg"
+                            alt="Capa da notícia: INSCRIÇÕES ABERTAS | MINHA CASA, MINHA VIDA" />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">INSCRIÇÕES ABERTAS | MINHA CASA, MINHA VIDA</h3>
+
+            <div class="desc">
+                <p style="text-align: justify;">🏠 INSCRI&Ccedil;&Otilde;ES ABERTAS | MINHA CASA, MINHA VIDA</p>
+<p style="text-align: justify;">A Prefeitura Municipal de Santa Maria do Salto, por meio da Secretaria Municipal de Assist&ecirc;ncia Social, informa que est&atilde;o abertas as inscri&ccedil;&otilde;es para o processo de sele&ccedil;&atilde;o das fam&iacute;lias benefici&aacute;rias das 25 unidades habitacionais do programa Minha Casa, Minha Vida.</p>
+<p style="text-align: justify;">📅 De 08/09 a 30/09, de segunda a sexta-feira🕑 Das 14h &agrave;s 16h30📍 Local: CRAS</p>
+<p style="text-align: justify;">Os interessados devem comparecer levando os documentos indicados na publica&ccedil;&atilde;o.</p>
+<p style="text-align: justify;">⚠️ Importante: a inscri&ccedil;&atilde;o n&atilde;o garante o recebimento da unidade habitacional. A sele&ccedil;&atilde;o seguir&aacute; os crit&eacute;rios e regras estabelecidos pelo programa.</p>
+<p style="text-align: justify;">Procure o CRAS e fa&ccedil;a sua inscri&ccedil;&atilde;o dentro do prazo.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://santamariadosalto.mg.gov.br/noticias/a-campanha-de-vacinacao-antirrabica-continua-em-santa-maria-do-salto" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>09</span>
+                <span>Sep</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/A%20CAMPANHA%20DE%20VACINA%C3%87%C3%83O%20ANTIRR%C3%81BICA%20CONTINUA%20EM%20SANTA%20MARIA%20DO%20SALTO%20-%2067h3ECrddw.jpeg"
+                            alt="Capa da notícia: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.34%20-%20C8lDyrlz0Q.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.35%20%281%29%20-%20YUNCvjIlTf.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.35%20%282%29%20-%20uyTJjSIcRo.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.35%20-%20J6dfCTGWRo.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.36%20%281%29%20-%20L1jj6F37n2.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.36%20%282%29%20-%20zraKUbfYF4.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.36%20%283%29%20-%20cPScoVkkWl.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.36%20-%20IeDVs1f1sz.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.37%20%281%29%20-%20E9P8FlcCjM.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.37%20-%20DXgJbQVC7q.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/WhatsApp%20Image%202026-09-09%20at%2015.37.34%20%281%29%20-%20ZrJHT8kfex.jpeg"
+                                alt="Imagem da galeria: A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">A CAMPANHA DE VACINAÇÃO ANTIRRÁBICA CONTINUA EM SANT...</h3>
+
+            <div class="desc">
+                <p>🐶🐱 A campanha de vacina&ccedil;&atilde;o antirr&aacute;bica continua em Santa Maria do Salto!</p>
+<p>A Prefeitura, por meio da Secretaria Municipal de Sa&uacute;de, segue realizando a vacina&ccedil;&atilde;o de c&atilde;es e gatos em nosso munic&iacute;pio. A campanha ter&aacute; dura&ccedil;&atilde;o de 60 dias, ampliando o acesso &agrave; imuniza&ccedil;&atilde;o em diferentes localidades.</p>
+<p>Os agentes tamb&eacute;m passar&atilde;o pelas resid&ecirc;ncias, levando a vacina&ccedil;&atilde;o ainda mais perto da popula&ccedil;&atilde;o.</p>
+<p>💉 Proteja seu animal de estima&ccedil;&atilde;o. Vacinar &eacute; cuidar!</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://santamariadosalto.mg.gov.br/noticias/edital-no-0012026-selecao-de-candidatos-para-o-programa-habitacional-minha-casa-minha-visa-fnhis-sub-50" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>17</span>
+                <span>Aug</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/noticia/EDITAL%20N%C2%BA%20001/2026%20-%20SELE%C3%87%C3%83O%20DE%20CANDIDATOS%20PARA%20O%20PROGRAMA%20HABITACIONAL%20MINHA%20CASA%20MINHA%20VISA%20-%20FNHIS%20SUB%2050%20-%20LBlq9HLeEb.png"
+                            alt="Capa da notícia: EDITAL Nº 001/2026 - SELEÇÃO DE CANDIDATOS PARA O PR..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">EDITAL Nº 001/2026 - SELEÇÃO DE CANDIDATOS PARA O PR...</h3>
+
+            <div class="desc">
+                <p><strong>01. Edital n&ordm; 001.2026, Clique aqui</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                    
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-center">
+                        <a class="btn btn_solid mt-5" href="https://santamariadosalto.mg.gov.br/noticias/todas"> Todas as notícias </a>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+    <section class="container feedback_context" style="margin-top: 3rem; margin-bottom: 3rem;" x-data="feedbackStars()">
+    <div class="my-6">
+        <div class="div_title">
+            <span> Sua opnião importa </span>
+            <h3 class="title"> Pesquisa de Satisfação </h3>
+        </div>
+
+        <div class="rating-container">
+            <div class="star-rating">
+                <template x-for="i in 5" :key="i">
+                    <span class="star" :style="{ color: starColor(i) }" @mousemove="preview(i, $event)"
+                        @mouseleave="hoverRate = 0" @click="select(i, $event)">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient :id="`grad-${i}`">
+                                    <stop offset="50%" stop-color="currentColor" />
+                                    <stop offset="50%" stop-color="#e5e7eb" />
+                                </linearGradient>
+                            </defs>
+
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                :fill="isHalf(i) ? `url(#grad-${i})` : 'currentColor'" d="M12 17.5
+            C12.3 17.5 12.6 17.6 12.8 17.8
+            L17.5 21
+            C17.9 21.3 18.2 20.9 18.1 20.5
+            L16.6 14.8
+            C16.5 14.5 16.6 14.2 16.9 14
+            L21.2 10.5
+            C21.6 10.2 21.4 9.6 20.9 9.5
+            L15.3 9
+            C15 9 14.7 8.8 14.6 8.5
+            L12.4 3
+            C12.2 2.6 11.8 2.6 11.6 3
+            L9.4 8.5
+            C9.3 8.8 9 9 8.7 9
+            L3.1 9.5
+            C2.6 9.6 2.4 10.2 2.8 10.5
+            L7.1 14
+            C7.4 14.2 7.5 14.5 7.4 14.8
+            L5.9 20.5
+            C5.8 20.9 6.1 21.3 6.5 21
+            L11.2 17.8
+            C11.4 17.6 11.7 17.5 12 17.5Z" />
+                        </svg>
+                    </span>
+                </template>
+            </div>
+        </div>
+
+        <div class="feedback-score">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
+                <strong>Média de</strong>
+                <div class="score-number">
+                    <strong>3.0</strong>
+                    <span>/ 5</span>
+                </div>
+            </div>
+
+            <div class="score-meta">
+                2 avaliações
+            </div>
+        </div>
+
+        <div class="rating-breakdown" x-data="{ open: false }">
+
+            <button class="toggle" @click="open = !open">
+                Ver detalhamento
+                <span x-text="open ? '▲' : '▼'"></span>
+            </button>
+
+            <div x-show="open" x-transition class="bars">
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            5.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 50%"></div>
+                        </div>
+
+                        <span class="count">
+                            1
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 50%"></div>
+                        </div>
+
+                        <span class="count">
+                            1
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            0.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                            </div>
+        </div>
+
+        <div class="push_modal-backdrop" x-cloak x-data="modalComponent('feedback')" x-show="open" x-transition.opacity
+    @open-modal.window="if ($event.detail === name) open = true"
+    @close-modal.window="if ($event.detail === name) open = false">
+    <div class="push_modal" @click.outside="open = false">
+        <div class="feedback-form">
+                <h3>Sua opinião (opcional)</h3>
+                <form method="POST" action="/feedback">
+                    <input type="hidden" name="_token" value="uJUqNxpMCC7qSd0AoegfaqAmvhPHLshSTNZ9ENcF">                    <input type="hidden" name="rate" :value="rate">
+                    <input type="text" name="name" placeholder="Seu nome (opcional)">
+                    <input type="email" name="email" placeholder="Seu e-mail (opcional)">
+                    <textarea name="message" placeholder="Escreva sua opinião (opcional)"></textarea>
+
+                    <div class="actions">
+                        <button type="submit">Enviar</button>
+                        <button type="button" @click="$dispatch('close-modal', 'feedback')">Agora não</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+        </div>
+</section>
+
+
+
+    
+            <section class="clima">
+    <div class="page_title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> Clima </span>
+                    <h1 class="title">  </h1>
+                    <hr>
+                    <p> Veja as informações do clima para a cidade de <span>SANTA MARIA DO SALTO</span>. </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="climate_content">
+            <p id="weather-info" data-city="SANTA MARIA DO SALTO">Carregando informações do clima...</p>
+        </div>
+    </div>
+    
+</section>
+    
+    
+
+    
+    <div class="modal fade" id="modal_popup" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal_temporaria" role="document">
+            <div class="modal-content modal-content-temporaria">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                                                                        <a target="_blank" href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/edital/01.%20Edital%20n%C2%BA%20001.2026%20-%20xvHSxldpOY.pdf">
+                            <img class="img-fluid mx-auto d-block" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santa-maria-do-salto/modal/CFdJsw675qvP6jc9DZsYuDPik1rcWYvnLYHggTiL.png" alt="">
+                            </a>
+
+                            
+
+                                                            </div>
+            </div>
+        </div>
+    </div>
+
+            </main>
+
+        
+        
+        <footer>
+    <div class="container">
+        <div class="footer_content">
+            <div class="footer_content_1">
+                <div class="footer_info">
+                    <div class="div_title">
+                        <span> Endereço </span>
+                        <h1 class="title"> Prefeitura de Santa Maria do Salto </h1>
+                        <hr>
+                        <p>
+                            PC AURELINA MOTA SANTOS, 218  <br>
+                            Centro, SANTA MARIA DO SALTO/MG - <span class="cep" data-mask="00000-000"> 39928000 </span>
+                        </p>
+
+                                                                                                </div>
+                </div>
+
+                <div class="footer_contact">
+                    <div class="div_title">
+                        <span> Contatos </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="#">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-map-pin"></i>
+                            </div>
+                            <span> Localização </span>
+                        </a>
+
+                        <a class="nav-link" target="_blank" rel="noopener" href="/cdn-cgi/l/email-protection#d5b6babba1b4a1ba95a6b4bba1b4b8b4a7bcb4b1baa6b4b9a1bafbb8b2fbb2baa3fbb7a7">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-envelope-simple"></i>
+                            </div>
+                            <span> <span class="__cf_email__" data-cfemail="8deee2e3f9ecf9e2cdfeece3f9ece0ecffe4ece9e2feece1f9e2a3e0eaa3eae2fba3efff">[email&#160;protected]</span> </span>
+                        </a>
+
+                         <a class="nav-link" href="#">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-phone"></i>
+                            </div>
+                            <span> (33) 3727-1145 </span>
+                        </a>
+
+                        
+                         
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_content_2">
+                                    <div class="footer_redes">
+                        <div class="div_title">
+                            <span> Redes Sociais </span>
+                        </div>
+
+                        <ul class="nav flex-column nav_footer">
+                                                            <a class="nav-link" target="_blank" rel="noopener" href="https://www.instagram.com/pref.santamaria?igsh=MTIya3lud2NuaWlhOA%3D%3D&amp;utm_source=qr">
+                                    <div class="back_icon">
+                                        <img class="img-fluid" src="https://santamariadosalto.mg.gov.br/storage/redes_sociais/instagram.svg" alt="...">
+                                    </div>
+                                    <span> Instagram </span>
+                                </a>
+                                                            <a class="nav-link" target="_blank" rel="noopener" href="https://www.facebook.com/people/Prefeitura-Municipal-de-Santa-Maria-do-Salto/61574436991490/?mibextid=wwXIfr&amp;rdid=4pk2uu74R4gBLr5o&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18xWzLaBcF%2F%3Fmibextid%3DwwXIfr">
+                                    <div class="back_icon">
+                                        <img class="img-fluid" src="https://santamariadosalto.mg.gov.br/storage/redes_sociais/facebook.svg" alt="...">
+                                    </div>
+                                    <span> Facebook </span>
+                                </a>
+                                                    </ul>
+                    </div>
+                
+                <div class="footer_menu">
+                    <div class="div_title">
+                        <span> Menu </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://santamariadosalto.mg.gov.br/noticias.rss">
+                            <i class="ph-bold ph-rss"></i>
+                            <span> RSS </span>
+                        </a>
+
+                        <a class="nav-link" href="https://santamariadosalto.mg.gov.br/mapa-site">
+                            <i class="ph-bold ph-map-trifold"></i>
+                            <span> Mapa do Site </span>
+                        </a>
+
+                                                    <a class="nav-link" href="#" id="clima">
+                                <i class="ph-bold ph-thermometer-simple"></i>
+                                <span> Clima </span>
+                            </a>
+                        
+                                            </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_copy">
+            <div class="copy">
+                <span> 2026 &copy; Todos os direitos reservados Prefeitura de Santa Maria do Salto | CNPJ: <span data-mask="00.000.000/0000-00"> 18347419000180 </span> </span>
+            </div>
+
+            <div class="design">
+                <span> Designed by <a href="https://www.digitaliza.com.br" target="_blank" rel="external"> Digitaliza </a> </span>
+            </div>
+        </div>
+    </div>
+</footer>
+        <a href="#" id="topo">
+    <div class="topo">
+        <i class="ph-bold ph-arrow-fat-up"></i>
+    </div>
+</a>
+    </div>
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=1054904748249600&autoLogAppEvents=1" crossorigin="anonymous" nonce="TgKZxTuJ"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.js"></script>
+
+    <script src="https://santamariadosalto.mg.gov.br/js/app.js"></script>
+
+            <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('modalComponent', (name) => ({
+                    name,
+                    open: false,
+                    openModal() {
+                        this.open = true
+                    },
+                    closeModal() {
+                        this.open = false
+                    }
+                }))
+            })
+        </script>
+        <script>
+        // Alpinejs
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('navbar', () => ({
+                showSearch: false,
+                isMobile: false,
+                init() {
+                    this.isMobile = window.matchMedia('(max-width: 768px)').matches;
+                    window.matchMedia('(max-width: 768px)').addEventListener('change', e => {
+                        this.isMobile = e.matches;
+                    });
+                }
+            }));
+        });
+    </script>
+    <!-- UserWay -->
+    <script>
+        window._userway_config = {
+            size: 'small',
+            position: '5'
+        }
+    </script>
+    <script data-account="HJhdKL5MCA" src="https://cdn.userway.org/widget.js"></script>
+    <script>
+        function feedbackStars() {
+            return {
+                rate: 0,
+                hoverRate: 0,
+                starColor(i) {
+                    const step = Math.min(this.displayRate, i * 2);
+                    if (step <= (i - 1) * 2) return '#e5e7eb';
+
+                    // posição global (1 a 10)
+                    const position = step;
+
+                    // interpolação HSL
+                    const startHue = 45; // amarelo fraco
+                    const endHue = 28; // laranja forte
+
+                    const hue =
+                        startHue - ((startHue - endHue) * (position - 1)) / 9;
+
+                    return `hsl(${hue}, 95%, 60%)`;
+                },
+
+                get displayRate() {
+                    return this.hoverRate || this.rate;
+                },
+
+                preview(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.hoverRate = half ? (i * 2 - 1) : (i * 2);
+                },
+
+                select(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.rate = half ? (i * 2 - 1) : (i * 2);
+                    this.hoverRate = 0;
+                    window.dispatchEvent(
+                        new CustomEvent('open-modal', {
+                            detail: 'feedback'
+                        })
+                    )
+                },
+
+                isFull(i) {
+                    return this.displayRate >= i * 2;
+                },
+
+                isHalf(i) {
+                    return this.displayRate === i * 2 - 1;
+                }
+            }
+        }
+    </script>
+        <script>
+
+            $(document).ready(function() {
+                $('#modal_popup').modal('show');
+            });
+        </script>
+        <!-- VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        new window.VLibras.Widget({
+            source: 'https://vlibras.gov.br/app',
+            position: 'L',
+        });
+    </script>
+
+            
+        <script>
+            $(function() {
+                const cidade = "SANTA MARIA DO SALTO";
+
+                fetch(
+                        `https://api.openweathermap.org/data/2.5/weather?q=${cidade},BR&appid=bbbf320c2a267ad7a2fe7b28f7bb6bb2&units=metric&lang=pt_br`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const temperatura = data.main.temp;
+                        const descricao = data.weather[0].description;
+
+                        document.getElementById('clima').textContent =
+                            `Agora em ${cidade}: ${temperatura}°C, ${descricao}`;
+                    })
+                    .catch(error => {
+                        document.getElementById('clima').textContent = 'Erro ao carregar o clima.';
+                        console.error('Erro ao buscar clima:', error);
+                    });
+            })
+        </script>
+    </body>
+
+</html>

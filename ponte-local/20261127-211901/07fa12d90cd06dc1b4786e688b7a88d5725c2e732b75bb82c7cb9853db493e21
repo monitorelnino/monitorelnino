@@ -1,0 +1,1529 @@
+﻿<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prefeitura de São Sebastião da Vargem Alegre</title>
+    <link rel="icon" href="https://saosebastiaodavargemalegre.mg.gov.br/assets/imagens/icone/brasao.ico" sizes="any">
+    <link rel="shortcut icon" href="https://saosebastiaodavargemalegre.mg.gov.br/assets/imagens/icone/brasao.ico" type="image/x-icon">
+    <link href="https://saosebastiaodavargemalegre.mg.gov.br/assets/css/app.css?v=efe2709f3a96" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        }
+
+        .nav-submenu:hover > .nav-submenu-panel,
+        .nav-submenu:focus-within > .nav-submenu-panel {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .nav-submenu-panel {
+            display: none;
+        }
+
+        .site-main-nav {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        }
+
+        .site-main-nav > * {
+            position: relative;
+        }
+
+        .site-main-nav > * + * {
+            margin-left: .35rem;
+            padding-left: .85rem;
+        }
+
+        .site-main-nav > * + *::before {
+            background: #0f766e;
+            border-radius: 999px;
+            content: "";
+            height: 24px;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+        }
+
+        .site-main-nav a,
+        .site-main-nav button {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
+
+        .site-header-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .site-social-link {
+            align-items: center;
+            border: 1px solid rgba(15, 118, 110, .28);
+            border-radius: 999px;
+            color: #0f766e;
+            display: inline-flex;
+            height: 20px;
+            justify-content: center;
+            transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+            width: 20px;
+        }
+
+        .site-social-link:hover {
+            background: #0f766e;
+            border-color: #0f766e;
+            color: #fff;
+        }
+
+        .site-footer-social-link {
+            align-items: center;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 999px;
+            color: #fff;
+            display: inline-flex;
+            height: 38px;
+            justify-content: center;
+            transition: background-color .15s ease, border-color .15s ease;
+            width: 38px;
+        }
+
+        .site-footer-social-link:hover {
+            background: #0f766e;
+            border-color: #0f766e;
+        }
+
+        .accessibility-fab {
+            align-items: center;
+            background: #0f766e;
+            border: 2px solid #fff;
+            border-radius: 999px;
+            bottom: 1.25rem;
+            box-shadow: 0 14px 30px rgba(2, 6, 23, .24);
+            color: #fff;
+            display: inline-flex;
+            height: 3rem;
+            justify-content: center;
+            position: fixed;
+            right: 1rem;
+            transition: background-color .15s ease, transform .15s ease;
+            width: 3rem;
+            z-index: 70;
+        }
+
+        .accessibility-fab:hover,
+        .accessibility-fab:focus-visible {
+            background: #115e59;
+            transform: translateY(-1px);
+        }
+
+        .accessibility-panel {
+            bottom: 4.75rem;
+            max-width: calc(100vw - 2rem);
+            position: fixed;
+            right: 1rem;
+            width: 18rem;
+            z-index: 70;
+        }
+
+        .accessibility-panel[hidden] {
+            display: none;
+        }
+
+        .accessibility-action {
+            align-items: center;
+            border: 1px solid #cbd5e1;
+            border-radius: .5rem;
+            color: #0f172a;
+            display: flex;
+            font-size: .875rem;
+            font-weight: 700;
+            gap: .6rem;
+            min-height: 2.75rem;
+            padding: .65rem .8rem;
+            transition: border-color .15s ease, color .15s ease, background-color .15s ease;
+            width: 100%;
+        }
+
+        .accessibility-action:hover,
+        .accessibility-action:focus-visible {
+            background: #ecfdf5;
+            border-color: #0f766e;
+            color: #0f766e;
+        }
+
+        html.accessibility-font-lg {
+            font-size: 112.5%;
+        }
+
+        html.accessibility-font-xl {
+            font-size: 125%;
+        }
+
+        html.accessibility-contrast body {
+            background: #000 !important;
+            color: #fff !important;
+        }
+
+        html.accessibility-contrast a {
+            color: #fde047 !important;
+        }
+
+        html.accessibility-contrast header,
+        html.accessibility-contrast footer,
+        html.accessibility-contrast section,
+        html.accessibility-contrast article,
+        html.accessibility-contrast aside,
+        html.accessibility-contrast div,
+        html.accessibility-contrast nav {
+            border-color: #fff !important;
+        }
+
+        html.accessibility-contrast .bg-white,
+        html.accessibility-contrast .bg-\[\#f4f6f8\],
+        html.accessibility-contrast .bg-\[\#f8fafc\] {
+            background: #000 !important;
+            color: #fff !important;
+        }
+
+        html.accessibility-contrast .text-slate-950,
+        html.accessibility-contrast .text-slate-900,
+        html.accessibility-contrast .text-slate-800,
+        html.accessibility-contrast .text-slate-700,
+        html.accessibility-contrast .text-slate-600,
+        html.accessibility-contrast .text-slate-500 {
+            color: #fff !important;
+        }
+
+        [vw] {
+            z-index: 69 !important;
+        }
+
+        [vw] [vw-access-button] {
+            bottom: 5rem !important;
+        }
+
+        @media (min-width: 640px) {
+            .site-header-logo {
+                height: 90px;
+            }
+        }
+
+        .nav-submenu::after {
+            bottom: 0;
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: 0;
+            width: 10px;
+        }
+
+    </style>
+</head>
+<body class="overflow-x-hidden bg-[#f4f6f8] text-slate-900 antialiased">
+<div class="border-b border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-5 py-2 text-xs text-slate-600">
+        <span class="hidden items-center gap-1 sm:inline-flex"><i class="fa-solid fa-building-columns text-[#0f766e]"></i> Portal oficial do município</span>
+        <div class="flex w-full flex-wrap items-center justify-between gap-2 sm:w-auto sm:justify-end sm:gap-4">
+            <a class="hover:text-[#075985]" href="tel:08000327133"><i class="fa-solid fa-phone text-[#0f766e]"></i> 0800 032 7133</a>
+            <a class="hover:text-[#075985]" href="https://email.uolhost.com.br/saosebastiaodavargemalegre.mg.gov.br/" target="_blank" rel="noopener"><i class="fa-solid fa-envelope text-[#0f766e]"></i> Webmail</a>
+            <a class="hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/admin"><i class="fa-solid fa-lock text-[#0f766e]"></i> Acesso administrativo</a>
+            <span class="hidden items-center gap-2 sm:inline-flex" aria-label="Redes sociais da Prefeitura">
+                <a class="site-social-link" href="https://www.facebook.com/prefeiturasaosebastiaodavargemalegre" target="_blank" rel="noopener" aria-label="Facebook da Prefeitura">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a class="site-social-link" href="https://www.instagram.com/prefeiturassva/" target="_blank" rel="noopener" aria-label="Instagram da Prefeitura">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-1">
+        <a href="https://saosebastiaodavargemalegre.mg.gov.br/" class="flex items-center gap-3 no-underline">
+            <img class="site-header-logo object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/logo/logo_site.png" alt="Prefeitura Municipal de São Sebastião da Vargem Alegre">
+        </a>
+
+        <nav class="site-main-nav hidden items-center gap-1 text-sm font-semibold text-slate-700 lg:flex">
+            <div class="group relative">
+                <button class="px-3 py-2 text-sm font-bold transition text-slate-700 hover:text-[#075985]" type="button">
+                    MUNICÍPIO <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                <div class="invisible absolute left-0 top-full z-30 w-60 translate-y-2 rounded-lg bg-white py-2 opacity-0 shadow-xl ring-1 ring-slate-200 transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/municipio/historia"><i class="fa-regular fa-clock w-4 text-[#0f766e]"></i> História</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/municipio/cultura-e-turismo"><i class="fa-solid fa-map-location-dot w-4 text-[#0f766e]"></i> Cultura e Turismo</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lei-aldir-blanc"><i class="fa-solid fa-masks-theater w-4 text-[#0f766e]" aria-hidden="true"></i> Lei Aldir Blanc (PNAB)</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/municipio/localizacao"><i class="fa-solid fa-location-dot w-4 text-[#0f766e]"></i> Localização</a>
+                </div>
+            </div>
+            <a class="px-3 py-2 text-sm font-bold transition text-slate-700 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias">SECRETARIAS</a>
+            <div class="group relative">
+                <button class="px-3 py-2 text-sm font-bold transition text-slate-700 hover:text-[#075985]" type="button">
+                    TRANSPARÊNCIA <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                <div class="invisible absolute left-0 top-full z-30 w-80 translate-y-2 rounded-lg bg-white py-2 opacity-0 shadow-xl ring-1 ring-slate-200 transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/portal-da-transparencia"><i class="fa-solid fa-chart-line w-4 text-[#0f766e]"></i> Portal da Transparência</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/transparencia/saude"><i class="fa-solid fa-kit-medical w-4 text-[#0f766e]"></i> Transparência da Saúde</a>
+                    <div class="nav-submenu relative">
+                        <button class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985] flex w-full justify-between text-left" type="button">
+                            <span><i class="fa-solid fa-users mr-3 w-4 text-[#0f766e]"></i>Pessoal</span>
+                            <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                        </button>
+                        <div class="nav-submenu-panel invisible absolute left-[calc(100%-2px)] top-0 z-40 w-72 translate-x-1 rounded-lg bg-white py-2 opacity-0 shadow-xl ring-1 ring-slate-200 transition">
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal"><i class="fa-solid fa-users w-4 text-[#0f766e]"></i> Visão geral</a>
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal/folha-salarial"><i class="fa-solid fa-money-check-dollar w-4 text-[#0f766e]"></i> Folha Salarial</a>
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal/cargos-remuneracao"><i class="fa-solid fa-briefcase w-4 text-[#0f766e]"></i> Cargo / Remuneração</a>
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal/relacao-funcionarios"><i class="fa-solid fa-id-badge w-4 text-[#0f766e]"></i> Relação de Funcionários</a>
+                        </div>
+                    </div>
+                    <div class="my-1 border-t border-slate-100"></div>
+                    <div class="nav-submenu relative">
+                        <button class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985] flex w-full justify-between text-left" type="button">
+                            <span><i class="fa-solid fa-scale-balanced mr-3 w-4 text-[#0f766e]"></i>Legislação</span>
+                            <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                        </button>
+                        <div class="nav-submenu-panel invisible absolute left-[calc(100%-2px)] top-0 z-40 w-52 translate-x-1 rounded-lg bg-white py-2 opacity-0 shadow-xl ring-1 ring-slate-200 transition">
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/legislacao/1"><i class="fa-solid fa-scale-balanced w-4 text-[#0f766e]"></i> Leis</a>
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/legislacao/2"><i class="fa-regular fa-file-lines w-4 text-[#0f766e]"></i> Decretos</a>
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/legislacao/3"><i class="fa-regular fa-file-lines w-4 text-[#0f766e]"></i> Portarias</a>
+                        </div>
+                    </div>
+                    <div class="nav-submenu relative">
+                        <button class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985] flex w-full justify-between text-left" type="button">
+                            <span><i class="fa-solid fa-people-group mr-3 w-4 text-[#0f766e]"></i>Resoluções / Conselhos</span>
+                            <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                        </button>
+                        <div class="nav-submenu-panel invisible absolute left-[calc(100%-2px)] top-0 z-40 w-72 translate-x-1 rounded-lg bg-white py-2 opacity-0 shadow-xl ring-1 ring-slate-200 transition">
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/conselhos"><i class="fa-solid fa-people-group w-4 text-[#0f766e]"></i> Todos os conselhos</a>
+                            <div class="my-1 border-t border-slate-100"></div>
+                                                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/conselhos/1"><i class="fa-regular fa-circle-dot w-4 text-[#0f766e]"></i> Conselho Municipal de Saúde</a>
+                                                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/conselhos/2"><i class="fa-regular fa-circle-dot w-4 text-[#0f766e]"></i> Conselho Municipal de Assistência Social</a>
+                                                    </div>
+                    </div>
+                    <div class="my-1 border-t border-slate-100"></div>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/informacoes-classificadas"><i class="fa-solid fa-shield-halved w-4 text-[#0f766e]"></i> Informações Classificadas</a>
+                    <div class="nav-submenu relative">
+                        <button class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985] flex w-full justify-between text-left" type="button">
+                            <span><i class="fa-solid fa-clipboard-list mr-3 w-4 text-[#0f766e]"></i>Listas e Divulgações</span>
+                            <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                        </button>
+                        <div class="nav-submenu-panel invisible absolute left-[calc(100%-2px)] top-0 z-40 w-80 translate-x-1 rounded-lg bg-white py-2 opacity-0 shadow-xl ring-1 ring-slate-200 transition">
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-creche"><i class="fa-solid fa-school w-4 text-[#0f766e]"></i> Lista de Espera na Creche</a>
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-saude"><i class="fa-solid fa-user-doctor w-4 text-[#0f766e]"></i> Lista de Espera na Saúde</a>
+                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/terceirizados"><i class="fa-solid fa-briefcase w-4 text-[#0f766e]"></i> Terceirizados</a>
+                        </div>
+                    </div>
+                    <div class="nav-submenu relative">
+                        <button class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985] flex w-full justify-between text-left" type="button"><span>Informações e serviços</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                        <div class="nav-submenu-panel invisible absolute left-[calc(100%-2px)] top-0 z-40 max-h-[70vh] w-80 translate-x-1 overflow-y-auto rounded-lg bg-white py-2 opacity-0 shadow-xl ring-1 ring-slate-200 transition">
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/estrutura-organizacional">Estrutura Organizacional</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/transparencia/educacao">Educação</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/transparencia/fundeb">Conselho do Fundeb</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/carta-de-servicos">Carta de Serviços ao Usuário</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/politica-de-privacidade">Política de Privacidade e Proteção de Dados</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/encarregado-dados">Encarregado de Dados Pessoais</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/sic">Acesso à Informação — SIC</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/informacoes-classificadas">Informações Classificadas e Desclassificadas</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/governo-digital">Governo Digital</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-creche">Lista de Espera na Creche</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-saude">Lista de Espera da Saúde</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/terceirizados">Terceirizados</a>
+                                                            <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/estagiarios">Estagiários</a>
+                                                    </div>
+                    </div>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/sic"><i class="fa-solid fa-circle-info w-4 text-[#0f766e]"></i> e-SIC</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/denuncias"><i class="fa-solid fa-shield-halved w-4 text-[#0f766e]"></i> Canal de Denúncias</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/relatorio-sic"><i class="fa-solid fa-chart-pie w-4 text-[#0f766e]"></i> Relatório SIC</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pmgirs"><i class="fa-solid fa-recycle w-4 text-[#0f766e]"></i> Gestão de Resíduos (PMGIRS)</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/perguntas-frequentes"><i class="fa-regular fa-circle-question w-4 text-[#0f766e]"></i> Perguntas Frequentes</a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#f8fafc] hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/ata-de-posse"><i class="fa-regular fa-file-lines w-4 text-[#0f766e]"></i> Ata de Posse</a>
+                </div>
+            </div>
+            <a class="px-3 py-2 text-sm font-bold transition text-slate-700 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/licitacoes">LICITAÇÕES</a>
+            <a class="px-3 py-2 text-sm font-bold transition text-slate-700 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/concursos">CONCURSOS</a>
+            <a class="px-3 py-2 text-sm font-bold transition text-slate-700 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">CONTATO</a>
+        </nav>
+
+        <button class="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[#0f766e] hover:text-[#0f766e] lg:hidden" type="button" data-mobile-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
+            <i class="fa-solid fa-bars mr-2" data-mobile-menu-icon></i> Menu
+        </button>
+    </div>
+
+    <div class="hidden max-h-[calc(100vh-116px)] overflow-y-auto border-t border-slate-200 bg-white lg:hidden" id="mobile-menu" data-mobile-menu>
+        <nav class="mx-auto grid max-w-7xl gap-2 px-5 py-4 text-sm font-semibold text-slate-700">
+            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-3 text-sm bg-[#e6f5f2] text-[#0f766e]" href="https://saosebastiaodavargemalegre.mg.gov.br/"><i class="fa-solid fa-house w-4 text-[#0f766e]"></i> Início</a>
+
+                        <details class="rounded-lg bg-[#f8fafc] p-1">
+                <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 text-sm font-bold transition [&::-webkit-details-marker]:hidden text-slate-700 hover:bg-slate-100 hover:text-[#075985]">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-landmark w-4 text-[#0f766e]"></i> Município</span>
+                    <i class="fa-solid fa-chevron-down text-[11px] text-slate-400"></i>
+                </summary>
+                <div class="mt-2 grid gap-1 border-t border-slate-200 pt-2">
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/municipio/historia"><i class="fa-regular fa-clock w-4 text-[#0f766e]"></i> História</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/municipio/cultura-e-turismo"><i class="fa-solid fa-map-location-dot w-4 text-[#0f766e]"></i> Cultura e Turismo</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lei-aldir-blanc"><i class="fa-solid fa-masks-theater w-4 text-[#0f766e]" aria-hidden="true"></i> Lei Aldir Blanc (PNAB)</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/municipio/localizacao"><i class="fa-solid fa-location-dot w-4 text-[#0f766e]"></i> Localização</a>
+                </div>
+            </details>
+
+            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-3 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias"><i class="fa-solid fa-sitemap w-4 text-[#0f766e]"></i> Secretarias</a>
+
+                        <details class="rounded-lg bg-[#f8fafc] p-1">
+                <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 text-sm font-bold transition [&::-webkit-details-marker]:hidden text-slate-700 hover:bg-slate-100 hover:text-[#075985]">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-chart-line w-4 text-[#0f766e]"></i> Transparência</span>
+                    <i class="fa-solid fa-chevron-down text-[11px] text-slate-400"></i>
+                </summary>
+                <div class="mt-2 grid gap-1 border-t border-slate-200 pt-2">
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/portal-da-transparencia"><i class="fa-solid fa-chart-line w-4 text-[#0f766e]"></i> Portal da Transparência</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/transparencia/saude"><i class="fa-solid fa-kit-medical w-4 text-[#0f766e]"></i> Transparência da Saúde</a>
+
+                                        <details class="rounded-md bg-white p-1">
+                        <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 text-sm font-bold transition [&::-webkit-details-marker]:hidden text-slate-700 hover:bg-slate-100 hover:text-[#075985]">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-users w-4 text-[#0f766e]"></i> Pessoal</span>
+                            <i class="fa-solid fa-chevron-down text-[11px] text-slate-400"></i>
+                        </summary>
+                        <div class="mt-2 ml-3 grid gap-1 border-l border-slate-200 pl-3">
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal"><i class="fa-solid fa-users w-4 text-[#0f766e]"></i> Visão geral</a>
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal/folha-salarial"><i class="fa-solid fa-money-check-dollar w-4 text-[#0f766e]"></i> Folha Salarial</a>
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal/cargos-remuneracao"><i class="fa-solid fa-briefcase w-4 text-[#0f766e]"></i> Cargo / Remuneração</a>
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal/relacao-funcionarios"><i class="fa-solid fa-id-badge w-4 text-[#0f766e]"></i> Relação de Funcionários</a>
+                        </div>
+                    </details>
+
+                                        <details class="rounded-md bg-white p-1">
+                        <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 text-sm font-bold transition [&::-webkit-details-marker]:hidden text-slate-700 hover:bg-slate-100 hover:text-[#075985]">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-scale-balanced w-4 text-[#0f766e]"></i> Legislação</span>
+                            <i class="fa-solid fa-chevron-down text-[11px] text-slate-400"></i>
+                        </summary>
+                        <div class="mt-2 ml-3 grid gap-1 border-l border-slate-200 pl-3">
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/legislacao/1"><i class="fa-solid fa-scale-balanced w-4 text-[#0f766e]"></i> Leis</a>
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/legislacao/2"><i class="fa-regular fa-file-lines w-4 text-[#0f766e]"></i> Decretos</a>
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/legislacao/3"><i class="fa-regular fa-file-lines w-4 text-[#0f766e]"></i> Portarias</a>
+                        </div>
+                    </details>
+
+                                        <details class="rounded-md bg-white p-1">
+                        <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 text-sm font-bold transition [&::-webkit-details-marker]:hidden text-slate-700 hover:bg-slate-100 hover:text-[#075985]">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-people-group w-4 text-[#0f766e]"></i> Resoluções / Conselhos</span>
+                            <i class="fa-solid fa-chevron-down text-[11px] text-slate-400"></i>
+                        </summary>
+                        <div class="mt-2 ml-3 grid gap-1 border-l border-slate-200 pl-3">
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/conselhos"><i class="fa-solid fa-people-group w-4 text-[#0f766e]"></i> Todos os conselhos</a>
+                                                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/conselhos/1"><i class="fa-regular fa-circle-dot w-4 text-[#0f766e]"></i> Conselho Municipal de Saúde</a>
+                                                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/conselhos/2"><i class="fa-regular fa-circle-dot w-4 text-[#0f766e]"></i> Conselho Municipal de Assistência Social</a>
+                                                    </div>
+                    </details>
+
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/informacoes-classificadas"><i class="fa-solid fa-shield-halved w-4 text-[#0f766e]"></i> Informações Classificadas</a>
+                                        <details class="rounded-md bg-white p-1">
+                        <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 text-sm font-bold transition [&::-webkit-details-marker]:hidden text-slate-700 hover:bg-slate-100 hover:text-[#075985]">
+                            <span class="flex items-center gap-3"><i class="fa-solid fa-clipboard-list w-4 text-[#0f766e]"></i> Listas e Divulgações</span>
+                            <i class="fa-solid fa-chevron-down text-[11px] text-slate-400"></i>
+                        </summary>
+                        <div class="mt-2 ml-3 grid gap-1 border-l border-slate-200 pl-3">
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-creche"><i class="fa-solid fa-school w-4 text-[#0f766e]"></i> Lista de Espera na Creche</a>
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-saude"><i class="fa-solid fa-user-doctor w-4 text-[#0f766e]"></i> Lista de Espera na Saúde</a>
+                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/terceirizados"><i class="fa-solid fa-briefcase w-4 text-[#0f766e]"></i> Terceirizados</a>
+                        </div>
+                    </details>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/contato"><i class="fa-solid fa-circle-info w-4 text-[#0f766e]"></i> e-SIC</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/denuncias"><i class="fa-solid fa-shield-halved w-4 text-[#0f766e]"></i> Canal de Denúncias</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/relatorio-sic"><i class="fa-solid fa-chart-pie w-4 text-[#0f766e]"></i> Relatório SIC</a>
+                    <details>
+                        <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 text-sm font-bold transition [&::-webkit-details-marker]:hidden text-slate-700 hover:bg-slate-100 hover:text-[#075985]">Informações e serviços</summary>
+                        <div class="mt-2 grid gap-1 pl-3">
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/estrutura-organizacional">Estrutura Organizacional</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/transparencia/educacao">Educação</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/transparencia/fundeb">Conselho do Fundeb</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/carta-de-servicos">Carta de Serviços ao Usuário</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/politica-de-privacidade">Política de Privacidade e Proteção de Dados</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/encarregado-dados">Encarregado de Dados Pessoais</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/sic">Acesso à Informação — SIC</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/informacoes-classificadas">Informações Classificadas e Desclassificadas</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/governo-digital">Governo Digital</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-creche">Lista de Espera na Creche</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/lista-espera-saude">Lista de Espera da Saúde</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/terceirizados">Terceirizados</a>
+                                                            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/estagiarios">Estagiários</a>
+                                                    </div>
+                    </details>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/pmgirs"><i class="fa-solid fa-recycle w-4 text-[#0f766e]"></i> Gestão de Resíduos (PMGIRS)</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/perguntas-frequentes"><i class="fa-regular fa-circle-question w-4 text-[#0f766e]"></i> Perguntas Frequentes</a>
+                    <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/ata-de-posse"><i class="fa-regular fa-file-lines w-4 text-[#0f766e]"></i> Ata de Posse</a>
+                </div>
+            </details>
+
+            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-3 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/licitacoes"><i class="fa-solid fa-gavel w-4 text-[#0f766e]"></i> Licitação</a>
+            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-3 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/concursos"><i class="fa-solid fa-user-check w-4 text-[#0f766e]"></i> Concursos</a>
+            <a class="flex items-center gap-3 rounded-md font-bold transition px-3 py-3 text-sm text-slate-700 hover:bg-slate-100 hover:text-[#075985]" href="https://saosebastiaodavargemalegre.mg.gov.br/contato"><i class="fa-solid fa-envelope w-4 text-[#0f766e]"></i> Contato</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+        
+<style>
+    .home-hero {
+        min-height: 420px;
+    }
+
+    .home-hero-collage {
+        position: absolute;
+        inset: 0;
+    }
+
+    .home-hero-collage img {
+        height: 100%;
+        width: 100%;
+        filter: contrast(1.03);
+        transform: scale(1.08);
+    }
+
+    .home-hero-overlay {
+        background: linear-gradient(90deg, rgba(2, 6, 23, .86) 0%, rgba(9, 37, 79, .64) 45%,
+        rgb(13 148 136 / 48%) 100%), linear-gradient(90deg, rgba(2, 6, 23, .22) 0%,
+        rgba(14, 116, 144, .05) 55%, rgb(20 184 166 / 0%) 10%), linear-gradient(180deg, rgba(2, 6, 23, .18) 0%,
+        rgba(2, 6, 23, .62) 100%)
+    }
+
+    .home-quick-strip {
+        margin-top: -32px;
+        padding-bottom: 30px;
+    }
+
+    .home-quick-grid {
+        display: grid;
+    }
+
+    .home-notices {
+        padding-top: 28px;
+    }
+
+    .home-notice-grid {
+        display: grid;
+        gap: 2rem;
+        justify-content: stretch;
+    }
+
+    .home-notice-frame {
+        min-height: 0;
+    }
+
+    .home-notice-media {
+        position: relative;
+        display: block;
+        aspect-ratio: 1520 / 660;
+        min-height: 0;
+        overflow: hidden;
+        background: #0f172a;
+    }
+
+    .home-notice-media img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .home-notice-caption {
+        display: block;
+        min-height: 116px;
+        background: #020617;
+    }
+
+    .home-shortcut-panel {
+        padding: 1.5rem 1.75rem;
+    }
+
+    .home-shortcut-link {
+        min-height: 0;
+    }
+
+    @media (min-width: 1024px) {
+        .home-quick-grid {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+
+        .home-notice-grid {
+            grid-template-columns: minmax(0, 740px) minmax(360px, 1fr);
+        }
+
+        .home-shortcut-aside {
+            grid-template-rows: 118px repeat(4, minmax(0, 1fr));
+            align-self: stretch;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .home-notice-grid {
+            grid-template-columns: minmax(0, 780px) minmax(420px, 1fr);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .home-hero {
+            min-height: 460px;
+        }
+
+        .home-quick-strip {
+            margin-top: 0;
+            padding-bottom: 42px;
+        }
+
+        .home-notices {
+            padding-top: 18px;
+        }
+
+        .home-notice-caption {
+            min-height: 126px;
+        }
+    }
+</style>
+
+<section class="home-hero relative overflow-hidden bg-slate-950">
+    <div class="home-hero-collage" aria-hidden="true">
+        <img src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/carousel/12/ssva-2.png" alt="">
+    </div>
+    <span class="home-hero-overlay absolute inset-0"></span>
+    <span class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/45 to-transparent"></span>
+
+    <div class="relative mx-auto flex min-h-full max-w-7xl flex-col justify-end px-5 py-16 text-white">
+        <span class="inline-flex w-max items-center bg-[#0f766e] px-3 py-1 text-xs font-bold uppercase tracking-wide">
+            Portal municipal
+        </span><br>
+        <h1 class="mt-5 max-w-2xl text-4xl font-semibold leading-tight md:text-3xl">
+            São Sebastião da Vargem Alegre
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-slate-100 md:text-lg">
+            Serviços, documentos oficiais, transparência, licitações e notícias em um portal mais fácil de consultar.
+        </p>
+
+        <form class="mt-7 max-w-2xl bg-white p-2 shadow-2xl" action="https://saosebastiaodavargemalegre.mg.gov.br/busca" method="get">
+            <div class="flex flex-col gap-2 md:flex-row">
+                <label class="sr-only" for="home-search">Buscar no portal</label>
+                <input id="home-search" name="q" class="min-h-12 flex-1 px-4 text-sm text-slate-900 outline-none" type="search" placeholder="Busque por serviços, documentos, licitações, saúde...">
+                <button class="bg-[#0f766e] px-6 py-3 text-sm font-bold text-white hover:bg-[#115e59]" type="submit">
+                    <i class="fa-solid fa-magnifying-glass mr-2"></i> Buscar
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="home-quick-strip relative z-10 bg-[#f4f6f8]">
+    <div class="mx-auto max-w-7xl px-5">
+        <div class="home-quick-grid overflow-hidden bg-white shadow-xl ring-1 ring-slate-200">
+                            <a class="group border-b border-slate-200 p-6 transition hover:bg-[#f8fafc] md:border-b-0 md:border-r md:last:border-r-0" href="https://saosebastiaodavargemalegremg.futurize-nfse.com.br">
+                    <i class="fa-solid fa-barcode text-2xl text-[#0f766e]"></i>
+                    <strong class="mt-4 block text-base text-slate-950">Nota Fiscal Eletrônica</strong>
+                    <small class="mt-2 block leading-5 text-slate-500">Emissão e consulta de NFS-e</small>
+                </a>
+                            <a class="group border-b border-slate-200 p-6 transition hover:bg-[#f8fafc] md:border-b-0 md:border-r md:last:border-r-0" href="https://pm-ssvalegre.publicacao.siplanweb.com.br">
+                    <i class="fa-solid fa-scale-balanced text-2xl text-[#0f766e]"></i>
+                    <strong class="mt-4 block text-base text-slate-950">Portal da Transparência</strong>
+                    <small class="mt-2 block leading-5 text-slate-500">Receitas, despesas e documentos públicos</small>
+                </a>
+                            <a class="group border-b border-slate-200 p-6 transition hover:bg-[#f8fafc] md:border-b-0 md:border-r md:last:border-r-0" href="https://saosebastiaodavargemalegre.mg.gov.br/licitacoes">
+                    <i class="fa-solid fa-gavel text-2xl text-[#0f766e]"></i>
+                    <strong class="mt-4 block text-base text-slate-950">Licitações</strong>
+                    <small class="mt-2 block leading-5 text-slate-500">Editais, atas, contratos e processos</small>
+                </a>
+                            <a class="group border-b border-slate-200 p-6 transition hover:bg-[#f8fafc] md:border-b-0 md:border-r md:last:border-r-0" href="https://saosebastiaodavargemalegre.mg.gov.br/concursos">
+                    <i class="fa-solid fa-user-check text-2xl text-[#0f766e]"></i>
+                    <strong class="mt-4 block text-base text-slate-950">Concursos</strong>
+                    <small class="mt-2 block leading-5 text-slate-500">Processos seletivos e convocações</small>
+                </a>
+                            <a class="group border-b border-slate-200 p-6 transition hover:bg-[#f8fafc] md:border-b-0 md:border-r md:last:border-r-0" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">
+                    <i class="fa-solid fa-headset text-2xl text-[#0f766e]"></i>
+                    <strong class="mt-4 block text-base text-slate-950">Atendimento</strong>
+                    <small class="mt-2 block leading-5 text-slate-500">Contatos, ouvidoria e solicitações</small>
+                </a>
+                    </div>
+    </div>
+</section>
+
+<section class="home-notices bg-[#f4f6f8] pb-16">
+    <div class="mx-auto max-w-7xl px-5">
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-5">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-[.18em] text-[#0f766e]">Avisos oficiais</span>
+                <h2 class="mt-2 max-w-2xl text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">Campanhas, comunicados e informes da Prefeitura</h2>
+            </div>
+            <a class="inline-flex h-11 items-center gap-2 border border-slate-300 px-4 text-sm font-bold text-slate-800 transition hover:border-[#0f766e] hover:text-[#0f766e]" href="https://saosebastiaodavargemalegre.mg.gov.br/noticias">
+                Ver comunicados <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+        </div>
+
+        <div class="home-notice-grid">
+            <div class="group relative overflow-hidden bg-slate-950 shadow-xl" data-carousel>
+                <div class="home-notice-frame relative">
+                                                                    <a class="" data-slide href="#">
+                            <span class="home-notice-media">
+                                <img src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/carousel-dois/9656/Energy%20Outage%20Reporting%20Guide.png" alt="Em caso de interrupção no fornecimento de energia elétrica, entre em contato com a Energisa pelos canais oficiais:" loading="eager">
+                                <span class="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-slate-950/10"></span>
+                                <span class="absolute left-6 top-6 inline-flex items-center bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#0f766e] backdrop-blur">
+                                    Em destaque
+                                </span>
+                            </span>
+                            <span class="home-notice-caption p-5 text-white md:px-6 md:py-5">
+                                <span class="mb-2 block h-1 w-16 bg-[#14b8a6]"></span>
+                                <strong class="block max-w-2xl text-2xl font-semibold leading-tight md:text-[1.85rem]">Em caso de interrupção no fornecimento de energia elétrica, entre em contato com a Energisa pelos canais oficiais:</strong>
+                                <span class="mt-2 inline-flex items-center gap-2 text-sm font-bold text-white/90">
+                                    Abrir comunicado <i class="fa-solid fa-arrow-right-long"></i>
+                                </span>
+                            </span>
+                        </a>
+                                                                    <a class="hidden" data-slide href="#">
+                            <span class="home-notice-media">
+                                <img src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/carousel-dois/9655/Benefici--rios_%20Pesagem%20Obrigat--ria%20Bolsa%20Fam--lia.png" alt="Atenção, beneficiários do Bolsa Família!" loading="lazy">
+                                <span class="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-slate-950/10"></span>
+                                <span class="absolute left-6 top-6 inline-flex items-center bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#0f766e] backdrop-blur">
+                                    Em destaque
+                                </span>
+                            </span>
+                            <span class="home-notice-caption p-5 text-white md:px-6 md:py-5">
+                                <span class="mb-2 block h-1 w-16 bg-[#14b8a6]"></span>
+                                <strong class="block max-w-2xl text-2xl font-semibold leading-tight md:text-[1.85rem]">Atenção, beneficiários do Bolsa Família!</strong>
+                                <span class="mt-2 inline-flex items-center gap-2 text-sm font-bold text-white/90">
+                                    Abrir comunicado <i class="fa-solid fa-arrow-right-long"></i>
+                                </span>
+                            </span>
+                        </a>
+                                                                    <a class="hidden" data-slide href="#">
+                            <span class="home-notice-media">
+                                <img src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/carousel-dois/9652/Campanha%20Sa--de%20da%20Mulher_%20Inser----o%20de%20Implanon.png" alt="MAIS UMA OPÇÃO DE CUIDADO COM A SAÚDE DA MULHER! " loading="lazy">
+                                <span class="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-slate-950/10"></span>
+                                <span class="absolute left-6 top-6 inline-flex items-center bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#0f766e] backdrop-blur">
+                                    Em destaque
+                                </span>
+                            </span>
+                            <span class="home-notice-caption p-5 text-white md:px-6 md:py-5">
+                                <span class="mb-2 block h-1 w-16 bg-[#14b8a6]"></span>
+                                <strong class="block max-w-2xl text-2xl font-semibold leading-tight md:text-[1.85rem]">MAIS UMA OPÇÃO DE CUIDADO COM A SAÚDE DA MULHER! </strong>
+                                <span class="mt-2 inline-flex items-center gap-2 text-sm font-bold text-white/90">
+                                    Abrir comunicado <i class="fa-solid fa-arrow-right-long"></i>
+                                </span>
+                            </span>
+                        </a>
+                                                                    <a class="hidden" data-slide href="https://saosebastiaodavargemalegre.mg.gov.br/noticias/municipio-disponibiliza-insercao-do-diu-mirena">
+                            <span class="home-notice-media">
+                                <img src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/carousel-dois/9651/Campanha%20Sa--de%20da%20Mulher_%20DIU%20Mirena.png" alt="Município disponibiliza inserção do DIU Mirena." loading="lazy">
+                                <span class="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-slate-950/10"></span>
+                                <span class="absolute left-6 top-6 inline-flex items-center bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#0f766e] backdrop-blur">
+                                    Em destaque
+                                </span>
+                            </span>
+                            <span class="home-notice-caption p-5 text-white md:px-6 md:py-5">
+                                <span class="mb-2 block h-1 w-16 bg-[#14b8a6]"></span>
+                                <strong class="block max-w-2xl text-2xl font-semibold leading-tight md:text-[1.85rem]">Município disponibiliza inserção do DIU Mirena.</strong>
+                                <span class="mt-2 inline-flex items-center gap-2 text-sm font-bold text-white/90">
+                                    Abrir comunicado <i class="fa-solid fa-arrow-right-long"></i>
+                                </span>
+                            </span>
+                        </a>
+                                    </div>
+
+                <div class="absolute right-5 top-5 flex items-center gap-2">
+                    <button class="grid h-11 w-11 place-items-center bg-white/90 text-slate-950 shadow-lg transition hover:bg-white" type="button" data-carousel-prev aria-label="Anterior">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="grid h-11 w-11 place-items-center bg-[#0f766e] text-white shadow-lg transition hover:bg-[#115e59]" type="button" data-carousel-next aria-label="Próximo">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="absolute bottom-6 right-6 flex gap-2">
+                                            <button class="h-2 w-2 rounded-full bg-white/40 transition" type="button" data-dot aria-label="Comunicado 1"></button>
+                                            <button class="h-2 w-2 rounded-full bg-white/40 transition" type="button" data-dot aria-label="Comunicado 2"></button>
+                                            <button class="h-2 w-2 rounded-full bg-white/40 transition" type="button" data-dot aria-label="Comunicado 3"></button>
+                                            <button class="h-2 w-2 rounded-full bg-white/40 transition" type="button" data-dot aria-label="Comunicado 4"></button>
+                                    </div>
+            </div>
+
+            <aside class="home-shortcut-aside grid content-start gap-4">
+                <div class="home-shortcut-panel bg-[#0f766e] text-white shadow-lg">
+                    <span class="text-xs font-bold uppercase tracking-[.18em] text-white/75">Acesso direto</span>
+                    <h3 class="mt-2 text-2xl font-semibold leading-tight">Serviços mais procurados</h3>
+                </div>
+
+                                    <a class="home-shortcut-link group flex items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/portal-da-transparencia">
+                        <span class="grid h-12 w-12 shrink-0 place-items-center bg-white text-lg text-[#0f766e] ring-1 ring-slate-200 transition group-hover:bg-[#0f766e] group-hover:text-white">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </span>
+                        <strong class="min-w-0 text-base font-semibold text-slate-950">Transparência</strong>
+                        <i class="fa-solid fa-arrow-right ml-auto text-slate-300 transition group-hover:translate-x-1 group-hover:text-[#0f766e]"></i>
+                    </a>
+                                    <a class="home-shortcut-link group flex items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/licitacoes">
+                        <span class="grid h-12 w-12 shrink-0 place-items-center bg-white text-lg text-[#0f766e] ring-1 ring-slate-200 transition group-hover:bg-[#0f766e] group-hover:text-white">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </span>
+                        <strong class="min-w-0 text-base font-semibold text-slate-950">Licitações</strong>
+                        <i class="fa-solid fa-arrow-right ml-auto text-slate-300 transition group-hover:translate-x-1 group-hover:text-[#0f766e]"></i>
+                    </a>
+                                    <a class="home-shortcut-link group flex items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg" href="https://saosebastiaodavargemalegremg.futurize-nfse.com.br">
+                        <span class="grid h-12 w-12 shrink-0 place-items-center bg-white text-lg text-[#0f766e] ring-1 ring-slate-200 transition group-hover:bg-[#0f766e] group-hover:text-white">
+                            <i class="fa-solid fa-barcode"></i>
+                        </span>
+                        <strong class="min-w-0 text-base font-semibold text-slate-950">Nota Fiscal</strong>
+                        <i class="fa-solid fa-arrow-right ml-auto text-slate-300 transition group-hover:translate-x-1 group-hover:text-[#0f766e]"></i>
+                    </a>
+                                    <a class="home-shortcut-link group flex items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">
+                        <span class="grid h-12 w-12 shrink-0 place-items-center bg-white text-lg text-[#0f766e] ring-1 ring-slate-200 transition group-hover:bg-[#0f766e] group-hover:text-white">
+                            <i class="fa-solid fa-message"></i>
+                        </span>
+                        <strong class="min-w-0 text-base font-semibold text-slate-950">Ouvidoria</strong>
+                        <i class="fa-solid fa-arrow-right ml-auto text-slate-300 transition group-hover:translate-x-1 group-hover:text-[#0f766e]"></i>
+                    </a>
+                            </aside>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#f4f6f8] py-8" aria-label="Edital de fomento à cultura">
+    <div class="mx-auto max-w-7xl px-5">
+        <a class="pnab-banner" href="https://saosebastiaodavargemalegre.mg.gov.br/lei-aldir-blanc">
+            <img class="pnab-banner-art" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/imagens/pnab/cultura-2026.webp" alt="" loading="lazy" width="1536" height="512">
+            <div class="pnab-banner-copy">
+                <span class="pnab-eyebrow">Cultura • Chamamento público nº 001/2026</span>
+                <h2>Lei Aldir Blanc</h2>
+                <p>Apoio a projetos culturais.<br>Conheça o edital PNAB 2026.</p>
+                <span class="pnab-banner-cta">Acesse o edital e as orientações <span aria-hidden="true">→</span></span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="bg-[#f4f6f8] py-14">
+    <div class="mx-auto max-w-7xl px-5">
+        <div class="mb-7 flex flex-wrap items-end justify-between gap-4">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-wide text-[#0f766e]">Serviços</span>
+                <h2 class="mt-1 text-3xl font-semibold text-slate-950">Acesso rápido</h2>
+                <p class="mt-3 max-w-2xl leading-7 text-slate-600">Atalhos para os serviços mais procurados pela população.</p>
+            </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegre.tributos-futurize.com.br/">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #0f766e"><i class="fa-solid fa-house-chimney"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #0f766e 12%, white); color: #0f766e">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">IPTU Online</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Emissão de guias e consulta de débitos</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #0f766e">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegremg.futurize-nfse.com.br">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #0891b2"><i class="fa-solid fa-barcode"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #0891b2 12%, white); color: #0891b2">
+                        <i class="fa-solid fa-barcode"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">Nota Fiscal Eletrônica</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Emissão e consulta de NFS-e</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #0891b2">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #0891b2"><i class="fa-solid fa-circle-info"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #0891b2 12%, white); color: #0891b2">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">e-SIC</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Pedidos de informação ao município</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #0891b2">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #d97706"><i class="fa-solid fa-comments"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #d97706 12%, white); color: #d97706">
+                        <i class="fa-solid fa-comments"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">Ouvidoria</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Manifestações, solicitações e sugestões</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #d97706">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/denuncias">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #b91c1c"><i class="fa-solid fa-shield-halved"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #b91c1c 12%, white); color: #b91c1c">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">Canal de Denúncias</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Envio protegido, anônimo e acompanhamento por protocolo</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #b91c1c">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/diario-oficial">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #2563eb"><i class="fa-regular fa-newspaper"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #2563eb 12%, white); color: #2563eb">
+                        <i class="fa-regular fa-newspaper"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">Diário Oficial</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Publicações e atos oficiais</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #2563eb">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/pessoal/folha-salarial">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #4f46e5"><i class="fa-solid fa-money-check-dollar"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #4f46e5 12%, white); color: #4f46e5">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">Folha de Pagamento</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Consulta de pagamentos e demonstrativos</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #4f46e5">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                            <a class="group relative min-h-36 overflow-hidden bg-white p-5 ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg" href="https://saosebastiaodavargemalegre.mg.gov.br/conselhos">
+                    <span class="absolute -right-2 top-4 text-7xl opacity-10 transition group-hover:scale-110" style="color: #65a30d"><i class="fa-solid fa-people-group"></i></span>
+                    <span class="relative grid h-11 w-11 place-items-center rounded-md text-lg" style="background: color-mix(in srgb, #65a30d 12%, white); color: #65a30d">
+                        <i class="fa-solid fa-people-group"></i>
+                    </span>
+                    <strong class="relative mt-5 block text-lg leading-tight text-slate-950">Conselhos</strong>
+                    <small class="relative mt-2 block max-w-[16rem] leading-5 text-slate-600">Conselhos municipais e participação social</small>
+                    <span class="relative mt-4 inline-flex items-center gap-2 text-sm font-bold" style="color: #65a30d">
+                        Acessar <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+                    </div>
+    </div>
+</section>
+
+<section class="bg-[#f6fafb] py-14">
+    <div class="mx-auto max-w-7xl px-5">
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-wide text-[#0f766e]">Comunicação</span>
+                <h2 class="mt-1 text-3xl font-semibold text-slate-950">Notícias recentes</h2>
+            </div>
+            <a class="text-sm font-bold text-[#0f766e] hover:text-[#115e59]" href="https://saosebastiaodavargemalegre.mg.gov.br/noticias">Ver todas</a>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_.95fr]">
+                                            <a class="group block overflow-hidden bg-white ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-xl" href="https://saosebastiaodavargemalegre.mg.gov.br/noticias/municipio-disponibiliza-insercao-do-diu-mirena">
+                    <img class="h-80 w-full object-cover" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/artigo/189/Campanha%20Sa--de%20da%20Mulher_%20DIU%20Mirena.png" alt="Município disponibiliza inserção do DIU Mirena">
+                    <div class="p-7">
+                        <time class="text-xs font-bold uppercase text-[#0f766e]">27/10/2026</time>
+                        <h3 class="mt-3 text-3xl font-semibold leading-tight text-slate-950">Município disponibiliza inserção do DIU Mirena</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-600">Município disponibiliza inserção do DIU Mirena. A Prefeitura de São Sebastião da Vargem Alegre informa que a inserção do DIU Mirena já está disponível na rede municipal de saúde. As interessadas devem procurar sua Unidade de Saúde para agendar uma avaliação...</p>
+                        <span class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ler notícia <i class="fa-solid fa-arrow-right-long transition group-hover:translate-x-1"></i>
+                        </span>
+                    </div>
+                </a>
+            
+            <div class="grid gap-4">
+                                                        <a class="grid grid-cols-[116px_1fr] gap-4 bg-white p-3 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/noticias/vacinacao-infantil-cuidado-e-prevencao">
+                        <img class="h-24 w-full object-cover" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/artigo/188/Vacina%20Pneumo%2020_%20Informa----o%20--%20Prote----o.png" alt="Vacinação infantil: cuidado e prevenção">
+                        <div>
+                            <time class="text-xs font-semibold text-[#0f766e]">27/10/2026</time>
+                            <h3 class="mt-1 font-semibold leading-snug text-slate-900">Vacinação infantil: cuidado e prevenção</h3>
+                        </div>
+                    </a>
+                                                        <a class="grid grid-cols-[116px_1fr] gap-4 bg-white p-3 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/noticias/agua-santa-de-cara-nova">
+                        <img class="h-24 w-full object-cover" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/artigo/187/ChatGPT%20Image%2010%20de%20set.%20de%202026-%2008_54_20.png" alt="Água Santa de cara nova!">
+                        <div>
+                            <time class="text-xs font-semibold text-[#0f766e]">10/09/2026</time>
+                            <h3 class="mt-1 font-semibold leading-snug text-slate-900">Água Santa de cara nova!</h3>
+                        </div>
+                    </a>
+                                                        <a class="grid grid-cols-[116px_1fr] gap-4 bg-white p-3 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/noticias/prefeitura-realiza-melhorias-na-comunidade-de-agua-santa">
+                        <img class="h-24 w-full object-cover" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/artigo/186/ChatGPT%20Image%20Sep%202-%202026-%2001_37_32%20PM.png" alt="Prefeitura realiza melhorias na comunidade de Água Santa">
+                        <div>
+                            <time class="text-xs font-semibold text-[#0f766e]">02/09/2026</time>
+                            <h3 class="mt-1 font-semibold leading-snug text-slate-900">Prefeitura realiza melhorias na comunidade de Água Santa</h3>
+                        </div>
+                    </a>
+                                                        <a class="grid grid-cols-[116px_1fr] gap-4 bg-white p-3 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/noticias/agosto-lilas-reforca-conscientizacao-e-combate-a-violencia-contra-a-mulher">
+                        <img class="h-24 w-full object-cover" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/artigo/185/ChatGPT%20Image%20Aug%2027-%202026-%2006_20_53%20PM.png" alt="Agosto Lilás reforça conscientização e combate à violência contra a mulher">
+                        <div>
+                            <time class="text-xs font-semibold text-[#0f766e]">27/08/2026</time>
+                            <h3 class="mt-1 font-semibold leading-snug text-slate-900">Agosto Lilás reforça conscientização e combate à violência contra a mulher</h3>
+                        </div>
+                    </a>
+                            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#edf2f4] py-14">
+    <div class="mx-auto max-w-7xl px-5">
+        <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-wide text-[#0f766e]">Gestão</span>
+                <h2 class="mt-1 text-3xl font-semibold text-slate-950">Secretarias municipais</h2>
+                <p class="mt-4 max-w-2xl leading-7 text-slate-600">Encontre setores, responsáveis e contatos principais.</p>
+            </div>
+            <a class="inline-flex w-fit items-center gap-2 rounded-md bg-[#0f766e] px-4 py-3 text-sm font-bold text-white transition hover:bg-[#115e59]" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias">
+                Ver todas <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+
+        <div class="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/1">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/1/Logo_Desenvolvimento_Social.png" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretaria de Desenvolvimento Social</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Rafhael Camargo B. Ribeiro</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/2">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/2/logo-saude-1.png" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretaria de Saúde</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Flávia Martins Barbosa Rodrigues</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/3">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/3/whatsapp-image-2021-03-02-at-11.03.02.jpeg" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretaria de Educação</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Vanessa de Oliveira Macedo</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/4">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/4/logo-administracao.png" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretaria de Administração</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Juan Massi de Almeida</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/5">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/5/logo-agricultura.png" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretaria da Agricultura e Meio Ambiente</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Eduardo Carvalho Almeida</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/6">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/6/logo-esporte.png" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretaria do Esporte, Lazer e Turismo</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Edilene C. Murito Milani</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/7">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/7/logo-infra-estrutura-copia.png" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretário de Infraestrutura</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Deberson Júnior Machado</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                                            <a class="group flex min-h-32 items-center gap-4 bg-white p-4 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md" href="https://saosebastiaodavargemalegre.mg.gov.br/secretarias/8">
+                    <span class="grid h-16 w-20 shrink-0 place-items-center bg-[#f8fafc] p-2 ring-1 ring-slate-200">
+                                                    <img class="max-h-10 max-w-16 object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/secretarias/8/logo-financas-copia.png" alt="">
+                                            </span>
+                    <span class="min-w-0 flex-1">
+                        <strong class="block text-base font-semibold leading-snug text-slate-950">Secretaria de Finanças</strong>
+                                                    <span class="mt-1 block truncate text-sm text-slate-600">Nilmar de Jesus Farinelli</span>
+                                                <span class="mt-3 flex items-center gap-2 text-sm font-semibold text-slate-600">
+                            <i class="fa-solid fa-phone text-[#0f766e]"></i>
+                            0800 032 7133                        </span>
+                        <span class="mt-2 flex items-center gap-2 text-sm font-bold text-[#0f766e]">
+                            Ver detalhes <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </span>
+                    </span>
+                </a>
+                    </div>
+    </div>
+</section>
+
+<section class="bg-white py-14">
+    <div class="mx-auto max-w-7xl px-5">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-wide text-[#0f766e]">Clima</span>
+                <h2 class="mt-1 text-3xl font-semibold text-slate-950">Previsão da semana</h2>
+                <p class="mt-4 max-w-2xl leading-7 text-slate-600">Acompanhe a previsão para São Sebastião da Vargem Alegre nos próximos dias.</p>
+            </div>
+            <span class="inline-flex w-fit items-center gap-2 rounded-md bg-[#e6f5f2] px-4 py-3 text-sm font-bold text-[#0f766e]">
+                <i class="fa-solid fa-location-dot"></i> São Sebastião da Vargem Alegre
+            </span>
+        </div>
+
+        <div class="mt-8 grid gap-4 lg:grid-cols-[1.05fr_1.95fr]" data-weather-forecast>
+                            <article class="min-h-40 animate-pulse bg-white p-4 ring-1 ring-slate-200">
+                    <div class="h-4 w-20 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-8 w-12 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-4 w-24 rounded bg-slate-200"></div>
+                </article>
+                            <article class="min-h-40 animate-pulse bg-white p-4 ring-1 ring-slate-200">
+                    <div class="h-4 w-20 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-8 w-12 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-4 w-24 rounded bg-slate-200"></div>
+                </article>
+                            <article class="min-h-40 animate-pulse bg-white p-4 ring-1 ring-slate-200">
+                    <div class="h-4 w-20 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-8 w-12 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-4 w-24 rounded bg-slate-200"></div>
+                </article>
+                            <article class="min-h-40 animate-pulse bg-white p-4 ring-1 ring-slate-200">
+                    <div class="h-4 w-20 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-8 w-12 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-4 w-24 rounded bg-slate-200"></div>
+                </article>
+                            <article class="min-h-40 animate-pulse bg-white p-4 ring-1 ring-slate-200">
+                    <div class="h-4 w-20 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-8 w-12 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-4 w-24 rounded bg-slate-200"></div>
+                </article>
+                            <article class="min-h-40 animate-pulse bg-white p-4 ring-1 ring-slate-200">
+                    <div class="h-4 w-20 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-8 w-12 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-4 w-24 rounded bg-slate-200"></div>
+                </article>
+                            <article class="min-h-40 animate-pulse bg-white p-4 ring-1 ring-slate-200">
+                    <div class="h-4 w-20 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-8 w-12 rounded bg-slate-200"></div>
+                    <div class="mt-5 h-4 w-24 rounded bg-slate-200"></div>
+                </article>
+                    </div>
+
+        <p class="mt-4 text-xs leading-5 text-slate-500">Dados meteorológicos fornecidos pela Open-Meteo, atualizados automaticamente.</p>
+    </div>
+</section>
+
+<style>
+    @keyframes weatherFade {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        var container = document.querySelector('[data-weather-forecast]');
+
+        if (!container) {
+            return;
+        }
+
+        var labels = {
+            0: ['Céu limpo', 'fa-solid fa-sun', '#f59e0b', '#fffbeb', '#fef3c7', 'linear-gradient(135deg, #fff7ed 0%, #fef3c7 52%, #bae6fd 100%)'],
+            1: ['Poucas nuvens', 'fa-solid fa-cloud-sun', '#0284c7', '#f0f9ff', '#bae6fd', 'linear-gradient(135deg, #f0f9ff 0%, #dbeafe 52%, #fef3c7 100%)'],
+            2: ['Parcialmente nublado', 'fa-solid fa-cloud-sun', '#0f766e', '#f0fdfa', '#ccfbf1', 'linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 58%, #fef9c3 100%)'],
+            3: ['Nublado', 'fa-solid fa-cloud', '#475569', '#f8fafc', '#e2e8f0', 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 56%, #dbeafe 100%)'],
+            45: ['Neblina', 'fa-solid fa-smog', '#64748b', '#f8fafc', '#e2e8f0', 'linear-gradient(135deg, #f8fafc 0%, #e5e7eb 56%, #cbd5e1 100%)'],
+            48: ['Neblina', 'fa-solid fa-smog', '#64748b', '#f8fafc', '#e2e8f0', 'linear-gradient(135deg, #f8fafc 0%, #e5e7eb 56%, #cbd5e1 100%)'],
+            51: ['Garoa fraca', 'fa-solid fa-cloud-rain', '#2563eb', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 54%, #bfdbfe 100%)'],
+            53: ['Garoa', 'fa-solid fa-cloud-rain', '#2563eb', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 54%, #bfdbfe 100%)'],
+            55: ['Garoa forte', 'fa-solid fa-cloud-rain', '#1d4ed8', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #eff6ff 0%, #bfdbfe 52%, #93c5fd 100%)'],
+            61: ['Chuva fraca', 'fa-solid fa-cloud-rain', '#2563eb', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 54%, #bfdbfe 100%)'],
+            63: ['Chuva', 'fa-solid fa-cloud-showers-heavy', '#1d4ed8', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #eff6ff 0%, #bfdbfe 52%, #93c5fd 100%)'],
+            65: ['Chuva forte', 'fa-solid fa-cloud-showers-heavy', '#1e40af', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #dbeafe 0%, #93c5fd 54%, #60a5fa 100%)'],
+            80: ['Pancadas fracas', 'fa-solid fa-cloud-rain', '#2563eb', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 54%, #bfdbfe 100%)'],
+            81: ['Pancadas de chuva', 'fa-solid fa-cloud-showers-heavy', '#1d4ed8', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #eff6ff 0%, #bfdbfe 52%, #93c5fd 100%)'],
+            82: ['Pancadas fortes', 'fa-solid fa-cloud-showers-heavy', '#1e40af', '#eff6ff', '#bfdbfe', 'linear-gradient(135deg, #dbeafe 0%, #93c5fd 54%, #60a5fa 100%)'],
+            95: ['Trovoadas', 'fa-solid fa-cloud-bolt', '#7c3aed', '#f5f3ff', '#ddd6fe', 'linear-gradient(135deg, #f5f3ff 0%, #ddd6fe 52%, #bfdbfe 100%)'],
+            96: ['Trovoadas', 'fa-solid fa-cloud-bolt', '#7c3aed', '#f5f3ff', '#ddd6fe', 'linear-gradient(135deg, #f5f3ff 0%, #ddd6fe 52%, #bfdbfe 100%)'],
+            99: ['Trovoadas fortes', 'fa-solid fa-cloud-bolt', '#6d28d9', '#f5f3ff', '#ddd6fe', 'linear-gradient(135deg, #ede9fe 0%, #c4b5fd 52%, #93c5fd 100%)']
+        };
+
+        function round(value) {
+            return Math.round(Number(value));
+        }
+
+        function dayLabel(date) {
+            return new Intl.DateTimeFormat('pt-BR', {
+                weekday: 'short',
+                day: '2-digit',
+                month: '2-digit',
+                timeZone: 'America/Sao_Paulo'
+            }).format(new Date(date + 'T12:00:00'));
+        }
+
+        function weatherMeta(day) {
+            return day.code in labels ? labels[day.code] : ['Previsão', 'fa-solid fa-cloud', '#0f766e', '#f0fdfa', '#ccfbf1', 'linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%)'];
+        }
+
+        function weatherCard(day, index) {
+            var code = weatherMeta(day);
+            var rain = day.rain === null || day.rain === undefined ? '-' : round(day.rain) + '%';
+
+            return [
+                '<article class="bg-white p-4 ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-md" style="animation: weatherFade .45s ease both; animation-delay: ' + (index * 55) + 'ms;">',
+                    '<div class="flex items-start justify-between gap-3">',
+                        '<div>',
+                            '<span class="block text-xs font-bold uppercase tracking-wide text-slate-500">' + (index === 0 ? 'Hoje' : dayLabel(day.date)) + '</span>',
+                            '<strong class="mt-2 block text-2xl font-semibold text-slate-950">' + round(day.max) + '°</strong>',
+                            '<span class="text-sm font-semibold text-slate-500">mín. ' + round(day.min) + '°</span>',
+                        '</div>',
+                        '<span class="grid h-10 w-10 shrink-0 place-items-center rounded-md text-lg" style="background:' + code[3] + '; color:' + code[2] + ';"><i class="' + code[1] + '"></i></span>',
+                    '</div>',
+                    '<p class="mt-4 min-h-10 text-sm font-semibold leading-5 text-slate-700">' + code[0] + '</p>',
+                    '<span class="mt-3 inline-flex items-center gap-2 text-xs font-bold text-slate-500"><i class="fa-solid fa-droplet" style="color:' + code[2] + ';"></i> Chuva ' + rain + '</span>',
+                '</article>'
+            ].join('');
+        }
+
+        function todayPanel(day) {
+            var code = weatherMeta(day);
+            var rain = day.rain === null || day.rain === undefined ? '-' : round(day.rain) + '%';
+
+            return [
+                '<article class="relative overflow-hidden p-6 shadow-sm ring-1 ring-slate-200" style="background:' + code[5] + '; border-top: 4px solid ' + code[2] + '; animation: weatherFade .45s ease both;">',
+                    '<span class="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-white/45"></span>',
+                    '<span class="pointer-events-none absolute -bottom-16 right-16 h-32 w-32 rounded-full bg-white/30"></span>',
+                    '<div class="relative flex items-start justify-between gap-4">',
+                        '<div>',
+                            '<span class="inline-flex items-center gap-2 rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wide" style="background:' + code[3] + '; color:' + code[2] + ';">Agora na cidade</span>',
+                            '<h3 class="mt-5 text-4xl font-semibold tracking-tight text-slate-950">' + round(day.max) + '°</h3>',
+                            '<p class="mt-2 text-sm font-semibold text-slate-500">mínima prevista de ' + round(day.min) + '°</p>',
+                        '</div>',
+                        '<span class="grid h-16 w-16 shrink-0 place-items-center rounded-lg text-3xl" style="background:' + code[4] + '; color:' + code[2] + ';"><i class="' + code[1] + '"></i></span>',
+                    '</div>',
+                    '<p class="relative mt-6 text-lg font-semibold leading-7 text-slate-900">' + code[0] + '</p>',
+                    '<div class="relative mt-5 grid gap-3 sm:grid-cols-2">',
+                        '<span class="flex items-center gap-3 bg-white/65 p-3 text-sm font-semibold text-slate-700 ring-1 ring-white/70"><i class="fa-solid fa-droplet" style="color:' + code[2] + ';"></i> Chuva ' + rain + '</span>',
+                        '<span class="flex items-center gap-3 bg-white/65 p-3 text-sm font-semibold text-slate-700 ring-1 ring-white/70"><i class="fa-regular fa-calendar" style="color:' + code[2] + ';"></i> ' + dayLabel(day.date) + '</span>',
+                    '</div>',
+                '</article>'
+            ].join('');
+        }
+
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=-21.0719&longitude=-42.6358&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=7&timezone=America%2FSao_Paulo')
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('weather_unavailable');
+                }
+
+                return response.json();
+            })
+            .then(function (forecast) {
+                var daily = forecast.daily || {};
+                var days = (daily.time || []).map(function (date, index) {
+                    return {
+                        date: date,
+                        code: daily.weather_code[index],
+                        max: daily.temperature_2m_max[index],
+                        min: daily.temperature_2m_min[index],
+                        rain: daily.precipitation_probability_max ? daily.precipitation_probability_max[index] : null
+                    };
+                });
+
+                if (!days.length) {
+                    throw new Error('weather_empty');
+                }
+
+                container.innerHTML = [
+                    todayPanel(days[0]),
+                    '<div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">',
+                        days.slice(1).map(function (day, index) {
+                            return weatherCard(day, index + 1);
+                        }).join(''),
+                    '</div>'
+                ].join('');
+            })
+            .catch(function () {
+                container.innerHTML = '<div class="bg-white p-5 text-sm font-semibold text-slate-600 ring-1 ring-slate-200 lg:col-span-2">Não foi possível carregar a previsão do tempo agora. Tente novamente mais tarde.</div>';
+            });
+    }());
+</script>
+</main>
+
+<button class="accessibility-fab" type="button" data-accessibility-toggle aria-controls="accessibility-panel" aria-expanded="false" aria-label="Abrir recursos de acessibilidade">
+    <i class="fa-solid fa-universal-access text-xl" aria-hidden="true"></i>
+</button>
+<section class="accessibility-panel rounded-xl bg-white p-4 shadow-2xl ring-1 ring-slate-200" id="accessibility-panel" data-accessibility-panel hidden aria-label="Recursos de acessibilidade">
+    <div class="mb-3 flex items-center justify-between gap-3">
+        <strong class="text-sm font-bold text-slate-950">Acessibilidade</strong>
+        <button class="text-slate-500 hover:text-[#0f766e]" type="button" data-accessibility-close aria-label="Fechar recursos de acessibilidade">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <div class="grid gap-2">
+        <button class="accessibility-action" type="button" data-accessibility-font="increase">
+            <i class="fa-solid fa-text-height text-[#0f766e]" aria-hidden="true"></i> Aumentar fonte
+        </button>
+        <button class="accessibility-action" type="button" data-accessibility-font="decrease">
+            <i class="fa-solid fa-text-width text-[#0f766e]" aria-hidden="true"></i> Diminuir fonte
+        </button>
+        <button class="accessibility-action" type="button" data-accessibility-contrast>
+            <i class="fa-solid fa-circle-half-stroke text-[#0f766e]" aria-hidden="true"></i> Alto contraste
+        </button>
+        <button class="accessibility-action" type="button" data-accessibility-reset>
+            <i class="fa-solid fa-rotate-left text-[#0f766e]" aria-hidden="true"></i> Redefinir
+        </button>
+    </div>
+</section>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<footer class="bg-[#18232d] text-white">
+    <div class="mx-auto grid max-w-7xl gap-8 px-5 py-10 md:grid-cols-[1.1fr_.9fr_.8fr]">
+        <div>
+            <img class="h-16 w-auto object-contain" src="https://saosebastiaodavargemalegre.mg.gov.br/assets/legacy/logo/logobranco.png" alt="Prefeitura">
+            <p class="mt-4 max-w-md text-sm leading-6 text-slate-200">Portal oficial da Prefeitura Municipal de São Sebastião da Vargem Alegre.</p>
+            <div class="mt-5 flex items-center gap-3" aria-label="Redes sociais da Prefeitura">
+                <a class="site-footer-social-link" href="https://www.facebook.com/prefeiturasaosebastiaodavargemalegre" target="_blank" rel="noopener" aria-label="Facebook da Prefeitura">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a class="site-footer-social-link" href="https://www.instagram.com/prefeiturassva/" target="_blank" rel="noopener" aria-label="Instagram da Prefeitura">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-100">Atendimento</h2>
+            <p class="mt-3 text-sm leading-6 text-slate-300">Praça José Honorato de Almeida, 83<br>São Sebastião da Vargem Alegre - MG<br>CEP 36793-000</p>
+        </div>
+        <div>
+            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-100">Canais</h2>
+            <div class="mt-3 grid gap-2 text-sm text-slate-300">
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">Fale Conosco</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">Ouvidoria</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/contato">e-SIC</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/denuncias">Canal de Denúncias</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/mapa-do-site">Mapa do Site</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/dados-abertos">Dados Abertos</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/sic">Acesso à Informação — SIC</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/carta-de-servicos">Carta de Serviços</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/politica-de-privacidade">Política de Privacidade</a>
+                <a class="hover:text-white" href="https://saosebastiaodavargemalegre.mg.gov.br/encarregado-dados">Encarregado de Dados</a>
+                <a class="hover:text-white" href="https://radardatransparencia.atricon.org.br/" target="_blank" rel="noopener">Radar da Transparência Pública</a>
+                <a class="hover:text-white" href="https://email.uolhost.com.br/saosebastiaodavargemalegre.mg.gov.br/" target="_blank" rel="noopener">Webmail</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    document.querySelectorAll('[data-mobile-menu-toggle]').forEach(function (button) {
+        var target = document.getElementById(button.getAttribute('aria-controls'));
+
+        if (!target) {
+            return;
+        }
+
+        button.addEventListener('click', function () {
+            var isOpen = !target.classList.contains('hidden');
+            target.classList.toggle('hidden', isOpen);
+            button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            var icon = button.querySelector('[data-mobile-menu-icon]');
+            if (icon) {
+                icon.classList.toggle('fa-bars', isOpen);
+                icon.classList.toggle('fa-xmark', !isOpen);
+            }
+        });
+    });
+
+    document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+        var slides = carousel.querySelectorAll('[data-slide]');
+        var dots = carousel.querySelectorAll('[data-dot]');
+        var current = 0;
+
+        function show(index) {
+            if (!slides.length) {
+                return;
+            }
+
+            current = (index + slides.length) % slides.length;
+            slides.forEach(function (slide, slideIndex) {
+                slide.classList.toggle('hidden', slideIndex !== current);
+            });
+            dots.forEach(function (dot, dotIndex) {
+                dot.classList.toggle('bg-white', dotIndex === current);
+                dot.classList.toggle('bg-white/40', dotIndex !== current);
+            });
+        }
+
+        carousel.querySelectorAll('[data-carousel-next]').forEach(function (button) {
+            button.addEventListener('click', function () { show(current + 1); });
+        });
+        carousel.querySelectorAll('[data-carousel-prev]').forEach(function (button) {
+            button.addEventListener('click', function () { show(current - 1); });
+        });
+        dots.forEach(function (dot, index) {
+            dot.addEventListener('click', function () { show(index); });
+        });
+        show(0);
+
+        if (slides.length > 1) {
+            setInterval(function () { show(current + 1); }, 6500);
+        }
+    });
+
+    document.querySelectorAll('[data-scroll-carousel]').forEach(function (carousel) {
+        var track = carousel.querySelector('[data-scroll-track]');
+        if (!track) {
+            return;
+        }
+        carousel.querySelectorAll('[data-scroll-next]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                track.scrollBy({ left: Math.max(280, track.clientWidth * 0.8), behavior: 'smooth' });
+            });
+        });
+        carousel.querySelectorAll('[data-scroll-prev]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                track.scrollBy({ left: -Math.max(280, track.clientWidth * 0.8), behavior: 'smooth' });
+            });
+        });
+    });
+
+    (function () {
+        var root = document.documentElement;
+        var panel = document.querySelector('[data-accessibility-panel]');
+        var toggle = document.querySelector('[data-accessibility-toggle]');
+        var close = document.querySelector('[data-accessibility-close]');
+        var fontLevel = 0;
+        var contrast = false;
+        try {
+            fontLevel = Math.max(0, Math.min(2, Number(localStorage.getItem('accessibilityFontLevel')) || 0));
+            contrast = localStorage.getItem('accessibilityContrast') === '1';
+        } catch (error) { /* The controls still work when browser storage is disabled. */ }
+
+        function apply() {
+            root.classList.toggle('accessibility-font-lg', fontLevel === 1);
+            root.classList.toggle('accessibility-font-xl', fontLevel === 2);
+            root.classList.toggle('accessibility-contrast', contrast);
+            var contrastControl = document.querySelector('[data-accessibility-contrast]');
+            if (contrastControl) contrastControl.setAttribute('aria-pressed', contrast ? 'true' : 'false');
+            try {
+                localStorage.setItem('accessibilityFontLevel', String(fontLevel));
+                localStorage.setItem('accessibilityContrast', contrast ? '1' : '0');
+            } catch (error) { /* Preference persistence is optional. */ }
+        }
+
+        function setPanel(open) {
+            if (!panel || !toggle) {
+                return;
+            }
+
+            panel.hidden = !open;
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            if (open && close) close.focus();
+            if (!open) toggle.focus();
+        }
+
+        apply();
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && panel && !panel.hidden) setPanel(false);
+        });
+
+        if (toggle) {
+            toggle.addEventListener('click', function () {
+                setPanel(panel ? panel.hidden : false);
+            });
+        }
+
+        if (close) {
+            close.addEventListener('click', function () {
+                setPanel(false);
+            });
+        }
+
+        document.querySelectorAll('[data-accessibility-font]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var action = button.getAttribute('data-accessibility-font');
+                fontLevel = action === 'increase' ? Math.min(2, fontLevel + 1) : Math.max(0, fontLevel - 1);
+                apply();
+            });
+        });
+
+        var contrastButton = document.querySelector('[data-accessibility-contrast]');
+        if (contrastButton) {
+            contrastButton.addEventListener('click', function () {
+                contrast = !contrast;
+                apply();
+            });
+        }
+
+        var resetButton = document.querySelector('[data-accessibility-reset]');
+        if (resetButton) {
+            resetButton.addEventListener('click', function () {
+                fontLevel = 0;
+                contrast = false;
+                apply();
+            });
+        }
+    })();
+    if (window.VLibras) {
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    }
+</script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js" onload="new window.VLibras.Widget('https://vlibras.gov.br/app');"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a6142cb43b8564b5',t:'MTc5NTgxNDQwMw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a6142cb43b8564b5',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
