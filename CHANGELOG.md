@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #2154 · União: fonte suspensa vale a observação mais recente
+
+A união pela base comum recusava `fontes_suspensas.json` quando dois elos visitavam a mesma fonte em dias diferentes (o `hash` muda a cada visita). Agora o registro cuja observação é mais recente em `ultima_deteccao` e `reavaliada_em` vence inteiro; sem lado dominante, continua recusando.
+
 ## 2026-11-26 · #2117 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura
 
 O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
